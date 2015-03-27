@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>stylesheet.css</file>
+        <file>ring.png</file>
+        <file>logo-ring-standard-coul.png</file>
+        <file>close.png</file>
+        <file>minus.png</file>
+        <file>settings.png</file>
+        <file>phone.png</file>
+        <file>phone-hangup.png</file>
+        <file>phone-paused.png</file>
+        <file>microphone-off.png</file>
+        <file>speaker-off.png</file>
+        <file>checkbox-blank-outline.png</file>
+        <file>checkbox-marked-outline.png</file>
+        <file>arrow-down-bold-circle-outline.png</file>
+        <file>arrow-up-bold-circle-outline.png</file>
+        <file>arrow-left-bold.png</file>
+        <file>plus.png</file>
+    </qresource>
+</RCC>
