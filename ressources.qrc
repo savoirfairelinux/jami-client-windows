@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>stylesheet.css</file>
+        <file>ring.png</file>
+    </qresource>
+</RCC>
