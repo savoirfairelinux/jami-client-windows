@@ -133,6 +133,7 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
 void
 ConfigurationWidget::on_testVideoButton_toggled(bool checked)
 {
+    checked ? ui->videoView->show() : ui->videoView->hide();
     checked ? Video::PreviewManager::instance()->startPreview()
             : Video::PreviewManager::instance()->stopPreview();
 }
