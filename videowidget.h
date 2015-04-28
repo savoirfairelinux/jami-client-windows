@@ -38,7 +38,7 @@ public:
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
-    void previewStopped(Video::Renderer* renderer);
+    void previewStopped();
     void frameFromPreview();
     void callInitiated(Call *call, Video::Renderer *renderer);
     void frameFromDistant();

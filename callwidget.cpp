@@ -169,10 +169,12 @@ CallWidget::on_callList_activated(const QModelIndex &index)
     if (actualCall_ != nullptr) {
         if (callSelected == actualCall_)
             return;
+        ui->videoWidget->hide();
         actualCall_->performAction(Call::Action::HOLD);
     }
     actualCall_ = callSelected;
     actualCall_->performAction(Call::Action::HOLD);
+    ui->videoWidget->show();
 }
 
 void
