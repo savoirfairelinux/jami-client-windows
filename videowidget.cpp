@@ -29,12 +29,7 @@ VideoWidget::VideoWidget(QWidget *parent) :
 {
     connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
-            this, SLOT(previewStarted(Video::Renderer*)),
-            Qt::ConnectionType::DirectConnection);
-    connect(Video::PreviewManager::instance(),
-            SIGNAL(previewStopped(Video::Renderer*)),
-            this, SLOT(previewStopped(Video::Renderer*)),
-            Qt::ConnectionType::DirectConnection);
+            this, SLOT(previewStarted(Video::Renderer*)));
     connect(CallModel::instance(),
             SIGNAL(rendererAdded(Call*,Video::Renderer*)),
             this, SLOT(callInitiated(Call*, Video::Renderer*)),
@@ -46,19 +41,20 @@ VideoWidget::~VideoWidget()
 
 void
 VideoWidget::previewStarted(Video::Renderer *renderer) {
-    if (previewRenderer_)
-        disconnect(previewRenderer_, 0,0,0);
     previewRenderer_ = renderer;
     connect(previewRenderer_, SIGNAL(frameUpdated()),
             this, SLOT(frameFromPreview()));
     connect(previewRenderer_, SIGNAL(stopped()),
-            this, SLOT(renderingStopped()), Qt::ConnectionType::DirectConnection);
+            this, SLOT(previewStopped()));
 }
 
 void
-VideoWidget::previewStopped(Video::Renderer* renderer) {
-    Q_UNUSED(renderer)
-    disconnect(previewRenderer_, 0,0,0);
+VideoWidget::previewStopped() {
+    QMutexLocker {&lock_};
+    disconnect(previewRenderer_, SIGNAL(frameUpdated()),
+            this, SLOT(frameFromPreview()));
+    disconnect(previewRenderer_, SIGNAL(stopped()),
+            this, SLOT(renderingStopped()));
     previewRenderer_ = nullptr;
 }
 
@@ -73,8 +69,8 @@ VideoWidget::frameFromPreview() {
         previewFrame_ = new QImage(
                     (const uchar*)previewRenderer_->currentFrame().constData(),
                     size.width(), size.height(), QImage::Format_RGBA8888);
+        update();
     }
-    update();
 }
 
 void
@@ -107,7 +103,6 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
 
 void
 VideoWidget::frameFromDistant() {
-    QMutexLocker {&lock_};
     if (distantFrame_) {
         delete distantFrame_;
         distantFrame_ = nullptr;
@@ -117,8 +112,8 @@ VideoWidget::frameFromDistant() {
         distantFrame_ = new QImage(
                     (const uchar*) renderer_->currentFrame().constData(),
                     size.width(), size.height(), QImage::Format_RGBA8888);
+        update();
     }
-    update();
 }
 
 void
@@ -128,8 +123,7 @@ VideoWidget::renderingStopped() {
         delete distantFrame_;
         distantFrame_ = nullptr;
     }
-    disconnect(renderer_, 0,0,0);
-    disconnect(previewRenderer_, 0,0,0);
-    previewRenderer_ = nullptr;
+    disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
+    disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
 }
