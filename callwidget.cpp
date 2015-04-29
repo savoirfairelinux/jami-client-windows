@@ -27,7 +27,7 @@
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
 
-#include "utils.h"
+#include "wizarddialog.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -76,6 +76,7 @@ CallWidget::~CallWidget()
 
 void
 CallWidget::findRingAccount() {
+
     auto a_count = AccountModel::instance()->rowCount();
     auto found = false;
     for (int i = 0; i < a_count; ++i) {
@@ -90,9 +91,9 @@ CallWidget::findRingAccount() {
         }
     }
     if (!found) {
-        AccountModel::instance()->add("RING", Account::Protocol::RING);
-        AccountModel::instance()->save();
-        Utils::CreateStartupLink();
+        WizardDialog *wizardDialog = new WizardDialog();
+        wizardDialog->exec();
+        delete wizardDialog;
         findRingAccount();
     }
 }
