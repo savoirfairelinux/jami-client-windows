@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     pivotviewwidget.cpp \
     pivotcontrol.cpp \
     videowidget.cpp \
-    utils.cpp
+    utils.cpp \
+    wizarddialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -48,7 +49,8 @@ HEADERS  += mainwindow.h \
     pivotviewwidget.h \
     pivotcontrol.h \
     videowidget.h \
-    utils.h
+    utils.h \
+    wizarddialog.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -57,7 +59,8 @@ FORMS    += mainwindow.ui \
     mainbar.ui \
     accountdetails.ui \
     aboutdialog.ui \
-    pivotviewwidget.ui
+    pivotviewwidget.ui \
+    wizarddialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
