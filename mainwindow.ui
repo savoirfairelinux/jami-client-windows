@@ -428,6 +428,10 @@
   <property name="windowTitle">
    <string>Ring</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="ressources.qrc">
+    <normaloff>:/images/ring.png</normaloff>:/images/ring.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
@@ -903,6 +907,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
