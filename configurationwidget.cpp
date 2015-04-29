@@ -23,12 +23,13 @@
 #include "video/channel.h"
 #include "video/resolution.h"
 #include "video/rate.h"
+#include "video/previewmanager.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
 #include "accountdetails.h"
 
-#include <video/previewmanager.h>
+#include "utils.h"
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(Nav, parent),
@@ -54,6 +55,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountDetailLayout->addWidget(accountDetails_);
     ui->testVideoButton->setCheckable(true);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
+    ui->startupBox->setChecked(Utils::CheckStartupLink());
 }
 
 void ConfigurationWidget::atExit() {
@@ -154,4 +156,12 @@ ConfigurationWidget::on_addAccountButton_clicked()
                        ui->accountTypeBox->model()->index(
                            ui->accountTypeBox->currentIndex(), 0));
     accountModel_->save();
+}
+
+void ConfigurationWidget::on_startupBox_toggled(bool checked)
+{
+    if (checked)
+        Utils::CreateStartupLink();
+    else
+        Utils::DeleteStartupLink();
 }

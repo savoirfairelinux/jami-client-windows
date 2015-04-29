@@ -27,6 +27,7 @@
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
 
+#include "utils.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -91,6 +92,7 @@ CallWidget::findRingAccount() {
     if (!found) {
         AccountModel::instance()->add("RING", Account::Protocol::RING);
         AccountModel::instance()->save();
+        Utils::CreateStartupLink();
         findRingAccount();
     }
 }

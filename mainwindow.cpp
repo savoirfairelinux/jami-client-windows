@@ -75,7 +75,8 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason) {
         this->show();
 }
 
-void MainWindow::onIncomingCall(Call *call) {
+void
+MainWindow::onIncomingCall(Call *call) {
     Q_UNUSED(call);
     QWidget::showNormal();
 }

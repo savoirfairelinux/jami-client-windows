@@ -54,6 +54,8 @@ private slots:
 private slots:
     void accountSelected(QItemSelection itemSel);
 
+    void on_startupBox_toggled(bool checked);
+
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;
