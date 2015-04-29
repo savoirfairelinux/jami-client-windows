@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg
 
-VERSION = 0.0.1
+VERSION = 0.1.0
 
 DEFINES += VERSION=\\\"$$VERSION\\\"
 
@@ -64,3 +64,9 @@ linux: LIBS += -L/usr/local/lib/ -lringclient
 
 RESOURCES += \
     ressources.qrc
+
+RC_FILE = ico.rc
+
+DISTFILES += \
+    ring.wxs \
+    License.rtf
