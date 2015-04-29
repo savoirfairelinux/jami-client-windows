@@ -16,34 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef NAVWIDGET_H
-#define NAVWIDGET_H
+#ifndef UTILS_H
+#define UTILS_H
 
-#include <QWidget>
+#include <windows.h>
+#include <lmcons.h>
+#include <shobjidl.h>
+#include <shlguid.h>
+#include <shlobj.h>
+#include <shlwapi.h>
 
-enum ScreenEnum {
-    Main,
-    Nav,
-    //DO not add main widget screen before callScreen
-    CallScreen,
-    //PivotScreen,
-    ConfScreen,
-    END
-};
+#include <string>
 
-class NavWidget : public QWidget
+class Utils
 {
-    Q_OBJECT
-
 public:
-    NavWidget(ScreenEnum barDesired, QWidget* parent = 0);
-    ~NavWidget();
-    ScreenEnum barDesired;
-    virtual void atExit() = 0;
-
-signals:
-    void NavigationRequested(ScreenEnum screen);
-    void BackRequested();
+    static bool CreateStartupLink();
+    static void DeleteStartupLink();
+    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
+    static bool CheckStartupLink();
 };
 
-#endif // NAVSIGNALHELPER_H
+#endif // UTILS_H

@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     aboutdialog.cpp \
     pivotviewwidget.cpp \
     pivotcontrol.cpp \
-    videowidget.cpp
+    videowidget.cpp \
+    utils.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     pivotviewwidget.h \
     pivotcontrol.h \
-    videowidget.h
+    videowidget.h \
+    utils.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -56,6 +58,8 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     pivotviewwidget.ui
+
+win32: LIBS += -lole32 -luuid -lshlwapi
 
 INCLUDEPATH += /home/edric/Documents/CrossWorkspace/ring/binArch/include/libringclient
 
