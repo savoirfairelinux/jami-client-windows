@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2011-2015 by Savoir-Faire Linux                           *
+ * Copyright (C) 2015 by Savoir-Faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,53 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef CONFIGURATIONWIDGET_H
-#define CONFIGURATIONWIDGET_H
+#ifndef UTILS_H
+#define UTILS_H
 
-#include <QWidget>
-#include <QItemSelection>
+#include <windows.h>
+#include <lmcons.h>
+#include <shobjidl.h>
+#include <shlguid.h>
+#include <shlobj.h>
+#include <shlwapi.h>
 
-#include "navwidget.h"
-#include "accountdetails.h"
+#include <string>
 
-#include "accountmodel.h"
-#include "video/devicemodel.h"
-#include "audio/codecmodel.h"
-
-namespace Ui {
-class ConfigurationWidget;
-}
-
-class ConfigurationWidget : public NavWidget
+class Utils
 {
-    Q_OBJECT
-
 public:
-    explicit ConfigurationWidget(QWidget *parent = 0);
-    ~ConfigurationWidget();
-    void atExit();
-
-//UI SLOTS
-private slots:
-    void on_deviceBox_currentIndexChanged(int index);
-    void on_sizeBox_currentIndexChanged(int index);
-    void on_rateBox_currentIndexChanged(int index);
-    void on_testVideoButton_toggled(bool checked);
-    void on_deleteAccountButton_clicked();
-    void on_addAccountButton_clicked();
-
-private slots:
-    void accountSelected(QItemSelection itemSel);
-
-    void on_startupBox_toggled(bool checked);
-
-private:
-    Ui::ConfigurationWidget *ui;
-    AccountModel* accountModel_;
-    Video::DeviceModel* deviceModel_;
-    CodecModel* codecModel_;
-    bool isLoading_;
-    AccountDetails* accountDetails_;
+    static bool CreateStartupLink();
+    static void DeleteStartupLink();
+    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
+    static bool CheckStartupLink();
 };
 
-#endif // CONFIGURATIONWIDGET_H
+#endif // UTILS_H
