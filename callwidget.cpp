@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2011-2015 by Savoir-Faire Linux                           *
+ * Copyright (C) 2015 by Savoir-Faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -27,6 +27,7 @@
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
 
+#include "utils.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -91,6 +92,7 @@ CallWidget::findRingAccount() {
     if (!found) {
         AccountModel::instance()->add("RING", Account::Protocol::RING);
         AccountModel::instance()->save();
+        Utils::CreateStartupLink();
         findRingAccount();
     }
 }

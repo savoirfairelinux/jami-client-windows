@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2011-2015 by Savoir-Faire Linux                           *
+ * Copyright (C) 2015 by Savoir-Faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -75,7 +75,8 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason) {
         this->show();
 }
 
-void MainWindow::onIncomingCall(Call *call) {
+void
+MainWindow::onIncomingCall(Call *call) {
     Q_UNUSED(call);
     QWidget::showNormal();
 }
