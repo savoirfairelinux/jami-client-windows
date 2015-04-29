@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
-    QIcon icon(":/ring.png");
+    QIcon icon(":images/ring.png");
 
     this->setWindowIcon(icon);
 
