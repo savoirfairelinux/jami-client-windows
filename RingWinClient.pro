@@ -76,4 +76,16 @@ RC_FILE = ico.rc
 
 DISTFILES += \
     ring.wxs \
-    License.rtf
+    License.rtf \
+    ringtones/konga.ul
+
+RINGTONES.files = ringtones
+release:RINGTONES.path = $$OUT_PWD/release
+
+PACKAGING.files = ring.wxs
+release:PACKAGING.path = $$OUT_PWD/release
+
+LICENSE.files = License.rtf
+release:LICENSE.path = $$OUT_PWD/release
+
+INSTALLS += RINGTONES PACKAGING LICENSE
