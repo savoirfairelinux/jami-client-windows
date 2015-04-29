@@ -40,6 +40,7 @@ public:
 
 private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
+    void onIncomingCall(Call *call);
 
 private:
     Ui::MainWindow *ui;

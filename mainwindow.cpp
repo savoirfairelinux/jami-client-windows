@@ -40,6 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&sysIcon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
+    connect(CallModel::instance(), SIGNAL(incomingCall(Call*)),
+            this, SLOT(onIncomingCall(Call*)));
+
     navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
     ui->verticalLayout_2->addWidget(
                 new QSizeGrip(this), 0, Qt::AlignBottom | Qt::AlignRight);
@@ -70,4 +73,9 @@ void
 MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason) {
     if (reason != QSystemTrayIcon::ActivationReason::Context)
         this->show();
+}
+
+void MainWindow::onIncomingCall(Call *call) {
+    Q_UNUSED(call);
+    QWidget::showNormal();
 }
