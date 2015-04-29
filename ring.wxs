@@ -52,6 +52,11 @@
                                     <File Id='qwindowsDLL' Name='qwindows.dll' DiskId='1' Source='platforms/qwindows.dll' KeyPath='yes' />
                                 </Component>
                             </Directory>
+                            <Directory Id="ringtones" Name="ringtones">
+                                <Component Id='RingtonesFiles' Guid='2B493BC2-281E-4B85-B93D-237DFFAD4D6E'>
+                                    <File Id='konga' Name='konga.ul' DiskId='1' Source='ringtones/konga.ul' KeyPath='yes' />
+                                </Component>
+                            </Directory>
                         </Directory>
                     </Directory>
                 </Directory>
@@ -76,6 +81,7 @@
             <ComponentRef Id='StdLibrary' />
             <ComponentRef Id='QtDeps' />
             <ComponentRef Id='QtPlatformsLibrary' />
+            <ComponentRef Id='RingtonesFiles' />
             <ComponentRef Id='ProgramMenuDir' />
         </Feature>
     </Feature>

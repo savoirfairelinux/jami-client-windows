@@ -152,9 +152,10 @@ ConfigurationWidget::on_deleteAccountButton_clicked()
 void
 ConfigurationWidget::on_addAccountButton_clicked()
 {
-    accountModel_->add("New Account",
+    auto account = accountModel_->add("New Account",
                        ui->accountTypeBox->model()->index(
                            ui->accountTypeBox->currentIndex(), 0));
+    account->setRingtonePath(Utils::GetRingtonePath());
     accountModel_->save();
 }
 

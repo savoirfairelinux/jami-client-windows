@@ -79,3 +79,14 @@ Utils::CheckStartupLink() {
     return PathFileExists(linkPath.c_str());
 }
 
+QString
+Utils::GetRingtonePath() {
+    TCHAR workingDirectory[MAX_PATH];
+    GetCurrentDirectory(MAX_PATH, workingDirectory);
+
+    QString ringtonePath = QString::fromWCharArray(workingDirectory);
+    ringtonePath += "\\ringtones\\konga.ul";
+
+    return ringtonePath;
+}
+

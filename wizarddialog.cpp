@@ -25,7 +25,8 @@ WizardDialog::~WizardDialog()
 void
 WizardDialog::on_buttonBox_accepted()
 {
-    AccountModel::instance()->add(ui->usernameEdit->text(), Account::Protocol::RING);
+    auto account = AccountModel::instance()->add(ui->usernameEdit->text(), Account::Protocol::RING);
+    account->setRingtonePath(Utils::GetRingtonePath());
     AccountModel::instance()->save();
     Utils::CreateStartupLink();
 }

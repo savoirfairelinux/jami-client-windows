@@ -27,6 +27,7 @@
 #include <shlwapi.h>
 
 #include <string>
+#include <QString>
 
 class Utils
 {
@@ -35,6 +36,7 @@ public:
     static void DeleteStartupLink();
     static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
     static bool CheckStartupLink();
+    static QString GetRingtonePath();
 };
 
 #endif // UTILS_H
