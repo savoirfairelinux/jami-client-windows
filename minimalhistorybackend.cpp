@@ -241,10 +241,9 @@ MinimalHistoryBackend::reload()
     return false;
 }
 
-CollectionInterface::SupportedFeatures
-MinimalHistoryBackend::supportedFeatures() const
+FlagPack<CollectionInterface::SupportedFeatures> MinimalHistoryBackend::supportedFeatures() const
 {
-    return (CollectionInterface::SupportedFeatures) (
+    return (
         CollectionInterface::SupportedFeatures::NONE  |
         CollectionInterface::SupportedFeatures::LOAD  |
         CollectionInterface::SupportedFeatures::CLEAR |
