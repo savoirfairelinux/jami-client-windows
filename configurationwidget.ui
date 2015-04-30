@@ -224,14 +224,24 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="startupBox">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="topMargin">
+      <number>0</number>
      </property>
-     <property name="text">
-      <string>Launch Ring on Startup</string>
+     <property name="rightMargin">
+      <number>10</number>
      </property>
-    </widget>
+     <item alignment="Qt::AlignRight">
+      <widget class="QCheckBox" name="startupBox">
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Launch Ring on Startup</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
