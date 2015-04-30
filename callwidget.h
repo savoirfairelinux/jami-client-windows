@@ -61,6 +61,7 @@ private slots:
     void callIncoming(Call *call);
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
+    void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
 
 private:
     Ui::CallWidget *ui;
