@@ -26,8 +26,12 @@
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
+#include "categorizedcontactmodel.h"
+#include "windowscontactbackend.h"
 
 #include "wizarddialog.h"
+
+#include <QStandardPaths>
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -53,12 +57,21 @@ CallWidget::CallWidget(QWidget *parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
+        connect(AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
+
         ui->callList->setModel(callModel_);
 
         CategorizedHistoryModel::instance()->
                 addCollection<MinimalHistoryBackend>(LoadOptions::FORCE_ENABLED);
 
+        PersonModel::instance()->
+                addCollection<FallbackPersonCollection>(LoadOptions::FORCE_ENABLED);
+
+        PersonModel::instance()->
+                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+
         ui->historyList->setModel(CategorizedHistoryModel::instance());
+        ui->contactView->setModel(CategorizedContactModel::instance());
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
 
@@ -72,6 +85,30 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
+}
+
+void
+CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec) {
+    Q_UNUSED(idx1)
+    Q_UNUSED(idx2)
+    Q_UNUSED(vec)
+
+    auto a_count = AccountModel::instance()->rowCount();
+    auto found = false;
+    for (int i = 0; i < a_count; ++i) {
+        auto idx = AccountModel::instance()->index(i, 0);
+        auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
+        if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
+            auto username = idx.data(static_cast<int>(Account::Role::Username));
+            ui->ringIdLabel->setText(
+                        "Your Ring ID: " + username.toString());
+            found = true;
+            return;
+        }
+    }
+    if (not found){
+        ui->ringIdLabel->setText("NO RING ACCOUNT FOUND");
+    }
 }
 
 void
@@ -91,10 +128,12 @@ CallWidget::findRingAccount() {
         }
     }
     if (!found) {
+        //FIXME: Quick Fix for a bug in daemon mkdir
+        QDir().mkdir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.config/ring");
+
         WizardDialog *wizardDialog = new WizardDialog();
         wizardDialog->exec();
         delete wizardDialog;
-        findRingAccount();
     }
 }
 
