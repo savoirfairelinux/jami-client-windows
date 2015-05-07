@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     pivotcontrol.cpp \
     videowidget.cpp \
     utils.cpp \
-    wizarddialog.cpp
+    wizarddialog.cpp \
+    windowscontactbackend.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -54,7 +55,8 @@ HEADERS  += mainwindow.h \
     pivotcontrol.h \
     videowidget.h \
     utils.h \
-    wizarddialog.h
+    wizarddialog.h \
+    windowscontactbackend.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \

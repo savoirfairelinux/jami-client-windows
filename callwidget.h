@@ -20,6 +20,8 @@
 #define CALLWIDGET_H
 
 #include <QWidget>
+#include <QVector>
+#include <QString>
 
 #include "navwidget.h"
 
@@ -38,6 +40,12 @@ class CallWidget : public NavWidget
 {
     Q_OBJECT
 
+    const QVector<QString> state = {"New", "Incoming", "Ringing", "Current",
+                                        "Dialing", "Hold", "Failure", "Busy",
+                                        "Transferred", "Transfer hold", "Over",
+                                        "Error", "Conference",
+                                        "Conference Hold", "Initialization",
+                                        "Aborted", "Connected"};
 public:
     explicit CallWidget(QWidget *parent = 0);
     ~CallWidget();
@@ -56,11 +64,13 @@ private slots:
     void on_speakerSlider_sliderReleased();
     void on_micSlider_sliderMoved(int position);
     void on_micSlider_sliderReleased();
+    void on_contactView_doubleClicked(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call *call);
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
+    void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
 
 private:
     Ui::CallWidget *ui;
