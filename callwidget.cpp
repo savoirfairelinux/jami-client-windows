@@ -26,6 +26,8 @@
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
+#include "categorizedcontactmodel.h"
+#include "windowscontactbackend.h"
 
 #include "wizarddialog.h"
 
@@ -53,12 +55,26 @@ CallWidget::CallWidget(QWidget *parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
+        connect(AccountModel::instance()
+                , SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>))
+                , this
+                , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
+
         ui->callList->setModel(callModel_);
 
         CategorizedHistoryModel::instance()->
                 addCollection<MinimalHistoryBackend>(LoadOptions::FORCE_ENABLED);
 
+        PersonModel::instance()->
+                addCollection<FallbackPersonCollection>(LoadOptions::FORCE_ENABLED);
+
+        PersonModel::instance()->
+                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+
         ui->historyList->setModel(CategorizedHistoryModel::instance());
+        CategorizedContactModel::instance()->setSortAlphabetical(false);
+        ui->contactView->setModel(CategorizedContactModel::instance());
+        ui->contactView->setHeaderHidden(true);
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
 
@@ -75,7 +91,33 @@ CallWidget::~CallWidget()
 }
 
 void
-CallWidget::findRingAccount() {
+CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec)
+{
+    Q_UNUSED(idx1)
+    Q_UNUSED(idx2)
+    Q_UNUSED(vec)
+
+    auto a_count = AccountModel::instance()->rowCount();
+    auto found = false;
+    for (int i = 0; i < a_count; ++i) {
+        auto idx = AccountModel::instance()->index(i, 0);
+        auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
+        if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
+            auto username = idx.data(static_cast<int>(Account::Role::Username));
+            ui->ringIdLabel->setText(
+                        "Your Ring ID: " + username.toString());
+            found = true;
+            return;
+        }
+    }
+    if (not found){
+        ui->ringIdLabel->setText("NO RING ACCOUNT FOUND");
+    }
+}
+
+void
+CallWidget::findRingAccount()
+{
 
     auto a_count = AccountModel::instance()->rowCount();
     auto found = false;
@@ -94,7 +136,6 @@ CallWidget::findRingAccount() {
         WizardDialog *wizardDialog = new WizardDialog();
         wizardDialog->exec();
         delete wizardDialog;
-        findRingAccount();
     }
 }
 
@@ -150,19 +191,21 @@ CallWidget::addedCall(Call* call, Call* parent) {
 }
 
 void
-CallWidget::callStateChanged(Call* call, Call::State previousState) {
+CallWidget::callStateChanged(Call* call, Call::State previousState)
+{
     Q_UNUSED(previousState)
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
     if (call->state() == Call::State::OVER) {
         actualCall_ = nullptr;
         ui->videoWidget->hide();
+    } else if (call->state() == Call::State::HOLD) {
+        ui->videoWidget->hide();
     } else {
         ui->videoWidget->show();
-        connect(actualCall_, SIGNAL(isOver(Call*)),
-                this, SLOT(callStateChanged(Call*,Call::State::OVER)));
         ui->messageOutput->setModel(
                     IMConversationManager::instance()->getModel(actualCall_));
     }
+    ui->callStateLabel->setText("Call State : " + state.at((int)call->state()));
 }
 
 void
@@ -219,4 +262,28 @@ CallWidget::on_micSlider_sliderReleased()
 void
 CallWidget::atExit() {
 
+}
+
+void
+CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
+{
+    auto contact =  index.data((int)ContactMethod::Role::Uri);
+    QString uri;
+
+    if (contact.isValid()) {
+        uri = contact.toString();
+    } else {
+        auto var = index.data((int)Person::Role::Object);
+        if (var.isValid()) {
+            Person* person = var.value<Person*>();
+            if (person->phoneNumbers().size() > 0) {
+                uri = person->phoneNumbers().at(0)->uri();
+            }
+        }
+    }
+    if (not uri.isEmpty()) {
+        auto outCall = CallModel::instance()->dialingCall(uri);
+        outCall->setDialNumber(uri);
+        outCall->performAction(Call::Action::ACCEPT);
+    }
 }
