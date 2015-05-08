@@ -50,11 +50,11 @@ private slots:
     void on_testVideoButton_toggled(bool checked);
     void on_deleteAccountButton_clicked();
     void on_addAccountButton_clicked();
+    void on_startupBox_toggled(bool checked);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
-
-    void on_startupBox_toggled(bool checked);
+    void deviceIndexChanged(int index);
 
 private:
     Ui::ConfigurationWidget *ui;
