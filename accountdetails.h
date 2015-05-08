@@ -68,6 +68,8 @@ private slots:
     void aliasChanged();
     void bootstrapChanged();
 
+    void on_upnpCheckBox_clicked(bool checked);
+
 private:
     Ui::AccountDetails *ui;
     CodecModel* codecModel_;
