@@ -8,16 +8,21 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg
 
-VERSION = 0.1.0
+VERSION = 0.1.1
 
 DEFINES += VERSION=\\\"$$VERSION\\\"
+
+BUILD=$${BUILD}
 
 TARGET = RingClientWindows
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
 
-CONFIG += console
+contains(BUILD, Debug) {
+    QMAKE_STRIP = echo
+    CONFIG += console
+}
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -66,10 +71,9 @@ FORMS    += mainwindow.ui \
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
-INCLUDEPATH += /home/edric/Documents/CrossWorkspace/ring/binArch/include/libringclient
+INCLUDEPATH += $${RING}/include/libringclient
 
-win32: LIBS += -L/home/edric/Documents/CrossWorkspace/ring/binArch/lib/ -lringclient
-linux: LIBS += -L/usr/local/lib/ -lringclient
+LIBS += -L$${RING}/lib/ -lringclient
 
 RESOURCES += \
     ressources.qrc
@@ -81,13 +85,38 @@ DISTFILES += \
     License.rtf \
     ringtones/konga.ul
 
-RINGTONES.files = ringtones
-release:RINGTONES.path = $$OUT_PWD/release
+win32 {
 
-PACKAGING.files = ring.wxs
-release:PACKAGING.path = $$OUT_PWD/release
+    RINGTONES.files = ringtones
+    RINGTONES.path = $$OUT_PWD/release
 
-LICENSE.files = License.rtf
-release:LICENSE.path = $$OUT_PWD/release
+    PACKAGING.files = ring.wxs
+    PACKAGING.path = $$OUT_PWD/release
 
-INSTALLS += RINGTONES PACKAGING LICENSE
+    LICENSE.files = License.rtf
+    LICENSE.path = $$OUT_PWD/release
+
+    RUNTIMEDIR=/usr/i686-w64-mingw32/bin/
+
+    RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll
+    RUNTIME.path = $$OUT_PWD/release
+
+    QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
+                            $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll
+    QTRUNTIME.path = $$OUT_PWD/release
+
+    QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll $$RUNTIMEDIR/iconv.dll \
+                            $$RUNTIMEDIR/libfreetype-6.dll $$RUNTIMEDIR/libglib-2.0-0.dll \
+                            $$RUNTIMEDIR/libharfbuzz-0.dll \
+                            $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
+                            $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll
+    QTDEPSRUNTIME.path = $$OUT_PWD/release
+
+    LIBSTD.files = $$RUNTIMEDIR/libgcc_s_sjlj-1.dll $$RUNTIMEDIR/libstdc++-6.dll \
+                    $$RUNTIMEDIR/libwinpthread-1.dll
+    LIBSTD.path = $$OUT_PWD/release
+
+    INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME QTRUNTIME QTDEPSRUNTIME LIBSTD
+}
+
+
