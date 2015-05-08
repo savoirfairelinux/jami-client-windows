@@ -191,13 +191,15 @@ CallWidget::addedCall(Call* call, Call* parent) {
 void
 CallWidget::callStateChanged(Call* call, Call::State previousState) {
     Q_UNUSED(previousState)
+    if (call == nullptr)
+        return;
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
     if (call->state() == Call::State::OVER) {
         actualCall_ = nullptr;
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::HOLD) {
         ui->videoWidget->hide();
-    } else {
+    } else if (call->state() == Call::State::CURRENT){
         ui->videoWidget->show();
         ui->messageOutput->setModel(
                     IMConversationManager::instance()->getModel(actualCall_));
