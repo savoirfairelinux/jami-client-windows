@@ -219,6 +219,7 @@ AccountDetails::setAccount(Account* currentAccount) {
 
     ui->videoEnabledCheckBox->setChecked(currentAccount_->isVideoEnabled());
     ui->autoAnswerCheckBox->setChecked(currentAccount_->isAutoAnswer());
+    ui->upnpCheckBox->setChecked(currentAccount_->isUpnpEnabled());
 }
 
 void
@@ -359,4 +360,9 @@ AccountDetails::on_tabWidget_currentChanged(int index)
     } else if (index == 2) {
         ui->videoCodecView->setCurrentItem(ui->videoCodecView->item(0, 0));
     }
+}
+
+void AccountDetails::on_upnpCheckBox_clicked(bool checked)
+{
+    currentAccount_->setUpnpEnabled(checked);
 }

@@ -59,6 +59,7 @@ private slots:
     void on_proxyEdit_editingFinished();
     void on_voicemailEdit_editingFinished();
     void on_tabWidget_currentChanged(int index);
+    void on_upnpCheckBox_clicked(bool checked);
 
 private slots:
     void audio_codec_checked(int row, int column);
