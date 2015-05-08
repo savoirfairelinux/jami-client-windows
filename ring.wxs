@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='windows-1252'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
 
-  <Product Name='Ring 0.1.0' Id='9D33885D-6992-4A9B-82B5-7AC3834CF61E' UpgradeCode='E7C93227-949A-4F55-9058-509AA1126A3E'
-    Language='1033' Codepage='1252' Version='0.1.0' Manufacturer='Savoir-Faire Linux'>
+  <Product Name='Ring' Id='9D33885D-6992-4A9B-82B5-7AC3834CF61E' UpgradeCode='E7C93227-949A-4F55-9058-509AA1126A3E'
+    Language='1033' Codepage='1252' Version='0.1.1' Manufacturer='Savoir-Faire Linux'>
 
-    <Package Id='*' Keywords='Installer' Description="Ring 0.1.0 Installer"
+    <Package Id='*' Keywords='Installer' Description="Ring Installer"
       Manufacturer='Savoir-Faire Linux'
       InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
       <Media Id='1' Cabinet='Ring.cab' EmbedCab='yes' DiskPrompt='USB' />
-      <Property Id='DiskPrompt' Value="Ring 0.1.0 Installer" />
+      <Property Id='DiskPrompt' Value="Ring Installer" />
       <Directory Id='TARGETDIR' Name='SourceDir'>
           <Directory Id='ProgramFilesFolder' Name='PFiles'>
             <Directory Id='SavoirFaireLinux' Name='Savoir-Faire Linux'>
