@@ -42,10 +42,10 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     ui->accountView->setModel(accountModel_);
 
-    //FIXME : Seems to set the active device instead of taking the default one
     isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);
-    ui->deviceBox->setCurrentIndex(deviceModel_->activeIndex());
+    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(deviceIndexChanged(int)));
 
     connect(ui->accountView->selectionModel(),
          SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -66,6 +66,11 @@ void ConfigurationWidget::atExit() {
 ConfigurationWidget::~ConfigurationWidget()
 {
     delete ui;
+}
+
+void
+ConfigurationWidget::deviceIndexChanged(int index) {
+    ui->deviceBox->setCurrentIndex(index);
 }
 
 void
