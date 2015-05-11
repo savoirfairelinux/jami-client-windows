@@ -29,6 +29,7 @@
 #include "categorizedcontactmodel.h"
 #include "windowscontactbackend.h"
 #include "historydelegate.h"
+#include "contactdelegate.h"
 
 #include "wizarddialog.h"
 
@@ -82,6 +83,7 @@ CallWidget::CallWidget(QWidget *parent) :
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
+        ui->contactView->setItemDelegate(new ContactDelegate());
 
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());

@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     utils.cpp \
     wizarddialog.cpp \
     windowscontactbackend.cpp \
-    historydelegate.cpp
+    historydelegate.cpp \
+    contactdelegate.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -59,7 +60,8 @@ HEADERS  += mainwindow.h \
     utils.h \
     wizarddialog.h \
     windowscontactbackend.h \
-    historydelegate.h
+    historydelegate.h \
+    contactdelegate.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
