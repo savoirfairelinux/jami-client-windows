@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QXmlStreamReader>
 #include <QtConcurrent/QtConcurrent>
+#include <QImage>
 
 #include "person.h"
 #include "collectioninterface.h"
