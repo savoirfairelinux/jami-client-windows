@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QXmlStreamReader>
 #include <QtConcurrent/QtConcurrent>
+#include <QImage>
 
 #include "person.h"
 #include "collectioninterface.h"
@@ -49,6 +50,7 @@ private:
     bool loadRun();
 private:
     CollectionMediator<Person>*  mediator_;
+    constexpr static int sizePhoto_ = 50;
 };
 
 class WindowsContactEditor : public CollectionEditor<Person>

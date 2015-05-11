@@ -134,11 +134,12 @@ WindowsContactBackend::loadRun()
                     else if (name == "Photo") {
                         //FIXME: It seems to be possible to have multiple photo...
                         reader.readNext();
-                        if (reader.name().toString() == "Value") {
+                        if (reader.name().toString() == "Url") {
                             QString photoValue = reader.readElementText();
-                            QByteArray byteArray;
-                            byteArray.append(photoValue);
-                            p->setPhoto(byteArray);
+                            QImage photo;
+                            photo.load(photoValue);
+                            p->setPhoto(photo.scaled(sizePhoto_,sizePhoto_, Qt::KeepAspectRatio,
+                                                     Qt::SmoothTransformation));
                         }
                     }
                     else if (name == "EmailAddress") {
