@@ -16,36 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef WIZARDDIALOG_H
-#define WIZARDDIALOG_H
+#ifndef HISTORYDELEGATE_H
+#define HISTORYDELEGATE_H
 
-#include <QDialog>
-#include <QtConcurrent/QtConcurrent>
+#include <QObject>
+#include <QString>
+#include <QPainter>
+#include <QApplication>
+#include <QStyledItemDelegate>
 
-namespace Ui {
-class WizardDialog;
-}
+#include "categorizedhistorymodel.h"
 
-class WizardDialog : public QDialog
+class HistoryDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
-
 public:
-    explicit WizardDialog(QWidget *parent = 0);
-    ~WizardDialog();
+    explicit HistoryDelegate(QObject *parent = 0);
 
-//UI SLOTS
-private slots:
-    void on_usernameEdit_textChanged(const QString &arg1);
-    void accept();
+protected:
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+signals:
 
-private slots:
-    void endSetup();
-
-private:
-    Ui::WizardDialog *ui;
-private:
-    void setup();
+public slots:
 };
 
-#endif // WIZARDDIALOG_H
+#endif // HISTORYDELEGATE_H

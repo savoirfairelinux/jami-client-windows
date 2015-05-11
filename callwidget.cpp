@@ -28,6 +28,7 @@
 #include "accountmodel.h"
 #include "categorizedcontactmodel.h"
 #include "windowscontactbackend.h"
+#include "historydelegate.h"
 
 #include "wizarddialog.h"
 
@@ -71,10 +72,17 @@ CallWidget::CallWidget(QWidget *parent) :
         PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
-        ui->historyList->setModel(CategorizedHistoryModel::instance());
+        auto historyModel = new QSortFilterProxyModel();
+        historyModel->setSourceModel(CategorizedHistoryModel::instance());
+        historyModel->setSortRole(static_cast<int>(Call::Role::Date));
+        historyModel->sort(0,Qt::DescendingOrder);
+        ui->historyList->setModel(historyModel);
+        ui->historyList->setHeaderHidden(true);
+        ui->historyList->setItemDelegate(new HistoryDelegate());
+
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
-        ui->contactView->setHeaderHidden(true);
+
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
 
@@ -149,7 +157,7 @@ void
 CallWidget::on_acceptButton_clicked()
 {
     if (actualCall_ != nullptr)
-       actualCall_->performAction(Call::Action::ACCEPT);
+        actualCall_->performAction(Call::Action::ACCEPT);
     ui->callInvite->setVisible(false);
 }
 
@@ -282,6 +290,16 @@ void CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
     if (not uri.isEmpty()) {
         auto outCall = CallModel::instance()->dialingCall(uri);
         outCall->setDialNumber(uri);
+        outCall->performAction(Call::Action::ACCEPT);
+    }
+}
+
+void CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
+{
+    QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
+    if (not number.isEmpty()) {
+        auto outCall = CallModel::instance()->dialingCall(number);
+        outCall->setDialNumber(number);
         outCall->performAction(Call::Action::ACCEPT);
     }
 }
