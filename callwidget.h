@@ -65,6 +65,7 @@ private slots:
     void on_micSlider_sliderMoved(int position);
     void on_micSlider_sliderReleased();
     void on_contactView_doubleClicked(const QModelIndex &index);
+    void on_historyList_doubleClicked(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call *call);
