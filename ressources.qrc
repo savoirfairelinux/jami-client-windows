@@ -17,5 +17,7 @@
         <file>images/plus.png</file>
         <file>images/settings.png</file>
         <file>images/speaker-off.png</file>
+        <file>images/account.png</file>
+        <file>images/sort-variant.png</file>
     </qresource>
 </RCC>
