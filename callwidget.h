@@ -22,6 +22,7 @@
 #include <QWidget>
 #include <QVector>
 #include <QString>
+#include <QMenu>
 
 #include "navwidget.h"
 
@@ -80,6 +81,8 @@ private:
     CallModel* callModel_;
     int outputVolume_;
     int inputVolume_;
+    QMenu *menu_;
+private:
     void findRingAccount();
 };
 

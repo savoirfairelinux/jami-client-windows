@@ -35,7 +35,8 @@
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
-    ui(new Ui::CallWidget)
+    ui(new Ui::CallWidget),
+    menu_(new QMenu())
 {
     ui->setupUi(this);
 
@@ -75,11 +76,76 @@ CallWidget::CallWidget(QWidget *parent) :
 
         auto historyModel = new QSortFilterProxyModel();
         historyModel->setSourceModel(CategorizedHistoryModel::instance());
-        historyModel->setSortRole(static_cast<int>(Call::Role::Date));
-        historyModel->sort(0,Qt::DescendingOrder);
         ui->historyList->setModel(historyModel);
         ui->historyList->setHeaderHidden(true);
         ui->historyList->setItemDelegate(new HistoryDelegate());
+
+        auto sortActionGroup = new QActionGroup(this);
+
+        auto alphabetAction = new QAction("Alphetical Order Ascending", this);
+        alphabetAction->setCheckable(true);
+        sortActionGroup->addAction(alphabetAction);
+        menu_->addAction(alphabetAction);
+        connect(alphabetAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::Name));
+            historyModel->setSortRole(static_cast<int>(Call::Role::Name));
+            historyModel->sort(0,Qt::AscendingOrder);
+        });
+
+        auto alphabetDownAction = new QAction("Alphetical Order Descending", this);
+        alphabetDownAction->setCheckable(true);
+        sortActionGroup->addAction(alphabetDownAction);
+        menu_->addAction(alphabetDownAction);
+        connect(alphabetDownAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::Name));
+            historyModel->setSortRole(static_cast<int>(Call::Role::Name));
+            historyModel->sort(0,Qt::DescendingOrder);
+        });
+
+        auto dateAction = new QAction("Date Order Ascending", this);
+        dateAction->setCheckable(true);
+        sortActionGroup->addAction(dateAction);
+        menu_->addAction(dateAction);
+        connect(dateAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::FuzzyDate));
+            historyModel->setSortRole(static_cast<int>(Call::Role::Date));
+            historyModel->sort(0,Qt::AscendingOrder);
+        });
+
+        auto dateDownAction = new QAction("Date Order Descending", this);
+        dateDownAction->setCheckable(true);
+        sortActionGroup->addAction(dateDownAction);
+        menu_->addAction(dateDownAction);
+        connect(dateDownAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::FuzzyDate));
+            historyModel->setSortRole(static_cast<int>(Call::Role::Date));
+            historyModel->sort(0,Qt::DescendingOrder);
+        });
+        dateDownAction->setChecked(true);
+        dateDownAction->trigger();
+
+        auto callsNumberAction = new QAction("Number of calls ascending", this);
+        callsNumberAction->setCheckable(true);
+        sortActionGroup->addAction(callsNumberAction);
+        menu_->addAction(callsNumberAction);
+        connect(callsNumberAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::CallCount));
+            historyModel->setSortRole(static_cast<int>(Call::Role::CallCount));
+            historyModel->sort(0,Qt::AscendingOrder);
+        });
+
+        auto callsDownNumberAction = new QAction("Number of calls descending", this);
+        callsDownNumberAction->setCheckable(true);
+        sortActionGroup->addAction(callsDownNumberAction);
+        menu_->addAction(callsDownNumberAction);
+        connect(callsDownNumberAction, &QAction::triggered, this, [=]() {
+            CategorizedHistoryModel::instance()->setCategoryRole(static_cast<int>(Call::Role::CallCount));
+            historyModel->setSortRole(static_cast<int>(Call::Role::CallCount));
+            historyModel->sort(0,Qt::DescendingOrder);
+        });
+
+        ui->sortToolButton->setMenu(menu_);
+        ui->sortToolButton->setPopupMode(QToolButton::InstantPopup);
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
@@ -275,18 +341,14 @@ CallWidget::atExit() {
 
 void CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
 {
-    auto contact =  index.data((int)ContactMethod::Role::Uri);
     QString uri;
 
-    if (contact.isValid()) {
-        uri = contact.toString();
-    } else {
-        auto var = index.data((int)Person::Role::Object);
-        if (var.isValid()) {
-            Person* person = var.value<Person*>();
-            if (person->phoneNumbers().size() > 0) {
-                uri = person->phoneNumbers().at(0)->uri();
-            }
+    auto var = index.child(0,0).data(
+                static_cast<int>(Person::Role::Object));
+    if (var.isValid()) {
+        Person* person = var.value<Person*>();
+        if (person->phoneNumbers().size() > 0) {
+            uri = person->phoneNumbers().at(0)->uri();
         }
     }
     if (not uri.isEmpty()) {

@@ -113,18 +113,22 @@ win32 {
                             $$RUNTIMEDIR/libfreetype-6.dll $$RUNTIMEDIR/libglib-2.0-0.dll \
                             $$RUNTIMEDIR/libharfbuzz-0.dll \
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
-                            $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll
+                            $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
+                            $$RUNTIMEDIR/libjpeg-62.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$(QTDIR)/plugins/platforms/qwindows.dll
     QTPLATFORMS.path = $$OUT_PWD/release/platforms
+
+    QTPLUGINIMAGE.files = $$(QTDIR)/plugins/imageformats/
+    QTPLUGINIMAGE.path = $$OUT_PWD/release
 
     LIBSTD.files = $$RUNTIMEDIR/libgcc_s_sjlj-1.dll $$RUNTIMEDIR/libstdc++-6.dll \
                     $$RUNTIMEDIR/libwinpthread-1.dll
     LIBSTD.path = $$OUT_PWD/release
 
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME QTRUNTIME QTDEPSRUNTIME \
-                 QTPLATFORMS LIBSTD
+                QTPLUGINIMAGE QTPLATFORMS LIBSTD
 }
 
 
