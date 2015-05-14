@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="videoTab">
       <attribute name="title">
@@ -48,38 +48,58 @@
           <number>0</number>
          </property>
          <item>
+          <widget class="QLabel" name="deviceSelecLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Device Selection</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>15</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <layout class="QFormLayout" name="formLayout">
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
-           <property name="bottomMargin">
-            <number>0</number>
+           <property name="horizontalSpacing">
+            <number>15</number>
            </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="deviceSelecLabel">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Device Selection</string>
-             </property>
-            </widget>
-           </item>
+           <property name="verticalSpacing">
+            <number>6</number>
+           </property>
            <item row="3" column="0">
             <widget class="QLabel" name="deviceLabel">
              <property name="text">
@@ -217,7 +237,11 @@
         </layout>
        </item>
        <item row="0" column="1">
-        <layout class="QVBoxLayout" name="accountDetailLayout"/>
+        <layout class="QVBoxLayout" name="accountDetailLayout">
+         <property name="bottomMargin">
+          <number>13</number>
+         </property>
+        </layout>
        </item>
       </layout>
      </widget>
