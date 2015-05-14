@@ -36,9 +36,9 @@ public:
 protected:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
-signals:
 
-public slots:
+private:
+    constexpr static int imgSize_ = 25;
 };
 
 #endif // HISTORYDELEGATE_H
