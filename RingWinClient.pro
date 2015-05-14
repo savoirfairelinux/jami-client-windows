@@ -13,7 +13,6 @@ VERSION = 0.1.1
 DEFINES += VERSION=\\\"$$VERSION\\\"
 
 BUILD=$${BUILD}
-
 TARGET = RingClientWindows
 TEMPLATE = app
 
@@ -79,16 +78,16 @@ RESOURCES += \
 RC_FILE = ico.rc
 
 DISTFILES += \
-    ring.wxs \
     License.rtf \
-    ringtones/konga.ul
+    ringtones/konga.ul \
+    ring.nsi
 
 win32 {
 
     RINGTONES.files = ringtones
     RINGTONES.path = $$OUT_PWD/release
 
-    PACKAGING.files = ring.wxs
+    PACKAGING.files = ring.nsi images/ring.ico
     PACKAGING.path = $$OUT_PWD/release
 
     LICENSE.files = License.rtf
