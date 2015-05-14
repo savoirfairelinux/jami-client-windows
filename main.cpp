@@ -20,6 +20,13 @@
 #include <QApplication>
 #include <QFile>
 
+#include "callmodel.h"
+#include <iostream>
+
+#include <QThread>
+
+#include <windows.h>
+
 int
 main(int argc, char *argv[])
 {
@@ -38,6 +45,10 @@ main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
+
+    QObject::connect(&a, &QApplication::aboutToQuit, [&a]() {
+        delete CallModel::instance();
+    });
 
     return a.exec();
 }
