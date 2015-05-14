@@ -83,7 +83,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="historyTab">
           <attribute name="title">
@@ -91,7 +91,7 @@
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <property name="leftMargin">
-            <number>4</number>
+            <number>0</number>
            </property>
            <property name="topMargin">
             <number>4</number>
@@ -100,7 +100,7 @@
             <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>4</number>
+            <number>0</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -133,7 +133,7 @@
            <item>
             <widget class="QTreeView" name="historyList">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -146,7 +146,7 @@
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>220</width>
                <height>16777215</height>
               </size>
              </property>
@@ -163,16 +163,16 @@
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <property name="leftMargin">
-            <number>4</number>
+            <number>0</number>
            </property>
            <property name="topMargin">
             <number>4</number>
            </property>
            <property name="rightMargin">
-            <number>4</number>
+            <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>4</number>
+            <number>0</number>
            </property>
            <item>
             <widget class="QListView" name="contactView">
