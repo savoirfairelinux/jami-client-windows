@@ -26,7 +26,6 @@ enum ScreenEnum {
     Nav,
     //DO not add main widget screen before callScreen
     CallScreen,
-    //PivotScreen,
     ConfScreen,
     END
 };
