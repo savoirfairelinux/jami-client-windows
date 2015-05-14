@@ -34,8 +34,10 @@ HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
     initStyleOption(&opt, index);
 
     if (index.column() == 0) {
+        qDebug() << index;
         QString name = index.model()->data(index, Qt::DisplayRole).toString();
         QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
+        Call::Direction direction = index.model()->data(index, static_cast<int>(Call::Role::Direction)).value<Call::Direction>();
         opt.text = "";
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
@@ -49,8 +51,19 @@ HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
             painter->drawText(QRect(rect.left(), rect.top(), rect.width(), rect.height()/2),
                               opt.displayAlignment, name);
             painter->setOpacity(0.7);
-            painter->drawText(QRect(rect.left(), rect.top() + rect.height()/2, rect.width(), rect.height()/2),
+            painter->drawText(QRect(rect.left(), rect.top() + rect.height()/2, 300, rect.height()/2),
                               opt.displayAlignment, number);
+            painter->setOpacity(1.0);
+            QImage arrow;
+            switch (direction) {
+            case Call::Direction::INCOMING:
+                arrow.load("://images/arrow-down.png");
+                break;
+            case Call::Direction::OUTGOING:
+                arrow.load("://images/arrow-up.png");
+                break;
+            }
+            painter->drawImage(QRect(rect.left() -IMG_SIZE, rect.top() + (rect.height()-IMG_SIZE)/2, IMG_SIZE, IMG_SIZE), arrow);
         } else {
             painter->drawText(QRect(rect.left(), rect.top(), rect.width(), rect.height()),
                               opt.displayAlignment, name);
