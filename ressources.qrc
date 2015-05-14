@@ -19,5 +19,7 @@
         <file>images/speaker-off.png</file>
         <file>images/account.png</file>
         <file>images/sort-variant.png</file>
+        <file>images/arrow-down.png</file>
+        <file>images/arrow-up.png</file>
     </qresource>
 </RCC>
