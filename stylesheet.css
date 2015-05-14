@@ -162,6 +162,13 @@ QListView::indicator:unchecked {
     image: url(://images/checkbox-blank-outline.png);
 }
 
+QHeaderView::section {
+     background-color: white;
+     padding-left: 4px;
+     border: none;
+     border-right: 1px solid grey;
+}
+
 QCheckBox::indicator {
      width: 18px;
      height: 18px;
@@ -173,4 +180,25 @@ QCheckBox::indicator:checked {
 
 QCheckBox::indicator:unchecked {
     image: url(://images/checkbox-blank-outline.png);
+}
+
+QTabWidget {
+    border:none;
+}
+QTabWidget::pane {
+    border:none;
+}
+
+QTabBar::tab {
+    min-width: 80px;
+    min-height: 30px;
+    font-size: 20px;
+    color: black;
+    border-bottom-color: #C2C7CB;
+    padding: 0px;
+}
+
+QTabBar::tab:selected {
+    font-weight: bold;
+    border-bottom-style: none;
 }

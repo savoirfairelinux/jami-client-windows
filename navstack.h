@@ -27,7 +27,6 @@
 #include "mainbar.h"
 #include "navbar.h"
 #include "callwidget.h"
-#include "pivotviewwidget.h"
 
 class NavStack : public QWidget
 {

@@ -74,6 +74,8 @@ private slots:
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
 
+    void on_sortComboBox_currentIndexChanged(int index);
+
 private:
     Ui::CallWidget *ui;
     Call* actualCall_;

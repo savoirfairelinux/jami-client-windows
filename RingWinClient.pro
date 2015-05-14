@@ -34,8 +34,6 @@ SOURCES += main.cpp\
     accountdetails.cpp \
     minimalhistorybackend.cpp \
     aboutdialog.cpp \
-    pivotviewwidget.cpp \
-    pivotcontrol.cpp \
     videowidget.cpp \
     utils.cpp \
     wizarddialog.cpp \
@@ -53,8 +51,6 @@ HEADERS  += mainwindow.h \
     accountdetails.h \
     minimalhistorybackend.h \
     aboutdialog.h \
-    pivotviewwidget.h \
-    pivotcontrol.h \
     videowidget.h \
     utils.h \
     wizarddialog.h \
