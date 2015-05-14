@@ -27,6 +27,8 @@
 
 #include "categorizedhistorymodel.h"
 
+#define IMG_SIZE 25
+
 class HistoryDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
