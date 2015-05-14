@@ -532,6 +532,9 @@
          <height>50</height>
         </size>
        </property>
+       <property name="placeholderText">
+        <string>Dial Number</string>
+       </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
