@@ -22,6 +22,8 @@
 #include <QDialog>
 #include <QtConcurrent/QtConcurrent>
 
+#include "account.h"
+
 namespace Ui {
 class WizardDialog;
 }
@@ -38,13 +40,14 @@ private slots:
     void on_usernameEdit_textChanged(const QString &arg1);
     void accept();
 
-    void endSetup();
-
 private:
     Ui::WizardDialog *ui;
 
 private:
     void setup();
+
+private slots:
+    void endSetup(Account* a);
 };
 
 #endif // WIZARDDIALOG_H
