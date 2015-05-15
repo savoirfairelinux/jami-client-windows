@@ -22,6 +22,8 @@
 #include <QDialog>
 #include <QtConcurrent/QtConcurrent>
 
+#include "account.h"
+
 namespace Ui {
 class WizardDialog;
 }
@@ -40,12 +42,10 @@ private slots:
     void accept();
 
 private slots:
-    void endSetup();
+    void endSetup(Account* a);
 
 private:
     Ui::WizardDialog *ui;
-private:
-    void setup();
 };
 
 #endif // WIZARDDIALOG_H
