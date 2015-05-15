@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg
 
-VERSION = 0.2.0
+VERSION = 0.3.0
 
 DEFINES += VERSION=\\\"$$VERSION\\\"
 
