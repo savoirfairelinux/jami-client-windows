@@ -19,7 +19,10 @@
 #include "wizarddialog.h"
 #include "ui_wizarddialog.h"
 
+#include <QMovie>
+
 #include "accountmodel.h"
+#include "account.h"
 
 #include "utils.h"
 
@@ -33,6 +36,14 @@ WizardDialog::WizardDialog(QWidget *parent) :
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setFixedSize(this->width(),this->height());
     ui->buttonBox->setEnabled(false);
+
+    ui->spinnerLabel->hide();
+    QMovie* movie = new QMovie(":images/spinner.gif");
+    if (movie->isValid())
+    {
+        ui->spinnerLabel->setMovie(movie);
+        movie->start();
+    }
 }
 
 WizardDialog::~WizardDialog()
@@ -43,32 +54,34 @@ WizardDialog::~WizardDialog()
 void
 WizardDialog::accept()
 {
-    ui->label->setText("Working...");
+    //ui->spinnerLabel->show();
+    ui->label->setText("Please wait while we create your account.");
     ui->buttonBox->setEnabled(false);
     ui->usernameEdit->setEnabled(false);
 
-   QtConcurrent::run(this, &WizardDialog::setup).waitForFinished();
-}
+    repaint();
 
-void
-WizardDialog::endSetup()
-{
-    QDialog::accept();
-}
+    Utils::CreateStartupLink();
 
-void
-WizardDialog::setup()
-{
     auto account = AccountModel::instance()->add(ui->usernameEdit->text(), Account::Protocol::RING);
     AccountModel::instance()->ip2ip()->setRingtonePath(Utils::GetRingtonePath());
     account->setRingtonePath(Utils::GetRingtonePath());
-    AccountModel::instance()->save();
-    Utils::CreateStartupLink();
-    endSetup();
+    account->setUpnpEnabled(true);
+
+    connect(account, SIGNAL(changed(Account*)), this, SLOT(endSetup(Account*)));
+
+    account->performAction(Account::EditAction::SAVE);
+}
+
+void
+WizardDialog::endSetup(Account* a)
+{
+    Q_UNUSED(a)
+    QDialog::accept();
 }
 
 void
 WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
 {
-     ui->buttonBox->setEnabled(!arg1.isEmpty());
+    ui->buttonBox->setEnabled(!arg1.isEmpty());
 }
