@@ -435,7 +435,17 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/images/logo-ring-standard-coul.png</pixmap>
+      <pixmap resource="ressources.qrc">:/images/logo-ring-standard-coul.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="spinnerLabel">
+     <property name="text">
+      <string/>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -471,7 +481,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
