@@ -44,7 +44,7 @@ CallWidget::CallWidget(QWidget *parent) :
     ui->muteSpeakerButton->setCheckable(true);
     ui->callInvite->setVisible(false);
 
-    actualCall_ = nullptr;
+    setActualCall(nullptr);
     videoRenderer_ = nullptr;
 
     try {
@@ -154,7 +154,7 @@ CallWidget::callIncoming(Call *call)
 {
     if (!call->account()->isAutoAnswer())
         ui->callInvite->setVisible(true);
-    actualCall_ = call;
+    setActualCall(call);
 }
 
 void
@@ -171,7 +171,7 @@ CallWidget::on_refuseButton_clicked()
     if (actualCall_ == nullptr)
         return;
     actualCall_->performAction(Call::Action::REFUSE);
-    actualCall_ = nullptr;
+    setActualCall(nullptr);
     ui->callInvite->setVisible(false);
 }
 
@@ -196,7 +196,7 @@ void
 CallWidget::addedCall(Call* call, Call* parent) {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
-        actualCall_ = call;
+        setActualCall(call);
     }
 }
 
@@ -207,8 +207,8 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
-    if (call->state() == Call::State::OVER) {
-        actualCall_ = nullptr;
+    if (call->state() == Call::State::OVER || call->state() == Call::State::ERROR) {
+        setActualCall(nullptr);
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::HOLD) {
         ui->videoWidget->hide();
@@ -230,7 +230,7 @@ CallWidget::on_callList_activated(const QModelIndex &index)
         ui->videoWidget->hide();
         actualCall_->performAction(Call::Action::HOLD);
     }
-    actualCall_ = callSelected;
+    setActualCall(callSelected);
     actualCall_->performAction(Call::Action::HOLD);
     ui->videoWidget->show();
 }
@@ -300,7 +300,8 @@ CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
     }
 }
 
-void CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
+void
+CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
 {
     QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
     if (not number.isEmpty()) {
@@ -308,4 +309,12 @@ void CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
         outCall->setDialNumber(number);
         outCall->performAction(Call::Action::ACCEPT);
     }
+}
+
+void
+CallWidget::setActualCall(Call* value)
+{
+    actualCall_ = value;
+    ui->holdButton->setEnabled(actualCall_ != nullptr);
+    ui->hangupButton->setEnabled(actualCall_ != nullptr);
 }
