@@ -32,7 +32,7 @@ LicenseData "License.rtf"
 # This will be in the installer/uninstaller's title bar
 Name "${COMPANYNAME} - ${APPNAME}"
 
-outFile "ring-windows-${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.exe"
+outFile "ring-windows-nightly.exe"
 
 !include LogicLib.nsh
 !include "FileFunc.nsh"
