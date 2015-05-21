@@ -550,6 +550,16 @@
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
+       <widget class="QLabel" name="gitVersionLabel">
+        <property name="text">
+         <string>version : </string>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="releaseLabel">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Release : Samuel de Champlain&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

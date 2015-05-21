@@ -9,8 +9,10 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg
 
 VERSION = 0.3.0
+GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 
 DEFINES += VERSION=\\\"$$VERSION\\\"
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
 
 BUILD=$${BUILD}
 TARGET = RingClientWindows
