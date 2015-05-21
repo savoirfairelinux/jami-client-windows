@@ -34,6 +34,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
                 QString("<html><head/><body><p><span style=\" font-weight:600;\">Windows Ring v")
                 + VERSION
                 + "</span></p></body></html>");
+    ui->gitVersionLabel->setText(QString("version: ") + GIT_VERSION);
 }
 
 AboutDialog::~AboutDialog()
