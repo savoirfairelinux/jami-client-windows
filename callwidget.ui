@@ -135,6 +135,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="holdButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Hold/Unhold</string>
        </property>
@@ -146,6 +149,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="hangupButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>

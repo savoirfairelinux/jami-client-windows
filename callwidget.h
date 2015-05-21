@@ -81,6 +81,7 @@ private:
     int outputVolume_;
     int inputVolume_;
     void findRingAccount();
+    void setActualCall(Call *value);
 };
 
 #endif // CALLWIDGET_H
