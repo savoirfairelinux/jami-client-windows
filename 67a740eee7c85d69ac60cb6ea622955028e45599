@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba57610f_6fc102e4",
+        "filename": "contactdelegate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-05-26T20:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba57610f_0f02863e",
+      "revId": "67a740eee7c85d69ac60cb6ea622955028e45599",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba57610f_4fe87e7c",
         "filename": "windowscontactbackend.cpp",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2015-05-26T19:31:33Z",
       "side": 1,
       "message": "use static constexpr  constant, declare that at file top.",
+      "range": {
+        "startLine": 141,
+        "startChar": 53,
+        "endLine": 141,
+        "endChar": 58
+      },
+      "revId": "67a740eee7c85d69ac60cb6ea622955028e45599",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_2fbb0a74",
+        "filename": "windowscontactbackend.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-05-26T20:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba57610f_4fe87e7c",
       "range": {
         "startLine": 141,
         "startChar": 53,
