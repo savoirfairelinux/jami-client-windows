@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba57610f_afa6da51",
+        "filename": "historydelegate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-05-26T20:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba57610f_ef85f2ad",
+      "range": {
+        "startLine": 54,
+        "startChar": 79,
+        "endLine": 54,
+        "endChar": 82
+      },
+      "revId": "0ad476ae92c240c861a74afdc89f5db1eb779ddb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba57610f_2fa42a56",
         "filename": "historydelegate.h",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-26T19:35:50Z",
       "side": 1,
       "message": "use constant than define (static constexpr)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "0ad476ae92c240c861a74afdc89f5db1eb779ddb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_efacd237",
+        "filename": "historydelegate.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-05-26T20:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba57610f_2fa42a56",
       "range": {
         "startLine": 30,
         "startChar": 0,
