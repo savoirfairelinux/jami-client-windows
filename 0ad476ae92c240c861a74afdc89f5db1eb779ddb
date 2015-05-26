@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_2fa42a56",
+        "filename": "historydelegate.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-05-26T19:35:50Z",
+      "side": 1,
+      "message": "use constant than define (static constexpr)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "0ad476ae92c240c861a74afdc89f5db1eb779ddb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
