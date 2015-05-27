@@ -34,7 +34,6 @@ SOURCES += main.cpp\
     mainbar.cpp \
     navwidget.cpp \
     accountdetails.cpp \
-    minimalhistorybackend.cpp \
     aboutdialog.cpp \
     videowidget.cpp \
     utils.cpp \
@@ -51,7 +50,6 @@ HEADERS  += mainwindow.h \
     mainbar.h \
     navwidget.h \
     accountdetails.h \
-    minimalhistorybackend.h \
     aboutdialog.h \
     videowidget.h \
     utils.h \
