@@ -31,7 +31,6 @@
 #include "video/previewmanager.h"
 
 #include "categorizedhistorymodel.h"
-#include "minimalhistorybackend.h"
 
 namespace Ui {
 class CallWidget;

@@ -31,6 +31,7 @@
 #include "windowscontactbackend.h"
 #include "historydelegate.h"
 #include "contactdelegate.h"
+#include "localhistorycollection.h"
 
 #include "wizarddialog.h"
 
@@ -67,7 +68,7 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->callList->setModel(callModel_);
 
         CategorizedHistoryModel::instance()->
-                addCollection<MinimalHistoryBackend>(LoadOptions::FORCE_ENABLED);
+                addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
 
         PersonModel::instance()->
                 addCollection<FallbackPersonCollection>(LoadOptions::FORCE_ENABLED);
@@ -218,8 +219,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
-        ui->messageOutput->setModel(
-                    IMConversationManager::instance()->getModel(actualCall_));
     }
     ui->callStateLabel->setText("Call State : " + state.at((int)call->state()));
 }
