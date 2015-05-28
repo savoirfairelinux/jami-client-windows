@@ -1,5 +1,5 @@
 win32:
-    type: win32
+    type: docker
     exe_commands:
         - echo "Building Daemon"
         - git clone https://gerrit-ring.savoirfairelinux.com/ring-daemon ring-daemon
