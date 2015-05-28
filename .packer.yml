@@ -1,5 +1,4 @@
 win32:
-    type: win32
     exe_commands:
         - echo "Building Daemon"
         - git clone https://gerrit-ring.savoirfairelinux.com/ring-daemon ring-daemon
