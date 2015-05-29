@@ -21,8 +21,6 @@
 
 #include <memory>
 
-#include "imconversationmanager.h"
-#include "instantmessagingmodel.h"
 #include "audio/settings.h"
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
