@@ -66,14 +66,14 @@ private slots:
     void on_micSlider_sliderReleased();
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_historyList_doubleClicked(const QModelIndex &index);
+    void on_sortComboBox_currentIndexChanged(int index);
 
 private slots:
     void callIncoming(Call *call);
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
-
-    void on_sortComboBox_currentIndexChanged(int index);
+    void mediaAdd(Media::Media* media);
 
 private:
     Ui::CallWidget *ui;
@@ -86,6 +86,7 @@ private:
 private:
     void findRingAccount();
     void setActualCall(Call *value);
+    void setMediaText(Call* call);
 };
 
 #endif // CALLWIDGET_H

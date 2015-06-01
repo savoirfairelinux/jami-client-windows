@@ -405,10 +405,22 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="flow">
+         <enum>QListView::TopToBottom</enum>
+        </property>
+        <property name="isWrapping" stdset="0">
+         <bool>false</bool>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="messageInput">
+        <property name="placeholderText">
+         <string>Send text message...</string>
+        </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
         </property>
