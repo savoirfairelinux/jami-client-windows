@@ -61,7 +61,7 @@ section "install"
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         setOutPath $INSTDIR
         # Files added here should be removed by the uninstaller (see section "uninstall")
-        file "RingClientWindows.exe"
+        file "Ring.exe"
         file "ring.ico"
         file *.dll
         setOutPath $INSTDIR\platforms
@@ -75,11 +75,11 @@ section "install"
         writeUninstaller "$INSTDIR\uninstall.exe"
 
         #Desktop
-        CreateShortCut "$DESKTOP\Ring.lnk" "$INSTDIR\RingClientWindows.exe" ""
+        CreateShortCut "$DESKTOP\Ring.lnk" "$INSTDIR\Ring.exe" ""
 
         # Start Menu
         createDirectory "$SMPROGRAMS\${COMPANYNAME}"
-        createShortCut "$SMPROGRAMS\${COMPANYNAME}\${APPNAME}.lnk" "$INSTDIR\RingClientWindows.exe" "" "$INSTDIR\ring.ico"
+        createShortCut "$SMPROGRAMS\${COMPANYNAME}\${APPNAME}.lnk" "$INSTDIR\Ring.exe" "" "$INSTDIR\ring.ico"
 
         # Registry information for add/remove programs
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayName" ${APPNAME}
@@ -122,7 +122,7 @@ section "uninstall"
         rmDir "$SMPROGRAMS\${COMPANYNAME}"
 
         # Remove files
-        delete $INSTDIR\RingClientWindows.exe
+        delete $INSTDIR\Ring.exe
         delete $INSTDIR\ring.ico
         delete $INSTDIR\*.dll
         rmDir /r $INSTDIR\platforms

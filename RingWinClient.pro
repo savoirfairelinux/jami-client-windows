@@ -15,7 +15,7 @@ DEFINES += VERSION=\\\"$$VERSION\\\"
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
 
 BUILD=$${BUILD}
-TARGET = RingClientWindows
+TARGET = Ring
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
