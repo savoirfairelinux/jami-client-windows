@@ -44,6 +44,8 @@ public slots:
     void frameFromDistant();
     void renderingStopped();
 
+protected slots:
+    void mouseDoubleClickEvent(QMouseEvent *e);
 private:
     Video::Renderer* previewRenderer_;
     Video::Renderer* renderer_;
@@ -51,6 +53,8 @@ private:
     QImage *distantFrame_;
     QMutex lock_;
     QPixmap *previewPix_;
+    QWidget *oldParent_;
+    QSize oldSize_;
 };
 
 #endif // VIDEOWIDGET_H

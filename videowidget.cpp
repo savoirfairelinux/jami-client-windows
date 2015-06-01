@@ -127,3 +127,19 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
 }
+
+void
+VideoWidget::mouseDoubleClickEvent(QMouseEvent *e) {
+    QWidget::mouseDoubleClickEvent(e);
+    if(isFullScreen()) {
+        this->setParent(oldParent_);
+        this->showNormal();
+        this->resize(oldSize_.width(), oldSize_.height());
+    } else {
+        oldSize_ = this->size();
+        oldParent_ = static_cast<QWidget*>(this->parent());
+        this->setParent(0);
+        this->showFullScreen();
+        this->show();
+    }
+}

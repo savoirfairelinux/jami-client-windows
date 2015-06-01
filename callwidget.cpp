@@ -157,8 +157,10 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call *call)
 {
-    if (!call->account()->isAutoAnswer())
+    if (!call->account()->isAutoAnswer()) {
         ui->callInvite->setVisible(true);
+        ui->callInvite->raise();
+    }
     setActualCall(call);
 }
 
