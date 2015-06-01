@@ -53,12 +53,13 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
-    ui->testVideoButton->setCheckable(true);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 }
 
 void ConfigurationWidget::atExit() {
+    ui->videoView->hide();
+    Video::PreviewManager::instance()->stopPreview();
     accountModel_->save();
     accountDetails_->save();
 }
@@ -138,14 +139,6 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
 }
 
 void
-ConfigurationWidget::on_testVideoButton_toggled(bool checked)
-{
-    checked ? ui->videoView->show() : ui->videoView->hide();
-    checked ? Video::PreviewManager::instance()->startPreview()
-            : Video::PreviewManager::instance()->stopPreview();
-}
-
-void
 ConfigurationWidget::on_deleteAccountButton_clicked()
 {
     auto account = accountModel_->getAccountByModelIndex(
@@ -164,10 +157,18 @@ ConfigurationWidget::on_addAccountButton_clicked()
     accountModel_->save();
 }
 
-void ConfigurationWidget::on_startupBox_toggled(bool checked)
+void
+ConfigurationWidget::on_startupBox_toggled(bool checked)
 {
     if (checked)
         Utils::CreateStartupLink();
     else
         Utils::DeleteStartupLink();
+}
+
+void
+ConfigurationWidget::showEvent( QShowEvent* event ) {
+    QWidget::showEvent( event );
+    ui->videoView->show();
+    Video::PreviewManager::instance()->startPreview();
 }
