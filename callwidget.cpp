@@ -47,6 +47,7 @@ CallWidget::CallWidget(QWidget *parent) :
     ui->muteMicButton->setCheckable(true);
     ui->muteSpeakerButton->setCheckable(true);
     ui->callInvite->setVisible(false);
+    ui->videoWidget->setVisible(false);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
