@@ -21,11 +21,17 @@
 #include <QFile>
 
 #include "callmodel.h"
+#include "media/audio.h"
+#include "media/video.h"
+#include "media/text.h"
+#include "media/file.h"
 #include <iostream>
 
 #include <QThread>
 
 #include <windows.h>
+
+REGISTER_MEDIA();
 
 int
 main(int argc, char *argv[])
