@@ -28,6 +28,7 @@
 #include "accountmodel.h"
 #include "protocolmodel.h"
 #include "accountdetails.h"
+#include "callmodel.h"
 
 #include "utils.h"
 
@@ -48,17 +49,20 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
             this, SLOT(deviceIndexChanged(int)));
 
     connect(ui->accountView->selectionModel(),
-         SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-         this, SLOT(accountSelected(QItemSelection)));
+            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(accountSelected(QItemSelection)));
 
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
-    ui->testVideoButton->setCheckable(true);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 }
 
 void ConfigurationWidget::atExit() {
+    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
+        ui->videoView->hide();
+        Video::PreviewManager::instance()->stopPreview();
+    }
     accountModel_->save();
     accountDetails_->save();
 }
@@ -117,7 +121,7 @@ ConfigurationWidget::on_sizeBox_currentIndexChanged(int index)
     }
     ui->rateBox->setCurrentIndex(
                 device->channelList()[0]->
-                activeResolution()->activeRate()->relativeIndex());
+            activeResolution()->activeRate()->relativeIndex());
     isLoading_ = false;
 }
 
@@ -138,14 +142,6 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
 }
 
 void
-ConfigurationWidget::on_testVideoButton_toggled(bool checked)
-{
-    checked ? ui->videoView->show() : ui->videoView->hide();
-    checked ? Video::PreviewManager::instance()->startPreview()
-            : Video::PreviewManager::instance()->stopPreview();
-}
-
-void
 ConfigurationWidget::on_deleteAccountButton_clicked()
 {
     auto account = accountModel_->getAccountByModelIndex(
@@ -158,16 +154,27 @@ void
 ConfigurationWidget::on_addAccountButton_clicked()
 {
     auto account = accountModel_->add("New Account",
-                       ui->accountTypeBox->model()->index(
-                           ui->accountTypeBox->currentIndex(), 0));
+                                      ui->accountTypeBox->model()->index(
+                                          ui->accountTypeBox->currentIndex(), 0));
     account->setRingtonePath(Utils::GetRingtonePath());
     accountModel_->save();
 }
 
-void ConfigurationWidget::on_startupBox_toggled(bool checked)
+void
+ConfigurationWidget::on_startupBox_toggled(bool checked)
 {
     if (checked)
         Utils::CreateStartupLink();
     else
         Utils::DeleteStartupLink();
+}
+
+void
+ConfigurationWidget::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
+        ui->videoView->show();
+        Video::PreviewManager::instance()->startPreview();
+    }
 }
