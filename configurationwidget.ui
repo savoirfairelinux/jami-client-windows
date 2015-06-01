@@ -165,19 +165,6 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QPushButton" name="testVideoButton">
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Start</string>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
        <item row="0" column="1">
