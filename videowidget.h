@@ -55,6 +55,7 @@ private:
     QPixmap *previewPix_;
     QWidget *oldParent_;
     QSize oldSize_;
+    constexpr static int previewMargin_ = 15;
 };
 
 #endif // VIDEOWIDGET_H
