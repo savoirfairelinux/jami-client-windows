@@ -34,6 +34,11 @@ VideoWidget::VideoWidget(QWidget *parent) :
             SIGNAL(rendererAdded(Call*,Video::Renderer*)),
             this, SLOT(callInitiated(Call*, Video::Renderer*)),
             Qt::ConnectionType::DirectConnection);
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, Qt::black);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
 }
 
 VideoWidget::~VideoWidget()
@@ -78,16 +83,23 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
     Q_UNUSED(evt)
     QMutexLocker {&lock_};
     QPainter painter(this);
-    //painter.drawRoundedRect(0,5,width()-5, height()-7,3,3);
-    if (distantFrame_ && renderer_ && renderer_->isRendering())
-          painter.drawImage(QRect(0,0,width(),height()),*(distantFrame_));
+
+    if (distantFrame_ && renderer_ && renderer_->isRendering()) {
+        auto scaledDistant = distantFrame_->scaled(size(), Qt::KeepAspectRatio);
+        auto xDiff = (width() - scaledDistant.width()) / 2;
+        auto yDiff = (height() - scaledDistant.height()) /2;
+        painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
+    }
     if (previewFrame_ && previewRenderer_ && previewRenderer_->isRendering()) {
-        int previewHeight = !renderer_ ? height() : height()/4;
-        int previewWidth = !renderer_  ? width() : width()/4;
-        int yPos = !renderer_ ? 0 : height() - previewHeight;
-        int xPos = !renderer_ ? 0 : width() - previewWidth;
-        painter.drawImage(QRect(xPos,yPos,previewWidth,previewHeight),
-                          *(previewFrame_));
+        auto previewHeight = !renderer_ ? height() : height()/4;
+        auto previewWidth = !renderer_  ? width() : width()/4;
+        auto scaledPreview = previewFrame_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        auto xDiff = (previewWidth - scaledPreview.width()) / 2;
+        auto yDiff = (previewHeight - scaledPreview.height()) / 2;
+        auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
+        auto xPos = !renderer_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+        painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
+                          scaledPreview);
     }
     painter.end();
 }
