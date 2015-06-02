@@ -26,6 +26,8 @@
 #include "media/text.h"
 #include "media/textrecording.h"
 
+#include "imdelegate.h"
+
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InstantMessagingWidget)
@@ -35,17 +37,34 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     ui->messageInput->hide();
     ui->messageOutput->hide();
 
+    imDelegate_ = new ImDelegate();
+    ui->messageOutput->setItemDelegate(imDelegate_);
     ui->messageOutput->setContextMenuPolicy(Qt::ActionsContextMenu);
     auto copyAction = new QAction("Copy", this);
     ui->messageOutput->addAction(copyAction);
     connect(copyAction, &QAction::triggered, [=]() {
         copyToClipboard();
     });
+    auto displayDate = new QAction("Display date", this);
+    displayDate->setCheckable(true);
+    ui->messageOutput->addAction(displayDate);
+    auto displayAuthor = new QAction("Display author", this);
+    displayAuthor->setCheckable(true);
+    ui->messageOutput->addAction(displayAuthor);
+    auto lamdba = [=](){
+        int opts = 0;
+        displayAuthor->isChecked() ? opts |= ImDelegate::DisplayOptions::AUTHOR : opts;
+        displayDate->isChecked() ? opts |= ImDelegate::DisplayOptions::DATE : opts;
+        imDelegate_->setDisplayOptions(static_cast<ImDelegate::DisplayOptions>(opts));
+    };
+    connect(displayAuthor, &QAction::triggered, lamdba);
+    connect(displayDate, &QAction::triggered, lamdba);
 }
 
 InstantMessagingWidget::~InstantMessagingWidget()
 {
     delete ui;
+    delete imDelegate_;
 }
 
 void

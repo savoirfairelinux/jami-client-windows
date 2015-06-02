@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     instantmessagingwidget.cpp \
     accountstatedelegate.cpp \
     videoview.cpp \
-    videooverlay.cpp
+    videooverlay.cpp \
+    imdelegate.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -68,7 +69,8 @@ HEADERS  += mainwindow.h \
     instantmessagingwidget.h \
     accountstatedelegate.h \
     videoview.h \
-    videooverlay.h
+    videooverlay.h \
+    imdelegate.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \

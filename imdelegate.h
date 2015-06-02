@@ -16,46 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef INSTANTMESSAGINGWIDGET_H
-#define INSTANTMESSAGINGWIDGET_H
+#ifndef IMDELEGATE_H
+#define IMDELEGATE_H
 
-#include <QWidget>
-#include <QKeyEvent>
+#include <QObject>
+#include <QApplication>
+#include <QPainter>
+#include <QStyledItemDelegate>
 #include <QSettings>
 
-#include "call.h"
-#include "media/media.h"
-
-#include "imdelegate.h"
-
-namespace Ui {
-class InstantMessagingWidget;
-}
-
-class InstantMessagingWidget : public QWidget
+class ImDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
-
 public:
-    explicit InstantMessagingWidget(QWidget *parent = 0);
-    ~InstantMessagingWidget();
-    void setMediaText(Call* call);
+    explicit ImDelegate(QObject *parent = 0);
+    enum DisplayOptions {
+        AUTHOR = 1,
+        DATE
+    };
 
+    void setDisplayOptions(DisplayOptions opt);
 protected:
-    virtual void keyPressEvent(QKeyEvent *event);
-
-//UI SLOTS
-private slots:
-    void on_sendButton_clicked();
-
-private slots:
-    void mediaAdd(Media::Media *media);
-
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 private:
-    Ui::InstantMessagingWidget *ui;
-    ImDelegate* imDelegate_;
-    QSettings settings_;
-    void copyToClipboard();
+    bool showDate_;
+    bool showAuthor_;
 };
 
-#endif // INSTANTMESSAGINGWIDGET_H
+#endif // IMDELEGATE_H
