@@ -24,7 +24,6 @@
 #include "audio/settings.h"
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
-#include "accountmodel.h"
 #include "categorizedcontactmodel.h"
 #include "windowscontactbackend.h"
 #include "historydelegate.h"
@@ -61,6 +60,11 @@ CallWidget::CallWidget(QWidget *parent) :
                 this, SLOT(addedCall(Call*, Call*)));
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
+
+        connect(AccountModel::instance(),
+                SIGNAL(accountStateChanged(Account*,Account::RegistrationState)),
+                this,
+                SLOT(checkRegistrationState(Account*,Account::RegistrationState)));
 
         connect(AccountModel::instance()
                 , SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>))
@@ -130,6 +134,47 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
     if (not found){
         ui->ringIdLabel->setText("NO RING ACCOUNT FOUND");
     }
+}
+
+void
+CallWidget::checkRegistrationState(Account *account,
+                                   Account::RegistrationState state)
+{
+    Q_UNUSED(account);
+
+    QPixmap pm(20,20);
+    pm.fill();
+    QPainter p(&pm);
+    QPen pen(Qt::black, 2);
+    p.setPen(pen);
+    p.setRenderHint(QPainter::Antialiasing, true);
+
+    switch(state) {
+    case Account::RegistrationState::ERROR:
+        p.setBrush(Qt::red);
+        break;
+    case Account::RegistrationState::TRYING:
+        p.setBrush(Qt::yellow);
+        break;
+    case Account::RegistrationState::READY:
+        p.setBrush(Qt::green);
+        auto a_count = AccountModel::instance()->rowCount();
+        for (int i = 0; i < a_count; ++i) {
+            auto idx = AccountModel::instance()->index(i, 0);
+            auto stateAcc = idx.data(
+                        static_cast<int>(Account::Role::RegistrationState));
+            if (stateAcc.value<Account::RegistrationState>()
+                    != Account::RegistrationState::READY) {
+                checkRegistrationState(nullptr,
+                                       stateAcc.value<Account::RegistrationState>());
+                return;
+            }
+        }
+        break;
+    }
+    p.drawEllipse(3, 3, 16, 16);
+    ui->accountStateHintLabel->setPixmap(pm);
+    ui->accountStateHintLabel->show();
 }
 
 void
