@@ -26,15 +26,16 @@
 #include "fallbackpersoncollection.h"
 #include "accountmodel.h"
 #include "categorizedcontactmodel.h"
-#include "windowscontactbackend.h"
-#include "historydelegate.h"
-#include "contactdelegate.h"
 #include "localhistorycollection.h"
 #include "media/text.h"
 #include "media/recording.h"
 #include "media/textrecording.h"
 
 #include "wizarddialog.h"
+#include "imdelegate.h"
+#include "windowscontactbackend.h"
+#include "historydelegate.h"
+#include "contactdelegate.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -93,6 +94,8 @@ CallWidget::CallWidget(QWidget *parent) :
 
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
+
+        ui->messageOutput->setItemDelegate(new ImDelegate());
 
         findRingAccount();
 
