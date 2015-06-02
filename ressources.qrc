@@ -18,10 +18,11 @@
         <file>images/settings.png</file>
         <file>images/speaker-off.png</file>
         <file>images/account.png</file>
-        <file>images/sort-variant.png</file>
         <file>images/arrow-down.png</file>
         <file>images/arrow-up.png</file>
         <file>images/spinner.gif</file>
         <file>images/folder-download.png</file>
+        <file>images/sort-ascending.png</file>
+        <file>images/sort-descending.png</file>
     </qresource>
 </RCC>

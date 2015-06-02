@@ -104,33 +104,27 @@
            </property>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <property name="topMargin">
-              <number>0</number>
-             </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit">
-               <property name="enabled">
-                <bool>false</bool>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
                </property>
-               <property name="placeholderText">
-                <string>Search</string>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
                </property>
-               <property name="clearButtonEnabled">
-                <bool>true</bool>
-               </property>
-              </widget>
+              </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label">
+              <widget class="QToolButton" name="sortToolButton">
                <property name="text">
-                <string>Sort:</string>
+                <string/>
                </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="sortComboBox">
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/images/sort-ascending.png</normaloff>:/images/sort-ascending.png</iconset>
                </property>
               </widget>
              </item>
