@@ -77,15 +77,33 @@ CallWidget::CallWidget(QWidget *parent) :
         PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
-        ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
-        CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
+        ui->historyList->setModel(
+                    CategorizedHistoryModel::SortedProxy::instance()->model());
+        CategorizedHistoryModel::SortedProxy::instance()->model()->
+                sort(0, Qt::AscendingOrder);
         ui->historyList->setHeaderHidden(true);
         ui->historyList->setItemDelegate(new HistoryDelegate());
-        auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
+        auto idx = CategorizedHistoryModel::SortedProxy::instance()->
+                model()->index(0,0);
         if (idx.isValid())
             ui->historyList->setExpanded(idx, true);
 
-        ui->sortComboBox->setModel(CategorizedHistoryModel::SortedProxy::instance()->categoryModel());
+        connect(ui->sortToolButton, &QToolButton::clicked, [=]() {
+            auto checked =
+                    CategorizedHistoryModel::SortedProxy::instance()->
+                    model()->sortOrder() == Qt::DescendingOrder ? true : false;
+            if (not checked){
+                QIcon iconDescending(":/images/sort-descending.png");
+                ui->sortToolButton->setIcon(iconDescending);
+                CategorizedHistoryModel::SortedProxy::instance()->model()->
+                        sort(0, Qt::DescendingOrder);
+            } else {
+                QIcon iconAscending(":/images/sort-ascending.png");
+                ui->sortToolButton->setIcon(iconAscending);
+                CategorizedHistoryModel::SortedProxy::instance()->model()->
+                        sort(0, Qt::AscendingOrder);
+            }
+        });
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
