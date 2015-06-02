@@ -26,6 +26,8 @@
 #include "media/text.h"
 #include "media/textrecording.h"
 
+#include "imdelegate.h"
+
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InstantMessagingWidget)
@@ -35,6 +37,7 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     ui->messageInput->hide();
     ui->messageOutput->hide();
 
+    ui->messageOutput->setItemDelegate(new ImDelegate());
     ui->messageOutput->setContextMenuPolicy(Qt::ActionsContextMenu);
     auto copyAction = new QAction("Copy", this);
     ui->messageOutput->addAction(copyAction);

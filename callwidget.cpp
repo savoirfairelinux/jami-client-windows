@@ -25,15 +25,15 @@
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
 #include "categorizedcontactmodel.h"
-#include "windowscontactbackend.h"
-#include "historydelegate.h"
-#include "contactdelegate.h"
 #include "localhistorycollection.h"
 #include "media/text.h"
 #include "media/recording.h"
 #include "media/textrecording.h"
 
 #include "wizarddialog.h"
+#include "windowscontactbackend.h"
+#include "historydelegate.h"
+#include "contactdelegate.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
