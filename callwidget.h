@@ -30,6 +30,7 @@
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
+#include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 
 namespace Ui {
@@ -67,6 +68,7 @@ private slots:
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
+    void checkRegistrationState(Account* account,Account::RegistrationState state);
 
 private:
     Ui::CallWidget *ui;
