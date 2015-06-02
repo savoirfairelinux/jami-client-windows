@@ -30,8 +30,10 @@
 #include "historydelegate.h"
 #include "contactdelegate.h"
 #include "localhistorycollection.h"
+#include "categorizedbookmarkmodel.h"
 
 #include "wizarddialog.h"
+#include "frequentdelegate.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -87,6 +89,14 @@ CallWidget::CallWidget(QWidget *parent) :
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
         ui->contactView->setItemDelegate(new ContactDelegate());
+
+
+        ui->frequentView->setModel(CategorizedBookmarkModel::instance());
+        ui->frequentView->setHeaderHidden(true);
+        ui->frequentView->setItemDelegate(new FrequentDelegate());
+        auto fidx = CategorizedBookmarkModel::instance()->index(0,0);
+        if (fidx.isValid())
+            ui->frequentView->setExpanded(fidx, true);
 
         ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
         ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
@@ -299,6 +309,20 @@ CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
 
 void
 CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
+{
+    if (not index.isValid())
+        return;
+
+    QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
+    if (not number.isEmpty()) {
+        auto outCall = CallModel::instance()->dialingCall(number);
+        outCall->setDialNumber(number);
+        outCall->performAction(Call::Action::ACCEPT);
+    }
+}
+
+void
+CallWidget::on_frequentView_doubleClicked(const QModelIndex &index)
 {
     if (not index.isValid())
         return;
