@@ -20,17 +20,17 @@
 
 bool
 Utils::CreateStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
 
-    TCHAR workingDirectory[MAX_PATH];
-    GetCurrentDirectory(MAX_PATH, workingDirectory);
+    TCHAR szPath[MAX_PATH];
+    GetModuleFileName(NULL, szPath, MAX_PATH);
 
-    std::wstring programPath(workingDirectory);
-    programPath += TEXT("\\RingClientWindows.exe");
+    std::wstring programPath(szPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
+
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
 
     return Utils::CreateLink(programPath.c_str(), linkPath.c_str());
 }
@@ -60,22 +60,22 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
 
 void
 Utils::DeleteStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
 
     DeleteFile(linkPath.c_str());
 }
 
 bool
 Utils::CheckStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
     return PathFileExists(linkPath.c_str());
 }
 

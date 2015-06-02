@@ -74,6 +74,7 @@ section "install"
         # Uninstaller - See function un.onInit and section "uninstall" for configuration
         writeUninstaller "$INSTDIR\uninstall.exe"
 
+        SetOutPath $INSTDIR
         #Desktop
         CreateShortCut "$DESKTOP\Ring.lnk" "$INSTDIR\RingClientWindows.exe" ""
 
