@@ -248,12 +248,12 @@ CallWidget::setMediaText(Call *call)
 void
 CallWidget::mediaAdd(Media::Media *media)
 {
-    switch(static_cast<int>(media->type())) {
-    case 0: /*AUDIO*/
+    switch(media->type()) {
+    case Media::Media::Type::AUDIO:
         break;
-    case 1: /*VIDEO*/
+    case Media::Media::Type::VIDEO:
         break;
-    case 2: /*TEXT*/
+    case Media::Media::Type::TEXT:
         if (media->direction() == Media::Text::Direction::IN) {
             ui->messageOutput->setModel(
                         static_cast<Media::Text*>(media)->recording()->
@@ -264,7 +264,9 @@ CallWidget::mediaAdd(Media::Media *media)
             ui->messageOutput->show();
         }
         break;
-    case 3: /*FILE*/
+    case Media::Media::Type::FILE:
+        break;
+    default:
         break;
     }
 }
