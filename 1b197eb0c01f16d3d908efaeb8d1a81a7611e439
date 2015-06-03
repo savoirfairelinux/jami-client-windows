@@ -16,6 +16,24 @@
       "revId": "1b197eb0c01f16d3d908efaeb8d1a81a7611e439",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_0ab95be9",
+        "filename": "callwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-03T14:04:57Z",
+      "side": 1,
+      "message": "You\u0027re right. No idea why i wrote that...",
+      "parentUuid": "9a5c5d37_6ad33739",
+      "revId": "1b197eb0c01f16d3d908efaeb8d1a81a7611e439",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
