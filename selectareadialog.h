@@ -16,45 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOWIDGET_H
-#define VIDEOWIDGET_H
+#ifndef SELECTAREADIALOG_H
+#define SELECTAREADIALOG_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QMutex>
+#include <QDialog>
+#include <QMouseEvent>
+#include <QRubberBand>
+#include <QDialog>
 #include <QPixmap>
-#include <QMenu>
 
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-#include "video/sourcemodel.h"
-#include "callmodel.h"
-
-class VideoWidget : public QWidget
+class SelectAreaDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
-
-public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
-    void frameFromDistant();
-    void renderingStopped();
-
-private slots:
-    void showContextMenu(const QPoint &pos);
+    SelectAreaDialog();
+protected:
+     void mousePressEvent(QMouseEvent* event);
+     void mouseMoveEvent(QMouseEvent* event);
+     void mouseReleaseEvent(QMouseEvent* event);
+     void paintEvent(QPaintEvent* event);
 private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    QImage *previewFrame_;
-    QImage *distantFrame_;
-    QMutex lock_;
-    QPixmap *previewPix_;
+     QPoint origin_;
+     QDialog transDialog_;
+     QRubberBand* rubberBand_;
+     QPixmap originalPixmap_;
 };
 
-#endif // VIDEOWIDGET_H
+#endif // SELECTAREADIALOG_H
