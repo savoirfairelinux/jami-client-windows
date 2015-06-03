@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_6ad33739",
+        "filename": "callwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-03T00:00:33Z",
+      "side": 1,
+      "message": "You should use Media::Media::Type::AUDIO instead of casting + comment. This kind of void the whole point of the enum class C++ feature.",
+      "revId": "1b197eb0c01f16d3d908efaeb8d1a81a7611e439",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
