@@ -18,7 +18,10 @@
 
 #include "videowidget.h"
 
-#include <QDebug>
+#include <QApplication>
+#include <QDesktopWidget>
+
+#include "selectareadialog.h"
 
 VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
@@ -39,6 +42,10 @@ VideoWidget::VideoWidget(QWidget *parent) :
     pal.setColor(QPalette::Background, Qt::black);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
+
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(showContextMenu(const QPoint&)));
 }
 
 VideoWidget::~VideoWidget()
@@ -154,4 +161,25 @@ VideoWidget::mouseDoubleClickEvent(QMouseEvent *e) {
         this->showFullScreen();
         this->show();
     }
+}
+void
+VideoWidget::showContextMenu(const QPoint& pos)
+{
+    QPoint globalPos = this->mapToGlobal(pos);
+
+    QMenu menu;
+
+    auto shareAction = new QAction("Share entire screen", this);
+    menu.addAction(shareAction);
+    connect(shareAction, &QAction::triggered, [=]() {
+        Video::SourceModel::instance()->setDisplay(0, QApplication::desktop()->rect());
+    });
+    auto shareAreaAction = new QAction("Share screen area", this);
+    menu.addAction(shareAreaAction);
+    connect(shareAreaAction, &QAction::triggered, [=]() {
+        SelectAreaDialog selec;
+        selec.exec();
+    });
+
+    menu.exec(globalPos);
 }
