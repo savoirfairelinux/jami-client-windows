@@ -18,7 +18,10 @@
 
 #include "videowidget.h"
 
-#include <QDebug>
+#include <QApplication>
+#include <QDesktopWidget>
+
+#include "selectareadialog.h"
 
 VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
@@ -34,6 +37,9 @@ VideoWidget::VideoWidget(QWidget *parent) :
             SIGNAL(rendererAdded(Call*,Video::Renderer*)),
             this, SLOT(callInitiated(Call*, Video::Renderer*)),
             Qt::ConnectionType::DirectConnection);
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(showContextMenu(const QPoint&)));
 }
 
 VideoWidget::~VideoWidget()
@@ -80,7 +86,7 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
     QPainter painter(this);
     //painter.drawRoundedRect(0,5,width()-5, height()-7,3,3);
     if (distantFrame_ && renderer_ && renderer_->isRendering())
-          painter.drawImage(QRect(0,0,width(),height()),*(distantFrame_));
+        painter.drawImage(QRect(0,0,width(),height()),*(distantFrame_));
     if (previewFrame_ && previewRenderer_ && previewRenderer_->isRendering()) {
         int previewHeight = !renderer_ ? height() : height()/4;
         int previewWidth = !renderer_  ? width() : width()/4;
@@ -126,4 +132,26 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
+}
+
+void
+VideoWidget::showContextMenu(const QPoint& pos)
+{
+    QPoint globalPos = this->mapToGlobal(pos);
+
+    QMenu menu;
+
+    auto shareAction = new QAction("Share entire screen", this);
+    menu.addAction(shareAction);
+    connect(shareAction, &QAction::triggered, [=]() {
+        Video::SourceModel::instance()->setDisplay(0, QApplication::desktop()->rect());
+    });
+    auto shareAreaAction = new QAction("Share screen area", this);
+    menu.addAction(shareAreaAction);
+    connect(shareAreaAction, &QAction::triggered, [=]() {
+        SelectAreaDialog selec;
+        selec.exec();
+    });
+
+    menu.exec(globalPos);
 }
