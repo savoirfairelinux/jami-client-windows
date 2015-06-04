@@ -25,11 +25,11 @@
 #include <QMenu>
 
 #include "navwidget.h"
+#include "instantmessagingwidget.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
-
 #include "categorizedhistorymodel.h"
 
 namespace Ui {
@@ -73,7 +73,6 @@ private slots:
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
-    void mediaAdd(Media::Media* media);
 
 private:
     Ui::CallWidget *ui;
@@ -86,7 +85,6 @@ private:
 private:
     void findRingAccount();
     void setActualCall(Call *value);
-    void setMediaText(Call* call);
 };
 
 #endif // CALLWIDGET_H
