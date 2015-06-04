@@ -224,7 +224,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     } else if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
     }
-    ui->callStateLabel->setText("Call State : " + state.at((int)call->state()));
+    ui->callStateLabel->setText("Call State : " + call->toHumanStateName());
 }
 
 void

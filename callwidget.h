@@ -40,12 +40,6 @@ class CallWidget : public NavWidget
 {
     Q_OBJECT
 
-    const QVector<QString> state = {"New", "Incoming", "Ringing", "Current",
-                                        "Dialing", "Hold", "Failure", "Busy",
-                                        "Transferred", "Transfer hold", "Over",
-                                        "Error", "Conference",
-                                        "Conference Hold", "Initialization",
-                                        "Aborted", "Connected"};
 public:
     explicit CallWidget(QWidget *parent = 0);
     ~CallWidget();
