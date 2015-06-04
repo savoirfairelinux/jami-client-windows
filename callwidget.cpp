@@ -228,53 +228,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 }
 
 void
-CallWidget::setMediaText(Call *call)
-{
-    if (call != nullptr) {
-        connect(call, SIGNAL(mediaAdded(Media::Media*)),
-                this, SLOT(mediaAdd(Media::Media*)));
-        Media::Text *textMedia = call->addOutgoingMedia<Media::Text>();
-        connect(ui->messageInput, &QLineEdit::returnPressed, [=]()
-        {
-            textMedia->send(ui->messageInput->text());
-            ui->messageInput->clear();
-        });
-        ui->messageInput->show();
-    } else {
-        ui->messageOutput->disconnect();
-        ui->messageInput->disconnect();
-        ui->messageOutput->hide();
-        ui->messageInput->hide();
-    }
-}
-
-void
-CallWidget::mediaAdd(Media::Media *media)
-{
-    switch(media->type()) {
-    case Media::Media::Type::AUDIO:
-        break;
-    case Media::Media::Type::VIDEO:
-        break;
-    case Media::Media::Type::TEXT:
-        if (media->direction() == Media::Text::Direction::IN) {
-            ui->messageOutput->setModel(
-                        static_cast<Media::Text*>(media)->recording()->
-                        instantMessagingModel());
-            connect(ui->messageOutput->model(),
-                    SIGNAL(rowsInserted(const QModelIndex&, int, int)),
-                    ui->messageOutput, SLOT(scrollToBottom()));
-            ui->messageOutput->show();
-        }
-        break;
-    case Media::Media::Type::FILE:
-        break;
-    default:
-        break;
-    }
-}
-
-void
 CallWidget::on_callList_activated(const QModelIndex &index)
 {
     Call *callSelected = callModel_->getCall(index);
@@ -370,10 +323,10 @@ CallWidget::setActualCall(Call* value)
     actualCall_ = value;
     ui->holdButton->setEnabled(actualCall_ != nullptr);
     ui->hangupButton->setEnabled(actualCall_ != nullptr);
-    ui->messageInput->setEnabled(actualCall_ != nullptr);
-    ui->messageOutput->setEnabled(actualCall_ != nullptr);
-    setMediaText(actualCall_);
+    ui->instantMessagingWidget->setVisible(actualCall_ != nullptr);
+    ui->instantMessagingWidget->setMediaText(actualCall_);
 }
+
 void
 CallWidget::on_sortComboBox_currentIndexChanged(int index)
 {

@@ -217,7 +217,7 @@
         <string>Hold/Unhold</string>
        </property>
        <property name="icon">
-        <iconset resource="ressources.qrc">
+        <iconset>
          <normaloff>:/images/phone-paused.png</normaloff>:/images/phone-paused.png</iconset>
        </property>
       </widget>
@@ -237,7 +237,7 @@
         <string>Hangup</string>
        </property>
        <property name="icon">
-        <iconset resource="ressources.qrc">
+        <iconset>
          <normaloff>:/images/phone-hangup.png</normaloff>:/images/phone-hangup.png</iconset>
        </property>
       </widget>
@@ -296,7 +296,7 @@
                  <string>Accept</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="ressources.qrc">
+                 <iconset>
                   <normaloff>:/images/phone.png</normaloff>:/images/phone.png</iconset>
                 </property>
                </widget>
@@ -307,7 +307,7 @@
                  <string>Refuse</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="ressources.qrc">
+                 <iconset>
                   <normaloff>:/images/phone-hangup.png</normaloff>:/images/phone-hangup.png</iconset>
                 </property>
                </widget>
@@ -348,7 +348,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="ressources.qrc">
+            <iconset>
              <normaloff>:/images/speaker-off.png</normaloff>:/images/speaker-off.png</iconset>
            </property>
            <property name="iconSize">
@@ -372,7 +372,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="ressources.qrc">
+            <iconset>
              <normaloff>:/images/microphone-off.png</normaloff>:/images/microphone-off.png</iconset>
            </property>
            <property name="iconSize">
@@ -398,31 +398,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QListView" name="messageOutput">
+       <widget class="InstantMessagingWidget" name="instantMessagingWidget" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
-        </property>
-        <property name="flow">
-         <enum>QListView::TopToBottom</enum>
-        </property>
-        <property name="isWrapping" stdset="0">
-         <bool>false</bool>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="messageInput">
-        <property name="placeholderText">
-         <string>Send text message...</string>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -438,9 +419,13 @@
    <header>videowidget.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>InstantMessagingWidget</class>
+   <extends>QWidget</extends>
+   <header>instantmessagingwidget.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
