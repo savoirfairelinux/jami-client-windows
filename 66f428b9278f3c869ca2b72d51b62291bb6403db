@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_ed94e145",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-06-04T19:16:30Z",
+      "side": 1,
+      "message": "delete commented code",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "66f428b9278f3c869ca2b72d51b62291bb6403db",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_cd911d54",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-06-04T19:16:30Z",
+      "side": 1,
+      "message": "is it possible for this to be 0? ie: check for divide by 0 maybe?\n\nsame for other places in the code",
+      "range": {
+        "startLine": 89,
+        "startChar": 22,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "66f428b9278f3c869ca2b72d51b62291bb6403db",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
