@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     wizarddialog.cpp \
     windowscontactbackend.cpp \
     historydelegate.cpp \
-    contactdelegate.cpp
+    contactdelegate.cpp \
+    instantmessagingwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -56,7 +57,8 @@ HEADERS  += mainwindow.h \
     wizarddialog.h \
     windowscontactbackend.h \
     historydelegate.h \
-    contactdelegate.h
+    contactdelegate.h \
+    instantmessagingwidget.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -66,7 +68,8 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     pivotviewwidget.ui \
-    wizarddialog.ui
+    wizarddialog.ui \
+    instantmessagingwidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
