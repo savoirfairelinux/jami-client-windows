@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a5c5d37_4d8d2d31",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-04T19:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5c5d37_ed94e145",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "66f428b9278f3c869ca2b72d51b62291bb6403db",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5c5d37_cd911d54",
         "filename": "videowidget.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-04T19:16:30Z",
       "side": 1,
       "message": "is it possible for this to be 0? ie: check for divide by 0 maybe?\n\nsame for other places in the code",
+      "range": {
+        "startLine": 89,
+        "startChar": 22,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "66f428b9278f3c869ca2b72d51b62291bb6403db",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_8d9b2572",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-04T19:32:09Z",
+      "side": 1,
+      "message": "yes width() - scaledDistant.width() could be equal to 0 but is always divided by 2. The result would symply be 0. If it was 2 / (width() - scaledDistant.width()) then this would be a problem.",
+      "parentUuid": "9a5c5d37_cd911d54",
       "range": {
         "startLine": 89,
         "startChar": 22,
