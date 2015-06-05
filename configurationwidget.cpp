@@ -25,6 +25,8 @@
 #include "video/rate.h"
 #include "video/previewmanager.h"
 
+#include "accountserializationadapter.h"
+
 #include "accountmodel.h"
 #include "protocolmodel.h"
 #include "accountdetails.h"
@@ -136,9 +138,12 @@ ConfigurationWidget::on_rateBox_currentIndexChanged(int index)
 
 void
 ConfigurationWidget::accountSelected(QItemSelection itemSel) {
+
     Q_UNUSED(itemSel)
-    accountDetails_->setAccount(accountModel_->getAccountByModelIndex(
-                                    ui->accountView->currentIndex()));
+    auto account = accountModel_->getAccountByModelIndex(
+                ui->accountView->currentIndex());
+    accountDetails_->setAccount(account);
+    AccountSerializationAdapter adapter(account, accountDetails_);
 }
 
 void

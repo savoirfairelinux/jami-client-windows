@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     windowscontactbackend.cpp \
     historydelegate.cpp \
     contactdelegate.cpp \
-    selectareadialog.cpp
+    selectareadialog.cpp \
+    accountserializationadapter.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -58,7 +59,8 @@ HEADERS  += mainwindow.h \
     windowscontactbackend.h \
     historydelegate.h \
     contactdelegate.h \
-    selectareadialog.h
+    selectareadialog.h \
+    accountserializationadapter.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
