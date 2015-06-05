@@ -20,11 +20,13 @@
 #define ACCOUNTDETAILS_H
 
 #include <QWidget>
+#include <QMap>
 
 #include <QTableWidgetItem>
 
 #include "accountmodel.h"
 #include "audio/codecmodel.h"
+#include "account.h"
 
 namespace Ui {
 class AccountDetails;
@@ -53,27 +55,22 @@ private slots:
     void on_downVideoButton_clicked();
     void on_audioCodecView_itemSelectionChanged();
     void on_videoCodecView_itemSelectionChanged();
-    void on_hostnameEdit_editingFinished();
     void on_usernameEdit_editingFinished();
-    void on_passwordEdit_editingFinished();
-    void on_proxyEdit_editingFinished();
-    void on_voicemailEdit_editingFinished();
     void on_tabWidget_currentChanged(int index);
-    void on_upnpCheckBox_clicked(bool checked);
 
 private slots:
     void audio_codec_checked(int row, int column);
-    void setVideoEnabled(bool enabled);
     void video_codec_checked(int row, int column);
-    void setAutoAnswer(bool enabled);
-    void aliasChanged();
     void bootstrapChanged();
+    void onCertButtonClicked();
 
 private:
     Ui::AccountDetails *ui;
     CodecModel* codecModel_;
     Account*    currentAccount_;
     bool codecModelModified;
+    typedef void (Account::*ACC_PTR)(const QString&);
+    QMap<QString, ACC_PTR > certMap_;
 
 };
 

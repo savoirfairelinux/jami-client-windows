@@ -25,6 +25,8 @@
 #include "video/rate.h"
 #include "video/previewmanager.h"
 
+#include "accountserializationadapter.h"
+
 #include "accountmodel.h"
 #include "protocolmodel.h"
 #include "accountdetails.h"
@@ -139,6 +141,9 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
     Q_UNUSED(itemSel)
     accountDetails_->setAccount(accountModel_->getAccountByModelIndex(
                                     ui->accountView->currentIndex()));
+    AccountSerializationAdapter adapter(accountModel_->getAccountByModelIndex(
+                                        ui->accountView->currentIndex()), accountDetails_);
+
 }
 
 void
