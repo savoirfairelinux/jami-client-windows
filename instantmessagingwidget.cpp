@@ -113,3 +113,9 @@ InstantMessagingWidget::copyToClipboard()
         QApplication::clipboard()->setText(text.value<QString>());
     }
 }
+
+void
+InstantMessagingWidget::on_sendButton_clicked()
+{
+    emit ui->messageInput->returnPressed();
+}

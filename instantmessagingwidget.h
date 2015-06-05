@@ -41,6 +41,10 @@ public:
 protected:
     virtual void keyPressEvent(QKeyEvent *event);
 
+//UI SLOTS
+private slots:
+    void on_sendButton_clicked();
+
 private slots:
     void mediaAdd(Media::Media *media);
 
