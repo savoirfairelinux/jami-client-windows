@@ -23,5 +23,6 @@
         <file>images/arrow-up.png</file>
         <file>images/spinner.gif</file>
         <file>images/folder-download.png</file>
+        <file>images/arrow-right.png</file>
     </qresource>
 </RCC>
