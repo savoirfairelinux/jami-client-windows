@@ -21,6 +21,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
+#include "video/devicemodel.h"
+
 #include "selectareadialog.h"
 
 VideoWidget::VideoWidget(QWidget *parent) :
@@ -168,6 +170,22 @@ VideoWidget::showContextMenu(const QPoint& pos)
     QPoint globalPos = this->mapToGlobal(pos);
 
     QMenu menu;
+
+    for (auto device : Video::DeviceModel::instance()->devices()) {
+        auto deviceAction = new QAction(device->name(), this);
+        deviceAction->setCheckable(true);
+        if (device == Video::DeviceModel::instance()->activeDevice())
+            deviceAction->setChecked(true);
+        menu.addAction(deviceAction);
+        connect(deviceAction, &QAction::toggled, [=](bool checked) {
+            if (checked == true) {
+                Video::SourceModel::instance()->switchTo(device);
+                Video::DeviceModel::instance()->setActive(device);
+            }
+        });
+    }
+
+    menu.addSeparator();
 
     auto shareAction = new QAction("Share entire screen", this);
     menu.addAction(shareAction);
