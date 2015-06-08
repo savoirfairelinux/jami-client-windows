@@ -50,7 +50,18 @@ main(int argc, char *argv[])
     }
 
     MainWindow w;
-    w.show();
+
+    auto startMinimized = false;
+
+    for (auto string : QCoreApplication::arguments()) {
+        if (string == "-m" || string == "--minimized")
+            startMinimized = true;
+    }
+
+    if (not startMinimized)
+        w.show();
+    else
+        w.showMinimized();
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&a]() {
         delete CallModel::instance();
