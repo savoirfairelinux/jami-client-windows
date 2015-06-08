@@ -46,6 +46,7 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
     {
         IPersistFile* ppf;
         psl->SetPath(lpszPathObj);
+        psl->SetArguments(TEXT("--minimized"));
 
         hres = psl->QueryInterface(IID_IPersistFile, (LPVOID*)&ppf);
         if (SUCCEEDED(hres))
