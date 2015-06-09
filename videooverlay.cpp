@@ -16,41 +16,54 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOWIDGET_H
-#define VIDEOWIDGET_H
+#include "videooverlay.h"
+#include "ui_videooverlay.h"
 
-#include <QWidget>
-#include <QPainter>
-#include <QMutex>
-#include <QPixmap>
-
-#include "video/renderer.h"
-#include "video/previewmanager.h"
 #include "callmodel.h"
 
-class VideoWidget : public QWidget
+VideoOverlay::VideoOverlay(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::VideoOverlay)
 {
-    Q_OBJECT
-public:
-    explicit VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
+    ui->setupUi(this);
 
-public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
-    void frameFromDistant();
-    void renderingStopped();
+    actionModel_ = CallModel::instance()->userActionModel();
+    setAttribute(Qt::WA_NoSystemBackground);
+}
 
-private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    QImage *previewFrame_;
-    QImage *distantFrame_;
-    QMutex lock_;
-    constexpr static int previewMargin_ = 15;
-};
+VideoOverlay::~VideoOverlay()
+{
+    delete ui;
+}
 
-#endif // VIDEOWIDGET_H
+void
+VideoOverlay::setName(const QString& name)
+{
+    ui->nameLabel->setText(name);
+}
+
+void
+VideoOverlay::setTime(const QString& time)
+{
+    ui->timerLabel->setText(time);
+}
+
+void
+VideoOverlay::on_holdButton_toggled(bool checked)
+{
+    Q_UNUSED(checked)
+    actionModel_->execute(UserActionModel::Action::HOLD);
+}
+
+void
+VideoOverlay::on_hangupButton_clicked()
+{
+    actionModel_->execute(UserActionModel::Action::HANGUP);
+}
+
+void
+VideoOverlay::on_chatButton_toggled(bool checked)
+{
+    //TODO : Link this to im class once it's merged
+}
+
