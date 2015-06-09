@@ -16,62 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef CALLWIDGET_H
-#define CALLWIDGET_H
+#ifndef VIDEOOVERLAY_H
+#define VIDEOOVERLAY_H
 
 #include <QWidget>
-#include <QVector>
-#include <QString>
-#include <QMenu>
 
-#include "navwidget.h"
-
-#include "callmodel.h"
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-
-#include "categorizedhistorymodel.h"
+#include "useractionmodel.h"
 
 namespace Ui {
-class CallWidget;
+class VideoOverlay;
 }
 
-class CallWidget : public NavWidget
+class VideoOverlay : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit CallWidget(QWidget *parent = 0);
-    ~CallWidget();
-    void atExit();
+    explicit VideoOverlay(QWidget *parent = 0);
+    ~VideoOverlay();
+
+public:
+    void setName(const QString &name);
+    void setTime(const QString &time);
 
 //UI SLOTS
 private slots:
-    void on_acceptButton_clicked();
-    void on_refuseButton_clicked();
-    void on_contactView_doubleClicked(const QModelIndex &index);
-    void on_historyList_doubleClicked(const QModelIndex &index);
-    void on_sortComboBox_currentIndexChanged(int index);
-
-private slots:
-    void callIncoming(Call *call);
-    void addedCall(Call *call, Call *parent);
-    void callStateChanged(Call *call, Call::State previousState);
-    void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
-    void mediaAdd(Media::Media* media);
+    void on_holdButton_toggled(bool checked);
+    void on_hangupButton_clicked();
+    void on_chatButton_toggled(bool checked);
 
 private:
-    Ui::CallWidget *ui;
-    Call* actualCall_;
-    Video::Renderer* videoRenderer_;
-    CallModel* callModel_;
-    int outputVolume_;
-    int inputVolume_;
-    QMenu *menu_;
-private:
-    void findRingAccount();
-    void setActualCall(Call *value);
-    void setMediaText(Call* call);
+    Ui::VideoOverlay *ui;
+    UserActionModel* actionModel_;
 };
 
-#endif // CALLWIDGET_H
+#endif // VIDEOOVERLAY_H

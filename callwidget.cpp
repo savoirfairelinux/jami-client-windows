@@ -43,9 +43,6 @@ CallWidget::CallWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->holdButton->setCheckable(true);
-    ui->muteMicButton->setCheckable(true);
-    ui->muteSpeakerButton->setCheckable(true);
     ui->callInvite->setVisible(false);
     ui->videoWidget->setVisible(false);
 
@@ -68,6 +65,7 @@ CallWidget::CallWidget(QWidget *parent) :
                 , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
 
         ui->callList->setModel(callModel_);
+        ui->callList->setSelectionModel(callModel_->selectionModel());
 
         CategorizedHistoryModel::instance()->
                 addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
@@ -91,9 +89,6 @@ CallWidget::CallWidget(QWidget *parent) :
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
         ui->contactView->setItemDelegate(new ContactDelegate());
-
-        ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
-        ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
 
         findRingAccount();
 
@@ -185,23 +180,6 @@ CallWidget::on_refuseButton_clicked()
 }
 
 void
-CallWidget::on_holdButton_toggled(bool checked)
-{
-    Q_UNUSED(checked)
-    if (actualCall_ == nullptr)
-        return;
-    actualCall_->performAction(Call::Action::HOLD);
-}
-
-void
-CallWidget::on_hangupButton_clicked()
-{
-    if (actualCall_ == nullptr)
-        return;
-    actualCall_->performAction(Call::Action::REFUSE);
-}
-
-void
 CallWidget::addedCall(Call* call, Call* parent) {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
@@ -218,8 +196,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
     if (call->state() == Call::State::OVER || call->state() == Call::State::ERROR) {
         setActualCall(nullptr);
-        ui->videoWidget->hide();
-    } else if (call->state() == Call::State::HOLD) {
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
@@ -274,56 +250,20 @@ CallWidget::mediaAdd(Media::Media *media)
     }
 }
 
-void
-CallWidget::on_callList_activated(const QModelIndex &index)
-{
-    Call *callSelected = callModel_->getCall(index);
-    if (actualCall_ != nullptr) {
-        if (callSelected == actualCall_)
-            return;
-        ui->videoWidget->hide();
-        actualCall_->performAction(Call::Action::HOLD);
-    }
-    setActualCall(callSelected);
-    actualCall_->performAction(Call::Action::HOLD);
-    ui->videoWidget->show();
-}
-
-void
-CallWidget::on_muteSpeakerButton_toggled(bool checked)
-{
-    Audio::Settings::instance()->mutePlayback(checked);
-}
-
-void
-CallWidget::on_muteMicButton_toggled(bool checked)
-{
-    Audio::Settings::instance()->muteCapture(checked);
-}
-
-void
-CallWidget::on_speakerSlider_sliderMoved(int position)
-{
-    outputVolume_ = position;
-}
-
-void
-CallWidget::on_speakerSlider_sliderReleased()
-{
-    emit Audio::Settings::instance()->setPlaybackVolume(outputVolume_);
-}
-
-void
-CallWidget::on_micSlider_sliderMoved(int position)
-{
-    inputVolume_ = position;
-}
-
-void
-CallWidget::on_micSlider_sliderReleased()
-{
-    emit Audio::Settings::instance()->setCaptureVolume(inputVolume_);
-}
+//void
+//CallWidget::on_callList_activated(const QModelIndex &index)
+//{
+//    Call *callSelected = callModel_->getCall(index);
+//    if (actualCall_ != nullptr) {
+//        if (callSelected == actualCall_)
+//            return;
+//        ui->videoWidget->hide();
+//        actualCall_->performAction(Call::Action::HOLD);
+//    }
+//    setActualCall(callSelected);
+//    actualCall_->performAction(Call::Action::HOLD);
+//    ui->videoWidget->show();
+//}
 
 void
 CallWidget::atExit() {
@@ -368,8 +308,6 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    ui->holdButton->setEnabled(actualCall_ != nullptr);
-    ui->hangupButton->setEnabled(actualCall_ != nullptr);
     ui->messageInput->setEnabled(actualCall_ != nullptr);
     ui->messageOutput->setEnabled(actualCall_ != nullptr);
     setMediaText(actualCall_);
