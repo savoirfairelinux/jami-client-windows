@@ -16,41 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOWIDGET_H
-#define VIDEOWIDGET_H
+#ifndef VIDEOOVERLAY_H
+#define VIDEOOVERLAY_H
 
 #include <QWidget>
-#include <QPainter>
-#include <QMutex>
-#include <QPixmap>
 
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-#include "callmodel.h"
+#include "useractionmodel.h"
 
-class VideoWidget : public QWidget
+namespace Ui {
+class VideoOverlay;
+}
+
+class VideoOverlay : public QWidget
 {
     Q_OBJECT
-public:
-    explicit VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
 
-public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
-    void frameFromDistant();
-    void renderingStopped();
+public:
+    explicit VideoOverlay(QWidget *parent = 0);
+    ~VideoOverlay();
+
+public:
+    void setName(const QString &name);
+    void setTime(const QString &time);
+
+//UI SLOTS
+private slots:
+    void on_holdButton_toggled(bool checked);
+    void on_hangupButton_clicked();
+    void on_chatButton_toggled(bool checked);
 
 private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    QImage *previewFrame_;
-    QImage *distantFrame_;
-    QMutex lock_;
-    constexpr static int previewMargin_ = 15;
+    Ui::VideoOverlay *ui;
+    UserActionModel* actionModel_;
 };
 
-#endif // VIDEOWIDGET_H
+#endif // VIDEOOVERLAY_H

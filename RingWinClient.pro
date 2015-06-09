@@ -42,7 +42,9 @@ SOURCES += main.cpp\
     historydelegate.cpp \
     contactdelegate.cpp \
     selectareadialog.cpp \
-    accountserializationadapter.cpp
+    accountserializationadapter.cpp \
+    videoview.cpp \
+    videooverlay.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -60,7 +62,9 @@ HEADERS  += mainwindow.h \
     historydelegate.h \
     contactdelegate.h \
     selectareadialog.h \
-    accountserializationadapter.h
+    accountserializationadapter.h \
+    videoview.h \
+    videooverlay.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -70,7 +74,9 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     pivotviewwidget.ui \
-    wizarddialog.ui
+    wizarddialog.ui \
+    videoview.ui \
+    videooverlay.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
