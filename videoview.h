@@ -16,62 +16,49 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef CALLWIDGET_H
-#define CALLWIDGET_H
+#ifndef VIDEOVIEW_H
+#define VIDEOVIEW_H
 
 #include <QWidget>
-#include <QVector>
-#include <QString>
-#include <QMenu>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QPropertyAnimation>
 
-#include "navwidget.h"
-
-#include "callmodel.h"
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-
-#include "categorizedhistorymodel.h"
+#include "videooverlay.h"
 
 namespace Ui {
-class CallWidget;
+class VideoView;
 }
 
-class CallWidget : public NavWidget
+class VideoView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit CallWidget(QWidget *parent = 0);
-    ~CallWidget();
-    void atExit();
+    explicit VideoView(QWidget *parent = 0);
+    ~VideoView();
 
-//UI SLOTS
-private slots:
-    void on_acceptButton_clicked();
-    void on_refuseButton_clicked();
-    void on_contactView_doubleClicked(const QModelIndex &index);
-    void on_historyList_doubleClicked(const QModelIndex &index);
-    void on_sortComboBox_currentIndexChanged(int index);
+protected:
+    void resizeEvent(QResizeEvent* event);
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseDoubleClickEvent(QMouseEvent *e);
 
 private slots:
-    void callIncoming(Call *call);
-    void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
-    void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
-    void mediaAdd(Media::Media* media);
+    void updateTimer();
+    void showContextMenu(const QPoint &pos);
 
 private:
-    Ui::CallWidget *ui;
-    Call* actualCall_;
-    Video::Renderer* videoRenderer_;
-    CallModel* callModel_;
-    int outputVolume_;
-    int inputVolume_;
-    QMenu *menu_;
+    Ui::VideoView *ui;
+    QTimer* timerLength_;
+    VideoOverlay* overlay_;
+    constexpr static int fadeOverlayTime_ = 2000; //msec
+    QPropertyAnimation* fadeAnim_;
+    QWidget *oldParent_;
+    QSize oldSize_;
 private:
-    void findRingAccount();
-    void setActualCall(Call *value);
-    void setMediaText(Call* call);
+    void toggleFullScreen();
 };
 
-#endif // CALLWIDGET_H
+#endif // VIDEOVIEW_H
