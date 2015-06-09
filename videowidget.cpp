@@ -18,13 +18,6 @@
 
 #include "videowidget.h"
 
-#include <QApplication>
-#include <QDesktopWidget>
-
-#include "video/devicemodel.h"
-
-#include "selectareadialog.h"
-
 VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
@@ -44,10 +37,6 @@ VideoWidget::VideoWidget(QWidget *parent) :
     pal.setColor(QPalette::Background, Qt::black);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
-
-    this->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
-        this, SLOT(showContextMenu(const QPoint&)));
 }
 
 VideoWidget::~VideoWidget()
@@ -147,57 +136,4 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
-}
-
-void
-VideoWidget::mouseDoubleClickEvent(QMouseEvent *e) {
-    QWidget::mouseDoubleClickEvent(e);
-    if(isFullScreen()) {
-        this->setParent(oldParent_);
-        this->showNormal();
-        this->resize(oldSize_.width(), oldSize_.height());
-    } else {
-        oldSize_ = this->size();
-        oldParent_ = static_cast<QWidget*>(this->parent());
-        this->setParent(0);
-        this->showFullScreen();
-        this->show();
-    }
-}
-void
-VideoWidget::showContextMenu(const QPoint& pos)
-{
-    QPoint globalPos = this->mapToGlobal(pos);
-
-    QMenu menu;
-
-    for (auto device : Video::DeviceModel::instance()->devices()) {
-        auto deviceAction = new QAction(device->name(), this);
-        deviceAction->setCheckable(true);
-        if (device == Video::DeviceModel::instance()->activeDevice())
-            deviceAction->setChecked(true);
-        menu.addAction(deviceAction);
-        connect(deviceAction, &QAction::toggled, [=](bool checked) {
-            if (checked == true) {
-                Video::SourceModel::instance()->switchTo(device);
-                Video::DeviceModel::instance()->setActive(device);
-            }
-        });
-    }
-
-    menu.addSeparator();
-
-    auto shareAction = new QAction("Share entire screen", this);
-    menu.addAction(shareAction);
-    connect(shareAction, &QAction::triggered, [=]() {
-        Video::SourceModel::instance()->setDisplay(0, QApplication::desktop()->rect());
-    });
-    auto shareAreaAction = new QAction("Share screen area", this);
-    menu.addAction(shareAreaAction);
-    connect(shareAreaAction, &QAction::triggered, [=]() {
-        SelectAreaDialog selec;
-        selec.exec();
-    });
-
-    menu.exec(globalPos);
 }
