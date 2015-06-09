@@ -44,8 +44,9 @@ SOURCES += main.cpp\
     selectareadialog.cpp \
     accountserializationadapter.cpp \
     instantmessagingwidget.cpp \
-    accountstatedelegate.cpp
-
+    accountstatedelegate.cpp \
+    videoview.cpp \
+    videooverlay.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -65,7 +66,9 @@ HEADERS  += mainwindow.h \
     selectareadialog.h \
     accountserializationadapter.h \
     instantmessagingwidget.h \
-    accountstatedelegate.h
+    accountstatedelegate.h \
+    videoview.h \
+    videooverlay.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -76,7 +79,9 @@ FORMS    += mainwindow.ui \
     aboutdialog.ui \
     pivotviewwidget.ui \
     wizarddialog.ui \
-    instantmessagingwidget.ui
+    instantmessagingwidget.ui \
+    videoview.ui \
+    videooverlay.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

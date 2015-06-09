@@ -29,7 +29,7 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
        <property name="topMargin">
         <number>0</number>
        </property>
@@ -189,40 +189,6 @@
        </item>
       </layout>
      </item>
-     <item>
-      <widget class="QPushButton" name="holdButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Hold/Unhold</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/images/phone-paused.png</normaloff>:/images/phone-paused.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="hangupButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Hangup</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/images/phone-hangup.png</normaloff>:/images/phone-hangup.png</iconset>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item row="0" column="1">
@@ -253,7 +219,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <widget class="VideoWidget" name="videoWidget" native="true"/>
+          <widget class="VideoView" name="videoWidget" native="true"/>
          </item>
          <item>
           <widget class="QWidget" name="callInvite" native="true">
@@ -312,70 +278,6 @@
         <property name="text">
          <string>Call State :</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="horizontalWidget" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="muteSpeakerButton">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/images/speaker-off.png</normaloff>:/images/speaker-off.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>25</width>
-             <height>25</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSlider" name="speakerSlider">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="muteMicButton">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/images/microphone-off.png</normaloff>:/images/microphone-off.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>25</width>
-             <height>25</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSlider" name="micSlider">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-        <zorder>micSlider</zorder>
-        <zorder>muteMicButton</zorder>
-        <zorder>speakerSlider</zorder>
-        <zorder>muteSpeakerButton</zorder>
        </widget>
       </item>
       <item>
@@ -438,9 +340,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>VideoWidget</class>
+   <class>VideoView</class>
    <extends>QWidget</extends>
-   <header>videowidget.h</header>
+   <header>videoview.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
