@@ -23,6 +23,7 @@
 #include <QVector>
 #include <QString>
 #include <QMenu>
+#include <QItemSelection>
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
@@ -49,18 +50,10 @@ public:
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
-    void on_holdButton_toggled(bool checked);
-    void on_hangupButton_clicked();
-    void on_callList_activated(const QModelIndex &index);
-    void on_muteSpeakerButton_toggled(bool checked);
-    void on_muteMicButton_toggled(bool checked);
-    void on_speakerSlider_sliderMoved(int position);
-    void on_speakerSlider_sliderReleased();
-    void on_micSlider_sliderMoved(int position);
-    void on_micSlider_sliderReleased();
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_historyList_doubleClicked(const QModelIndex &index);
     void on_sortComboBox_currentIndexChanged(int index);
+    void on_callList_activated(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call *call);
