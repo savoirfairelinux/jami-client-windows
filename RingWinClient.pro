@@ -41,7 +41,9 @@ SOURCES += main.cpp\
     windowscontactbackend.cpp \
     historydelegate.cpp \
     contactdelegate.cpp \
-    selectareadialog.cpp
+    selectareadialog.cpp \
+    videoview.cpp \
+    videooverlay.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -58,7 +60,9 @@ HEADERS  += mainwindow.h \
     windowscontactbackend.h \
     historydelegate.h \
     contactdelegate.h \
-    selectareadialog.h
+    selectareadialog.h \
+    videoview.h \
+    videooverlay.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -68,7 +72,9 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     pivotviewwidget.ui \
-    wizarddialog.ui
+    wizarddialog.ui \
+    videoview.ui \
+    videooverlay.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

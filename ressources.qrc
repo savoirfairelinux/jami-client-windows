@@ -22,5 +22,6 @@
         <file>images/arrow-down.png</file>
         <file>images/arrow-up.png</file>
         <file>images/spinner.gif</file>
+        <file>images/message-text-outline.png</file>
     </qresource>
 </RCC>
