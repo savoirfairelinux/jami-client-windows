@@ -19,6 +19,8 @@
 #include "configurationwidget.h"
 #include "ui_configurationwidget.h"
 
+#include <QMessageBox>
+
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
@@ -32,6 +34,8 @@
 #include "protocolmodel.h"
 #include "accountdetails.h"
 #include "callmodel.h"
+#include "ringtonemodel.h"
+#include "categorizedhistorymodel.h"
 
 #include "utils.h"
 
@@ -60,6 +64,9 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountDetailLayout->addWidget(accountDetails_);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
+
+    ui->ringtonesBox->setModel(RingtoneModel::instance());
+    ui->historyDaySettingsSpinBox->setValue(CategorizedHistoryModel::instance()->historyLimit());
 }
 
 void ConfigurationWidget::atExit() {
@@ -184,4 +191,24 @@ ConfigurationWidget::showEvent(QShowEvent* event)
         ui->videoView->show();
         Video::PreviewManager::instance()->startPreview();
     }
+}
+
+void
+ConfigurationWidget::on_clearHistoryButton_clicked()
+{
+    QMessageBox confirmationDialog;
+
+    confirmationDialog.setText("Are you sure you want to clear all your history?");
+    confirmationDialog.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    auto ret = confirmationDialog.exec();
+
+    if (ret == QMessageBox::Ok)
+        CategorizedHistoryModel::instance()->clearAllCollections();
+}
+
+void
+ConfigurationWidget::on_historyDaySettingsSpinBox_valueChanged(int limit)
+{
+    if (CategorizedHistoryModel::instance()->historyLimit() != limit)
+        CategorizedHistoryModel::instance()->setHistoryLimit(limit);
 }
