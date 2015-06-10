@@ -54,6 +54,8 @@ private slots:
     void on_deleteAccountButton_clicked();
     void on_addAccountButton_clicked();
     void on_startupBox_toggled(bool checked);
+    void on_clearHistoryButton_clicked();
+    void on_historyDaySettingsSpinBox_valueChanged(int limit);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
