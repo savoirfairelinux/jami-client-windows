@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_3bd10fce",
+        "filename": "callwidget.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-06-10T23:11:05Z",
+      "side": 1,
+      "message": "any reasons to keep this code?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 3
+      },
+      "revId": "36b4f82c5618ef94b1f47d9bd0e3eaf8b8af0a27",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_1bd64bc6",
+        "filename": "videooverlay.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-06-10T23:11:05Z",
+      "side": 1,
+      "message": "missing a _ to variable name to indicate private member as\ndone for actionModel_",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "36b4f82c5618ef94b1f47d9bd0e3eaf8b8af0a27",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
