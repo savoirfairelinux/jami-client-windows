@@ -35,10 +35,6 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-key D605848ED7E69871 9766E084FB0
 #install cross compil tool
 RUN yaourt -S mingw-w64-toolchain mingw-w64-pkg-config --noconfirm --needed
 
-#downgrade mingw-gcc as ring-daemon is not yet compatible with v5
-RUN wget http://seblu.net/a/arm/2015/05/01/community/os/x86_64/mingw-w64-gcc-4.9.2-2-x86_64.pkg.tar.xz
-RUN sudo pacman -U mingw-w64-gcc-4.9.2-2-x86_64.pkg.tar.xz --noconfirm
-
 #set env to include perl package (pod2man needed for doc)
 ENV PATH=$PATH:/usr/bin/core_perl
 RUN env
@@ -52,8 +48,6 @@ RUN yaourt -S mingw-w64-openssl --noconfirm --needed
 RUN yaourt -S mingw-w64-pcre --noconfirm --needed
 RUN yaourt -S mingw-w64-sqlite --noconfirm --needed
 RUN yaourt -S mingw-w64-zlib --noconfirm --needed
-RUN yaourt -S mingw-w64-mariadb-connector-c --noconfirm --needed
-RUN yaourt -S mingw-w64-postgresql-libs --noconfirm --needed
 RUN yaourt -S mingw-w64-mariadb-connector-c --noconfirm --needed
 RUN yaourt -S mingw-w64-postgresql-libs --noconfirm --needed
 
