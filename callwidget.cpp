@@ -219,6 +219,11 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call->state() == Call::State::OVER || call->state() == Call::State::ERROR) {
         setActualCall(nullptr);
         ui->videoWidget->hide();
+        auto onHoldCall = callModel_->getActiveCalls().first();
+        if (onHoldCall != nullptr) {
+            setActualCall(onHoldCall);
+            onHoldCall->performAction(Call::Action::HOLD);
+        }
     } else if (call->state() == Call::State::HOLD) {
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::CURRENT) {
