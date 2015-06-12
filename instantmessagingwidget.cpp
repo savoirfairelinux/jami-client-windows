@@ -34,8 +34,7 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->messageInput->hide();
-    ui->messageOutput->hide();
+    this->hide();
 
     imDelegate_ = new ImDelegate();
     ui->messageOutput->setItemDelegate(imDelegate_);
@@ -79,12 +78,9 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia->send(ui->messageInput->text());
             ui->messageInput->clear();
         });
-        ui->messageInput->show();
     } else {
         ui->messageOutput->disconnect();
         ui->messageInput->disconnect();
-        ui->messageOutput->hide();
-        ui->messageInput->hide();
     }
 }
 
@@ -104,7 +100,7 @@ InstantMessagingWidget::mediaAdd(Media::Media *media)
             connect(ui->messageOutput->model(),
                     SIGNAL(rowsInserted(const QModelIndex&, int, int)),
                     ui->messageOutput, SLOT(scrollToBottom()));
-            ui->messageOutput->show();
+            this->show();
         }
         break;
     case Media::Media::Type::FILE:

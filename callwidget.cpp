@@ -48,6 +48,9 @@ CallWidget::CallWidget(QWidget *parent) :
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
 
+    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
+            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+
     try {
         callModel_ = CallModel::instance();
 
@@ -306,7 +309,6 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    ui->instantMessagingWidget->setVisible(actualCall_ != nullptr);
     ui->instantMessagingWidget->setMediaText(actualCall_);
 }
 

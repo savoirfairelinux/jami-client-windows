@@ -61,6 +61,8 @@ private:
     QSize oldSize_;
 private:
     void toggleFullScreen();
+signals:
+    void setChatVisibility(bool visible);
 };
 
 #endif // VIDEOVIEW_H

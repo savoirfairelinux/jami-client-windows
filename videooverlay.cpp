@@ -27,6 +27,8 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->chatButton->setCheckable(true);
+
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 }
@@ -59,11 +61,12 @@ void
 VideoOverlay::on_hangupButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::HANGUP);
+    ui->chatButton->setChecked(false);
 }
 
 void
 VideoOverlay::on_chatButton_toggled(bool checked)
 {
-    //TODO : Link this to im class once it's merged
+    emit setChatVisibility(checked);
 }
 
