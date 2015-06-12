@@ -26,6 +26,7 @@
 #include "video/previewmanager.h"
 
 #include "accountserializationadapter.h"
+#include "accountstatedelegate.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -44,6 +45,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->setupUi(this);
 
     ui->accountView->setModel(accountModel_);
+    ui->accountView->setItemDelegate(new AccountStateDelegate());
 
     isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);
