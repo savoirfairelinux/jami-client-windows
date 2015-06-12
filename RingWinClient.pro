@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     contactdelegate.cpp \
     selectareadialog.cpp \
     accountserializationadapter.cpp \
-    instantmessagingwidget.cpp
+    instantmessagingwidget.cpp \
+    accountstatedelegate.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -63,7 +64,8 @@ HEADERS  += mainwindow.h \
     contactdelegate.h \
     selectareadialog.h \
     accountserializationadapter.h \
-    instantmessagingwidget.h
+    instantmessagingwidget.h \
+    accountstatedelegate.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
