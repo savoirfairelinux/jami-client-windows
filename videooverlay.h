@@ -48,6 +48,9 @@ private slots:
 private:
     Ui::VideoOverlay *ui;
     UserActionModel* actionModel_;
+
+signals:
+    void setChatVisibility(bool visible);
 };
 
 #endif // VIDEOOVERLAY_H

@@ -60,6 +60,9 @@ VideoView::VideoView(QWidget *parent) :
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
+    connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
+        emit this->setChatVisibility(visible);
+    });
 }
 
 VideoView::~VideoView()
@@ -101,6 +104,7 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
         overlay_->setName(call->formattedName());
     }
     else {
+        emit setChatVisibility(false);
         ui->videoWidget->hide();
         if (isFullScreen())
             toggleFullScreen();
