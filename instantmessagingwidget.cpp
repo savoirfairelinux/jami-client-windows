@@ -32,8 +32,7 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->messageInput->hide();
-    ui->messageOutput->hide();
+    this->hide();
 
     ui->messageOutput->setContextMenuPolicy(Qt::ActionsContextMenu);
     auto copyAction = new QAction("Copy", this);
@@ -60,12 +59,9 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia->send(ui->messageInput->text());
             ui->messageInput->clear();
         });
-        ui->messageInput->show();
     } else {
         ui->messageOutput->disconnect();
         ui->messageInput->disconnect();
-        ui->messageOutput->hide();
-        ui->messageInput->hide();
     }
 }
 
@@ -85,7 +81,7 @@ InstantMessagingWidget::mediaAdd(Media::Media *media)
             connect(ui->messageOutput->model(),
                     SIGNAL(rowsInserted(const QModelIndex&, int, int)),
                     ui->messageOutput, SLOT(scrollToBottom()));
-            ui->messageOutput->show();
+            this->show();
         }
         break;
     case Media::Media::Type::FILE:
