@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_56681af5",
+        "filename": "accountstatedelegate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-12T15:33:45Z",
+      "side": 1,
+      "message": "Actually, you can just implement AccountListColorDelegate::instance()-\u003egetColor(this); and most of this code will not be needed anymore",
+      "revId": "7650a32621853d15f5fb1c99d1916a85ae6f0861",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
