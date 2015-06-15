@@ -50,6 +50,16 @@
          <item>
           <widget class="VideoView" name="videoWidget" native="true"/>
          </item>
+         <item>
+          <widget class="QLabel" name="spinnerLabel">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QWidget" name="callInvite" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_4">
