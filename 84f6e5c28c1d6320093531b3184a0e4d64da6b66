@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_a1727247",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-15T14:16:30Z",
+      "side": 1,
+      "message": "You can do that one directly from Qt Designer drag and drop singal/slot editor, but then, it doesn\u0027t change much other than having smaller C++ files",
+      "revId": "84f6e5c28c1d6320093531b3184a0e4d64da6b66",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
