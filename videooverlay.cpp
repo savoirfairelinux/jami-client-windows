@@ -31,11 +31,29 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
 
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
+
+    menu_ = new QMenu(this);
+    auto muteAudio = new QAction("Mute Audio", this);
+    muteAudio->setCheckable(true);
+    connect(muteAudio, &QAction::toggled, [=](bool) {
+        actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
+    });
+    menu_->addAction(muteAudio);
+
+    auto muteVideo = new QAction("Mute Video", this);
+    muteVideo->setCheckable(true);
+    connect(muteVideo, &QAction::toggled, [=](bool) {
+        actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
+    });
+    menu_->addAction(muteVideo);
+
+    ui->moreButton->setMenu(menu_);
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
+    delete menu_;
 }
 
 void
