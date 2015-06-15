@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_419f3604",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-15T18:16:08Z",
+      "side": 1,
+      "message": "You might want to take a look at how the Gnome and KDE client handle this\n\nhttps://projects.kde.org/projects/playground/pim/ring-kde/repository/revisions/master/entry/src/actioncollection.cpp#L226\n\nIt will fix the case where the action is checked while the muting failed. It also avoid some code copy/paste",
+      "revId": "d90449400861518e34c1971d6e328c9b0f0c4e21",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
