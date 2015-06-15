@@ -52,6 +52,12 @@ CallWidget::CallWidget(QWidget *parent) :
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
+    ui->spinnerLabel->hide();
+    spinner_ = new QMovie(":/images/spinner.gif");
+    if (spinner_->isValid()) {
+        ui->spinnerLabel->setMovie(spinner_);
+    }
+
     try {
         callModel_ = CallModel::instance();
 
@@ -103,6 +109,8 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
+    delete spinner_;
+    delete menu_;
 }
 
 void
@@ -187,6 +195,7 @@ void
 CallWidget::addedCall(Call* call, Call* parent) {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
+        displaySpinner(true);
         setActualCall(call);
     }
 }
@@ -198,10 +207,15 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
-    if (call->state() == Call::State::OVER || call->state() == Call::State::ERROR) {
+    if (call->state() == Call::State::OVER
+            || call->state() == Call::State::ERROR
+            || call->state() == Call::State::FAILURE
+            || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
         ui->videoWidget->hide();
+        displaySpinner(false);
     } else if (call->state() == Call::State::CURRENT) {
+        displaySpinner(false);
         ui->videoWidget->show();
     }
     ui->callStateLabel->setText("Call State : " + call->toHumanStateName());
@@ -276,4 +290,12 @@ CallWidget::on_sortComboBox_currentIndexChanged(int index)
     CategorizedHistoryModel::SortedProxy::instance()->categorySelectionModel()->
             setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
     ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
+}
+
+void
+CallWidget::displaySpinner(bool display)
+{
+    display ? ui->spinnerLabel->show() : ui->spinnerLabel->hide();
+    if (ui->spinnerLabel->movie())
+        display ? ui->spinnerLabel->movie()->start() : ui->spinnerLabel->movie()->stop();
 }
