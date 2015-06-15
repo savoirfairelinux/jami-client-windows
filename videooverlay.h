@@ -20,6 +20,7 @@
 #define VIDEOOVERLAY_H
 
 #include <QWidget>
+#include <QMenu>
 
 #include "useractionmodel.h"
 
@@ -48,6 +49,7 @@ private slots:
 private:
     Ui::VideoOverlay *ui;
     UserActionModel* actionModel_;
+    QMenu* menu_;
 
 signals:
     void setChatVisibility(bool visible);
