@@ -31,11 +31,46 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
 
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
+
+    menu_ = new QMenu(this);
+    auto muteAudio = new QAction("Mute Audio", this);
+    muteAudio->setCheckable(true);
+    connect(muteAudio, &QAction::triggered, [=](bool) {
+       actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
+    });
+    menu_->addAction(muteAudio);
+
+    auto muteVideo = new QAction("Mute Video", this);
+    muteVideo->setCheckable(true);
+    connect(muteVideo, &QAction::triggered, [=](bool) {
+        actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
+    });
+    menu_->addAction(muteVideo);
+
+    connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
+        const int first(tl.row()),last(br.row());
+        for(int i = first; i <= last;i++) {
+            const QModelIndex& idx = actionModel_->index(i,0);
+            switch (idx.data(UserActionModel::Role::ACTION).value<UserActionModel::Action>()) {
+               case UserActionModel::Action::MUTE_AUDIO:
+                muteAudio->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                break;
+            case UserActionModel::Action::MUTE_VIDEO:
+                muteVideo->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                break;
+            default:
+                break;
+            }
+        }
+    });
+
+    ui->moreButton->setMenu(menu_);
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
+    delete menu_;
 }
 
 void
