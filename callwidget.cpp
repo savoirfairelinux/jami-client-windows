@@ -158,6 +158,7 @@ void
 CallWidget::callIncoming(Call *call)
 {
     if (!call->account()->isAutoAnswer()) {
+        ui->callLabel->setText("Call from " + call->formattedName());
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
