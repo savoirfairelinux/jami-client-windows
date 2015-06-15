@@ -24,6 +24,7 @@
 #include <QString>
 #include <QMenu>
 #include <QItemSelection>
+#include <QMovie>
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
@@ -69,9 +70,11 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu *menu_;
+    QMovie *spinner_;
 private:
     void findRingAccount();
     void setActualCall(Call *value);
+    void displaySpinner(bool display);
 };
 
 #endif // CALLWIDGET_H
