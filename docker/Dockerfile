@@ -44,7 +44,15 @@ RUN yaourt -S mingw-w64-harfbuzz --noconfirm --needed
 RUN yaourt -S mingw-w64-libdbus --noconfirm --needed
 RUN yaourt -S mingw-w64-libjpeg-turbo --noconfirm --needed
 RUN yaourt -S mingw-w64-libpng --noconfirm --needed
-RUN yaourt -S mingw-w64-openssl --noconfirm --needed
+
+#Temporary patch during migration of AUR repository
+RUN wget https://aur4.archlinux.org/cgit/aur.git/snapshot/mingw-w64-openssl.tar.gz
+RUN tar -xvf mingw-w64-openssl.tar.gz
+WORKDIR ./mingw-w64-openssl
+RUN makepkg -s
+RUN sudo pacman -U mingw-w64-openssl-1.0.2.c-1-any.pkg.tar.xz --noconfirm
+WORKDIR /home/jenkins
+
 RUN yaourt -S mingw-w64-pcre --noconfirm --needed
 RUN yaourt -S mingw-w64-sqlite --noconfirm --needed
 RUN yaourt -S mingw-w64-zlib --noconfirm --needed
