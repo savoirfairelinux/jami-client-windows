@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_5c6399b1",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-06-16T14:49:24Z",
+      "side": 1,
+      "message": "would it make sense to instead do:\nui-\u003ecallList-\u003esetCurrentIndex(callModel_-\u003egetIndex(CallModel::instance()-\u003egetIndex(onHoldCall)));\n\nto automatically select the call in your call list? And then on_callList_activated() will also put it off hold()\n\notherwise I think the call you\u0027re switching to doesn\u0027t get selected in the call list... but maybe I\u0027m missing something",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 225,
+        "endChar": 58
+      },
+      "revId": "e0693ac5d149c17dc9801bd05d8f4d18833ac0f6",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
