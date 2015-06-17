@@ -20,6 +20,7 @@
 #include "ui_configurationwidget.h"
 
 #include <QMessageBox>
+#include <QSettings>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -28,6 +29,9 @@
 #include "video/previewmanager.h"
 
 #include "accountserializationadapter.h"
+#include "accountstatedelegate.h"
+#include "settingskey.h"
+
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -66,7 +70,10 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 
     ui->ringtonesBox->setModel(RingtoneModel::instance());
-    ui->historyDaySettingsSpinBox->setValue(CategorizedHistoryModel::instance()->historyLimit());
+    ui->historyDaySettingsSpinBox->setValue(
+                CategorizedHistoryModel::instance()->historyLimit());
+    ui->closeOrMinCheckBox->setChecked(settings_.value(
+                                           SettingsKey::closeOrMinimized).toBool());
 }
 
 void ConfigurationWidget::atExit() {
@@ -212,4 +219,10 @@ ConfigurationWidget::on_historyDaySettingsSpinBox_valueChanged(int limit)
 {
     if (CategorizedHistoryModel::instance()->historyLimit() != limit)
         CategorizedHistoryModel::instance()->setHistoryLimit(limit);
+}
+
+void
+ConfigurationWidget::on_closeOrMinCheckBox_toggled(bool checked)
+{
+    settings_.setValue(SettingsKey::closeOrMinimized, checked);
 }
