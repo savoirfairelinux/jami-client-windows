@@ -65,7 +65,8 @@ HEADERS  += mainwindow.h \
     selectareadialog.h \
     accountserializationadapter.h \
     instantmessagingwidget.h \
-    accountstatedelegate.h
+    accountstatedelegate.h \
+    settingskey.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \

@@ -208,6 +208,7 @@ CallWidget::callIncoming(Call *call)
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
+
     setActualCall(call);
 }
 
