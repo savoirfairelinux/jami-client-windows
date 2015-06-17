@@ -77,6 +77,10 @@ main(int argc, char *argv[])
         file.close();
     }
 
+    QCoreApplication::setOrganizationName("Savoir-Faire Linux");
+    QCoreApplication::setOrganizationDomain("ring.cx");
+    QCoreApplication::setApplicationName("Ring");
+
     MainWindow w;
 
     if (not startMinimized)
