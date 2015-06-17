@@ -21,6 +21,7 @@
 
 #include <QWidget>
 #include <QItemSelection>
+#include <QSettings>
 
 #include "navwidget.h"
 #include "accountdetails.h"
@@ -43,7 +44,6 @@ public:
     ~ConfigurationWidget();
     void atExit();
 
-
 protected:
     void showEvent(QShowEvent *event);
 
@@ -57,6 +57,7 @@ private slots:
     void on_startupBox_toggled(bool checked);
     void on_clearHistoryButton_clicked();
     void on_historyDaySettingsSpinBox_valueChanged(int limit);
+    void on_closeOrMinCheckBox_toggled(bool checked);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
@@ -70,6 +71,7 @@ private:
     bool isLoading_;
     AccountDetails* accountDetails_;
     AccountStateDelegate *accountStateDelegate_;
+    QSettings settings_;
 };
 
 #endif // CONFIGURATIONWIDGET_H
