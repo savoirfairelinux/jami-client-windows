@@ -315,7 +315,6 @@ AccountDetails::on_tabWidget_currentChanged(int index)
     }
 }
 
-
 void
 AccountDetails::onCertButtonClicked()
 {
