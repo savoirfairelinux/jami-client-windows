@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -91,6 +91,10 @@ main(int argc, char *argv[])
         a.setStyleSheet(file.readAll());
         file.close();
     }
+
+    QCoreApplication::setOrganizationName("Savoir-faire Linux");
+    QCoreApplication::setOrganizationDomain("ring.cx");
+    QCoreApplication::setApplicationName("Ring");
 
     MainWindow w;
 

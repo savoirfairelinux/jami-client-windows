@@ -19,6 +19,11 @@
 #include "mainbar.h"
 #include "ui_mainbar.h"
 
+#include <QSettings>
+#include <QMessageBox>
+
+#include "settingskey.h"
+
 #include "callmodel.h"
 #include "aboutdialog.h"
 
@@ -85,7 +90,22 @@ MainBar::showAboutDialog() {
 void
 MainBar::on_exitButton_clicked()
 {
-    QCoreApplication::exit();
+    QSettings settings;
+
+    if (not settings.value(SettingsKey::closeOrMinimized).isValid()) {
+        QMessageBox confirmationDialog;
+
+        confirmationDialog.setText("Do you want to keep Ring minimized ?");
+        confirmationDialog.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+        auto ret = confirmationDialog.exec();
+
+        if (ret == QMessageBox::Ok)
+            settings.setValue(SettingsKey::closeOrMinimized, true);
+    }
+    if (settings.value(SettingsKey::closeOrMinimized).toBool() == true)
+        emit minimize();
+    else
+        QCoreApplication::exit();
 }
 
 void
