@@ -68,6 +68,9 @@
              <property name="text">
               <string>Alias</string>
              </property>
+             <property name="buddy">
+              <cstring>lrcfg_alias</cstring>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
@@ -77,6 +80,9 @@
             <widget class="QLabel" name="hashLabel">
              <property name="text">
               <string>Hash</string>
+             </property>
+             <property name="buddy">
+              <cstring>lrcfg_username</cstring>
              </property>
             </widget>
            </item>
@@ -135,6 +141,9 @@
              <property name="text">
               <string>Hostname</string>
              </property>
+             <property name="buddy">
+              <cstring>lrcfg_hostname</cstring>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
@@ -145,6 +154,9 @@
              <property name="text">
               <string>Username</string>
              </property>
+             <property name="buddy">
+              <cstring>usernameEdit</cstring>
+             </property>
             </widget>
            </item>
            <item row="1" column="1">
@@ -154,6 +166,9 @@
             <widget class="QLabel" name="passwordLabel">
              <property name="text">
               <string>Password</string>
+             </property>
+             <property name="buddy">
+              <cstring>lrcfg_password</cstring>
              </property>
             </widget>
            </item>
@@ -169,6 +184,9 @@
              <property name="text">
               <string>Proxy</string>
              </property>
+             <property name="buddy">
+              <cstring>lrcfg_proxy</cstring>
+             </property>
             </widget>
            </item>
            <item row="3" column="1">
@@ -178,6 +196,9 @@
             <widget class="QLabel" name="voicemailLabel">
              <property name="text">
               <string>Voicemail number</string>
+             </property>
+             <property name="buddy">
+              <cstring>lrcfg_mailbox</cstring>
              </property>
             </widget>
            </item>
@@ -431,6 +452,9 @@
            <property name="text">
             <string>Registration expire timeout (seconds):</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_registrationExpire</cstring>
+           </property>
           </widget>
          </item>
          <item row="0" column="1">
@@ -464,6 +488,9 @@
           <widget class="QLabel" name="label_10">
            <property name="text">
             <string>Local Port:</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_localPort</cstring>
            </property>
           </widget>
          </item>
@@ -556,6 +583,9 @@
              <property name="text">
               <string>Adress</string>
              </property>
+             <property name="buddy">
+              <cstring>lrcfg_publishedAddress</cstring>
+             </property>
             </widget>
            </item>
            <item>
@@ -575,6 +605,9 @@
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>Port</string>
+             </property>
+             <property name="buddy">
+              <cstring>lrcfg_publishedPort</cstring>
              </property>
             </widget>
            </item>
@@ -702,6 +735,9 @@
            <property name="text">
             <string>Min</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_audioPortMin</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -721,6 +757,9 @@
           <widget class="QLabel" name="label_14">
            <property name="text">
             <string>Max</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_audioPortMax</cstring>
            </property>
           </widget>
          </item>
@@ -778,6 +817,9 @@
            <property name="text">
             <string>Min</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_videoPortMin</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -797,6 +839,9 @@
           <widget class="QLabel" name="label_16">
            <property name="text">
             <string>Max</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_videoPortMax</cstring>
            </property>
           </widget>
          </item>
@@ -862,6 +907,9 @@
            <property name="text">
             <string>Key exchange protocol</string>
            </property>
+           <property name="buddy">
+            <cstring>keyExchangeModelCombo</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -910,12 +958,18 @@
            <property name="text">
             <string>CA certificate</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsCaListCertificate</cstring>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_21">
            <property name="text">
             <string>User certificate</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsCertificate</cstring>
            </property>
           </widget>
          </item>
@@ -924,12 +978,18 @@
            <property name="text">
             <string>Private key</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsPrivateKeyCertificate</cstring>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_23">
            <property name="text">
             <string>Private key password</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsPassword</cstring>
            </property>
           </widget>
          </item>
@@ -938,6 +998,9 @@
            <property name="text">
             <string>TLS protocol method</string>
            </property>
+           <property name="buddy">
+            <cstring>tlsProtocoCombo</cstring>
+           </property>
           </widget>
          </item>
          <item row="5" column="0">
@@ -945,12 +1008,18 @@
            <property name="text">
             <string>Outgoing TLS server name</string>
            </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsServerName</cstring>
+           </property>
           </widget>
          </item>
          <item row="6" column="0">
           <widget class="QLabel" name="label_26">
            <property name="text">
             <string>Negotiation timeout (seconds)</string>
+           </property>
+           <property name="buddy">
+            <cstring>lrcfg_tlsNegotiationTimeoutSec</cstring>
            </property>
           </widget>
          </item>
@@ -1413,6 +1482,5 @@
  <buttongroups>
   <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
-  <buttongroup name="cipherGroup"/>
  </buttongroups>
 </ui>
