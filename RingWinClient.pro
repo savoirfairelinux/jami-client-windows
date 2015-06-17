@@ -78,7 +78,8 @@ HEADERS  += mainwindow.h \
     videooverlay.h \
     imdelegate.h \
     contactpicker.h \
-    contactmethodpicker.h
+    contactmethodpicker.h \
+    settingskey.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
