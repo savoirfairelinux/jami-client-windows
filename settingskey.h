@@ -16,60 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "mainwindow.h"
-#include <QApplication>
-#include <QFile>
+#ifndef SETTINGSKEY_H
+#define SETTINGSKEY_H
 
-#include "callmodel.h"
-#include "media/audio.h"
-#include "media/video.h"
-#include "media/text.h"
-#include "media/file.h"
-#include <iostream>
+namespace SettingsKey {
 
-#include <QThread>
+constexpr static char closeOrMinimized[] = "closeOrMin";
+constexpr static char autoAnswer[] = "autoAnswer";
 
-#include <windows.h>
-
-REGISTER_MEDIA();
-
-int
-main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-
-    QFont font;
-    font.setFamily("Segoe UI");
-    a.setFont(font);
-
-    QFile file(":/stylesheet.css");
-    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        a.setStyleSheet(file.readAll());
-        file.close();
-    }
-
-    QCoreApplication::setOrganizationName("Savoir-Faire Linux");
-    QCoreApplication::setOrganizationDomain("ring.cx");
-    QCoreApplication::setApplicationName("Ring");
-
-    MainWindow w;
-
-    auto startMinimized = false;
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string == "-m" || string == "--minimized")
-            startMinimized = true;
-    }
-
-    if (not startMinimized)
-        w.show();
-    else
-        w.showMinimized();
-
-    QObject::connect(&a, &QApplication::aboutToQuit, [&a]() {
-        delete CallModel::instance();
-    });
-
-    return a.exec();
 }
+
+#define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
+
+#endif // SETTINGSKEY_H
+

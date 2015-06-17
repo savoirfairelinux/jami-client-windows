@@ -21,6 +21,8 @@
 
 #include <memory>
 
+#include <QSettings>
+
 #include "audio/settings.h"
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
@@ -34,6 +36,7 @@
 #include "media/textrecording.h"
 
 #include "wizarddialog.h"
+#include "settingskey.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -204,10 +207,17 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call *call)
 {
-    if (!call->account()->isAutoAnswer()) {
+    QSettings settings;
+
+    if (settings.value(accountAutoAnswer(call->account()->id())).toBool()) {
+        // Should be uncommented when auto-answer prop is removed
+        // from daemon/LRC configuration property
+        //call->performAction(Call::Action::ACCEPT);
+    } else {
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
+
     setActualCall(call);
 }
 

@@ -57,6 +57,7 @@ private slots:
     void on_videoCodecView_itemSelectionChanged();
     void on_usernameEdit_editingFinished();
     void on_tabWidget_currentChanged(int index);
+    void on_lrcfg_autoAnswer_toggled(bool checked);
 
 private slots:
     void audio_codec_checked(int row, int column);

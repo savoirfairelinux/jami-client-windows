@@ -22,6 +22,9 @@
 #include <QSortFilterProxyModel>
 #include <QFileDialog>
 #include <QPushButton>
+#include <QSettings>
+
+#include "settingskey.h"
 
 #include "accountdetails.h"
 #include "audio/codecmodel.h"
@@ -324,7 +327,6 @@ AccountDetails::on_tabWidget_currentChanged(int index)
     }
 }
 
-
 void
 AccountDetails::onCertButtonClicked()
 {
@@ -337,4 +339,12 @@ AccountDetails::onCertButtonClicked()
     (currentAccount_->*certMap_[sender->objectName()])(fileName);
 
     static_cast<QPushButton*>(sender)->setText(fileName);
+}
+
+void
+AccountDetails::on_lrcfg_autoAnswer_toggled(bool checked)
+{
+    QSettings settings;
+
+    settings.setValue(accountAutoAnswer(currentAccount_->id()), checked);
 }
