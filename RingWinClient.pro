@@ -70,7 +70,8 @@ HEADERS  += mainwindow.h \
     accountstatedelegate.h \
     videoview.h \
     videooverlay.h \
-    imdelegate.h
+    imdelegate.h \
+    settingskey.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
