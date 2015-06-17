@@ -21,7 +21,10 @@
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QAbstractButton>
+#include <QtWidgets/QLabel>
 
 #include <account.h>
 #include <accountmodel.h>
@@ -49,62 +52,94 @@ static void avoidDuplicate(QWidget* w)
 /**
  * This check for some supported widgets and bind the widgets and property
  */
-static void setupWidget(QWidget* w,
-                        Account* a,
-                        const QHash<QByteArray, int>& roles)
+static void setupWidget(QWidget* w, Account* a, const QHash<QByteArray, int>& roles)
 {
     if (w->objectName().left(LRC_CFG_LEN) == LRC_CFG) {
         const QByteArray prop = w->objectName().mid(LRC_CFG_LEN, 999).toLatin1();
         if (roles.contains(prop)) {
             const int role = roles[prop];
-            auto roleState = a->roleState(static_cast<Account::Role>(role));
-            if (roleState == Account::RoleState::READ_WRITE
-                    || roleState == Account::RoleState::READ_ONLY) {
-                if (qobject_cast<QLineEdit*>(w)) {
-                    QLineEdit* le = qobject_cast<QLineEdit*>(w);
-                    avoidDuplicate(le);
-                    le->setText(a->roleData(role).toString());
-                    ConnHolder* c = new ConnHolder {
-                            QObject::connect(le, &QLineEdit::textChanged,
-                                             [a,role](const QString& text) {
-                        if (a->roleData(role) != text)
-                            a->setRoleData(role, text);
-                    })
-                };
-                    le->setProperty("lrcfgConn",QVariant::fromValue(c));
-                }
-                else if (qobject_cast<QSpinBox*>(w)) {
-                    QSpinBox* sb = qobject_cast<QSpinBox*>(w);
-                    avoidDuplicate(sb);
-                    sb->setValue(a->roleData(role).toInt());
-                    ConnHolder* c = new ConnHolder {
-                            QObject::connect(sb, static_cast<void (QSpinBox::*)
-                                             (int)>(&QSpinBox::valueChanged),
-                                             [a,role](int value) {
-                        if (a->roleData(role).toInt() != value)
-                            a->setRoleData(role, value);
-                    })
-                };
-                    sb->setProperty("lrcfgConn",QVariant::fromValue(c));
-                }
-                else if  (qobject_cast<QAbstractButton*>(w)) {
-                    //QCheckBox, QRadioButton, QToolButton, QPushButton
-                    QAbstractButton* b = qobject_cast<QAbstractButton*>(w);
-                    avoidDuplicate(b);
-                    b->setChecked(a->roleData(role).toBool());
-                    ConnHolder* c = new ConnHolder {
-                            QObject::connect(b, &QAbstractButton::toggled,
-                                             [a,role](bool c) {
-                        if (a->roleData(role).toBool() != c)
-                            a->setRoleData(role, c);
-                    })
-                };
-                    b->setProperty("lrcfgConn",QVariant::fromValue(c));
-                }
-                w->setVisible(true);
-                w->setEnabled(roleState == Account::RoleState::READ_WRITE);
-            } else {
+            if (qobject_cast<QLineEdit*>(w)) {
+                QLineEdit* le = qobject_cast<QLineEdit*>(w);
+                avoidDuplicate(le);
+                le->setText(a->roleData(role).toString());
+                ConnHolder* c = new ConnHolder {
+                        QObject::connect(le, &QLineEdit::textChanged, [a,role](const QString& text) {
+                    if (a->roleData(role) != text)
+                        a->setRoleData(role, text);
+                })
+            };
+                le->setProperty("lrcfgConn",QVariant::fromValue(c));
+            }
+            else if (qobject_cast<QSpinBox*>(w)) {
+                QSpinBox* sb = qobject_cast<QSpinBox*>(w);
+                avoidDuplicate(sb);
+                sb->setValue(a->roleData(role).toInt());
+                ConnHolder* c = new ConnHolder {
+                        QObject::connect(sb, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [a,role](int value) {
+                    if (a->roleData(role).toInt() != value)
+                        a->setRoleData(role, value);
+                })
+            };
+                sb->setProperty("lrcfgConn",QVariant::fromValue(c));
+            }
+            else if  (qobject_cast<QAbstractButton*>(w)) {
+                //QCheckBox, QRadioButton, QToolButton, QPushButton
+                QAbstractButton* b = qobject_cast<QAbstractButton*>(w);
+                avoidDuplicate(b);
+                b->setChecked(a->roleData(role).toBool());
+                ConnHolder* c = new ConnHolder {
+                        QObject::connect(b, &QAbstractButton::toggled,[a,role](bool c) {
+                    if (a->roleData(role).toBool() != c)
+                        a->setRoleData(role, c);
+                })
+            };
+                b->setProperty("lrcfgConn",QVariant::fromValue(c));
+            }
+            else if  (qobject_cast<QGroupBox*>(w)) {
+                QGroupBox* b = qobject_cast<QGroupBox*>(w);
+                avoidDuplicate(b);
+                b->setChecked(a->roleData(role).toBool());
+                ConnHolder* c = new ConnHolder {
+                        QObject::connect(b, &QGroupBox::toggled,[a,role](bool c) {
+                    if (a->roleData(role).toBool() != c)
+                        a->setRoleData(role, c);
+                })
+            };
+                b->setProperty("lrcfgConn",QVariant::fromValue(c));
+            }
+            else {
+                qDebug() << "Unsupported widget type" << w;
+            }
+
+            //Check if the field is required for this account type
+            if (a->roleState((Account::Role)role) == Account::RoleState::UNAVAILABLE) {
+
+                w->setProperty("lrcfgVisible", w->isVisible() ? 2 : 1);
                 w->setVisible(false);
+
+                QFormLayout* fm = qobject_cast<QFormLayout*>(w->parentWidget()->layout());
+
+                //There is many of corner case here, this only handle the one that's
+                //created by Qt Designer
+                if (!fm) {
+                    QLayoutItem* il = w->parentWidget()->layout()->itemAt(0);
+                    if (il && il->layout())
+                        fm = qobject_cast<QFormLayout*>(il->layout());
+                }
+
+                if (fm) {
+                    QWidget* buddy = fm->labelForField(w);
+                    qDebug() << "BUDDY " << buddy;
+                    if (buddy)
+                        buddy->setVisible(false);
+
+                }
+            }
+            else {
+                //0 = unset, 1=invisible, 2=visible
+                const int oldVisibleState = w->property("lrcfgVisible").toInt();
+                if (oldVisibleState)
+                    w->setVisible(oldVisibleState-1);
             }
         }
         else {
@@ -120,9 +155,7 @@ static void clearConnections(QWidget* w)
     }
 }
 
-static void drill(QWidget* w, Account* a,
-                  const QHash<QByteArray, int>& roles,
-                  bool clear = false)
+static void drill(QWidget* w, Account* a, const QHash<QByteArray, int>& roles, bool clear = false)
 {
     for (QObject *object : w->children()) {
         if (!object->isWidgetType())
@@ -138,9 +171,22 @@ static void drill(QWidget* w, Account* a,
     }
 }
 
-AccountSerializationAdapter::AccountSerializationAdapter(Account* a,
-                                                         QWidget* w)
-    : QObject(w)
+static void hideLabel(QWidget* w) {
+    for (QObject *object : w->children()) {
+        if (!object->isWidgetType())
+            continue;
+        QWidget* w2 = qobject_cast<QWidget*>(object);
+        if (w2) {
+            QLabel* l =  qobject_cast<QLabel*>(w2);
+            if (l && l->buddy()) {
+                l->setVisible(!l->buddy()->isHidden());
+            }
+        }
+        hideLabel(w2);
+    }
+}
+
+AccountSerializationAdapter::AccountSerializationAdapter(Account* a, QWidget* w) : QObject(w)
 {
     static QHash<QByteArray, int> reverse;
     if (reverse.isEmpty()) {
@@ -151,7 +197,10 @@ AccountSerializationAdapter::AccountSerializationAdapter(Account* a,
     }
 
     drill(w, a, reverse);
+    hideLabel(w);
 }
 
 AccountSerializationAdapter::~AccountSerializationAdapter()
-{}
+{
+
+}
