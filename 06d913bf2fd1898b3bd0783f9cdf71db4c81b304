@@ -16,6 +16,24 @@
       "revId": "06d913bf2fd1898b3bd0783f9cdf71db4c81b304",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_f35a7b4f",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-18T13:34:23Z",
+      "side": 1,
+      "message": "Hum Ok guess i should ve separated this commit in two. I thought the removal patch was just waiting for the client to implement it.",
+      "parentUuid": "9a5c5d37_13898fca",
+      "revId": "06d913bf2fd1898b3bd0783f9cdf71db4c81b304",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
