@@ -22,6 +22,30 @@
       "revId": "e0693ac5d149c17dc9801bd05d8f4d18833ac0f6",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_2981c44a",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-19T18:46:15Z",
+      "side": 1,
+      "message": "That would not trigger the on_callList_activated(), it\u0027s user action dependent",
+      "parentUuid": "9a5c5d37_5c6399b1",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 225,
+        "endChar": 58
+      },
+      "revId": "e0693ac5d149c17dc9801bd05d8f4d18833ac0f6",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
