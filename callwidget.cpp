@@ -32,6 +32,7 @@
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
+#include "globalsystemtray.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -223,6 +224,11 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call *call)
 {
+    if (!QApplication::activeWindow()) {
+        GlobalSystemTray::instance().showMessage("Ring", "Call incoming from " + call->formattedName());
+        QApplication::alert(this, 5000);
+    }
+
     if (!call->account()->isAutoAnswer()) {
         ui->callLabel->setText("Call from " + call->formattedName());
         ui->callInvite->setVisible(true);

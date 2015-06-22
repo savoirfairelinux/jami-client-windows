@@ -16,40 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef GLOBALSYSTEMTRAY_H
+#define GLOBALSYSTEMTRAY_H
 
-#include "globalsystemtray.h"
+#include <QSystemTrayIcon>
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class GlobalSystemTray : public QSystemTrayIcon
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
+    static GlobalSystemTray& instance()
+    {
+        static GlobalSystemTray instance_;
 
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
+        return instance_;
+    }
 
 private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    QPoint oldPos_;
-protected:
-    void mousePressEvent(QMouseEvent *evt);
-    void mouseMoveEvent(QMouseEvent *evt);
+    GlobalSystemTray();
 };
 
-#endif // MAINWINDOW_H
+#endif // GLOBALSYSTEMTRAY_H
