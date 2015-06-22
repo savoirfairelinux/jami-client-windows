@@ -51,6 +51,7 @@ private slots:
 
 private slots:
     void mediaAdd(Media::Media *media);
+    void onMsgReceived(const QString& message);
 
 private:
     Ui::InstantMessagingWidget *ui;
