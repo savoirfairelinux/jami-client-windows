@@ -40,6 +40,7 @@ public:
 
 protected:
     virtual void keyPressEvent(QKeyEvent *event);
+    virtual void showEvent(QShowEvent * event);
 
 //UI SLOTS
 private slots:

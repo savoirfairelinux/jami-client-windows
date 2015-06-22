@@ -100,6 +100,12 @@ InstantMessagingWidget::keyPressEvent(QKeyEvent *event)
 }
 
 void
+InstantMessagingWidget::showEvent(QShowEvent *event)
+{
+    ui->messageInput->setFocus();
+}
+
+void
 InstantMessagingWidget::copyToClipboard()
 {
     auto idx = ui->messageOutput->currentIndex();
