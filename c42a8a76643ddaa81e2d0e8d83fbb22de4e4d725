@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_646ec3cb",
+        "filename": "videoview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-22T20:15:00Z",
+      "side": 1,
+      "message": "I would do the opposite here. \n\nif (!dialog.exec())\n    return;\n\nconst QStringList fileNames \u003d dialog.selectedFiles();\n\nVideo::SourceModel::instance()-\u003esetFile(\n    QUrl::fromLocalFile(fileNames.first())\n);\n\nThis way it avoid the readability issue of the unchecked array access. I had to look at the doc to make sure it was valid (good news, it was). But that\u0027s just me, feel free to ignore.\n\nAlso, if you wish, you can do fileNames[0] or fileNames.first() instead of .at(0). (do what you like, that depend on your stylistic preferences)",
+      "revId": "c42a8a76643ddaa81e2d0e8d83fbb22de4e4d725",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
