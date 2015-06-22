@@ -29,7 +29,7 @@ namespace Ui {
 class InstantMessagingWidget;
 }
 
-class InstantMessagingWidget : public QWidget
+class InstantMessagingWidget final : public QWidget
 {
     Q_OBJECT
 
@@ -39,7 +39,8 @@ public:
     void setMediaText(Call* call);
 
 protected:
-    virtual void keyPressEvent(QKeyEvent *event);
+    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void showEvent(QShowEvent * event) override;
 
 //UI SLOTS
 private slots:
