@@ -20,6 +20,11 @@
 #include "ui_mainwindow.h"
 
 #include <QSizeGrip>
+#include <QWinThumbnailToolBar>
+#include <QWinThumbnailToolButton>
+
+#include "media/text.h"
+#include "media/textrecording.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,10 +39,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setWindowIcon(icon);
 
-    sysIcon_.setIcon(icon);
-    sysIcon_.show();
+    GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
+    sysIcon.setIcon(icon);
 
-    connect(&sysIcon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+    QMenu *menu = new QMenu();
+
+    auto configAction = new QAction("Configuration", this);
+    menu->addAction(configAction);
+
+    auto exitAction = new QAction("Exit", this);
+    connect(exitAction, &QAction::triggered, []() {
+        QCoreApplication::exit();
+    });
+
+    menu->addAction(exitAction);
+
+    sysIcon.setContextMenu(menu);
+    sysIcon.show();
+
+    connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
     connect(CallModel::instance(), SIGNAL(incomingCall(Call*)),
@@ -46,6 +66,9 @@ MainWindow::MainWindow(QWidget *parent) :
     navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
     ui->verticalLayout_2->addWidget(
                 new QSizeGrip(this), 0, Qt::AlignBottom | Qt::AlignRight);
+    connect(configAction, &QAction::triggered, [this]() {
+        navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
+    });
 }
 
 MainWindow::~MainWindow()
@@ -71,13 +94,32 @@ MainWindow::mouseMoveEvent(QMouseEvent *evt)
 }
 
 void
-MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason) {
+MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
+{
     if (reason != QSystemTrayIcon::ActivationReason::Context)
         this->show();
 }
 
 void
-MainWindow::onIncomingCall(Call *call) {
+MainWindow::onIncomingCall(Call *call)
+{
     Q_UNUSED(call);
     QWidget::showNormal();
+}
+
+void
+MainWindow::createThumbBar()
+{
+    QWinThumbnailToolBar *thumbbar = new QWinThumbnailToolBar(this);
+    thumbbar->setWindow(this->windowHandle());
+    QWinThumbnailToolButton *settings = new QWinThumbnailToolButton(thumbbar);
+    settings->setToolTip("Settings");
+    QIcon icon(":/images/settings.png");
+    settings->setIcon(icon);
+    settings->setDismissOnClick(true);
+    connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
+        navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
+    });
+
+    thumbbar->addButton(settings);
 }

@@ -23,10 +23,13 @@
 #include <QClipboard>
 #include <QMenu>
 
+#include "navstack.h"
+
 #include "media/text.h"
 #include "media/textrecording.h"
 
 #include "imdelegate.h"
+#include "globalsystemtray.h"
 
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
@@ -102,6 +105,10 @@ InstantMessagingWidget::mediaAdd(Media::Media *media)
             connect(ui->messageOutput->model(),
                     SIGNAL(rowsInserted(const QModelIndex&, int, int)),
                     ui->messageOutput, SLOT(scrollToBottom()));
+            connect(static_cast<Media::Text*>(media),
+                    SIGNAL(messageReceived(QString)),
+                    this,
+                    SLOT(onMsgReceived(const QString&)));
             this->show();
         }
         break;
@@ -142,4 +149,13 @@ void
 InstantMessagingWidget::on_sendButton_clicked()
 {
     emit ui->messageInput->returnPressed();
+}
+
+void
+InstantMessagingWidget::onMsgReceived(const QString& message)
+{
+    if (!QApplication::activeWindow()) {
+        GlobalSystemTray::instance().showMessage("Ring: Message Received", message);
+        QApplication::alert(this, 5000);
+    }
 }
