@@ -51,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete navStack_;
 }
 
 void
