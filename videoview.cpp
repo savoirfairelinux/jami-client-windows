@@ -27,6 +27,8 @@
 #include <QPropertyAnimation>
 #include <QDesktopWidget>
 #include <QMenu>
+#include <QFileDialog>
+#include <QMimeData>
 
 #include <memory>
 
@@ -120,6 +122,18 @@ VideoView::mouseDoubleClickEvent(QMouseEvent* e) {
     toggleFullScreen();
 }
 
+void VideoView::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void VideoView::dropEvent(QDropEvent *event)
+{
+    auto urls = event->mimeData()->urls();
+    Video::SourceModel::instance()->setFile(urls.at(0));
+}
+
 void
 VideoView::toggleFullScreen()
 {
@@ -170,6 +184,16 @@ VideoView::showContextMenu(const QPoint& pos)
     connect(shareAreaAction, &QAction::triggered, [=]() {
         SelectAreaDialog selec;
         selec.exec();
+    });
+    auto shareFileAction = new QAction("Share file", this);
+    menu.addAction(shareFileAction);
+    connect(shareFileAction, &QAction::triggered, [=]() {
+        QFileDialog dialog(this);
+        dialog.setFileMode(QFileDialog::AnyFile);
+        QStringList fileNames;
+        if (dialog.exec())
+            fileNames = dialog.selectedFiles();
+        Video::SourceModel::instance()->setFile(QUrl::fromLocalFile(fileNames.at(0)));
     });
 
     menu.exec(globalPos);

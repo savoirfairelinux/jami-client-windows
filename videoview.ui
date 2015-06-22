@@ -10,6 +10,9 @@
     <height>522</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -29,6 +32,9 @@
    <item row="0" column="0">
     <widget class="VideoWidget" name="videoWidget" native="true">
      <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="acceptDrops">
       <bool>false</bool>
      </property>
     </widget>
