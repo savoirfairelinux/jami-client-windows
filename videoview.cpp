@@ -67,6 +67,9 @@ VideoView::VideoView(QWidget *parent) :
 VideoView::~VideoView()
 {
     delete ui;
+    delete overlay_;
+    delete timerLength_;
+    delete fadeAnim_;
 }
 
 void
