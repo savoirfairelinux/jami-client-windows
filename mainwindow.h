@@ -25,7 +25,6 @@
 
 #include "navstack.h"
 
-
 namespace Ui {
 class MainWindow;
 }
@@ -37,6 +36,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void createThumbBar();
 
 private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
@@ -47,7 +47,6 @@ private:
     NavStack* navStack_;
     QPoint oldPos_;
     QSystemTrayIcon sysIcon_;
-
 protected:
     void mousePressEvent(QMouseEvent *evt);
     void mouseMoveEvent(QMouseEvent *evt);
