@@ -24,6 +24,7 @@
 
 #include "navwidget.h"
 #include "accountdetails.h"
+#include "accountstatedelegate.h"
 
 #include "accountmodel.h"
 #include "video/devicemodel.h"
@@ -68,6 +69,7 @@ private:
     CodecModel* codecModel_;
     bool isLoading_;
     AccountDetails* accountDetails_;
+    AccountStateDelegate *accountStateDelegate_;
 };
 
 #endif // CONFIGURATIONWIDGET_H

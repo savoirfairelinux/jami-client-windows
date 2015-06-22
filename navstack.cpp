@@ -42,7 +42,11 @@ NavStack::NavStack(QStackedWidget* bar, QStackedWidget* stack, QWidget *parent)
 }
 
 NavStack::~NavStack()
-{}
+{
+    for (int i = 0; i < END; i++) {
+        delete navList_[i];
+    }
+}
 
 void
 NavStack::onNavigationRequested(ScreenEnum screen) {

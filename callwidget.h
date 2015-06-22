@@ -28,6 +28,8 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "historydelegate.h"
+#include "contactdelegate.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
@@ -73,6 +75,9 @@ private:
     int inputVolume_;
     QMenu *menu_;
     QMovie *spinner_;
+    HistoryDelegate *historyDelegate_;
+    ContactDelegate *contactDelegate_;
+
 private:
     void findRingAccount();
     void setActualCall(Call *value);
