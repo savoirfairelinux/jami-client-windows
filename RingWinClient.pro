@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg winextras
 
 VERSION = 0.3.0
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
@@ -118,7 +118,8 @@ win32 {
     RUNTIME.path = $$OUT_PWD/release
 
     QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
-                            $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll
+                            $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll \
+                            $$RUNTIMEDIR/Qt5WinExtras.dll
     QTRUNTIME.path = $$OUT_PWD/release
 
     QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll $$RUNTIMEDIR/iconv.dll \
