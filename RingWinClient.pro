@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg xml
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg winextras xml
 
 VERSION = 0.3.0
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
@@ -53,7 +53,8 @@ SOURCES += main.cpp\
     videooverlay.cpp \
     imdelegate.cpp \
     contactpicker.cpp \
-    contactmethodpicker.cpp
+    contactmethodpicker.cpp \
+    globalsystemtray.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -78,7 +79,8 @@ HEADERS  += mainwindow.h \
     videooverlay.h \
     imdelegate.h \
     contactpicker.h \
-    contactmethodpicker.h
+    contactmethodpicker.h \
+    globalsystemtray.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -152,7 +154,7 @@ win32 {
 
     QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
                             $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll \
-                            $$RUNTIMEDIR/Qt5Xml.dll
+                            $$RUNTIMEDIR/Qt5Xml.dll $$RUNTIMEDIR/Qt5WinExtras.dll
     QTRUNTIME.path = $$OUT_PWD/release
 
     QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll $$RUNTIMEDIR/iconv.dll \
