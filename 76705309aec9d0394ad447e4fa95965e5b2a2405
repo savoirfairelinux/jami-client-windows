@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_c976a806",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-22T15:46:18Z",
+      "side": 1,
+      "message": "This method is called more often then you might think. I suggest using a:\n\nstatic bool displayImDate \u003d settings_.value(SettingsKey::displayImDate).toBool();\nif (displayImDate) {\n...\n\nWhile not perfect (changes take effect on restart), it will be much faster. Those small footprint calls add up very fast.\n\nIt\u0027s not necessary, but really help",
+      "revId": "76705309aec9d0394ad447e4fa95965e5b2a2405",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_a9737414",
+        "filename": "instantmessagingwidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-22T15:46:18Z",
+      "side": 1,
+      "message": "This is a memory leak. See:\nhttp://doc.qt.io/qt-5/qabstractitemview.html#setItemDelegate",
+      "revId": "76705309aec9d0394ad447e4fa95965e5b2a2405",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
