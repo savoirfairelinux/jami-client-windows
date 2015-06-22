@@ -16,6 +16,24 @@
       "revId": "c42a8a76643ddaa81e2d0e8d83fbb22de4e4d725",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_84a097f5",
+        "filename": "videoview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-22T20:32:16Z",
+      "side": 1,
+      "message": "yeah you\u0027re right that make sense to return in that case. I\u0027d still let at() here as it\u0027s supposed to do boundary checking, that would probably explode elsewhere tough.",
+      "parentUuid": "9a5c5d37_646ec3cb",
+      "revId": "c42a8a76643ddaa81e2d0e8d83fbb22de4e4d725",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
