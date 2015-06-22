@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,40 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
 #include "globalsystemtray.h"
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-namespace Ui {
-class MainWindow;
+GlobalSystemTray::GlobalSystemTray()
+{
 }
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
-
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-
-private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    QPoint oldPos_;
-protected:
-    void mousePressEvent(QMouseEvent *evt);
-    void mouseMoveEvent(QMouseEvent *evt);
-};
-
-#endif // MAINWINDOW_H
