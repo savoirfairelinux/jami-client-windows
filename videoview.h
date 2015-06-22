@@ -43,6 +43,8 @@ protected:
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
     void mouseDoubleClickEvent(QMouseEvent *e);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 
 private slots:
     void callStateChanged(Call *call, Call::State previousState);
