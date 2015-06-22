@@ -46,6 +46,8 @@ NavStack::~NavStack()
 
 void
 NavStack::onNavigationRequested(ScreenEnum screen) {
+    if (navList_[screen] == stack_->currentWidget())
+        return;
     if (screen < CallScreen) {
         bar_->setCurrentWidget(navList_[screen]);
     } else {
