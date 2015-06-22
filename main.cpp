@@ -103,6 +103,8 @@ main(int argc, char *argv[])
     else
         w.showMinimized();
 
+    w.createThumbBar();
+
     QObject::connect(&a, &QApplication::aboutToQuit, [&a]() {
         delete CallModel::instance();
     });
