@@ -48,6 +48,9 @@ WizardDialog::WizardDialog(QWidget *parent) :
 
 WizardDialog::~WizardDialog()
 {
+    if (ui->spinnerLabel->movie()) {
+        delete ui->spinnerLabel->movie();
+    }
     delete ui;
 }
 

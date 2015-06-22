@@ -32,8 +32,6 @@
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
-#include "historydelegate.h"
-#include "contactdelegate.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -83,7 +81,8 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
         CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
         ui->historyList->setHeaderHidden(true);
-        ui->historyList->setItemDelegate(new HistoryDelegate());
+        historyDelegate_ = new HistoryDelegate();
+        ui->historyList->setItemDelegate(historyDelegate_);
         auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
         if (idx.isValid())
             ui->historyList->setExpanded(idx, true);
@@ -92,7 +91,8 @@ CallWidget::CallWidget(QWidget *parent) :
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
-        ui->contactView->setItemDelegate(new ContactDelegate());
+        contactDelegate_ = new ContactDelegate();
+        ui->contactView->setItemDelegate(contactDelegate_);
 
         findRingAccount();
 
@@ -104,6 +104,8 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
+    delete historyDelegate_;
+    delete contactDelegate_;
 }
 
 void
