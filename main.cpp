@@ -33,10 +33,35 @@
 
 REGISTER_MEDIA();
 
+void
+Console()
+{
+    AllocConsole();
+    FILE *pFileCon = NULL;
+    pFileCon = freopen("CONOUT$", "w", stdout);
+    pFileCon = freopen("CONOUT$", "w", stderr);
+
+    COORD coordInfo;
+    coordInfo.X = 130;
+    coordInfo.Y = 9000;
+
+    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coordInfo);
+    SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),ENABLE_QUICK_EDIT_MODE| ENABLE_EXTENDED_FLAGS);
+}
+
 int
 main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    auto startMinimized = false;
+
+    for (auto string : QCoreApplication::arguments()) {
+        if (string == "-m" || string == "--minimized")
+            startMinimized = true;
+        if (string == "-d" || string == "--debug")
+            Console();
+    }
 
     QFont font;
     font.setFamily("Segoe UI");
@@ -50,13 +75,6 @@ main(int argc, char *argv[])
     }
 
     MainWindow w;
-
-    auto startMinimized = false;
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string == "-m" || string == "--minimized")
-            startMinimized = true;
-    }
 
     if (not startMinimized)
         w.show();
