@@ -16,6 +16,24 @@
       "revId": "c235e8ace0377f7b7e250149555f6b7dcd6f088a",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_84365702",
+        "filename": "instantmessagingwidget.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-06-23T15:11:49Z",
+      "side": 1,
+      "message": "Guess QtCreator doesn\u0027t autocomplete that for me yet.",
+      "parentUuid": "9a5c5d37_24b0cb8a",
+      "revId": "c235e8ace0377f7b7e250149555f6b7dcd6f088a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
