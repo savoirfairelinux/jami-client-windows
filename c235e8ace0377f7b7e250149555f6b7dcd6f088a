@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_24b0cb8a",
+        "filename": "instantmessagingwidget.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-06-23T14:10:21Z",
+      "side": 1,
+      "message": "In the furure, I would suggest using \"override\" for the overloaded methods and \"final\" for the class. This avoid silent invalid signature problems",
+      "revId": "c235e8ace0377f7b7e250149555f6b7dcd6f088a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
