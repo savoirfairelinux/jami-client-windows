@@ -201,9 +201,9 @@ AccountDetails::setAccount(Account* currentAccount) {
     if (currentAccount_->tlsPrivateKeyCertificate())
         ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKeyCertificate()->path().fileName());
 
-    certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
-    certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
-    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKeyCertificate;
+    certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &Account::setTlsCaListCertificate;
+    certMap_[ui->lrcfg_tlsCertificate->objectName()] = &Account::setTlsCertificate;
+    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &Account::setTlsPrivateKeyCertificate;
 
     ui->srtpEnabled->disconnect();
     connect(ui->srtpEnabled, &QCheckBox::toggled, [=](bool checked) {
