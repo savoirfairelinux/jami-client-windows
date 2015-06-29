@@ -27,7 +27,8 @@
 #endif
 
 bool
-Utils::CreateStartupLink() {
+Utils::CreateStartupLink()
+{
 #ifdef Q_OS_WIN32
     TCHAR szPath[MAX_PATH];
     GetModuleFileName(NULL, szPath, MAX_PATH);

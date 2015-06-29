@@ -41,4 +41,5 @@ public:
     static QString GetRingtonePath();
 };
 
+
 #endif // UTILS_H
