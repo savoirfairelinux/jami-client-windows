@@ -21,8 +21,8 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QMutex>
-#include <QPixmap>
+
+#include <memory>
 
 #include "video/renderer.h"
 #include "video/previewmanager.h"
@@ -47,9 +47,8 @@ public slots:
 private:
     Video::Renderer* previewRenderer_;
     Video::Renderer* renderer_;
-    QImage *previewFrame_;
-    QImage *distantFrame_;
-    QMutex lock_;
+    std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
+    std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
     constexpr static int previewMargin_ = 15;
 };
 
