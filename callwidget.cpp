@@ -259,7 +259,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call->state() == Call::State::FAILURE
             || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
-        ui->videoWidget->hide();
+       // ui->videoWidget->hide();
         displaySpinner(false);
     } else if (call->state() == Call::State::CURRENT) {
         displaySpinner(false);

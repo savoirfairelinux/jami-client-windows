@@ -89,7 +89,7 @@ win32: LIBS += -lole32 -luuid -lshlwapi
 
 INCLUDEPATH += $${RING}/include/libringclient
 
-LIBS += -L$${RING}/lib/ -lringclient
+LIBS += -L/usr/local/lib -lringclient
 
 RESOURCES += \
     ressources.qrc
@@ -142,5 +142,3 @@ win32 {
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME QTRUNTIME QTDEPSRUNTIME \
                 QTPLUGINIMAGE QTPLATFORMS LIBSTD
 }
-
-

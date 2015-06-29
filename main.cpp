@@ -29,13 +29,16 @@
 
 #include <QThread>
 
+#ifdef Q_OS_WIN32
 #include <windows.h>
+#endif
 
 REGISTER_MEDIA();
 
 void
 Console()
 {
+#ifdef _WIN32
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
@@ -46,6 +49,7 @@ Console()
 
     SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coordInfo);
     SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),ENABLE_QUICK_EDIT_MODE| ENABLE_EXTENDED_FLAGS);
+#endif
 }
 
 int
