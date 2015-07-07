@@ -75,7 +75,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
     if (renderer_ && currentDistantFrame_) {
         const QSize imgSize(renderer_->size());
         QImage distantFrame(currentDistantFrame_.get()->data(),
-                    imgSize.width(), imgSize.height(), QImage::Format_RGBA8888);
+                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
         auto scaledDistant = distantFrame.scaled(size(), Qt::KeepAspectRatio);
         auto xDiff = (width() - scaledDistant.width()) / 2;
         auto yDiff = (height() - scaledDistant.height()) /2;
@@ -85,7 +85,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
         const QSize imgSize(previewRenderer_->size());
         QImage previewFrame(
                     currentPreviewFrame_.get()->data(),
-                    imgSize.width(), imgSize.height(), QImage::Format_RGBA8888);
+                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
         auto previewHeight = !renderer_ ? height() : height()/4;
         auto previewWidth = !renderer_  ? width() : width()/4;
         auto scaledPreview = previewFrame.scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
