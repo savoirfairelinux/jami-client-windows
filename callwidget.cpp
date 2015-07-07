@@ -49,7 +49,7 @@ CallWidget::CallWidget(QWidget *parent) :
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
-    ui->spinnerLabel->hide();
+    ui->spinnerWidget->hide();
     spinner_ = new QMovie(":/images/spinner.gif");
     if (spinner_->isValid()) {
         ui->spinnerLabel->setMovie(spinner_);
@@ -262,7 +262,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         ui->videoWidget->hide();
         displaySpinner(false);
         auto onHoldCall = callModel_->getActiveCalls().first();
-        if (onHoldCall != nullptr) {
+        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
             setActualCall(onHoldCall);
             onHoldCall->performAction(Call::Action::HOLD);
         }
@@ -349,7 +349,13 @@ CallWidget::on_sortComboBox_currentIndexChanged(int index)
 void
 CallWidget::displaySpinner(bool display)
 {
-    display ? ui->spinnerLabel->show() : ui->spinnerLabel->hide();
+    display ? ui->spinnerWidget->show() : ui->spinnerWidget->hide();
     if (ui->spinnerLabel->movie())
         display ? ui->spinnerLabel->movie()->start() : ui->spinnerLabel->movie()->stop();
+}
+
+void CallWidget::on_cancelButton_clicked()
+{
+    if (actualCall_)
+        actualCall_->performAction(Call::Action::REFUSE);
 }

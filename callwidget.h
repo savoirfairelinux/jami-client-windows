@@ -66,6 +66,8 @@ private slots:
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void checkRegistrationState(Account* account,Account::RegistrationState state);
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::CallWidget *ui;
     Call* actualCall_;
