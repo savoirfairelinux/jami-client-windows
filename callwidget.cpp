@@ -92,9 +92,13 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->historyList->setHeaderHidden(true);
         historyDelegate_ = new HistoryDelegate();
         ui->historyList->setItemDelegate(historyDelegate_);
-        auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
-        if (idx.isValid())
-            ui->historyList->setExpanded(idx, true);
+
+        connect(CategorizedHistoryModel::SortedProxy::instance()->model(), &QSortFilterProxyModel::layoutChanged, [=]() {
+            auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
+            if (idx.isValid())
+                ui->historyList->setExpanded(idx, true);
+        });
+
 
         ui->sortComboBox->setModel(CategorizedHistoryModel::SortedProxy::instance()->categoryModel());
 
