@@ -121,6 +121,7 @@ InstantMessagingWidget::keyPressEvent(QKeyEvent *event)
 void
 InstantMessagingWidget::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     ui->messageInput->setFocus();
 }
 
