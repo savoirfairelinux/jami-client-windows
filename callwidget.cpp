@@ -165,6 +165,7 @@ CallWidget::checkRegistrationState(Account *account,
         p.setBrush(Qt::yellow);
         break;
     case Account::RegistrationState::READY:
+    {
         p.setBrush(Qt::green);
         auto a_count = AccountModel::instance()->rowCount();
         for (int i = 0; i < a_count; ++i) {
@@ -178,6 +179,9 @@ CallWidget::checkRegistrationState(Account *account,
                 return;
             }
         }
+    }
+        break;
+     default:
         break;
     }
     p.drawEllipse(3, 3, 16, 16);
