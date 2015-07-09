@@ -138,7 +138,7 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
             ui->ringIdLabel->setText(
-                        "Your Ring ID: " + username.toString());
+                         "Your Ring ID: " + username.toString());
             found = true;
             return;
         }
@@ -203,9 +203,12 @@ CallWidget::findRingAccount()
         auto idx = AccountModel::instance()->index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
-            auto username = idx.data(static_cast<int>(Account::Role::Username));
+            auto account = AccountModel::instance()->getAccountByModelIndex(idx);
+            if (account->displayName().isEmpty())
+                account->displayName() = account->alias();
+            auto username = account->username();
             ui->ringIdLabel->setText(
-                        ui->ringIdLabel->text() + " " + username.toString());
+                        "Your Ring ID: " + username);
             found = true;
             return;
         }
