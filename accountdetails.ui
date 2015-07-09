@@ -266,6 +266,43 @@
              </item>
             </layout>
            </item>
+           <item row="9" column="0">
+            <widget class="QCheckBox" name="lrcfg_allowIncomingFromUnknown">
+             <property name="text">
+              <string>Allow Call From Unknown</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QCheckBox" name="lrcfg_allowIncomingFromContact">
+             <property name="text">
+              <string>Allow Call From Contact</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QCheckBox" name="lrcfg_allowIncomingFromHistory">
+             <property name="text">
+              <string>Allow Call From History</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_27">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Ring Account Settings</string>
+             </property>
+             <property name="buddy">
+              <cstring>lrcfg_allowIncomingFromUnknown</cstring>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -442,6 +479,9 @@
          </property>
          <property name="text">
           <string>Registration</string>
+         </property>
+         <property name="buddy">
+          <cstring>lrcfg_registrationExpire</cstring>
          </property>
         </widget>
        </item>
@@ -1475,6 +1515,38 @@
     <hint type="destinationlabel">
      <x>499</x>
      <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lrcfg_allowIncomingFromUnknown</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>lrcfg_allowIncomingFromHistory</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>578</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lrcfg_allowIncomingFromUnknown</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>lrcfg_allowIncomingFromContact</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>104</x>
+     <y>608</y>
     </hint>
    </hints>
   </connection>
