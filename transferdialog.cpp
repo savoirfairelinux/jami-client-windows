@@ -16,44 +16,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOOVERLAY_H
-#define VIDEOOVERLAY_H
+#include "transferdialog.h"
+#include "ui_transferdialog.h"
 
-#include <QWidget>
-#include <QMenu>
+#include "callmodel.h"
+#include "categorizedcontactmodel.h"
 
-#include "useractionmodel.h"
+TransferDialog::TransferDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::TransferDialog)
+{
+    ui->setupUi(this);
 
-namespace Ui {
-class VideoOverlay;
+    this->setWindowFlags(Qt::CustomizeWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+
+    ui->activeCallsView->setModel(CallModel::instance());
+    ui->activeCallsView->setSelectionModel(CallModel::instance()->selectionModel());
+
+    ui->contactsView->setModel(CategorizedContactModel::instance());
+    contactDelegate_ = new ContactDelegate();
+    ui->contactsView->setItemDelegate(contactDelegate_);
 }
 
-class VideoOverlay : public QWidget
+TransferDialog::~TransferDialog()
 {
-    Q_OBJECT
+    delete contactDelegate_;
+    delete ui;
+}
 
-public:
-    explicit VideoOverlay(QWidget *parent = 0);
-    ~VideoOverlay();
-
-public:
-    void setName(const QString &name);
-    void setTime(const QString &time);
-
-//UI SLOTS
-private slots:
-    void on_holdButton_toggled(bool checked);
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-
-private:
-    Ui::VideoOverlay *ui;
-    UserActionModel* actionModel_;
-    QMenu* menu_;
-
-signals:
-    void setChatVisibility(bool visible);
-};
-
-#endif // VIDEOOVERLAY_H
+void
+TransferDialog::on_cancelButton_clicked()
+{
+    this->close();
+}

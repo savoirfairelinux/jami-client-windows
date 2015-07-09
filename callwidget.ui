@@ -90,7 +90,7 @@
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="ressources.qrc">:/images/account.png</pixmap>
+                 <pixmap>:/images/account.png</pixmap>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -123,7 +123,7 @@
                  <string>Accept</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="ressources.qrc">
+                 <iconset>
                   <normaloff>:/images/phone.png</normaloff>:/images/phone.png</iconset>
                 </property>
                </widget>
@@ -134,7 +134,7 @@
                  <string>Refuse</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="ressources.qrc">
+                 <iconset>
                   <normaloff>:/images/phone-hangup.png</normaloff>:/images/phone-hangup.png</iconset>
                 </property>
                </widget>
@@ -207,7 +207,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="historyTab">
           <attribute name="title">
@@ -416,8 +416,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

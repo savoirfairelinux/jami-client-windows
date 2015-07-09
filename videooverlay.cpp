@@ -21,6 +21,8 @@
 
 #include "callmodel.h"
 
+#include "transferdialog.h"
+
 VideoOverlay::VideoOverlay(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::VideoOverlay)
@@ -107,3 +109,12 @@ VideoOverlay::on_chatButton_toggled(bool checked)
     emit setChatVisibility(checked);
 }
 
+
+void VideoOverlay::on_transferButton_clicked()
+{
+    auto transferDialog = new TransferDialog();
+
+    transferDialog->exec();
+
+    delete transferDialog;
+}
