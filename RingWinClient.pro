@@ -54,7 +54,8 @@ SOURCES += main.cpp\
     imdelegate.cpp \
     contactpicker.cpp \
     contactmethodpicker.cpp \
-    globalsystemtray.cpp
+    globalsystemtray.cpp \
+    transferdialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -81,7 +82,8 @@ HEADERS  += mainwindow.h \
     contactpicker.h \
     contactmethodpicker.h \
     settingskey.h \
-    globalsystemtray.h
+    globalsystemtray.h \
+    transferdialog.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -95,7 +97,8 @@ FORMS    += mainwindow.ui \
     videoview.ui \
     videooverlay.ui \
     contactpicker.ui \
-    contactmethodpicker.ui
+    contactmethodpicker.ui \
+    transferdialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
