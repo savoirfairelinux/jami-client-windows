@@ -17,20 +17,17 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
-    <widget class="QPushButton" name="holdButton">
+   <item row="1" column="2">
+    <widget class="QPushButton" name="hangupButton">
      <property name="text">
-      <string>Hold</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
+      <string>Hangup</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="chatButton">
+   <item row="1" column="5">
+    <widget class="QPushButton" name="moreButton">
      <property name="text">
-      <string>Chat</string>
+      <string>...</string>
      </property>
     </widget>
    </item>
@@ -47,7 +44,7 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="5">
+   <item row="1" column="6">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -104,7 +101,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="5" alignment="Qt::AlignRight|Qt::AlignTop">
+   <item row="0" column="6" alignment="Qt::AlignRight|Qt::AlignTop">
     <widget class="QLabel" name="timerLabel">
      <property name="palette">
       <palette>
@@ -148,17 +145,27 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="hangupButton">
+   <item row="1" column="1">
+    <widget class="QPushButton" name="holdButton">
      <property name="text">
-      <string>Hangup</string>
+      <string>Hold</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="chatButton">
+     <property name="text">
+      <string>Chat</string>
      </property>
     </widget>
    </item>
    <item row="1" column="4">
-    <widget class="QPushButton" name="moreButton">
+    <widget class="QPushButton" name="transferButton">
      <property name="text">
-      <string>...</string>
+      <string>Transfer</string>
      </property>
     </widget>
    </item>
