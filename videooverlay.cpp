@@ -23,11 +23,13 @@
 
 VideoOverlay::VideoOverlay(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::VideoOverlay)
+    ui(new Ui::VideoOverlay),
+    transferDialog_(new TransferDialog())
 {
     ui->setupUi(this);
 
     ui->chatButton->setCheckable(true);
+    ui->transferButton->setCheckable(true);
 
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
@@ -73,6 +75,7 @@ VideoOverlay::~VideoOverlay()
 {
     delete ui;
     delete menu_;
+    delete transferDialog_;
 }
 
 void
@@ -107,3 +110,10 @@ VideoOverlay::on_chatButton_toggled(bool checked)
     emit setChatVisibility(checked);
 }
 
+void
+VideoOverlay::on_transferButton_toggled(bool checked)
+{
+    auto pos = this->mapToGlobal(ui->transferButton->pos());
+    transferDialog_->move(pos.x() + ui->transferButton->width(), pos.y() - (transferDialog_->height()/2));
+    checked ? transferDialog_->show() : transferDialog_->hide();
+}
