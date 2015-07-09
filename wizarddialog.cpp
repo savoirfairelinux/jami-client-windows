@@ -67,6 +67,7 @@ WizardDialog::accept()
     Utils::CreateStartupLink();
 
     auto account = AccountModel::instance()->add(ui->usernameEdit->text(), Account::Protocol::RING);
+    account->setDisplayName(ui->usernameEdit->text());
     AccountModel::instance()->ip2ip()->setRingtonePath(Utils::GetRingtonePath());
     account->setRingtonePath(Utils::GetRingtonePath());
     account->setUpnpEnabled(true);
