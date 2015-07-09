@@ -16,48 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOOVERLAY_H
-#define VIDEOOVERLAY_H
+#ifndef TRANSFERDIALOG_H
+#define TRANSFERDIALOG_H
 
-#include <QWidget>
-#include <QMenu>
+#include <QDialog>
 
-#include "useractionmodel.h"
-
-#include "transferdialog.h"
+#include "callmodel.h"
 
 namespace Ui {
-class VideoOverlay;
+class TransferDialog;
 }
 
-class VideoOverlay : public QWidget
+class TransferDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit VideoOverlay(QWidget *parent = 0);
-    ~VideoOverlay();
-
-public:
-    void setName(const QString &name);
-    void setTime(const QString &time);
+    explicit TransferDialog(QWidget *parent = 0);
+    ~TransferDialog();
 
 //UI SLOTS
+protected slots:
+    void showEvent(QShowEvent *event);
 private slots:
-    void on_holdButton_toggled(bool checked);
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-
-    void on_transferButton_toggled(bool checked);
+    void on_transferButton_clicked();
+    void on_activeCallsView_doubleClicked(const QModelIndex &index);
+    void on_activeCallsView_clicked(const QModelIndex &index);
 
 private:
-    Ui::VideoOverlay *ui;
-    UserActionModel* actionModel_;
-    QMenu* menu_;
-    TransferDialog *transferDialog_;
-
-signals:
-    void setChatVisibility(bool visible);
+    Ui::TransferDialog *ui;
+    Call *selectedCall_;
 };
 
-#endif // VIDEOOVERLAY_H
+#endif // TRANSFERDIALOG_H
