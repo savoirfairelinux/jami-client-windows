@@ -75,7 +75,7 @@ VideoWidget::frameFromPreview() {
         const QSize size(previewRenderer_->size());
         previewFrame_ = new QImage(
                     (const uchar*)previewRenderer_->currentFrame().constData(),
-                    size.width(), size.height(), QImage::Format_RGBA8888);
+                    size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
         update();
     }
 }
@@ -125,7 +125,7 @@ VideoWidget::frameFromDistant() {
         const QSize size(renderer_->size());
         distantFrame_ = new QImage(
                     (const uchar*) renderer_->currentFrame().constData(),
-                    size.width(), size.height(), QImage::Format_RGBA8888);
+                    size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
         update();
     }
 }
