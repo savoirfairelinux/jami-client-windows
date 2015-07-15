@@ -42,13 +42,11 @@ VideoWidget::~VideoWidget()
 
 void
 VideoWidget::previewStarted(Video::Renderer *renderer) {
-    if (this->isVisible()) {
-        previewRenderer_ = renderer;
-        connect(previewRenderer_, SIGNAL(frameUpdated()),
-                this, SLOT(frameFromPreview()));
-        connect(previewRenderer_, SIGNAL(stopped()),
-                this, SLOT(previewStopped()));
-    }
+    previewRenderer_ = renderer;
+    connect(previewRenderer_, SIGNAL(frameUpdated()),
+            this, SLOT(frameFromPreview()));
+    connect(previewRenderer_, SIGNAL(stopped()),
+            this, SLOT(previewStopped()));
 }
 
 void
@@ -75,7 +73,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
     if (renderer_ && currentDistantFrame_) {
         const QSize imgSize(renderer_->size());
         QImage distantFrame(currentDistantFrame_.get()->data(),
-                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
+                            imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
         auto scaledDistant = distantFrame.scaled(size(), Qt::KeepAspectRatio);
         auto xDiff = (width() - scaledDistant.width()) / 2;
         auto yDiff = (height() - scaledDistant.height()) /2;
@@ -102,12 +100,10 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
 void
 VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     Q_UNUSED(call)
-    if (this->isVisible()) {
-        renderer_ = renderer;
-        connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-        connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
-                Qt::ConnectionType::DirectConnection);
-    }
+    renderer_ = renderer;
+    connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
+    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
+            Qt::ConnectionType::DirectConnection);
 }
 
 void
