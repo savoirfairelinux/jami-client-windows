@@ -67,7 +67,6 @@ private:
     Ui::AccountDetails *ui;
     CodecModel* codecModel_;
     Account*    currentAccount_;
-    bool codecModelModified;
     typedef void (Account::*ACC_PTR)(const QString&);
     QMap<QString, ACC_PTR > certMap_;
 

@@ -33,8 +33,7 @@ AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccountDetails),
     codecModel_(nullptr),
-    currentAccount_(nullptr),
-    codecModelModified(false)
+    currentAccount_(nullptr)
 {
     ui->setupUi(this);
 
@@ -150,9 +149,6 @@ AccountDetails::setAccount(Account* currentAccount) {
 
     currentAccount_ = currentAccount;
 
-    if (codecModel_ && codecModelModified)
-        codecModel_->save();
-
     codecModel_ = currentAccount->codecModel();
 
     ui->typeValueLabel->setText(currentAccount_->protocolModel()->
@@ -238,7 +234,6 @@ AccountDetails::audio_codec_checked(int row, int column) {
     auto idx = codecModel_->audioCodecs()->index(row, 0);
     codecModel_->audioCodecs()->setData(idx, item->checkState(),
                                         Qt::CheckStateRole);
-    codecModelModified = true;
 }
 
 void
@@ -249,7 +244,6 @@ AccountDetails::video_codec_checked(int row, int column) {
     auto idx = codecModel_->videoCodecs()->index(row, 0);
     codecModel_->videoCodecs()->setData(idx, item->checkState(),
                                         Qt::CheckStateRole);
-    codecModelModified = true;
 }
 
 void
@@ -257,7 +251,6 @@ AccountDetails::on_upAudioButton_clicked()
 {
     codecModel_->moveUp();
     reloadCodec(CodecType::AUDIO);
-    codecModelModified = true;
 }
 
 void
@@ -265,7 +258,6 @@ AccountDetails::on_downAudioButton_clicked()
 {
     codecModel_->moveDown();
     reloadCodec(CodecType::AUDIO);
-    codecModelModified = true;
 }
 
 void
@@ -273,7 +265,6 @@ AccountDetails::on_upVideoButton_clicked()
 {
     codecModel_->moveUp();
     reloadCodec(CodecType::VIDEO);
-    codecModelModified = true;
 }
 
 void
@@ -281,7 +272,6 @@ AccountDetails::on_downVideoButton_clicked()
 {
     codecModel_->moveDown();
     reloadCodec(CodecType::VIDEO);
-    codecModelModified = true;
 }
 
 void
@@ -306,8 +296,7 @@ AccountDetails::on_videoCodecView_itemSelectionChanged()
 
 void
 AccountDetails::save() {
-    if (codecModelModified)
-        codecModel_->save();
+    codecModel_->performAction(CodecModel::EditAction::SAVE);
 }
 
 void
