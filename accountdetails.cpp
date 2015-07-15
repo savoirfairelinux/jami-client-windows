@@ -151,7 +151,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     currentAccount_ = currentAccount;
 
     if (codecModel_ && codecModelModified)
-        codecModel_->save();
+        codecModel_ << CodecModel::EditAction::SAVE;
 
     codecModel_ = currentAccount->codecModel();
 
@@ -307,7 +307,7 @@ AccountDetails::on_videoCodecView_itemSelectionChanged()
 void
 AccountDetails::save() {
     if (codecModelModified)
-        codecModel_->save();
+        codecModel_ << CodecModel::EditAction::SAVE;
 }
 
 void
