@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a5c5d37_ce4a21ac",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-07-15T19:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5c5d37_ae600d36",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 52
+      },
+      "revId": "a8e877e37e605d15ac151521e4e3b15a0d3884b9",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5c5d37_8e654947",
         "filename": "accountdetails.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-15T19:45:14Z",
       "side": 1,
       "message": "The codec model now has a state machine to track if it has been modified, so you shouldn\u0027t have to perform this check anymore",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 309,
+        "endChar": 27
+      },
+      "revId": "a8e877e37e605d15ac151521e4e3b15a0d3884b9",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_aec7ed11",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-07-15T19:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5c5d37_8e654947",
       "range": {
         "startLine": 309,
         "startChar": 4,
