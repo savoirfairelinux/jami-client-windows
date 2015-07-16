@@ -47,7 +47,8 @@ SOURCES += main.cpp\
     accountstatedelegate.cpp \
     videoview.cpp \
     videooverlay.cpp \
-    imdelegate.cpp
+    imdelegate.cpp \
+    certsettingsdialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -70,7 +71,8 @@ HEADERS  += mainwindow.h \
     accountstatedelegate.h \
     videoview.h \
     videooverlay.h \
-    imdelegate.h
+    imdelegate.h \
+    certsettingsdialog.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -83,7 +85,8 @@ FORMS    += mainwindow.ui \
     wizarddialog.ui \
     instantmessagingwidget.ui \
     videoview.ui \
-    videooverlay.ui
+    videooverlay.ui \
+    certsettingsdialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

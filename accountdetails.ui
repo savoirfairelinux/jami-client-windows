@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>748</width>
-    <height>657</height>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -319,6 +319,13 @@
           </spacer>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Certificates Settings</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1552,7 +1559,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>

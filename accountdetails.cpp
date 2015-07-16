@@ -29,6 +29,8 @@
 #include "certificate.h"
 #include "ciphermodel.h"
 
+#include "certsettingsdialog.h"
+
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccountDetails),
@@ -328,4 +330,11 @@ AccountDetails::onCertButtonClicked()
     (currentAccount_->*certMap_[sender->objectName()])(fileName);
 
     static_cast<QPushButton*>(sender)->setText(fileName);
+}
+
+void AccountDetails::on_pushButton_clicked()
+{
+    CertSettingsDialog dial;
+
+    dial.exec();
 }

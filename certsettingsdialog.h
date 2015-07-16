@@ -16,62 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef ACCOUNTDETAILS_H
-#define ACCOUNTDETAILS_H
+#ifndef CERTSETTINGSDIALOG_H
+#define CERTSETTINGSDIALOG_H
 
-#include <QWidget>
-#include <QMap>
-
-#include <QTableWidgetItem>
-
-#include "accountmodel.h"
-#include "audio/codecmodel.h"
-#include "account.h"
+#include <QDialog>
 
 namespace Ui {
-class AccountDetails;
+class CertSettingsDialog;
 }
 
-class AccountDetails : public QWidget
+class CertSettingsDialog : public QDialog
 {
     Q_OBJECT
 
-private:
-    enum CodecType { AUDIO, VIDEO, ALL };
-
 public:
-    explicit AccountDetails(QWidget *parent = 0);
-    ~AccountDetails();
-
-    void setAccount(Account *currentAccount);
-    void reloadCodec(CodecType type = CodecType::ALL);
-    void save();
-
-//UI SLOTS
-private slots:
-    void on_upAudioButton_clicked();
-    void on_downAudioButton_clicked();
-    void on_upVideoButton_clicked();
-    void on_downVideoButton_clicked();
-    void on_audioCodecView_itemSelectionChanged();
-    void on_videoCodecView_itemSelectionChanged();
-    void on_usernameEdit_editingFinished();
-    void on_tabWidget_currentChanged(int index);
-
-private slots:
-    void audio_codec_checked(int row, int column);
-    void video_codec_checked(int row, int column);
-    void onCertButtonClicked();
-
-    void on_pushButton_clicked();
+    explicit CertSettingsDialog(QWidget *parent = 0);
+    ~CertSettingsDialog();
 
 private:
-    Ui::AccountDetails *ui;
-    CodecModel* codecModel_;
-    Account*    currentAccount_;
-    typedef void (Account::*ACC_PTR)(const QString&);
-    QMap<QString, ACC_PTR > certMap_;
-
+    Ui::CertSettingsDialog *ui;
 };
 
-#endif // ACCOUNTDETAILS_H
+#endif // CERTSETTINGSDIALOG_H
