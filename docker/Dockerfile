@@ -52,7 +52,6 @@ RUN yaourt -Syua mingw-w64-sqlite --noconfirm --needed
 RUN yaourt -Syua mingw-w64-zlib --noconfirm --needed
 RUN yaourt -Syua mingw-w64-mariadb-connector-c --noconfirm --needed
 RUN yaourt -Syua mingw-w64-postgresql-libs --noconfirm --needed
-RUN yaourt -Syua mingw-w64-win-iconv --noconfirm
 
 #install Qt
 RUN yaourt -Syua mingw-w64-qt5-base-opengl --noconfirm
