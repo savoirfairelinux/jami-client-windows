@@ -15,7 +15,7 @@ RUN pacman -Syu reflector rsync --noconfirm --needed
 RUN reflector --verbose --country 'Canada' -l 200 --sort rate --save /etc/pacman.d/mirrorlist
 RUN cat /etc/pacman.d/mirrorlist
 
-RUN echo "MAKEFLAGS=\-j4\"" >> /etc/makepkg.conf
+RUN echo "MAKEFLAGS=\"-j4\"" >> /etc/makepkg.conf
 
 #ensure that base and base-devel are installed and up to date
 RUN pacman -Syu base base-devel --noconfirm --needed
