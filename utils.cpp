@@ -117,3 +117,33 @@ Utils::GetRingtonePath() {
 #endif
 }
 
+QString
+Utils::GenGUID() {
+#ifdef Q_OS_WIN32
+    GUID gidReference;
+    wchar_t *str;
+    HRESULT hCreateGuid = CoCreateGuid(&gidReference);
+    if (hCreateGuid == S_OK) {
+        StringFromCLSID(gidReference, &str);
+        auto gStr = QString::fromWCharArray(str);
+        return gStr.remove("{").remove("}").toLower();
+    }
+    else
+        return QString("");
+#else
+    return QString("");
+#endif
+}
+
+QString
+Utils::GetISODate() {
+#ifdef Q_OS_WIN32
+    SYSTEMTIME lt;
+    GetSystemTime(&lt);
+    return QString("%1-%2-%3T%4:%5:%6Z").arg(lt.wYear).arg(lt.wMonth,2,10,QChar('0')).arg(lt.wDay,2,10,QChar('0'))
+            .arg(lt.wHour,2,10,QChar('0')).arg(lt.wMinute,2,10,QChar('0')).arg(lt.wSecond,2,10,QChar('0'));
+#else
+    return QString("");
+#endif
+}
+
