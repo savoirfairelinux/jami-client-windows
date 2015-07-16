@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,32 +16,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef UTILS_H
-#define UTILS_H
+#include "contactpicker.h"
+#include "ui_contactpicker.h"
 
-//Needed for OS detection
-#include <QtGlobal>
+#include "categorizedcontactmodel.h"
 
-#ifdef Q_OS_WIN32
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
-
-#include <string>
-#include <QString>
-
-class Utils
+ContactPicker::ContactPicker(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ContactPicker),
+    personSelected_(nullptr)
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-};
+    ui->setupUi(this);
 
+    this->setWindowFlags(Qt::CustomizeWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint);
 
-#endif // UTILS_H
+    auto personModel = PersonModel::instance();
+    ui->contactView->setModel(personModel);
+}
+
+ContactPicker::~ContactPicker()
+{
+    delete ui;
+}
+
+void
+ContactPicker::on_contactView_doubleClicked(const QModelIndex &index)
+{
+    personSelected_ =  index.data(static_cast<int>(Person::Role::Object)).value<Person*>();
+    this->accept();
+}
+
+Person*
+ContactPicker::getPersonSelected()
+{
+    return personSelected_;
+}
+
+void
+ContactPicker::on_cancelButton_clicked()
+{
+    this->reject();
+}

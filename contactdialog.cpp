@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,32 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef UTILS_H
-#define UTILS_H
+#include "contactdialog.h"
+#include "ui_contactdialog.h"
 
-//Needed for OS detection
-#include <QtGlobal>
-
-#ifdef Q_OS_WIN32
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
-
-#include <string>
-#include <QString>
-
-class Utils
+ContactDialog::ContactDialog(const QString &number, QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ContactDialog)
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-};
+    ui->setupUi(this);
+    ui->numberLineEdit->setText(number);
+}
 
+ContactDialog::~ContactDialog()
+{
+    delete ui;
+}
 
-#endif // UTILS_H
+const QString&
+ContactDialog::getName()
+{
+    return contactName_;
+}
+
+void
+ContactDialog::on_nameLineEdit_textChanged(const QString &arg1)
+{
+    contactName_ = arg1;
+}

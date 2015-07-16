@@ -35,7 +35,6 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
     initStyleOption(&opt, index);
 
     if (index.column() == 0) {
-        QString name = index.model()->data(index, Qt::DisplayRole).toString();
         opt.text = "";
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
@@ -46,14 +45,13 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
             cg = QPalette::Inactive;
         painter->setPen(opt.palette.color(cg, QPalette::Text));
         painter->setOpacity(1.0);
-        painter->drawText(QRect(rect.left()+sizeImage_+5, rect.top(),
-                                rect.width(), rect.height()/2),
-                                opt.displayAlignment, name);
-
         QVariant var_c = index.child(0,0).data(
                     static_cast<int>(Person::Role::Object));
         if (var_c.isValid()) {
             Person *c = var_c.value<Person *>();
+            painter->drawText(QRect(rect.left()+sizeImage_+5, rect.top(),
+                                    rect.width(), rect.height()/2),
+                                    opt.displayAlignment, c->formattedName());
             QVariant var_p = c->photo();
             painter->drawRect(QRect(rect.left(), rect.top(),
                                     sizeImage_+1, sizeImage_+1));
