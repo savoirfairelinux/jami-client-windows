@@ -18,6 +18,10 @@
 
 #include "windowscontactbackend.h"
 
+#include <QtXml>
+
+#include "utils.h"
+
 WindowsContactEditor::WindowsContactEditor(CollectionMediator<Person> *m
                                            , WindowsContactBackend *parent)
     : CollectionEditor<Person>(m),collection_(parent)
@@ -34,7 +38,8 @@ bool
 WindowsContactEditor::save(const Person *item)
 {
     Q_UNUSED(item)
-    return false;
+
+    return true;
 }
 
 bool
@@ -54,8 +59,79 @@ WindowsContactEditor::edit(Person *item)
 bool
 WindowsContactEditor::addNew(const Person *item)
 {
-    Q_UNUSED(item)
-    return false;
+    QDomDocument doc;
+    QFile file(QStandardPaths::writableLocation
+               (QStandardPaths::HomeLocation) + "/Contacts/"+item->formattedName()+".contact");
+    if (!file.open(QIODevice::ReadWrite)) {
+        file.close();
+        qDebug() << "Cannot create contact file";
+        return false;
+    }
+    doc.appendChild(
+                doc.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"utf-8\""));
+
+    //Create root
+    auto root = doc.createElement("c:contact");
+    root.setAttribute("c:Version", "1");
+    root.setAttribute("xmlns:c", "http://schemas.microsoft.com/Contact");
+    root.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+    root.setAttribute("xmlns:MSP2P","http://schemas.microsoft.com/Contact/Extended/MSP2P");
+    doc.appendChild(root);
+
+    auto date = Utils::GetISODate();
+
+    //Create creation date
+    auto creationDateNode = doc.createElement("c:CreationDate");
+    auto creationDateValue = doc.createTextNode(date);
+    creationDateNode.appendChild(creationDateValue);
+    root.appendChild(creationDateNode);
+
+    //Create extended node
+    auto extendedNode = doc.createElement("c:Extended");
+    extendedNode.setAttribute("xsi:nil", "true");
+    root.appendChild(extendedNode);
+
+    //Create contactID collection
+    auto contactIDCol = doc.createElement("c:ContactIDCollection");
+    root.appendChild(contactIDCol);
+    auto contactID = doc.createElement("c:ContactID");
+    contactID.setAttribute("c:ElementID", Utils::GenGUID());
+    auto contactValue = doc.createElement("c:Value");
+    auto value = doc.createTextNode(Utils::GenGUID());
+    contactValue.appendChild(value);
+    contactID.appendChild(contactValue);
+    contactIDCol.appendChild(contactID);
+
+    //Create NameCollection
+    auto nameCollection = doc.createElement("c:NameCollection");
+    root.appendChild(nameCollection);
+    auto name = doc.createElement("c:Name");
+    nameCollection.appendChild(name);
+    name.setAttribute("c:ElementID", Utils::GenGUID());
+    auto formattedName = doc.createElement("c:FormattedName");
+    name.appendChild(formattedName);
+    auto formattedNameValue = doc.createTextNode(item->formattedName());
+    formattedName.appendChild(formattedNameValue);
+
+    //Create PhoneNumberCollection
+    auto phoneNumberCollection = doc.createElement("c:PhoneNumberCollection");
+    root.appendChild(phoneNumberCollection);
+    auto phoneNumber = doc.createElement("c:PhoneNumber");
+    phoneNumberCollection.appendChild(phoneNumber);
+    phoneNumber.setAttribute("c:ElementID", Utils::GenGUID());
+    auto numberNode = doc.createElement("c:Number");
+    phoneNumber.appendChild(numberNode);
+    auto numberValue = doc.createTextNode(item->phoneNumbers().at(0)->uri());
+    numberNode.appendChild(numberValue);
+
+    //Write to file
+    file.write(doc.toByteArray());
+    file.close();
+
+    //Add it to the collection
+    addExisting(item);
+
+    return true;
 }
 
 bool
@@ -218,6 +294,8 @@ FlagPack<CollectionInterface::SupportedFeatures> WindowsContactBackend::supporte
 {
     return (
                 CollectionInterface::SupportedFeatures::NONE |
-                CollectionInterface::SupportedFeatures::LOAD);
+                CollectionInterface::SupportedFeatures::LOAD |
+                CollectionInterface::SupportedFeatures::SAVE |
+                CollectionInterface::SupportedFeatures::ADD);
 }
 
