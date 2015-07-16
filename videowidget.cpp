@@ -18,14 +18,10 @@
 
 #include "videowidget.h"
 
-#include <QDebug>
-
 VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
-  , previewFrame_(nullptr)
-  , distantFrame_(nullptr)
 {
     connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
@@ -34,6 +30,11 @@ VideoWidget::VideoWidget(QWidget *parent) :
             SIGNAL(rendererAdded(Call*,Video::Renderer*)),
             this, SLOT(callInitiated(Call*, Video::Renderer*)),
             Qt::ConnectionType::DirectConnection);
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, Qt::black);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
 }
 
 VideoWidget::~VideoWidget()
@@ -41,53 +42,59 @@ VideoWidget::~VideoWidget()
 
 void
 VideoWidget::previewStarted(Video::Renderer *renderer) {
-    previewRenderer_ = renderer;
-    connect(previewRenderer_, SIGNAL(frameUpdated()),
-            this, SLOT(frameFromPreview()));
-    connect(previewRenderer_, SIGNAL(stopped()),
-            this, SLOT(previewStopped()));
+    if (this->isVisible()) {
+        previewRenderer_ = renderer;
+        connect(previewRenderer_, SIGNAL(frameUpdated()),
+                this, SLOT(frameFromPreview()));
+        connect(previewRenderer_, SIGNAL(stopped()),
+                this, SLOT(previewStopped()));
+    }
 }
 
 void
 VideoWidget::previewStopped() {
-    QMutexLocker {&lock_};
     disconnect(previewRenderer_, SIGNAL(frameUpdated()),
-            this, SLOT(frameFromPreview()));
+               this, SLOT(frameFromPreview()));
     disconnect(previewRenderer_, SIGNAL(stopped()),
-            this, SLOT(renderingStopped()));
+               this, SLOT(renderingStopped()));
     previewRenderer_ = nullptr;
 }
 
 void
 VideoWidget::frameFromPreview() {
-    if (previewFrame_) {
-        delete previewFrame_;
-        previewFrame_ = nullptr;
-    }
     if (previewRenderer_ && previewRenderer_->isRendering()) {
-        const QSize size(previewRenderer_->size());
-        previewFrame_ = new QImage(
-                    (const uchar*)previewRenderer_->currentFrame().constData(),
-                    size.width(), size.height(), QImage::Format_RGBA8888);
+        currentPreviewFrame_ = previewRenderer_->currentSmartFrame();
         update();
     }
 }
 
 void
-VideoWidget::paintEvent(QPaintEvent* evt) {
+VideoWidget::paintEvent(QPaintEvent *evt) {
     Q_UNUSED(evt)
-    QMutexLocker {&lock_};
     QPainter painter(this);
-    //painter.drawRoundedRect(0,5,width()-5, height()-7,3,3);
-    if (distantFrame_ && renderer_ && renderer_->isRendering())
-          painter.drawImage(QRect(0,0,width(),height()),*(distantFrame_));
-    if (previewFrame_ && previewRenderer_ && previewRenderer_->isRendering()) {
-        int previewHeight = !renderer_ ? height() : height()/4;
-        int previewWidth = !renderer_  ? width() : width()/4;
-        int yPos = !renderer_ ? 0 : height() - previewHeight;
-        int xPos = !renderer_ ? 0 : width() - previewWidth;
-        painter.drawImage(QRect(xPos,yPos,previewWidth,previewHeight),
-                          *(previewFrame_));
+    if (renderer_ && currentDistantFrame_) {
+        const QSize imgSize(renderer_->size());
+        QImage distantFrame(currentDistantFrame_.get()->data(),
+                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
+        auto scaledDistant = distantFrame.scaled(size(), Qt::KeepAspectRatio);
+        auto xDiff = (width() - scaledDistant.width()) / 2;
+        auto yDiff = (height() - scaledDistant.height()) /2;
+        painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
+    }
+    if (previewRenderer_ && currentPreviewFrame_) {
+        const QSize imgSize(previewRenderer_->size());
+        QImage previewFrame(
+                    currentPreviewFrame_.get()->data(),
+                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
+        auto previewHeight = !renderer_ ? height() : height()/4;
+        auto previewWidth = !renderer_  ? width() : width()/4;
+        auto scaledPreview = previewFrame.scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        auto xDiff = (previewWidth - scaledPreview.width()) / 2;
+        auto yDiff = (previewHeight - scaledPreview.height()) / 2;
+        auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
+        auto xPos = !renderer_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+        painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
+                          scaledPreview);
     }
     painter.end();
 }
@@ -95,34 +102,24 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
 void
 VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     Q_UNUSED(call)
-    renderer_ = renderer;
-    connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
-            Qt::ConnectionType::DirectConnection);
+    if (this->isVisible()) {
+        renderer_ = renderer;
+        connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
+        connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
+                Qt::ConnectionType::DirectConnection);
+    }
 }
 
 void
 VideoWidget::frameFromDistant() {
-    if (distantFrame_) {
-        delete distantFrame_;
-        distantFrame_ = nullptr;
-    }
-    if (renderer_) {
-        const QSize size(renderer_->size());
-        distantFrame_ = new QImage(
-                    (const uchar*) renderer_->currentFrame().constData(),
-                    size.width(), size.height(), QImage::Format_RGBA8888);
+    if (renderer_ && renderer_->isRendering()) {
+        currentDistantFrame_ = renderer_->currentSmartFrame();
         update();
     }
 }
 
 void
 VideoWidget::renderingStopped() {
-    QMutexLocker {&lock_};
-    if (distantFrame_) {
-        delete distantFrame_;
-        distantFrame_ = nullptr;
-    }
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;

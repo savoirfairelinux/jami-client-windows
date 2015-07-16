@@ -22,11 +22,11 @@
 #include <QWidget>
 #include <QPainter>
 
-#include <video/renderer.h>
-#include <video/previewmanager.h>
-#include <callmodel.h>
-#include <QMutex>
-#include <QPixmap>
+#include <memory>
+
+#include "video/renderer.h"
+#include "video/previewmanager.h"
+#include "callmodel.h"
 
 class VideoWidget : public QWidget
 {
@@ -47,10 +47,9 @@ public slots:
 private:
     Video::Renderer* previewRenderer_;
     Video::Renderer* renderer_;
-    QImage *previewFrame_;
-    QImage *distantFrame_;
-    QMutex lock_;
-    QPixmap *previewPix_;
+    std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
+    std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
+    constexpr static int previewMargin_ = 15;
 };
 
 #endif // VIDEOWIDGET_H

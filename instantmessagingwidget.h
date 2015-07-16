@@ -16,62 +16,47 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef ACCOUNTDETAILS_H
-#define ACCOUNTDETAILS_H
+#ifndef INSTANTMESSAGINGWIDGET_H
+#define INSTANTMESSAGINGWIDGET_H
 
 #include <QWidget>
-#include <QMap>
+#include <QKeyEvent>
+#include <QSettings>
 
-#include <QTableWidgetItem>
+#include "call.h"
+#include "media/media.h"
 
-#include "accountmodel.h"
-#include "audio/codecmodel.h"
-#include "account.h"
+#include "imdelegate.h"
 
 namespace Ui {
-class AccountDetails;
+class InstantMessagingWidget;
 }
 
-class AccountDetails : public QWidget
+class InstantMessagingWidget final : public QWidget
 {
     Q_OBJECT
 
-private:
-    enum CodecType { AUDIO, VIDEO, ALL };
-
 public:
-    explicit AccountDetails(QWidget *parent = 0);
-    ~AccountDetails();
+    explicit InstantMessagingWidget(QWidget *parent = 0);
+    ~InstantMessagingWidget();
+    void setMediaText(Call* call);
 
-    void setAccount(Account *currentAccount);
-    void reloadCodec(CodecType type = CodecType::ALL);
-    void save();
+protected:
+    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void showEvent(QShowEvent * event) override;
 
 //UI SLOTS
 private slots:
-    void on_upAudioButton_clicked();
-    void on_downAudioButton_clicked();
-    void on_upVideoButton_clicked();
-    void on_downVideoButton_clicked();
-    void on_audioCodecView_itemSelectionChanged();
-    void on_videoCodecView_itemSelectionChanged();
-    void on_usernameEdit_editingFinished();
-    void on_tabWidget_currentChanged(int index);
+    void on_sendButton_clicked();
 
 private slots:
-    void audio_codec_checked(int row, int column);
-    void video_codec_checked(int row, int column);
-    void onCertButtonClicked();
-
-    void on_pushButton_clicked();
+    void mediaAdd(Media::Media *media);
 
 private:
-    Ui::AccountDetails *ui;
-    CodecModel* codecModel_;
-    Account*    currentAccount_;
-    typedef void (Account::*ACC_PTR)(const QString&);
-    QMap<QString, ACC_PTR > certMap_;
-
+    Ui::InstantMessagingWidget *ui;
+    ImDelegate* imDelegate_;
+    QSettings settings_;
+    void copyToClipboard();
 };
 
-#endif // ACCOUNTDETAILS_H
+#endif // INSTANTMESSAGINGWIDGET_H

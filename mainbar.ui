@@ -532,6 +532,9 @@
          <height>50</height>
         </size>
        </property>
+       <property name="maxLength">
+        <number>50</number>
+       </property>
        <property name="placeholderText">
         <string>Dial Number</string>
        </property>

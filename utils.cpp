@@ -18,25 +18,38 @@
 
 #include "utils.h"
 
+#ifdef Q_OS_WIN32
+#include <lmcons.h>
+#include <shobjidl.h>
+#include <shlguid.h>
+#include <shlobj.h>
+#include <shlwapi.h>
+#endif
+
 bool
-Utils::CreateStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
+Utils::CreateStartupLink()
+{
+#ifdef Q_OS_WIN32
+    TCHAR szPath[MAX_PATH];
+    GetModuleFileName(NULL, szPath, MAX_PATH);
 
-    TCHAR workingDirectory[MAX_PATH];
-    GetCurrentDirectory(MAX_PATH, workingDirectory);
+    std::wstring programPath(szPath);
 
-    std::wstring programPath(workingDirectory);
-    programPath += TEXT("\\RingClientWindows.exe");
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
 
     return Utils::CreateLink(programPath.c_str(), linkPath.c_str());
+#else
+    return true;
+#endif
 }
 
 bool
 Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
+#ifdef Q_OS_WIN32
     HRESULT hres;
     IShellLink* psl;
 
@@ -46,6 +59,7 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
     {
         IPersistFile* ppf;
         psl->SetPath(lpszPathObj);
+        psl->SetArguments(TEXT("--minimized"));
 
         hres = psl->QueryInterface(IID_IPersistFile, (LPVOID*)&ppf);
         if (SUCCEEDED(hres))
@@ -56,31 +70,41 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
         psl->Release();
     }
     return hres;
+#else
+    return true;
+#endif
 }
 
 void
 Utils::DeleteStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
+#ifdef Q_OS_WIN32
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
 
     DeleteFile(linkPath.c_str());
+#endif
 }
 
 bool
 Utils::CheckStartupLink() {
-    TCHAR userHome[MAX_PATH];
-    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userHome);
+#ifdef Q_OS_WIN32
+    TCHAR startupPath[MAX_PATH];
+    SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
-    std::wstring linkPath(userHome);
-    linkPath += TEXT("\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Ring.lnk");
+    std::wstring linkPath(startupPath);
+    linkPath += TEXT("\\Ring.lnk");
     return PathFileExists(linkPath.c_str());
+#else
+    return true;
+#endif
 }
 
 QString
 Utils::GetRingtonePath() {
+#ifdef Q_OS_WIN32
     TCHAR workingDirectory[MAX_PATH];
     GetCurrentDirectory(MAX_PATH, workingDirectory);
 
@@ -88,5 +112,8 @@ Utils::GetRingtonePath() {
     ringtonePath += "\\ringtones\\konga.ul";
 
     return ringtonePath;
+#else
+    return QString("/usr/local");
+#endif
 }
 

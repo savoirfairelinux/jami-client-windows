@@ -19,12 +19,14 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+//Needed for OS detection
+#include <QtGlobal>
+
+#ifdef Q_OS_WIN32
 #include <windows.h>
-#include <lmcons.h>
-#include <shobjidl.h>
-#include <shlguid.h>
-#include <shlobj.h>
-#include <shlwapi.h>
+#else //LINUX
+#define LPCWSTR char*
+#endif
 
 #include <string>
 #include <QString>
@@ -38,5 +40,6 @@ public:
     static bool CheckStartupLink();
     static QString GetRingtonePath();
 };
+
 
 #endif // UTILS_H

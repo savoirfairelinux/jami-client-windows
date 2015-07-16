@@ -21,19 +21,17 @@
 
 #include <memory>
 
-#include "imconversationmanager.h"
-#include "instantmessagingmodel.h"
 #include "audio/settings.h"
 #include "personmodel.h"
 #include "fallbackpersoncollection.h"
-#include "accountmodel.h"
 #include "categorizedcontactmodel.h"
-#include "windowscontactbackend.h"
-#include "historydelegate.h"
-#include "contactdelegate.h"
 #include "localhistorycollection.h"
+#include "media/text.h"
+#include "media/recording.h"
+#include "media/textrecording.h"
 
 #include "wizarddialog.h"
+#include "windowscontactbackend.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -42,13 +40,20 @@ CallWidget::CallWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->holdButton->setCheckable(true);
-    ui->muteMicButton->setCheckable(true);
-    ui->muteSpeakerButton->setCheckable(true);
     ui->callInvite->setVisible(false);
+    ui->videoWidget->setVisible(false);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
+
+    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
+            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+
+    ui->spinnerWidget->hide();
+    spinner_ = new QMovie(":/images/spinner.gif");
+    if (spinner_->isValid()) {
+        ui->spinnerLabel->setMovie(spinner_);
+    }
 
     try {
         callModel_ = CallModel::instance();
@@ -60,12 +65,18 @@ CallWidget::CallWidget(QWidget *parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
+        connect(AccountModel::instance(),
+                SIGNAL(accountStateChanged(Account*,Account::RegistrationState)),
+                this,
+                SLOT(checkRegistrationState(Account*,Account::RegistrationState)));
+
         connect(AccountModel::instance()
                 , SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>))
                 , this
                 , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
 
         ui->callList->setModel(callModel_);
+        ui->callList->setSelectionModel(callModel_->selectionModel());
 
         CategorizedHistoryModel::instance()->
                 addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
@@ -79,19 +90,22 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
         CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
         ui->historyList->setHeaderHidden(true);
-        ui->historyList->setItemDelegate(new HistoryDelegate());
-        auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
-        if (idx.isValid())
-            ui->historyList->setExpanded(idx, true);
+        historyDelegate_ = new HistoryDelegate();
+        ui->historyList->setItemDelegate(historyDelegate_);
+
+        connect(CategorizedHistoryModel::SortedProxy::instance()->model(), &QSortFilterProxyModel::layoutChanged, [=]() {
+            auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
+            if (idx.isValid())
+                ui->historyList->setExpanded(idx, true);
+        });
+
 
         ui->sortComboBox->setModel(CategorizedHistoryModel::SortedProxy::instance()->categoryModel());
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
         ui->contactView->setModel(CategorizedContactModel::instance());
-        ui->contactView->setItemDelegate(new ContactDelegate());
-
-        ui->speakerSlider->setValue(Audio::Settings::instance()->playbackVolume());
-        ui->micSlider->setValue(Audio::Settings::instance()->captureVolume());
+        contactDelegate_ = new ContactDelegate();
+        ui->contactView->setItemDelegate(contactDelegate_);
 
         findRingAccount();
 
@@ -103,6 +117,10 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
+    delete spinner_;
+    delete menu_;
+    delete historyDelegate_;
+    delete contactDelegate_;
 }
 
 void
@@ -120,7 +138,7 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
             ui->ringIdLabel->setText(
-                        "Your Ring ID: " + username.toString());
+                         "Your Ring ID: " + username.toString());
             found = true;
             return;
         }
@@ -128,6 +146,51 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
     if (not found){
         ui->ringIdLabel->setText("NO RING ACCOUNT FOUND");
     }
+}
+
+void
+CallWidget::checkRegistrationState(Account *account,
+                                   Account::RegistrationState state)
+{
+    Q_UNUSED(account);
+
+    QPixmap pm(20,20);
+    pm.fill();
+    QPainter p(&pm);
+    QPen pen(Qt::black, 2);
+    p.setPen(pen);
+    p.setRenderHint(QPainter::Antialiasing, true);
+
+    switch(state) {
+    case Account::RegistrationState::ERROR:
+        p.setBrush(Qt::red);
+        break;
+    case Account::RegistrationState::TRYING:
+        p.setBrush(Qt::yellow);
+        break;
+    case Account::RegistrationState::READY:
+    {
+        p.setBrush(Qt::green);
+        auto a_count = AccountModel::instance()->rowCount();
+        for (int i = 0; i < a_count; ++i) {
+            auto idx = AccountModel::instance()->index(i, 0);
+            auto stateAcc = idx.data(
+                        static_cast<int>(Account::Role::RegistrationState));
+            if (stateAcc.value<Account::RegistrationState>()
+                    != Account::RegistrationState::READY) {
+                checkRegistrationState(nullptr,
+                                       stateAcc.value<Account::RegistrationState>());
+                return;
+            }
+        }
+    }
+        break;
+     default:
+        break;
+    }
+    p.drawEllipse(3, 3, 16, 16);
+    ui->accountStateHintLabel->setPixmap(pm);
+    ui->accountStateHintLabel->show();
 }
 
 void
@@ -140,9 +203,12 @@ CallWidget::findRingAccount()
         auto idx = AccountModel::instance()->index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
-            auto username = idx.data(static_cast<int>(Account::Role::Username));
+            auto account = AccountModel::instance()->getAccountByModelIndex(idx);
+            if (account->displayName().isEmpty())
+                account->displayName() = account->alias();
+            auto username = account->username();
             ui->ringIdLabel->setText(
-                        ui->ringIdLabel->text() + " " + username.toString());
+                        "Your Ring ID: " + username);
             found = true;
             return;
         }
@@ -157,8 +223,11 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call *call)
 {
-    if (!call->account()->isAutoAnswer())
+    if (!call->account()->isAutoAnswer()) {
+        ui->callLabel->setText("Call from " + call->formattedName());
         ui->callInvite->setVisible(true);
+        ui->callInvite->raise();
+    }
     setActualCall(call);
 }
 
@@ -181,26 +250,10 @@ CallWidget::on_refuseButton_clicked()
 }
 
 void
-CallWidget::on_holdButton_toggled(bool checked)
-{
-    Q_UNUSED(checked)
-    if (actualCall_ == nullptr)
-        return;
-    actualCall_->performAction(Call::Action::HOLD);
-}
-
-void
-CallWidget::on_hangupButton_clicked()
-{
-    if (actualCall_ == nullptr)
-        return;
-    actualCall_->performAction(Call::Action::REFUSE);
-}
-
-void
 CallWidget::addedCall(Call* call, Call* parent) {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
+        displaySpinner(true);
         setActualCall(call);
     }
 }
@@ -212,15 +265,25 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
-    if (call->state() == Call::State::OVER || call->state() == Call::State::ERROR) {
+    if (call->state() == Call::State::OVER
+            || call->state() == Call::State::ERROR
+            || call->state() == Call::State::FAILURE
+            || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
         ui->videoWidget->hide();
+        displaySpinner(false);
+        auto onHoldCall = callModel_->getActiveCalls().first();
+        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
+            setActualCall(onHoldCall);
+            onHoldCall->performAction(Call::Action::HOLD);
+        }
     } else if (call->state() == Call::State::HOLD) {
         ui->videoWidget->hide();
     } else if (call->state() == Call::State::CURRENT) {
+        displaySpinner(false);
         ui->videoWidget->show();
     }
-    ui->callStateLabel->setText("Call State : " + state.at((int)call->state()));
+    ui->callStateLabel->setText("Call State : " + call->toHumanStateName());
 }
 
 void
@@ -236,42 +299,6 @@ CallWidget::on_callList_activated(const QModelIndex &index)
     setActualCall(callSelected);
     actualCall_->performAction(Call::Action::HOLD);
     ui->videoWidget->show();
-}
-
-void
-CallWidget::on_muteSpeakerButton_toggled(bool checked)
-{
-    Audio::Settings::instance()->mutePlayback(checked);
-}
-
-void
-CallWidget::on_muteMicButton_toggled(bool checked)
-{
-    Audio::Settings::instance()->muteCapture(checked);
-}
-
-void
-CallWidget::on_speakerSlider_sliderMoved(int position)
-{
-    outputVolume_ = position;
-}
-
-void
-CallWidget::on_speakerSlider_sliderReleased()
-{
-    emit Audio::Settings::instance()->setPlaybackVolume(outputVolume_);
-}
-
-void
-CallWidget::on_micSlider_sliderMoved(int position)
-{
-    inputVolume_ = position;
-}
-
-void
-CallWidget::on_micSlider_sliderReleased()
-{
-    emit Audio::Settings::instance()->setCaptureVolume(inputVolume_);
 }
 
 void
@@ -317,10 +344,9 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    ui->holdButton->setEnabled(actualCall_ != nullptr);
-    ui->hangupButton->setEnabled(actualCall_ != nullptr);
-
+    ui->instantMessagingWidget->setMediaText(actualCall_);
 }
+
 void
 CallWidget::on_sortComboBox_currentIndexChanged(int index)
 {
@@ -329,4 +355,18 @@ CallWidget::on_sortComboBox_currentIndexChanged(int index)
     CategorizedHistoryModel::SortedProxy::instance()->categorySelectionModel()->
             setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
     ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
+}
+
+void
+CallWidget::displaySpinner(bool display)
+{
+    display ? ui->spinnerWidget->show() : ui->spinnerWidget->hide();
+    if (ui->spinnerLabel->movie())
+        display ? ui->spinnerLabel->movie()->start() : ui->spinnerLabel->movie()->stop();
+}
+
+void CallWidget::on_cancelButton_clicked()
+{
+    if (actualCall_)
+        actualCall_->performAction(Call::Action::REFUSE);
 }

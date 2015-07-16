@@ -24,6 +24,7 @@
 
 #include "navwidget.h"
 #include "accountdetails.h"
+#include "accountstatedelegate.h"
 
 #include "accountmodel.h"
 #include "video/devicemodel.h"
@@ -42,15 +43,20 @@ public:
     ~ConfigurationWidget();
     void atExit();
 
+
+protected:
+    void showEvent(QShowEvent *event);
+
 //UI SLOTS
 private slots:
     void on_deviceBox_currentIndexChanged(int index);
     void on_sizeBox_currentIndexChanged(int index);
     void on_rateBox_currentIndexChanged(int index);
-    void on_testVideoButton_toggled(bool checked);
     void on_deleteAccountButton_clicked();
     void on_addAccountButton_clicked();
     void on_startupBox_toggled(bool checked);
+    void on_clearHistoryButton_clicked();
+    void on_historyDaySettingsSpinBox_valueChanged(int limit);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
@@ -63,6 +69,7 @@ private:
     CodecModel* codecModel_;
     bool isLoading_;
     AccountDetails* accountDetails_;
+    AccountStateDelegate *accountStateDelegate_;
 };
 
 #endif // CONFIGURATIONWIDGET_H

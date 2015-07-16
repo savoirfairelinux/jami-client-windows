@@ -16,62 +16,53 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef ACCOUNTDETAILS_H
-#define ACCOUNTDETAILS_H
+#ifndef VIDEOVIEW_H
+#define VIDEOVIEW_H
 
 #include <QWidget>
-#include <QMap>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QPropertyAnimation>
 
-#include <QTableWidgetItem>
-
-#include "accountmodel.h"
-#include "audio/codecmodel.h"
-#include "account.h"
+#include "videooverlay.h"
 
 namespace Ui {
-class AccountDetails;
+class VideoView;
 }
 
-class AccountDetails : public QWidget
+class VideoView : public QWidget
 {
     Q_OBJECT
 
-private:
-    enum CodecType { AUDIO, VIDEO, ALL };
-
 public:
-    explicit AccountDetails(QWidget *parent = 0);
-    ~AccountDetails();
+    explicit VideoView(QWidget *parent = 0);
+    ~VideoView();
 
-    void setAccount(Account *currentAccount);
-    void reloadCodec(CodecType type = CodecType::ALL);
-    void save();
-
-//UI SLOTS
-private slots:
-    void on_upAudioButton_clicked();
-    void on_downAudioButton_clicked();
-    void on_upVideoButton_clicked();
-    void on_downVideoButton_clicked();
-    void on_audioCodecView_itemSelectionChanged();
-    void on_videoCodecView_itemSelectionChanged();
-    void on_usernameEdit_editingFinished();
-    void on_tabWidget_currentChanged(int index);
+protected:
+    void resizeEvent(QResizeEvent* event);
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseDoubleClickEvent(QMouseEvent *e);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 
 private slots:
-    void audio_codec_checked(int row, int column);
-    void video_codec_checked(int row, int column);
-    void onCertButtonClicked();
-
-    void on_pushButton_clicked();
+    void callStateChanged(Call *call, Call::State previousState);
+    void updateTimer();
+    void showContextMenu(const QPoint &pos);
 
 private:
-    Ui::AccountDetails *ui;
-    CodecModel* codecModel_;
-    Account*    currentAccount_;
-    typedef void (Account::*ACC_PTR)(const QString&);
-    QMap<QString, ACC_PTR > certMap_;
-
+    Ui::VideoView *ui;
+    QTimer* timerLength_;
+    VideoOverlay* overlay_;
+    constexpr static int fadeOverlayTime_ = 2000; //msec
+    QPropertyAnimation* fadeAnim_;
+    QWidget *oldParent_;
+    QSize oldSize_;
+private:
+    void toggleFullScreen();
+signals:
+    void setChatVisibility(bool visible);
 };
 
-#endif // ACCOUNTDETAILS_H
+#endif // VIDEOVIEW_H
