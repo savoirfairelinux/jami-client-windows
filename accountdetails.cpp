@@ -20,17 +20,20 @@
 #include "ui_accountdetails.h"
 
 #include <QSortFilterProxyModel>
+#include <QFileDialog>
+#include <QPushButton>
 
-#include "accountmodel.h"
-#include "account.h"
 #include "accountdetails.h"
 #include "audio/codecmodel.h"
+#include "protocolmodel.h"
+#include "certificate.h"
+#include "ciphermodel.h"
 
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccountDetails),
     codecModel_(nullptr),
-    codecModelModified(false)
+    currentAccount_(nullptr)
 {
     ui->setupUi(this);
 
@@ -48,20 +51,16 @@ AccountDetails::AccountDetails(QWidget *parent) :
     ui->videoCodecView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->videoCodecView->setShowGrid(false);
 
-    ui->hashValue->setAlignment(Qt::AlignCenter);
+    ui->lrcfg_username->setAlignment(Qt::AlignCenter);
 
     connect(ui->audioCodecView, SIGNAL(cellChanged(int,int)),
             this, SLOT(audio_codec_checked(int, int)));
     connect(ui->videoCodecView, SIGNAL(cellChanged(int,int)),
             this, SLOT(video_codec_checked(int,int)));
-    connect(ui->videoEnabledCheckBox, SIGNAL(toggled(bool)),
-            this, SLOT(setVideoEnabled(bool)));
-    connect(ui->autoAnswerCheckBox, SIGNAL(toggled(bool)),
-            this, SLOT(setAutoAnswer(bool)));
-    connect(ui->aliasValue, SIGNAL(editingFinished()),
-            this, SLOT(aliasChanged()));
-    connect(ui->bootstrapLineEdit, SIGNAL(editingFinished()),
-            this, SLOT(bootstrapChanged()));
+
+    connect(ui->lrcfg_tlsCaListCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
+    connect(ui->lrcfg_tlsCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
+    connect(ui->lrcfg_tlsPrivateKeyCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
 }
 
 AccountDetails::~AccountDetails()
@@ -144,82 +143,87 @@ AccountDetails::reloadCodec(CodecType type)
 void
 AccountDetails::setAccount(Account* currentAccount) {
 
-    currentAccount_ = currentAccount;
+    if (currentAccount_) {
+        currentAccount_->performAction(Account::EditAction::SAVE);
+    }
 
-    if (codecModel_ && codecModelModified)
-        codecModel_->save();
+    currentAccount_ = currentAccount;
 
     codecModel_ = currentAccount->codecModel();
 
-    //FIX ME : Reorganize this in group
-    ui->hashValue->hide();
-    ui->hashLabel->hide();
-    ui->aliasValue->hide();
-    ui->aliasLabel->hide();
-    ui->bootstrapLabel->hide();
-    ui->bootstrapLineEdit->hide();
-    ui->hostnameLabel->hide();
-    ui->hostnameEdit->hide();
-    ui->usernameEdit->hide();
-    ui->usernameLabel->hide();
-    ui->passwordEdit->hide();
-    ui->passwordLabel->hide();
-    ui->proxyEdit->hide();
-    ui->proxyLabel->hide();
-    ui->voicemailLabel->hide();
-    ui->voicemailEdit->hide();
+    ui->typeValueLabel->setText(currentAccount_->protocolModel()->
+                                selectionModel()->currentIndex().data().value<QString>());
 
-    switch (currentAccount_->protocol()) {
-    case Account::Protocol::SIP:
-        if (currentAccount_ != AccountModel::instance()->ip2ip()) {
-            ui->typeValueLabel->setText("SIP");
-            ui->aliasValue->setText(currentAccount_->alias());
-            ui->hostnameEdit->setText(currentAccount_->hostname());
-            ui->usernameEdit->setText(currentAccount_->username());
-            ui->passwordEdit->setText(currentAccount_->password());
-            ui->proxyEdit->setText(currentAccount_->proxy());
-            ui->voicemailEdit->setText(currentAccount_->mailbox());
+    ui->publishGroup->disconnect();
 
-            ui->aliasLabel->show();
-            ui->aliasValue->show();
-            ui->hostnameLabel->show();
-            ui->hostnameEdit->show();
-            ui->usernameEdit->show();
-            ui->usernameLabel->show();
-            ui->passwordEdit->show();
-            ui->passwordLabel->show();
-            ui->proxyEdit->show();
-            ui->proxyLabel->show();
-            ui->voicemailLabel->show();
-            ui->voicemailEdit->show();
-        } else {
-            ui->typeValueLabel->setText("IP2IP");
-        }
+    if (currentAccount_->isPublishedSameAsLocal())
+        ui->puslishedSameAsLocalRadio->setChecked(true);
+    else
+        ui->customPublishedRadio->setChecked(true);
+
+    ui->publishGroup->setId(ui->puslishedSameAsLocalRadio, 1);
+    ui->publishGroup->setId(ui->customPublishedRadio, 0);
+    ui->lrcfg_publishedAddress->setEnabled(!currentAccount_->isPublishedSameAsLocal());
+    ui->lrcfg_publishedPort->setEnabled(!currentAccount_->isPublishedSameAsLocal());
+
+    connect(ui->publishGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
+        [=](int id) {
+        currentAccount_->setPublishedSameAsLocal(static_cast<bool>(id));
+    });
+
+    switch (currentAccount_->DTMFType()) {
+    case DtmfType::OverRtp:
+        ui->rtpRadio->setChecked(true);
         break;
-    case Account::Protocol::IAX:
-        ui->typeValueLabel->setText("IAX");
-        break;
-    case Account::Protocol::RING:
-        ui->typeValueLabel->setText("RING");
-        ui->aliasValue->setText(currentAccount_->alias());
-        ui->hashValue->setText(currentAccount_->username());
-        ui->bootstrapLineEdit->setText(currentAccount_->hostname());
-        ui->hashValue->show();
-        ui->hashLabel->show();
-        ui->aliasLabel->show();
-        ui->aliasValue->show();
-        ui->bootstrapLabel->show();
-        ui->bootstrapLineEdit->show();
-        break;
-    default:
+    case DtmfType::OverSip:
+        ui->sipRadio->setChecked(true);
         break;
     }
 
-    reloadCodec();
+    ui->dtmfGroup->disconnect();
+    ui->dtmfGroup->setId(ui->rtpRadio, DtmfType::OverRtp);
+    ui->dtmfGroup->setId(ui->sipRadio, DtmfType::OverSip);
 
-    ui->videoEnabledCheckBox->setChecked(currentAccount_->isVideoEnabled());
-    ui->autoAnswerCheckBox->setChecked(currentAccount_->isAutoAnswer());
-    ui->upnpCheckBox->setChecked(currentAccount_->isUpnpEnabled());
+    connect(ui->dtmfGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
+        [=](int id){ currentAccount_->setDTMFType(static_cast<DtmfType>(id)); });
+
+    ui->keyExchangeModelCombo->setModel(currentAccount_->keyExchangeModel());
+    ui->tlsProtocoCombo->setModel(currentAccount_->tlsMethodModel());
+
+    if (currentAccount_->tlsCaListCertificate())
+        ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path().fileName());
+    if (currentAccount_->tlsCertificate())
+        ui->lrcfg_tlsCertificate->setText(currentAccount_->tlsCertificate()->path().fileName());
+    if (currentAccount_->tlsPrivateKeyCertificate())
+        ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKeyCertificate()->path().fileName());
+
+#ifdef Q_OS_WIN32
+    certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
+    certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
+    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKeyCertificate;
+#endif
+
+    ui->srtpEnabled->disconnect();
+    connect(ui->srtpEnabled, &QCheckBox::toggled, [=](bool checked) {
+        currentAccount_->setSrtpEnabled(checked);
+        ui->lrcfg_srtpRtpFallback->setEnabled(checked);
+        ui->keyExchangeModelCombo->setEnabled(checked);
+    });
+
+    ui->srtpEnabled->setChecked(currentAccount_->isSrtpEnabled());
+
+    if (currentAccount_->cipherModel()->useDefault())
+        ui->defaultCipherRadio->setChecked(true);
+    else
+        ui->customCipherRadio->setChecked(true);
+
+    connect(ui->defaultCipherRadio, &QRadioButton::toggled, [=](bool checked) {
+        currentAccount_->cipherModel()->setUseDefault(checked);
+    });
+
+    ui->cipherListView->setModel(currentAccount_->cipherModel());
+
+    reloadCodec();
 }
 
 void
@@ -230,7 +234,6 @@ AccountDetails::audio_codec_checked(int row, int column) {
     auto idx = codecModel_->audioCodecs()->index(row, 0);
     codecModel_->audioCodecs()->setData(idx, item->checkState(),
                                         Qt::CheckStateRole);
-    codecModelModified = true;
 }
 
 void
@@ -241,27 +244,6 @@ AccountDetails::video_codec_checked(int row, int column) {
     auto idx = codecModel_->videoCodecs()->index(row, 0);
     codecModel_->videoCodecs()->setData(idx, item->checkState(),
                                         Qt::CheckStateRole);
-    codecModelModified = true;
-}
-
-void
-AccountDetails::setVideoEnabled(bool enabled) {
-    currentAccount_->setVideoEnabled(enabled);
-}
-
-void
-AccountDetails::setAutoAnswer(bool enabled) {
-    currentAccount_->setAutoAnswer(enabled);
-}
-
-void
-AccountDetails::aliasChanged() {
-    currentAccount_->setAlias(ui->aliasValue->text());
-}
-
-void
-AccountDetails::bootstrapChanged() {
-    currentAccount_->setHostname(ui->bootstrapLineEdit->text());
 }
 
 void
@@ -269,7 +251,6 @@ AccountDetails::on_upAudioButton_clicked()
 {
     codecModel_->moveUp();
     reloadCodec(CodecType::AUDIO);
-    codecModelModified = true;
 }
 
 void
@@ -277,7 +258,6 @@ AccountDetails::on_downAudioButton_clicked()
 {
     codecModel_->moveDown();
     reloadCodec(CodecType::AUDIO);
-    codecModelModified = true;
 }
 
 void
@@ -285,7 +265,6 @@ AccountDetails::on_upVideoButton_clicked()
 {
     codecModel_->moveUp();
     reloadCodec(CodecType::VIDEO);
-    codecModelModified = true;
 }
 
 void
@@ -293,7 +272,6 @@ AccountDetails::on_downVideoButton_clicked()
 {
     codecModel_->moveDown();
     reloadCodec(CodecType::VIDEO);
-    codecModelModified = true;
 }
 
 void
@@ -318,38 +296,13 @@ AccountDetails::on_videoCodecView_itemSelectionChanged()
 
 void
 AccountDetails::save() {
-    if (codecModelModified)
-        codecModel_->save();
-}
-
-void
-AccountDetails::on_hostnameEdit_editingFinished()
-{
-    currentAccount_->setHostname(ui->hostnameEdit->text());
+    codecModel_->performAction(CodecModel::EditAction::SAVE);
 }
 
 void
 AccountDetails::on_usernameEdit_editingFinished()
 {
     currentAccount_->setUsername(ui->usernameEdit->text());
-}
-
-void
-AccountDetails::on_passwordEdit_editingFinished()
-{
-    currentAccount_->setPassword(ui->passwordEdit->text());
-}
-
-void
-AccountDetails::on_proxyEdit_editingFinished()
-{
-    currentAccount_->setProxy(ui->proxyEdit->text());
-}
-
-void
-AccountDetails::on_voicemailEdit_editingFinished()
-{
-    currentAccount_->setMailbox(ui->voicemailEdit->text());
 }
 
 void
@@ -362,7 +315,17 @@ AccountDetails::on_tabWidget_currentChanged(int index)
     }
 }
 
-void AccountDetails::on_upnpCheckBox_clicked(bool checked)
+
+void
+AccountDetails::onCertButtonClicked()
 {
-    currentAccount_->setUpnpEnabled(checked);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Choose File"),
+    "",
+    tr("Files (*)"));
+
+    auto sender = QObject::sender();
+
+    (currentAccount_->*certMap_[sender->objectName()])(fileName);
+
+    static_cast<QPushButton*>(sender)->setText(fileName);
 }

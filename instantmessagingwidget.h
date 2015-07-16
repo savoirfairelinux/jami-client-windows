@@ -16,40 +16,47 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOWIDGET_H
-#define VIDEOWIDGET_H
+#ifndef INSTANTMESSAGINGWIDGET_H
+#define INSTANTMESSAGINGWIDGET_H
 
 #include <QWidget>
-#include <QPainter>
+#include <QKeyEvent>
+#include <QSettings>
 
-#include <memory>
+#include "call.h"
+#include "media/media.h"
 
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-#include "callmodel.h"
+#include "imdelegate.h"
 
-class VideoWidget : public QWidget
+namespace Ui {
+class InstantMessagingWidget;
+}
+
+class InstantMessagingWidget final : public QWidget
 {
     Q_OBJECT
-public:
-    explicit VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
 
-public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
-    void frameFromDistant();
-    void renderingStopped();
+public:
+    explicit InstantMessagingWidget(QWidget *parent = 0);
+    ~InstantMessagingWidget();
+    void setMediaText(Call* call);
+
+protected:
+    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void showEvent(QShowEvent * event) override;
+
+//UI SLOTS
+private slots:
+    void on_sendButton_clicked();
+
+private slots:
+    void mediaAdd(Media::Media *media);
 
 private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
-    std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
-    constexpr static int previewMargin_ = 15;
+    Ui::InstantMessagingWidget *ui;
+    ImDelegate* imDelegate_;
+    QSettings settings_;
+    void copyToClipboard();
 };
 
-#endif // VIDEOWIDGET_H
+#endif // INSTANTMESSAGINGWIDGET_H

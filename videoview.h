@@ -16,40 +16,53 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOWIDGET_H
-#define VIDEOWIDGET_H
+#ifndef VIDEOVIEW_H
+#define VIDEOVIEW_H
 
 #include <QWidget>
-#include <QPainter>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QPropertyAnimation>
 
-#include <memory>
+#include "videooverlay.h"
 
-#include "video/renderer.h"
-#include "video/previewmanager.h"
-#include "callmodel.h"
+namespace Ui {
+class VideoView;
+}
 
-class VideoWidget : public QWidget
+class VideoView : public QWidget
 {
     Q_OBJECT
-public:
-    explicit VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
 
-public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
-    void frameFromDistant();
-    void renderingStopped();
+public:
+    explicit VideoView(QWidget *parent = 0);
+    ~VideoView();
+
+protected:
+    void resizeEvent(QResizeEvent* event);
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseDoubleClickEvent(QMouseEvent *e);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
+
+private slots:
+    void callStateChanged(Call *call, Call::State previousState);
+    void updateTimer();
+    void showContextMenu(const QPoint &pos);
 
 private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
-    std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
-    constexpr static int previewMargin_ = 15;
+    Ui::VideoView *ui;
+    QTimer* timerLength_;
+    VideoOverlay* overlay_;
+    constexpr static int fadeOverlayTime_ = 2000; //msec
+    QPropertyAnimation* fadeAnim_;
+    QWidget *oldParent_;
+    QSize oldSize_;
+private:
+    void toggleFullScreen();
+signals:
+    void setChatVisibility(bool visible);
 };
 
-#endif // VIDEOWIDGET_H
+#endif // VIDEOVIEW_H

@@ -15,7 +15,7 @@ DEFINES += VERSION=\\\"$$VERSION\\\"
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
 
 BUILD=$${BUILD}
-TARGET = RingClientWindows
+TARGET = Ring
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
@@ -40,7 +40,14 @@ SOURCES += main.cpp\
     wizarddialog.cpp \
     windowscontactbackend.cpp \
     historydelegate.cpp \
-    contactdelegate.cpp
+    contactdelegate.cpp \
+    selectareadialog.cpp \
+    accountserializationadapter.cpp \
+    instantmessagingwidget.cpp \
+    accountstatedelegate.cpp \
+    videoview.cpp \
+    videooverlay.cpp \
+    imdelegate.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -56,7 +63,14 @@ HEADERS  += mainwindow.h \
     wizarddialog.h \
     windowscontactbackend.h \
     historydelegate.h \
-    contactdelegate.h
+    contactdelegate.h \
+    selectareadialog.h \
+    accountserializationadapter.h \
+    instantmessagingwidget.h \
+    accountstatedelegate.h \
+    videoview.h \
+    videooverlay.h \
+    imdelegate.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -66,13 +80,16 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     pivotviewwidget.ui \
-    wizarddialog.ui
+    wizarddialog.ui \
+    instantmessagingwidget.ui \
+    videoview.ui \
+    videooverlay.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
 INCLUDEPATH += $${RING}/include/libringclient
 
-LIBS += -L$${RING}/lib/ -lringclient
+LIBS += -L$${RING}/lib -lringclient
 
 RESOURCES += \
     ressources.qrc
@@ -109,7 +126,7 @@ win32 {
                             $$RUNTIMEDIR/libharfbuzz-0.dll \
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
                             $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
-                            $$RUNTIMEDIR/libjpeg-62.dll
+                            $$RUNTIMEDIR/libjpeg-62.dll $$RUNTIMEDIR/libiconv-2.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$(QTDIR)/plugins/platforms/qwindows.dll
@@ -125,5 +142,3 @@ win32 {
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME QTRUNTIME QTDEPSRUNTIME \
                 QTPLUGINIMAGE QTPLATFORMS LIBSTD
 }
-
-

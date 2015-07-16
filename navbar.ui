@@ -42,7 +42,7 @@
    <item>
     <widget class="QPushButton" name="backButton">
      <property name="text">
-      <string>Back</string>
+      <string>Done</string>
      </property>
      <property name="icon">
       <iconset resource="ressources.qrc">

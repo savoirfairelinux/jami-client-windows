@@ -23,13 +23,18 @@
 #include <QVector>
 #include <QString>
 #include <QMenu>
+#include <QItemSelection>
+#include <QMovie>
 
 #include "navwidget.h"
+#include "instantmessagingwidget.h"
+#include "historydelegate.h"
+#include "contactdelegate.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
-
+#include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 
 namespace Ui {
@@ -40,12 +45,6 @@ class CallWidget : public NavWidget
 {
     Q_OBJECT
 
-    const QVector<QString> state = {"New", "Incoming", "Ringing", "Current",
-                                        "Dialing", "Hold", "Failure", "Busy",
-                                        "Transferred", "Transfer hold", "Over",
-                                        "Error", "Conference",
-                                        "Conference Hold", "Initialization",
-                                        "Aborted", "Connected"};
 public:
     explicit CallWidget(QWidget *parent = 0);
     ~CallWidget();
@@ -55,25 +54,19 @@ public:
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
-    void on_holdButton_toggled(bool checked);
-    void on_hangupButton_clicked();
-    void on_callList_activated(const QModelIndex &index);
-    void on_muteSpeakerButton_toggled(bool checked);
-    void on_muteMicButton_toggled(bool checked);
-    void on_speakerSlider_sliderMoved(int position);
-    void on_speakerSlider_sliderReleased();
-    void on_micSlider_sliderMoved(int position);
-    void on_micSlider_sliderReleased();
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_historyList_doubleClicked(const QModelIndex &index);
+    void on_sortComboBox_currentIndexChanged(int index);
+    void on_callList_activated(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call *call);
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
+    void checkRegistrationState(Account* account,Account::RegistrationState state);
 
-    void on_sortComboBox_currentIndexChanged(int index);
+    void on_cancelButton_clicked();
 
 private:
     Ui::CallWidget *ui;
@@ -83,9 +76,14 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu *menu_;
+    QMovie *spinner_;
+    HistoryDelegate *historyDelegate_;
+    ContactDelegate *contactDelegate_;
+
 private:
     void findRingAccount();
     void setActualCall(Call *value);
+    void displaySpinner(bool display);
 };
 
 #endif // CALLWIDGET_H

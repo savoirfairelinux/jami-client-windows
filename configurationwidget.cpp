@@ -19,15 +19,22 @@
 #include "configurationwidget.h"
 #include "ui_configurationwidget.h"
 
+#include <QMessageBox>
+
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
 #include "video/rate.h"
 #include "video/previewmanager.h"
 
+#include "accountserializationadapter.h"
+
 #include "accountmodel.h"
 #include "protocolmodel.h"
 #include "accountdetails.h"
+#include "callmodel.h"
+#include "ringtonemodel.h"
+#include "categorizedhistorymodel.h"
 
 #include "utils.h"
 
@@ -41,6 +48,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->setupUi(this);
 
     ui->accountView->setModel(accountModel_);
+    accountStateDelegate_ = new AccountStateDelegate();
+    ui->accountView->setItemDelegate(accountStateDelegate_);
 
     isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);
@@ -48,17 +57,23 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
             this, SLOT(deviceIndexChanged(int)));
 
     connect(ui->accountView->selectionModel(),
-         SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-         this, SLOT(accountSelected(QItemSelection)));
+            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(accountSelected(QItemSelection)));
 
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
-    ui->testVideoButton->setCheckable(true);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
+
+    ui->ringtonesBox->setModel(RingtoneModel::instance());
+    ui->historyDaySettingsSpinBox->setValue(CategorizedHistoryModel::instance()->historyLimit());
 }
 
 void ConfigurationWidget::atExit() {
+    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
+        ui->videoView->hide();
+        Video::PreviewManager::instance()->stopPreview();
+    }
     accountModel_->save();
     accountDetails_->save();
 }
@@ -66,6 +81,7 @@ void ConfigurationWidget::atExit() {
 ConfigurationWidget::~ConfigurationWidget()
 {
     delete ui;
+    delete accountStateDelegate_;
 }
 
 void
@@ -117,7 +133,7 @@ ConfigurationWidget::on_sizeBox_currentIndexChanged(int index)
     }
     ui->rateBox->setCurrentIndex(
                 device->channelList()[0]->
-                activeResolution()->activeRate()->relativeIndex());
+            activeResolution()->activeRate()->relativeIndex());
     isLoading_ = false;
 }
 
@@ -132,17 +148,12 @@ ConfigurationWidget::on_rateBox_currentIndexChanged(int index)
 
 void
 ConfigurationWidget::accountSelected(QItemSelection itemSel) {
-    Q_UNUSED(itemSel)
-    accountDetails_->setAccount(accountModel_->getAccountByModelIndex(
-                                    ui->accountView->currentIndex()));
-}
 
-void
-ConfigurationWidget::on_testVideoButton_toggled(bool checked)
-{
-    checked ? ui->videoView->show() : ui->videoView->hide();
-    checked ? Video::PreviewManager::instance()->startPreview()
-            : Video::PreviewManager::instance()->stopPreview();
+    Q_UNUSED(itemSel)
+    auto account = accountModel_->getAccountByModelIndex(
+                ui->accountView->currentIndex());
+    accountDetails_->setAccount(account);
+    AccountSerializationAdapter adapter(account, accountDetails_);
 }
 
 void
@@ -158,16 +169,47 @@ void
 ConfigurationWidget::on_addAccountButton_clicked()
 {
     auto account = accountModel_->add("New Account",
-                       ui->accountTypeBox->model()->index(
-                           ui->accountTypeBox->currentIndex(), 0));
+                                      ui->accountTypeBox->model()->index(
+                                          ui->accountTypeBox->currentIndex(), 0));
     account->setRingtonePath(Utils::GetRingtonePath());
     accountModel_->save();
 }
 
-void ConfigurationWidget::on_startupBox_toggled(bool checked)
+void
+ConfigurationWidget::on_startupBox_toggled(bool checked)
 {
     if (checked)
         Utils::CreateStartupLink();
     else
         Utils::DeleteStartupLink();
+}
+
+void
+ConfigurationWidget::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
+        ui->videoView->show();
+        Video::PreviewManager::instance()->startPreview();
+    }
+}
+
+void
+ConfigurationWidget::on_clearHistoryButton_clicked()
+{
+    QMessageBox confirmationDialog;
+
+    confirmationDialog.setText("Are you sure you want to clear all your history?");
+    confirmationDialog.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    auto ret = confirmationDialog.exec();
+
+    if (ret == QMessageBox::Ok)
+        CategorizedHistoryModel::instance()->clearAllCollections();
+}
+
+void
+ConfigurationWidget::on_historyDaySettingsSpinBox_valueChanged(int limit)
+{
+    if (CategorizedHistoryModel::instance()->historyLimit() != limit)
+        CategorizedHistoryModel::instance()->setHistoryLimit(limit);
 }
