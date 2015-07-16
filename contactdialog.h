@@ -16,32 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef CONTACTDIALOG_H
+#define CONTACTDIALOG_H
 
-//Needed for OS detection
-#include <QtGlobal>
+#include <QDialog>
 
-#ifdef Q_OS_WIN32
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
+namespace Ui {
+class ContactDialog;
+}
 
-#include <string>
-#include <QString>
-
-class Utils
+class ContactDialog : public QDialog
 {
+    Q_OBJECT
+
 public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
+    explicit ContactDialog(const QString& number, QWidget *parent = 0);
+    ~ContactDialog();
+
+    const QString &getName();
+
+private slots:
+    void on_nameLineEdit_textChanged(const QString &arg1);
+
+private:
+    Ui::ContactDialog *ui;
+    QString contactName_;
 };
 
-
-#endif // UTILS_H
+#endif // CONTACTDIALOG_H
