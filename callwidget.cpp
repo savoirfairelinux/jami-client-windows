@@ -19,10 +19,13 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
+#include <QClipboard>
+
 #include <memory>
 
 #include "audio/settings.h"
 #include "personmodel.h"
+#include "person.h"
 #include "fallbackpersoncollection.h"
 #include "categorizedcontactmodel.h"
 #include "localhistorycollection.h"
@@ -32,6 +35,8 @@
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
+#include "contactdialog.h"
+#include "contactpicker.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -78,14 +83,17 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->callList->setModel(callModel_);
         ui->callList->setSelectionModel(callModel_->selectionModel());
 
+        auto personCollection = PersonModel::instance()->
+                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+
+        CategorizedContactModel::instance()->setSortAlphabetical(false);
+        CategorizedContactModel::instance()->setUnreachableHidden(true);
+        ui->contactView->setModel(CategorizedContactModel::instance());
+        contactDelegate_ = new ContactDelegate();
+        ui->contactView->setItemDelegate(contactDelegate_);
+
         CategorizedHistoryModel::instance()->
                 addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
-
-        PersonModel::instance()->
-                addCollection<FallbackPersonCollection>(LoadOptions::FORCE_ENABLED);
-
-        PersonModel::instance()->
-                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
         ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
         CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
@@ -99,13 +107,58 @@ CallWidget::CallWidget(QWidget *parent) :
                 ui->historyList->setExpanded(idx, true);
         });
 
+        ui->historyList->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(ui->historyList, &QListView::customContextMenuRequested, [=](const QPoint& pos){
+            if (ui->historyList->currentIndex().parent().isValid()) {
+                QPoint globalPos = ui->historyList->mapToGlobal(pos);
+                QMenu menu;
+
+                ContactMethod* contactMethod = ui->historyList->currentIndex()
+                        .data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>();
+
+                auto copyAction = new QAction("Copy number", this);
+                menu.addAction(copyAction);
+                connect(copyAction, &QAction::triggered, [=]() {
+                    QApplication::clipboard()->setText(contactMethod->uri());
+                });
+
+                if (not contactMethod->contact()) {
+                    auto addNew = new QAction("Add to new contact", this);
+                    menu.addAction(addNew);
+                    connect(addNew, &QAction::triggered, [=]() {
+                        ContactDialog dialog(contactMethod->uri());
+                        auto ret = dialog.exec();
+                        if (!ret || dialog.getName().isEmpty())
+                            return;
+                        auto *newPerson = new Person();
+                        newPerson->setFormattedName(dialog.getName());
+                        Person::ContactMethods cM;
+                        cM.append(contactMethod);
+                        newPerson->setContactMethods(cM);
+                        PersonModel::instance()->addNewPerson(newPerson, personCollection);
+                    });
+                    auto addExisting = new QAction("Add to existing contact", this);
+                    menu.addAction(addExisting);
+                    connect(addExisting, &QAction::triggered, [=]() {
+                        CategorizedContactModel::instance()->setUnreachableHidden(false);
+                        ContactPicker contactPicker;
+                        contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
+                        auto ret = contactPicker.exec();
+                        if (!ret)
+                            return;
+                        auto p = contactPicker.getPersonSelected();
+                        Person::ContactMethods cM (p->phoneNumbers());
+                        cM.append(contactMethod);
+                        p->setContactMethods(cM);
+                        p->save();
+                        CategorizedContactModel::instance()->setUnreachableHidden(true);
+                    });
+                }
+                menu.exec(globalPos);
+            }
+        });
 
         ui->sortComboBox->setModel(CategorizedHistoryModel::SortedProxy::instance()->categoryModel());
-
-        CategorizedContactModel::instance()->setSortAlphabetical(false);
-        ui->contactView->setModel(CategorizedContactModel::instance());
-        contactDelegate_ = new ContactDelegate();
-        ui->contactView->setItemDelegate(contactDelegate_);
 
         findRingAccount();
 
@@ -250,7 +303,8 @@ CallWidget::on_refuseButton_clicked()
 }
 
 void
-CallWidget::addedCall(Call* call, Call* parent) {
+CallWidget::addedCall(Call* call, Call* parent)
+{
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
         displaySpinner(true);
@@ -302,27 +356,31 @@ CallWidget::on_callList_activated(const QModelIndex &index)
 }
 
 void
-CallWidget::atExit() {
+CallWidget::atExit()
+{
 
 }
 
 void
 CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
 {
-    QString uri;
+    if (not index.isValid())
+        return;
+
+    ContactMethod* uri;
 
     auto var = index.child(0,0).data(
                 static_cast<int>(Person::Role::Object));
     if (var.isValid()) {
         Person* person = var.value<Person*>();
         if (person->phoneNumbers().size() > 0) {
-            uri = person->phoneNumbers().at(0)->uri();
+            uri = person->phoneNumbers().at(0); // FIXME: A person can have multiple contact method
+            if (uri) {
+                auto outCall = CallModel::instance()->dialingCall(person->formattedName());
+                outCall->setDialNumber(uri);
+                outCall->performAction(Call::Action::ACCEPT);
+            }
         }
-    }
-    if (not uri.isEmpty()) {
-        auto outCall = CallModel::instance()->dialingCall(uri);
-        outCall->setDialNumber(uri);
-        outCall->performAction(Call::Action::ACCEPT);
     }
 }
 
@@ -332,9 +390,9 @@ CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
     if (not index.isValid())
         return;
 
-    QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
-    if (not number.isEmpty()) {
-        auto outCall = CallModel::instance()->dialingCall(number);
+    auto number = index.model()->data(index, static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>();
+    if (number) {
+        auto outCall = CallModel::instance()->dialingCall();
         outCall->setDialNumber(number);
         outCall->performAction(Call::Action::ACCEPT);
     }
