@@ -16,32 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef UTILS_H
-#define UTILS_H
+#include "contactpicker.h"
+#include "ui_contactpicker.h"
 
-//Needed for OS detection
-#include <QtGlobal>
+#include "categorizedcontactmodel.h"
 
-#ifdef Q_OS_WIN32
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
-
-#include <string>
-#include <QString>
-
-class Utils
+ContactPicker::ContactPicker(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ContactPicker)
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-};
+    ui->setupUi(this);
 
+    this->setWindowFlags(Qt::CustomizeWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint);
 
-#endif // UTILS_H
+    auto contactModel = CategorizedContactModel::instance();
+    contactModel->setSortAlphabetical(true);
+    ui->contactView->setModel(contactModel);
+}
+
+ContactPicker::~ContactPicker()
+{
+    delete ui;
+}
+
+void
+ContactPicker::on_contactView_doubleClicked(const QModelIndex &index)
+{
+    qDebug() << "DOUBLE CLICKED";
+    qDebug() << index;
+}

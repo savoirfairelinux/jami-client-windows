@@ -16,32 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef CONTACTPICKER_H
+#define CONTACTPICKER_H
 
-//Needed for OS detection
-#include <QtGlobal>
+#include <QDialog>
 
-#ifdef Q_OS_WIN32
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
+namespace Ui {
+class ContactPicker;
+}
 
-#include <string>
-#include <QString>
-
-class Utils
+class ContactPicker : public QDialog
 {
+    Q_OBJECT
+
 public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
+    explicit ContactPicker(QWidget *parent = 0);
+    ~ContactPicker();
+
+//UI SLOTS
+private slots:
+    void on_contactView_doubleClicked(const QModelIndex &index);
+
+private:
+    Ui::ContactPicker *ui;
 };
 
-
-#endif // UTILS_H
+#endif // CONTACTPICKER_H
