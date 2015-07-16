@@ -19,10 +19,13 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
+#include <QClipboard>
+
 #include <memory>
 
 #include "audio/settings.h"
 #include "personmodel.h"
+#include "person.h"
 #include "fallbackpersoncollection.h"
 #include "categorizedcontactmodel.h"
 #include "localhistorycollection.h"
@@ -32,6 +35,8 @@
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
+#include "contactdialog.h"
+#include "contactpicker.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -84,8 +89,13 @@ CallWidget::CallWidget(QWidget *parent) :
         PersonModel::instance()->
                 addCollection<FallbackPersonCollection>(LoadOptions::FORCE_ENABLED);
 
-        PersonModel::instance()->
+        auto personCollection = PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+
+        CategorizedContactModel::instance()->setSortAlphabetical(false);
+        ui->contactView->setModel(CategorizedContactModel::instance());
+        contactDelegate_ = new ContactDelegate();
+        ui->contactView->setItemDelegate(contactDelegate_);
 
         ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
         CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
@@ -99,13 +109,55 @@ CallWidget::CallWidget(QWidget *parent) :
                 ui->historyList->setExpanded(idx, true);
         });
 
+        ui->historyList->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(ui->historyList, &QListView::customContextMenuRequested, [=](const QPoint& pos){
+            if (ui->historyList->currentIndex().parent().isValid()) {
+                QPoint globalPos = ui->historyList->mapToGlobal(pos);
+                QMenu menu;
+
+                ContactMethod* contactMethod = ui->historyList->currentIndex()
+                        .data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>();
+
+                auto copyAction = new QAction("Copy number", this);
+                menu.addAction(copyAction);
+                connect(copyAction, &QAction::triggered, [=]() {
+                    QApplication::clipboard()->setText(contactMethod->uri());
+                });
+
+                auto addNew = new QAction("Add to new contact", this);
+                menu.addAction(addNew);
+                connect(addNew, &QAction::triggered, [=]() {
+                    ContactDialog dialog(contactMethod->uri());
+                    auto ret = dialog.exec();
+                    if (!ret || dialog.getName().isEmpty())
+                        return;
+                    auto *newPerson = new Person();
+                    newPerson->setFormattedName(dialog.getName());
+                    Person::ContactMethods cM;
+                    cM.append(contactMethod);
+                    newPerson->setContactMethods(cM);
+                    PersonModel::instance()->addNewPerson(newPerson, personCollection);
+                });
+                auto addExisting = new QAction("Add to existing contact", this);
+                menu.addAction(addExisting);
+                connect(addExisting, &QAction::triggered, [=]() {
+                   ContactPicker contactPicker;
+                   contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
+                   auto ret = contactPicker.exec();
+                   if (!ret)
+                       return;
+                   auto p = contactPicker.getPersonSelected();
+                   Person::ContactMethods cM (p->phoneNumbers());
+                   cM.append(contactMethod);
+                   p->setContactMethods(cM);
+                   p->save();
+                });
+                menu.exec(globalPos);
+            }
+        });
+
 
         ui->sortComboBox->setModel(CategorizedHistoryModel::SortedProxy::instance()->categoryModel());
-
-        CategorizedContactModel::instance()->setSortAlphabetical(false);
-        ui->contactView->setModel(CategorizedContactModel::instance());
-        contactDelegate_ = new ContactDelegate();
-        ui->contactView->setItemDelegate(contactDelegate_);
 
         findRingAccount();
 
@@ -309,10 +361,13 @@ CallWidget::atExit() {
 void
 CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
 {
+    qDebug() << "DOUBLE CLICKED";
+
     QString uri;
 
     auto var = index.child(0,0).data(
                 static_cast<int>(Person::Role::Object));
+    qDebug() << var;
     if (var.isValid()) {
         Person* person = var.value<Person*>();
         if (person->phoneNumbers().size() > 0) {
