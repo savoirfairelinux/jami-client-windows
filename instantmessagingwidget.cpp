@@ -75,7 +75,9 @@ InstantMessagingWidget::setMediaText(Call *call)
         Media::Text *textMedia = call->addOutgoingMedia<Media::Text>();
         connect(ui->messageInput, &QLineEdit::returnPressed, [=]()
         {
-            textMedia->send(ui->messageInput->text());
+            QMap<QString, QString> messages;
+            messages["text/plain"] = ui->messageInput->text();
+            textMedia->send(messages);
             ui->messageInput->clear();
         });
     } else {
