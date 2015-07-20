@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_85e2c701",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-20T18:17:56Z",
+      "side": 1,
+      "message": "Is it possible for this to be nullptr? Is it not only the contents that might be null? ie: the test should be\n\u0026\u0026 previewRenderer_-\u003ecurrentSmartFrame()\n\nor \n\n\u0026\u0026 previewREnderer_-\u003ecurrentSmartFrame().get() !\u003d nullptr",
+      "range": {
+        "startLine": 65,
+        "startChar": 80,
+        "endLine": 65,
+        "endChar": 111
+      },
+      "revId": "c963ed2873796633e6e100bcddc972a2d9b5e626",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_65e7d313",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-20T18:17:56Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 115,
+        "startChar": 60,
+        "endLine": 115,
+        "endChar": 90
+      },
+      "revId": "c963ed2873796633e6e100bcddc972a2d9b5e626",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
