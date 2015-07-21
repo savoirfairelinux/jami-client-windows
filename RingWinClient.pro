@@ -49,7 +49,8 @@ SOURCES += main.cpp\
     videooverlay.cpp \
     imdelegate.cpp \
     contactdialog.cpp \
-    contactpicker.cpp
+    contactpicker.cpp \
+    contactmethodpicker.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -74,7 +75,8 @@ HEADERS  += mainwindow.h \
     videooverlay.h \
     imdelegate.h \
     contactdialog.h \
-    contactpicker.h
+    contactpicker.h \
+    contactmethodpicker.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -89,7 +91,8 @@ FORMS    += mainwindow.ui \
     videoview.ui \
     videooverlay.ui \
     contactdialog.ui \
-    contactpicker.ui
+    contactpicker.ui \
+    contactmethodpicker.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
