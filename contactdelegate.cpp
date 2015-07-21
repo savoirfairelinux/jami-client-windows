@@ -83,7 +83,10 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                 break;
             }
             default:
-                /* more than one, for now don't show any of the contact methods */
+                painter->drawText(QRect(rect.left()+sizeImage_+5,
+                                        rect.top() + rect.height()/2,
+                                        rect.width(), rect.height()/2),
+                                  opt.displayAlignment, "<Multiple contact methods>");
                 break;
             }
         }
