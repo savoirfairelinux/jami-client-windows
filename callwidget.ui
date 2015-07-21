@@ -315,15 +315,6 @@
              <property name="sizeAdjustPolicy">
               <enum>QAbstractScrollArea::AdjustIgnored</enum>
              </property>
-             <property name="resizeMode">
-              <enum>QListView::Fixed</enum>
-             </property>
-             <property name="layoutMode">
-              <enum>QListView::SinglePass</enum>
-             </property>
-             <property name="wordWrap">
-              <bool>false</bool>
-             </property>
             </widget>
            </item>
           </layout>
