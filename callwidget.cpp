@@ -37,6 +37,7 @@
 #include "windowscontactbackend.h"
 #include "contactdialog.h"
 #include "contactpicker.h"
+#include "contactmethodpicker.h"
 
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(Main ,parent),
@@ -121,7 +122,6 @@ CallWidget::CallWidget(QWidget *parent) :
                 connect(copyAction, &QAction::triggered, [=]() {
                     QApplication::clipboard()->setText(contactMethod->uri());
                 });
-
                 if (not contactMethod->contact()) {
                     auto addNew = new QAction("Add to new contact", this);
                     menu.addAction(addNew);
@@ -367,19 +367,25 @@ CallWidget::on_contactView_doubleClicked(const QModelIndex &index)
     if (not index.isValid())
         return;
 
-    ContactMethod* uri;
+    ContactMethod* uri = nullptr;
 
     auto var = index.child(0,0).data(
                 static_cast<int>(Person::Role::Object));
     if (var.isValid()) {
         Person* person = var.value<Person*>();
-        if (person->phoneNumbers().size() > 0) {
-            uri = person->phoneNumbers().at(0); // FIXME: A person can have multiple contact method
-            if (uri) {
-                auto outCall = CallModel::instance()->dialingCall(person->formattedName());
-                outCall->setDialNumber(uri);
-                outCall->performAction(Call::Action::ACCEPT);
-            }
+        if (person->phoneNumbers().size() == 1) {
+            uri = person->phoneNumbers().at(0);
+        } else if (person->phoneNumbers().size() > 1) {
+            ContactMethodPicker dlg(person->phoneNumbers());
+            auto pos = QCursor::pos();
+            dlg.move(pos.x(), pos.y());
+            if (dlg.exec())
+                uri = dlg.getSelected();
+        }
+        if (uri) {
+            auto outCall = CallModel::instance()->dialingCall(person->formattedName());
+            outCall->setDialNumber(uri);
+            outCall->performAction(Call::Action::ACCEPT);
         }
     }
 }
