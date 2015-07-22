@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_98b0eade",
+        "filename": "callwidget.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "maybe its good to add a short comment about why this needs to be done... since its technically a bug in lrc that the model doesn\u0027t get properly refreshed without this",
+      "range": {
+        "startLine": 143,
+        "startChar": 24,
+        "endLine": 143,
+        "endChar": 89
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_789e5658",
+        "filename": "callwidget.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "since its actually a ContactMethod and its not needed outside of this scope, maybe its easier to just do:\nauto number \u003d ...",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 15
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_58a3929e",
+        "filename": "callwidget.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "you can just do:\nindex.data(static_cast\u003cint\u003e(...",
+      "range": {
+        "startLine": 391,
+        "startChar": 18,
+        "endLine": 391,
+        "endChar": 114
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_d8dd4216",
+        "filename": "contactdialog.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "\u0027f\u0027",
+      "range": {
+        "startLine": 2,
+        "startChar": 32,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_f8c0062c",
+        "filename": "contactdialog.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "\u0027f\u0027  :P",
+      "range": {
+        "startLine": 2,
+        "startChar": 32,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_98e7cae4",
+        "filename": "contactpicker.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "\u0027f\u0027",
+      "range": {
+        "startLine": 2,
+        "startChar": 32,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_b8e28ed3",
+        "filename": "contactpicker.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "\u0027f\u0027",
+      "range": {
+        "startLine": 2,
+        "startChar": 32,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_d82b02ea",
+        "filename": "windowscontactbackend.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "should this check if the file already exists?",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_7803f673",
+        "filename": "windowscontactbackend.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T20:16:00Z",
+      "side": 1,
+      "message": "so, I did this initially, because it was easier to parse the vCard with the vcardutils.h in lrc and then get each field with the Person api. However, deleting a Person can have bad consequences. I recommend to (either in this patch, or another) instead to first check if the person already exists and then update that object instead\n\n...although, I\u0027m not sure if you ever even load the UID of the person from the file...",
+      "range": {
+        "startLine": 323,
+        "startChar": 12,
+        "endLine": 335,
+        "endChar": 25
+      },
+      "revId": "3e57deceb7fb611624e5f85c43676da9473c21c0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
