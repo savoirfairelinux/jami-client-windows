@@ -68,6 +68,8 @@ private slots:
 
     void on_cancelButton_clicked();
 
+    void on_smartListView_clicked(const QModelIndex &index);
+
 private:
     Ui::CallWidget *ui;
     Call* actualCall_;
