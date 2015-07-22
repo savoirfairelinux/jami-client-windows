@@ -46,6 +46,30 @@
       "revId": "53971615ae45a883de3b28623a67743411327da3",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_58db92ed",
+        "filename": "callwidget.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-07-22T22:01:03Z",
+      "side": 0,
+      "message": "It checks QStandardPaths::DataLocation + \"/vCard/\" for vcards... though you can set it to another location, like so:\n\nPersonModel::instance()-\u003eaddCollection\u003cFallbackPersonCollection, QString\u003e(\u003cpath\u003e, LoadOptions::FORCE_ENABLED);",
+      "parentUuid": "9a5c5d37_18775a04",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 84
+      },
+      "revId": "53971615ae45a883de3b28623a67743411327da3",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
