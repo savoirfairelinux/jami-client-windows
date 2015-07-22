@@ -48,6 +48,9 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
+          <widget class="SummaryWidget" name="summaryWidget" native="true"/>
+         </item>
+         <item>
           <widget class="VideoView" name="videoWidget" native="true"/>
          </item>
          <item>
@@ -209,6 +212,28 @@
          <property name="currentIndex">
           <number>0</number>
          </property>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>SmartList</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QListView" name="smartListView"/>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="historyTab">
           <attribute name="title">
            <string>History</string>
@@ -413,6 +438,12 @@
    <class>VideoView</class>
    <extends>QWidget</extends>
    <header>videoview.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SummaryWidget</class>
+   <extends>QWidget</extends>
+   <header>summarywidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

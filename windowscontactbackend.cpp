@@ -127,7 +127,7 @@ WindowsContactBackend::loadRun()
                     else if (name == "Number") {
                         QString number = reader.readElementText();
                         if (not number.isEmpty()) {
-                            ContactMethod *contact = PhoneDirectoryModel::instance()->getNumber(number);
+                            ContactMethod *contact = PhoneDirectoryModel::instance()->getNumber(number, p);
                             contactMethod.append(contact);
                         }
                     }

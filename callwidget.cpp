@@ -29,6 +29,7 @@
 #include "media/text.h"
 #include "media/recording.h"
 #include "media/textrecording.h"
+#include "recentmodel.h"
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
@@ -106,6 +107,8 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->contactView->setModel(CategorizedContactModel::instance());
         contactDelegate_ = new ContactDelegate();
         ui->contactView->setItemDelegate(contactDelegate_);
+
+        ui->smartListView->setModel(RecentModel::instance());
 
         findRingAccount();
 
@@ -227,6 +230,7 @@ CallWidget::callIncoming(Call *call)
         ui->callLabel->setText("Call from " + call->formattedName());
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
+        ui->summaryWidget->hide();
     }
     setActualCall(call);
 }
@@ -262,6 +266,7 @@ void
 CallWidget::callStateChanged(Call* call, Call::State previousState)
 {
     Q_UNUSED(previousState)
+    qDebug() << "CALL STATE" << call->toHumanStateName();
     if (call == nullptr)
         return;
     ui->callList->setCurrentIndex(callModel_->getIndex(actualCall_));
@@ -331,6 +336,7 @@ CallWidget::on_historyList_doubleClicked(const QModelIndex &index)
         return;
 
     QString number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
+    qDebug() << index.model()->data(index, static_cast<int>(Call::Role::ContactMethod));
     if (not number.isEmpty()) {
         auto outCall = CallModel::instance()->dialingCall(number);
         outCall->setDialNumber(number);
@@ -367,4 +373,9 @@ void CallWidget::on_cancelButton_clicked()
 {
     if (actualCall_)
         actualCall_->performAction(Call::Action::REFUSE);
+}
+
+void CallWidget::on_smartListView_clicked(const QModelIndex &index)
+{
+    ui->summaryWidget->setPerson(index);
 }

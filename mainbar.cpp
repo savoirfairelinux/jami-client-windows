@@ -21,6 +21,7 @@
 
 #include "callmodel.h"
 #include "aboutdialog.h"
+#include "phonedirectorydialog.h"
 
 MainBar::MainBar(QWidget *parent) :
     NavWidget(END, parent),
@@ -97,4 +98,10 @@ MainBar::on_minimizeButton_clicked()
 void
 MainBar::atExit() {
 
+}
+
+void MainBar::on_pushButton_clicked()
+{
+    PhoneDirectoryDialog dlg;
+    dlg.exec();
 }

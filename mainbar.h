@@ -49,6 +49,8 @@ private slots:
 private slots:
     void showAboutDialog();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainBar *ui;
     void callAction();
