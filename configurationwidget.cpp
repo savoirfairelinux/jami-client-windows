@@ -70,6 +70,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 }
 
 void ConfigurationWidget::atExit() {
+    qDebug() << "IS PREVIEWING" << Video::PreviewManager::instance()->isPreviewing();
     if (CallModel::instance()->getActiveCalls().size() == 0 ) {
         ui->videoView->hide();
         Video::PreviewManager::instance()->stopPreview();

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>748</width>
-    <height>657</height>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1552,7 +1552,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>
