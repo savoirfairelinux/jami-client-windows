@@ -33,6 +33,24 @@
       "revId": "d05106105b8ce0f412ce305118a0c948ba6848b4",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_f1a9417c",
+        "filename": "contactmethodpicker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-07-30T14:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5c5d37_51200d49",
+      "revId": "d05106105b8ce0f412ce305118a0c948ba6848b4",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
