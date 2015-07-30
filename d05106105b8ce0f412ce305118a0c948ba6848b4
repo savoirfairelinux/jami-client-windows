@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_311d9910",
+        "filename": "contactmethodpicker.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-07-30T11:44:43Z",
+      "side": 1,
+      "message": "I wonder if the contact methods could be exposed as a model. This would make much of this redundant. If you wish, I can do that (send me an email)",
+      "revId": "d05106105b8ce0f412ce305118a0c948ba6848b4",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_51200d49",
+        "filename": "contactmethodpicker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-07-30T11:44:43Z",
+      "side": 1,
+      "message": "Either make it virtual or declare the class final. All destructor of non final classes should be declared virtual",
+      "revId": "d05106105b8ce0f412ce305118a0c948ba6848b4",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
