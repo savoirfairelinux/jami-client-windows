@@ -22,6 +22,7 @@
 #include <QDialog>
 
 #include "personmodel.h"
+#include "contactmethod.h"
 
 namespace Ui {
 class ContactPicker;
@@ -32,19 +33,22 @@ class ContactPicker : public QDialog
     Q_OBJECT
 
 public:
-    explicit ContactPicker(QWidget *parent = 0);
+    explicit ContactPicker(ContactMethod* number, QWidget *parent = 0);
     ~ContactPicker();
 
-     Person *getPersonSelected();
+protected slots:
+     void accept();
 
 //UI SLOTS
 private slots:
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_cancelButton_clicked();
+    void on_okButton_clicked();
 
 private:
     Ui::ContactPicker *ui;
     Person *personSelected_;
+    ContactMethod* number_;
 };
 
 #endif // CONTACTPICKER_H

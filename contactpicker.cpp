@@ -20,11 +20,15 @@
 #include "ui_contactpicker.h"
 
 #include "categorizedcontactmodel.h"
+#include "personmodel.h"
 
-ContactPicker::ContactPicker(QWidget *parent) :
+#include "utils.h"
+
+ContactPicker::ContactPicker(ContactMethod *number, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactPicker),
-    personSelected_(nullptr)
+    personSelected_(nullptr),
+    number_(number)
 {
     ui->setupUi(this);
 
@@ -33,6 +37,7 @@ ContactPicker::ContactPicker(QWidget *parent) :
 
     auto personModel = PersonModel::instance();
     ui->contactView->setModel(personModel);
+    ui->numberLineEdit->setText(number->uri());
 }
 
 ContactPicker::~ContactPicker()
@@ -43,18 +48,48 @@ ContactPicker::~ContactPicker()
 void
 ContactPicker::on_contactView_doubleClicked(const QModelIndex &index)
 {
-    personSelected_ =  index.data(static_cast<int>(Person::Role::Object)).value<Person*>();
     this->accept();
-}
-
-Person*
-ContactPicker::getPersonSelected()
-{
-    return personSelected_;
 }
 
 void
 ContactPicker::on_cancelButton_clicked()
 {
     this->reject();
+}
+
+void
+ContactPicker::accept()
+{
+    /* Force LRC to update contact model as adding a number
+    to a contact without one didn't render him reachable */
+    CategorizedContactModel::instance()->setUnreachableHidden(false);
+
+    auto idx = ui->contactView->currentIndex();
+
+    //There is only one collection on Windows
+    auto personCollection = PersonModel::instance()->collections().at(0);
+
+    if (not ui->nameLineEdit->text().isEmpty()) {
+        auto *newPerson = new Person();
+        newPerson->setFormattedName(ui->nameLineEdit->text());
+        Person::ContactMethods cM;
+        cM.append(number_);
+        newPerson->setContactMethods(cM);
+        newPerson->setUid(Utils::GenGUID().toLocal8Bit());
+        PersonModel::instance()->addNewPerson(newPerson, personCollection);
+    } else if (idx.isValid()) {
+        auto p = idx.data(static_cast<int>(Person::Role::Object)).value<Person*>();
+        Person::ContactMethods cM (p->phoneNumbers());
+        cM.append(number_);
+        p->setContactMethods(cM);
+        p->save();
+    }
+    CategorizedContactModel::instance()->setUnreachableHidden(true);
+
+    QDialog::accept();
+}
+
+void ContactPicker::on_okButton_clicked()
+{
+    this->accept();
 }
