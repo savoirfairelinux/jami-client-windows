@@ -48,7 +48,6 @@ SOURCES += main.cpp\
     videoview.cpp \
     videooverlay.cpp \
     imdelegate.cpp \
-    contactdialog.cpp \
     contactpicker.cpp \
     contactmethodpicker.cpp
 
@@ -74,7 +73,6 @@ HEADERS  += mainwindow.h \
     videoview.h \
     videooverlay.h \
     imdelegate.h \
-    contactdialog.h \
     contactpicker.h \
     contactmethodpicker.h
 
@@ -90,7 +88,6 @@ FORMS    += mainwindow.ui \
     instantmessagingwidget.ui \
     videoview.ui \
     videooverlay.ui \
-    contactdialog.ui \
     contactpicker.ui \
     contactmethodpicker.ui
 

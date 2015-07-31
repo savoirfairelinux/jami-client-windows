@@ -20,31 +20,53 @@
 #define CONTACTPICKER_H
 
 #include <QDialog>
+#include <QSortFilterProxyModel>
 
 #include "personmodel.h"
+#include "contactmethod.h"
 
 namespace Ui {
 class ContactPicker;
 }
+
+class OnlyPersonProxyModel : public QSortFilterProxyModel
+{
+public:
+    OnlyPersonProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
+    {
+        setSourceModel(parent);
+    }
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
+    {
+        bool match = filterRegExp().indexIn(sourceModel()->index(source_row,0,source_parent).data(Qt::DisplayRole).toString()) != -1;
+        return match && !sourceModel()->index(source_row,0,source_parent).parent().isValid();
+    }
+};
 
 class ContactPicker : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ContactPicker(QWidget *parent = 0);
+    explicit ContactPicker(ContactMethod* number, QWidget *parent = 0);
     ~ContactPicker();
 
-     Person *getPersonSelected();
+protected slots:
+     void accept();
 
 //UI SLOTS
 private slots:
     void on_contactView_doubleClicked(const QModelIndex &index);
-    void on_cancelButton_clicked();
+    void on_okButton_clicked();
+    void on_createNewButton_clicked();
+
+    void on_searchBar_textChanged(const QString &arg1);
 
 private:
     Ui::ContactPicker *ui;
     Person *personSelected_;
+    ContactMethod* number_;
+    OnlyPersonProxyModel* contactProxyModel_;
 };
 
 #endif // CONTACTPICKER_H
