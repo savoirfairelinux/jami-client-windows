@@ -39,7 +39,6 @@
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
-#include "contactdialog.h"
 #include "contactpicker.h"
 #include "contactmethodpicker.h"
 
@@ -88,7 +87,7 @@ CallWidget::CallWidget(QWidget *parent) :
         ui->callList->setModel(callModel_);
         ui->callList->setSelectionModel(callModel_->selectionModel());
 
-        auto personCollection = PersonModel::instance()->
+        PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
         CategorizedContactModel::instance()->setSortAlphabetical(false);
@@ -126,40 +125,13 @@ CallWidget::CallWidget(QWidget *parent) :
                 connect(copyAction, &QAction::triggered, [=]() {
                     QApplication::clipboard()->setText(contactMethod->uri());
                 });
-                if (not contactMethod->contact()) {
-                    auto addNew = new QAction("Add to new contact", this);
-                    menu.addAction(addNew);
-                    connect(addNew, &QAction::triggered, [=]() {
-                        ContactDialog dialog(contactMethod->uri());
-                        auto ret = dialog.exec();
-                        if (!ret || dialog.getName().isEmpty())
-                            return;
-                        auto *newPerson = new Person();
-                        newPerson->setFormattedName(dialog.getName());
-                        Person::ContactMethods cM;
-                        cM.append(contactMethod);
-                        newPerson->setContactMethods(cM);
-                        newPerson->setUid(Utils::GenGUID().toLocal8Bit());
-                        PersonModel::instance()->addNewPerson(newPerson, personCollection);
-                    });
-                    auto addExisting = new QAction("Add to existing contact", this);
+                if (not contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
+                    auto addExisting = new QAction("Add to contact", this);
                     menu.addAction(addExisting);
                     connect(addExisting, &QAction::triggered, [=]() {
-                        /* Force LRC to update contact model as adding a number
-                        to a contact without one didn't render him reachable */
-                        CategorizedContactModel::instance()->setUnreachableHidden(false);
-
-                        ContactPicker contactPicker;
+                        ContactPicker contactPicker(contactMethod);
                         contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
-                        auto ret = contactPicker.exec();
-                        if (!ret)
-                            return;
-                        auto p = contactPicker.getPersonSelected();
-                        Person::ContactMethods cM (p->phoneNumbers());
-                        cM.append(contactMethod);
-                        p->setContactMethods(cM);
-                        p->save();
-                        CategorizedContactModel::instance()->setUnreachableHidden(true);
+                        contactPicker.exec();
                     });
                 }
                 menu.exec(globalPos);

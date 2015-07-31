@@ -19,20 +19,31 @@
 #include "contactpicker.h"
 #include "ui_contactpicker.h"
 
-#include "categorizedcontactmodel.h"
 
-ContactPicker::ContactPicker(QWidget *parent) :
+
+#include "categorizedcontactmodel.h"
+#include "personmodel.h"
+
+#include "utils.h"
+
+ContactPicker::ContactPicker(ContactMethod *number, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactPicker),
-    personSelected_(nullptr)
+    personSelected_(nullptr),
+    number_(number)
 {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
 
-    auto personModel = PersonModel::instance();
-    ui->contactView->setModel(personModel);
+    contactProxyModel_ = new OnlyPersonProxyModel(PersonModel::instance());
+    contactProxyModel_->setSortRole(static_cast<int>(Qt::DisplayRole));
+    contactProxyModel_->sort(0,Qt::AscendingOrder);
+    contactProxyModel_->setFilterRole(Qt::DisplayRole);
+
+    ui->contactView->setModel(contactProxyModel_);
+    ui->numberLineEdit->setText(number->uri());
 }
 
 ContactPicker::~ContactPicker()
@@ -43,18 +54,56 @@ ContactPicker::~ContactPicker()
 void
 ContactPicker::on_contactView_doubleClicked(const QModelIndex &index)
 {
-    personSelected_ =  index.data(static_cast<int>(Person::Role::Object)).value<Person*>();
+    Q_UNUSED(index)
     this->accept();
 }
 
-Person*
-ContactPicker::getPersonSelected()
+void
+ContactPicker::accept()
 {
-    return personSelected_;
+    /* Force LRC to update contact model as adding a number
+    to a contact without one didn't render him reachable */
+    CategorizedContactModel::instance()->setUnreachableHidden(false);
+
+    auto idx = ui->contactView->currentIndex();
+
+    //There is only one collection on Windows
+    auto personCollection = PersonModel::instance()->collections().at(0);
+
+    if (not ui->nameLineEdit->text().isEmpty()) {
+        auto *newPerson = new Person();
+        newPerson->setFormattedName(ui->nameLineEdit->text());
+        Person::ContactMethods cM;
+        cM.append(number_);
+        newPerson->setContactMethods(cM);
+        newPerson->setUid(Utils::GenGUID().toLocal8Bit());
+        PersonModel::instance()->addNewPerson(newPerson, personCollection);
+    } else if (idx.isValid()) {
+        auto p = idx.data(static_cast<int>(Person::Role::Object)).value<Person*>();
+        Person::ContactMethods cM (p->phoneNumbers());
+        cM.append(number_);
+        p->setContactMethods(cM);
+        p->save();
+    }
+    CategorizedContactModel::instance()->setUnreachableHidden(true);
+
+    QDialog::accept();
 }
 
 void
-ContactPicker::on_cancelButton_clicked()
+ContactPicker::on_okButton_clicked()
 {
-    this->reject();
+    this->accept();
+}
+
+void
+ContactPicker::on_createNewButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void
+ContactPicker::on_searchBar_textChanged(const QString &arg1)
+{
+    contactProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }
