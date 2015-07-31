@@ -60,7 +60,7 @@ VideoWidget::previewStopped() {
 
 void
 VideoWidget::frameFromPreview() {
-    if (previewRenderer_ && previewRenderer_->isRendering() && previewRenderer_->currentSmartFrame() != nullptr) {
+    if (previewRenderer_ && previewRenderer_->isRendering() && previewRenderer_->currentSmartFrame()) {
         currentPreviewFrame_ = previewRenderer_->currentSmartFrame();
         update();
     }
@@ -108,7 +108,7 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
 
 void
 VideoWidget::frameFromDistant() {
-    if (renderer_ && renderer_->isRendering() && renderer_->currentSmartFrame() != nullptr) {
+    if (renderer_ && renderer_->isRendering() && renderer_->currentSmartFrame()) {
         currentDistantFrame_ = renderer_->currentSmartFrame();
         update();
     }
