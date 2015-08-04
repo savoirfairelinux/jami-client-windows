@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,47 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "shmclient.h"
 
-#include "globalsystemtray.h"
+#include <QTextStream>
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class MainWindowToolBar;
-
-namespace Ui {
-class MainWindow;
+ShmClient::ShmClient(QSharedMemory* shm, QSystemSemaphore *sem) :
+    shm_(shm),
+    sem_(sem)
+{
+    start();
 }
 
-class MainWindow : public QMainWindow
+void ShmClient::run()
 {
-    Q_OBJECT
+    while (true) {
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
+        sem_->acquire();
 
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+        shm_->lock();
 
-public slots:
-    void onRingEvent(const QString& uri);
+        char const *from = (char const*)shm_->data();
 
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
+        QString uri = "";
+        QTextStream stream(&uri);
 
-private:
-    Ui::MainWindow* ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    MainWindowToolBar* mwToolBar_;
-};
+        while (from && *from)
+        {
+            stream << *from;
+            ++from;
+        }
+
+        shm_->unlock();
+
+        emit RingEvent(uri);
+    }
+}
