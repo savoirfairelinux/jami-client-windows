@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a6fba646",
+        "filename": "summarywidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-08-04T23:26:05Z",
+      "side": 1,
+      "message": "Please don\u0027t do this. It would be much cleaner to get a subsection of the model instead. There is 2 ways to do this.\n\nOption 1: Add a new method to RecentModel to return a sub-model. You can do that by sub-classing RecentModel and re-implement rowCount() and parent() methods. When parentIdx.internalPointer() \u003d\u003d myNewRootNode, return myNewRootNode-\u003em_lChildren.size(). For parent(), if idx.internalPointer() \u003d\u003d myNewRootNode return QModelIndex. Your subclass can be private (in the .cpp) and have a myNewRootNode attribute. You also have to bind them to the row inserted/removed ans dataChanged signals. This can be done by some refactoring. Send me an email if you have questions or want me to do it.\n\nOption 2: It can also be done using QIdentityProxyModel by re-implementing some functions, but it is a little tricker. You will get the singals for free with this method.\n\nI talked with some Qt guys last week about making this easier in future Qt releases. For now this use case is common, but always a bit hacky.",
+      "revId": "a87f7c8125f1d1f0a41dc4cb41a30f453cdce512",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_86f8aa4a",
+        "filename": "windowscontactbackend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2015-08-04T23:26:05Z",
+      "side": 1,
+      "message": "const to avoid copy, or use Q_FOREACH",
+      "revId": "a87f7c8125f1d1f0a41dc4cb41a30f453cdce512",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
