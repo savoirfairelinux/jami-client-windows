@@ -101,6 +101,11 @@ section "install"
         ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
         IntFmt $0 "0x%08X" $0
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "EstimatedSize" "$0"
+
+        # Write ring protocol in registry
+        WriteRegStr HKCR "ring" "URL Protocol" "$\"$\""
+        WriteRegStr HKCR "ring\DefaultIcon" "" "$\"$INSTDIR\Ring.exe,1$\""
+        WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Ring.exe$\" $\"%1$\""
 sectionEnd
 
 # Uninstaller
