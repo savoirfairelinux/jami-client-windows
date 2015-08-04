@@ -49,7 +49,8 @@ SOURCES += main.cpp\
     videooverlay.cpp \
     imdelegate.cpp \
     contactpicker.cpp \
-    contactmethodpicker.cpp
+    contactmethodpicker.cpp \
+    shmclient.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -74,7 +75,9 @@ HEADERS  += mainwindow.h \
     videooverlay.h \
     imdelegate.h \
     contactpicker.h \
-    contactmethodpicker.h
+    contactmethodpicker.h \
+    contactpicker.h \
+    shmclient.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
