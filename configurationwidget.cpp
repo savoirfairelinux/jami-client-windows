@@ -20,6 +20,8 @@
 #include "ui_configurationwidget.h"
 
 #include <QMessageBox>
+#include <QSettings>
+#include <QDir>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
