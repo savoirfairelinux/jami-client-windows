@@ -31,6 +31,10 @@
 #include <QWinThumbnailToolButton>
 #endif
 
+#include "callmodel.h"
+
+#include <windows.h>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -84,6 +88,17 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete navStack_;
+}
+
+void
+MainWindow::onRingEvent(const QString &uri)
+{
+    this->showNormal();
+    if (not uri.isEmpty()) {
+        auto outCall = CallModel::instance().dialingCall();
+        outCall->setDialNumber(uri);
+        outCall->performAction(Call::Action::ACCEPT);
+    }
 }
 
 bool

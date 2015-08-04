@@ -57,7 +57,8 @@ SOURCES += main.cpp\
     contactmethodpicker.cpp \
     globalsystemtray.cpp \
     smartlistdelegate.cpp \
-    callutilsdialog.cpp
+    callutilsdialog.cpp \
+    shmclient.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -85,7 +86,9 @@ HEADERS  += mainwindow.h \
     settingskey.h \
     globalsystemtray.h \
     smartlistdelegate.h \
-    callutilsdialog.h
+    callutilsdialog.h \
+    contactpicker.h \
+    shmclient.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \

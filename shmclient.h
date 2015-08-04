@@ -16,41 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#ifndef SHMCLIENT_H
+#define SHMCLIENT_H
 
-#include "globalsystemtray.h"
+#include <QThread>
+#include <QSystemSemaphore>
+#include <QSharedMemory>
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class ShmClient : public QThread
 {
     Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
-
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-public slots:
-    void onRingEvent(const QString& uri);
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
+    ShmClient(QSharedMemory* shm, QSystemSemaphore* sem);
+    void run();
 
 private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
+    QSharedMemory* shm_;
+    QSystemSemaphore* sem_;
+
+signals:
+    void RingEvent(const QString& uri = "");
 };
 
+#endif // SHMCLIENT_H
