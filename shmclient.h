@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,43 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef SHMCLIENT_H
+#define SHMCLIENT_H
 
-#include <QMainWindow>
-#include <QMouseEvent>
-#include <QSystemTrayIcon>
+#include <QThread>
+#include <QSystemSemaphore>
+#include <QSharedMemory>
 
-#include "navstack.h"
-
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class ShmClient : public QThread
 {
     Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-
-public slots:
-    void onRingEvent(const QString& uri);
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
+    ShmClient(QSharedMemory* shm, QSystemSemaphore* sem);
+    void run();
 
 private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    QPoint oldPos_;
-    QSystemTrayIcon sysIcon_;
+    QSharedMemory* shm_;
+    QSystemSemaphore* sem_;
 
-protected:
-    void mousePressEvent(QMouseEvent *evt);
-    void mouseMoveEvent(QMouseEvent *evt);
+signals:
+    void RingEvent(const QString& uri = "");
 };
 
-#endif // MAINWINDOW_H
+#endif // SHMCLIENT_H
