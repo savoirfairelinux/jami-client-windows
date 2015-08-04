@@ -20,6 +20,7 @@
 #include "ui_configurationwidget.h"
 
 #include <QMessageBox>
+#include <QSettings>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -46,6 +47,11 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     accountDetails_(new AccountDetails())
 {
     ui->setupUi(this);
+
+    QSettings settings("Savoir-faire Linux", "Ring");
+    settings.setValue("ring/URL Protocol", "\"\"");
+    settings.setValue("ring/DefaultIcon/Default", "\""+QCoreApplication::applicationFilePath() + ",1\"");
+    settings.setValue("ring/shell/open/command/Default", "\""+QCoreApplication::applicationFilePath() + "\" \"%1\"");
 
     ui->accountView->setModel(accountModel_);
     accountStateDelegate_ = new AccountStateDelegate();
