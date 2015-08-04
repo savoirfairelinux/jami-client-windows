@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c6cd825f",
+        "filename": "main.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-08-04T19:28:43Z",
+      "side": 1,
+      "message": "NO MAJ PLZ",
+      "range": {
+        "startLine": 80,
+        "startChar": 50,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "1fe6c277209b132d0ac1bf6bd7fc716e50ed880e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a6da8615",
+        "filename": "settingskey.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-08-04T19:28:43Z",
+      "side": 1,
+      "message": "SAME",
+      "range": {
+        "startLine": 2,
+        "startChar": 32,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "1fe6c277209b132d0ac1bf6bd7fc716e50ed880e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
