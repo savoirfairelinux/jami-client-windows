@@ -109,7 +109,7 @@ WindowsContactEditor::edit(Person *item)
 }
 
 bool
-WindowsContactEditor::addNew(const Person *item)
+WindowsContactEditor::addNew(Person *item)
 {
     QDomDocument doc;
     QFile file(QStandardPaths::writableLocation

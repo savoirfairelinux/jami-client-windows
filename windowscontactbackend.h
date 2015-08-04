@@ -66,7 +66,7 @@ public:
     virtual bool save       ( const Person* item ) override;
     virtual bool remove     ( const Person* item ) override;
     virtual bool edit       ( Person*       item ) override;
-    virtual bool addNew     ( const Person* item ) override;
+    virtual bool addNew     ( Person* item       ) override;
     virtual bool addExisting( const Person* item ) override;
 
 private:
