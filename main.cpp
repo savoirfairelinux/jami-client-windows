@@ -25,14 +25,19 @@
 #include "media/video.h"
 #include "media/text.h"
 #include "media/file.h"
-#include <iostream>
+
 
 #include <QThread>
 #include <QTranslator>
 #include <QLibraryInfo>
 
+
 #ifdef Q_OS_WIN32
 #include <windows.h>
+#endif
+
+#ifdef URI_PROTOCOL
+#include "shmclient.h"
 #endif
 
 REGISTER_MEDIA();
@@ -62,13 +67,46 @@ main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     auto startMinimized = false;
+    QString uri = "";
 
     for (auto string : QCoreApplication::arguments()) {
         if (string == "-m" || string == "--minimized")
             startMinimized = true;
         if (string == "-d" || string == "--debug")
             Console();
+        if (string.startsWith("ring:")) {
+            uri = string;
+        }
     }
+
+#ifdef URI_PROTOCOL
+    QSharedMemory* shm = new QSharedMemory("RingShm");
+    QSystemSemaphore* sem = new QSystemSemaphore("RingSem", 0);
+
+    if (not shm->create(1024)) {
+        if (not uri.isEmpty()) {
+            shm->attach();
+            shm->lock();
+            char *to = (char*) shm->data();
+            QChar *data = uri.data();
+            while (!data->isNull())
+            {
+                memset(to, data->toLatin1(), 1);
+                ++data;
+                ++to;
+            }
+            memset(to, 0, 1); //null terminator
+            shm->unlock();
+        }
+        sem->release();
+
+        delete shm;
+        exit(EXIT_SUCCESS);
+    }
+    //Client listening to shm event
+    memset((char*)shm->data(), 0, shm->size());
+    ShmClient* shmClient = new ShmClient(shm, sem);
+#endif
 
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + QLocale::system().name(),
@@ -100,12 +138,28 @@ main(int argc, char *argv[])
 
     MainWindow w;
 
+    if (not uri.isEmpty()) {
+        startMinimized = false;
+        w.onRingEvent(uri);
+    }
+
     if (not startMinimized)
         w.show();
     else
         w.showMinimized();
 
     w.createThumbBar();
+
+#ifdef URI_PROTOCOL
+    QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &w, SLOT(onRingEvent(QString)));
+
+    QObject::connect(&a, &QApplication::aboutToQuit, [&a, &shmClient, &shm, &sem]() {
+        shmClient->terminate();
+        delete shmClient;
+        delete shm;
+        delete sem;
+    });
+#endif
 
     return a.exec();
 }

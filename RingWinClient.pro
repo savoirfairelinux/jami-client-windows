@@ -67,7 +67,8 @@ SOURCES += main.cpp\
     mainwindowtoolbar.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
-    qualitydialog.cpp
+    qualitydialog.cpp \
+    shmclient.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -103,7 +104,8 @@ HEADERS  += mainwindow.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
-    ringthemeutils.h
+    ringthemeutils.h \
+    shmclient.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
