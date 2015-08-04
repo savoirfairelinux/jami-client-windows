@@ -105,6 +105,11 @@ HEADERS  += mainwindow.h \
     qualitydialog.h \
     ringthemeutils.h
 
+contains(DEFINES, URI_PROTOCOL) {
+ HEADERS += shmclient.h
+ SOURCES += shmclient.cpp
+}
+
 FORMS    += mainwindow.ui \
     callwidget.ui \
     configurationwidget.ui \
