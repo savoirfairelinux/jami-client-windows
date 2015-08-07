@@ -222,10 +222,11 @@ WindowsContactBackend::load()
     QtConcurrent::run(this, &WindowsContactBackend::loadRun);
     watcher_->addPath(QStandardPaths::writableLocation
                       (QStandardPaths::HomeLocation) + "/Contacts");
-    QObject::connect(watcher_, &QFileSystemWatcher::directoryChanged, [=](QString path) {
-        Q_UNUSED(path)
-        QtConcurrent::run(this, &WindowsContactBackend::loadRun);
-    });
+//FIXME: Temporary disabling watch on the dir because of double add
+//    QObject::connect(watcher_, &QFileSystemWatcher::directoryChanged, [=](QString path) {
+//        Q_UNUSED(path)
+//        QtConcurrent::run(this, &WindowsContactBackend::loadRun);
+//    });
     return true;
 }
 
