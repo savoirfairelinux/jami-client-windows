@@ -53,11 +53,6 @@ AccountDetails::AccountDetails(QWidget *parent) :
 
     ui->lrcfg_username->setAlignment(Qt::AlignCenter);
 
-    connect(ui->audioCodecView, SIGNAL(cellChanged(int,int)),
-            this, SLOT(audio_codec_checked(int, int)));
-    connect(ui->videoCodecView, SIGNAL(cellChanged(int,int)),
-            this, SLOT(video_codec_checked(int,int)));
-
     connect(ui->lrcfg_tlsCaListCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
     connect(ui->lrcfg_tlsCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
     connect(ui->lrcfg_tlsPrivateKeyCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
@@ -71,6 +66,9 @@ AccountDetails::~AccountDetails()
 void
 AccountDetails::reloadCodec(CodecType type)
 {
+    ui->audioCodecView->disconnect();
+    ui->videoCodecView->disconnect();
+
     auto selectedIdx = codecModel_->selectionModel()->currentIndex();
 
     if (type != CodecType::VIDEO) {
@@ -138,6 +136,10 @@ AccountDetails::reloadCodec(CodecType type)
             }
         }
     }
+    connect(ui->audioCodecView, SIGNAL(cellChanged(int,int)),
+            this, SLOT(audio_codec_checked(int, int)));
+    connect(ui->videoCodecView, SIGNAL(cellChanged(int,int)),
+            this, SLOT(video_codec_checked(int,int)));
 }
 
 void
