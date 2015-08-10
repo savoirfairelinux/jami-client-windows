@@ -183,9 +183,6 @@ WindowsContactEditor::addNew(Person *item)
     file.write(doc.toByteArray());
     file.close();
 
-    //Add it to the collection
-    addExisting(item);
-
     return true;
 }
 
@@ -222,11 +219,11 @@ WindowsContactBackend::load()
     QtConcurrent::run(this, &WindowsContactBackend::loadRun);
     watcher_->addPath(QStandardPaths::writableLocation
                       (QStandardPaths::HomeLocation) + "/Contacts");
-//FIXME: Temporary disabling watch on the dir because of double add
-//    QObject::connect(watcher_, &QFileSystemWatcher::directoryChanged, [=](QString path) {
-//        Q_UNUSED(path)
-//        QtConcurrent::run(this, &WindowsContactBackend::loadRun);
-//    });
+
+    QObject::connect(watcher_, &QFileSystemWatcher::directoryChanged, [=](QString path) {
+        Q_UNUSED(path)
+        QtConcurrent::run(this, &WindowsContactBackend::loadRun);
+    });
     return true;
 }
 
