@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>748</width>
-    <height>677</height>
+    <width>788</width>
+    <height>720</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -16,10 +22,22 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="gen_tab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>General</string>
       </attribute>
@@ -28,301 +46,415 @@
         <number>0</number>
        </property>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <property name="spacing">
-          <number>10</number>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
-         <item>
-          <widget class="QLabel" name="accountLabel">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Account</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QFormLayout" name="formLayout">
-           <property name="verticalSpacing">
-            <number>10</number>
-           </property>
-           <item row="1" column="0">
-            <widget class="QLabel" name="typeLabel">
-             <property name="text">
-              <string>Type</string>
+         <widget class="QWidget" name="scrollAreaWidgetContents_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>733</width>
+            <height>667</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="spacing">
+              <number>10</number>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="aliasLabel">
-             <property name="text">
-              <string>Alias</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_alias</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lrcfg_alias"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="hashLabel">
-             <property name="text">
-              <string>Hash</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_username</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lrcfg_username">
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="typeValueLabel">
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0">
-         <property name="spacing">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="paramLabel">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Parameters</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QFormLayout" name="formLayout_2">
-           <property name="topMargin">
-            <number>10</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="hostnameLabel">
-             <property name="text">
-              <string>Hostname</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_hostname</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lrcfg_hostname"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="usernameLabel">
-             <property name="text">
-              <string>Username</string>
-             </property>
-             <property name="buddy">
-              <cstring>usernameEdit</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="usernameEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="passwordLabel">
-             <property name="text">
-              <string>Password</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_password</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lrcfg_password">
-             <property name="echoMode">
-              <enum>QLineEdit::PasswordEchoOnEdit</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="proxyLabel">
-             <property name="text">
-              <string>Proxy</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_proxy</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lrcfg_proxy"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="voicemailLabel">
-             <property name="text">
-              <string>Voicemail number</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_mailbox</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lrcfg_mailbox"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QCheckBox" name="lrcfg_autoAnswer">
-             <property name="text">
-              <string>Auto-answer calls</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QCheckBox" name="lrcfg_upnpEnabled">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="text">
-              <string>UPnP enabled</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>DTMF tone type</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QRadioButton" name="rtpRadio">
-               <property name="text">
-                <string>RTP</string>
+              <widget class="QLabel" name="accountLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <attribute name="buttonGroup">
-                <string notr="true">dtmfGroup</string>
-               </attribute>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Account</string>
+               </property>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="sipRadio">
-               <property name="text">
-                <string>SIP</string>
+              <layout class="QFormLayout" name="formLayout">
+               <property name="verticalSpacing">
+                <number>10</number>
                </property>
-               <attribute name="buttonGroup">
-                <string notr="true">dtmfGroup</string>
-               </attribute>
+               <item row="1" column="0">
+                <widget class="QLabel" name="typeLabel">
+                 <property name="text">
+                  <string>Type</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="aliasLabel">
+                 <property name="text">
+                  <string>Alias</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_alias</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="lrcfg_alias">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="hashLabel">
+                 <property name="text">
+                  <string>Hash</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_username</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="lrcfg_username">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="typeValueLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="paramLabel">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Parameters</string>
+               </property>
               </widget>
              </item>
              <item>
-              <spacer name="horizontalSpacer">
+              <layout class="QFormLayout" name="formLayout_2">
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="hostnameLabel">
+                 <property name="text">
+                  <string>Hostname</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_hostname</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="lrcfg_hostname">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="usernameLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Username</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>usernameEdit</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="usernameEdit">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="passwordLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Password</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_password</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="lrcfg_password">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="proxyLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Proxy</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_proxy</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QLineEdit" name="lrcfg_proxy">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="voicemailLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Voicemail number</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_mailbox</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QLineEdit" name="lrcfg_mailbox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="lrcfg_autoAnswer">
+                 <property name="text">
+                  <string>Auto-answer calls</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QCheckBox" name="lrcfg_upnpEnabled">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="text">
+                  <string>UPnP enabled</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>DTMF tone type</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QRadioButton" name="rtpRadio">
+                   <property name="text">
+                    <string>RTP</string>
+                   </property>
+                   <attribute name="buttonGroup">
+                    <string notr="true">dtmfGroup</string>
+                   </attribute>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="sipRadio">
+                   <property name="text">
+                    <string>SIP</string>
+                   </property>
+                   <attribute name="buttonGroup">
+                    <string notr="true">dtmfGroup</string>
+                   </attribute>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::MinimumExpanding</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item row="9" column="0">
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromUnknown">
+                 <property name="text">
+                  <string>Allow Call From Unknown</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="11" column="0">
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromContact">
+                 <property name="text">
+                  <string>Allow Call From Contact</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0">
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromHistory">
+                 <property name="text">
+                  <string>Allow Call From History</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_27">
+                 <property name="font">
+                  <font>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Ring Account Settings</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_allowIncomingFromUnknown</cstring>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
                <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
-                 <width>40</width>
-                 <height>20</height>
+                 <width>0</width>
+                 <height>40</height>
                 </size>
                </property>
               </spacer>
              </item>
             </layout>
            </item>
-           <item row="9" column="0">
-            <widget class="QCheckBox" name="lrcfg_allowIncomingFromUnknown">
-             <property name="text">
-              <string>Allow Call From Unknown</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QCheckBox" name="lrcfg_allowIncomingFromContact">
-             <property name="text">
-              <string>Allow Call From Contact</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="0">
-            <widget class="QCheckBox" name="lrcfg_allowIncomingFromHistory">
-             <property name="text">
-              <string>Allow Call From History</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label_27">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Ring Account Settings</string>
-             </property>
-             <property name="buddy">
-              <cstring>lrcfg_allowIncomingFromUnknown</cstring>
-             </property>
-            </widget>
-           </item>
           </layout>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+         </widget>
+        </widget>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="audio_codec_tab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>Audio</string>
       </attribute>
@@ -371,6 +503,9 @@
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::MinimumExpanding</enum>
+           </property>
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
@@ -383,6 +518,12 @@
        </item>
        <item row="0" column="0">
         <widget class="QTableWidget" name="audioCodecView">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -394,12 +535,25 @@
       </layout>
      </widget>
      <widget class="QWidget" name="video_codec_tab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>Video</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
-        <widget class="QTableWidget" name="videoCodecView"/>
+        <widget class="QTableWidget" name="videoCodecView">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0">
         <widget class="QCheckBox" name="lrcfg_isVideoEnabled">
@@ -452,6 +606,9 @@
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::MinimumExpanding</enum>
+           </property>
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
@@ -465,6 +622,12 @@
       </layout>
      </widget>
      <widget class="QWidget" name="advancedTab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>Advanced</string>
       </attribute>
@@ -478,8 +641,8 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>693</width>
+            <y>-40</y>
+            <width>733</width>
             <height>685</height>
            </rect>
           </property>
@@ -714,6 +877,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="placeholderText">
                   <string>Server URL</string>
                  </property>
@@ -741,6 +910,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="placeholderText">
                   <string>Server URL</string>
                  </property>
@@ -751,6 +926,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="placeholderText">
                   <string>Username</string>
                  </property>
@@ -760,6 +941,12 @@
                 <widget class="QLineEdit" name="lrcfg_turnServerPassword">
                  <property name="enabled">
                   <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
                  <property name="echoMode">
                   <enum>QLineEdit::Password</enum>
@@ -774,6 +961,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="placeholderText">
                   <string>Realm</string>
                  </property>
@@ -785,6 +978,12 @@
            </item>
            <item>
             <widget class="QLabel" name="label_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <weight>75</weight>
@@ -798,6 +997,12 @@
            </item>
            <item>
             <widget class="QLabel" name="label_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
               <string>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</string>
              </property>
@@ -877,6 +1082,9 @@
               <spacer name="horizontalSpacer_2">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -960,6 +1168,9 @@
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>40</width>
@@ -977,273 +1188,322 @@
       </layout>
      </widget>
      <widget class="QWidget" name="securityTab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>Security</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QLabel" name="label_17">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
+        <widget class="QScrollArea" name="scrollArea_3">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
-         <property name="text">
-          <string>Media Stream Encryption</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="srtpEnabled">
-         <property name="text">
-          <string>Encrypt media stream (SRTP)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_18">
-           <property name="text">
-            <string>Key exchange protocol</string>
-           </property>
-           <property name="buddy">
-            <cstring>keyExchangeModelCombo</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="keyExchangeModelCombo">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="lrcfg_srtpRtpFallback">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Fallback on RTP on encryption failure</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_19">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Negotiation Encryption</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="lrcfg_tlsEnabled">
-         <property name="text">
-          <string>Encrypt negotiation (TLS)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QFormLayout" name="formLayout_5">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_20">
-           <property name="text">
-            <string>CA certificate</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsCaListCertificate</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_21">
-           <property name="text">
-            <string>User certificate</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsCertificate</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_22">
-           <property name="text">
-            <string>Private key</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsPrivateKeyCertificate</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_23">
-           <property name="text">
-            <string>Private key password</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsPassword</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_24">
-           <property name="text">
-            <string>TLS protocol method</string>
-           </property>
-           <property name="buddy">
-            <cstring>tlsProtocoCombo</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_25">
-           <property name="text">
-            <string>Outgoing TLS server name</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsServerName</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_26">
-           <property name="text">
-            <string>Negotiation timeout (seconds)</string>
-           </property>
-           <property name="buddy">
-            <cstring>lrcfg_tlsNegotiationTimeoutSec</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="lrcfg_tlsPassword">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="tlsProtocoCombo">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLineEdit" name="lrcfg_tlsServerName">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QSpinBox" name="lrcfg_tlsNegotiationTimeoutSec">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="maximum">
-            <number>100000</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="lrcfg_tlsCertificate">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::RightToLeft</enum>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-           <property name="icon">
-            <iconset resource="ressources.qrc">
-             <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="lrcfg_tlsPrivateKeyCertificate">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::RightToLeft</enum>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-           <property name="icon">
-            <iconset resource="ressources.qrc">
-             <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="lrcfg_tlsCaListCertificate">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::RightToLeft</enum>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-           <property name="icon">
-            <iconset resource="ressources.qrc">
-             <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="lrcfg_tlsVerifyServer">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Verify incoming certificates (server side)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="lrcfg_tlsVerifyClient">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Verify answer certificates (client side)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="lrcfg_tlsRequireClientCertificate">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Require a certificate for incoming TLS connections</string>
-         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>746</width>
+            <height>645</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_13">
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Media Stream Encryption</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="srtpEnabled">
+             <property name="text">
+              <string>Encrypt media stream (SRTP)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_18">
+               <property name="text">
+                <string>Key exchange protocol</string>
+               </property>
+               <property name="buddy">
+                <cstring>keyExchangeModelCombo</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="keyExchangeModelCombo">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="lrcfg_srtpRtpFallback">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Fallback on RTP on encryption failure</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_19">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Negotiation Encryption</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="lrcfg_tlsEnabled">
+             <property name="text">
+              <string>Encrypt negotiation (TLS)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="formLayout_5">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_20">
+               <property name="text">
+                <string>CA certificate</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsCaListCertificate</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>User certificate</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsCertificate</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_22">
+               <property name="text">
+                <string>Private key</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsPrivateKeyCertificate</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>Private key password</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsPassword</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>TLS protocol method</string>
+               </property>
+               <property name="buddy">
+                <cstring>tlsProtocoCombo</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_25">
+               <property name="text">
+                <string>Outgoing TLS server name</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsServerName</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_26">
+               <property name="text">
+                <string>Negotiation timeout (seconds)</string>
+               </property>
+               <property name="buddy">
+                <cstring>lrcfg_tlsNegotiationTimeoutSec</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="lrcfg_tlsPassword">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QComboBox" name="tlsProtocoCombo">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="lrcfg_tlsServerName">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QSpinBox" name="lrcfg_tlsNegotiationTimeoutSec">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="maximum">
+                <number>100000</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="lrcfg_tlsCertificate">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="lrcfg_tlsPrivateKeyCertificate">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="lrcfg_tlsCaListCertificate">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/images/folder-download.png</normaloff>:/images/folder-download.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="lrcfg_tlsVerifyServer">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Verify incoming certificates (server side)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="lrcfg_tlsVerifyClient">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Verify answer certificates (client side)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="lrcfg_tlsRequireClientCertificate">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Require a certificate for incoming TLS connections</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="title">
        <string>Cipher</string>
       </attribute>
@@ -1278,7 +1538,7 @@
           <bool>false</bool>
          </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
