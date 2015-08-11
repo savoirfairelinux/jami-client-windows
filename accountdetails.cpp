@@ -37,6 +37,8 @@ AccountDetails::AccountDetails(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+
     ui->audioCodecView->setColumnCount(4);
     QStringList audioHeader {"Enabled", "Name", "Bitrate", "Samplerate"};
     ui->audioCodecView->setHorizontalHeaderLabels(audioHeader);

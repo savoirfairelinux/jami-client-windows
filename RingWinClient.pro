@@ -83,7 +83,6 @@ FORMS    += mainwindow.ui \
     mainbar.ui \
     accountdetails.ui \
     aboutdialog.ui \
-    pivotviewwidget.ui \
     wizarddialog.ui \
     instantmessagingwidget.ui \
     videoview.ui \
