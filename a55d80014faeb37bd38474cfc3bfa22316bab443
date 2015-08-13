@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4b7175_4704f014",
+        "filename": "configurationwidget.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-08-13T18:47:20Z",
+      "side": 1,
+      "message": "you include it again in your cpp file.\n\nUse forward declaration instead",
+      "revId": "a55d80014faeb37bd38474cfc3bfa22316bab443",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
