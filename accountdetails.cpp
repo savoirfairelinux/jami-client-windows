@@ -193,16 +193,16 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->tlsProtocoCombo->setModel(currentAccount_->tlsMethodModel());
 
     if (currentAccount_->tlsCaListCertificate())
-        ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path().fileName());
+        ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path());
     if (currentAccount_->tlsCertificate())
-        ui->lrcfg_tlsCertificate->setText(currentAccount_->tlsCertificate()->path().fileName());
-    if (currentAccount_->tlsPrivateKeyCertificate())
-        ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKeyCertificate()->path().fileName());
+        ui->lrcfg_tlsCertificate->setText(currentAccount_->tlsCertificate()->path());
+    if (not currentAccount_->tlsPrivateKey().isEmpty())
+        ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKey());
 
 #ifdef Q_OS_WIN32
     certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
     certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
-    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKeyCertificate;
+    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKey;
 #endif
 
     ui->srtpEnabled->disconnect();
