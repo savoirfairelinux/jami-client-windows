@@ -13,4 +13,5 @@ ENV PATH=$PATH:/usr/bin/core_perl
 RUN env
 
 #install the packager
+RUN yaourt -Syu --noconfirm --needed
 RUN yaourt -S nsis --noconfirm --needed
