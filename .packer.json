@@ -1,0 +1,54 @@
+{
+    "BuildType" : "Docker",
+    "BuildInstructions" : { "Win32" : [
+        "git clone https://gerrit-ring.savoirfairelinux.com/ring-daemon ring-daemon",
+        "cd ring-daemon/contrib",
+        "mkdir native",
+        "cd native",
+        "../bootstrap --host=i686-w64-mingw32",
+        "make",
+        "cd ../..",
+        "./autogen.sh",
+        "./configure --host=i686-w64-mingw32 --without-dbus",
+        "make",
+        "make install",
+        "cd ..",
+        "git clone https://gerrit-ring.savoirfairelinux.com/ring-lrc ring-lrc",
+        "RING=`pwd`/ring-daemon",
+        "cd ring-lrc",
+        "mkdir build",
+        "cd build",
+        "cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=$RING/_win32 -DRING_BUILD_DIR=$RING/src -DENABLE_LIBWRAP=true ..",
+        "make",
+        "make install",
+        "cd ../..",
+        "git clone https://gerrit-ring.savoirfairelinux.com/ring-client-windows ring-client-windows",
+        "cd ring-client-windows",
+        "git fetch https://gerrit-ring.savoirfairelinux.com/ring-client-windows {{REF_NUMBER}} && git checkout FETCH_HEAD",
+        "mkdir build && cd build",
+        "export QTDIR=/usr/i686-w64-mingw32/lib/qt",
+        "/usr/i686-w64-mingw32/lib/qt/bin/qmake ../RingWinClient.pro -r -spec win32-g++ RING=$RING/_win32",
+        "make",
+        "make install",
+        "cd release",
+        "makensis ring.nsi",
+        "sudo mv ring-windows-nightly.exe /output"
+        ]},
+    "UpdateInstructions" : {
+        "Win32" : [
+            "sudo reflector --verbose --country 'Canada' -l 200 --sort rate --save /etc/pacman.d/mirrorlist",
+            "yaourt -Syua --noconfirm"
+        ]},
+    "ReviewType": "Gerrit",
+    "ReviewAddress": "https://gerrit-ring.savoirfairelinux.com",
+    "Package" : {
+        "Win32" : "ring-windows-nightly.exe"
+    },
+    "ReloadProjectCmd" : [
+        "git checkout packaging",
+        "git pull"
+    ],
+    "AutoDeploySchedule": {
+        "Win32": "@midnight"
+    }
+}
