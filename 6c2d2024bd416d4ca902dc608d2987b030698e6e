@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_c402500b",
+        "filename": "transferdialog.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-09-01T13:44:58Z",
+      "side": 1,
+      "message": "This call is blocking (as least into daemon).\nIt\u0027s a bad idea to call blocking routine into UI event handler.",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 74
+      },
+      "revId": "6c2d2024bd416d4ca902dc608d2987b030698e6e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
