@@ -120,13 +120,13 @@ CallWidget::CallWidget(QWidget *parent) :
                 ContactMethod* contactMethod = ui->historyList->currentIndex()
                         .data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>();
 
-                auto copyAction = new QAction("Copy number", this);
+                auto copyAction = new QAction(tr("Copy number"), this);
                 menu.addAction(copyAction);
                 connect(copyAction, &QAction::triggered, [=]() {
                     QApplication::clipboard()->setText(contactMethod->uri());
                 });
                 if (not contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
-                    auto addExisting = new QAction("Add to contact", this);
+                    auto addExisting = new QAction(tr("Add to contact"), this);
                     menu.addAction(addExisting);
                     connect(addExisting, &QAction::triggered, [=]() {
                         ContactPicker contactPicker(contactMethod);
@@ -171,13 +171,13 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
             ui->ringIdLabel->setText(
-                         "Your Ring ID: " + username.toString());
+                         tr("Your RingID: ") + username.toString());
             found = true;
             return;
         }
     }
     if (not found){
-        ui->ringIdLabel->setText("NO RING ACCOUNT FOUND");
+        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
     }
 }
 
@@ -241,7 +241,7 @@ CallWidget::findRingAccount()
                 account->displayName() = account->alias();
             auto username = account->username();
             ui->ringIdLabel->setText(
-                        "Your Ring ID: " + username);
+                        tr("Your RingID: ") + username);
             found = true;
             return;
         }
@@ -257,7 +257,7 @@ void
 CallWidget::callIncoming(Call *call)
 {
     if (!call->account()->isAutoAnswer()) {
-        ui->callLabel->setText("Call from " + call->formattedName());
+        ui->callLabel->setText(tr("Call from ") + call->formattedName());
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
@@ -315,7 +315,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         displaySpinner(false);
         ui->videoWidget->show();
     }
-    ui->callStateLabel->setText("Call State : " + call->toHumanStateName());
+    ui->callStateLabel->setText(tr("Call State: ") + call->toHumanStateName());
 }
 
 void

@@ -181,18 +181,18 @@ VideoView::showContextMenu(const QPoint& pos)
 
     menu.addSeparator();
 
-    auto shareAction = new QAction("Share entire screen", this);
+    auto shareAction = new QAction(tr("Share entire screen"), this);
     menu.addAction(shareAction);
     connect(shareAction, &QAction::triggered, [=]() {
         Video::SourceModel::instance()->setDisplay(0, QApplication::desktop()->rect());
     });
-    auto shareAreaAction = new QAction("Share screen area", this);
+    auto shareAreaAction = new QAction(tr("Share screen area"), this);
     menu.addAction(shareAreaAction);
     connect(shareAreaAction, &QAction::triggered, [=]() {
         SelectAreaDialog selec;
         selec.exec();
     });
-    auto shareFileAction = new QAction("Share file", this);
+    auto shareFileAction = new QAction(tr("Share file"), this);
     menu.addAction(shareFileAction);
     connect(shareFileAction, &QAction::triggered, [=]() {
         QFileDialog dialog(this);
