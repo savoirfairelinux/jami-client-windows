@@ -25,6 +25,10 @@ contains(BUILD, Debug) {
     CONFIG += console
 }
 
+isEmpty(QMAKE_LRELEASE) {
+    QMAKE_LRELEASE = lrelease
+}
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     callwidget.cpp \
@@ -100,6 +104,26 @@ RESOURCES += \
     ressources.qrc
 
 RC_FILE = ico.rc
+
+TRANSLATIONS = ring_fr.ts
+
+maketranslationdir.target = customtarget
+maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
+
+updateqm.input = TRANSLATIONS
+updateqm.output = $$OUT_PWD/share/ring/translations/${QMAKE_FILE_BASE}.qm
+updateqm.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} -qm $$OUT_PWD/share/ring/translations/${QMAKE_FILE_BASE}.qm
+updateqm.CONFIG += no_link
+
+QMAKE_EXTRA_TARGETS += maketranslationdir
+QMAKE_EXTRA_COMPILERS += updateqm
+
+PRE_TARGETDEPS += customtarget compiler_updateqm_make_all
+
+QM_FILES.files = share
+QM_FILES.path = $$OUT_PWD/release
+
+INSTALLS += QM_FILES
 
 DISTFILES += \
     License.rtf \

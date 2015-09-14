@@ -39,15 +39,15 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     imDelegate_ = new ImDelegate();
     ui->messageOutput->setItemDelegate(imDelegate_);
     ui->messageOutput->setContextMenuPolicy(Qt::ActionsContextMenu);
-    auto copyAction = new QAction("Copy", this);
+    auto copyAction = new QAction(tr("Copy"), this);
     ui->messageOutput->addAction(copyAction);
     connect(copyAction, &QAction::triggered, [=]() {
         copyToClipboard();
     });
-    auto displayDate = new QAction("Display date", this);
+    auto displayDate = new QAction(tr("Display date"), this);
     displayDate->setCheckable(true);
     ui->messageOutput->addAction(displayDate);
-    auto displayAuthor = new QAction("Display author", this);
+    auto displayAuthor = new QAction(tr("Display author"), this);
     displayAuthor->setCheckable(true);
     ui->messageOutput->addAction(displayAuthor);
     auto lamdba = [=](){
