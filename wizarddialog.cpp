@@ -58,7 +58,7 @@ void
 WizardDialog::accept()
 {
     //ui->spinnerLabel->show();
-    ui->label->setText("Please wait while we create your account.");
+    ui->label->setText(tr("Please wait while we create your account."));
     ui->buttonBox->setEnabled(false);
     ui->usernameEdit->setEnabled(false);
 

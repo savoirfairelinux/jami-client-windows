@@ -29,11 +29,11 @@ MainBar::MainBar(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    auto aboutAction = new QAction("About", this);
+    auto aboutAction = new QAction(tr("About"), this);
     menu_->addAction(aboutAction);
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAboutDialog()));
 
-    auto exitAction = new QAction("Exit", this);
+    auto exitAction = new QAction(tr("Exit"), this);
     menu_->addAction(exitAction);
     connect(exitAction, SIGNAL(triggered()), this, SLOT(on_exitButton_clicked()));
 
