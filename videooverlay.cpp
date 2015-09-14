@@ -33,14 +33,14 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
     setAttribute(Qt::WA_NoSystemBackground);
 
     menu_ = new QMenu(this);
-    auto muteAudio = new QAction("Mute Audio", this);
+    auto muteAudio = new QAction(tr("Mute Audio"), this);
     muteAudio->setCheckable(true);
     connect(muteAudio, &QAction::triggered, [=](bool) {
        actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
     });
     menu_->addAction(muteAudio);
 
-    auto muteVideo = new QAction("Mute Video", this);
+    auto muteVideo = new QAction(tr("Mute Video"), this);
     muteVideo->setCheckable(true);
     connect(muteVideo, &QAction::triggered, [=](bool) {
         actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
