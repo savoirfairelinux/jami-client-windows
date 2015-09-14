@@ -31,10 +31,9 @@ AboutDialog::AboutDialog(QWidget *parent) :
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
     ui->clientVersionLabel->setText(
-                QString("<html><head/><body><p><span style=\" font-weight:600;\">Windows Ring v")
-                + VERSION
-                + "</span></p></body></html>");
-    ui->gitVersionLabel->setText(QString("version: ") + GIT_VERSION);
+        QString("<html><head/><body><p><span style=\" font-weight:600;\">"
+                "%1 v%2</span></p></body></html>").arg(tr("Windows Ring"), VERSION));
+    ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), GIT_VERSION));
 }
 
 AboutDialog::~AboutDialog()
