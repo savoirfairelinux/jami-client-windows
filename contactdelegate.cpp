@@ -86,7 +86,7 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                 painter->drawText(QRect(rect.left()+sizeImage_+5,
                                         rect.top() + rect.height()/2,
                                         rect.width(), rect.height()/2),
-                                  opt.displayAlignment, "<Multiple contact methods>");
+                                  opt.displayAlignment, tr("<Multiple contact methods>"));
                 break;
             }
         }

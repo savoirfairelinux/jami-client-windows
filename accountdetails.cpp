@@ -40,14 +40,14 @@ AccountDetails::AccountDetails(QWidget *parent) :
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
     ui->audioCodecView->setColumnCount(4);
-    QStringList audioHeader {"Enabled", "Name", "Bitrate", "Samplerate"};
+    QStringList audioHeader {tr("Enabled"), tr("Name"), tr("Bitrate"), tr("Samplerate")};
     ui->audioCodecView->setHorizontalHeaderLabels(audioHeader);
     ui->audioCodecView->verticalHeader()->hide();
     ui->audioCodecView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->audioCodecView->setShowGrid(false);
 
     ui->videoCodecView->setColumnCount(3);
-    QStringList videoHeader {"Enabled", "Name", "Bitrate"};
+    QStringList videoHeader {tr("Enabled"), tr("Name"), tr("Bitrate")};
     ui->videoCodecView->setHorizontalHeaderLabels(videoHeader);
     ui->videoCodecView->verticalHeader()->hide();
     ui->videoCodecView->setSelectionBehavior(QAbstractItemView::SelectRows);
