@@ -25,6 +25,10 @@ contains(BUILD, Debug) {
     CONFIG += console
 }
 
+isEmpty(QMAKE_LRELEASE) {
+    QMAKE_LRELEASE = lrelease
+}
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     callwidget.cpp \
@@ -101,6 +105,26 @@ RESOURCES += \
 
 RC_FILE = ico.rc
 
+TRANSLATIONS =
+
+maketranslationdir.target = customtarget
+maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
+
+updateqm.input = TRANSLATIONS
+updateqm.output = $$OUT_PWD/release/share/ring/translations/${QMAKE_FILE_BASE}.qm
+updateqm.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} -qm $$OUT_PWD/release/share/ring/translations/${QMAKE_FILE_BASE}.qm
+updateqm.CONFIG += no_link
+
+QMAKE_EXTRA_TARGETS += maketranslationdir
+QMAKE_EXTRA_COMPILERS += updateqm
+
+PRE_TARGETDEPS += customtarget compiler_updateqm_make_all
+
+QM_FILES.files = share
+QM_FILES.path = $$OUT_PWD/release
+
+INSTALLS += QM_FILES
+
 DISTFILES += \
     License.rtf \
     ringtones/konga.ul \
@@ -121,6 +145,9 @@ win32 {
 
     RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll
     RUNTIME.path = $$OUT_PWD/release
+
+    LRC_TRANSLATION.files = $${RING}/share/libringclient/translations
+    LRC_TRANSLATION.path = $$OUT_PWD/release/share/libringclient/
 
     QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
                             $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll \
@@ -145,6 +172,6 @@ win32 {
                     $$RUNTIMEDIR/libwinpthread-1.dll
     LIBSTD.path = $$OUT_PWD/release
 
-    INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME QTRUNTIME QTDEPSRUNTIME \
+    INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
                 QTPLUGINIMAGE QTPLATFORMS LIBSTD
 }
