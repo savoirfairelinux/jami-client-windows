@@ -28,6 +28,8 @@
 #include <iostream>
 
 #include <QThread>
+#include <QTranslator>
+#include <QLibraryInfo>
 
 #ifdef Q_OS_WIN32
 #include <windows.h>
@@ -65,6 +67,15 @@ main(int argc, char *argv[])
         if (string == "-d" || string == "--debug")
             Console();
     }
+
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(),
+                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    a.installTranslator(&qtTranslator);
+
+    QTranslator myappTranslator;
+    myappTranslator.load("i18n/ring_" + QLocale::system().name());
+    a.installTranslator(&myappTranslator);
 
     QFont font;
     font.setFamily("Segoe UI");

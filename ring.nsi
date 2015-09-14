@@ -70,6 +70,8 @@ section "install"
         file imageformats/*
         setOutPath $INSTDIR\ringtones
         file ringtones/*
+        setOutPath $INSTDIR\i18n
+        file i18n/*
 
         # Uninstaller - See function un.onInit and section "uninstall" for configuration
         writeUninstaller "$INSTDIR\uninstall.exe"
@@ -129,6 +131,7 @@ section "uninstall"
         rmDir /r $INSTDIR\platforms
         rmDir /r $INSTDIR\imageformats
         rmDir /r $INSTDIR\ringtones
+        rmDir /r $INSTDIR\i18n
 
         # Always delete uninstaller as the last action
         delete $INSTDIR\uninstall.exe
