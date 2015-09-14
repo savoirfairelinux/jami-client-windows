@@ -70,6 +70,10 @@ section "install"
         file imageformats/*
         setOutPath $INSTDIR\ringtones
         file ringtones/*
+        setOutPath $INSTDIR\share\ring\translations
+        file share/ring/translations/*
+        setOutPath $INSTDIR\share\libringclient\translations
+        file share/libringclient/translations/*
 
         # Uninstaller - See function un.onInit and section "uninstall" for configuration
         writeUninstaller "$INSTDIR\uninstall.exe"
@@ -129,6 +133,7 @@ section "uninstall"
         rmDir /r $INSTDIR\platforms
         rmDir /r $INSTDIR\imageformats
         rmDir /r $INSTDIR\ringtones
+        rmDir /r $INSTDIR\share
 
         # Always delete uninstaller as the last action
         delete $INSTDIR\uninstall.exe

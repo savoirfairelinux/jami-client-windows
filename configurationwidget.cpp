@@ -168,7 +168,7 @@ ConfigurationWidget::on_deleteAccountButton_clicked()
 void
 ConfigurationWidget::on_addAccountButton_clicked()
 {
-    auto account = accountModel_->add("New Account",
+    auto account = accountModel_->add(tr("New Account"),
                                       ui->accountTypeBox->model()->index(
                                           ui->accountTypeBox->currentIndex(), 0));
     account->setRingtonePath(Utils::GetRingtonePath());
@@ -199,7 +199,7 @@ ConfigurationWidget::on_clearHistoryButton_clicked()
 {
     QMessageBox confirmationDialog;
 
-    confirmationDialog.setText("Are you sure you want to clear all your history?");
+    confirmationDialog.setText(tr("Are you sure you want to clear all your history?"));
     confirmationDialog.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
     auto ret = confirmationDialog.exec();
 
