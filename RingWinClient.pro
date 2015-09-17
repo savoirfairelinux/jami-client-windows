@@ -105,7 +105,7 @@ RESOURCES += \
 
 RC_FILE = ico.rc
 
-TRANSLATIONS =
+TRANSLATIONS = ring_client_windows_fr.ts
 
 maketranslationdir.target = customtarget
 maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
