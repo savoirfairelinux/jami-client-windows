@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_47d644c7",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-09-17T16:40:18Z",
+      "side": 1,
+      "message": "RingID or Ring identity",
+      "range": {
+        "startLine": 174,
+        "startChar": 34,
+        "endLine": 174,
+        "endChar": 42
+      },
+      "revId": "a4194b4a840bd23d2f084fcfa46e7b41a250d2dd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c7e1f49b",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-09-17T16:40:18Z",
+      "side": 1,
+      "message": "see upper",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 40
+      },
+      "revId": "a4194b4a840bd23d2f084fcfa46e7b41a250d2dd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_67eee08d",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-09-17T16:40:18Z",
+      "side": 1,
+      "message": "no space in English after word",
+      "range": {
+        "startLine": 318,
+        "startChar": 45,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "a4194b4a840bd23d2f084fcfa46e7b41a250d2dd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_27e8d87b",
+        "filename": "ring_client_windows_fr.ts",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-09-17T16:40:18Z",
+      "side": 1,
+      "message": "as to be in dedicated patch",
+      "revId": "a4194b4a840bd23d2f084fcfa46e7b41a250d2dd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
