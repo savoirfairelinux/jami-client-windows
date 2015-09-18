@@ -171,7 +171,7 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
             ui->ringIdLabel->setText(
-                         QString("%1: %2").arg(tr("Your RingID"), username.toString()));
+                         QString(tr("Your RingID: %2", "%2 is the RingID")).arg(username.toString()));
             found = true;
             return;
         }
@@ -241,7 +241,7 @@ CallWidget::findRingAccount()
                 account->displayName() = account->alias();
             auto username = account->username();
             ui->ringIdLabel->setText(
-                        QString("%1: %2").arg(tr("Your RingID"), username));
+                        QString(tr("Your RingID: %2", "%2 is the RingID")).arg(username));
             found = true;
             return;
         }
@@ -257,7 +257,8 @@ void
 CallWidget::callIncoming(Call *call)
 {
     if (!call->account()->isAutoAnswer()) {
-        ui->callLabel->setText(QString("%1 %2").arg(tr("Call from"), call->formattedName()));
+        ui->callLabel->setText(QString(tr("Call from %2", "%2 is the name of the caller"))
+                               .arg(call->formattedName()));
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
@@ -315,8 +316,8 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         displaySpinner(false);
         ui->videoWidget->show();
     }
-    ui->callStateLabel->setText(QString("%1: %2")
-                                .arg(tr("Call State"), call->toHumanStateName()));
+    ui->callStateLabel->setText(QString(tr("Call State: %2", "%2 is the state of the call"))
+                                .arg(call->toHumanStateName()));
 }
 
 void
