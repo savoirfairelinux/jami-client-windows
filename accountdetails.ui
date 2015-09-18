@@ -29,7 +29,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="gen_tab">
       <property name="sizePolicy">
@@ -641,7 +641,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-40</y>
+            <y>0</y>
             <width>733</width>
             <height>685</height>
            </rect>
@@ -799,7 +799,7 @@
                <item>
                 <widget class="QLabel" name="label_12">
                  <property name="text">
-                  <string>Adress</string>
+                  <string>Address</string>
                  </property>
                  <property name="buddy">
                   <cstring>lrcfg_publishedAddress</cstring>
