@@ -52,5 +52,5 @@
         "win32": "@midnight"
     },
     "DeployScript": "ring-nightly-windows.sh",
-    "NotificationMailAdress": ["Awesome Ring Team", "ring-dev@savoirfairelinux.com"]
+    "NotificationMailAdress": ["Awesome Ring Team", "ring-dev@lists.savoirfairelinux.net"]
 }
