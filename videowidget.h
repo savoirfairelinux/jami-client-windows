@@ -22,7 +22,9 @@
 #include <QWidget>
 #include <QPainter>
 
+#include <QMutexLocker>
 #include <memory>
+#include <atomic>
 
 #include "video/renderer.h"
 #include "video/previewmanager.h"
@@ -50,6 +52,8 @@ private:
     std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
     std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
     constexpr static int previewMargin_ = 15;
+    enum FrameType {FRAME_NONE, FRAME_PREVIEW, FRAME_DISTANT};
+    std::atomic<FrameType> frameType_ {FRAME_NONE};
 };
 
 #endif // VIDEOWIDGET_H
