@@ -42,6 +42,8 @@ VideoWidget::~VideoWidget()
 
 void
 VideoWidget::previewStarted(Video::Renderer *renderer) {
+    if (not isVisible())
+        return;
     previewRenderer_ = renderer;
     connect(previewRenderer_, SIGNAL(frameUpdated()),
             this, SLOT(frameFromPreview()));
@@ -60,7 +62,8 @@ VideoWidget::previewStopped() {
 
 void
 VideoWidget::frameFromPreview() {
-    if (previewRenderer_ && previewRenderer_->isRendering() && previewRenderer_->currentSmartFrame()) {
+    if (previewRenderer_ && previewRenderer_->isRendering()) {
+        previewRenderer_->swapFrame();
         currentPreviewFrame_ = previewRenderer_->currentSmartFrame();
         update();
     }
@@ -100,6 +103,8 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
 void
 VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     Q_UNUSED(call)
+    if (not isVisible())
+        return;
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
@@ -108,7 +113,8 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
 
 void
 VideoWidget::frameFromDistant() {
-    if (renderer_ && renderer_->isRendering() && renderer_->currentSmartFrame()) {
+    if (renderer_ && renderer_->isRendering()) {
+        renderer_->swapFrame();
         currentDistantFrame_ = renderer_->currentSmartFrame();
         update();
     }
