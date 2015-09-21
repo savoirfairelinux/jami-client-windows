@@ -142,6 +142,10 @@ AccountDetails::reloadCodec(CodecType type)
             this, SLOT(audio_codec_checked(int, int)));
     connect(ui->videoCodecView, SIGNAL(cellChanged(int,int)),
             this, SLOT(video_codec_checked(int,int)));
+    connect(ui->audioCodecView, SIGNAL(itemSelectionChanged()),
+            this, SLOT(on_audioCodecView_itemSelectionChanged()));
+    connect(ui->videoCodecView, SIGNAL(itemSelectionChanged()),
+            this, SLOT(on_videoCodecView_itemSelectionChanged()));
 }
 
 void
