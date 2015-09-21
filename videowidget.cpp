@@ -62,6 +62,7 @@ void
 VideoWidget::frameFromPreview() {
     if (previewRenderer_ && previewRenderer_->isRendering() && previewRenderer_->currentSmartFrame()) {
         currentPreviewFrame_ = previewRenderer_->currentSmartFrame();
+        frameType_ = FRAME_PREVIEW;
         update();
     }
 }
@@ -70,7 +71,8 @@ void
 VideoWidget::paintEvent(QPaintEvent *evt) {
     Q_UNUSED(evt)
     QPainter painter(this);
-    if (renderer_ && currentDistantFrame_) {
+    renderer_->swapFrame();
+    if (renderer_ && currentDistantFrame_ && (frameType_ == FRAME_DISTANT)) {
         const QSize imgSize(renderer_->size());
         QImage distantFrame(currentDistantFrame_.get()->data(),
                             imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
@@ -79,7 +81,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
         auto yDiff = (height() - scaledDistant.height()) /2;
         painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
     }
-    if (previewRenderer_ && currentPreviewFrame_) {
+    if (previewRenderer_ && currentPreviewFrame_ && (frameType_ == FRAME_PREVIEW)) {
         const QSize imgSize(previewRenderer_->size());
         QImage previewFrame(
                     currentPreviewFrame_.get()->data(),
@@ -110,6 +112,7 @@ void
 VideoWidget::frameFromDistant() {
     if (renderer_ && renderer_->isRendering() && renderer_->currentSmartFrame()) {
         currentDistantFrame_ = renderer_->currentSmartFrame();
+        frameType_ = FRAME_DISTANT;
         update();
     }
 }
