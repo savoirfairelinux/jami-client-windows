@@ -47,8 +47,8 @@ public slots:
 private:
     Video::Renderer* previewRenderer_;
     Video::Renderer* renderer_;
-    std::shared_ptr<std::vector<unsigned char> > currentPreviewFrame_;
-    std::shared_ptr<std::vector<unsigned char> > currentDistantFrame_;
+    QImage* currentPreviewFrame_;
+    QImage* currentDistantFrame_;
     constexpr static int previewMargin_ = 15;
 };
 
