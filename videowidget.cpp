@@ -22,6 +22,8 @@ VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
+  , currentDistantFrame_(nullptr)
+  , currentPreviewFrame_(nullptr)
 {
     connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
@@ -42,6 +44,9 @@ VideoWidget::~VideoWidget()
 
 void
 VideoWidget::previewStarted(Video::Renderer *renderer) {
+    //Enforce that only one videowidget we'll be used at the same time
+    if (not isVisible())
+        return;
     previewRenderer_ = renderer;
     connect(previewRenderer_, SIGNAL(frameUpdated()),
             this, SLOT(frameFromPreview()));
@@ -56,13 +61,24 @@ VideoWidget::previewStopped() {
     disconnect(previewRenderer_, SIGNAL(stopped()),
                this, SLOT(renderingStopped()));
     previewRenderer_ = nullptr;
+    if (currentPreviewFrame_) {
+        delete currentPreviewFrame_;
+        currentPreviewFrame_ = nullptr;
+    }
 }
 
 void
 VideoWidget::frameFromPreview() {
-    if (previewRenderer_ && previewRenderer_->isRendering() && previewRenderer_->currentSmartFrame()) {
-        currentPreviewFrame_ = previewRenderer_->currentSmartFrame();
-        update();
+    if (previewRenderer_ && previewRenderer_->isRendering()) {
+        if (currentPreviewFrame_) {
+            delete currentPreviewFrame_;
+            currentPreviewFrame_ = nullptr;
+        }
+        const QSize size(previewRenderer_->size());
+        currentPreviewFrame_ = new QImage(
+                    (const uchar*)previewRenderer_->currentFrame().constData(),
+                    size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
+        repaint();
     }
 }
 
@@ -71,22 +87,15 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
     Q_UNUSED(evt)
     QPainter painter(this);
     if (renderer_ && currentDistantFrame_) {
-        const QSize imgSize(renderer_->size());
-        QImage distantFrame(currentDistantFrame_.get()->data(),
-                            imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
-        auto scaledDistant = distantFrame.scaled(size(), Qt::KeepAspectRatio);
+        auto scaledDistant = currentDistantFrame_->scaled(size(), Qt::KeepAspectRatio);
         auto xDiff = (width() - scaledDistant.width()) / 2;
         auto yDiff = (height() - scaledDistant.height()) /2;
         painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
     }
     if (previewRenderer_ && currentPreviewFrame_) {
-        const QSize imgSize(previewRenderer_->size());
-        QImage previewFrame(
-                    currentPreviewFrame_.get()->data(),
-                    imgSize.width(), imgSize.height(), QImage::Format_ARGB32_Premultiplied);
         auto previewHeight = !renderer_ ? height() : height()/4;
         auto previewWidth = !renderer_  ? width() : width()/4;
-        auto scaledPreview = previewFrame.scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        auto scaledPreview = currentPreviewFrame_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
         auto xDiff = (previewWidth - scaledPreview.width()) / 2;
         auto yDiff = (previewHeight - scaledPreview.height()) / 2;
         auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
@@ -100,6 +109,9 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
 void
 VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     Q_UNUSED(call)
+    //Enforce that only one videowidget we'll be used at the same time
+    if (not isVisible())
+        return;
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
@@ -108,9 +120,16 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
 
 void
 VideoWidget::frameFromDistant() {
-    if (renderer_ && renderer_->isRendering() && renderer_->currentSmartFrame()) {
-        currentDistantFrame_ = renderer_->currentSmartFrame();
-        update();
+    if (renderer_ && renderer_->isRendering()) {
+        if (currentDistantFrame_) {
+            delete currentDistantFrame_;
+            currentDistantFrame_ = nullptr;
+        }
+        const QSize size(renderer_->size());
+        currentDistantFrame_ = new QImage(
+                            (const uchar*)renderer_->currentFrame().constData(),
+                            size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
+        repaint();
     }
 }
 
@@ -119,4 +138,8 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
+    if (currentDistantFrame_) {
+        delete currentDistantFrame_;
+        currentDistantFrame_ = nullptr;
+    }
 }
