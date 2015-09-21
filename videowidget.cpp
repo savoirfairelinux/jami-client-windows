@@ -95,6 +95,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
                           scaledPreview);
     }
     painter.end();
+    renderer_->swapFrame();
 }
 
 void
