@@ -308,12 +308,6 @@ AccountDetails::save() {
 }
 
 void
-AccountDetails::on_usernameEdit_editingFinished()
-{
-    currentAccount_->setUsername(ui->usernameEdit->text());
-}
-
-void
 AccountDetails::on_tabWidget_currentChanged(int index)
 {
     if (index == 1) {
