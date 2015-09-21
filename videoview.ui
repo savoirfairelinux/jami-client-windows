@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>845</width>
-    <height>522</height>
+    <width>848</width>
+    <height>498</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -52,6 +52,8 @@
     </widget>
    </item>
   </layout>
+  <zorder>videoWidget</zorder>
+  <zorder>widget</zorder>
  </widget>
  <customwidgets>
   <customwidget>

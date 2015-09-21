@@ -22,7 +22,9 @@
 #include <QWidget>
 #include <QPainter>
 
+#include <QMutexLocker>
 #include <memory>
+#include <atomic>
 
 #include "video/renderer.h"
 #include "video/previewmanager.h"
