@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_03da7278",
+        "filename": "videowidget.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 25
+      },
+      "writtenOn": "2015-09-22T18:08:02Z",
+      "side": 1,
+      "message": "a comment would be useful",
+      "revId": "07b415042a011003b940db9984c6d44fb9d8bca7",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a3e61e43",
+        "filename": "videowidget.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 25
+      },
+      "writtenOn": "2015-09-22T18:08:02Z",
+      "side": 1,
+      "message": "a comment would be useful",
+      "revId": "07b415042a011003b940db9984c6d44fb9d8bca7",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
