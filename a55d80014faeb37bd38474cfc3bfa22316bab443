@@ -16,6 +16,24 @@
       "revId": "a55d80014faeb37bd38474cfc3bfa22316bab443",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_83044216",
+        "filename": "configurationwidget.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-09-22T14:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4b7175_4704f014",
+      "revId": "a55d80014faeb37bd38474cfc3bfa22316bab443",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
