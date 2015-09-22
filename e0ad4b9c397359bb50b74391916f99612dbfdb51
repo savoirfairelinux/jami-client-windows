@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_c02b2093",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-09-22T14:33:45Z",
+      "side": 1,
+      "message": "are these changes related to this patch? maybe better to separate them if not?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "e0ad4b9c397359bb50b74391916f99612dbfdb51",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
