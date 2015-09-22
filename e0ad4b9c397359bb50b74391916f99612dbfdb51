@@ -22,6 +22,30 @@
       "revId": "e0ad4b9c397359bb50b74391916f99612dbfdb51",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_63ffb602",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-09-22T14:45:07Z",
+      "side": 1,
+      "message": "Yeah this is needed for QSettings, it uses these values to make the path of key value in registry",
+      "parentUuid": "5a93c517_c02b2093",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "e0ad4b9c397359bb50b74391916f99612dbfdb51",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
