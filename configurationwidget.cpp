@@ -73,11 +73,32 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
                 CategorizedHistoryModel::instance()->historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
                                            SettingsKey::closeOrMinimized).toBool());
+    connect(ui->tabWidget, QTabWidget::currentChanged, [](int index) {
+        if (index == 1
+                && CallModel::instance()->getActiveCalls().size() == 0) {
+            Video::PreviewManager::instance()->startPreview();
+        } else {
+            if (CallModel::instance()->getActiveCalls().size() == 0
+                    && Video::PreviewManager::instance()->isPreviewing()) {
+                Video::PreviewManager::instance()->stopPreview();
+            }
+        }
+    });
 }
 
-void ConfigurationWidget::atExit() {
-    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
-        ui->videoView->hide();
+void
+ConfigurationWidget::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event);
+    if (ui->tabWidget->currentIndex() == 1
+            && CallModel::instance()->getActiveCalls().size() == 0) {
+        Video::PreviewManager::instance()->startPreview();
+    }
+}
+
+void
+ConfigurationWidget::atExit() {
+    if (CallModel::instance()->getActiveCalls().size() == 0
+            && Video::PreviewManager::instance()->isPreviewing()) {
         Video::PreviewManager::instance()->stopPreview();
     }
     accountModel_->save();
@@ -188,16 +209,6 @@ ConfigurationWidget::on_startupBox_toggled(bool checked)
         Utils::CreateStartupLink();
     else
         Utils::DeleteStartupLink();
-}
-
-void
-ConfigurationWidget::showEvent(QShowEvent* event)
-{
-    QWidget::showEvent(event);
-    if (CallModel::instance()->getActiveCalls().size() == 0 ) {
-        ui->videoView->show();
-        Video::PreviewManager::instance()->startPreview();
-    }
 }
 
 void
