@@ -101,6 +101,8 @@ MainBar::on_exitButton_clicked()
 
         if (ret == QMessageBox::Ok)
             settings.setValue(SettingsKey::closeOrMinimized, true);
+        else
+            settings.setValue(SettingsKey::closeOrMinimized, false);
     }
     if (settings.value(SettingsKey::closeOrMinimized).toBool() == true)
         emit minimize();
