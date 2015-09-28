@@ -288,8 +288,9 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
                         QString photoValue = reader.readElementText();
                         QImage photo;
                         photo.load(photoValue);
-                        p->setPhoto(photo.scaled(sizePhoto_,sizePhoto_, Qt::KeepAspectRatio,
-                                                 Qt::SmoothTransformation));
+                        if (not photo.isNull())
+                            p->setPhoto(photo.scaled(sizePhoto_,sizePhoto_, Qt::KeepAspectRatio,
+                                                    Qt::SmoothTransformation));
                     }
                 }
                 else if (name == "EmailAddress") {
