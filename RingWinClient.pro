@@ -161,12 +161,12 @@ win32 {
                             $$RUNTIMEDIR/Qt5Xml.dll $$RUNTIMEDIR/Qt5WinExtras.dll
     QTRUNTIME.path = $$OUT_PWD/release
 
-    QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll $$RUNTIMEDIR/iconv.dll \
+    QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll \
                             $$RUNTIMEDIR/libfreetype-6.dll $$RUNTIMEDIR/libglib-2.0-0.dll \
                             $$RUNTIMEDIR/libharfbuzz-0.dll \
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
                             $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
-                            $$RUNTIMEDIR/libjpeg-62.dll $$RUNTIMEDIR/libiconv-2.dll
+                            $$RUNTIMEDIR/libjpeg-8.dll $$RUNTIMEDIR/libiconv-2.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$(QTDIR)/plugins/platforms/qwindows.dll
