@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef CONTACTMETHODPICKER_H
-#define CONTACTMETHODPICKER_H
+#pragma once
 
 #include <QDialog>
 
@@ -48,4 +47,3 @@ private:
     int index_;
 };
 
-#endif // CONTACTMETHODPICKER_H

@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef CONTACTPICKER_H
-#define CONTACTPICKER_H
+#pragma once
 
 #include <QDialog>
 #include <QSortFilterProxyModel>
@@ -68,5 +67,3 @@ private:
     ContactMethod* number_;
     OnlyPersonProxyModel* contactProxyModel_;
 };
-
-#endif // CONTACTPICKER_H

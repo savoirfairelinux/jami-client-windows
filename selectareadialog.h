@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef SELECTAREADIALOG_H
-#define SELECTAREADIALOG_H
+#pragma once
 
 #include <QDialog>
 #include <QMouseEvent>
@@ -42,4 +41,3 @@ private:
      QPixmap originalPixmap_;
 };
 
-#endif // SELECTAREADIALOG_H

@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef SETTINGSKEY_H
-#define SETTINGSKEY_H
+#pragma once
 
 namespace SettingsKey {
 
@@ -28,5 +27,4 @@ constexpr static char autoAnswer[] = "autoAnswer";
 
 #define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
 
-#endif // SETTINGSKEY_H
 

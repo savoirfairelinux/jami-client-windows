@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef VIDEOVIEW_H
-#define VIDEOVIEW_H
+#pragma once
 
 #include <QWidget>
 #include <QTimer>
@@ -65,4 +64,3 @@ signals:
     void setChatVisibility(bool visible);
 };
 
-#endif // VIDEOVIEW_H

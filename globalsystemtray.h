@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef GLOBALSYSTEMTRAY_H
-#define GLOBALSYSTEMTRAY_H
+#pragma once
 
 #include <QSystemTrayIcon>
 
@@ -37,4 +36,3 @@ private:
     GlobalSystemTray();
 };
 
-#endif // GLOBALSYSTEMTRAY_H

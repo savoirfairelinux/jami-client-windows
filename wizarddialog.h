@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 by Savoir-Faire Linux                                *
+ * Copyright (C) 2015 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef WIZARDDIALOG_H
-#define WIZARDDIALOG_H
+#pragma once
 
 #include <QDialog>
 #include <QtConcurrent/QtConcurrent>
@@ -50,4 +49,3 @@ private slots:
     void endSetup(Account* a);
 };
 
-#endif // WIZARDDIALOG_H
