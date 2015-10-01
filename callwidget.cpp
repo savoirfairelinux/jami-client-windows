@@ -311,6 +311,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call->state() == Call::State::FAILURE
             || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
+        ui->instantMessagingWidget->setMediaText(nullptr);
         ui->videoWidget->hide();
         displaySpinner(false);
         auto onHoldCall = callModel_->getActiveCalls().first();
@@ -321,6 +322,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     } else if (call->state() == Call::State::CURRENT) {
         displaySpinner(false);
         ui->videoWidget->show();
+        ui->instantMessagingWidget->setMediaText(actualCall_);
     }
     ui->callStateLabel->setText(QString(tr("Call State: %1", "%1 is the state of the call"))
                                 .arg(call->toHumanStateName()));
@@ -394,7 +396,6 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    ui->instantMessagingWidget->setMediaText(actualCall_);
 }
 
 void
