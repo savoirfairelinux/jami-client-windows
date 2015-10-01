@@ -20,20 +20,22 @@
 #include "ui_mainwindow.h"
 
 #include <QSizeGrip>
-#include <QWinThumbnailToolBar>
-#include <QWinThumbnailToolButton>
+#include "aboutdialog.h"
 
 #include "media/text.h"
 #include "media/textrecording.h"
+
+#ifdef Q_OS_WIN32
+#include <windows.h>
+#include <QWinThumbnailToolBar>
+#include <QWinThumbnailToolButton>
+#endif
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
 
     QIcon icon(":images/ring.png");
 
@@ -64,11 +66,18 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(onIncomingCall(Call*)));
 
     navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
-    ui->verticalLayout_2->addWidget(
-                new QSizeGrip(this), 0, Qt::AlignBottom | Qt::AlignRight);
     connect(configAction, &QAction::triggered, [this]() {
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
     });
+
+#ifdef Q_OS_WIN32
+    HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
+    if (sysMenu != NULL) {
+        ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
+        QString aboutTitle = tr("About");
+        ::AppendMenuA(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdString().c_str());
+    }
+#endif
 }
 
 MainWindow::~MainWindow()
@@ -77,20 +86,26 @@ MainWindow::~MainWindow()
     delete navStack_;
 }
 
-void
-MainWindow::mousePressEvent(QMouseEvent *evt)
+bool
+MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
-    oldPos_ = evt->globalPos();
-}
+    Q_UNUSED(eventType)
 
-void
-MainWindow::mouseMoveEvent(QMouseEvent *evt)
-{
-    if(evt->buttons() & Qt::LeftButton) {
-        const auto delta = evt->globalPos() - oldPos_;
-        move(x() + delta.x(), y() + delta.y());
-        oldPos_ = evt->globalPos();
+#ifdef Q_OS_WIN32
+    MSG *msg = (MSG*) message;
+
+    if (msg->message == WM_SYSCOMMAND) {
+        if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
+            *result = 0;
+
+            AboutDialog aboutDialog;
+            aboutDialog.exec();
+
+            return true;
+        }
     }
+#endif
+    return false;
 }
 
 void
@@ -110,6 +125,7 @@ MainWindow::onIncomingCall(Call *call)
 void
 MainWindow::createThumbBar()
 {
+#ifdef Q_OS_WIN32
     QWinThumbnailToolBar *thumbbar = new QWinThumbnailToolBar(this);
     thumbbar->setWindow(this->windowHandle());
     QWinThumbnailToolButton *settings = new QWinThumbnailToolButton(thumbbar);
@@ -122,4 +138,5 @@ MainWindow::createThumbBar()
     });
 
     thumbbar->addButton(settings);
+#endif
 }

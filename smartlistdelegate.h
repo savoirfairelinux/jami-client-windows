@@ -18,41 +18,20 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QMenu>
+#include <QObject>
+#include <QStyledItemDelegate>
 
-#include "navwidget.h"
+class QPainter;
 
-namespace Ui {
-class MainBar;
-}
-
-class MainBar : public NavWidget
+class SmartListDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
-
 public:
-    explicit MainBar(QWidget *parent = 0);
-    ~MainBar();
-    void atExit();
+    explicit SmartListDelegate(QObject *parent = 0);
 
-//UI SLOTS
-private slots:
-    void on_confButton_clicked();
-    void on_callLineEdit_returnPressed();
-    void on_callButton_clicked();
-    void on_exitButton_clicked();
-    void on_minimizeButton_clicked();
-
-private slots:
-    void showAboutDialog();
-
+protected:
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 private:
-    Ui::MainBar *ui;
-    void callAction();
-    QMenu *menu_;
-
-signals:
-    void minimize();
+    constexpr static int sizeImage_ = 30;
 };
-

@@ -25,5 +25,6 @@
         <file>images/folder-download.png</file>
         <file>images/arrow-right.png</file>
         <file>images/message-text-outline.png</file>
+        <file>images/history.png</file>
     </qresource>
 </RCC>
