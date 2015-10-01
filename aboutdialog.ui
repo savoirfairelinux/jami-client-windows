@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>565</height>
+    <height>555</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -439,7 +439,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
      <property name="topMargin">
       <number>0</number>
      </property>
@@ -492,23 +492,6 @@
        </property>
       </spacer>
      </item>
-     <item>
-      <widget class="QToolButton" name="toolButton">
-       <property name="text">
-        <string>X</string>
-       </property>
-       <property name="icon">
-        <iconset resource="ressources.qrc">
-         <normaloff>:/images/close.png</normaloff>:/images/close.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item alignment="Qt::AlignHCenter">
@@ -537,7 +520,10 @@
        <number>0</number>
       </property>
       <property name="topMargin">
-       <number>1</number>
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
       <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="clientVersionLabel">
@@ -684,7 +670,10 @@ Ring is a secured and distributed communication software.</string>
     <widget class="QWidget" name="creditsWidget" native="true">
      <layout class="QVBoxLayout" name="creditsLayout">
       <property name="topMargin">
-       <number>1</number>
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
       <item>
        <widget class="QTextBrowser" name="creditsBrowser">

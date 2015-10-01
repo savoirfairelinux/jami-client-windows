@@ -22,8 +22,6 @@ VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
-  , currentDistantFrame_(nullptr)
-  , currentPreviewFrame_(nullptr)
 {
     connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
