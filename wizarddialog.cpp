@@ -32,34 +32,25 @@ WizardDialog::WizardDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
-    this->setFixedSize(this->width(),this->height());
-    ui->buttonBox->setEnabled(false);
+    setFixedSize(this->width(),this->height());
 
-    ui->spinnerLabel->hide();
-    QMovie* movie = new QMovie(":images/spinner.gif");
-    if (movie->isValid())
-    {
-        ui->spinnerLabel->setMovie(movie);
-        movie->start();
-    }
+    ui->joinButton->setEnabled(false);
+
+    QPixmap logo(":/images/logo-ring-standard-coul.png");
+    ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
+    ui->ringLogo->setAlignment(Qt::AlignHCenter);
 }
 
 WizardDialog::~WizardDialog()
 {
-    if (ui->spinnerLabel->movie()) {
-        delete ui->spinnerLabel->movie();
-    }
     delete ui;
 }
 
 void
 WizardDialog::accept()
 {
-    //ui->spinnerLabel->show();
     ui->label->setText(tr("Please wait while we create your account."));
-    ui->buttonBox->setEnabled(false);
+    ui->joinButton->setEnabled(false);
     ui->usernameEdit->setEnabled(false);
 
     repaint();
@@ -87,5 +78,13 @@ WizardDialog::endSetup(Account* a)
 void
 WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
 {
-    ui->buttonBox->setEnabled(!arg1.isEmpty());
+    ui->joinButton->setEnabled(!arg1.isEmpty());
+}
+
+void
+WizardDialog::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event)
+
+    exit(0);
 }
