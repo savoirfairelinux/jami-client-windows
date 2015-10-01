@@ -157,6 +157,8 @@ AccountDetails::setAccount(Account* currentAccount) {
 
     currentAccount_ = currentAccount;
 
+    ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
+
     codecModel_ = currentAccount->codecModel();
 
     ui->typeValueLabel->setText(currentAccount_->protocolModel()->
