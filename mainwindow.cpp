@@ -32,9 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
-
     QIcon icon(":images/ring.png");
 
     this->setWindowIcon(icon);
@@ -64,8 +61,6 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(onIncomingCall(Call*)));
 
     navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
-    ui->verticalLayout_2->addWidget(
-                new QSizeGrip(this), 0, Qt::AlignBottom | Qt::AlignRight);
     connect(configAction, &QAction::triggered, [this]() {
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
     });
@@ -75,22 +70,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete navStack_;
-}
-
-void
-MainWindow::mousePressEvent(QMouseEvent *evt)
-{
-    oldPos_ = evt->globalPos();
-}
-
-void
-MainWindow::mouseMoveEvent(QMouseEvent *evt)
-{
-    if(evt->buttons() & Qt::LeftButton) {
-        const auto delta = evt->globalPos() - oldPos_;
-        move(x() + delta.x(), y() + delta.y());
-        oldPos_ = evt->globalPos();
-    }
 }
 
 void
