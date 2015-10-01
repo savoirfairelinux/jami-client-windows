@@ -37,13 +37,13 @@ ImDelegate::paint(QPainter *painter,
                   const QStyleOptionViewItem &option,
                   const QModelIndex &index) const
 {
-    QStyleOptionViewItemV4 opt = option;
+    QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
 
     if (index.isValid()) {
 
         auto msg = index.model()->data(index, Qt::DisplayRole).toString();
-        opt.text = "";
+        opt.text.clear();
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;

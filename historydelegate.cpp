@@ -18,8 +18,6 @@
 
 #include "historydelegate.h"
 
-#include <QDebug>
-
 HistoryDelegate::HistoryDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
 {
@@ -30,7 +28,7 @@ void
 HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                        const QModelIndex &index) const
 {
-    QStyleOptionViewItemV4 opt = option;
+    QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
 
     if (index.column() == 0) {
@@ -38,7 +36,7 @@ HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
         auto number = index.model()->data(index, static_cast<int>(Call::Role::Number)).toString();
         Call::Direction direction = index.model()->data(index, static_cast<int>(Call::Role::Direction)).value<Call::Direction>();
 
-        opt.text = "";
+        opt.text.clear();
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;
