@@ -43,7 +43,7 @@ ImDelegate::paint(QPainter *painter,
     if (index.isValid()) {
 
         auto msg = index.model()->data(index, Qt::DisplayRole).toString();
-        opt.text = "";
+        opt.text = QString();
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;
