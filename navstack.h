@@ -23,7 +23,6 @@
 
 #include "navwidget.h"
 #include "configurationwidget.h"
-#include "mainbar.h"
 #include "navbar.h"
 #include "callwidget.h"
 
