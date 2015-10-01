@@ -36,7 +36,6 @@ public:
 private slots:
     void on_aboutButton_toggled(bool checked);
     void on_creditsButton_clicked(bool checked);
-    void on_toolButton_clicked();
 
 private:
     Ui::AboutDialog *ui;
