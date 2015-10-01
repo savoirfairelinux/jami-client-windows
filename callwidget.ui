@@ -263,32 +263,10 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0">
        <property name="topMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="QListView" name="callList">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>220</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="sizePolicy">
@@ -310,7 +288,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="historyTab">
           <property name="sizePolicy">
@@ -326,7 +304,7 @@
            </size>
           </property>
           <attribute name="title">
-           <string>History</string>
+           <string>SmartList</string>
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <property name="leftMargin">
@@ -359,46 +337,10 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Sort:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="sortComboBox">
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
            <item>
-            <widget class="QTreeView" name="historyList">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>220</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Plain</enum>
-             </property>
-            </widget>
+            <widget class="QListView" name="smartList"/>
            </item>
           </layout>
          </widget>
