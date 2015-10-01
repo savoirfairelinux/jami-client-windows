@@ -19,9 +19,9 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
-#include "callmodel.h"
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
+#include "recentmodel.h"
 
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
@@ -120,7 +120,8 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
 void
 VideoView::updateTimer()
 {
-    overlay_->setTime(CallModel::instance()->selectedCall()->length());
+    //FIX ME : Migrate to recent model
+    //overlay_->setTime(CalModel::instance()->selectedCall()->length());
 }
 
 void

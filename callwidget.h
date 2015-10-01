@@ -54,9 +54,8 @@ private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
     void on_contactView_doubleClicked(const QModelIndex &index);
-    void on_historyList_doubleClicked(const QModelIndex &index);
-    void on_sortComboBox_currentIndexChanged(int index);
-    void on_callList_activated(const QModelIndex &index);
+    void on_cancelButton_clicked();
+    void on_smartList_doubleClicked(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call *call);
@@ -64,8 +63,7 @@ private slots:
     void callStateChanged(Call *call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void checkRegistrationState(Account* account,Account::RegistrationState state);
-
-    void on_cancelButton_clicked();
+    void smartListSelectionChanged(const QItemSelection &newSel, const QItemSelection &oldSel);
 
 private:
     Ui::CallWidget *ui;
@@ -76,7 +74,6 @@ private:
     int inputVolume_;
     QMenu *menu_;
     QMovie *spinner_;
-    HistoryDelegate *historyDelegate_;
     ContactDelegate *contactDelegate_;
 
 private:
