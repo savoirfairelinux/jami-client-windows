@@ -32,7 +32,7 @@ AccountStateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     initStyleOption(&opt, index);
     if (index.column() == 0) {
         auto name = index.model()->data(index, Qt::DisplayRole).toString();
-        opt.text = "";
+        opt.text = QString();
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;
