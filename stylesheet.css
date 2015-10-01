@@ -1,10 +1,3 @@
-QMainWindow {
-    border: 1px solid #CC119EDA;
-}
-
-QDialog {
-    border: 1px solid #CC119EDA;
-}
 
 QPushButton {
     background-color: #FFF7F7F7;
