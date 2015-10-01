@@ -47,17 +47,17 @@ protected:
 
 private slots:
     void callStateChanged(Call *call, Call::State previousState);
-    void updateTimer();
+    void updateCall();
     void showContextMenu(const QPoint &pos);
 
 private:
     Ui::VideoView *ui;
-    QTimer* timerLength_;
     VideoOverlay* overlay_;
     constexpr static int fadeOverlayTime_ = 2000; //msec
     QPropertyAnimation* fadeAnim_;
     QWidget *oldParent_;
     QSize oldSize_;
+    QMetaObject::Connection timerConnection_;
 private:
     void toggleFullScreen();
 signals:
