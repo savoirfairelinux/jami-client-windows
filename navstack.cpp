@@ -22,13 +22,13 @@ NavStack::NavStack(QStackedWidget* bar, QStackedWidget* stack, QWidget *parent)
     : bar_(bar)
     , stack_(stack)
 {
-    navList_.append(new MainBar());
+    Q_UNUSED(parent)
+
     navList_.append(new NavBar());
 
     navList_.append(new CallWidget());
     navList_.append(new ConfigurationWidget());
 
-    connect(navList_[Main], SIGNAL(minimize()), parent, SLOT(showMinimized()));
     for (int i = 0; i < END; i++) {
         if (i < CallScreen)
             bar_->addWidget(navList_[i]);
@@ -39,6 +39,7 @@ NavStack::NavStack(QStackedWidget* bar, QStackedWidget* stack, QWidget *parent)
         connect(navList_[i], SIGNAL(BackRequested()),
                 this, SLOT(onBackRequested()));
     }
+    bar_->hide();
 }
 
 NavStack::~NavStack()
@@ -53,7 +54,11 @@ NavStack::onNavigationRequested(ScreenEnum screen) {
     if (navList_[screen] == stack_->currentWidget())
         return;
     if (screen < CallScreen) {
-        bar_->setCurrentWidget(navList_[screen]);
+        bar_->show();
+        if (auto barItem = navList_[screen])
+            bar_->setCurrentWidget(barItem);
+        else
+            bar_->hide();
     } else {
         stack_->setCurrentWidget(navList_[screen]);
         setNavBar(navList_[screen]);
@@ -78,6 +83,10 @@ NavStack::onBackRequested() {
 
 void
 NavStack::setNavBar(NavWidget* navW) {
-    if (navW->barDesired != END)
+    if (navW->barDesired != END) {
         bar_->setCurrentWidget(navList_[navW->barDesired]);
+        bar_->show();
+    } else {
+        bar_->hide();
+    }
 }
