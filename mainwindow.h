@@ -45,9 +45,5 @@ private slots:
 private:
     Ui::MainWindow *ui;
     NavStack* navStack_;
-    QPoint oldPos_;
-protected:
-    void mousePressEvent(QMouseEvent *evt);
-    void mouseMoveEvent(QMouseEvent *evt);
 };
 

@@ -21,7 +21,6 @@
 #include <QWidget>
 
 enum ScreenEnum {
-    Main,
     Nav,
     //DO not add main widget screen before callScreen
     CallScreen,

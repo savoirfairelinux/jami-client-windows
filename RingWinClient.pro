@@ -35,7 +35,6 @@ SOURCES += main.cpp\
     configurationwidget.cpp \
     navstack.cpp \
     navbar.cpp \
-    mainbar.cpp \
     navwidget.cpp \
     accountdetails.cpp \
     aboutdialog.cpp \
@@ -62,7 +61,6 @@ HEADERS  += mainwindow.h \
     configurationwidget.h \
     navstack.h \
     navbar.h \
-    mainbar.h \
     navwidget.h \
     accountdetails.h \
     aboutdialog.h \
@@ -89,7 +87,6 @@ FORMS    += mainwindow.ui \
     callwidget.ui \
     configurationwidget.ui \
     navbar.ui \
-    mainbar.ui \
     accountdetails.ui \
     aboutdialog.ui \
     wizarddialog.ui \

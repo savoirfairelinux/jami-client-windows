@@ -45,7 +45,7 @@
 #include "globalsystemtray.h"
 
 CallWidget::CallWidget(QWidget *parent) :
-    NavWidget(Main ,parent),
+    NavWidget(END ,parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu())
 {
