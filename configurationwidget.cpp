@@ -73,7 +73,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
                 CategorizedHistoryModel::instance()->historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
                                            SettingsKey::closeOrMinimized).toBool());
-    connect(ui->tabWidget, QTabWidget::currentChanged, [](int index) {
+    connect(ui->tabWidget, &QTabWidget::currentChanged, [](int index) {
         if (index == 1
                 && CallModel::instance()->getActiveCalls().size() == 0) {
             Video::PreviewManager::instance()->startPreview();

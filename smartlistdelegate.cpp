@@ -16,20 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "contactdelegate.h"
+#include "smartlistdelegate.h"
 
+#include <QApplication>
+#include <QSortFilterProxyModel>
+#include <QPainter>
+
+#include "itemdataroles.h"
 #include "person.h"
-#include "contactmethod.h"
+#include "recentmodel.h"
+#include "call.h"
 
-ContactDelegate::ContactDelegate(QObject *parent)
+SmartListDelegate::SmartListDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
+
 }
 
-
 void
-ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
-                       const QModelIndex &index) const
+SmartListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
@@ -45,57 +50,50 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
             cg = QPalette::Inactive;
         painter->setPen(opt.palette.color(cg, QPalette::Text));
         painter->setOpacity(1.0);
-        QVariant var_c = index.child(0,0).data(
-                    static_cast<int>(Person::Role::Object));
-        if (var_c.isValid()) {
-            Person *c = var_c.value<Person *>();
+        QVariant name = index.data(static_cast<int>(Ring::Role::Name));
+        if (name.isValid()) {
             painter->drawText(QRect(rect.left()+sizeImage_+5, rect.top(),
                                     rect.width(), rect.height()/2),
-                                    opt.displayAlignment, c->formattedName());
-            QVariant var_p = c->photo();
-            if (var_p.isValid()) {
-                painter->drawImage(QRect(rect.left()+1, rect.top()+1,
-                                         sizeImage_, sizeImage_),
-                                   var_p.value<QImage>());
-            } else {
-                QImage defaultImage(":images/account.png");
-                painter->drawImage(QRect(rect.left(), rect.top(),
-                                         sizeImage_, sizeImage_),
-                                   defaultImage);
-            }
-            switch (c->phoneNumbers().size()) {
-            case 0:
-                break;
-            case 1:
-            {
-                QString number;
-                QVariant var_n =
-                        c->phoneNumbers().first()->roleData(Qt::DisplayRole);
-                if (var_n.isValid())
-                    number = var_n.value<QString>();
+                                    opt.displayAlignment, name.toString());
+        }
 
+        QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
+        if (state.isValid() && RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(index))) {
+            painter->drawText(QRect(rect.left()+sizeImage_+5,
+                                    rect.top() + rect.height()/2,
+                                    rect.width(), rect.height()/2),
+                              opt.displayAlignment, state.toString());
+        } else {
+            QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
+            if (lastUsed.isValid()) {
                 painter->drawText(QRect(rect.left()+sizeImage_+5,
                                         rect.top() + rect.height()/2,
                                         rect.width(), rect.height()/2),
-                                  opt.displayAlignment, number);
-                break;
-            }
-            default:
-                painter->drawText(QRect(rect.left()+sizeImage_+5,
-                                        rect.top() + rect.height()/2,
-                                        rect.width(), rect.height()/2),
-                                  opt.displayAlignment, tr("<Multiple contact methods>"));
-                break;
+                                  opt.displayAlignment, lastUsed.toString());
             }
         }
+        QVariant var_p = index.data(static_cast<int>(Ring::Role::Object));
+        auto person = var_p.value<Person*>();
+        if (person && not person->photo().value<QImage>().isNull()) {
+            painter->drawImage(QRect(rect.left()+1, rect.top()+1,
+                                     sizeImage_, sizeImage_),
+                               person->photo().value<QImage>());
+        } else {
+            QImage defaultImage(":images/account.png");
+            painter->drawImage(QRect(rect.left(), rect.top(),
+                                     sizeImage_, sizeImage_),
+                               defaultImage);
+        }
+    } else {
+        QStyledItemDelegate::paint(painter, option, index);
     }
 }
 
 QSize
-ContactDelegate::sizeHint(const QStyleOptionViewItem &option,
-                          const QModelIndex &index) const
+SmartListDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QSize result = QStyledItemDelegate::sizeHint(option, index);
-    result.setHeight((result.height()*2)+2);
+    result.setHeight((result.height()*2));
     return result;
 }
+
