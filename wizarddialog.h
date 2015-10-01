@@ -35,6 +35,8 @@ public:
     explicit WizardDialog(QWidget *parent = 0);
     ~WizardDialog();
 
+protected slots:
+    void closeEvent(QCloseEvent *event);
 private slots:
     void on_usernameEdit_textChanged(const QString &arg1);
     void accept();
