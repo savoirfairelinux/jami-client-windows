@@ -25,9 +25,6 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
-
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
     ui->clientVersionLabel->setText(
@@ -76,10 +73,4 @@ AboutDialog::on_creditsButton_clicked(bool checked)
     ui->aboutButton->setChecked(!checked);
     ui->creditsWidget->setVisible(checked);
     ui->aboutWidget->setVisible(!checked);
-}
-
-void
-AboutDialog::on_toolButton_clicked()
-{
-    this->close();
 }
