@@ -75,14 +75,27 @@ InstantMessagingWidget::setMediaText(Call *call)
     if (call != nullptr) {
         connect(call, SIGNAL(mediaAdded(Media::Media*)),
                 this, SLOT(mediaAdd(Media::Media*)));
-        Media::Text *textMedia = call->addOutgoingMedia<Media::Text>();
-        connect(ui->messageInput, &QLineEdit::returnPressed, [=]()
-        {
-            QMap<QString, QString> messages;
-            messages["text/plain"] = ui->messageInput->text();
-            textMedia->send(messages);
-            ui->messageInput->clear();
-        });
+        Media::Text *textMedia = nullptr;
+        if (call->hasMedia(Media::Media::Type::TEXT, Media::Media::Direction::OUT)) {
+            textMedia = call->firstMedia<Media::Text>(Media::Media::Direction::OUT);
+        } else {
+            textMedia = call->addOutgoingMedia<Media::Text>();
+        }
+        if (textMedia) {
+            connect(ui->messageOutput->model(),
+                    SIGNAL(rowsInserted(const QModelIndex&, int, int)),
+                    ui->messageOutput, SLOT(scrollToBottom()));
+            ui->messageOutput->setModel(
+                        textMedia->recording()->
+                        instantMessagingModel());
+            connect(ui->messageInput, &QLineEdit::returnPressed, [=]()
+            {
+                QMap<QString, QString> messages;
+                messages["text/plain"] = ui->messageInput->text();
+                textMedia->send(messages);
+                ui->messageInput->clear();
+            });
+        }
     } else {
         ui->messageOutput->disconnect();
         ui->messageInput->disconnect();
@@ -99,12 +112,6 @@ InstantMessagingWidget::mediaAdd(Media::Media *media)
         break;
     case Media::Media::Type::TEXT:
         if (media->direction() == Media::Text::Direction::IN) {
-            ui->messageOutput->setModel(
-                        static_cast<Media::Text*>(media)->recording()->
-                        instantMessagingModel());
-            connect(ui->messageOutput->model(),
-                    SIGNAL(rowsInserted(const QModelIndex&, int, int)),
-                    ui->messageOutput, SLOT(scrollToBottom()));
             connect(static_cast<Media::Text*>(media),
                     SIGNAL(messageReceived(QMap<QString,QString>)),
                     this,
@@ -158,4 +165,5 @@ InstantMessagingWidget::onMsgReceived(const QMap<QString,QString>& message)
         GlobalSystemTray::instance().showMessage("Ring: Message Received", message["text/plain"]);
         QApplication::alert(this, 5000);
     }
+    this->show();
 }
