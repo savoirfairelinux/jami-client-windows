@@ -19,9 +19,9 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
-#include "callmodel.h"
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
+#include "recentmodel.h"
 
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
@@ -110,7 +110,6 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
     }
     else {
         emit setChatVisibility(false);
-        ui->videoWidget->hide();
         if (isFullScreen())
             toggleFullScreen();
         timerLength_->stop();

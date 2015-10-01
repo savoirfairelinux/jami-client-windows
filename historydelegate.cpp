@@ -18,8 +18,6 @@
 
 #include "historydelegate.h"
 
-#include <QDebug>
-
 HistoryDelegate::HistoryDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
 {
