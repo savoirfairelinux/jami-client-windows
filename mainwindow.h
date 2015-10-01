@@ -25,6 +25,8 @@
 
 #include "navstack.h"
 
+#define IDM_ABOUTBOX 0x0010
+
 namespace Ui {
 class MainWindow;
 }
@@ -38,6 +40,8 @@ public:
     ~MainWindow();
     void createThumbBar();
 
+protected:
+    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
 private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void onIncomingCall(Call *call);
@@ -45,9 +49,5 @@ private slots:
 private:
     Ui::MainWindow *ui;
     NavStack* navStack_;
-    QPoint oldPos_;
-protected:
-    void mousePressEvent(QMouseEvent *evt);
-    void mouseMoveEvent(QMouseEvent *evt);
 };
 
