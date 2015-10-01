@@ -19,9 +19,9 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
-#include "callmodel.h"
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
+#include "recentmodel.h"
 
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
@@ -56,9 +56,6 @@ VideoView::VideoView(QWidget *parent) :
     fadeAnim_->setEndValue(0);
     fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
 
-    timerLength_ =  new QTimer(this);
-    connect(timerLength_, SIGNAL(timeout()), this, SLOT(updateTimer()));
-
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
@@ -71,7 +68,6 @@ VideoView::~VideoView()
 {
     delete ui;
     delete overlay_;
-    delete timerLength_;
     delete fadeAnim_;
 }
 
@@ -105,22 +101,22 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
    Q_UNUSED(previousState)
     if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
-        timerLength_->start(1000);
-        overlay_->setName(call->formattedName());
+        timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
     }
     else {
         emit setChatVisibility(false);
-        ui->videoWidget->hide();
         if (isFullScreen())
             toggleFullScreen();
-        timerLength_->stop();
+        QObject::disconnect(timerConnection_);
     }
 }
 
 void
-VideoView::updateTimer()
+VideoView::updateCall()
 {
-    overlay_->setTime(CallModel::instance()->selectedCall()->length());
+    auto call = CallModel::instance()->selectedCall();
+    overlay_->setName(call->formattedName());
+    overlay_->setTime(call->length());
 }
 
 void
