@@ -67,6 +67,8 @@ private slots:
     void checkRegistrationState(Account* account,Account::RegistrationState state);
     void smartListSelectionChanged(const QItemSelection &newSel, const QItemSelection &oldSel);
 
+    void on_settingsButton_clicked();
+
 private:
     Ui::CallWidget *ui;
     Call* actualCall_;
