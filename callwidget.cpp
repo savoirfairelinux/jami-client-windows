@@ -38,6 +38,7 @@
 #include "media/textrecording.h"
 #include "recentmodel.h"
 
+
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
@@ -417,4 +418,19 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
         setActualCall(nullptr);
         ui->videoWidget->hide();
     }
+}
+
+void CallWidget::on_callButton_clicked()
+{
+    if (ui->searchEdit->text().isEmpty())
+        return;
+    Call* c = CallModel::instance()->dialingCall();
+    c->setPeerContactMethod(PhoneDirectoryModel::instance()->getNumber(ui->searchEdit->text()));
+    c->performAction(Call::Action::ACCEPT);
+    ui->searchEdit->clear();
+}
+
+void CallWidget::on_searchEdit_returnPressed()
+{
+    on_callButton_clicked();
 }

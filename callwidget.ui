@@ -325,15 +325,26 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit">
+              <widget class="QLineEdit" name="searchEdit">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="placeholderText">
-                <string>Search</string>
+                <string>Search / Enter number</string>
                </property>
                <property name="clearButtonEnabled">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="callButton">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/images/phone.png</normaloff>:/images/phone.png</iconset>
                </property>
               </widget>
              </item>
