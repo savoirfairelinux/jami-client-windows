@@ -53,7 +53,6 @@ CallWidget::CallWidget(QWidget *parent) :
     ui->setupUi(this);
 
     ui->callInvite->setVisible(false);
-    ui->videoWidget->setVisible(false);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -160,8 +159,7 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
-            ui->ringIdLabel->setText(
-                         QString(tr("Your RingID: %1", "%1 is the RingID")).arg(username.toString()));
+            ui->ringIdLabel->setText(username.toString());
             found = true;
             return;
         }
@@ -230,8 +228,7 @@ CallWidget::findRingAccount()
             if (account->displayName().isEmpty())
                 account->displayName() = account->alias();
             auto username = account->username();
-            ui->ringIdLabel->setText(
-                        QString(tr("Your RingID: %1", "%1 is the RingID")).arg(username));
+            ui->ringIdLabel->setText(username);
             found = true;
             return;
         }
@@ -254,6 +251,7 @@ CallWidget::callIncoming(Call *call)
     if (!call->account()->isAutoAnswer()) {
         ui->callLabel->setText(QString(tr("Call from %1", "%1 is the name of the caller"))
                                .arg(call->formattedName()));
+        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
     }
@@ -266,6 +264,7 @@ CallWidget::on_acceptButton_clicked()
     if (actualCall_ != nullptr)
         actualCall_->performAction(Call::Action::ACCEPT);
     ui->callInvite->setVisible(false);
+    ui->stackedWidget->setCurrentWidget(ui->videoPage);
 }
 
 void
@@ -276,6 +275,7 @@ CallWidget::on_refuseButton_clicked()
     actualCall_->performAction(Call::Action::REFUSE);
     setActualCall(nullptr);
     ui->callInvite->setVisible(false);
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
 void
@@ -286,6 +286,7 @@ CallWidget::addedCall(Call* call, Call* parent)
     if (call->direction() == Call::Direction::OUTGOING) {
         displaySpinner(true);
         setActualCall(call);
+        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
     }
 }
 
@@ -302,7 +303,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
-        ui->videoWidget->hide();
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
         displaySpinner(false);
         //auto onHoldCall = callModel_->getActiveCalls().first();
         //if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
@@ -311,8 +312,8 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         //}
     } else if (call->state() == Call::State::CURRENT) {
         displaySpinner(false);
-        ui->videoWidget->show();
         ui->instantMessagingWidget->setMediaText(actualCall_);
+        ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
     ui->callStateLabel->setText(QString(tr("Call State: %1", "%1 is the state of the call"))
                                 .arg(call->toHumanStateName()));
@@ -407,20 +408,20 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
     auto newIdx = newSel.indexes().first() ;
 
     if (actualCall_ != nullptr) {
-        ui->videoWidget->hide();
         actualCall_->performAction(Call::Action::HOLD);
     }
     if (auto newIdxCall = RecentModel::instance()->getActiveCall(newIdx)) {
         newIdxCall->performAction(Call::Action::HOLD);
         setActualCall(newIdxCall);
-        ui->videoWidget->show();
+        ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
         setActualCall(nullptr);
-        ui->videoWidget->hide();
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
 }
 
-void CallWidget::on_callButton_clicked()
+void
+CallWidget::on_callButton_clicked()
 {
     if (ui->searchEdit->text().isEmpty())
         return;
@@ -430,7 +431,14 @@ void CallWidget::on_callButton_clicked()
     ui->searchEdit->clear();
 }
 
-void CallWidget::on_searchEdit_returnPressed()
+void
+CallWidget::on_searchEdit_returnPressed()
 {
     on_callButton_clicked();
+}
+
+void
+CallWidget::on_settingsButton_clicked()
+{
+    emit NavigationRequested(ScreenEnum::ConfScreen);
 }
