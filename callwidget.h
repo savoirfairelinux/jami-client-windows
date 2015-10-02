@@ -56,6 +56,8 @@ private slots:
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex &index);
+    void on_callButton_clicked();
+    void on_searchEdit_returnPressed();
 
 private slots:
     void callIncoming(Call *call);
