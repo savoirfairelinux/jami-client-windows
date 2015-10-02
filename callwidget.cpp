@@ -91,6 +91,8 @@ CallWidget::CallWidget(QWidget *parent) :
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
                 this,
                 SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
+        smartListDelegate_ = new SmartListDelegate();
+        ui->smartList->setItemDelegate(smartListDelegate_);
 
         PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);

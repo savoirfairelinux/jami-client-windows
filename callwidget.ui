@@ -484,6 +484,9 @@ Copy and share it with your friends!</string>
                <property name="enabled">
                 <bool>true</bool>
                </property>
+               <property name="maxLength">
+                <number>100</number>
+               </property>
                <property name="placeholderText">
                 <string>Search / Enter number</string>
                </property>
