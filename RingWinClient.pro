@@ -42,7 +42,6 @@ SOURCES += main.cpp\
     utils.cpp \
     wizarddialog.cpp \
     windowscontactbackend.cpp \
-    historydelegate.cpp \
     contactdelegate.cpp \
     selectareadialog.cpp \
     accountserializationadapter.cpp \
@@ -68,7 +67,6 @@ HEADERS  += mainwindow.h \
     utils.h \
     wizarddialog.h \
     windowscontactbackend.h \
-    historydelegate.h \
     contactdelegate.h \
     selectareadialog.h \
     accountserializationadapter.h \
