@@ -29,6 +29,7 @@
 #include "instantmessagingwidget.h"
 #include "historydelegate.h"
 #include "contactdelegate.h"
+#include "smartlistdelegate.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
@@ -79,6 +80,7 @@ private:
     QMenu *menu_;
     QMovie *spinner_;
     ContactDelegate *contactDelegate_;
+    SmartListDelegate* smartListDelegate_;
 
 private:
     void findRingAccount();

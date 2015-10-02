@@ -54,7 +54,8 @@ SOURCES += main.cpp\
     contactpicker.cpp \
     contactmethodpicker.cpp \
     globalsystemtray.cpp \
-    transferdialog.cpp
+    transferdialog.cpp \
+    smartlistdelegate.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -81,7 +82,8 @@ HEADERS  += mainwindow.h \
     contactmethodpicker.h \
     settingskey.h \
     globalsystemtray.h \
-    transferdialog.h
+    transferdialog.h \
+    smartlistdelegate.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
