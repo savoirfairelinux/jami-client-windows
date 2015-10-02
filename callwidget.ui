@@ -509,7 +509,7 @@ Copy and share it with your friends!</string>
             </layout>
            </item>
            <item>
-            <widget class="QListView" name="smartList"/>
+            <widget class="QTreeView" name="smartList"/>
            </item>
           </layout>
          </widget>
