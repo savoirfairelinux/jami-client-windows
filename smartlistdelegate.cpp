@@ -72,6 +72,8 @@ SmartListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
                                      sizeImage_, sizeImage_),
                                defaultImage);
         }
+    } else {
+        QStyledItemDelegate::paint(painter, option, index);
     }
 }
 
