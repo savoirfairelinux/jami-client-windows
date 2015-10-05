@@ -36,8 +36,13 @@ public:
     }
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
     {
-        return sourceModel()->index(source_row,0,source_parent)
-                .data(static_cast<int>(Call::Role::State)).value<Call::State>() != Call::State::CURRENT;
+        if (not sourceModel() || source_parent.isValid())
+            return false;
+        auto idx = sourceModel()->index(source_row,0,source_parent);
+        if (not idx.isValid())
+            return false;
+        return idx.data(static_cast<int>(Call::Role::State))
+                .value<Call::State>() != Call::State::CURRENT;
     }
 };
 
@@ -61,5 +66,8 @@ private slots:
 private:
     Ui::TransferDialog *ui;
     Call *selectedCall_;
+    ActiveCallsProxyModel *activeProxy_;
+
+    void removeProxyModel();
 };
 
