@@ -31,13 +31,15 @@ TransferDialog::TransferDialog(QWidget *parent) :
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
-    auto activeProxy = new ActiveCallsProxyModel(CallModel::instance());
-    ui->activeCallsView->setModel(activeProxy);
+    activeProxy_ = new ActiveCallsProxyModel(CallModel::instance());
+    activeProxy_->setDynamicSortFilter(false);
+    ui->activeCallsView->setModel(activeProxy_);
     ui->activeCallsView->clearSelection();
 }
 
 TransferDialog::~TransferDialog()
 {
+    removeProxyModel();
     delete ui;
 }
 
@@ -53,6 +55,8 @@ TransferDialog::showEvent(QShowEvent *event)
 void
 TransferDialog::on_transferButton_clicked()
 {
+    removeProxyModel();
+
     auto callList = CallModel::instance()->getActiveCalls();
     for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
@@ -68,18 +72,29 @@ TransferDialog::on_transferButton_clicked()
     }
 }
 
+void TransferDialog::removeProxyModel()
+{
+    //This prevent a crash happening in Qt5.5 in QSortFilterProxyModel
+    ui->activeCallsView->setModel(nullptr);
+    if (activeProxy_) {
+        delete activeProxy_;
+        activeProxy_ = nullptr;
+    }
+}
+
 void
 TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
 {
+    Q_UNUSED(index)
+
+    removeProxyModel();
+
     auto callList = CallModel::instance()->getActiveCalls();
-    for (auto c : callList) {
+    Q_FOREACH(Call* c, callList) {
         if (c->state() == Call::State::CURRENT) {
-            auto selectedCall = CallModel::instance()->getCall(index);
-            if (c != selectedCall) {
-                CallModel::instance()->attendedTransfer(c, selectedCall);
+                CallModel::instance()->attendedTransfer(c, selectedCall_);
                 this->close();
                 return;
-            }
         }
     }
 }
