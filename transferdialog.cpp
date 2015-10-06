@@ -31,15 +31,13 @@ TransferDialog::TransferDialog(QWidget *parent) :
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
-    activeProxy_ = new ActiveCallsProxyModel(CallModel::instance());
-    activeProxy_->setDynamicSortFilter(false);
-    ui->activeCallsView->setModel(activeProxy_);
+    auto activeProxy = new ActiveCallsProxyModel(CallModel::instance());
+    ui->activeCallsView->setModel(activeProxy);
     ui->activeCallsView->clearSelection();
 }
 
 TransferDialog::~TransferDialog()
 {
-    removeProxyModel();
     delete ui;
 }
 
@@ -55,10 +53,8 @@ TransferDialog::showEvent(QShowEvent *event)
 void
 TransferDialog::on_transferButton_clicked()
 {
-    removeProxyModel();
-
     auto callList = CallModel::instance()->getActiveCalls();
-    Q_FOREACH(Call* c, callList) {
+    for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
             if (not ui->numberBar->text().isEmpty()) {
                 auto number = PhoneDirectoryModel::instance()->getNumber(ui->numberBar->text());
@@ -72,29 +68,18 @@ TransferDialog::on_transferButton_clicked()
     }
 }
 
-void TransferDialog::removeProxyModel()
-{
-    //This prevent a crash happening in Qt5.5 in QSortFilterProxyModel
-    ui->activeCallsView->setModel(nullptr);
-    if (activeProxy_) {
-        delete activeProxy_;
-        activeProxy_ = nullptr;
-    }
-}
-
 void
 TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
 {
-    Q_UNUSED(index)
-
-    removeProxyModel();
-
     auto callList = CallModel::instance()->getActiveCalls();
-    Q_FOREACH(Call* c, callList) {
+    for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
-                CallModel::instance()->attendedTransfer(c, selectedCall_);
+            auto selectedCall = CallModel::instance()->getCall(index);
+            if (c != selectedCall) {
+                CallModel::instance()->attendedTransfer(c, selectedCall);
                 this->close();
                 return;
+            }
         }
     }
 }
