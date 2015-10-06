@@ -24,20 +24,21 @@
 
 TransferDialog::TransferDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::TransferDialog)
+    ui(new Ui::TransferDialog),
+    activeProxy_(nullptr)
 {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint);
-
-    auto activeProxy = new ActiveCallsProxyModel(CallModel::instance());
-    ui->activeCallsView->setModel(activeProxy);
-    ui->activeCallsView->clearSelection();
 }
 
 TransferDialog::~TransferDialog()
 {
+    if (activeProxy_) {
+        ui->activeCallsView->setModel(nullptr);
+        delete activeProxy_;
+    }
     delete ui;
 }
 
@@ -48,6 +49,12 @@ TransferDialog::showEvent(QShowEvent *event)
 
     ui->numberBar->clear();
     selectedCall_ = nullptr;
+    if (activeProxy_) {
+        activeProxy_ = new ActiveCallsProxyModel(CallModel::instance());
+        activeProxy_->setDynamicSortFilter(false);
+    }
+    ui->activeCallsView->setModel(activeProxy_);
+    ui->activeCallsView->clearSelection();
 }
 
 void
@@ -66,6 +73,12 @@ TransferDialog::on_transferButton_clicked()
             return;
         }
     }
+}
+
+void TransferDialog::removeProxyModel()
+{
+    //This prevent a crash happening in Qt5.5 in QSortFilterProxyModel
+    ui->activeCallsView->setModel(nullptr);
 }
 
 void
