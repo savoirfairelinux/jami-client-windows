@@ -86,7 +86,7 @@ CallWidget::CallWidget(QWidget *parent) :
                 , this
                 , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
 
-        ui->smartList->setModel(RecentModel::instance());
+        ui->smartList->setModel(RecentModel::instance()->peopleProxy());
         connect(ui->smartList->selectionModel(),
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
                 this,
@@ -285,7 +285,6 @@ void
 CallWidget::addedCall(Call* call, Call* parent)
 {
     Q_UNUSED(parent);
-    qDebug() << "CALL ADDED";
     if (call->direction() == Call::Direction::OUTGOING) {
         displaySpinner(true);
         setActualCall(call);
@@ -308,11 +307,12 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
         displaySpinner(false);
-        //auto onHoldCall = callModel_->getActiveCalls().first();
-        //if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
-        //    setActualCall(onHoldCall);
-        //    onHoldCall->performAction(Call::Action::HOLD);
-        //}
+//TODO : Link this so that recentModel get selected correctly
+//        auto onHoldCall = callModel_->getActiveCalls().first();
+//        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
+//            setActualCall(onHoldCall);
+//            onHoldCall->performAction(Call::Action::HOLD);
+//        }
     } else if (call->state() == Call::State::CURRENT) {
         displaySpinner(false);
         ui->instantMessagingWidget->setMediaText(actualCall_);
@@ -383,20 +383,21 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex &index)
 {
-    if (RecentModel::instance()->hasActiveCall(index))
+    auto realIndex = RecentModel::instance()->peopleProxy()->mapToSource(index);
+    if (RecentModel::instance()->hasActiveCall(realIndex))
         return;
 
     ContactMethod* m = nullptr;
-    auto cm = index.data((int)Call::Role::ContactMethod).value<ContactMethod*>();
+    auto cm = realIndex.data((int)Call::Role::ContactMethod).value<ContactMethod*>();
     if (cm) {
         m = cm;
     } else {
-        auto person =  index.data((int)Person::Role::Object).value<Person*>();
+        auto person =  realIndex.data((int)Person::Role::Object).value<Person*>();
         if (person) {
             m = person->phoneNumbers().first();
         }
     }
-    if (m && !RecentModel::instance()->index(0, 0, index).isValid()) {
+    if (m && !RecentModel::instance()->index(0, 0, realIndex).isValid()) {
         Call* c = CallModel::instance()->dialingCall();
         c->setPeerContactMethod(m);
         c->performAction(Call::Action::ACCEPT);
@@ -412,7 +413,7 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
     if (newIdx.parent().isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance()->getActiveCall(newIdx);
+    auto newIdxCall = RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;

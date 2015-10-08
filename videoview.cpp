@@ -120,8 +120,7 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
 void
 VideoView::updateTimer()
 {
-    //FIX ME : Migrate to recent model
-    //overlay_->setTime(CalModel::instance()->selectedCall()->length());
+    overlay_->setTime(CallModel::instance()->selectedCall()->length());
 }
 
 void

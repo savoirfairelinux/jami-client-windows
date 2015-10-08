@@ -19,10 +19,13 @@
 #include "smartlistdelegate.h"
 
 #include <QApplication>
+#include <QSortFilterProxyModel>
 #include <qdebug.h>
 
 #include "itemdataroles.h"
 #include "person.h"
+#include "recentmodel.h"
+#include "call.h"
 
 SmartListDelegate::SmartListDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -53,12 +56,21 @@ SmartListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
                                     rect.width(), rect.height()/2),
                                     opt.displayAlignment, name.toString());
         }
-        QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
-        if (lastUsed.isValid()) {
+
+        QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
+        if (state.isValid() && RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(index))) {
             painter->drawText(QRect(rect.left()+sizeImage_+5,
                                     rect.top() + rect.height()/2,
                                     rect.width(), rect.height()/2),
-                              opt.displayAlignment, lastUsed.toString());
+                              opt.displayAlignment, state.toString());
+        } else {
+            QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
+            if (lastUsed.isValid()) {
+                painter->drawText(QRect(rect.left()+sizeImage_+5,
+                                        rect.top() + rect.height()/2,
+                                        rect.width(), rect.height()/2),
+                                  opt.displayAlignment, lastUsed.toString());
+            }
         }
         QVariant var_p = index.data(static_cast<int>(Ring::Role::Object));
         auto person = var_p.value<Person*>();
