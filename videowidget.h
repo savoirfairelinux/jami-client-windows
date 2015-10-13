@@ -46,8 +46,14 @@ public slots:
 private:
     Video::Renderer* previewRenderer_;
     Video::Renderer* renderer_;
-    QImage* currentPreviewFrame_;
-    QImage* currentDistantFrame_;
+    Video::RendererFrame currentPreviewFrame_;
+    Video::RendererFrame currentDistantFrame_;
+    QMutex mutex_;
+    std::unique_ptr<QImage> distantImage_;
+    std::unique_ptr<QImage> previewImage_;
+    std::vector<uint8_t> frameDistant_;
+    std::vector<uint8_t> framePreview_;
+
     constexpr static int previewMargin_ = 15;
 };
 
