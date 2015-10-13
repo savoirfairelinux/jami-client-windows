@@ -22,8 +22,6 @@ VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
-  , currentDistantFrame_(nullptr)
-  , currentPreviewFrame_(nullptr)
 {
     connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
@@ -61,24 +59,27 @@ VideoWidget::previewStopped() {
     disconnect(previewRenderer_, SIGNAL(stopped()),
                this, SLOT(renderingStopped()));
     previewRenderer_ = nullptr;
-    if (currentPreviewFrame_) {
-        delete currentPreviewFrame_;
-        currentPreviewFrame_ = nullptr;
-    }
+//    if (currentPreviewFrame_) {
+//        delete currentPreviewFrame_;
+//        currentPreviewFrame_ = nullptr;
+//    }
 }
 
 void
 VideoWidget::frameFromPreview() {
     if (previewRenderer_ && previewRenderer_->isRendering()) {
-        if (currentPreviewFrame_) {
-            delete currentPreviewFrame_;
-            currentPreviewFrame_ = nullptr;
+//        if (currentPreviewFrame_) {
+//            delete currentPreviewFrame_;
+//            currentPreviewFrame_ = nullptr;
+//        }
+        //const QSize size(previewRenderer_->size());
+        {
+            QMutexLocker lock(&mutex);
+            auto tmp  = previewRenderer_->currentFrame();
+            if (tmp.storage.size())
+                currentPreviewFrame_ = tmp;
         }
-        const QSize size(previewRenderer_->size());
-        currentPreviewFrame_ = new QImage(
-                    (const uchar*)previewRenderer_->currentFrame().constData(),
-                    size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
-        repaint();
+        update();
     }
 }
 
@@ -86,22 +87,42 @@ void
 VideoWidget::paintEvent(QPaintEvent *evt) {
     Q_UNUSED(evt)
     QPainter painter(this);
-    if (renderer_ && currentDistantFrame_) {
-        auto scaledDistant = currentDistantFrame_->scaled(size(), Qt::KeepAspectRatio);
-        auto xDiff = (width() - scaledDistant.width()) / 2;
-        auto yDiff = (height() - scaledDistant.height()) /2;
-        painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
+
+    if (renderer_) {
+        {
+            QMutexLocker lock(&mutex);
+            if (currentDistantFrame_.storage.size() != 0) {
+                frameDistant = std::move(currentDistantFrame_.storage);
+                distantImage.reset(new QImage((uchar*)frameDistant.data(), renderer_->size().width(), renderer_->size().height(), QImage::Format_ARGB32_Premultiplied));
+            }
+        }
+        if (distantImage) {
+            auto scaledDistant = distantImage->scaled(size(), Qt::KeepAspectRatio);
+            auto xDiff = (width() - scaledDistant.width()) / 2;
+            auto yDiff = (height() - scaledDistant.height()) /2;
+            painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
+        }
     }
-    if (previewRenderer_ && currentPreviewFrame_) {
-        auto previewHeight = !renderer_ ? height() : height()/4;
-        auto previewWidth = !renderer_  ? width() : width()/4;
-        auto scaledPreview = currentPreviewFrame_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-        auto xDiff = (previewWidth - scaledPreview.width()) / 2;
-        auto yDiff = (previewHeight - scaledPreview.height()) / 2;
-        auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
-        auto xPos = !renderer_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
-        painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
-                          scaledPreview);
+    if (previewRenderer_) {
+        {
+            QMutexLocker lock(&mutex);
+            if (currentPreviewFrame_.storage.size() != 0) {
+                framePreview = std::move(currentPreviewFrame_.storage);
+                previewImage.reset(new QImage((uchar*)framePreview.data(), previewRenderer_->size().width(), previewRenderer_->size().height(), QImage::Format_ARGB32_Premultiplied));
+
+            }
+        }
+        if (previewImage) {
+            auto previewHeight = !renderer_ ? height() : height()/4;
+            auto previewWidth = !renderer_  ? width() : width()/4;
+            auto scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+            auto xDiff = (previewWidth - scaledPreview.width()) / 2;
+            auto yDiff = (previewHeight - scaledPreview.height()) / 2;
+            auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
+            auto xPos = !renderer_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+            painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
+                              scaledPreview);
+        }
     }
     painter.end();
 }
@@ -121,15 +142,19 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
 void
 VideoWidget::frameFromDistant() {
     if (renderer_ && renderer_->isRendering()) {
-        if (currentDistantFrame_) {
-            delete currentDistantFrame_;
-            currentDistantFrame_ = nullptr;
+//        if (currentDistantFrame_) {
+//            delete currentDistantFrame_;
+//            currentDistantFrame_ = nullptr;
+//        }
+        //const QSize size(renderer_->size());
+        {
+            QMutexLocker lock(&mutex);
+            auto tmp  = renderer_->currentFrame();
+            if (tmp.storage.size())
+                currentDistantFrame_ = tmp;
+
         }
-        const QSize size(renderer_->size());
-        currentDistantFrame_ = new QImage(
-                            (const uchar*)renderer_->currentFrame().constData(),
-                            size.width(), size.height(), QImage::Format_ARGB32_Premultiplied);
-        repaint();
+        update();
     }
 }
 
@@ -138,8 +163,8 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
-    if (currentDistantFrame_) {
-        delete currentDistantFrame_;
-        currentDistantFrame_ = nullptr;
-    }
+//    if (currentDistantFrame_) {
+//        delete currentDistantFrame_;
+//        currentDistantFrame_ = nullptr;
+//    }
 }
