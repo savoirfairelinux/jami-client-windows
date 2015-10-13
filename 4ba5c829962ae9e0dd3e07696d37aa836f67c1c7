@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_25ca14a2",
+        "filename": "transferdialog.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2015-10-13T14:56:12Z",
+      "side": 1,
+      "message": "unrelated to this patch, but wouldn\u0027t it be better to get the selected call (from the selection model of the CallModel, or otherwise) to know which call is being transfered? Is it safe to assume that the first call in the call list which is CURRENT is the selected call? I\u0027m just worried if there are bugs/cases where there can be multiple \"current\" calls...",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "4ba5c829962ae9e0dd3e07696d37aa836f67c1c7",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
