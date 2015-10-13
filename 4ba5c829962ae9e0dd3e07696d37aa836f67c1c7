@@ -22,6 +22,30 @@
       "revId": "4ba5c829962ae9e0dd3e07696d37aa836f67c1c7",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_e5c3cc88",
+        "filename": "transferdialog.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-13T14:59:06Z",
+      "side": 1,
+      "message": "The thing is i\u0027m not sure if the selection model will always be good with the recent model and all. I actually talked to alision about that and the necessity to port some of the callmodel api to the recentmodel",
+      "parentUuid": "3aa0d159_25ca14a2",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "4ba5c829962ae9e0dd3e07696d37aa836f67c1c7",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
