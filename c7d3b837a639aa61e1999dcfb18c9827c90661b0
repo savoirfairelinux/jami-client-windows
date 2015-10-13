@@ -16,6 +16,24 @@
       "revId": "c7d3b837a639aa61e1999dcfb18c9827c90661b0",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_655edceb",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-13T16:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_a5bdc404",
+      "revId": "c7d3b837a639aa61e1999dcfb18c9827c90661b0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
