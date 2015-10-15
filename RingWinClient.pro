@@ -113,6 +113,11 @@ RC_FILE = ico.rc
 
 TRANSLATIONS = translations/ring_client_windows.ts \
                translations/ring_client_windows_fr.ts \
+               translations/ring_client_windows_ar.ts \
+               translations/ring_client_windows_de.ts \
+               translations/ring_client_windows_lt.ts \
+               translations/ring_client_windows_ru.ts \
+               translations/ring_client_windows_uk.ts \
 
 maketranslationdir.target = customtarget
 maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
