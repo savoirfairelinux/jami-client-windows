@@ -34,30 +34,33 @@ class VideoView : public QWidget
     Q_OBJECT
 
 public:
-    explicit VideoView(QWidget *parent = 0);
+    explicit VideoView(QWidget* parent = 0);
     ~VideoView();
+    void pushRenderer(Call* call);
 
 protected:
     void resizeEvent(QResizeEvent* event);
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
-    void mouseDoubleClickEvent(QMouseEvent *e);
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent* e);
+    void dragEnterEvent(QDragEnterEvent* event);
+    void dropEvent(QDropEvent* event);
 
 private slots:
-    void callStateChanged(Call *call, Call::State previousState);
+    void callStateChanged(Call* call, Call::State previousState);
     void updateCall();
-    void showContextMenu(const QPoint &pos);
+    void showContextMenu(const QPoint& pos);
+    void slotVideoStarted(Video::Renderer* renderer);
 
 private:
-    Ui::VideoView *ui;
+    Ui::VideoView* ui;
     VideoOverlay* overlay_;
     constexpr static int fadeOverlayTime_ = 2000; //msec
     QPropertyAnimation* fadeAnim_;
-    QWidget *oldParent_;
+    QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
+    QMetaObject::Connection videoStartedConnection_;
 private:
     void toggleFullScreen();
 signals:
