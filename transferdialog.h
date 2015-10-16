@@ -55,6 +55,8 @@ public:
     explicit TransferDialog(QWidget *parent = 0);
     ~TransferDialog();
 
+    void setConfMode(bool active);
+
 //UI SLOTS
 protected slots:
     void showEvent(QShowEvent *event);
@@ -67,6 +69,7 @@ private:
     Ui::TransferDialog *ui;
     Call *selectedCall_;
     ActiveCallsProxyModel *activeProxy_;
+    bool confMode_;
 
     void removeProxyModel();
 };

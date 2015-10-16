@@ -67,7 +67,9 @@ VideoWidget::frameFromPreview() {
         {
             QMutexLocker lock(&mutex_);
             auto tmp  = previewRenderer_->currentFrame();
+#ifndef Q_OS_WIN
             if (tmp.storage.size())
+#endif
                 currentPreviewFrame_ = tmp;
         }
         update();
@@ -142,9 +144,10 @@ VideoWidget::frameFromDistant() {
         {
             QMutexLocker lock(&mutex_);
             auto tmp  = renderer_->currentFrame();
+#ifndef Q_OS_WIN
             if (tmp.storage.size())
+#endif
                 currentDistantFrame_ = tmp;
-
         }
         update();
     }
