@@ -29,7 +29,6 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
     ui->setupUi(this);
 
     ui->chatButton->setCheckable(true);
-    ui->transferButton->setCheckable(true);
 
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
@@ -62,6 +61,10 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
                 muteVideo->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
                 muteVideo->setEnabled(idx.flags() & Qt::ItemIsEnabled);
                 break;
+            case UserActionModel::Action::HOLD:
+                ui->holdButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                ui->holdButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
+                break;
             default:
                 break;
             }
@@ -69,6 +72,28 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
     });
 
     ui->moreButton->setMenu(menu_);
+
+    connect(CallModel::instance()->selectionModel(), &QItemSelectionModel::currentChanged, [=](const QModelIndex &current, const QModelIndex &previous) {
+        Q_UNUSED(previous)
+        Call* c = current.data(static_cast<int>(Call::Role::Object)).value<Call*>();
+        if (c) {
+            if (c->hasParentCall()) {
+                ui->holdButton->hide();
+                ui->moreButton->hide();
+                ui->transferButton->hide();
+                ui->addPersonButton->hide();
+
+                ui->joinButton->show();
+            } else {
+                ui->holdButton->show();
+                ui->moreButton->show();
+                ui->transferButton->show();
+                ui->addPersonButton->show();
+
+                ui->joinButton->hide();
+            }
+        }
+    });
 }
 
 VideoOverlay::~VideoOverlay()
@@ -91,13 +116,6 @@ VideoOverlay::setTime(const QString& time)
 }
 
 void
-VideoOverlay::on_holdButton_toggled(bool checked)
-{
-    Q_UNUSED(checked)
-    actionModel_->execute(UserActionModel::Action::HOLD);
-}
-
-void
 VideoOverlay::on_hangupButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::HANGUP);
@@ -111,9 +129,30 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::on_transferButton_toggled(bool checked)
+VideoOverlay::on_transferButton_clicked()
 {
+    transferDialog_->setConfMode(false);
     auto pos = this->mapToGlobal(ui->transferButton->pos());
     transferDialog_->move(pos.x() + ui->transferButton->width(), pos.y() - (transferDialog_->height()/2));
-    checked ? transferDialog_->show() : transferDialog_->hide();
+    transferDialog_->show();
+}
+
+void
+VideoOverlay::on_addPersonButton_clicked()
+{
+    transferDialog_->setConfMode(true);
+    auto pos = this->mapToGlobal(ui->addPersonButton->pos());
+    transferDialog_->move(pos.x() + ui->addPersonButton->width(), pos.y() - (transferDialog_->height()/2));
+    transferDialog_->show();
+}
+
+void
+VideoOverlay::on_holdButton_clicked()
+{
+    actionModel_->execute(UserActionModel::Action::HOLD);
+}
+
+void VideoOverlay::on_joinButton_clicked()
+{
+    CallModel::instance()->selectedCall()->joinToParent();
 }

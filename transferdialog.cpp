@@ -21,16 +21,20 @@
 
 #include "callmodel.h"
 #include "phonedirectorymodel.h"
+#include "recentmodel.h"
+#include "contactmethod.h"
+#include "person.h"
 
 TransferDialog::TransferDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TransferDialog),
-    activeProxy_(nullptr)
+    activeProxy_(nullptr),
+    confMode_(false)
 {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
 }
 
 TransferDialog::~TransferDialog()
@@ -51,6 +55,11 @@ TransferDialog::showEvent(QShowEvent *event)
     }
     ui->activeCallsView->setModel(activeProxy_);
     ui->activeCallsView->clearSelection();
+    ui->contactView->setModel(RecentModel::instance()->peopleProxy());
+    if (activeProxy_->rowCount() == 0)
+        ui->contactButton->setChecked(true);
+    else
+        ui->currentCallButton->setChecked(true);
 }
 
 void
@@ -87,15 +96,14 @@ TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
 
     removeProxyModel();
 
-    auto callList = CallModel::instance()->getActiveCalls();
-    for (auto c : callList) {
-        if (c->state() == Call::State::CURRENT) {
-            if (c != selectedCall_) {
-                CallModel::instance()->attendedTransfer(c, selectedCall_);
-                this->close();
-                return;
-            }
-        }
+    auto c = CallModel::instance()->selectedCall();
+    if (c != selectedCall_) {
+        if (not confMode_)
+            CallModel::instance()->attendedTransfer(c, selectedCall_);
+        else
+            CallModel::instance()->createConferenceFromCall(c, selectedCall_);
+        this->close();
+        return;
     }
 }
 
@@ -103,4 +111,40 @@ void
 TransferDialog::on_activeCallsView_clicked(const QModelIndex &index)
 {
     selectedCall_ = CallModel::instance()->getCall(index);
+}
+
+void
+TransferDialog::setConfMode(bool active)
+{
+    confMode_ = active;
+    ui->transferButton->setVisible(not active);
+    ui->numberBar->setVisible(not active);
+}
+
+void
+TransferDialog::on_currentCallButton_toggled(bool checked)
+{
+    ui->stackedWidget->setCurrentIndex(checked ? 0 : 1);
+}
+
+void
+TransferDialog::on_contactView_doubleClicked(const QModelIndex &index)
+{
+    auto realIndex = RecentModel::instance()->peopleProxy()->mapToSource(index);
+    if (not RecentModel::instance()->hasActiveCall(realIndex)) {
+
+        ContactMethod* m = nullptr;
+        if (auto cm = realIndex.data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>()) {
+            m = cm;
+        } else {
+            if (auto person =  realIndex.data(static_cast<int>(Person::Role::Object)).value<Person*>()) {
+                m = person->phoneNumbers().first();
+            }
+        }
+        if (m && !RecentModel::instance()->index(0, 0, realIndex).isValid()) {
+            Call* c = CallModel::instance()->dialingCall(m, CallModel::instance()->selectedCall());
+            c->performAction(Call::Action::ACCEPT);
+        }
+    }
+    this->close();
 }
