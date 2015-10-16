@@ -23,7 +23,7 @@
 
 #include "useractionmodel.h"
 
-#include "transferdialog.h"
+#include "callutilsdialog.h"
 
 namespace Ui {
 class VideoOverlay;
@@ -43,16 +43,18 @@ public:
 
 //UI SLOTS
 private slots:
-    void on_holdButton_toggled(bool checked);
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
-    void on_transferButton_toggled(bool checked);
+    void on_transferButton_clicked();
+    void on_addPersonButton_clicked();
+    void on_holdButton_clicked();
+    void on_joinButton_clicked();
 
 private:
     Ui::VideoOverlay *ui;
     UserActionModel* actionModel_;
     QMenu* menu_;
-    TransferDialog *transferDialog_;
+    CallUtilsDialog *transferDialog_;
 
 signals:
     void setChatVisibility(bool visible);

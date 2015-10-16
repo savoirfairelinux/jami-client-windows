@@ -36,6 +36,7 @@ class VideoView : public QWidget
 public:
     explicit VideoView(QWidget *parent = 0);
     ~VideoView();
+    void pushRenderer(Call *call);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -49,6 +50,7 @@ private slots:
     void callStateChanged(Call *call, Call::State previousState);
     void updateCall();
     void showContextMenu(const QPoint &pos);
+    void slotVideoStarted(Video::Renderer *renderer);
 
 private:
     Ui::VideoView *ui;
@@ -58,6 +60,7 @@ private:
     QWidget *oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
+    QMetaObject::Connection videoStartedConnection_;
 private:
     void toggleFullScreen();
 signals:
