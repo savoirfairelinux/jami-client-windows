@@ -130,6 +130,8 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     //Enforce that only one videowidget we'll be used at the same time
     if (not isVisible())
         return;
+    if (renderer_)
+        return;
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
@@ -144,7 +146,6 @@ VideoWidget::frameFromDistant() {
             auto tmp  = renderer_->currentFrame();
             if (tmp.storage.size())
                 currentDistantFrame_ = tmp;
-
         }
         update();
     }
