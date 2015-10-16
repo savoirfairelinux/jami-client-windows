@@ -58,6 +58,8 @@ VideoWidget::previewStopped() {
                this, SLOT(frameFromPreview()));
     disconnect(previewRenderer_, SIGNAL(stopped()),
                this, SLOT(renderingStopped()));
+    disconnect(previewRenderer_, SIGNAL(stopped()),
+            this, SLOT(previewStopped()));
     previewRenderer_ = nullptr;
 }
 
@@ -130,6 +132,8 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
     //Enforce that only one videowidget we'll be used at the same time
     if (not isVisible())
         return;
+    if (renderer_)
+        return;
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
@@ -144,7 +148,6 @@ VideoWidget::frameFromDistant() {
             auto tmp  = renderer_->currentFrame();
             if (tmp.storage.size())
                 currentDistantFrame_ = tmp;
-
         }
         update();
     }
@@ -153,6 +156,7 @@ VideoWidget::frameFromDistant() {
 void
 VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
+    disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
 }
