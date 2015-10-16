@@ -34,6 +34,7 @@ public:
     explicit VideoWidget(QWidget *parent = 0);
     ~VideoWidget();
     void paintEvent(QPaintEvent* evt);
+    void setPreviewDisplay(bool display);
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
@@ -53,6 +54,7 @@ private:
     std::unique_ptr<QImage> previewImage_;
     std::vector<uint8_t> frameDistant_;
     std::vector<uint8_t> framePreview_;
+    bool isPreviewDisplayed_;
 
     constexpr static int previewMargin_ = 15;
 };

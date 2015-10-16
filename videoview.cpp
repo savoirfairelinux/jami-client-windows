@@ -99,15 +99,16 @@ void
 VideoView::callStateChanged(Call* call, Call::State previousState)
 {
    Q_UNUSED(previousState)
+
     if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
         timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
     }
     else {
+        QObject::disconnect(timerConnection_);
         emit setChatVisibility(false);
         if (isFullScreen())
             toggleFullScreen();
-        QObject::disconnect(timerConnection_);
     }
 }
 
@@ -115,8 +116,10 @@ void
 VideoView::updateCall()
 {
     auto call = CallModel::instance().selectedCall();
-    overlay_->setName(call->formattedName());
-    overlay_->setTime(call->length());
+    if (call) {
+        overlay_->setName(call->formattedName());
+        overlay_->setTime(call->length());
+    }
 }
 
 void
