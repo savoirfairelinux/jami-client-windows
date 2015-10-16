@@ -22,14 +22,11 @@ VideoWidget::VideoWidget(QWidget *parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
+  , isPreviewDisplayed_(true)
 {
     connect(&Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
             this, SLOT(previewStarted(Video::Renderer*)));
-    connect(&CallModel::instance(),
-            SIGNAL(rendererAdded(Call*,Video::Renderer*)),
-            this, SLOT(callInitiated(Call*, Video::Renderer*)),
-            Qt::ConnectionType::DirectConnection);
 
     QPalette pal(palette());
     pal.setColor(QPalette::Background, Qt::black);
@@ -45,6 +42,8 @@ VideoWidget::previewStarted(Video::Renderer *renderer) {
     //Enforce that only one videowidget we'll be used at the same time
     if (not isVisible())
         return;
+    if (previewRenderer_ == renderer)
+        return;
     previewRenderer_ = renderer;
     connect(previewRenderer_, SIGNAL(frameUpdated()),
             this, SLOT(frameFromPreview()));
@@ -57,7 +56,7 @@ VideoWidget::previewStopped() {
     disconnect(previewRenderer_, SIGNAL(frameUpdated()),
                this, SLOT(frameFromPreview()));
     disconnect(previewRenderer_, SIGNAL(stopped()),
-               this, SLOT(renderingStopped()));
+               this, SLOT(previewStopped()));
     previewRenderer_ = nullptr;
 }
 
@@ -97,7 +96,7 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
             painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
         }
     }
-    if (previewRenderer_) {
+    if (previewRenderer_ && isPreviewDisplayed_) {
         {
             QMutexLocker lock(&mutex_);
             if (currentPreviewFrame_.storage.size() != 0) {
@@ -125,15 +124,16 @@ VideoWidget::paintEvent(QPaintEvent *evt) {
 }
 
 void
-VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
-    Q_UNUSED(call)
-    //Enforce that only one videowidget we'll be used at the same time
-    if (not isVisible())
+VideoWidget::setDistantRenderer(Video::Renderer* renderer) {
+    QMutexLocker lock(&mutex_);
+    if (not renderer)
         return;
+    if (renderer_ && renderer_ != renderer) {
+        renderingStopped();
+    }
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
-            Qt::ConnectionType::DirectConnection);
+    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
 }
 
 void
@@ -144,7 +144,6 @@ VideoWidget::frameFromDistant() {
             auto tmp  = renderer_->currentFrame();
             if (tmp.storage.size())
                 currentDistantFrame_ = tmp;
-
         }
         update();
     }
@@ -152,7 +151,14 @@ VideoWidget::frameFromDistant() {
 
 void
 VideoWidget::renderingStopped() {
+    if (not renderer_)
+        return;
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
+}
+
+void
+VideoWidget::setPreviewDisplay(bool display) {
+    isPreviewDisplayed_ = display;
 }

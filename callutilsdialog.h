@@ -22,9 +22,10 @@
 #include <QSortFilterProxyModel>
 
 #include "callmodel.h"
+#include "recentmodel.h"
 
 namespace Ui {
-class TransferDialog;
+    class CallUtilsDialog;
 }
 
 class ActiveCallsProxyModel : public QSortFilterProxyModel
@@ -41,33 +42,59 @@ public:
         auto idx = sourceModel()->index(source_row,0,source_parent);
         if (not idx.isValid())
             return false;
-        return idx.data(static_cast<int>(Call::Role::State))
-                .value<Call::State>() != Call::State::CURRENT;
+        auto call = idx.data(static_cast<int>(Call::Role::Object)).value<Call*>();
+        return call->state() != Call::State::CURRENT
+                && call != CallModel::instance().selectedCall();
     }
 };
 
+class NotActiveProxyModel : public QSortFilterProxyModel
+{
+public:
+    NotActiveProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
+    {
+        setSourceModel(parent);
+    }
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
+    {
+        if (not sourceModel() || source_parent.isValid())
+            return false;
+        auto idx = sourceModel()->index(source_row,0,source_parent);
+        if (not idx.isValid())
+            return false;
+        return not RecentModel::instance().hasActiveCall(RecentModel::instance().peopleProxy()->mapToSource(idx));
+    }
+};
 
-class TransferDialog : public QDialog
+class CallUtilsDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit TransferDialog(QWidget *parent = 0);
-    ~TransferDialog();
+    explicit CallUtilsDialog(QWidget* parent = 0);
+    ~CallUtilsDialog();
+
+    void setConfMode(bool active);
 
 //UI SLOTS
 protected slots:
-    void showEvent(QShowEvent *event);
+    void showEvent(QShowEvent* event);
+    void closeEvent(QCloseEvent *event);
 private slots:
     void on_transferButton_clicked();
-    void on_activeCallsView_doubleClicked(const QModelIndex &index);
-    void on_activeCallsView_clicked(const QModelIndex &index);
-
-private:
-    Ui::TransferDialog *ui;
-    Call *selectedCall_;
-    ActiveCallsProxyModel *activeProxy_;
+    void on_activeCallsView_doubleClicked(const QModelIndex& index);
+    void on_activeCallsView_clicked(const QModelIndex& index);
+    void on_currentCallButton_toggled(bool checked);
+    void on_contactView_doubleClicked(const QModelIndex& index);
 
     void removeProxyModel();
+
+private:
+    Ui::CallUtilsDialog* ui;
+    Call* selectedCall_;
+    ActiveCallsProxyModel* activeProxy_;
+    NotActiveProxyModel *notActiveProxy_;
+    bool confMode_;
+
 };
 
