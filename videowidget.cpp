@@ -57,7 +57,7 @@ VideoWidget::previewStopped() {
     disconnect(previewRenderer_, SIGNAL(frameUpdated()),
                this, SLOT(frameFromPreview()));
     disconnect(previewRenderer_, SIGNAL(stopped()),
-               this, SLOT(renderingStopped()));
+               this, SLOT(previewStopped()));
     previewRenderer_ = nullptr;
 }
 
@@ -132,8 +132,7 @@ VideoWidget::callInitiated(Call* call, Video::Renderer *renderer) {
         return;
     renderer_ = renderer;
     connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()),
-            Qt::ConnectionType::DirectConnection);
+    connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
 }
 
 void
@@ -144,7 +143,6 @@ VideoWidget::frameFromDistant() {
             auto tmp  = renderer_->currentFrame();
             if (tmp.storage.size())
                 currentDistantFrame_ = tmp;
-
         }
         update();
     }
