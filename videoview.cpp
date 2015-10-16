@@ -35,7 +35,7 @@
 #include "videooverlay.h"
 #include "selectareadialog.h"
 
-VideoView::VideoView(QWidget *parent) :
+VideoView::VideoView(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::VideoView)
 {
@@ -72,7 +72,7 @@ VideoView::~VideoView()
 }
 
 void
-VideoView::resizeEvent(QResizeEvent *event)
+VideoView::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event)
     overlay_->resize(this->size());
@@ -99,24 +99,26 @@ void
 VideoView::callStateChanged(Call* call, Call::State previousState)
 {
    Q_UNUSED(previousState)
+
     if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
         timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
     }
     else {
+        QObject::disconnect(timerConnection_);
         emit setChatVisibility(false);
         if (isFullScreen())
             toggleFullScreen();
-        QObject::disconnect(timerConnection_);
     }
 }
 
 void
 VideoView::updateCall()
 {
-    auto call = CallModel::instance().selectedCall();
-    overlay_->setName(call->formattedName());
-    overlay_->setTime(call->length());
+    if (auto call = CallModel::instance().selectedCall()) {
+        overlay_->setName(call->formattedName());
+        overlay_->setTime(call->length());
+    }
 }
 
 void
@@ -125,13 +127,15 @@ VideoView::mouseDoubleClickEvent(QMouseEvent* e) {
     toggleFullScreen();
 }
 
-void VideoView::dragEnterEvent(QDragEnterEvent *event)
+void
+VideoView::dragEnterEvent(QDragEnterEvent* event)
 {
     if (event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void VideoView::dropEvent(QDropEvent *event)
+void
+VideoView::dropEvent(QDropEvent* event)
 {
     auto urls = event->mimeData()->urls();
     Video::SourceModel::instance().setFile(urls.at(0));
@@ -202,5 +206,29 @@ VideoView::showContextMenu(const QPoint& pos)
     });
 
     menu.exec(globalPos);
+}
+
+void
+VideoView::pushRenderer(Call* call) {
+    if (not call) {
+        disconnect(videoStartedConnection_);
+        return;
+    }
+    if (auto renderer = call->videoRenderer()) {
+        slotVideoStarted(renderer);
+    } else {
+        disconnect(videoStartedConnection_);
+        videoStartedConnection_ = connect(call,
+                SIGNAL(videoStarted(Video::Renderer*)),
+                this,
+                SLOT(slotVideoStarted(Video::Renderer*)));
+    }
+    ui->videoWidget->setPreviewDisplay(call->type() != Call::Type::CONFERENCE);
+}
+
+void
+VideoView::slotVideoStarted(Video::Renderer* renderer) {
+    ui->videoWidget->show();
+    ui->videoWidget->setDistantRenderer(renderer);
 }
 

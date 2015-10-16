@@ -31,15 +31,16 @@ class VideoWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit VideoWidget(QWidget *parent = 0);
+    explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
     void paintEvent(QPaintEvent* evt);
+    void setPreviewDisplay(bool display);
+    void setDistantRenderer(Video::Renderer* renderer);
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
     void previewStopped();
     void frameFromPreview();
-    void callInitiated(Call *call, Video::Renderer *renderer);
     void frameFromDistant();
     void renderingStopped();
 
@@ -53,6 +54,7 @@ private:
     std::unique_ptr<QImage> previewImage_;
     std::vector<uint8_t> frameDistant_;
     std::vector<uint8_t> framePreview_;
+    bool isPreviewDisplayed_;
 
     constexpr static int previewMargin_ = 15;
 };
