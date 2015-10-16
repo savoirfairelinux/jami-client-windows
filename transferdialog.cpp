@@ -25,7 +25,8 @@
 TransferDialog::TransferDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TransferDialog),
-    activeProxy_(nullptr)
+    activeProxy_(nullptr),
+    confMode_(false)
 {
     ui->setupUi(this);
 
@@ -91,7 +92,10 @@ TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
     for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
             if (c != selectedCall_) {
-                CallModel::instance()->attendedTransfer(c, selectedCall_);
+                if (not confMode_)
+                    CallModel::instance()->attendedTransfer(c, selectedCall_);
+                else
+                    CallModel::instance()->createConferenceFromCall(c, selectedCall_);
                 this->close();
                 return;
             }
@@ -103,4 +107,12 @@ void
 TransferDialog::on_activeCallsView_clicked(const QModelIndex &index)
 {
     selectedCall_ = CallModel::instance()->getCall(index);
+}
+
+void
+TransferDialog::setConfMode(bool active)
+{
+    confMode_ = active;
+    ui->transferButton->setVisible(not active);
+    ui->numberBar->setVisible(not active);
 }

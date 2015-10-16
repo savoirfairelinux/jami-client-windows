@@ -47,6 +47,7 @@ private slots:
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
     void on_transferButton_toggled(bool checked);
+    void on_addPersonButton_clicked(bool checked);
 
 private:
     Ui::VideoOverlay *ui;

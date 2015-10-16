@@ -394,19 +394,21 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
+    if (newSel.indexes().size() == 0)
+        return;
     auto newIdx = newSel.indexes().first();
-    if (newIdx.parent().isValid())
+    if (not newIdx.isValid())
         return;
 
     auto newIdxCall = RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;
-    if (actualCall_ != nullptr) {
-        actualCall_->performAction(Call::Action::HOLD);
-    }
+//    if (actualCall_ != nullptr) {
+//        actualCall_->performAction(Call::Action::HOLD);
+//    }
     if (newIdxCall) {
-        newIdxCall->performAction(Call::Action::HOLD);
+//        newIdxCall->performAction(Call::Action::HOLD);
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
