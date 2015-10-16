@@ -30,6 +30,7 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
 
     ui->chatButton->setCheckable(true);
     ui->transferButton->setCheckable(true);
+    ui->addPersonButton->setCheckable(true);
 
     actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
@@ -113,7 +114,17 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 void
 VideoOverlay::on_transferButton_toggled(bool checked)
 {
+    transferDialog_->setConfMode(false);
     auto pos = this->mapToGlobal(ui->transferButton->pos());
     transferDialog_->move(pos.x() + ui->transferButton->width(), pos.y() - (transferDialog_->height()/2));
+    checked ? transferDialog_->show() : transferDialog_->hide();
+}
+
+void
+VideoOverlay::on_addPersonButton_clicked(bool checked)
+{
+    transferDialog_->setConfMode(true);
+    auto pos = this->mapToGlobal(ui->addPersonButton->pos());
+    transferDialog_->move(pos.x() + ui->addPersonButton->width(), pos.y() - (transferDialog_->height()/2));
     checked ? transferDialog_->show() : transferDialog_->hide();
 }
