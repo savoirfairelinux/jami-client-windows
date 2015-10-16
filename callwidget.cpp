@@ -150,15 +150,15 @@ CallWidget::CallWidget(QWidget *parent) :
 
         findRingAccount();
 
-    } catch (...) {
-        qDebug() << "INIT ERROR";
+    } catch (const std::exception& e) {
+        qDebug() << "INIT ERROR" << e.what();
     }
 
-    connect(RecentModel::instance()->selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
+    connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
         Q_UNUSED(deselected)
         if (selected.size()) {
             auto idx = selected.indexes().first();
-            auto realIdx = RecentModel::instance()->peopleProxy()->mapFromSource(idx);
+            auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
             ui->smartList->selectionModel()->select(realIdx, QItemSelectionModel::ClearAndSelect);
         } else
             ui->smartList->clearSelection();
@@ -280,9 +280,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
 
-    //Force update of smartList
-    ui->smartList->setFocus();
-
     if (call->state() == Call::State::OVER
             || call->state() == Call::State::ERROR
             || call->state() == Call::State::FAILURE
@@ -359,8 +356,7 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    if (value)
-        CallModel::instance().selectCall(value);
+    CallModel::instance().selectCall(value);
 }
 
 void
@@ -410,18 +406,18 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
         return;
     }
     auto newIdx = newSel.indexes().first();
-    if (newIdx.parent().isValid())
+    if (not newIdx.isValid())
         return;
 
     auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;
-    if (actualCall_ != nullptr) {
-        actualCall_->performAction(Call::Action::HOLD);
-    }
+//    if (actualCall_ != nullptr) {
+//        actualCall_->performAction(Call::Action::HOLD);
+//    }
     if (newIdxCall) {
-        newIdxCall->performAction(Call::Action::HOLD);
+//        newIdxCall->performAction(Call::Action::HOLD);
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
