@@ -150,8 +150,8 @@ CallWidget::CallWidget(QWidget *parent) :
 
         findRingAccount();
 
-    } catch (...) {
-        qDebug() << "INIT ERROR";
+    } catch (const std::exception& e) {
+        qDebug() << "INIT ERROR" << e.what();
     }
 }
 
@@ -270,9 +270,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
 
-    //Force update of smartList
-    ui->smartList->setFocus();
-
     if (call->state() == Call::State::OVER
             || call->state() == Call::State::ERROR
             || call->state() == Call::State::FAILURE
@@ -349,8 +346,8 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    if (value)
-        CallModel::instance().selectCall(value);
+    CallModel::instance().selectCall(value);
+    ui->videoWidget->pushRenderer(value);
 }
 
 void
@@ -395,18 +392,14 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
     Q_UNUSED(oldSel)
 
     auto newIdx = newSel.indexes().first();
-    if (newIdx.parent().isValid())
+    if (not newIdx.isValid())
         return;
 
     auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;
-    if (actualCall_ != nullptr) {
-        actualCall_->performAction(Call::Action::HOLD);
-    }
     if (newIdxCall) {
-        newIdxCall->performAction(Call::Action::HOLD);
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
