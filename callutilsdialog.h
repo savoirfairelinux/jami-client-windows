@@ -22,15 +22,18 @@
 #include <QSortFilterProxyModel>
 
 #include "callmodel.h"
+#include "recentmodel.h"
+
+#include "smartlistdelegate.h"
 
 namespace Ui {
-class TransferDialog;
+    class CallUtilsDialog;
 }
 
-class ActiveCallsProxyModel : public QSortFilterProxyModel
+class NotCurrentProxyModel : public QSortFilterProxyModel
 {
 public:
-    ActiveCallsProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
+    NotCurrentProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
     {
         setSourceModel(parent);
     }
@@ -41,32 +44,34 @@ public:
         auto idx = sourceModel()->index(source_row,0,source_parent);
         if (not idx.isValid())
             return false;
-        return idx.data(static_cast<int>(Call::Role::State))
-                .value<Call::State>() != Call::State::CURRENT;
+        auto call = RecentModel::instance().getActiveCall(idx);
+        return not call || not (call->state() == Call::State::CURRENT);
     }
 };
 
-
-class TransferDialog : public QDialog
+class CallUtilsDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit TransferDialog(QWidget *parent = 0);
-    ~TransferDialog();
+    explicit CallUtilsDialog(QWidget* parent = 0);
+    ~CallUtilsDialog();
+
+    void setConfMode(bool active);
 
 //UI SLOTS
 protected slots:
-    void showEvent(QShowEvent *event);
+    void showEvent(QShowEvent* event);
+    void closeEvent(QCloseEvent* event);
 private slots:
     void on_transferButton_clicked();
-    void on_activeCallsView_doubleClicked(const QModelIndex &index);
-    void on_activeCallsView_clicked(const QModelIndex &index);
+    void on_contactView_doubleClicked(const QModelIndex& index);
 
 private:
-    Ui::TransferDialog *ui;
-    Call *selectedCall_;
-    ActiveCallsProxyModel *activeProxy_;
+    Ui::CallUtilsDialog* ui;
+    bool confMode_;
+    SmartListDelegate* smartListDelegate_;
+    NotCurrentProxyModel* notCurrentProxyModel_;
 
     void removeProxyModel();
 };
