@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_f6d060f9",
+        "filename": "accountstatedelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "Should not be QStyleOptionViewItem in Qt5?\nIt looks like a synonym for:\n\nhttp://doc.qt.io/qt-5/qstyleoptionviewitem.html",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_16ce2c5b",
+        "filename": "accountstatedelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "In fact, opt.text \u003d QString() is not equals to opt.text \u003d \"\".\n\nAs QString().isNull() is true, not QString(\"\") (see http://doc.qt.io/qt-5/qstring.html#isNull), the instance is not in the same state.\n\nSo depending on the wanted behavior:\n- if you need to nullify the variable: opt.text.clear()\n- if you need to set it to an empty string (maybe you need opt.text.isNull() returning false): opt.text.resize(0), but to me it looks weird and less explicit than opt.text \u003d \"\"\n\nNow, I think doing \u0027opt.text \u003d QString()\u0027 is even worst in term of performance than \u0027opt.text \u003d \"\"\u0027, as the former needs to create a temporary QString instance on the stack, then call the operator\u003d on it.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_d6d764ec",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "hmm a naked \"new\" inside a try/catch-all-exceptions block: looks like a memory leak party :-D\n\nI hope for you that setItemDelegate never does exceptions...\n\nBTW: why there is a try/catch block? possible to have a partial initialized instance?",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_7604507e",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "if (auto xxx)",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 11
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_9609dc97",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "if (auto xxx)",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 20
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_36fec86c",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "no nullptr check: does c is never a nullptr?",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 423,
+        "endChar": 43
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_56035473",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "weird syntax, better like:\n\n if (checked) {\n     ui-\u003ehistoricButton-\u003esetChecked(false);\n     ui-\u003emainTabMenu-\u003esetCurrentIndex(1);\n } else {\n     ui-\u003emainTabMenu-\u003esetCurrentIndex(0);\n }\n\nor at least:\n\n if (checked)\n     ui-\u003ehistoricButton-\u003esetChecked(false);\n ui-\u003emainTabMenu-\u003esetCurrentIndex(checked ? 1 : 0);",
+      "range": {
+        "startLine": 442,
+        "startChar": 4,
+        "endLine": 444,
+        "endChar": 88
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_f6f7008b",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "same comment as for on_contactButton_clicked",
+      "range": {
+        "startLine": 450,
+        "startChar": 4,
+        "endLine": 452,
+        "endChar": 88
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_b6dad815",
+        "filename": "callwidget.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "than including complex headers, increasing not necessary dependencies that make all you code rebuild just for one modification, if you need a class declaration just for pointers (smart ones included) or references, just \"forward declare\" them.\nAnd move the inclusing in .cpp files that really need the definition (like accessing to class members).",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_16f5cc82",
+        "filename": "contactdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "remember my previous comment on this",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_b6f17897",
+        "filename": "historydelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "again",
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_d6ee84b4",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "again",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_9630fc57",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "possible memory leak here",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_762bf0eb",
+        "filename": "mainwindow.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "good practice to ban #define.\nBetter to use static constexpr for that",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_563a7437",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "no V4 on Qt5?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_f63e2029",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": ";-)",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_36356846",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2015-10-17T02:54:37Z",
+      "side": 1,
+      "message": "think about forward declarations",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
