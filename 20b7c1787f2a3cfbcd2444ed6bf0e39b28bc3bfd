@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_9668fcf6",
+        "filename": "accountstatedelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_f6d060f9",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_16ce2c5b",
         "filename": "accountstatedelegate.cpp",
         "patchSetId": 32
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "In fact, opt.text \u003d QString() is not equals to opt.text \u003d \"\".\n\nAs QString().isNull() is true, not QString(\"\") (see http://doc.qt.io/qt-5/qstring.html#isNull), the instance is not in the same state.\n\nSo depending on the wanted behavior:\n- if you need to nullify the variable: opt.text.clear()\n- if you need to set it to an empty string (maybe you need opt.text.isNull() returning false): opt.text.resize(0), but to me it looks weird and less explicit than opt.text \u003d \"\"\n\nNow, I think doing \u0027opt.text \u003d QString()\u0027 is even worst in term of performance than \u0027opt.text \u003d \"\"\u0027, as the former needs to create a temporary QString instance on the stack, then call the operator\u003d on it.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_366d6805",
+        "filename": "accountstatedelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_16ce2c5b",
       "range": {
         "startLine": 35,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_964f9c92",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "We initialize most of LRC in this try catch block. If something goes wrong here the behavior is undefined.",
+      "parentUuid": "3aa0d159_d6d764ec",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_7604507e",
         "filename": "callwidget.cpp",
         "patchSetId": 32
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "if (auto xxx)",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 11
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_f67620d8",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_7604507e",
       "range": {
         "startLine": 376,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_1674eccd",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_9609dc97",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 20
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_36fec86c",
         "filename": "callwidget.cpp",
         "patchSetId": 32
@@ -128,6 +248,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "no nullptr check: does c is never a nullptr?",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 423,
+        "endChar": 43
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_b680988c",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "not supposed to be, could happen if we are out of memory but we would be f* anyway",
+      "parentUuid": "3aa0d159_36fec86c",
       "range": {
         "startLine": 422,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_d67d24b3",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_56035473",
+      "range": {
+        "startLine": 442,
+        "startChar": 4,
+        "endLine": 444,
+        "endChar": 88
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_f6f7008b",
         "filename": "callwidget.cpp",
         "patchSetId": 32
@@ -174,6 +342,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "same comment as for on_contactButton_clicked",
+      "range": {
+        "startLine": 450,
+        "startChar": 4,
+        "endLine": 452,
+        "endChar": 88
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_764a1085",
+        "filename": "callwidget.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_f6f7008b",
       "range": {
         "startLine": 450,
         "startChar": 4,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_567274e6",
+        "filename": "callwidget.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_b6dad815",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_16f5cc82",
         "filename": "contactdelegate.cpp",
         "patchSetId": 32
@@ -220,6 +436,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "remember my previous comment on this",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_36448873",
+        "filename": "contactdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_16f5cc82",
       "range": {
         "startLine": 38,
         "startChar": 19,
@@ -249,6 +489,24 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_5649148a",
+        "filename": "historydelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_b6f17897",
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_d6ee84b4",
         "filename": "imdelegate.cpp",
         "patchSetId": 32
@@ -260,6 +518,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "again",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_f65dc049",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_d6ee84b4",
       "range": {
         "startLine": 46,
         "startChar": 19,
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_165b8c55",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_9630fc57",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_762bf0eb",
         "filename": "mainwindow.h",
         "patchSetId": 32
@@ -306,6 +612,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "good practice to ban #define.\nBetter to use static constexpr for that",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_b6573826",
+        "filename": "mainwindow.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_762bf0eb",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_7631b00a",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_563a7437",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_f63e2029",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 32
@@ -364,6 +718,30 @@
     },
     {
       "key": {
+        "uuid": "3aa0d159_9636bc02",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa0d159_f63e2029",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa0d159_36356846",
         "filename": "smartlistdelegate.h",
         "patchSetId": 32
@@ -375,6 +753,30 @@
       "writtenOn": "2015-10-17T02:54:37Z",
       "side": 1,
       "message": "think about forward declarations",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "20b7c1787f2a3cfbcd2444ed6bf0e39b28bc3bfd",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_d6544423",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-10-19T15:31:42Z",
+      "side": 1,
+      "message": "Done for QPainter, not for QStyledItemDelegate as we inherit from it and re-implement some methods",
+      "parentUuid": "3aa0d159_36356846",
       "range": {
         "startLine": 22,
         "startChar": 0,
