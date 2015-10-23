@@ -153,6 +153,16 @@ CallWidget::CallWidget(QWidget *parent) :
     } catch (...) {
         qDebug() << "INIT ERROR";
     }
+
+    connect(RecentModel::instance()->selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
+        Q_UNUSED(deselected)
+        if (selected.size()) {
+            auto idx = selected.indexes().first();
+            auto realIdx = RecentModel::instance()->peopleProxy()->mapFromSource(idx);
+            ui->smartList->selectionModel()->select(realIdx, QItemSelectionModel::ClearAndSelect);
+        } else
+            ui->smartList->clearSelection();
+    });
 }
 
 CallWidget::~CallWidget()
@@ -394,6 +404,11 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
+    if (not newSel.size()) {
+        setActualCall(nullptr);
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        return;
+    }
     auto newIdx = newSel.indexes().first();
     if (newIdx.parent().isValid())
         return;
