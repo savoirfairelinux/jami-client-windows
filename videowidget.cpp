@@ -23,10 +23,10 @@ VideoWidget::VideoWidget(QWidget *parent) :
   , previewRenderer_(nullptr)
   , renderer_(nullptr)
 {
-    connect(Video::PreviewManager::instance(),
+    connect(&Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
             this, SLOT(previewStarted(Video::Renderer*)));
-    connect(CallModel::instance(),
+    connect(&CallModel::instance(),
             SIGNAL(rendererAdded(Call*,Video::Renderer*)),
             this, SLOT(callInitiated(Call*, Video::Renderer*)),
             Qt::ConnectionType::DirectConnection);

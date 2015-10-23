@@ -58,7 +58,7 @@ SmartListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         }
 
         QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
-        if (state.isValid() && RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(index))) {
+        if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index))) {
             painter->drawText(QRect(rect.left()+sizeImage_+5,
                                     rect.top() + rect.height()/2,
                                     rect.width(), rect.height()/2),

@@ -105,9 +105,5 @@ main(int argc, char *argv[])
 
     w.createThumbBar();
 
-    QObject::connect(&a, &QApplication::aboutToQuit, [&a]() {
-        delete CallModel::instance();
-    });
-
     return a.exec();
 }

@@ -46,7 +46,7 @@ TransferDialog::showEvent(QShowEvent *event)
     ui->numberBar->clear();
     selectedCall_ = nullptr;
     if (not activeProxy_) {
-        activeProxy_ = new ActiveCallsProxyModel(CallModel::instance());
+        activeProxy_ = new ActiveCallsProxyModel(&CallModel::instance());
         activeProxy_->setDynamicSortFilter(false);
     }
     ui->activeCallsView->setModel(activeProxy_);
@@ -58,14 +58,14 @@ TransferDialog::on_transferButton_clicked()
 {
     removeProxyModel();
 
-    auto callList = CallModel::instance()->getActiveCalls();
+    auto callList = CallModel::instance().getActiveCalls();
     for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
             if (not ui->numberBar->text().isEmpty()) {
-                auto number = PhoneDirectoryModel::instance()->getNumber(ui->numberBar->text());
-                CallModel::instance()->transfer(c, number);
+                auto number = PhoneDirectoryModel::instance().getNumber(ui->numberBar->text());
+                CallModel::instance().transfer(c, number);
             } else if (selectedCall_) {
-                CallModel::instance()->attendedTransfer(c, selectedCall_);
+                CallModel::instance().attendedTransfer(c, selectedCall_);
             }
             this->close();
             return;
@@ -87,11 +87,11 @@ TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
 
     removeProxyModel();
 
-    auto callList = CallModel::instance()->getActiveCalls();
+    auto callList = CallModel::instance().getActiveCalls();
     for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
             if (c != selectedCall_) {
-                CallModel::instance()->attendedTransfer(c, selectedCall_);
+                CallModel::instance().attendedTransfer(c, selectedCall_);
                 this->close();
                 return;
             }
@@ -102,5 +102,5 @@ TransferDialog::on_activeCallsView_doubleClicked(const QModelIndex &index)
 void
 TransferDialog::on_activeCallsView_clicked(const QModelIndex &index)
 {
-    selectedCall_ = CallModel::instance()->getCall(index);
+    selectedCall_ = CallModel::instance().getCall(index);
 }

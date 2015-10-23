@@ -67,7 +67,7 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
     if(rubberBand_) {
         QApplication::restoreOverrideCursor();
         releaseMouse();
-        Video::SourceModel::instance()->setDisplay(0, rubberBand_->rect());
+        Video::SourceModel::instance().setDisplay(0, rubberBand_->rect());
         delete rubberBand_;
         rubberBand_ = nullptr;
         reject();

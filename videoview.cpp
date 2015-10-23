@@ -41,7 +41,7 @@ VideoView::VideoView(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
+    connect(&CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
             this, SLOT(callStateChanged(Call*, Call::State)));
 
     overlay_ = new VideoOverlay(this);
@@ -114,7 +114,7 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
 void
 VideoView::updateCall()
 {
-    auto call = CallModel::instance()->selectedCall();
+    auto call = CallModel::instance().selectedCall();
     overlay_->setName(call->formattedName());
     overlay_->setTime(call->length());
 }
@@ -134,7 +134,7 @@ void VideoView::dragEnterEvent(QDragEnterEvent *event)
 void VideoView::dropEvent(QDropEvent *event)
 {
     auto urls = event->mimeData()->urls();
-    Video::SourceModel::instance()->setFile(urls.at(0));
+    Video::SourceModel::instance().setFile(urls.at(0));
 }
 
 void
@@ -161,17 +161,17 @@ VideoView::showContextMenu(const QPoint& pos)
 
     QMenu menu;
 
-    for (auto device : Video::DeviceModel::instance()->devices()) {
+    for (auto device : Video::DeviceModel::instance().devices()) {
         std::unique_ptr<QAction> deviceAction(new QAction(device->name(), this));
         deviceAction->setCheckable(true);
-        if (device == Video::DeviceModel::instance()->activeDevice())
+        if (device == Video::DeviceModel::instance().activeDevice())
             deviceAction->setChecked(true);
         auto ptr = deviceAction.release();
         menu.addAction(ptr);
         connect(ptr, &QAction::toggled, [=](bool checked) {
             if (checked == true) {
-                Video::SourceModel::instance()->switchTo(device);
-                Video::DeviceModel::instance()->setActive(device);
+                Video::SourceModel::instance().switchTo(device);
+                Video::DeviceModel::instance().setActive(device);
             }
         });
     }
@@ -181,7 +181,7 @@ VideoView::showContextMenu(const QPoint& pos)
     auto shareAction = new QAction(tr("Share entire screen"), this);
     menu.addAction(shareAction);
     connect(shareAction, &QAction::triggered, [=]() {
-        Video::SourceModel::instance()->setDisplay(0, QApplication::desktop()->rect());
+        Video::SourceModel::instance().setDisplay(0, QApplication::desktop()->rect());
     });
     auto shareAreaAction = new QAction(tr("Share screen area"), this);
     menu.addAction(shareAreaAction);
@@ -198,7 +198,7 @@ VideoView::showContextMenu(const QPoint& pos)
         if (!dialog.exec())
             return;
         fileNames = dialog.selectedFiles();
-        Video::SourceModel::instance()->setFile(QUrl::fromLocalFile(fileNames.at(0)));
+        Video::SourceModel::instance().setFile(QUrl::fromLocalFile(fileNames.at(0)));
     });
 
     menu.exec(globalPos);
