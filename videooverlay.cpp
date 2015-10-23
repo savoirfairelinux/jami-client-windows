@@ -31,7 +31,7 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
     ui->chatButton->setCheckable(true);
     ui->transferButton->setCheckable(true);
 
-    actionModel_ = CallModel::instance()->userActionModel();
+    actionModel_ = CallModel::instance().userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 
     menu_ = new QMenu(this);

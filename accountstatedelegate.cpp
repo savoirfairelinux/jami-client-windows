@@ -43,7 +43,7 @@ AccountStateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         auto font = painter->font() ;
         font.setBold(true);
         painter->setFont(font);
-        painter->setPen(AccountModel::instance()->
+        painter->setPen(AccountModel::instance().
                         getAccountByModelIndex(index)->stateColorName());
         painter->setOpacity(1.0);
         painter->drawText(QRect(rect.left()+25, rect.top(),
