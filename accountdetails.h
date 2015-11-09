@@ -35,15 +35,11 @@ class AccountDetails : public QWidget
 {
     Q_OBJECT
 
-private:
-    enum CodecType { AUDIO, VIDEO, ALL };
-
 public:
     explicit AccountDetails(QWidget *parent = 0);
     ~AccountDetails();
 
     void setAccount(Account *currentAccount);
-    void reloadCodec(CodecType type = CodecType::ALL);
     void save();
 
 //UI SLOTS
@@ -52,13 +48,10 @@ private slots:
     void on_downAudioButton_clicked();
     void on_upVideoButton_clicked();
     void on_downVideoButton_clicked();
-    void on_audioCodecView_itemSelectionChanged();
-    void on_videoCodecView_itemSelectionChanged();
-    void on_tabWidget_currentChanged(int index);
+    void audioCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void videoCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private slots:
-    void audio_codec_checked(int row, int column);
-    void video_codec_checked(int row, int column);
     void onCertButtonClicked();
 
 private:
