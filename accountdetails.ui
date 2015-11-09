@@ -29,7 +29,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="gen_tab">
       <property name="sizePolicy">
@@ -506,7 +506,7 @@
         </layout>
        </item>
        <item row="0" column="0">
-        <widget class="QTableWidget" name="audioCodecView">
+        <widget class="QTableView" name="audioCodecView">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
@@ -534,16 +534,6 @@
        <string>Video</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QTableWidget" name="videoCodecView">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="0">
         <widget class="QCheckBox" name="lrcfg_isVideoEnabled">
          <property name="text">
@@ -607,6 +597,16 @@
           </spacer>
          </item>
         </layout>
+       </item>
+       <item row="0" column="0">
+        <widget class="QTableView" name="videoCodecView">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
