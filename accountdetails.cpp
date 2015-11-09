@@ -44,7 +44,7 @@ AccountDetails::AccountDetails(QWidget *parent) :
     ui->audioCodecView->horizontalHeader()->hide();
     ui->videoCodecView->setShowGrid(false);
     ui->videoCodecView->verticalHeader()->hide();
-    ui->audioCodecView->horizontalHeader()->hide();
+    ui->videoCodecView->horizontalHeader()->hide();
 
     ui->lrcfg_username->setAlignment(Qt::AlignCenter);
 
