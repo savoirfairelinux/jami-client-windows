@@ -39,19 +39,10 @@ AccountDetails::AccountDetails(QWidget *parent) :
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
-    ui->audioCodecView->setColumnCount(4);
-    QStringList audioHeader {tr("Enabled"), tr("Name"), tr("Bitrate"), tr("Samplerate")};
-    ui->audioCodecView->setHorizontalHeaderLabels(audioHeader);
-    ui->audioCodecView->verticalHeader()->hide();
-    ui->audioCodecView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->audioCodecView->setShowGrid(false);
-
-    ui->videoCodecView->setColumnCount(3);
-    QStringList videoHeader {tr("Enabled"), tr("Name"), tr("Bitrate")};
-    ui->videoCodecView->setHorizontalHeaderLabels(videoHeader);
-    ui->videoCodecView->verticalHeader()->hide();
-    ui->videoCodecView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->audioCodecView->verticalHeader()->hide();
     ui->videoCodecView->setShowGrid(false);
+    ui->videoCodecView->verticalHeader()->hide();
 
     ui->lrcfg_username->setAlignment(Qt::AlignCenter);
 
@@ -66,89 +57,6 @@ AccountDetails::~AccountDetails()
 }
 
 void
-AccountDetails::reloadCodec(CodecType type)
-{
-    ui->audioCodecView->disconnect();
-    ui->videoCodecView->disconnect();
-
-    auto selectedIdx = codecModel_->selectionModel()->currentIndex();
-
-    if (type != CodecType::VIDEO) {
-        ui->audioCodecView->clearContents();
-        ui->audioCodecView->setRowCount(codecModel_->audioCodecs()->rowCount());
-
-        for (int i = 0; i < codecModel_->audioCodecs()->rowCount(); i++) {
-
-            auto idx = codecModel_->audioCodecs()->index(i, 0);
-
-            auto checkBoxItem = new QTableWidgetItem();
-            checkBoxItem->setCheckState(
-                        codecModel_->audioCodecs()->data(idx ,
-                                                         Qt::CheckStateRole).toBool()
-                        ? Qt::Checked : Qt::Unchecked);
-            ui->audioCodecView->setItem(i, 0, checkBoxItem);
-
-            auto item = new QTableWidgetItem(
-                        codecModel_->audioCodecs()->data(idx).toString());
-            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-            ui->audioCodecView->setItem(i, 1, item);
-
-            item = new QTableWidgetItem(
-                        codecModel_->audioCodecs()->
-                        data(idx,CodecModel::Role::BITRATE).toString());
-            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-            ui->audioCodecView->setItem(i, 2, item);
-
-            item = new QTableWidgetItem(
-                        codecModel_->audioCodecs()->
-                        data(idx, CodecModel::Role::SAMPLERATE).toString());
-            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-            ui->audioCodecView->setItem(i, 3, item);
-
-            if (codecModel_->audioCodecs()->mapToSource(idx) == selectedIdx) {
-                ui->audioCodecView->setCurrentCell(i, 0);
-            }
-        }
-    }
-    if (type != CodecType::AUDIO) {
-        ui->videoCodecView->clearContents();
-        ui->videoCodecView->setRowCount(codecModel_->videoCodecs()->rowCount());
-        for (int i = 0; i < codecModel_->videoCodecs()->rowCount(); i++) {
-
-            auto idx = codecModel_->videoCodecs()->index(i, 0);
-
-            auto checkBoxItem = new QTableWidgetItem();
-            checkBoxItem->setCheckState(codecModel_->videoCodecs()->
-                                        data(idx , Qt::CheckStateRole).toBool()
-                                        ? Qt::Checked : Qt::Unchecked);
-            ui->videoCodecView->setItem(i, 0, checkBoxItem);
-
-            auto item = new QTableWidgetItem(
-                        codecModel_->videoCodecs()->data(idx).toString());
-            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-            ui->videoCodecView->setItem(i, 1, item);
-
-            item = new QTableWidgetItem(codecModel_->videoCodecs()->
-                                        data(idx,CodecModel::Role::BITRATE).toString());
-            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-            ui->videoCodecView->setItem(i, 2, item);
-
-            if (codecModel_->videoCodecs()->mapToSource(idx) == selectedIdx) {
-                ui->videoCodecView->setCurrentCell(i, 0);
-            }
-        }
-    }
-    connect(ui->audioCodecView, SIGNAL(cellChanged(int,int)),
-            this, SLOT(audio_codec_checked(int, int)));
-    connect(ui->videoCodecView, SIGNAL(cellChanged(int,int)),
-            this, SLOT(video_codec_checked(int,int)));
-    connect(ui->audioCodecView, SIGNAL(itemSelectionChanged()),
-            this, SLOT(on_audioCodecView_itemSelectionChanged()));
-    connect(ui->videoCodecView, SIGNAL(itemSelectionChanged()),
-            this, SLOT(on_videoCodecView_itemSelectionChanged()));
-}
-
-void
 AccountDetails::setAccount(Account* currentAccount) {
 
     if (currentAccount_) {
@@ -160,6 +68,12 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
 
     codecModel_ = currentAccount->codecModel();
+    ui->audioCodecView->setModel(codecModel_->audioCodecs());
+    ui->videoCodecView->setModel(codecModel_->videoCodecs());
+    connect(ui->audioCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(audioCodecSelectionChanged(QItemSelection,QItemSelection)));
+    connect(ui->videoCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(videoCodecSelectionChanged(QItemSelection,QItemSelection)));
 
     ui->typeValueLabel->setText(currentAccount_->protocolModel()->
                                 selectionModel()->currentIndex().data().value<QString>());
@@ -232,76 +146,26 @@ AccountDetails::setAccount(Account* currentAccount) {
     });
 
     ui->cipherListView->setModel(currentAccount_->cipherModel());
-
-    reloadCodec();
 }
 
 void
-AccountDetails::audio_codec_checked(int row, int column) {
-    if (column != 0)
-        return;
-    auto item = ui->audioCodecView->item(row, 0);
-    auto idx = codecModel_->audioCodecs()->index(row, 0);
-    codecModel_->audioCodecs()->setData(idx, item->checkState(),
-                                        Qt::CheckStateRole);
-}
-
-void
-AccountDetails::video_codec_checked(int row, int column) {
-    if (column != 0)
-        return;
-    auto item = ui->videoCodecView->item(row, 0);
-    auto idx = codecModel_->videoCodecs()->index(row, 0);
-    codecModel_->videoCodecs()->setData(idx, item->checkState(),
-                                        Qt::CheckStateRole);
-}
-
-void
-AccountDetails::on_upAudioButton_clicked()
-{
+AccountDetails::on_upAudioButton_clicked() {
     codecModel_->moveUp();
-    reloadCodec(CodecType::AUDIO);
 }
 
 void
-AccountDetails::on_downAudioButton_clicked()
-{
+AccountDetails::on_downAudioButton_clicked() {
     codecModel_->moveDown();
-    reloadCodec(CodecType::AUDIO);
 }
 
 void
-AccountDetails::on_upVideoButton_clicked()
-{
+AccountDetails::on_upVideoButton_clicked() {
     codecModel_->moveUp();
-    reloadCodec(CodecType::VIDEO);
 }
 
 void
-AccountDetails::on_downVideoButton_clicked()
-{
+AccountDetails::on_downVideoButton_clicked() {
     codecModel_->moveDown();
-    reloadCodec(CodecType::VIDEO);
-}
-
-void
-AccountDetails::on_audioCodecView_itemSelectionChanged()
-{
-    int row = ui->audioCodecView->currentRow();
-    auto idx = codecModel_->audioCodecs()->index(row, 0);
-    auto srcIdx = codecModel_->audioCodecs()->mapToSource(idx);
-    codecModel_->selectionModel()->setCurrentIndex(srcIdx,
-                                                   QItemSelectionModel::Select);
-}
-
-void
-AccountDetails::on_videoCodecView_itemSelectionChanged()
-{
-    int row = ui->videoCodecView->currentRow();
-    auto idx = codecModel_->videoCodecs()->index(row, 0);
-    auto srcIdx = codecModel_->videoCodecs()->mapToSource(idx);
-    codecModel_->selectionModel()->setCurrentIndex(srcIdx,
-                                                   QItemSelectionModel::Select);
 }
 
 void
@@ -310,18 +174,7 @@ AccountDetails::save() {
 }
 
 void
-AccountDetails::on_tabWidget_currentChanged(int index)
-{
-    if (index == 1) {
-        ui->audioCodecView->setCurrentItem(ui->audioCodecView->item(0, 0));
-    } else if (index == 2) {
-        ui->videoCodecView->setCurrentItem(ui->videoCodecView->item(0, 0));
-    }
-}
-
-void
-AccountDetails::onCertButtonClicked()
-{
+AccountDetails::onCertButtonClicked() {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose File"),
     "",
     tr("Files (*)"));
@@ -331,4 +184,24 @@ AccountDetails::onCertButtonClicked()
     (currentAccount_->*certMap_[sender->objectName()])(fileName);
 
     static_cast<QPushButton*>(sender)->setText(fileName);
+}
+
+void
+AccountDetails::audioCodecSelectionChanged(const QItemSelection& selected,
+                                           const QItemSelection& deselected) {
+    Q_UNUSED(deselected)
+    if (not codecModel_ || selected.empty())
+        return;
+    auto idx = codecModel_->audioCodecs()->mapToSource(selected.indexes().at(0));
+    codecModel_->selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
+}
+
+void
+AccountDetails::videoCodecSelectionChanged(const QItemSelection& selected,
+                                           const QItemSelection& deselected) {
+    Q_UNUSED(deselected)
+    if (not codecModel_ || selected.empty())
+        return;
+    auto idx = codecModel_->videoCodecs()->mapToSource(selected.indexes().at(0));
+    codecModel_->selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
 }
