@@ -145,32 +145,11 @@ ConfigurationWidget::on_sizeBox_currentIndexChanged(int index)
 {
     auto device = deviceModel_->activeDevice();
 
-    ui->rateBox->clear();
-
     if (index < 0)
         return;
     if (!isLoading_)
         device->channelList()[0]->setActiveResolution(
                     device->channelList()[0]->validResolutions()[index]);
-
-    isLoading_ = true;
-    for (auto rate
-         : device->channelList()[0]->validResolutions()[index]->validRates()) {
-        ui->rateBox->addItem(rate->name());
-    }
-    ui->rateBox->setCurrentIndex(
-                device->channelList()[0]->
-            activeResolution()->activeRate()->relativeIndex());
-    isLoading_ = false;
-}
-
-void
-ConfigurationWidget::on_rateBox_currentIndexChanged(int index)
-{
-    if (index < 0 || isLoading_)
-        return;
-    auto device = deviceModel_->activeDevice();
-    device->channelList()[0]->activeResolution()->setActiveRate(index);
 }
 
 void
