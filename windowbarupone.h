@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,43 +18,34 @@
 
 #pragma once
 
-#include "globalsystemtray.h"
+#include <QToolBar>
 
-#include <QMainWindow>
-#include <QMouseEvent>
+class QPoint;
+class QMenu;
+class QMenuBar;
 
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class WindowBarUpTwo;
-
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class WindowBarUpOne : public QToolBar
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
-
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-    
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
-
+	WindowBarUpOne(QToolBar *parent = 0);
+	~WindowBarUpOne();
+	QAction* getQuitButton(){ return quit;};
+	QAction* getMaximizeButton(){ return maximize;};
+	QAction* getMinimizeButton(){ return minimize;};
+	void paintEvent(QPaintEvent *event);
+	
 private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    WindowBarUpTwo* wbTwo_;
+	QAction*  minimize;
+	QAction*  maximize;
+	QAction*  quit;
+	QWidget*  spacer_;
+	QPoint    dl;
+	
+	
+protected:
+	void mousePressEvent  (QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
+	void mouseMoveEvent   (QMouseEvent *event);
 };
-

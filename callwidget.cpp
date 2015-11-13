@@ -63,11 +63,6 @@ CallWidget::CallWidget(QWidget *parent) :
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
-    ui->spinnerWidget->hide();
-    spinner_ = new QMovie(":/images/spinner.gif");
-    if (spinner_->isValid()) {
-        ui->spinnerLabel->setMovie(spinner_);
-    }
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -158,7 +153,6 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
-    delete spinner_;
     delete menu_;
     delete contactDelegate_;
 }
@@ -257,7 +251,6 @@ CallWidget::addedCall(Call* call, Call* parent)
 {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
-        displaySpinner(true);
         setActualCall(call);
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
     }
@@ -280,7 +273,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        displaySpinner(false);
 //TODO : Link this so that recentModel get selected correctly
 //        auto onHoldCall = callModel_->getActiveCalls().first();
 //        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
@@ -288,7 +280,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 //            onHoldCall->performAction(Call::Action::HOLD);
 //        }
     } else if (call->state() == Call::State::CURRENT) {
-        displaySpinner(false);
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
@@ -353,13 +344,6 @@ CallWidget::setActualCall(Call* value)
         CallModel::instance().selectCall(value);
 }
 
-void
-CallWidget::displaySpinner(bool display)
-{
-    display ? ui->spinnerWidget->show() : ui->spinnerWidget->hide();
-    if (ui->spinnerLabel->movie())
-        display ? ui->spinnerLabel->movie()->start() : ui->spinnerLabel->movie()->stop();
-}
 
 void
 CallWidget::on_cancelButton_clicked()

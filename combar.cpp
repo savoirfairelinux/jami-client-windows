@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,45 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "combar.h"
+#include "ui_combar.h"
 
-#include "globalsystemtray.h"
+ComBar::ComBar( QWidget *parent )
+: ComBarUi_(new Ui::ComBar)
+, QWidget(parent)
+{
+	ComBarUi_->setupUi(this);
+	
+	setStyleSheet(
+	"QPushButton#btnvideo{ border-image: url(:/images/hover-contact/btn-video.svg);}"
+	"QPushButton#btnchat{ border-image: url(:/images/hover-contact/btn-chat.svg);}"
+	"QPushButton#btncontactinfo{ border-image: url(:/images/hover-contact/btn-contactinfo.svg);}"
+	);
+	
+	// [jn] these buttons are for further uses
+	ComBarUi_->btnchat->hide();
+	ComBarUi_->btncontactinfo->hide();
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class WindowBarUpTwo;
-
-namespace Ui {
-class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+ComBar::~ComBar(  )
 {
-    Q_OBJECT
+	delete ComBarUi_;
+	
+}
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
-
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-    
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
-
-private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    WindowBarUpTwo* wbTwo_;
-};
-
+void
+ComBar::MonSlot( const QRect& rect )
+{
+	move( rect.right()-width(), rect.bottom()-height()-( rect.height()/4 ) );
+	
+}

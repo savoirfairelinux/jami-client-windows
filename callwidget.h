@@ -52,7 +52,7 @@ public:
     void atExit();
 
 //UI SLOTS
-private slots:
+public slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
     void on_contactView_doubleClicked(const QModelIndex &index);
@@ -79,7 +79,6 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu *menu_;
-    QMovie *spinner_;
     ContactDelegate *contactDelegate_;
     HistoryDelegate *historyDelegate_;
     SmartListDelegate* smartListDelegate_;
@@ -87,7 +86,6 @@ private:
 private:
     void findRingAccount();
     void setActualCall(Call *value);
-    void displaySpinner(bool display);
     void placeCall();
 };
 

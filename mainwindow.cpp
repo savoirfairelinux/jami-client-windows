@@ -21,6 +21,8 @@
 
 #include <QSizeGrip>
 #include "aboutdialog.h"
+#include "windowbarupone.h"
+#include "windowbaruptwo.h"
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -31,11 +33,15 @@
 #include <QWinThumbnailToolButton>
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow( QWidget *parent )
+: QMainWindow(parent)
+, ui(new Ui::MainWindow)
+, wbOne_(new WindowBarUpOne)
+, wbTwo_(new WindowBarUpTwo)
 {
     ui->setupUi(this);
+    
+    this->setWindowFlags(Qt::FramelessWindowHint);
 
     QIcon icon(":images/ring.png");
 
@@ -78,6 +84,22 @@ MainWindow::MainWindow(QWidget *parent) :
         ::AppendMenuA(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdString().c_str());
     }
 #endif
+
+	resize( 1054, 600 );
+	
+	addToolBar( static_cast<QToolBar*>( wbOne_ ) );
+    addToolBarBreak();
+    addToolBar( static_cast<QToolBar*>( wbTwo_ ) );
+    
+    connect( wbOne_->getQuitButton(), &QAction::triggered, this, &QMainWindow::close );
+	connect( wbOne_->getMaximizeButton(), &QAction::triggered, this , &MainWindow::switchNormalMaximize );
+	connect( wbOne_->getMinimizeButton(), &QAction::triggered, this , &QMainWindow::showMinimized );
+	connect( wbTwo_->getSettingsButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_settingsButton_clicked );
+	
+	// a verifier, car il faut les `bools`
+	connect( wbTwo_->getHistoryButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_historicButton_clicked );
+	connect( wbTwo_->getContactListButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_contactButton_clicked );
+
 }
 
 MainWindow::~MainWindow()
@@ -139,4 +161,18 @@ MainWindow::createThumbBar()
 
     thumbbar->addButton(settings);
 #endif
+}
+
+void 
+MainWindow::switchNormalMaximize(  )
+{
+	if( isMaximized() )
+	{
+		showNormal();
+	}
+	else
+	{
+		showMaximized();		
+	}
+	
 }
