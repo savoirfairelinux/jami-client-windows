@@ -30,6 +30,10 @@ SmartList::SmartList( QWidget *parent )
 : currentRow(-1)
 , comBar_(new ComBar(this))
 {
+	setMouseTracking(true);
+	
+	setHeaderHidden(true);
+	
 	setStyleSheet(
 	"QScrollBar:vertical { background:white; width:10px; }"
     "QScrollBar::handle:vertical { background: rgb( 77, 77, 77 ) }"
@@ -49,7 +53,10 @@ SmartList::leaveEvent( QEvent * event )
 {
 	currentRow = -1;	
 	
-	smartListDelegate_->setRowHighlighted( currentRow );
+    if ( smartListDelegate_ )
+    {
+		smartListDelegate_->setRowHighlighted( currentRow );
+	}
 	
 	setStyleSheet(
 	"QScrollBar:vertical { background:white; width:10px; }"
@@ -95,15 +102,19 @@ SmartList::mouseMoveEvent( QMouseEvent* event )
     
 }
 
-void
-SmartList::ptrSmartListDelegate( SmartListDelegate* p )
-{
-	smartListDelegate_ = p;
-}
-
 
 void
-SmartList::connectCombarAndSmartListDelegate(  )
+SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
 {
-	connect( smartListDelegate_ , &SmartListDelegate::MonSignal , comBar_, &ComBar::MonSlot );
+	if ( delegate ) 
+	{
+	
+		setItemDelegate(delegate);
+	
+		smartListDelegate_ = delegate;
+	
+		connect( smartListDelegate_ , &SmartListDelegate::MonSignal , comBar_, &ComBar::MonSlot );
+	
+	}
+	
 }

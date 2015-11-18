@@ -54,6 +54,37 @@ CallWidget::CallWidget(QWidget *parent) :
     menu_(new QMenu())
 {
     ui->setupUi(this);
+    
+    setStyleSheet(
+	"QPushButton#btnCall{ border-image: url(:/images/hover-contact/btn-plus.svg);}"
+	"QPushButton#acceptButton{ border-image: url(:/images/call/btn-answer.svg);}"
+	"QPushButton#refuseButton{ border-image: url(:/images/call/btn-ignore.svg);}"
+	"QPushButton#cancelButton{ border-image: url(:/images/call/btn-ignore.svg);}"
+	"QWidget#callInvitePage{ background-color : rgb( 77, 77, 77 ); }"
+	);
+	
+	// TODO : add this in style sheet forms
+	QPalette palette;
+	palette.setColor( QPalette::WindowText, QColor(255,255,255) );
+
+	ui->callLabel->setPalette(palette);
+
+
+	QPalette palette2;
+	palette2.setColor( QPalette::WindowText, QColor(141,141,141) );
+
+	ui->callLabel2->setPalette(palette2);
+	ui->callLabel3->setPalette(palette2);
+	ui->cancelCallLabel->setPalette(palette2);
+	ui->acceptLabel->setPalette(palette2);
+	ui->refuseLabel->setPalette(palette2);
+
+
+	QFont font = ui->callLabel->font();
+	font.setPointSize(20);
+	
+	ui->callLabel->setFont( font );
+	// end of TODO : add this in style sheet forms
 
     ui->callInvite->setVisible(false);
 
@@ -89,8 +120,7 @@ CallWidget::CallWidget(QWidget *parent) :
                 this,
                 SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
         smartListDelegate_ = new SmartListDelegate();
-        ui->smartList->setItemDelegate(smartListDelegate_);
-        ui->smartList->setHeaderHidden(true);
+        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
 
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
@@ -144,7 +174,7 @@ CallWidget::CallWidget(QWidget *parent) :
         });
 
         findRingAccount();
-
+        
     } catch (...) {
         qDebug() << "INIT ERROR";
     }
@@ -208,16 +238,19 @@ CallWidget::findRingAccount()
     }
 }
 
+
 void
 CallWidget::callIncoming(Call *call)
 {
+	ui->outboundCall->hide();
+	
     if (!QApplication::activeWindow()) {
         GlobalSystemTray::instance().showMessage("Ring", "Call incoming from " + call->formattedName());
         QApplication::alert(this, 5000);
     }
 
     if (!call->account()->isAutoAnswer()) {
-        ui->callLabel->setText(QString(tr("Call from %1", "%1 is the name of the caller"))
+        ui->callLabel->setText(QString(tr("%1", "%1 people calling"))
                                .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
         ui->callInvite->setVisible(true);
@@ -402,11 +435,11 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
 void
 CallWidget::placeCall()
 {
-    if (ui->searchEdit->text().isEmpty())
+    if (ui->ringContactLineEdit->text().isEmpty())
         return;
-    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->searchEdit->text()));
+    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
     c->performAction(Call::Action::ACCEPT);
-    ui->searchEdit->clear();
+    ui->ringContactLineEdit->clear();
 }
 
 void
@@ -424,15 +457,15 @@ CallWidget::on_settingsButton_clicked()
 void
 CallWidget::on_contactButton_clicked(bool checked)
 {
-    if (checked)
-        ui->historicButton->setChecked(false);
+    //~ if (checked)
+        //~ ui->historicButton->setChecked(false);
     ui->mainTabMenu->setCurrentIndex(checked ? 1 : 0);
 }
 
 void
 CallWidget::on_historicButton_clicked(bool checked)
 {
-    if (checked)
-        ui->contactButton->setChecked(false);
+    //~ if (checked)
+        //~ ui->contactButton->setChecked(false);
     ui->mainTabMenu->setCurrentIndex(checked ? 2 : 0);
 }

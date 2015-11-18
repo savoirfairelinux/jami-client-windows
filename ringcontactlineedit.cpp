@@ -15,5 +15,48 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+ 
+#include <QtWidgets/QApplication>
+#include "ringcontactlineedit.h"
+#include <QDebug>
+#include <QIcon>
 
-#pragma once
+
+
+RingContactLineEdit::RingContactLineEdit(QWidget *parent) :
+	QLineEdit(parent)
+{
+	QPalette palette;
+	palette.setColor( QPalette::Base, QColor(242,242,242) );
+	//~ palette.setColor(QPalette::Text,Qt::white);
+	setPalette(palette);
+
+    setFrame(false);
+    
+    setStyleSheet("RingContactLineEdit {"
+		"border-color: rgb(242, 242, 242);"
+		"border-radius: 5px;"
+		"border-width: 2px;"
+        "background-color: rgb(242, 242, 242) }");
+        
+    addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
+		
+		
+		    //~ background-color: red;
+    //~ border-style: outset;
+    //~ border-width: 2px;
+    //~ border-radius: 10px;
+    //~ border-color: beige;
+		
+		
+}
+
+RingContactLineEdit::~RingContactLineEdit()
+{
+}
+
+void RingContactLineEdit::paintEvent(QPaintEvent * event)
+{
+    QLineEdit::paintEvent(event);
+    
+}

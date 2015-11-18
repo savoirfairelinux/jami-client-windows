@@ -34,20 +34,17 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
     actionModel_ = CallModel::instance().userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 
-    menu_ = new QMenu(this);
     auto muteAudio = new QAction(tr("Mute Audio"), this);
     muteAudio->setCheckable(true);
     connect(muteAudio, &QAction::triggered, [=](bool) {
        actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
     });
-    menu_->addAction(muteAudio);
 
     auto muteVideo = new QAction(tr("Mute Video"), this);
     muteVideo->setCheckable(true);
     connect(muteVideo, &QAction::triggered, [=](bool) {
         actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
     });
-    menu_->addAction(muteVideo);
 
     connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
         const int first(tl.row()),last(br.row());
@@ -68,13 +65,33 @@ VideoOverlay::VideoOverlay(QWidget *parent) :
         }
     });
 
-    ui->moreButton->setMenu(menu_);
+    connect(ui->nomicButton, &QPushButton::toggled, [=](bool) {
+       actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
+    });
+
+
+	connect(ui->novideoButton, &QPushButton::toggled, [=](bool) {
+       actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
+    });
+    
+    
+    setStyleSheet("QPushButton#holdButton{ border-image: url(:/images/video-conf/btn-pause.svg);}"
+				  "QPushButton#holdButton:checked{ border-image: url(:/images/video-conf/btn-pause-toggled.svg);}"
+				  "QPushButton#hangupButton{ border-image: url(:/images/video-conf/btn-hangup.svg);}"
+				  "QPushButton#chatButton{ border-image: url(:/images/video-conf/btn-chat.svg);}"
+				  "QPushButton#nomicButton{ border-image: url(:/images/video-conf/btn-nomic.svg);}"
+				  "QPushButton#nomicButton:checked{ border-image: url(:/images/video-conf/btn-nomic-toggled.svg);}"
+				  "QPushButton#novideoButton{ border-image: url(:/images/video-conf/btn-novideo.svg);}"
+				  "QPushButton#novideoButton:checked{ border-image: url(:/images/video-conf/btn-novideo-toggled.svg);}"
+				  "QPushButton#transferButton{ border-image: url(:/images/video-conf/btn-missing.svg);}"
+	);
+	
+	
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
-    delete menu_;
     delete transferDialog_;
 }
 
@@ -95,6 +112,12 @@ VideoOverlay::on_holdButton_toggled(bool checked)
 {
     Q_UNUSED(checked)
     actionModel_->execute(UserActionModel::Action::HOLD);
+    
+    ui->chatButton->setVisible(!checked);
+    ui->nomicButton->setVisible(!checked);
+    ui->novideoButton->setVisible(!checked);
+    ui->transferButton->setVisible(!checked);
+    
 }
 
 void

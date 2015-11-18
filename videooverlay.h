@@ -51,7 +51,6 @@ private slots:
 private:
     Ui::VideoOverlay *ui;
     UserActionModel* actionModel_;
-    QMenu* menu_;
     TransferDialog *transferDialog_;
 
 signals:

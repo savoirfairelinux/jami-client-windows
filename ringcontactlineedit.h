@@ -15,3 +15,25 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+
+#pragma once
+
+#include <QLineEdit>
+
+
+namespace Ui {
+class ringContactLineEdit;
+}
+
+
+class RingContactLineEdit: public QLineEdit
+{
+
+	Q_OBJECT
+
+public:
+	explicit RingContactLineEdit(QWidget *parent = 0);
+	~RingContactLineEdit();
+	void paintEvent(QPaintEvent * event);
+
+};

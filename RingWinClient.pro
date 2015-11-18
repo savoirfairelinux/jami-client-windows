@@ -61,10 +61,10 @@ SOURCES += main.cpp\
     \
     combar.cpp \
     idLabel.cpp \
-    contactLineEdit.cpp \
     smartlist.cpp \
     windowbarupone.cpp \
-    windowbaruptwo.cpp
+    windowbaruptwo.cpp \
+    ringcontactlineedit.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -96,10 +96,10 @@ HEADERS  += mainwindow.h \
         \
     combar.h \
     idLabel.h \
-    contactLineEdit.h \
     smartlist.h \
     windowbarupone.h \
-    windowbaruptwo.h
+    windowbaruptwo.h \
+    ringcontactlineedit.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \

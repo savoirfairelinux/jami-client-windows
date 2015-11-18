@@ -33,8 +33,7 @@ public:
 	void leaveEvent(QEvent* event);
 	void mouseMoveEvent(QMouseEvent* event);
 	void paintEvent(QPaintEvent* event);
-	void ptrSmartListDelegate(SmartListDelegate*);
-	void connectCombarAndSmartListDelegate();
+	void setSmartListItemDelegate(SmartListDelegate*);
 
 signals:
 	void MonSignal(bool) const;
