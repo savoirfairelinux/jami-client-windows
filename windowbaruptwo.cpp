@@ -29,8 +29,6 @@ WindowBarUpTwo::WindowBarUpTwo(QToolBar *parent)
 ,spacer_(new QWidget())
 ,dl( QPoint() )
 {
-  qDebug() << "WindowBarUpTwo::WindowBarUpTwo";
-  
   //~ setFixedHeight(55); // marianne
   setFixedHeight(25);
   
@@ -74,7 +72,6 @@ WindowBarUpTwo::paintEvent(QPaintEvent *event)
 
 void WindowBarUpTwo::mousePressEvent(QMouseEvent *event)
 {
-	qDebug() << "WindowBarUpTwo::mousePressEvent";
 	// event->pos() return the position inside the current widget, 
 	// so I`m adding the height of the RingWindowBar to get the good
 	// computation when the mouse is moved.
@@ -94,7 +91,6 @@ void WindowBarUpTwo::mouseReleaseEvent(QMouseEvent *event)
 
 void WindowBarUpTwo::mouseMoveEvent(QMouseEvent *event)
 {
-	qDebug() << "WindowBarUpTwo::mouseMoveEvent";
 	QPoint p = event->globalPos();
   
 	window()->move(p - dl);

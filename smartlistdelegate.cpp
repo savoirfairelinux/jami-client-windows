@@ -31,7 +31,6 @@ SmartListDelegate::SmartListDelegate( QObject* parent )
 : QStyledItemDelegate(parent)
 , rowHighlighted(-1)
 {
-
 }
 
 void
@@ -40,7 +39,6 @@ SmartListDelegate::paint( QPainter *painter
                         , const QModelIndex &index
                         ) const
 {
-	
     QStyleOptionViewItem opt(option);
 
 

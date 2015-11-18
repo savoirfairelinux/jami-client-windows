@@ -37,7 +37,8 @@ SmartList::SmartList( QWidget *parent )
 	setStyleSheet(
 	"QScrollBar:vertical { background:white; width:10px; }"
     "QScrollBar::handle:vertical { background: rgb( 77, 77, 77 ) }"
-	"RingTreeView{background-color : white; color}"
+	"SmartList{background-color : white;"
+	"border : none;}"
 	);
 }
 
@@ -61,7 +62,8 @@ SmartList::leaveEvent( QEvent * event )
 	setStyleSheet(
 	"QScrollBar:vertical { background:white; width:10px; }"
     "QScrollBar::handle:vertical { background: rgb( 77, 77, 77 ) }"
-	"RingTreeView{background-color : white; color}"
+	"SmartList{background-color : white;"
+	"border : none;}"
 	);
 	
 }
