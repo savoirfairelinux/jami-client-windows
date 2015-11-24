@@ -154,7 +154,7 @@ win32 {
     LICENSE.files = License.rtf
     LICENSE.path = $$OUT_PWD/release
 
-    RUNTIMEDIR=/usr/i686-w64-mingw32/bin/
+    RUNTIMEDIR=$$[QT_INSTALL_BINS]
 
     RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll
     RUNTIME.path = $$OUT_PWD/release
@@ -173,7 +173,9 @@ win32 {
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
                             $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
                             $$RUNTIMEDIR/libjpeg-8.dll $$RUNTIMEDIR/libiconv-2.dll \
-                            $$RUNTIMEDIR/libidn-11.dll $$RUNTIMEDIR/liblzma-5.dll
+                            $$RUNTIMEDIR/libidn-11.dll $$RUNTIMEDIR/liblzma-5.dll \
+                            $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll \
+                            $$RUNTIMEDIR/iconv.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$(QTDIR)/plugins/platforms/qwindows.dll
