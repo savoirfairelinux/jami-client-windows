@@ -27,6 +27,9 @@
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
+class WindowBarUpOne;
+class WindowBarUpTwo;
+
 namespace Ui {
 class MainWindow;
 }
@@ -42,12 +45,17 @@ public:
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+    
 private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void onIncomingCall(Call *call);
+    void switchNormalMaximize();
 
 private:
     Ui::MainWindow *ui;
     NavStack* navStack_;
+    WindowBarUpOne* wbOne_;
+    WindowBarUpTwo* wbTwo_;
 };
+
 

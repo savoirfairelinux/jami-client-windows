@@ -53,7 +53,41 @@ CallWidget::CallWidget(QWidget *parent) :
     ui(new Ui::CallWidget),
     menu_(new QMenu())
 {
+
+    setMouseTracking(true);
+
     ui->setupUi(this);
+
+    setStyleSheet(
+    "QPushButton#btnCall{ border-image: url(:/images/call/btn-call.svg);}"
+    "QPushButton#acceptButton{ border-image: url(:/images/call/btn-answer.svg);}"
+    "QPushButton#refuseButton{ border-image: url(:/images/call/btn-ignore.svg);}"
+    "QPushButton#cancelButton{ border-image: url(:/images/call/btn-ignore.svg);}"
+    "QWidget#callInvitePage{ background-color : rgb( 77, 77, 77 ); }"
+    );
+
+    // TODO : add this in style sheet forms
+    QPalette palette;
+    palette.setColor( QPalette::WindowText, QColor(255,255,255) );
+
+    ui->callLabel->setPalette(palette);
+
+
+    QPalette palette2;
+    palette2.setColor( QPalette::WindowText, QColor(141,141,141) );
+
+    ui->callLabel2->setPalette(palette2);
+    ui->callLabel3->setPalette(palette2);
+    ui->cancelCallLabel->setPalette(palette2);
+    ui->acceptLabel->setPalette(palette2);
+    ui->refuseLabel->setPalette(palette2);
+
+
+    QFont font = ui->callLabel->font();
+    font.setPointSize(20);
+
+    ui->callLabel->setFont( font );
+    // end of TODO : add this in style sheet forms
 
     ui->callInvite->setVisible(false);
 
@@ -63,11 +97,6 @@ CallWidget::CallWidget(QWidget *parent) :
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
-    ui->spinnerWidget->hide();
-    spinner_ = new QMovie(":/images/spinner.gif");
-    if (spinner_->isValid()) {
-        ui->spinnerLabel->setMovie(spinner_);
-    }
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -93,9 +122,11 @@ CallWidget::CallWidget(QWidget *parent) :
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
                 this,
                 SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
+
+        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered );
+
         smartListDelegate_ = new SmartListDelegate();
-        ui->smartList->setItemDelegate(smartListDelegate_);
-        ui->smartList->setHeaderHidden(true);
+        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
 
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
@@ -158,7 +189,6 @@ CallWidget::CallWidget(QWidget *parent) :
 CallWidget::~CallWidget()
 {
     delete ui;
-    delete spinner_;
     delete menu_;
     delete contactDelegate_;
 }
@@ -214,16 +244,19 @@ CallWidget::findRingAccount()
     }
 }
 
+
 void
 CallWidget::callIncoming(Call *call)
 {
+    ui->outboundCall->hide();
+
     if (!QApplication::activeWindow()) {
         GlobalSystemTray::instance().showMessage("Ring", "Call incoming from " + call->formattedName());
         QApplication::alert(this, 5000);
     }
 
     if (!call->account()->isAutoAnswer()) {
-        ui->callLabel->setText(QString(tr("Call from %1", "%1 is the name of the caller"))
+        ui->callLabel->setText(QString(tr("%1", "%1 people calling"))
                                .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
         ui->callInvite->setVisible(true);
@@ -257,9 +290,10 @@ CallWidget::addedCall(Call* call, Call* parent)
 {
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
-        displaySpinner(true);
         setActualCall(call);
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        ui->callInvite->setVisible(false);
+        ui->outboundCall->show();
     }
 }
 
@@ -270,6 +304,9 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
 
+    //Force update of smartList
+    ui->smartList->setFocus();
+
     if (call->state() == Call::State::OVER
             || call->state() == Call::State::ERROR
             || call->state() == Call::State::FAILURE
@@ -277,7 +314,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        displaySpinner(false);
 //TODO : Link this so that recentModel get selected correctly
 //        auto onHoldCall = callModel_->getActiveCalls().first();
 //        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
@@ -285,7 +321,6 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 //            onHoldCall->performAction(Call::Action::HOLD);
 //        }
     } else if (call->state() == Call::State::CURRENT) {
-        displaySpinner(false);
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
@@ -351,14 +386,6 @@ CallWidget::setActualCall(Call* value)
 }
 
 void
-CallWidget::displaySpinner(bool display)
-{
-    display ? ui->spinnerWidget->show() : ui->spinnerWidget->hide();
-    if (ui->spinnerLabel->movie())
-        display ? ui->spinnerLabel->movie()->start() : ui->spinnerLabel->movie()->stop();
-}
-
-void
 CallWidget::on_cancelButton_clicked()
 {
     if (actualCall_)
@@ -392,14 +419,18 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
     Q_UNUSED(oldSel)
 
     auto newIdx = newSel.indexes().first();
-    if (not newIdx.isValid())
+    if (newIdx.parent().isValid())
         return;
 
     auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;
+    if (actualCall_ != nullptr) {
+        actualCall_->performAction(Call::Action::HOLD);
+    }
     if (newIdxCall) {
+        newIdxCall->performAction(Call::Action::HOLD);
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
@@ -411,11 +442,11 @@ CallWidget::smartListSelectionChanged(const QItemSelection &newSel, const QItemS
 void
 CallWidget::placeCall()
 {
-    if (ui->searchEdit->text().isEmpty())
+    if (ui->ringContactLineEdit->text().isEmpty())
         return;
-    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->searchEdit->text()));
+    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
     c->performAction(Call::Action::ACCEPT);
-    ui->searchEdit->clear();
+    ui->ringContactLineEdit->clear();
 }
 
 void
@@ -433,15 +464,35 @@ CallWidget::on_settingsButton_clicked()
 void
 CallWidget::on_contactButton_clicked(bool checked)
 {
-    if (checked)
-        ui->historicButton->setChecked(false);
     ui->mainTabMenu->setCurrentIndex(checked ? 1 : 0);
+
 }
 
 void
 CallWidget::on_historicButton_clicked(bool checked)
 {
-    if (checked)
-        ui->contactButton->setChecked(false);
     ui->mainTabMenu->setCurrentIndex(checked ? 2 : 0);
+
+}
+
+void
+CallWidget::on_ringContactLineEdit_returnPressed()
+{
+    placeCall();
+}
+
+void
+CallWidget::on_btnCall_clicked()
+{
+    placeCall();
+}
+
+void
+CallWidget::on_btnvideo_clicked()
+{
+    if ( &highLightedIndex == nullptr )
+        return;
+
+    on_smartList_doubleClicked( highLightedIndex );
+
 }

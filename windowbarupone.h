@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,29 +18,33 @@
 
 #pragma once
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include <QToolBar>
 
-class QPainter;
+class QPoint;
+class QMenu;
+class QMenuBar;
 
-class SmartListDelegate : public QStyledItemDelegate
+class WindowBarUpOne : public QToolBar
 {
     Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject *parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted = i;};
 
-protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+public:
+    WindowBarUpOne(QToolBar *parent = 0);
+    ~WindowBarUpOne();
+    inline QAction* getQuitButton(){ return quit_;};
+    inline QAction* getMaximizeButton(){ return maximize_;};
+    inline QAction* getMinimizeButton(){ return minimize_;};
+    void paintEvent(QPaintEvent *event);
 
 private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    int rowHighlighted;
+    QAction*  minimize_;
+    QAction*  maximize_;
+    QAction*  quit_;
+    QWidget*  spacer_;
+    QPoint    dl;
 
-signals:
-    void RowSelected( const QRect& ) const;
-    
+protected:
+    void mousePressEvent  (QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent   (QMouseEvent *event);
 };

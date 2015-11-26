@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,31 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "combar.h"
+#include "ui_combar.h"
 
-#include <QObject>
-#include <QStyledItemDelegate>
-
-class QPainter;
-
-class SmartListDelegate : public QStyledItemDelegate
+ComBar::ComBar( QWidget *parent ) :
+    ui(new Ui::ComBar)
+    , QWidget(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject *parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted = i;};
+    ui->setupUi(this);
 
-protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    setStyleSheet(
+    "QPushButton#btnvideo{ border-image: url(:/images/hover-contact/btn-video.svg);}"
+    "QPushButton#btnchat{ border-image: url(:/images/hover-contact/btn-chat.svg);}"
+    "QPushButton#btncontactinfo{ border-image: url(:/images/hover-contact/btn-contactinfo.svg);}"
+    );
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    int rowHighlighted;
+    // [jn] these buttons are for further uses
+    ui->btnchat->hide();
+    ui->btncontactinfo->hide();
 
-signals:
-    void RowSelected( const QRect& ) const;
-    
-};
+}
+
+ComBar::~ComBar()
+{
+    delete ui;
+
+}
+
+void
+ComBar::Move( const QRect& rect )
+{
+    move( rect.right()-width(), rect.bottom()-height()-( rect.height()/4 ) );
+
+}

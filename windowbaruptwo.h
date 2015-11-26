@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,29 +18,34 @@
 
 #pragma once
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include <QToolBar>
 
-class QPainter;
+class QPoint;
 
-class SmartListDelegate : public QStyledItemDelegate
+class WindowBarUpTwo : public QToolBar
 {
     Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject *parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted = i;};
 
-protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+public:
+    WindowBarUpTwo(QToolBar *parent = 0);
+    ~WindowBarUpTwo();
+    inline QAction* getSettingsButton(){ return settings_;};
+    inline QAction* getHistoryButton(){ return history_;};
+    inline QAction* getContactListButton(){ return contactslist_;};
+    void paintEvent(QPaintEvent *event);
+    void historyToggled(bool checked);
+    void contactslistToggled(bool checked);
 
 private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    int rowHighlighted;
+    QAction*  contactslist_;
+    QAction*  history_;
+    QAction*  settings_;
+    //~ QAction*  info_; // further use
+    QWidget*  spacer_;
+    QPoint    dl;
 
-signals:
-    void RowSelected( const QRect& ) const;
-    
+protected:
+    void mousePressEvent  (QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent   (QMouseEvent *event);
 };

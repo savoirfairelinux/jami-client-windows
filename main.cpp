@@ -85,12 +85,12 @@ main(int argc, char *argv[])
     font.setFamily("Segoe UI");
     a.setFont(font);
 
-    QFile file(":/stylesheet.css");
-    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        a.setStyleSheet(file.readAll());
-        file.close();
-    }
+    //~ QFile file(":/stylesheet.css");
+    //~ if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    //~ {
+        //~ a.setStyleSheet(file.readAll());
+        //~ file.close();
+    //~ }
 
     QCoreApplication::setOrganizationName("Savoir-faire Linux");
     QCoreApplication::setOrganizationDomain("ring.cx");

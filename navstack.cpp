@@ -90,3 +90,10 @@ NavStack::setNavBar(NavWidget* navW) {
         bar_->hide();
     }
 }
+
+CallWidget*
+NavStack::getCallWidget()
+{
+    return dynamic_cast<CallWidget*>(navList_[1]);
+}
+

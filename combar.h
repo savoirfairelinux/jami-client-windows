@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,29 +18,24 @@
 
 #pragma once
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include <QWidget>
 
-class QPainter;
+namespace Ui {
+class ComBar;
+}
 
-class SmartListDelegate : public QStyledItemDelegate
+class ComBar
+: public QWidget
 {
     Q_OBJECT
 public:
-    explicit SmartListDelegate(QObject *parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted = i;};
+    explicit ComBar(QWidget *parent = 0);
+    ~ComBar();
 
-protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+public slots:
+    void Move(const QRect&);
 
 private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    int rowHighlighted;
+    Ui::ComBar* ui;
 
-signals:
-    void RowSelected( const QRect& ) const;
-    
 };
