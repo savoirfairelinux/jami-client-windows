@@ -71,6 +71,8 @@ private slots:
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void smartListSelectionChanged(const QItemSelection &newSel, const QItemSelection &oldSel);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::CallWidget *ui;
     Call* actualCall_;

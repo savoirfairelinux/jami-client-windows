@@ -48,6 +48,8 @@
 #include "contactdelegate.h"
 #include "smartlistdelegate.h"
 
+#include "testmessagedialog.h"
+
 CallWidget::CallWidget(QWidget *parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
@@ -444,4 +446,10 @@ CallWidget::on_historicButton_clicked(bool checked)
     if (checked)
         ui->contactButton->setChecked(false);
     ui->mainTabMenu->setCurrentIndex(checked ? 2 : 0);
+}
+
+void CallWidget::on_pushButton_clicked()
+{
+    TestMessageDialog dlg;
+    dlg.exec();
 }
