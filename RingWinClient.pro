@@ -57,7 +57,8 @@ SOURCES += main.cpp\
     contactmethodpicker.cpp \
     globalsystemtray.cpp \
     smartlistdelegate.cpp \
-    callutilsdialog.cpp
+    callutilsdialog.cpp \
+    testmessagedialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -85,7 +86,8 @@ HEADERS  += mainwindow.h \
     settingskey.h \
     globalsystemtray.h \
     smartlistdelegate.h \
-    callutilsdialog.h
+    callutilsdialog.h \
+    testmessagedialog.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -99,7 +101,8 @@ FORMS    += mainwindow.ui \
     videooverlay.ui \
     contactpicker.ui \
     contactmethodpicker.ui \
-    callutilsdialog.ui
+    callutilsdialog.ui \
+    testmessagedialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

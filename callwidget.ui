@@ -63,7 +63,7 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item row="3" column="0" colspan="2" alignment="Qt::AlignHCenter">
+          <item row="3" column="0" colspan="3" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
@@ -97,7 +97,7 @@ Copy and share it with your friends!</string>
             </property>
            </spacer>
           </item>
-          <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignTop">
+          <item row="0" column="2" alignment="Qt::AlignRight|Qt::AlignTop">
            <widget class="QPushButton" name="settingsButton">
             <property name="minimumSize">
              <size>
@@ -123,7 +123,7 @@ Copy and share it with your friends!</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2" alignment="Qt::AlignHCenter">
+          <item row="4" column="0" colspan="3" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="ringIdLabel">
             <property name="minimumSize">
              <size>
@@ -147,7 +147,7 @@ Copy and share it with your friends!</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2" alignment="Qt::AlignHCenter">
+          <item row="2" column="0" colspan="3" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="descLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -173,7 +173,7 @@ Copy and share it with your friends!</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="2">
+          <item row="1" column="0" colspan="3">
            <widget class="QLabel" name="ringLogo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -204,6 +204,13 @@ Copy and share it with your friends!</string>
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Message</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
