@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,35 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QDebug>
+#include <QIcon>
+#include <QtWidgets/QApplication>
 
-#include <QStackedWidget>
-#include <QStack>
+#include "ringcontactlineedit.h"
 
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
-
-class NavStack : public QWidget
+RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
+    QLineEdit(parent)
 {
-    Q_OBJECT
-public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
+    QPalette palette;
+    palette.setColor(QPalette::Base, QColor(242, 242, 242));
+    setPalette(palette);
 
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
+    setFrame(false);
 
-private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
-};
+    addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
+}
 
+RingContactLineEdit::~RingContactLineEdit()
+{
+}

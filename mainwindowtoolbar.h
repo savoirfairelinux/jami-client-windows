@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,33 +18,29 @@
 
 #pragma once
 
-#include <QStackedWidget>
-#include <QStack>
+#include <QToolBar>
 
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
+class QPoint;
 
-class NavStack : public QWidget
+class MainWindowToolBar : public QToolBar
 {
     Q_OBJECT
-public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
 
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
+public:
+    MainWindowToolBar(QToolBar* parent = 0);
+    ~MainWindowToolBar();
+    inline QAction* getSettingsButton(){ return settings_;};
+    inline QAction* getHistoryButton(){ return history_;};
+    inline QAction* getContactListButton(){ return contactslist_;};
+    void historyToggled(bool checked);
+    void contactslistToggled(bool checked);
+
+protected:
+    void paintEvent(QPaintEvent* event);
 
 private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
+    QAction*  contactslist_;
+    QAction*  history_;
+    QAction*  settings_;
+    QWidget*  spacer_;
 };
-
