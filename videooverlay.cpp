@@ -33,33 +33,20 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     actionModel_ = CallModel::instance().userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 
-    menu_ = new QMenu(this);
-    auto muteAudio = new QAction(tr("Mute Audio"), this);
-    muteAudio->setCheckable(true);
-    connect(muteAudio, &QAction::triggered, [=](bool) {
-       actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
-    });
-    menu_->addAction(muteAudio);
-
-    auto muteVideo = new QAction(tr("Mute Video"), this);
-    muteVideo->setCheckable(true);
-    connect(muteVideo, &QAction::triggered, [=](bool) {
-        actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
-    });
-    menu_->addAction(muteVideo);
+    ui->nomicButton->setCheckable(true);
 
     connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
         const int first(tl.row()),last(br.row());
         for(int i = first; i <= last;i++) {
             const QModelIndex& idx = actionModel_->index(i,0);
             switch (idx.data(UserActionModel::Role::ACTION).value<UserActionModel::Action>()) {
-               case UserActionModel::Action::MUTE_AUDIO:
-                muteAudio->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                muteAudio->setEnabled(idx.flags() & Qt::ItemIsEnabled);
+            case UserActionModel::Action::MUTE_AUDIO:
+                ui->nomicButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                ui->nomicButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
                 break;
             case UserActionModel::Action::MUTE_VIDEO:
-                muteVideo->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                muteVideo->setEnabled(idx.flags() & Qt::ItemIsEnabled);
+                ui->novideoButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                ui->novideoButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
                 break;
             case UserActionModel::Action::HOLD:
                 ui->holdButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
@@ -71,15 +58,12 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
         }
     });
 
-    ui->moreButton->setMenu(menu_);
-
     connect(CallModel::instance().selectionModel(), &QItemSelectionModel::currentChanged, [=](const QModelIndex &current, const QModelIndex &previous) {
         Q_UNUSED(previous)
         Call* c = current.data(static_cast<int>(Call::Role::Object)).value<Call*>();
         if (c) {
             if (c->hasParentCall()) {
                 ui->holdButton->hide();
-                ui->moreButton->hide();
                 ui->transferButton->hide();
                 ui->addPersonButton->hide();
                 ui->chatButton->hide();
@@ -87,7 +71,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                 ui->joinButton->show();
             } else {
                 ui->holdButton->show();
-                ui->moreButton->show();
                 ui->transferButton->show();
                 ui->addPersonButton->show();
                 ui->chatButton->show();
@@ -96,12 +79,12 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
             }
         }
     });
+    
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
-    delete menu_;
     delete transferDialog_;
 }
 
@@ -159,6 +142,19 @@ VideoOverlay::on_holdButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::HOLD);
 }
+
+void
+VideoOverlay::on_nomicButton_clicked()
+{
+    actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
+}
+
+void
+VideoOverlay::on_novideoButton_clicked()
+{
+    actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
+}
+
 
 void VideoOverlay::on_joinButton_clicked()
 {

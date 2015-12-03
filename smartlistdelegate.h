@@ -28,10 +28,19 @@ class SmartListDelegate : public QStyledItemDelegate
     Q_OBJECT
 public:
     explicit SmartListDelegate(QObject *parent = 0);
+    inline void setRowHighlighted(int i){ rowHighlighted = i;};
 
 protected:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+
 private:
-    constexpr static int sizeImage_ = 30;
+    constexpr static int sizeImage_ = 48;
+    constexpr static int cellHeight_ = 60;
+    constexpr static int cellWidth_ = 324;
+    int rowHighlighted;
+
+signals:
+    void rowSelected(const QRect&) const;
+    
 };
