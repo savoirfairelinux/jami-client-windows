@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,42 +18,29 @@
 
 #pragma once
 
-#include "globalsystemtray.h"
+#include <QToolBar>
 
-#include <QMainWindow>
-#include <QMouseEvent>
+class QPoint;
 
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class MainWindowToolBar;
-
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class MainWindowToolBar : public QToolBar
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
+    MainWindowToolBar(QToolBar* parent = 0);
+    ~MainWindowToolBar();
+    inline QAction* getSettingsButton(){ return settings_;};
+    inline QAction* getHistoryButton(){ return history_;};
+    inline QAction* getContactListButton(){ return contactslist_;};
+    void historyToggled(bool checked);
+    void contactslistToggled(bool checked);
 
 protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
+    void paintEvent(QPaintEvent *event);
 
 private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    MainWindowToolBar* mwToolBar_;
+    QAction*  contactslist_;
+    QAction*  history_;
+    QAction*  settings_;
+    QWidget*  spacer_;
 };
