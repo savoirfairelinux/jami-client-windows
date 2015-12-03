@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,32 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QDebug>
+#include <QIcon>
+#include <QtWidgets/QApplication>
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include "ringcontactlineedit.h"
 
-class QPainter;
-
-class SmartListDelegate : public QStyledItemDelegate
+RingContactLineEdit::RingContactLineEdit(QWidget *parent) :
+    QLineEdit(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject* parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted_ = i;};
+    QPalette palette;
+    palette.setColor(QPalette::Base, QColor(242,242,242));
+    setPalette(palette);
 
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    setFrame(false);
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
-    int rowHighlighted_ = -1;
+    addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
+}
 
-signals:
-    void rowSelected(const QRect&) const;
-};
+RingContactLineEdit::~RingContactLineEdit()
+{
+}

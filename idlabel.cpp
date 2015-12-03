@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,32 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QClipboard>
+#include <QtWidgets/QApplication>
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include "idlabel.h"
 
-class QPainter;
-
-class SmartListDelegate : public QStyledItemDelegate
+IdLabel::IdLabel(QWidget* parent) : 
+    QLabel(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject* parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted_ = i;};
+}
 
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+IdLabel::~IdLabel()
+{
+}
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
-    int rowHighlighted_ = -1;
+void
+IdLabel::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    Q_UNUSED(event);
 
-signals:
-    void rowSelected(const QRect&) const;
-};
+    QApplication::clipboard()->setText(this->text());
+}
+
