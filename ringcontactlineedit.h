@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,33 +18,18 @@
 
 #pragma once
 
-#include <QStackedWidget>
-#include <QStack>
+#include <QLineEdit>
 
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
+namespace Ui {
+class ringContactLineEdit;
+}
 
-class NavStack : public QWidget
+class RingContactLineEdit : public QLineEdit
 {
+
     Q_OBJECT
+
 public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
-
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
-
-private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
+    explicit RingContactLineEdit(QWidget* parent = 0);
+    ~RingContactLineEdit();
 };
-

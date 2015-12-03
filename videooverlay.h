@@ -49,11 +49,12 @@ private slots:
     void on_addPersonButton_clicked();
     void on_holdButton_clicked();
     void on_joinButton_clicked();
+    void on_noMicButton_clicked();
+    void on_noVideoButton_clicked();
 
 private:
     Ui::VideoOverlay* ui;
     UserActionModel* actionModel_;
-    QMenu* menu_;
     CallUtilsDialog* transferDialog_;
 
 signals:

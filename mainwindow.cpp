@@ -20,7 +20,6 @@
 #include "ui_mainwindow.h"
 
 #include <QSizeGrip>
-#include "aboutdialog.h"
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -31,9 +30,13 @@
 #include <QWinThumbnailToolButton>
 #endif
 
+#include "aboutdialog.h"
+#include "mainwindowtoolbar.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    mwToolBar_(new MainWindowToolBar)
 {
     ui->setupUi(this);
 
@@ -48,13 +51,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     auto configAction = new QAction("Configuration", this);
     menu->addAction(configAction);
-
-    auto exitAction = new QAction("Exit", this);
-    connect(exitAction, &QAction::triggered, []() {
-        QCoreApplication::exit();
-    });
-
-    menu->addAction(exitAction);
 
     sysIcon.setContextMenu(menu);
     sysIcon.show();
@@ -78,6 +74,19 @@ MainWindow::MainWindow(QWidget *parent) :
         ::AppendMenuA(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdString().c_str());
     }
 #endif
+
+    resize(1054, 600);
+
+    addToolBar(static_cast<QToolBar*>(mwToolBar_));
+
+    auto callWidget = static_cast<CallWidget*>(navStack_->getNavWidget(ScreenEnum::CallScreen));
+
+    connect(mwToolBar_->getSettingsButton(), &QAction::triggered,
+            callWidget, &CallWidget::on_settingsButton_clicked);
+    connect(mwToolBar_->getHistoryButton(), &QAction::triggered,
+            callWidget, &CallWidget::on_historicButton_clicked);
+    connect(mwToolBar_->getContactListButton(), &QAction::triggered,
+            callWidget, &CallWidget::on_contactButton_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -139,4 +148,13 @@ MainWindow::createThumbBar()
 
     thumbbar->addButton(settings);
 #endif
+}
+
+void
+MainWindow::switchNormalMaximize()
+{
+    if(isMaximized())
+        showNormal();
+    else
+        showMaximized();
 }

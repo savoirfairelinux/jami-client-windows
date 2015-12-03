@@ -27,11 +27,21 @@ class SmartListDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit SmartListDelegate(QObject *parent = 0);
+    explicit SmartListDelegate(QObject* parent = 0);
+    inline void setRowHighlighted(int i){rowHighlighted_ = i;};
 
 protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
 private:
-    constexpr static int sizeImage_ = 30;
+    constexpr static int sizeImage_ = 48;
+    constexpr static int cellHeight_ = 60;
+    constexpr static int cellWidth_ = 324;
+    constexpr static int dy = 6;
+    constexpr static int dx = 12;
+    int rowHighlighted_ = -1;
+
+signals:
+    void rowSelected(const QRect& rect) const;
 };

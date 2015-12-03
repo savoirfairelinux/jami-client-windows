@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,33 +18,31 @@
 
 #pragma once
 
-#include <QStackedWidget>
-#include <QStack>
+#include <QTreeView>
 
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
+class SmartListDelegate;
+class ComBar;
+class SmartListScrollBar;
 
-class NavStack : public QWidget
+class SmartList : public QTreeView
 {
     Q_OBJECT
 public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
+    explicit SmartList(QWidget* parent = 0);
+    ~SmartList();
+    void setSmartListItemDelegate(SmartListDelegate* delegate);
 
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void wheelEvent(QWheelEvent* event);
+    void paintEvent(QPaintEvent* event);
 
 private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
-};
+  int currentRow_ = -1;
+  SmartListDelegate* smartListDelegate_;
+  ComBar* comBar_;
+  SmartListScrollBar* smartListScrollBar_;
 
+};
