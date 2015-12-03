@@ -52,19 +52,22 @@ public:
     void atExit();
 
 //UI SLOTS
+public slots:
+    void on_contactButton_clicked(bool checked);
+    void on_settingsButton_clicked();
+    void on_historicButton_clicked(bool checked);
+    void on_ringContactLineEdit_returnPressed();
+    void on_btnCall_clicked();
+    void on_btnvideo_clicked();
+    inline void on_entered(const QModelIndex& i){highLightedIndex = i;};
+
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
     void on_contactView_doubleClicked(const QModelIndex &index);
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex &index);
-    void on_searchEdit_returnPressed();
-    void on_settingsButton_clicked();
     void on_historyList_doubleClicked(const QModelIndex &index);
-    void on_contactButton_clicked(bool checked);
-    void on_historicButton_clicked(bool checked);
-
-private slots:
     void callIncoming(Call *call);
     void addedCall(Call *call, Call *parent);
     void callStateChanged(Call *call, Call::State previousState);
@@ -79,15 +82,14 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu *menu_;
-    QMovie *spinner_;
     ContactDelegate *contactDelegate_;
     HistoryDelegate *historyDelegate_;
     SmartListDelegate* smartListDelegate_;
+    QModelIndex highLightedIndex;
 
 private:
     void findRingAccount();
     void setActualCall(Call *value);
-    void displaySpinner(bool display);
     void placeCall();
 };
 

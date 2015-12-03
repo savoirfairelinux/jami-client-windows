@@ -1,201 +1,56 @@
-
-QPushButton {
-    background-color: #FFF7F7F7;
-    border: 1px solid #FFCCCCCC;
-    border-radius: 3px;
-    font: bold;
-    padding: 6px;
+QPushButton#btnCall{
+    border-image: url(:/images/call/btn-call.svg);
 }
 
-QPushButton:hover:!pressed:!checked {
-    background-color:#FFE0E0E0;
+QPushButton#acceptButton{
+    border-image: url(:/images/call/btn-answer.svg);
 }
 
-QPushButton:hover:!pressed {
-    background-color:#FF9D9D9D;
+QPushButton#refuseButton{
+    border-image: url(:/images/call/btn-ignore.svg);
 }
 
-QPushButton:pressed {
-    background-color:#FFD8D8D9;
+QPushButton#cancelButton{
+    border-image: url(:/images/call/btn-ignore.svg);
 }
 
-QPushButton:checked {
-    background-color:#FF7F7F7F;
-    border-radius: 2px;
-    border-color: #FFB9B9B9;
+QWidget#callInvitePage{
+    background-color : rgb( 77, 77, 77 );
 }
 
-QSlider::groove:horizontal {
-    height: 3px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
-    background: #FF9D9D9D;
-    margin: 2px 0;
+QPushButton#btnvideo{
+    border-image: url(:/images/hover-contact/btn-video.svg);
 }
 
-QSlider::handle:horizontal {
-    background: #FFD8D8D9;
-    width: 10px;
-    margin: -9px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
-    border-radius: 2.5px;
-    border: 1px solid white;
+QPushButton#btnchat{
+    border-image: url(:/images/hover-contact/btn-chat.svg);
 }
 
-QSlider::add-page:horizontal {
-    background: #FF9D9D9D;
+QPushButton#btncontactinfo{
+    border-image: url(:/images/hover-contact/btn-contactinfo.svg);
 }
 
-QSlider::sub-page:horizontal {
-    background: #CC119EDA;
+IdLabel{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 192, 212);
 }
 
-QLineEdit {
-   border: 1px solid #FFCCCCCC;
-   padding: 0px;
-   background: #FFFFFFFF;
-   min-height: 26px;
+RingContactLineEdit {
+    border-color: rgb(242, 242, 242);
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: rgb(242, 242, 242);
 }
 
-QLineEdit:focus {
-    border-color: #FF000000;
+QScrollBar:vertical {
+    background:white; width:0px;
 }
 
-QListView {
-    border-color: #FF000000;
-    background: #FFFFFFFF;
+QScrollBar::handle:vertical {
+    background: rgb( 255, 255, 255 )
 }
 
-QTreeView {
-     border: none;
-}
-
-QListView::item {
-    min-height: 25px;
-
-}
-
-QListView::item:selected {
-
-}
-
-QListView::item:selected:active {
-    background: #CC119EDA;
-}
-
-QListView::item:hover {
-    background: #66119EDA;
-}
-
-QComboBox {
-    border: 1px solid gray;
-    border-radius: 3px;
-    padding: 1px 18px 1px 3px;
-    min-width: 6em;
-}
-
-QComboBox:editable {
-    background: white;
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-     background: white;
-}
-
-/* QComboBox gets the "on" state when the popup is open */
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background: white;
-}
-
-QComboBox:on { /* shift the text when the popup opens */
-
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-    border-left-width: 0px;
-    border-left-color: darkgray;
-    border-left-style: solid; /* just a single line */
-
-}
-
-QComboBox::down-arrow {
-}
-
-QComboBox::down-arrow:on {
-}
-
-QToolButton {
-    background-color: rgba(255, 255, 255, 0);
-}
-
-QToolButton::menu-indicator {
-    image: none;
-}
-
-QTableWidget::indicator {
-    width: 18px;
-    height: 18px;
-}
-
-QTableWidget::indicator:checked {
-   image: url(://images/checkbox-marked-outline.png);
-}
-
-QTableWidget::indicator:unchecked {
-    image: url(://images/checkbox-blank-outline.png);
-}
-
-QListView::indicator {
-    width: 18px;
-    height: 18px;
-}
-
-QListView::indicator:checked {
-   image: url(://images/checkbox-marked-outline.png);
-}
-
-QListView::indicator:unchecked {
-    image: url(://images/checkbox-blank-outline.png);
-}
-
-QHeaderView::section {
-     background-color: white;
-     padding-left: 4px;
-     border: none;
-     border-right: 1px solid grey;
-}
-
-QCheckBox::indicator {
-     width: 18px;
-     height: 18px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(://images/checkbox-marked-outline.png);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(://images/checkbox-blank-outline.png);
-}
-
-QTabWidget {
-    border:none;
-}
-QTabWidget::pane {
-    border:none;
-}
-
-QTabBar::tab {
-    min-width: 95px;
-    min-height: 30px;
-    font-size: 20px;
-    color: black;
-    border-bottom-color: #C2C7CB;
-    padding: 0px;
-}
-
-QTabBar::tab:selected {
-    font-weight: bold;
-    border-bottom-style: none;
+SmartList{
+    background-color : white; border : none;
 }
