@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,33 +18,19 @@
 
 #pragma once
 
-#include <QStackedWidget>
-#include <QStack>
+#include <QScrollBar>
 
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
-
-class NavStack : public QWidget
+class SmartListScrollBar : public QScrollBar
 {
     Q_OBJECT
+
 public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
+    SmartListScrollBar(QWidget* parent = 0);
+    ~SmartListScrollBar();
 
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
+protected:
+    void enterEvent(QEvent* event);
 
-private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
+signals:
+    void enterSignal() const;
 };
-

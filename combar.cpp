@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,35 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "combar.h"
+#include "ui_combar.h"
 
-#include <QStackedWidget>
-#include <QStack>
-
-#include "navwidget.h"
-#include "configurationwidget.h"
-#include "navbar.h"
-#include "callwidget.h"
-
-class NavStack : public QWidget
+ComBar::ComBar(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::ComBar)
 {
-    Q_OBJECT
-public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
-    ~NavStack();
-    NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
+    ui->setupUi(this);
 
-public slots:
-    void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
+    // [jn] these buttons are for further uses
+    ui->btnchat->hide();
+    ui->btncontactinfo->hide();
+}
 
-private:
-    QStackedWidget* bar_;
-    QStackedWidget* stack_;
-    QList<NavWidget*> navList_;
-    QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
-};
+ComBar::~ComBar()
+{
+    delete ui;
+}
 
+void
+ComBar::moveToRow(const QRect& rect)
+{
+    move(rect.right() - width(),
+         rect.bottom() - height() - (rect.height()/4));
+}
