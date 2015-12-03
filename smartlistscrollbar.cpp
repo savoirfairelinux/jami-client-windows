@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,32 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "smartlistscrollbar.h"
 
-#include <QObject>
-#include <QStyledItemDelegate>
-
-class QPainter;
-
-class SmartListDelegate : public QStyledItemDelegate
+SmartListScrollBar::SmartListScrollBar(QWidget* parent) : QScrollBar(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject* parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted_ = i;};
+}
 
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+SmartListScrollBar::~SmartListScrollBar()
+{
+}
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
-    int rowHighlighted_ = -1;
-
-signals:
-    void rowSelected(const QRect&) const;
-};
+void
+SmartListScrollBar::enterEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+    emit enterSignal();
+}

@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,32 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "combar.h"
+#include "ui_combar.h"
 
-#include <QObject>
-#include <QStyledItemDelegate>
-
-class QPainter;
-
-class SmartListDelegate : public QStyledItemDelegate
+ComBar::ComBar(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::ComBar)
 {
-    Q_OBJECT
-public:
-    explicit SmartListDelegate(QObject* parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted_ = i;};
+    ui->setupUi(this);
 
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    // [jn] these buttons are for further uses
+    ui->btnchat->hide();
+    ui->btncontactinfo->hide();
+}
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
-    int rowHighlighted_ = -1;
+ComBar::~ComBar()
+{
+    delete ui;
+}
 
-signals:
-    void rowSelected(const QRect&) const;
-};
+void
+ComBar::moveToRow(const QRect& rect)
+{
+    move(rect.right() - width(),
+         rect.bottom() - height() - (rect.height()/4));
+}

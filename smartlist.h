@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,30 +18,31 @@
 
 #pragma once
 
-#include <QObject>
-#include <QStyledItemDelegate>
+#include <QTreeView>
 
-class QPainter;
+class SmartListDelegate;
+class ComBar;
+class SmartListScrollBar;
 
-class SmartListDelegate : public QStyledItemDelegate
+class SmartList : public QTreeView
 {
     Q_OBJECT
 public:
-    explicit SmartListDelegate(QObject* parent = 0);
-    inline void setRowHighlighted(int i){ rowHighlighted_ = i;};
+    explicit SmartList(QWidget* parent = 0);
+    ~SmartList();
+    void setSmartListItemDelegate(SmartListDelegate* delegate);
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void wheelEvent(QWheelEvent* event);
+    void paintEvent(QPaintEvent* event);
 
 private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
-    int rowHighlighted_ = -1;
+  int currentRow_;
+  SmartListDelegate* smartListDelegate_;
+  ComBar* comBar_;
+  SmartListScrollBar* smartListScrollBar_;
 
-signals:
-    void rowSelected(const QRect&) const;
 };

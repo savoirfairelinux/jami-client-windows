@@ -34,6 +34,7 @@ public:
              QStackedWidget* stack,
              QWidget* parent = nullptr);
     ~NavStack();
+    CallWidget* getCallWidget();
 
 public slots:
     void onNavigationRequested(ScreenEnum screen);

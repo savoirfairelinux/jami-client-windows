@@ -49,6 +49,12 @@ NavStack::~NavStack()
     }
 }
 
+CallWidget*
+NavStack::getCallWidget()
+{
+    return static_cast<CallWidget*>(navList_[ScreenEnum::CallScreen]);
+}
+
 void
 NavStack::onNavigationRequested(ScreenEnum screen) {
     if (navList_[screen] == stack_->currentWidget())
