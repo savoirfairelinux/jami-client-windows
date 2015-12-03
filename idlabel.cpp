@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,44 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QClipboard>
+#include <QtWidgets/QApplication>
 
-#include "globalsystemtray.h"
+#include "idlabel.h"
 
-#include <QMainWindow>
-#include <QMouseEvent>
-
-#include "navstack.h"
-
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class MainWindowToolBar;
-
-namespace Ui {
-class MainWindow;
+IdLabel::IdLabel(QWidget* parent)
+: QLabel(parent)
+{
 }
 
-class MainWindow : public QMainWindow
+IdLabel::~IdLabel()
 {
-    Q_OBJECT
+}
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
+void
+IdLabel::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    Q_UNUSED(event);
 
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+    QApplication::clipboard()->setText(this->text());
 
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
+}
 
-private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    MainWindowToolBar* mwToolBar_;
-};
