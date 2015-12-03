@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,46 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QtWidgets/QApplication>
+#include "ringcontactlineedit.h"
+#include <QDebug>
+#include <QIcon>
 
-#include "globalsystemtray.h"
+RingContactLineEdit::RingContactLineEdit(QWidget *parent) :
+    QLineEdit(parent)
+{
+    QPalette palette;
+    palette.setColor( QPalette::Base, QColor(242,242,242) );
+    setPalette(palette);
 
-#include <QMainWindow>
-#include <QMouseEvent>
+    setFrame(false);
 
-#include "navstack.h"
+    addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
 
-static constexpr char IDM_ABOUTBOX = 0x0010;
-
-class WindowBarUpOne;
-class WindowBarUpTwo;
-
-namespace Ui {
-class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+RingContactLineEdit::~RingContactLineEdit()
 {
-    Q_OBJECT
-
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    void createThumbBar();
-
-protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
-    void switchNormalMaximize();
-
-private:
-    Ui::MainWindow *ui;
-    NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    WindowBarUpTwo* wbTwo_;
-};
-
-
+}

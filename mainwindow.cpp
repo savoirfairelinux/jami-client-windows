@@ -16,11 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
+/* [15/12/03]
+ * MainWindow get back the usual MS window borders until I finish to figure
+ * how to custom the border correctly. --jn
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include <QSizeGrip>
 #include "aboutdialog.h"
+// [15/12/03] Temporarily Disabled. --jn
+//~ #include "windowbarupone.h"
+#include "windowbaruptwo.h"
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -31,11 +39,17 @@
 #include <QWinThumbnailToolButton>
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow( QWidget *parent ) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    // [15/12/03] Temporarily Disabled. --jn
+    //~ wbOne_(new WindowBarUpOne),
+    wbTwo_(new WindowBarUpTwo)
 {
     ui->setupUi(this);
+
+    // [15/12/03] Temporarily Disabled. --jn
+    //~ this->setWindowFlags(Qt::FramelessWindowHint);
 
     QIcon icon(":images/ring.png");
 
@@ -49,12 +63,13 @@ MainWindow::MainWindow(QWidget *parent) :
     auto configAction = new QAction("Configuration", this);
     menu->addAction(configAction);
 
-    auto exitAction = new QAction("Exit", this);
-    connect(exitAction, &QAction::triggered, []() {
-        QCoreApplication::exit();
-    });
+    // [15/12/03] Temporarily Disabled. --jn
+    //~ auto exitAction = new QAction("Exit", this);
+    //~ connect(exitAction, &QAction::triggered, []() {
+        //~ QCoreApplication::exit();
+    //~ });
 
-    menu->addAction(exitAction);
+    //~ menu->addAction(exitAction);
 
     sysIcon.setContextMenu(menu);
     sysIcon.show();
@@ -78,6 +93,23 @@ MainWindow::MainWindow(QWidget *parent) :
         ::AppendMenuA(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdString().c_str());
     }
 #endif
+
+    resize( 1054, 600 );
+
+    // [15/12/03] Temporarily Disabled. --jn
+    //~ addToolBar( static_cast<QToolBar*>( wbOne_ ) );
+    //~ addToolBarBreak();
+    addToolBar( static_cast<QToolBar*>( wbTwo_ ) );
+
+    // [15/12/03] Temporarily Disabled. --jn
+    //~ connect( wbOne_->getQuitButton(), &QAction::triggered, this, &QMainWindow::close );
+    //~ connect( wbOne_->getMaximizeButton(), &QAction::triggered, this , &MainWindow::switchNormalMaximize );
+    //~ connect( wbOne_->getMinimizeButton(), &QAction::triggered, this , &QMainWindow::showMinimized );
+
+    connect( wbTwo_->getSettingsButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_settingsButton_clicked );
+    connect( wbTwo_->getHistoryButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_historicButton_clicked );
+    connect( wbTwo_->getContactListButton(), &QAction::triggered, navStack_->getCallWidget() , &CallWidget::on_contactButton_clicked );
+
 }
 
 MainWindow::~MainWindow()
@@ -139,4 +171,18 @@ MainWindow::createThumbBar()
 
     thumbbar->addButton(settings);
 #endif
+}
+
+void
+MainWindow::switchNormalMaximize(  )
+{
+    if( isMaximized() )
+    {
+        showNormal();
+    }
+    else
+    {
+        showMaximized();
+    }
+
 }
