@@ -49,6 +49,12 @@ NavStack::~NavStack()
     }
 }
 
+NavWidget*
+NavStack::getNavWidget(ScreenEnum wantedNavWidget)
+{
+    return navList_[wantedNavWidget];
+}
+
 void
 NavStack::onNavigationRequested(ScreenEnum screen) {
     if (navList_[screen] == stack_->currentWidget())
