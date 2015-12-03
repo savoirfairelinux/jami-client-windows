@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,46 +18,29 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QMenu>
+#include <QToolBar>
 
-#include "useractionmodel.h"
+class QPoint;
 
-#include "callutilsdialog.h"
-
-namespace Ui {
-class VideoOverlay;
-}
-
-class VideoOverlay : public QWidget
+class MainWindowToolBar : public QToolBar
 {
     Q_OBJECT
 
 public:
-    explicit VideoOverlay(QWidget* parent = 0);
-    ~VideoOverlay();
+    MainWindowToolBar(QToolBar* parent = 0);
+    ~MainWindowToolBar();
+    inline QAction* getSettingsButton(){ return settings_;};
+    inline QAction* getHistoryButton(){ return history_;};
+    inline QAction* getContactListButton(){ return contactslist_;};
+    void historyToggled(bool checked);
+    void contactslistToggled(bool checked);
 
-public:
-    void setName(const QString& name);
-    void setTime(const QString& time);
-
-//UI SLOTS
-private slots:
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
-    void on_holdButton_clicked();
-    void on_joinButton_clicked();
-    void on_noMicButton_clicked();
-    void on_noVideoButton_clicked();
+protected:
+    void paintEvent(QPaintEvent* event);
 
 private:
-    Ui::VideoOverlay* ui;
-    UserActionModel* actionModel_;
-    CallUtilsDialog* transferDialog_;
-
-signals:
-    void setChatVisibility(bool visible);
+    QAction*  contactslist_;
+    QAction*  history_;
+    QAction*  settings_;
+    QWidget*  spacer_;
 };
-

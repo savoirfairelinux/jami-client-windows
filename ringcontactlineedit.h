@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,46 +18,18 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QMenu>
-
-#include "useractionmodel.h"
-
-#include "callutilsdialog.h"
+#include <QLineEdit>
 
 namespace Ui {
-class VideoOverlay;
+class ringContactLineEdit;
 }
 
-class VideoOverlay : public QWidget
+class RingContactLineEdit : public QLineEdit
 {
+
     Q_OBJECT
 
 public:
-    explicit VideoOverlay(QWidget* parent = 0);
-    ~VideoOverlay();
-
-public:
-    void setName(const QString& name);
-    void setTime(const QString& time);
-
-//UI SLOTS
-private slots:
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
-    void on_holdButton_clicked();
-    void on_joinButton_clicked();
-    void on_noMicButton_clicked();
-    void on_noVideoButton_clicked();
-
-private:
-    Ui::VideoOverlay* ui;
-    UserActionModel* actionModel_;
-    CallUtilsDialog* transferDialog_;
-
-signals:
-    void setChatVisibility(bool visible);
+    explicit RingContactLineEdit(QWidget* parent = 0);
+    ~RingContactLineEdit();
 };
-

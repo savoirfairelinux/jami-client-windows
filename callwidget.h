@@ -47,47 +47,52 @@ class CallWidget : public NavWidget
     Q_OBJECT
 
 public:
-    explicit CallWidget(QWidget *parent = 0);
+    explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
     void atExit();
+
+//UI SLOTS
+public slots:
+    void on_contactButton_clicked(bool checked);
+    void on_settingsButton_clicked();
+    void on_historicButton_clicked(bool checked);
+    void on_ringContactLineEdit_returnPressed();
+    void on_btnCall_clicked();
+    void on_btnvideo_clicked();
+    inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
-    void on_contactView_doubleClicked(const QModelIndex &index);
+    void on_contactView_doubleClicked(const QModelIndex& index);
     void on_cancelButton_clicked();
-    void on_smartList_doubleClicked(const QModelIndex &index);
-    void on_searchEdit_returnPressed();
-    void on_settingsButton_clicked();
-    void on_historyList_doubleClicked(const QModelIndex &index);
-    void on_contactButton_clicked(bool checked);
-    void on_historicButton_clicked(bool checked);
+    void on_smartList_doubleClicked(const QModelIndex& index);
+    void on_historyList_doubleClicked(const QModelIndex& index);
 
 private slots:
-    void callIncoming(Call *call);
-    void addedCall(Call *call, Call *parent);
-    void callStateChanged(Call *call, Call::State previousState);
+    void callIncoming(Call* call);
+    void addedCall(Call* call, Call* parent);
+    void callStateChanged(Call* call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
-    void smartListSelectionChanged(const QItemSelection &newSel, const QItemSelection &oldSel);
+    void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
 
 private:
-    Ui::CallWidget *ui;
+    Ui::CallWidget* ui;
     Call* actualCall_;
     Video::Renderer* videoRenderer_;
     CallModel* callModel_;
     int outputVolume_;
     int inputVolume_;
-    QMenu *menu_;
-    QMovie *spinner_;
-    ContactDelegate *contactDelegate_;
-    HistoryDelegate *historyDelegate_;
+    QMenu* menu_;
+    ContactDelegate* contactDelegate_;
+    HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
+    QModelIndex highLightedIndex_;
 
 private:
     void findRingAccount();
-    void setActualCall(Call *value);
-    void displaySpinner(bool display);
+    void setActualCall(Call* value);
     void placeCall();
 };
 

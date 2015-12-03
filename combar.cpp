@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,48 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "combar.h"
+#include "ui_combar.h"
 
-#include <QWidget>
-#include <QMenu>
+ComBar::ComBar(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::ComBar)
+{
+    ui->setupUi(this);
 
-#include "useractionmodel.h"
-
-#include "callutilsdialog.h"
-
-namespace Ui {
-class VideoOverlay;
+    // [jn] these buttons are for further uses
+    ui->btnchat->hide();
+    ui->btncontactinfo->hide();
 }
 
-class VideoOverlay : public QWidget
+ComBar::~ComBar()
 {
-    Q_OBJECT
+    delete ui;
+}
 
-public:
-    explicit VideoOverlay(QWidget* parent = 0);
-    ~VideoOverlay();
-
-public:
-    void setName(const QString& name);
-    void setTime(const QString& time);
-
-//UI SLOTS
-private slots:
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
-    void on_holdButton_clicked();
-    void on_joinButton_clicked();
-    void on_noMicButton_clicked();
-    void on_noVideoButton_clicked();
-
-private:
-    Ui::VideoOverlay* ui;
-    UserActionModel* actionModel_;
-    CallUtilsDialog* transferDialog_;
-
-signals:
-    void setChatVisibility(bool visible);
-};
-
+void
+ComBar::moveToRow(const QRect& rect)
+{
+    move(rect.right() - width(),
+         rect.bottom() - height() - (rect.height()/4));
+}
