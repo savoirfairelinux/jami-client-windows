@@ -46,11 +46,13 @@
 #include "historydelegate.h"
 #include "contactdelegate.h"
 #include "smartlistdelegate.h"
+#include "imdelegate.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
-    menu_(new QMenu())
+    menu_(new QMenu()),
+    imDelegate_(new ImDelegate())
 {
     setMouseTracking(true);
 
@@ -166,6 +168,7 @@ CallWidget::CallWidget(QWidget* parent) :
         });
 
         findRingAccount();
+        ui->listMessageView->setItemDelegate(imDelegate_);
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -177,6 +180,7 @@ CallWidget::~CallWidget()
     delete ui;
     delete menu_;
     delete contactDelegate_;
+    delete imDelegate_;
 }
 
 void
@@ -397,20 +401,25 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
+    if (newSel.indexes().empty())
+    {
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        return;
+    }
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
+    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
+    auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
 
-    if (newIdxCall == actualCall_)
-        return;
+//    if (newIdxCall == actualCall_)
+//        return;
     if (newIdxCall) {
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
         setActualCall(nullptr);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
 }
 
@@ -461,4 +470,44 @@ CallWidget::on_btnvideo_clicked()
         return;
 
     on_smartList_doubleClicked(highLightedIndex_);
+}
+
+void
+CallWidget::on_btnchat_clicked()
+{
+    if (not highLightedIndex_.isValid())
+        return;
+    qDebug() << highLightedIndex_;
+
+    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(highLightedIndex_);
+    auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
+    if (!cmVector.empty()) {
+        if (auto txtRecording = cmVector.at(0)->textRecording()) {
+            ui->listMessageView->setModel(txtRecording->instantMessagingModel());
+        }
+    }
+    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+}
+
+void
+CallWidget::on_sendButton_clicked()
+{
+    if (ui->messageEdit->text().isEmpty())
+        return;
+    auto idx = RecentModel::instance().peopleProxy()->mapToSource(ui->smartList->currentIndex());
+    if (idx.isValid()) {
+        auto cmVector = RecentModel::instance().getContactMethods(idx);
+        if (!cmVector.isEmpty()) {
+            QMap<QString, QString> msg;
+            msg["text/plain"] = ui->messageEdit->text();
+            cmVector[0]->sendOfflineTextMessage(msg);
+        }
+        ui->messageEdit->text().clear();
+    }
+}
+
+void
+CallWidget::on_messageEdit_returnPressed()
+{
+    on_sendButton_clicked();
 }

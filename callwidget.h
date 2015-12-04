@@ -37,6 +37,7 @@
 class ContactDelegate;
 class HistoryDelegate;
 class SmartListDelegate;
+class ImDelegate;
 
 namespace Ui {
 class CallWidget;
@@ -59,6 +60,7 @@ public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
+    void on_btnchat_clicked();
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
@@ -69,6 +71,8 @@ private slots:
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
     void on_historyList_doubleClicked(const QModelIndex& index);
+    void on_sendButton_clicked();
+    void on_messageEdit_returnPressed();
 
 private slots:
     void callIncoming(Call* call);
@@ -89,6 +93,7 @@ private:
     HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
     QModelIndex highLightedIndex_;
+    ImDelegate* imDelegate_;
 
 private:
     void findRingAccount();
