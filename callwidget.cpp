@@ -37,6 +37,7 @@
 #include "media/recording.h"
 #include "media/textrecording.h"
 #include "recentmodel.h"
+#include "contactmethod.h"
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
@@ -46,11 +47,13 @@
 #include "historydelegate.h"
 #include "contactdelegate.h"
 #include "smartlistdelegate.h"
+#include "imdelegate.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
-    menu_(new QMenu())
+    menu_(new QMenu()),
+    imDelegate_(new ImDelegate())
 {
     setMouseTracking(true);
 
@@ -166,6 +169,7 @@ CallWidget::CallWidget(QWidget* parent) :
         });
 
         findRingAccount();
+        ui->listMessageView->setItemDelegate(imDelegate_);
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -177,6 +181,7 @@ CallWidget::~CallWidget()
     delete ui;
     delete menu_;
     delete contactDelegate_;
+    delete imDelegate_;
 }
 
 void
@@ -397,11 +402,17 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
+    if (newSel.indexes().empty())
+    {
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        return;
+    }
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
+    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
+    auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
 
     if (newIdxCall == actualCall_)
         return;
@@ -461,4 +472,74 @@ CallWidget::on_btnvideo_clicked()
         return;
 
     on_smartList_doubleClicked(highLightedIndex_);
+}
+
+void
+CallWidget::on_btnchat_clicked()
+{
+    if (not highLightedIndex_.isValid())
+        return;
+
+    ui->smartList->selectionModel()->select(highLightedIndex_, QItemSelectionModel::ClearAndSelect);
+
+    ui->contactMethodComboBox->clear();
+
+    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(highLightedIndex_);
+    auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
+    foreach (const ContactMethod* cm, cmVector) {
+       ui->contactMethodComboBox->addItem(cm->uri());
+    }
+
+    ui->stackedWidget->currentWidget() == ui->messagingPage ?
+                ui->stackedWidget->setCurrentWidget(ui->welcomePage) :
+                ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+}
+
+void
+CallWidget::on_sendButton_clicked()
+{
+    if (ui->messageEdit->text().isEmpty())
+        return;
+    auto number = ui->contactMethodComboBox->currentText();
+    if (auto cm = PhoneDirectoryModel::instance().getNumber(number)) {
+        QMap<QString, QString> msg;
+        msg["text/plain"] = ui->messageEdit->text();
+        cm->sendOfflineTextMessage(msg);
+        ui->messageEdit->clear();
+    } else {
+        qWarning() << "Contact Method not found for " << number;
+    }
+}
+
+void
+CallWidget::on_messageEdit_returnPressed()
+{
+    on_sendButton_clicked();
+}
+
+void
+CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
+{
+    auto cm = PhoneDirectoryModel::instance().getNumber(number);
+    if (auto txtRecording = cm->textRecording()) {
+        ui->listMessageView->setModel(txtRecording->instantMessagingModel());
+        disconnect(imConnection_);
+        imConnection_ = connect(txtRecording,
+                SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
+                this,
+                SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
+        ui->listMessageView->scrollToBottom();
+    }
+}
+
+void
+CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
+                                       ContactMethod* cm,
+                                       Media::Media::Direction dir)
+{
+    Q_UNUSED(message)
+    Q_UNUSED(cm)
+    Q_UNUSED(dir)
+
+    ui->listMessageView->scrollToBottom();
 }
