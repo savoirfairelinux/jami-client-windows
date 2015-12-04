@@ -42,6 +42,53 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_8da46358",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "I understand, I changed callLabel, callLabel1, callLabel2\n\nare cancelCallLabel, acceptLabel and refuseLabel too generics ?",
+      "parentUuid": "1a9dcd25_cdd82b56",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0de2939f",
+        "filename": "callwidget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 14
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_add35f37",
         "filename": "callwidget.h",
         "patchSetId": 1
@@ -53,6 +100,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Sorry this seems trivial but could you move this up before private slots. I\u0027d like to keep things ordered like so public \u003e private",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 72
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ed92c7f5",
+        "filename": "callwidget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_add35f37",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -88,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_8dec63c9",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8de22302",
+      "range": {
+        "startLine": 22,
+        "startChar": 15,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4de41b0d",
         "filename": "combar.cpp",
         "patchSetId": 1
@@ -99,6 +194,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "No space in bracket",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 77
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2dd18ffb",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_4de41b0d",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -128,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4dce5b5c",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_2de74f14",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_6ddd5742",
         "filename": "combar.h",
         "patchSetId": 1
@@ -139,6 +276,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "camelCase naming convention: move / moveToSomething",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4d865bbb",
+        "filename": "combar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_6ddd5742",
       "range": {
         "startLine": 37,
         "startChar": 9,
@@ -174,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_eddac716",
+        "filename": "idlabel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_edf087cb",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_0dee13ed",
         "filename": "images/btn-info.svg",
         "patchSetId": 1
@@ -185,6 +370,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Do you have a legal copy of that software ? Or is it an asset that was given to us by Marianne ?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 94
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0dd8531c",
+        "filename": "images/btn-info.svg",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "yes, that\u0027s was made by Marianne, should I open+save in inskape ?\n\nI can do that to all svg",
+      "parentUuid": "1a9dcd25_0dee13ed",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -220,6 +429,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ad04bf7e",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_6db477f2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4dcbbb72",
         "filename": "mainwindow.cpp",
         "patchSetId": 1
@@ -231,6 +464,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cd090b97",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_4dcbbb72",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -260,6 +517,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_6dfeb76d",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_2dce6f84",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_8db9c3eb",
         "filename": "mainwindow.cpp",
         "patchSetId": 1
@@ -271,6 +546,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Space...",
+      "range": {
+        "startLine": 177,
+        "startChar": 33,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8d030373",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8db9c3eb",
       "range": {
         "startLine": 177,
         "startChar": 33,
@@ -300,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_2db0af8a",
+        "filename": "mainwindow.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_cdbfcbcf",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_edc72763",
         "filename": "navstack.cpp",
         "patchSetId": 1
@@ -311,6 +628,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "When i talked about more generic i meaned something as NavWidget* NavStack::getNavWidget(ScreenEnum) to ensure that if we supress something this does not compile instead of segfaulting",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6d447774",
+        "filename": "navstack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "I may not understand, if I return a pointer on a NavWidget I cant use it in the connect() right ?\n\n(for the connect() cf. line 83 in mainwindows.cpp)",
+      "parentUuid": "1a9dcd25_edc72763",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -346,6 +687,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_2df8af7b",
+        "filename": "ringcontactlineedit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_0dc5b35a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4d92db58",
         "filename": "smartlist.cpp",
         "patchSetId": 1
@@ -357,6 +722,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Why not in ui or css file ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0deff3b1",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "I don\u0027t know (yet) how to dynamically change the CSS properties of the scrollbars. That\u0027s something I want to talk about on QT irc.",
+      "parentUuid": "1a9dcd25_4d92db58",
       "range": {
         "startLine": 61,
         "startChar": 4,
@@ -392,6 +781,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_cd302b59",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_ad883f23",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_ed9e4763",
         "filename": "smartlist.cpp",
         "patchSetId": 1
@@ -403,6 +816,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Why not in ui or css file ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ad2b5fea",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "I don\u0027t know (yet) how to dynamically change the CSS properties of the scrollbars. That\u0027s something I want to talk about on QT irc.",
+      "parentUuid": "1a9dcd25_ed9e4763",
       "range": {
         "startLine": 83,
         "startChar": 3,
@@ -432,6 +869,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_6d355745",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_cd8d8b33",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4d797b2e",
         "filename": "smartlist.cpp",
         "patchSetId": 1
@@ -443,6 +898,24 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Only one return line after func",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8d3a2335",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_4d797b2e",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -466,6 +939,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_2d3f4f27",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_2d7c2f20",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_8d87830f",
         "filename": "smartlist.cpp",
         "patchSetId": 1
@@ -483,6 +974,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4d3c1b30",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8d87830f",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_ed75e732",
         "filename": "smartlist.cpp",
         "patchSetId": 1
@@ -494,6 +1003,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "Way too much space here",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ed4887ce",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_ed75e732",
       "range": {
         "startLine": 168,
         "startChar": 0,
@@ -529,6 +1062,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4df5fb81",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_ada11fab",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_6dab178a",
         "filename": "smartlist.h",
         "patchSetId": 1
@@ -545,6 +1102,76 @@
         "startChar": 4,
         "endLine": 37,
         "endChar": 40
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8d49c38d",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_6dab178a",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ad635f19",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "protected",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0da7f350",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 18
       },
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
@@ -575,6 +1202,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4d5bbb54",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8db0e3f5",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_2d950f40",
         "filename": "smartlist.h",
         "patchSetId": 1
@@ -592,6 +1243,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_edf16796",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_2d950f40",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_6d99d76d",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 1
@@ -603,6 +1272,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "space police",
+      "range": {
+        "startLine": 30,
+        "startChar": 37,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0d4613c0",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_6d99d76d",
       "range": {
         "startLine": 30,
         "startChar": 37,
@@ -638,6 +1331,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ad127fb2",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_cd94ab39",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_8d9ea355",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 1
@@ -649,6 +1366,30 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "If you don\u0027t modify that then make it a constexpr in class",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cd17cba2",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8d9ea355",
       "range": {
         "startLine": 49,
         "startChar": 4,
@@ -678,6 +1419,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_6d0c7795",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_2da3cf9f",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4da09b90",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 1
@@ -695,6 +1454,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_8d11c3ae",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_4da09b90",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_edac078f",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 1
@@ -706,6 +1483,24 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "please fix all the space",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2d266f17",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_edac078f",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -735,6 +1530,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_cd682bf8",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_ad8fdf22",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_adb6ffda",
         "filename": "smartlistscrollbar.cpp",
         "patchSetId": 1
@@ -746,6 +1565,24 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "no line return",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6d6d5704",
+        "filename": "smartlistscrollbar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_adb6ffda",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -775,6 +1612,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4d23bb05",
+        "filename": "smartlistscrollbar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_0daa9370",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_2dcaef4f",
         "filename": "windowbarupone.cpp",
         "patchSetId": 1
@@ -792,6 +1653,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ad603f36",
+        "filename": "windowbarupone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "file deleted",
+      "parentUuid": "1a9dcd25_2dcaef4f",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_4dc73b46",
         "filename": "windowbarupone.cpp",
         "patchSetId": 1
@@ -803,6 +1682,24 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "No line return",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cd658b46",
+        "filename": "windowbarupone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "file deleted",
+      "parentUuid": "1a9dcd25_4dc73b46",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -832,6 +1729,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ed1f27b6",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "I\u0027m going to delete WindowBarUpOne files \u0026 class to stay consistent with your comment in mainwindow.cpp",
+      "parentUuid": "1a9dcd25_cdbb4bc3",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_6db0f7dd",
         "filename": "windowbarupone.h",
         "patchSetId": 1
@@ -843,6 +1764,24 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "_ at the end of private var",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0d1db3bd",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "file deleted",
+      "parentUuid": "1a9dcd25_6db0f7dd",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -872,6 +1811,47 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ad791ffe",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "file deleted",
+      "parentUuid": "1a9dcd25_8db543cf",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6dd1d7cc",
+        "filename": "windowbaruptwo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "going to be renamed mainwindowtoolbar.cpp",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_addd9f16",
         "filename": "windowbaruptwo.cpp",
         "patchSetId": 1
@@ -883,6 +1863,87 @@
       "writtenOn": "2015-12-04T17:04:26Z",
       "side": 1,
       "message": "line return not needed try to make logical block",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0d55b31c",
+        "filename": "windowbaruptwo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_addd9f16",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4dd89bef",
+        "filename": "windowbaruptwo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ede407ae",
+        "filename": "windowbaruptwo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4d517b61",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "going to be renamed mainwindowtoolbar.h",
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -912,6 +1973,47 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_8d5f8372",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_0dc1332e",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cdccab38",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_edc3a736",
         "filename": "windowbaruptwo.h",
         "patchSetId": 1
@@ -928,6 +2030,53 @@
         "startChar": 0,
         "endLine": 47,
         "endChar": 9
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2d542f53",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_edc3a736",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8dd6a3c4",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-04T20:51:01Z",
+      "side": 1,
+      "message": "rm them",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 47
       },
       "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
