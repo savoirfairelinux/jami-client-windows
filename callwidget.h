@@ -37,6 +37,7 @@
 class ContactDelegate;
 class HistoryDelegate;
 class SmartListDelegate;
+class ImDelegate;
 
 namespace Ui {
 class CallWidget;
@@ -69,6 +70,8 @@ private slots:
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
     void on_historyList_doubleClicked(const QModelIndex& index);
+    void on_sendButton_clicked();
+    void on_messageEdit_returnPressed();
 
 private slots:
     void callIncoming(Call* call);
@@ -89,6 +92,7 @@ private:
     HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
     QModelIndex highLightedIndex_;
+    ImDelegate* imDelegate_;
 
 private:
     void findRingAccount();
