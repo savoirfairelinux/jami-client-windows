@@ -1,0 +1,937 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_adba7fdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "You need a tuleap id:\n\nTuleap: #NumberOfTheTicket",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cdd82b56",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "generic name is not a good idea because for now you remember what they represent but 3 months from now or another dev will not. I know i can be a pain in the ass to find a good and concise name but the effort is worth it.",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_add35f37",
+        "filename": "callwidget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Sorry this seems trivial but could you move this up before private slots. I\u0027d like to keep things ordered like so public \u003e private",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 72
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8de22302",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "No space after bracket",
+      "range": {
+        "startLine": 22,
+        "startChar": 15,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4de41b0d",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "No space in bracket",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 77
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2de74f14",
+        "filename": "combar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "no need for this line",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6ddd5742",
+        "filename": "combar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "camelCase naming convention: move / moveToSomething",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_edf087cb",
+        "filename": "idlabel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Space...bracket...you know the drill",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0dee13ed",
+        "filename": "images/btn-info.svg",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Do you have a legal copy of that software ? Or is it an asset that was given to us by Marianne ?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 94
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6db477f2",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "If you don\u0027t use windowbarupone then remove it entirely from commit",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4dcbbb72",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2dce6f84",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Space",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8db9c3eb",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Space...",
+      "range": {
+        "startLine": 177,
+        "startChar": 33,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cdbfcbcf",
+        "filename": "mainwindow.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Only one line at the end of a file",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_edc72763",
+        "filename": "navstack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "When i talked about more generic i meaned something as NavWidget* NavStack::getNavWidget(ScreenEnum) to ensure that if we supress something this does not compile instead of segfaulting",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0dc5b35a",
+        "filename": "ringcontactlineedit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Try ordering include by space like : #include QTStuff then a blank line then #include LRCStuff then #include clientStuff for lisibility",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4d92db58",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Why not in ui or css file ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ad883f23",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "space bracket police is on the way",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ed9e4763",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Why not in ui or css file ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cd8d8b33",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "space after comma",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4d797b2e",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Only one return line after func",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2d7c2f20",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Only one return line after func",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8d87830f",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Only one return line after func",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ed75e732",
+        "filename": "smartlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Way too much space here",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ada11fab",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "no line return needed here",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6dab178a",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "I think these are protected function to begin with they should remain so.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8db0e3f5",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Still want one for me. And please put the name of the args even if it\u0027s in comment form",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2d950f40",
+        "filename": "smartlist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "_ at the end of private variable",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6d99d76d",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "space police",
+      "range": {
+        "startLine": 30,
+        "startChar": 37,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cd94ab39",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "tab",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8d9ea355",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "If you don\u0027t modify that then make it a constexpr in class",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2da3cf9f",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "space before and after +",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4da09b90",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "line not needed",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_edac078f",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "please fix all the space",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ad8fdf22",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Maj and space issue",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_adb6ffda",
+        "filename": "smartlistscrollbar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "no line return",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0daa9370",
+        "filename": "smartlistscrollbar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Protected func should remain protected",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2dcaef4f",
+        "filename": "windowbarupone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "no need to line return between each line. Try to make logical block",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4dc73b46",
+        "filename": "windowbarupone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "No line return",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cdbb4bc3",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "Better name ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6db0f7dd",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "_ at the end of private var",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8db543cf",
+        "filename": "windowbarupone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "order is public \u003e protected \u003e private",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_addd9f16",
+        "filename": "windowbaruptwo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "line return not needed try to make logical block",
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0dc1332e",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "protected ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_edc3a736",
+        "filename": "windowbaruptwo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2015-12-04T17:04:26Z",
+      "side": 1,
+      "message": "order is... you know the drill",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "54608d198cb927b7ebcd6c6dadc03dc4a0717435",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
