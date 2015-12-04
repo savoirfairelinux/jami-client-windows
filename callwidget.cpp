@@ -397,20 +397,34 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
+    qDebug() << "SELECTION CHANGED";
+
+    if (newSel.indexes().empty())
+    {
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        return;
+    }
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
+    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
+    auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
 
-    if (newIdxCall == actualCall_)
-        return;
+//    if (newIdxCall == actualCall_)
+//        return;
     if (newIdxCall) {
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else {
         setActualCall(nullptr);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
+        if (!cmVector.empty()) {
+            if (auto txtRecording = cmVector.at(0)->textRecording()) {
+                ui->listMessageView->setModel(txtRecording->instantMessagingModel());
+            }
+        }
+        ui->stackedWidget->setCurrentWidget(ui->messagingPage);
     }
 }
 
@@ -461,4 +475,26 @@ CallWidget::on_btnvideo_clicked()
         return;
 
     on_smartList_doubleClicked(highLightedIndex_);
+}
+
+void
+CallWidget::on_sendButton_clicked()
+{
+    if (ui->messageEdit->text().isEmpty())
+        return;
+    auto idx = RecentModel::instance().peopleProxy()->mapToSource(ui->smartList->currentIndex());
+    if (idx.isValid()) {
+        auto cmVector = RecentModel::instance().getContactMethods(idx);
+        if (!cmVector.isEmpty()) {
+            QMap<QString, QString> msg;
+            msg["text/plain"] = ui->messageEdit->text();
+            cmVector[0]->sendOfflineTextMessage(msg);
+        }
+    }
+}
+
+void
+CallWidget::on_messageEdit_returnPressed()
+{
+    on_sendButton_clicked();
 }
