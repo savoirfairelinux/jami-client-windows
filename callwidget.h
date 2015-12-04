@@ -63,6 +63,8 @@ private slots:
     void on_historyList_doubleClicked(const QModelIndex &index);
     void on_contactButton_clicked(bool checked);
     void on_historicButton_clicked(bool checked);
+    void on_sendButton_clicked();
+    void on_messageEdit_returnPressed();
 
 private slots:
     void callIncoming(Call *call);
