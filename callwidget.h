@@ -69,6 +69,9 @@ private slots:
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
     void on_historyList_doubleClicked(const QModelIndex& index);
+    void on_searchEdit_returnPressed();
+    void on_sendButton_clicked();
+    void on_messageEdit_returnPressed();
 
 private slots:
     void callIncoming(Call* call);
