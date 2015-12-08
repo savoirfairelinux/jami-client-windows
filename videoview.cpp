@@ -22,6 +22,7 @@
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
 #include "recentmodel.h"
+#include "media/video.h"
 
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
@@ -138,7 +139,9 @@ void
 VideoView::dropEvent(QDropEvent* event)
 {
     auto urls = event->mimeData()->urls();
-    Video::SourceModel::instance().setFile(urls.at(0));
+    if (auto call = CallModel::instance().selectedCall()) {
+       call->getOutgoingVideoMedia()->sourceModel()->setFile(urls.at(0));
+    }
 }
 
 void
@@ -173,7 +176,9 @@ VideoView::showContextMenu(const QPoint& pos)
         menu.addAction(ptr);
         connect(ptr, &QAction::toggled, [=](bool checked) {
             if (checked == true) {
-                Video::SourceModel::instance().switchTo(device);
+                if (auto call = CallModel::instance().selectedCall()) {
+                   call->getOutgoingVideoMedia()->sourceModel()->switchTo(device);
+                }
                 Video::DeviceModel::instance().setActive(device);
             }
         });
@@ -184,7 +189,9 @@ VideoView::showContextMenu(const QPoint& pos)
     auto shareAction = new QAction(tr("Share entire screen"), this);
     menu.addAction(shareAction);
     connect(shareAction, &QAction::triggered, [=]() {
-        Video::SourceModel::instance().setDisplay(0, QApplication::desktop()->rect());
+        if (auto call = CallModel::instance().selectedCall()) {
+           call->getOutgoingVideoMedia()->sourceModel()->setDisplay(0, QApplication::desktop()->rect());
+        }
     });
     auto shareAreaAction = new QAction(tr("Share screen area"), this);
     menu.addAction(shareAreaAction);
@@ -201,7 +208,9 @@ VideoView::showContextMenu(const QPoint& pos)
         if (!dialog.exec())
             return;
         fileNames = dialog.selectedFiles();
-        Video::SourceModel::instance().setFile(QUrl::fromLocalFile(fileNames.at(0)));
+        if (auto call = CallModel::instance().selectedCall()) {
+           call->getOutgoingVideoMedia()->sourceModel()->setFile(QUrl::fromLocalFile(fileNames.at(0)));
+        }
     });
 
     menu.exec(globalPos);
