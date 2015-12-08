@@ -23,6 +23,8 @@
 #include <QPainter>
 
 #include "video/sourcemodel.h"
+#include "media/video.h"
+#include "callmodel.h"
 
 SelectAreaDialog::SelectAreaDialog() :
     rubberBand_(nullptr)
@@ -67,7 +69,11 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
     if(rubberBand_) {
         QApplication::restoreOverrideCursor();
         releaseMouse();
-        Video::SourceModel::instance().setDisplay(0, rubberBand_->rect());
+        if (auto call = CallModel::instance().selectedCall()) {
+            if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
+                outVideo->sourceModel()->setDisplay(0, rubberBand_->rect());
+            }
+        }
         delete rubberBand_;
         rubberBand_ = nullptr;
         reject();
