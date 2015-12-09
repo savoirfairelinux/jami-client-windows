@@ -30,7 +30,7 @@
 #include "accountserializationadapter.h"
 #include "accountstatedelegate.h"
 #include "settingskey.h"
-
+#include "utils.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -39,7 +39,7 @@
 #include "ringtonemodel.h"
 #include "categorizedhistorymodel.h"
 
-#include "utils.h"
+#include "winsparkle.h"
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(Nav, parent),
@@ -214,4 +214,10 @@ void
 ConfigurationWidget::on_closeOrMinCheckBox_toggled(bool checked)
 {
     settings_.setValue(SettingsKey::closeOrMinimized, checked);
+}
+
+void
+ConfigurationWidget::on_pushButton_clicked()
+{
+    win_sparkle_check_update_with_ui();
 }

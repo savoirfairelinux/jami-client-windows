@@ -61,6 +61,8 @@ private slots:
     void accountSelected(QItemSelection itemSel);
     void deviceIndexChanged(int index);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;

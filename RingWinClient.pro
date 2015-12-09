@@ -13,8 +13,11 @@ win32: QT += winextras
 VERSION = 0.3.0
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 
+NIGHTLY_VERSION =$$system(date +'%y%m%d') #+'%Y%m%d'
+
 DEFINES += VERSION=\\\"$$VERSION\\\"
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+DEFINES += NIGHTLY_VERSION=\\\"$$NIGHTLY_VERSION\\\"
 
 BUILD=$${BUILD}
 TARGET = Ring
@@ -117,8 +120,9 @@ FORMS    += mainwindow.ui \
 win32: LIBS += -lole32 -luuid -lshlwapi
 
 INCLUDEPATH += $${RING}/include/libringclient
+INCLUDEPATH += $${RING}/include
 
-LIBS += -L$${RING}/lib -lringclient
+LIBS += -L$${RING}/lib -lringclient -lWinSparkle
 
 RESOURCES += \
     ressources.qrc
