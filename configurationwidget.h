@@ -56,6 +56,7 @@ private slots:
     void on_clearHistoryButton_clicked();
     void on_historyDaySettingsSpinBox_valueChanged(int limit);
     void on_closeOrMinCheckBox_toggled(bool checked);
+    void on_checkUpdateButton_clicked();
 
 private slots:
     void accountSelected(QItemSelection itemSel);
