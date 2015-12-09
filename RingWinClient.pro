@@ -13,8 +13,11 @@ win32: QT += winextras
 VERSION = 0.3.0
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 
+NIGHTLY_VERSION =$$system(date +'%y%m%d') #+'%Y%m%d'
+
 DEFINES += VERSION=\\\"$$VERSION\\\"
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+DEFINES += NIGHTLY_VERSION=\\\"$$NIGHTLY_VERSION\\\"
 
 BUILD=$${BUILD}
 TARGET = Ring
@@ -117,8 +120,9 @@ FORMS    += mainwindow.ui \
 win32: LIBS += -lole32 -luuid -lshlwapi
 
 INCLUDEPATH += $${RING}/include/libringclient
+INCLUDEPATH += $${RING}/include
 
-LIBS += -L$${RING}/lib -lringclient
+LIBS += -L$${RING}/lib -lringclient -lWinSparkle
 
 RESOURCES += \
     ressources.qrc
@@ -169,8 +173,11 @@ win32 {
 
     RUNTIMEDIR=$$[QT_INSTALL_BINS]
 
-    RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll
+    RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/WinSparkle.dll
     RUNTIME.path = $$OUT_PWD/release
+
+    WINSPARKLE.files = $${RING}/bin/WinSparkle.dll $${RING}/bin/libringclient.dll
+    WINSPARKLE.path = $$OUT_PWD/release
 
     LRC_TRANSLATION.files = $${RING}/share/libringclient/translations
     LRC_TRANSLATION.path = $$OUT_PWD/release/share/libringclient/
@@ -201,6 +208,6 @@ win32 {
                     $$RUNTIMEDIR/libwinpthread-1.dll
     LIBSTD.path = $$OUT_PWD/release
 
-    INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
+    INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME WINSPARKLE LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
                 QTPLUGINIMAGE QTPLATFORMS LIBSTD
 }

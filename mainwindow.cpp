@@ -33,6 +33,8 @@
 #include "aboutdialog.h"
 #include "mainwindowtoolbar.h"
 
+#include "winsparkle.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -87,6 +89,15 @@ MainWindow::MainWindow(QWidget *parent) :
             callWidget, &CallWidget::on_historicButton_clicked);
     connect(mwToolBar_->getContactListButton(), &QAction::triggered,
             callWidget, &CallWidget::on_contactButton_clicked);
+
+    win_sparkle_set_appcast_url("https://raw.githubusercontent.com/EckoEdc/TestAppCast/master/Appcast.xml");
+    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
+    win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
+    win_sparkle_init();
+
+    QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
+        win_sparkle_cleanup();
+    });
 }
 
 MainWindow::~MainWindow()
