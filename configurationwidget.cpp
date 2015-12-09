@@ -30,7 +30,7 @@
 #include "accountserializationadapter.h"
 #include "accountstatedelegate.h"
 #include "settingskey.h"
-
+#include "utils.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -39,7 +39,9 @@
 #include "ringtonemodel.h"
 #include "categorizedhistorymodel.h"
 
-#include "utils.h"
+#ifdef ENABLE_AUTOUPDATE
+#include "winsparkle.h"
+#endif
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(Nav, parent),
@@ -84,6 +86,9 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
             }
         }
     });
+#ifndef ENABLE_AUTOUPDATE
+    ui->checkUpdateButton->hide();
+#endif
 }
 
 void
@@ -214,4 +219,12 @@ void
 ConfigurationWidget::on_closeOrMinCheckBox_toggled(bool checked)
 {
     settings_.setValue(SettingsKey::closeOrMinimized, checked);
+}
+
+void
+ConfigurationWidget::on_checkUpdateButton_clicked()
+{
+#ifdef ENABLE_AUTOUPDATE
+    win_sparkle_check_update_with_ui();
+#endif
 }
