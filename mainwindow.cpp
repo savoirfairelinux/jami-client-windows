@@ -33,6 +33,10 @@
 #include "aboutdialog.h"
 #include "mainwindowtoolbar.h"
 
+#ifdef ENABLE_AUTOUPDATE
+#include "winsparkle.h"
+#endif
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -87,6 +91,17 @@ MainWindow::MainWindow(QWidget *parent) :
             callWidget, &CallWidget::on_historicButton_clicked);
     connect(mwToolBar_->getContactListButton(), &QAction::triggered,
             callWidget, &CallWidget::on_contactButton_clicked);
+
+#ifdef ENABLE_AUTOUPDATE
+    win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
+    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
+    win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
+    win_sparkle_init();
+
+    QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
+        win_sparkle_cleanup();
+    });
+#endif
 }
 
 MainWindow::~MainWindow()
