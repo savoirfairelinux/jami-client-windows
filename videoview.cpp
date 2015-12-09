@@ -148,7 +148,7 @@ VideoView::toggleFullScreen()
         this->setParent(oldParent_);
         oldParent_->layout()->addWidget(this);
         this->resize(oldSize_.width(), oldSize_.height());
-        this->show();
+        this->showNormal();
     } else {
         oldSize_ = this->size();
         oldParent_ = static_cast<QWidget*>(this->parent());
