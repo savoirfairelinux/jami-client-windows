@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -13,10 +11,6 @@
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
         <translation>Crédits</translation>
-    </message>
-    <message>
-        <source>X</source>
-        <translation type="vanished">X</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -43,7 +37,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation>Créer par :</translation>
+        <translation>Créé par :</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="49"/>
@@ -84,10 +78,6 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
         <translation>Nom d&apos;emprunt</translation>
     </message>
     <message>
-        <source>Hash</source>
-        <translation type="vanished">Hash</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="165"/>
         <source>Parameters</source>
         <translation>Paramètres</translation>
@@ -107,7 +97,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
         <location filename="../accountdetails.ui" line="209"/>
         <location filename="../accountdetails.ui" line="944"/>
         <source>Password</source>
-        <translation>Mot-de-passe</translation>
+        <translation>Mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
@@ -152,7 +142,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="412"/>
         <source>Allow Call From Contact</source>
-        <translation>Autoriser la réception d&apos;appels des interlocuteurs appartenant à votre liste de contacts</translation>
+        <translation>Autoriser les appels de vos contacts</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
@@ -207,7 +197,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="745"/>
         <source>Published Adress</source>
-        <translation>Adresse exposée</translation>
+        <translation>Adresse publique</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="760"/>
@@ -335,7 +325,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1311"/>
         <source>Private key password</source>
-        <translation>Mot-de-passe clé privée</translation>
+        <translation>Mot de passe clé privée</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1321"/>
@@ -383,22 +373,6 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
         <translation>Utiliser des modes de chiffrement spécifiques</translation>
     </message>
     <message>
-        <source>Enabled</source>
-        <translation type="vanished">Activé</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Nom</translation>
-    </message>
-    <message>
-        <source>Bitrate</source>
-        <translation type="vanished">taux de transfert (bit/s)</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">Taux d’échantillonnage</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
         <translation>Choisir un fichier</translation>
@@ -414,18 +388,19 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"></translation>
+        <translation>Voici votre identifiant Ring.
+Copiez-le et partagez-le avec vos amis !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="166"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring est une plate-forme de communication texte, audio et vidéo sécurisée et distribuée, sans serveur centralisé, qui laisse le contrôle de la confidentialité à l’utilisateur.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="258"/>
@@ -450,31 +425,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>State:</source>
-        <translation type="vanished">État:</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">OK</translation>
-    </message>
-    <message>
-        <source>History</source>
-        <translation type="vanished">Historique</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Rechercher</translation>
-    </message>
-    <message>
-        <source>Sort:</source>
-        <translation type="vanished">Trier:</translation>
-    </message>
-    <message>
-        <source>Contact</source>
-        <translation type="vanished">Contact</translation>
+        <translation>Rechercher / Entrer un numéro</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
@@ -487,11 +438,6 @@ Copy and share it with your friends!</source>
         <translation>Ajouter aux contacts</translation>
     </message>
     <message>
-        <source>Your RingID: %1</source>
-        <comment>%1 is the RingID</comment>
-        <translation type="vanished">Votre RingID est %1</translation>
-    </message>
-    <message>
         <location filename="../callwidget.cpp" line="186"/>
         <location filename="../callwidget.cpp" line="210"/>
         <source>NO RING ACCOUNT FOUND</source>
@@ -502,11 +448,6 @@ Copy and share it with your friends!</source>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
         <translation>Appel de %1</translation>
-    </message>
-    <message>
-        <source>Call State: %1</source>
-        <comment>%1 is the state of the call</comment>
-        <translation type="vanished">État d&apos;appel : %1</translation>
     </message>
 </context>
 <context>
@@ -549,12 +490,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres divers</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Laisser minimisé en fermant</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -575,10 +516,6 @@ Copy and share it with your friends!</source>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Resolution</source>
         <translation>Résolution</translation>
-    </message>
-    <message>
-        <source>Framerate</source>
-        <translation type="vanished">images/seconde</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
@@ -676,25 +613,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>MainBar</name>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Dial Number</source>
-        <translation type="vanished">Composer un numéro</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">À Propos</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">Sortir</translation>
-    </message>
-</context>
-<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
@@ -704,7 +622,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
         <source>About</source>
-        <translation type="unfinished">À Propos</translation>
+        <translation>À Propos</translation>
     </message>
 </context>
 <context>
@@ -720,22 +638,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogue</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Transférer</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation>ou taper le numéro...</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Appels courants</translation>
     </message>
 </context>
 <context>
@@ -748,7 +666,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="167"/>
         <source>Chat</source>
-        <translation>Message texte</translation>
+        <translation>Clavardage</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="150"/>
@@ -768,7 +686,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Transférer</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
@@ -802,27 +720,19 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <source>Wizard</source>
-        <translation type="vanished">Assistant</translation>
-    </message>
-    <message>
-        <source>Greetings ! Please enter a username</source>
-        <translation type="vanished">Salutation ! Veuillez entrer un nom d&apos;utilisateur.</translation>
-    </message>
-    <message>
         <location filename="../wizarddialog.cpp" line="52"/>
         <source>Please wait while we create your account.</source>
-        <translation>Attendez s&apos;il-vous plait durant la création de votre compte.</translation>
+        <translation>Veuillez attendre pendant la création de votre compte.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejoignez Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisissez votre nom d&apos;utilisateur :</translation>
     </message>
 </context>
 </TS>

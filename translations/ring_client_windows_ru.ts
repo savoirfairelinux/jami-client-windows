@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -13,10 +11,6 @@
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
         <translation>Благодарности</translation>
-    </message>
-    <message>
-        <source>X</source>
-        <translation type="vanished">Х</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -82,10 +76,6 @@ Ring это приложение для безопасного и распред
         <location filename="../accountdetails.ui" line="101"/>
         <source>Alias</source>
         <translation>Прозвище</translation>
-    </message>
-    <message>
-        <source>Hash</source>
-        <translation type="vanished">Хэш</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="165"/>
@@ -383,22 +373,6 @@ Ring это приложение для безопасного и распред
         <translation>Использовать пользовательский список шифров</translation>
     </message>
     <message>
-        <source>Enabled</source>
-        <translation type="vanished">разрешен</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Имя</translation>
-    </message>
-    <message>
-        <source>Bitrate</source>
-        <translation type="vanished">Битрейт</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">Частота дискретизации</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
@@ -414,18 +388,19 @@ Ring это приложение для безопасного и распред
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"></translation>
+        <translation>Это ваш RingID.
+Скопируйте и поделитесь им с вашими друзьями!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="166"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring - это распределенная и безопасная платформа для передачи голоса, видео и текстовых сообщений, которая не нуждается в централизованном сервере и оставляет мощь секретности в руках пользователя.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="258"/>
@@ -450,31 +425,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>State:</source>
-        <translation type="vanished">Состояние:</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">OK</translation>
-    </message>
-    <message>
-        <source>History</source>
-        <translation type="vanished">История</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Поиск:</translation>
-    </message>
-    <message>
-        <source>Sort:</source>
-        <translation type="vanished">Упорядочить по:</translation>
-    </message>
-    <message>
-        <source>Contact</source>
-        <translation type="vanished">Контакт</translation>
+        <translation>Найти / Ввести номер</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
@@ -487,11 +438,6 @@ Copy and share it with your friends!</source>
         <translation>Добавить в контакт</translation>
     </message>
     <message>
-        <source>Your RingID: %1</source>
-        <comment>%1 is the RingID</comment>
-        <translation type="vanished">Ваш RingID: %1</translation>
-    </message>
-    <message>
         <location filename="../callwidget.cpp" line="186"/>
         <location filename="../callwidget.cpp" line="210"/>
         <source>NO RING ACCOUNT FOUND</source>
@@ -502,11 +448,6 @@ Copy and share it with your friends!</source>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
         <translation>Звонок от: %1</translation>
-    </message>
-    <message>
-        <source>Call State: %1</source>
-        <comment>%1 is the state of the call</comment>
-        <translation type="vanished">Состояние звонка: %1</translation>
     </message>
 </context>
 <context>
@@ -549,12 +490,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Другие настройки</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Сворачивать вместо закрытия</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -575,10 +516,6 @@ Copy and share it with your friends!</source>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Resolution</source>
         <translation>Разрешение</translation>
-    </message>
-    <message>
-        <source>Framerate</source>
-        <translation type="vanished">Частота кадров</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
@@ -676,25 +613,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>MainBar</name>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Dial Number</source>
-        <translation type="vanished">Набрать номер</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">О программе</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">Выход</translation>
-    </message>
-</context>
-<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
@@ -704,7 +622,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
         <source>About</source>
-        <translation type="unfinished">О программе</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -720,22 +638,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Диалог</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Передача</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation>или введите номер...</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Текущие звонки</translation>
     </message>
 </context>
 <context>
@@ -768,17 +686,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Передача</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
         <source>Mute Audio</source>
-        <translation>Отключить звук</translation>
+        <translation>Выключить звук</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="45"/>
         <source>Mute Video</source>
-        <translation>Отключить видео</translation>
+        <translation>Выключить видео</translation>
     </message>
 </context>
 <context>
@@ -802,14 +720,6 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <source>Wizard</source>
-        <translation type="vanished">Мастер</translation>
-    </message>
-    <message>
-        <source>Greetings ! Please enter a username</source>
-        <translation type="vanished">Добро пожаловать! Пожалуйста, введите имя пользователя</translation>
-    </message>
-    <message>
         <location filename="../wizarddialog.cpp" line="52"/>
         <source>Please wait while we create your account.</source>
         <translation>Подождите, пока идет создание учетной записи.</translation>
@@ -817,12 +727,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Присоединиться к Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите имя пользователя:</translation>
     </message>
 </context>
 </TS>

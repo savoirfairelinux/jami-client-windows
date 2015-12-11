@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ar">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -13,10 +11,6 @@
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
         <translation>الأطراف المصممة</translation>
-    </message>
-    <message>
-        <source>X</source>
-        <translation type="vanished">X</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -82,10 +76,6 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <location filename="../accountdetails.ui" line="101"/>
         <source>Alias</source>
         <translation>الاسم المستعار</translation>
-    </message>
-    <message>
-        <source>Hash</source>
-        <translation type="vanished">مزيج (hash)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="165"/>
@@ -232,7 +222,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../accountdetails.ui" line="860"/>
         <source>Use STUN</source>
-        <translation>إستعمال STUN</translation>
+        <translation>إستعمل STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="876"/>
@@ -383,25 +373,9 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>إستعمل قائمة شيفرة  حسب الطلب</translation>
     </message>
     <message>
-        <source>Enabled</source>
-        <translation type="vanished">عملي</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">الإسم</translation>
-    </message>
-    <message>
-        <source>Bitrate</source>
-        <translation type="vanished">معدل البت</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">معدل العينة</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
-        <translation>إختار وثيقة</translation>
+        <translation>إختار ملف</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="182"/>
@@ -414,18 +388,19 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"></translation>
+        <translation>هاذا معرفك RingI
+انسخه و بثه لأصدقائك!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="166"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring برنامج إتصال صوتي  بصري  و كتابي منيع و موزع لا يستلزم خادم تطبيقات مركزي ويمنح المستخدم قدرة التحكم فالخصوصية.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="258"/>
@@ -450,31 +425,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>State:</source>
-        <translation type="vanished">حالة:</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">موافق</translation>
-    </message>
-    <message>
-        <source>History</source>
-        <translation type="vanished">تاريخ</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">إبحث</translation>
-    </message>
-    <message>
-        <source>Sort:</source>
-        <translation type="vanished">فرز</translation>
-    </message>
-    <message>
-        <source>Contact</source>
-        <translation type="vanished">إتصال</translation>
+        <translation>إبحث عن رقم أو أدخل رقم</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
@@ -487,11 +438,6 @@ Copy and share it with your friends!</source>
         <translation>أضف إلى الاتصال</translation>
     </message>
     <message>
-        <source>Your RingID: %1</source>
-        <comment>%1 is the RingID</comment>
-        <translation type="vanished">معرفك Ring ID هو 1% </translation>
-    </message>
-    <message>
         <location filename="../callwidget.cpp" line="186"/>
         <location filename="../callwidget.cpp" line="210"/>
         <source>NO RING ACCOUNT FOUND</source>
@@ -502,11 +448,6 @@ Copy and share it with your friends!</source>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
         <translation>مكالمة من 1%</translation>
-    </message>
-    <message>
-        <source>Call State: %1</source>
-        <comment>%1 is the state of the call</comment>
-        <translation type="vanished">حالة المكالمة: 1%</translation>
     </message>
 </context>
 <context>
@@ -549,12 +490,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>إعدادات متنوعة</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation>أبقي مصغر عند الغلق</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -575,10 +516,6 @@ Copy and share it with your friends!</source>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Resolution</source>
         <translation>دقة العرض (resolution)</translation>
-    </message>
-    <message>
-        <source>Framerate</source>
-        <translation type="vanished">معدل الاطار (framerate)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
@@ -676,25 +613,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>MainBar</name>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Dial Number</source>
-        <translation type="vanished">أطلب رقم</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">عن RING</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">غادر</translation>
-    </message>
-</context>
-<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
@@ -704,7 +622,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
         <source>About</source>
-        <translation type="unfinished">عن RING</translation>
+        <translation>عن RING</translation>
     </message>
 </context>
 <context>
@@ -720,22 +638,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>الحوار</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>نقل</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation>أو أكتب رقما</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation type="unfinished"></translation>
+        <translation>المكالمات الحالية</translation>
     </message>
 </context>
 <context>
@@ -768,7 +686,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>نقل</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
@@ -802,14 +720,6 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <source>Wizard</source>
-        <translation type="vanished">معين</translation>
-    </message>
-    <message>
-        <source>Greetings ! Please enter a username</source>
-        <translation type="vanished">مرحبا ! الرجاء إدخال إسم مستخدم</translation>
-    </message>
-    <message>
         <location filename="../wizarddialog.cpp" line="52"/>
         <source>Please wait while we create your account.</source>
         <translation>الرجاء الإنتظار في حين نحدث حسابك</translation>
@@ -817,12 +727,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>إنضم إلى Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>اختار اسم المستخدم</translation>
     </message>
 </context>
 </TS>
