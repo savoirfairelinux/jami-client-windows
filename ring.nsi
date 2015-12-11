@@ -110,6 +110,10 @@ section "install"
         ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
         IntFmt $0 "0x%08X" $0
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "EstimatedSize" "$0"
+
+        IfSilent "" +2 ; If the installer is always silent then you don't need this check
+        ExecShell "" "$DESKTOP\Ring.lnk"
+
 sectionEnd
 
 # Uninstaller
