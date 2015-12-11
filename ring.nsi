@@ -19,7 +19,15 @@
 !define MUI_ABORTWARNING
 !define MUI_UNINSTALLER
 !define MUI_UNCONFIRMPAGE
-!define MUI_FINISHPAGE
+   !define MUI_FINISHPAGE_RUN
+   !define MUI_FINISHPAGE_RUN_TEXT "Launch Ring"
+   !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "License.rtf"
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_LANGUAGE "English"
 
@@ -27,8 +35,6 @@ RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
-# rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
-LicenseData "License.rtf"
 # This will be in the installer/uninstaller's title bar
 Name "${COMPANYNAME} - ${APPNAME}"
 
@@ -36,11 +42,6 @@ outFile "ring-windows-nightly.exe"
 
 !include LogicLib.nsh
 !include "FileFunc.nsh"
-
-# Just three pages - license agreement, install location, and installation
-page license
-page directory
-Page instfiles
 
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
@@ -56,6 +57,10 @@ function .onInit
         setShellVarContext all
         !insertmacro VerifyUserIsAdmin
 functionEnd
+
+Function LaunchLink
+  ExecShell "" "$DESKTOP\Ring.lnk"
+FunctionEnd
 
 section "install"
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
