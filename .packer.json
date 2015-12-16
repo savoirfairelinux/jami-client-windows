@@ -29,7 +29,7 @@
         "cd winsparkle",
         "git submodule init && git submodule update",
         "mkdir build && cd build",
-        "cmake -DCMAKE_TOOLCHAIN_FILE=/ring-lrc/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=$RING/_win32 ../cmake",
+        "cmake -DCMAKE_TOOLCHAIN_FILE=../../../ring-lrc/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=$RING/_win32 ../cmake",
         "make install",
         "cd ../..",
         "mkdir build && cd build",
