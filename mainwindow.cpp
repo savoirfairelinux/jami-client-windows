@@ -147,7 +147,8 @@ void
 MainWindow::onIncomingCall(Call *call)
 {
     Q_UNUSED(call);
-    QWidget::showNormal();
+    if(isMinimized())
+        QWidget::showNormal();
 }
 
 void

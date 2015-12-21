@@ -55,31 +55,8 @@ CallWidget::CallWidget(QWidget* parent) :
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
 {
-    setMouseTracking(true);
 
     ui->setupUi(this);
-
-    // TODO : add this in style sheet forms
-    QPalette palette;
-    palette.setColor(QPalette::WindowText, QColor(255,255,255));
-    ui->callerIdLabel->setPalette(palette);
-
-    QPalette palette2;
-    palette2.setColor(QPalette::WindowText, QColor(141,141,141));
-
-    ui->wantToTalkLabel->setPalette(palette2);
-    ui->outboundCallLabel->setPalette(palette2);
-    ui->cancelCallLabel->setPalette(palette2);
-    ui->acceptLabel->setPalette(palette2);
-    ui->refuseLabel->setPalette(palette2);
-
-    QFont font = ui->callerIdLabel->font();
-    font.setPointSize(20);
-
-    ui->callerIdLabel->setFont(font);
-    // end of TODO : add this in style sheet forms
-
-    ui->callInvite->setVisible(false);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -87,9 +64,7 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
-    QPixmap logo(":/images/logo-ring-standard-coul.png");
-    ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
-    ui->ringLogo->setAlignment(Qt::AlignHCenter);
+    ui->ringContactLineEdit->addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
 
     try {
         callModel_ = &CallModel::instance();
@@ -238,8 +213,6 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call* call)
 {
-    ui->outboundCall->hide();
-
     if (!QApplication::activeWindow()) {
         GlobalSystemTray::instance().showMessage("Ring", "Call incoming from " + call->formattedName());
         QApplication::alert(this, 5000);
@@ -249,8 +222,6 @@ CallWidget::callIncoming(Call* call)
         ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
                                .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
-        ui->callInvite->setVisible(true);
-        ui->callInvite->raise();
     }
     setActualCall(call);
 }
@@ -260,7 +231,6 @@ CallWidget::on_acceptButton_clicked()
 {
     if (actualCall_ != nullptr)
         actualCall_->performAction(Call::Action::ACCEPT);
-    ui->callInvite->setVisible(false);
     ui->stackedWidget->setCurrentWidget(ui->videoPage);
 }
 
@@ -271,7 +241,6 @@ CallWidget::on_refuseButton_clicked()
         return;
     actualCall_->performAction(Call::Action::REFUSE);
     setActualCall(nullptr);
-    ui->callInvite->setVisible(false);
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
@@ -279,9 +248,13 @@ void
 CallWidget::addedCall(Call* call, Call* parent)
 {
     Q_UNUSED(parent);
-    if (call->direction() == Call::Direction::OUTGOING) {
+    if (call->direction() == Call::Direction::OUTGOING)
+    {
         setActualCall(call);
-        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+        ui->smartList->scrollToTop();
+        ui->smartList->repaint();
+        
     }
 }
 
@@ -305,9 +278,28 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 //            setActualCall(onHoldCall);
 //            onHoldCall->performAction(Call::Action::HOLD);
 //        }
-    } else if (call->state() == Call::State::CURRENT) {
+    } else if (call->state() == Call::State::CURRENT)
+    {
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
+    } 
+    else if (call->state() == Call::State::DIALING)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "dialing %1")).arg(call->formattedName()));
+        qDebug() << "@: " << call->toHumanStateName();
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
+    }
+    else if (call->state() == Call::State::INITIALIZATION)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "searching for %1")).arg(call->formattedName()));
+        qDebug() << "@: " << call->toHumanStateName();
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
+    }
+    else if (call->state() == Call::State::RINGING)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "calling %1")).arg(call->formattedName()));
+        qDebug() << "@: " << call->toHumanStateName();
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
     }
 }
 
@@ -379,6 +371,8 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
+    ui->smartList->selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+
     auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
     if (RecentModel::instance().hasActiveCall(realIndex))
         return;
@@ -394,32 +388,44 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
     if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
         Call* c = CallModel::instance().dialingCall(m);
         c->performAction(Call::Action::ACCEPT);
+        QModelIndex idx = CallModel::instance().getIndex(c);
+        ui->smartList->setCurrentIndex(idx);
     }
 }
 
 void
-CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel) {
+CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel)
+{
 
     Q_UNUSED(oldSel)
 
-    if (newSel.indexes().empty())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        return;
-    }
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
         return;
 
-    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
-    auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
+    smartListDelegate_->setSelectedRow(newIdx);
+    auto newIdxCall = RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(newIdx));
 
     if (newIdxCall == actualCall_)
         return;
-    if (newIdxCall) {
+    if (newIdxCall)
+    {
         setActualCall(newIdxCall);
-        ui->stackedWidget->setCurrentWidget(ui->videoPage);
-    } else {
+        if(newIdxCall->state() == Call::State::RINGING)
+        {
+            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+        }
+        else if(newIdxCall->state() == Call::State::INCOMING)
+        {
+            ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        }
+        else
+        {
+            ui->stackedWidget->setCurrentWidget(ui->videoPage);
+        }
+    } 
+    else
+    {
         setActualCall(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
