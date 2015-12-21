@@ -61,7 +61,6 @@ public slots:
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
     void on_btnchat_clicked();
-    inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
 private slots:
@@ -94,7 +93,6 @@ private:
     ContactDelegate* contactDelegate_;
     HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
-    QModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
 

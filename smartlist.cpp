@@ -19,28 +19,20 @@
 #include <QStyledItemDelegate>
 #include <qevent.h>
 #include <QTreeWidgetItem>
+#include <QScrollBar>
 
 #include "smartlistdelegate.h"
 #include "combar.h"
-#include "smartlistscrollbar.h"
 #include "smartlist.h"
+
+#include <QDebug>
 
 SmartList::SmartList(QWidget *parent) :
     QTreeView(parent),
-    comBar_(new ComBar(this)),
-    smartListScrollBar_(new SmartListScrollBar(this))
+    comBar_(new ComBar(this))
 {
-    setMouseTracking(true);
-    setHeaderHidden(true);
-
-    setVerticalScrollBar(smartListScrollBar_);
-    connect(smartListScrollBar_
-           , &SmartListScrollBar::enterSignal
-           , [=]()
-             {
-                 smartListDelegate_->setRowHighlighted(-1);
-                 currentRow_ = -1;
-             });
+    verticalScrollBar()->installEventFilter( this );
+    comBar_->installEventFilter( this );
 }
 
 SmartList::~SmartList()
@@ -49,92 +41,32 @@ SmartList::~SmartList()
 }
 
 void
-SmartList::enterEvent(QEvent* event)
-{
-    Q_UNUSED(event);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
-}
-
-void
 SmartList::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event);
 
-    smartListDelegate_->setRowHighlighted(-1);
-
-    currentRow_ = -1;
-
     if (smartListDelegate_)
-        smartListDelegate_->setRowHighlighted(currentRow_);
+        smartListDelegate_->setHoveredRow(QModelIndex());
 
-    setStyleSheet(
-    "QScrollBar:vertical { background:white; width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(255, 255, 255) }"
-   );
+    repaint();
 
-    comBar_->hide();
-}
-
-void
-SmartList::wheelEvent(QWheelEvent* event)
-{
-    currentRow_ = -1;
-
-    comBar_->hide();
-
-    smartListDelegate_->setRowHighlighted(currentRow_);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
-
-    QTreeView::wheelEvent(event);
 }
 
 void
 SmartList::paintEvent(QPaintEvent* event)
 {
-    QTreeView::paintEvent(event);
+    Q_UNUSED(event);
 
-    if (currentRow_ > -1)
-        comBar_->show();
-    else
-        comBar_->hide();
-}
+    event = new QPaintEvent(QRect(0, 0, width(), height()));
+    QPoint p = this->mapFromGlobal(QCursor::pos());
+    QModelIndex index = indexAt(p);
 
-void
-SmartList::mouseMoveEvent(QMouseEvent* event)
-{
-    QModelIndex index = indexAt(event->pos());
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
-
-    currentRow_ = index.row();
-
-    if (smartListDelegate_)
+    if (smartListDelegate_ && index.isValid())
     {
-        smartListDelegate_->setRowHighlighted(currentRow_);
-
-        if (currentRow_ > -1)
-            comBar_->show();
-        else
-            comBar_->hide();
+        smartListDelegate_->setHoveredRow(index);
     }
-    QTreeView::mouseMoveEvent(event);
+
+    QTreeView::paintEvent(event);
 }
 
 void
@@ -144,6 +76,27 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
     {
         setItemDelegate(delegate);
         smartListDelegate_ = delegate;
-        connect(smartListDelegate_ , &SmartListDelegate::rowSelected , comBar_, &ComBar::moveToRow);
+        connect(smartListDelegate_ , &SmartListDelegate::rowHovering , comBar_, &ComBar::moveToRow);
     }
+}
+
+bool
+SmartList::eventFilter(QObject* watched, QEvent* event)
+{
+    if ( qobject_cast<QScrollBar*>(watched) 
+                                && ( event->type() == QEvent::Wheel
+                                   || event->type() == QEvent::Enter ) )
+    {
+        if (smartListDelegate_)
+            smartListDelegate_->setHoveredRow(QModelIndex());
+
+        repaint();
+
+    }
+    else if ( qobject_cast<ComBar*>(watched) && event->type() == QEvent::Wheel  )
+    {
+        wheelEvent(static_cast<QWheelEvent*>(event));
+    }
+
+    return QObject::eventFilter(watched, event);
 }
