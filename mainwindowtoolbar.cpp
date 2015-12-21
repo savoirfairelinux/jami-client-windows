@@ -61,7 +61,7 @@ MainWindowToolBar::paintEvent(QPaintEvent* event)
     QBrush background(QColor(63, 63, 63));
 
     painter.setBrush(background);
-    painter.setPen  (Qt::NoPen ); // No stroke
+    painter.setPen(Qt::NoPen ); // No stroke
     painter.drawRect(0, 0, width(), height());
 }
 
