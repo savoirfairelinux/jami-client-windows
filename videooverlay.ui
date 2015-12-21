@@ -71,15 +71,18 @@
     <widget class="QPushButton" name="addPersonButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Add person</string>
      </property>
      <property name="text">
       <string/>
@@ -96,15 +99,18 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Toggle video</string>
      </property>
      <property name="text">
       <string/>
@@ -118,15 +124,18 @@
     <widget class="QPushButton" name="transferButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Transfer</string>
      </property>
      <property name="text">
       <string/>
@@ -137,15 +146,18 @@
     <widget class="QPushButton" name="holdButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Hold</string>
      </property>
      <property name="text">
       <string/>
@@ -159,15 +171,18 @@
     <widget class="QPushButton" name="chatButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Chat</string>
      </property>
      <property name="text">
       <string/>
@@ -197,15 +212,18 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Toggle microphone</string>
      </property>
      <property name="text">
       <string/>
@@ -263,15 +281,18 @@
     <widget class="QPushButton" name="joinButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Join</string>
      </property>
      <property name="text">
       <string/>
@@ -295,15 +316,18 @@
     <widget class="QPushButton" name="hangupButton">
      <property name="minimumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>48</width>
+       <height>48</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Hang-up</string>
      </property>
      <property name="text">
       <string/>

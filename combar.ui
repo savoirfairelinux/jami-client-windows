@@ -33,13 +33,13 @@
     <number>0</number>
    </property>
    <property name="topMargin">
-    <number>7</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
     <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>7</number>
+    <number>0</number>
    </property>
    <item>
     <widget class="QPushButton" name="btnvideo">
@@ -61,6 +61,9 @@
        <height>30</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>Call</string>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -79,6 +82,9 @@
        <width>30</width>
        <height>30</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Chat</string>
      </property>
      <property name="text">
       <string/>
@@ -99,6 +105,9 @@
        <height>30</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>Info</string>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -106,8 +115,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
