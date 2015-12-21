@@ -65,8 +65,7 @@ SOURCES += main.cpp\
     idlabel.cpp \
     smartlist.cpp \
     mainwindowtoolbar.cpp \
-    ringcontactlineedit.cpp \
-    smartlistscrollbar.cpp
+    ringcontactlineedit.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -99,8 +98,7 @@ HEADERS  += mainwindow.h \
     idlabel.h \
     smartlist.h \
     mainwindowtoolbar.h \
-    ringcontactlineedit.h \
-    smartlistscrollbar.h
+    ringcontactlineedit.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
