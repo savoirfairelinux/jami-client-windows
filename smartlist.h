@@ -40,9 +40,8 @@ protected:
     void paintEvent(QPaintEvent* event);
 
 private:
-  int currentRow_ = -1;
-  SmartListDelegate* smartListDelegate_;
-  ComBar* comBar_;
-  SmartListScrollBar* smartListScrollBar_;
+    SmartListDelegate* smartListDelegate_;
+    ComBar* comBar_;
+    SmartListScrollBar* smartListScrollBar_;
 
 };
