@@ -16,7 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include <QDebug>
 #include <QIcon>
 #include <QtWidgets/QApplication>
 
@@ -25,12 +24,6 @@
 RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
     QLineEdit(parent)
 {
-    QPalette palette;
-    palette.setColor(QPalette::Base, QColor(242, 242, 242));
-    setPalette(palette);
-
-    setFrame(false);
-
     addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
 }
 
