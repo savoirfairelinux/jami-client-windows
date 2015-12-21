@@ -28,12 +28,14 @@
 #include "call.h"
 
 SmartListDelegate::SmartListDelegate(QObject* parent) :
-    QStyledItemDelegate(parent)
+    QStyledItemDelegate(parent),
+    hoveredRow_(QModelIndex()),
+    selectedRow_(QModelIndex())
 {
 }
 
 void
-SmartListDelegate::paint(QPainter* painter
+SmartListDelegate::paint( QPainter* painter
                         , const QStyleOptionViewItem& option
                         , const QModelIndex& index
                         ) const
@@ -43,30 +45,32 @@ SmartListDelegate::paint(QPainter* painter
     QFont font(painter->font());
     font.setPointSize(10);
 
-    const int currentRow = index.row();
-
     QRect rect = opt.rect;
-    rect.setLeft(0);
 
     QRect rectTexts(16 + rect.left() + dx+sizeImage_, rect.top(), rect.width(), rect.height()/2);
     QRect rectAvatar(16 + rect.left(), rect.top() + dy, sizeImage_, sizeImage_);
 
-    QLinearGradient linearGradient(0, 0, 100, 100);
-    linearGradient.setColorAt(0.0, Qt::white);
-    linearGradient.setColorAt(1.0, Qt::black);
-
-    if (currentRow == rowHighlighted_)
+    if (index == hoveredRow_)
     {
-        painter->fillRect(opt.rect, QColor(242, 242, 242));
-        emit rowSelected(opt.rect);
+        painter->fillRect(rect, QColor(242, 242, 242));
+    }
+    else if ( RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)) )
+    {
+        painter->fillRect(rect, QColor(235, 235, 235));
+    }
+    else if (index == selectedRow_)
+    {
+        painter->fillRect(rect, QColor(229, 229, 229));
     }
 
     QPen pen(painter->pen());
     pen.setColor(QColor(242, 242, 242));
     painter->setPen(pen);
+
     painter->drawLine(rect.left() + 20, rect.bottom(),
                       rect.right() - 20,
                       rect.bottom());
+
     if (index.column() == 0)
     {
         painter->setPen(pen);
@@ -85,8 +89,10 @@ SmartListDelegate::paint(QPainter* painter
 
         pen.setColor(QColor(192, 192, 192));
         painter->setPen(pen);
+
         font.setBold(false);
         painter->setFont(font);
+
         rectTexts.moveTop(cellHeight_/2);
 
         if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
@@ -121,21 +127,42 @@ SmartListDelegate::paint(QPainter* painter
             painter->drawImage(rectAvatar, defaultImage);
         }
 
-        if (currentRow == rowHighlighted_)
+        if (index == hoveredRow_)
         {
-            QLinearGradient gradient(opt.rect.topLeft(),opt.rect.topRight());
-            gradient.setColorAt(0.65,    QColor(242, 242, 242, 0));
-            gradient.setColorAt(0.75,    QColor(242, 242, 242, 255));
+            QLinearGradient gradient(rect.topLeft(),rect.topRight());
 
-            painter->fillRect(opt.rect, gradient);
+            gradient.setColorAt(0.55, QColor(242, 242, 242, 0));
+            gradient.setColorAt(0.65, QColor(242, 242, 242, 255));
+
+            painter->fillRect(rect, gradient);
+
+        }
+        else if (index == selectedRow_)
+        {
+                QLinearGradient gradient(rect.topLeft(),rect.topRight());
+
+                gradient.setColorAt(0.8, QColor(229,229,229,0));
+                gradient.setColorAt(1.0, QColor(229,229,229,255));
+
+                painter->fillRect(rect, gradient);
+        }
+        else if (RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
+        {
+            QLinearGradient gradient(rect.topLeft(),rect.topRight());
+
+            gradient.setColorAt(0.8, QColor(235, 235, 235, 0));
+            gradient.setColorAt(1.0, QColor(235, 235, 235, 235));
+
+            painter->fillRect(rect, gradient);
         }
         else
         {
-            QLinearGradient gradient(opt.rect.topLeft(),opt.rect.topRight());
-            gradient.setColorAt(0.8,    QColor(255, 255, 255, 0));
-            gradient.setColorAt(1.0,    QColor(255, 255, 255, 255));
+            QLinearGradient gradient(rect.topLeft(),rect.topRight());
 
-            painter->fillRect(opt.rect, gradient);
+            gradient.setColorAt(0.8, QColor(255, 255, 255, 0));
+            gradient.setColorAt(1.0, QColor(255, 255, 255, 255));
+
+            painter->fillRect(rect, gradient);
         }
     }
     else
