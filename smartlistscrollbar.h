@@ -30,6 +30,7 @@ public:
 
 protected:
     void enterEvent(QEvent* event);
+    void wheelEvent(QWheelEvent* event);
 
 signals:
     void enterSignal() const;
