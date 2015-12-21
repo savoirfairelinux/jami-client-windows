@@ -22,24 +22,24 @@
 
 #include "smartlistdelegate.h"
 #include "combar.h"
-#include "smartlistscrollbar.h"
 #include "smartlist.h"
+#include "smartlistscrollbar.h"
 
 SmartList::SmartList(QWidget *parent) :
     QTreeView(parent),
     comBar_(new ComBar(this)),
     smartListScrollBar_(new SmartListScrollBar(this))
 {
-    setMouseTracking(true);
-    setHeaderHidden(true);
+    comBar_->hide();
 
     setVerticalScrollBar(smartListScrollBar_);
     connect(smartListScrollBar_
            , &SmartListScrollBar::enterSignal
            , [=]()
              {
-                 smartListDelegate_->setRowHighlighted(-1);
-                 currentRow_ = -1;
+                 comBar_->hide();
+                 smartListDelegate_->setHoveredRow(QModelIndex());
+                 repaint();
              });
 }
 
@@ -52,13 +52,6 @@ void
 SmartList::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
 }
 
 void
@@ -66,36 +59,21 @@ SmartList::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event);
 
-    smartListDelegate_->setRowHighlighted(-1);
-
-    currentRow_ = -1;
-
     if (smartListDelegate_)
-        smartListDelegate_->setRowHighlighted(currentRow_);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background:white; width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(255, 255, 255) }"
-   );
+        smartListDelegate_->setHoveredRow(QModelIndex());
 
     comBar_->hide();
+    repaint();
+
 }
 
 void
 SmartList::wheelEvent(QWheelEvent* event)
 {
-    currentRow_ = -1;
-
     comBar_->hide();
 
-    smartListDelegate_->setRowHighlighted(currentRow_);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
+    if (smartListDelegate_)
+        smartListDelegate_->setHoveredRow(QModelIndex());
 
     QTreeView::wheelEvent(event);
 }
@@ -103,38 +81,30 @@ SmartList::wheelEvent(QWheelEvent* event)
 void
 SmartList::paintEvent(QPaintEvent* event)
 {
-    QTreeView::paintEvent(event);
+    event = new QPaintEvent(QRect(0, 0, width(), height()));
+    QPoint p = this->mapFromGlobal(QCursor::pos());
+    QModelIndex index = indexAt(p);
 
-    if (currentRow_ > -1)
+    if (smartListDelegate_ && index.isValid())
+    {
+        smartListDelegate_->setHoveredRow(index);
         comBar_->show();
-    else
-        comBar_->hide();
+    }
+
+    QTreeView::paintEvent(event);
 }
 
 void
 SmartList::mouseMoveEvent(QMouseEvent* event)
 {
+    Q_UNUSED(event);
     QModelIndex index = indexAt(event->pos());
 
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
-
-    repaint(0, 0, width(), height());
-
-    currentRow_ = index.row();
-
-    if (smartListDelegate_)
+    if (smartListDelegate_ && index.isValid())
     {
-        smartListDelegate_->setRowHighlighted(currentRow_);
-
-        if (currentRow_ > -1)
-            comBar_->show();
-        else
-            comBar_->hide();
+        smartListDelegate_->setHoveredRow(index);
+        comBar_->show();
     }
-    QTreeView::mouseMoveEvent(event);
 }
 
 void
@@ -144,6 +114,6 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
     {
         setItemDelegate(delegate);
         smartListDelegate_ = delegate;
-        connect(smartListDelegate_ , &SmartListDelegate::rowSelected , comBar_, &ComBar::moveToRow);
+        connect(smartListDelegate_ , &SmartListDelegate::rowHovering , comBar_, &ComBar::moveToRow);
     }
 }
