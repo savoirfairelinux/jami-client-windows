@@ -26,6 +26,7 @@ ComBar::ComBar(QWidget* parent) :
     ui->setupUi(this);
 
     // [jn] these buttons are for further uses
+    ui->btnchat->hide();
     ui->btncontactinfo->hide();
 }
 
