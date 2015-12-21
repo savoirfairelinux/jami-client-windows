@@ -18,6 +18,10 @@ QWidget#callInvitePage{
     background-color : rgb( 77, 77, 77 );
 }
 
+QWidget#outboundCallPage{
+    background-color : rgb( 77, 77, 77 );
+}
+
 QPushButton#btnvideo{
     border-image: url(:/images/hover-contact/btn-video.svg);
 }
@@ -30,13 +34,13 @@ QPushButton#btncontactinfo{
     border-image: url(:/images/hover-contact/btn-contactinfo.svg);
 }
 
-IdLabel{
+IdLabel#ringIdLabel{
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 192, 212);
 }
 
-RingContactLineEdit {
+QLineEdit#ringContactLineEdit {
     border-color: rgb(242, 242, 242);
     border-radius: 5px;
     border-width: 2px;
@@ -44,11 +48,12 @@ RingContactLineEdit {
 }
 
 QScrollBar:vertical {
-    background:white; width:0px;
+    background: rgb(242, 242, 242);
+    width:10px;
 }
 
 QScrollBar::handle:vertical {
-    background: rgb( 255, 255, 255 )
+    background: rgb(77, 77, 77);
 }
 
 SmartList{

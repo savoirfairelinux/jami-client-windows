@@ -17,6 +17,7 @@
  **************************************************************************/
 
 #include "smartlistscrollbar.h"
+#include <qevent.h>
 
 SmartListScrollBar::SmartListScrollBar(QWidget* parent) : QScrollBar(parent)
 {
@@ -30,5 +31,16 @@ void
 SmartListScrollBar::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
+    
     emit enterSignal();
+    
+}
+
+void
+SmartListScrollBar::wheelEvent(QWheelEvent* event)
+{
+    if(event->buttons() == Qt::LeftButton)
+        return;
+
+    QScrollBar::wheelEvent(event);
 }
