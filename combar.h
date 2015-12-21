@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QModelIndex>
 
 namespace Ui {
 class ComBar;
@@ -30,10 +31,12 @@ class ComBar : public QWidget
 public:
     explicit ComBar(QWidget* parent = 0);
     ~ComBar();
+    QModelIndex* currentHoveredRow(){ return &hoveredRow_; };
 
 public slots:
-    void moveToRow(const QRect& rect);
+    void moveToRow(const QModelIndex& index, const QRect& rect);
 
 private:
     Ui::ComBar* ui;
+    QModelIndex hoveredRow_;
 };
