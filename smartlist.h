@@ -31,18 +31,16 @@ public:
     explicit SmartList(QWidget* parent = 0);
     ~SmartList();
     void setSmartListItemDelegate(SmartListDelegate* delegate);
+    inline ComBar* getComBar(){ return comBar_; };
 
 protected:
-    void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
-    void mouseMoveEvent(QMouseEvent* event);
-    void wheelEvent(QWheelEvent* event);
     void paintEvent(QPaintEvent* event);
+    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
-  int currentRow_ = -1;
-  SmartListDelegate* smartListDelegate_;
-  ComBar* comBar_;
-  SmartListScrollBar* smartListScrollBar_;
+    SmartListDelegate* smartListDelegate_;
+    ComBar* comBar_;
+    QScrollBar* smartListScrollBar_;
 
 };
