@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_22d196fb",
+        "filename": "combar.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-28T13:57:57Z",
+      "side": 1,
+      "message": "thx!",
+      "parentUuid": "1a9dcd25_22caf64f",
+      "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_e2c3ae36",
         "filename": "smartlistdelegate.h",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-26T02:16:59Z",
       "side": 1,
       "message": "Idem",
+      "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c2e232d5",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-28T13:57:57Z",
+      "side": 1,
+      "message": "idem",
+      "parentUuid": "1a9dcd25_e2c3ae36",
       "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_62e79ee5",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-28T13:57:57Z",
+      "side": 1,
+      "message": "idem",
+      "parentUuid": "1a9dcd25_42c70246",
+      "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_02c1fa2d",
         "filename": "smartlistscrollbar.h",
         "patchSetId": 11
@@ -64,6 +118,24 @@
       "writtenOn": "2015-12-26T02:16:59Z",
       "side": 1,
       "message": "It is sometime cleaner/easier to use event filters rather than those methods (separation of concerns)",
+      "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_82ec2ac9",
+        "filename": "smartlistscrollbar.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-28T13:57:57Z",
+      "side": 1,
+      "message": "I never used event filters, I`ll check that",
+      "parentUuid": "1a9dcd25_02c1fa2d",
       "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
