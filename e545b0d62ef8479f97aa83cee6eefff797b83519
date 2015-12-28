@@ -139,6 +139,24 @@
       "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8203ca72",
+        "filename": "smartlistscrollbar.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2015-12-28T16:43:51Z",
+      "side": 1,
+      "message": "thx btw! I was able to fix some problems and get the code more clear and less ambiguous...",
+      "parentUuid": "1a9dcd25_82ec2ac9",
+      "revId": "e545b0d62ef8479f97aa83cee6eefff797b83519",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
