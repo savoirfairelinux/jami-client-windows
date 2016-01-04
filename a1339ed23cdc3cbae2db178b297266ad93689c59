@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_222516c2",
+        "filename": "callwidget.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-04T17:12:50Z",
+      "side": 1,
+      "message": "should be calling",
+      "range": {
+        "startLine": 309,
+        "startChar": 12,
+        "endLine": 309,
+        "endChar": 19
+      },
+      "revId": "a1339ed23cdc3cbae2db178b297266ad93689c59",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4222a2ba",
+        "filename": "callwidget.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-04T17:12:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 313,
+        "startChar": 12,
+        "endLine": 313,
+        "endChar": 19
+      },
+      "revId": "a1339ed23cdc3cbae2db178b297266ad93689c59",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e22e4ea5",
+        "filename": "callwidget.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-04T17:12:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 317,
+        "startChar": 12,
+        "endLine": 317,
+        "endChar": 19
+      },
+      "revId": "a1339ed23cdc3cbae2db178b297266ad93689c59",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_022c9aaa",
+        "filename": "callwidget.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-04T17:12:50Z",
+      "side": 1,
+      "message": "hum... why ?",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 57
+      },
+      "revId": "a1339ed23cdc3cbae2db178b297266ad93689c59",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
