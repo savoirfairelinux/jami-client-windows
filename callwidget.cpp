@@ -33,7 +33,7 @@
 #include "person.h"
 #include "fallbackpersoncollection.h"
 #include "categorizedcontactmodel.h"
-#include "localhistorycollection.h"
+#include "sqlitehistorycollection.h"
 #include "media/text.h"
 #include "media/recording.h"
 #include "media/recordingmodel.h"
@@ -104,7 +104,7 @@ CallWidget::CallWidget(QWidget* parent) :
         ui->contactView->setItemDelegate(contactDelegate_);
 
         CategorizedHistoryModel::instance().
-                addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
+                addCollection<SqliteHistoryCollection>(LoadOptions::FORCE_ENABLED);
 
         ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance().model());
         CategorizedHistoryModel::SortedProxy::instance().model()->sort(0, Qt::DescendingOrder);
