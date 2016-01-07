@@ -629,7 +629,7 @@ Ring is a secured and distributed communication software.</string>
          </font>
         </property>
         <property name="text">
-         <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;© 2015 Savoir-faire Linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;© 2015-2016 Savoir-faire Linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="margin">
          <number>5</number>
