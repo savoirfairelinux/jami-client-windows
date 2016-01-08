@@ -52,11 +52,12 @@ public:
     ~CallWidget();
     void atExit();
 
+public slots:
+    void contactButton_clicked(bool checked);
+    void settingsButton_clicked();
+    void historicButton_clicked(bool checked);
 //UI SLOTS
 public slots:
-    void on_contactButton_clicked(bool checked);
-    void on_settingsButton_clicked();
-    void on_historicButton_clicked(bool checked);
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();

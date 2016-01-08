@@ -436,19 +436,19 @@ CallWidget::placeCall()
 }
 
 void
-CallWidget::on_settingsButton_clicked()
+CallWidget::settingsButton_clicked()
 {
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
 void
-CallWidget::on_contactButton_clicked(bool checked)
+CallWidget::contactButton_clicked(bool checked)
 {
     ui->mainTabMenu->setCurrentIndex(checked ? 1 : 0);
 }
 
 void
-CallWidget::on_historicButton_clicked(bool checked)
+CallWidget::historicButton_clicked(bool checked)
 {
     ui->mainTabMenu->setCurrentIndex(checked ? 2 : 0);
 }

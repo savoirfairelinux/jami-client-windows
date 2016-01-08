@@ -86,11 +86,11 @@ MainWindow::MainWindow(QWidget *parent) :
     auto callWidget = static_cast<CallWidget*>(navStack_->getNavWidget(ScreenEnum::CallScreen));
 
     connect(mwToolBar_->getSettingsButton(), &QAction::triggered,
-            callWidget, &CallWidget::on_settingsButton_clicked);
+            callWidget, &CallWidget::settingsButton_clicked);
     connect(mwToolBar_->getHistoryButton(), &QAction::triggered,
-            callWidget, &CallWidget::on_historicButton_clicked);
+            callWidget, &CallWidget::historicButton_clicked);
     connect(mwToolBar_->getContactListButton(), &QAction::triggered,
-            callWidget, &CallWidget::on_contactButton_clicked);
+            callWidget, &CallWidget::contactButton_clicked);
 
 #ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
