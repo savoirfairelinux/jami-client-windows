@@ -26,6 +26,7 @@
 //ERROR is defined in windows.h
 #include "utils.h"
 #undef ERROR
+#undef interface
 
 #include "audio/settings.h"
 #include "personmodel.h"
@@ -38,6 +39,7 @@
 #include "media/textrecording.h"
 #include "recentmodel.h"
 #include "contactmethod.h"
+#include "globalinstances.h"
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
@@ -48,6 +50,7 @@
 #include "contactdelegate.h"
 #include "smartlistdelegate.h"
 #include "imdelegate.h"
+#include "pixbufmanipulator.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
@@ -90,6 +93,8 @@ CallWidget::CallWidget(QWidget* parent) :
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
+
+    GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
     try {
         callModel_ = &CallModel::instance();
@@ -170,7 +175,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
         findRingAccount();
         ui->listMessageView->setItemDelegate(imDelegate_);
-
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
     }
@@ -247,7 +251,7 @@ CallWidget::callIncoming(Call* call)
 
     if (!call->account()->isAutoAnswer()) {
         ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
-                               .arg(call->formattedName()));
+                                   .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
         ui->callInvite->setVisible(true);
         ui->callInvite->raise();
@@ -299,12 +303,12 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-//TODO : Link this so that recentModel get selected correctly
-//        auto onHoldCall = callModel_->getActiveCalls().first();
-//        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
-//            setActualCall(onHoldCall);
-//            onHoldCall->performAction(Call::Action::HOLD);
-//        }
+        //TODO : Link this so that recentModel get selected correctly
+        //        auto onHoldCall = callModel_->getActiveCalls().first();
+        //        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
+        //            setActualCall(onHoldCall);
+        //            onHoldCall->performAction(Call::Action::HOLD);
+        //        }
     } else if (call->state() == Call::State::CURRENT) {
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
@@ -414,11 +418,12 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
     auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
     auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
 
-    if (newIdxCall == actualCall_)
-        return;
-    if (newIdxCall) {
+    if (newIdxCall && newIdxCall != actualCall_) {
         setActualCall(newIdxCall);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
+    } else if (newIdxCall == nullptr){
+        setActualCall(nullptr);
+        showIMOutOfCall();
     } else {
         setActualCall(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
@@ -475,7 +480,7 @@ CallWidget::on_btnvideo_clicked()
 }
 
 void
-CallWidget::on_btnchat_clicked()
+CallWidget::showIMOutOfCall()
 {
     if (not highLightedIndex_.isValid())
         return;
@@ -487,12 +492,10 @@ CallWidget::on_btnchat_clicked()
     auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(highLightedIndex_);
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
     foreach (const ContactMethod* cm, cmVector) {
-       ui->contactMethodComboBox->addItem(cm->uri());
+        ui->contactMethodComboBox->addItem(cm->uri());
     }
 
-    ui->stackedWidget->currentWidget() == ui->messagingPage ?
-                ui->stackedWidget->setCurrentWidget(ui->welcomePage) :
-                ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
 }
 
 void
@@ -525,9 +528,9 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
         ui->listMessageView->setModel(txtRecording->instantMessagingModel());
         disconnect(imConnection_);
         imConnection_ = connect(txtRecording,
-                SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
-                this,
-                SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
+                                SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
+                                this,
+                                SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
         ui->listMessageView->scrollToBottom();
     }
 }
