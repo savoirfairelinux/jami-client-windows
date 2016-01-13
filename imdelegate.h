@@ -18,11 +18,8 @@
 
 #pragma once
 
-#include <QObject>
-#include <QApplication>
 #include <QPainter>
 #include <QStyledItemDelegate>
-#include <QSettings>
 
 class ImDelegate : public QStyledItemDelegate
 {
@@ -36,10 +33,18 @@ public:
 
     void setDisplayOptions(DisplayOptions opt);
 protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 private:
     bool showDate_;
     bool showAuthor_;
+
+    void formatMsg(const QModelIndex& index, QString& msg) const;
+    QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
+
+    const QColor blue {"#3AC0D2"};
+    const QColor grey {"#f2f2f2"};
+    const QSize iconSize_ {38,38};
+    constexpr static int padding_ = 5;
 };
 
