@@ -74,6 +74,7 @@ private slots:
     void on_sendButton_clicked();
     void on_messageEdit_returnPressed();
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
+    void on_ringContactLineEdit_textEdited(const QString& text);
 
 private slots:
     void callIncoming(Call* call);
