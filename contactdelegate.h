@@ -35,6 +35,6 @@ protected:
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
-    constexpr static int sizeImage_ = 49;
+    constexpr static int sizeImage_ = 48;
 };
 
