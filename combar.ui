@@ -67,25 +67,6 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnchat">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QPushButton" name="btncontactinfo">
      <property name="minimumSize">
       <size>
@@ -106,8 +87,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
