@@ -19,11 +19,11 @@
 #pragma once
 
 #include <QObject>
-#include <QStyledItemDelegate>
+#include <QItemDelegate>
 
 class QPainter;
 
-class SmartListDelegate : public QStyledItemDelegate
+class SmartListDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
@@ -38,9 +38,13 @@ private:
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;
     constexpr static int cellWidth_ = 324;
-    constexpr static int dy = 6;
-    constexpr static int dx = 12;
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
     int rowHighlighted_ = -1;
+
+    const QColor lightGrey_ {242, 242, 242};
+    const QColor lightBlack_ {63, 63, 63};
+    const QColor grey_ {192, 192, 192};
 
 signals:
     void rowSelected(const QRect& rect) const;
