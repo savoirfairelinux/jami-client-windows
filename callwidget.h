@@ -61,7 +61,7 @@ public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
-    void on_btnchat_clicked();
+    void showIMOutOfCall();
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
@@ -84,6 +84,8 @@ private slots:
     void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
 
+    void on_backButton_clicked();
+
 private:
     Ui::CallWidget* ui;
     Call* actualCall_;
@@ -103,5 +105,7 @@ private:
     void findRingAccount();
     void setActualCall(Call* value);
     void placeCall();
+    void setupOutOfCallIM();
+    void setupSmartListMenu();
 };
 
