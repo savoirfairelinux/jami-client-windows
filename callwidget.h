@@ -61,7 +61,7 @@ public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
-    void on_btnchat_clicked();
+    void showIMOutOfCall();
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
@@ -103,5 +103,7 @@ private:
     void findRingAccount();
     void setActualCall(Call* value);
     void placeCall();
+    void setupOutOfCallIM();
+    void setupSmartListMenu();
 };
 
