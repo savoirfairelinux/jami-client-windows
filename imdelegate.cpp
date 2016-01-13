@@ -21,67 +21,120 @@
 #include "media/text.h"
 #include "media/textrecording.h"
 
+#include <QApplication>
+
 ImDelegate::ImDelegate(QObject *parent)
     : QStyledItemDelegate(parent), showDate_(false), showAuthor_(false)
 {}
 
 void ImDelegate::setDisplayOptions(ImDelegate::DisplayOptions opt)
 {
-    qDebug() << opt;
     showAuthor_ = opt & DisplayOptions::AUTHOR;
     showDate_ = opt & DisplayOptions::DATE;
+    emit sizeHintChanged(QModelIndex());
 }
 
 void
-ImDelegate::paint(QPainter *painter,
-                  const QStyleOptionViewItem &option,
-                  const QModelIndex &index) const
+ImDelegate::formatMsg(const QModelIndex& index, QString& msg) const
+{
+    if (showAuthor_) {
+        auto author = index.data(
+                    static_cast<int>(Media::TextRecording::Role::AuthorDisplayname)).toString();
+        msg = QString("(%1)\n%2").arg(author, msg);
+    }
+    if (showDate_) {
+        auto formattedDate = index.data(
+                    static_cast<int>(Media::TextRecording::Role::FormattedDate)).toString();
+        msg = QString("%2\n%1").arg(formattedDate, msg);
+    }
+}
+
+void
+ImDelegate::paint(QPainter* painter,
+                  const QStyleOptionViewItem& option,
+                  const QModelIndex& index) const
 {
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
 
     if (index.isValid()) {
-
-        auto msg = index.model()->data(index, Qt::DisplayRole).toString();
+        auto msg = index.data(Qt::DisplayRole).toString();
         opt.text.clear();
-        QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
-        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
-        auto rect = opt.rect;
+        QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
         QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled
                 ? QPalette::Normal : QPalette::Disabled;
         if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
             cg = QPalette::Inactive;
-        painter->setPen(opt.palette.color(cg, QPalette::Text));
-        painter->setOpacity(1.0);
-        auto dir = index.model()->data(
-                    index,
-                    static_cast<int>(Media::TextRecording::Role::Direction))
+
+        auto dir = index.data(static_cast<int>(Media::TextRecording::Role::Direction))
                 .value<Media::Media::Direction>() == Media::Media::Direction::IN
                 ? Qt::AlignLeft : Qt::AlignRight;
 
-        if (showAuthor_) {
-            auto author = index.model()->
-                    data(index,
-                         static_cast<int>(Media::TextRecording::Role::AuthorDisplayname)).toString();
-            msg = QString("(%1) %2").arg(author, msg);
+        formatMsg(index, msg);
+
+        QRect textRect = getBoundingRect(dir, msg, opt);
+        QRect bubbleRect(textRect.left() - padding_, textRect.top() - padding_, textRect.width() + padding_, textRect.height() + padding_);
+        bubbleRect.setBottom(bubbleRect.bottom() + padding_);
+        bubbleRect.setRight(bubbleRect.right() + padding_);
+        opt.decorationSize = iconSize_;
+        opt.decorationPosition = (dir == Qt::AlignRight ? QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
+        opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
+        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
+        if (dir == Qt::AlignRight) {
+            painter->fillRect(bubbleRect, blue);
         }
-        if (showDate_) {
-            auto formattedDate = index.model()->
-                    data(index,
-                         static_cast<int>(Media::TextRecording::Role::FormattedDate)).toString();
-            msg = QString("[%1] %2").arg(formattedDate, msg);
+        else {
+            painter->fillRect(bubbleRect, grey);
         }
-        painter->drawText(QRect(rect.left(), rect.top(), rect.width(), rect.height()),
-                          dir, msg);
+        painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, msg);
     }
 }
 
-QSize
-ImDelegate::sizeHint(const QStyleOptionViewItem &option,
-                     const QModelIndex &index) const
+QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const
 {
-    QSize result = QStyledItemDelegate::sizeHint(option, index);
-    result.setHeight(result.height());
-    return result;
+    QFont textFont = option.font;
+    QFontMetrics textFontMetrics(textFont);
+    QRect textRect;
+
+    if (dir == Qt::AlignRight) {
+        textRect = textFontMetrics.boundingRect(option.rect.left(),
+                                                option.rect.top() + padding_,
+                                                option.rect.width() - iconSize_.width() - 2 * padding_,
+                                                0,
+                                                dir|Qt::AlignTop|Qt::TextWordWrap,
+                                                msg);
+    } else {
+        textRect = textFontMetrics.boundingRect(option.rect.left() + iconSize_.width() + 2 * padding_,
+                                                option.rect.top() + padding_,
+                                                option.rect.width() - iconSize_.width(),
+                                                0,
+                                                dir|Qt::AlignTop|Qt::TextWordWrap,
+                                                msg);
+    }
+    return textRect;
+}
+
+QSize
+ImDelegate::sizeHint(const QStyleOptionViewItem& option,
+                     const QModelIndex& index) const
+{
+    QString msg = index.data(Qt::DisplayRole).toString();
+
+    auto dir = index.data(
+                static_cast<int>(Media::TextRecording::Role::Direction))
+            .value<Media::Media::Direction>() == Media::Media::Direction::IN
+            ? Qt::AlignLeft : Qt::AlignRight;
+
+    formatMsg(index, msg);
+
+    QRect subheaderRect = getBoundingRect(dir, msg, option);
+
+    QSize size(option.rect.width(), subheaderRect.height() + 3 * padding_);
+
+    /* Keep the minimum height needed. */
+    if(size.height() < iconSize_.height())
+        size.setHeight(iconSize_.height() + 3 * padding_);
+
+    return size;
 }
 
