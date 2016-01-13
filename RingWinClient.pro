@@ -66,7 +66,8 @@ SOURCES += main.cpp\
     smartlist.cpp \
     mainwindowtoolbar.cpp \
     ringcontactlineedit.cpp \
-    smartlistscrollbar.cpp
+    smartlistscrollbar.cpp \
+    pixbufmanipulator.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -100,7 +101,8 @@ HEADERS  += mainwindow.h \
     smartlist.h \
     mainwindowtoolbar.h \
     ringcontactlineedit.h \
-    smartlistscrollbar.h
+    smartlistscrollbar.h \
+    pixbufmanipulator.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
