@@ -111,6 +111,8 @@ CallWidget::CallWidget(QWidget* parent) :
                 , this
                 , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
 
+        RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
+        RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
         connect(ui->smartList->selectionModel(),
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -610,4 +612,10 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
     Q_UNUSED(dir)
 
     ui->listMessageView->scrollToBottom();
+}
+
+void
+CallWidget::on_ringContactLineEdit_textEdited(const QString& text)
+{
+    RecentModel::instance().peopleProxy()->setFilterWildcard(text);
 }
