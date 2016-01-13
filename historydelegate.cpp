@@ -37,8 +37,12 @@ HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
         Call::Direction direction = index.model()->data(index, static_cast<int>(Call::Role::Direction)).value<Call::Direction>();
 
         opt.text.clear();
+        opt.decorationSize = QSize(imgSize_,imgSize_);
+        opt.decorationPosition = QStyleOptionViewItem::Left;
+        opt.decorationAlignment = Qt::AlignCenter;
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
+
         auto rect = opt.rect;
         QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ? QPalette::Normal : QPalette::Disabled;
         if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
@@ -46,11 +50,11 @@ HistoryDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
         painter->setPen(opt.palette.color(cg, QPalette::Text));
         painter->setOpacity(1.0);
         if (not number.isEmpty()) {
-            painter->drawText(QRect(rect.left(), rect.top(), rect.width(), rect.height()/2),
-                              opt.displayAlignment, name);
+            painter->drawText(QRect(rect.left() +imgSize_ + 5, rect.top(), rect.width(), rect.height()/2),
+                              Qt::AlignBottom, name);
             painter->setOpacity(0.7);
-            painter->drawText(QRect(rect.left(), rect.top() + rect.height()/2, rect.width(), rect.height()/2),
-                              opt.displayAlignment, number);
+            painter->drawText(QRect(rect.left()+imgSize_ + 5, rect.top() + rect.height()/2, rect.width(), rect.height()/2),
+                              Qt::AlignTop, number);
             painter->setOpacity(1.0);
             QImage arrow;
             switch (direction) {
@@ -73,10 +77,5 @@ QSize
 HistoryDelegate::sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
     QSize result = QStyledItemDelegate::sizeHint(option, index);
-    if (not index.model()->data(index, static_cast<int>(Call::Role::Number)).toString().isEmpty()) {
-        result.setHeight(result.height()*2);
-    } else {
-        result.setHeight(result.height());
-    }
     return result;
 }

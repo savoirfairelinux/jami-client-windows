@@ -21,6 +21,7 @@
 #include <QApplication>
 #include <QSortFilterProxyModel>
 #include <QPainter>
+#include <QPixmap>
 
 #include "itemdataroles.h"
 #include "person.h"
@@ -28,7 +29,7 @@
 #include "call.h"
 
 SmartListDelegate::SmartListDelegate(QObject* parent) :
-    QStyledItemDelegate(parent)
+    QItemDelegate(parent)
 {
 }
 
@@ -39,30 +40,31 @@ SmartListDelegate::paint(QPainter* painter
                         ) const
 {
     QStyleOptionViewItem opt(option);
+    opt.decorationPosition = QStyleOptionViewItem::Left;
+    opt.decorationAlignment = Qt::AlignCenter;
+    if (opt.state & QStyle::State_HasFocus)
+        opt.state ^= QStyle::State_HasFocus;
 
-    QFont font(painter->font());
-    font.setPointSize(10);
-
-    const int currentRow = index.row();
+    QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
+    style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
     QRect rect = opt.rect;
     rect.setLeft(0);
 
-    QRect rectTexts(16 + rect.left() + dx+sizeImage_, rect.top(), rect.width(), rect.height()/2);
-    QRect rectAvatar(16 + rect.left(), rect.top() + dy, sizeImage_, sizeImage_);
+    QRect rectTexts(16 + rect.left() + dx_+sizeImage_, rect.top(), rect.width(), rect.height()/2);
+    QRect rectAvatar(16 + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
+    drawDecoration(painter, opt, rectAvatar, QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>()));
 
-    QLinearGradient linearGradient(0, 0, 100, 100);
-    linearGradient.setColorAt(0.0, Qt::white);
-    linearGradient.setColorAt(1.0, Qt::black);
+    const int currentRow = index.row();
 
     if (currentRow == rowHighlighted_)
-    {
-        painter->fillRect(opt.rect, QColor(242, 242, 242));
         emit rowSelected(opt.rect);
-    }
+
+    QFont font(painter->font());
+    font.setPointSize(10);
 
     QPen pen(painter->pen());
-    pen.setColor(QColor(242, 242, 242));
+    pen.setColor(lightGrey_);
     painter->setPen(pen);
     painter->drawLine(rect.left() + 20, rect.bottom(),
                       rect.right() - 20,
@@ -74,7 +76,7 @@ SmartListDelegate::paint(QPainter* painter
         QVariant name = index.data(static_cast<int>(Ring::Role::Name));
         if (name.isValid())
         {
-            pen.setColor(QColor(63, 63, 63));
+            pen.setColor(lightBlack_);
             painter->setPen(pen);
             font.setBold(true);
             painter->setFont(font);
@@ -82,16 +84,14 @@ SmartListDelegate::paint(QPainter* painter
         }
 
         QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
-
-        pen.setColor(QColor(192, 192, 192));
+        pen.setColor(grey_);
         painter->setPen(pen);
         font.setBold(false);
         painter->setFont(font);
         rectTexts.moveTop(cellHeight_/2);
-
         if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
         {
-            painter->drawText(QRect(16 + rect.left() + dx + sizeImage_,
+            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
                                rect.top() + rect.height()/2,
                                rect.width(), rect.height()/2),
                                Qt::AlignTop | Qt::AlignLeft, state.toString());
@@ -101,46 +101,16 @@ SmartListDelegate::paint(QPainter* painter
             QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
             if (lastUsed.isValid())
             {
-                painter->drawText(QRect(16 + rect.left() + dx + sizeImage_,
+                painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
                                    rect.top() + rect.height()/2,
                                    rect.width(), rect.height()/2),
                                    Qt::AlignTop | Qt::AlignLeft, lastUsed.toString());
             }
         }
-
-        painter->setPen(pen);
-        QVariant var_p = index.data(static_cast<int>(Ring::Role::Object));
-        auto person = var_p.value<Person*>();
-        if (person && not person->photo().value<QImage>().isNull())
-        {
-            painter->drawImage(rectAvatar, person->photo().value<QImage>());
-        }
-        else
-        {
-            QImage defaultImage(":images/user/btn-default-userpic.svg");
-            painter->drawImage(rectAvatar, defaultImage);
-        }
-
-        if (currentRow == rowHighlighted_)
-        {
-            QLinearGradient gradient(opt.rect.topLeft(),opt.rect.topRight());
-            gradient.setColorAt(0.65,    QColor(242, 242, 242, 0));
-            gradient.setColorAt(0.75,    QColor(242, 242, 242, 255));
-
-            painter->fillRect(opt.rect, gradient);
-        }
-        else
-        {
-            QLinearGradient gradient(opt.rect.topLeft(),opt.rect.topRight());
-            gradient.setColorAt(0.8,    QColor(255, 255, 255, 0));
-            gradient.setColorAt(1.0,    QColor(255, 255, 255, 255));
-
-            painter->fillRect(opt.rect, gradient);
-        }
     }
     else
     {
-        QStyledItemDelegate::paint(painter, option, index);
+        QItemDelegate::paint(painter, opt, index);
     }
 }
 
@@ -149,9 +119,8 @@ SmartListDelegate::sizeHint(const QStyleOptionViewItem& option
                            , const QModelIndex& index
                            ) const
 {
-    QSize size = QStyledItemDelegate::sizeHint(option, index);
+    QSize size = QItemDelegate::sizeHint(option, index);
     size.setHeight(cellHeight_);
     size.setWidth(cellWidth_);
-
     return size;
 }

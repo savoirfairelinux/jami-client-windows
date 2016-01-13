@@ -53,6 +53,7 @@ ContactDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                                     rect.width(), rect.height()/2),
                                     opt.displayAlignment, c->formattedName());
             QVariant var_p = c->photo();
+
             if (var_p.isValid()) {
                 painter->drawImage(QRect(rect.left()+1, rect.top()+1,
                                          sizeImage_, sizeImage_),
@@ -96,6 +97,9 @@ ContactDelegate::sizeHint(const QStyleOptionViewItem &option,
                           const QModelIndex &index) const
 {
     QSize result = QStyledItemDelegate::sizeHint(option, index);
-    result.setHeight((result.height()*2)+2);
+    auto height = (result.height()*2)+2;
+    if (height < sizeImage_)
+        height = sizeImage_;
+    result.setHeight(height);
     return result;
 }
