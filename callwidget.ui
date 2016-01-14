@@ -354,6 +354,9 @@
              </item>
              <item>
               <widget class="QLabel" name="outboundCallLabel">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(174, 174, 174);</string>
+               </property>
                <property name="text">
                 <string>Calling</string>
                </property>
@@ -389,6 +392,9 @@
              </item>
              <item>
               <widget class="QLabel" name="cancelCallLabel">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(174, 174, 174);</string>
+               </property>
                <property name="text">
                 <string>Cancel</string>
                </property>
@@ -474,6 +480,9 @@
                </item>
                <item alignment="Qt::AlignHCenter">
                 <widget class="QLabel" name="callerIdLabel">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(174, 174, 174);</string>
+                 </property>
                  <property name="text">
                   <string>Call</string>
                  </property>
@@ -481,6 +490,9 @@
                </item>
                <item>
                 <widget class="QLabel" name="wantToTalkLabel">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(174, 174, 174);</string>
+                 </property>
                  <property name="text">
                   <string>Wants to talk to you!</string>
                  </property>
@@ -559,6 +571,9 @@
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
                 <widget class="QLabel" name="acceptLabel">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(174, 174, 174);</string>
+                 </property>
                  <property name="text">
                   <string>Answer</string>
                  </property>
@@ -587,6 +602,9 @@
                 <widget class="QLabel" name="refuseLabel">
                  <property name="layoutDirection">
                   <enum>Qt::RightToLeft</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(174, 174, 174);</string>
                  </property>
                  <property name="text">
                   <string>Ignore</string>

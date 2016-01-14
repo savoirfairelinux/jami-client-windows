@@ -59,26 +59,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->setupUi(this);
 
-    // TODO : add this in style sheet forms
-    QPalette palette;
-    palette.setColor(QPalette::WindowText, QColor(255,255,255));
-    ui->callerIdLabel->setPalette(palette);
-
-    QPalette palette2;
-    palette2.setColor(QPalette::WindowText, QColor(141,141,141));
-
-    ui->wantToTalkLabel->setPalette(palette2);
-    ui->outboundCallLabel->setPalette(palette2);
-    ui->cancelCallLabel->setPalette(palette2);
-    ui->acceptLabel->setPalette(palette2);
-    ui->refuseLabel->setPalette(palette2);
-
-    QFont font = ui->callerIdLabel->font();
-    font.setPointSize(20);
-
-    ui->callerIdLabel->setFont(font);
-    // end of TODO : add this in style sheet forms
-
     ui->callInvite->setVisible(false);
 
     setActualCall(nullptr);
