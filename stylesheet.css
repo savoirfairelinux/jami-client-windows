@@ -18,6 +18,10 @@ QWidget#callInvitePage{
     background-color : rgb( 77, 77, 77 );
 }
 
+QWidget#outboundCallPage{
+    background-color : rgb(77, 77, 77);
+}
+
 QPushButton#btnvideo{
     border-image: url(:/images/hover-contact/btn-video.svg);
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -61,26 +61,6 @@ CallWidget::CallWidget(QWidget* parent) :
     setMouseTracking(true);
 
     ui->setupUi(this);
-
-    // TODO : add this in style sheet forms
-    QPalette palette;
-    palette.setColor(QPalette::WindowText, QColor(255,255,255));
-    ui->callerIdLabel->setPalette(palette);
-
-    QPalette palette2;
-    palette2.setColor(QPalette::WindowText, QColor(141,141,141));
-
-    ui->wantToTalkLabel->setPalette(palette2);
-    ui->outboundCallLabel->setPalette(palette2);
-    ui->cancelCallLabel->setPalette(palette2);
-    ui->acceptLabel->setPalette(palette2);
-    ui->refuseLabel->setPalette(palette2);
-
-    QFont font = ui->callerIdLabel->font();
-    font.setPointSize(20);
-
-    ui->callerIdLabel->setFont(font);
-    // end of TODO : add this in style sheet forms
 
     ui->callInvite->setVisible(false);
 
@@ -307,8 +287,6 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call* call)
 {
-    ui->outboundCall->hide();
-
     if (!QApplication::activeWindow()) {
         GlobalSystemTray::instance().showMessage("Ring", "Call incoming from " + call->formattedName());
         QApplication::alert(this, 5000);
@@ -318,8 +296,7 @@ CallWidget::callIncoming(Call* call)
         ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
                                    .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
-        ui->callInvite->setVisible(true);
-        ui->callInvite->raise();
+
     }
     setActualCall(call);
 }
@@ -350,7 +327,8 @@ CallWidget::addedCall(Call* call, Call* parent)
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
         setActualCall(call);
-        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+        ui->smartList->scrollToTop();
     }
 }
 
@@ -361,22 +339,47 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call == nullptr)
         return;
 
-    if (call->state() == Call::State::OVER
-            || call->state() == Call::State::ERROR
-            || call->state() == Call::State::FAILURE
-            || call->state() == Call::State::ABORTED) {
+    if (call->state() == Call::State::OVER)
+    {
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        //TODO : Link this so that recentModel get selected correctly
-        //        auto onHoldCall = callModel_->getActiveCalls().first();
-        //        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
-        //            setActualCall(onHoldCall);
-        //            onHoldCall->performAction(Call::Action::HOLD);
-        //        }
-    } else if (call->state() == Call::State::CURRENT) {
+//TODO : Link this so that recentModel get selected correctly
+//        auto onHoldCall = callModel_->getActiveCalls().first();
+//        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
+//            setActualCall(onHoldCall);
+//            onHoldCall->performAction(Call::Action::HOLD);
+//        }
+    }
+    else if (call->state() == Call::State::ERROR
+                               || call->state() == Call::State::FAILURE
+                               || call->state() == Call::State::ABORTED)
+    {
+        // the daemon don't know how to hangup. That leads to a bug for the UI.
+        // The user has to hangup by him/herself. ring-client-gnome has the same behavior.
+        // Since I'm alone those very days, I won't try to mess with a daemon without some
+        // backup...
+        CallModel::instance().userActionModel()->execute(UserActionModel::Action::HANGUP);
+    }
+    else if (call->state() == Call::State::CURRENT)
+    {
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
+    }
+    else if (call->state() == Call::State::DIALING)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "dialing %1")).arg(call->formattedName()));
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
+    }
+    else if (call->state() == Call::State::INITIALIZATION)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "searching for %1")).arg(call->formattedName()));
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
+    }
+    else if (call->state() == Call::State::RINGING)
+    {
+        ui->outboundCallLabel->setText(QString(tr("%1", "calling %1")).arg(call->formattedName()));
+        ui->Calling->setText(QString(tr("%1", "")).arg(call->toHumanStateName()));
     }
 }
 
