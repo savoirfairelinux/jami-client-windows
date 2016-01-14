@@ -25,9 +25,9 @@
 RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
     QLineEdit(parent)
 {
-    QPalette palette;
-    palette.setColor(QPalette::Base, QColor(242, 242, 242));
-    setPalette(palette);
+    //~ QPalette palette;
+    //~ palette.setColor(QPalette::Base, QColor(242, 242, 242));
+    //~ setPalette(palette);
 
     setFrame(false);
 

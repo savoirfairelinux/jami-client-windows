@@ -15,7 +15,11 @@ QPushButton#cancelButton{
 }
 
 QWidget#callInvitePage{
-    background-color : rgb( 77, 77, 77 );
+    background-color : rgb(77, 77, 77);
+}
+
+QWidget#outboundCallPage{
+    background-color : rgb(77, 77, 77);
 }
 
 QPushButton#btnvideo{
@@ -30,25 +34,26 @@ QPushButton#btncontactinfo{
     border-image: url(:/images/hover-contact/btn-contactinfo.svg);
 }
 
-IdLabel{
+IdLabel#ringIdLabel{
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 192, 212);
 }
 
-RingContactLineEdit {
+QLineEdit#ringContactLineEdit{
     border-color: rgb(242, 242, 242);
     border-radius: 5px;
     border-width: 2px;
     background-color: rgb(242, 242, 242);
 }
 
-QScrollBar:vertical {
-    background:white; width:0px;
+QScrollBar:vertical{
+    background: rgb(242, 242, 242);
+    width:10px;
 }
 
-QScrollBar::handle:vertical {
-    background: rgb( 255, 255, 255 )
+QScrollBar::handle:vertical{
+    background: rgb(77, 77, 77);
 }
 
 SmartList{
@@ -59,15 +64,15 @@ QPushButton#holdButton {
     border-image: url(:/images/video-conf/btn-pause.svg);
 }
 
-QPushButton#holdButton:checked {
+QPushButton#holdButton:checked{
     border-image: url(:/images/video-conf/btn-pause-toggled.svg);
 }
 
-QPushButton#hangupButton {
+QPushButton#hangupButton{
     border-image: url(:/images/video-conf/btn-hangup.svg);
 }
 
-QPushButton#chatButton {
+QPushButton#chatButton{
     border-image: url(:/images/video-conf/btn-chat.svg);
 }
 
@@ -79,22 +84,26 @@ QPushButton#noMicButton:checked {
     border-image: url(:/images/video-conf/btn-nomic-toggled.svg);
 }
 
-QPushButton#noVideoButton {
+QPushButton#noVideoButton{
     border-image: url(:/images/video-conf/btn-novideo.svg);
 }
 
-QPushButton#noVideoButton:checked {
+QPushButton#noVideoButton:checked{
     border-image: url(:/images/video-conf/btn-novideo-toggled.svg);
 }
 
-QPushButton#transferButton {
+QPushButton#transferButton{
     border-image: url(:/images/video-conf/btn-transfer.svg);
 }
 
-QPushButton#addPersonButton {
+QPushButton#addPersonButton{
     border-image: url(:/images/video-conf/btn-add-contact-to-conf.svg);
 }
 
-QPushButton#joinButton {
+QPushButton#joinButton{
     border-image: url(:/images/video-conf/btn-join.svg);
+}
+
+QSplitter::handle:horizontal{
+    background-color : rgb(255, 255, 255);
 }
