@@ -19,28 +19,26 @@
 #include <QStyledItemDelegate>
 #include <qevent.h>
 #include <QTreeWidgetItem>
+#include <QScrollBar>
+#include <QApplication>
+
+
 
 #include "smartlistdelegate.h"
 #include "combar.h"
-#include "smartlistscrollbar.h"
 #include "smartlist.h"
 
 SmartList::SmartList(QWidget *parent) :
     QTreeView(parent),
-    comBar_(new ComBar(this)),
-    smartListScrollBar_(new SmartListScrollBar(this))
+    comBar_(new ComBar(this))
 {
     setMouseTracking(true);
     setHeaderHidden(true);
 
-    setVerticalScrollBar(smartListScrollBar_);
-    connect(smartListScrollBar_
-           , &SmartListScrollBar::enterSignal
-           , [=]()
-             {
-                 smartListDelegate_->setRowHighlighted(-1);
-                 currentRow_ = -1;
-             });
+        verticalScrollBar()->installEventFilter(this);
+
+            comBar_->installEventFilter(this);
+
 }
 
 SmartList::~SmartList()
@@ -52,11 +50,6 @@ void
 SmartList::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
 
     repaint(0, 0, width(), height());
 }
@@ -73,11 +66,6 @@ SmartList::leaveEvent(QEvent* event)
     if (smartListDelegate_)
         smartListDelegate_->setRowHighlighted(currentRow_);
 
-    setStyleSheet(
-    "QScrollBar:vertical { background:white; width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(255, 255, 255) }"
-   );
-
     comBar_->hide();
 }
 
@@ -89,11 +77,6 @@ SmartList::wheelEvent(QWheelEvent* event)
     comBar_->hide();
 
     smartListDelegate_->setRowHighlighted(currentRow_);
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
 
     repaint(0, 0, width(), height());
 
@@ -115,11 +98,6 @@ void
 SmartList::mouseMoveEvent(QMouseEvent* event)
 {
     QModelIndex index = indexAt(event->pos());
-
-    setStyleSheet(
-    "QScrollBar:vertical { background: rgb(242, 242, 242); width:10px; }"
-    "QScrollBar::handle:vertical { background: rgb(77, 77, 77) }"
-   );
 
     repaint(0, 0, width(), height());
 
@@ -146,4 +124,33 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
         smartListDelegate_ = delegate;
         connect(smartListDelegate_ , &SmartListDelegate::rowSelected , comBar_, &ComBar::moveToRow);
     }
+}
+
+bool
+SmartList::eventFilter(QObject* watched, QEvent* event)
+{
+
+    if ( qobject_cast<QScrollBar*>(watched)
+                                     && event->type() == QEvent::Enter )
+    {
+        update();
+        return true;
+
+    }
+    else // this one discard some bad user behavior...
+    if ( qobject_cast<QScrollBar*>(watched)
+                       && event->type() == QEvent::Wheel
+                       && QApplication::mouseButtons() != Qt::NoButton )
+    {
+        return true;
+    }
+    else
+    if ( qobject_cast<ComBar*>(watched) && event->type() == QEvent::Wheel
+                       && QApplication::mouseButtons() == Qt::NoButton )
+    {
+        wheelEvent(static_cast<QWheelEvent*>(event));
+        return true;
+    }
+
+    return QObject::eventFilter(watched, event);
 }
