@@ -67,7 +67,8 @@ SOURCES += main.cpp\
     mainwindowtoolbar.cpp \
     ringcontactlineedit.cpp \
     smartlistscrollbar.cpp \
-    pixbufmanipulator.cpp
+    pixbufmanipulator.cpp \
+    qualitydialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -102,7 +103,8 @@ HEADERS  += mainwindow.h \
     mainwindowtoolbar.h \
     ringcontactlineedit.h \
     smartlistscrollbar.h \
-    pixbufmanipulator.h
+    pixbufmanipulator.h \
+    qualitydialog.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
@@ -117,7 +119,8 @@ FORMS    += mainwindow.ui \
     contactpicker.ui \
     contactmethodpicker.ui \
     callutilsdialog.ui \
-    combar.ui
+    combar.ui \
+    qualitydialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

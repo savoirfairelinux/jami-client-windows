@@ -119,3 +119,9 @@ QPushButton#imBackButton {
    border-radius: 15px;
    border:solid 1px;
 }
+
+QPushButton#qualityButton {
+   background-color: rgba(0, 0, 0, 140);
+   border-radius: 18px;
+   border:solid 1px;
+}

@@ -24,7 +24,8 @@
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::VideoOverlay),
-    transferDialog_(new CallUtilsDialog())
+    transferDialog_(new CallUtilsDialog()),
+    qualityDialog_(new QualityDialog())
 {
     ui->setupUi(this);
 
@@ -34,6 +35,11 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     setAttribute(Qt::WA_NoSystemBackground);
 
     ui->noMicButton->setCheckable(true);
+
+    QPixmap pixmap(":/images/video-conf/ic_high_quality_white.svg");
+    QIcon qualityIcon(pixmap);
+    ui->qualityButton->setIcon(qualityIcon);
+    ui->qualityButton->setIconSize(pixmap.rect().size());
 
     connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
         const int first(tl.row()),last(br.row());
@@ -85,6 +91,7 @@ VideoOverlay::~VideoOverlay()
 {
     delete ui;
     delete transferDialog_;
+    delete qualityDialog_;
 }
 
 void
@@ -158,4 +165,15 @@ VideoOverlay::on_noVideoButton_clicked()
 void VideoOverlay::on_joinButton_clicked()
 {
     CallModel::instance().selectedCall()->joinToParent();
+}
+
+void
+VideoOverlay::on_qualityButton_clicked()
+{
+    auto pos = this->mapToGlobal(ui->qualityButton->pos());
+    qualityDialog_->move(pos.x()
+              - qualityDialog_->size().width()/2
+              + ui->qualityButton->size().width()/2,
+              pos.y() - (qualityDialog_->height()));
+    qualityDialog_->show();
 }
