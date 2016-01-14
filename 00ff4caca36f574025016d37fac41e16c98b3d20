@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_2abba80f",
+        "filename": "qualitydialog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-01-14T23:11:29Z",
+      "side": 1,
+      "message": "extra space?",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 9
+      },
+      "revId": "00ff4caca36f574025016d37fac41e16c98b3d20",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
