@@ -609,6 +609,7 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
                                 this,
                                 SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
         ui->listMessageView->scrollToBottom();
+        txtRecording->setAllRead();
     }
 }
 
@@ -618,10 +619,10 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
                                        Media::Media::Direction dir)
 {
     Q_UNUSED(message)
-    Q_UNUSED(cm)
     Q_UNUSED(dir)
 
     ui->listMessageView->scrollToBottom();
+    cm->textRecording()->setAllRead();
 }
 
 void
