@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4a72b47d",
+        "filename": "callwidget.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-15T14:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_8acafc9f",
+      "range": {
+        "startLine": 558,
+        "startChar": 29,
+        "endLine": 558,
+        "endChar": 59
+      },
+      "revId": "b84e2eecc5cd745d5987108be6c81f2b009cdd89",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_6ac1b07f",
         "filename": "smartlistdelegate.cpp",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-14T23:08:44Z",
       "side": 1,
       "message": "magic number... maybe should be a var in the header or something?",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "b84e2eecc5cd745d5987108be6c81f2b009cdd89",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6a6f7093",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-15T14:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_6ac1b07f",
       "range": {
         "startLine": 64,
         "startChar": 22,
