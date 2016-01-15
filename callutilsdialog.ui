@@ -40,7 +40,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="transferButton">
+    <widget class="QPushButton" name="doTransferButton">
      <property name="text">
       <string>Transfer</string>
      </property>

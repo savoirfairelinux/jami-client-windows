@@ -74,7 +74,7 @@ void CallUtilsDialog::closeEvent(QCloseEvent* event)
 }
 
 void
-CallUtilsDialog::on_transferButton_clicked()
+CallUtilsDialog::on_doTransferButton_clicked()
 {
     auto callList = CallModel::instance().getActiveCalls();
     for (auto c : callList) {
@@ -94,7 +94,7 @@ void
 CallUtilsDialog::setConfMode(bool active)
 {
     confMode_ = active;
-    ui->transferButton->setVisible(not active);
+    ui->doTransferButton->setVisible(not active);
     ui->numberBar->setVisible(not active);
 }
 

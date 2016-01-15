@@ -64,7 +64,7 @@ protected slots:
     void showEvent(QShowEvent* event);
     void closeEvent(QCloseEvent* event);
 private slots:
-    void on_transferButton_clicked();
+    void on_doTransferButton_clicked();
     void on_contactView_doubleClicked(const QModelIndex& index);
 
 private:
