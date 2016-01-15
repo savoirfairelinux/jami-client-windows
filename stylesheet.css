@@ -120,8 +120,17 @@ QPushButton#imBackButton{
    border:solid 1px;
 }
 
-QPushButton#qualityButton {
+QPushButton#qualityButton{
    background-color: rgba(0, 0, 0, 140);
    border-radius: 18px;
    border:solid 1px;
+}
+
+QScrollBar:vertical{
+    background: rgb(242, 242, 242);
+    width:10px;
+}
+
+QScrollBar::handle:vertical{
+    background: rgb(77, 77, 77);
 }
