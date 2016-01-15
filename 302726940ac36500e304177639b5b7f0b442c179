@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_4a207449",
+        "filename": "callwidget.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-01-15T14:53:23Z",
+      "side": 1,
+      "message": "hmmm, do we want to trim whitespace? What if someone is sending ascii art?",
+      "range": {
+        "startLine": 579,
+        "startChar": 52,
+        "endLine": 579,
+        "endChar": 59
+      },
+      "revId": "302726940ac36500e304177639b5b7f0b442c179",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
