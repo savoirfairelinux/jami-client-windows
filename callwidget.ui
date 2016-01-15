@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>724</height>
+    <width>1019</width>
+    <height>839</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -317,8 +317,8 @@
                      <height>0</height>
                     </size>
                    </property>
-                   <property name="verticalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOn</enum>
+                   <property name="mouseTracking">
+                    <bool>true</bool>
                    </property>
                    <property name="indentation">
                     <number>0</number>
