@@ -39,6 +39,8 @@ SmartListDelegate::paint(QPainter* painter
                         , const QModelIndex& index
                         ) const
 {
+    painter->setRenderHint(QPainter::Antialiasing);
+
     QStyleOptionViewItem opt(option);
     opt.decorationPosition = QStyleOptionViewItem::Left;
     opt.decorationAlignment = Qt::AlignCenter;
@@ -55,15 +57,45 @@ SmartListDelegate::paint(QPainter* painter
     QRect rectAvatar(16 + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
     drawDecoration(painter, opt, rectAvatar, QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>()));
 
+    QFont font(painter->font());
+
+
+    if (auto messageCount = index.data(static_cast<int>(Ring::Role::UnreadTextMessageCount)).toInt()) {
+
+        font.setPointSize(8);
+        QFontMetrics textFontMetrics(font);
+        QString messageCountText = QString::number(messageCount);
+
+        QRect pastilleRect;
+        QRect(rectAvatar.right() - 7, rectAvatar.bottom() - 7, pinSize_, pinSize_);
+        pastilleRect = textFontMetrics.boundingRect(QRect(rectAvatar.left() + sizeImage_/3,
+                                                          rectAvatar.bottom() - 6, sizeImage_, 0),
+                                                    Qt::AlignCenter, messageCountText);
+
+        painter->setOpacity(0.9);
+        QRect bubbleRect(pastilleRect.left(), pastilleRect.top(),
+                         pastilleRect.width() + 3, pastilleRect.height());
+
+        QPainterPath path;
+        path.addRoundedRect(bubbleRect, 3, 3);
+        QPen pen(red_, 5);
+        painter->setPen(pen);
+        painter->fillPath(path, red_);
+        painter->drawPath(path);
+
+        painter->setPen(Qt::white);
+        painter->setOpacity(1);
+        painter->setFont(font);
+        painter->drawText(bubbleRect, Qt::AlignCenter, messageCountText);
+    }
+    font.setPointSize(fontSize_);
+
+    QPen pen(painter->pen());
+
     const int currentRow = index.row();
 
     if (currentRow == rowHighlighted_)
         emit rowSelected(opt.rect);
-
-    QFont font(painter->font());
-    font.setPointSize(fontSize_);
-
-    QPen pen(painter->pen());
 
     if (not (opt.state & QStyle::State_Selected)) {
         pen.setColor(lightGrey_);
