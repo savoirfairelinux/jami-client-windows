@@ -57,6 +57,8 @@ ImDelegate::paint(QPainter* painter,
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
 
+    painter->setRenderHint(QPainter::Antialiasing);
+
     if (index.isValid()) {
         auto msg = index.data(Qt::DisplayRole).toString();
         opt.text.clear();
@@ -73,19 +75,25 @@ ImDelegate::paint(QPainter* painter,
         formatMsg(index, msg);
 
         QRect textRect = getBoundingRect(dir, msg, opt);
-        QRect bubbleRect(textRect.left() - padding_, textRect.top() - padding_, textRect.width() + padding_, textRect.height() + padding_);
-        bubbleRect.setBottom(bubbleRect.bottom() + padding_);
-        bubbleRect.setRight(bubbleRect.right() + padding_);
+        QRect bubbleRect(textRect.left() - 2, textRect.top() - 2, textRect.width() + 2, textRect.height() + 2);
+        bubbleRect.setBottom(bubbleRect.bottom() + 2);
+        bubbleRect.setRight(bubbleRect.right() + 2);
         opt.decorationSize = iconSize_;
         opt.decorationPosition = (dir == Qt::AlignRight ? QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
         opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
-        if (dir == Qt::AlignRight) {
-            painter->fillRect(bubbleRect, blue);
-        }
-        else {
-            painter->fillRect(bubbleRect, grey);
-        }
+
+        painter->save();
+        QPen pen(blue, 5);
+        if (dir == Qt::AlignRight)
+            pen.setColor(grey);
+        QPainterPath path;
+        path.addRoundedRect(bubbleRect, 5, 5);
+        painter->setPen(pen);
+        painter->fillPath(path, pen.color());
+        painter->drawPath(path);
+        painter->restore();
+
         painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, msg);
     }
 }
