@@ -46,5 +46,6 @@ private:
     const QColor grey {"#f2f2f2"};
     const QSize iconSize_ {38,38};
     constexpr static int padding_ = 5;
+    constexpr static int bubblePadding_ = 2;
 };
 
