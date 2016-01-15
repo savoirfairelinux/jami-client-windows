@@ -360,7 +360,8 @@ void
 CallWidget::callStateChanged(Call* call, Call::State previousState)
 {
     Q_UNUSED(previousState)
-    if (call == nullptr)
+    if (call == nullptr
+            || call != actualCall_)
         return;
 
     if (call->state() == Call::State::OVER
