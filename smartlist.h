@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -22,7 +22,6 @@
 
 class SmartListDelegate;
 class ComBar;
-class SmartListScrollBar;
 
 class SmartList : public QTreeView
 {
@@ -43,6 +42,5 @@ private:
   int currentRow_ = -1;
   SmartListDelegate* smartListDelegate_;
   ComBar* comBar_;
-  SmartListScrollBar* smartListScrollBar_;
 
 };
