@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -75,7 +75,6 @@ private slots:
     void on_sendButton_clicked();
     void on_messageEdit_returnPressed();
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
-    void on_ringContactLineEdit_textEdited(const QString& text);
     void on_imBackButton_clicked();
 
 private slots:

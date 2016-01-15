@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -24,8 +24,9 @@ ComBar::ComBar(QWidget* parent) :
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
+    hide();
 
-    // [jn] these buttons are for further uses
+    // [jn] this button is for some further use
     ui->btncontactinfo->hide();
 }
 
@@ -35,8 +36,18 @@ ComBar::~ComBar()
 }
 
 void
-ComBar::moveToRow(const QRect& rect)
+ComBar::moveToRow(const QModelIndex& index, const QRect& rect)
 {
-    move(rect.right() - width(),
-         rect.bottom() - height() - (rect.height()/4));
+    hoveredRow_ = QPersistentModelIndex(index);
+
+    if(hoveredRow_.isValid())
+    {
+        move(rect.right() - width(),
+                          rect.bottom() - height() - (rect.height()/4));
+        show();
+    }
+    else
+    {
+        hide();
+    }
 }
