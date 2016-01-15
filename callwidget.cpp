@@ -62,8 +62,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->setupUi(this);
 
-    ui->callInvite->setVisible(false);
-
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
 

@@ -40,86 +40,95 @@ IdLabel{
     border-color: rgb(0, 192, 212);
 }
 
-RingContactLineEdit {
+RingContactLineEdit{
     border-color: rgb(242, 242, 242);
     border-radius: 5px;
     border-width: 2px;
     background-color: rgb(242, 242, 242);
 }
 
-QScrollBar:vertical {
+QScrollBar:vertical{
     background:white; width:0px;
 }
 
-QScrollBar::handle:vertical {
+QScrollBar::handle:vertical{
     background: rgb( 255, 255, 255 )
 }
 
-SmartList {
+SmartList{
     background-color: white;
     border: none;
 }
 
-SmartList::item:selected {
+SmartList::item:selected{
    background-color: qlineargradient(x1:1 y1:0, stop:1 rgba(220, 220, 220, 255), stop:0.65 rgba(242, 242, 242, 255), stop:0 rgba(242, 242, 242, 0));
    border: none;
 }
 
-SmartList::item:hover {
+SmartList::item:hover{
    background-color: rgba(242, 242, 242, 255);
 }
 
-QListView#listMessageView::item:hover {
+QListView#listMessageView::item:hover{
    background-color: rgba(242, 242, 242, 255);
 }
 
-QPushButton#holdButton {
+QPushButton#holdButton{
     border-image: url(:/images/video-conf/btn-pause.svg);
 }
 
-QPushButton#holdButton:checked {
+QPushButton#holdButton:checked{
     border-image: url(:/images/video-conf/btn-pause-toggled.svg);
 }
 
-QPushButton#hangupButton {
+QPushButton#hangupButton{
     border-image: url(:/images/video-conf/btn-hangup.svg);
 }
 
-QPushButton#chatButton {
+QPushButton#chatButton{
     border-image: url(:/images/video-conf/btn-chat.svg);
 }
 
-QPushButton#noMicButton {
+QPushButton#noMicButton{
     border-image: url(:/images/video-conf/btn-nomic.svg);
 }
 
-QPushButton#noMicButton:checked {
+QPushButton#noMicButton:checked{
     border-image: url(:/images/video-conf/btn-nomic-toggled.svg);
 }
 
-QPushButton#noVideoButton {
+QPushButton#noVideoButton{
     border-image: url(:/images/video-conf/btn-novideo.svg);
 }
 
-QPushButton#noVideoButton:checked {
+QPushButton#noVideoButton:checked{
     border-image: url(:/images/video-conf/btn-novideo-toggled.svg);
 }
 
-QPushButton#transferButton {
+QPushButton#transferButton{
     border-image: url(:/images/video-conf/btn-transfer.svg);
 }
 
-QPushButton#addPersonButton {
+QPushButton#addPersonButton{
     border-image: url(:/images/video-conf/btn-add-contact-to-conf.svg);
 }
 
-QPushButton#joinButton {
+QPushButton#joinButton{
     border-image: url(:/images/video-conf/btn-join.svg);
 }
 
-QPushButton#imBackButton {
+QPushButton#imBackButton{
    background-color: #414141;
    border-image: url(:/images/ic_arrow_back_white.svg);
    border-radius: 15px;
    border:solid 1px;
+}
+
+QScrollBar:vertical{
+    background: rgb(242, 242, 242);
+    width:10px;
+}
+
+QScrollBar::handle:vertical{
+    background: rgb(77, 77, 77);
 }
