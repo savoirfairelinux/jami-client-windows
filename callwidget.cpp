@@ -360,12 +360,11 @@ void
 CallWidget::callStateChanged(Call* call, Call::State previousState)
 {
     Q_UNUSED(previousState)
-    if (call == nullptr)
+    if (call == nullptr
+            || call != actualCall_)
         return;
 
     if (call->state() == Call::State::OVER
-            || call->state() == Call::State::ERROR
-            || call->state() == Call::State::FAILURE
             || call->state() == Call::State::ABORTED) {
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
