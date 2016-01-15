@@ -125,3 +125,12 @@ QPushButton#qualityButton{
    border-radius: 18px;
    border:solid 1px;
 }
+
+QScrollBar:vertical {
+    background: rgb(242, 242, 242);
+    width:10px;
+}
+
+QScrollBar::handle:vertical {
+    background: rgb(77, 77, 77);
+}
