@@ -25,22 +25,47 @@
   <property name="windowTitle">
    <string/>
   </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>0</number>
+   </property>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetNoConstraint</enum>
    </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
    <property name="topMargin">
-    <number>7</number>
-   </property>
-   <property name="rightMargin">
     <number>0</number>
    </property>
-   <property name="bottomMargin">
-    <number>7</number>
+   <property name="rightMargin">
+    <number>4</number>
    </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QPushButton" name="btncontactinfo">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QPushButton" name="btnvideo">
      <property name="sizePolicy">
@@ -67,23 +92,17 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btncontactinfo">
-     <property name="minimumSize">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>30</width>
-       <height>30</height>
+       <width>100</width>
+       <height>20</height>
       </size>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
+    </spacer>
    </item>
   </layout>
  </widget>
