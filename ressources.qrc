@@ -42,5 +42,6 @@
         <file>images/btn-info.svg</file>
         <file>images/ic_arrow_back_white.svg</file>
         <file>images/video-conf/ic_high_quality_white.svg</file>
+        <file>images/ic_send_white.svg</file>
     </qresource>
 </RCC>
