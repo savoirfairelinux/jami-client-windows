@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -56,8 +56,10 @@ ImDelegate::paint(QPainter* painter,
 {
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
-
     painter->setRenderHint(QPainter::Antialiasing);
+
+    opt.font = fontMsg_;
+    painter->setFont(fontMsg_);
 
     if (index.isValid()) {
         auto msg = index.data(Qt::DisplayRole).toString();
@@ -75,27 +77,29 @@ ImDelegate::paint(QPainter* painter,
         formatMsg(index, msg);
 
         QRect textRect = getBoundingRect(dir, msg, opt);
-        QRect bubbleRect(textRect.left() - bubblePadding_,
-                         textRect.top() - bubblePadding_,
-                         textRect.width() + bubblePadding_,
-                         textRect.height() + bubblePadding_);
-        bubbleRect.setBottom(bubbleRect.bottom() + bubblePadding_);
-        bubbleRect.setRight(bubbleRect.right() + bubblePadding_);
+
+        QRect bubbleRect(textRect.left() - padding_,
+                         textRect.top() - padding_,
+                         textRect.width() + 2 * padding_,
+                         textRect.height() + 2 * padding_ );
+
         opt.decorationSize = iconSize_;
-        opt.decorationPosition = (dir == Qt::AlignRight ? QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
+        opt.decorationPosition = (dir == Qt::AlignRight ?
+                                      QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
         opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
-        painter->save();
-        QPen pen(blue, padding_);
-        if (dir == Qt::AlignRight)
-            pen.setColor(grey);
         QPainterPath path;
         path.addRoundedRect(bubbleRect, padding_, padding_);
-        painter->setPen(pen);
-        painter->fillPath(path, pen.color());
-        painter->drawPath(path);
-        painter->restore();
+
+        if (dir == Qt::AlignRight) {
+            painter->fillPath(path, blue_);
+            painter->setPen(Qt::white);
+        }
+        else {
+            painter->fillPath(path, Qt::white);
+            painter->setPen(Qt::black);
+        }
 
         painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, msg);
     }
@@ -108,16 +112,16 @@ QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir, const QString& m
     QRect textRect;
 
     if (dir == Qt::AlignRight) {
-        textRect = textFontMetrics.boundingRect(option.rect.left(),
-                                                option.rect.top() + padding_,
-                                                option.rect.width() - iconSize_.width() - 2 * padding_,
+        textRect = textFontMetrics.boundingRect(option.rect.left() + 2 * padding_,
+                                                option.rect.top() + 2 * padding_,
+                                                option.rect.width() - iconSize_.width() - 4 * padding_,
                                                 0,
                                                 dir|Qt::AlignTop|Qt::TextWordWrap,
                                                 msg);
     } else {
         textRect = textFontMetrics.boundingRect(option.rect.left() + iconSize_.width() + 2 * padding_,
-                                                option.rect.top() + padding_,
-                                                option.rect.width() - iconSize_.width(),
+                                                option.rect.top() + 2 * padding_,
+                                                option.rect.width() - iconSize_.width() - 4 * padding_ ,
                                                 0,
                                                 dir|Qt::AlignTop|Qt::TextWordWrap,
                                                 msg);
@@ -129,6 +133,9 @@ QSize
 ImDelegate::sizeHint(const QStyleOptionViewItem& option,
                      const QModelIndex& index) const
 {
+    QStyleOptionViewItem opt = option;
+    opt.font = fontMsg_;
+
     QString msg = index.data(Qt::DisplayRole).toString();
 
     auto dir = index.data(
@@ -138,13 +145,13 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     formatMsg(index, msg);
 
-    QRect subheaderRect = getBoundingRect(dir, msg, option);
+    QRect boundingRect = getBoundingRect(dir, msg, opt);
 
-    QSize size(option.rect.width(), subheaderRect.height() + 3 * padding_);
+    QSize size(option.rect.width(), boundingRect.height() + padding_);
 
     /* Keep the minimum height needed. */
     if(size.height() < iconSize_.height())
-        size.setHeight(iconSize_.height() + 3 * padding_);
+        size.setHeight(iconSize_.height() + padding_);
 
     return size;
 }
