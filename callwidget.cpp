@@ -52,6 +52,8 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 
+#include <QDebug>
+
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
@@ -61,6 +63,9 @@ CallWidget::CallWidget(QWidget* parent) :
     setMouseTracking(true);
 
     ui->setupUi(this);
+
+    welcomePageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
+    messagingPageAnim_ = new QPropertyAnimation(ui->messagingPage, "pos", this);
 
     // TODO : add this in style sheet forms
     QPalette palette;
@@ -564,7 +569,7 @@ CallWidget::showIMOutOfCall()
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
     }
-
+    slideToRight(messagingPageAnim_, ui->messagingPage);
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
 }
 
@@ -623,7 +628,29 @@ CallWidget::on_ringContactLineEdit_textEdited(const QString& text)
     RecentModel::instance().peopleProxy()->setFilterWildcard(text);
 }
 
-void CallWidget::on_imBackButton_clicked()
+void
+CallWidget::on_imBackButton_clicked()
 {
+    slideToLeft(welcomePageAnim_, ui->welcomePage);
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+}
+
+void
+CallWidget::slideToLeft(QPropertyAnimation* anim, QWidget* widget)
+{
+    anim->setDuration(animDuration_);
+    anim->setStartValue(QPoint(widget->width(), widget->y()));
+    anim->setEndValue(QPoint(widget->x(), widget->y()));
+    anim->setEasingCurve(QEasingCurve::OutQuad);
+    anim->start();
+}
+
+void
+CallWidget::slideToRight(QPropertyAnimation* anim, QWidget* widget)
+{
+    anim->setDuration(animDuration_);
+    anim->setStartValue(QPoint(-widget->width(), widget->y()));
+    anim->setEndValue(QPoint(widget->x(), widget->y()));
+    anim->setEasingCurve(QEasingCurve::OutQuad);
+    anim->start();
 }
