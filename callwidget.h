@@ -38,6 +38,7 @@ class ContactDelegate;
 class HistoryDelegate;
 class SmartListDelegate;
 class ImDelegate;
+class QPropertyAnimation;
 
 namespace Ui {
 class CallWidget;
@@ -100,6 +101,10 @@ private:
     QModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
+    QPropertyAnimation* messagingPageAnim_;
+    QPropertyAnimation* welcomePageAnim_;
+
+    constexpr static int animDuration_ = 200; //msecs
 
 private:
     void findRingAccount();
@@ -107,5 +112,7 @@ private:
     void placeCall();
     void setupOutOfCallIM();
     void setupSmartListMenu();
+    void slideToLeft(QPropertyAnimation* anim, QWidget* widget);
+    void slideToRight(QPropertyAnimation* anim, QWidget* widget);
 };
 

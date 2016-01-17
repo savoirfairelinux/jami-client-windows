@@ -62,6 +62,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->setupUi(this);
 
+    welcomePageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
+    messagingPageAnim_ = new QPropertyAnimation(ui->messagingPage, "pos", this);
+
     // TODO : add this in style sheet forms
     QPalette palette;
     palette.setColor(QPalette::WindowText, QColor(255,255,255));
@@ -190,6 +193,8 @@ CallWidget::~CallWidget()
     delete menu_;
     delete contactDelegate_;
     delete imDelegate_;
+    delete welcomePageAnim_;
+    delete messagingPageAnim_;
 }
 
 void
@@ -562,8 +567,7 @@ CallWidget::showIMOutOfCall()
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
     }
-
-    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+    slideToRight(messagingPageAnim_, ui->messagingPage);
 }
 
 void
@@ -621,7 +625,30 @@ CallWidget::on_ringContactLineEdit_textEdited(const QString& text)
     RecentModel::instance().peopleProxy()->setFilterWildcard(text);
 }
 
-void CallWidget::on_imBackButton_clicked()
+void
+CallWidget::on_imBackButton_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    slideToLeft(welcomePageAnim_, ui->welcomePage);
+}
+
+void
+CallWidget::slideToLeft(QPropertyAnimation* anim, QWidget* widget)
+{
+    ui->stackedWidget->setCurrentWidget(widget);
+    anim->setDuration(animDuration_);
+    anim->setStartValue(QPoint(widget->width(), widget->y()));
+    anim->setEndValue(QPoint(widget->x(), widget->y()));
+    anim->setEasingCurve(QEasingCurve::OutQuad);
+    anim->start();
+}
+
+void
+CallWidget::slideToRight(QPropertyAnimation* anim, QWidget* widget)
+{
+    ui->stackedWidget->setCurrentWidget(widget);
+    anim->setDuration(animDuration_);
+    anim->setStartValue(QPoint(-widget->width(), widget->y()));
+    anim->setEndValue(QPoint(widget->x(), widget->y()));
+    anim->setEasingCurve(QEasingCurve::OutQuad);
+    anim->start();
 }
