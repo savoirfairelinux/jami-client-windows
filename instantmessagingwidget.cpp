@@ -37,22 +37,27 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QPixmap sendPixmap(":/images/ic_send_white.svg");
+    QIcon sendIcon(sendPixmap);
+    ui->sendButton->setIcon(sendIcon);
+    ui->sendButton->setIconSize(sendPixmap.rect().size());
+
     this->hide();
 
     imDelegate_ = new ImDelegate();
-    ui->messageOutput->setItemDelegate(imDelegate_);
-    ui->messageOutput->setContextMenuPolicy(Qt::ActionsContextMenu);
+    ui->listMessageView->setItemDelegate(imDelegate_);
+    ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
     auto copyAction = new QAction(tr("Copy"), this);
-    ui->messageOutput->addAction(copyAction);
+    ui->listMessageView->addAction(copyAction);
     connect(copyAction, &QAction::triggered, [=]() {
         copyToClipboard();
     });
     auto displayDate = new QAction(tr("Display date"), this);
     displayDate->setCheckable(true);
-    ui->messageOutput->addAction(displayDate);
+    ui->listMessageView->addAction(displayDate);
     auto displayAuthor = new QAction(tr("Display author"), this);
     displayAuthor->setCheckable(true);
-    ui->messageOutput->addAction(displayAuthor);
+    ui->listMessageView->addAction(displayAuthor);
     auto lamdba = [=](){
         int opts = 0;
         displayAuthor->isChecked() ? opts |= ImDelegate::DisplayOptions::AUTHOR : opts;
@@ -82,23 +87,25 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia = call->addOutgoingMedia<Media::Text>();
         }
         if (textMedia) {
-            connect(ui->messageOutput->model(),
+            connect(ui->listMessageView->model(),
                     SIGNAL(rowsInserted(const QModelIndex&, int, int)),
-                    ui->messageOutput, SLOT(scrollToBottom()));
-            ui->messageOutput->setModel(
+                    ui->listMessageView, SLOT(scrollToBottom()));
+            ui->listMessageView->setModel(
                         textMedia->recording()->
                         instantMessagingModel());
-            connect(ui->messageInput, &QLineEdit::returnPressed, [=]()
+            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]()
             {
-                QMap<QString, QString> messages;
-                messages["text/plain"] = ui->messageInput->text();
-                textMedia->send(messages);
-                ui->messageInput->clear();
+                if (not ui->messageEdit->text().trimmed().isEmpty()) {
+                    QMap<QString, QString> messages;
+                    messages["text/plain"] = ui->messageEdit->text();
+                    textMedia->send(messages);
+                    ui->messageEdit->clear();
+                }
             });
         }
     } else {
-        ui->messageOutput->disconnect();
-        ui->messageInput->disconnect();
+        ui->listMessageView->disconnect();
+        ui->messageEdit->disconnect();
     }
 }
 
@@ -138,15 +145,15 @@ void
 InstantMessagingWidget::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event)
-    ui->messageInput->setFocus();
+    ui->messageEdit->setFocus();
 }
 
 void
 InstantMessagingWidget::copyToClipboard()
 {
-    auto idx = ui->messageOutput->currentIndex();
+    auto idx = ui->listMessageView->currentIndex();
     if (idx.isValid()) {
-        auto text = ui->messageOutput->model()->data(idx);
+        auto text = ui->listMessageView->model()->data(idx);
 
         QApplication::clipboard()->setText(text.value<QString>());
     }
@@ -155,7 +162,7 @@ InstantMessagingWidget::copyToClipboard()
 void
 InstantMessagingWidget::on_sendButton_clicked()
 {
-    emit ui->messageInput->returnPressed();
+    emit ui->messageEdit->returnPressed();
 }
 
 void
