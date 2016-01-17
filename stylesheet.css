@@ -48,7 +48,7 @@ QScrollBar:vertical{
 }
 
 QScrollBar::handle:vertical{
-    background: rgb( 255, 255, 255 )
+    background: rgb( 255, 255, 255 );
 }
 
 SmartList{
@@ -62,11 +62,25 @@ SmartList::item:selected{
 }
 
 SmartList::item:hover{
-   background-color: rgba(242, 242, 242, 255);
+    background-color: rgba(242, 242, 242, 255);
 }
 
 QListView#listMessageView::item:hover{
-   background-color: rgba(242, 242, 242, 255);
+    background-color: rgba(229, 229, 229, 255);
+    border-radius: 18px;
+}
+
+QListView#listMessageView{
+    background: rgb(242, 242, 242);
+    border-top: 1px solid rgb(229, 229, 229);
+}
+
+QLineEdit#messageEdit{
+    border-color: rgb(0, 192, 212);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: outset;
+    background-color: rgb(255, 255, 255);
 }
 
 QPushButton#holdButton{
@@ -133,4 +147,12 @@ QScrollBar:vertical{
 
 QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
+}
+
+QWidget#welcomePage{
+    background: rgb(242, 242, 242);
+}
+
+QWidget#messagingPage{
+    background: rgb(242, 242, 242);
 }
