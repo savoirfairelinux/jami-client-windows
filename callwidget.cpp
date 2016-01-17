@@ -94,6 +94,11 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
+    QPixmap sendPixmap(":/images/ic_send_white.svg");
+    QIcon sendIcon(sendPixmap);
+    ui->sendButton->setIcon(sendIcon);
+    ui->sendButton->setIconSize(sendPixmap.rect().size());
+
     GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
     try {
