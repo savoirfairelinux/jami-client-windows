@@ -21,19 +21,19 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <item>
-    <widget class="QListView" name="messageOutput">
+    <widget class="QListView" name="listMessageView">
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -51,7 +51,13 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QLineEdit" name="messageInput">
+      <widget class="QLineEdit" name="messageEdit">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="placeholderText">
         <string>Send text message...</string>
        </property>
@@ -62,12 +68,20 @@
      </item>
      <item>
       <widget class="QPushButton" name="sendButton">
-       <property name="text">
-        <string>Send</string>
+       <property name="minimumSize">
+        <size>
+         <width>36</width>
+         <height>36</height>
+        </size>
        </property>
-       <property name="icon">
-        <iconset resource="ressources.qrc">
-         <normaloff>:/images/arrow-right.png</normaloff>:/images/arrow-right.png</iconset>
+       <property name="maximumSize">
+        <size>
+         <width>36</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -75,8 +89,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

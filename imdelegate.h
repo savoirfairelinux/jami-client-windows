@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -42,10 +42,11 @@ private:
     void formatMsg(const QModelIndex& index, QString& msg) const;
     QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
 
-    const QColor blue {"#3AC0D2"};
-    const QColor grey {"#f2f2f2"};
+    const QFont fontMsg_ = QFont("Arial", 10);
+
+    const QColor blue_ {"#3AC0D2"};
     const QSize iconSize_ {38,38};
+
     constexpr static int padding_ = 5;
-    constexpr static int bubblePadding_ = 2;
 };
 
