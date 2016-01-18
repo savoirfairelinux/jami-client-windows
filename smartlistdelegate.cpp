@@ -40,6 +40,8 @@ SmartListDelegate::paint(QPainter* painter
                         ) const
 {
     QStyleOptionViewItem opt(option);
+    painter->setRenderHint(QPainter::Antialiasing);
+    opt.decorationSize = QSize(sizeImage_, sizeImage_);
     opt.decorationPosition = QStyleOptionViewItem::Left;
     opt.decorationAlignment = Qt::AlignCenter;
     if (opt.state & QStyle::State_HasFocus)

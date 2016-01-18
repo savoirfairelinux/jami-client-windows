@@ -19,6 +19,7 @@
 #include "windowscontactbackend.h"
 
 #include <QtXml>
+#include <QPainter>
 
 #include "personmodel.h"
 #include "categorizedcontactmodel.h"
@@ -289,8 +290,7 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
                         QImage photo;
                         photo.load(photoValue);
                         if (not photo.isNull())
-                            p->setPhoto(photo.scaled(sizePhoto_,sizePhoto_, Qt::KeepAspectRatio,
-                                                    Qt::SmoothTransformation));
+                            p->setPhoto(getCirclePhoto(photo));
                     }
                 }
                 else if (name == "EmailAddress") {
@@ -343,6 +343,23 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
         qDebug() << "Error Opening contact file : " << contactFileName;
         return false;
     }
+}
+
+QImage WindowsContactBackend::getCirclePhoto(const QImage original)
+{
+    QImage target(sizePhoto_, sizePhoto_, QImage::Format_ARGB32_Premultiplied);
+    target.fill(Qt::transparent);
+
+    QPainter painter(&target);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setBrush(QBrush(Qt::white));
+    painter.drawEllipse(0, 0, sizePhoto_, sizePhoto_);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.drawImage(0, 0,
+                      original
+                      .scaled(60, 60, Qt::KeepAspectRatio, Qt::SmoothTransformation)
+                      .convertToFormat(QImage::Format_ARGB32_Premultiplied));
+    return target;
 }
 
 bool
