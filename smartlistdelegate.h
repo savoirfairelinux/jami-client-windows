@@ -37,7 +37,6 @@ protected:
 private:
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;
-    constexpr static int cellWidth_ = 324;
     constexpr static int dy_ = 6;
     constexpr static int dx_ = 12;
     constexpr static int fontSize_ = 10;
