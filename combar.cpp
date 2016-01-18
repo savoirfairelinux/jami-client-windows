@@ -24,9 +24,6 @@ ComBar::ComBar(QWidget* parent) :
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
-
-    // [jn] these buttons are for further uses
-    ui->btncontactinfo->hide();
 }
 
 ComBar::~ComBar()
@@ -37,6 +34,6 @@ ComBar::~ComBar()
 void
 ComBar::moveToRow(const QRect& rect)
 {
-    move(rect.right() - width(),
+    move(rect.right() - width() - 5,
          rect.bottom() - height() - (rect.height()/4));
 }

@@ -41,9 +41,11 @@ SmartListDelegate::paint(QPainter* painter
 {
     QStyleOptionViewItem opt(option);
     painter->setRenderHint(QPainter::Antialiasing);
+
     opt.decorationSize = QSize(sizeImage_, sizeImage_);
     opt.decorationPosition = QStyleOptionViewItem::Left;
     opt.decorationAlignment = Qt::AlignCenter;
+
     if (opt.state & QStyle::State_HasFocus)
         opt.state ^= QStyle::State_HasFocus;
 
@@ -53,12 +55,15 @@ SmartListDelegate::paint(QPainter* painter
     QRect rect = opt.rect;
     rect.setLeft(0);
 
-    QRect rectTexts(16 + rect.left() + dx_+sizeImage_, rect.top(), rect.width(), rect.height()/2);
+    QRect rectTexts(16 + rect.left() + dx_ + sizeImage_,
+                    rect.top(),
+                    rect.width(),
+                    rect.height() / 2);
     QRect rectAvatar(16 + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
-    drawDecoration(painter, opt, rectAvatar, QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>()));
+    drawDecoration(painter, opt, rectAvatar,
+                   QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>()));
 
     const int currentRow = index.row();
-
     if (currentRow == rowHighlighted_)
         emit rowSelected(opt.rect);
 
@@ -85,7 +90,16 @@ SmartListDelegate::paint(QPainter* painter
             painter->setPen(pen);
             font.setBold(true);
             painter->setFont(font);
-            painter->drawText(rectTexts, Qt::AlignBottom | Qt::AlignLeft, name.toString());
+            QFontMetrics fontMetrics(font);
+            QString nameStr = name.toString();
+            auto realRect = fontMetrics.boundingRect(rect, Qt::AlignBottom | Qt::AlignLeft, nameStr);
+            if (realRect.width() > (rect.width() - rectTexts.left() - 30)) {
+                /* 30 here is the size of the video button */
+                auto charToChop = (realRect.width() - (rect.width() - rectTexts.left())) / fontMetrics.averageCharWidth();
+                nameStr.chop(charToChop + 8);
+                nameStr.append(QStringLiteral("..."));
+            }
+            painter->drawText(rectTexts, Qt::AlignBottom | Qt::AlignLeft, nameStr);
         }
 
         QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
@@ -126,6 +140,5 @@ SmartListDelegate::sizeHint(const QStyleOptionViewItem& option
 {
     QSize size = QItemDelegate::sizeHint(option, index);
     size.setHeight(cellHeight_);
-    size.setWidth(cellWidth_);
     return size;
 }
