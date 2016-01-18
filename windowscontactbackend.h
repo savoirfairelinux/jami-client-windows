@@ -55,6 +55,7 @@ private:
 
 private:
     bool getPersonFromContactFile(const QDir &contactDir, const QString& contactFileName);
+    QImage getCirclePhoto(const QImage original);
 };
 
 class WindowsContactEditor : public CollectionEditor<Person>

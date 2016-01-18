@@ -29,7 +29,7 @@
 namespace Interfaces {
 
 PixbufManipulator::PixbufManipulator()
-    : fallbackAvatar_( QImage(":/images/user/btn-default-userpic.svg"))
+    : fallbackAvatar_(QImage(":/images/user/btn-default-userpic.svg"))
 {}
 
 QImage
@@ -147,26 +147,35 @@ QVariant PixbufManipulator::decorationRole(const QModelIndex& index)
 
 QVariant PixbufManipulator::decorationRole(const Call* c)
 {
+    QImage photo;
     if (c && c->peerContactMethod()
             && c->peerContactMethod()->contact()
             && c->peerContactMethod()->contact()->photo().isValid()) {
-        return c->peerContactMethod()->contact()->photo().value<QImage>();
+        photo =  c->peerContactMethod()->contact()->photo().value<QImage>();
     }
-    return QVariant::fromValue(scaleAndFrame(fallbackAvatar_, imgSize_));
+    else
+        photo = fallbackAvatar_;
+    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
 }
 
 QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
 {
+    QImage photo;
     if (cm && cm->contact() && cm->contact()->photo().isValid())
-        return cm->contact()->photo().value<QImage>();
-    return QVariant::fromValue(scaleAndFrame(fallbackAvatar_, imgSize_));
+        photo = cm->contact()->photo().value<QImage>();
+    else
+        photo = fallbackAvatar_;
+    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
 }
 
 QVariant PixbufManipulator::decorationRole(const Person* p)
 {
+    QImage photo;
     if (p && p->photo().isValid())
-        return p->photo();
-    return QVariant::fromValue(scaleAndFrame(fallbackAvatar_, imgSize_));
+        photo = p->photo().value<QImage>();
+    else
+        photo = fallbackAvatar_;
+    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
 }
 
 } // namespace Interfaces
