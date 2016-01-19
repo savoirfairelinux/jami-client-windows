@@ -33,6 +33,7 @@
 #include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "categorizedhistorymodel.h"
+#include "media/textrecording.h"
 
 class ContactDelegate;
 class HistoryDelegate;
@@ -86,6 +87,7 @@ private slots:
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
+    void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
 
 private:
     Ui::CallWidget* ui;
