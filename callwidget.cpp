@@ -558,7 +558,10 @@ CallWidget::historicButton_clicked(bool checked)
 void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    placeCall();
+    auto cm = PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text());
+    time_t currentTime;
+    ::time(&currentTime);
+    cm->setLastUsed(currentTime);
 }
 
 void
