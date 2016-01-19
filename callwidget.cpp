@@ -36,6 +36,7 @@
 #include "localhistorycollection.h"
 #include "media/text.h"
 #include "media/recording.h"
+#include "media/recordingmodel.h"
 #include "media/textrecording.h"
 #include "recentmodel.h"
 #include "contactmethod.h"
@@ -231,6 +232,15 @@ CallWidget::setupOutOfCallIM()
     };
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
+
+    connect(&Media::RecordingModel::instance(), &Media::RecordingModel::newTextMessage, [&](Media::TextRecording* t, ContactMethod* cm) {
+        Q_UNUSED(cm)
+        if (!QApplication::activeWindow()) {
+            auto idx = t->instantTextMessagingModel()->index(t->instantTextMessagingModel()->rowCount()-1, 0);
+            GlobalSystemTray::instance().showMessage("Ring", "Message incoming from " + idx.data((int)Media::TextRecording::Role::AuthorDisplayname).toString());
+            QApplication::alert(this, 5000);
+        }
+    });
 }
 
 void
