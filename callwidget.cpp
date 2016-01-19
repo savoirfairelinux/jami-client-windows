@@ -608,8 +608,20 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
                                 SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
                                 this,
                                 SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
-        ui->listMessageView->scrollToBottom();
-        txtRecording->setAllRead();
+        auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
+        if (messagesPresent) {
+            ui->listMessageView->scrollToBottom();
+            txtRecording->setAllRead();
+        }
+        ui->listMessageView->setVisible(messagesPresent);
+        ui->noMessagesLabel->setVisible(!messagesPresent);
+        if (not messagesPresent) {
+            QMetaObject::Connection connection = connect(txtRecording->instantMessagingModel(), &QAbstractItemModel::rowsInserted, [&]() {
+                ui->listMessageView->setVisible(messagesPresent);
+                ui->noMessagesLabel->setVisible(!messagesPresent);
+                disconnect(connection);
+            });
+        }
     }
 }
 
