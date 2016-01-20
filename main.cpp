@@ -30,6 +30,7 @@
 #include <QThread>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QProcessEnvironment>
 
 #ifdef Q_OS_WIN32
 #include <windows.h>
@@ -57,6 +58,8 @@ Console()
 int
 main(int argc, char *argv[])
 {
+    qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
+
     QApplication a(argc, argv);
 
     auto startMinimized = false;
