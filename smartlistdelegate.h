@@ -43,11 +43,6 @@ private:
     constexpr static int pinSize_ = 12;
     int rowHighlighted_ = -1;
 
-    const QColor lightGrey_ {242, 242, 242};
-    const QColor lightBlack_ {63, 63, 63};
-    const QColor grey_ {192, 192, 192};
-    const QColor red_ {251, 72, 71};
-
 signals:
     void rowSelected(const QRect& rect) const;
 };
