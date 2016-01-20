@@ -22,6 +22,30 @@
       "revId": "45bf7c021b975d92219ee2030f5428a0c175f308",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5b65a4df",
+        "filename": "instantmessagingwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-20T17:09:11Z",
+      "side": 0,
+      "message": "this part do not the job properly. the one in callwidget.cpp does. I don\u0027t know why yet, but I will do the changes for the rest of the buttons.",
+      "parentUuid": "1a9dcd25_7b574003",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "45bf7c021b975d92219ee2030f5428a0c175f308",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
