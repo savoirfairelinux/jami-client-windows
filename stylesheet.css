@@ -1,24 +1,22 @@
 QPushButton#btnCall{
-    border-image: url(:/images/call/btn-call.svg);
+    background-color: #4caf50;
+    border-radius: 15px;
+    border:solid 1px;
 }
 
 QPushButton#acceptButton{
-    border-image: url(:/images/call/btn-answer.svg);
+    background-color: #4caf50;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
-QPushButton#refuseButton{
-    border-image: url(:/images/call/btn-ignore.svg);
+QPushButton#refuseButton, QPushButton#cancelButton{
+    background-color: #f44336;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
-QPushButton#cancelButton{
-    border-image: url(:/images/call/btn-ignore.svg);
-}
-
-QWidget#callInvitePage{
-    background-color : rgb( 77, 77, 77 );
-}
-
-QWidget#outboundCallPage{
+QWidget#callInvitePage, QWidget#outboundCallPage{
     background-color : rgb( 77, 77, 77 );
 }
 
@@ -133,7 +131,6 @@ QPushButton#joinButton{
 
 QPushButton#imBackButton{
    background-color: #414141;
-   border-image: url(:/images/ic_arrow_back_white.svg);
    border-radius: 15px;
    border:solid 1px;
 }
@@ -159,10 +156,6 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#welcomePage{
-    background: rgb(242, 242, 242);
-}
-
-QWidget#messagingPage{
+QWidget#welcomePage, QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
