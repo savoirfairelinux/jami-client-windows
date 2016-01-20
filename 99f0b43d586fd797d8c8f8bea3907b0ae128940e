@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_3b3a18ce",
+        "filename": "images/call/btn-ignore.svg",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-20T16:23:48Z",
+      "side": 1,
+      "message": "I did the changes with inkscape, should I update something about this ?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 94
+      },
+      "revId": "99f0b43d586fd797d8c8f8bea3907b0ae128940e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
