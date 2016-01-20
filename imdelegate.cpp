@@ -18,10 +18,12 @@
 
 #include "imdelegate.h"
 
+#include <QApplication>
+
 #include "media/text.h"
 #include "media/textrecording.h"
 
-#include <QApplication>
+#include "ringthemeutils.h"
 
 ImDelegate::ImDelegate(QObject *parent)
     : QStyledItemDelegate(parent), showDate_(false), showAuthor_(false)
@@ -93,7 +95,7 @@ ImDelegate::paint(QPainter* painter,
         path.addRoundedRect(bubbleRect, padding_, padding_);
 
         if (dir == Qt::AlignRight) {
-            painter->fillPath(path, blue_);
+            painter->fillPath(path, RingTheme::blue_);
             painter->setPen(Qt::white);
         }
         else {
