@@ -872,94 +872,6 @@
                  <number>0</number>
                 </property>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QWidget" name="outboundCall" native="true">
-                  <layout class="QVBoxLayout" name="spinnerLayout">
-                   <item>
-                    <widget class="QLabel" name="label_3">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>130</width>
-                       <height>130</height>
-                      </size>
-                     </property>
-                     <property name="baseSize">
-                      <size>
-                       <width>130</width>
-                       <height>130</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="outboundCallLabel">
-                     <property name="styleSheet">
-                      <string notr="true">color: rgb(174, 174, 174);</string>
-                     </property>
-                     <property name="text">
-                      <string>Calling</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QPushButton" name="cancelButton">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>63</width>
-                       <height>63</height>
-                      </size>
-                     </property>
-                     <property name="baseSize">
-                      <size>
-                       <width>63</width>
-                       <height>63</height>
-                      </size>
-                     </property>
-                     <property name="layoutDirection">
-                      <enum>Qt::LeftToRight</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="cancelCallLabel">
-                     <property name="styleSheet">
-                      <string notr="true">color: rgb(174, 174, 174);</string>
-                     </property>
-                     <property name="text">
-                      <string>Cancel</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                  <widget class="QWidget" name="callInvite" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -1168,6 +1080,113 @@
                       </widget>
                      </item>
                     </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="outboundCallPage">
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                 <widget class="QWidget" name="outboundCall" native="true">
+                  <layout class="QVBoxLayout" name="spinnerLayout">
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>130</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>130</width>
+                       <height>130</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="outboundCallLabel">
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(174, 174, 174);</string>
+                     </property>
+                     <property name="text">
+                      <string>Calling</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QPushButton" name="cancelButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>63</width>
+                       <height>63</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>63</width>
+                       <height>63</height>
+                      </size>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="cancelCallLabel">
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(174, 174, 174);</string>
+                     </property>
+                     <property name="text">
+                      <string>Cancel</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>

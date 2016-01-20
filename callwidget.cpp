@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -64,28 +64,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     welcomePageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
     messagingPageAnim_ = new QPropertyAnimation(ui->messagingPage, "pos", this);
-
-    // TODO : add this in style sheet forms
-    QPalette palette;
-    palette.setColor(QPalette::WindowText, QColor(255,255,255));
-    ui->callerIdLabel->setPalette(palette);
-
-    QPalette palette2;
-    palette2.setColor(QPalette::WindowText, QColor(141,141,141));
-
-    ui->wantToTalkLabel->setPalette(palette2);
-    ui->outboundCallLabel->setPalette(palette2);
-    ui->cancelCallLabel->setPalette(palette2);
-    ui->acceptLabel->setPalette(palette2);
-    ui->refuseLabel->setPalette(palette2);
-
-    QFont font = ui->callerIdLabel->font();
-    font.setPointSize(20);
-
-    ui->callerIdLabel->setFont(font);
-    // end of TODO : add this in style sheet forms
-
-    ui->callInvite->setVisible(false);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -339,8 +317,6 @@ CallWidget::findRingAccount()
 void
 CallWidget::callIncoming(Call* call)
 {
-    ui->outboundCall->hide();
-
     if (!QApplication::focusWidget()) {
         GlobalSystemTray::instance()
                 .showMessage("Ring",
@@ -352,8 +328,6 @@ CallWidget::callIncoming(Call* call)
         ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
                                    .arg(call->formattedName()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
-        ui->callInvite->setVisible(true);
-        ui->callInvite->raise();
     }
     setActualCall(call);
 }
@@ -363,7 +337,6 @@ CallWidget::on_acceptButton_clicked()
 {
     if (actualCall_ != nullptr)
         actualCall_->performAction(Call::Action::ACCEPT);
-    ui->callInvite->setVisible(false);
     ui->stackedWidget->setCurrentWidget(ui->videoPage);
 }
 
@@ -374,7 +347,6 @@ CallWidget::on_refuseButton_clicked()
         return;
     actualCall_->performAction(Call::Action::REFUSE);
     setActualCall(nullptr);
-    ui->callInvite->setVisible(false);
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
@@ -384,7 +356,7 @@ CallWidget::addedCall(Call* call, Call* parent)
     Q_UNUSED(parent);
     if (call->direction() == Call::Direction::OUTGOING) {
         setActualCall(call);
-        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
     }
 }
 
