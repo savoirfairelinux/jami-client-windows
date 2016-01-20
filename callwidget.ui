@@ -215,6 +215,16 @@
                 <property name="text">
                  <string/>
                 </property>
+                <property name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -698,6 +708,16 @@
                     <property name="text">
                      <string/>
                     </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_arrow_back_white.svg</normaloff>:/images/ic_arrow_back_white.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
                     <property name="flat">
                      <bool>false</bool>
                     </property>
@@ -829,6 +849,12 @@
                       <pointsize>10</pointsize>
                      </font>
                     </property>
+                    <property name="placeholderText">
+                     <string>Send text message...</string>
+                    </property>
+                    <property name="clearButtonEnabled">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -845,8 +871,15 @@
                       <height>36</height>
                      </size>
                     </property>
+                    <property name="toolTip">
+                     <string>send message</string>
+                    </property>
                     <property name="text">
                      <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_send_white.svg</normaloff>:/images/ic_send_white.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -983,8 +1016,18 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>63</width>
-                         <height>63</height>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="ressources.qrc">
+                         <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
                         </size>
                        </property>
                       </widget>
@@ -1015,18 +1058,22 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>63</width>
-                         <height>63</height>
-                        </size>
-                       </property>
-                       <property name="baseSize">
-                        <size>
-                         <width>63</width>
-                         <height>63</height>
+                         <width>64</width>
+                         <height>64</height>
                         </size>
                        </property>
                        <property name="layoutDirection">
                         <enum>Qt::RightToLeft</enum>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="ressources.qrc">
+                         <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
                        </property>
                       </widget>
                      </item>
@@ -1166,12 +1213,22 @@
                      </property>
                      <property name="baseSize">
                       <size>
-                       <width>63</width>
-                       <height>63</height>
+                       <width>64</width>
+                       <height>64</height>
                       </size>
                      </property>
                      <property name="layoutDirection">
                       <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="ressources.qrc">
+                       <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>64</width>
+                       <height>64</height>
+                      </size>
                      </property>
                     </widget>
                    </item>
@@ -1275,50 +1332,9 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <layout class="QVBoxLayout" name="verticalLayout_13">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="InstantMessagingWidget" name="instantMessagingWidget" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>InstantMessagingWidget</class>
-   <extends>QWidget</extends>
-   <header>instantmessagingwidget.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>VideoView</class>
    <extends>QWidget</extends>

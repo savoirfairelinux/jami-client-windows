@@ -51,7 +51,6 @@ SOURCES += main.cpp\
     contactdelegate.cpp \
     selectareadialog.cpp \
     accountserializationadapter.cpp \
-    instantmessagingwidget.cpp \
     accountstatedelegate.cpp \
     videoview.cpp \
     videooverlay.cpp \
@@ -85,7 +84,6 @@ HEADERS  += mainwindow.h \
     contactdelegate.h \
     selectareadialog.h \
     accountserializationadapter.h \
-    instantmessagingwidget.h \
     accountstatedelegate.h \
     videoview.h \
     videooverlay.h \
@@ -111,7 +109,6 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     wizarddialog.ui \
-    instantmessagingwidget.ui \
     videoview.ui \
     videooverlay.ui \
     contactpicker.ui \
