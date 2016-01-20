@@ -37,11 +37,6 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap sendPixmap(":/images/ic_send_white.svg");
-    QIcon sendIcon(sendPixmap);
-    ui->sendButton->setIcon(sendIcon);
-    ui->sendButton->setIconSize(sendPixmap.rect().size());
-
     this->hide();
 
     imDelegate_ = new ImDelegate();
@@ -87,12 +82,10 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia = call->addOutgoingMedia<Media::Text>();
         }
         if (textMedia) {
-            connect(ui->listMessageView->model(),
-                    SIGNAL(rowsInserted(const QModelIndex&, int, int)),
-                    ui->listMessageView, SLOT(scrollToBottom()));
             ui->listMessageView->setModel(
                         textMedia->recording()->
                         instantMessagingModel());
+            ui->listMessageView->scrollToBottom();
             connect(ui->messageEdit, &QLineEdit::returnPressed, [=]()
             {
                 if (not ui->messageEdit->text().trimmed().isEmpty()) {
@@ -100,6 +93,7 @@ InstantMessagingWidget::setMediaText(Call *call)
                     messages["text/plain"] = ui->messageEdit->text();
                     textMedia->send(messages);
                     ui->messageEdit->clear();
+                    ui->listMessageView->scrollToBottom();
                 }
             });
         }
@@ -172,5 +166,6 @@ InstantMessagingWidget::onMsgReceived(const QMap<QString,QString>& message)
         GlobalSystemTray::instance().showMessage("Ring: Message Received", message["text/plain"]);
         QApplication::alert(this, 5000);
     }
+    ui->listMessageView->scrollToBottom();
     this->show();
 }
