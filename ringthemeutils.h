@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,33 +18,12 @@
 
 #pragma once
 
-#include <QPainter>
-#include <QStyledItemDelegate>
+namespace RingTheme {
 
-class ImDelegate : public QStyledItemDelegate
-{
-    Q_OBJECT
-public:
-    explicit ImDelegate(QObject *parent = 0);
-    enum DisplayOptions {
-        AUTHOR = 1,
-        DATE
-    };
+static const QColor blue_ {"#3AC0D2"};
+static const QColor lightGrey_ {242, 242, 242};
+static const QColor lightBlack_ {63, 63, 63};
+static const QColor grey_ {192, 192, 192};
+static const QColor red_ {251, 72, 71};
 
-    void setDisplayOptions(DisplayOptions opt);
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
-private:
-    bool showDate_;
-    bool showAuthor_;
-
-    void formatMsg(const QModelIndex& index, QString& msg) const;
-    QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
-
-    const QFont fontMsg_ = QFont("Arial", 10);
-    const QSize iconSize_ {38,38};
-
-    constexpr static int padding_ = 5;
-};
-
+}

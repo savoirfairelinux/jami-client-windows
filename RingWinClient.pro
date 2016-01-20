@@ -102,7 +102,8 @@ HEADERS  += mainwindow.h \
     mainwindowtoolbar.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
-    qualitydialog.h
+    qualitydialog.h \
+    ringthemeutils.h
 
 FORMS    += mainwindow.ui \
     callwidget.ui \
