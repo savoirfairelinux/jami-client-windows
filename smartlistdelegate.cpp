@@ -28,6 +28,8 @@
 #include "recentmodel.h"
 #include "call.h"
 
+#include "ringthemeutils.h"
+
 SmartListDelegate::SmartListDelegate(QObject* parent) :
     QItemDelegate(parent)
 {
