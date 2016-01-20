@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="lt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -13,10 +11,6 @@
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
         <translation>Padėkos</translation>
-    </message>
-    <message>
-        <source>X</source>
-        <translation type="vanished">X</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -143,17 +137,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="398"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Leisti Skambučius Nuo Nepažįstamųjų</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="412"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Leisti Skambučius Nuo Kontaktų</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"></translation>
+        <translation>Leisti Skambučius Iš Istorijos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="388"/>
@@ -188,7 +182,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="660"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation type="unfinished"></translation>
+        <translation>Registracijos galiojimo pabaigos laiko limitas (sekundžių):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="688"/>
@@ -203,7 +197,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="745"/>
         <source>Published Adress</source>
-        <translation type="unfinished"></translation>
+        <translation>Paskelbtas Adresas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="760"/>
@@ -244,17 +238,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="960"/>
         <source>Realm</source>
-        <translation type="unfinished"></translation>
+        <translation>Sritis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="983"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"></translation>
+        <translation>SDP Seanso Derėjimasis (ICE Surogatas)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="996"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Šie nustatymai yra naudojami tik SDP seanso derėjimosi metu tuo atveju, jei serveris arba naudotojas nepalaiko ICE.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1012"/>
@@ -301,17 +295,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1252"/>
         <source>Fallback on RTP on encryption failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavykus šifravimui, pereiti RTP surogatinę veikseną</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1265"/>
         <source>Negotiation Encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Derėjimosi Užšifravimas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1272"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Užšifruoti derėjimąsi (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1281"/>
@@ -341,27 +335,27 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1331"/>
         <source>Outgoing TLS server name</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsiunčiamo TLS serverio pavadinimas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1341"/>
         <source>Negotiation timeout (seconds)</source>
-        <translation type="unfinished"></translation>
+        <translation>Derėjimuisi skirtas laikas (sekundžių)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1459"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikrinti gaunamus liudijimus (serverio pusėje)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1469"/>
         <source>Verify answer certificates (client side)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikrinti atsakomuosius liudijimus (kliento pusėje)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1479"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Reikalauti liudijimo gaunamiems TLS ryšiams</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1497"/>
@@ -379,25 +373,9 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Naudoti tinkintą šifrų sąrašą</translation>
     </message>
     <message>
-        <source>Enabled</source>
-        <translation type="vanished">Įjungta</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Vardas</translation>
-    </message>
-    <message>
-        <source>Bitrate</source>
-        <translation type="vanished">Pralaidumas</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">Skatimeninimo dažnis</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="182"/>
@@ -410,18 +388,19 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tai yra jūsų RingID.
+Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="166"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring yra saugi ir paskirstytoji balso, vaizdo ir pokalbių susisiekimo platforma, kuri nereikalauja centralizuoto serverio ir palieka visą privatumo galią naudotojo rankose.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="258"/>
@@ -446,31 +425,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>State:</source>
-        <translation type="vanished">Būsena:</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">Gerai</translation>
-    </message>
-    <message>
-        <source>History</source>
-        <translation type="vanished">Istorija</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Paieška</translation>
-    </message>
-    <message>
-        <source>Sort:</source>
-        <translation type="vanished">Rikiuoti:</translation>
-    </message>
-    <message>
-        <source>Contact</source>
-        <translation type="vanished">Kontaktą</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
@@ -483,11 +438,6 @@ Copy and share it with your friends!</source>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <source>Your RingID: %1</source>
-        <comment>%1 is the RingID</comment>
-        <translation type="vanished">Jūsų RingID: %1</translation>
-    </message>
-    <message>
         <location filename="../callwidget.cpp" line="186"/>
         <location filename="../callwidget.cpp" line="210"/>
         <source>NO RING ACCOUNT FOUND</source>
@@ -498,11 +448,6 @@ Copy and share it with your friends!</source>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
         <translation>Skambutis nuo %1</translation>
-    </message>
-    <message>
-        <source>Call State: %1</source>
-        <comment>%1 is the state of the call</comment>
-        <translation type="vanished">Skambučio Būsena: %1</translation>
     </message>
 </context>
 <context>
@@ -545,12 +490,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvairūs nustatymai</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -571,10 +516,6 @@ Copy and share it with your friends!</source>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Resolution</source>
         <translation>Raiška</translation>
-    </message>
-    <message>
-        <source>Framerate</source>
-        <translation type="vanished">Kadrų dažnis</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
@@ -607,7 +548,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactdelegate.cpp" line="87"/>
         <source>&lt;Multiple contact methods&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -663,31 +604,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti datą</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="53"/>
         <source>Display author</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MainBar</name>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Dial Number</source>
-        <translation type="vanished">Rinkti Numerį</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">Apie</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">Išeiti</translation>
+        <translation>Rodyti autorių</translation>
     </message>
 </context>
 <context>
@@ -700,7 +622,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
         <source>About</source>
-        <translation type="unfinished">Apie</translation>
+        <translation>Apie</translation>
     </message>
 </context>
 <context>
@@ -716,22 +638,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Esami Skambučiai</translation>
     </message>
 </context>
 <context>
@@ -764,17 +686,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
         <source>Mute Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nutildyti Garsą</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="45"/>
         <source>Mute Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -798,14 +720,6 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <source>Wizard</source>
-        <translation type="vanished">Vediklis</translation>
-    </message>
-    <message>
-        <source>Greetings ! Please enter a username</source>
-        <translation type="vanished">Sveiki ! Prašome įvesti naudotojo vardą</translation>
-    </message>
-    <message>
         <location filename="../wizarddialog.cpp" line="52"/>
         <source>Please wait while we create your account.</source>
         <translation>Prašome palaukti, kol sukursime jūsų paskyrą.</translation>
@@ -813,12 +727,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Prisijungti prie Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite savo naudotojo vardą:</translation>
     </message>
 </context>
 </TS>

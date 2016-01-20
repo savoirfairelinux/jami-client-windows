@@ -21,8 +21,8 @@
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>Клиент Ring для GNOME.
-Ring это приложение для безопасного и распределенного общения. </translation>
+        <translation>Клиент Ring для Windows.
+Ring – это приложение для безопасного и распределённого общения. </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -47,7 +47,7 @@ Ring это приложение для безопасного и распред
     <message>
         <location filename="../aboutdialog.cpp" line="53"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Основан на проекте SFLPhone</translation>
+        <translation>Основано на проекте SFLPhone</translation>
     </message>
 </context>
 <context>
@@ -300,7 +300,7 @@ Ring это приложение для безопасного и распред
     <message>
         <location filename="../accountdetails.ui" line="1265"/>
         <source>Negotiation Encryption</source>
-        <translation>Шифрование согласования</translation>
+        <translation>Шифрование разговора</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1272"/>
@@ -410,7 +410,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="292"/>
         <source>Call</source>
-        <translation>звонок</translation>
+        <translation>Звонок</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="306"/>
@@ -447,7 +447,7 @@ Copy and share it with your friends!</source>
         <location filename="../callwidget.cpp" line="226"/>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>Звонок от: %1</translation>
+        <translation>Звонок от %1</translation>
     </message>
 </context>
 <context>
@@ -475,7 +475,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="79"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Поставьте 0 для хранения всей истории)</translation>
+        <translation>(0 = хранить всю историю)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="104"/>
@@ -617,7 +617,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation>кольцо</translation>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
