@@ -28,6 +28,8 @@
 #include "recentmodel.h"
 #include "call.h"
 
+#include "ringthemeutils.h"
+
 SmartListDelegate::SmartListDelegate(QObject* parent) :
     QItemDelegate(parent)
 {
@@ -85,9 +87,9 @@ SmartListDelegate::paint(QPainter* painter
 
         QPainterPath path;
         path.addRoundedRect(bubbleRect, 3, 3);
-        QPen pen(red_, 5);
+        QPen pen(ThemeUtils::red_, 5);
         painter->setPen(pen);
-        painter->fillPath(path, red_);
+        painter->fillPath(path, ThemeUtils::red_);
         painter->drawPath(path);
 
         painter->setPen(Qt::white);
@@ -104,7 +106,7 @@ SmartListDelegate::paint(QPainter* painter
         emit rowSelected(opt.rect);
 
     if (not (opt.state & QStyle::State_Selected)) {
-        pen.setColor(lightGrey_);
+        pen.setColor(ThemeUtils::lightGrey_);
         painter->setPen(pen);
         painter->drawLine(rect.left() + 20, rect.bottom(),
                           rect.right() - 20,
@@ -117,7 +119,7 @@ SmartListDelegate::paint(QPainter* painter
         QVariant name = index.data(static_cast<int>(Ring::Role::Name));
         if (name.isValid())
         {
-            pen.setColor(lightBlack_);
+            pen.setColor(ThemeUtils::lightBlack_);
             painter->setPen(pen);
             font.setBold(true);
             painter->setFont(font);
@@ -134,7 +136,7 @@ SmartListDelegate::paint(QPainter* painter
         }
 
         QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
-        pen.setColor(grey_);
+        pen.setColor(ThemeUtils::grey_);
         painter->setPen(pen);
         font.setBold(false);
         painter->setFont(font);
