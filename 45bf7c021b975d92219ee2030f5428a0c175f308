@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_7b574003",
+        "filename": "instantmessagingwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-20T16:32:16Z",
+      "side": 0,
+      "message": "Pixmap have been used for a reason don\u0027t supress that and use it for the other button",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "45bf7c021b975d92219ee2030f5428a0c175f308",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
