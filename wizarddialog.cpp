@@ -34,7 +34,7 @@ WizardDialog::WizardDialog(QWidget *parent) :
 
     setFixedSize(this->width(),this->height());
 
-    ui->joinButton->setEnabled(false);
+    ui->wizardButton->setEnabled(false);
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -50,7 +50,7 @@ void
 WizardDialog::accept()
 {
     ui->label->setText(tr("Please wait while we create your account."));
-    ui->joinButton->setEnabled(false);
+    ui->wizardButton->setEnabled(false);
     ui->usernameEdit->setEnabled(false);
 
     repaint();
@@ -78,7 +78,7 @@ WizardDialog::endSetup(Account* a)
 void
 WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
 {
-    ui->joinButton->setEnabled(!arg1.isEmpty());
+    ui->wizardButton->setEnabled(!arg1.isEmpty());
 }
 
 void

@@ -517,7 +517,7 @@
       </spacer>
      </item>
      <item row="7" column="1" alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="joinButton">
+      <widget class="QPushButton" name="wizardButton">
        <property name="palette">
         <palette>
          <active>
@@ -1016,7 +1016,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>joinButton</sender>
+   <sender>wizardButton</sender>
    <signal>clicked()</signal>
    <receiver>WizardDialog</receiver>
    <slot>accept()</slot>
