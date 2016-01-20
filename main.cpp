@@ -57,6 +57,8 @@ Console()
 int
 main(int argc, char *argv[])
 {
+    qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
+
     QApplication a(argc, argv);
 
     auto startMinimized = false;
