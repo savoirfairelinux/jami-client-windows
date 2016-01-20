@@ -26,7 +26,7 @@
 #include <QMovie>
 
 #include "navwidget.h"
-#include "instantmessagingwidget.h"
+//~ #include "instantmessagingwidget.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"

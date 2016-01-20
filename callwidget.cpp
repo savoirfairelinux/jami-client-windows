@@ -68,8 +68,8 @@ CallWidget::CallWidget(QWidget* parent) :
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
 
-    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
-            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+    //~ connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
+            //~ ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -370,7 +370,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
-        ui->instantMessagingWidget->setMediaText(nullptr);
+        //~ ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
         //TODO : Link this so that recentModel get selected correctly
         //        auto onHoldCall = callModel_->getActiveCalls().first();
@@ -379,7 +379,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         //            onHoldCall->performAction(Call::Action::HOLD);
         //        }
     } else if (call->state() == Call::State::CURRENT) {
-        ui->instantMessagingWidget->setMediaText(actualCall_);
+        //~ ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
 }
