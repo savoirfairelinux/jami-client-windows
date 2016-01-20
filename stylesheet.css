@@ -1,37 +1,39 @@
 QPushButton#btnCall{
-    border-image: url(:/images/call/btn-call.svg);
+    background-color: #4caf50;
+    border-radius: 15px;
+    border:solid 1px;
 }
 
 QPushButton#acceptButton{
-    border-image: url(:/images/call/btn-answer.svg);
+    background-color: #4caf50;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
-QPushButton#refuseButton{
-    border-image: url(:/images/call/btn-ignore.svg);
+QPushButton#refuseButton, QPushButton#cancelButton{
+    background-color: #f44336;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
-QPushButton#cancelButton{
-    border-image: url(:/images/call/btn-ignore.svg);
+QPushButton#btnCall:hover, QPushButton#acceptButton:hover{
+    background-color: #5db761;
 }
 
-QWidget#callInvitePage{
+QPushButton#btnCall:pressed, QPushButton#acceptButton:pressed{
+    background-color: #449d48;
+}
+
+QPushButton#refuseButton:hover, QPushButton#cancelButton:hover{
+    background-color: #f5554a;
+}
+
+QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
+    background-color: #db3c30;
+}
+
+QWidget#callInvitePage, QWidget#outboundCallPage{
     background-color : rgb( 77, 77, 77 );
-}
-
-QWidget#outboundCallPage{
-    background-color : rgb( 77, 77, 77 );
-}
-
-QPushButton#btnvideo{
-    border-image: url(:/images/hover-contact/btn-video.svg);
-}
-
-QPushButton#btnchat{
-    border-image: url(:/images/hover-contact/btn-chat.svg);
-}
-
-QPushButton#btncontactinfo{
-    border-image: url(:/images/hover-contact/btn-contactinfo.svg);
 }
 
 IdLabel{
@@ -87,67 +89,79 @@ QLineEdit#messageEdit{
     background-color: rgb(255, 255, 255);
 }
 
-QPushButton#holdButton{
-    border-image: url(:/images/video-conf/btn-pause.svg);
+QPushButton#holdButton, QPushButton#chatButton,
+QPushButton#noMicButton, QPushButton#noVideoButton,
+QPushButton#transferButton, QPushButton#addPersonButton,
+QPushButton#joinButton, QPushButton#qualityButton{
+    background-color: rgba(0, 0, 0, 140);
+    border-radius: 18px;
+    border:solid 1px;
 }
 
-QPushButton#holdButton:checked{
-    border-image: url(:/images/video-conf/btn-pause-toggled.svg);
+QPushButton#holdButton:hover, QPushButton#chatButton:hover,
+QPushButton#noMicButton:hover, QPushButton#noVideoButton:hover,
+QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
+QPushButton#joinButton:hover, QPushButton#qualityButton:hover{
+    background-color: rgba(0, 192, 213, 0.6);
+    border-radius: 18px;
+    border:solid 1px;
+}
+
+QPushButton#holdButton:pressed, QPushButton#chatButton:pressed,
+QPushButton#noMicButton:pressed, QPushButton#noVideoButton:pressed,
+QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
+QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed{
+    background-color: rgba(0, 192, 213, 0.8);
+    border-radius: 18px;
+    border:solid 1px;
 }
 
 QPushButton#hangupButton{
-    border-image: url(:/images/video-conf/btn-hangup.svg);
+    background-color: rgba(200, 0, 0, 0.6);
+    border-radius: 18px;
+    border:solid 1px;
 }
 
-QPushButton#chatButton{
-    border-image: url(:/images/video-conf/btn-chat.svg);
+QPushButton#hangupButton:hover{
+    background-color: rgba(255, 0, 0, 0.6);
 }
 
-QPushButton#noMicButton{
-    border-image: url(:/images/video-conf/btn-nomic.svg);
-}
-
-QPushButton#noMicButton:checked{
-    border-image: url(:/images/video-conf/btn-nomic-toggled.svg);
-}
-
-QPushButton#noVideoButton{
-    border-image: url(:/images/video-conf/btn-novideo.svg);
-}
-
-QPushButton#noVideoButton:checked{
-    border-image: url(:/images/video-conf/btn-novideo-toggled.svg);
-}
-
-QPushButton#transferButton{
-    border-image: url(:/images/video-conf/btn-transfer.svg);
-}
-
-QPushButton#addPersonButton{
-    border-image: url(:/images/video-conf/btn-add-contact-to-conf.svg);
-}
-
-QPushButton#joinButton{
-    border-image: url(:/images/video-conf/btn-join.svg);
+QPushButton#hangupButton:pressed{
+    background-color: rgba(255, 0, 0, 0.8);
 }
 
 QPushButton#imBackButton{
    background-color: #414141;
-   border-image: url(:/images/ic_arrow_back_white.svg);
    border-radius: 15px;
    border:solid 1px;
 }
 
-QPushButton#qualityButton{
-   background-color: rgba(0, 0, 0, 140);
-   border-radius: 18px;
-   border:solid 1px;
+QPushButton#imBackButton:hover{
+   background-color: #515151;
+}
+
+QPushButton#imBackButton:pressed{
+   background-color: #313131;
 }
 
 QPushButton#sendButton{
    background-color: #3AC0D2;
    border-radius: 18px;
    border:solid 1px;
+}
+
+QPushButton#btnvideo{
+   background-color: #3AC0D2;
+   border-radius: 15px;
+   border:solid 1px;
+}
+
+QPushButton#sendButton:hover, QPushButton#btnvideo:hover{
+   background-color: #4dc6d6;
+}
+
+QPushButton#sendButton:pressed, QPushButton#btnvideo:pressed{
+   background-color: #34acbd;
 }
 
 QScrollBar:vertical{
@@ -159,10 +173,6 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#welcomePage{
-    background: rgb(242, 242, 242);
-}
-
-QWidget#messagingPage{
+QWidget#welcomePage, QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }

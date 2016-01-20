@@ -40,6 +40,16 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-hangup.svg</normaloff>:/images/video-conf/btn-hangup.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
     </widget>
    </item>
    <item row="0" column="0" alignment="Qt::AlignTop">
@@ -103,6 +113,16 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-join.svg</normaloff>:/images/video-conf/btn-join.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
     </widget>
    </item>
    <item row="1" column="2">
@@ -121,6 +141,16 @@
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-pause.svg</normaloff>:/images/video-conf/btn-pause.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -150,6 +180,16 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-nomic.svg</normaloff>:/images/video-conf/btn-nomic.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
      <property name="checkable">
       <bool>true</bool>
      </property>
@@ -171,6 +211,16 @@
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-chat.svg</normaloff>:/images/video-conf/btn-chat.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -254,6 +304,16 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-novideo.svg</normaloff>:/images/video-conf/btn-novideo.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
      <property name="checkable">
       <bool>true</bool>
      </property>
@@ -289,6 +349,16 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-add-contact-to-conf.svg</normaloff>:/images/video-conf/btn-add-contact-to-conf.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
     </widget>
    </item>
    <item row="1" column="7">
@@ -307,6 +377,16 @@
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/btn-transfer.svg</normaloff>:/images/video-conf/btn-transfer.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -327,10 +407,22 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/images/video-conf/ic_high_quality_white.svg</normaloff>:/images/video-conf/ic_high_quality_white.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
