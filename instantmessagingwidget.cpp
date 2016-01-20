@@ -37,11 +37,6 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap sendPixmap(":/images/ic_send_white.svg");
-    QIcon sendIcon(sendPixmap);
-    ui->sendButton->setIcon(sendIcon);
-    ui->sendButton->setIconSize(sendPixmap.rect().size());
-
     this->hide();
 
     imDelegate_ = new ImDelegate();
