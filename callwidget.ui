@@ -215,6 +215,16 @@
                 <property name="text">
                  <string/>
                 </property>
+                <property name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -698,6 +708,16 @@
                     <property name="text">
                      <string/>
                     </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_arrow_back_white.svg</normaloff>:/images/ic_arrow_back_white.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
                     <property name="flat">
                      <bool>false</bool>
                     </property>
@@ -845,8 +865,15 @@
                       <height>36</height>
                      </size>
                     </property>
+                    <property name="toolTip">
+                     <string>send message</string>
+                    </property>
                     <property name="text">
                      <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_send_white.svg</normaloff>:/images/ic_send_white.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -983,8 +1010,18 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>63</width>
-                         <height>63</height>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="ressources.qrc">
+                         <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
                         </size>
                        </property>
                       </widget>
@@ -1015,18 +1052,22 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>63</width>
-                         <height>63</height>
-                        </size>
-                       </property>
-                       <property name="baseSize">
-                        <size>
-                         <width>63</width>
-                         <height>63</height>
+                         <width>64</width>
+                         <height>64</height>
                         </size>
                        </property>
                        <property name="layoutDirection">
                         <enum>Qt::RightToLeft</enum>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="ressources.qrc">
+                         <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
                        </property>
                       </widget>
                      </item>
@@ -1166,12 +1207,22 @@
                      </property>
                      <property name="baseSize">
                       <size>
-                       <width>63</width>
-                       <height>63</height>
+                       <width>64</width>
+                       <height>64</height>
                       </size>
                      </property>
                      <property name="layoutDirection">
                       <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="ressources.qrc">
+                       <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>64</width>
+                       <height>64</height>
+                      </size>
                      </property>
                     </widget>
                    </item>

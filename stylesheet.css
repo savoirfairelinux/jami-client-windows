@@ -1,17 +1,25 @@
 QPushButton#btnCall{
-    border-image: url(:/images/call/btn-call.svg);
+    background-color: #4caf50;
+    border-radius: 15px;
+    border:solid 1px;
 }
 
 QPushButton#acceptButton{
-    border-image: url(:/images/call/btn-answer.svg);
+    background-color: #4caf50;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
 QPushButton#refuseButton{
-    border-image: url(:/images/call/btn-ignore.svg);
+    background-color: #f44336;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
 QPushButton#cancelButton{
-    border-image: url(:/images/call/btn-ignore.svg);
+    background-color: #f44336;
+    border-radius: 32px;
+    border:solid 1px;
 }
 
 QWidget#callInvitePage{
@@ -133,7 +141,6 @@ QPushButton#joinButton{
 
 QPushButton#imBackButton{
    background-color: #414141;
-   border-image: url(:/images/ic_arrow_back_white.svg);
    border-radius: 15px;
    border:solid 1px;
 }
