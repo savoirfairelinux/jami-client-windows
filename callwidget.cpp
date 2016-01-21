@@ -382,6 +382,13 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
+    else if (call->state() == Call::State::ERROR
+                               || call->state() == Call::State::FAILURE
+                               || call->state() == Call::State::ABORTED)
+    {
+        // tell the daemon to hangup.
+        CallModel::instance().userActionModel()->execute(UserActionModel::Action::HANGUP);
+    }
 }
 
 void
