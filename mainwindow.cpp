@@ -106,6 +106,8 @@ MainWindow::MainWindow(QWidget *parent) :
         win_sparkle_cleanup();
     });
 #endif
+
+    setContextMenuPolicy(Qt::NoContextMenu);
 }
 
 MainWindow::~MainWindow()
