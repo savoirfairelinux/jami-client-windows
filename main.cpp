@@ -57,6 +57,21 @@ Console()
 int
 main(int argc, char *argv[])
 {
+#ifdef Q_OS_WIN32
+    HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, 0, L"RingMutex");
+
+    if (!hMutex)
+    {
+      hMutex = CreateMutex(0, 0, L"RingMutex");
+    }
+    else
+    {
+        HWND w = FindWindow(0, L"Ring");
+        SwitchToThisWindow(w, TRUE);
+        return 0;
+    }
+#endif
+
     qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
 
     QApplication a(argc, argv);
