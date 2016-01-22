@@ -103,8 +103,10 @@ private:
     QModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
+    QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* messagingPageAnim_;
     QPropertyAnimation* welcomePageAnim_;
+
 
     constexpr static int animDuration_ = 200; //msecs
 
