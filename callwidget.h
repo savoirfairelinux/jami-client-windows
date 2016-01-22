@@ -63,7 +63,7 @@ public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
-    void showIMOutOfCall();
+    void showIMOutOfCall(const QModelIndex& newIdx);
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
@@ -79,6 +79,7 @@ private slots:
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
     void on_ringContactLineEdit_textEdited(const QString& text);
     void on_imBackButton_clicked();
+    void on_smartList_clicked(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call* call);
@@ -106,7 +107,6 @@ private:
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* messagingPageAnim_;
     QPropertyAnimation* welcomePageAnim_;
-
 
     constexpr static int animDuration_ = 200; //msecs
 
