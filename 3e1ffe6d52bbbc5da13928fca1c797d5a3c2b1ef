@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_ff9b3bc7",
+        "filename": "wizarddialog.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-22T17:12:21Z",
+      "side": 0,
+      "message": "was the problem, we have a button with the same ID for a button in the video tool bar",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "3e1ffe6d52bbbc5da13928fca1c797d5a3c2b1ef",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
