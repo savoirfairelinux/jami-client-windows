@@ -613,10 +613,10 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
         ui->listMessageView->setVisible(messagesPresent);
         ui->noMessagesLabel->setVisible(!messagesPresent);
         if (not messagesPresent) {
-            QMetaObject::Connection connection = connect(txtRecording->instantMessagingModel(), &QAbstractItemModel::rowsInserted, [&]() {
+            connect(txtRecording->instantMessagingModel(), &QAbstractItemModel::rowsInserted, [this, txtRecording]() {
+                auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
                 ui->listMessageView->setVisible(messagesPresent);
                 ui->noMessagesLabel->setVisible(!messagesPresent);
-                disconnect(connection);
             });
         }
     }
