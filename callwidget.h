@@ -103,6 +103,7 @@ private:
     QModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
+    QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* messagingPageAnim_;
     QPropertyAnimation* welcomePageAnim_;
 
