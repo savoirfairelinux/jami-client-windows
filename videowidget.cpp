@@ -83,7 +83,7 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             QMutexLocker lock(&mutex_);
             if (currentDistantFrame_.storage.size() != 0
                 && currentDistantFrame_.storage.size() ==
-                    (renderer_->size().height()*renderer_->size().width()*4)) {
+                    (unsigned int)(renderer_->size().height()*renderer_->size().width()*4)) {
                 frameDistant_ = std::move(currentDistantFrame_.storage);
                 distantImage_.reset(new QImage((uchar*)frameDistant_.data(),
                                                renderer_->size().width(),
@@ -103,7 +103,7 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             QMutexLocker lock(&mutex_);
             if (currentPreviewFrame_.storage.size() != 0
                  && currentPreviewFrame_.storage.size() ==
-                    (previewRenderer_->size().height()*previewRenderer_->size().width()*4)) {
+                    (unsigned int) (previewRenderer_->size().height()*previewRenderer_->size().width()*4)) {
                 framePreview_ = std::move(currentPreviewFrame_.storage);
                 previewImage_.reset(new QImage((uchar*)framePreview_.data(),
                                                previewRenderer_->size().width(),
