@@ -34,7 +34,7 @@
         "cd ../..",
         "mkdir build && cd build",
         "export QTDIR=/usr/i686-w64-mingw32/lib/qt",
-        "/usr/i686-w64-mingw32/lib/qt/bin/qmake ../RingWinClient.pro -r -spec win32-g++ RING=$RING/_win32 ENABLE_AUTOUPDATE=True",
+        "/usr/i686-w64-mingw32/lib/qt/bin/qmake ../RingWinClient.pro -r -spec win32-g++ RING=$RING/_win32 ENABLE_AUTOUPDATE=True DEFINES+=URI_PROTOCOL",
         "make",
         "make install",
         "cd release",
