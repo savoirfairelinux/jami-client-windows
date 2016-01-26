@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_823f4025",
+        "filename": "callwidget.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-01-26T14:20:47Z",
+      "side": 1,
+      "message": "You miss a \u0027delete smartListDelegate_;\u0027 here, since you allocate it line 125",
+      "revId": "83a29cd9218c0dfb59027b991bc8590088686e4e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
