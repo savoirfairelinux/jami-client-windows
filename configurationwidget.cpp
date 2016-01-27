@@ -86,6 +86,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
             }
         }
     });
+
+    ui->videoView->setIsFullPreview(true);
 #ifndef ENABLE_AUTOUPDATE
     ui->checkUpdateButton->hide();
     ui->intervalUpdateCheckSpinBox->hide();
