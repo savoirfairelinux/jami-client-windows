@@ -113,13 +113,13 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             }
         }
         if (previewImage_) {
-            auto previewHeight = !renderer_ ? height() : height()/4;
-            auto previewWidth = !renderer_  ? width() : width()/4;
+            auto previewHeight = fullPreview_ ? height() : height()/4;
+            auto previewWidth = fullPreview_  ? width() : width()/4;
             auto scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
             auto xDiff = (previewWidth - scaledPreview.width()) / 2;
             auto yDiff = (previewHeight - scaledPreview.height()) / 2;
-            auto yPos = !renderer_ ? yDiff : height() - previewHeight - previewMargin_;
-            auto xPos = !renderer_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+            auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
+            auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
             painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
                               scaledPreview);
         }
@@ -164,4 +164,9 @@ VideoWidget::renderingStopped() {
 void
 VideoWidget::setPreviewDisplay(bool display) {
     isPreviewDisplayed_ = display;
+}
+
+void
+VideoWidget::setIsFullPreview(bool full) {
+    fullPreview_ = full;
 }

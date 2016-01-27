@@ -36,6 +36,7 @@ public:
     void paintEvent(QPaintEvent* evt);
     void setPreviewDisplay(bool display);
     void setDistantRenderer(Video::Renderer* renderer);
+    void setIsFullPreview(bool full);
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
@@ -55,6 +56,7 @@ private:
     std::vector<uint8_t> frameDistant_;
     std::vector<uint8_t> framePreview_;
     bool isPreviewDisplayed_;
+    bool fullPreview_;
 
     constexpr static int previewMargin_ = 15;
 };
