@@ -946,7 +946,7 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="label_2">
+                      <widget class="QLabel" name="callerPhoto">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                          <horstretch>0</horstretch>
