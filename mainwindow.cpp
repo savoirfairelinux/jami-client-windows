@@ -41,6 +41,8 @@
 
 #include <windows.h>
 
+MainWindow* MainWindow::instance_;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -100,6 +102,7 @@ MainWindow::MainWindow(QWidget *parent) :
     win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
+    win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
     win_sparkle_init();
 
     if (win_sparkle_get_last_check_time() == -1) {
@@ -109,6 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
         win_sparkle_cleanup();
     });
+    win_sparkle_check_update_with_ui();
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
