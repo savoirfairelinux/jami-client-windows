@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_5a9b75c9",
+        "filename": "mainwindow.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-01-27T16:36:47Z",
+      "side": 1,
+      "message": "You should do the same as LRC:\n\nMainWindow\u0026 instance()\n{\n    static auto instance \u003d new MainWindow();\n    return instance;\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "355c059458e9886c8ba04d4d47f3fbe598af8285",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
