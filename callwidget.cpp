@@ -529,6 +529,7 @@ CallWidget::on_ringContactLineEdit_returnPressed()
     time_t currentTime;
     ::time(&currentTime);
     cm->setLastUsed(currentTime);
+    ui->ringContactLineEdit->clear();
 }
 
 void
@@ -634,7 +635,7 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
 }
 
 void
-CallWidget::on_ringContactLineEdit_textEdited(const QString& text)
+CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 {
     RecentModel::instance().peopleProxy()->setFilterWildcard(text);
 }
