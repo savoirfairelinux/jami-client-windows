@@ -502,6 +502,7 @@ CallWidget::placeCall()
     Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
     c->performAction(Call::Action::ACCEPT);
     ui->ringContactLineEdit->clear();
+    on_ringContactLineEdit_textEdited("");
 }
 
 void
