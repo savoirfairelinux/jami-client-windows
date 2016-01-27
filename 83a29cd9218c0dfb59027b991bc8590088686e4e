@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_9a1cad6c",
+        "filename": "callwidget.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-27T15:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_823f4025",
+      "revId": "83a29cd9218c0dfb59027b991bc8590088686e4e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_424938cf",
         "filename": "callwidget.cpp",
         "patchSetId": 11
@@ -30,6 +48,30 @@
       "writtenOn": "2016-01-26T14:21:57Z",
       "side": 1,
       "message": "Maybe remove that?",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 19
+      },
+      "revId": "83a29cd9218c0dfb59027b991bc8590088686e4e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_ba19717b",
+        "filename": "callwidget.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-27T15:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_424938cf",
       "range": {
         "startLine": 382,
         "startChar": 0,
