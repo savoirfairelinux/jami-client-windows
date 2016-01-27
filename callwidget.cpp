@@ -322,6 +322,10 @@ CallWidget::callIncoming(Call* call)
     if (!call->account()->isAutoAnswer()) {
         ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
                                    .arg(call->formattedName()));
+        ui->callerPhoto->setPixmap(
+                    QPixmap::fromImage(
+                        GlobalInstances::pixmapManipulator()
+                        .callPhoto(call, QSize(130,130)).value<QImage>()));
         ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
     }
     setActualCall(call);
