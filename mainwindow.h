@@ -39,8 +39,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    inline static MainWindow& instance()  {
+        static auto instance = new MainWindow();
+        return *instance;
+    }
     void createThumbBar();
 
 protected:
@@ -55,6 +57,8 @@ private slots:
     void switchNormalMaximize();
 
 private:
+    explicit MainWindow(QWidget *parent = 0);
+     ~MainWindow();
     Ui::MainWindow* ui;
     NavStack* navStack_;
     WindowBarUpOne* wbOne_;

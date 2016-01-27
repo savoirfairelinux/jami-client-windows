@@ -136,22 +136,20 @@ main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("ring.cx");
     QCoreApplication::setApplicationName("Ring");
 
-    MainWindow w;
-
     if (not uri.isEmpty()) {
         startMinimized = false;
-        w.onRingEvent(uri);
+        MainWindow::instance().onRingEvent(uri);
     }
 
     if (not startMinimized)
-        w.show();
+        MainWindow::instance().show();
     else
-        w.showMinimized();
+        MainWindow::instance().showMinimized();
 
-    w.createThumbBar();
+    MainWindow::instance().createThumbBar();
 
 #ifdef URI_PROTOCOL
-    QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &w, SLOT(onRingEvent(QString)));
+    QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&a, &shmClient, &shm, &sem]() {
         shmClient->terminate();
