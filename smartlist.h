@@ -37,6 +37,7 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
     void wheelEvent(QWheelEvent* event);
     void paintEvent(QPaintEvent* event);
+    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
   int currentRow_ = -1;

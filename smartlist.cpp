@@ -20,6 +20,8 @@
 #include <qevent.h>
 #include <QTreeWidgetItem>
 #include <QScrollBar>
+#include <QApplication>
+
 
 #include "smartlistdelegate.h"
 #include "combar.h"
@@ -118,4 +120,19 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
         smartListDelegate_ = delegate;
         connect(smartListDelegate_ , &SmartListDelegate::rowSelected , comBar_, &ComBar::moveToRow);
     }
+}
+
+bool
+SmartList::eventFilter(QObject* watched, QEvent* event)
+{
+
+    if ( qobject_cast<QScrollBar*>(watched)
+                                     && event->type() == QEvent::Enter )
+    {
+        smartListDelegate_->setRowHighlighted(-1);
+        currentRow_ = -1;
+        return true;
+    }
+
+    return QObject::eventFilter(watched, event);
 }
