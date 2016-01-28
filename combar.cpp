@@ -24,16 +24,13 @@ ComBar::ComBar(QWidget* parent) :
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
+    connect(ui->btnvideo, QPushButton::clicked , this , [=](){
+        emit btnVideoClicked();
+    });
+
 }
 
 ComBar::~ComBar()
 {
     delete ui;
-}
-
-void
-ComBar::moveToRow(const QRect& rect)
-{
-    move(rect.right() - width() - 5,
-         rect.bottom() - height() - (rect.height()/4));
 }
