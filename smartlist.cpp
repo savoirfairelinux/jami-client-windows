@@ -17,7 +17,7 @@
  **************************************************************************/
 
 #include <QStyledItemDelegate>
-#include <qevent.h>
+#include <QEvent>
 #include <QTreeWidgetItem>
 #include <QScrollBar>
 
@@ -26,15 +26,30 @@
 #include "smartlist.h"
 
 SmartList::SmartList(QWidget *parent) :
-    QTreeView(parent),
-    comBar_(new ComBar(this))
+    QTreeView(parent)
 {
+
     verticalScrollBar()->hide();
+
+    connect(this, &QAbstractItemView::entered, [this](const QModelIndex & index) {
+            removeCombar();
+            if (auto widget = indexWidget(index)) {
+                widget->setVisible(true);
+            } else {
+                ComBar* bar = new ComBar();
+                setIndexWidget(index, bar);
+                connect(bar, &ComBar::btnVideoClicked, this, [=](){ emit btnVideoClicked(); });
+            }
+            hoveredRow_ = index;
+    });
+
+    setVerticalScrollMode(ScrollPerPixel);
+
 }
 
 SmartList::~SmartList()
 {
-    delete comBar_;
+
 }
 
 void
@@ -42,8 +57,6 @@ SmartList::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
     verticalScrollBar()->show();
-
-    repaint(0, 0, width(), height());
 }
 
 void
@@ -51,62 +64,9 @@ SmartList::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event);
 
-    smartListDelegate_->setRowHighlighted(-1);
-
-    currentRow_ = -1;
-
-    if (smartListDelegate_)
-        smartListDelegate_->setRowHighlighted(currentRow_);
-
     verticalScrollBar()->hide();
 
-    comBar_->hide();
-}
-
-void
-SmartList::wheelEvent(QWheelEvent* event)
-{
-    currentRow_ = -1;
-
-    comBar_->hide();
-
-    smartListDelegate_->setRowHighlighted(currentRow_);
-
-    repaint(0, 0, width(), height());
-
-    QTreeView::wheelEvent(event);
-}
-
-void
-SmartList::paintEvent(QPaintEvent* event)
-{
-    QTreeView::paintEvent(event);
-
-    if (currentRow_ > -1)
-        comBar_->show();
-    else
-        comBar_->hide();
-}
-
-void
-SmartList::mouseMoveEvent(QMouseEvent* event)
-{
-    QModelIndex index = indexAt(event->pos());
-
-    repaint(0, 0, width(), height());
-
-    currentRow_ = index.row();
-
-    if (smartListDelegate_)
-    {
-        smartListDelegate_->setRowHighlighted(currentRow_);
-
-        if (currentRow_ > -1)
-            comBar_->show();
-        else
-            comBar_->hide();
-    }
-    QTreeView::mouseMoveEvent(event);
+    removeCombar();
 }
 
 void
@@ -116,6 +76,29 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
     {
         setItemDelegate(delegate);
         smartListDelegate_ = delegate;
-        connect(smartListDelegate_ , &SmartListDelegate::rowSelected , comBar_, &ComBar::moveToRow);
+    }
+}
+
+bool
+SmartList::eventFilter(QObject* watched, QEvent* event)
+{
+
+    if (qobject_cast<QScrollBar*>(watched) && event->type() == QEvent::Enter)
+    {
+        removeCombar();
+        return true;
+    }
+
+    return QObject::eventFilter(watched, event);
+}
+
+void
+SmartList::removeCombar()
+{
+    if(not hoveredRow_.isValid())
+        return;
+
+    if (auto widget = indexWidget(hoveredRow_)) {
+        widget->setVisible(false);
     }
 }
