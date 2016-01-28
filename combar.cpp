@@ -19,21 +19,20 @@
 #include "combar.h"
 #include "ui_combar.h"
 
+#include <QDebug>
+
 ComBar::ComBar(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
+    connect(ui->btnvideo, QPushButton::clicked , this , [=](){
+        emit btnvideoClicked();
+    });
+
 }
 
 ComBar::~ComBar()
 {
     delete ui;
-}
-
-void
-ComBar::moveToRow(const QRect& rect)
-{
-    move(rect.right() - width() - 5,
-         rect.bottom() - height() - (rect.height()/4));
 }
