@@ -22,6 +22,30 @@
       "revId": "7a8517d2fd9cea925e9cb3420c65bdb22807460b",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7da0b3f4",
+        "filename": "callwidget.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:31:13Z",
+      "side": 1,
+      "message": "We\u0027ll eventually redo that (i had legacy code commented that was doing that but never got rewritten for recentmodel) This will do for now but we\u0027ll certainly discuss that in the coming days",
+      "parentUuid": "fa6b99d7_fd3603e7",
+      "range": {
+        "startLine": 386,
+        "startChar": 9,
+        "endLine": 386,
+        "endChar": 58
+      },
+      "revId": "7a8517d2fd9cea925e9cb3420c65bdb22807460b",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
