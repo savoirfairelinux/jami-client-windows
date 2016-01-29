@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_5de92f19",
+        "filename": "callwidget.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 58
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7dee7324",
+        "filename": "combar.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1df3b70b",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "removeCombar seems sufficient enough",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3df8fbe4",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "- Where do you delete that ?\n- I think bar is enough no need to say it twice",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bde3ab32",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 72
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_5dd04f53",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-01-29T20:59:39Z",
+      "side": 1,
+      "message": "- If you new something you should delete it unless Qt is handling it, this is not the case here so this is leaking as above.\n- Can\u0027t allocation be avoided (here and above) ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
