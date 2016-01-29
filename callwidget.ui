@@ -52,7 +52,7 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QSplitter" name="splitter">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1336,6 +1336,28 @@
        </widget>
       </widget>
      </item>
+     <item row="0" column="0">
+      <widget class="ErrorBanner" name="errorBanner" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="0" column="1">
@@ -1402,6 +1424,12 @@
    <class>SmartList</class>
    <extends>QTreeView</extends>
    <header>smartlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ErrorBanner</class>
+   <extends>QWidget</extends>
+   <header location="global">errorbanner.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
