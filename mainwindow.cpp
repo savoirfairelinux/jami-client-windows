@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
-    connect(&CallModel::instance(), SIGNAL(incomingCall(Call*)),
+    connect(CallModel::instance(), SIGNAL(incomingCall(Call*)),
             this, SLOT(onIncomingCall(Call*)));
 
     navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
@@ -126,7 +126,7 @@ MainWindow::onRingEvent(const QString &uri)
 {
     this->showNormal();
     if (not uri.isEmpty()) {
-        auto outCall = CallModel::instance().dialingCall();
+        auto outCall = CallModel::instance()->dialingCall();
         outCall->setDialNumber(uri);
         outCall->performAction(Call::Action::ACCEPT);
     }

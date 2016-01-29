@@ -141,7 +141,7 @@ SmartListDelegate::paint(QPainter* painter
         font.setBold(false);
         painter->setFont(font);
         rectTexts.moveTop(cellHeight_/2);
-        if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
+        if (state.isValid() && RecentModel::instance()->getActiveCall(RecentModel::instance()->peopleProxy()->mapToSource(index)))
         {
             painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
                                rect.top() + rect.height()/2,

@@ -46,8 +46,8 @@
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(Nav, parent),
     ui(new Ui::ConfigurationWidget),
-    accountModel_(&AccountModel::instance()),
-    deviceModel_(&Video::DeviceModel::instance()),
+    accountModel_(AccountModel::instance()),
+    deviceModel_(Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
     ui->setupUi(this);
@@ -70,19 +70,19 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 
-    ui->ringtonesBox->setModel(&RingtoneModel::instance());
+    ui->ringtonesBox->setModel(RingtoneModel::instance());
     ui->historyDaySettingsSpinBox->setValue(
-                CategorizedHistoryModel::instance().historyLimit());
+                CategorizedHistoryModel::instance()->historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
                                            SettingsKey::closeOrMinimized).toBool());
     connect(ui->tabWidget, &QTabWidget::currentChanged, [](int index) {
         if (index == 1
-                && CallModel::instance().getActiveCalls().size() == 0) {
-            Video::PreviewManager::instance().startPreview();
+                && CallModel::instance()->getActiveCalls().size() == 0) {
+            Video::PreviewManager::instance()->startPreview();
         } else {
-            if (CallModel::instance().getActiveCalls().size() == 0
-                    && Video::PreviewManager::instance().isPreviewing()) {
-                Video::PreviewManager::instance().stopPreview();
+            if (CallModel::instance()->getActiveCalls().size() == 0
+                    && Video::PreviewManager::instance()->isPreviewing()) {
+                Video::PreviewManager::instance()->stopPreview();
             }
         }
     });
@@ -107,16 +107,16 @@ ConfigurationWidget::showEvent(QShowEvent *event) {
 #endif
     QWidget::showEvent(event);
     if (ui->tabWidget->currentIndex() == 1
-            && CallModel::instance().getActiveCalls().size() == 0) {
-        Video::PreviewManager::instance().startPreview();
+            && CallModel::instance()->getActiveCalls().size() == 0) {
+        Video::PreviewManager::instance()->startPreview();
     }
 }
 
 void
 ConfigurationWidget::atExit() {
-    if (CallModel::instance().getActiveCalls().size() == 0
-            && Video::PreviewManager::instance().isPreviewing()) {
-        Video::PreviewManager::instance().stopPreview();
+    if (CallModel::instance()->getActiveCalls().size() == 0
+            && Video::PreviewManager::instance()->isPreviewing()) {
+        Video::PreviewManager::instance()->stopPreview();
     }
     accountModel_->save();
     accountDetails_->save();
@@ -217,14 +217,14 @@ ConfigurationWidget::on_clearHistoryButton_clicked()
     auto ret = confirmationDialog.exec();
 
     if (ret == QMessageBox::Ok)
-        CategorizedHistoryModel::instance().clearAllCollections();
+        CategorizedHistoryModel::instance()->clearAllCollections();
 }
 
 void
 ConfigurationWidget::on_historyDaySettingsSpinBox_valueChanged(int limit)
 {
-    if (CategorizedHistoryModel::instance().historyLimit() != limit)
-        CategorizedHistoryModel::instance().setHistoryLimit(limit);
+    if (CategorizedHistoryModel::instance()->historyLimit() != limit)
+        CategorizedHistoryModel::instance()->setHistoryLimit(limit);
 }
 
 void

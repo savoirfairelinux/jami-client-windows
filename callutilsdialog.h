@@ -44,7 +44,7 @@ public:
         auto idx = sourceModel()->index(source_row,0,source_parent);
         if (not idx.isValid())
             return false;
-        auto call = RecentModel::instance().getActiveCall(idx);
+        auto call = RecentModel::instance()->getActiveCall(idx);
         return not call || not (call->state() == Call::State::CURRENT);
     }
 };

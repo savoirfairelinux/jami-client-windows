@@ -78,7 +78,7 @@ CallWidget::CallWidget(QWidget* parent) :
     GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
     try {
-        callModel_ = &CallModel::instance();
+        callModel_ = CallModel::instance();
 
         connect(callModel_, SIGNAL(incomingCall(Call*)),
                 this, SLOT(callIncoming(Call*)));
@@ -87,35 +87,35 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
-        connect(&AccountModel::instance()
+        connect(AccountModel::instance()
                 , SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>))
                 , this
                 , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
 
-        RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
-        RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
-        ui->smartList->setModel(RecentModel::instance().peopleProxy());
+        RecentModel::instance()->peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
+        RecentModel::instance()->peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
+        ui->smartList->setModel(RecentModel::instance()->peopleProxy());
 
-        PersonModel::instance().
+        PersonModel::instance()->
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
-        CategorizedContactModel::instance().setSortAlphabetical(false);
-        CategorizedContactModel::instance().setUnreachableHidden(true);
-        ui->contactView->setModel(&CategorizedContactModel::instance());
+        CategorizedContactModel::instance()->setSortAlphabetical(false);
+        CategorizedContactModel::instance()->setUnreachableHidden(true);
+        ui->contactView->setModel(CategorizedContactModel::instance());
         contactDelegate_ = new ContactDelegate();
         ui->contactView->setItemDelegate(contactDelegate_);
 
-        CategorizedHistoryModel::instance().
+        CategorizedHistoryModel::instance()->
                 addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
 
-        ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance().model());
-        CategorizedHistoryModel::SortedProxy::instance().model()->sort(0, Qt::DescendingOrder);
+        ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance()->model());
+        CategorizedHistoryModel::SortedProxy::instance()->model()->sort(0, Qt::DescendingOrder);
         ui->historyList->setHeaderHidden(true);
         historyDelegate_ = new HistoryDelegate();
         ui->historyList->setItemDelegate(historyDelegate_);
 
-        connect(CategorizedHistoryModel::SortedProxy::instance().model(), &QSortFilterProxyModel::layoutChanged, [=]() {
-            auto idx = CategorizedHistoryModel::SortedProxy::instance().model()->index(0,0);
+        connect(CategorizedHistoryModel::SortedProxy::instance()->model(), &QSortFilterProxyModel::layoutChanged, [=]() {
+            auto idx = CategorizedHistoryModel::SortedProxy::instance()->model()->index(0,0);
             if (idx.isValid())
                 ui->historyList->setExpanded(idx, true);
         });
@@ -156,16 +156,16 @@ CallWidget::CallWidget(QWidget* parent) :
         setupOutOfCallIM();
         setupSmartListMenu();
 
-        connect(RecentModel::instance().selectionModel(),
+        connect(RecentModel::instance()->selectionModel(),
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
                 this,
                 SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
 
-        connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
+        connect(RecentModel::instance()->selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
             Q_UNUSED(deselected)
             if (selected.size()) {
                 auto idx = selected.indexes().first();
-                auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
+                auto realIdx = RecentModel::instance()->peopleProxy()->mapFromSource(idx);
                 ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
             } else
                 ui->smartList->clearSelection();
@@ -217,7 +217,7 @@ CallWidget::setupOutOfCallIM()
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
 
-    connect(&::Media::RecordingModel::instance(),
+    connect(::Media::RecordingModel::instance(),
             SIGNAL(newTextMessage(::Media::TextRecording*, ContactMethod*)),
             this,
             SLOT(onIncomingMessage(::Media::TextRecording*, ContactMethod*)));
@@ -249,7 +249,7 @@ CallWidget::setupSmartListMenu() {
         QMenu menu;
 
         ContactMethod* contactMethod = RecentModel::instance()
-                .getContactMethods(RecentModel::instance().peopleProxy()->mapToSource(idx)).at(0);
+                ->getContactMethods(RecentModel::instance()->peopleProxy()->mapToSource(idx)).at(0);
         if (not contactMethod)
             return;
         auto copyAction = new QAction(tr("Copy number"), this);
@@ -277,10 +277,10 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
     Q_UNUSED(idx2)
     Q_UNUSED(vec)
 
-    auto a_count = AccountModel::instance().rowCount();
+    auto a_count = AccountModel::instance()->rowCount();
     auto found = false;
     for (int i = 0; i < a_count; ++i) {
-        auto idx = AccountModel::instance().index(i, 0);
+        auto idx = AccountModel::instance()->index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
@@ -298,13 +298,13 @@ void
 CallWidget::findRingAccount()
 {
 
-    auto a_count = AccountModel::instance().rowCount();
+    auto a_count = AccountModel::instance()->rowCount();
     auto found = false;
     for (int i = 0; i < a_count; ++i) {
-        auto idx = AccountModel::instance().index(i, 0);
+        auto idx = AccountModel::instance()->index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
-            auto account = AccountModel::instance().getAccountByModelIndex(idx);
+            auto account = AccountModel::instance()->getAccountByModelIndex(idx);
             if (account->displayName().isEmpty())
                 account->displayName() = account->alias();
             auto username = account->username();
@@ -383,7 +383,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        RecentModel::instance().selectionModel()->clear();
+        RecentModel::instance()->selectionModel()->clear();
     } else if (call->state() == Call::State::CURRENT) {
         ui->instantMessagingWidget->setMediaText(actualCall_);
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
@@ -417,7 +417,7 @@ CallWidget::on_contactView_doubleClicked(const QModelIndex& index)
                 uri = dlg.getSelected();
         }
         if (uri) {
-            auto outCall = CallModel::instance().dialingCall(uri);
+            auto outCall = CallModel::instance()->dialingCall(uri);
             outCall->performAction(Call::Action::ACCEPT);
             ui->mainTabMenu->setCurrentIndex(0);
             ui->smartList->setFocus();
@@ -433,7 +433,7 @@ CallWidget::on_historyList_doubleClicked(const QModelIndex& index)
 
     auto number = index.data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>();
     if (number) {
-        auto outCall = CallModel::instance().dialingCall(number);
+        auto outCall = CallModel::instance()->dialingCall(number);
         outCall->performAction(Call::Action::ACCEPT);
         ui->mainTabMenu->setCurrentIndex(0);
         ui->smartList->setFocus();
@@ -444,7 +444,7 @@ void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
-    CallModel::instance().selectCall(value);
+    CallModel::instance()->selectCall(value);
     ui->videoWidget->pushRenderer(value);
 }
 
@@ -458,8 +458,8 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
-    auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
-    if (RecentModel::instance().hasActiveCall(realIndex))
+    auto realIndex = RecentModel::instance()->peopleProxy()->mapToSource(index);
+    if (RecentModel::instance()->hasActiveCall(realIndex))
         return;
 
     ContactMethod* m = nullptr;
@@ -470,8 +470,8 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
             m = person->phoneNumbers().first();
         }
     }
-    if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
-        Call* c = CallModel::instance().dialingCall(m);
+    if (m && !RecentModel::instance()->index(0, 0, realIndex).isValid()) {
+        Call* c = CallModel::instance()->dialingCall(m);
         c->performAction(Call::Action::ACCEPT);
     }
 }
@@ -490,7 +490,7 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
     if (not newIdx.isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance().getActiveCall(newIdx);
+    auto newIdxCall = RecentModel::instance()->getActiveCall(newIdx);
     if (newIdxCall && newIdxCall != actualCall_) {
         setActualCall(newIdxCall);
         if (newIdxCall->state() == Call::State::INCOMING
@@ -512,7 +512,7 @@ CallWidget::placeCall()
 {
     if (ui->ringContactLineEdit->text().isEmpty())
         return;
-    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
+    Call* c = CallModel::instance()->dialingCall(PhoneDirectoryModel::instance()->getNumber(ui->ringContactLineEdit->text()));
     c->performAction(Call::Action::ACCEPT);
     ui->ringContactLineEdit->clear();
 }
@@ -538,7 +538,7 @@ CallWidget::historicButton_clicked(bool checked)
 void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    auto cm = PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text());
+    auto cm = PhoneDirectoryModel::instance()->getNumber(ui->ringContactLineEdit->text());
     time_t currentTime;
     ::time(&currentTime);
     cm->setLastUsed(currentTime);
@@ -567,7 +567,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 
     ui->imNameLabel->setText(QString(tr("Conversation with %1", "%1 is the contact name"))
                              .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
-    auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
+    auto cmVector = RecentModel::instance()->getContactMethods(nodeIdx);
     ui->contactMethodComboBox->setEnabled(cmVector.size() > 1);
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
@@ -581,7 +581,7 @@ CallWidget::on_sendButton_clicked()
     if (ui->messageEdit->text().trimmed().isEmpty())
         return;
     auto number = ui->contactMethodComboBox->currentText();
-    if (auto cm = PhoneDirectoryModel::instance().getNumber(number)) {
+    if (auto cm = PhoneDirectoryModel::instance()->getNumber(number)) {
         QMap<QString, QString> msg;
         msg["text/plain"] = ui->messageEdit->text();
         cm->sendOfflineTextMessage(msg);
@@ -600,7 +600,7 @@ CallWidget::on_messageEdit_returnPressed()
 void
 CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
 {
-    auto cm = PhoneDirectoryModel::instance().getNumber(number);
+    auto cm = PhoneDirectoryModel::instance()->getNumber(number);
     if (auto txtRecording = cm->textRecording()) {
         ui->listMessageView->setModel(txtRecording->instantMessagingModel());
         disconnect(imConnection_);
@@ -644,13 +644,13 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
 void
 CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 {
-    RecentModel::instance().peopleProxy()->setFilterWildcard(text);
+    RecentModel::instance()->peopleProxy()->setFilterWildcard(text);
 }
 
 void
 CallWidget::on_imBackButton_clicked()
 {
-    RecentModel::instance().selectionModel()->clear();
+    RecentModel::instance()->selectionModel()->clear();
     slideToLeft(welcomePageAnim_, ui->welcomePage);
 }
 
@@ -679,7 +679,7 @@ CallWidget::slideToRight(QPropertyAnimation* anim, QWidget* widget)
 void
 CallWidget::on_smartList_clicked(const QModelIndex& index)
 {
-    RecentModel::instance().selectionModel()->setCurrentIndex(
-                RecentModel::instance().peopleProxy()->mapToSource(index),
+    RecentModel::instance()->selectionModel()->setCurrentIndex(
+                RecentModel::instance()->peopleProxy()->mapToSource(index),
                 QItemSelectionModel::ClearAndSelect);
 }
