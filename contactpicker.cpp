@@ -37,7 +37,7 @@ ContactPicker::ContactPicker(ContactMethod *number, QWidget *parent) :
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
 
-    contactProxyModel_ = new OnlyPersonProxyModel(&PersonModel::instance());
+    contactProxyModel_ = new OnlyPersonProxyModel(PersonModel::instance());
     contactProxyModel_->setSortRole(static_cast<int>(Qt::DisplayRole));
     contactProxyModel_->sort(0,Qt::AscendingOrder);
     contactProxyModel_->setFilterRole(Qt::DisplayRole);
@@ -63,12 +63,12 @@ ContactPicker::accept()
 {
     /* Force LRC to update contact model as adding a number
     to a contact without one didn't render him reachable */
-    CategorizedContactModel::instance().setUnreachableHidden(false);
+    CategorizedContactModel::instance()->setUnreachableHidden(false);
 
     auto idx = ui->contactView->currentIndex();
 
     //There is only one collection on Windows
-    auto personCollection = PersonModel::instance().collections().at(0);
+    auto personCollection = PersonModel::instance()->collections().at(0);
 
     if (not ui->nameLineEdit->text().isEmpty()) {
         auto *newPerson = new Person();
@@ -77,7 +77,7 @@ ContactPicker::accept()
         cM.append(number_);
         newPerson->setContactMethods(cM);
         newPerson->setUid(Utils::GenGUID().toLocal8Bit());
-        PersonModel::instance().addNewPerson(newPerson, personCollection);
+        PersonModel::instance()->addNewPerson(newPerson, personCollection);
     } else if (idx.isValid()) {
         auto p = idx.data(static_cast<int>(Person::Role::Object)).value<Person*>();
         Person::ContactMethods cM (p->phoneNumbers());
@@ -85,7 +85,7 @@ ContactPicker::accept()
         p->setContactMethods(cM);
         p->save();
     }
-    CategorizedContactModel::instance().setUnreachableHidden(true);
+    CategorizedContactModel::instance()->setUnreachableHidden(true);
 
     QDialog::accept();
 }

@@ -274,7 +274,7 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
                     QString number = reader.readElementText();
                     if (not number.isEmpty()) {
                         ContactMethod *contact =
-                                PhoneDirectoryModel::instance().getNumber(number,p);
+                                PhoneDirectoryModel::instance()->getNumber(number,p);
                         contactMethod.append(contact);
                     }
                 } else if (name == "ContactID") {
@@ -319,7 +319,7 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
             contactFile.close();
             return false;
         } else {
-            Person* existing = PersonModel::instance().getPersonByUid(p->uid());
+            Person* existing = PersonModel::instance()->getPersonByUid(p->uid());
             if (existing) {
                 if (contactMethod.size() > 0)
                     existing->setContactMethods ( contactMethod   );

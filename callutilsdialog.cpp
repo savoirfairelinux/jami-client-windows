@@ -52,7 +52,7 @@ CallUtilsDialog::showEvent(QShowEvent* event)
 
     ui->numberBar->clear();
     if (not notCurrentProxyModel_) {
-        notCurrentProxyModel_ = new NotCurrentProxyModel(&RecentModel::instance());
+        notCurrentProxyModel_ = new NotCurrentProxyModel(RecentModel::instance());
     }
     ui->contactView->setModel(notCurrentProxyModel_);
     if (not smartListDelegate_) {
@@ -76,12 +76,12 @@ void CallUtilsDialog::closeEvent(QCloseEvent* event)
 void
 CallUtilsDialog::on_doTransferButton_clicked()
 {
-    auto callList = CallModel::instance().getActiveCalls();
+    auto callList = CallModel::instance()->getActiveCalls();
     for (auto c : callList) {
         if (c->state() == Call::State::CURRENT) {
             if (not ui->numberBar->text().isEmpty()) {
-                auto number = PhoneDirectoryModel::instance().getNumber(ui->numberBar->text());
-                CallModel::instance().transfer(c, number);
+                auto number = PhoneDirectoryModel::instance()->getNumber(ui->numberBar->text());
+                CallModel::instance()->transfer(c, number);
             }
             removeProxyModel();
             this->close();
@@ -105,7 +105,7 @@ CallUtilsDialog::on_contactView_doubleClicked(const QModelIndex& index)
     if (not index.isValid())
         return;
     auto realIdx = notCurrentProxyModel_->mapToSource(index);
-    if (not RecentModel::instance().hasActiveCall(realIdx)) {
+    if (not RecentModel::instance()->hasActiveCall(realIdx)) {
         ContactMethod* m = nullptr;
         if (auto cm = realIdx.data(static_cast<int>(Call::Role::ContactMethod)).value<ContactMethod*>()) {
             m = cm;
@@ -115,23 +115,23 @@ CallUtilsDialog::on_contactView_doubleClicked(const QModelIndex& index)
             }
         }
         if (confMode_) {
-            if (m && !RecentModel::instance().index(0, 0, realIdx).isValid()) {
-                Call* c = CallModel::instance().dialingCall(m, CallModel::instance().selectedCall());
+            if (m && !RecentModel::instance()->index(0, 0, realIdx).isValid()) {
+                Call* c = CallModel::instance()->dialingCall(m, CallModel::instance()->selectedCall());
                 c->performAction(Call::Action::ACCEPT);
             }
         } else {
             if (m) {
-                auto activeCall = CallModel::instance().selectedCall();
-                CallModel::instance().transfer(activeCall, m);
+                auto activeCall = CallModel::instance()->selectedCall();
+                CallModel::instance()->transfer(activeCall, m);
             }
         }
     } else {
-        auto activeCall = CallModel::instance().selectedCall();
-        auto call = RecentModel::instance().getActiveCall(realIdx);
+        auto activeCall = CallModel::instance()->selectedCall();
+        auto call = RecentModel::instance()->getActiveCall(realIdx);
         if (not confMode_)
-            CallModel::instance().attendedTransfer(activeCall, call);
+            CallModel::instance()->attendedTransfer(activeCall, call);
         else
-            CallModel::instance().createJoinOrMergeConferenceFromCall(activeCall, call);
+            CallModel::instance()->createJoinOrMergeConferenceFromCall(activeCall, call);
     }
     this->close();
 }

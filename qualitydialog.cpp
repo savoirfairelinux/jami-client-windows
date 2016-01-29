@@ -58,7 +58,7 @@ QualityDialog::on_qualitySlider_sliderReleased()
 void QualityDialog::showEvent(QShowEvent* event) {
     QWidget::showEvent(event);
     ui->autoCheckBox->blockSignals(true);
-    const auto& call = CallModel::instance().selectedCall();
+    const auto& call = CallModel::instance()->selectedCall();
     if (const auto& codecModel = call->account()->codecModel()) {
         const auto& videoCodecs = codecModel->videoCodecs();
         if (videoCodecs->rowCount() > 0) {
@@ -82,7 +82,7 @@ QualityDialog::setQuality()
 {
     /* set auto quality true or false, also set the bitrate and quality values;
      * the slider is from 0 to 100, use the min and max vals to scale each value accordingly */
-    const auto& call = CallModel::instance().selectedCall();
+    const auto& call = CallModel::instance()->selectedCall();
     if (const auto& codecModel = call->account()->codecModel()) {
         const auto& videoCodecs = codecModel->videoCodecs();
 

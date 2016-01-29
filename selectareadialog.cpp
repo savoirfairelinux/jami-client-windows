@@ -69,7 +69,7 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
     if(rubberBand_) {
         QApplication::restoreOverrideCursor();
         releaseMouse();
-        if (auto call = CallModel::instance().selectedCall()) {
+        if (auto call = CallModel::instance()->selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
                 outVideo->sourceModel()->setDisplay(0, rubberBand_->rect());
             }

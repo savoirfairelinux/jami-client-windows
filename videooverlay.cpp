@@ -31,7 +31,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->chatButton->setCheckable(true);
 
-    actionModel_ = CallModel::instance().userActionModel();
+    actionModel_ = CallModel::instance()->userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 
     ui->noMicButton->setCheckable(true);
@@ -64,7 +64,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
         }
     });
 
-    connect(CallModel::instance().selectionModel(), &QItemSelectionModel::currentChanged, [=](const QModelIndex &current, const QModelIndex &previous) {
+    connect(CallModel::instance()->selectionModel(), &QItemSelectionModel::currentChanged, [=](const QModelIndex &current, const QModelIndex &previous) {
         Q_UNUSED(previous)
         Call* c = current.data(static_cast<int>(Call::Role::Object)).value<Call*>();
         if (c) {
@@ -164,7 +164,7 @@ VideoOverlay::on_noVideoButton_clicked()
 
 void VideoOverlay::on_joinButton_clicked()
 {
-    CallModel::instance().selectedCall()->joinToParent();
+    CallModel::instance()->selectedCall()->joinToParent();
 }
 
 void

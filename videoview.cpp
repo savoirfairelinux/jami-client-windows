@@ -42,7 +42,7 @@ VideoView::VideoView(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    connect(&CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
+    connect(CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
             this, SLOT(callStateChanged(Call*, Call::State)));
 
     overlay_ = new VideoOverlay(this);
@@ -116,7 +116,7 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
 void
 VideoView::updateCall()
 {
-    if (auto call = CallModel::instance().selectedCall()) {
+    if (auto call = CallModel::instance()->selectedCall()) {
         overlay_->setName(call->formattedName());
         overlay_->setTime(call->length());
     }
@@ -139,7 +139,7 @@ void
 VideoView::dropEvent(QDropEvent* event)
 {
     auto urls = event->mimeData()->urls();
-    if (auto call = CallModel::instance().selectedCall()) {
+    if (auto call = CallModel::instance()->selectedCall()) {
         if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
             outVideo->sourceModel()->setFile(urls.at(0));
         }
@@ -169,21 +169,21 @@ VideoView::showContextMenu(const QPoint& pos)
 
     QMenu menu;
 
-    for (auto device : Video::DeviceModel::instance().devices()) {
+    for (auto device : Video::DeviceModel::instance()->devices()) {
         std::unique_ptr<QAction> deviceAction(new QAction(device->name(), this));
         deviceAction->setCheckable(true);
-        if (device == Video::DeviceModel::instance().activeDevice())
+        if (device == Video::DeviceModel::instance()->activeDevice())
             deviceAction->setChecked(true);
         auto ptr = deviceAction.release();
         menu.addAction(ptr);
         connect(ptr, &QAction::toggled, [=](bool checked) {
             if (checked == true) {
-                if (auto call = CallModel::instance().selectedCall()) {
+                if (auto call = CallModel::instance()->selectedCall()) {
                     if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
                         outVideo->sourceModel()->switchTo(device);
                     }
                 }
-                Video::DeviceModel::instance().setActive(device);
+                Video::DeviceModel::instance()->setActive(device);
             }
         });
     }
@@ -193,7 +193,7 @@ VideoView::showContextMenu(const QPoint& pos)
     auto shareAction = new QAction(tr("Share entire screen"), this);
     menu.addAction(shareAction);
     connect(shareAction, &QAction::triggered, [=]() {
-        if (auto call = CallModel::instance().selectedCall()) {
+        if (auto call = CallModel::instance()->selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
                 outVideo->sourceModel()->setDisplay(0, QApplication::desktop()->rect());
             }
@@ -214,7 +214,7 @@ VideoView::showContextMenu(const QPoint& pos)
         if (!dialog.exec())
             return;
         fileNames = dialog.selectedFiles();
-        if (auto call = CallModel::instance().selectedCall()) {
+        if (auto call = CallModel::instance()->selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
                 outVideo->sourceModel()->setFile(QUrl::fromLocalFile(fileNames.at(0)));
             }

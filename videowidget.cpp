@@ -25,7 +25,7 @@ VideoWidget::VideoWidget(QWidget* parent) :
   , isPreviewDisplayed_(true)
   , fullPreview_(false)
 {
-    connect(&Video::PreviewManager::instance(),
+    connect(Video::PreviewManager::instance(),
             SIGNAL(previewStarted(Video::Renderer*)),
             this, SLOT(previewStarted(Video::Renderer*)));
 
