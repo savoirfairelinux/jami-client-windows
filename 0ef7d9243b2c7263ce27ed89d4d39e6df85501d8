@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_fdca836d",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-30T17:04:37Z",
+      "side": 1,
+      "message": "that\u0027s a mistake, this one should not be there anymore.",
+      "parentUuid": "fa6b99d7_3df8fbe4",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_bde3ab32",
         "filename": "smartlist.cpp",
         "patchSetId": 8
@@ -128,6 +152,30 @@
       "writtenOn": "2016-01-29T20:59:39Z",
       "side": 1,
       "message": "- If you new something you should delete it unless Qt is handling it, this is not the case here so this is leaking as above.\n- Can\u0027t allocation be avoided (here and above) ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9dc7c764",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-30T17:04:37Z",
+      "side": 1,
+      "message": "1) Qt delete it when setIndexWidget, is call again on the same index. But I just did a test when the application exits, the widget is not  destroyed.\n2) last evening I was thinking to change that. I will add a combar at the creation of a row then just hide/show the combar when needed.",
+      "parentUuid": "fa6b99d7_5dd04f53",
       "range": {
         "startLine": 98,
         "startChar": 4,
