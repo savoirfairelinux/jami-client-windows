@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_5da12fa8",
+        "filename": "smartlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-30T18:14:08Z",
+      "side": 1,
+      "message": "mistake, but I forgot to say that barbar is deleted by removecombar. When using setitemwidget, Qt first delete the old one. There is no way to spare (by moving) a widget",
+      "parentUuid": "fa6b99d7_fdca836d",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "0ef7d9243b2c7263ce27ed89d4d39e6df85501d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_bde3ab32",
         "filename": "smartlist.cpp",
         "patchSetId": 8
