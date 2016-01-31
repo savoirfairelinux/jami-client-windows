@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_1d82d700",
+        "filename": "smartlist.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-01-31T02:24:12Z",
+      "side": 1,
+      "message": "this ensures all widgets set through setIndexWidget are deleted.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "6e6c3bd9df0343641b482b1f47a1cefbb7b994e9",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
