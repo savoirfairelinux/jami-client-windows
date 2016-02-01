@@ -62,8 +62,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->setupUi(this);
 
-    welcomePageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
-    messagingPageAnim_ = new QPropertyAnimation(ui->messagingPage, "pos", this);
+    pageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -82,8 +81,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
         connect(callModel_, SIGNAL(incomingCall(Call*)),
                 this, SLOT(callIncoming(Call*)));
-        connect(callModel_, SIGNAL(callAdded(Call*,Call*)),
-                this, SLOT(addedCall(Call*, Call*)));
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
@@ -95,12 +92,6 @@ CallWidget::CallWidget(QWidget* parent) :
         RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
         RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
-        connect(ui->smartList->selectionModel(),
-                SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-                this,
-                SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
-
-        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
@@ -128,6 +119,11 @@ CallWidget::CallWidget(QWidget* parent) :
             if (idx.isValid())
                 ui->historyList->setExpanded(idx, true);
         });
+
+        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
+
+        smartListDelegate_ = new SmartListDelegate();
+        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
 
         ui->historyList->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(ui->historyList, &QListView::customContextMenuRequested, [=](const QPoint& pos){
@@ -160,6 +156,21 @@ CallWidget::CallWidget(QWidget* parent) :
         setupOutOfCallIM();
         setupSmartListMenu();
 
+        connect(RecentModel::instance().selectionModel(),
+                SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+                this,
+                SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
+
+        connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
+            Q_UNUSED(deselected)
+            if (selected.size()) {
+                auto idx = selected.indexes().first();
+                auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
+                ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
+            } else
+                ui->smartList->clearSelection();
+        });
+
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
     }
@@ -171,8 +182,8 @@ CallWidget::~CallWidget()
     delete menu_;
     delete contactDelegate_;
     delete imDelegate_;
-    delete welcomePageAnim_;
-    delete messagingPageAnim_;
+    delete pageAnim_;
+    delete smartListDelegate_;
 }
 
 void
@@ -285,7 +296,6 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
 void
 CallWidget::findRingAccount()
 {
-
     auto a_count = AccountModel::instance().rowCount();
     auto found = false;
     for (int i = 0; i < a_count; ++i) {
@@ -319,15 +329,12 @@ CallWidget::callIncoming(Call* call)
         QApplication::alert(this, 5000);
     }
 
-    if (!call->account()->isAutoAnswer()) {
-        ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
-                                   .arg(call->formattedName()));
-        ui->callerPhoto->setPixmap(
-                    QPixmap::fromImage(
-                        GlobalInstances::pixmapManipulator()
-                        .callPhoto(call, QSize(130,130)).value<QImage>()));
-        ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
-    }
+    ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
+                               .arg(call->formattedName()));
+    ui->callerPhoto->setPixmap(
+                QPixmap::fromImage(
+                    GlobalInstances::pixmapManipulator()
+                    .callPhoto(call, QSize(130,130)).value<QImage>()));
     setActualCall(call);
 }
 
@@ -336,7 +343,6 @@ CallWidget::on_acceptButton_clicked()
 {
     if (actualCall_ != nullptr)
         actualCall_->performAction(Call::Action::ACCEPT);
-    ui->stackedWidget->setCurrentWidget(ui->videoPage);
 }
 
 void
@@ -346,17 +352,6 @@ CallWidget::on_refuseButton_clicked()
         return;
     actualCall_->performAction(Call::Action::REFUSE);
     setActualCall(nullptr);
-    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-}
-
-void
-CallWidget::addedCall(Call* call, Call* parent)
-{
-    Q_UNUSED(parent);
-    if (call->direction() == Call::Direction::OUTGOING) {
-        setActualCall(call);
-        ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
-    }
 }
 
 void
@@ -370,17 +365,11 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        //TODO : Link this so that recentModel get selected correctly
-        //        auto onHoldCall = callModel_->getActiveCalls().first();
-        //        if (onHoldCall != nullptr && onHoldCall->state() == Call::State::HOLD) {
-        //            setActualCall(onHoldCall);
-        //            onHoldCall->performAction(Call::Action::HOLD);
-        //        }
+        RecentModel::instance().selectionModel()->clear();
     } else if (call->state() == Call::State::CURRENT) {
         ui->instantMessagingWidget->setMediaText(actualCall_);
-        ui->stackedWidget->setCurrentWidget(ui->videoPage);
     }
+    callStateToView(call);
 }
 
 void
@@ -433,12 +422,42 @@ CallWidget::on_historyList_doubleClicked(const QModelIndex& index)
     }
 }
 
+void CallWidget::callStateToView(Call* value)
+{
+    if (value) {
+        switch (value->state()) {
+        case Call::State::INCOMING:
+            if (not value->account()->isAutoAnswer())
+                ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+            else
+                ui->stackedWidget->setCurrentWidget(ui->videoPage);
+            break;
+        case Call::State::CURRENT:
+            ui->stackedWidget->setCurrentWidget(ui->videoPage);
+            break;
+        case Call::State::OVER:
+            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+            break;
+        case Call::State::INITIALIZATION:
+        case Call::State::CONNECTED:
+        case Call::State::RINGING:
+        case Call::State::ERROR:
+            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 void
 CallWidget::setActualCall(Call* value)
 {
     actualCall_ = value;
     CallModel::instance().selectCall(value);
     ui->videoWidget->pushRenderer(value);
+
+    callStateToView(value);
 }
 
 void
@@ -466,6 +485,7 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
     if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
         Call* c = CallModel::instance().dialingCall(m);
         c->performAction(Call::Action::ACCEPT);
+        setActualCall(c);
     }
 }
 
@@ -475,24 +495,19 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
     Q_UNUSED(oldSel)
 
     if (newSel.indexes().empty())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        return;
-    }
+        return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
         return;
 
-    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(newIdx);
-    auto newIdxCall = RecentModel::instance().getActiveCall(nodeIdx);
-
+    auto newIdxCall = RecentModel::instance().getActiveCall(newIdx);
     if (newIdxCall && newIdxCall != actualCall_) {
         setActualCall(newIdxCall);
-        ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else if (newIdxCall == nullptr){
         setActualCall(nullptr);
         ui->instantMessagingWidget->hide();
-        showIMOutOfCall();
+        showIMOutOfCall(newIdx);
     } else {
         setActualCall(nullptr);
         ui->instantMessagingWidget->hide();
@@ -554,16 +569,10 @@ CallWidget::on_btnvideo_clicked()
 }
 
 void
-CallWidget::showIMOutOfCall()
+CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
-    if (not highLightedIndex_.isValid())
-        return;
-
-    ui->smartList->selectionModel()->select(highLightedIndex_, QItemSelectionModel::ClearAndSelect);
-
     ui->contactMethodComboBox->clear();
 
-    auto nodeIdx = RecentModel::instance().peopleProxy()->mapToSource(highLightedIndex_);
     ui->imNameLabel->setText(QString(tr("Conversation with %1", "%1 is the contact name"))
                              .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
@@ -571,7 +580,7 @@ CallWidget::showIMOutOfCall()
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
     }
-    slideToRight(messagingPageAnim_, ui->messagingPage);
+    slidePage(ui->messagingPage, true);
 }
 
 void
@@ -649,27 +658,27 @@ CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 void
 CallWidget::on_imBackButton_clicked()
 {
-    slideToLeft(welcomePageAnim_, ui->welcomePage);
+    RecentModel::instance().selectionModel()->clear();
+    slidePage(ui->welcomePage);
 }
 
 void
-CallWidget::slideToLeft(QPropertyAnimation* anim, QWidget* widget)
+CallWidget::slidePage(QWidget* widget, bool toRight)
 {
+    short dir = (toRight ? -1 : 1);
     ui->stackedWidget->setCurrentWidget(widget);
-    anim->setDuration(animDuration_);
-    anim->setStartValue(QPoint(widget->width(), widget->y()));
-    anim->setEndValue(QPoint(widget->x(), widget->y()));
-    anim->setEasingCurve(QEasingCurve::OutQuad);
-    anim->start();
+    pageAnim_->setTargetObject(widget);
+    pageAnim_->setDuration(animDuration_);
+    pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
+    pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
+    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
+    pageAnim_->start();
 }
 
 void
-CallWidget::slideToRight(QPropertyAnimation* anim, QWidget* widget)
+CallWidget::on_smartList_clicked(const QModelIndex& index)
 {
-    ui->stackedWidget->setCurrentWidget(widget);
-    anim->setDuration(animDuration_);
-    anim->setStartValue(QPoint(-widget->width(), widget->y()));
-    anim->setEndValue(QPoint(widget->x(), widget->y()));
-    anim->setEasingCurve(QEasingCurve::OutQuad);
-    anim->start();
+    RecentModel::instance().selectionModel()->setCurrentIndex(
+                RecentModel::instance().peopleProxy()->mapToSource(index),
+                QItemSelectionModel::ClearAndSelect);
 }

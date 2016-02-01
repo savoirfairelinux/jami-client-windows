@@ -63,7 +63,7 @@ public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
     void on_btnvideo_clicked();
-    void showIMOutOfCall();
+    void showIMOutOfCall(const QModelIndex& nodeIdx);
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
@@ -79,10 +79,10 @@ private slots:
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
+    void on_smartList_clicked(const QModelIndex &index);
 
 private slots:
     void callIncoming(Call* call);
-    void addedCall(Call* call, Call* parent);
     void callStateChanged(Call* call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
@@ -100,12 +100,11 @@ private:
     ContactDelegate* contactDelegate_;
     HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
-    QModelIndex highLightedIndex_;
+    QPersistentModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
-    QPropertyAnimation* messagingPageAnim_;
-    QPropertyAnimation* welcomePageAnim_;
+    QPropertyAnimation* pageAnim_;
 
     constexpr static int animDuration_ = 200; //msecs
 
@@ -115,7 +114,7 @@ private:
     void placeCall();
     void setupOutOfCallIM();
     void setupSmartListMenu();
-    void slideToLeft(QPropertyAnimation* anim, QWidget* widget);
-    void slideToRight(QPropertyAnimation* anim, QWidget* widget);
+    void slidePage(QWidget* widget, bool toRight = false);
+    void callStateToView(Call* value);
 };
 
