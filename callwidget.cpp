@@ -518,6 +518,8 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
     } else {
         setActualCall(nullptr);
         ui->instantMessagingWidget->hide();
+        if (imConnection_)
+            disconnect(imConnection_);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
 }
@@ -624,7 +626,8 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
     auto cm = PhoneDirectoryModel::instance().getNumber(number);
     if (auto txtRecording = cm->textRecording()) {
         ui->listMessageView->setModel(txtRecording->instantMessagingModel());
-        disconnect(imConnection_);
+        if (imConnection_)
+            disconnect(imConnection_);
         imConnection_ = connect(txtRecording,
                                 SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
                                 this,
