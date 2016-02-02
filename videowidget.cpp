@@ -59,6 +59,7 @@ VideoWidget::previewStopped() {
     disconnect(previewRenderer_, SIGNAL(stopped()),
                this, SLOT(previewStopped()));
     previewRenderer_ = nullptr;
+    repaint();
 }
 
 void
@@ -160,6 +161,7 @@ VideoWidget::renderingStopped() {
     disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
     disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
     renderer_ = nullptr;
+    repaint();
 }
 
 void
