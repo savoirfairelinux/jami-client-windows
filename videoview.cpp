@@ -247,4 +247,3 @@ VideoView::slotVideoStarted(Video::Renderer* renderer) {
     ui->videoWidget->show();
     ui->videoWidget->setDistantRenderer(renderer);
 }
-
