@@ -71,7 +71,14 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
-                outVideo->sourceModel()->setDisplay(0, rubberBand_->rect());
+                int x, y, width, height;
+                QRect realRect;
+                rubberBand_->geometry().getRect(&x, &y, &width, &height);
+                realRect.setX(x);
+                realRect.setY(y);
+                realRect.setWidth(width);
+                realRect.setHeight(height);
+                outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
         delete rubberBand_;
