@@ -491,9 +491,11 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
         ui->stackedWidget->setCurrentWidget(ui->videoPage);
     } else if (newIdxCall == nullptr){
         setActualCall(nullptr);
+        ui->instantMessagingWidget->hide();
         showIMOutOfCall();
     } else {
         setActualCall(nullptr);
+        ui->instantMessagingWidget->hide();
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
 }
