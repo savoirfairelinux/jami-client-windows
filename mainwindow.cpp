@@ -32,6 +32,7 @@
 
 #include "aboutdialog.h"
 #include "mainwindowtoolbar.h"
+#include "settingskey.h"
 
 #ifdef ENABLE_AUTOUPDATE
 #include "winsparkle.h"
@@ -194,4 +195,14 @@ MainWindow::switchNormalMaximize()
         showNormal();
     else
         showMaximized();
+}
+
+void
+MainWindow::closeEvent(QCloseEvent* event)
+{
+    QSettings settings;
+    if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
+        this->hide();
+        event->ignore();
+    }
 }

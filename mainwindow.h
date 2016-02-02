@@ -46,18 +46,19 @@ public:
     void createThumbBar();
 
 protected:
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+    bool nativeEvent(const QByteArray& eventType, void* message, long* result);
+    void closeEvent(QCloseEvent* event);
 
 public slots:
     void onRingEvent(const QString& uri);
 
 private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call *call);
+    void onIncomingCall(Call* call);
     void switchNormalMaximize();
 
 private:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget* parent = 0);
      ~MainWindow();
     Ui::MainWindow* ui;
     NavStack* navStack_;
