@@ -184,8 +184,8 @@ AccountDetails::onCertButtonClicked() {
     auto sender = QObject::sender();
 
     (currentAccount_->*certMap_[sender->objectName()])(fileName);
-
-    static_cast<QPushButton*>(sender)->setText(fileName);
+    if (not fileName.isEmpty())
+        static_cast<QPushButton*>(sender)->setText(fileName);
 }
 
 void
