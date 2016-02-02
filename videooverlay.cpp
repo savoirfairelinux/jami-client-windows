@@ -19,7 +19,11 @@
 #include "videooverlay.h"
 #include "ui_videooverlay.h"
 
+#include "contactpicker.h"
+
 #include "callmodel.h"
+#include "contactmethod.h"
+#include "person.h"
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
@@ -57,6 +61,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
             case UserActionModel::Action::HOLD:
                 ui->holdButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
                 ui->holdButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
+                ui->onHoldLabel->setVisible(idx.data(Qt::CheckStateRole).value<bool>());
                 break;
             default:
                 break;
@@ -83,6 +88,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
                 ui->joinButton->hide();
             }
+            if (auto contactMethod =  c->peerContactMethod())
+                ui->addToContactButton->setVisible(not contactMethod->contact()
+                                                   || contactMethod->contact()->isPlaceHolder());
         }
     });
 }
@@ -176,4 +184,16 @@ VideoOverlay::on_qualityButton_clicked()
               + ui->qualityButton->size().width()/2,
               pos.y() - (qualityDialog_->height()));
     qualityDialog_->show();
+}
+
+void
+VideoOverlay::on_addToContactButton_clicked()
+{
+    QPoint globalPos = mapToGlobal(ui->addToContactButton->pos());
+    if (auto contactMethod = CallModel::instance().selectedCall()->peerContactMethod()) {
+        ContactPicker contactPicker(contactMethod);
+        contactPicker.move(globalPos.x(),
+                           globalPos.y() + ui->addToContactButton->height());
+        contactPicker.exec();
+    }
 }
