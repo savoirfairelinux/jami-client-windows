@@ -671,3 +671,10 @@ CallWidget::slideToRight(QPropertyAnimation* anim, QWidget* widget)
     anim->setEasingCurve(QEasingCurve::OutQuad);
     anim->start();
 }
+
+void
+CallWidget::on_copyCMButton_clicked()
+{
+    auto text = ui->contactMethodComboBox->currentText();
+    QApplication::clipboard()->setText(text);
+}
