@@ -97,20 +97,18 @@ QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
 }
 
 QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#noVideoButton:hover,
-QPushButton#transferButton:hover, QPushButton#addPersonButton:hover, QPushButton#joinButton:hover, QPushButton#qualityButton:hover{
+QPushButton#transferButton:hover, QPushButton#addPersonButton:hover, QPushButton#joinButton:hover, QPushButton#qualityButton:hover,
+QPushButton#addToContactButton:hover{
     background-color: rgba(0, 192, 213, 0.6);
-    border-radius: 18px;
-    border:solid 1px;
 }
 
 QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#noVideoButton:pressed,
-QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed, QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed{
+QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed, QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed,
+QPushButton#addToContactButton:pressed{
     background-color: rgba(0, 192, 213, 0.8);
-    border-radius: 18px;
-    border:solid 1px;
 }
 
-QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked{
+QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked{
     background-color: rgba(0, 192, 213, 0.8);
 }
 
@@ -128,7 +126,7 @@ QPushButton#hangupButton:pressed{
     background-color: rgba(255, 0, 0, 0.8);
 }
 
-QPushButton#imBackButton{
+QPushButton#imBackButton, QPushButton#addToContactButton{
    background-color: #414141;
    border-radius: 15px;
    border:solid 1px;
