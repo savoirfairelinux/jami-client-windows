@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -27,8 +27,11 @@
 #include "person.h"
 #include "recentmodel.h"
 #include "call.h"
+#include "combar.h"
 
 #include "ringthemeutils.h"
+
+#include <QDebug>
 
 SmartListDelegate::SmartListDelegate(QObject* parent) :
     QItemDelegate(parent)
@@ -124,14 +127,7 @@ SmartListDelegate::paint(QPainter* painter
             font.setBold(true);
             painter->setFont(font);
             QFontMetrics fontMetrics(font);
-            QString nameStr = name.toString();
-            auto realRect = fontMetrics.boundingRect(rect, Qt::AlignBottom | Qt::AlignLeft, nameStr);
-            if (realRect.width() > (rect.width() - rectTexts.left() - 30)) {
-                /* 30 here is the size of the video button */
-                auto charToChop = (realRect.width() - (rect.width() - rectTexts.left())) / fontMetrics.averageCharWidth();
-                nameStr.chop(charToChop + 8);
-                nameStr.append(QStringLiteral("..."));
-            }
+            QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight, rectTexts.width() - sizeImage_ - effectiveComBarSize_ - dx_);
             painter->drawText(rectTexts, Qt::AlignBottom | Qt::AlignLeft, nameStr);
         }
 
