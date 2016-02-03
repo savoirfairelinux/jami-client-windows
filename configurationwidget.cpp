@@ -108,7 +108,12 @@ ConfigurationWidget::showEvent(QShowEvent *event) {
     QWidget::showEvent(event);
     if (ui->tabWidget->currentIndex() == 1
             && CallModel::instance().getActiveCalls().size() == 0) {
+        ui->previewUnavailable->hide();
+        ui->videoView->show();
         Video::PreviewManager::instance().startPreview();
+    } else {
+        ui->previewUnavailable->show();
+        ui->videoView->hide();
     }
 }
 
