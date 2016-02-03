@@ -54,6 +54,10 @@ private slots:
 private slots:
     void onCertButtonClicked();
 
+    void ringtonesBoxCurrentIndexChanged(int index);
+
+    void on_playButton_clicked();
+
 private:
     Ui::AccountDetails *ui;
     CodecModel* codecModel_;
