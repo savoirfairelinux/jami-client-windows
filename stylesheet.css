@@ -110,7 +110,7 @@ QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed, QPushBu
     border:solid 1px;
 }
 
-QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked{
+QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked, QPushButton#chatButton:checked, QPushButton#holdButton:checked{
     background-color: rgba(0, 192, 213, 0.8);
 }
 
