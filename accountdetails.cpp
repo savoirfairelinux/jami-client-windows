@@ -28,6 +28,7 @@
 #include "protocolmodel.h"
 #include "certificate.h"
 #include "ciphermodel.h"
+#include "ringtonemodel.h"
 
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
@@ -148,6 +149,11 @@ AccountDetails::setAccount(Account* currentAccount) {
     });
 
     ui->cipherListView->setModel(currentAccount_->cipherModel());
+
+    disconnect(ui->ringtonesBox);
+    ui->ringtonesBox->setModel(&RingtoneModel::instance());
+    ui->ringtonesBox->setCurrentIndex(RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex().row());
+    connect(ui->ringtonesBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ringtonesBoxCurrentIndexChanged(int)));
 }
 
 void
@@ -206,4 +212,19 @@ AccountDetails::videoCodecSelectionChanged(const QItemSelection& selected,
         return;
     auto idx = codecModel_->videoCodecs()->mapToSource(selected.indexes().at(0));
     codecModel_->selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
+}
+
+void
+AccountDetails::ringtonesBoxCurrentIndexChanged(int index)
+{
+    RingtoneModel::instance().selectionModel(currentAccount_)->setCurrentIndex(
+                RingtoneModel::instance().index(index, 0), QItemSelectionModel::ClearAndSelect);
+    qDebug() << RingtoneModel::instance().index(index, 0);
+}
+
+void
+AccountDetails::on_playButton_clicked()
+{
+    RingtoneModel::instance().play(RingtoneModel::instance().index(
+                                       ui->ringtonesBox->currentIndex(), 0));
 }
