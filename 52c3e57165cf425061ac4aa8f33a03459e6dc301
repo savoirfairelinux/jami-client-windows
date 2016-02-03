@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_00f6ead7",
+        "filename": "smartlist.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-03T14:29:27Z",
+      "side": 1,
+      "message": "I did something like this saturday, I got the \"weird\" behavior as you, after failling to solve that behavior, I decided to roll back. I will investigate, maybe with your work I\u0027ll found a way to solve this",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "52c3e57165cf425061ac4aa8f33a03459e6dc301",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
