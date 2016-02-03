@@ -166,12 +166,11 @@ INSTALLS += QM_FILES
 
 DISTFILES += \
     License.rtf \
-    ringtones/konga.ul \
     ring.nsi
 
 win32 {
 
-    RINGTONES.files = ringtones
+    RINGTONES.files = $${RING}/share/ring/ringtones
     RINGTONES.path = $$OUT_PWD/release
 
     PACKAGING.files = ring.nsi images/ring.ico

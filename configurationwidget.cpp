@@ -70,7 +70,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 
-    ui->ringtonesBox->setModel(&RingtoneModel::instance());
     ui->historyDaySettingsSpinBox->setValue(
                 CategorizedHistoryModel::instance().historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
