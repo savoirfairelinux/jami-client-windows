@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_40b5c2cb",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-03T17:50:47Z",
+      "side": 1,
+      "message": "Magic number ! If you really can\u0027t compute it then explain it in the comment.",
+      "range": {
+        "startLine": 127,
+        "startChar": 100,
+        "endLine": 127,
+        "endChar": 105
+      },
+      "revId": "8f6a6536cc9c2ed84a008a20274f3542e047331a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
