@@ -109,7 +109,7 @@ Utils::GetRingtonePath() {
     GetCurrentDirectory(MAX_PATH, workingDirectory);
 
     QString ringtonePath = QString::fromWCharArray(workingDirectory);
-    ringtonePath += "\\ringtones\\konga.ul";
+    ringtonePath += QStringLiteral("\\ringtones\\default.wav");
 
     return ringtonePath;
 #else
