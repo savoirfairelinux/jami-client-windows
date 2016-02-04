@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_23269869",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T18:47:20Z",
+      "side": 1,
+      "message": "You can remove that now",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_432b8c30",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T18:47:20Z",
+      "side": 1,
+      "message": "line return",
+      "range": {
+        "startLine": 130,
+        "startChar": 97,
+        "endLine": 130,
+        "endChar": 117
+      },
+      "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8331a4a4",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T18:47:20Z",
+      "side": 1,
+      "message": "i meant in combar class (which in turn use it for it\u0027s size. Sorry",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
