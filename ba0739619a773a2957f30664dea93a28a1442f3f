@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_c351dcd9",
+        "filename": "smartlistdelegate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T18:16:40Z",
+      "side": 1,
+      "message": "We have sizeImage_ for the avatar size and for combar maybe a introduce a static in combar class to allow resizing things without effort",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 128,
+        "endChar": 106
+      },
+      "revId": "ba0739619a773a2957f30664dea93a28a1442f3f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
