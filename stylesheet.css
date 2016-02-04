@@ -108,7 +108,7 @@ QPushButton#addToContactButton:pressed{
     background-color: rgba(0, 192, 213, 0.8);
 }
 
-QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked{
+QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#noVideoButton:checked, QPushButton#chatButton:checked, QPushButton#holdButton:checked{
     background-color: rgba(0, 192, 213, 0.8);
 }
 
