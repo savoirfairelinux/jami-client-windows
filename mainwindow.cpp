@@ -24,7 +24,7 @@
 #include "media/text.h"
 #include "media/textrecording.h"
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
@@ -39,9 +39,7 @@
 
 #include "callmodel.h"
 
-#include <windows.h>
-
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     mwToolBar_(new MainWindowToolBar)
@@ -74,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
     });
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
     if (sysMenu != NULL) {
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
@@ -133,11 +131,11 @@ MainWindow::onRingEvent(const QString &uri)
 }
 
 bool
-MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
+MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
 {
     Q_UNUSED(eventType)
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     MSG *msg = (MSG*) message;
 
     if (msg->message == WM_SYSCOMMAND) {
@@ -150,6 +148,9 @@ MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result
             return true;
         }
     }
+#else
+    Q_UNUSED(message)
+    Q_UNUSED(result)
 #endif
     return false;
 }
@@ -162,7 +163,7 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 }
 
 void
-MainWindow::onIncomingCall(Call *call)
+MainWindow::onIncomingCall(Call* call)
 {
     Q_UNUSED(call);
     QWidget::showNormal();
@@ -171,7 +172,7 @@ MainWindow::onIncomingCall(Call *call)
 void
 MainWindow::createThumbBar()
 {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     QWinThumbnailToolBar *thumbbar = new QWinThumbnailToolBar(this);
     thumbbar->setWindow(this->windowHandle());
     QWinThumbnailToolButton *settings = new QWinThumbnailToolButton(thumbbar);

@@ -32,7 +32,7 @@
 #include <QLibraryInfo>
 
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #endif
 
@@ -45,7 +45,7 @@ REGISTER_MEDIA();
 void
 Console()
 {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
