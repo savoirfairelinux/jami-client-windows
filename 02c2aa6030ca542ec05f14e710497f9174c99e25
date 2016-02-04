@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_83bf64d0",
+        "filename": "stylesheet.css",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T19:04:38Z",
+      "side": 1,
+      "message": "I added it in another patch that was just merged",
+      "range": {
+        "startLine": 111,
+        "startChar": 132,
+        "endLine": 111,
+        "endChar": 163
+      },
+      "revId": "02c2aa6030ca542ec05f14e710497f9174c99e25",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
