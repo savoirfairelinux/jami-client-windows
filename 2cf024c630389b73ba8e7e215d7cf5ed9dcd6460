@@ -92,6 +92,30 @@
       "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_0379142f",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-04T19:37:50Z",
+      "side": 1,
+      "message": "- Hum, you\u0027re right about the distance thing.\n- BTW it\u0027s not because it has been done before (sometimes for lack of time or else...) that we should continue to do so, sometimes things i\u0027ve written are plain wrong (work-ish) but wrong in term of good practice, maintainability and robustness.",
+      "parentUuid": "fa6b99d7_83a684c0",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
