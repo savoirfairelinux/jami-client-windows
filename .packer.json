@@ -56,7 +56,7 @@
         "git pull"
     ],
     "AutoDeploySchedule": {
-        "win32": "0 0 * * 5"
+        "win32": "0 0 0 * * THU"
     },
     "DeployScript": "ring-nightly-windows.sh",
     "NotificationMailAdress": ["Awesome Ring Team", "ring-dev@lists.savoirfairelinux.net"]
