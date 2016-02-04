@@ -21,7 +21,7 @@
 //Needed for OS detection
 #include <QtGlobal>
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #else //LINUX
 #define LPCWSTR char*
@@ -40,5 +40,6 @@ public:
     static QString GetRingtonePath();
     static QString GenGUID();
     static QString GetISODate();
+    static QString GetCurrentUserName();
 };
 

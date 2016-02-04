@@ -18,7 +18,7 @@
 
 #include "utils.h"
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #include <lmcons.h>
 #include <shobjidl.h>
 #include <shlguid.h>
@@ -29,7 +29,7 @@
 bool
 Utils::CreateStartupLink()
 {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     TCHAR szPath[MAX_PATH];
     GetModuleFileName(NULL, szPath, MAX_PATH);
 
@@ -49,7 +49,7 @@ Utils::CreateStartupLink()
 
 bool
 Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     HRESULT hres;
     IShellLink* psl;
 
@@ -71,13 +71,15 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
     }
     return hres;
 #else
+    Q_UNUSED(lpszPathObj)
+    Q_UNUSED(lpszPathLink)
     return true;
 #endif
 }
 
 void
 Utils::DeleteStartupLink() {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
@@ -90,7 +92,7 @@ Utils::DeleteStartupLink() {
 
 bool
 Utils::CheckStartupLink() {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
@@ -104,7 +106,7 @@ Utils::CheckStartupLink() {
 
 QString
 Utils::GetRingtonePath() {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     TCHAR workingDirectory[MAX_PATH];
     GetCurrentDirectory(MAX_PATH, workingDirectory);
 
@@ -119,7 +121,7 @@ Utils::GetRingtonePath() {
 
 QString
 Utils::GenGUID() {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     GUID gidReference;
     wchar_t *str;
     HRESULT hCreateGuid = CoCreateGuid(&gidReference);
@@ -129,7 +131,7 @@ Utils::GenGUID() {
         return gStr.remove("{").remove("}").toLower();
     }
     else
-        return QString("");
+        return QString();
 #else
     return QString("");
 #endif
@@ -137,13 +139,25 @@ Utils::GenGUID() {
 
 QString
 Utils::GetISODate() {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     SYSTEMTIME lt;
     GetSystemTime(&lt);
     return QString("%1-%2-%3T%4:%5:%6Z").arg(lt.wYear).arg(lt.wMonth,2,10,QChar('0')).arg(lt.wDay,2,10,QChar('0'))
             .arg(lt.wHour,2,10,QChar('0')).arg(lt.wMinute,2,10,QChar('0')).arg(lt.wSecond,2,10,QChar('0'));
 #else
-    return QString("");
+    return QString();
+#endif
+}
+
+QString
+Utils::GetCurrentUserName() {
+#ifdef Q_OS_WIN
+    wchar_t username[UNLEN+1];
+    DWORD username_len = UNLEN+1;
+    GetUserName(username, &username_len);
+    return QString::fromWCharArray(username, username_len);
+#else
+    return QString();
 #endif
 }
 
