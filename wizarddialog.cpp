@@ -39,6 +39,8 @@ WizardDialog::WizardDialog(QWidget *parent) :
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
+
+    ui->usernameEdit->setText(Utils::GetCurrentUserName());
 }
 
 WizardDialog::~WizardDialog()
