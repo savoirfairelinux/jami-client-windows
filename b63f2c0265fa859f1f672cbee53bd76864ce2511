@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_63eed08d",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-02-04T21:30:00Z",
+      "side": 1,
+      "message": "to remove?",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 58
+      },
+      "revId": "b63f2c0265fa859f1f672cbee53bd76864ce2511",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
