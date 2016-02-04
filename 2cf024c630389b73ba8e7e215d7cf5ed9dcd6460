@@ -68,6 +68,30 @@
       "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_83a684c0",
+        "filename": "smartlistdelegate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-04T19:18:40Z",
+      "side": 1,
+      "message": "effective size is not the size of the button, it\u0027s the distance from the left of the widget to the right of the cell, I know no way to get the left position of the widget from the paint function. Moreover in your own work you use to define it directly to smartlist.cpp",
+      "parentUuid": "fa6b99d7_8331a4a4",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "2cf024c630389b73ba8e7e215d7cf5ed9dcd6460",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
