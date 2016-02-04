@@ -124,7 +124,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     if (not currentAccount_->tlsPrivateKey().isEmpty())
         ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKey());
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
     certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
     certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKey;

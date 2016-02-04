@@ -24,7 +24,7 @@
 #include "media/text.h"
 #include "media/textrecording.h"
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #include <windows.h>
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
@@ -39,9 +39,7 @@
 
 #include "callmodel.h"
 
-#include <windows.h>
-
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     mwToolBar_(new MainWindowToolBar)
@@ -55,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
     sysIcon.setIcon(icon);
 
-    QMenu *menu = new QMenu();
+    QMenu* menu = new QMenu();
 
     auto configAction = new QAction("Configuration", this);
     menu->addAction(configAction);
@@ -74,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
     });
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
     HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
     if (sysMenu != NULL) {
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
@@ -122,7 +120,7 @@ MainWindow::~MainWindow()
 }
 
 void
-MainWindow::onRingEvent(const QString &uri)
+MainWindow::onRingEvent(const QString& uri)
 {
     this->showNormal();
     if (not uri.isEmpty()) {
@@ -133,12 +131,12 @@ MainWindow::onRingEvent(const QString &uri)
 }
 
 bool
-MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
+MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
 {
     Q_UNUSED(eventType)
 
-#ifdef Q_OS_WIN32
-    MSG *msg = (MSG*) message;
+#ifdef Q_OS_WIN
+    MSG* msg = (MSG*) message;
 
     if (msg->message == WM_SYSCOMMAND) {
         if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
@@ -150,6 +148,9 @@ MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result
             return true;
         }
     }
+#else
+    Q_UNUSED(message)
+    Q_UNUSED(result)
 #endif
     return false;
 }
@@ -162,7 +163,7 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 }
 
 void
-MainWindow::onIncomingCall(Call *call)
+MainWindow::onIncomingCall(Call* call)
 {
     Q_UNUSED(call);
     QWidget::showNormal();
@@ -171,10 +172,10 @@ MainWindow::onIncomingCall(Call *call)
 void
 MainWindow::createThumbBar()
 {
-#ifdef Q_OS_WIN32
-    QWinThumbnailToolBar *thumbbar = new QWinThumbnailToolBar(this);
+#ifdef Q_OS_WIN
+    QWinThumbnailToolBar* thumbbar = new QWinThumbnailToolBar(this);
     thumbbar->setWindow(this->windowHandle());
-    QWinThumbnailToolButton *settings = new QWinThumbnailToolButton(thumbbar);
+    QWinThumbnailToolButton* settings = new QWinThumbnailToolButton(thumbbar);
     settings->setToolTip("Settings");
     QIcon icon(":/images/settings.png");
     settings->setIcon(icon);
