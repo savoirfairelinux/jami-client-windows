@@ -60,7 +60,7 @@
      </property>
      <property name="icon">
       <iconset resource="ressources.qrc">
-       <normaloff>:/images/hover-contact/btn-video.svg</normaloff>:/images/hover-contact/btn-video.svg</iconset>
+       <normaloff>:/images/icons/ic_videocam_white_24px.svg</normaloff>:/images/icons/ic_videocam_white_24px.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
