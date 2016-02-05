@@ -20,12 +20,17 @@
 #include "ui_configurationwidget.h"
 
 #include <QMessageBox>
+#include <QDir>
+#include <QStandardPaths>
+#include <QFileDialog>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
 #include "video/rate.h"
 #include "video/previewmanager.h"
+
+#include "media/recordingmodel.h"
 
 #include "accountserializationadapter.h"
 #include "accountstatedelegate.h"
@@ -87,6 +92,19 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     });
 
     ui->videoView->setIsFullPreview(true);
+
+    auto recordPath = Media::RecordingModel::instance().recordPath();
+    if (recordPath.isEmpty()) {
+        recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+        Media::RecordingModel::instance().setRecordPath(recordPath);
+    }
+    ui->recordPath->setText(Media::RecordingModel::instance().recordPath());
+
+    ui->alwaysRecordCheckBox->setChecked(Media::RecordingModel::instance().isAlwaysRecording());
+    connect(ui->alwaysRecordCheckBox, &QCheckBox::clicked, [](bool checked){
+        Media::RecordingModel::instance().setAlwaysRecording(checked);
+    });
+
 #ifndef ENABLE_AUTOUPDATE
     ui->checkUpdateButton->hide();
     ui->intervalUpdateCheckSpinBox->hide();
@@ -271,4 +289,17 @@ ConfigurationWidget::on_tabWidget_currentChanged(int index)
 {
     Q_UNUSED(index)
     showPreview();
+}
+
+void
+ConfigurationWidget::on_recordPath_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+                                                 Media::RecordingModel::instance().recordPath(),
+                                                 QFileDialog::ShowDirsOnly
+                                                 | QFileDialog::DontResolveSymlinks);
+    if (not dir.isEmpty()) {
+        Media::RecordingModel::instance().setRecordPath(dir);
+        ui->recordPath->setText(dir);
+    }
 }
