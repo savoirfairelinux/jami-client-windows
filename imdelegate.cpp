@@ -81,9 +81,9 @@ ImDelegate::paint(QPainter* painter,
         QRect textRect = getBoundingRect(dir, msg, opt);
 
         QRect bubbleRect(textRect.left() - padding_,
-                         textRect.top() - padding_,
+                         textRect.top(),
                          textRect.width() + 2 * padding_,
-                         textRect.height() + 2 * padding_ );
+                         textRect.height() );
 
         opt.decorationSize = iconSize_;
         opt.decorationPosition = (dir == Qt::AlignRight ?
@@ -114,15 +114,15 @@ QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir, const QString& m
     QRect textRect;
 
     if (dir == Qt::AlignRight) {
-        textRect = textFontMetrics.boundingRect(option.rect.left() + 2 * padding_,
-                                                option.rect.top() + 2 * padding_,
+        textRect = textFontMetrics.boundingRect(option.rect.left(),
+                                                option.rect.top() + 3 * padding_,
                                                 option.rect.width() - iconSize_.width() - 4 * padding_,
                                                 0,
                                                 dir|Qt::AlignTop|Qt::TextWordWrap,
                                                 msg);
     } else {
-        textRect = textFontMetrics.boundingRect(option.rect.left() + iconSize_.width() + 2 * padding_,
-                                                option.rect.top() + 2 * padding_,
+        textRect = textFontMetrics.boundingRect(option.rect.left() + iconSize_.width() + 4 * padding_,
+                                                option.rect.top() + 3 * padding_,
                                                 option.rect.width() - iconSize_.width() - 4 * padding_ ,
                                                 0,
                                                 dir|Qt::AlignTop|Qt::TextWordWrap,
@@ -149,7 +149,7 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     QRect boundingRect = getBoundingRect(dir, msg, opt);
 
-    QSize size(option.rect.width(), boundingRect.height() + padding_);
+    QSize size(option.rect.width(), boundingRect.height() + 6*padding_);
 
     /* Keep the minimum height needed. */
     if(size.height() < iconSize_.height())
