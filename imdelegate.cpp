@@ -25,6 +25,8 @@
 
 #include "ringthemeutils.h"
 
+#include <QDebug>
+
 ImDelegate::ImDelegate(QObject *parent)
     : QStyledItemDelegate(parent), showDate_(false), showAuthor_(false)
 {}
