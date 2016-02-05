@@ -154,7 +154,7 @@ CallWidget::CallWidget(QWidget* parent) :
         setupOutOfCallIM();
         setupSmartListMenu();
 
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::on_btnvideo_clicked);
+        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::on_btnComBarVideo_clicked);
 
         connect(RecentModel::instance().selectionModel(),
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -589,7 +589,7 @@ CallWidget::on_btnCall_clicked()
 }
 
 void
-CallWidget::on_btnvideo_clicked()
+CallWidget::on_btnComBarVideo_clicked()
 {
     if (not highLightedIndex_.isValid())
         return;

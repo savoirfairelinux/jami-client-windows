@@ -62,7 +62,7 @@ public slots:
 public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
-    void on_btnvideo_clicked();
+    void on_btnComBarVideo_clicked();
     void showIMOutOfCall(const QModelIndex& nodeIdx);
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
