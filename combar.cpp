@@ -26,7 +26,7 @@ ComBar::ComBar(QWidget* parent) :
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
-    connect(ui->btnvideo, &QPushButton::clicked , this , [=](){
+    connect(ui->btnComBarVideo, &QPushButton::clicked , this , [=](){
         emit btnVideoClicked();
     });
 
