@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -36,10 +36,10 @@ class AccountDetails : public QWidget
     Q_OBJECT
 
 public:
-    explicit AccountDetails(QWidget *parent = 0);
+    explicit AccountDetails(QWidget* parent = 0);
     ~AccountDetails();
 
-    void setAccount(Account *currentAccount);
+    void setAccount(Account* currentAccount);
     void save();
 
 //UI SLOTS
@@ -48,22 +48,21 @@ private slots:
     void on_downAudioButton_clicked();
     void on_upVideoButton_clicked();
     void on_downVideoButton_clicked();
-    void audioCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-    void videoCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void on_playButton_clicked();
 
 private slots:
     void onCertButtonClicked();
-
     void ringtonesBoxCurrentIndexChanged(int index);
-
-    void on_playButton_clicked();
+    void audioCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    void videoCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
 
 private:
-    Ui::AccountDetails *ui;
+    Ui::AccountDetails* ui;
     CodecModel* codecModel_;
     Account*    currentAccount_;
     typedef void (Account::*ACC_PTR)(const QString&);
     QMap<QString, ACC_PTR > certMap_;
 
+    void stopRingtone();
 };
 
