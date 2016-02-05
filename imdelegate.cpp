@@ -81,9 +81,9 @@ ImDelegate::paint(QPainter* painter,
         QRect textRect = getBoundingRect(dir, msg, opt);
 
         QRect bubbleRect(textRect.left() - padding_,
-                         textRect.top() - padding_,
+                         textRect.top(),
                          textRect.width() + 2 * padding_,
-                         textRect.height() + 2 * padding_ );
+                         textRect.height() );
 
         opt.decorationSize = iconSize_;
         opt.decorationPosition = (dir == Qt::AlignRight ?
@@ -149,7 +149,7 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     QRect boundingRect = getBoundingRect(dir, msg, opt);
 
-    QSize size(option.rect.width(), boundingRect.height() + padding_);
+    QSize size(option.rect.width(), boundingRect.height() + 3*padding_);
 
     /* Keep the minimum height needed. */
     if(size.height() < iconSize_.height())
