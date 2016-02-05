@@ -59,6 +59,7 @@ private slots:
     void on_checkUpdateButton_clicked();
     void on_autoUpdateCheckBox_toggled(bool checked);
     void on_intervalUpdateCheckSpinBox_valueChanged(int arg1);
+    void on_tabWidget_currentChanged(int index);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
@@ -73,5 +74,6 @@ private:
     AccountDetails* accountDetails_;
     AccountStateDelegate *accountStateDelegate_;
     QSettings settings_;
+    void showPreview();
 };
 

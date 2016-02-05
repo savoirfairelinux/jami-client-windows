@@ -95,6 +95,19 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 #endif
 }
 
+void ConfigurationWidget::showPreview()
+{
+    if (ui->tabWidget->currentIndex() == 1
+            && CallModel::instance().getActiveCalls().size() == 0) {
+        ui->previewUnavailable->hide();
+        ui->videoView->show();
+        Video::PreviewManager::instance().startPreview();
+    } else {
+        ui->previewUnavailable->show();
+        ui->videoView->hide();
+    }
+}
+
 void
 ConfigurationWidget::showEvent(QShowEvent *event) {
 
@@ -105,15 +118,7 @@ ConfigurationWidget::showEvent(QShowEvent *event) {
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
 #endif
     QWidget::showEvent(event);
-    if (ui->tabWidget->currentIndex() == 1
-            && CallModel::instance().getActiveCalls().size() == 0) {
-        ui->previewUnavailable->hide();
-        ui->videoView->show();
-        Video::PreviewManager::instance().startPreview();
-    } else {
-        ui->previewUnavailable->show();
-        ui->videoView->hide();
-    }
+    showPreview();
 }
 
 void
@@ -259,4 +264,11 @@ ConfigurationWidget::on_intervalUpdateCheckSpinBox_valueChanged(int arg1)
 #ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_update_check_interval(arg1 * 86400);
 #endif
+}
+
+void
+ConfigurationWidget::on_tabWidget_currentChanged(int index)
+{
+    Q_UNUSED(index)
+    showPreview();
 }
