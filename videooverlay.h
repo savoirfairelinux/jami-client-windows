@@ -54,6 +54,7 @@ private slots:
     void on_noVideoButton_clicked();
     void on_qualityButton_clicked();
     void on_addToContactButton_clicked();
+    void on_recButton_clicked();
 
 private:
     Ui::VideoOverlay* ui;
