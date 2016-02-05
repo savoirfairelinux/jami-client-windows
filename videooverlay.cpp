@@ -63,6 +63,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                 ui->holdButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
                 ui->onHoldLabel->setVisible(idx.data(Qt::CheckStateRole).value<bool>());
                 break;
+            case UserActionModel::Action::RECORD:
+                ui->recButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
+                ui->recButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
             default:
                 break;
             }
@@ -196,4 +199,10 @@ VideoOverlay::on_addToContactButton_clicked()
                            globalPos.y() + ui->addToContactButton->height());
         contactPicker.exec();
     }
+}
+
+void
+VideoOverlay::on_recButton_clicked()
+{
+    actionModel_->execute(UserActionModel::Action::RECORD);
 }
