@@ -217,7 +217,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="ressources.qrc">
-                  <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                  <normaloff>:/images/icons/ic_call_white_24px.svg</normaloff>:/images/icons/ic_call_white_24px.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -710,7 +710,7 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_arrow_back_white.svg</normaloff>:/images/ic_arrow_back_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_arrow_back_white_24px.svg</normaloff>:/images/icons/ic_arrow_back_white_24px.svg</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -798,7 +798,7 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_content_copy_white.svg</normaloff>:/images/ic_content_copy_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_content_copy_white_24px.svg</normaloff>:/images/icons/ic_content_copy_white_24px.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -902,7 +902,7 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_send_white.svg</normaloff>:/images/ic_send_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_send_white_24px.svg</normaloff>:/images/icons/ic_send_white_24px.svg</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -1050,8 +1050,8 @@
                         </size>
                        </property>
                        <property name="icon">
-                        <iconset resource="ressources.qrc">
-                         <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                        <iconset>
+                         <normaloff>:/images/icons/ic_done_white_24px.svg</normaloff>:/images/icons/ic_done_white_24px.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1095,8 +1095,8 @@
                         <enum>Qt::RightToLeft</enum>
                        </property>
                        <property name="icon">
-                        <iconset resource="ressources.qrc">
-                         <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                        <iconset>
+                         <normaloff>:/images/icons/ic_not_interested_white_24px.svg</normaloff>:/images/icons/ic_not_interested_white_24px.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1256,8 +1256,8 @@
                       <enum>Qt::LeftToRight</enum>
                      </property>
                      <property name="icon">
-                      <iconset resource="ressources.qrc">
-                       <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                      <iconset>
+                       <normaloff>:/images/icons/ic_not_interested_white_24px.svg</normaloff>:/images/icons/ic_not_interested_white_24px.svg</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
