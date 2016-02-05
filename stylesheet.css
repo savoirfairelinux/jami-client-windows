@@ -6,13 +6,13 @@ QPushButton#btnCall{
 
 QPushButton#acceptButton{
     background-color: #4caf50;
-    border-radius: 32px;
+    border-radius: 28px;
     border:solid 1px;
 }
 
 QPushButton#refuseButton, QPushButton#cancelButton{
     background-color: #f44336;
-    border-radius: 32px;
+    border-radius: 28px;
     border:solid 1px;
 }
 
@@ -144,13 +144,7 @@ QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#
    background-color: #313131;
 }
 
-QPushButton#sendButton{
-   background-color: #3AC0D2;
-   border-radius: 18px;
-   border:solid 1px;
-}
-
-QPushButton#btnvideo{
+QPushButton#btnvideo, QPushButton#sendButton{
    background-color: #3AC0D2;
    border-radius: 15px;
    border:solid 1px;
