@@ -60,6 +60,8 @@ private slots:
     void on_autoUpdateCheckBox_toggled(bool checked);
     void on_intervalUpdateCheckSpinBox_valueChanged(int arg1);
     void on_tabWidget_currentChanged(int index);
+    void on_recordPath_clicked();
+    void on_alwaysRecordCheckBox_stateChanged(int arg1);
 
 private slots:
     void accountSelected(QItemSelection itemSel);

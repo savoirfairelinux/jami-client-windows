@@ -272,3 +272,15 @@ ConfigurationWidget::on_tabWidget_currentChanged(int index)
     Q_UNUSED(index)
     showPreview();
 }
+
+void
+ConfigurationWidget::on_recordPath_clicked()
+{
+
+}
+
+void
+ConfigurationWidget::on_alwaysRecordCheckBox_stateChanged(int arg1)
+{
+
+}
