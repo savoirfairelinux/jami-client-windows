@@ -52,6 +52,19 @@ AccountDetails::AccountDetails(QWidget *parent) :
     connect(ui->lrcfg_tlsCaListCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
     connect(ui->lrcfg_tlsCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
     connect(ui->lrcfg_tlsPrivateKeyCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
+
+    connect(&RingtoneModel::instance(), &RingtoneModel::dataChanged, [=](const QModelIndex &topLeft, const QModelIndex &bottomRight) {
+        Q_UNUSED(topLeft)
+        Q_UNUSED(bottomRight)
+        if (not currentAccount_)
+            return;
+        auto idx = RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex();
+        if (RingtoneModel::instance().data(idx, static_cast<int>(RingtoneModel::Role::IsPlaying)).toBool())
+            ui->playButton->setText(tr("Pause"));
+        else
+            ui->playButton->setText(tr("Play"));
+
+    });
 }
 
 AccountDetails::~AccountDetails()
@@ -63,7 +76,8 @@ void
 AccountDetails::setAccount(Account* currentAccount) {
 
     if (currentAccount_) {
-        currentAccount_->performAction(Account::EditAction::SAVE);
+        stopRingtone();
+        save();
     }
 
     currentAccount_ = currentAccount;
@@ -226,4 +240,13 @@ AccountDetails::on_playButton_clicked()
 {
     RingtoneModel::instance().play(RingtoneModel::instance().index(
                                        ui->ringtonesBox->currentIndex(), 0));
+}
+
+void
+AccountDetails::stopRingtone() {
+    if (not currentAccount_)
+        return;
+    auto idx = RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex();
+    if (RingtoneModel::instance().data(idx, static_cast<int>(RingtoneModel::Role::IsPlaying)).toBool())
+        RingtoneModel::instance().play(idx);
 }

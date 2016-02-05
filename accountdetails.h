@@ -48,15 +48,13 @@ private slots:
     void on_downAudioButton_clicked();
     void on_upVideoButton_clicked();
     void on_downVideoButton_clicked();
-    void audioCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-    void videoCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void on_playButton_clicked();
 
 private slots:
     void onCertButtonClicked();
-
     void ringtonesBoxCurrentIndexChanged(int index);
-
-    void on_playButton_clicked();
+    void audioCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void videoCodecSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
     Ui::AccountDetails *ui;
@@ -65,5 +63,6 @@ private:
     typedef void (Account::*ACC_PTR)(const QString&);
     QMap<QString, ACC_PTR > certMap_;
 
+    void stopRingtone();
 };
 
