@@ -217,12 +217,12 @@
                 </property>
                 <property name="icon">
                  <iconset resource="ressources.qrc">
-                  <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                  <normaloff>:/images/icons/ic_videocam_white.png</normaloff>:/images/icons/ic_videocam_white.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>30</width>
-                  <height>30</height>
+                  <width>18</width>
+                  <height>18</height>
                  </size>
                 </property>
                </widget>
@@ -660,6 +660,12 @@
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
                     <property name="maximumSize">
                      <size>
                       <width>30</width>
@@ -678,8 +684,8 @@
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>30</width>
-                      <height>25</height>
+                      <width>18</width>
+                      <height>18</height>
                      </size>
                     </property>
                    </widget>
@@ -791,12 +797,12 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_arrow_back_white.svg</normaloff>:/images/ic_arrow_back_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>30</width>
-                      <height>30</height>
+                      <width>18</width>
+                      <height>18</height>
                      </size>
                     </property>
                     <property name="flat">
@@ -879,7 +885,13 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_content_copy_white.svg</normaloff>:/images/ic_content_copy_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_content_copy_white_24dp.png</normaloff>:/images/icons/ic_content_copy_white_24dp.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -943,6 +955,15 @@
                 </item>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
                   <property name="bottomMargin">
                    <number>6</number>
                   </property>
@@ -965,8 +986,8 @@
                    <widget class="QPushButton" name="sendButton">
                     <property name="minimumSize">
                      <size>
-                      <width>36</width>
-                      <height>36</height>
+                      <width>30</width>
+                      <height>30</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -983,12 +1004,12 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/ic_send_white.svg</normaloff>:/images/ic_send_white.svg</iconset>
+                      <normaloff>:/images/icons/ic_send_white_24dp.png</normaloff>:/images/icons/ic_send_white_24dp.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>36</width>
-                      <height>36</height>
+                      <width>18</width>
+                      <height>18</height>
                      </size>
                     </property>
                    </widget>
@@ -1126,18 +1147,18 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>64</width>
-                         <height>64</height>
+                         <width>56</width>
+                         <height>56</height>
                         </size>
                        </property>
                        <property name="icon">
                         <iconset resource="ressources.qrc">
-                         <normaloff>:/images/call/btn-call.svg</normaloff>:/images/call/btn-call.svg</iconset>
+                         <normaloff>:/images/icons/ic_done_white_24dp.png</normaloff>:/images/icons/ic_done_white_24dp.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
-                         <width>34</width>
-                         <height>34</height>
+                         <width>24</width>
+                         <height>24</height>
                         </size>
                        </property>
                       </widget>
@@ -1168,8 +1189,8 @@
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>64</width>
-                         <height>64</height>
+                         <width>56</width>
+                         <height>56</height>
                         </size>
                        </property>
                        <property name="layoutDirection">
@@ -1177,12 +1198,12 @@
                        </property>
                        <property name="icon">
                         <iconset resource="ressources.qrc">
-                         <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                         <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
-                         <width>34</width>
-                         <height>34</height>
+                         <width>24</width>
+                         <height>24</height>
                         </size>
                        </property>
                       </widget>
@@ -1317,8 +1338,8 @@
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>64</width>
-                       <height>64</height>
+                       <width>56</width>
+                       <height>56</height>
                       </size>
                      </property>
                      <property name="maximumSize">
@@ -1338,12 +1359,12 @@
                      </property>
                      <property name="icon">
                       <iconset resource="ressources.qrc">
-                       <normaloff>:/images/call/btn-ignore.svg</normaloff>:/images/call/btn-ignore.svg</iconset>
+                       <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
-                       <width>34</width>
-                       <height>34</height>
+                       <width>24</width>
+                       <height>24</height>
                       </size>
                      </property>
                     </widget>
@@ -1479,7 +1500,6 @@
          <height>0</height>
         </size>
        </property>
-       <zorder>stackedWidget</zorder>
       </widget>
      </item>
     </layout>
