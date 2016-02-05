@@ -272,3 +272,4 @@ ConfigurationWidget::on_tabWidget_currentChanged(int index)
     Q_UNUSED(index)
     showPreview();
 }
+
