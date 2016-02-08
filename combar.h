@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -31,10 +31,9 @@ public:
     explicit ComBar(QWidget* parent = 0);
     ~ComBar();
 
+public slots:
+    void moveToRow(const QRect& rect);
+
 private:
     Ui::ComBar* ui;
-
-signals:
-    void btnVideoClicked() const;
-
 };

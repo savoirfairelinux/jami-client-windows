@@ -16,24 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "ui_combar.h"
-
 #include "combar.h"
-
+#include "ui_combar.h"
 
 ComBar::ComBar(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::ComBar)
 {
     ui->setupUi(this);
-    connect(ui->btnvideo, &QPushButton::clicked , this , [=](){
-        emit btnVideoClicked();
-    });
-
 }
 
 ComBar::~ComBar()
 {
-    disconnect(this);
     delete ui;
+}
+
+void
+ComBar::moveToRow(const QRect& rect)
+{
+    move(rect.right() - width() - 5,
+         rect.bottom() - height() - (rect.height()/4));
 }

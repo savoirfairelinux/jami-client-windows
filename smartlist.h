@@ -21,6 +21,7 @@
 #include <QTreeView>
 
 class SmartListDelegate;
+class ComBar;
 
 class SmartList : public QTreeView
 {
@@ -33,13 +34,13 @@ public:
 protected:
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void wheelEvent(QWheelEvent* event);
+    void paintEvent(QPaintEvent* event);
 
 private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
+  int currentRow_ = -1;
+  SmartListDelegate* smartListDelegate_;
+  ComBar* comBar_;
 
-signals:
-    void btnVideoClicked() const;
 };

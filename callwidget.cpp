@@ -58,6 +58,8 @@ CallWidget::CallWidget(QWidget* parent) :
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
 {
+    setMouseTracking(true);
+
     ui->setupUi(this);
 
     welcomePageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
@@ -157,8 +159,6 @@ CallWidget::CallWidget(QWidget* parent) :
         findRingAccount();
         setupOutOfCallIM();
         setupSmartListMenu();
-
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::on_btnvideo_clicked);
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -473,9 +473,6 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
-    ui->smartList->reset();
-    ui->smartList->setCurrentIndex(index);
-
     auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
     if (RecentModel::instance().hasActiveCall(realIndex))
         return;
