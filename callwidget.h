@@ -81,6 +81,7 @@ private slots:
     void on_imBackButton_clicked();
     void on_copyCMButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
+    void on_shareButton_clicked();
 
 private slots:
     void callIncoming(Call* call);

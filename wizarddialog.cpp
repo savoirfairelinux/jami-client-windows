@@ -32,12 +32,13 @@ WizardDialog::WizardDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setFixedSize(this->width(),this->height());
+    Qt::WindowFlags flags = windowFlags();
+    flags = flags & (~Qt::WindowContextHelpButtonHint);
 
-    ui->wizardButton->setEnabled(false);
+    setWindowFlags(flags);
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
-    ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
+    ui->ringLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
     ui->usernameEdit->setText(Utils::GetCurrentUserName());
@@ -60,7 +61,10 @@ WizardDialog::accept()
     Utils::CreateStartupLink();
 
     auto account = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
-    account->setDisplayName(ui->usernameEdit->text());
+    if (not ui->usernameEdit->text().isEmpty())
+        account->setDisplayName(ui->usernameEdit->text());
+    else
+        account->setDisplayName(tr("Unknown"));
     AccountModel::instance().ip2ip()->setRingtonePath(Utils::GetRingtonePath());
     account->setRingtonePath(Utils::GetRingtonePath());
     account->setUpnpEnabled(true);
@@ -75,12 +79,6 @@ WizardDialog::endSetup(Account* a)
 {
     Q_UNUSED(a)
     QDialog::accept();
-}
-
-void
-WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
-{
-    ui->wizardButton->setEnabled(!arg1.isEmpty());
 }
 
 void
