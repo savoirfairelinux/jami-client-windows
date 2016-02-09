@@ -178,5 +178,14 @@ QWidget#welcomePage, QWidget#messagingPage{
 }
 
 QPushButton#wizardButton{
-    background: transparent;
+     background-color: #3AC0D2;
+     border: 0px;
+}
+
+QPushButton#wizardButton:hover{
+     background-color: #4dc6d6;
+}
+
+QPushButton#wizardButton:pressed{
+     background-color: #34acbd;
 }
