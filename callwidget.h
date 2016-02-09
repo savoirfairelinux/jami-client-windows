@@ -90,6 +90,8 @@ private slots:
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
 
+    void on_shareButton_clicked();
+
 private:
     Ui::CallWidget* ui;
     Call* actualCall_;
