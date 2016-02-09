@@ -335,7 +335,7 @@ CallWidget::findRingAccount()
     }
     if (!found) {
         ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-        WizardDialog *wizardDialog = new WizardDialog();
+        auto wizardDialog = new WizardDialog();
         wizardDialog->exec();
         delete wizardDialog;
     }
@@ -718,4 +718,10 @@ CallWidget::on_copyCMButton_clicked()
 {
     auto text = ui->contactMethodComboBox->currentText();
     QApplication::clipboard()->setText(text);
+}
+
+void
+CallWidget::on_shareButton_clicked()
+{
+   Utils::InvokeMailto("Contact me on Ring", QStringLiteral("My RingId is : ") + ui->ringIdLabel->text());
 }
