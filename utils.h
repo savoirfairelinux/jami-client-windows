@@ -41,5 +41,6 @@ public:
     static QString GenGUID();
     static QString GetISODate();
     static QString GetCurrentUserName();
+    static void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
 };
 
