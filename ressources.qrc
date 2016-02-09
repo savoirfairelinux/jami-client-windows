@@ -47,5 +47,6 @@
         <file>images/ic_pause_white.svg</file>
         <file>images/ic_content_copy_white.svg</file>
         <file>images/ic_voicemail_white.svg</file>
+        <file>images/ic_share_white.png</file>
     </qresource>
 </RCC>
