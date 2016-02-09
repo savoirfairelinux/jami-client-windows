@@ -130,17 +130,17 @@ QPushButton#hangupButton:pressed{
 }
 
 
-QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton{
+QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
    background-color: #414141;
    border-radius: 15px;
    border:solid 1px;
 }
 
-QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover{
+QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
    background-color: #515151;
 }
 
-QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed{
+QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
    background-color: #313131;
 }
 
@@ -178,5 +178,14 @@ QWidget#welcomePage, QWidget#messagingPage{
 }
 
 QPushButton#wizardButton{
-    background: transparent;
+     background-color: #3AC0D2;
+     border: 0px;
+}
+
+QPushButton#wizardButton:hover{
+     background-color: #4dc6d6;
+}
+
+QPushButton#wizardButton:pressed{
+     background-color: #34acbd;
 }

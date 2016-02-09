@@ -24,6 +24,9 @@ TARGET = Ring
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS *= -fstack-protector-all
+QMAKE_LFLAGS *= -fstack-protector-all
+
 
 contains(BUILD, Debug) {
     QMAKE_STRIP = echo

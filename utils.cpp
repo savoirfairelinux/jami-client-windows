@@ -161,3 +161,12 @@ Utils::GetCurrentUserName() {
 #endif
 }
 
+void
+Utils::InvokeMailto(const QString& subject,
+                    const QString& body,
+                    const QString& attachement) {
+    auto addr = QString("mailto:?subject=%1&body=%2").arg(subject).arg(body);
+    if (not attachement.isEmpty())
+        addr += QString("&attachement=%1").arg(attachement);
+    ShellExecute(nullptr, L"open", addr.toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL);
+}
