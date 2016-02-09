@@ -335,7 +335,7 @@ CallWidget::findRingAccount()
     }
     if (!found) {
         ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-        WizardDialog *wizardDialog = new WizardDialog();
+        WizardDialog* wizardDialog = new WizardDialog();
         wizardDialog->exec();
         delete wizardDialog;
     }
