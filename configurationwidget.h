@@ -30,6 +30,11 @@
 #include "video/devicemodel.h"
 #include "audio/codecmodel.h"
 
+namespace Audio
+{
+    class InputDeviceModel;
+}
+
 namespace Ui {
 class ConfigurationWidget;
 }
@@ -70,6 +75,7 @@ private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;
     Video::DeviceModel* deviceModel_;
+    Audio::InputDeviceModel* audioInputDeviceModel_;
     CodecModel* codecModel_;
     bool isLoading_;
     AccountDetails* accountDetails_;

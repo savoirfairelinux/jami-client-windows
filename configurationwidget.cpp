@@ -30,6 +30,8 @@
 #include "video/rate.h"
 #include "video/previewmanager.h"
 
+#include "audio/inputdevicemodel.h"
+
 #include "media/recordingmodel.h"
 
 #include "accountserializationadapter.h"
@@ -53,7 +55,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui(new Ui::ConfigurationWidget),
     accountModel_(&AccountModel::instance()),
     deviceModel_(&Video::DeviceModel::instance()),
-    accountDetails_(new AccountDetails())
+    accountDetails_(new AccountDetails()),
+    audioInputDeviceModel_(new Audio::InputDeviceModel(this))
 {
     ui->setupUi(this);
 
@@ -69,6 +72,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(ui->accountView->selectionModel(),
             SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(accountSelected(QItemSelection)));
+
+    ui->audioDeviceBox->setModel(audioInputDeviceModel_);
 
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
