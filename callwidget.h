@@ -107,7 +107,7 @@ private:
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* pageAnim_;
 
-    constexpr static int animDuration_ = 200; //msecs
+    constexpr static int animDuration_ = 500; //msecs
 
 private:
     void findRingAccount();
