@@ -41,6 +41,11 @@ class SmartListDelegate;
 class ImDelegate;
 class QPropertyAnimation;
 
+enum Direction {
+    LEFT,
+    RIGHT
+};
+
 namespace Ui {
 class CallWidget;
 }
@@ -108,7 +113,7 @@ private:
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* pageAnim_;
 
-    constexpr static int animDuration_ = 200; //msecs
+    constexpr static int animDuration_ = 500; //msecs
 
 private:
     void findRingAccount();
@@ -116,7 +121,7 @@ private:
     void placeCall();
     void setupOutOfCallIM();
     void setupSmartListMenu();
-    void slidePage(QWidget* widget, bool toRight = false);
+    void slidePage(QWidget* widget, Direction dir);
     void callStateToView(Call* value);
 };
 
