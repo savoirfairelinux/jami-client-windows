@@ -46,6 +46,10 @@ MainWindow::MainWindow(QWidget* parent) :
     mwToolBar_(new MainWindowToolBar)
 {
     ui->setupUi(this);
+    
+    //~ QPalette * p = new QPalette;
+    //~ p->setColor(QPalette::Window, Qt::red);
+//~ this->setPalette(*p);
 
     QIcon icon(":images/ring.png");
 
