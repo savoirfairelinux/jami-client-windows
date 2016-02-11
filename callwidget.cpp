@@ -56,11 +56,10 @@ CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    imDelegate_(new ImDelegate()),
+    pageAnim_(new QPropertyAnimation())
 {
     ui->setupUi(this);
-
-    pageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -385,6 +384,8 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call != actualCall_)
         return;
 
+    callStateToView(call);
+
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
@@ -392,7 +393,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     } else if (call->state() == Call::State::CURRENT) {
         ui->instantMessagingWidget->setMediaText(actualCall_);
     }
-    callStateToView(call);
+
 }
 
 void
@@ -451,7 +452,7 @@ void CallWidget::callStateToView(Call* value)
         switch (value->state()) {
         case Call::State::INCOMING:
             if (not value->account()->isAutoAnswer())
-                ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+                slidePage(ui->callInvitePage, Direction::RIGHT);
             else
                 ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
@@ -459,13 +460,13 @@ void CallWidget::callStateToView(Call* value)
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::OVER:
-            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+            slidePage(ui->welcomePage, Direction::LEFT);
             break;
         case Call::State::INITIALIZATION:
         case Call::State::CONNECTED:
         case Call::State::RINGING:
         case Call::State::ERROR:
-            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+            slidePage(ui->outboundCallPage, Direction::RIGHT);
             break;
         default:
             break;
@@ -521,7 +522,7 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
     Q_UNUSED(oldSel)
 
     if (newSel.indexes().empty())
-        return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        return slidePage(ui->welcomePage, Direction::LEFT);
 
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
@@ -539,7 +540,7 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
         ui->instantMessagingWidget->hide();
         if (imConnection_)
             disconnect(imConnection_);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        slidePage(ui->welcomePage, Direction::LEFT);
     }
 }
 
@@ -609,7 +610,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
     }
-    slidePage(ui->messagingPage, true);
+    slidePage(ui->messagingPage, Direction::RIGHT);
 }
 
 void
@@ -689,19 +690,24 @@ void
 CallWidget::on_imBackButton_clicked()
 {
     RecentModel::instance().selectionModel()->clear();
-    slidePage(ui->welcomePage);
+    slidePage(ui->welcomePage, Direction::LEFT);
 }
 
 void
-CallWidget::slidePage(QWidget* widget, bool toRight)
+CallWidget::slidePage(QWidget* widget, Direction direction)
 {
-    short dir = (toRight ? -1 : 1);
+    if (pageAnim_->state() != QAbstractAnimation::Stopped || ui->stackedWidget->currentWidget() == widget)
+        return;
+
     ui->stackedWidget->setCurrentWidget(widget);
+
+    short dir = (direction == Direction::RIGHT ? -1 : 1);
     pageAnim_->setTargetObject(widget);
+    pageAnim_->setPropertyName("pos");
     pageAnim_->setDuration(animDuration_);
     pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
     pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
-    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
+    pageAnim_->setEasingCurve(QEasingCurve::OutExpo);
     pageAnim_->start();
 }
 
