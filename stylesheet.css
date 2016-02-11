@@ -173,8 +173,12 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#welcomePage, QWidget#messagingPage{
+MainWindow, QWidget#welcomePage, QWidget#messagingPage{
     background: rgb(242, 242, 242);
+}
+
+QWidget#selectBar{
+    background: rgb(255, 255, 255);
 }
 
 QPushButton#wizardButton{
