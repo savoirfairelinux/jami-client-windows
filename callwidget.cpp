@@ -56,11 +56,10 @@ CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    imDelegate_(new ImDelegate()),
+    pageAnim_(new QPropertyAnimation())
 {
     ui->setupUi(this);
-
-    pageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -384,6 +383,8 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call != actualCall_)
         return;
 
+callStateToView(call);
+
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
         ui->instantMessagingWidget->setMediaText(nullptr);
@@ -391,7 +392,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
     } else if (call->state() == Call::State::CURRENT) {
         ui->instantMessagingWidget->setMediaText(actualCall_);
     }
-    callStateToView(call);
+
 }
 
 void
@@ -450,27 +451,27 @@ void CallWidget::callStateToView(Call* value)
         switch (value->state()) {
         case Call::State::INCOMING:
             if (not value->account()->isAutoAnswer())
-                ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+            {
+                // for some reason, Call::State::INCOMING is invoked twice...
+                if (ui->stackedWidget->currentWidget() != ui->callInvitePage)
+                    slidePage(ui->callInvitePage, true);
+            }
             else
                 ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::CURRENT:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
-        case Call::State::OVER:
-            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-            break;
-        case Call::State::INITIALIZATION:
-        case Call::State::CONNECTED:
-        case Call::State::RINGING:
-        case Call::State::ERROR:
-            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+        case Call::State::NEW:
+            slidePage(ui->outboundCallPage, true);
             break;
         default:
             break;
         }
-    } else
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    } else if (ui->stackedWidget->currentWidget() != ui->welcomePage)
+    {
+        slidePage(ui->welcomePage);
+    }
 }
 
 void
@@ -695,13 +696,18 @@ CallWidget::on_imBackButton_clicked()
 void
 CallWidget::slidePage(QWidget* widget, bool toRight)
 {
-    short dir = (toRight ? -1 : 1);
     ui->stackedWidget->setCurrentWidget(widget);
+
+    if (pageAnim_->state() != QAbstractAnimation::Stopped)
+        return;
+
+    short dir = (toRight ? -1 : 1);
     pageAnim_->setTargetObject(widget);
+    pageAnim_->setPropertyName("pos");
     pageAnim_->setDuration(animDuration_);
     pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
     pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
-    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
+    pageAnim_->setEasingCurve(QEasingCurve::OutExpo);
     pageAnim_->start();
 }
 
