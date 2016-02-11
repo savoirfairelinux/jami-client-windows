@@ -56,11 +56,10 @@ CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    imDelegate_(new ImDelegate()),
+    pageAnim_(new QPropertyAnimation())
 {
     ui->setupUi(this);
-
-    pageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
@@ -449,22 +448,29 @@ void CallWidget::callStateToView(Call* value)
     if (value) {
         switch (value->state()) {
         case Call::State::INCOMING:
-            if (not value->account()->isAutoAnswer())
-                ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+            if (not value->account()->isAutoAnswer() )
+            {
+                // for some reason, Call::State::INCOMING can be called twice...
+                if ( ui->stackedWidget->currentWidget() != ui->callInvitePage )
+                    slidePage(ui->callInvitePage, true);
+            }
             else
-                ui->stackedWidget->setCurrentWidget(ui->videoPage);
+            {
+                slidePage(ui->videoPage, true);
+            }
             break;
         case Call::State::CURRENT:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::OVER:
-            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        qDebug() << "toto";
+            slidePage(ui->welcomePage);
             break;
         case Call::State::INITIALIZATION:
+            slidePage(ui->outboundCallPage, true);
         case Call::State::CONNECTED:
         case Call::State::RINGING:
         case Call::State::ERROR:
-            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
             break;
         default:
             break;
@@ -695,13 +701,18 @@ CallWidget::on_imBackButton_clicked()
 void
 CallWidget::slidePage(QWidget* widget, bool toRight)
 {
-    short dir = (toRight ? -1 : 1);
     ui->stackedWidget->setCurrentWidget(widget);
+
+    if ( pageAnim_->state() != QAbstractAnimation::Stopped )
+        return;
+
+    short dir = (toRight ? -1 : 1);
     pageAnim_->setTargetObject(widget);
+    pageAnim_->setPropertyName("pos");
     pageAnim_->setDuration(animDuration_);
     pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
     pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
-    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
+    pageAnim_->setEasingCurve(QEasingCurve::Linear);
     pageAnim_->start();
 }
 
