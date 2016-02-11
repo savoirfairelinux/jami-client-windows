@@ -173,7 +173,7 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#welcomePage, QWidget#messagingPage{
+QWidget#widgetSplitterRight, QWidget#welcomePage, QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
 
