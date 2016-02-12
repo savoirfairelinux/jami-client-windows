@@ -126,7 +126,7 @@ FORMS    += mainwindow.ui \
     combar.ui \
     qualitydialog.ui
 
-win32: LIBS += -lole32 -luuid -lshlwapi
+win32: LIBS += -lole32 -luuid -lshlwapi -lqrencode
 
 INCLUDEPATH += $${RING}/include/libringclient
 INCLUDEPATH += $${RING}/include
