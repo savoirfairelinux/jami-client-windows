@@ -373,6 +373,7 @@ CallWidget::on_refuseButton_clicked()
     if (actualCall_ == nullptr)
         return;
     actualCall_->performAction(Call::Action::REFUSE);
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     setActualCall(nullptr);
 }
 
@@ -469,8 +470,7 @@ void CallWidget::callStateToView(Call* value)
         default:
             break;
         }
-    } else
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
 }
 
 void
