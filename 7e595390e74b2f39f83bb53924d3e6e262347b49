@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ef940146",
+        "filename": "callwidget.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T22:26:43Z",
+      "side": 1,
+      "message": "going to change that for enum class direction LEFT/RIGHT",
+      "range": {
+        "startLine": 454,
+        "startChar": 45,
+        "endLine": 454,
+        "endChar": 52
+      },
+      "revId": "7e595390e74b2f39f83bb53924d3e6e262347b49",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
