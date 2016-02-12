@@ -501,7 +501,8 @@ void CallWidget::callStateToView(Call* value)
         default:
             break;
         }
-    }
+    } else
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
 void
