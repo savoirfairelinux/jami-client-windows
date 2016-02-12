@@ -23,6 +23,8 @@
 
 #include <memory>
 
+#include "qrencode.h"
+
 //ERROR is defined in windows.h
 #include "utils.h"
 #undef ERROR
@@ -73,6 +75,8 @@ CallWidget::CallWidget(QWidget* parent) :
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
+
+    setupShareMenu();
 
     GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
@@ -186,6 +190,25 @@ CallWidget::~CallWidget()
     delete imDelegate_;
     delete pageAnim_;
     delete smartListDelegate_;
+    delete shareMenu_;
+}
+
+void
+CallWidget::setupShareMenu()
+{
+    ui->shareButton->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
+    shareMenu_ = new QMenu(ui->shareButton);
+    auto emailShare = new QAction(tr("Share by email"), this);
+    connect(emailShare, &QAction::triggered, [=]() {
+        Utils::InvokeMailto(tr("Contact me on Ring"), tr("My RingId is : ") + ui->ringIdLabel->text());
+    });
+    shareMenu_->addAction(emailShare);
+    auto qrcodeAction = new QAction(tr("Show QRCode"), this);
+    qrcodeAction->setCheckable(true);
+    ui->qrLabel->hide();
+    connect(qrcodeAction, &QAction::toggled, ui->qrLabel, &QLabel::setVisible);
+    shareMenu_->addAction(qrcodeAction);
+    ui->shareButton->setMenu(shareMenu_);
 }
 
 void
@@ -317,6 +340,40 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
     }
 }
 
+void CallWidget::setupQRCode()
+{
+    auto rcode = QRcode_encodeString(ui->ringIdLabel->text().toStdString().c_str(),
+                                     8,
+                                     QR_ECLEVEL_H, // Highest level of error correction
+                                     QR_MODE_8, // 8-bit data mode
+                                     1);
+    if (not rcode)
+        return;
+
+    auto margin = 5;
+    int qrwidth = rcode->width + margin * 2;
+    QImage result(QSize(qrwidth, qrwidth), QImage::Format_Mono);
+    QPainter painter;
+    painter.begin(&result);
+    painter.setClipRect(QRect(0, 0, qrwidth, qrwidth));
+    painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
+    painter.setBrush(Qt::black);
+    painter.fillRect(QRect(0, 0, qrwidth, qrwidth), Qt::white);
+    unsigned char *row, *p;
+    p = rcode->data;
+    for(int y = 0; y < rcode->width; y++) {
+        row = (p + (y * rcode->width));
+        for(int x = 0; x < rcode->width; x++) {
+            if(*(row + x) & 0x1) {
+                painter.drawRect(margin + x, margin + y, 1, 1);
+            }
+        }
+
+    }
+    painter.end();
+    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_))));
+}
+
 void
 CallWidget::findRingAccount()
 {
@@ -331,6 +388,8 @@ CallWidget::findRingAccount()
                 account->displayName() = account->alias();
             auto username = account->username();
             ui->ringIdLabel->setText(username);
+            setupQRCode();
+
             found = true;
             return;
         }
@@ -726,5 +785,5 @@ CallWidget::on_copyCMButton_clicked()
 void
 CallWidget::on_shareButton_clicked()
 {
-   Utils::InvokeMailto("Contact me on Ring", QStringLiteral("My RingId is : ") + ui->ringIdLabel->text());
+    ui->shareButton->showMenu();
 }

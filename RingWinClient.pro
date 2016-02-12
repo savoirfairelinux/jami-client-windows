@@ -124,7 +124,7 @@ FORMS    += mainwindow.ui \
     qualitydialog.ui \
     ringbutton.ui
 
-win32: LIBS += -lole32 -luuid -lshlwapi
+win32: LIBS += -lole32 -luuid -lshlwapi -lqrencode
 
 INCLUDEPATH += $${RING}/include/libringclient
 INCLUDEPATH += $${RING}/include
@@ -187,7 +187,7 @@ win32 {
 
     RUNTIMEDIR=$$[QT_INSTALL_BINS]
 
-    RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll
+    RUNTIME.files = $${RING}/bin/libring.dll $${RING}/bin/libringclient.dll  $${RING}/bin/libqrencode.dll
     RUNTIME.path = $$OUT_PWD/release
 
     LRC_TRANSLATION.files = $${RING}/share/libringclient/translations
