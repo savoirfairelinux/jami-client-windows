@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_8f31c5a4",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T21:05:35Z",
+      "side": 0,
+      "message": "Nope i still want to be able to hangup or cancel in case of error and i don\u0027t understand why the over state would not be processed anymore",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 467,
+        "endChar": 70
+      },
+      "revId": "4097d2f8df899a43d9942a177789edb673aaf3aa",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
