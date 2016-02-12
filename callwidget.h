@@ -119,5 +119,7 @@ private:
     void setupSmartListMenu();
     void slidePage(QWidget* widget, bool toRight = false);
     void callStateToView(Call* value);
+    void setupShareMenu();
+    void setupQRCode();
 };
 
