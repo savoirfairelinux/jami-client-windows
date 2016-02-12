@@ -184,19 +184,19 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
+QPushButton#imBackButton, QPushButton#copyCMButton, QToolButton#shareButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
-QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
+QPushButton#copyCMButton:hover, QToolButton#shareButton:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
+QPushButton#copyCMButton:pressed, QToolButton#shareButton:pressed{
     background-color: #313131;
 }
 
@@ -531,3 +531,7 @@ QSlider::sub-page:vertical{
 QSlider::add-page:vertical{
     background: #3AC0D2;
 }
+
+QToolButton::menu-button {image:none;}
+
+QToolButton::menu-arrow {image:none;}

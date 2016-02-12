@@ -108,8 +108,10 @@ private:
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* pageAnim_;
+    QMenu* shareMenu_;
 
     constexpr static int animDuration_ = 200; //msecs
+    constexpr static int qrSize_ = 100;
 
 private:
     void findRingAccount();
@@ -119,5 +121,7 @@ private:
     void setupSmartListMenu();
     void slidePage(QWidget* widget, bool toRight = false);
     void callStateToView(Call* value);
+    void setupShareMenu();
+    void setupQRCode();
 };
 
