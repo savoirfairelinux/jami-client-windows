@@ -24,9 +24,6 @@ TARGET = Ring
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
-QMAKE_CXXFLAGS *= -fstack-protector-all
-QMAKE_LFLAGS *= -fstack-protector-all
-
 
 contains(BUILD, Debug) {
     QMAKE_STRIP = echo
@@ -129,7 +126,7 @@ FORMS    += mainwindow.ui \
     combar.ui \
     qualitydialog.ui
 
-win32: LIBS += -lole32 -luuid -lshlwapi
+win32: LIBS += -lole32 -luuid -lshlwapi -lqrencode
 
 INCLUDEPATH += $${RING}/include/libringclient
 INCLUDEPATH += $${RING}/include

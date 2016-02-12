@@ -25,6 +25,8 @@
 
 #include <memory>
 
+#include "qrencode.h"
+
 //ERROR is defined in windows.h
 #include "utils.h"
 #undef ERROR
@@ -331,6 +333,36 @@ CallWidget::findRingAccount()
                 account->displayName() = account->alias();
             auto username = account->username();
             ui->ringIdLabel->setText(username);
+            auto rcode = QRcode_encodeString(ui->ringIdLabel->text().toStdString().c_str(), 8, QR_ECLEVEL_H, QR_MODE_8, 1);
+            int symwidth = rcode->width + 5 * 2;
+            QImage result(QSize(symwidth, symwidth), QImage::Format_Mono);
+            QPainter painter;
+            painter.begin(&result);
+            painter.setClipRect(QRect(0,0,symwidth, symwidth));
+            painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
+            painter.setBrush(Qt::black);
+
+            /* Make solid background */
+            painter.fillRect(QRect(0, 0, symwidth, symwidth), Qt::white);
+
+            unsigned char *row, *p;
+            int x, y;
+            /* Write data */
+            p = rcode->data;
+            for(y=0; y< rcode->width; y++) {
+                row = (p+(y*rcode->width));
+                /* no RLE */
+                for(x=0; x<rcode->width; x++) {
+                    if(*(row+x)&0x1) {
+                        painter.drawRect(5 + x, 5 + y, 1, 1);
+                    }
+                }
+
+            }
+            painter.end();
+
+            ui->ringLogo->setPixmap(QPixmap::fromImage(result.scaled(QSize(100, 100))));
+
             found = true;
             return;
         }
