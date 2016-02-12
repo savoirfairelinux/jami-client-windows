@@ -130,17 +130,17 @@ QPushButton#hangupButton:pressed{
 }
 
 
-QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
+QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QToolButton#shareButton{
    background-color: #414141;
    border-radius: 15px;
    border:solid 1px;
 }
 
-QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
+QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QToolButton#shareButton:hover{
    background-color: #515151;
 }
 
-QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
+QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QToolButton#shareButton:pressed{
    background-color: #313131;
 }
 
@@ -189,3 +189,7 @@ QPushButton#wizardButton:hover{
 QPushButton#wizardButton:pressed{
      background-color: #34acbd;
 }
+
+QToolButton::menu-button {image:none;}
+
+QToolButton::menu-arrow {image:none;}
