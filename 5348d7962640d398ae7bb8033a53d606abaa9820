@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_cf47bd4a",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Should be renamed, it\u0027s confusing qt",
+      "range": {
+        "startLine": 156,
+        "startChar": 79,
+        "endLine": 156,
+        "endChar": 98
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_6f74719c",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Space",
+      "range": {
+        "startLine": 451,
+        "startChar": 52,
+        "endLine": 451,
+        "endChar": 53
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8f79c595",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Bracket",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 13
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_ef6721e9",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 454,
+        "startChar": 20,
+        "endLine": 454,
+        "endChar": 21
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_4f73adb1",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 454,
+        "startChar": 77,
+        "endLine": 454,
+        "endChar": 78
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_2f6e79ca",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Over bracketization",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 460,
+        "endChar": 13
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_4f5c0d26",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Well i don\u0027t think we want to let that here",
+      "range": {
+        "startLine": 466,
+        "startChar": 8,
+        "endLine": 466,
+        "endChar": 27
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_ef408137",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "You didnt rebase correctly",
+      "range": {
+        "startLine": 478,
+        "startChar": 6,
+        "endLine": 479,
+        "endChar": 61
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_0f3e15b9",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Isn\u0027t that from an entirely different patch ?",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 42
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_af4a8953",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 565,
+        "startChar": 4,
+        "endLine": 565,
+        "endChar": 27
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_0f65b5e0",
+        "filename": "callwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-12T18:26:58Z",
+      "side": 1,
+      "message": "space everywhere",
+      "range": {
+        "startLine": 706,
+        "startChar": 2,
+        "endLine": 707,
+        "endChar": 15
+      },
+      "revId": "5348d7962640d398ae7bb8033a53d606abaa9820",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
