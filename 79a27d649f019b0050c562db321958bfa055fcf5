@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_6fd31139",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T21:42:55Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "fa6b99d7_eff881c6",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 15
+      },
+      "revId": "79a27d649f019b0050c562db321958bfa055fcf5",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_0ff615d8",
         "filename": "callwidget.cpp",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-12T21:05:35Z",
       "side": 1,
       "message": "You could make a \u0026\u0026 condition instead. See the other comment for a way to render that check useless",
+      "range": {
+        "startLine": 453,
+        "startChar": 11,
+        "endLine": 458,
+        "endChar": 13
+      },
+      "revId": "79a27d649f019b0050c562db321958bfa055fcf5",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_cf16ddf1",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T21:42:55Z",
+      "side": 1,
+      "message": "see below",
+      "parentUuid": "fa6b99d7_0ff615d8",
       "range": {
         "startLine": 453,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_ef1f2108",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T21:42:55Z",
+      "side": 1,
+      "message": "I used to did that...",
+      "parentUuid": "fa6b99d7_6f2c714b",
+      "range": {
+        "startLine": 471,
+        "startChar": 3,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "79a27d649f019b0050c562db321958bfa055fcf5",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_af0289b2",
         "filename": "callwidget.cpp",
         "patchSetId": 12
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_0f1db50f",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T21:42:55Z",
+      "side": 1,
+      "message": "I will do the change",
+      "parentUuid": "fa6b99d7_af0289b2",
+      "range": {
+        "startLine": 699,
+        "startChar": 4,
+        "endLine": 699,
+        "endChar": 47
+      },
+      "revId": "79a27d649f019b0050c562db321958bfa055fcf5",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_cfffbda9",
         "filename": "callwidget.cpp",
         "patchSetId": 12
@@ -105,6 +201,30 @@
       "writtenOn": "2016-02-12T21:05:35Z",
       "side": 1,
       "message": "Maybe merge that with the if i\u0027ve mentionned above ?",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 702,
+        "endChar": 15
+      },
+      "revId": "79a27d649f019b0050c562db321958bfa055fcf5",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_af192924",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-12T21:42:55Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "fa6b99d7_cfffbda9",
       "range": {
         "startLine": 701,
         "startChar": 4,
