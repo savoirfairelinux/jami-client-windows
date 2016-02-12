@@ -751,7 +751,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="shareButton">
+                   <widget class="QToolButton" name="shareButton">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -833,6 +833,13 @@
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="qrLabel">
+                  <property name="text">
+                   <string>Error while generating QR Code</string>
                   </property>
                  </widget>
                 </item>
