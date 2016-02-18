@@ -580,6 +580,11 @@ CallWidget::on_ringContactLineEdit_returnPressed()
     ::time(&currentTime);
     cm->setLastUsed(currentTime);
     ui->ringContactLineEdit->clear();
+
+    QModelIndex index = RecentModel::instance().getIndex(cm);
+
+    RecentModel::instance().selectionModel()->setCurrentIndex(index,
+                                                QItemSelectionModel::ClearAndSelect);
 }
 
 void
