@@ -34,6 +34,7 @@ protected:
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
     bool eventFilter(QObject* watched, QEvent* event);
+    void resizeEvent(QResizeEvent* event);
 
 private:
     SmartListDelegate* smartListDelegate_;

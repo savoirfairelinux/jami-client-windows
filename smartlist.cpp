@@ -100,3 +100,10 @@ SmartList::removeCombar()
         widget->setVisible(false);
     }
 }
+
+void
+SmartList::resizeEvent(QResizeEvent* event)
+{
+    reset();
+    QTreeView::resizeEvent(event);
+}
