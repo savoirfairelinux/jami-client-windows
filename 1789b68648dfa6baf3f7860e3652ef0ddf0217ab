@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_2409bb31",
+        "filename": "callwidget.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T21:18:20Z",
+      "side": 1,
+      "message": "Guess what... This cause another problem",
+      "range": {
+        "startLine": 699,
+        "startChar": 61,
+        "endLine": 699,
+        "endChar": 105
+      },
+      "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
