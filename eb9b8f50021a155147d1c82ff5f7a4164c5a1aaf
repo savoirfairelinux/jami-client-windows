@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_f767f7e8",
+        "filename": "stylesheet.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T22:01:41Z",
+      "side": 1,
+      "message": "alignement",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "eb9b8f50021a155147d1c82ff5f7a4164c5a1aaf",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_577343b1",
+        "filename": "stylesheet.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T22:01:41Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "eb9b8f50021a155147d1c82ff5f7a4164c5a1aaf",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
