@@ -70,6 +70,30 @@
       "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9779db95",
+        "filename": "callwidget.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-18T21:54:25Z",
+      "side": 1,
+      "message": "actually, I was thinking it\u0027s better to don\u0027t replay the animation when you change the person.\nI will try to figure if there is something I can do against the freeze.",
+      "parentUuid": "fa6b99d7_d747534a",
+      "range": {
+        "startLine": 699,
+        "startChar": 61,
+        "endLine": 699,
+        "endChar": 105
+      },
+      "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
