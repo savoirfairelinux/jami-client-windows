@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa6b99d7_97879b61",
+        "filename": "stylesheet.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-18T22:08:21Z",
+      "side": 1,
+      "message": "actually this one (and some others) need to have their  alignements fixed. I\u0027m checking the whole file",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 16
+      },
+      "revId": "eb9b8f50021a155147d1c82ff5f7a4164c5a1aaf",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_f767f7e8",
         "filename": "stylesheet.css",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 208,
         "endChar": 41
+      },
+      "revId": "eb9b8f50021a155147d1c82ff5f7a4164c5a1aaf",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_17acebec",
+        "filename": "stylesheet.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-02-18T22:08:21Z",
+      "side": 1,
+      "message": "those are okay, they have 4 spaces",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
       },
       "revId": "eb9b8f50021a155147d1c82ff5f7a4164c5a1aaf",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
