@@ -210,7 +210,7 @@ win32 {
     QTPLUGINIMAGE.path = $$OUT_PWD/release
 
     LIBSTD.files = $$RUNTIMEDIR/libgcc_s_sjlj-1.dll $$RUNTIMEDIR/libstdc++-6.dll \
-                    $$RUNTIMEDIR/libwinpthread-1.dll
+                    $$RUNTIMEDIR/libwinpthread-1.dll $$RUNTIMEDIR/libgcc_s_seh-1.dll
     LIBSTD.path = $$OUT_PWD/release
 
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
