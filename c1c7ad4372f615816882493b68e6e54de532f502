@@ -69,6 +69,30 @@
       "revId": "c1c7ad4372f615816882493b68e6e54de532f502",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a4c14be6",
+        "filename": "accountdetails.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T19:43:33Z",
+      "side": 1,
+      "message": "yeah the on_signal are the ones directly used by .ui files and the others are those used in code. So for readability i tend to separate them in .h",
+      "parentUuid": "fa6b99d7_8460c736",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "c1c7ad4372f615816882493b68e6e54de532f502",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
