@@ -46,6 +46,30 @@
       "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_d747534a",
+        "filename": "callwidget.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T21:50:02Z",
+      "side": 1,
+      "message": "No it causes no animation when changing from textMessaging page to same page but different person. Also i tested it and it still freeze so i\u0027m not sure we should continue with it.",
+      "parentUuid": "fa6b99d7_3757af04",
+      "range": {
+        "startLine": 699,
+        "startChar": 61,
+        "endLine": 699,
+        "endChar": 105
+      },
+      "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
