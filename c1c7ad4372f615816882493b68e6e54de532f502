@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_8460c736",
+        "filename": "accountdetails.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-02-18T19:10:57Z",
+      "side": 1,
+      "message": "is it normal? it is already line 46",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "c1c7ad4372f615816882493b68e6e54de532f502",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
