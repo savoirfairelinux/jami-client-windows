@@ -94,6 +94,30 @@
       "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_97a0fbf5",
+        "filename": "callwidget.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-02-18T21:59:55Z",
+      "side": 1,
+      "message": "The freeze are mostly caused by the daemon you can\u0027t really do anithing about that. As for the animation i tend to not really see it as a problem myself but the mac client does it so for consistency we should do it too.",
+      "parentUuid": "fa6b99d7_9779db95",
+      "range": {
+        "startLine": 699,
+        "startChar": 61,
+        "endLine": 699,
+        "endChar": 105
+      },
+      "revId": "1789b68648dfa6baf3f7860e3652ef0ddf0217ab",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
