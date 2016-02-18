@@ -63,8 +63,8 @@ SmartList{
 }
 
 SmartList::item:selected{
-   background-color: qlineargradient(x1:1 y1:0, stop:1 rgba(220, 220, 220, 255), stop:0.65 rgba(242, 242, 242, 255), stop:0 rgba(242, 242, 242, 0));
-   border: none;
+    background-color: qlineargradient(x1:1 y1:0, stop:1 rgba(220, 220, 220, 255), stop:0.65 rgba(242, 242, 242, 255), stop:0 rgba(242, 242, 242, 0));
+    border: none;
 }
 
 SmartList::item:hover{
@@ -131,29 +131,29 @@ QPushButton#hangupButton:pressed{
 
 
 QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
-   background-color: #414141;
-   border-radius: 15px;
-   border:solid 1px;
+    background-color: #414141;
+    border-radius: 15px;
+    border:solid 1px;
 }
 
 QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
-   background-color: #515151;
+    background-color: #515151;
 }
 
 QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
-   background-color: #313131;
+    background-color: #313131;
 }
 
 QPushButton#sendButton{
-   background-color: #3AC0D2;
-   border-radius: 18px;
-   border:solid 1px;
+    background-color: #3AC0D2;
+    border-radius: 18px;
+    border:solid 1px;
 }
 
 QPushButton#btnvideo{
-   background-color: #3AC0D2;
-   border-radius: 15px;
-   border:solid 1px;
+    background-color: #3AC0D2;
+    border-radius: 15px;
+    border:solid 1px;
 }
 
 QPushButton#sendButton:hover, QPushButton#btnvideo:hover{
@@ -161,7 +161,7 @@ QPushButton#sendButton:hover, QPushButton#btnvideo:hover{
 }
 
 QPushButton#sendButton:pressed, QPushButton#btnvideo:pressed{
-   background-color: #34acbd;
+    background-color: #34acbd;
 }
 
 QScrollBar:vertical{
@@ -178,14 +178,32 @@ QWidget#welcomePage, QWidget#messagingPage{
 }
 
 QPushButton#wizardButton{
-     background-color: #3AC0D2;
-     border: 0px;
+    background-color: #3AC0D2;
+    border: 0px;
+    color: white;
+    font: 14px;
 }
 
 QPushButton#wizardButton:hover{
-     background-color: #4dc6d6;
+    background-color: #4dc6d6;
 }
 
 QPushButton#wizardButton:pressed{
-     background-color: #34acbd;
+    background-color: #34acbd;
+}
+
+QLineEdit#usernameEdit:enabled{
+    border-color: rgb(0, 192, 212);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: outset;
+    background-color: rgb(255, 255, 255);
+}
+
+QLineEdit#usernameEdit:disabled{
+    border-color: rgb(159, 157, 154);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: outset;
+    background-color: rgb(239, 235, 231);
 }
