@@ -138,29 +138,23 @@ QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#
     background-color: #313131;
 }
 
-QPushButton#sendButton{
-    background-color: #3AC0D2;
-    border-radius: 18px;
-    border:solid 1px;
-}
-
 QPushButton#btnvideo{
     background-color: #3AC0D2;
     border-radius: 15px;
     border:solid 1px;
 }
 
-QPushButton#btnCall, QPushButton#btnComBarVideo, QPushButton#sendButton{
+QPushButton#btnCall, QPushButton#btnComBarVideo, QPushButton#sendButton,  QPushButton#sendFileButton{
    background-color: #3AC0D2;
    border-radius: 15px;
    border:solid 1px;
 }
 
-QPushButton#btnCall:hover, QPushButton#sendButton:hover, QPushButton#btnComBarVideo:hover{
+QPushButton#btnCall:hover, QPushButton#sendButton:hover, QPushButton#btnComBarVideo:hover, QPushButton#sendFileButton:hover{
    background-color: #4dc6d6;
 }
 
-QPushButton#sendButton:pressed, QPushButton#btnCall:pressed, QPushButton#sendButton:pressed, QPushButton#btnComBarVideo:pressed{
+QPushButton#sendButton:pressed, QPushButton#btnCall:pressed, QPushButton#sendButton:pressed, QPushButton#btnComBarVideo:pressed, QPushButton#sendFileButton:pressed{
    background-color: #34acbd;
 }
 
