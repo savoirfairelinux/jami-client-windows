@@ -16,16 +16,59 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "transferfiledialog.h"
+#include "ui_transferfiledialog.h"
 
-namespace RingTheme {
+//QT
+#include <QTimer>
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
+#include "transferitemdelegate.h"
+
+//LRC
+#include "filetransfermodel.h"
+
+TransferFileDialog::TransferFileDialog(QWidget* parent) :
+    QDialog(parent),
+    ui(new Ui::TransferFileDialog),
+    delegate_(nullptr),
+    updateProgressBarTimer_(new QTimer())
+{
+    ui->setupUi(this);
+
+    Qt::WindowFlags flags = windowFlags();
+    flags = flags & (~Qt::WindowContextHelpButtonHint);
+    setWindowFlags(flags);
+
+    delegate_ = new TransferItemDelegate(this);
+    ui->transferItemList->setItemDelegate(delegate_);
+
+    ui->transferItemList->setModel(&FileTransferModel::instance());
+
+    //Don't look a this unless you want to puke
+//    updateProgressBarTimer_->setInterval(100); //10FPS
+//    connect(updateProgressBarTimer_, &QTimer::timeout, [=](){
+//        ui->transferItemList->reset();
+//    });
+}
+
+TransferFileDialog::~TransferFileDialog()
+{
+    updateProgressBarTimer_->stop();
+    delete delegate_;
+    delete updateProgressBarTimer_;
+    delete ui;
+}
+
+void
+TransferFileDialog::showEvent(QShowEvent* event)
+{
+    Q_UNUSED(event)
+    updateProgressBarTimer_->start();
+}
+
+void
+TransferFileDialog::hideEvent(QHideEvent* event)
+{
+    Q_UNUSED(event)
+    updateProgressBarTimer_->stop();
 }

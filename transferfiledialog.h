@@ -18,14 +18,29 @@
 
 #pragma once
 
-namespace RingTheme {
+#include <QDialog>
+#include <QTimer>
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
+class TransferItemDelegate;
+
+namespace Ui {
+class TransferFileDialog;
 }
+
+class TransferFileDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit TransferFileDialog(QWidget* parent = 0);
+    ~TransferFileDialog();
+
+protected:
+    void showEvent(QShowEvent* event);
+    void hideEvent(QHideEvent* event);
+
+private:
+    Ui::TransferFileDialog* ui;
+    TransferItemDelegate* delegate_;
+    QTimer* updateProgressBarTimer_;
+};

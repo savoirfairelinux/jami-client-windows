@@ -18,14 +18,23 @@
 
 #pragma once
 
-namespace RingTheme {
+#include <QObject>
+#include <QStyledItemDelegate>
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
-}
+class QPainter;
+
+class TransferItemDelegate : public QStyledItemDelegate
+{
+public:
+    explicit TransferItemDelegate(QObject* parent = 0);
+
+protected:
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    bool editorEvent(QEvent* event, QAbstractItemModel* model, const QStyleOptionViewItem& option, const QModelIndex& index);
+
+private:
+    QStyle::StateFlag acceptState_;
+    QStyle::StateFlag refuseState_;
+    QStyle::StateFlag cancelState_;
+};
