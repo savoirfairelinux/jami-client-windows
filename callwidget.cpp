@@ -19,8 +19,11 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
+//QT
 #include <QClipboard>
+#include <QFileDialog>
 
+//Sys
 #include <memory>
 
 //ERROR is defined in windows.h
@@ -28,6 +31,19 @@
 #undef ERROR
 #undef interface
 
+//Client
+#include "wizarddialog.h"
+#include "windowscontactbackend.h"
+#include "contactpicker.h"
+#include "contactmethodpicker.h"
+#include "globalsystemtray.h"
+#include "historydelegate.h"
+#include "contactdelegate.h"
+#include "smartlistdelegate.h"
+#include "imdelegate.h"
+#include "pixbufmanipulator.h"
+
+//LRC
 #include "audio/settings.h"
 #include "personmodel.h"
 #include "person.h"
@@ -40,23 +56,14 @@
 #include "recentmodel.h"
 #include "contactmethod.h"
 #include "globalinstances.h"
-
-#include "wizarddialog.h"
-#include "windowscontactbackend.h"
-#include "contactpicker.h"
-#include "contactmethodpicker.h"
-#include "globalsystemtray.h"
-#include "historydelegate.h"
-#include "contactdelegate.h"
-#include "smartlistdelegate.h"
-#include "imdelegate.h"
-#include "pixbufmanipulator.h"
+#include "filetransfermodel.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    imDelegate_(new ImDelegate()),
+    fileTransferDlg_(new TransferFileDialog())
 {
     ui->setupUi(this);
 
@@ -170,6 +177,13 @@ CallWidget::CallWidget(QWidget* parent) :
             } else
                 ui->smartList->clearSelection();
         });
+
+        //TODO: Hook that to the correct signal
+//        connect(&FileTransferModel::instance(), &FileTransferModel::SOME_SIGNAL, [=](){
+//           fileTransferDlg_->show();
+//        });
+
+        fileTransferDlg_->show();
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -668,6 +682,8 @@ CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
             });
         }
     }
+    ui->sendFileButton->setVisible(cm->account()
+                                   && cm->account()->protocol() == Account::Protocol::RING);
 }
 
 void
@@ -727,4 +743,17 @@ void
 CallWidget::on_shareButton_clicked()
 {
    Utils::InvokeMailto("Contact me on Ring", QStringLiteral("My RingId is : ") + ui->ringIdLabel->text());
+}
+
+void
+CallWidget::on_sendFileButton_clicked()
+{
+    if (auto cm = PhoneDirectoryModel::instance().getNumber(ui->contactMethodComboBox->currentText())) {
+        if (not cm->account())
+            return;
+        QUrl file = QFileDialog::getOpenFileUrl(this, tr("Choose a file"));
+        if (not file.isEmpty()) {
+            FileTransferModel::instance().sendFile(cm->account(), cm->uri(), file.toLocalFile());
+        }
+    }
 }
