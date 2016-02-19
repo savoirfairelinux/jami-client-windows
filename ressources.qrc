@@ -66,5 +66,6 @@
         <file>images/icons/ic_call_transfer_white_24px.png</file>
         <file>images/icons/ic_pause_white_100px.png</file>
         <file>images/icons/ic_videocam_white.png</file>
+        <file>images/ic_attachment_white.png</file>
     </qresource>
 </RCC>
