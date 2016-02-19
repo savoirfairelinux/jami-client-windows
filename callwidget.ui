@@ -679,7 +679,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="ressources.qrc">
+                     <iconset>
                       <normaloff>:/images/ic_share_white.png</normaloff>:/images/ic_share_white.png</iconset>
                     </property>
                     <property name="iconSize">
@@ -1014,6 +1014,29 @@
                     </property>
                    </widget>
                   </item>
+                  <item>
+                   <widget class="QPushButton" name="sendFileButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>:/images/ic_attachment_white.png</normaloff>:/images/ic_attachment_white.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </item>
                </layout>
@@ -1100,7 +1123,7 @@
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+                        <pixmap>:/images/user/btn-default-userpic.svg</pixmap>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -1308,7 +1331,7 @@
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+                      <pixmap>:/images/user/btn-default-userpic.svg</pixmap>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -1535,8 +1558,6 @@
    <header>smartlist.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

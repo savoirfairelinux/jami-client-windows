@@ -16,24 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "transferfiledialog.h"
+#include "ui_transferfiledialog.h"
 
-namespace RingTheme {
+//Client
+#include "transferitemdelegate.h"
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
+//LRC
+#include "filetransfermodel.h"
 
-static const QSize largeButton_ {56, 56};
-static const QSize largeButtonIcon_ {40, 40};
-static const QSize mediumButton_ {40, 40};
-static const QSize mediumButtonIcon_ {32, 32};
-static const QSize smallButton_ {30, 30};
-static const QSize smallButtonIcon_ {24, 24};
+TransferFileDialog::TransferFileDialog(QWidget* parent) :
+    QDialog(parent),
+    ui(new Ui::TransferFileDialog),
+    delegate_(nullptr)
+{
+    ui->setupUi(this);
 
+    Qt::WindowFlags flags = windowFlags();
+    flags = flags & (~Qt::WindowContextHelpButtonHint);
+    setWindowFlags(flags);
+
+    delegate_ = new TransferItemDelegate(this);
+    ui->transferItemList->setItemDelegate(delegate_);
+
+    ui->transferItemList->setModel(&FileTransferModel::instance());
+}
+
+TransferFileDialog::~TransferFileDialog()
+{
+    delete delegate_;
+    delete ui;
 }
