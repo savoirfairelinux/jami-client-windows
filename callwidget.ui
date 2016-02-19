@@ -993,6 +993,29 @@
                     </property>
                    </widget>
                   </item>
+                  <item>
+                   <widget class="QPushButton" name="sendFileButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_attachment_white.png</normaloff>:/images/ic_attachment_white.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </item>
                </layout>
@@ -1479,7 +1502,6 @@
          <height>0</height>
         </size>
        </property>
-       <zorder>stackedWidget</zorder>
       </widget>
      </item>
     </layout>

@@ -67,7 +67,8 @@ SOURCES += main.cpp\
     mainwindowtoolbar.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
-    qualitydialog.cpp
+    qualitydialog.cpp \
+    transferfiledialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -103,7 +104,8 @@ HEADERS  += mainwindow.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
-    ringthemeutils.h
+    ringthemeutils.h \
+    transferfiledialog.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -124,7 +126,8 @@ FORMS    += mainwindow.ui \
     contactmethodpicker.ui \
     callutilsdialog.ui \
     combar.ui \
-    qualitydialog.ui
+    qualitydialog.ui \
+    transferfiledialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 

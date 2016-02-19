@@ -27,6 +27,7 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "transferfiledialog.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
@@ -82,6 +83,7 @@ private slots:
     void on_copyCMButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
     void on_shareButton_clicked();
+    void on_sendFileButton_clicked();
 
 private slots:
     void callIncoming(Call* call);
@@ -107,6 +109,7 @@ private:
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* pageAnim_;
+    TransferFileDialog fileTransferDlg_;
 
     constexpr static int animDuration_ = 200; //msecs
 
