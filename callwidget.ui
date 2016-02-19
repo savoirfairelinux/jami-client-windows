@@ -470,7 +470,7 @@
                </sizepolicy>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -990,6 +990,12 @@
                   </item>
                   <item>
                    <widget class="QPushButton" name="sendButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -998,8 +1004,8 @@
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>36</width>
-                      <height>36</height>
+                      <width>30</width>
+                      <height>30</height>
                      </size>
                     </property>
                     <property name="toolTip">
@@ -1011,6 +1017,41 @@
                     <property name="icon">
                      <iconset resource="ressources.qrc">
                       <normaloff>:/images/icons/ic_send_white_24dp.png</normaloff>:/images/icons/ic_send_white_24dp.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="sendFileButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/ic_attachment_white.png</normaloff>:/images/ic_attachment_white.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
