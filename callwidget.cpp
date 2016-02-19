@@ -20,6 +20,7 @@
 #include "ui_callwidget.h"
 
 #include <QClipboard>
+#include <QFileDialog>
 
 #include <memory>
 
@@ -51,6 +52,7 @@
 #include "smartlistdelegate.h"
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
+#include "transferfiledialog.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(END ,parent),
@@ -174,6 +176,10 @@ CallWidget::CallWidget(QWidget* parent) :
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
     }
+
+    //TODO: REMOVE
+    auto fileTransferDialog = new TransferFileDialog();
+    fileTransferDialog->exec();
 }
 
 CallWidget::~CallWidget()
@@ -727,4 +733,17 @@ void
 CallWidget::on_shareButton_clicked()
 {
    Utils::InvokeMailto("Contact me on Ring", QStringLiteral("My RingId is : ") + ui->ringIdLabel->text());
+}
+
+void
+CallWidget::on_sendFileButton_clicked()
+{
+    QUrl file = QFileDialog::getOpenFileUrl(this, tr("Choose a file"));
+    if (not file.isEmpty()) {
+        qDebug() << "SENDING FILE TO NOWHERE" << file.toLocalFile();
+    }
+
+//TODO Remove this and connect to the signal instead
+    auto fileTransferDialog = new TransferFileDialog();
+    fileTransferDialog->show();
 }
