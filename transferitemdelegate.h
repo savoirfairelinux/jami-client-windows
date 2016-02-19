@@ -18,22 +18,29 @@
 
 #pragma once
 
-namespace RingTheme {
+//Qt
+#include <QObject>
+#include <QStyledItemDelegate>
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
+class QPainter;
 
-static const QSize largeButton_ {56, 56};
-static const QSize largeButtonIcon_ {40, 40};
-static const QSize mediumButton_ {40, 40};
-static const QSize mediumButtonIcon_ {32, 32};
-static const QSize smallButton_ {30, 30};
-static const QSize smallButtonIcon_ {18, 18};
+class TransferItemDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
 
-}
+public:
+    explicit TransferItemDelegate(QObject* parent = 0);
+
+protected:
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    bool editorEvent(QEvent* event, QAbstractItemModel* model, const QStyleOptionViewItem& option, const QModelIndex& index);
+
+private:
+    QStyle::StateFlag acceptState_;
+    QStyle::StateFlag refuseState_;
+    QStyle::StateFlag cancelState_;
+
+    static constexpr int margin_ {5};
+    static constexpr int iconInset_ {6};
+};
