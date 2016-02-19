@@ -20,6 +20,7 @@
 #include "ui_callwidget.h"
 
 #include <QClipboard>
+#include <QFileDialog>
 
 #include <memory>
 
@@ -727,4 +728,13 @@ void
 CallWidget::on_shareButton_clicked()
 {
    Utils::InvokeMailto("Contact me on Ring", QStringLiteral("My RingId is : ") + ui->ringIdLabel->text());
+}
+
+void
+CallWidget::on_sendFileButton_clicked()
+{
+    QUrl file = QFileDialog::getOpenFileUrl(this, tr("Choose a file"));
+    if (not file.isEmpty()) {
+        qDebug() << "SENDING FILE TO NOWHERE" << file.toLocalFile();
+    }
 }

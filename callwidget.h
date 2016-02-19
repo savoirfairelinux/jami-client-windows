@@ -27,6 +27,7 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "transferfiledialog.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
@@ -91,6 +92,8 @@ private slots:
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
 
+    void on_sendFileButton_clicked();
+
 private:
     Ui::CallWidget* ui;
     Call* actualCall_;
@@ -107,6 +110,7 @@ private:
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
     QPropertyAnimation* pageAnim_;
+    TransferFileDialog fileTransferDlg_;
 
     constexpr static int animDuration_ = 200; //msecs
 
