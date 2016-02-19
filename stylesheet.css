@@ -144,7 +144,7 @@ QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#
     background-color: #313131;
 }
 
-QPushButton#sendButton{
+QPushButton#sendButton, QPushButton#sendFileButton{
     background-color: #3AC0D2;
     border-radius: 18px;
     border:solid 1px;
@@ -156,11 +156,11 @@ QPushButton#btnvideo{
     border:solid 1px;
 }
 
-QPushButton#sendButton:hover, QPushButton#btnvideo:hover{
-   background-color: #4dc6d6;
+QPushButton#sendButton:hover, QPushButton#btnvideo:hover, QPushButton#sendFile:hover{
+    background-color: #4dc6d6;
 }
 
-QPushButton#sendButton:pressed, QPushButton#btnvideo:pressed{
+QPushButton#sendButton:pressed, QPushButton#btnvideo:pressed, QPushButton#sendFileButton:pressed{
     background-color: #34acbd;
 }
 
