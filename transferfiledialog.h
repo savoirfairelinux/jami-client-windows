@@ -18,22 +18,23 @@
 
 #pragma once
 
-namespace RingTheme {
+#include <QDialog>
 
-static const QColor blue_ {"#3AC0D2"};
-static const QColor lightGrey_ {242, 242, 242};
-static const QColor lightBlack_ {63, 63, 63};
-static const QColor grey_ {192, 192, 192};
-static const QColor red_ {251, 72, 71};
-static const QColor darkRed_ {"#db3c30"};
-static const QColor green_ {"#4caf50"};
-static const QColor darkGreen_ {"#449d48"};
+class TransferItemDelegate;
 
-static const QSize largeButton_ {56, 56};
-static const QSize largeButtonIcon_ {40, 40};
-static const QSize mediumButton_ {40, 40};
-static const QSize mediumButtonIcon_ {32, 32};
-static const QSize smallButton_ {30, 30};
-static const QSize smallButtonIcon_ {24, 24};
-
+namespace Ui {
+class TransferFileDialog;
 }
+
+class TransferFileDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit TransferFileDialog(QWidget* parent = 0);
+    ~TransferFileDialog();
+
+private:
+    Ui::TransferFileDialog* ui;
+    TransferItemDelegate* delegate_;
+};
