@@ -470,7 +470,7 @@
                </sizepolicy>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -834,6 +834,12 @@
                     </property>
                     <property name="text">
                      <string>Conversation with</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
