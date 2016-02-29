@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -38,7 +38,7 @@
 
 VideoView::VideoView(QWidget* parent) :
     QWidget(parent),
-    ui(new Ui::VideoView)
+    ui(new Ui::VideoView),
 {
     ui->setupUi(this);
 
@@ -75,7 +75,39 @@ VideoView::~VideoView()
 void
 VideoView::resizeEvent(QResizeEvent* event)
 {
-    Q_UNUSED(event)
+        QRect& previewRect = ui->videoWidget->getPreviewRect();
+        int deltaW = event->size().width() - event->oldSize().width();
+        int deltaH = event->size().height() - event->oldSize().height();
+
+        QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
+        float cx = (float)(event->oldSize().width())/2.f;
+        float cy = (float)(event->oldSize().height())/2.f;
+        QPoint center = QPoint(cx,cy);
+
+        // first we check if we want to displace the preview
+        if ( previewRect.x() + deltaW > 0 && previewRect.y() + deltaH > 0 )
+        {
+            // then we check wich way
+            if ( center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() < 0 )
+                ui->videoWidget->getPreviewRect().translate(deltaW, deltaH);
+            else if ( center.x() - previewCenter.x() > 0 && center.y() - previewCenter.y() < 0 )
+                ui->videoWidget->getPreviewRect().translate(0,deltaH);
+            else if ( center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() > 0 )
+                ui->videoWidget->getPreviewRect().translate(deltaW,0);
+        }
+
+        if ( previewRect.left() <= 0 )
+            previewRect.moveLeft(1);
+
+        if ( previewRect.right() >= width() )
+            previewRect.moveRight(width()-1);
+
+        if ( previewRect.top() <= 0 )
+            previewRect.moveTop(1);
+
+        if ( previewRect.bottom() >= height() )
+            previewRect.moveBottom(height()-1);
+
     overlay_->resize(this->size());
     overlay_->show();
     overlay_->raise();
@@ -160,6 +192,7 @@ VideoView::toggleFullScreen()
         this->setParent(0);
         this->showFullScreen();
     }
+    ui->videoWidget->setResetPreview(true);
 }
 
 void
@@ -261,4 +294,67 @@ void
 VideoView::slotVideoStarted(Video::Renderer* renderer) {
     ui->videoWidget->show();
     ui->videoWidget->setDistantRenderer(renderer);
+}
+
+void
+VideoView::mousePressEvent(QMouseEvent* event)
+{
+    QPoint clickPosition = event->pos();
+    if (ui->videoWidget->getPreviewRect().contains(clickPosition))
+    {
+        QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
+        if (distance.dy() < 40 and distance.dx() < 40)
+        {
+            QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
+            resizingPreview_ = true;
+        } else {
+            originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
+            QApplication::setOverrideCursor(Qt::SizeAllCursor);
+            draggingPreview_ = true;
+        }
+    }
+}
+
+void
+VideoView::mouseReleaseEvent(QMouseEvent* event)
+{
+    draggingPreview_ = false;
+    resizingPreview_ = false;
+    QApplication::setOverrideCursor(Qt::ArrowCursor);
+}
+
+void
+VideoView::mouseMoveEvent(QMouseEvent* event)
+{
+    QRect& previewRect =  ui->videoWidget->getPreviewRect();
+    if ( draggingPreview_ )
+        if ( previewRect.left() > 0 && previewRect.top() > 0 && previewRect.right() < width() && previewRect.bottom() < height() )
+        {
+            previewRect.moveTo(event->pos()-originMouseDisplacement_);
+
+            if ( previewRect.left() <= 0 )
+            {
+                previewRect.moveLeft(1);
+            }
+
+            if ( previewRect.right() >= width() )
+            {
+                previewRect.moveRight(width()-1);
+            }
+
+            if ( previewRect.top() <= 0 )
+            {
+                previewRect.moveTop(1);
+            }
+
+            if ( previewRect.bottom() >= height() )
+            {
+                previewRect.moveBottom(height()-1);
+            }
+        }
+
+    QLine distance = QLine(previewRect.topLeft(), event->pos());
+
+    if(resizingPreview_ and distance.dx() > 100 and distance.dy() > 100 and geometry().contains(event->pos()))
+        previewRect.setBottomRight(event->pos());
 }
