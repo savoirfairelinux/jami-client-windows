@@ -30,6 +30,8 @@
 #include "video/devicemodel.h"
 #include "audio/codecmodel.h"
 
+class QPropertyAnimation;
+
 namespace Ui {
 class ConfigurationWidget;
 }
@@ -76,5 +78,8 @@ private:
     AccountStateDelegate *accountStateDelegate_;
     QSettings settings_;
     void showPreview();
+    void slidePage(QWidget* widget, bool toRight);
+    QPropertyAnimation* pageAnim_;
+    constexpr static int animDuration_ = 200; //msecs
 };
 

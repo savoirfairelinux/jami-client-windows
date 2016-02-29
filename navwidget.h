@@ -21,7 +21,6 @@
 #include <QWidget>
 
 enum ScreenEnum {
-    Nav,
     //DO not add main widget screen before callScreen
     CallScreen,
     ConfScreen,
@@ -33,9 +32,8 @@ class NavWidget : public QWidget
     Q_OBJECT
 
 public:
-    NavWidget(ScreenEnum barDesired, QWidget* parent = 0);
+    NavWidget(QWidget* parent = 0);
     ~NavWidget();
-    ScreenEnum barDesired;
     virtual void atExit() = 0;
 
 signals:

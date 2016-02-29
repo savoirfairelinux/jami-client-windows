@@ -23,6 +23,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QFileDialog>
+#include <QPropertyAnimation>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -49,13 +50,19 @@
 #endif
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
-    NavWidget(Nav, parent),
+    NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
     accountModel_(&AccountModel::instance()),
     deviceModel_(&Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
     ui->setupUi(this);
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=](){
+        //~ slidePage(this, true);
+        qDebug() << this->parent();
+        emit NavigationRequested(ScreenEnum::CallScreen);
+    });
 
     ui->accountView->setModel(accountModel_);
     accountStateDelegate_ = new AccountStateDelegate();
@@ -302,4 +309,16 @@ ConfigurationWidget::on_recordPath_clicked()
         Media::RecordingModel::instance().setRecordPath(dir);
         ui->recordPath->setText(dir);
     }
+}
+
+void
+ConfigurationWidget::slidePage(QWidget* widget, bool toRight)
+{
+    short dir = (toRight ? -1 : 1);
+    pageAnim_->setTargetObject(widget);
+    pageAnim_->setDuration(animDuration_);
+    pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
+    pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
+    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
+    pageAnim_->start();
 }
