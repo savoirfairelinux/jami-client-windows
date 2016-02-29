@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -39,15 +39,6 @@ AccountDetails::AccountDetails(QWidget *parent) :
     ui->setupUi(this);
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-
-    ui->audioCodecView->setShowGrid(false);
-    ui->audioCodecView->verticalHeader()->hide();
-    ui->audioCodecView->horizontalHeader()->hide();
-    ui->videoCodecView->setShowGrid(false);
-    ui->videoCodecView->verticalHeader()->hide();
-    ui->videoCodecView->horizontalHeader()->hide();
-
-    ui->lrcfg_username->setAlignment(Qt::AlignCenter);
 
     connect(ui->lrcfg_tlsCaListCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
     connect(ui->lrcfg_tlsCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
@@ -251,3 +242,10 @@ AccountDetails::stopRingtone() {
     if (RingtoneModel::instance().isPlaying())
         RingtoneModel::instance().play(idx);
 }
+
+QPushButton*
+AccountDetails::getDeleteAccountButton()
+{
+    return ui->deleteAccountButton;
+}
+

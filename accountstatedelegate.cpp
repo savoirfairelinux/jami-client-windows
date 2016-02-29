@@ -21,39 +21,55 @@
 #include "accountmodel.h"
 #include "account.h"
 
-AccountStateDelegate::AccountStateDelegate(QObject *parent) :
+AccountStateDelegate::AccountStateDelegate(QObject* parent) :
     QStyledItemDelegate(parent)
 {}
 
 void
-AccountStateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+AccountStateDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
+    painter->setRenderHint(QPainter::Antialiasing);
     QStyleOptionViewItemV4 opt = option;
     initStyleOption(&opt, index);
     if (index.column() == 0) {
+        // name & checkbox
         auto name = index.model()->data(index, Qt::DisplayRole).toString();
         opt.text = QString();
-        QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
+        QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;
         QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ?
                     QPalette::Normal : QPalette::Disabled;
         if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
             cg = QPalette::Inactive;
-        auto font = painter->font() ;
-        font.setBold(true);
+        auto font = painter->font();
+        font.setPointSize(12);
         painter->setFont(font);
-        painter->setPen(AccountModel::instance().
-                        getAccountByModelIndex(index)->stateColorName());
         painter->setOpacity(1.0);
-        painter->drawText(QRect(rect.left()+25, rect.top(),
+        opt.displayAlignment = Qt::AlignTop;
+
+        painter->setPen(Qt::black);
+        painter->drawText(QRect(rect.left() + 25, rect.top(),
                                 rect.width(), rect.height()),
                                 opt.displayAlignment, name);
+
+        // status
+        auto account = AccountModel::instance().getAccountByModelIndex(index);
+        QString stateColor(account->stateColorName());
+        QString accountStatus = account->toHumanStateName();
+
+        painter->setPen(stateColor);
+
+        opt.displayAlignment = Qt::AlignBottom|Qt::AlignLeft;
+
+        painter->drawText(QRect(rect.left() + 25, rect.top(),
+                                rect.width(), rect.height()),
+                                opt.displayAlignment, accountStatus);
     }
 }
 
 QSize
-AccountStateDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+AccountStateDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     QSize result = QStyledItemDelegate::sizeHint(option, index);
     return result;

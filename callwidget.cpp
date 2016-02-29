@@ -53,7 +53,7 @@
 #include "pixbufmanipulator.h"
 
 CallWidget::CallWidget(QWidget* parent) :
-    NavWidget(END ,parent),
+    NavWidget(parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
@@ -64,6 +64,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
+
+    connect(ui->settingsButton, &QPushButton::clicked, this, &CallWidget::settingsButtonClicked);
 
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
@@ -154,7 +156,7 @@ CallWidget::CallWidget(QWidget* parent) :
         setupOutOfCallIM();
         setupSmartListMenu();
 
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::on_btnComBarVideo_clicked);
+        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
         connect(RecentModel::instance().selectionModel(),
                 SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -558,20 +560,20 @@ CallWidget::placeCall()
 }
 
 void
-CallWidget::settingsButton_clicked()
+CallWidget::settingsButtonClicked()
 {
     ui->smartList->reset();
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
 void
-CallWidget::contactButton_clicked(bool checked)
+CallWidget::contactButtonClicked(bool checked)
 {
     ui->mainTabMenu->setCurrentIndex(checked ? 1 : 0);
 }
 
 void
-CallWidget::historicButton_clicked(bool checked)
+CallWidget::historicButtonClicked(bool checked)
 {
     ui->mainTabMenu->setCurrentIndex(checked ? 2 : 0);
 }
@@ -596,7 +598,7 @@ CallWidget::on_btnCall_clicked()
 }
 
 void
-CallWidget::on_btnComBarVideo_clicked()
+CallWidget::btnComBarVideoClicked()
 {
     if (not highLightedIndex_.isValid())
         return;
