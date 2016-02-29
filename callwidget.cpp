@@ -53,7 +53,7 @@
 #include "pixbufmanipulator.h"
 
 CallWidget::CallWidget(QWidget* parent) :
-    NavWidget(END ,parent),
+    NavWidget(parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
@@ -65,12 +65,14 @@ CallWidget::CallWidget(QWidget* parent) :
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
 
+    connect(ui->settingsButton, &QPushButton::clicked, this, &CallWidget::settingsButton_clicked);
+
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
 
-    QPixmap logo(":/images/logo-ring-standard-coul.png");
-    ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
-    ui->ringLogo->setAlignment(Qt::AlignHCenter);
+    //~ QPixmap logo(":/images/logo-ring-standard-coul.png");
+    //~ ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
+    //~ ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
     GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
