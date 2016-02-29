@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -160,6 +160,7 @@ VideoView::toggleFullScreen()
         this->setParent(0);
         this->showFullScreen();
     }
+    ui->videoWidget->setResetPreview(true);
 }
 
 void
@@ -261,4 +262,43 @@ void
 VideoView::slotVideoStarted(Video::Renderer* renderer) {
     ui->videoWidget->show();
     ui->videoWidget->setDistantRenderer(renderer);
+}
+
+void
+VideoView::mousePressEvent(QMouseEvent* event)
+{
+    QPoint clickPosition = event->pos();
+    if (ui->videoWidget->getPreviewRect()->contains(clickPosition))
+    {
+        QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect()->bottomRight());
+        if (distance.dy() < 40 and distance.dx() < 40)
+        {
+            QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
+            resizingPreview_ = true;
+        } else {
+            originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect()->topLeft();
+            QApplication::setOverrideCursor(Qt::SizeAllCursor);
+            draggingPreview_ = true;
+        }
+    }
+}
+
+void
+VideoView::mouseReleaseEvent(QMouseEvent* event)
+{
+    draggingPreview_ = false;
+    resizingPreview_ = false;
+    QApplication::setOverrideCursor(Qt::ArrowCursor);
+}
+
+void
+VideoView::mouseMoveEvent(QMouseEvent* event)
+{
+    if(draggingPreview_)
+        ui->videoWidget->getPreviewRect()->moveTo(event->pos()-originMouseDisplacement_);
+
+    QLine distance = QLine(ui->videoWidget->getPreviewRect()->topLeft(), event->pos());
+
+    if(resizingPreview_ and distance.dx() > 100 and distance.dy() > 100)
+        ui->videoWidget->getPreviewRect()->setBottomRight(event->pos());
 }

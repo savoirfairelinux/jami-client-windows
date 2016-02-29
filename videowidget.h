@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -37,6 +37,7 @@ public:
     void setPreviewDisplay(bool display);
     void setDistantRenderer(Video::Renderer* renderer);
     void setIsFullPreview(bool full);
+    inline void setResetPreview(bool reset){ resetPreview_ = reset; };
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
@@ -44,6 +45,7 @@ public slots:
     void frameFromPreview();
     void frameFromDistant();
     void renderingStopped();
+    inline QRect* getPreviewRect(){ return previewGeometry_; };
 
 private:
     Video::Renderer* previewRenderer_;
@@ -57,6 +59,8 @@ private:
     std::vector<uint8_t> framePreview_;
     bool isPreviewDisplayed_;
     bool fullPreview_;
+    QRect* previewGeometry_;
+    bool resetPreview_ = false;
 
     constexpr static int previewMargin_ = 15;
 };
