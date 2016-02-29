@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -31,7 +31,6 @@
 #endif
 
 #include "aboutdialog.h"
-#include "mainwindowtoolbar.h"
 #include "settingskey.h"
 
 #ifdef ENABLE_AUTOUPDATE
@@ -42,8 +41,7 @@
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    mwToolBar_(new MainWindowToolBar)
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -68,7 +66,7 @@ MainWindow::MainWindow(QWidget* parent) :
     connect(&CallModel::instance(), SIGNAL(incomingCall(Call*)),
             this, SLOT(onIncomingCall(Call*)));
 
-    navStack_ = new NavStack(ui->bar, ui->stackedWidgetView, this);
+    navStack_ = new NavStack(ui->stackedWidgetView, this);
     connect(configAction, &QAction::triggered, [this]() {
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
     });
@@ -83,17 +81,6 @@ MainWindow::MainWindow(QWidget* parent) :
 #endif
 
     resize(1054, 600);
-
-    addToolBar(static_cast<QToolBar*>(mwToolBar_));
-
-    auto callWidget = static_cast<CallWidget*>(navStack_->getNavWidget(ScreenEnum::CallScreen));
-
-    connect(mwToolBar_->getSettingsButton(), &QAction::triggered,
-            callWidget, &CallWidget::settingsButton_clicked);
-    connect(mwToolBar_->getHistoryButton(), &QAction::triggered,
-            callWidget, &CallWidget::historicButton_clicked);
-    connect(mwToolBar_->getContactListButton(), &QAction::triggered,
-            callWidget, &CallWidget::contactButton_clicked);
 
 #ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
