@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -41,7 +41,6 @@ class ConfigurationWidget : public NavWidget
 public:
     explicit ConfigurationWidget(QWidget *parent = 0);
     ~ConfigurationWidget();
-    void atExit();
 
 protected:
     void showEvent(QShowEvent *event);
@@ -50,7 +49,6 @@ protected:
 private slots:
     void on_deviceBox_currentIndexChanged(int index);
     void on_sizeBox_currentIndexChanged(int index);
-    void on_deleteAccountButton_clicked();
     void on_addAccountButton_clicked();
     void on_startupBox_toggled(bool checked);
     void on_clearHistoryButton_clicked();
@@ -59,7 +57,7 @@ private slots:
     void on_checkUpdateButton_clicked();
     void on_autoUpdateCheckBox_toggled(bool checked);
     void on_intervalUpdateCheckSpinBox_valueChanged(int arg1);
-    void on_tabWidget_currentChanged(int index);
+    void on_stackedWidget_currentChanged(int index);
     void on_recordPath_clicked();
 
 private slots:

@@ -23,6 +23,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QFileDialog>
+#include <QPropertyAnimation>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -49,13 +50,33 @@
 #endif
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
-    NavWidget(Nav, parent),
+    NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
     accountModel_(&AccountModel::instance()),
     deviceModel_(&Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
     ui->setupUi(this);
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=](){
+        if (CallModel::instance().getActiveCalls().size() == 0
+                && Video::PreviewManager::instance().isPreviewing()) {
+            Video::PreviewManager::instance().stopPreview();
+        }
+        accountModel_->save();
+        accountDetails_->save();
+    });
+
+    connect(accountDetails_->getDeleteAccountButton(), &QPushButton::clicked, this, [=]() {
+        auto account = accountModel_->getAccountByModelIndex(
+                    ui->accountView->currentIndex());
+        if (account != accountModel_->ip2ip())
+            accountModel_->remove(account);
+    });
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
+        emit NavigationRequested(ScreenEnum::CallScreen);
+    });
 
     ui->accountView->setModel(accountModel_);
     accountStateDelegate_ = new AccountStateDelegate();
@@ -79,7 +100,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
                 CategorizedHistoryModel::instance().historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
                                            SettingsKey::closeOrMinimized).toBool());
-    connect(ui->tabWidget, &QTabWidget::currentChanged, [](int index) {
+    connect(ui->stackedWidget, &QStackedWidget::currentChanged, [](int index) {
         if (index == 1
                 && CallModel::instance().getActiveCalls().size() == 0) {
             Video::PreviewManager::instance().startPreview();
@@ -105,6 +126,33 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         Media::RecordingModel::instance().setAlwaysRecording(checked);
     });
 
+    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            ui->stackedWidget->setCurrentWidget(ui->generalPage);
+            ui->videoTabButton->setChecked(false);
+            ui->accountTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if(toggled) {
+            ui->stackedWidget->setCurrentWidget(ui->videoPage);
+            ui->accountTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if(toggled)
+        {
+            ui->stackedWidget->setCurrentWidget(ui->accountPage);
+            ui->videoTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    ui->generalTabButton->setChecked(true);
+
 #ifndef ENABLE_AUTOUPDATE
     ui->checkUpdateButton->hide();
     ui->intervalUpdateCheckSpinBox->hide();
@@ -115,7 +163,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
 void ConfigurationWidget::showPreview()
 {
-    if (ui->tabWidget->currentIndex() == 1
+    if (ui->stackedWidget->currentIndex() == 1
             && CallModel::instance().getActiveCalls().size() == 0) {
         ui->previewUnavailable->hide();
         ui->videoView->show();
@@ -137,16 +185,6 @@ ConfigurationWidget::showEvent(QShowEvent *event) {
 #endif
     QWidget::showEvent(event);
     showPreview();
-}
-
-void
-ConfigurationWidget::atExit() {
-    if (CallModel::instance().getActiveCalls().size() == 0
-            && Video::PreviewManager::instance().isPreviewing()) {
-        Video::PreviewManager::instance().stopPreview();
-    }
-    accountModel_->save();
-    accountDetails_->save();
 }
 
 ConfigurationWidget::~ConfigurationWidget()
@@ -204,15 +242,6 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
                 ui->accountView->currentIndex());
     accountDetails_->setAccount(account);
     AccountSerializationAdapter adapter(account, accountDetails_);
-}
-
-void
-ConfigurationWidget::on_deleteAccountButton_clicked()
-{
-    auto account = accountModel_->getAccountByModelIndex(
-                ui->accountView->currentIndex());
-    if (account != accountModel_->ip2ip())
-        accountModel_->remove(account);
 }
 
 void
@@ -285,7 +314,7 @@ ConfigurationWidget::on_intervalUpdateCheckSpinBox_valueChanged(int arg1)
 }
 
 void
-ConfigurationWidget::on_tabWidget_currentChanged(int index)
+ConfigurationWidget::on_stackedWidget_currentChanged(int index)
 {
     Q_UNUSED(index)
     showPreview();
