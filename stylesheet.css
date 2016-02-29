@@ -56,12 +56,46 @@ SmartList{
     border: none;
 }
 
-SmartList::item:selected{
-    background-color: qlineargradient(x1:1 y1:0, stop:1 rgba(220, 220, 220, 255), stop:0.65 rgba(242, 242, 242, 255), stop:0 rgba(242, 242, 242, 0));
+QListView#accountView{
+    background-color: transparent;
+    border: 2px solid rgb(77, 77, 77);
+}
+
+QListView#accountView:item{
+    height: 20px;
+    font: 14pt "Sans Serif";
+    padding: 2px;
+}
+
+QListView#accountView::indicator{
+    height : 12 px;
+    width : 12 px;
+    border: 2px solid rgb(77, 77, 77);
+    border-radius: 4px;
+    background: none;
+}
+
+QListView#accountView::indicator:checked{
+    border-color: #34acbd;
+    background: #34acbd;
+    image: url(":/images/icons/ic_check_white_18dp_2x.png");
+}
+
+QListView#accountView::item:selected{
+    background-color: rgba(150, 150, 150, 255);
     border: none;
 }
 
-SmartList::item:hover{
+QListView#accountView::item:hover{
+    background-color: transparent;
+}
+
+SmartList::item:selected{
+    background-color: rgba(220, 220, 220, 255);
+    border: none;
+}
+
+SmartList::item:hover, QListView#accountView::item:hover{
     background-color: rgba(242, 242, 242, 255);
 }
 
@@ -123,18 +157,23 @@ QPushButton#hangupButton:pressed{
     background-color: rgba(255, 0, 0, 0.8);
 }
 
-
-QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
+QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
+QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton, QToolButton#deleteAccountButton,
+QToolButton#addAccountButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
-QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
+QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
+QPushButton#copyCMButton:hover, QPushButton#shareButton:hover, QToolButton#deleteAccountButton:hover,
+QToolButton#addAccountButton:hover{
     background-color: #515151;
 }
 
-QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
+QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
+QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed, QToolButton#deleteAccountButton:pressed,
+QToolButton#addAccountButton:pressed{
     background-color: #313131;
 }
 
@@ -177,18 +216,18 @@ QWidget#welcomePage, QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
 
-QPushButton#wizardButton{
+QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
     font: 14px;
 }
 
-QPushButton#wizardButton:hover{
+QPushButton#wizardButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover{
     background-color: #4dc6d6;
 }
 
-QPushButton#wizardButton:pressed{
+QPushButton#wizardButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed{
     background-color: #34acbd;
 }
 
@@ -206,4 +245,195 @@ QLineEdit#usernameEdit:disabled{
     border-width: 1px;
     border-style: outset;
     background-color: rgb(239, 235, 231);
+}
+
+QComboBox{
+    background: transparent;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 11pt "Sans Serif";
+    padding: 2px;
+}
+
+QComboBox:focus{
+    border-color: #3AC0D2;
+}
+
+QComboBox::down-arrow{
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    height: 36;
+    width : 36;
+    image: url(":/images/icons/ic_arrow_drop_down_black_18dp_2x.png");
+}
+
+QComboBox::drop-down{
+    border-radius: 0px;
+    width: 36px;
+}
+
+QRadioButton::indicator{
+    width: 12px;
+    height: 12px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+QRadioButton::indicator:unchecked{
+    border-color: rgb(77, 77, 77);
+    background: transparent;
+}
+
+QRadioButton::indicator:checked{
+    background: #3AC0D2;
+    border-color: #3AC0D2;
+    image: url(":/images/icons/ic_check_white_18dp_2x.png");
+}
+
+QWidget#horizontalWidget{
+    background: rgb(77, 77, 77);
+}
+
+QPushButton#generalTabButton, QPushButton#videoTabButton, QPushButton#accountTabButton{
+    background: rgb(77, 77, 77);
+    color: rgb(242, 242, 242);
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 12pt "Sans Serif";
+    padding: 2px;
+}
+
+QTabBar::tab{
+    background: rgb(77, 77, 77);
+    color: rgb(242, 242, 242);
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 12pt "Sans Serif";
+    padding: 2px;
+    width : 100px;
+    height: 20px;
+}
+
+QTabWidget::tab-bar{
+    alignment: center;
+}
+
+QPushButton#generalTabButton:checked, QPushButton#videoTabButton:checked, QPushButton#accountTabButton:checked,
+QTabBar::tab:selected{
+    border-color: #3AC0D2;
+}
+
+QTabWidget::pane{
+    border: 2px solid rgb(77, 77, 77);
+}
+
+QPushButton#generalTabButton:hover, QPushButton#videoTabButton:hover, QPushButton#accountTabButton:hover,
+QTabBar::tab:hover{
+    border-color: rgb(242, 242, 242);
+}
+
+QPushButton#recordPath{
+/*
+    background: rgb(77, 77, 77);
+*/
+    color: rgb(77, 77, 77);
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 11pt "Sans Serif";
+    padding: 2px;
+}
+
+QSpinBox#historyDaySettingsSpinBox{
+    background: transparent;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 11pt "Sans Serif";
+    padding: 2px; 
+}
+
+QSpinBox#historyDaySettingsSpinBox:focus{
+    border-color: #3AC0D2;
+}
+
+QCheckBox::indicator{
+    height : 12 px;
+    width : 12 px;
+    border: 2px solid rgb(77, 77, 77);
+    border-radius: 4px;
+    background: none;
+}
+
+QCheckBox::indicator:checked{
+    border-color: #34acbd;
+    background: #34acbd;
+    image: url(":/images/icons/ic_check_white_18dp_2x.png");
+}
+
+QSpinBox::down-button{
+    height: 18;
+    width : 18;
+    image: url(":/images/icons/ic_arrow_drop_down_black_18dp_2x.png");
+}
+
+QSpinBox::up-button{
+    height: 18;
+    width : 18;
+    image: url(":/images/icons/ic_arrow_drop_up_black_18dp_2x.png");
+}
+
+QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLineEdit#lrcfg_proxy,
+QLineEdit#lrcfg_mailbox{
+    background: transparent;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #414141;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font: 11pt "Sans Serif";
+    padding: 2px;
+}
+
+QLabel#typeValueLabel, QLineEdit#lrcfg_username{
+    background: transparent;
+    font: 11pt "Sans Serif";
+    border-radius: 0px;
+    padding: 2px;
+}
+
+QLineEdit#lrcfg_alias:focus, QLineEdit#lrcfg_hostname:focus, QLineEdit#lrcfg_password:focus,
+QLineEdit#lrcfg_proxy:focus, QLineEdit#lrcfg_mailbox:focus{
+    border-color: #3AC0D2;
+}
+
+QTabWidget#tabWidget{
+    border-color: #3AC0D2;
 }
