@@ -30,6 +30,7 @@
 #include <QMenu>
 #include <QFileDialog>
 #include <QMimeData>
+#include <QSplitter>
 
 #include <memory>
 
@@ -150,8 +151,7 @@ void
 VideoView::toggleFullScreen()
 {
     if(isFullScreen()) {
-        this->setParent(oldParent_);
-        oldParent_->layout()->addWidget(this);
+        dynamic_cast<QSplitter*>(oldParent_)->insertWidget(0,this);
         this->resize(oldSize_.width(), oldSize_.height());
         this->showNormal();
     } else {
