@@ -35,5 +35,16 @@
         <file>images/icons/ic_call_transfer_white_24px.png</file>
         <file>images/icons/ic_pause_white_100px.png</file>
         <file>images/icons/ic_videocam_white.png</file>
+        <file>images/icons/ic_add_black_18dp_2x.png</file>
+        <file>images/icons/ic_delete_black_18dp_2x.png</file>
+        <file>images/icons/ic_arrow_drop_down_black_18dp_2x.png</file>
+        <file>images/icons/ic_arrow_drop_up_black_18dp_2x.png</file>
+        <file>images/icons/ic_check_white_18dp_2x.png</file>
+        <file>images/icons/ic_folder_black_18dp_2x.png</file>
+        <file>images/icons/ic_archive_white_18dp_2x.png</file>
+        <file>images/icons/ic_remove_white_48dp_2x.png</file>
+        <file>images/icons/ic_add_white_48dp_2x.png</file>
+        <file>images/icons/ic_arrow_forward_white_48dp_2x.png</file>
+        <file>images/icons/ic_settings_white_48dp_2x.png</file>
     </qresource>
 </RCC>
