@@ -96,6 +96,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                                                    || contactMethod->contact()->isPlaceHolder());
         }
     });
+    
+    toto.setGeometry( QRect(800,600,300,200) );
+    toto.setAutoFillBackground(true);
 }
 
 VideoOverlay::~VideoOverlay()
