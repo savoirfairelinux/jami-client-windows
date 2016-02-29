@@ -55,15 +55,16 @@ public:
     void atExit();
 
 public slots:
-    void contactButton_clicked(bool checked);
-    void settingsButton_clicked();
-    void historicButton_clicked(bool checked);
+    void contactButtonClicked(bool checked);
+    void settingsButtonClicked();
+    void historicButtonClicked(bool checked);
+    void showIMOutOfCall(const QModelIndex& nodeIdx);
+    void btnComBarVideoClicked();
+
 //UI SLOTS
 public slots:
     void on_ringContactLineEdit_returnPressed();
     void on_btnCall_clicked();
-    void on_btnComBarVideo_clicked();
-    void showIMOutOfCall(const QModelIndex& nodeIdx);
     inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
 
 //UI SLOTS
