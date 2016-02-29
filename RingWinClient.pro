@@ -39,7 +39,6 @@ SOURCES += main.cpp\
     callwidget.cpp \
     configurationwidget.cpp \
     navstack.cpp \
-    navbar.cpp \
     navwidget.cpp \
     accountdetails.cpp \
     aboutdialog.cpp \
@@ -64,7 +63,6 @@ SOURCES += main.cpp\
     combar.cpp \
     idlabel.cpp \
     smartlist.cpp \
-    mainwindowtoolbar.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
     qualitydialog.cpp
@@ -73,7 +71,6 @@ HEADERS  += mainwindow.h \
     callwidget.h \
     configurationwidget.h \
     navstack.h \
-    navbar.h \
     navwidget.h \
     accountdetails.h \
     aboutdialog.h \
@@ -99,7 +96,6 @@ HEADERS  += mainwindow.h \
     combar.h \
     idlabel.h \
     smartlist.h \
-    mainwindowtoolbar.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
@@ -113,7 +109,6 @@ contains(DEFINES, URI_PROTOCOL) {
 FORMS    += mainwindow.ui \
     callwidget.ui \
     configurationwidget.ui \
-    navbar.ui \
     accountdetails.ui \
     aboutdialog.ui \
     wizarddialog.ui \
