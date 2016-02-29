@@ -31,7 +31,7 @@ RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
 
     setFrame(false);
 
-    addAction(QIcon(":/images/search-contact.png"), QLineEdit::ActionPosition::LeadingPosition);
+    addAction(QIcon(":images/icons/ic_search_black_18dp_2x.png"), QLineEdit::ActionPosition::LeadingPosition);
 }
 
 RingContactLineEdit::~RingContactLineEdit()
