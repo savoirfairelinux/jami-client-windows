@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -45,6 +45,10 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     void dragEnterEvent(QDragEnterEvent* event);
     void dropEvent(QDropEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    //~ void resizeEvent(QResizeEvent* event);
 
 private slots:
     void callStateChanged(Call* call, Call::State previousState);
@@ -61,6 +65,11 @@ private:
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
     QMetaObject::Connection videoStartedConnection_;
+    QPoint origin_;
+    QPoint originMouseDisplacement_;
+    bool draggingPreview_ = false;
+    bool resizingPreview_ = false;
+    QRect tempo;
 private:
     void toggleFullScreen();
 signals:
