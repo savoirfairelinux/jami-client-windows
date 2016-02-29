@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -23,28 +23,25 @@
 
 #include "navwidget.h"
 #include "configurationwidget.h"
-#include "navbar.h"
 #include "callwidget.h"
 
 class NavStack : public QWidget
 {
     Q_OBJECT
 public:
-    NavStack(QStackedWidget* bar,
-             QStackedWidget* stack,
-             QWidget* parent = nullptr);
+    NavStack(QStackedWidget* stack, QWidget* parent = nullptr);
     ~NavStack();
     NavWidget* getNavWidget(ScreenEnum wantedNavWidget);
 
 public slots:
     void onNavigationRequested(ScreenEnum screen);
-    void onBackRequested();
 
 private:
-    QStackedWidget* bar_;
     QStackedWidget* stack_;
     QList<NavWidget*> navList_;
     QStack<ScreenEnum> stackNav_;
-    void setNavBar(NavWidget *navW);
+    QPropertyAnimation* slideStacked_;
+
+    constexpr static int animDuration_ = 200; //msecs
 };
 
