@@ -53,7 +53,7 @@
 #include "pixbufmanipulator.h"
 
 CallWidget::CallWidget(QWidget* parent) :
-    NavWidget(END ,parent),
+    NavWidget(parent),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
@@ -64,6 +64,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     setActualCall(nullptr);
     videoRenderer_ = nullptr;
+
+    connect(ui->settingsButton, &QPushButton::clicked, this, &CallWidget::settingsButtonClicked);
 
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
             ui->instantMessagingWidget, SLOT(setVisible(bool)));
@@ -554,7 +556,7 @@ CallWidget::placeCall()
 }
 
 void
-CallWidget::settingsButton_clicked()
+CallWidget::settingsButtonClicked()
 {
     ui->smartList->reset();
     emit NavigationRequested(ScreenEnum::ConfScreen);

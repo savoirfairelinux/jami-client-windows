@@ -56,7 +56,7 @@ public:
 
 public slots:
     void contactButton_clicked(bool checked);
-    void settingsButton_clicked();
+    void settingsButtonClicked();
     void historicButton_clicked(bool checked);
 //UI SLOTS
 public slots:
