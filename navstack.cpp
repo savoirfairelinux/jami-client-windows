@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,28 +18,27 @@
 
 #include "navstack.h"
 
-NavStack::NavStack(QStackedWidget* bar, QStackedWidget* stack, QWidget *parent)
-    : bar_(bar)
-    , stack_(stack)
+#include <QPropertyAnimation>
+
+NavStack::NavStack(QStackedWidget* stack, QWidget *parent)
+    : stack_(stack)
 {
     Q_UNUSED(parent)
-
-    navList_.append(new NavBar());
 
     navList_.append(new CallWidget());
     navList_.append(new ConfigurationWidget());
 
     for (int i = 0; i < END; i++) {
-        if (i < CallScreen)
-            bar_->addWidget(navList_[i]);
-        else
-            stack_->addWidget(navList_[i]);
-        connect(navList_[i], SIGNAL(NavigationRequested(ScreenEnum)),
-                this, SLOT(onNavigationRequested(ScreenEnum)));
-        connect(navList_[i], SIGNAL(BackRequested()),
-                this, SLOT(onBackRequested()));
+        stack_->addWidget(navList_[i]);
+        connect(navList_[i],
+                SIGNAL(NavigationRequested(ScreenEnum)),
+                this,
+                SLOT(onNavigationRequested(ScreenEnum)));
     }
-    bar_->hide();
+    slideStacked_ = new QPropertyAnimation();
+    slideStacked_->setPropertyName("pos");
+    slideStacked_->setDuration(animDuration_);
+    slideStacked_->setEasingCurve(QEasingCurve::OutQuad);
 }
 
 NavStack::~NavStack()
@@ -47,6 +46,7 @@ NavStack::~NavStack()
     for (int i = 0; i < END; i++) {
         delete navList_[i];
     }
+    delete slideStacked_;
 }
 
 NavWidget*
@@ -56,43 +56,19 @@ NavStack::getNavWidget(ScreenEnum wantedNavWidget)
 }
 
 void
-NavStack::onNavigationRequested(ScreenEnum screen) {
+NavStack::onNavigationRequested(ScreenEnum screen)
+{
     if (navList_[screen] == stack_->currentWidget())
         return;
-    if (screen < CallScreen) {
-        bar_->show();
-        if (auto barItem = navList_[screen])
-            bar_->setCurrentWidget(barItem);
-        else
-            bar_->hide();
-    } else {
-        stack_->setCurrentWidget(navList_[screen]);
-        setNavBar(navList_[screen]);
-        stackNav_.append(screen);
-    }
-}
-
-void
-NavStack::onBackRequested() {
-
-    navList_[stackNav_.pop()]->atExit();
-    ScreenEnum screen;
-
-    if (stackNav_.size() == 0)
-        screen = CallScreen;
-    else
-        screen = stackNav_.first();
 
     stack_->setCurrentWidget(navList_[screen]);
-    setNavBar(navList_[screen]);
-}
+    stackNav_.append(screen);
 
-void
-NavStack::setNavBar(NavWidget* navW) {
-    if (navW->barDesired != END) {
-        bar_->setCurrentWidget(navList_[navW->barDesired]);
-        bar_->show();
-    } else {
-        bar_->hide();
-    }
+    slideStacked_->setTargetObject(navList_[screen]);
+    if(screen == CallScreen)
+        slideStacked_->setStartValue(-QPoint(navList_[screen]->width(), navList_[screen]->y()));
+    else
+        slideStacked_->setStartValue(QPoint(navList_[screen]->width(), navList_[screen]->y()));
+    slideStacked_->setEndValue(QPoint(navList_[screen]->x(), navList_[screen]->y()));
+    slideStacked_->start();
 }

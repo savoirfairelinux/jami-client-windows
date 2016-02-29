@@ -40,11 +40,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->noMicButton->setCheckable(true);
 
-    QPixmap pixmap(":/images/video-conf/ic_high_quality_white.svg");
-    QIcon qualityIcon(pixmap);
-    ui->qualityButton->setIcon(qualityIcon);
-    ui->qualityButton->setIconSize(pixmap.rect().size());
-
     connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
         const int first(tl.row()),last(br.row());
         for(int i = first; i <= last;i++) {
