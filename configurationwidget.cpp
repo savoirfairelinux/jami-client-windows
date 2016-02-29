@@ -23,6 +23,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QFileDialog>
+#include <QPropertyAnimation>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -49,13 +50,17 @@
 #endif
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
-    NavWidget(Nav, parent),
+    NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
     accountModel_(&AccountModel::instance()),
     deviceModel_(&Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
     ui->setupUi(this);
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=](){
+        emit NavigationRequested(ScreenEnum::CallScreen);
+    });
 
     ui->accountView->setModel(accountModel_);
     accountStateDelegate_ = new AccountStateDelegate();
