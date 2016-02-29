@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -43,6 +43,9 @@ VideoWidget::previewStarted(Video::Renderer* renderer) {
     //Enforce that only one videowidget we'll be used at the same time
     if (not isVisible())
         return;
+
+    resetPreview_ = true;
+
     if (previewRenderer_ == renderer)
         return;
     previewRenderer_ = renderer;
@@ -96,7 +99,7 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
         if (distantImage_) {
             auto scaledDistant = distantImage_->scaled(size(), Qt::KeepAspectRatio);
             auto xDiff = (width() - scaledDistant.width()) / 2;
-            auto yDiff = (height() - scaledDistant.height()) /2;
+            auto yDiff = (height() - scaledDistant.height()) / 2;
             painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
         }
     }
@@ -115,15 +118,25 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             }
         }
         if (previewImage_) {
-            auto previewHeight = fullPreview_ ? height() : height()/4;
-            auto previewWidth = fullPreview_  ? width() : width()/4;
-            auto scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-            auto xDiff = (previewWidth - scaledPreview.width()) / 2;
-            auto yDiff = (previewHeight - scaledPreview.height()) / 2;
-            auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
-            auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
-            painter.drawImage(QRect(xPos,yPos,scaledPreview.width(),scaledPreview.height()),
-                              scaledPreview);
+            if(resetPreview_) {
+                auto previewHeight = fullPreview_ ? height() : height() / 4;
+                auto previewWidth = fullPreview_  ? width() : width() / 4;
+                auto scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+                auto xDiff = (previewWidth - scaledPreview.width()) / 2;
+                auto yDiff = (previewHeight - scaledPreview.height()) / 2;
+                auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
+                auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+                previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
+                painter.drawImage(previewGeometry_, scaledPreview);
+                resetPreview_ = false;
+            }
+
+            auto scaledPreview = previewImage_->scaled(previewGeometry_.width(),
+                                                       previewGeometry_.height(),
+                                                       Qt::KeepAspectRatio);
+            previewGeometry_.setWidth(scaledPreview.width());
+            previewGeometry_.setHeight(scaledPreview.height());
+            painter.drawImage(previewGeometry_, scaledPreview);
         }
     }
     painter.end();

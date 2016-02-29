@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -45,6 +45,9 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     void dragEnterEvent(QDragEnterEvent* event);
     void dropEvent(QDropEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
 
 private slots:
     void callStateChanged(Call* call, Call::State previousState);
@@ -55,12 +58,20 @@ private slots:
 private:
     Ui::VideoView* ui;
     VideoOverlay* overlay_;
-    constexpr static int fadeOverlayTime_ = 2000; //msec
     QPropertyAnimation* fadeAnim_;
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
     QMetaObject::Connection videoStartedConnection_;
+    QPoint origin_;
+    QPoint originMouseDisplacement_;
+    bool draggingPreview_ = false;
+    bool resizingPreview_ = false;
+
+    constexpr static int fadeOverlayTime_ = 2000; //msec
+    constexpr static int resizeGrip_ = 40;
+    constexpr static int minimalSize_ = 100;
+
 private:
     void toggleFullScreen();
 signals:
