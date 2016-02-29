@@ -28,9 +28,11 @@ AccountStateDelegate::AccountStateDelegate(QObject *parent) :
 void
 AccountStateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
+    painter->setRenderHint(QPainter::Antialiasing);
     QStyleOptionViewItemV4 opt = option;
     initStyleOption(&opt, index);
     if (index.column() == 0) {
+        // name & checkbox
         auto name = index.model()->data(index, Qt::DisplayRole).toString();
         opt.text = QString();
         QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
@@ -41,14 +43,36 @@ AccountStateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
             cg = QPalette::Inactive;
         auto font = painter->font() ;
-        font.setBold(true);
+        font.setPointSize(12);
         painter->setFont(font);
-        painter->setPen(AccountModel::instance().
-                        getAccountByModelIndex(index)->stateColorName());
         painter->setOpacity(1.0);
+        opt.displayAlignment = Qt::AlignTop;
+
+        painter->setPen(Qt::black);
         painter->drawText(QRect(rect.left()+25, rect.top(),
                                 rect.width(), rect.height()),
                                 opt.displayAlignment, name);
+
+        // status
+        QString stateColor(AccountModel::instance().getAccountByModelIndex(index)->stateColorName());
+        QString accountStatus;
+
+        painter->setPen(stateColor);
+
+        if (stateColor == "darkGreen")
+            accountStatus = "ready";
+        else if (stateColor == "black")
+            accountStatus = "checking";
+        else if (stateColor == "orange")
+            accountStatus = "error";
+        else // "red", I don't understand what this state means, I set it to "unknown" for now
+            accountStatus = "unknown";
+
+        opt.displayAlignment = Qt::AlignBottom|Qt::AlignLeft;
+
+        painter->drawText(QRect(rect.left()+25, rect.top(),
+                                rect.width(), rect.height()),
+                                opt.displayAlignment, accountStatus);
     }
 }
 
