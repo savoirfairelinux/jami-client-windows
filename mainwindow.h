@@ -27,9 +27,6 @@
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
-class WindowBarUpOne;
-class MainWindowToolBar;
-
 namespace Ui {
 class MainWindow;
 }
@@ -62,6 +59,4 @@ private:
      ~MainWindow();
     Ui::MainWindow* ui;
     NavStack* navStack_;
-    WindowBarUpOne* wbOne_;
-    MainWindowToolBar* mwToolBar_;
 };

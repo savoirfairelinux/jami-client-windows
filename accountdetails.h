@@ -27,6 +27,8 @@
 #include "audio/codecmodel.h"
 #include "account.h"
 
+class QPushButton;
+
 namespace Ui {
 class AccountDetails;
 }
@@ -38,6 +40,8 @@ class AccountDetails : public QWidget
 public:
     explicit AccountDetails(QWidget* parent = 0);
     ~AccountDetails();
+
+    QPushButton* deleteButton();
 
     void setAccount(Account* currentAccount);
     void save();
