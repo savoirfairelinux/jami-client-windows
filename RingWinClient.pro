@@ -39,7 +39,6 @@ SOURCES += main.cpp\
     callwidget.cpp \
     configurationwidget.cpp \
     navstack.cpp \
-    navbar.cpp \
     navwidget.cpp \
     accountdetails.cpp \
     aboutdialog.cpp \
@@ -73,7 +72,6 @@ HEADERS  += mainwindow.h \
     callwidget.h \
     configurationwidget.h \
     navstack.h \
-    navbar.h \
     navwidget.h \
     accountdetails.h \
     aboutdialog.h \
@@ -113,7 +111,6 @@ contains(DEFINES, URI_PROTOCOL) {
 FORMS    += mainwindow.ui \
     callwidget.ui \
     configurationwidget.ui \
-    navbar.ui \
     accountdetails.ui \
     aboutdialog.ui \
     wizarddialog.ui \

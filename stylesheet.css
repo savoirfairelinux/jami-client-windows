@@ -123,18 +123,20 @@ QPushButton#hangupButton:pressed{
     background-color: rgba(255, 0, 0, 0.8);
 }
 
-
-QPushButton#addToContactButton, QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
+QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton, 
+QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#shareButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
-QPushButton#imBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
+QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
+QPushButton#copyCMButton:hover, QPushButton#shareButton:hover{
     background-color: #515151;
 }
 
-QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
+QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
+QPushButton#copyCMButton:pressed, QPushButton#shareButton:pressed{
     background-color: #313131;
 }
 
