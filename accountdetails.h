@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QPushButton>
 
 #include <QTableWidgetItem>
 
@@ -38,6 +39,8 @@ class AccountDetails : public QWidget
 public:
     explicit AccountDetails(QWidget* parent = 0);
     ~AccountDetails();
+
+    QPushButton* deleteButton();
 
     void setAccount(Account* currentAccount);
     void save();
