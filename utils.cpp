@@ -19,12 +19,18 @@
 #include "utils.h"
 
 #ifdef Q_OS_WIN
+#include <windows.h>
 #include <lmcons.h>
 #include <shobjidl.h>
 #include <shlguid.h>
 #include <shlobj.h>
 #include <shlwapi.h>
 #endif
+
+
+//Qt
+#include <QObject>
+#include <QErrorMessage>
 
 bool
 Utils::CreateStartupLink()
@@ -165,8 +171,17 @@ void
 Utils::InvokeMailto(const QString& subject,
                     const QString& body,
                     const QString& attachement) {
-    auto addr = QString("mailto:?subject=%1&body=%2").arg(subject).arg(body);
-    if (not attachement.isEmpty())
-        addr += QString("&attachement=%1").arg(attachement);
-    ShellExecute(nullptr, L"open", addr.toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL);
+#ifdef Q_OS_WIN
+    HKEY hKey;
+    LONG lRes = RegOpenKeyExW(HKEY_CLASSES_ROOT, L"mailto", 0, KEY_READ, &hKey);
+    if (lRes != ERROR_FILE_NOT_FOUND) {
+        auto addr = QString("mailto:?subject=%1&body=%2").arg(subject).arg(body);
+        if (not attachement.isEmpty())
+            addr += QString("&attachement=%1").arg(attachement);
+        ShellExecute(nullptr, L"open", addr.toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL);
+    } else {
+        QErrorMessage errorMessage;
+        errorMessage.showMessage(QObject::tr("No default mail client found"));
+    }
+#endif
 }
