@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_bb689388",
+        "filename": "callwidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-01T20:36:35Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 68,
+        "startChar": 74,
+        "endLine": 68,
+        "endChar": 96
+      },
+      "revId": "84c1ae177bc5525261546ffcdf4acb9086309178",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_7b0afbd3",
+        "filename": "navstack.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-01T20:36:35Z",
+      "side": 1,
+      "message": "alignement",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 100
+      },
+      "revId": "84c1ae177bc5525261546ffcdf4acb9086309178",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_1b0f3fe3",
+        "filename": "navstack.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-01T20:36:35Z",
+      "side": 1,
+      "message": "new.. no delete \u003d leak",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 87
+      },
+      "revId": "84c1ae177bc5525261546ffcdf4acb9086309178",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
