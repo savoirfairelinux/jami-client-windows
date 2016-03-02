@@ -22,6 +22,30 @@
       "revId": "5d6fdf9b44fd69773b8392126580d4b8b95da52d",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_bba9737d",
+        "filename": "ressources.qrc",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-03-02T22:23:29Z",
+      "side": 0,
+      "message": "wasn\u0027t me, but qdesigner (I\u0027ve checked that)... I\u0027ll move the lines at the bottom",
+      "parentUuid": "ba65a107_3b1483f4",
+      "range": {
+        "startLine": 2,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "5d6fdf9b44fd69773b8392126580d4b8b95da52d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
