@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_3b7243e6",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-03T14:37:04Z",
+      "side": 1,
+      "message": "I see no reason to not use a reference",
+      "parentUuid": "ba65a107_5b8ff723",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "804f0e5494db18a7cb1cfcd9a62e35bd6c3b734a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_1b265f69",
         "filename": "videowidget.cpp",
         "patchSetId": 3
