@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_fb736be5",
+        "filename": "videowidget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-03-03T14:48:07Z",
+      "side": 1,
+      "message": "yes you totally right, I did the changes, I\u0027m working on this patch today to add something else",
+      "parentUuid": "ba65a107_5b8ff723",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "804f0e5494db18a7cb1cfcd9a62e35bd6c3b734a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_1b265f69",
         "filename": "videowidget.cpp",
         "patchSetId": 3
