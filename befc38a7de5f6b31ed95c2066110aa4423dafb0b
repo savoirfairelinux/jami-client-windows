@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_615ecceb",
+        "filename": "videoview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-04T20:40:12Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "befc38a7de5f6b31ed95c2066110aa4423dafb0b",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_8163e0b0",
+        "filename": "videowidget.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-04T20:40:12Z",
+      "side": 1,
+      "message": "No need",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "befc38a7de5f6b31ed95c2066110aa4423dafb0b",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
