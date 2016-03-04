@@ -20,6 +20,8 @@
 
 #include "combar.h"
 
+#include <QDebug>
+
 
 ComBar::ComBar(QWidget* parent) :
     QWidget(parent),
@@ -29,6 +31,11 @@ ComBar::ComBar(QWidget* parent) :
     connect(ui->btnComBarVideo, &QPushButton::clicked , this , [=](){
         emit btnVideoClicked();
     });
+
+    qDebug() << parent;
+
+    if( parent )
+        delete this;
 
 }
 
