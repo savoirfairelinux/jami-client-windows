@@ -20,7 +20,6 @@
 
 #include "combar.h"
 
-
 ComBar::ComBar(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::ComBar)

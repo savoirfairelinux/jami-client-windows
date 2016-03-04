@@ -28,19 +28,22 @@
 SmartList::SmartList(QWidget *parent) :
     QTreeView(parent)
 {
-
     verticalScrollBar()->hide();
 
     connect(this, &QAbstractItemView::entered, [this](const QModelIndex & index) {
-            removeCombar();
-            if (auto widget = indexWidget(index)) {
-                widget->setVisible(true);
-            } else {
-                ComBar* bar = new ComBar();
-                setIndexWidget(index, bar);
-                connect(bar, &ComBar::btnVideoClicked, this, [=](){ emit btnVideoClicked(); });
-            }
-            hoveredRow_ = index;
+        auto widget = indexWidget(index);
+        if (!widget) {
+            ComBar* bar = new ComBar();
+            setIndexWidget(index, bar);
+            connect(bar, &ComBar::btnVideoClicked, this, [=](){ emit btnVideoClicked(); });
+        }
+        else if (index.isValid())
+            indexWidget(index)->setVisible(true);
+
+        if(hoveredRow_.isValid() and indexWidget(hoveredRow_))
+            indexWidget(hoveredRow_)->setVisible(false);
+
+        hoveredRow_ = index;
     });
 
     setVerticalScrollMode(ScrollPerPixel);
@@ -48,7 +51,7 @@ SmartList::SmartList(QWidget *parent) :
 
 SmartList::~SmartList()
 {
-
+    reset();
 }
 
 void
@@ -63,16 +66,14 @@ SmartList::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event);
 
+    hoveredRow_ = QModelIndex();
     verticalScrollBar()->hide();
-
-    removeCombar();
 }
 
 void
 SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
 {
-    if (delegate)
-    {
+    if (delegate) {
         setItemDelegate(delegate);
         smartListDelegate_ = delegate;
     }
@@ -83,27 +84,21 @@ SmartList::eventFilter(QObject* watched, QEvent* event)
 {
 
     if (qobject_cast<QScrollBar*>(watched) && event->type() == QEvent::Enter) {
-        removeCombar();
+        hoveredRow_ = QModelIndex();
         return true;
     }
 
     return QObject::eventFilter(watched, event);
 }
 
-void
-SmartList::removeCombar()
-{
-    if(not hoveredRow_.isValid())
-        return;
-
-    if (auto widget = indexWidget(hoveredRow_)) {
-        widget->setVisible(false);
-    }
-}
 
 void
-SmartList::resizeEvent(QResizeEvent* event)
+SmartList::drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
-    reset();
-    QTreeView::resizeEvent(event);
+    if(index == hoveredRow_ && indexWidget(hoveredRow_))
+        indexWidget(index)->setVisible(true);
+    else if(indexWidget(index))
+        indexWidget(index)->setVisible(false);
+
+    QTreeView::drawRow(painter, option, index);
 }

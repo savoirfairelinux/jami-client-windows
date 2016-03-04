@@ -34,7 +34,7 @@ protected:
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
     bool eventFilter(QObject* watched, QEvent* event);
-    void resizeEvent(QResizeEvent* event);
+    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
     SmartListDelegate* smartListDelegate_;
