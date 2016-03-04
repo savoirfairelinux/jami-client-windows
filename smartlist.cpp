@@ -93,12 +93,7 @@ SmartList::eventFilter(QObject* watched, QEvent* event)
 void
 SmartList::removeCombar()
 {
-    if(not hoveredRow_.isValid())
-        return;
-
-    if (auto widget = indexWidget(hoveredRow_)) {
-        widget->setVisible(false);
-    }
+    foreach (ComBar * w, findChildren<ComBar*>()) delete w;
 }
 
 void
