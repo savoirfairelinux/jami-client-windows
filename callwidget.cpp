@@ -499,9 +499,6 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
-    ui->smartList->reset();
-    ui->smartList->setCurrentIndex(index);
-
     auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
     if (RecentModel::instance().hasActiveCall(realIndex))
         return;
@@ -562,7 +559,6 @@ CallWidget::placeCall()
 void
 CallWidget::settingsButtonClicked()
 {
-    ui->smartList->reset();
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
