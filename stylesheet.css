@@ -27,7 +27,10 @@ QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
 }
 
 QWidget#callInvitePage, QWidget#outboundCallPage{
-    background-color : rgb(77, 77, 77);
+    background-color : rgb( 77, 77, 77 );
+    background-image : url(:/images/background-dark.png);
+    background-repeat : repeat-x;
+    background-position: bottom;
 }
 
 IdLabel{
@@ -228,7 +231,14 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#welcomePage, QWidget#messagingPage{
+QDialog#WizardDialog, QWidget#welcomePage{
+    background: rgb(242, 242, 242);
+    background-image : url(:/images/background-light.png);
+    background-repeat : repeat-x;
+    background-position: bottom;
+}
+
+QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
 

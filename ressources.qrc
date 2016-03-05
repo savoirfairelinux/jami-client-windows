@@ -2,6 +2,8 @@
     <qresource prefix="/">
         <file>stylesheet.css</file>
         <file>images/ring.png</file>
+        <file>images/background-light.png</file>
+        <file>images/background-dark.png</file>
         <file>images/logo-ring-standard-coul.png</file>
         <file>images/user/btn-default-userpic.svg</file>
         <file>images/icons/ic_arrow_back_white_24dp.png</file>
