@@ -75,7 +75,7 @@ QListView#listMessageView{
     border-top: 1px solid rgb(229, 229, 229);
 }
 
-QLineEdit#messageEdit{
+QLineEdit#messageEdit, QLineEdit#imMessageEdit{
     border-color: rgb(0, 192, 212);
     border-radius: 5px;
     border-width: 1px;
@@ -138,29 +138,26 @@ QPushButton#imBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#
     background-color: #313131;
 }
 
-QPushButton#sendButton{
-    background-color: #3AC0D2;
-    border-radius: 18px;
-    border:solid 1px;
-}
-
 QPushButton#btnvideo{
     background-color: #3AC0D2;
     border-radius: 15px;
     border:solid 1px;
 }
 
-QPushButton#btnCall, QPushButton#btnComBarVideo, QPushButton#sendButton{
+QPushButton#btnCall, QPushButton#btnComBarVideo,
+QPushButton#sendButton, QPushButton#sendIMButton{
    background-color: #3AC0D2;
    border-radius: 15px;
    border:solid 1px;
 }
 
-QPushButton#btnCall:hover, QPushButton#sendButton:hover, QPushButton#btnComBarVideo:hover{
+QPushButton#btnCall:hover, QPushButton#sendButton:hover,
+QPushButton#sendIMButton:hover, QPushButton#btnComBarVideo:hover{
    background-color: #4dc6d6;
 }
 
-QPushButton#sendButton:pressed, QPushButton#btnCall:pressed, QPushButton#sendButton:pressed, QPushButton#btnComBarVideo:pressed{
+QPushButton#btnCall:pressed,
+QPushButton#sendIMButton:pressed, QPushButton#btnComBarVideo:pressed{
    background-color: #34acbd;
 }
 
