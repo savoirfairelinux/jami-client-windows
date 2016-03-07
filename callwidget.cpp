@@ -616,25 +616,25 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 }
 
 void
-CallWidget::on_sendButton_clicked()
+CallWidget::on_sendIMButton_clicked()
 {
-    if (ui->messageEdit->text().trimmed().isEmpty())
+    if (ui->imMessageEdit->text().trimmed().isEmpty())
         return;
     auto number = ui->contactMethodComboBox->currentText();
     if (auto cm = PhoneDirectoryModel::instance().getNumber(number)) {
         QMap<QString, QString> msg;
-        msg["text/plain"] = ui->messageEdit->text();
+        msg["text/plain"] = ui->imMessageEdit->text();
         cm->sendOfflineTextMessage(msg);
-        ui->messageEdit->clear();
+        ui->imMessageEdit->clear();
     } else {
         qWarning() << "Contact Method not found for " << number;
     }
 }
 
 void
-CallWidget::on_messageEdit_returnPressed()
+CallWidget::on_imMessageEdit_returnPressed()
 {
-    on_sendButton_clicked();
+    on_sendIMButton_clicked();
 }
 
 void

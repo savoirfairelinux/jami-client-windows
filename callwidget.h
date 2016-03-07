@@ -74,8 +74,8 @@ private slots:
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
     void on_historyList_doubleClicked(const QModelIndex& index);
-    void on_sendButton_clicked();
-    void on_messageEdit_returnPressed();
+    void on_sendIMButton_clicked();
+    void on_imMessageEdit_returnPressed();
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();

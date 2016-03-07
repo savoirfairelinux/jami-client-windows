@@ -315,6 +315,8 @@ VideoView::mousePressEvent(QMouseEvent* event)
 void
 VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
+    Q_UNUSED(event)
+
     draggingPreview_ = false;
     resizingPreview_ = false;
     QApplication::setOverrideCursor(Qt::ArrowCursor);
