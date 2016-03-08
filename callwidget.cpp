@@ -456,6 +456,7 @@ void CallWidget::callStateToView(Call* value)
                 ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::CURRENT:
+        case Call::State::HOLD:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::OVER:
@@ -464,6 +465,7 @@ void CallWidget::callStateToView(Call* value)
         case Call::State::INITIALIZATION:
         case Call::State::CONNECTED:
         case Call::State::RINGING:
+        case Call::State::FAILURE:
         case Call::State::ERROR:
             ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
             break;
