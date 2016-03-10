@@ -49,6 +49,8 @@
 #include "winsparkle.h"
 #endif
 
+#include <QDebug>
+
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
@@ -239,6 +241,7 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
     Q_UNUSED(itemSel)
     auto account = accountModel_->getAccountByModelIndex(
                 ui->accountView->currentIndex());
+    qDebug() << "!1!";
     accountDetails_->setAccount(account);
     AccountSerializationAdapter adapter(account, accountDetails_);
 }

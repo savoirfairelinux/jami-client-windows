@@ -2586,7 +2586,10 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="cipherTab">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -3023,7 +3026,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>

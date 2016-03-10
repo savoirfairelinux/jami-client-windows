@@ -30,6 +30,8 @@
 #include "ciphermodel.h"
 #include "ringtonemodel.h"
 
+#include <QDebug>
+
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccountDetails),
@@ -67,6 +69,7 @@ AccountDetails::~AccountDetails()
 void
 AccountDetails::setAccount(Account* currentAccount) {
 
+// je pense que c ici que tout se passe XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     if (currentAccount_) {
         stopRingtone();
         save();
@@ -160,6 +163,10 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->ringtonesBox->setModel(&RingtoneModel::instance());
     ui->ringtonesBox->setCurrentIndex(RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex().row());
     connect(ui->ringtonesBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ringtonesBoxCurrentIndexChanged(int)));
+
+    int indexCipherTab = ui->tabWidget->indexOf(ui->cipherTab);
+    ui->tabWidget->setTabEnabled(indexCipherTab, currentAccount_->protocol() == Account::Protocol::RING);
+
 }
 
 void
