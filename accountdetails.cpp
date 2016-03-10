@@ -57,6 +57,31 @@ AccountDetails::AccountDetails(QWidget *parent) :
             ui->playButton->setText(tr("Play"));
 
     });
+
+    connect(ui->lrcfg_tlsEnabled, &QCheckBox::stateChanged, [=] (int state) {
+        if(state == Qt::Checked) {
+            ui->negoEncry_1->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
+            ui->negoEncry_2->setVisible(true);
+            ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
+            ui->cipherListView->setVisible(!ui->defaultCipherCheckBox->isChecked()
+                                           && currentAccount_->protocol() != Account::Protocol::RING);
+        } else {
+            ui->negoEncry_1->setVisible(false);
+            ui->negoEncry_2->setVisible(false);
+            ui->defaultCipherCheckBox->setVisible(false);
+            ui->cipherListView->setVisible(false);
+        }
+    });
+
+    connect(ui->defaultCipherCheckBox, &QCheckBox::stateChanged, [=] (int state) {
+        if (state == Qt::Checked) {
+            ui->cipherListView->setVisible(false);
+            currentAccount_->cipherModel()->setUseDefault(true);
+        } else {
+            ui->cipherListView->setVisible(true);
+            currentAccount_->cipherModel()->setUseDefault(false);
+        }
+    });
 }
 
 AccountDetails::~AccountDetails()
@@ -99,8 +124,9 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->lrcfg_publishedAddress->setEnabled(!currentAccount_->isPublishedSameAsLocal());
     ui->lrcfg_publishedPort->setEnabled(!currentAccount_->isPublishedSameAsLocal());
 
-    connect(ui->publishGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
-        [=](int id) {
+    connect(ui->publishGroup,
+            static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
+            [=](int id) {
         currentAccount_->setPublishedSameAsLocal(static_cast<bool>(id));
     });
 
@@ -118,10 +144,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->dtmfGroup->setId(ui->sipRadio, DtmfType::OverSip);
 
     connect(ui->dtmfGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
-        [=](int id){ currentAccount_->setDTMFType(static_cast<DtmfType>(id)); });
-
-    ui->keyExchangeModelCombo->setModel(currentAccount_->keyExchangeModel());
-    ui->tlsProtocoCombo->setModel(currentAccount_->tlsMethodModel());
+            [=](int id){ currentAccount_->setDTMFType(static_cast<DtmfType>(id)); });
 
     if (currentAccount_->tlsCaListCertificate())
         ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path());
@@ -139,20 +162,14 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->srtpEnabled->disconnect();
     connect(ui->srtpEnabled, &QCheckBox::toggled, [=](bool checked) {
         currentAccount_->setSrtpEnabled(checked);
-        ui->lrcfg_srtpRtpFallback->setEnabled(checked);
-        ui->keyExchangeModelCombo->setEnabled(checked);
     });
 
     ui->srtpEnabled->setChecked(currentAccount_->isSrtpEnabled());
 
     if (currentAccount_->cipherModel()->useDefault())
-        ui->defaultCipherRadio->setChecked(true);
+        ui->defaultCipherCheckBox->setChecked(true);
     else
-        ui->customCipherRadio->setChecked(true);
-
-    connect(ui->defaultCipherRadio, &QRadioButton::toggled, [=](bool checked) {
-        currentAccount_->cipherModel()->setUseDefault(checked);
-    });
+        ui->defaultCipherCheckBox->setChecked(false);
 
     ui->cipherListView->setModel(currentAccount_->cipherModel());
 
@@ -160,6 +177,31 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->ringtonesBox->setModel(&RingtoneModel::instance());
     ui->ringtonesBox->setCurrentIndex(RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex().row());
     connect(ui->ringtonesBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ringtonesBoxCurrentIndexChanged(int)));
+
+    auto accountProtocol = currentAccount_->protocol();
+    if (accountProtocol == Account::Protocol::RING) {
+        ui->medStreaEncry->setVisible(false);
+        ui->lrcfg_tlsEnabled->setVisible(false);
+    } else if (accountProtocol == Account::Protocol::SIP) {
+        ui->medStreaEncry->setVisible(true);
+        ui->lrcfg_tlsEnabled->setVisible(true);
+    }
+
+    if (ui->lrcfg_tlsEnabled->checkState() == Qt::Checked) {
+        ui->negoEncry_1->setVisible(true);
+        ui->negoEncry_2->setVisible(true);
+        ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
+    } else {
+        ui->negoEncry_1->setVisible(false);
+        ui->negoEncry_2->setVisible(false);
+        ui->defaultCipherCheckBox->setVisible(false);
+        ui->cipherListView->setVisible(false);
+    }
+
+    if (ui->defaultCipherCheckBox->checkState() == Qt::Checked)
+        ui->cipherListView->setVisible(false);
+    else
+        ui->cipherListView->setVisible(true);
 }
 
 void
@@ -190,8 +232,8 @@ AccountDetails::save() {
 void
 AccountDetails::onCertButtonClicked() {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose File"),
-    "",
-    tr("Files (*)"));
+                                                    "",
+                                                    tr("Files (*)"));
 
     auto sender = QObject::sender();
 
