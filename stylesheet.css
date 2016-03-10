@@ -383,6 +383,10 @@ QTabBar::tab:selected{
     border-color: #3AC0D2;
 }
 
+QTabBar::tab:disabled{
+    color: #8C8C8C;
+}
+
 QTabWidget::pane{
     border: 0px;
 }

@@ -160,6 +160,10 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->ringtonesBox->setModel(&RingtoneModel::instance());
     ui->ringtonesBox->setCurrentIndex(RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex().row());
     connect(ui->ringtonesBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ringtonesBoxCurrentIndexChanged(int)));
+
+    int indexCipherTab = ui->tabWidget->indexOf(ui->cipherTab);
+    ui->tabWidget->setTabEnabled(indexCipherTab, currentAccount_->protocol() == Account::Protocol::RING);
+
 }
 
 void
