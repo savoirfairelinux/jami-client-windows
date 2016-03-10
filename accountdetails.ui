@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>789</width>
+    <width>847</width>
     <height>895</height>
    </rect>
   </property>
@@ -47,7 +47,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="gen_tab">
       <property name="sizePolicy">
@@ -91,7 +91,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>785</width>
+            <width>843</width>
             <height>866</height>
            </rect>
           </property>
@@ -1136,7 +1136,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>753</width>
+            <width>811</width>
             <height>919</height>
            </rect>
           </property>
@@ -1993,81 +1993,129 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>785</width>
-            <height>866</height>
+            <width>829</width>
+            <height>915</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_13">
            <item>
-            <widget class="QLabel" name="label_17">
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>300</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Media Stream Encryption</string>
-             </property>
+            <widget class="QWidget" name="MedStreaEncry" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QFormLayout" name="formLayout_7">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_17">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(77, 77, 77);</string>
+                  </property>
+                  <property name="text">
+                   <string>Media Stream Encryption (SRTP)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QCheckBox" name="srtpEnabled">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Encrypt media stream (SRTP)</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(77, 77, 77);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="srtpEnabled">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Encrypt media stream (SRTP)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QFormLayout" name="formLayout_7">
+            <layout class="QFormLayout" name="formLayout_8">
              <item row="0" column="0">
-              <widget class="QLabel" name="label_18">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
+              <widget class="QLabel" name="label_19">
                <property name="minimumSize">
                 <size>
-                 <width>200</width>
+                 <width>0</width>
                  <height>30</height>
                 </size>
                </property>
-               <property name="maximumSize">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(77, 77, 77);</string>
+               </property>
+               <property name="text">
+                <string>Negotiation Encryption</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="lrcfg_tlsEnabled">
+               <property name="minimumSize">
                 <size>
-                 <width>200</width>
+                 <width>0</width>
                  <height>30</height>
                 </size>
                </property>
@@ -2076,100 +2124,18 @@
                  <pointsize>11</pointsize>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>Encrypt negotiation (TLS)</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">color: rgb(77, 77, 77);</string>
                </property>
                <property name="text">
-                <string>Key exchange protocol</string>
-               </property>
-               <property name="buddy">
-                <cstring>keyExchangeModelCombo</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QComboBox" name="keyExchangeModelCombo">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
+                <string/>
                </property>
               </widget>
              </item>
             </layout>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="lrcfg_srtpRtpFallback">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Fallback on RTP on encryption failure</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_19">
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>300</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Negotiation Encryption</string>
-             </property>
-            </widget>
            </item>
            <item>
             <widget class="Line" name="line_6">
@@ -2179,391 +2145,262 @@
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="lrcfg_tlsEnabled">
+            <widget class="QWidget" name="NegoEncry_1" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QCheckBox" name="lrcfg_tlsVerifyServer">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>Verify incoming certificates (server side)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="lrcfg_tlsRequireClientCertificate">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>Require a certificate for incoming TLS connections</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="lrcfg_tlsVerifyClient">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>Verify answer certificates (client side)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="NegoEncry_2" native="true">
+             <layout class="QFormLayout" name="formLayout_5">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_20">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>CA certificate</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="lrcfg_tlsCaListCertificate">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::WheelFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_21">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>User certificate</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="lrcfg_tlsCertificate">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_22">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>Private key</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QPushButton" name="lrcfg_tlsPrivateKeyCertificate">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(77, 77, 77);</string>
+                </property>
+                <property name="text">
+                 <string>Private key password</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="lrcfg_tlsPassword">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="defaultCipherCheckBox">
              <property name="font">
               <font>
                <pointsize>11</pointsize>
               </font>
              </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
              <property name="text">
-              <string>Encrypt negotiation (TLS)</string>
+              <string>Use default ciphers</string>
              </property>
             </widget>
            </item>
            <item>
-            <layout class="QFormLayout" name="formLayout_5">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_20">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>CA certificate</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsCaListCertificate</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_21">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>User certificate</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsCertificate</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_22">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Private key</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsPrivateKeyCertificate</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_23">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Private key password</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsPassword</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_24">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>TLS protocol method</string>
-               </property>
-               <property name="buddy">
-                <cstring>tlsProtocoCombo</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_25">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Outgoing TLS server name</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsServerName</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_26">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Negotiation timeout (seconds)</string>
-               </property>
-               <property name="buddy">
-                <cstring>lrcfg_tlsNegotiationTimeoutSec</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="lrcfg_tlsPassword">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QComboBox" name="tlsProtocoCombo">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLineEdit" name="lrcfg_tlsServerName">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QSpinBox" name="lrcfg_tlsNegotiationTimeoutSec">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximum">
-                <number>100000</number>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="lrcfg_tlsCertificate">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="ressources.qrc">
-                 <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="lrcfg_tlsPrivateKeyCertificate">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="ressources.qrc">
-                 <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="lrcfg_tlsCaListCertificate">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="focusPolicy">
-                <enum>Qt::WheelFocus</enum>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="ressources.qrc">
-                 <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="lrcfg_tlsVerifyServer">
-             <property name="enabled">
-              <bool>false</bool>
+            <widget class="QListView" name="cipherListView">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
+             <property name="minimumSize">
+              <size>
+               <width>640</width>
+               <height>480</height>
+              </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
+             <property name="maximumSize">
+              <size>
+               <width>640</width>
+               <height>480</height>
+              </size>
              </property>
-             <property name="text">
-              <string>Verify incoming certificates (server side)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="lrcfg_tlsVerifyClient">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Verify answer certificates (client side)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="lrcfg_tlsRequireClientCertificate">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(77, 77, 77);</string>
-             </property>
-             <property name="text">
-              <string>Require a certificate for incoming TLS connections</string>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
              </property>
             </widget>
            </item>
@@ -2586,81 +2423,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <attribute name="title">
-       <string>Cipher</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QRadioButton" name="defaultCipherRadio">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Use default ciphers</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="customCipherRadio">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>User custom cipher list</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QListView" name="cipherListView">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
   </layout>
@@ -2670,18 +2432,18 @@
  </resources>
  <connections>
   <connection>
-   <sender>customPublishedRadio</sender>
+   <sender>lrcfg_sipStunEnabled</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lrcfg_publishedAddress</receiver>
+   <receiver>lrcfg_sipStunServer</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>277</y>
+     <x>33</x>
+     <y>355</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>311</y>
+     <x>252</x>
+     <y>355</y>
     </hint>
    </hints>
   </connection>
@@ -2718,226 +2480,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>lrcfg_sipStunEnabled</sender>
+   <sender>customPublishedRadio</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lrcfg_sipStunServer</receiver>
+   <receiver>lrcfg_publishedAddress</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>33</x>
-     <y>355</y>
+     <x>120</x>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
-     <x>252</x>
-     <y>355</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsCaListCertificate</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>154</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>327</x>
-     <y>296</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsCertificate</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>99</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>289</x>
-     <y>336</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsPrivateKeyCertificate</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>69</x>
-     <y>266</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>257</x>
-     <y>376</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsPassword</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>199</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>448</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tlsProtocoCombo</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>126</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>261</x>
-     <y>455</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsServerName</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>228</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>244</x>
-     <y>490</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsNegotiationTimeoutSec</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>63</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>476</x>
-     <y>559</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsVerifyServer</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>251</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>191</x>
-     <y>592</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsVerifyClient</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>344</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>299</x>
-     <y>624</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>lrcfg_tlsRequireClientCertificate</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>380</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>386</x>
-     <y>656</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>defaultCipherRadio</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>195</x>
-     <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_tlsEnabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>customCipherRadio</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>288</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>551</x>
-     <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>customCipherRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cipherListView</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>496</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>139</y>
+     <x>131</x>
+     <y>311</y>
     </hint>
    </hints>
   </connection>
@@ -3023,7 +2577,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>
