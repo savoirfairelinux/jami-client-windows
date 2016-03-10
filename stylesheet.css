@@ -239,7 +239,8 @@ QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
 
-QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton{
+QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton, 
+QPushButton#checkUpdateButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -408,7 +409,7 @@ QPushButton#lrcfg_tlsPrivateKeyCertificate, QPushButton#tlsProtocoCombo, QPushBu
 
 QSpinBox#historyDaySettingsSpinBox, QSpinBox#lrcfg_tlsNegotiationTimeoutSec, QSpinBox#lrcfg_registrationExpire,
 QSpinBox#lrcfg_localPort, QSpinBox#lrcfg_publishedPort, QSpinBox#lrcfg_audioPortMin, QSpinBox#lrcfg_audioPortMax,
-QSpinBox#lrcfg_videoPortMin, QSpinBox#lrcfg_videoPortMax{
+QSpinBox#lrcfg_videoPortMin, QSpinBox#lrcfg_videoPortMax, QSpinBox#intervalUpdateCheckSpinBox{
     background: transparent;
     border-radius: 0px;
     border-style: solid;
@@ -445,19 +446,13 @@ QCheckBox::indicator:checked{
 QSpinBox::down-button{
     height: 9;
     width : 9;
-    image: url(":/images/icons/ic_arrow_drop_down_black_18dp_2x.png");
+    image: url(":/images/icons/ic_arrow_drop_down_black_9dp_2x.png");
 }
 
 QSpinBox::up-button{
     height: 9;
     width : 9;
-    image: url(":/images/icons/ic_arrow_drop_up_black_18dp_2x.png");
-}
-
-QSpinBox::down-button{
-    height: 9;
-    width : 9;
-    image: url(":/images/icons/ic_arrow_drop_down_black_18dp_2x.png");
+    image: url(":/images/icons/ic_arrow_drop_up_black_9dp_2x.png");
 }
 
 QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLineEdit#lrcfg_proxy,
