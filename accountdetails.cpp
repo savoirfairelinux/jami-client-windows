@@ -57,6 +57,32 @@ AccountDetails::AccountDetails(QWidget *parent) :
             ui->playButton->setText(tr("Play"));
 
     });
+
+    connect(ui->lrcfg_tlsEnabled, &QCheckBox::stateChanged, [=] (int state) {
+        if(state == Qt::Checked ) 
+        {
+            ui->NegoEncry_1->setVisible(true);
+            ui->NegoEncry_2->setVisible(true);
+            ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
+        }else{
+            ui->NegoEncry_1->setVisible(false);
+            ui->NegoEncry_2->setVisible(false);
+            ui->defaultCipherCheckBox->setVisible(false);
+        }
+    });
+    
+    connect(ui->defaultCipherCheckBox, &QCheckBox::stateChanged, [=] (int state) {
+        if (state == Qt::Checked)
+        {
+            ui->cipherListView->setVisible(false);
+            currentAccount_->cipherModel()->setUseDefault(true);
+        }
+        else
+        {
+            ui->cipherListView->setVisible(true);
+            currentAccount_->cipherModel()->setUseDefault(false);
+        }
+    });
 }
 
 AccountDetails::~AccountDetails()
@@ -120,9 +146,6 @@ AccountDetails::setAccount(Account* currentAccount) {
     connect(ui->dtmfGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
         [=](int id){ currentAccount_->setDTMFType(static_cast<DtmfType>(id)); });
 
-    ui->keyExchangeModelCombo->setModel(currentAccount_->keyExchangeModel());
-    ui->tlsProtocoCombo->setModel(currentAccount_->tlsMethodModel());
-
     if (currentAccount_->tlsCaListCertificate())
         ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path());
     if (currentAccount_->tlsCertificate())
@@ -139,20 +162,14 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->srtpEnabled->disconnect();
     connect(ui->srtpEnabled, &QCheckBox::toggled, [=](bool checked) {
         currentAccount_->setSrtpEnabled(checked);
-        ui->lrcfg_srtpRtpFallback->setEnabled(checked);
-        ui->keyExchangeModelCombo->setEnabled(checked);
     });
 
     ui->srtpEnabled->setChecked(currentAccount_->isSrtpEnabled());
 
     if (currentAccount_->cipherModel()->useDefault())
-        ui->defaultCipherRadio->setChecked(true);
+        ui->defaultCipherCheckBox->setChecked(true);
     else
-        ui->customCipherRadio->setChecked(true);
-
-    connect(ui->defaultCipherRadio, &QRadioButton::toggled, [=](bool checked) {
-        currentAccount_->cipherModel()->setUseDefault(checked);
-    });
+        ui->defaultCipherCheckBox->setChecked(false);
 
     ui->cipherListView->setModel(currentAccount_->cipherModel());
 
@@ -160,6 +177,31 @@ AccountDetails::setAccount(Account* currentAccount) {
     ui->ringtonesBox->setModel(&RingtoneModel::instance());
     ui->ringtonesBox->setCurrentIndex(RingtoneModel::instance().selectionModel(currentAccount_)->currentIndex().row());
     connect(ui->ringtonesBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ringtonesBoxCurrentIndexChanged(int)));
+
+    auto accountProtocol = currentAccount_->protocol();
+    if (accountProtocol == Account::Protocol::RING) {
+        ui->MedStreaEncry->setVisible(false);
+        ui->lrcfg_tlsEnabled->setVisible(false);
+    }else if (accountProtocol == Account::Protocol::SIP) {
+        ui->MedStreaEncry->setVisible(true);
+        ui->lrcfg_tlsEnabled->setVisible(true);
+    }
+    
+    if (ui->lrcfg_tlsEnabled->checkState() == Qt::Checked)
+    {
+        ui->NegoEncry_1->setVisible(true);
+        ui->NegoEncry_2->setVisible(true);
+        ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
+    }else{
+        ui->NegoEncry_1->setVisible(false);
+        ui->NegoEncry_2->setVisible(false);
+        ui->defaultCipherCheckBox->setVisible(false);
+    }
+    
+    if (ui->defaultCipherCheckBox->checkState() == Qt::Checked)
+        ui->cipherListView->setVisible(false);
+    else
+        ui->cipherListView->setVisible(true);
 }
 
 void
