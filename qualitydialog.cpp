@@ -25,19 +25,39 @@
 #include "audio/codecmodel.h"
 
 #include <QSortFilterProxyModel>
+#include <QPaintEvent>
+#include <QBitmap>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
 
 QualityDialog::QualityDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::QualityDialog)
+    ui(new Ui::QualityDialog),
+    spikeMask_(new QPixmap(":/images/spikeMask.png"))
 {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
+
+    ui->spike->setMask(spikeMask_->mask());
+
+    effect_ = new QGraphicsOpacityEffect(this);
+    effect_->setOpacity(1.0);
+    setGraphicsEffect(effect_);
+    fadeAnim_ = new QPropertyAnimation(effect_,"opacity");
+    fadeAnim_->setDuration(fadeOverlayTime_);
+    fadeAnim_->setStartValue(0.0);
+    fadeAnim_->setEndValue(1.0);
+    fadeAnim_->setEasingCurve(QEasingCurve::InExpo);
+
 }
 
 QualityDialog::~QualityDialog()
 {
+    delete effect_;
+    delete spikeMask_;
+    delete fadeAnim_;
     delete ui;
 }
 
@@ -75,6 +95,20 @@ void QualityDialog::showEvent(QShowEvent* event) {
         }
     }
     ui->autoCheckBox->blockSignals(false);
+
+    emit(isVisble(true));
+
+    fadeAnim_->setDirection(QAbstractAnimation::Forward);
+    fadeAnim_->start();
+
+}
+
+void
+QualityDialog::closeEvent(QCloseEvent* event)
+{
+    Q_UNUSED(event)
+
+    emit(isVisble(false));
 }
 
 void
