@@ -27,9 +27,9 @@ class GlobalSystemTray : public QSystemTrayIcon
 public:
     static GlobalSystemTray& instance()
     {
-        static GlobalSystemTray instance_;
+        static GlobalSystemTray* instance_ = new GlobalSystemTray();
 
-        return instance_;
+        return *instance_;
     }
 
 private:
