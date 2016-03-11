@@ -211,7 +211,7 @@ WindowsContactBackend::WindowsContactBackend(CollectionMediator<Person>* mediato
 
 WindowsContactBackend::~WindowsContactBackend()
 {
-
+    delete watcher_;
 }
 
 bool
