@@ -20,6 +20,9 @@
 
 #include <QDialog>
 
+class QPropertyAnimation;
+class QGraphicsOpacityEffect;
+
 namespace Ui {
 class QualityDialog;
 }
@@ -34,6 +37,7 @@ public:
 
 protected:
     void showEvent(QShowEvent* event);
+    void closeEvent(QCloseEvent* event);
 
 private slots:
     void on_autoCheckBox_toggled(bool checked);
@@ -42,4 +46,12 @@ private slots:
 private:
     Ui::QualityDialog *ui;
     void setQuality();
+    QPixmap* spikeMask_;
+    QPropertyAnimation* fadeAnim_;
+    constexpr static int fadeOverlayTime_ = 250; //msec
+    QGraphicsOpacityEffect* effect_;
+
+signals:
+    void isVisible(bool visible);
+
 };

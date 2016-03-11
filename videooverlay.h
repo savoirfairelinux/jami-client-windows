@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -41,6 +41,7 @@ public:
 public:
     void setName(const QString& name);
     void setTime(const QString& time);
+    inline bool isDialogVisible(){ return dialogVisible_; };
 
 //UI SLOTS
 private slots:
@@ -61,6 +62,7 @@ private:
     UserActionModel* actionModel_;
     CallUtilsDialog* transferDialog_;
     QualityDialog* qualityDialog_;
+    bool dialogVisible_ = false;
 
 signals:
     void setChatVisibility(bool visible);
