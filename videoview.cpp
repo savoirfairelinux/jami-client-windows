@@ -125,7 +125,8 @@ void
 VideoView::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event)
-    fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
+    if(not overlay_->isDialogVisible())
+        fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
 }
 
 void
