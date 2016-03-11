@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -24,6 +24,8 @@
 #include "callmodel.h"
 #include "contactmethod.h"
 #include "person.h"
+
+#include <QDebug>
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
@@ -91,6 +93,17 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                                                    || contactMethod->contact()->isPlaceHolder());
         }
     });
+
+    transferDialog_->setAttribute(Qt::WA_TranslucentBackground);
+    connect(transferDialog_, &CallUtilsDialog::isVisble, [this] (bool visible) {
+        dialogVisible_ = visible;
+    });
+
+    qualityDialog_->setAttribute(Qt::WA_TranslucentBackground);
+    connect(qualityDialog_, &QualityDialog::isVisble, [this] (bool visible) {
+        dialogVisible_ = visible;
+    });
+
 }
 
 VideoOverlay::~VideoOverlay()
