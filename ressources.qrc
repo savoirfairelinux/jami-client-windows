@@ -32,5 +32,6 @@
         <file>images/icons/ic_share_white_24dp_2x.png</file>
         <file>images/background-light.png</file>
         <file>images/background-dark.png</file>
+        <file>images/spikeMask.png</file>
     </qresource>
 </RCC>
