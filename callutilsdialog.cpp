@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -25,21 +25,45 @@
 #include "contactmethod.h"
 #include "person.h"
 
+#include <QPaintEvent>
+#include <QBitmap>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
+#include <QScrollBar>
+
 CallUtilsDialog::CallUtilsDialog(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::CallUtilsDialog),
     confMode_(false),
     smartListDelegate_(nullptr),
-    notCurrentProxyModel_(nullptr)
+    notCurrentProxyModel_(nullptr),
+    spikeMask_(new QPixmap(":/images/spikeMask.png"))
 {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup | Qt::NoDropShadowWindowHint);
+
+    ui->spike->setMask(spikeMask_->mask());
+
+    effect_ = new QGraphicsOpacityEffect(this);
+    effect_->setOpacity(1.0);
+    setGraphicsEffect(effect_);
+    fadeAnim_ = new QPropertyAnimation(effect_,"opacity");
+    fadeAnim_->setDuration(fadeOverlayTime_);
+    fadeAnim_->setStartValue(0.0);
+    fadeAnim_->setEndValue(1.0);
+    fadeAnim_->setEasingCurve(QEasingCurve::InExpo);
+
+    ui->contactView->verticalScrollBar()->hide();
+
 }
 
 CallUtilsDialog::~CallUtilsDialog()
 {
+    delete effect_;
+    delete spikeMask_;
+    delete fadeAnim_;
     delete smartListDelegate_;
     delete notCurrentProxyModel_;
     delete ui;
@@ -59,6 +83,12 @@ CallUtilsDialog::showEvent(QShowEvent* event)
         smartListDelegate_ = new SmartListDelegate();
     }
     ui->contactView->setItemDelegate(smartListDelegate_);
+
+    emit(isVisble(true));
+
+    fadeAnim_->setDirection(QAbstractAnimation::Forward);
+    fadeAnim_->start();
+
 }
 
 void CallUtilsDialog::removeProxyModel()
@@ -71,6 +101,8 @@ void CallUtilsDialog::closeEvent(QCloseEvent* event)
     //This prevent a crash happening in Qt5.5 in QSortFilterProxyModel
     Q_UNUSED(event)
     removeProxyModel();
+
+    emit(isVisble(false));
 }
 
 void
@@ -134,4 +166,20 @@ CallUtilsDialog::on_contactView_doubleClicked(const QModelIndex& index)
             CallModel::instance().createJoinOrMergeConferenceFromCall(activeCall, call);
     }
     this->close();
+}
+
+void
+CallUtilsDialog::enterEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+
+    ui->contactView->verticalScrollBar()->show();
+}
+
+void
+CallUtilsDialog::leaveEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+
+    ui->contactView->verticalScrollBar()->hide();
 }

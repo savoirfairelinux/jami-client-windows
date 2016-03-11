@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -25,6 +25,9 @@
 #include "recentmodel.h"
 
 #include "smartlistdelegate.h"
+
+class QPropertyAnimation;
+class QGraphicsOpacityEffect;
 
 namespace Ui {
     class CallUtilsDialog;
@@ -59,6 +62,10 @@ public:
 
     void setConfMode(bool active);
 
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+
 //UI SLOTS
 protected slots:
     void showEvent(QShowEvent* event);
@@ -72,7 +79,15 @@ private:
     bool confMode_;
     SmartListDelegate* smartListDelegate_;
     NotCurrentProxyModel* notCurrentProxyModel_;
+    QPixmap* spikeMask_;
+    QPropertyAnimation* fadeAnim_;
+    constexpr static int fadeOverlayTime_ = 250; //msec
+    QGraphicsOpacityEffect* effect_;
 
     void removeProxyModel();
+
+signals:
+    void isVisble(bool visible);
+
 };
 
