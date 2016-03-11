@@ -54,7 +54,7 @@ QScrollBar::handle:vertical, QScrollBar::handle:horizontal{
     background: rgb(255, 255, 255);
 }
 
-SmartList, QListView#contactView{
+SmartList{
     background-color: white;
     border: none;
 }
@@ -125,12 +125,20 @@ QListView#listMessageView{
     border-top: 1px solid rgb(229, 229, 229);
 }
 
-QLineEdit#messageEdit, QLineEdit#imMessageEdit, QLineEdit#numberBar{
+QLineEdit#messageEdit, QLineEdit#imMessageEdit{
     border-color: rgb(0, 192, 212);
     border-radius: 5px;
     border-width: 1px;
     border-style: outset;
     background-color: rgb(255, 255, 255);
+}
+
+QLineEdit#numberBar{
+    border-color: rgba(0, 192, 212, 0.6);
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: outset;
+    background-color: rgba(255, 255, 255, 0.8)
 }
 
 QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton,
@@ -233,6 +241,26 @@ QDialog#WizardDialog, QWidget#welcomePage{
     background-image : url(:/images/background-light.png);
     background-repeat : repeat-x;
     background-position: bottom;
+}
+
+#CallUtilsDialog{
+    background: transparent;
+}
+
+#test{
+    background-color: rgba(250, 250, 250, 0.8);
+    border-color: rgba(25, 25, 25, 1.0);
+    border-radius: 8px;
+    border:solid 1px;
+}
+
+#titi{
+    background-color: rgba(250, 250, 250, 0.8);
+    border-color: rgba(25, 25, 25, 1.0);
+}
+
+#contactView{
+    background: transparent;
 }
 
 QWidget#messagingPage{

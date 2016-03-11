@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -91,6 +91,13 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                                                    || contactMethod->contact()->isPlaceHolder());
         }
     });
+
+    connect(transferDialog_, &CallUtilsDialog::changeVisibility, [this] (bool visible) {
+        callUtilsDialogVisible_ = visible;
+    });
+
+    transferDialog_->setAttribute(Qt::WA_TranslucentBackground);
+
 }
 
 VideoOverlay::~VideoOverlay()
