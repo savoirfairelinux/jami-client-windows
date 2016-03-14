@@ -31,6 +31,10 @@
 #include "video/rate.h"
 #include "video/previewmanager.h"
 
+#include "audio/settings.h"
+#include "audio/outputdevicemodel.h"
+#include "audio/inputdevicemodel.h"
+
 #include "media/recordingmodel.h"
 
 #include "accountserializationadapter.h"
@@ -151,6 +155,17 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     });
 
     ui->generalTabButton->setChecked(true);
+
+    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    auto outputModel = Audio::Settings::instance().outputDeviceModel();
+
+    ui->outputComboBox->setModel(outputModel);
+    ui->inputComboBox->setModel(inputModel);
+    ui->outputComboBox->setCurrentIndex(outputModel->selectionModel()->currentIndex().row());
+    ui->inputComboBox->setCurrentIndex(inputModel->selectionModel()->currentIndex().row());
+    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
+    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
+
 
 #ifndef ENABLE_AUTOUPDATE
     ui->checkUpdateButton->hide();
@@ -330,4 +345,18 @@ ConfigurationWidget::on_recordPath_clicked()
         Media::RecordingModel::instance().setRecordPath(dir);
         ui->recordPath->setText(dir);
     }
+}
+
+void
+ConfigurationWidget::outputIndexChanged(int index)
+{
+    auto outputModel = Audio::Settings::instance().outputDeviceModel();
+    outputModel->selectionModel()->setCurrentIndex(outputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}
+
+void
+ConfigurationWidget::inputIndexChanged(int index)
+{
+    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
 }
