@@ -63,7 +63,8 @@ private slots:
 private slots:
     void accountSelected(QItemSelection itemSel);
     void deviceIndexChanged(int index);
-
+    void outputIndexChanged(int index);
+    void inputIndexChanged(int index);
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;
