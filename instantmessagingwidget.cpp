@@ -72,6 +72,8 @@ InstantMessagingWidget::~InstantMessagingWidget()
 void
 InstantMessagingWidget::setMediaText(Call *call)
 {
+    ui->listMessageView->disconnect();
+    ui->messageEdit->disconnect();
     if (call != nullptr) {
         connect(call, SIGNAL(mediaAdded(Media::Media*)),
                 this, SLOT(mediaAdd(Media::Media*)));
@@ -97,9 +99,6 @@ InstantMessagingWidget::setMediaText(Call *call)
                 }
             });
         }
-    } else {
-        ui->listMessageView->disconnect();
-        ui->messageEdit->disconnect();
     }
 }
 
