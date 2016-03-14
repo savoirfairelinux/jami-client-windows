@@ -389,10 +389,7 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
 
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
-        ui->instantMessagingWidget->setMediaText(nullptr);
         RecentModel::instance().selectionModel()->clear();
-    } else if (call->state() == Call::State::CURRENT) {
-        ui->instantMessagingWidget->setMediaText(actualCall_);
     }
     callStateToView(call);
 }
@@ -458,6 +455,7 @@ void CallWidget::callStateToView(Call* value)
                 ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::CURRENT:
+        case Call::State::CONFERENCE:
         case Call::State::HOLD:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
@@ -485,7 +483,7 @@ CallWidget::setActualCall(Call* value)
     actualCall_ = value;
     CallModel::instance().selectCall(value);
     ui->videoWidget->pushRenderer(value);
-
+    ui->instantMessagingWidget->setMediaText(actualCall_);
     callStateToView(value);
 }
 
