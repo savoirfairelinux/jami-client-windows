@@ -20,6 +20,7 @@
 #include "ui_videooverlay.h"
 
 #include "contactpicker.h"
+#include "dialpaddialog.h"
 
 #include "callmodel.h"
 #include "contactmethod.h"
@@ -210,4 +211,11 @@ void
 VideoOverlay::on_recButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::RECORD);
+}
+
+void
+VideoOverlay::on_dialpadButton_clicked()
+{
+    DialpadDialog* dialpad = new DialpadDialog();
+    dialpad->show();
 }

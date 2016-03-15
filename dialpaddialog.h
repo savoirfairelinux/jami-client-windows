@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,54 +18,26 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QMenu>
-
-#include "useractionmodel.h"
-
-#include "callutilsdialog.h"
-#include "qualitydialog.h"
+#include <QDialog>
 
 namespace Ui {
-class VideoOverlay;
+class DialpadDialog;
 }
 
-class VideoOverlay : public QWidget
+class DialpadDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit VideoOverlay(QWidget* parent = 0);
-    ~VideoOverlay();
+    explicit DialpadDialog(QWidget* parent = 0);
+    ~DialpadDialog();
 
-public:
-    void setName(const QString& name);
-    void setTime(const QString& time);
-    inline bool isDialogVisible(){ return dialogVisible_; };
+protected:
+    bool eventFilter(QObject* target, QEvent* event);
 
-//UI SLOTS
 private slots:
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
-    void on_holdButton_clicked();
-    void on_joinButton_clicked();
-    void on_noMicButton_clicked();
-    void on_noVideoButton_clicked();
-    void on_qualityButton_clicked();
-    void on_addToContactButton_clicked();
-    void on_recButton_clicked();
-    void on_dialpadButton_clicked();
+    void onButtonClicked();
 
 private:
-    Ui::VideoOverlay* ui;
-    UserActionModel* actionModel_;
-    CallUtilsDialog* transferDialog_;
-    QualityDialog* qualityDialog_;
-    bool dialogVisible_ = false;
-
-signals:
-    void setChatVisibility(bool visible);
+    Ui::DialpadDialog *ui;
 };
-
