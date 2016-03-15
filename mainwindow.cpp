@@ -80,7 +80,14 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 #endif
 
-    resize(1054, 600);
+    QSettings settings;
+    QVariant size = settings.value(SettingsKey::savedSize);
+    QVariant pos = settings.value(SettingsKey::savedPos);
+    if (size.isValid() && pos.isValid()) {
+        resize(size.toSize());
+        move(pos.toPoint());
+    } else
+        resize(1054, 600);
 
 #ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
@@ -192,5 +199,8 @@ MainWindow::closeEvent(QCloseEvent* event)
     if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
         this->hide();
         event->ignore();
+    } else {
+        settings.setValue(SettingsKey::savedSize, size());
+        settings.setValue(SettingsKey::savedPos, pos());
     }
 }
