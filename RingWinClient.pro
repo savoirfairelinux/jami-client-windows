@@ -65,7 +65,8 @@ SOURCES += main.cpp\
     smartlist.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
-    qualitydialog.cpp
+    qualitydialog.cpp \
+    dialpaddialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -99,7 +100,8 @@ HEADERS  += mainwindow.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
-    ringthemeutils.h
+    ringthemeutils.h \
+    dialpaddialog.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -119,7 +121,8 @@ FORMS    += mainwindow.ui \
     contactmethodpicker.ui \
     callutilsdialog.ui \
     combar.ui \
-    qualitydialog.ui
+    qualitydialog.ui \
+    dialpaddialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 
