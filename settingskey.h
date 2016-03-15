@@ -22,7 +22,7 @@ namespace SettingsKey {
 
 constexpr static char closeOrMinimized[] = "closeOrMin";
 constexpr static char autoAnswer[] = "autoAnswer";
-
+constexpr static char savedSize[] = "savedSize";
 }
 
 #define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)

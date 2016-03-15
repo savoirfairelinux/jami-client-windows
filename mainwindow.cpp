@@ -80,7 +80,12 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 #endif
 
-    resize(1054, 600);
+    QSettings settings;
+    QVariant size = settings.value(SettingsKey::savedSize);
+    if (size.isValid()) {
+        resize(size.toSize());
+    } else
+        resize(1054, 600);
 
 #ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
