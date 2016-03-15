@@ -36,5 +36,6 @@
         <file>images/icons/ic_arrow_drop_up_black_9dp_2x.png</file>
         <file>images/icons/ic_arrow_tab_next_black_9dp_2x.png</file>
         <file>images/icons/ic_arrow_tab_previous_black_9dp_2x.png</file>
+        <file>images/icons/ic_dialpad_white_24dp_2x.png</file>
     </qresource>
 </RCC>
