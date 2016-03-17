@@ -22,6 +22,30 @@
       "revId": "63a65561db3054fa880a4e7784e80b16ac7b47ff",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_223e8fb9",
+        "filename": "globalsystemtray.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-17T14:48:45Z",
+      "side": 1,
+      "message": "That\u0027s a singleton we want it to be instantiated at first call and then valid during all the application lifetime (and to be the same instance) so we let the system take care of reclaiming the memory at exit",
+      "parentUuid": "ba65a107_bf763805",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "63a65561db3054fa880a4e7784e80b16ac7b47ff",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
