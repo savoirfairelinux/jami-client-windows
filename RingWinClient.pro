@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets svg xml
 
 win32: QT += winextras
 
-VERSION = 0.3.0
+VERSION = 1.0.0
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 
 NIGHTLY_VERSION =$$system(date +'%Y%m%d')
