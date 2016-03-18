@@ -82,6 +82,11 @@ AccountDetails::AccountDetails(QWidget *parent) :
             currentAccount_->cipherModel()->setUseDefault(false);
         }
     });
+
+    connect(ui->lrcfg_alias, &QLineEdit::textEdited, [=](const QString& newAlias) {
+        if (currentAccount_ && currentAccount_->protocol() == Account::Protocol::RING)
+            currentAccount_->setDisplayName(newAlias);
+    });
 }
 
 AccountDetails::~AccountDetails()
