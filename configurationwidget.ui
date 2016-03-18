@@ -200,7 +200,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="generalPage">
       <layout class="QHBoxLayout" name="verticalLayout_2">
@@ -463,28 +463,15 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="recordPath">
+            <widget class="RingButton" name="recordPath">
              <property name="font">
               <font>
                <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
-             <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
-             </property>
              <property name="text">
               <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="ressources.qrc">
-               <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>18</width>
-               <height>18</height>
-              </size>
              </property>
             </widget>
            </item>
@@ -1107,6 +1094,11 @@
    <extends>QWidget</extends>
    <header>videowidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RingButton</class>
+   <extends>QPushButton</extends>
+   <header>ringbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
