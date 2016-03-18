@@ -421,20 +421,6 @@ QTabBar::tab:hover{
     border-color:#4dc6d6;
 }
 
-QPushButton#recordPath, QPushButton#lrcfg_tlsCaListCertificate, QPushButton#lrcfg_tlsCertificate,
-QPushButton#lrcfg_tlsPrivateKeyCertificate, QPushButton#tlsProtocoCombo, QPushButton#keyExchangeModelCombo{
-    color: rgb(77, 77, 77);
-    border-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #414141;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    font: 11pt "Sans Serif";
-    padding: 2px;
-}
-
 QSpinBox#historyDaySettingsSpinBox, QSpinBox#lrcfg_tlsNegotiationTimeoutSec, QSpinBox#lrcfg_registrationExpire,
 QSpinBox#lrcfg_localPort, QSpinBox#lrcfg_publishedPort, QSpinBox#lrcfg_audioPortMin, QSpinBox#lrcfg_audioPortMax,
 QSpinBox#lrcfg_videoPortMin, QSpinBox#lrcfg_videoPortMax, QSpinBox#intervalUpdateCheckSpinBox{
