@@ -76,7 +76,7 @@ MainWindow::MainWindow(QWidget* parent) :
     if (sysMenu != NULL) {
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
         QString aboutTitle = tr("About");
-        ::AppendMenuA(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdString().c_str());
+        ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
     }
 #endif
 
