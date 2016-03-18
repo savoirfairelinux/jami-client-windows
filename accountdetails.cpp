@@ -40,9 +40,9 @@ AccountDetails::AccountDetails(QWidget *parent) :
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
-    connect(ui->lrcfg_tlsCaListCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
-    connect(ui->lrcfg_tlsCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
-    connect(ui->lrcfg_tlsPrivateKeyCertificate, SIGNAL(clicked(bool)), this, SLOT(onCertButtonClicked()));
+    connect(ui->lrcfg_tlsCaListCertificate, &RingButton::clicked, this, &AccountDetails::onCertButtonClicked );
+    connect(ui->lrcfg_tlsCertificate, &RingButton::clicked, this, &AccountDetails::onCertButtonClicked );
+    connect(ui->lrcfg_tlsPrivateKeyCertificate, &RingButton::clicked, this, &AccountDetails::onCertButtonClicked );
 
     connect(&RingtoneModel::instance(),
             &RingtoneModel::dataChanged,
