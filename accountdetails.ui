@@ -92,7 +92,7 @@
             <x>0</x>
             <y>0</y>
             <width>843</width>
-            <height>859</height>
+            <height>866</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1135,9 +1135,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>812</width>
-            <height>981</height>
+            <y>-53</y>
+            <width>811</width>
+            <height>919</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1993,8 +1993,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>830</width>
-            <height>913</height>
+            <width>829</width>
+            <height>915</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -2126,7 +2126,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QPushButton" name="lrcfg_tlsCaListCertificate">
+               <widget class="RingButton" name="lrcfg_tlsCaListCertificate">
                 <property name="minimumSize">
                  <size>
                   <width>500</width>
@@ -2142,15 +2142,8 @@
                 <property name="focusPolicy">
                  <enum>Qt::WheelFocus</enum>
                 </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
                 <property name="text">
                  <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
                 </property>
                </widget>
               </item>
@@ -2170,7 +2163,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QPushButton" name="lrcfg_tlsCertificate">
+               <widget class="RingButton" name="lrcfg_tlsCertificate">
                 <property name="minimumSize">
                  <size>
                   <width>500</width>
@@ -2183,15 +2176,8 @@
                   <height>30</height>
                  </size>
                 </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
                 <property name="text">
                  <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
                 </property>
                </widget>
               </item>
@@ -2210,33 +2196,7 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QPushButton" name="lrcfg_tlsPrivateKeyCertificate">
-                <property name="minimumSize">
-                 <size>
-                  <width>500</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>500</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
+              <item row="4" column="0">
                <widget class="QLabel" name="label_23">
                 <property name="font">
                  <font>
@@ -2251,7 +2211,7 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
+              <item row="4" column="1">
                <widget class="QLineEdit" name="lrcfg_tlsPassword">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -2273,6 +2233,25 @@
                 </property>
                 <property name="echoMode">
                  <enum>QLineEdit::Password</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="RingButton" name="lrcfg_tlsPrivateKeyCertificate">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -2411,6 +2390,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RingButton</class>
+   <extends>QPushButton</extends>
+   <header>ringbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
