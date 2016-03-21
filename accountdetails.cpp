@@ -24,7 +24,7 @@
 #include <QPushButton>
 
 #include "accountdetails.h"
-#include "audio/codecmodel.h"
+#include "codecmodel.h"
 #include "protocolmodel.h"
 #include "certificate.h"
 #include "ciphermodel.h"

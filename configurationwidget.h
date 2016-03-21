@@ -28,7 +28,7 @@
 
 #include "accountmodel.h"
 #include "video/devicemodel.h"
-#include "audio/codecmodel.h"
+#include "codecmodel.h"
 
 namespace Ui {
 class ConfigurationWidget;

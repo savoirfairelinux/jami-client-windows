@@ -24,7 +24,7 @@
 #include <QTableWidgetItem>
 
 #include "accountmodel.h"
-#include "audio/codecmodel.h"
+#include "codecmodel.h"
 #include "account.h"
 
 class QPushButton;
