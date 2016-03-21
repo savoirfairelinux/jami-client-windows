@@ -22,7 +22,7 @@
 
 #include "callmodel.h"
 #include "account.h"
-#include "audio/codecmodel.h"
+#include "codecmodel.h"
 
 #include <QSortFilterProxyModel>
 
