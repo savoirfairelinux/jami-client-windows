@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_95cc7337",
+        "filename": "ringbutton.ui",
+        "patchSetId": 10
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 83
+      },
+      "writtenOn": "2016-03-23T14:09:54Z",
+      "side": 1,
+      "message": "qtdesigner work...",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 38
+      },
+      "revId": "87d648eab72fc7a9625a0db9e62da7441efd342c",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
