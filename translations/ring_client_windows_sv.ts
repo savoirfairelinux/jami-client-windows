@@ -1,28 +1,28 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="eo" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation>Pri</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation>Agnosko</translation>
+        <translation>Tack till</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Samuel de Champlain</source>
-        <translation>Eldono : Samuel de Champlain</translation>
+        <translation>Publicering : Samuel de Champlain</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>La Microsoft Windows kliento por Ring.
-Ring estas sekura kaj disa komunikprogramo.</translation>
+        <translation>Microsoft Windows-klient för Ring.
+Ring är säkrad och distribuerad kommunikationsmjukvara.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -32,22 +32,22 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation>versio</translation>
+        <translation>version</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation>Kreita de:</translation>
+        <translation>Skapad av:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="49"/>
         <source>Artwork by:</source>
-        <translation>Grafiko de:</translation>
+        <translation>Bildkonst av:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="53"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Surbaze de la SFLPhone projekto</translation>
+        <translation>Baserad på SFLPhone-projektet</translation>
     </message>
 </context>
 <context>
@@ -55,12 +55,12 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation>Agordoj</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="42"/>
         <source>General</source>
-        <translation>Ĝenerala</translation>
+        <translation>Allmänt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="89"/>
@@ -70,59 +70,59 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="121"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="101"/>
         <source>Alias</source>
-        <translation>Kromnomo</translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="165"/>
         <source>Parameters</source>
-        <translation>Parametroj</translation>
+        <translation>Parametrar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="183"/>
         <source>Hostname</source>
-        <translation>Nomo de gastiga komputilo</translation>
+        <translation>Värdnamn</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
         <location filename="../accountdetails.ui" line="925"/>
         <source>Username</source>
-        <translation>Uzantnomo</translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="209"/>
         <location filename="../accountdetails.ui" line="944"/>
         <source>Password</source>
-        <translation>Pasvorto</translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Proxy</source>
-        <translation>Prokura servilo</translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="264"/>
         <source>Voicemail number</source>
-        <translation>Parolita mesaĝo</translation>
+        <translation>Nummer till röstbrevlåda</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="284"/>
         <source>Auto-answer calls</source>
-        <translation>Aŭtomate respondi al alvokojn</translation>
+        <translation>Besvara samtal automatiskt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="294"/>
         <source>UPnP enabled</source>
-        <translation>UPnP ŝaltita</translation>
+        <translation>UPnP aktiverad</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="301"/>
         <source>DTMF tone type</source>
-        <translation>Tipo de du-tona multfrekvenco</translation>
+        <translation>DTMF-tontyp</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="310"/>
@@ -137,27 +137,27 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="398"/>
         <source>Allow Call From Unknown</source>
-        <translation>Permesi alvokojn de nekonataj</translation>
+        <translation>Tillåt samtal från okänd</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="412"/>
         <source>Allow Call From Contact</source>
-        <translation>Permesi alvokojn de kontaktoj</translation>
+        <translation>Tillåt samtal från kontakt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <source>Allow Call From History</source>
-        <translation>Permesi alvokojn de historio</translation>
+        <translation>Tillåt samtal från historik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="388"/>
         <source>Ring Account Settings</source>
-        <translation>Agordoj de Ring konto</translation>
+        <translation>Ring-kontoinställningar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>Audio</source>
-        <translation>Aŭdio</translation>
+        <translation>Ljud</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="534"/>
@@ -167,93 +167,93 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="540"/>
         <source>Enable Video</source>
-        <translation>Ŝalti videon</translation>
+        <translation>Aktivera video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="621"/>
         <source>Advanced</source>
-        <translation>Speciala</translation>
+        <translation>Avancerat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="648"/>
         <source>Registration</source>
-        <translation>Registriĝo</translation>
+        <translation>Registrering</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="660"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Tempolimo de registriĝo (sekunde):</translation>
+        <translation>Tidsgräns för registrering (sekunder):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="688"/>
         <source>Network Interface</source>
-        <translation>Reta interfaco</translation>
+        <translation>Nätverksgränssnitt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="697"/>
         <source>Local Port:</source>
-        <translation>Loka pordo:</translation>
+        <translation>Lokal port:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="745"/>
         <source>Published Adress</source>
-        <translation>Publika adreso</translation>
+        <translation>Publicerad adress</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="760"/>
         <source>Same as local parameters</source>
-        <translation>Kiel lokaj parametroj</translation>
+        <translation>Samma som lokala parametrar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="773"/>
         <source>Set published address and port:</source>
-        <translation>Agordi publikan adreson kaj pordon:</translation>
+        <translation>Ange publicerad adress och port:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="791"/>
         <source>Address</source>
-        <translation>Adreso</translation>
+        <translation>Adress</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="814"/>
         <source>Port</source>
-        <translation>Pordo</translation>
+        <translation>Port</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="860"/>
         <source>Use STUN</source>
-        <translation>Uzi STUN</translation>
+        <translation>Använd STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="876"/>
         <location filename="../accountdetails.ui" line="909"/>
         <source>Server URL</source>
-        <translation>URL de servilo</translation>
+        <translation>Serveradress</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="893"/>
         <source>Use TURN</source>
-        <translation>Uzi TURN</translation>
+        <translation>Använd TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="960"/>
         <source>Realm</source>
-        <translation>Regno</translation>
+        <translation>Område</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="983"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>Intertraktado de SDP seanco (ICE retropaŝo)</translation>
+        <translation>SDP sessionsförhandling (ICE-reserv)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="996"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Tiuj ĉi agordoj estas uzataj nur dum intertraktado de SDP seanco, se ICE ne estas subtenata de la servilo aŭ samtavolano.</translation>
+        <translation>Dessa inställningar används endast under SDP-sessionsförhandling, om ICE inte stöds av server eller deltagare.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1012"/>
         <source>Audio RTP Port Range</source>
-        <translation>Porda amplekso de aŭdia RTP</translation>
+        <translation>Audio RTP portintervall</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1027"/>
@@ -265,122 +265,122 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
         <location filename="../accountdetails.ui" line="1050"/>
         <location filename="../accountdetails.ui" line="1135"/>
         <source>Max</source>
-        <translation>Maks</translation>
+        <translation>Max</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1097"/>
         <source>Video RTP Port Range</source>
-        <translation>Porda amplekso de video RTP</translation>
+        <translation>Video RTP portintervall</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1187"/>
         <source>Security</source>
-        <translation>Sekurigo</translation>
+        <translation>Säkerhet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1214"/>
         <source>Media Stream Encryption</source>
-        <translation>Ĉifrado de aŭdvidfluoj</translation>
+        <translation>Mediaströmkryptering</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation>Ĉifri aŭdvidfluon (SRTP)</translation>
+        <translation>Kryptera mediaströmmar (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1230"/>
         <source>Key exchange protocol</source>
-        <translation>Protokolo de elĉifrigila interŝanĝo</translation>
+        <translation>Nyckelutbytesprotokoll</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1252"/>
         <source>Fallback on RTP on encryption failure</source>
-        <translation>Retropaŝo al RTP okaze de ĉifrada fiasko</translation>
+        <translation>Fall tillbaka på RTP vid krypteringsfel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1265"/>
         <source>Negotiation Encryption</source>
-        <translation>Intertraktada ĉifrado</translation>
+        <translation>Förhandlingskryptering</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1272"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Ĉifri intertraktadon (TLS)</translation>
+        <translation>Kryptera förhandling (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1281"/>
         <source>CA certificate</source>
-        <translation>CA atestilo</translation>
+        <translation>CA-certificat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1291"/>
         <source>User certificate</source>
-        <translation>Uzanta atestilo</translation>
+        <translation>Användarcertifikat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1301"/>
         <source>Private key</source>
-        <translation>Privata elĉifrilo</translation>
+        <translation>Privat nyckel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1311"/>
         <source>Private key password</source>
-        <translation>Pasvorto de privata elĉifrigilo</translation>
+        <translation>Lösenord för privat nyckel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1321"/>
         <source>TLS protocol method</source>
-        <translation>Metodo de TLS protokolo</translation>
+        <translation>TLS-protokollmetod</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1331"/>
         <source>Outgoing TLS server name</source>
-        <translation>Nomo de elira TLS servilo</translation>
+        <translation>Utgående TLS-servernamn</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1341"/>
         <source>Negotiation timeout (seconds)</source>
-        <translation>Intertraktada tempolimo (sekunde)</translation>
+        <translation>Tidsgräns för förhandling (sekunder)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1459"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation>Kontroli envenajn atestilojn (servilflanke)</translation>
+        <translation>Verifiera inkommande certifikat (serversidan)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1469"/>
         <source>Verify answer certificates (client side)</source>
-        <translation>Kontroli respondajn atestilojn (klientflanke)</translation>
+        <translation>Verifiera svarscertifikat (klientsidan)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1479"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Bezoni atestilon por envenaj TLS konektoj</translation>
+        <translation>Kräv certifikat för inkommande TLS-anslutningar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1497"/>
         <source>Cipher</source>
-        <translation>Ĉifro</translation>
+        <translation>Chiffer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1508"/>
         <source>Use default ciphers</source>
-        <translation>Uzi defaŭltajn ĉifrojn</translation>
+        <translation>Använd standardshiffer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1518"/>
         <source>User custom cipher list</source>
-        <translation>Uzi propran listo de ĉifrojn</translation>
+        <translation>Använd anpassad chifferlista</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
-        <translation>Elektu dosieron</translation>
+        <translation>Välj fil</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="182"/>
         <source>Files (*)</source>
-        <translation>Dosieroj (*)</translation>
+        <translation>Filer (*)</translation>
     </message>
 </context>
 <context>
@@ -388,66 +388,66 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation>Tio ĉi estas via RingID.
-Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
+        <translation>Detta är ditt Ring-ID.
+Kopiera och dela det med dina vänner!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="166"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation>Ring estas sekura kaj disa voĉa, videa kaj retbabila komunika platformo kiu ne bezonas centran servilon kaj restigas la povon de privateco ĉe la uzanto.</translation>
+        <translation>Ring är en säker och distribuerad plattform för röst-, video- och chattkommunikation, som inte kräver någon central server och som lägger kontrollen över integritet och privatliv i användarens händer.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="258"/>
         <source>Cancel</source>
-        <translation>Rezigni</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="292"/>
         <source>Call</source>
-        <translation>Alvoki</translation>
+        <translation>Ring upp</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="306"/>
         <source>Accept</source>
-        <translation>Akcepti</translation>
+        <translation>Acceptera</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="317"/>
         <source>Refuse</source>
-        <translation>Rifuzi</translation>
+        <translation>Neka</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation>Serĉu / Enmetu numeron</translation>
+        <translation>Sök / Ange nummer</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
         <source>Copy number</source>
-        <translation>Kopii numeron</translation>
+        <translation>Kopiera nummer</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="139"/>
         <source>Add to contact</source>
-        <translation>Aldoni al kontakto</translation>
+        <translation>Lägg till i kontakt</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="186"/>
         <location filename="../callwidget.cpp" line="210"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation>NENIU RING KONTO TROVITA</translation>
+        <translation>INGET RING-KONTO HITTADES</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="226"/>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>Alvoko de %1</translation>
+        <translation>Samtal från %1</translation>
     </message>
 </context>
 <context>
@@ -455,47 +455,47 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Agordoj</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="36"/>
         <source>General</source>
-        <translation>Ĝenerala</translation>
+        <translation>Allmänt</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="51"/>
         <source>History Settings</source>
-        <translation>Historia agordoj</translation>
+        <translation>Historikinställningar</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="60"/>
         <source>Keep History for (days)</source>
-        <translation>Savu historion dum (tage)</translation>
+        <translation>Spara historiken i (dagar)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="79"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Agordu al 0 por senlima historio)</translation>
+        <translation>(Ange 0 för obegränsad historik)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="104"/>
         <source>Clear History</source>
-        <translation>Vakigi historion</translation>
+        <translation>Rensa historik</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Ringtones Selection</source>
-        <translation>Elektaĵo de vokosono</translation>
+        <translation>Ringtoner</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation>Diversaj agordoj</translation>
+        <translation>Div. inställningar</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation>Ne ĉesu per fermi fenestron</translation>
+        <translation>Minimera istället för att avsluta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -505,22 +505,22 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="231"/>
         <source>Device Selection</source>
-        <translation>Selekto de aparato</translation>
+        <translation>Enheter</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="271"/>
         <source>Device</source>
-        <translation>Aparato</translation>
+        <translation>Enhet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Resolution</source>
-        <translation>Distingivo</translation>
+        <translation>Upplösning</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
         <source>Camera Preview</source>
-        <translation>Aspekto de videokamerao</translation>
+        <translation>Kameraförhandsgranskning</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="371"/>
@@ -530,17 +530,17 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="448"/>
         <source>Launch Ring on Startup</source>
-        <translation>Lanĉi Ring post startigo</translation>
+        <translation>Starta Ring vid systemstart</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="177"/>
         <source>New Account</source>
-        <translation>Nova konto</translation>
+        <translation>Nytt konto</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="198"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation>Ĉu vi certe volas vakigi vian tutan historion?</translation>
+        <translation>Vill du verkligen rensa bort all din historik?</translation>
     </message>
 </context>
 <context>
@@ -548,7 +548,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../contactdelegate.cpp" line="87"/>
         <source>&lt;Multiple contact methods&gt;</source>
-        <translation>&lt;Multiple contact methods&gt;</translation>
+        <translation>&lt;Flera kontaktmetoder&gt;</translation>
     </message>
 </context>
 <context>
@@ -556,32 +556,32 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Ekzistanta kontakto</translation>
+        <translation>Befintlig kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation>Serĉi...</translation>
+        <translation>Sök...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation>Krei novan kontakton</translation>
+        <translation>Skapa ny kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation>Nova kontakto</translation>
+        <translation>Ny kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation>Entajpu nomon en tie ĉi...</translation>
+        <translation>Ange ett namn här...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Krei</translation>
+        <translation>Skapa</translation>
     </message>
 </context>
 <context>
@@ -589,27 +589,27 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Send text message...</source>
-        <translation>Sendu tekstmesaĝon...</translation>
+        <translation>Skicka textmeddelande...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="48"/>
         <source>Send</source>
-        <translation>Sendi</translation>
+        <translation>Skicka</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
         <source>Copy</source>
-        <translation>Kopii</translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
-        <translation>Vidigi daton</translation>
+        <translation>Visa datum</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="53"/>
         <source>Display author</source>
-        <translation>Vidigi aŭtoron</translation>
+        <translation>Visa deltagare</translation>
     </message>
 </context>
 <context>
@@ -622,7 +622,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../mainwindow.cpp" line="77"/>
         <source>About</source>
-        <translation>Pri</translation>
+        <translation>Om</translation>
     </message>
 </context>
 <context>
@@ -630,7 +630,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../navbar.ui" line="54"/>
         <source>Done</source>
-        <translation>Finita</translation>
+        <translation>Klar</translation>
     </message>
 </context>
 <context>
@@ -638,22 +638,22 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialogo</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation>Transmeto</translation>
+        <translation>Överföring</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation>aŭ tajpu numeron...</translation>
+        <translation>eller ange nummer...</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation>Aktivaj alvokoj</translation>
+        <translation>Aktuella samtal</translation>
     </message>
 </context>
 <context>
@@ -661,12 +661,12 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../videooverlay.ui" line="157"/>
         <source>Hold</source>
-        <translation>Deteni</translation>
+        <translation>Parkera</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="167"/>
         <source>Chat</source>
-        <translation>Retbabilo</translation>
+        <translation>Chatt</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="150"/>
@@ -676,7 +676,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../videooverlay.ui" line="29"/>
         <source>Hangup</source>
-        <translation>Finigi alvokon</translation>
+        <translation>Lägg på</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="36"/>
@@ -686,17 +686,17 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation>Transmeto</translation>
+        <translation>Överför</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
         <source>Mute Audio</source>
-        <translation>Silentigi aŭdion</translation>
+        <translation>Pausa ljud</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="45"/>
         <source>Mute Video</source>
-        <translation>Kaŝi videon</translation>
+        <translation>Pausa video</translation>
     </message>
 </context>
 <context>
@@ -704,17 +704,17 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../videoview.cpp" line="181"/>
         <source>Share entire screen</source>
-        <translation>Kunhavigi tutan ekranon</translation>
+        <translation>Dela hela skärmen</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="186"/>
         <source>Share screen area</source>
-        <translation>Kunhavigi areon de ekrano</translation>
+        <translation>Dela skärmområde</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="192"/>
         <source>Share file</source>
-        <translation>Kunhavigi dosieron</translation>
+        <translation>Dela fil</translation>
     </message>
 </context>
 <context>
@@ -722,17 +722,17 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="52"/>
         <source>Please wait while we create your account.</source>
-        <translation>Bonvole atendu dum ni kreas vian konton.</translation>
+        <translation>Vänta medan ditt konto skapas.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation>Aliĝi en Ring</translation>
+        <translation>Anslut till Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation>Elektu vian uzantnomon:</translation>
+        <translation>Välj ditt användarnamn:</translation>
     </message>
 </context>
 </TS>

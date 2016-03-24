@@ -27,7 +27,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
         <source>Windows Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring para Windows</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
@@ -238,7 +238,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="960"/>
         <source>Realm</source>
-        <translation type="unfinished"/>
+        <translation>Dominio</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="983"/>
@@ -295,7 +295,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1252"/>
         <source>Fallback on RTP on encryption failure</source>
-        <translation type="unfinished"/>
+        <translation>Respaldo en RTP si falla el cifrado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1265"/>
@@ -360,12 +360,12 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1497"/>
         <source>Cipher</source>
-        <translation type="unfinished"/>
+        <translation>Cifrado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1508"/>
         <source>Use default ciphers</source>
-        <translation type="unfinished"/>
+        <translation>Usar cifrados por defecto</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1518"/>
@@ -375,12 +375,12 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="180"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Examinar</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="182"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Ficheros (*)</translation>
     </message>
 </context>
 <context>
@@ -388,7 +388,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
@@ -638,7 +638,7 @@ Copialo y compártelo con tus amigos!</translation>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Mensaje</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>

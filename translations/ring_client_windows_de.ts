@@ -388,7 +388,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="76"/>
@@ -425,7 +425,7 @@ Kopieren sie sie und teilen sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation type="unfinished"/>
+        <translation>Kontakte suchen oder Nummer eingeben</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="133"/>
@@ -490,12 +490,12 @@ Kopieren sie sie und teilen sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"/>
+        <translation>Andere Einstellungen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Beim Schließen minimiert bleiben</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -638,7 +638,7 @@ Kopieren sie sie und teilen sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="23"/>
@@ -648,7 +648,7 @@ Kopieren sie sie und teilen sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation type="unfinished"/>
+        <translation>oder Nummer eingeben...</translation>
     </message>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
@@ -727,12 +727,12 @@ Kopieren sie sie und teilen sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="937"/>
         <source>Join the Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring beitreten</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1000"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"/>
+        <translation>Nutzernamen wählen:</translation>
     </message>
 </context>
 </TS>

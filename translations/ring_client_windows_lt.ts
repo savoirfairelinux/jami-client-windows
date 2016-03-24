@@ -137,22 +137,22 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="398"/>
         <source>Allow Call From Unknown</source>
-        <translation>Leisti Skambučius Nuo Nepažįstamųjų</translation>
+        <translation>Leisti skambučius nuo nepažįstamųjų</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="412"/>
         <source>Allow Call From Contact</source>
-        <translation>Leisti Skambučius Nuo Kontaktų</translation>
+        <translation>Leisti skambučius nuo kontaktų</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <source>Allow Call From History</source>
-        <translation>Leisti Skambučius Iš Istorijos</translation>
+        <translation>Leisti skambučius iš istorijos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="388"/>
         <source>Ring Account Settings</source>
-        <translation>Ring Paskyros Nustatymai</translation>
+        <translation>Ring paskyros nustatymai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
@@ -167,7 +167,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="540"/>
         <source>Enable Video</source>
-        <translation>Įjungti Vaizdą</translation>
+        <translation>Įjungti vaizdą</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="621"/>
@@ -187,17 +187,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="688"/>
         <source>Network Interface</source>
-        <translation>Tinklo Sąsaja</translation>
+        <translation>Tinklo sąsaja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="697"/>
         <source>Local Port:</source>
-        <translation>Vietinis Prievadas:</translation>
+        <translation>Vietinis prievadas:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="745"/>
         <source>Published Adress</source>
-        <translation>Paskelbtas Adresas</translation>
+        <translation>Paskelbtas adresas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="760"/>
@@ -243,7 +243,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="983"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>SDP Seanso Derėjimasis (ICE Surogatas)</translation>
+        <translation>SDP seanso derėjimasis (ICE surogatas)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="996"/>
@@ -253,7 +253,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1012"/>
         <source>Audio RTP Port Range</source>
-        <translation>Garso RTP Prievadų Rėžis</translation>
+        <translation>Garso RTP prievadų rėžis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1027"/>
@@ -270,7 +270,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1097"/>
         <source>Video RTP Port Range</source>
-        <translation>Vaizdo RTP Prievadų Rėžis</translation>
+        <translation>Vaizdo RTP prievadų rėžis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1187"/>
@@ -280,12 +280,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1214"/>
         <source>Media Stream Encryption</source>
-        <translation>Medija Srauto Šifravimas</translation>
+        <translation>Medija srauto šifravimas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation>Šifruoti medija srauto (SRTP)</translation>
+        <translation>Šifruoti medija srautą (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1230"/>
@@ -300,7 +300,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1265"/>
         <source>Negotiation Encryption</source>
-        <translation>Derėjimosi Užšifravimas</translation>
+        <translation>Derėjimosi šifravimas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1272"/>
@@ -465,12 +465,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="51"/>
         <source>History Settings</source>
-        <translation>Istorijos Nustatymai</translation>
+        <translation>Istorijos nustatymai</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="60"/>
         <source>Keep History for (days)</source>
-        <translation>Laikyti Istoriją (dienų)</translation>
+        <translation>Laikyti istoriją (dienų)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="79"/>
@@ -480,12 +480,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="104"/>
         <source>Clear History</source>
-        <translation>Išvalyti Istoriją</translation>
+        <translation>Išvalyti istoriją</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Ringtones Selection</source>
-        <translation>Skambučio Melodijų Pasirinkimas</translation>
+        <translation>Skambučio melodijų pasirinkimas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="158"/>
@@ -495,7 +495,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="165"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Užvėrus, palikti suskleistą</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="189"/>
@@ -505,7 +505,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="231"/>
         <source>Device Selection</source>
-        <translation>Įrenginio Pasirinkimas</translation>
+        <translation>Įrenginio pasirinkimas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="271"/>
@@ -520,7 +520,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="345"/>
         <source>Camera Preview</source>
-        <translation>Kameros Peržiūra</translation>
+        <translation>Kameros peržiūra</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="371"/>
@@ -535,7 +535,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="177"/>
         <source>New Account</source>
-        <translation>Nauja Paskyra</translation>
+        <translation>Nauja paskyra</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="198"/>
@@ -556,7 +556,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Esami Kontaktai</translation>
+        <translation>Esami kontaktai</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
@@ -571,7 +571,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation>Naujas Kontaktas</translation>
+        <translation>Naujas kontaktas</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
@@ -581,7 +581,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Kurti</translation>
+        <translation>Sukurti</translation>
     </message>
 </context>
 <context>
@@ -653,7 +653,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation>Esami Skambučiai</translation>
+        <translation>Esami skambučiai</translation>
     </message>
 </context>
 <context>
@@ -691,12 +691,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../videooverlay.cpp" line="38"/>
         <source>Mute Audio</source>
-        <translation>Nutildyti Garsą</translation>
+        <translation>Išjungti garsą</translation>
     </message>
     <message>
         <location filename="../videooverlay.cpp" line="45"/>
         <source>Mute Video</source>
-        <translation type="unfinished"/>
+        <translation>Išjungti vaizdą</translation>
     </message>
 </context>
 <context>
