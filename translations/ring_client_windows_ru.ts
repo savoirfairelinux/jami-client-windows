@@ -355,7 +355,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="1479"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Требует сертификат для входящих TLS соединений</translation>
+        <translation>Требовать сертификат для входящих TLS соединений</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1497"/>
