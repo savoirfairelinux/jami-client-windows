@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<TS version="2.1" language="id">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -56,27 +56,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Akun</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation>Pseudônimo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
@@ -86,19 +86,19 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
         <source>Hostname</source>
-        <translation>Nome do host</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation>Usuário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
@@ -108,22 +108,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation>Número do correio de voz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation>Chamadas respondias automaticamente</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation>UPnP habilitado</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
@@ -161,18 +161,6 @@ Ring is a secured and distributed communication software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Audio</source>
-        <translation type="vanished">Audio</translation>
-    </message>
-    <message>
-        <source>Video</source>
-        <translation type="vanished">Vídeo</translation>
-    </message>
-    <message>
-        <source>Enable Video</source>
-        <translation type="vanished">Ativar Vídeo</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
         <translation type="unfinished"></translation>
@@ -201,7 +189,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation>Avançado</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
@@ -211,7 +199,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>A sessão expira em (segundos):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
@@ -231,27 +219,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation>Igual aos parâmetros locais</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation>Defina endereço e porta:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation>Endereço</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
         <source>Port</source>
-        <translation>Porta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation>Usar STUN</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
@@ -262,7 +250,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation>Usar TURN</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
@@ -277,7 +265,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Estas configurações serão usadas durante o estabelecimento de sessão via SDP, caso as configurações de roteamento não permitam acesso ao servidor ou a um peer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
@@ -288,13 +276,13 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation>Max</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
@@ -304,7 +292,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation>Segurança</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
@@ -317,14 +305,6 @@ Ring is a secured and distributed communication software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Key exchange protocol</source>
-        <translation type="vanished">Protocolo de troca de chaves</translation>
-    </message>
-    <message>
-        <source>Fallback on RTP on encryption failure</source>
-        <translation type="vanished">Retorna RTP, caso falhe a encriptação</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
         <translation type="unfinished"></translation>
@@ -332,59 +312,47 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Negociação de criptografia (TLS)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation>Certificado CA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation>Certificado do usuário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation>Chave privada</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation>Senha da chave privada</translation>
-    </message>
-    <message>
-        <source>TLS protocol method</source>
-        <translation type="vanished">Método de protocolo TLS</translation>
-    </message>
-    <message>
-        <source>Outgoing TLS server name</source>
-        <translation type="vanished">Nome do servidor TLS de saída</translation>
-    </message>
-    <message>
-        <source>Negotiation timeout (seconds)</source>
-        <translation type="vanished">Tempo limite de negociação (segundos)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation>Verificar certificados de entrada (servidor)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation>Verificar certificados de resposta (cliente)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Exige certificado para conexões TLS</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation>Use cifras padrão</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
@@ -428,12 +396,6 @@ Ring is a secured and distributed communication software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This is your RingID.
-Copy and share it with your friends!</source>
-        <translation type="vanished">Este é seu RingID.
-Copie e avise seus amigos!</translation>
-    </message>
-    <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
         <translation type="unfinished"></translation>
@@ -446,7 +408,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation>O Ring é uma plataforma de comunicação por voz, vídeo e texto, distribuída e segura que não requer servidor centralizado, garantindo poder e privacidade nas mãos dos usuários.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
@@ -506,7 +468,11 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="1223"/>
         <source>Call</source>
-        <translation>Chamada</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation type="vanished">Terima</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="137"/>
@@ -589,12 +555,12 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -634,7 +600,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="428"/>
@@ -704,7 +670,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Akun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="583"/>
@@ -714,7 +680,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="264"/>
         <source>New Account</source>
-        <translation>Nova Conta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="285"/>
@@ -776,10 +742,6 @@ Copie e avise seus amigos!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Send</source>
-        <translation type="vanished">Enviar</translation>
-    </message>
-    <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
@@ -806,13 +768,6 @@ Copie e avise seus amigos!</translation>
         <location filename="../mainwindow.cpp" line="78"/>
         <source>About</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NavBar</name>
-    <message>
-        <source>Done</source>
-        <translation type="vanished">Concluido</translation>
     </message>
 </context>
 <context>
@@ -853,7 +808,7 @@ Copie e avise seus amigos!</translation>
     <name>VideoOverlay</name>
     <message>
         <source>Hold</source>
-        <translation type="vanished">Espera</translation>
+        <translation type="vanished">Tahan</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
@@ -868,7 +823,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>Bate-papo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
@@ -936,12 +891,12 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation>Compartilhar tela</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation>Anexar arquivo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

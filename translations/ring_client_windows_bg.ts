@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<TS version="2.1" language="bg">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Относно</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Заслуги</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -20,30 +20,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Release : Samuel de Champlain</source>
+        <translation type="vanished">Издание : Самюел дьо Шамплен</translation>
+    </message>
+    <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Клиентът на Ring за Уиндоус.
+Ring е сигурен и разпределен софтуер за общуване.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
         <source>Windows Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring за Уиндоус</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation type="unfinished"></translation>
+        <translation>версия</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаден от:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="52"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"></translation>
+        <translation>С изображения от:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="56"/>
@@ -56,49 +61,49 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation>Общи</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Акаунт</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation>Вид</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation>Pseudônimo</translation>
+        <translation>Псевдоним</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметри</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
         <source>Hostname</source>
-        <translation>Nome do host</translation>
+        <translation>Име на сървъра</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation>Usuário</translation>
+        <translation>Потребителско име</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Парола</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
@@ -108,22 +113,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>Прокс</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation>Número do correio de voz</translation>
+        <translation>Номер на гласова поща</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation>Chamadas respondias automaticamente</translation>
+        <translation>Авт. отговор на обажданията</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation>UPnP habilitado</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
@@ -143,34 +148,34 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяване на обажданията от непознати</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяване на обажданията от контакти</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяване на обажданията от хора в историята</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки на акаунта за Ring</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="vanished">Audio</translation>
+        <translation type="vanished">Звук</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="vanished">Vídeo</translation>
+        <translation type="vanished">Видео</translation>
     </message>
     <message>
         <source>Enable Video</source>
-        <translation type="vanished">Ativar Vídeo</translation>
+        <translation type="vanished">Включване на видеото</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
@@ -201,57 +206,57 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation>Avançado</translation>
+        <translation>Разширени</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Регистрация</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>A sessão expira em (segundos):</translation>
+        <translation>Годност на регистрацията (секунди):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Мрежова карта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Местен порт:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Adress</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикуван адрес</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation>Igual aos parâmetros locais</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation>Defina endereço e porta:</translation>
+        <translation>Задаване на публикувания адрес и порт:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation>Endereço</translation>
+        <translation>Адрес</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
         <source>Port</source>
-        <translation>Porta</translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation>Usar STUN</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
@@ -262,7 +267,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation>Usar TURN</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
@@ -277,7 +282,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Estas configurações serão usadas durante o estabelecimento de sessão via SDP, caso as configurações de roteamento não permitam acesso ao servidor ou a um peer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
@@ -288,13 +293,13 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation>Max</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
@@ -304,12 +309,16 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation>Segurança</translation>
+        <translation>Сигурност</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media Stream Encryption</source>
+        <translation type="vanished">Шифроване на потоците</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
@@ -318,73 +327,69 @@ Ring is a secured and distributed communication software.</source>
     </message>
     <message>
         <source>Key exchange protocol</source>
-        <translation type="vanished">Protocolo de troca de chaves</translation>
-    </message>
-    <message>
-        <source>Fallback on RTP on encryption failure</source>
-        <translation type="vanished">Retorna RTP, caso falhe a encriptação</translation>
+        <translation type="vanished">Протокол за размяна на ключове</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифроване на договарянето</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Negociação de criptografia (TLS)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation>Certificado CA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation>Certificado do usuário</translation>
+        <translation>Потребителски сертификат</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation>Chave privada</translation>
+        <translation>Частен ключ</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation>Senha da chave privada</translation>
-    </message>
-    <message>
-        <source>TLS protocol method</source>
-        <translation type="vanished">Método de protocolo TLS</translation>
-    </message>
-    <message>
-        <source>Outgoing TLS server name</source>
-        <translation type="vanished">Nome do servidor TLS de saída</translation>
+        <translation>Парола за частен ключ</translation>
     </message>
     <message>
         <source>Negotiation timeout (seconds)</source>
-        <translation type="vanished">Tempo limite de negociação (segundos)</translation>
+        <translation type="vanished">Време за изчакване на договарянето (секунди)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation>Verificar certificados de entrada (servidor)</translation>
+        <translation>Проверка на входящите сертификати (от страната на сървъра)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation>Verificar certificados de resposta (cliente)</translation>
+        <translation>Проверка на отговарящите сертификатите (от страната на клиента)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Exige certificado para conexões TLS</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cipher</source>
+        <translation type="vanished">Шифър</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation>Use cifras padrão</translation>
+        <translation>Използване на шифри по подразбиране</translation>
+    </message>
+    <message>
+        <source>User custom cipher list</source>
+        <translation type="vanished">Персонализиран потребителски списък с шифри</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
@@ -394,12 +399,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="234"/>
         <source>Choose File</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете файл</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="236"/>
         <source>Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Всички файлове (*)</translation>
     </message>
 </context>
 <context>
@@ -407,17 +412,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Прозорец</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">или въведете номер…</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Прехвърляне</translation>
     </message>
 </context>
 <context>
@@ -430,8 +435,8 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="vanished">Este é seu RingID.
-Copie e avise seus amigos!</translation>
+        <translation type="vanished">Това е Вашият идентификатор за Ring.
+Копирайте го и го споделете с приятелите си!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
@@ -446,7 +451,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation>O Ring é uma plataforma de comunicação por voz, vídeo e texto, distribuída e segura que não requer servidor centralizado, garantindo poder e privacidade nas mãos dos usuários.</translation>
+        <translation>Ring е сигурна и разпределена система за гласово, видео и текстово общуване, която не изисква централен сървър и оставя поверителността в ръцете на потребителите.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
@@ -501,39 +506,51 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="1485"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Отказ</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1223"/>
         <source>Call</source>
-        <translation>Chamada</translation>
+        <translation>Обаждане</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation type="vanished">Приемане</translation>
+    </message>
+    <message>
+        <source>Refuse</source>
+        <translation type="vanished">Отказ</translation>
+    </message>
+    <message>
+        <source>Search / Enter number</source>
+        <translation type="vanished">Потърсете или въведете номер</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="137"/>
         <location filename="../callwidget.cpp" line="259"/>
         <source>Copy number</source>
-        <translation type="unfinished"></translation>
+        <translation>Копиране на номера</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="143"/>
         <location filename="../callwidget.cpp" line="265"/>
         <source>Add to contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавяне към контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="197"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Копиране</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="206"/>
         <source>Display date</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показване на датата</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="209"/>
         <source>Display author</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показване на автора</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="236"/>
@@ -564,7 +581,7 @@ Copie e avise seus amigos!</translation>
         <location filename="../callwidget.cpp" line="316"/>
         <location filename="../callwidget.cpp" line="339"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"></translation>
+        <translation>НЕ Е ОТКРИТ АКАУНТ ЗА RING</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="352"/>
@@ -583,18 +600,23 @@ Copie e avise seus amigos!</translation>
         <comment>%1 is the contact name</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Call from %1</source>
+        <comment>%1 is the name of the caller</comment>
+        <translation type="vanished">Обаждане от %1</translation>
+    </message>
 </context>
 <context>
     <name>ConfigurationWidget</name>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation>Общи</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -604,37 +626,41 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="253"/>
         <source>History Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки на историята</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="294"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"></translation>
+        <translation>Пазене на историята (в дни)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="337"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"></translation>
+        <translation>(0 означава безкрайна история)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="391"/>
         <source>Clear History</source>
-        <translation type="unfinished"></translation>
+        <translation>Изчистване на историята</translation>
+    </message>
+    <message>
+        <source>Ringtones Selection</source>
+        <translation type="vanished">Избор на тонове за звънене</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="537"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Разнообразни настройки</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="559"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Минимизиране при затваряне</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>Видео</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="428"/>
@@ -674,17 +700,17 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="825"/>
         <source>Device Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Избор на устройство</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="883"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Устройство</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="914"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Разделителна способност</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="951"/>
@@ -702,24 +728,28 @@ Copie e avise seus amigos!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Camera Preview</source>
+        <translation type="vanished">Показване на камерата</translation>
+    </message>
+    <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Акаунт</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="583"/>
         <source>Launch Ring on Startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Пускане на Ring със системата</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="264"/>
         <source>New Account</source>
-        <translation>Nova Conta</translation>
+        <translation>Нов акаунт</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="285"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation type="unfinished"></translation>
+        <translation>Наистина ли искате да изчистите цялата история?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="340"/>
@@ -740,32 +770,32 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Съществуващ контакт</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Търсене…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на нов контакт</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Нов контакт</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation type="unfinished"></translation>
+        <translation>Въведете име…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване</translation>
     </message>
 </context>
 <context>
@@ -773,26 +803,26 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"></translation>
+        <translation>Изпратете текстово съобщение…</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Enviar</translation>
+        <translation type="vanished">Изпращане</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Копиране</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
-        <translation type="unfinished"></translation>
+        <translation>Показване на датата</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="53"/>
         <source>Display author</source>
-        <translation type="unfinished"></translation>
+        <translation>Показване на автора</translation>
     </message>
 </context>
 <context>
@@ -800,19 +830,19 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="78"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Относно</translation>
     </message>
 </context>
 <context>
     <name>NavBar</name>
     <message>
         <source>Done</source>
-        <translation type="vanished">Concluido</translation>
+        <translation type="vanished">Готово</translation>
     </message>
 </context>
 <context>
@@ -828,7 +858,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Прозорец</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
@@ -850,10 +880,29 @@ Copie e avise seus amigos!</translation>
     </message>
 </context>
 <context>
+    <name>TransferDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="vanished">Прозорец</translation>
+    </message>
+    <message>
+        <source>Transfer</source>
+        <translation type="vanished">Прехвърляне</translation>
+    </message>
+    <message>
+        <source>or type number...</source>
+        <translation type="vanished">или въведете номер…</translation>
+    </message>
+    <message>
+        <source>Current Calls</source>
+        <translation type="vanished">Текущи обаждания</translation>
+    </message>
+</context>
+<context>
     <name>VideoOverlay</name>
     <message>
         <source>Hold</source>
-        <translation type="vanished">Espera</translation>
+        <translation type="vanished">Задържане</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
@@ -868,7 +917,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>Bate-papo</translation>
+        <translation>Съобщения</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
@@ -903,7 +952,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавяне към контакт</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
@@ -913,17 +962,29 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
-        <translation type="unfinished"></translation>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation type="unfinished"></translation>
+        <translation>Затваряне</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="vanished">…</translation>
+    </message>
+    <message>
+        <source>Transfer</source>
+        <translation type="vanished">Прехвърляне</translation>
+    </message>
+    <message>
+        <source>Mute Audio</source>
+        <translation type="vanished">Заглушаване</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглушаване на видеото</translation>
     </message>
 </context>
 <context>
@@ -931,17 +992,17 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../videoview.cpp" line="232"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Споделяне на целия екран</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation>Compartilhar tela</translation>
+        <translation>Споделяне на област от екрана</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation>Anexar arquivo</translation>
+        <translation>Споделяне на файл</translation>
     </message>
 </context>
 <context>
@@ -949,7 +1010,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="55"/>
         <source>Please wait while we create your account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля, изчакайте докато създадем акаунта Ви.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="67"/>
@@ -957,9 +1018,13 @@ Copie e avise seus amigos!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Join the Ring</source>
+        <translation type="vanished">Присъединете се към Ring</translation>
+    </message>
+    <message>
         <location filename="../wizarddialog.ui" line="86"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете потребителското си име:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="157"/>
