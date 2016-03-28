@@ -89,6 +89,10 @@ AccountDetails::~AccountDetails()
     delete ui;
 }
 
+#include "profilemodel.h"
+#include "profile.h"
+#include "person.h"
+
 void
 AccountDetails::setAccount(Account* currentAccount) {
 
@@ -98,6 +102,9 @@ AccountDetails::setAccount(Account* currentAccount) {
     }
 
     currentAccount_ = currentAccount;
+
+    auto profile = ProfileModel::instance().selectedProfile();
+    ui->avatarLabel->setPixmap(QPixmap::fromImage(profile->person()->photo().value<QImage>()));
 
     ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
 
