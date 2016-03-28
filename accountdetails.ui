@@ -91,8 +91,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>843</width>
-            <height>859</height>
+            <width>830</width>
+            <height>925</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -190,7 +190,7 @@
                <property name="verticalSpacing">
                 <number>10</number>
                </property>
-               <item row="0" column="0">
+               <item row="2" column="0">
                 <widget class="QLabel" name="aliasLabel">
                  <property name="font">
                   <font>
@@ -208,7 +208,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
+               <item row="2" column="1">
                 <widget class="QLineEdit" name="lrcfg_alias">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -224,7 +224,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0">
+               <item row="3" column="0">
                 <widget class="QLabel" name="typeLabel">
                  <property name="font">
                   <font>
@@ -239,7 +239,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
+               <item row="3" column="1">
                 <widget class="QLabel" name="typeValueLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -249,6 +249,57 @@
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>Avatar</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="avatarButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>74</width>
+                   <height>74</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>74</width>
+                   <height>74</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="ressources.qrc">
+                   <normaloff>:/images/user/btn-default-userpic.svg</normaloff>:/images/user/btn-default-userpic.svg</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>74</width>
+                   <height>74</height>
+                  </size>
+                 </property>
+                 <property name="autoDefault">
+                  <bool>false</bool>
+                 </property>
+                 <property name="default">
+                  <bool>false</bool>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -1136,8 +1187,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>812</width>
-            <height>981</height>
+            <width>369</width>
+            <height>1019</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1993,7 +2044,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>830</width>
+            <width>684</width>
             <height>919</height>
            </rect>
           </property>
@@ -2394,7 +2445,7 @@
   <customwidget>
    <class>RingButton</class>
    <extends>QPushButton</extends>
-   <header>ringbutton.h</header>
+   <header location="global">ringbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
