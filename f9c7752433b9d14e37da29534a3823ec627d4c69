@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_7303f773",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba65a107_33c7bf47",
+      "range": {
+        "startLine": 203,
+        "startChar": 28,
+        "endLine": 203,
+        "endChar": 48
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_13f87b7b",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba65a107_d3c3e336",
+      "range": {
+        "startLine": 203,
+        "startChar": 65,
+        "endLine": 203,
+        "endChar": 82
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_73ec57c8",
         "filename": "callwidget.cpp",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2016-03-28T18:15:31Z",
       "side": 1,
       "message": "can\u0027t you just use the signal \u0026 slot version of connect() here? singled toggled() is a signal and setVisible() is a slot... why use the lambda?",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_33f57f83",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "You\u0027re right. Done",
+      "parentUuid": "ba65a107_73ec57c8",
       "range": {
         "startLine": 209,
         "startChar": 4,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_d3f1a396",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba65a107_93dd6b17",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 36
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_53e7d3e4",
         "filename": "callwidget.cpp",
         "patchSetId": 13
@@ -105,6 +201,30 @@
       "writtenOn": "2016-03-28T18:15:31Z",
       "side": 1,
       "message": "would maybe be useful to add comments on why these parameters were chosen... are they the same as in android?",
+      "range": {
+        "startLine": 348,
+        "startChar": 37,
+        "endLine": 350,
+        "endChar": 46
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_b330af57",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "This is pretty standard, i think alex tested it with android but i m not sure anymore",
+      "parentUuid": "ba65a107_53e7d3e4",
       "range": {
         "startLine": 348,
         "startChar": 37,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_f3ee27b4",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "By default it gives us everything in capital, i tested and it doesn\u0027t seem to work well",
+      "parentUuid": "ba65a107_b3e2efd3",
+      "range": {
+        "startLine": 351,
+        "startChar": 37,
+        "endLine": 351,
+        "endChar": 38
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_13d15bfb",
         "filename": "callwidget.cpp",
         "patchSetId": 13
@@ -151,6 +295,30 @@
       "writtenOn": "2016-03-28T18:15:31Z",
       "side": 1,
       "message": "sort of a magic number, like the \"margin\" variable... maybe it should be a constexrp or somekind of variable...",
+      "range": {
+        "startLine": 373,
+        "startChar": 66,
+        "endLine": 373,
+        "endChar": 74
+      },
+      "revId": "f9c7752433b9d14e37da29534a3823ec627d4c69",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_53359344",
+        "filename": "callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-28T19:01:05Z",
+      "side": 1,
+      "message": "It\u0027s the size we want for the QRCode in UI. Done",
+      "parentUuid": "ba65a107_13d15bfb",
       "range": {
         "startLine": 373,
         "startChar": 66,
