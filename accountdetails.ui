@@ -190,7 +190,7 @@
                <property name="verticalSpacing">
                 <number>10</number>
                </property>
-               <item row="0" column="0">
+               <item row="1" column="0">
                 <widget class="QLabel" name="aliasLabel">
                  <property name="font">
                   <font>
@@ -208,7 +208,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
+               <item row="1" column="1">
                 <widget class="QLineEdit" name="lrcfg_alias">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -224,7 +224,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0">
+               <item row="2" column="0">
                 <widget class="QLabel" name="typeLabel">
                  <property name="font">
                   <font>
@@ -239,7 +239,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
+               <item row="2" column="1">
                 <widget class="QLabel" name="typeValueLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -2394,7 +2394,7 @@
   <customwidget>
    <class>RingButton</class>
    <extends>QPushButton</extends>
-   <header>ringbutton.h</header>
+   <header location="global">ringbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -2547,7 +2547,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="dtmfGroup"/>
   <buttongroup name="publishGroup"/>
+  <buttongroup name="dtmfGroup"/>
  </buttongroups>
 </ui>

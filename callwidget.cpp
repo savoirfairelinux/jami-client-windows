@@ -54,6 +54,10 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 
+#include "profilemodel.h"
+#include "peerprofilecollection.h"
+#include "localprofilecollection.h"
+
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
@@ -99,6 +103,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+
+        PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
+        ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
 
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
@@ -416,6 +423,7 @@ CallWidget::callIncoming(Call* call)
         QApplication::alert(this, 5000);
     }
 
+    //FIXME: This should update accordingly with profile changes
     ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
                                .arg(call->formattedName()));
     ui->callerPhoto->setPixmap(
@@ -584,8 +592,10 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
 
     Q_UNUSED(oldSel)
 
-    if (newSel.indexes().empty())
+    if (newSel.indexes().empty()) {
+        setActualCall(nullptr);
         return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
 
     auto newIdx = newSel.indexes().first();
     if (not newIdx.isValid())
