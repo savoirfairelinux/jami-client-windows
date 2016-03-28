@@ -32,21 +32,22 @@ class WizardDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit WizardDialog(QWidget *parent = 0);
+    explicit WizardDialog(QWidget* parent = 0);
     ~WizardDialog();
 
 protected slots:
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent* event);
 private slots:
     void accept();
 
 private:
-    Ui::WizardDialog *ui;
+    Ui::WizardDialog* ui;
 
 private:
     void setup();
 
 private slots:
     void endSetup(Account* a);
+    void on_photoButton_clicked();
 };
 
