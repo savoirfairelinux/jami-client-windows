@@ -23,12 +23,17 @@
 
 #include "accountmodel.h"
 #include "account.h"
+#include "profilemodel.h"
 
 #include "utils.h"
+#include "photoboothdialog.h"
 
-WizardDialog::WizardDialog(QWidget *parent) :
+#include "profilemodel.h"
+
+WizardDialog::WizardDialog(QWidget* parent) :
     QDialog(parent),
-    ui(new Ui::WizardDialog)
+    ui(new Ui::WizardDialog),
+    profile_(new Person())
 {
     ui->setupUi(this);
 
@@ -61,10 +66,14 @@ WizardDialog::accept()
     Utils::CreateStartupLink();
 
     auto account = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
-    if (not ui->usernameEdit->text().isEmpty())
+    if (not ui->usernameEdit->text().isEmpty()) {
         account->setDisplayName(ui->usernameEdit->text());
-    else
+        profile_->setNickName(ui->usernameEdit->text());
+    }
+    else {
         account->setDisplayName(tr("Unknown"));
+        profile_->setNickName(tr("Unknown"));
+    }
     AccountModel::instance().ip2ip()->setRingtonePath(Utils::GetRingtonePath());
     account->setRingtonePath(Utils::GetRingtonePath());
     account->setUpnpEnabled(true);
@@ -72,6 +81,7 @@ WizardDialog::accept()
     connect(account, SIGNAL(changed(Account*)), this, SLOT(endSetup(Account*)));
 
     account->performAction(Account::EditAction::SAVE);
+    ProfileModel::instance().add(profile_);
 }
 
 void
@@ -82,9 +92,23 @@ WizardDialog::endSetup(Account* a)
 }
 
 void
-WizardDialog::closeEvent(QCloseEvent *event)
+WizardDialog::closeEvent(QCloseEvent* event)
 {
     Q_UNUSED(event)
 
     exit(0);
+}
+
+void
+WizardDialog::on_photoButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
+    if (dlg.result() == QDialog::Accepted) {
+        auto image = QImage(dlg.fileName_);
+        auto avatar = Utils::getCirclePhoto(image, ui->avatar->width());
+        qDebug() << "AVATAR SIZE " << avatar.byteCount();
+        profile_->setPhoto(avatar);
+        ui->avatar->setPixmap(QPixmap::fromImage(avatar));
+    }
 }

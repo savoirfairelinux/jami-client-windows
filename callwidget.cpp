@@ -54,6 +54,10 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 
+#include "globalinstances.h"
+#include "profilemodel.h"
+#include "peerprofilecollection.h"
+
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
@@ -99,6 +103,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+
+        PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
+        ProfileModel::instance();
 
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
