@@ -52,6 +52,7 @@ private slots:
     void on_upVideoButton_clicked();
     void on_downVideoButton_clicked();
     void on_playButton_clicked();
+    void on_avatarButton_clicked();
 
 private slots:
     void onCertButtonClicked();
