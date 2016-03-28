@@ -25,8 +25,9 @@
 #include "account.h"
 
 #include "utils.h"
+#include "photoboothdialog.h"
 
-WizardDialog::WizardDialog(QWidget *parent) :
+WizardDialog::WizardDialog(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::WizardDialog)
 {
@@ -82,9 +83,21 @@ WizardDialog::endSetup(Account* a)
 }
 
 void
-WizardDialog::closeEvent(QCloseEvent *event)
+WizardDialog::closeEvent(QCloseEvent* event)
 {
     Q_UNUSED(event)
 
     exit(0);
+}
+
+void
+WizardDialog::on_photoButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
+    if (dlg.result() == QDialog::Accepted) {
+        auto image = QImage(dlg.fileName_);
+        auto avatar = Utils::getCirclePhoto(image, ui->avatar->width());
+        ui->avatar->setPixmap(QPixmap::fromImage(avatar));
+    }
 }
