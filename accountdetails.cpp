@@ -23,7 +23,6 @@
 #include <QFileDialog>
 #include <QPushButton>
 
-#include "accountdetails.h"
 #include "codecmodel.h"
 #include "protocolmodel.h"
 #include "certificate.h"
@@ -112,6 +111,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     codecModel_ = currentAccount->codecModel();
     ui->audioCodecView->setModel(codecModel_->audioCodecs());
     ui->videoCodecView->setModel(codecModel_->videoCodecs());
+
     connect(ui->audioCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(audioCodecSelectionChanged(QItemSelection,QItemSelection)));
     connect(ui->videoCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -298,4 +298,3 @@ AccountDetails::getDeleteAccountButton()
 {
     return ui->deleteAccountButton;
 }
-

@@ -43,6 +43,7 @@
 #include "settingskey.h"
 #include "utils.h"
 #include "pathpassworddialog.h"
+#include "photoboothdialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -50,6 +51,9 @@
 #include "callmodel.h"
 #include "ringtonemodel.h"
 #include "categorizedhistorymodel.h"
+#include "profilemodel.h"
+#include "profile.h"
+#include "person.h"
 
 #ifdef ENABLE_AUTOUPDATE
 #include "winsparkle.h"
@@ -176,6 +180,10 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->updateDayLabel->hide();
     ui->autoUpdateCheckBox->hide();
 #endif
+
+    auto profile = ProfileModel::instance().selectedProfile();
+    ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
+    ui->profileNameEdit->setText(profile->person()->formattedName());
 }
 
 void ConfigurationWidget::showPreview()
@@ -389,4 +397,25 @@ ConfigurationWidget::on_exportButton_clicked()
         };
         QtConcurrent::run(func, dlg.path_, dlg.password_);
     }
+}
+
+void
+ConfigurationWidget::on_avatarButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
+    if (dlg.result() == QDialog::Accepted) {
+        auto image = QImage(dlg.fileName_);
+        auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
+        ProfileModel::instance().selectedProfile()->save();
+        ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarButton->width())));
+    }
+}
+
+void
+ConfigurationWidget::on_profileNameEdit_textEdited(const QString& name)
+{
+    ProfileModel::instance().selectedProfile()->person()->setFormattedName(name);
+    ProfileModel::instance().selectedProfile()->save();
 }

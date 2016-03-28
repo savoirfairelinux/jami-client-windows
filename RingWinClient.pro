@@ -67,7 +67,8 @@ SOURCES += main.cpp\
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
     ringbutton.cpp \
-    pathpassworddialog.cpp
+    pathpassworddialog.cpp \
+    photoboothdialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -103,7 +104,8 @@ HEADERS  += mainwindow.h \
     qualitydialog.h \
     ringthemeutils.h \
     ringbutton.h \
-    pathpassworddialog.h
+    pathpassworddialog.h \
+    photoboothdialog.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -125,9 +127,11 @@ FORMS    += mainwindow.ui \
     combar.ui \
     qualitydialog.ui \
     ringbutton.ui \
-    pathpassworddialog.ui
+    pathpassworddialog.ui \
+    photoboothdialog.ui
 
-win32: LIBS += -lole32 -luuid -lshlwapi -lqrencode
+win32: LIBS += -lole32 -luuid -lshlwapi
+LIBS += -lqrencode
 
 INCLUDEPATH += $${RING}/include/libringclient
 INCLUDEPATH += $${RING}/include
