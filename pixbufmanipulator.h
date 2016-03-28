@@ -27,6 +27,8 @@ Q_DECLARE_METATYPE(QImage);
 
 class Person;
 
+QByteArray QImageToByteArray(QImage image);
+
 namespace Interfaces {
 
 class PixbufManipulator : public PixmapManipulatorI {
