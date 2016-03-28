@@ -18,12 +18,29 @@
 
 #include "pixbufmanipulator.h"
 
-#include <QtCore/QSize>
-#include <QtCore/QMetaType>
+#include <QSize>
+#include <QMetaType>
+#include <QImage>
+#include <QIODevice>
+#include <QByteArray>
+#include <QBuffer>
 
-#include <person.h>
-#include <call.h>
-#include <contactmethod.h>
+#include "person.h"
+#include "call.h"
+#include "contactmethod.h"
+
+#include "utils.h"
+
+#undef interface
+
+QByteArray QImageToByteArray(QImage image)
+{
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    image.save(&buffer, "PNG");
+    return ba;
+}
 
 namespace Interfaces {
 
@@ -77,9 +94,12 @@ PixbufManipulator::contactPhoto(Person* c, const QSize& size, bool displayPresen
 
 QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& type)
 {
-    Q_UNUSED(type);
-    Q_UNUSED(data);
-    return QVariant();
+    QImage avatar;
+    QByteArray ba = type.toLatin1();
+    const char* c_str2 = ba.data();
+    if (avatar.loadFromData(data.fromBase64(data), c_str2))
+        return Utils::getCirclePhoto(avatar, avatar.size().width());
+    return fallbackAvatar_;
 }
 
 QVariant
@@ -99,11 +119,14 @@ PixbufManipulator::securityIssueIcon(const QModelIndex& index)
     return QVariant();
 }
 
+
+
 QByteArray
 PixbufManipulator::toByteArray(const QVariant& pxm)
 {
-    Q_UNUSED(pxm);
-    return QByteArray();
+    auto image = pxm.value<QImage>();
+    QByteArray ba = QImageToByteArray(image);
+    return ba;
 }
 
 QVariant
@@ -180,7 +203,9 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
 QVariant PixbufManipulator::decorationRole(const Account* acc)
 {
     Q_UNUSED(acc)
-    return QVariant();
+    return Utils::getCirclePhoto(ProfileModel::instance().
+                                     selectedProfile()->person()->photo().value<QImage>(),
+                                     imgSize_.width());
 }
 
 } // namespace Interfaces
