@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_d348c3ce",
+        "filename": "callwidget.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-03-28T19:11:19Z",
+      "side": 1,
+      "message": "sorry, missed it the first time around, but I think you need to free this at the end with QRcode_free(rcode);",
+      "range": {
+        "startLine": 345,
+        "startChar": 9,
+        "endLine": 345,
+        "endChar": 14
+      },
+      "revId": "4e39bcfdc78e2f00e8032eb858487799b6dd85f4",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_93124bb3",
+        "filename": "callwidget.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-03-28T19:11:19Z",
+      "side": 1,
+      "message": "If strerror/errno works on windows, you could do something like:\nqDebug()\u003c\u003c\"Failed to generate QR code: \"\u003c\u003c strerror(errno);",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 15
+      },
+      "revId": "4e39bcfdc78e2f00e8032eb858487799b6dd85f4",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
