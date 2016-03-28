@@ -25,6 +25,7 @@
 #include "account.h"
 
 #include "utils.h"
+#include "photoboothdialog.h"
 
 WizardDialog::WizardDialog(QWidget *parent) :
     QDialog(parent),
@@ -87,4 +88,11 @@ WizardDialog::closeEvent(QCloseEvent *event)
     Q_UNUSED(event)
 
     exit(0);
+}
+
+void
+WizardDialog::on_pushButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
 }

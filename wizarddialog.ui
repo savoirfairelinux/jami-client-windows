@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>246</height>
+    <height>370</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>500</width>
-    <height>246</height>
+    <height>370</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -76,6 +76,25 @@
     </spacer>
    </item>
    <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="avatar">
+     <property name="maximumSize">
+      <size>
+       <width>74</width>
+       <height>74</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
@@ -90,6 +109,13 @@
      </property>
      <property name="wordWrap">
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Take or import a photo</string>
      </property>
     </widget>
    </item>

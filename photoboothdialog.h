@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -19,35 +19,29 @@
 #pragma once
 
 #include <QDialog>
-#include <QtConcurrent/QtConcurrent>
-
-#include "account.h"
 
 namespace Ui {
-class WizardDialog;
+class PhotoBoothDialog;
 }
 
-class WizardDialog : public QDialog
+class PhotoBoothDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit WizardDialog(QWidget *parent = 0);
-    ~WizardDialog();
+    explicit PhotoBoothDialog(QWidget* parent = 0);
+    ~PhotoBoothDialog();
+public:
+    QString fileName;
 
-protected slots:
-    void closeEvent(QCloseEvent *event);
+protected:
+    void closeEvent(QCloseEvent* event);
+
+//UI SLOTS
 private slots:
-    void accept();
+    void on_importButton_clicked();
+    void on_takePhotoButton_clicked();
 
 private:
-    Ui::WizardDialog *ui;
-
-private:
-    void setup();
-
-private slots:
-    void endSetup(Account* a);
-    void on_pushButton_clicked();
+    Ui::PhotoBoothDialog* ui;
 };
-

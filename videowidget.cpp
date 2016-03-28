@@ -186,3 +186,8 @@ void
 VideoWidget::setIsFullPreview(bool full) {
     fullPreview_ = full;
 }
+
+QImage
+VideoWidget::takePhoto() {
+    return previewImage_.get()->copy();
+}

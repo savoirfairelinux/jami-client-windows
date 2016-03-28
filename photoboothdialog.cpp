@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,38 +16,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "photoboothdialog.h"
+#include "ui_photoboothdialog.h"
 
-#include <QDialog>
-#include <QtConcurrent/QtConcurrent>
+#include <QFileDialog>
 
-#include "account.h"
+#include "video/previewmanager.h"
 
-namespace Ui {
-class WizardDialog;
+PhotoBoothDialog::PhotoBoothDialog(QWidget* parent) :
+    QDialog(parent),
+    ui(new Ui::PhotoBoothDialog)
+{
+    ui->setupUi(this);
+
+    Qt::WindowFlags flags = windowFlags();
+    flags = flags & (~Qt::WindowContextHelpButtonHint);
+    setWindowFlags(flags);
+
+    ui->videoFeed->setIsFullPreview(true);
+    Video::PreviewManager::instance().startPreview();
 }
 
-class WizardDialog : public QDialog
+PhotoBoothDialog::~PhotoBoothDialog()
 {
-    Q_OBJECT
+    delete ui;
+}
 
-public:
-    explicit WizardDialog(QWidget *parent = 0);
-    ~WizardDialog();
+void
+PhotoBoothDialog::closeEvent(QCloseEvent* event)
+{
+    Q_UNUSED(event)
+    Video::PreviewManager::instance().stopPreview();
+}
 
-protected slots:
-    void closeEvent(QCloseEvent *event);
-private slots:
-    void accept();
+void
+PhotoBoothDialog::on_importButton_clicked()
+{
+    fileName = QFileDialog::getOpenFileName(this, tr("Choose File"),
+                                            "",
+                                            tr("Files (*)"));
+}
 
-private:
-    Ui::WizardDialog *ui;
-
-private:
-    void setup();
-
-private slots:
-    void endSetup(Account* a);
-    void on_pushButton_clicked();
-};
-
+void
+PhotoBoothDialog::on_takePhotoButton_clicked()
+{
+    auto photo = ui->videoFeed->takePhoto();
+    Video::PreviewManager::instance().stopPreview();
+    photo.scaled(74,74, Qt::KeepAspectRatio, Qt::SmoothTransformation).save("profile.png");
+}
