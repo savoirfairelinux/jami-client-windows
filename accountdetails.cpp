@@ -89,6 +89,10 @@ AccountDetails::~AccountDetails()
     delete ui;
 }
 
+#include "profilemodel.h"
+#include "profile.h"
+#include "person.h"
+
 void
 AccountDetails::setAccount(Account* currentAccount) {
 
@@ -98,6 +102,9 @@ AccountDetails::setAccount(Account* currentAccount) {
     }
 
     currentAccount_ = currentAccount;
+
+    auto profile = ProfileModel::instance().selectedProfile();
+    ui->avatarButton->setIcon(QPixmap::fromImage(profile->person()->photo().value<QImage>()));
 
     ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
 
@@ -291,3 +298,19 @@ AccountDetails::getDeleteAccountButton()
     return ui->deleteAccountButton;
 }
 
+#include "photoboothdialog.h"
+#include "utils.h"
+
+void
+AccountDetails::on_avatarButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
+    if (dlg.result() == QDialog::Accepted) {
+        auto image = QImage(dlg.fileName_);
+        auto avatar = Utils::getCirclePhoto(image, ui->avatarButton->height());
+        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
+        ui->avatarButton->setIcon(QPixmap::fromImage(avatar));
+        ProfileModel::instance().selectedProfile()->save();
+    }
+}

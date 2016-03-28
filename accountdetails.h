@@ -59,6 +59,8 @@ private slots:
     void audioCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void videoCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
 
+    void on_avatarButton_clicked();
+
 private:
     Ui::AccountDetails* ui;
     CodecModel* codecModel_;
