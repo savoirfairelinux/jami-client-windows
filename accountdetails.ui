@@ -91,8 +91,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>843</width>
-            <height>859</height>
+            <width>830</width>
+            <height>969</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -190,7 +190,7 @@
                <property name="verticalSpacing">
                 <number>10</number>
                </property>
-               <item row="0" column="0">
+               <item row="1" column="0">
                 <widget class="QLabel" name="aliasLabel">
                  <property name="font">
                   <font>
@@ -208,7 +208,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
+               <item row="1" column="1">
                 <widget class="QLineEdit" name="lrcfg_alias">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -224,7 +224,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0">
+               <item row="2" column="0">
                 <widget class="QLabel" name="typeLabel">
                  <property name="font">
                   <font>
@@ -239,7 +239,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
+               <item row="2" column="1">
                 <widget class="QLabel" name="typeValueLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -249,6 +249,23 @@
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>Avatar</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="avatarLabel">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1136,8 +1153,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>812</width>
-            <height>981</height>
+            <width>370</width>
+            <height>1019</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1993,7 +2010,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>830</width>
+            <width>686</width>
             <height>919</height>
            </rect>
           </property>

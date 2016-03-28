@@ -18,6 +18,8 @@
 
 #include "videowidget.h"
 
+#include "utils.h"
+
 VideoWidget::VideoWidget(QWidget* parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
@@ -121,7 +123,11 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             if(resetPreview_) {
                 auto previewHeight = fullPreview_ ? height() : height() / 4;
                 auto previewWidth = fullPreview_  ? width() : width() / 4;
-                auto scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+                QImage scaledPreview;
+                if (photoMode_)
+                    scaledPreview = Utils::getCirclePhoto(*previewImage_, previewHeight);
+                else
+                    scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
                 auto xDiff = (previewWidth - scaledPreview.width()) / 2;
                 auto yDiff = (previewHeight - scaledPreview.height()) / 2;
                 auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
@@ -131,11 +137,16 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
                 resetPreview_ = false;
             }
 
-            auto scaledPreview = previewImage_->scaled(previewGeometry_.width(),
-                                                       previewGeometry_.height(),
-                                                       Qt::KeepAspectRatio);
+            QImage scaledPreview;
+            if (photoMode_)
+                scaledPreview = Utils::getCirclePhoto(*previewImage_, previewGeometry_.height());
+            else
+                scaledPreview = previewImage_->scaled(previewGeometry_.width(),
+                                                      previewGeometry_.height(),
+                                                      Qt::KeepAspectRatio);
             previewGeometry_.setWidth(scaledPreview.width());
             previewGeometry_.setHeight(scaledPreview.height());
+
             painter.drawImage(previewGeometry_, scaledPreview);
         }
     }
@@ -185,4 +196,21 @@ VideoWidget::setPreviewDisplay(bool display) {
 void
 VideoWidget::setIsFullPreview(bool full) {
     fullPreview_ = full;
+}
+
+QImage
+VideoWidget::takePhoto() {
+    return previewImage_.get()->copy();
+}
+
+void
+VideoWidget::setPhotoMode(bool isPhotoMode) {
+
+    photoMode_ = isPhotoMode;
+    auto color = isPhotoMode ? Qt::transparent : Qt::black;
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, color);
+    setAutoFillBackground(true);
+    setPalette(pal);
 }
