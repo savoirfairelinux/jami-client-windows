@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_f3a62753",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-03-28T21:05:13Z",
+      "side": 1,
+      "message": "the Qt doc says that toStdWString():\nReturns a std::wstring object with the data contained in this QString. The std::wstring is encoded in utf16 on platforms where wchar_t is 2 bytes wide (e.g. windows) and in ucs4 on platforms where wchar_t is 4 bytes wide (most Unix systems).\n\nIs utf16 what  you want? For utf8 you can do:\naboutTtitle.toUtf8().constData()\n\nto get a C string",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 80
+      },
+      "revId": "89ce48e9bbed89ec7839e3d0a2f8f6155da2f26c",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
