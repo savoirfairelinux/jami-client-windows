@@ -22,6 +22,7 @@
 #include <QtConcurrent/QtConcurrent>
 
 #include "account.h"
+#include "person.h"
 
 namespace Ui {
 class WizardDialog;
@@ -32,21 +33,24 @@ class WizardDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit WizardDialog(QWidget *parent = 0);
+    explicit WizardDialog(QWidget* parent = 0);
     ~WizardDialog();
 
+// Overrided function
 protected slots:
-    void closeEvent(QCloseEvent *event);
-private slots:
     void accept();
+    void closeEvent(QCloseEvent* event);
 
-private:
-    Ui::WizardDialog *ui;
-
-private:
-    void setup();
+//UI Slots
+private slots:
+    void on_avatarButton_clicked();
 
 private slots:
     void endSetup(Account* a);
+
+private:
+    Ui::WizardDialog* ui;
+
+    void setup();
 };
 
