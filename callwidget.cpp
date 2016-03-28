@@ -54,6 +54,10 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 
+#include "globalinstances.h"
+#include "profilemodel.h"
+#include "profilepersisterdefault.h"
+
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
@@ -159,6 +163,9 @@ CallWidget::CallWidget(QWidget* parent) :
         findRingAccount();
         setupOutOfCallIM();
         setupSmartListMenu();
+
+//        GlobalInstances::setInterface<Interfaces::ProfilePersisterDefault>();
+//        ProfileModel::instance();
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
