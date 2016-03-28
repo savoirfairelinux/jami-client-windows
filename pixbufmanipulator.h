@@ -27,6 +27,8 @@ Q_DECLARE_METATYPE(QImage);
 
 class Person;
 
+QByteArray QImageToByteArray(QImage image);
+
 namespace Interfaces {
 
 class PixbufManipulator : public PixmapManipulatorI {
@@ -52,6 +54,8 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
 
+
+    
 private:
     QImage fallbackAvatar_;
     QImage scaleAndFrame(const QImage photo, const QSize& size);

@@ -26,6 +26,23 @@
 #include <call.h>
 #include <contactmethod.h>
 
+#include <QImage>
+#include <QIODevice>
+#include <QByteArray>
+#include <QtCore/qbuffer.h>
+
+
+QByteArray QImageToByteArray(QImage image)
+{
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    image.save(&buffer, "JPEG");
+    qDebug() << " GOT PHOTO ";
+    return ba;
+}
+
+
 namespace Interfaces {
 
 PixbufManipulator::PixbufManipulator()
@@ -100,11 +117,14 @@ PixbufManipulator::securityIssueIcon(const QModelIndex& index)
     return QVariant();
 }
 
+
+
 QByteArray
 PixbufManipulator::toByteArray(const QVariant& pxm)
 {
-    Q_UNUSED(pxm);
-    return QByteArray();
+    auto image = pxm.value<QImage>();
+    QByteArray ba = QImageToByteArray(image);
+    return ba;
 }
 
 QVariant

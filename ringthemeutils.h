@@ -18,6 +18,9 @@
 
 #pragma once
 
+#include <QImage>
+#include <QPainter>
+
 namespace RingTheme {
 
 static const QColor blue_ {"#3AC0D2"};
