@@ -23,12 +23,13 @@
 #include <QFileDialog>
 #include <QPushButton>
 
-#include "accountdetails.h"
 #include "codecmodel.h"
 #include "protocolmodel.h"
 #include "certificate.h"
 #include "ciphermodel.h"
 #include "ringtonemodel.h"
+
+#include "utils.h"
 
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
@@ -107,6 +108,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     codecModel_ = currentAccount->codecModel();
     ui->audioCodecView->setModel(codecModel_->audioCodecs());
     ui->videoCodecView->setModel(codecModel_->videoCodecs());
+
     connect(ui->audioCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(audioCodecSelectionChanged(QItemSelection,QItemSelection)));
     connect(ui->videoCodecView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -294,3 +296,16 @@ AccountDetails::getDeleteAccountButton()
     return ui->deleteAccountButton;
 }
 
+//void
+//AccountDetails::on_avatarButton_clicked()
+//{
+//    PhotoBoothDialog dlg;
+//    dlg.exec();
+//    if (dlg.result() == QDialog::Accepted) {
+//        auto image = QImage(dlg.fileName_);
+//        auto avatar = image.scaled(100, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+//        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
+//        ProfileModel::instance().selectedProfile()->save();
+//        ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarButton->width())));
+//    }
+//}
