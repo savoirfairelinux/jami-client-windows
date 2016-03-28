@@ -54,6 +54,8 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 
+#include "profilemodel.h"
+
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
@@ -159,6 +161,8 @@ CallWidget::CallWidget(QWidget* parent) :
         findRingAccount();
         setupOutOfCallIM();
         setupSmartListMenu();
+
+        ProfileModel::instance();
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
