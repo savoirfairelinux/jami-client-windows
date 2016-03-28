@@ -62,6 +62,8 @@ private slots:
     void on_recordPath_clicked();
     void on_importButton_clicked();
     void on_exportButton_clicked();
+    void on_avatarButton_clicked();
+    void on_profileNameEdit_textEdited(const QString& name);
 
 private slots:
     void accountSelected(QItemSelection itemSel);
