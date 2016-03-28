@@ -92,7 +92,7 @@
             <x>0</x>
             <y>0</y>
             <width>843</width>
-            <height>866</height>
+            <height>859</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1135,9 +1135,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-53</y>
-            <width>811</width>
-            <height>919</height>
+            <y>0</y>
+            <width>812</width>
+            <height>981</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1313,7 +1313,7 @@
               <string notr="true">color: rgb(77, 77, 77);</string>
              </property>
              <property name="text">
-              <string>Published Adress</string>
+              <string>Published Address</string>
              </property>
             </widget>
            </item>
@@ -1993,8 +1993,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>829</width>
-            <height>915</height>
+            <width>830</width>
+            <height>919</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_13">
