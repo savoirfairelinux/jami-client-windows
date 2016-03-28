@@ -268,7 +268,7 @@ QWidget#messagingPage{
 }
 
 QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
-QPushButton#checkUpdateButton{
+QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -276,12 +276,14 @@ QPushButton#checkUpdateButton{
 }
 
 QPushButton#wizardButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
-QPushButton#doTransferButton:hover{
+QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
+QPushButton#takePhotoButton:hover, QPushButton#importButton:hover{
     background-color: #4dc6d6;
 }
 
 QPushButton#wizardButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
-QPushButton#doTransferButton:pressed{
+QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
+QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed{
     background-color: #34acbd;
 }
 

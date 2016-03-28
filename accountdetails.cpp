@@ -23,12 +23,18 @@
 #include <QFileDialog>
 #include <QPushButton>
 
-#include "accountdetails.h"
 #include "codecmodel.h"
 #include "protocolmodel.h"
 #include "certificate.h"
 #include "ciphermodel.h"
 #include "ringtonemodel.h"
+#include "profilemodel.h"
+#include "profile.h"
+#include "person.h"
+
+#include "accountdetails.h"
+#include "photoboothdialog.h"
+#include "utils.h"
 
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
@@ -98,6 +104,9 @@ AccountDetails::setAccount(Account* currentAccount) {
     }
 
     currentAccount_ = currentAccount;
+
+    auto profile = ProfileModel::instance().selectedProfile();
+    ui->avatarButton->setIcon(QPixmap::fromImage(profile->person()->photo().value<QImage>()));
 
     ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
 
@@ -291,3 +300,16 @@ AccountDetails::getDeleteAccountButton()
     return ui->deleteAccountButton;
 }
 
+void
+AccountDetails::on_avatarButton_clicked()
+{
+    PhotoBoothDialog dlg;
+    dlg.exec();
+    if (dlg.result() == QDialog::Accepted) {
+        auto image = QImage(dlg.fileName_);
+        auto avatar = Utils::getCirclePhoto(image, ui->avatarButton->height());
+        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
+        ui->avatarButton->setIcon(QPixmap::fromImage(avatar));
+        ProfileModel::instance().selectedProfile()->save();
+    }
+}
