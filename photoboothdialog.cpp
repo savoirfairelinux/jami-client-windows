@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,33 +16,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "photoboothdialog.h"
+#include "ui_photoboothdialog.h"
 
-//Needed for OS detection
-#include <QtGlobal>
+#include <QFileDialog>
 
-#ifdef Q_OS_WIN
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
+#include "video/previewmanager.h"
 
-#include <string>
-#include <QString>
-#include <QImage>
-
-class Utils
+PhotoBoothDialog::PhotoBoothDialog(QWidget* parent) :
+    QDialog(parent),
+    ui(new Ui::PhotoBoothDialog)
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-    static QString GetCurrentUserName();
-    static void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
-    static QImage getCirclePhoto(const QImage original, int sizePhoto);
-};
+    ui->setupUi(this);
 
+    Qt::WindowFlags flags = windowFlags();
+    flags = flags & (~Qt::WindowContextHelpButtonHint);
+    setWindowFlags(flags);
+
+    ui->videoFeed->setIsFullPreview(true);
+    Video::PreviewManager::instance().startPreview();
+}
+
+PhotoBoothDialog::~PhotoBoothDialog()
+{
+    delete ui;
+}
+
+void
+PhotoBoothDialog::closeEvent(QCloseEvent* event)
+{
+    Q_UNUSED(event)
+    Video::PreviewManager::instance().stopPreview();
+}
+
+void
+PhotoBoothDialog::on_importButton_clicked()
+{
+    fileName = QFileDialog::getOpenFileName(this, tr("Choose File"),
+                                            "",
+                                            tr("Files (*)"));
+}
+
+void
+PhotoBoothDialog::on_takePhotoButton_clicked()
+{
+    auto photo = ui->videoFeed->takePhoto();
+    Video::PreviewManager::instance().stopPreview();
+    photo.save("profile.png");
+}

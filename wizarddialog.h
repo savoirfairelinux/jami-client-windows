@@ -48,5 +48,6 @@ private:
 
 private slots:
     void endSetup(Account* a);
+    void on_photoButton_clicked();
 };
 

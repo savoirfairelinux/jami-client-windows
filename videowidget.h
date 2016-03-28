@@ -37,7 +37,8 @@ public:
     void setPreviewDisplay(bool display);
     void setDistantRenderer(Video::Renderer* renderer);
     void setIsFullPreview(bool full);
-    inline void setResetPreview(bool reset){ resetPreview_ = reset; };
+    inline void setResetPreview(bool reset){ resetPreview_ = reset; }
+    QImage takePhoto();
 
 public slots:
     void previewStarted(Video::Renderer* renderer);
@@ -45,7 +46,7 @@ public slots:
     void frameFromPreview();
     void frameFromDistant();
     void renderingStopped();
-    inline QRect& getPreviewRect(){ return previewGeometry_; };
+    inline QRect& getPreviewRect(){ return previewGeometry_; }
 
 private:
     Video::Renderer* previewRenderer_;

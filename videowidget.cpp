@@ -18,6 +18,8 @@
 
 #include "videowidget.h"
 
+#include "utils.h"
+
 VideoWidget::VideoWidget(QWidget* parent) :
     QWidget(parent)
   , previewRenderer_(nullptr)
@@ -131,11 +133,13 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
                 resetPreview_ = false;
             }
 
-            auto scaledPreview = previewImage_->scaled(previewGeometry_.width(),
-                                                       previewGeometry_.height(),
-                                                       Qt::KeepAspectRatio);
+            auto scaledPreview = Utils::getCirclePhoto(*previewImage_, previewGeometry_.height());
+//            auto scaledPreview = previewImage_->scaled(previewGeometry_.width(),
+//                                                       previewGeometry_.height(),
+//                                                       Qt::KeepAspectRatio);
             previewGeometry_.setWidth(scaledPreview.width());
             previewGeometry_.setHeight(scaledPreview.height());
+
             painter.drawImage(previewGeometry_, scaledPreview);
         }
     }
@@ -185,4 +189,9 @@ VideoWidget::setPreviewDisplay(bool display) {
 void
 VideoWidget::setIsFullPreview(bool full) {
     fullPreview_ = full;
+}
+
+QImage
+VideoWidget::takePhoto() {
+    return previewImage_.get()->copy();
 }

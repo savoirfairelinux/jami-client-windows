@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2016 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,31 +18,30 @@
 
 #pragma once
 
-//Needed for OS detection
-#include <QtGlobal>
+#include <QDialog>
 
-#ifdef Q_OS_WIN
-#include <windows.h>
-#else //LINUX
-#define LPCWSTR char*
-#endif
+namespace Ui {
+class PhotoBoothDialog;
+}
 
-#include <string>
-#include <QString>
-#include <QImage>
-
-class Utils
+class PhotoBoothDialog : public QDialog
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-    static QString GetCurrentUserName();
-    static void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
-    static QImage getCirclePhoto(const QImage original, int sizePhoto);
-};
+    Q_OBJECT
 
+public:
+    explicit PhotoBoothDialog(QWidget* parent = 0);
+    ~PhotoBoothDialog();
+public:
+    QString fileName;
+
+protected:
+    void closeEvent(QCloseEvent* event);
+
+//UI SLOTS
+private slots:
+    void on_importButton_clicked();
+    void on_takePhotoButton_clicked();
+
+private:
+    Ui::PhotoBoothDialog* ui;
+};
