@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -14,8 +16,12 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
+        <source>Release : Louis-Joseph Papineau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Release : Samuel de Champlain</source>
-        <translation>Автор: Samuel de Champlain</translation>
+        <translation type="vanished">Автор: Samuel de Champlain</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
@@ -40,12 +46,12 @@ Ring – это приложение для безопасного и распр
         <translation>Авторы проекта:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="49"/>
+        <location filename="../aboutdialog.cpp" line="52"/>
         <source>Artwork by:</source>
         <translation>Дизайн:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="53"/>
+        <location filename="../aboutdialog.cpp" line="56"/>
         <source>Based on the SFLPhone project</source>
         <translation>Основано на проекте SFLPhone</translation>
     </message>
@@ -58,329 +64,381 @@ Ring – это приложение для безопасного и распр
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="42"/>
+        <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
         <translation>Общий</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="89"/>
+        <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
         <translation>Учетная запись</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="121"/>
+        <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="101"/>
+        <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
         <translation>Прозвище</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="165"/>
+        <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="183"/>
+        <location filename="../accountdetails.ui" line="341"/>
         <source>Hostname</source>
         <translation>Имя компьютера</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="354"/>
-        <location filename="../accountdetails.ui" line="925"/>
+        <location filename="../accountdetails.ui" line="608"/>
+        <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="209"/>
-        <location filename="../accountdetails.ui" line="944"/>
+        <location filename="../accountdetails.ui" line="381"/>
+        <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="238"/>
+        <location filename="../accountdetails.ui" line="127"/>
+        <source>delete account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
         <translation>Прокси</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="264"/>
+        <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
         <translation>Номер голосовой почты</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="284"/>
+        <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
         <translation>Автоответ звонков</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="294"/>
+        <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
         <translation>UPnP разрешен</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="301"/>
+        <location filename="../accountdetails.ui" line="531"/>
         <source>DTMF tone type</source>
         <translation>Тип тона DTMF</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="310"/>
+        <location filename="../accountdetails.ui" line="548"/>
         <source>RTP</source>
         <translation>RTP</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="320"/>
+        <location filename="../accountdetails.ui" line="566"/>
         <source>SIP</source>
         <translation>SIP</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="398"/>
+        <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
         <translation>Разрешать звонки от незнакомых</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="412"/>
+        <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
         <translation>Разрешать звонки от лиц из списка контактов</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="405"/>
+        <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
         <translation>Разрешать звонки от лиц из истории</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="388"/>
+        <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
         <translation>Настройки учетной записи Ring</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="448"/>
         <source>Audio</source>
-        <translation>Голосовой</translation>
+        <translation type="vanished">Голосовой</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="534"/>
         <source>Video</source>
-        <translation>Видео</translation>
+        <translation type="vanished">Видео</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="540"/>
         <source>Enable Video</source>
-        <translation>Включить видео</translation>
+        <translation type="vanished">Включить видео</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="621"/>
+        <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="648"/>
+        <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
         <translation>Регистрация</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="660"/>
+        <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
         <translation>Регистрация истекает через (секунды):</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="688"/>
+        <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
         <translation>Сетевой интерфейс</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="697"/>
+        <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
         <translation>Локальный порт:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="745"/>
         <source>Published Adress</source>
-        <translation>Опубликованный адрес</translation>
+        <translation type="vanished">Опубликованный адрес</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="760"/>
+        <location filename="../accountdetails.ui" line="772"/>
+        <source>Ringtone Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="796"/>
+        <location filename="../accountdetails.cpp" line="57"/>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="854"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1070"/>
+        <source>Audio codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1100"/>
+        <source>Video codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1316"/>
+        <source>Published Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
         <translation>Такие же, как и локальные параметры</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="773"/>
+        <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
         <translation>Установить опубликованный адрес как порт</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="791"/>
+        <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="814"/>
+        <location filename="../accountdetails.ui" line="1424"/>
         <source>Port</source>
         <translation>Порт</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="860"/>
+        <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
         <translation>Исполльзовать STUN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="876"/>
-        <location filename="../accountdetails.ui" line="909"/>
+        <location filename="../accountdetails.ui" line="1494"/>
+        <location filename="../accountdetails.ui" line="1535"/>
         <source>Server URL</source>
         <translation>Адрес сервера</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="893"/>
+        <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
         <translation>Использовать TURN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="960"/>
+        <location filename="../accountdetails.ui" line="1586"/>
         <source>Realm</source>
         <translation>область </translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="983"/>
+        <location filename="../accountdetails.ui" line="1635"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
         <translation>Согласование сесcии SDP (резерв ICE)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="996"/>
+        <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
         <translation>Данные параметры используются только во время SDP согласования сессии в случае, если ICE не поддерживается сервером или пиром.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1012"/>
+        <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
         <translation>Диапазон портов для RTP аудио</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1027"/>
-        <location filename="../accountdetails.ui" line="1112"/>
+        <location filename="../accountdetails.ui" line="1735"/>
+        <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
         <translation>Минимум</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1050"/>
-        <location filename="../accountdetails.ui" line="1135"/>
+        <location filename="../accountdetails.ui" line="1766"/>
+        <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
         <translation>Максимум</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1097"/>
+        <location filename="../accountdetails.ui" line="1839"/>
         <source>Video RTP Port Range</source>
         <translation>Диапазон портов для RTP видео</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1187"/>
+        <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
         <translation>Безопасность</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1214"/>
-        <source>Media Stream Encryption</source>
-        <translation>Шифрование медиапотока</translation>
+        <location filename="../accountdetails.ui" line="2337"/>
+        <source>Media Stream Encryption (SRTP)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1221"/>
+        <source>Media Stream Encryption</source>
+        <translation type="vanished">Шифрование медиапотока</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
         <translation>Шифровать медиапотоки (SRTP)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1230"/>
         <source>Key exchange protocol</source>
-        <translation>Протокол обмена ключами</translation>
+        <translation type="vanished">Протокол обмена ключами</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1252"/>
         <source>Fallback on RTP on encryption failure</source>
-        <translation>Использовать RTP, если шифрование отсутствует</translation>
+        <translation type="vanished">Использовать RTP, если шифрование отсутствует</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1265"/>
+        <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
         <translation>Шифрование разговора</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1272"/>
+        <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
         <translation>Шифровать разговор (TLS)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1281"/>
+        <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
         <translation>CA сертификат</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1291"/>
+        <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
         <translation>Пользовательский сертификат</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1301"/>
+        <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
         <translation>Приватный ключ</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1311"/>
+        <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
         <translation>Пароль к приватному ключу</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1321"/>
         <source>TLS protocol method</source>
-        <translation>Метод протокола TSL</translation>
+        <translation type="vanished">Метод протокола TSL</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1331"/>
         <source>Outgoing TLS server name</source>
-        <translation>Исходящее имя сервера TLS</translation>
+        <translation type="vanished">Исходящее имя сервера TLS</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1341"/>
         <source>Negotiation timeout (seconds)</source>
-        <translation>Ожидание разговора (секунд)</translation>
+        <translation type="vanished">Ожидание разговора (секунд)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1459"/>
+        <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
         <translation>Проверять входящие сертификаты (на стороне сервера)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1469"/>
+        <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
         <translation>Проверять исходящие сертификаты (клиент)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1479"/>
+        <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
         <translation>Требует сертификат для входящих TLS соединений</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1497"/>
         <source>Cipher</source>
-        <translation>Шифр</translation>
+        <translation type="vanished">Шифр</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1508"/>
+        <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
         <translation>Использовать шифрование по-умолчанию</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1518"/>
         <source>User custom cipher list</source>
-        <translation>Использовать пользовательский список шифров</translation>
+        <translation type="vanished">Использовать пользовательский список шифров</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="180"/>
+        <location filename="../accountdetails.cpp" line="55"/>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.cpp" line="234"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="182"/>
+        <location filename="../accountdetails.cpp" line="236"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
+    </message>
+</context>
+<context>
+    <name>CallUtilsDialog</name>
+    <message>
+        <location filename="../callutilsdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Диалог</translation>
+    </message>
+    <message>
+        <location filename="../callutilsdialog.ui" line="65"/>
+        <source>or type number...</source>
+        <translation type="unfinished">или введите номер...</translation>
+    </message>
+    <message>
+        <location filename="../callutilsdialog.ui" line="104"/>
+        <source>Transfer</source>
+        <translation type="unfinished">Передача</translation>
     </message>
 </context>
 <context>
@@ -391,63 +449,177 @@ Ring – это приложение для безопасного и распр
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="76"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation>Это ваш RingID.
+        <translation type="vanished">Это ваш RingID.
 Скопируйте и поделитесь им с вашими друзьями!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="166"/>
+        <location filename="../callwidget.ui" line="197"/>
+        <source>Search contacts or enter ring ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="556"/>
+        <source>settings menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
         <translation>Ring - это распределенная и безопасная платформа для передачи голоса, видео и текстовых сообщений, которая не нуждается в централизованном сервере и оставляет мощь секретности в руках пользователя.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="258"/>
+        <location filename="../callwidget.ui" line="670"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="774"/>
+        <source>Share your ring id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="829"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="937"/>
+        <source>Conversation with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1020"/>
+        <source>Start the conversation !</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1107"/>
+        <source>send message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1233"/>
+        <source>Wants to talk to you!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1328"/>
+        <source>Answer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1360"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1431"/>
+        <source>Calling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1485"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="292"/>
+        <location filename="../callwidget.ui" line="1223"/>
         <source>Call</source>
         <translation>Звонок</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="306"/>
         <source>Accept</source>
-        <translation>Принять</translation>
+        <translation type="vanished">Принять</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="317"/>
         <source>Refuse</source>
-        <translation>Отклонить</translation>
+        <translation type="vanished">Отклонить</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="440"/>
         <source>Search / Enter number</source>
-        <translation>Найти / Ввести номер</translation>
+        <translation type="vanished">Найти / Ввести номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="133"/>
+        <location filename="../callwidget.cpp" line="137"/>
+        <location filename="../callwidget.cpp" line="259"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="139"/>
+        <location filename="../callwidget.cpp" line="143"/>
+        <location filename="../callwidget.cpp" line="265"/>
         <source>Add to contact</source>
         <translation>Добавить в контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="186"/>
-        <location filename="../callwidget.cpp" line="210"/>
+        <location filename="../callwidget.cpp" line="197"/>
+        <source>Copy</source>
+        <translation type="unfinished">Копировать</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="206"/>
+        <source>Display date</source>
+        <translation type="unfinished">Отображать дату</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="209"/>
+        <source>Display author</source>
+        <translation type="unfinished">Отображать имя</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="236"/>
+        <source>Message incoming from %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="275"/>
+        <source>Call Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="276"/>
+        <source>Copy Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="279"/>
+        <source>Copy %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="284"/>
+        <source>Call %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="316"/>
+        <location filename="../callwidget.cpp" line="339"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>НЕ НАЙДЕНА УЧЕТНАЯ ЗАПИСЬ RING</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="352"/>
+        <source>Call incoming from %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="356"/>
+        <source>%1</source>
+        <comment>%1 is the name of the caller</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="608"/>
+        <source>Conversation with %1</source>
+        <comment>%1 is the contact name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Call from %1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>Звонок от %1</translation>
+        <translation type="vanished">Звонок от %1</translation>
     </message>
 </context>
 <context>
@@ -458,89 +630,147 @@ Copy and share it with your friends!</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="36"/>
+        <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
         <translation>Общий</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="51"/>
+        <location filename="../configurationwidget.ui" line="171"/>
+        <source>quit settings menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="253"/>
         <source>History Settings</source>
         <translation>Настройки истории</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="60"/>
+        <location filename="../configurationwidget.ui" line="294"/>
         <source>Keep History for (days)</source>
         <translation>Хранить историю (дней):</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="79"/>
+        <location filename="../configurationwidget.ui" line="337"/>
         <source>(Set to 0 for unlimited history)</source>
         <translation>(0 = хранить всю историю)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="104"/>
+        <location filename="../configurationwidget.ui" line="391"/>
         <source>Clear History</source>
         <translation>Удалить историю сообщений</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="119"/>
         <source>Ringtones Selection</source>
-        <translation>Выбор мелодии звонка</translation>
+        <translation type="vanished">Выбор мелодии звонка</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="158"/>
+        <location filename="../configurationwidget.ui" line="537"/>
         <source>Misc. Settings</source>
         <translation>Другие настройки</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="165"/>
+        <location filename="../configurationwidget.ui" line="559"/>
         <source>Keep minimized on close</source>
         <translation>Сворачивать вместо закрытия</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="189"/>
+        <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
         <translation>Видео</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="231"/>
+        <location filename="../configurationwidget.ui" line="428"/>
+        <source>Record Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="461"/>
+        <source>Save in :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="504"/>
+        <source>Always Record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="603"/>
+        <source>Check for update automatically every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="631"/>
+        <source>days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="658"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="771"/>
+        <source>Preview unavailable during call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="825"/>
         <source>Device Selection</source>
         <translation>Выбор устройства</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="271"/>
+        <location filename="../configurationwidget.ui" line="883"/>
         <source>Device</source>
         <translation>Устройство</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="294"/>
+        <location filename="../configurationwidget.ui" line="914"/>
         <source>Resolution</source>
         <translation>Разрешение</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="345"/>
-        <source>Camera Preview</source>
-        <translation>Предпросмотр камеры</translation>
+        <location filename="../configurationwidget.ui" line="951"/>
+        <source>Output Device</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="371"/>
+        <location filename="../configurationwidget.ui" line="966"/>
+        <source>Input Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1047"/>
+        <source>add new account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Camera Preview</source>
+        <translation type="vanished">Предпросмотр камеры</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
         <translation>Учетная запись</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="448"/>
+        <location filename="../configurationwidget.ui" line="583"/>
         <source>Launch Ring on Startup</source>
         <translation>Запускать Ring при старте системы</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="177"/>
+        <location filename="../configurationwidget.cpp" line="264"/>
         <source>New Account</source>
         <translation>Новая учетная запись</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="198"/>
+        <location filename="../configurationwidget.cpp" line="285"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>Вы уверены, что хотите удалить всю историю? </translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.cpp" line="340"/>
+        <source>Choose Directory</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -587,14 +817,13 @@ Copy and share it with your friends!</source>
 <context>
     <name>InstantMessagingWidget</name>
     <message>
-        <location filename="../instantmessagingwidget.ui" line="38"/>
+        <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
         <translation>Отправить текстовое сообщение...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.ui" line="48"/>
         <source>Send</source>
-        <translation>Отправить</translation>
+        <translation type="vanished">Отправить</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
@@ -620,7 +849,7 @@ Copy and share it with your friends!</source>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -628,73 +857,148 @@ Copy and share it with your friends!</source>
 <context>
     <name>NavBar</name>
     <message>
-        <location filename="../navbar.ui" line="54"/>
         <source>Done</source>
-        <translation>Готово</translation>
+        <translation type="vanished">Готово</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../utils.cpp" line="184"/>
+        <source>No default mail client found</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QualityDialog</name>
+    <message>
+        <location filename="../qualitydialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Диалог</translation>
+    </message>
+    <message>
+        <location filename="../qualitydialog.ui" line="100"/>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RingButton</name>
+    <message>
+        <location filename="../ringbutton.ui" line="26"/>
+        <source>Form</source>
+        <translation type="unfinished">Форма</translation>
+    </message>
+    <message>
+        <location filename="../ringbutton.ui" line="69"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TransferDialog</name>
     <message>
-        <location filename="../transferdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Диалог</translation>
+        <translation type="vanished">Диалог</translation>
     </message>
     <message>
-        <location filename="../transferdialog.ui" line="23"/>
         <source>Transfer</source>
-        <translation>Передача</translation>
+        <translation type="vanished">Передача</translation>
     </message>
     <message>
-        <location filename="../transferdialog.ui" line="30"/>
         <source>or type number...</source>
-        <translation>или введите номер...</translation>
+        <translation type="vanished">или введите номер...</translation>
     </message>
     <message>
-        <location filename="../transferdialog.ui" line="40"/>
         <source>Current Calls</source>
-        <translation>Текущие звонки</translation>
+        <translation type="vanished">Текущие звонки</translation>
     </message>
 </context>
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="157"/>
         <source>Hold</source>
-        <translation>Удержать</translation>
+        <translation type="vanished">Удержать</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="167"/>
+        <location filename="../videooverlay.ui" line="42"/>
+        <source>Call on Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="119"/>
+        <source>Hold / Unhold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
         <translation>Чат</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="150"/>
+        <location filename="../videooverlay.ui" line="186"/>
+        <source>Add person to call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="218"/>
+        <source>Transfer call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="256"/>
+        <source>Mute Mic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="367"/>
+        <source>Quality</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="399"/>
+        <source>Join Calls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="473"/>
+        <source>Name label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="495"/>
+        <source>Add to contact</source>
+        <translation type="unfinished">Добавить в контакт</translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="565"/>
+        <source>Time elapsed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="29"/>
+        <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
         <translation>Повесить трубку</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="36"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="174"/>
         <source>Transfer</source>
-        <translation>Передача</translation>
+        <translation type="vanished">Передача</translation>
     </message>
     <message>
-        <location filename="../videooverlay.cpp" line="38"/>
         <source>Mute Audio</source>
-        <translation>Выключить звук</translation>
+        <translation type="vanished">Выключить звук</translation>
     </message>
     <message>
-        <location filename="../videooverlay.cpp" line="45"/>
+        <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
         <translation>Выключить видео</translation>
     </message>
@@ -702,17 +1006,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="181"/>
+        <location filename="../videoview.cpp" line="232"/>
         <source>Share entire screen</source>
         <translation>Транслировать весь экран</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="186"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
         <translation>Транслировать область экрана</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="192"/>
+        <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
         <translation>Поделиться файлом</translation>
     </message>
@@ -720,19 +1024,29 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="52"/>
+        <location filename="../wizarddialog.cpp" line="55"/>
         <source>Please wait while we create your account.</source>
         <translation>Подождите, пока идет создание учетной записи.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="937"/>
-        <source>Join the Ring</source>
-        <translation>Присоединиться к Ring</translation>
+        <location filename="../wizarddialog.cpp" line="67"/>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="1000"/>
+        <source>Join the Ring</source>
+        <translation type="vanished">Присоединиться к Ring</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="86"/>
         <source>Choose your username:</source>
         <translation>Выберите имя пользователя:</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="157"/>
+        <location filename="../wizarddialog.ui" line="160"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
