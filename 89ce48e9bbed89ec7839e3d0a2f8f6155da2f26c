@@ -22,6 +22,30 @@
       "revId": "89ce48e9bbed89ec7839e3d0a2f8f6155da2f26c",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_93180b86",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-29T13:22:02Z",
+      "side": 1,
+      "message": "Yep Utf16 is exactly what i want because of that https://msdn.microsoft.com/en-us/library/windows/desktop/dd374081(v\u003dvs.85).aspx",
+      "parentUuid": "ba65a107_f3a62753",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 80
+      },
+      "revId": "89ce48e9bbed89ec7839e3d0a2f8f6155da2f26c",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
