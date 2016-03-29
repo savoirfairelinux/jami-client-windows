@@ -46,6 +46,30 @@
       "revId": "89ce48e9bbed89ec7839e3d0a2f8f6155da2f26c",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_53127363",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-03-29T13:25:32Z",
+      "side": 1,
+      "message": "TL;DR; Unicode-enabled functions in Windows use UTF-16 / New Windows applications should use UTF-16 as their internal data representation.",
+      "parentUuid": "ba65a107_93180b86",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 80
+      },
+      "revId": "89ce48e9bbed89ec7839e3d0a2f8f6155da2f26c",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
