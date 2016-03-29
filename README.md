@@ -19,18 +19,37 @@ For more information about the ring project, see the following:
 
 ## Build instructions
 
-*USE THE QMAKE OF Qt BUILT WITH MINGW* (e.g. /usr/bin/i686-w64-mingw32-qmake-qt5)
+*USE THE QMAKE OF Qt BUILT WITH MINGW* (e.g. /usr/bin/[i686 | x86_64]-w64-mingw32-qmake-qt5)
 
 ```
 cd ring-client-windows
 mkdir build && cd build
-export QTDIR=<path to mingw qt> (e.g. /usr/i686-w64-mingw32/lib/qt)
+export QTDIR=<path to mingw qt> (e.g. /usr/[i686 | x86_64]-w64-mingw32/lib/qt)
+git submodule init && git submodule update
+cd libqrencode
+./autogen.sh && ./configure --host=[i686 | x86_64]-w64-mingw32 --prefix=<Install dir of Ring and LRC>
+make
+make install
+cd ..
 qmake ../RingWinClient.pro -r -spec win32-g++ RING=<Install dir of Ring and LRC> [BUILD=Debug]
 make
 make install
 ```
-
 You will find all files in ./release directory.
+
+#Auto update
+
+If you want to enable auto-update
+- Build winsparkle
+    In the client directory after having initialized the submodule
+    ```
+    cd winsparkle
+    mkdir build && cd build
+    cmake -DCMAKE_TOOLCHAIN_FILE=<LRC Directory>/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=Install dir of Ring and LRC> ../cmake",
+    make
+    make install
+    ```
+- Compile the client with `ENABLE_AUTOUPDATE=True`
 
 ## Debugging
 
