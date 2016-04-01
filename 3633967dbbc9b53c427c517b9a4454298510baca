@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba65a107_ae4fe891",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-04-01T14:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba65a107_8e60e436",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 101
+      },
+      "revId": "3633967dbbc9b53c427c517b9a4454298510baca",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba65a107_ae65a846",
         "filename": "README.md",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-30T20:19:19Z",
       "side": 1,
       "message": "maybe some mistake of my own, but libqrencode.dll wasn\u0027t copied to the release directory of the client. It was copied where I set the prefix though. I got the missing dll error when I started the client.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "3633967dbbc9b53c427c517b9a4454298510baca",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_6e49d08a",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-04-01T14:00:01Z",
+      "side": 1,
+      "message": "Yeah it\u0027s working on packaging so i guess something went wrong on your side",
+      "parentUuid": "ba65a107_ae65a846",
       "range": {
         "startLine": 35,
         "startChar": 0,
