@@ -111,7 +111,7 @@ private:
     QMenu* shareMenu_;
 
     constexpr static int animDuration_ = 200; //msecs
-    constexpr static int qrSize_ = 100;
+    constexpr static int qrSize_ = 200;
 
 private:
     void findRingAccount();
