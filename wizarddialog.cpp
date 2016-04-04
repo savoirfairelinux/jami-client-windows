@@ -65,7 +65,6 @@ WizardDialog::accept()
         account->setDisplayName(ui->usernameEdit->text());
     else
         account->setDisplayName(tr("Unknown"));
-    AccountModel::instance().ip2ip()->setRingtonePath(Utils::GetRingtonePath());
     account->setRingtonePath(Utils::GetRingtonePath());
     account->setUpnpEnabled(true);
 
