@@ -344,8 +344,8 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
 void CallWidget::setupQRCode()
 {
     auto rcode = QRcode_encodeString(ui->ringIdLabel->text().toStdString().c_str(),
-                                     8,
-                                     QR_ECLEVEL_H, // Highest level of error correction
+                                     0,
+                                     QR_ECLEVEL_L, // Highest level of error correction
                                      QR_MODE_8, // 8-bit data mode
                                      1);
     if (not rcode) {
@@ -375,7 +375,7 @@ void CallWidget::setupQRCode()
     }
     painter.end();
     QRcode_free(rcode);
-    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_))));
+    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_), Qt::KeepAspectRatio)));
 }
 
 void
