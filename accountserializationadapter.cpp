@@ -113,7 +113,6 @@ static void setupWidget(QWidget* w, Account* a, const QHash<QByteArray, int>& ro
 
             //Check if the field is required for this account type
             if (a->roleState((Account::Role)role) == Account::RoleState::UNAVAILABLE) {
-
                 w->setProperty("lrcfgVisible", w->isVisible() ? 2 : 1);
                 w->setVisible(false);
 
@@ -129,7 +128,6 @@ static void setupWidget(QWidget* w, Account* a, const QHash<QByteArray, int>& ro
 
                 if (fm) {
                     QWidget* buddy = fm->labelForField(w);
-                    qDebug() << "BUDDY " << buddy;
                     if (buddy)
                         buddy->setVisible(false);
 
@@ -137,9 +135,8 @@ static void setupWidget(QWidget* w, Account* a, const QHash<QByteArray, int>& ro
             }
             else {
                 //0 = unset, 1=invisible, 2=visible
-                const int oldVisibleState = w->property("lrcfgVisible").toInt();
-                if (oldVisibleState)
-                    w->setVisible(oldVisibleState-1);
+                w->setProperty("lrcfgVisible", 2);
+                w->setVisible(true);
             }
         }
         else {
