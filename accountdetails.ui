@@ -2547,7 +2547,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>
