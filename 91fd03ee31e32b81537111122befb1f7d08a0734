@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_b04dfe74",
+        "filename": "accountserializationadapter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-04-11T20:23:09Z",
+      "side": 1,
+      "message": "Is that still useful to you?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "91fd03ee31e32b81537111122befb1f7d08a0734",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
