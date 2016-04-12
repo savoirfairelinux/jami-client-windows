@@ -99,6 +99,9 @@ AccountDetails::setAccount(Account* currentAccount) {
 
     currentAccount_ = currentAccount;
 
+    if (currentAccount_ == nullptr)
+        return;
+
     ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
 
     codecModel_ = currentAccount->codecModel();

@@ -24,6 +24,7 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QPropertyAnimation>
+#include <QtConcurrent/QtConcurrent>
 
 #include "video/devicemodel.h"
 #include "video/channel.h"
@@ -41,6 +42,7 @@
 #include "accountstatedelegate.h"
 #include "settingskey.h"
 #include "utils.h"
+#include "pathpassworddialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -74,8 +76,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(accountDetails_->getDeleteAccountButton(), &QPushButton::clicked, this, [=]() {
         auto account = accountModel_->getAccountByModelIndex(
                     ui->accountView->currentIndex());
-        if (account != accountModel_->ip2ip())
-            accountModel_->remove(account);
+        accountModel_->remove(account);
+        accountModel_->save();
     });
 
     connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
@@ -91,6 +93,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
             this, SLOT(deviceIndexChanged(int)));
 
+    ui->accountView->setSelectionModel(AccountModel::instance().selectionModel());
     connect(ui->accountView->selectionModel(),
             SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(accountSelected(QItemSelection)));
@@ -255,7 +258,8 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel) {
     auto account = accountModel_->getAccountByModelIndex(
                 ui->accountView->currentIndex());
     accountDetails_->setAccount(account);
-    AccountSerializationAdapter adapter(account, accountDetails_);
+    if (account)
+        AccountSerializationAdapter adapter(account, accountDetails_);
 }
 
 void
@@ -359,4 +363,29 @@ ConfigurationWidget::inputIndexChanged(int index)
 {
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}
+
+void
+ConfigurationWidget::on_importButton_clicked()
+{
+    PathPasswordDialog dlg;
+    if (dlg.exec() == QDialog::Accepted)
+        AccountModel::instance().importAccounts(dlg.path_, dlg.password_);
+}
+
+void
+ConfigurationWidget::on_exportButton_clicked()
+{
+    PathPasswordDialog dlg;
+    dlg.exportMode = true;
+    if (dlg.exec() == QDialog::Accepted) {
+        auto func = [](QString path, QString password)
+        {
+            AccountModel::instance().exportAccounts(
+            {AccountModel::instance().selectedAccount()->id()},
+                        path,
+                        password);
+        };
+        QtConcurrent::run(func, dlg.path_, dlg.password_);
+    }
 }
