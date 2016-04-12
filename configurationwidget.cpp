@@ -41,6 +41,7 @@
 #include "accountstatedelegate.h"
 #include "settingskey.h"
 #include "utils.h"
+#include "pathpassworddialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -359,4 +360,18 @@ ConfigurationWidget::inputIndexChanged(int index)
 {
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}
+
+void
+ConfigurationWidget::on_importButton_clicked()
+{
+    PathPasswordDialog dlg;
+    dlg.exec();
+}
+
+void
+ConfigurationWidget::on_exportButton_clicked()
+{
+    PathPasswordDialog dlg;
+    dlg.exec();
 }
