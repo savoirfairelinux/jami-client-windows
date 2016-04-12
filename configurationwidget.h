@@ -21,6 +21,7 @@
 #include <QWidget>
 #include <QItemSelection>
 #include <QSettings>
+#include <QErrorMessage>
 
 #include "navwidget.h"
 #include "accountdetails.h"
@@ -59,12 +60,15 @@ private slots:
     void on_intervalUpdateCheckSpinBox_valueChanged(int arg1);
     void on_stackedWidget_currentChanged(int index);
     void on_recordPath_clicked();
+    void on_importButton_clicked();
+    void on_exportButton_clicked();
 
 private slots:
     void accountSelected(QItemSelection itemSel);
     void deviceIndexChanged(int index);
     void outputIndexChanged(int index);
     void inputIndexChanged(int index);
+
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;
@@ -74,6 +78,7 @@ private:
     AccountDetails* accountDetails_;
     AccountStateDelegate *accountStateDelegate_;
     QSettings settings_;
+    QErrorMessage errorDlg_;
     void showPreview();
 };
 

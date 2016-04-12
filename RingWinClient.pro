@@ -66,7 +66,8 @@ SOURCES += main.cpp\
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
-    ringbutton.cpp
+    ringbutton.cpp \
+    pathpassworddialog.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -101,7 +102,8 @@ HEADERS  += mainwindow.h \
     pixbufmanipulator.h \
     qualitydialog.h \
     ringthemeutils.h \
-    ringbutton.h
+    ringbutton.h \
+    pathpassworddialog.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -122,7 +124,8 @@ FORMS    += mainwindow.ui \
     callutilsdialog.ui \
     combar.ui \
     qualitydialog.ui \
-    ringbutton.ui
+    ringbutton.ui \
+    pathpassworddialog.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi -lqrencode
 
