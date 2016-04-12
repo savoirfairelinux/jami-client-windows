@@ -65,6 +65,10 @@ private slots:
     void deviceIndexChanged(int index);
     void outputIndexChanged(int index);
     void inputIndexChanged(int index);
+    void on_importButton_clicked();
+
+    void on_exportButton_clicked();
+
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;

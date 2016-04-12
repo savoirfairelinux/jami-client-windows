@@ -1079,6 +1079,27 @@
             </property>
            </widget>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="importButton">
+              <property name="text">
+               <string>Import</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="exportButton">
+              <property name="text">
+               <string>Export</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </widget>
        </item>
@@ -1090,15 +1111,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>RingButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">ringbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>VideoWidget</class>
    <extends>QWidget</extends>
    <header>videowidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>RingButton</class>
-   <extends>QPushButton</extends>
-   <header>ringbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
