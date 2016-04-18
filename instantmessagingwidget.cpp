@@ -30,6 +30,7 @@
 
 #include "imdelegate.h"
 #include "globalsystemtray.h"
+#include "settingskey.h"
 
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
@@ -47,17 +48,20 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     connect(copyAction, &QAction::triggered, [=]() {
         copyToClipboard();
     });
+    QSettings settings;
     auto displayDate = new QAction(tr("Display date"), this);
     displayDate->setCheckable(true);
+    displayDate->setChecked(settings.value(SettingsKey::imShowDate).toBool());
     ui->listMessageView->addAction(displayDate);
     auto displayAuthor = new QAction(tr("Display author"), this);
     displayAuthor->setCheckable(true);
+    displayAuthor->setChecked(settings.value(SettingsKey::imShowAuthor).toBool());
     ui->listMessageView->addAction(displayAuthor);
     auto lamdba = [=](){
-        int opts = 0;
-        displayAuthor->isChecked() ? opts |= ImDelegate::DisplayOptions::AUTHOR : opts;
-        displayDate->isChecked() ? opts |= ImDelegate::DisplayOptions::DATE : opts;
-        imDelegate_->setDisplayOptions(static_cast<ImDelegate::DisplayOptions>(opts));
+        QSettings settings;
+        settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
+        settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
+        emit imDelegate_->sizeHintChanged(QModelIndex());
     };
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
