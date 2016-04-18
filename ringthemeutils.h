@@ -21,6 +21,7 @@
 namespace RingTheme {
 
 static const QColor blue_ {"#3AC0D2"};
+static const QColor lightBlue_ {"#c1ebf0"};
 static const QColor lightGrey_ {242, 242, 242};
 static const QColor lightBlack_ {63, 63, 63};
 static const QColor grey_ {192, 192, 192};
