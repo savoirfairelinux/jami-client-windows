@@ -19,36 +19,71 @@
 #include "imdelegate.h"
 
 #include <QApplication>
+#include <QTextDocument>
+#include <QSettings>
 
 #include "media/text.h"
 #include "media/textrecording.h"
 
 #include "ringthemeutils.h"
+#include "settingskey.h"
 
 ImDelegate::ImDelegate(QObject *parent)
-    : QStyledItemDelegate(parent), showDate_(false), showAuthor_(false)
-{}
-
-void ImDelegate::setDisplayOptions(ImDelegate::DisplayOptions opt)
+    : QStyledItemDelegate(parent),
+      linkRegex_(
+          QRegularExpression(QStringLiteral("([a-z]{3,9}:|www\\.)([^\\s,.);!>]|[,.);!>](?!\\s|$))+"),
+                             QRegularExpression::CaseInsensitiveOption))
 {
-    showAuthor_ = opt & DisplayOptions::AUTHOR;
-    showDate_ = opt & DisplayOptions::DATE;
-    emit sizeHintChanged(QModelIndex());
+}
+
+QUrl ImDelegate::getParsedUrl(const QModelIndex& index)
+{
+    auto it = linkRegex_.globalMatch(index.data().toString());
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        return QUrl::fromUserInput(match.capturedRef().toString());
+    }
+    return QUrl();
 }
 
 void
 ImDelegate::formatMsg(const QModelIndex& index, QString& msg) const
 {
-    if (showAuthor_) {
+    QSettings settings;
+    if (settings.value(SettingsKey::imShowAuthor).toBool()) {
         auto author = index.data(
                     static_cast<int>(Media::TextRecording::Role::AuthorDisplayname)).toString();
-        msg = QString("(%1)\n%2").arg(author, msg);
+        msg = QString("%1").arg(author, msg);
     }
-    if (showDate_) {
+    if (settings.value(SettingsKey::imShowDate).toBool()) {
         auto formattedDate = index.data(
                     static_cast<int>(Media::TextRecording::Role::FormattedDate)).toString();
-        msg = QString("%2\n%1").arg(formattedDate, msg);
+        msg = QString("%2<footer><i>%1</i></footer>").arg(formattedDate, msg);
     }
+}
+
+QString
+ImDelegate::parseForLink(const QString& msg) const
+{
+    QString re;
+    auto p = 0;
+    auto it = linkRegex_.globalMatch(msg);
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        auto start = match.capturedStart();
+
+        auto url = QUrl::fromUserInput(match.capturedRef().toString());
+
+        if (start > p)
+            re.append(msg.mid(p, start - p).toHtmlEscaped().replace(QLatin1Char('\n'),
+                                                                    QStringLiteral("<br/>")));
+        re.append(QStringLiteral("<a href=\"%1\">%2</a>")
+                  .arg(QString::fromLatin1(url.toEncoded()).toHtmlEscaped(),
+                       match.capturedRef().toString().toHtmlEscaped()));
+        p = match.capturedEnd();
+    }
+
+    return QString("<body>%1</body>").arg(re.isEmpty() ? msg : re);
 }
 
 void
@@ -76,14 +111,10 @@ ImDelegate::paint(QPainter* painter,
                 .value<Media::Media::Direction>() == Media::Media::Direction::IN
                 ? Qt::AlignLeft : Qt::AlignRight;
 
+        msg = parseForLink(msg);
         formatMsg(index, msg);
 
         QRect textRect = getBoundingRect(dir, msg, opt);
-
-        QRect bubbleRect(textRect.left() - padding_,
-                         textRect.top() - padding_,
-                         textRect.width() + 2 * padding_,
-                         textRect.height() + 2 * padding_ );
 
         opt.decorationSize = iconSize_;
         opt.decorationPosition = (dir == Qt::AlignRight ?
@@ -92,41 +123,68 @@ ImDelegate::paint(QPainter* painter,
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
         QPainterPath path;
-        path.addRoundedRect(bubbleRect, padding_, padding_);
+        path.addRoundedRect(textRect, padding_, padding_);
 
         if (dir == Qt::AlignRight) {
-            painter->fillPath(path, RingTheme::blue_);
-            painter->setPen(Qt::white);
+            auto status = index.data(static_cast<int>(Media::TextRecording::Role::DeliveryStatus)).toString();
+            if (status == QStringLiteral("SENDING"))
+                painter->fillPath(path, RingTheme::lightBlack_);
+            else if (status == QStringLiteral("FAILURE"))
+                painter->fillPath(path, RingTheme::red_);
+            else
+                painter->fillPath(path, RingTheme::blue_);
         }
         else {
             painter->fillPath(path, Qt::white);
-            painter->setPen(Qt::black);
         }
 
-        painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, msg);
+        painter->save();
+
+        QTextDocument document;
+        document.setDefaultFont(fontMsg_);
+
+        if (dir == Qt::AlignRight)
+            document.setDefaultStyleSheet("body { color : white; } i { opacity: 100; font-size : 11px; text-align : right; }");
+        else
+            document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
+
+        document.setHtml(msg);
+
+        auto textOptions = QTextOption(Qt::AlignLeft);
+        textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+        document.setDefaultTextOption(textOptions);
+        document.setTextWidth(textRect.width());
+
+        painter->translate(textRect.topLeft());
+        document.drawContents(painter);
+        painter->restore();
     }
 }
 
-QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const
+QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
+                                  const QString& msg,
+                                  const QStyleOptionViewItem &option) const
 {
-    QFont textFont = option.font;
-    QFontMetrics textFontMetrics(textFont);
     QRect textRect;
 
-    if (dir == Qt::AlignRight) {
-        textRect = textFontMetrics.boundingRect(option.rect.left() + 2 * padding_,
-                                                option.rect.top() + 2 * padding_,
-                                                option.rect.width() - iconSize_.width() - 4 * padding_,
-                                                0,
-                                                dir|Qt::AlignTop|Qt::TextWordWrap,
-                                                msg);
+    QTextDocument txtDoc;
+    txtDoc.setDefaultFont(fontMsg_);
+    txtDoc.setHtml(msg);
+    auto textOptions = QTextOption(Qt::AlignLeft);
+    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    txtDoc.setDefaultTextOption(textOptions);
+    txtDoc.setTextWidth(option.rect.width() - iconSize_.width() - padding_);
+
+    if (dir == Qt::AlignLeft) {
+        textRect.setRect(option.rect.left() + iconSize_.width() + padding_,
+                         option.rect.top() + padding_,
+                         txtDoc.idealWidth(),
+                         txtDoc.size().height());
     } else {
-        textRect = textFontMetrics.boundingRect(option.rect.left() + iconSize_.width() + 2 * padding_,
-                                                option.rect.top() + 2 * padding_,
-                                                option.rect.width() - iconSize_.width() - 4 * padding_ ,
-                                                0,
-                                                dir|Qt::AlignTop|Qt::TextWordWrap,
-                                                msg);
+        textRect.setRect(option.rect.right() - iconSize_.width() - padding_ - txtDoc.idealWidth(),
+                         option.rect.top() + padding_,
+                         txtDoc.idealWidth(),
+                         txtDoc.size().height());
     }
     return textRect;
 }
@@ -145,15 +203,18 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
             .value<Media::Media::Direction>() == Media::Media::Direction::IN
             ? Qt::AlignLeft : Qt::AlignRight;
 
+    msg = parseForLink(msg);
     formatMsg(index, msg);
 
     QRect boundingRect = getBoundingRect(dir, msg, opt);
 
-    QSize size(option.rect.width(), boundingRect.height() + padding_);
+    QSize size(option.rect.width(), boundingRect.height());
 
     /* Keep the minimum height needed. */
     if(size.height() < iconSize_.height())
-        size.setHeight(iconSize_.height() + padding_);
+        size.setHeight(iconSize_.height());
+
+    size.setHeight(size.height() + 2 * padding_);
 
     return size;
 }
