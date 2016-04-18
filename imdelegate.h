@@ -20,6 +20,7 @@
 
 #include <QPainter>
 #include <QStyledItemDelegate>
+#include <QRegularExpression>
 
 class ImDelegate : public QStyledItemDelegate
 {
@@ -32,6 +33,7 @@ public:
     };
 
     void setDisplayOptions(DisplayOptions opt);
+    QUrl getParsedUrl(const QModelIndex& index);
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -40,10 +42,13 @@ private:
     bool showAuthor_;
 
     void formatMsg(const QModelIndex& index, QString& msg) const;
+    QString parseForLink(const QString& msg) const;
     QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
 
     const QFont fontMsg_ = QFont("Arial", 10);
     const QSize iconSize_ {38,38};
+
+    const QRegularExpression linkRegex_;
 
     constexpr static int padding_ = 5;
 };

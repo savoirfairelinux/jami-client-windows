@@ -20,6 +20,7 @@
 #include "ui_callwidget.h"
 
 #include <QClipboard>
+#include <QDesktopServices>
 
 #include <memory>
 
@@ -676,6 +677,12 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
         ui->contactMethodComboBox->addItem(cm->uri());
     }
     slidePage(ui->messagingPage, true);
+    disconnect(imClickedConnection_);
+    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
+        auto url = imDelegate_->getParsedUrl(index);
+        if (not url.isEmpty())
+            QDesktopServices::openUrl(url);
+    });
 }
 
 void
