@@ -31,14 +31,10 @@ public:
         DATE
     };
 
-    void setDisplayOptions(DisplayOptions opt);
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 private:
-    bool showDate_;
-    bool showAuthor_;
-
     void formatMsg(const QModelIndex& index, QString& msg) const;
     QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
 
