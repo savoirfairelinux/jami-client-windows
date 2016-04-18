@@ -107,6 +107,7 @@ private:
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
+    QMetaObject::Connection imClickedConnection_;
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
 
