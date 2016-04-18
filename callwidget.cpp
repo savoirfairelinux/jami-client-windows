@@ -20,6 +20,7 @@
 #include "ui_callwidget.h"
 
 #include <QClipboard>
+#include <QDesktopServices>
 
 #include <memory>
 
@@ -53,6 +54,7 @@
 #include "smartlistdelegate.h"
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
+#include "settingskey.h"
 
 #include "profilemodel.h"
 #include "peerprofilecollection.h"
@@ -233,17 +235,20 @@ CallWidget::setupOutOfCallIM()
             QApplication::clipboard()->setText(text.value<QString>());
         }
     });
+    QSettings settings;
     auto displayDate = new QAction(tr("Display date"), this);
     displayDate->setCheckable(true);
+    displayDate->setChecked(settings.value(SettingsKey::imShowDate).toBool());
     ui->listMessageView->addAction(displayDate);
     auto displayAuthor = new QAction(tr("Display author"), this);
     displayAuthor->setCheckable(true);
+    displayAuthor->setChecked(settings.value(SettingsKey::imShowAuthor).toBool());
     ui->listMessageView->addAction(displayAuthor);
     auto lamdba = [=](){
-        int opts = 0;
-        displayAuthor->isChecked() ? opts |= ImDelegate::DisplayOptions::AUTHOR : opts;
-        displayDate->isChecked() ? opts |= ImDelegate::DisplayOptions::DATE : opts;
-        imDelegate_->setDisplayOptions(static_cast<ImDelegate::DisplayOptions>(opts));
+        QSettings settings;
+        settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
+        settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
+        emit imDelegate_->sizeHintChanged(QModelIndex());
     };
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
@@ -700,6 +705,15 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
         ui->contactMethodComboBox->addItem(cm->uri());
     }
     slidePage(ui->messagingPage, true);
+    disconnect(imClickedConnection_);
+    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
+        auto urlList = index.data(static_cast<int>(Media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
+        if (urlList.size() == 1)
+            QDesktopServices::openUrl(urlList.at(0));
+        else if (urlList.size()) {
+            //TODO Handle multiple url in one message
+        }
+    });
 }
 
 void
