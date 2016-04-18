@@ -95,7 +95,13 @@ ImDelegate::paint(QPainter* painter,
         path.addRoundedRect(bubbleRect, padding_, padding_);
 
         if (dir == Qt::AlignRight) {
-            painter->fillPath(path, RingTheme::blue_);
+            auto status = index.data(static_cast<int>(Media::TextRecording::Role::DeliveryStatus)).toString();
+            if (status == QStringLiteral("SENDING"))
+                painter->fillPath(path, RingTheme::lightBlack_);
+            else if (status == QStringLiteral("FAILURE"))
+                painter->fillPath(path, RingTheme::red_);
+            else
+                painter->fillPath(path, RingTheme::blue_);
             painter->setPen(Qt::white);
         }
         else {
