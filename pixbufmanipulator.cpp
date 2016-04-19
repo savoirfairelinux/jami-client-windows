@@ -18,8 +18,33 @@
 
 #include "pixbufmanipulator.h"
 
-#include <QtCore/QSize>
-#include <QtCore/QMetaType>
+#include <memory>
+
+#include <QSize>
+#include <QMetaType>
+#include <QImage>
+#include <QIODevice>
+#include <QByteArray>
+#include <QBuffer>
+
+#include "person.h"
+#include "call.h"
+#include "contactmethod.h"
+#include "profilemodel.h"
+#include "profile.h"
+
+#include "utils.h"
+
+#undef interface
+
+QByteArray QImageToByteArray(QImage image)
+{
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    image.save(&buffer, "PNG");
+    return ba;
+}
 
 #include <person.h>
 #include <memory>
@@ -176,6 +201,14 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
     else
         photo = fallbackAvatar_;
     return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+}
+
+QVariant PixbufManipulator::decorationRole(const Account* acc)
+{
+    Q_UNUSED(acc)
+    return Utils::getCirclePhoto(ProfileModel::instance().
+                                 selectedProfile()->person()->photo().value<QImage>(),
+                                 imgSize_.width());
 }
 
 } // namespace Interfaces
