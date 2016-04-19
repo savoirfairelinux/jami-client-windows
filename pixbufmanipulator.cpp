@@ -30,6 +30,8 @@
 #include "person.h"
 #include "call.h"
 #include "contactmethod.h"
+#include "profilemodel.h"
+#include "profile.h"
 
 #include "utils.h"
 
@@ -201,6 +203,14 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
     else
         photo = fallbackAvatar_;
     return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+}
+
+QVariant PixbufManipulator::decorationRole(const Account* acc)
+{
+    Q_UNUSED(acc)
+    return Utils::getCirclePhoto(ProfileModel::instance().
+                                 selectedProfile()->person()->photo().value<QImage>(),
+                                 imgSize_.width());
 }
 
 } // namespace Interfaces
