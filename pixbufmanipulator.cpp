@@ -22,7 +22,6 @@
 #include <QtCore/QMetaType>
 
 #include <person.h>
-#include <memory>
 #include <call.h>
 #include <contactmethod.h>
 
@@ -176,6 +175,12 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
     else
         photo = fallbackAvatar_;
     return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+}
+
+QVariant PixbufManipulator::decorationRole(const Account* acc)
+{
+    Q_UNUSED(acc)
+    return QVariant();
 }
 
 } // namespace Interfaces
