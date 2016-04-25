@@ -43,7 +43,7 @@
         "make",
         "make install",
         "cd release",
-        "makensis ring.nsi",
+        "makensis -DARCH=x86 ring.nsi",
         "sudo mv ring-windows-nightly.exe /output"
         ],
         "win64" : [
@@ -88,7 +88,7 @@
         "make",
         "make install",
         "cd release",
-        "makensis ring.nsi",
+        "makensis -DARCH=x64 ring.nsi",
         "sudo mv ring-windows-nightly.exe /output/ring-windows-nightly_x86_64.exe"
         ]
     },
