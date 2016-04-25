@@ -54,8 +54,14 @@ MainWindow::MainWindow(QWidget* parent) :
 
     QMenu* menu = new QMenu();
 
-    auto configAction = new QAction("Configuration", this);
+    auto configAction = new QAction(tr("Configuration"), this);
     menu->addAction(configAction);
+
+    auto exitAction = new QAction(tr("Exit"), this);
+    connect(exitAction, &QAction::triggered, [this](){
+        QCoreApplication::exit();
+    });
+    menu->addAction(exitAction);
 
     sysIcon.setContextMenu(menu);
     sysIcon.show();
