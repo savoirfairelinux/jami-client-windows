@@ -54,8 +54,11 @@ MainWindow::MainWindow(QWidget* parent) :
 
     QMenu* menu = new QMenu();
 
-    auto configAction = new QAction("Configuration", this);
+    auto configAction = new QAction(tr("Configuration"), this);
     menu->addAction(configAction);
+
+    auto exitAction = new QAction(tr("Exit"), this);
+    menu->addAction(exitAction);
 
     sysIcon.setContextMenu(menu);
     sysIcon.show();
@@ -69,6 +72,9 @@ MainWindow::MainWindow(QWidget* parent) :
     navStack_ = new NavStack(ui->stackedWidgetView, this);
     connect(configAction, &QAction::triggered, [this]() {
         navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
+    });
+    connect(exitAction, &QAction::triggered, [this](){
+        QCoreApplication::exit();
     });
 
 #ifdef Q_OS_WIN
