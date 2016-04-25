@@ -33,8 +33,6 @@
 
 RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
 
-InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
-
 # This will be in the installer/uninstaller's title bar
 Name "${COMPANYNAME} - ${APPNAME}"
 
@@ -53,9 +51,17 @@ ${If} $0 != "admin" ;Require admin rights on NT4+
 ${EndIf}
 !macroend
 
+!include x64.nsh
+
 function .onInit
         setShellVarContext all
         !insertmacro VerifyUserIsAdmin
+        StrCpy $INSTDIR "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
+        ${If} ${ARCH} == "x64"
+         ${If} ${RunningX64}
+            StrCpy $INSTDIR "$PROGRAMFILES64\${COMPANYNAME}\${APPNAME}"
+         ${EndIf}
+        ${EndIf}
 functionEnd
 
 Function LaunchLink
