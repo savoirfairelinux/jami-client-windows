@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_74c1937f",
+        "filename": "pixbufmanipulator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-04-26T20:47:44Z",
+      "side": 0,
+      "message": "already in header",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "06d5157d69d885f3a8b17264cb01ef3e5f07e919",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
