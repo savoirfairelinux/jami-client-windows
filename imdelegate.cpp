@@ -136,7 +136,13 @@ ImDelegate::paint(QPainter* painter,
         path.addRoundedRect(textRect, padding_, padding_);
 
         if (dir == Qt::AlignRight) {
-            painter->fillPath(path, RingTheme::blue_);
+            auto status = index.data(static_cast<int>(Media::TextRecording::Role::DeliveryStatus)).toInt();
+            if (status == 1 /*SENDING*/)
+                painter->fillPath(path, RingTheme::lightBlue_);
+            else if (status == 4 /*FAILURE*/)
+                painter->fillPath(path, RingTheme::red_);
+            else
+                painter->fillPath(path, RingTheme::blue_);
         }
         else {
             painter->fillPath(path, Qt::white);
