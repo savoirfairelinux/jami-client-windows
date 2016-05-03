@@ -22,6 +22,30 @@
       "revId": "d267db6afa96d1d538b744c0108e1844b71408c1",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_0a9fd260",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-05-03T15:06:38Z",
+      "side": 1,
+      "message": "I updated the regex to be a better fit you can play with it here https://regex101.com/r/mX1jA7/6",
+      "parentUuid": "ba65a107_0a4b525a",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 98
+      },
+      "revId": "d267db6afa96d1d538b744c0108e1844b71408c1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
