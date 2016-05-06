@@ -20,12 +20,14 @@
 #include "ui_photoboothdialog.h"
 
 #include <QFileDialog>
+#include <QStandardPaths>
 
 #include "video/previewmanager.h"
 
 PhotoBoothDialog::PhotoBoothDialog(QWidget* parent) :
     QDialog(parent),
-    fileName_("profile.png"),
+    fileName_(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+              + QStringLiteral("profile.png")),
     ui(new Ui::PhotoBoothDialog)
 {
     ui->setupUi(this);
@@ -58,7 +60,9 @@ PhotoBoothDialog::on_importButton_clicked()
                                             "",
                                             tr("Files (*)"));
     if (fileName_.isEmpty())
-        fileName_ = QStringLiteral("profile.png");
+        fileName_ = QStandardPaths::standardLocations(
+                    QStandardPaths::TempLocation).first()
+                + QStringLiteral("profile.png");
     else {
         Video::PreviewManager::instance().stopPreview();
         accept();
