@@ -489,7 +489,7 @@
                </sizepolicy>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1125,6 +1125,13 @@
                       <width>18</width>
                       <height>18</height>
                      </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="sendImage">
+                    <property name="text">
+                     <string>ImageSend</string>
                     </property>
                    </widget>
                   </item>

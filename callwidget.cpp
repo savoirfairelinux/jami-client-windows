@@ -812,3 +812,30 @@ CallWidget::on_shareButton_clicked()
 {
     ui->shareButton->showMenu();
 }
+
+#include <QFileDialog>
+
+void
+CallWidget::on_sendImage_clicked()
+{
+    QFileDialog dlg;
+    dlg.exec();
+
+    if (dlg.result() == QDialog::Accepted) {
+        QImage img;
+        img.load(dlg.selectedFiles()[0]);
+        QByteArray byteArray;
+        QBuffer buffer(&byteArray);
+        img.save(&buffer, "PNG");
+        QString imgBase64 = QString::fromLatin1(byteArray.toBase64().data());
+
+        auto number = ui->contactMethodComboBox->currentText();
+        if (auto cm = PhoneDirectoryModel::instance().getNumber(number)) {
+            QMap<QString, QString> msg;
+            msg["text/plain"] = QString("<img src='data:image/png;base64,%1'>").arg(imgBase64);
+            cm->sendOfflineTextMessage(msg);
+        } else {
+            qWarning() << "Contact Method not found for " << number;
+        }
+    }
+}
