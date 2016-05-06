@@ -20,10 +20,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Release : Samuel de Champlain</source>
-        <translation type="vanished">الإصدار: Samuel de Champlain</translation>
-    </message>
-    <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
@@ -166,32 +162,20 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>إعدادات الحساب Ring</translation>
     </message>
     <message>
-        <source>Audio</source>
-        <translation type="vanished">صوت</translation>
-    </message>
-    <message>
-        <source>Video</source>
-        <translation type="vanished">فيديو</translation>
-    </message>
-    <message>
-        <source>Enable Video</source>
-        <translation type="vanished">فعل الفيديو</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
-        <location filename="../accountdetails.cpp" line="57"/>
+        <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"></translation>
+        <translation>صوت/فيديو</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
@@ -229,9 +213,8 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>نقطة عبور ( port ) محلية</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Adress</source>
-        <translation>العنوان المنشور</translation>
+        <translation type="vanished">العنوان المنشور</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
@@ -317,26 +300,19 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Media Stream Encryption</source>
-        <translation type="vanished">تشفير تيارات الميديا</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
         <translation>تشفير تيار الميديا (SRTP)</translation>
     </message>
     <message>
-        <source>Key exchange protocol</source>
-        <translation type="vanished">بروتوكول تبادل المفاتيح</translation>
-    </message>
-    <message>
-        <source>Fallback on RTP on encryption failure</source>
-        <translation type="vanished">إلجأ إلى RTP عند فشل التشفير</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
         <translation>تشفير التفاوض</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1316"/>
+        <source>Published Address</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
@@ -364,18 +340,6 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>كلمة سر المفتاح الخاص</translation>
     </message>
     <message>
-        <source>TLS protocol method</source>
-        <translation type="vanished">أسلوب بروتوكول TLS</translation>
-    </message>
-    <message>
-        <source>Outgoing TLS server name</source>
-        <translation type="vanished">اسم خادم TLS الصادر</translation>
-    </message>
-    <message>
-        <source>Negotiation timeout (seconds)</source>
-        <translation type="vanished">إنقضاء فترة التفاوض (ثواني)</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
         <translation>تحقق من الشهادات الواردة (من جانب الخادم)</translation>
@@ -391,30 +355,22 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>استلزم شهادة للإتصالات TLS الواردة</translation>
     </message>
     <message>
-        <source>Cipher</source>
-        <translation type="vanished">شيفرة</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
         <translation>إستعمل قائمة الشيفرة المبدئية</translation>
     </message>
     <message>
-        <source>User custom cipher list</source>
-        <translation type="vanished">إستعمل قائمة شيفرة  حسب الطلب</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.cpp" line="55"/>
+        <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="234"/>
+        <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
         <translation>إختار ملف</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="236"/>
+        <location filename="../accountdetails.cpp" line="244"/>
         <source>Files (*)</source>
         <translation>وثائق (*)</translation>
     </message>
@@ -424,17 +380,17 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">الحوار</translation>
+        <translation>الحوار</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished">أو أكتب رقما</translation>
+        <translation>أو أكتب رقما</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished">نقل</translation>
+        <translation>نقل</translation>
     </message>
 </context>
 <context>
@@ -443,12 +399,6 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
         <translation>استمارة</translation>
-    </message>
-    <message>
-        <source>This is your RingID.
-Copy and share it with your friends!</source>
-        <translation type="vanished">هاذا معرفك RingI
-انسخه و بثه لأصدقائك!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
@@ -481,141 +431,149 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="937"/>
+        <location filename="../callwidget.ui" line="842"/>
+        <source>Error while generating QR Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1020"/>
+        <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1107"/>
+        <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1233"/>
+        <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1328"/>
+        <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>أجب</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1360"/>
+        <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1485"/>
+        <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
         <translation>ألغي</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1223"/>
+        <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
         <translation>مكالمة</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <translation type="vanished">قبول</translation>
-    </message>
-    <message>
-        <source>Refuse</source>
-        <translation type="vanished">أرفض</translation>
-    </message>
-    <message>
-        <source>Search / Enter number</source>
-        <translation type="vanished">إبحث عن رقم أو أدخل رقم</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="137"/>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="148"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
         <translation>نسخ الرقم</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="143"/>
-        <location filename="../callwidget.cpp" line="265"/>
+        <location filename="../callwidget.cpp" line="154"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Add to contact</source>
         <translation>أضف إلى الاتصال</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
+        <location filename="../callwidget.cpp" line="208"/>
+        <source>Share by email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>Contact me on Ring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>My RingId is : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="213"/>
+        <source>Show QRCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="227"/>
         <source>Copy</source>
-        <translation type="unfinished">إنسخ</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="206"/>
-        <source>Display date</source>
-        <translation type="unfinished">عرض التاريخ</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="209"/>
-        <source>Display author</source>
-        <translation type="unfinished">عرض المؤلف</translation>
+        <translation>إنسخ</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="236"/>
+        <source>Display date</source>
+        <translation>عرض التاريخ</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="239"/>
+        <source>Display author</source>
+        <translation>عرض المؤلف</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="275"/>
+        <location filename="../callwidget.cpp" line="305"/>
         <source>Call Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="276"/>
+        <location filename="../callwidget.cpp" line="306"/>
         <source>Copy Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="309"/>
         <source>Copy %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="314"/>
         <source>Call %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="316"/>
-        <location filename="../callwidget.cpp" line="339"/>
+        <location filename="../callwidget.cpp" line="347"/>
+        <location filename="../callwidget.cpp" line="409"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>لا يوجد حساب Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="422"/>
         <source>Call incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="356"/>
+        <location filename="../callwidget.cpp" line="427"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="608"/>
+        <location filename="../callwidget.cpp" line="681"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Call from %1</source>
-        <comment>%1 is the name of the caller</comment>
-        <translation type="vanished">مكالمة من 1%</translation>
     </message>
 </context>
 <context>
@@ -636,36 +594,32 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="253"/>
+        <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
         <translation>إعدادات التاريخ</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="294"/>
+        <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
         <translation>أبقي على التاريخ ل (أيام)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="337"/>
+        <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
         <translation>(ضع صفر لتاريخ غير محدود)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="391"/>
+        <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
         <translation>أزل التاريخ</translation>
     </message>
     <message>
-        <source>Ringtones Selection</source>
-        <translation type="vanished">إختيارات النغمات</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="537"/>
+        <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
         <translation>إعدادات متنوعة</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="559"/>
+        <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
         <translation>أبقي مصغر عند الغلق</translation>
     </message>
@@ -675,73 +629,89 @@ Copy and share it with your friends!</source>
         <translation>فيديو</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="428"/>
+        <location filename="../configurationwidget.ui" line="249"/>
+        <source>Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="299"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="461"/>
+        <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="504"/>
+        <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="603"/>
+        <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="631"/>
+        <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"></translation>
+        <translation>أيام</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="658"/>
+        <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="771"/>
+        <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="825"/>
+        <location filename="../configurationwidget.ui" line="903"/>
         <source>Device Selection</source>
         <translation>إختيارات الأجهزة</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="883"/>
+        <location filename="../configurationwidget.ui" line="961"/>
         <source>Device</source>
         <translation>جهاز</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="914"/>
+        <location filename="../configurationwidget.ui" line="992"/>
         <source>Resolution</source>
         <translation>دقة العرض (resolution)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="951"/>
+        <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="966"/>
+        <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="1047"/>
+        <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Camera Preview</source>
-        <translation type="vanished">معاينة الكاميرا</translation>
+        <location filename="../configurationwidget.ui" line="1168"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1175"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -749,23 +719,28 @@ Copy and share it with your friends!</source>
         <translation>حساب</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="583"/>
+        <location filename="../configurationwidget.ui" line="661"/>
         <source>Launch Ring on Startup</source>
         <translation>إطلق Ring عند بدء التشغيل</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="264"/>
+        <location filename="../configurationwidget.cpp" line="276"/>
         <source>New Account</source>
         <translation>حساب جديد</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="285"/>
+        <location filename="../configurationwidget.cpp" line="297"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>هل أنت متأكد من حذف تاريخك  ؟</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="340"/>
+        <location filename="../configurationwidget.cpp" line="352"/>
         <source>Choose Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.cpp" line="382"/>
+        <source>An error occured while importing account.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -818,10 +793,6 @@ Copy and share it with your friends!</source>
         <translation>إبعث رسالة نصية...</translation>
     </message>
     <message>
-        <source>Send</source>
-        <translation type="vanished">أرسل</translation>
-    </message>
-    <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
         <source>Copy</source>
         <translation>إنسخ</translation>
@@ -845,22 +816,92 @@ Copy and share it with your friends!</source>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="57"/>
+        <source>Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="60"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="84"/>
         <source>About</source>
         <translation>عن RING</translation>
     </message>
 </context>
 <context>
-    <name>NavBar</name>
+    <name>PathPasswordDialog</name>
     <message>
-        <source>Done</source>
-        <translation type="vanished">منجز</translation>
+        <location filename="../pathpassworddialog.ui" line="26"/>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="46"/>
+        <source>Password</source>
+        <translation type="unfinished">كلمة السر</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="65"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="72"/>
+        <source>Cancel</source>
+        <translation type="unfinished">ألغي</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="60"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="62"/>
+        <location filename="../pathpassworddialog.cpp" line="67"/>
+        <source>Ring archive files (*.ring)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="65"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PhotoBoothDialog</name>
+    <message>
+        <location filename="../photoboothdialog.ui" line="14"/>
+        <source>Photobooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="58"/>
+        <source>or</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="71"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="57"/>
+        <source>Choose File</source>
+        <translation type="unfinished">إختار ملف</translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="59"/>
+        <source>Files (*)</source>
+        <translation type="unfinished">وثائق (*)</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="184"/>
+        <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -870,7 +911,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">الحوار</translation>
+        <translation>الحوار</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
@@ -883,7 +924,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
@@ -892,30 +933,7 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>TransferDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="vanished">الحوار</translation>
-    </message>
-    <message>
-        <source>Transfer</source>
-        <translation type="vanished">نقل</translation>
-    </message>
-    <message>
-        <source>or type number...</source>
-        <translation type="vanished">أو أكتب رقما</translation>
-    </message>
-    <message>
-        <source>Current Calls</source>
-        <translation type="vanished">المكالمات الحالية</translation>
-    </message>
-</context>
-<context>
     <name>VideoOverlay</name>
-    <message>
-        <source>Hold</source>
-        <translation type="vanished">توقف</translation>
-    </message>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
@@ -964,7 +982,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished">أضف إلى الاتصال</translation>
+        <translation>أضف إلى الاتصال</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
@@ -980,18 +998,6 @@ Copy and share it with your friends!</source>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
         <translation>أنهي المحادثة</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Transfer</source>
-        <translation type="vanished">نقل</translation>
-    </message>
-    <message>
-        <source>Mute Audio</source>
-        <translation type="vanished">أبكم الصوت</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
@@ -1020,29 +1026,25 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="55"/>
+        <location filename="../wizarddialog.cpp" line="58"/>
         <source>Please wait while we create your account.</source>
         <translation>الرجاء الإنتظار في حين نحدث حسابك</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="67"/>
+        <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>مجهول</translation>
     </message>
     <message>
-        <source>Join the Ring</source>
-        <translation type="vanished">إنضم إلى Ring</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="86"/>
+        <location filename="../wizarddialog.ui" line="124"/>
         <source>Choose your username:</source>
         <translation>اختار اسم المستخدم</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="157"/>
-        <location filename="../wizarddialog.ui" line="160"/>
+        <location filename="../wizarddialog.ui" line="195"/>
+        <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>التالي</translation>
     </message>
 </context>
 </TS>

@@ -17,11 +17,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release : Samuel de Champlain</source>
-        <translation type="vanished">Laida : Samuel de Champlain</translation>
+        <translation>Laida : Louis-Joseph Papineau</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
@@ -108,7 +104,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"></translation>
+        <translation>ištrinti paskyrą</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
@@ -166,42 +162,30 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Ring paskyros nustatymai</translation>
     </message>
     <message>
-        <source>Audio</source>
-        <translation type="vanished">Garsas</translation>
-    </message>
-    <message>
-        <source>Video</source>
-        <translation type="vanished">Vaizdas</translation>
-    </message>
-    <message>
-        <source>Enable Video</source>
-        <translation type="vanished">Įjungti vaizdą</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Skambučio melodijos pasirinkimas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
-        <location filename="../accountdetails.cpp" line="57"/>
+        <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Garsas/Vaizdas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>Garso kodekai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaizdo kodekai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
@@ -229,9 +213,8 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Vietinis prievadas:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Adress</source>
-        <translation>Paskelbtas adresas</translation>
+        <translation type="vanished">Paskelbtas adresas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
@@ -287,7 +270,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation>Garso RTP prievadų rėžis</translation>
+        <translation>Garso RTP Prievadų Rėžis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
@@ -314,11 +297,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Media Stream Encryption</source>
-        <translation type="vanished">Medija srauto šifravimas</translation>
+        <translation>Medija srauto šifravimas (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
@@ -326,22 +305,19 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Šifruoti medija srautą (SRTP)</translation>
     </message>
     <message>
-        <source>Key exchange protocol</source>
-        <translation type="vanished">Rakto mainų protokolas</translation>
-    </message>
-    <message>
-        <source>Fallback on RTP on encryption failure</source>
-        <translation type="vanished">Nepavykus šifravimui, pereiti RTP surogatinę veikseną</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
         <translation>Derėjimosi šifravimas</translation>
     </message>
     <message>
+        <location filename="../accountdetails.ui" line="1316"/>
+        <source>Published Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Užšifruoti derėjimąsi (TLS)</translation>
+        <translation>Šifruoti derėjimąsi (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
@@ -364,18 +340,6 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Privataus rakto slaptažodis</translation>
     </message>
     <message>
-        <source>TLS protocol method</source>
-        <translation type="vanished">TLS protokolo metodas</translation>
-    </message>
-    <message>
-        <source>Outgoing TLS server name</source>
-        <translation type="vanished">Išsiunčiamo TLS serverio pavadinimas</translation>
-    </message>
-    <message>
-        <source>Negotiation timeout (seconds)</source>
-        <translation type="vanished">Derėjimuisi skirtas laikas (sekundžių)</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
         <translation>Tikrinti gaunamus liudijimus (serverio pusėje)</translation>
@@ -391,30 +355,22 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Reikalauti liudijimo gaunamiems TLS ryšiams</translation>
     </message>
     <message>
-        <source>Cipher</source>
-        <translation type="vanished">Šifras</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
         <translation>Naudoti numatytuosius šifrus</translation>
     </message>
     <message>
-        <source>User custom cipher list</source>
-        <translation type="vanished">Naudoti tinkintą šifrų sąrašą</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.cpp" line="55"/>
+        <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="234"/>
+        <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti failą</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="236"/>
+        <location filename="../accountdetails.cpp" line="244"/>
         <source>Files (*)</source>
         <translation>Failai (*)</translation>
     </message>
@@ -429,7 +385,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation>arba įrašykite numerį...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
@@ -445,20 +401,14 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This is your RingID.
-Copy and share it with your friends!</source>
-        <translation type="vanished">Tai yra jūsų RingID.
-Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
-    </message>
-    <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškokite kontaktus arba įrašykite ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"></translation>
+        <translation>nustatymų meniu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -468,150 +418,162 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../callwidget.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Tai yra jūsų RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Nukopijuokite ir dalinkitės juo su savo draugais!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"></translation>
+        <translation>Dalintis savo ring id</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Spustelėkite du kartus, kad nukopijuotumėte.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="842"/>
+        <source>Error while generating QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="937"/>
+        <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokalbis su</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1020"/>
+        <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"></translation>
+        <translation>Pradėkite pokalbį !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1107"/>
+        <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"></translation>
+        <translation>siųsti žinutę</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1233"/>
+        <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nori su jumis pakalbėti!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1328"/>
+        <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsiliepti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1360"/>
+        <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepaisyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"></translation>
+        <translation>Skambinama</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1485"/>
+        <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1223"/>
+        <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
         <translation>Skambutis</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <translation type="vanished">Priimti</translation>
-    </message>
-    <message>
-        <source>Refuse</source>
-        <translation type="vanished">Atmesti</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="137"/>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="148"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
         <translation>Kopijuoti numerį</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="143"/>
-        <location filename="../callwidget.cpp" line="265"/>
+        <location filename="../callwidget.cpp" line="154"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Add to contact</source>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
-        <source>Copy</source>
-        <translation type="unfinished">Kopijuoti</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="206"/>
-        <source>Display date</source>
-        <translation type="unfinished">Rodyti datą</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="209"/>
-        <source>Display author</source>
-        <translation type="unfinished">Rodyti autorių</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="236"/>
-        <source>Message incoming from %1</source>
+        <location filename="../callwidget.cpp" line="208"/>
+        <source>Share by email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="275"/>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>Contact me on Ring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>My RingId is : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="213"/>
+        <source>Show QRCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="227"/>
+        <source>Copy</source>
+        <translation>Kopijuoti</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="236"/>
+        <source>Display date</source>
+        <translation>Rodyti datą</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="239"/>
+        <source>Display author</source>
+        <translation>Rodyti autorių</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="266"/>
+        <source>Message incoming from %1</source>
+        <translation>Gauta žinutė nuo %1</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="305"/>
         <source>Call Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="276"/>
+        <location filename="../callwidget.cpp" line="306"/>
         <source>Copy Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="309"/>
         <source>Copy %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopijuoti %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="314"/>
         <source>Call %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="316"/>
-        <location filename="../callwidget.cpp" line="339"/>
+        <location filename="../callwidget.cpp" line="347"/>
+        <location filename="../callwidget.cpp" line="409"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>NERASTA RING PASKYRA</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="422"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Įeinantis skambutis nuo %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="356"/>
+        <location filename="../callwidget.cpp" line="427"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="608"/>
+        <location filename="../callwidget.cpp" line="681"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Call from %1</source>
-        <comment>%1 is the name of the caller</comment>
-        <translation type="vanished">Skambutis nuo %1</translation>
+        <translation>Pokalbis su %1</translation>
     </message>
 </context>
 <context>
@@ -629,39 +591,35 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"></translation>
+        <translation>išeiti iš nustatymų meniu</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="253"/>
+        <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
         <translation>Istorijos nustatymai</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="294"/>
+        <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
         <translation>Laikyti istoriją (dienų)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="337"/>
+        <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
         <translation>(Nustatykite 0 neribotai istorijai)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="391"/>
+        <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
         <translation>Išvalyti istoriją</translation>
     </message>
     <message>
-        <source>Ringtones Selection</source>
-        <translation type="vanished">Skambučio melodijų pasirinkimas</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="537"/>
+        <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
         <translation>Įvairūs nustatymai</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="559"/>
+        <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
         <translation>Užvėrus, palikti suskleistą</translation>
     </message>
@@ -671,73 +629,89 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <translation>Vaizdas</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="428"/>
+        <location filename="../configurationwidget.ui" line="249"/>
+        <source>Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="299"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrašymo nustatymai</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="461"/>
+        <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrašyti į :</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="504"/>
+        <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Visada įrašinėti</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="603"/>
+        <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikrinti ar yra atnaujinimų kas</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="631"/>
+        <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"></translation>
+        <translation>dienas</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="658"/>
+        <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikrinti ar yra atnaujinimų</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="771"/>
+        <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"></translation>
+        <translation>Skambučio metu, peržiūra neprieinama</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="825"/>
+        <location filename="../configurationwidget.ui" line="903"/>
         <source>Device Selection</source>
         <translation>Įrenginio pasirinkimas</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="883"/>
+        <location filename="../configurationwidget.ui" line="961"/>
         <source>Device</source>
         <translation>Įrenginys</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="914"/>
+        <location filename="../configurationwidget.ui" line="992"/>
         <source>Resolution</source>
         <translation>Raiška</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="951"/>
+        <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvesties įrenginys</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="966"/>
+        <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvesties įrenginys</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="1047"/>
+        <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
+        <translation>pridėti naują paskyrą</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1168"/>
+        <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Camera Preview</source>
-        <translation type="vanished">Kameros peržiūra</translation>
+        <location filename="../configurationwidget.ui" line="1175"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -745,23 +719,28 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <translation>Paskyra</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="583"/>
+        <location filename="../configurationwidget.ui" line="661"/>
         <source>Launch Ring on Startup</source>
         <translation>Paleisti Ring, įjungus kompiuterį</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="264"/>
+        <location filename="../configurationwidget.cpp" line="276"/>
         <source>New Account</source>
         <translation>Nauja paskyra</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="285"/>
+        <location filename="../configurationwidget.cpp" line="297"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>Ar tikrai norite išvalyti visą savo istoriją?</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="340"/>
+        <location filename="../configurationwidget.cpp" line="352"/>
         <source>Choose Directory</source>
+        <translation>Pasirinkti katalogą</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.cpp" line="382"/>
+        <source>An error occured while importing account.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -778,7 +757,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Esami kontaktai</translation>
+        <translation>Esami Kontaktai</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
@@ -793,17 +772,17 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation>Naujas kontaktas</translation>
+        <translation>Naujas Kontaktas</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation>Čia įveskite vardą...</translation>
+        <translation>Čia įrašykite vardą...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Sukurti</translation>
+        <translation>Kurti</translation>
     </message>
 </context>
 <context>
@@ -811,11 +790,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation>Siųsti teksto pranešimą...</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="vanished">Siųsti</translation>
+        <translation>Siųsti teksto žinutę...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
@@ -841,24 +816,94 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="57"/>
+        <source>Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="60"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="84"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
 </context>
 <context>
-    <name>NavBar</name>
+    <name>PathPasswordDialog</name>
     <message>
-        <source>Done</source>
-        <translation type="vanished">Atlikta</translation>
+        <location filename="../pathpassworddialog.ui" line="26"/>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="46"/>
+        <source>Password</source>
+        <translation type="unfinished">Slaptažodis</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="65"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="72"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Atsisakyti</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="60"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="62"/>
+        <location filename="../pathpassworddialog.cpp" line="67"/>
+        <source>Ring archive files (*.ring)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="65"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PhotoBoothDialog</name>
+    <message>
+        <location filename="../photoboothdialog.ui" line="14"/>
+        <source>Photobooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="58"/>
+        <source>or</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="71"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="57"/>
+        <source>Choose File</source>
+        <translation type="unfinished">Pasirinkti failą</translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="59"/>
+        <source>Files (*)</source>
+        <translation type="unfinished">Failai (*)</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="184"/>
+        <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"></translation>
+        <translation>Numatytoji pašto kliento programa nerasta</translation>
     </message>
 </context>
 <context>
@@ -888,18 +933,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     </message>
 </context>
 <context>
-    <name>TransferDialog</name>
-    <message>
-        <source>Current Calls</source>
-        <translation type="vanished">Esami skambučiai</translation>
-    </message>
-</context>
-<context>
     <name>VideoOverlay</name>
-    <message>
-        <source>Hold</source>
-        <translation type="vanished">Užlaikyta</translation>
-    </message>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
@@ -918,7 +952,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti asmenį į pokalbį</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
@@ -928,12 +962,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungti mikrofoną</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
@@ -943,17 +977,17 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"></translation>
+        <translation>Vardo etiketė</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished">Pridėti prie kontaktų</translation>
+        <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"></translation>
+        <translation>Praėjęs laikas</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
@@ -964,14 +998,6 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
         <translation>Padėti ragelį</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
-    </message>
-    <message>
-        <source>Mute Audio</source>
-        <translation type="vanished">Išjungti garsą</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
@@ -1000,29 +1026,25 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="55"/>
+        <location filename="../wizarddialog.cpp" line="58"/>
         <source>Please wait while we create your account.</source>
         <translation>Prašome palaukti, kol sukursime jūsų paskyrą.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="67"/>
+        <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Nežinoma</translation>
     </message>
     <message>
-        <source>Join the Ring</source>
-        <translation type="vanished">Prisijungti prie Ring</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="86"/>
+        <location filename="../wizarddialog.ui" line="124"/>
         <source>Choose your username:</source>
         <translation>Pasirinkite savo naudotojo vardą:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="157"/>
-        <location filename="../wizarddialog.ui" line="160"/>
+        <location filename="../wizarddialog.ui" line="195"/>
+        <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Kitas</translation>
     </message>
 </context>
 </TS>

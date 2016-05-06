@@ -7,48 +7,49 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziękowania</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"></translation>
+        <translation>Wydanie : Louis-Joseph Papineau</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient Microsoft Windows dla Ring.
+Ring jest oprogramowaniem zabezpieczonym i rozprowadzonym do komunikacyj.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
         <source>Windows Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows Ring</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stworzone przez:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="52"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrazki przez:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="56"/>
         <source>Based on the SFLPhone project</source>
-        <translation type="unfinished"></translation>
+        <translation>Na podstawie projektu SFLPhone</translation>
     </message>
 </context>
 <context>
@@ -56,12 +57,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Generalne</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
@@ -76,12 +77,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation type="unfinished"></translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
@@ -92,144 +93,143 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa użytkownika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasło</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń konto</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Pełnomocnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer poczty głosowej</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne odbierz połączeńia</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>UPnP jest włączone</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
         <source>DTMF tone type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ tonu DTMF</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="548"/>
         <source>RTP</source>
-        <translation type="unfinished"></translation>
+        <translation>RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="566"/>
         <source>SIP</source>
-        <translation type="unfinished"></translation>
+        <translation>SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Zezwól Na Połączenia Od Nieznanych</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Zezwól Na Połączenia Od Kontaku</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"></translation>
+        <translation>Zezwól Na Połączenia Od Historii</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia Konta Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz Dzwonek</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
-        <location filename="../accountdetails.cpp" line="57"/>
+        <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Graj</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio/Video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodeki audio</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodeki wideo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaawansowane</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejestracja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation type="unfinished"></translation>
+        <translation>Limit czasu do rejestracji (w sekundach) :</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfejs Sieciowy</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Port lokalny:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Adress</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Opublikowany Adres</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Tak samo jak lokalne parametry.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw opublikowany adres i port:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
@@ -239,135 +239,140 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
         <location filename="../accountdetails.ui" line="1535"/>
         <source>Server URL</source>
-        <translation type="unfinished"></translation>
+        <translation>serwer URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
         <source>Realm</source>
-        <translation type="unfinished"></translation>
+        <translation>sfera</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1635"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"></translation>
+        <translation>Negocjacja sesji SDP (użyjcie ICE w przypadku awari)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Te ustawienia są tylko używane podczas negocjacji sesji SDP w przypadku gdzie ICE nie jest obsługiwany przez serwer lub innym użytkownikiem.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakres Portów Audio RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation type="unfinished"></translation>
+        <translation>Min</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation type="unfinished"></translation>
+        <translation>Max</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
         <source>Video RTP Port Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakres Portów Wideo RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Zabezpieczenia</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"></translation>
+        <translation>Szyfrowanie Strumieni Multimedialnych (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation type="unfinished"></translation>
+        <translation>Szyfruj strumień multimedialny (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
+        <translation>Negocjacja szyfrowania</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="1316"/>
+        <source>Published Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Negocjacja szyfrowania (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>Certyfikat CA</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>Certyfikat użytkownika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation type="unfinished"></translation>
+        <translation>Klucz prywatny</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasło klucza prywatnego</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweryfikuj przychodzące certyfikaty (po stronie serwera)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweryfikuj odesłane certyfikaty (po stronie klienta)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Wymagamy certyfikat dla przychodzących połączeń TLS</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj domyślnych szyfrów</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="55"/>
+        <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="234"/>
+        <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz Plik</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="236"/>
+        <location filename="../accountdetails.cpp" line="244"/>
         <source>Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki (*)</translation>
     </message>
 </context>
 <context>
@@ -375,17 +380,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"></translation>
+        <translation>albo wpisz numer...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished">Przełaczanie</translation>
+        <translation>Przełaczenie</translation>
     </message>
 </context>
 <context>
@@ -393,161 +398,182 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj kontakty lub wpisz Ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"></translation>
+        <translation>ustawienia menu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring jest bezpieczną i rozprowadzoną platformą komunikacji głosowej, wideo, i czat, który nie wymaga scentralizowanego serwera i pozostawia moc prywatności w rękach użytkownika.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;To jest twój RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Skopiuj go i podziel się nim ze swoimi przyjaciółmi!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziel się swoim ring id</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Kliknij dwukrotnie aby skopiować.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="842"/>
+        <source>Error while generating QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="937"/>
+        <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmowa z</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1020"/>
+        <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"></translation>
+        <translation>Zacznij rozmowę !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1107"/>
+        <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"></translation>
+        <translation>wyślij wiadomość</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1233"/>
+        <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chce z tobą rozmawiać!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1328"/>
+        <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Odbierz</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1360"/>
+        <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"></translation>
+        <translation>Zignoruj</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"></translation>
+        <translation>Dzwonienie</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1485"/>
+        <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1223"/>
+        <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
         <translation>Dzwoń</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <translation type="vanished">Akceptuj</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="137"/>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="148"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj numer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="143"/>
-        <location filename="../callwidget.cpp" line="265"/>
+        <location filename="../callwidget.cpp" line="154"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Add to contact</source>
+        <translation>Dodaj do kontaku</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="208"/>
+        <source>Share by email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>Contact me on Ring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="210"/>
+        <source>My RingId is : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="213"/>
+        <source>Show QRCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="227"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="206"/>
-        <source>Display date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="209"/>
-        <source>Display author</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="236"/>
+        <source>Display date</source>
+        <translation>Wyświetl datę</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="239"/>
+        <source>Display author</source>
+        <translation>Wyświetl autora</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Przychodząca wiadomość od %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="275"/>
+        <location filename="../callwidget.cpp" line="305"/>
         <source>Call Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer Połączeńia</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="276"/>
+        <location filename="../callwidget.cpp" line="306"/>
         <source>Copy Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj Numer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="309"/>
         <source>Copy %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="314"/>
         <source>Call %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dzwoń do %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="316"/>
-        <location filename="../callwidget.cpp" line="339"/>
+        <location filename="../callwidget.cpp" line="347"/>
+        <location filename="../callwidget.cpp" line="409"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"></translation>
+        <translation>NIE ZNALEZIONO ŻADNEGO KONTA RING</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="422"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Połączenie przychodzące od %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="356"/>
+        <location filename="../callwidget.cpp" line="427"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="608"/>
+        <location filename="../callwidget.cpp" line="681"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rozmowa z %1</translation>
     </message>
 </context>
 <context>
@@ -555,116 +581,136 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Generalne</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"></translation>
+        <translation>wyjdź z menu ustawień</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="253"/>
+        <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia Historii</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="294"/>
+        <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"></translation>
+        <translation>Przechowaj historię do (dni)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="337"/>
+        <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Ustaw na 0 dla nieograniczonej historii)</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="391"/>
+        <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń historię</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="537"/>
+        <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodatkowe Ustawienia</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="559"/>
+        <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Przechowaj zminimalizowane przy zamknięciu</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
+        <translation>Wideo</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="249"/>
+        <source>Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="428"/>
+        <location filename="../configurationwidget.ui" line="299"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia Nagrań</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="461"/>
+        <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz w :</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="504"/>
+        <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Zawsze Nagrywaj</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="603"/>
+        <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprawdź po aktualizacje automatycznie co</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="631"/>
+        <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"></translation>
+        <translation>dni</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="658"/>
+        <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprawdź po aktualizacje</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="771"/>
+        <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"></translation>
+        <translation>Podgląd jest niedostępny podczas rozmowy</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="825"/>
+        <location filename="../configurationwidget.ui" line="903"/>
         <source>Device Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz Urządzenie</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="883"/>
+        <location filename="../configurationwidget.ui" line="961"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Urządzenie</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="914"/>
+        <location filename="../configurationwidget.ui" line="992"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozdzielczość</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="951"/>
+        <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Urządzenie Wyjściowe</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="966"/>
+        <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
+        <translation>Urządzenie Wejściowe</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1141"/>
+        <source>add new account</source>
+        <translation>dodaj nowe konto</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1168"/>
+        <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="1047"/>
-        <source>add new account</source>
+        <location filename="../configurationwidget.ui" line="1175"/>
+        <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -673,23 +719,28 @@ Ring is a secured and distributed communication software.</source>
         <translation>Konto</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="583"/>
+        <location filename="../configurationwidget.ui" line="661"/>
         <source>Launch Ring on Startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Uruchom Ring przy Starcie</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="264"/>
+        <location filename="../configurationwidget.cpp" line="276"/>
         <source>New Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowe konto</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="285"/>
+        <location filename="../configurationwidget.cpp" line="297"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy na pewno chcesz usunąć całą twoją historię?</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="340"/>
+        <location filename="../configurationwidget.cpp" line="352"/>
         <source>Choose Directory</source>
+        <translation>Wybierz Folder</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.cpp" line="382"/>
+        <source>An error occured while importing account.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -698,7 +749,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../contactdelegate.cpp" line="87"/>
         <source>&lt;Multiple contact methods&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Różne metody kontaktu&gt;</translation>
     </message>
 </context>
 <context>
@@ -706,32 +757,32 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Istniejący Kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Stwórz nowy kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wpisz imię tutaj...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Stwórz</translation>
     </message>
 </context>
 <context>
@@ -739,22 +790,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyślij wiadomość tekstową...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="45"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl datę</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="53"/>
         <source>Display author</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl autora</translation>
     </message>
 </context>
 <context>
@@ -762,20 +813,97 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
+        <translation>Ring</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="57"/>
+        <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
-        <source>About</source>
+        <location filename="../mainwindow.cpp" line="60"/>
+        <source>Exit</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="84"/>
+        <source>About</source>
+        <translation>O</translation>
+    </message>
+</context>
+<context>
+    <name>PathPasswordDialog</name>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="26"/>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="46"/>
+        <source>Password</source>
+        <translation type="unfinished">Hasło</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="65"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.ui" line="72"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Anuluj</translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="60"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="62"/>
+        <location filename="../pathpassworddialog.cpp" line="67"/>
+        <source>Ring archive files (*.ring)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pathpassworddialog.cpp" line="65"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PhotoBoothDialog</name>
+    <message>
+        <location filename="../photoboothdialog.ui" line="14"/>
+        <source>Photobooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="58"/>
+        <source>or</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.ui" line="71"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="57"/>
+        <source>Choose File</source>
+        <translation type="unfinished">Wybierz Plik</translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="59"/>
+        <source>Files (*)</source>
+        <translation type="unfinished">Pliki (*)</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="184"/>
+        <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie znaleziono domyślnego klienta poczty</translation>
     </message>
 </context>
 <context>
@@ -783,12 +911,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatycznie</translation>
     </message>
 </context>
 <context>
@@ -796,86 +924,75 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TransferDialog</name>
-    <message>
-        <source>Transfer</source>
-        <translation type="vanished">Przełaczanie</translation>
+        <translation>TekstEtykieta</translation>
     </message>
 </context>
 <context>
     <name>VideoOverlay</name>
     <message>
-        <source>Hold</source>
-        <translation type="vanished">Czekanie</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmowa jest Zawieszona</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"></translation>
+        <translation>Zawiesić / Wznowić</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Czat</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj osobę do rozmowy</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"></translation>
+        <translation>Przełącz rozmowę</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz mikrofon</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Jakość</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Dołącz Do Rozmów</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etykieta Nazwiska</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj do kontaku</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"></translation>
+        <translation>Czas się skończył</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
-        <translation type="unfinished"></translation>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -883,13 +1000,9 @@ Ring is a secured and distributed communication software.</source>
         <translation>Odłożyć słuchawkę</translation>
     </message>
     <message>
-        <source>Transfer</source>
-        <translation type="vanished">Przełaczanie</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz video</translation>
     </message>
 </context>
 <context>
@@ -897,41 +1010,41 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videoview.cpp" line="232"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziel się obszarem ekranu</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziel się obszar ekranu</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziel się plikiem</translation>
     </message>
 </context>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="55"/>
+        <location filename="../wizarddialog.cpp" line="58"/>
         <source>Please wait while we create your account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Proszę poczekaj aż stworzymy twoje konto.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="67"/>
+        <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieznane</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="86"/>
+        <location filename="../wizarddialog.ui" line="124"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz swoją nazwę użytkownika:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="157"/>
-        <location filename="../wizarddialog.ui" line="160"/>
+        <location filename="../wizarddialog.ui" line="195"/>
+        <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Następne</translation>
     </message>
 </context>
 </TS>
