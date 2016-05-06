@@ -19,7 +19,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QSizeGrip>
+#include <QDesktopWidget>
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -88,10 +88,13 @@ MainWindow::MainWindow(QWidget* parent) :
 
     QSettings settings;
     QVariant size = settings.value(SettingsKey::savedSize);
-    QVariant pos = settings.value(SettingsKey::savedPos);
-    if (size.isValid() && pos.isValid()) {
+    QVariant posV = settings.value(SettingsKey::savedPos);
+    if (size.isValid() && posV.isValid()) {
         resize(size.toSize());
-        move(pos.toPoint());
+        auto screenSize = QApplication::desktop()->screenGeometry();
+        auto pos = posV.toPoint();
+        if (pos.rx() < screenSize.width() && pos.ry() < screenSize.height())
+            move(pos);
     } else
         resize(1054, 600);
 
