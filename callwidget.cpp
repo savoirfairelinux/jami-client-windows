@@ -414,6 +414,19 @@ CallWidget::findRingAccount()
 }
 
 void
+CallWidget::callChangedSlot()
+{
+    if (not actualCall_)
+        return;
+    ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
+                               .arg(actualCall_->formattedName()));
+    ui->callerPhoto->setPixmap(
+                QPixmap::fromImage(
+                    GlobalInstances::pixmapManipulator()
+                    .callPhoto(actualCall_, QSize(130,130)).value<QImage>()));
+}
+
+void
 CallWidget::callIncoming(Call* call)
 {
     if (!QApplication::focusWidget()) {
@@ -424,12 +437,6 @@ CallWidget::callIncoming(Call* call)
     }
 
     //FIXME: This should update accordingly with profile changes
-    ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
-                               .arg(call->formattedName()));
-    ui->callerPhoto->setPixmap(
-                QPixmap::fromImage(
-                    GlobalInstances::pixmapManipulator()
-                    .callPhoto(call, QSize(130,130)).value<QImage>()));
     setActualCall(call);
 }
 
@@ -556,6 +563,14 @@ CallWidget::setActualCall(Call* value)
     ui->videoWidget->pushRenderer(value);
     ui->instantMessagingWidget->setMediaText(actualCall_);
     callStateToView(value);
+    if (actualCall_) {
+        callChangedConnection_ = connect(actualCall_,
+                                         SIGNAL(changed()),
+                                         this,
+                                         SLOT(callChangedSlot()));
+    } else
+        disconnect(callChangedConnection_);
+
 }
 
 void
