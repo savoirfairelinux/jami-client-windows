@@ -91,6 +91,7 @@ private slots:
     void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
+    void callChangedSlot();
 
 private:
     Ui::CallWidget* ui;
@@ -107,6 +108,7 @@ private:
     ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
+    QMetaObject::Connection callChangedConnection_;
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
 
