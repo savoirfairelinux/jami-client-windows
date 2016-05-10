@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_c018d986",
+        "filename": "imdelegate.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-05-10T15:19:57Z",
+      "side": 1,
+      "message": "Need to be moved to LRC too",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "268ec7c57e216b5b416239a5a52c14f84ba97860",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
