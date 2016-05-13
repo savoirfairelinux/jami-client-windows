@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -82,6 +82,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
                     ui->accountView->currentIndex());
         accountModel_->remove(account);
         accountModel_->save();
+        if (accountModel_->size() == 0)
+            accountDetails_->hide();
     });
 
     connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
@@ -208,6 +210,7 @@ ConfigurationWidget::showEvent(QShowEvent *event) {
     }
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
 #endif
+    accountSelected(AccountModel::instance().selectionModel()->selection());
     QWidget::showEvent(event);
     showPreview();
 }
@@ -278,6 +281,8 @@ ConfigurationWidget::on_addAccountButton_clicked()
                                           ui->accountTypeBox->currentIndex(), 0));
     account->setRingtonePath(Utils::GetRingtonePath());
     accountModel_->save();
+    if (accountDetails_->isHidden())
+        accountDetails_->show();
 }
 
 void
