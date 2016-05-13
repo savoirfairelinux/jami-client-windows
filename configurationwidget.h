@@ -70,10 +70,13 @@ private slots:
     void deviceIndexChanged(int index);
     void outputIndexChanged(int index);
     void inputIndexChanged(int index);
+    void accountPropertyChanged(Account* a, const QString& name,
+                                const QString& newVal, const QString& oldVal);
 
 private:
     Ui::ConfigurationWidget *ui;
     AccountModel* accountModel_;
+    QMetaObject::Connection accountConnection_;
     Video::DeviceModel* deviceModel_;
     CodecModel* codecModel_;
     bool isLoading_;

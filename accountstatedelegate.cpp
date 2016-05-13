@@ -38,10 +38,6 @@ AccountStateDelegate::paint(QPainter* painter, const QStyleOptionViewItem& optio
         QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
         auto rect = opt.rect;
-        QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ?
-                    QPalette::Normal : QPalette::Disabled;
-        if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
-            cg = QPalette::Inactive;
         auto font = painter->font();
         font.setPointSize(12);
         painter->setFont(font);

@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -97,6 +97,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
             this, SLOT(deviceIndexChanged(int)));
 
+    AccountModel::instance().selectionModel()->clear();
     ui->accountView->setSelectionModel(AccountModel::instance().selectionModel());
     connect(ui->accountView->selectionModel(),
             SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -200,8 +201,8 @@ void ConfigurationWidget::showPreview()
 }
 
 void
-ConfigurationWidget::showEvent(QShowEvent *event) {
-
+ConfigurationWidget::showEvent(QShowEvent *event)
+{
 #ifdef ENABLE_AUTOUPDATE
     if (win_sparkle_get_automatic_check_for_updates()) {
         ui->autoUpdateCheckBox->setChecked(true);
@@ -219,7 +220,8 @@ ConfigurationWidget::~ConfigurationWidget()
 }
 
 void
-ConfigurationWidget::deviceIndexChanged(int index) {
+ConfigurationWidget::deviceIndexChanged(int index)
+{
     ui->deviceBox->setCurrentIndex(index);
 }
 
@@ -260,14 +262,39 @@ ConfigurationWidget::on_sizeBox_currentIndexChanged(int index)
 }
 
 void
-ConfigurationWidget::accountSelected(QItemSelection itemSel) {
+ConfigurationWidget::accountSelected(QItemSelection itemSel)
+{
+    if (itemSel.size())
+        accountDetails_->show();
+    else
+        accountDetails_->hide();
 
-    Q_UNUSED(itemSel)
+    if (accountConnection_)
+        disconnect(accountConnection_);
+
     auto account = accountModel_->getAccountByModelIndex(
                 ui->accountView->currentIndex());
     accountDetails_->setAccount(account);
-    if (account)
+    if (account) {
         AccountSerializationAdapter adapter(account, accountDetails_);
+        accountConnection_= connect(account,
+                                    SIGNAL(propertyChanged(Account*,QString,QString,QString)),
+                                    this,
+                                    SLOT(accountPropertyChanged(Account*,QString,QString,QString)));
+    }
+}
+
+void
+ConfigurationWidget::accountPropertyChanged(Account* a,
+                                            const QString& name,
+                                            const QString& newVal,
+                                            const QString& oldVal)
+{
+    Q_UNUSED(name)
+    Q_UNUSED(newVal)
+    Q_UNUSED(oldVal)
+    accountDetails_->setAccount(a);
+    AccountSerializationAdapter adapter(a, accountDetails_);
 }
 
 void
