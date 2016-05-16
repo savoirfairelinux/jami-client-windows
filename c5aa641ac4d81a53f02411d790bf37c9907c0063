@@ -46,6 +46,30 @@
       "revId": "c5aa641ac4d81a53f02411d790bf37c9907c0063",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_9a100950",
+        "filename": "configurationwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-05-16T16:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba65a107_170b72d7",
+      "range": {
+        "startLine": 284,
+        "startChar": 3,
+        "endLine": 285,
+        "endChar": 32
+      },
+      "revId": "c5aa641ac4d81a53f02411d790bf37c9907c0063",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
