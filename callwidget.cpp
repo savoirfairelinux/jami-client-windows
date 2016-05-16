@@ -331,21 +331,17 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
     Q_UNUSED(vec)
 
     auto a_count = AccountModel::instance().rowCount();
-    auto found = false;
     for (int i = 0; i < a_count; ++i) {
         auto idx = AccountModel::instance().index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
-        if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
+        if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
             auto username = idx.data(static_cast<int>(Account::Role::Username));
             ui->ringIdLabel->setText(username.toString());
-            found = true;
             setupQRCode();
             return;
         }
     }
-    if (not found) {
-        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-    }
+    ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
 }
 
 void CallWidget::setupQRCode()
@@ -369,10 +365,10 @@ void CallWidget::setupQRCode()
     painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
     painter.setBrush(Qt::black);
     painter.fillRect(QRect(0, 0, qrwidth, qrwidth), Qt::white);
-    unsigned char *row, *p;
+    unsigned char* p;
     p = rcode->data;
     for(int y = 0; y < rcode->width; y++) {
-        row = (p + (y * rcode->width));
+        unsigned char* row = (p + (y * rcode->width));
         for(int x = 0; x < rcode->width; x++) {
             if(*(row + x) & 0x1) {
                 painter.drawRect(margin + x, margin + y, 1, 1);
@@ -389,28 +385,23 @@ void
 CallWidget::findRingAccount()
 {
     auto a_count = AccountModel::instance().rowCount();
-    auto found = false;
     for (int i = 0; i < a_count; ++i) {
         auto idx = AccountModel::instance().index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
-        if ((Account::Protocol)protocol.toUInt() == Account::Protocol::RING) {
+        if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
             auto account = AccountModel::instance().getAccountByModelIndex(idx);
             if (account->displayName().isEmpty())
                 account->displayName() = account->alias();
             auto username = account->username();
             ui->ringIdLabel->setText(username);
             setupQRCode();
-
-            found = true;
             return;
         }
     }
-    if (!found) {
-        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-        auto wizardDialog = new WizardDialog();
-        wizardDialog->exec();
-        delete wizardDialog;
-    }
+    ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
+    auto wizardDialog = new WizardDialog();
+    wizardDialog->exec();
+    delete wizardDialog;
 }
 
 void
@@ -482,12 +473,11 @@ CallWidget::on_contactView_doubleClicked(const QModelIndex& index)
     if (not index.isValid())
         return;
 
-    ContactMethod* uri = nullptr;
-
     auto var = index.child(0,0).data(
                 static_cast<int>(Person::Role::Object));
     if (var.isValid()) {
         Person* person = var.value<Person*>();
+        ContactMethod* uri = nullptr;
         if (person->phoneNumbers().size() == 1) {
             uri = person->phoneNumbers().at(0);
         } else if (person->phoneNumbers().size() > 1) {

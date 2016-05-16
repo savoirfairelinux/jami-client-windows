@@ -36,7 +36,7 @@ namespace Ui {
 class NotCurrentProxyModel : public QSortFilterProxyModel
 {
 public:
-    NotCurrentProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
+    explicit NotCurrentProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
     {
         setSourceModel(parent);
     }
