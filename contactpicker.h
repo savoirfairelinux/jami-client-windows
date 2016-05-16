@@ -31,7 +31,7 @@ class ContactPicker;
 class OnlyPersonProxyModel : public QSortFilterProxyModel
 {
 public:
-    OnlyPersonProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
+    explicit OnlyPersonProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent)
     {
         setSourceModel(parent);
     }

@@ -251,7 +251,7 @@ WindowsContactBackend::getPersonFromContactFile(const QDir& contactDir,
     QFile contactFile(contactFilePath);
     if (contactFile.open(QIODevice::ReadOnly)) {
         QXmlStreamReader reader;
-        Person *p = new Person(this);
+        Person* p = new Person(this);
         QVector<ContactMethod*> contactMethod;
         reader.setDevice(&contactFile);
         while (!reader.atEnd()) {

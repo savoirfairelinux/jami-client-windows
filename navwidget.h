@@ -32,7 +32,7 @@ class NavWidget : public QWidget
     Q_OBJECT
 
 public:
-    NavWidget(QWidget* parent = 0);
+    explicit NavWidget(QWidget* parent = 0);
     ~NavWidget();
 
 signals:

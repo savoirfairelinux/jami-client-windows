@@ -67,10 +67,6 @@ ImDelegate::paint(QPainter* painter,
         auto msg = index.data(Qt::DisplayRole).toString();
         opt.text.clear();
         QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
-        QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled
-                ? QPalette::Normal : QPalette::Disabled;
-        if (cg == QPalette::Normal && !(opt.state & QStyle::State_Active))
-            cg = QPalette::Inactive;
 
         auto dir = index.data(static_cast<int>(Media::TextRecording::Role::Direction))
                 .value<Media::Media::Direction>() == Media::Media::Direction::IN
