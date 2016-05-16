@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba65a107_1a3dd98f",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2016-05-16T19:28:42Z",
+      "side": 1,
+      "message": "You should probably mention in the commit msg that failed msgs will also be red. However, I\u0027m not sure if thats the best indicator... eg: the users could interpret red messages as \"important\" or something. Maybe they should be a light grey or red, to suggest they won\u0027t be seen... even better if there could be some sort of tool tip when you hover over the messages which says \"failed to send\".",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 57
+      },
+      "revId": "07287fbdfa3d67ee8bb05cd2accec630f5f3b7ed",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
