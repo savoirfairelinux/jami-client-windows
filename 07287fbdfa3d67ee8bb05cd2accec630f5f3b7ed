@@ -22,6 +22,30 @@
       "revId": "07287fbdfa3d67ee8bb05cd2accec630f5f3b7ed",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba65a107_7a4bb52b",
+        "filename": "imdelegate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-05-16T19:35:58Z",
+      "side": 1,
+      "message": "Definitely no to the tooltip (it\u0027s technically not possible with the current widget believe me i tried). For the color let\u0027s discuss it with Alex for the sake of \"UI consistency\"",
+      "parentUuid": "ba65a107_1a3dd98f",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 57
+      },
+      "revId": "07287fbdfa3d67ee8bb05cd2accec630f5f3b7ed",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
