@@ -76,8 +76,8 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
                 rubberBand_->geometry().getRect(&x, &y, &width, &height);
                 realRect.setX(x);
                 realRect.setY(y);
-                realRect.setWidth(width);
-                realRect.setHeight(height);
+                realRect.setWidth(width * QGuiApplication::primaryScreen()->devicePixelRatio());
+                realRect.setHeight(height * QGuiApplication::primaryScreen()->devicePixelRatio());
                 outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
