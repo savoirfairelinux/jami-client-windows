@@ -31,6 +31,7 @@
 #include <QFileDialog>
 #include <QMimeData>
 #include <QSplitter>
+#include <QScreen>
 
 #include <memory>
 
@@ -81,8 +82,8 @@ VideoView::resizeEvent(QResizeEvent* event)
     int deltaH = event->size().height() - event->oldSize().height();
 
     QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
-    float cx = (float)(event->oldSize().width()) / 2.f;
-    float cy = (float)(event->oldSize().height()) / 2.f;
+    int cx = (event->oldSize().width()) / 2;
+    int cy = (event->oldSize().height()) / 2;
     QPoint center = QPoint(cx, cy);
 
     // first we check if we want to displace the preview
@@ -255,8 +256,12 @@ VideoView::showContextMenu(const QPoint& pos)
     }
 
     connect(shareAction, &QAction::triggered, [=]() {
-        if (outVideo)
-            outVideo->sourceModel()->setDisplay(0, QApplication::desktop()->rect());
+        if (outVideo) {
+            auto realRect = QApplication::desktop()->normalGeometry();
+            realRect.setWidth(static_cast<int>(realRect.width() * QApplication::primaryScreen()->devicePixelRatio()));
+            realRect.setHeight(static_cast<int>(realRect.height() * QApplication::primaryScreen()->devicePixelRatio()));
+            outVideo->sourceModel()->setDisplay(0, realRect);
+        }
     });
     connect(shareFileAction, &QAction::triggered, [=]() {
         QFileDialog dialog(this);
