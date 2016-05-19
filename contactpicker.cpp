@@ -19,7 +19,7 @@
 #include "contactpicker.h"
 #include "ui_contactpicker.h"
 
-
+#include <QMouseEvent>
 
 #include "categorizedcontactmodel.h"
 #include "personmodel.h"
@@ -106,4 +106,22 @@ void
 ContactPicker::on_searchBar_textChanged(const QString &arg1)
 {
     contactProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
+}
+
+void
+ContactPicker::mousePressEvent(QMouseEvent *event)
+{
+    mpos_ = event->pos();
+    if (not rect().contains(mpos_))
+        QDialog::reject();
+}
+
+void ContactPicker::mouseMoveEvent(QMouseEvent *event)
+{
+    if (event->buttons() & Qt::LeftButton) {
+        QPoint diff = event->pos() - mpos_;
+        QPoint newpos = this->pos() + diff;
+
+        this->move(newpos);
+    }
 }
