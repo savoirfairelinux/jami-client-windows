@@ -18,6 +18,16 @@
 
 #include "selectareadialog.h"
 
+#ifdef Q_OS_WIN
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#include <winuser.h>
+
+#undef OUT
+#undef IN
+#undef ERROR
+#endif
+
 #include <QApplication>
 #include <QScreen>
 #include <QPainter>
@@ -37,11 +47,13 @@ SelectAreaDialog::SelectAreaDialog() :
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_PaintOnScreen);
     grabMouse();
-    rubberBand_ = new QRubberBand(QRubberBand::Rectangle,0);
+    rubberBand_ = new QRubberBand(QRubberBand::Rectangle, this);
     QApplication::setOverrideCursor(Qt::CrossCursor);
-    QScreen *screen = QGuiApplication::primaryScreen();
-    if (screen)
+    QScreen* screen = QGuiApplication::primaryScreen();
+    if (screen) {
         originalPixmap_ = screen->grabWindow(0);
+        originalPixmap_.setDevicePixelRatio(screen->devicePixelRatio());
+    }
 }
 
 void
@@ -71,13 +83,23 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
-                int x, y, width, height;
-                QRect realRect;
-                rubberBand_->geometry().getRect(&x, &y, &width, &height);
-                realRect.setX(x);
-                realRect.setY(y);
-                realRect.setWidth(width);
-                realRect.setHeight(height);
+                QRect realRect = rubberBand_->geometry();
+#ifdef Q_OS_WIN
+                if (QGuiApplication::primaryScreen()->devicePixelRatio() > 1.0) {
+                    auto scaledSize = QGuiApplication::primaryScreen()->geometry();
+                    auto sourceHdc = GetDC(nullptr);
+                    auto vertres = GetDeviceCaps(sourceHdc, VERTRES);
+                    auto horzres = GetDeviceCaps(sourceHdc, HORZRES);
+                    auto height = realRect.height() * QGuiApplication::primaryScreen()->devicePixelRatio();
+                    auto width = realRect.width() * QGuiApplication::primaryScreen()->devicePixelRatio();
+                    float xRatio = static_cast<float>(horzres) / static_cast<float>(scaledSize.width());
+                    float yRatio = static_cast<float>(vertres) / static_cast<float>(scaledSize.height());
+                    realRect.setX(static_cast<int>(realRect.x() * xRatio));
+                    realRect.setY(static_cast<int>(realRect.y() * yRatio));
+                    realRect.setWidth(static_cast<int>(width));
+                    realRect.setHeight(static_cast<int>(height));
+                }
+#endif
                 outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
@@ -88,7 +110,8 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
 }
 
 void
-SelectAreaDialog::paintEvent(QPaintEvent* event) {
+SelectAreaDialog::paintEvent(QPaintEvent* event)
+{
     Q_UNUSED(event)
     QPainter painter(this);
 
