@@ -39,6 +39,8 @@
 
 #include "callmodel.h"
 
+#include <QScreen>
+
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -115,6 +117,18 @@ MainWindow::MainWindow(QWidget* parent) :
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
+
+    qDebug() << "SCREEN GEOMETRY : " << QGuiApplication::primaryScreen()->geometry();
+    qDebug() << "SCREEN PHYSICAL : " << QGuiApplication::primaryScreen()->physicalSize();
+    qDebug() << "SCREEN SIZE : " << QGuiApplication::primaryScreen()->size();
+    qDebug() << "SCREEN VIRTUAL SIZE : " << QGuiApplication::primaryScreen()->virtualSize();
+    qDebug() << "SCREEN : " << QGuiApplication::primaryScreen();
+    qDebug() << "SCREEN DPI : " << QGuiApplication::primaryScreen()->devicePixelRatio();
+    qDebug() << "SCREEN VIRTUAL GEOMETRY : " << QGuiApplication::primaryScreen()->virtualGeometry();
+    auto sourceHdc = GetDC(nullptr);
+    auto vertres = GetDeviceCaps(sourceHdc, VERTRES);
+    auto horzres = GetDeviceCaps(sourceHdc, HORZRES);
+    qDebug() << "VERTRES " << vertres << "HORZRES " << horzres;
 }
 
 MainWindow::~MainWindow()

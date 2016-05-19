@@ -686,6 +686,15 @@ CallWidget::btnComBarVideoClicked()
     on_smartList_doubleClicked(highLightedIndex_);
 }
 
+#include <QMouseEvent>
+
+void
+CallWidget::mouseMoveEvent(QMouseEvent* event)
+{
+    qDebug() << event;
+    qDebug() << event->globalPos();
+}
+
 void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
