@@ -34,9 +34,6 @@ ContactPicker::ContactPicker(ContactMethod *number, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setWindowFlags(Qt::CustomizeWindowHint);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
-
     contactProxyModel_ = new OnlyPersonProxyModel(&PersonModel::instance());
     contactProxyModel_->setSortRole(static_cast<int>(Qt::DisplayRole));
     contactProxyModel_->sort(0,Qt::AscendingOrder);
