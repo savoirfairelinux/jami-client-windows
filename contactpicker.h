@@ -50,6 +50,9 @@ public:
     explicit ContactPicker(ContactMethod* number, QWidget *parent = 0);
     ~ContactPicker();
 
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 protected slots:
      void accept();
 
@@ -66,4 +69,5 @@ private:
     Person *personSelected_;
     ContactMethod* number_;
     OnlyPersonProxyModel* contactProxyModel_;
+    QPoint mpos_;
 };
