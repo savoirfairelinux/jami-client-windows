@@ -634,6 +634,10 @@ CallWidget::placeCall()
     Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
     c->performAction(Call::Action::ACCEPT);
     ui->ringContactLineEdit->clear();
+    ui->callingPhoto->setPixmap(
+                QPixmap::fromImage(
+                    GlobalInstances::pixmapManipulator()
+                    .callPhoto(c, QSize(130,130)).value<QImage>()));
 }
 
 void
