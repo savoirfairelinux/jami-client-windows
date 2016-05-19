@@ -18,6 +18,16 @@
 
 #include "selectareadialog.h"
 
+#ifdef Q_OS_WIN
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#include <winuser.h>
+
+#undef OUT
+#undef IN
+#undef ERROR
+#endif
+
 #include <QApplication>
 #include <QScreen>
 #include <QPainter>
@@ -37,11 +47,13 @@ SelectAreaDialog::SelectAreaDialog() :
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_PaintOnScreen);
     grabMouse();
-    rubberBand_ = new QRubberBand(QRubberBand::Rectangle,0);
+    rubberBand_ = new QRubberBand(QRubberBand::Rectangle, this);
     QApplication::setOverrideCursor(Qt::CrossCursor);
-    QScreen *screen = QGuiApplication::primaryScreen();
-    if (screen)
+    QScreen* screen = QGuiApplication::primaryScreen();
+    if (screen) {
         originalPixmap_ = screen->grabWindow(0);
+        originalPixmap_.setDevicePixelRatio(screen->devicePixelRatio());
+    }
 }
 
 void
@@ -58,7 +70,7 @@ void
 SelectAreaDialog::mouseMoveEvent(QMouseEvent* event)
 {
   if (rubberBand_)
-      rubberBand_->setGeometry(QRect(origin_, event->globalPos()));
+      rubberBand_->setGeometry(QRect(origin_, event->globalPos()).normalized());
 }
 
 void
@@ -71,13 +83,29 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
-                int x, y, width, height;
-                QRect realRect;
-                rubberBand_->geometry().getRect(&x, &y, &width, &height);
-                realRect.setX(x);
-                realRect.setY(y);
-                realRect.setWidth(width);
-                realRect.setHeight(height);
+                QRect realRect = rubberBand_->geometry();
+                if (QGuiApplication::primaryScreen()->devicePixelRatio() > 1.0) {
+                    auto scaledSize = QGuiApplication::primaryScreen()->geometry();
+                    auto sourceHdc = GetDC(nullptr);
+                    qDebug() << "REALRECT : " << realRect;
+                    auto vertres = GetDeviceCaps(sourceHdc, VERTRES);
+                    auto horzres = GetDeviceCaps(sourceHdc, HORZRES);
+                    qDebug() << "VERTRES " << vertres << "HORZRES " << horzres;
+                    auto height = realRect.height() * QGuiApplication::primaryScreen()->devicePixelRatio();
+                    auto width = realRect.width() * QGuiApplication::primaryScreen()->devicePixelRatio();
+                    realRect.setX(realRect.x() * (float)((float)horzres / (float)scaledSize.width()));
+                    realRect.setY(realRect.y() * (float)((float)vertres / (float)scaledSize.height()));
+                    qDebug() <<"X RATIO : " << (float)((float)vertres / (float)scaledSize.width()) << "Y RATIO : " << (float)((float)horzres / (float)scaledSize.height());
+                    realRect.setWidth(static_cast<int>(width));
+                    realRect.setHeight(static_cast<int>(height));
+                }
+                qDebug() << "REALRECT : " << realRect;
+                qDebug() << "SCREEN GEOMETRY : " << QGuiApplication::primaryScreen()->geometry();
+                qDebug() << "SCREEN PHYSICAL : " << QGuiApplication::primaryScreen()->physicalSize();
+                qDebug() << "SCREEN SIZE : " << QGuiApplication::primaryScreen()->size();
+                qDebug() << "SCREEN VIRTUAL SIZE : " << QGuiApplication::primaryScreen()->virtualSize();
+                qDebug() << "SCREEN VIRTUAL SIZE : " << QGuiApplication::primaryScreen();
+                qDebug() << realRect;
                 outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
@@ -88,7 +116,8 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
 }
 
 void
-SelectAreaDialog::paintEvent(QPaintEvent* event) {
+SelectAreaDialog::paintEvent(QPaintEvent* event)
+{
     Q_UNUSED(event)
     QPainter painter(this);
 
