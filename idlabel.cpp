@@ -35,5 +35,6 @@ IdLabel::mouseDoubleClickEvent(QMouseEvent* event)
     Q_UNUSED(event);
 
     QApplication::clipboard()->setText(this->text());
+    setSelection(0, text().size());
 }
 
