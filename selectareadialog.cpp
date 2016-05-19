@@ -21,6 +21,7 @@
 #include <QApplication>
 #include <QScreen>
 #include <QPainter>
+#include <QCursor>
 
 #include "video/sourcemodel.h"
 #include "media/video.h"
@@ -37,11 +38,13 @@ SelectAreaDialog::SelectAreaDialog() :
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_PaintOnScreen);
     grabMouse();
-    rubberBand_ = new QRubberBand(QRubberBand::Rectangle,0);
+    rubberBand_ = new QRubberBand(QRubberBand::Rectangle, this);
     QApplication::setOverrideCursor(Qt::CrossCursor);
-    QScreen *screen = QGuiApplication::primaryScreen();
-    if (screen)
+    QScreen* screen = QGuiApplication::primaryScreen();
+    if (screen) {
         originalPixmap_ = screen->grabWindow(0);
+        originalPixmap_.setDevicePixelRatio(screen->devicePixelRatio());
+    }
 }
 
 void
@@ -49,6 +52,8 @@ SelectAreaDialog::mousePressEvent(QMouseEvent* event)
 {
     if (rubberBand_) {
         origin_ = event->globalPos();
+        qDebug() << "MOUSE PRESS" << event->globalPos() << event->pos() << event->screenPos() << event->localPos();
+        qDebug() << "QCURSOR " << QCursor::pos(QGuiApplication::primaryScreen());
         rubberBand_->setGeometry(QRect(origin_, QSize()));
         rubberBand_->show();
     }
@@ -58,7 +63,7 @@ void
 SelectAreaDialog::mouseMoveEvent(QMouseEvent* event)
 {
   if (rubberBand_)
-      rubberBand_->setGeometry(QRect(origin_, event->globalPos()));
+      rubberBand_->setGeometry(QRect(origin_, event->globalPos()).normalized());
 }
 
 void
@@ -71,13 +76,17 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
             if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
-                int x, y, width, height;
-                QRect realRect;
-                rubberBand_->geometry().getRect(&x, &y, &width, &height);
-                realRect.setX(x);
-                realRect.setY(y);
-                realRect.setWidth(width);
-                realRect.setHeight(height);
+                QRect realRect = rubberBand_->geometry();
+                qDebug() << "REALRECT : " << realRect;
+                qDebug() << "SCREEN GEOMETRY : " << QGuiApplication::primaryScreen()->geometry();
+                qDebug() << "SCREEN PHYSICAL : " << QGuiApplication::primaryScreen()->physicalSize();
+                qDebug() << "SCREEN SIZE : " << QGuiApplication::primaryScreen()->size();
+                qDebug() << "SCREEN VIRTUAL SIZE : " << QGuiApplication::primaryScreen()->virtualSize();
+                realRect.setX(realRect.x());
+                realRect.setY(realRect.y());
+                realRect.setWidth(static_cast<int>(realRect.width() * QGuiApplication::primaryScreen()->devicePixelRatio()));
+                realRect.setHeight(static_cast<int>(realRect.height() * QGuiApplication::primaryScreen()->devicePixelRatio()));
+                qDebug() << realRect;
                 outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
@@ -88,7 +97,8 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
 }
 
 void
-SelectAreaDialog::paintEvent(QPaintEvent* event) {
+SelectAreaDialog::paintEvent(QPaintEvent* event)
+{
     Q_UNUSED(event)
     QPainter painter(this);
 

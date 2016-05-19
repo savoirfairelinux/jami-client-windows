@@ -61,6 +61,9 @@ public slots:
     void showIMOutOfCall(const QModelIndex& nodeIdx);
     void btnComBarVideoClicked();
 
+protected:
+    void mouseMoveEvent(QMouseEvent* event);
+
 //UI SLOTS
 public slots:
     void on_ringContactLineEdit_returnPressed();
