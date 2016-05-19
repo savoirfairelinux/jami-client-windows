@@ -40,8 +40,10 @@ SelectAreaDialog::SelectAreaDialog() :
     rubberBand_ = new QRubberBand(QRubberBand::Rectangle,0);
     QApplication::setOverrideCursor(Qt::CrossCursor);
     QScreen *screen = QGuiApplication::primaryScreen();
-    if (screen)
+    if (screen) {
         originalPixmap_ = screen->grabWindow(0);
+        originalPixmap_.setDevicePixelRatio(screen->devicePixelRatio());
+    }
 }
 
 void
@@ -76,8 +78,8 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
                 rubberBand_->geometry().getRect(&x, &y, &width, &height);
                 realRect.setX(x);
                 realRect.setY(y);
-                realRect.setWidth(width);
-                realRect.setHeight(height);
+                realRect.setWidth(static_cast<int>(width * QGuiApplication::primaryScreen()->devicePixelRatio()));
+                realRect.setHeight(static_cast<int>(height * QGuiApplication::primaryScreen()->devicePixelRatio()));
                 outVideo->sourceModel()->setDisplay(0, realRect);
             }
         }
