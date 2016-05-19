@@ -256,7 +256,7 @@ VideoView::showContextMenu(const QPoint& pos)
 
     connect(shareAction, &QAction::triggered, [=]() {
         if (outVideo)
-            outVideo->sourceModel()->setDisplay(0, QApplication::desktop()->rect());
+            outVideo->sourceModel()->setDisplay(0, QApplication::desktop()->geometry());
     });
     connect(shareFileAction, &QAction::triggered, [=]() {
         QFileDialog dialog(this);
