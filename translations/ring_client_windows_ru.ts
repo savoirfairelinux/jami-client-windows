@@ -213,10 +213,6 @@ Ring – это приложение для безопасного и распр
         <translation>Локальный порт:</translation>
     </message>
     <message>
-        <source>Published Adress</source>
-        <translation type="vanished">Опубликованный адрес</translation>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
         <translation>Такие же, как и локальные параметры</translation>
@@ -312,7 +308,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Опубликованный адрес</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
@@ -481,96 +477,96 @@ Ring – это приложение для безопасного и распр
         <translation>Звонок</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="148"/>
-        <location filename="../callwidget.cpp" line="289"/>
+        <location filename="../callwidget.cpp" line="150"/>
+        <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="154"/>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="156"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Add to contact</source>
         <translation>Добавить в контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="208"/>
+        <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="210"/>
+        <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="210"/>
+        <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="213"/>
+        <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="227"/>
+        <location filename="../callwidget.cpp" line="229"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="236"/>
+        <location filename="../callwidget.cpp" line="239"/>
         <source>Display date</source>
         <translation>Отображать дату</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="239"/>
+        <location filename="../callwidget.cpp" line="243"/>
         <source>Display author</source>
         <translation>Отображать имя</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="305"/>
+        <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="306"/>
+        <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="314"/>
         <source>Copy %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="314"/>
+        <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="347"/>
-        <location filename="../callwidget.cpp" line="409"/>
+        <location filename="../callwidget.cpp" line="349"/>
+        <location filename="../callwidget.cpp" line="406"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>НЕ НАЙДЕНА УЧЕТНАЯ ЗАПИСЬ RING</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="422"/>
+        <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="427"/>
+        <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="681"/>
+        <location filename="../callwidget.cpp" line="694"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
         <translation type="unfinished"></translation>
@@ -631,12 +627,12 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Профиль</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
@@ -724,22 +720,22 @@ Ring – это приложение для безопасного и распр
         <translation>Запускать Ring при старте системы</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="276"/>
+        <location filename="../configurationwidget.cpp" line="303"/>
         <source>New Account</source>
         <translation>Новая учетная запись</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="297"/>
+        <location filename="../configurationwidget.cpp" line="324"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>Вы уверены, что хотите удалить всю историю? </translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="352"/>
+        <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="382"/>
+        <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -793,17 +789,17 @@ Ring – это приложение для безопасного и распр
         <translation>Отправить текстовое сообщение...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="45"/>
+        <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="50"/>
+        <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
         <translation>Отображать дату</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="53"/>
+        <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
         <translation>Отображать имя</translation>
     </message>
@@ -818,12 +814,12 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройка</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Выход</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
@@ -841,7 +837,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished">Пароль</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -851,7 +847,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
@@ -888,14 +884,14 @@ Ring – это приложение для безопасного и распр
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../photoboothdialog.cpp" line="57"/>
+        <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation type="unfinished">Выберите файл</translation>
+        <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
+        <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation type="unfinished">Файлы (*)</translation>
+        <translation>Файлы (*)</translation>
     </message>
 </context>
 <context>
