@@ -104,7 +104,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف الحساب</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
@@ -170,7 +170,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>تشغيل</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
@@ -180,12 +180,12 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>مرمّزات الصوت</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"></translation>
+        <translation>مرمّزات الفيديو</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
@@ -211,10 +211,6 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
         <translation>نقطة عبور ( port ) محلية</translation>
-    </message>
-    <message>
-        <source>Published Adress</source>
-        <translation type="vanished">العنوان المنشور</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
@@ -312,7 +308,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation type="unfinished"></translation>
+        <translation>العنوان المنشور</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
@@ -362,7 +358,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>إيقاف مؤقت</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="242"/>
@@ -408,42 +404,42 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"></translation>
+        <translation>قائمة الإعدادات</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation>Ring برنامج إتصال صوتي  بصري  و كتابي منيع و موزع لا يستلزم خادم تطبيقات مركزي ويمنح المستخدم قدرة التحكم فالخصوصية.</translation>
+        <translation>Ring برنامج إتصال صوتي بصري وكتابي منيع وموزع لا يستلزم خادم مركزي ويمنح المستخدم كامل القدرة على التحكم في الخصوصية.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;هذا هو عنوان RingID الخاص بك.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;انسخه وشاركه مع أصدقائك&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"></translation>
+        <translation>شارك عنوان Ring الخاص بك</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;نقر مزدوج للنسخ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"></translation>
+        <translation>خطأ عند محاولة تولد الرمز الشريطي</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"></translation>
+        <translation>محادثة مع</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"></translation>
+        <translation>ابدأ المحادثة !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1114"/>
@@ -453,7 +449,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"></translation>
+        <translation>يريد التحدث إليك!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1335"/>
@@ -463,17 +459,17 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"></translation>
+        <translation>تجاهل</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"></translation>
+        <translation>يتّصل</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
-        <translation>ألغي</translation>
+        <translation>ألغِ</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
@@ -481,99 +477,99 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>مكالمة</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="148"/>
-        <location filename="../callwidget.cpp" line="289"/>
+        <location filename="../callwidget.cpp" line="150"/>
+        <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
         <translation>نسخ الرقم</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="154"/>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="156"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Add to contact</source>
         <translation>أضف إلى الاتصال</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="208"/>
+        <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"></translation>
+        <translation>مشاركة بواسطة البريد الإلكتروني</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="210"/>
+        <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="210"/>
+        <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="213"/>
+        <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="227"/>
+        <location filename="../callwidget.cpp" line="229"/>
         <source>Copy</source>
         <translation>إنسخ</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="236"/>
+        <location filename="../callwidget.cpp" line="239"/>
         <source>Display date</source>
         <translation>عرض التاريخ</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="239"/>
+        <location filename="../callwidget.cpp" line="243"/>
         <source>Display author</source>
         <translation>عرض المؤلف</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="305"/>
+        <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="306"/>
+        <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="314"/>
         <source>Copy %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="314"/>
+        <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="347"/>
-        <location filename="../callwidget.cpp" line="409"/>
+        <location filename="../callwidget.cpp" line="349"/>
+        <location filename="../callwidget.cpp" line="406"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>لا يوجد حساب Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="422"/>
+        <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="427"/>
+        <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="681"/>
+        <location filename="../callwidget.cpp" line="694"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation type="unfinished"></translation>
+        <translation>محادثة مع %1</translation>
     </message>
 </context>
 <context>
@@ -631,22 +627,22 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>خذ لمحة</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>تسجيل الإعدادات</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ في:</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
@@ -656,7 +652,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"></translation>
+        <translation>البحث عن تحديثات تلقائيًا كل</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
@@ -666,12 +662,12 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>البحث عن تحديثات</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"></translation>
+        <translation>المعاينة غير متوفرة أثناء المكالمة</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="903"/>
@@ -691,27 +687,27 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"></translation>
+        <translation>جهاز الإخراج</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
-        <translation type="unfinished"></translation>
+        <translation>جهاز الإدخال</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة حساب جديد</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -724,22 +720,22 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>إطلق Ring عند بدء التشغيل</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="276"/>
+        <location filename="../configurationwidget.cpp" line="303"/>
         <source>New Account</source>
         <translation>حساب جديد</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="297"/>
+        <location filename="../configurationwidget.cpp" line="324"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>هل أنت متأكد من حذف تاريخك  ؟</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="352"/>
+        <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="382"/>
+        <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -793,17 +789,17 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
         <translation>إبعث رسالة نصية...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="45"/>
+        <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
         <translation>إنسخ</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="50"/>
+        <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
         <translation>عرض التاريخ</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="53"/>
+        <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
         <translation>عرض المؤلف</translation>
     </message>
@@ -818,12 +814,12 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>ترتيب</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>غادر</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
@@ -836,27 +832,27 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>المسار</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished">كلمة السر</translation>
+        <translation>كلمة السر</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>موافق</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished">ألغي</translation>
+        <translation>ألغي</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ الملف</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
@@ -867,7 +863,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>فتح ملف</translation>
     </message>
 </context>
 <context>
@@ -885,17 +881,17 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="57"/>
-        <source>Choose File</source>
-        <translation type="unfinished">إختار ملف</translation>
+        <translation>استيراد</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
+        <source>Choose File</source>
+        <translation>إختار ملف</translation>
+    </message>
+    <message>
+        <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation type="unfinished">وثائق (*)</translation>
+        <translation>وثائق (*)</translation>
     </message>
 </context>
 <context>
@@ -916,7 +912,7 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>آلي</translation>
     </message>
 </context>
 <context>
@@ -962,12 +958,12 @@ Ring برمجية تواصل مؤمنة و موزعة.</translation>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"></translation>
+        <translation>كتم اللاقط</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>الجودة</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
