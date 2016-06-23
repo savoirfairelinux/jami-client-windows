@@ -1,53 +1,52 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da_DK" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation>Om</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation>Krediteringer</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation>Release : Louis-Joseph Papineau</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>Microsoft Windows klient til Ring.
-Ring er software til sikker og distribueret kommunikation.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
         <source>Windows Ring</source>
-        <translation>Windows Ring</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation>version</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation>Skabt af:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="52"/>
         <source>Artwork by:</source>
-        <translation>Grafik af:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="56"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Baseret på SFLPhone-projektet</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -55,175 +54,175 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation>Indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation>Generelt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
-        <translation>Konto</translation>
+        <translation>Λογαριασμός</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation>Alias</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation>Parametre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
         <source>Hostname</source>
-        <translation>Værtsnavn</translation>
+        <translation>Hostname</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation>slet konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation>Stedfortræder</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation>Telefonsvarernummer</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation>Svar automatisk opkald</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation>UPnP aktiveret</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
         <source>DTMF tone type</source>
-        <translation>DTMF-tone type</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="548"/>
         <source>RTP</source>
-        <translation>RTP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="566"/>
         <source>SIP</source>
-        <translation>SIP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
-        <translation>Tillad Opkald Fra Ukendt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation>Tillad Opkald Fra Kontakt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation>Tillad Opkald Fra Historik</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
-        <translation>Ring-konto Indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation>Ringetone-valg</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation>Afspil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation>Lyd/video</translation>
+        <translation>Ήχος/Βίντεο</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation>Audio-codec&apos;er</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation>Video-codec&apos;er</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation>Avanceret</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation>Registrering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Tidsgrænse for registrering (sekunder):</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation>Netværksinterface</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
-        <translation>Lokal-port:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation>Samme som lokale parametre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation>Sæt offentliggjorte adresse og port:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation>Adresse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
@@ -233,60 +232,60 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation>Brug STUN</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
         <location filename="../accountdetails.ui" line="1535"/>
         <source>Server URL</source>
-        <translation>Server-URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation>Brug TURN</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
         <source>Realm</source>
-        <translation>Realm</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1635"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>SDP Sessions-forhandling (ICE-tilbagefald)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Disse indstillinger bruges kun under SDP-sessiinsforhandling hvis ICE ikke understøttes af serveren eller modparten.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation>Portinterval for Lyd-RTP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation>Maks</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
         <source>Video RTP Port Range</source>
-        <translation>Video RTP-port Interval</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation>Sikkerhed</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
@@ -306,52 +305,52 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation>Publiceret Adresse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Krypter forhandling (TLS)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation>CA-certifikat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation>Bruger-certifikat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation>Privat nøgle</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation>Kodeord til privat nøgle</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation>Verificer indgående certifikater (på server-siden)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation>Verificer svar-certifikater (på klient-siden)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Kræv certifikat for indgående TLS-forbindelser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation>Brug standard-cifre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
@@ -384,7 +383,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation>Overfør</translation>
+        <translation>Μεταφορά</translation>
     </message>
 </context>
 <context>
@@ -407,7 +406,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation>Ring er en sikker og distribueret tale, video og besked kommunikationsplatform, der ikke benytter en central server og som efterlader magten over privatlivet i brugerens hænder.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
@@ -462,17 +461,17 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation>Ringer</translation>
+        <translation>Καλεί</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
-        <translation>Annuller</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
-        <translation>Ring op</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="150"/>
@@ -575,12 +574,12 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>Generelt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -605,7 +604,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>Slet Historik</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
@@ -620,17 +619,17 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation>Profil</translation>
+        <translation>Προφίλ</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation>Navn</translation>
+        <translation>Όνομα</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
@@ -705,12 +704,12 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation>Konto</translation>
+        <translation>Λογαριασμός</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
@@ -720,7 +719,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="303"/>
         <source>New Account</source>
-        <translation>Ny konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="324"/>
@@ -776,7 +775,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Opret</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -807,12 +806,12 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation>Ring</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation>Konfiguration</translation>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
@@ -822,7 +821,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
         <source>About</source>
-        <translation>Om</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -835,7 +834,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -845,7 +844,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation>Annuller</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
@@ -941,7 +940,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>Chat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
@@ -991,7 +990,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation>Læg på</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
@@ -1009,12 +1008,12 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation>Del skærmområde</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation>Del fil</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1027,7 +1026,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation>Ukendt</translation>
+        <translation>Άγνωστος</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="124"/>
@@ -1038,7 +1037,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
         <location filename="../wizarddialog.ui" line="195"/>
         <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation>Næste</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

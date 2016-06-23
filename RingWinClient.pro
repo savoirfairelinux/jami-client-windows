@@ -153,6 +153,7 @@ TRANSLATIONS = \
     translations/ring_client_windows_ca.ts \
     translations/ring_client_windows_uk.ts \
     translations/ring_client_windows_fr.ts \
+    translations/ring_client_windows_fr_FR.ts \
     translations/ring_client_windows.ts \
     translations/ring_client_windows_id.ts \
     translations/ring_client_windows_ar.ts \
@@ -164,6 +165,7 @@ TRANSLATIONS = \
     translations/ring_client_windows_es.ts \
     translations/ring_client_windows_lt.ts \
     translations/ring_client_windows_nl.ts \
+    translations/ring_client_windows_nl_NL.ts \
     translations/ring_client_windows_pa.ts \
     translations/ring_client_windows_sv.ts \
     translations/ring_client_windows_pl.ts \
@@ -171,6 +173,8 @@ TRANSLATIONS = \
     translations/ring_client_windows_fa_IR.ts \
     translations/ring_client_windows_ru.ts \
     translations/ring_client_windows_eo.ts \
+    translations/ring_client_windows_fi.ts \
+    translations/ring_client_windows_el.ts \
 
 maketranslationdir.target = customtarget
 maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
