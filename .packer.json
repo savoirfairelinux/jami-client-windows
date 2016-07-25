@@ -94,10 +94,10 @@
     },
     "UpdateInstructions" : {
         "win32" : [
-            "yaourt -Syua --noconfirm"
+            "dnf -y upgrade"
         ],
         "win64" : [
-            "yaourt -Syua --noconfirm"
+            "dnf -y upgrade"
         ]
     },
     "ReviewType": "Gerrit",
