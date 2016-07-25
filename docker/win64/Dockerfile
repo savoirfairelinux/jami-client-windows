@@ -38,10 +38,8 @@ RUN dnf -y install mingw32-qt5-qtbase \
 # Client Req
 RUN dnf -y install mingw32-qt5-qtsvg \
  mingw32-qt5-qtwinextras \
- mingw32-qt5-imageformats \
  mingw64-qt5-qtsvg \
- mingw64-qt5-qtwinextras \
- mingw64-qt5-imageformats
+ mingw64-qt5-qtwinextras
 
 ENV CMAKE_PREFIX_PATH /usr/i686-w64-mingw32/sys-root/mingw/lib/cmake:/usr/x86_64-w64-mingw32/sys-root/mingw/lib/cmake
 ENV QTDIR /usr/i686-w64-mingw32/sys-root/mingw/lib/qt5/:/usr/x86_64-w64-mingw32/sys-root/mingw/lib/qt5/
