@@ -44,7 +44,7 @@
         "make install",
         "cd release",
         "makensis -DARCH=x86 ring.nsi",
-        "mv ring-windows-nightly.exe /output"
+        "sudo mv ring-windows-nightly.exe /output"
         ],
         "win64" : [
         "git clone https://gerrit-ring.savoirfairelinux.com/ring-daemon ring-daemon",
@@ -89,7 +89,7 @@
         "make install",
         "cd release",
         "makensis -DARCH=x64 ring.nsi",
-        "mv ring-windows-nightly.exe /output/ring-windows-nightly_x86_64.exe"
+        "sudo mv ring-windows-nightly.exe /output/ring-windows-nightly_x86_64.exe"
         ]
     },
     "UpdateInstructions" : {

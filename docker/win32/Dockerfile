@@ -27,7 +27,8 @@ RUN dnf -y install git \
  make \
  xz \
  bzip2 \
- which
+ which \
+ sudo
 
 # LRC Req
 RUN dnf -y install mingw32-qt5-qtbase \
