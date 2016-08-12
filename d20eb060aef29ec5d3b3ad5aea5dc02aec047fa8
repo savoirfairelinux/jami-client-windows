@@ -1,0 +1,7 @@
+Code-Review+2: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+Verified+1: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+Submitted-by: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+Submitted-at: Fri, 12 Aug 2016 09:32:00 -0400
+Reviewed-on: https://gerrit-ring.savoirfairelinux.com/4680
+Project: ring-client-windows
+Branch: refs/heads/wip/test
