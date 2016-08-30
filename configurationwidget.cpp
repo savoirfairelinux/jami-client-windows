@@ -44,6 +44,7 @@
 #include "utils.h"
 #include "pathpassworddialog.h"
 #include "photoboothdialog.h"
+#include "wizarddialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -300,11 +301,15 @@ ConfigurationWidget::accountPropertyChanged(Account* a,
 void
 ConfigurationWidget::on_addAccountButton_clicked()
 {
-    auto account = accountModel_->add(tr("New Account"),
-                                      ui->accountTypeBox->model()->index(
-                                          ui->accountTypeBox->currentIndex(), 0));
-    account->setRingtonePath(Utils::GetRingtonePath());
-    accountModel_->save();
+    auto type = ui->accountTypeBox->model()->index(ui->accountTypeBox->currentIndex(), 0);
+    if (type.data()  == "RING") {
+        WizardDialog dlg(WizardDialog::NEW_ACCOUNT);
+        dlg.exec();
+    } else {
+        auto account = accountModel_->add(tr("New Account"), type);
+        account->setRingtonePath(Utils::GetRingtonePath());
+        accountModel_->save();
+    }
 }
 
 void

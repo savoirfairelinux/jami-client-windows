@@ -389,6 +389,8 @@ void CallWidget::setupQRCode()
 void
 CallWidget::findRingAccount()
 {
+    ui->ringIdLabel->text().clear();
+
     auto a_count = AccountModel::instance().rowCount();
     for (int i = 0; i < a_count; ++i) {
         auto idx = AccountModel::instance().index(i, 0);
@@ -397,16 +399,22 @@ CallWidget::findRingAccount()
             auto account = AccountModel::instance().getAccountByModelIndex(idx);
             if (account->displayName().isEmpty())
                 account->displayName() = account->alias();
-            auto username = account->username();
-            ui->ringIdLabel->setText(username);
-            setupQRCode();
-            return;
+            if (account->needsMigration()) {
+                WizardDialog dlg(WizardDialog::MIGRATION, account);
+                dlg.exec();
+            }
+            if (ui->ringIdLabel->text().isEmpty()) {
+                auto username = account->username();
+                ui->ringIdLabel->setText(username);
+                setupQRCode();
+            }
         }
     }
-    ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-    auto wizardDialog = new WizardDialog();
-    wizardDialog->exec();
-    delete wizardDialog;
+    if (ui->ringIdLabel->text().isEmpty()) {
+        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
+        WizardDialog wizardDialog;
+        wizardDialog.exec();
+    }
 }
 
 void
