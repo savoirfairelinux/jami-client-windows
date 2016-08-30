@@ -44,13 +44,18 @@ protected slots:
 //UI Slots
 private slots:
     void on_avatarButton_clicked();
+    void on_existingPushButton_clicked();
+    void on_newAccountButton_clicked();
+    void on_previousButton_clicked();
 
 private slots:
-    void endSetup(Account* a);
+    void endSetup(Account::RegistrationState state);
 
 private:
     Ui::WizardDialog* ui;
+    Account* account_;
 
     void setup();
+    void changePage(bool existingAccount);
 };
 

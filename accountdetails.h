@@ -52,12 +52,18 @@ private slots:
     void on_upVideoButton_clicked();
     void on_downVideoButton_clicked();
     void on_playButton_clicked();
+    void on_addDeviceButton_clicked();
+    void on_cancelButton_clicked();
+    void on_exportOnRingButton_clicked();
+    void on_exportEndedOkButton_clicked();
+    void on_cancelAddButton_clicked();
 
 private slots:
     void onCertButtonClicked();
     void ringtonesBoxCurrentIndexChanged(int index);
     void audioCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void videoCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    void exportOnRingEnded(Account::ExportOnRingStatus state, const QString& pin);
 
 private:
     Ui::AccountDetails* ui;
