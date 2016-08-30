@@ -44,6 +44,9 @@ WizardDialog::WizardDialog(QWidget* parent) :
     ui->ringLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
+    ui->welcomeLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
+    ui->welcomeLogo->setAlignment(Qt::AlignHCenter);
+
     ui->usernameEdit->setText(Utils::GetCurrentUserName());
 }
 
@@ -55,6 +58,10 @@ WizardDialog::~WizardDialog()
 void
 WizardDialog::accept()
 {
+    if (ui->passwordEdit->text().isEmpty() || ui->passwordEdit->text() != ui->passwordEdit->text()) {
+        //TODO: Give some feedback
+        return;
+    }
     ui->label->setText(tr("Please wait while we create your account."));
     ui->wizardButton->setEnabled(false);
     ui->usernameEdit->setEnabled(false);
@@ -65,36 +72,54 @@ WizardDialog::accept()
 
     Utils::CreateStartupLink();
 
-    auto account = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
+    account_ = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
     if (not ui->usernameEdit->text().isEmpty()) {
-        account->setDisplayName(ui->usernameEdit->text());
+        account_->setDisplayName(ui->usernameEdit->text());
         profile->person()->setFormattedName(ui->usernameEdit->text());
     }
     else {
         profile->person()->setFormattedName(tr("Unknown"));
     }
-    account->setRingtonePath(Utils::GetRingtonePath());
-    account->setUpnpEnabled(true);
+    account_->setRingtonePath(Utils::GetRingtonePath());
+    account_->setUpnpEnabled(true);
 
-    connect(account, SIGNAL(changed(Account*)), this, SLOT(endSetup(Account*)));
+    account_->setArchivePassword(ui->passwordEdit->text());
+    ui->passwordEdit->setEnabled(false);
+    ui->confirmPasswordEdit->setEnabled(false);
 
-    account->performAction(Account::EditAction::SAVE);
+    if (not ui->pinEdit->text().isEmpty()) {
+        account_->setArchivePin(ui->pinEdit->text());
+    }
 
-    profile->setAccounts({account});
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
+
+    account_->performAction(Account::EditAction::SAVE);
+
+    profile->setAccounts({account_});
     profile->save();
 }
 
 void
-WizardDialog::endSetup(Account* a)
+WizardDialog::endSetup(Account::RegistrationState state)
 {
-    Q_UNUSED(a)
-    QDialog::accept();
+    switch (state) {
+    case Account::RegistrationState::READY:
+    {
+        account_->performAction(Account::EditAction::RELOAD);
+        QDialog::accept();
+        break;
+    }
+    case Account::RegistrationState::UNREGISTERED:
+    case Account::RegistrationState::TRYING:
+    case Account::RegistrationState::COUNT__:
+        break;
+    }
 }
 
 void
 WizardDialog::closeEvent(QCloseEvent* event)
 {
-    Q_UNUSED(event)
+    Q_UNUSED(event);
 
     exit(0);
 }
@@ -110,4 +135,36 @@ WizardDialog::on_avatarButton_clicked()
         ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
         ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarButton->width())));
     }
+}
+
+void
+WizardDialog::on_existingPushButton_clicked()
+{
+    changePage(true);
+}
+
+void
+WizardDialog::on_newAccountButton_clicked()
+{
+    changePage(false);
+}
+
+void
+WizardDialog::changePage(bool existingAccount)
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+    ui->avatarButton->setHidden(existingAccount);
+    ui->ringLogo->setHidden(existingAccount);
+    ui->label->setHidden(existingAccount);
+    ui->usernameEdit->setHidden(existingAccount);
+    ui->confirmPasswordEdit->setHidden(existingAccount);
+
+    ui->pinEdit->setVisible(existingAccount);
+}
+
+void
+WizardDialog::on_previousButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }

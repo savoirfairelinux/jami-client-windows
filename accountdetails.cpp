@@ -210,6 +210,8 @@ AccountDetails::setAccount(Account* currentAccount) {
         ui->cipherListView->setVisible(false);
     else
         ui->cipherListView->setVisible(true);
+
+    ui->tableView->setModel((QAbstractItemModel*)currentAccount_->ringDeviceModel());
 }
 
 void
@@ -297,4 +299,63 @@ QPushButton*
 AccountDetails::getDeleteAccountButton()
 {
     return ui->deleteAccountButton;
+}
+
+void
+AccountDetails::on_addDeviceButton_clicked()
+{
+    ui->devicesStackedWidget->setCurrentIndex(1);
+}
+
+void
+AccountDetails::on_cancelButton_clicked()
+{
+    ui->devicesStackedWidget->setCurrentIndex(0);
+}
+
+void
+AccountDetails::on_exportOnRingButton_clicked()
+{
+    if (ui->passwordArchiveEdit->text().isEmpty())
+        return;
+
+    connect(currentAccount_, SIGNAL(exportOnRingEnded(Account::ExportOnRingStatus,QString)), this, SLOT(exportOnRingEnded(Account::ExportOnRingStatus,QString)));
+    currentAccount_->exportOnRing(ui->passwordArchiveEdit->text());
+    ui->devicesStackedWidget->setCurrentIndex(2);
+    ui->pinLabel->setText(tr("Please wait while your PIN is generated."));
+}
+
+void
+AccountDetails::exportOnRingEnded(Account::ExportOnRingStatus state, const QString& pin) {
+
+    ui->devicesStackedWidget->setCurrentIndex(2);
+
+    ui->pinLabel->clear();
+
+    switch (state) {
+    case Account::ExportOnRingStatus::SUCCESS:
+    {
+        ui->pinLabel->setText(pin);
+        break;
+    }
+    case Account::ExportOnRingStatus::NETWORK_ERROR:
+    {
+        ui->pinLabel->setText(tr("Network Error. Please try again later."));
+        break;
+    }
+    case Account::ExportOnRingStatus::WRONG_PASSWORD:
+        break;
+    }
+}
+
+void
+AccountDetails::on_exportEndedOkButton_clicked()
+{
+    ui->devicesStackedWidget->setCurrentIndex(0);
+}
+
+void
+AccountDetails::on_cancelAddButton_clicked()
+{
+    ui->devicesStackedWidget->setCurrentIndex(0);
 }
