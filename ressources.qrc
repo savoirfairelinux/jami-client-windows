@@ -38,5 +38,6 @@
         <file>images/icons/ic_arrow_tab_previous_black_9dp_2x.png</file>
         <file>images/spikeMask.png</file>
         <file>images/icons/ic_photo_camera_white_24dp_2x.png</file>
+        <file>images/loading.gif</file>
     </qresource>
 </RCC>
