@@ -286,7 +286,9 @@ QWidget#messagingPage{
 }
 
 QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
-QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton{
+QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
+QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
+QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -295,17 +297,23 @@ QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoBut
 
 QPushButton#wizardButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
 QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
-QPushButton#takePhotoButton:hover, QPushButton#importButton:hover{
+QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
+QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
+QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
+QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover{
     background-color: #4dc6d6;
 }
 
 QPushButton#wizardButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
 QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
-QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed{
+QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
+QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
+QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
+QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed{
     background-color: #34acbd;
 }
 
-QLineEdit#usernameEdit:enabled{
+QLineEdit#usernameEdit:enabled, QLineEdit#passwordEdit:enabled, QLineEdit#confirmPasswordEdit:enabled, QLineEdit#pinEdit:enabled{
     border-color: rgb(0, 192, 212);
     border-radius: 5px;
     border-width: 1px;
@@ -313,7 +321,7 @@ QLineEdit#usernameEdit:enabled{
     background-color: rgb(255, 255, 255);
 }
 
-QLineEdit#usernameEdit:disabled{
+QLineEdit#usernameEdit:disabled, QLineEdit#passwordEdit:disabled, QLineEdit#confirmPasswordEdit:disabled, QLineEdit#pinEdit:disabled{
     border-color: rgb(159, 157, 154);
     border-radius: 5px;
     border-width: 1px;

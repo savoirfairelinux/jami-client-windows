@@ -33,7 +33,14 @@ class WizardDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit WizardDialog(QWidget* parent = 0);
+    enum WizardMode {
+        WIZARD,
+        NEW_ACCOUNT,
+        MIGRATION
+    };
+
+public:
+    explicit WizardDialog(WizardMode wizardMode = WIZARD, Account* toBeMigrated = nullptr, QWidget* parent = 0);
     ~WizardDialog();
 
 // Overrided function
@@ -44,13 +51,21 @@ protected slots:
 //UI Slots
 private slots:
     void on_avatarButton_clicked();
+    void on_existingPushButton_clicked();
+    void on_newAccountButton_clicked();
+    void on_previousButton_clicked();
+    void on_passwordEdit_textChanged(const QString& arg1);
 
 private slots:
-    void endSetup(Account* a);
+    void endSetup(Account::RegistrationState state);
 
 private:
     Ui::WizardDialog* ui;
+    Account* account_;
+    WizardMode wizardMode_;
+    QMovie* movie_;
 
     void setup();
+    void changePage(bool existingAccount);
 };
 

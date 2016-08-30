@@ -34,186 +34,410 @@
     <number>0</number>
    </property>
    <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="ringLogo">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QWidget" name="LoginPage">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="welcomeLogo">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="existingPushButton">
+         <property name="minimumSize">
+          <size>
+           <width>85</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Existing Ring Account</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="newAccountButton">
+         <property name="minimumSize">
+          <size>
+           <width>85</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>New Ring Account</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="UserDataPage">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>3</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="ringLogo">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>13</width>
+           <height>4</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="avatarButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>74</width>
+           <height>74</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>74</width>
+           <height>74</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="ressources.qrc">
+           <normaloff>:/images/user/btn-default-userpic.svg</normaloff>:/images/user/btn-default-userpic.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>74</width>
+           <height>74</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Choose your username:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLineEdit" name="usernameEdit">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string>Choose your username</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLineEdit" name="pinEdit">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="placeholderText">
+          <string>Enter your pin</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLineEdit" name="passwordEdit">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>Password</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLineEdit" name="confirmPasswordEdit">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>Confirm password</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>13</width>
+           <height>3</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>11</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="previousButton">
+           <property name="minimumSize">
+            <size>
+             <width>85</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Previous</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="wizardButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>85</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>85</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Next</string>
+           </property>
+           <property name="text">
+            <string>Next</string>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="spinnerPage">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="spinnerLabel">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="ressources.qrc">:/images/loading.gif</pixmap>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>10</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QPushButton" name="avatarButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>74</width>
-       <height>74</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>74</width>
-       <height>74</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="ressources.qrc">
-       <normaloff>:/images/user/btn-default-userpic.svg</normaloff>:/images/user/btn-default-userpic.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>74</width>
-       <height>74</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Choose your username:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLineEdit" name="usernameEdit">
-     <property name="minimumSize">
-      <size>
-       <width>200</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>200</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="clearButtonEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>5</width>
-       <height>10</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignRight">
-    <widget class="QPushButton" name="wizardButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>85</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>85</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Next</string>
-     </property>
-     <property name="text">
-      <string>Next</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>10</width>
-       <height>5</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
