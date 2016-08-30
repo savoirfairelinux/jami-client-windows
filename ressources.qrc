@@ -39,5 +39,6 @@
         <file>images/icons/ic_photo_camera_white_24dp_2x.png</file>
         <file>images/qrcode.png</file>
         <file>images/icons/ic_share_black_48dp_2x.png</file>
+        <file>images/loading.gif</file>
     </qresource>
 </RCC>

@@ -242,10 +242,10 @@ win32 {
                             $$RUNTIMEDIR/iconv.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
-    QTPLATFORMS.files = $$(QTDIR)/plugins/platforms/qwindows.dll
+    QTPLATFORMS.files = $$[QT_INSTALL_PLUGINS]/platforms/qwindows.dll
     QTPLATFORMS.path = $$OUT_PWD/release/platforms
 
-    QTPLUGINIMAGE.files = $$(QTDIR)/plugins/imageformats/
+    QTPLUGINIMAGE.files = $$[QT_INSTALL_PLUGINS]/imageformats/
     QTPLUGINIMAGE.path = $$OUT_PWD/release
 
     LIBSTD.files = $$RUNTIMEDIR/libgcc_s_sjlj-1.dll $$RUNTIMEDIR/libstdc++-6.dll \

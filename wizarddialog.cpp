@@ -29,9 +29,11 @@
 #include "utils.h"
 #include "photoboothdialog.h"
 
-WizardDialog::WizardDialog(QWidget* parent) :
+WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget* parent) :
     QDialog(parent),
-    ui(new Ui::WizardDialog)
+    ui(new Ui::WizardDialog),
+    account_(toBeMigrated),
+    wizardMode_(wizardMode)
 {
     ui->setupUi(this);
 
@@ -44,7 +46,23 @@ WizardDialog::WizardDialog(QWidget* parent) :
     ui->ringLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
+    ui->welcomeLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
+    ui->welcomeLogo->setAlignment(Qt::AlignHCenter);
+
     ui->usernameEdit->setText(Utils::GetCurrentUserName());
+
+    movie_ = new QMovie(":/images/loading.gif");
+    ui->spinnerLabel->setMovie(movie_);
+    movie_->start();
+
+    if (wizardMode_ == MIGRATION) {
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->usernameEdit->hide();
+        ui->previousButton->hide();
+        ui->avatarButton->hide();
+        ui->pinEdit->hide();
+        ui->label->setText(tr("Your account needs to be migrated. Choose a password."));
+    }
 }
 
 WizardDialog::~WizardDialog()
@@ -55,9 +73,21 @@ WizardDialog::~WizardDialog()
 void
 WizardDialog::accept()
 {
-    ui->label->setText(tr("Please wait while we create your account."));
-    ui->wizardButton->setEnabled(false);
-    ui->usernameEdit->setEnabled(false);
+    if (ui->pinEdit->isVisible() && ui->pinEdit->text().isEmpty()) {
+        ui->pinEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+        return;
+    }
+    if (ui->passwordEdit->text().isEmpty() || ui->passwordEdit->text() != ui->confirmPasswordEdit->text()) {
+        ui->passwordEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+        ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+        return;
+    } else {
+        ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+        ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+        ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+    }
+
+    ui->stackedWidget->setCurrentIndex(2);
 
     auto profile = ProfileModel::instance().selectedProfile();
 
@@ -65,38 +95,60 @@ WizardDialog::accept()
 
     Utils::CreateStartupLink();
 
-    auto account = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
-    if (not ui->usernameEdit->text().isEmpty()) {
-        account->setDisplayName(ui->usernameEdit->text());
-        profile->person()->setFormattedName(ui->usernameEdit->text());
+    if (account_ == nullptr) {
+        account_ = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
+        if (not ui->usernameEdit->text().isEmpty()) {
+            account_->setDisplayName(ui->usernameEdit->text());
+            profile->person()->setFormattedName(ui->usernameEdit->text());
+        }
+        else {
+            profile->person()->setFormattedName(tr("Unknown"));
+        }
     }
-    else {
-        profile->person()->setFormattedName(tr("Unknown"));
+    account_->setRingtonePath(Utils::GetRingtonePath());
+    account_->setUpnpEnabled(true);
+
+    account_->setArchivePassword(ui->passwordEdit->text());
+    ui->passwordEdit->setEnabled(false);
+    ui->confirmPasswordEdit->setEnabled(false);
+
+    if (not ui->pinEdit->text().isEmpty()) {
+        account_->setArchivePin(ui->pinEdit->text());
     }
-    account->setRingtonePath(Utils::GetRingtonePath());
-    account->setUpnpEnabled(true);
 
-    connect(account, SIGNAL(changed(Account*)), this, SLOT(endSetup(Account*)));
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
 
-    account->performAction(Account::EditAction::SAVE);
+    account_->performAction(Account::EditAction::SAVE);
 
-    profile->setAccounts({account});
+    profile->setAccounts({account_});
     profile->save();
 }
 
 void
-WizardDialog::endSetup(Account* a)
+WizardDialog::endSetup(Account::RegistrationState state)
 {
-    Q_UNUSED(a)
-    QDialog::accept();
+    switch (state) {
+    case Account::RegistrationState::READY:
+    {
+        account_->performAction(Account::EditAction::RELOAD);
+        QDialog::accept();
+        break;
+    }
+    case Account::RegistrationState::UNREGISTERED:
+    case Account::RegistrationState::TRYING:
+    case Account::RegistrationState::COUNT__:
+        break;
+    }
 }
 
 void
 WizardDialog::closeEvent(QCloseEvent* event)
 {
-    Q_UNUSED(event)
-
-    exit(0);
+    Q_UNUSED(event);
+    if (wizardMode_ == WIZARD)
+        exit(0);
+    else
+        QDialog::closeEvent(event);
 }
 
 void
@@ -109,5 +161,50 @@ WizardDialog::on_avatarButton_clicked()
         auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
         ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
         ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarButton->width())));
+    }
+}
+
+void
+WizardDialog::on_existingPushButton_clicked()
+{
+    changePage(true);
+}
+
+void
+WizardDialog::on_newAccountButton_clicked()
+{
+    changePage(false);
+}
+
+void
+WizardDialog::changePage(bool existingAccount)
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+    ui->avatarButton->setHidden(existingAccount);
+    ui->ringLogo->setHidden(existingAccount);
+    ui->label->setHidden(existingAccount);
+    ui->usernameEdit->setHidden(existingAccount);
+    ui->confirmPasswordEdit->setHidden(existingAccount);
+
+    ui->pinEdit->setVisible(existingAccount);
+}
+
+void
+WizardDialog::on_previousButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+    ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+    ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+}
+
+void
+WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
+{
+    Q_UNUSED(arg1)
+
+    if (ui->pinEdit->isVisible()) {
+        ui->confirmPasswordEdit->setText(ui->passwordEdit->text());
     }
 }
