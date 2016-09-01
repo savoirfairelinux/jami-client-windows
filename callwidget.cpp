@@ -296,6 +296,11 @@ CallWidget::setupSmartListMenu() {
             connect(copyAction, &QAction::triggered, [contactMethod]() {
                 QApplication::clipboard()->setText(contactMethod->uri());
             });
+            auto copyNameAction = new QAction(tr("Copy name"), this);
+            menu.addAction(copyNameAction);
+            connect(copyNameAction, &QAction::triggered, [contactMethod]() {
+                QApplication::clipboard()->setText(contactMethod->primaryName());
+            });
             if (not contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
                 auto addExisting = new QAction(tr("Add to contact"), this);
                 menu.addAction(addExisting);
