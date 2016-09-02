@@ -115,6 +115,10 @@ MainWindow::MainWindow(QWidget* parent) :
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
+
+    if (not settings.contains(SettingsKey::enableNotifications)) {
+        settings.setValue(SettingsKey::enableNotifications, true);
+    }
 }
 
 MainWindow::~MainWindow()

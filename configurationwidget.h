@@ -64,6 +64,7 @@ private slots:
     void on_exportButton_clicked();
     void on_avatarButton_clicked();
     void on_profileNameEdit_textEdited(const QString& name);
+    void on_notificationCheckBox_toggled(bool checked);
 
 private slots:
     void accountSelected(QItemSelection itemSel);

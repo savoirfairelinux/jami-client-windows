@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>954</width>
-    <height>680</height>
+    <height>815</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -635,6 +635,21 @@
            </property>
            <property name="text">
             <string>Keep minimized on close</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="notificationCheckBox">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(77, 77, 77);</string>
+           </property>
+           <property name="text">
+            <string>Enable notifications</string>
            </property>
           </widget>
          </item>
