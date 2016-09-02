@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>954</width>
-    <height>680</height>
+    <height>780</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -620,6 +620,13 @@
           <widget class="Line" name="line_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="notificationCheckBox">
+           <property name="text">
+            <string>Enable notifications</string>
            </property>
           </widget>
          </item>
