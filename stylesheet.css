@@ -184,20 +184,38 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#copyCMButton, QToolButton#shareButton{
+QPushButton#imBackButton, QPushButton#copyCMButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
-QPushButton#copyCMButton:hover, QToolButton#shareButton:hover{
+QPushButton#copyCMButton:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QPushButton#copyCMButton:pressed, QToolButton#shareButton:pressed{
+QPushButton#copyCMButton:pressed{
     background-color: #313131;
+}
+
+QToolButton#qrButton, QToolButton#shareButton{
+    background-color: #3AC0D2;
+    border-radius: 15px;
+    border:solid 1px;
+}
+
+QToolButton#qrButton:hover, QToolButton#shareButton:hover{
+    background-color: #4dc6d6;
+}
+
+QToolButton#qrButton:pressed, QToolButton#shareButton:pressed{
+    background-color: #34acbd;
+}
+
+QToolButton#qrButton:checked {
+    background-color: #34acbd;
 }
 
 QPushButton#deleteAccountButton, QToolButton#addAccountButton{

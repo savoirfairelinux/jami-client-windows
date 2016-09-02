@@ -82,6 +82,7 @@ private slots:
     void on_imBackButton_clicked();
     void on_copyCMButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
+    void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
 
 private slots:
@@ -124,7 +125,6 @@ private:
     void setupSmartListMenu();
     void slidePage(QWidget* widget, bool toRight = false);
     void callStateToView(Call* value);
-    void setupShareMenu();
     void setupQRCode();
 };
 
