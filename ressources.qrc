@@ -29,7 +29,6 @@
         <file>images/icons/ic_arrow_forward_white_48dp_2x.png</file>
         <file>images/icons/ic_settings_white_48dp_2x.png</file>
         <file>images/icons/ic_voicemail_white_24dp_2x.png</file>
-        <file>images/icons/ic_share_white_24dp_2x.png</file>
         <file>images/background-light.png</file>
         <file>images/background-dark.png</file>
         <file>images/icons/ic_arrow_drop_down_black_9dp_2x.png</file>
@@ -38,5 +37,7 @@
         <file>images/icons/ic_arrow_tab_previous_black_9dp_2x.png</file>
         <file>images/spikeMask.png</file>
         <file>images/icons/ic_photo_camera_white_24dp_2x.png</file>
+        <file>images/qrcode.png</file>
+        <file>images/icons/ic_share_black_48dp_2x.png</file>
     </qresource>
 </RCC>

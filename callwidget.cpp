@@ -82,7 +82,7 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
-    setupShareMenu();
+    ui->qrLabel->hide();
 
     GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
@@ -200,24 +200,6 @@ CallWidget::~CallWidget()
     delete pageAnim_;
     delete smartListDelegate_;
     delete shareMenu_;
-}
-
-void
-CallWidget::setupShareMenu()
-{
-    ui->shareButton->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
-    shareMenu_ = new QMenu(ui->shareButton);
-    auto emailShare = new QAction(tr("Share by email"), this);
-    connect(emailShare, &QAction::triggered, [=]() {
-        Utils::InvokeMailto(tr("Contact me on Ring"), tr("My RingId is : ") + ui->ringIdLabel->text());
-    });
-    shareMenu_->addAction(emailShare);
-    auto qrcodeAction = new QAction(tr("Show QRCode"), this);
-    qrcodeAction->setCheckable(true);
-    ui->qrLabel->hide();
-    connect(qrcodeAction, &QAction::toggled, ui->qrLabel, &QLabel::setVisible);
-    shareMenu_->addAction(qrcodeAction);
-    ui->shareButton->setMenu(shareMenu_);
 }
 
 void
@@ -819,7 +801,13 @@ CallWidget::on_copyCMButton_clicked()
 }
 
 void
+CallWidget::on_qrButton_toggled(bool checked)
+{
+    ui->qrLabel->setVisible(checked);
+}
+
+void
 CallWidget::on_shareButton_clicked()
 {
-    ui->shareButton->showMenu();
+    Utils::InvokeMailto(tr("Contact me on Ring"), tr("My RingId is : ") + ui->ringIdLabel->text());
 }
