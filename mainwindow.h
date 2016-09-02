@@ -53,6 +53,7 @@ private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void onIncomingCall(Call* call);
     void switchNormalMaximize();
+    void notificationClicked();
 
 private:
     explicit MainWindow(QWidget* parent = 0);

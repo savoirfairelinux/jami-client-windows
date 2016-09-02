@@ -165,7 +165,7 @@ InstantMessagingWidget::on_sendButton_clicked()
 void
 InstantMessagingWidget::onMsgReceived(const QMap<QString,QString>& message)
 {
-    if (!QApplication::activeWindow()) {
+    if (!QApplication::activeWindow() && settings_.value(SettingsKey::enableNotifications).toBool()) {
         GlobalSystemTray::instance().showMessage("Ring: Message Received", message["text/plain"]);
         QApplication::alert(this, 5000);
     }

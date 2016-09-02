@@ -112,6 +112,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
                 CategorizedHistoryModel::instance().historyLimit());
     ui->closeOrMinCheckBox->setChecked(settings_.value(
                                            SettingsKey::closeOrMinimized).toBool());
+    ui->notificationCheckBox->setChecked(settings_.value(
+                                           SettingsKey::enableNotifications).toBool());
     connect(ui->stackedWidget, &QStackedWidget::currentChanged, [](int index) {
         if (index == 1
                 && CallModel::instance().getActiveCalls().size() == 0) {
@@ -445,4 +447,10 @@ ConfigurationWidget::on_profileNameEdit_textEdited(const QString& name)
 {
     ProfileModel::instance().selectedProfile()->person()->setFormattedName(name);
     ProfileModel::instance().selectedProfile()->save();
+}
+
+void
+ConfigurationWidget::on_notificationCheckBox_toggled(bool checked)
+{
+    settings_.setValue(SettingsKey::enableNotifications, checked);
 }

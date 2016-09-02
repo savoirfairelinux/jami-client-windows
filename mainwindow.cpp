@@ -115,6 +115,11 @@ MainWindow::MainWindow(QWidget* parent) :
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
+
+    if (not settings.contains(SettingsKey::enableNotifications)) {
+        settings.setValue(SettingsKey::enableNotifications, true);
+    }
+    connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 }
 
 MainWindow::~MainWindow()
@@ -164,6 +169,11 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason != QSystemTrayIcon::ActivationReason::Context)
         this->show();
+}
+
+void
+MainWindow::notificationClicked() {
+    showNormal();
 }
 
 void

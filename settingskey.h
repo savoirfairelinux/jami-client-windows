@@ -26,6 +26,7 @@ constexpr static char savedSize[] = "savedSize";
 constexpr static char savedPos[] = "savedPos";
 constexpr static char imShowAuthor[] = "imShowAuthor";
 constexpr static char imShowDate[] = "imShowDate";
+constexpr static char enableNotifications[] = "enableNotifications";
 }
 
 #define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
