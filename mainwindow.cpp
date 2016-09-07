@@ -120,6 +120,12 @@ MainWindow::MainWindow(QWidget* parent) :
         settings.setValue(SettingsKey::enableNotifications, true);
     }
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
+
+    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged, [=](bool online) {
+        Q_UNUSED(online)
+        AccountModel::instance().slotConnectivityChanged();
+    });
+
 }
 
 MainWindow::~MainWindow()
