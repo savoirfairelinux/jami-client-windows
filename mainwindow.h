@@ -22,6 +22,7 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
+#include <QNetworkConfigurationManager>
 
 #include "navstack.h"
 
@@ -60,4 +61,5 @@ private:
      ~MainWindow();
     Ui::MainWindow* ui;
     NavStack* navStack_;
+    QNetworkConfigurationManager netManager_;
 };
