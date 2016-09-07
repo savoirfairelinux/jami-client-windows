@@ -115,6 +115,12 @@ MainWindow::MainWindow(QWidget* parent) :
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
+
+    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged, [=](bool online) {
+        Q_UNUSED(online)
+        qDebug() << "CONNECTIVITY CHANGED";
+        AccountModel::instance().slotConnectivityChanged();
+    });
 }
 
 MainWindow::~MainWindow()
