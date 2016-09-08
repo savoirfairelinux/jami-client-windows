@@ -143,8 +143,10 @@ main(int argc, char *argv[])
 
     if (not startMinimized)
         MainWindow::instance().show();
-    else
+    else {
         MainWindow::instance().showMinimized();
+        MainWindow::instance().hide();
+    }
 
     MainWindow::instance().createThumbBar();
 
