@@ -29,6 +29,11 @@
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 
+!define MUI_PAGE_CUSTOMFUNCTION_SHOW un.ModifyUnWelcome
+!define MUI_PAGE_CUSTOMFUNCTION_LEAVE un.LeaveUnWelcome
+!insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_INSTFILES
+
 !insertmacro MUI_LANGUAGE "English"
 
 RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
@@ -134,6 +139,23 @@ function un.onInit
         next:
         !insertmacro VerifyUserIsAdmin
 functionEnd
+
+Function un.ModifyUnWelcome
+${NSD_CreateCheckbox} 120u -18u 50% 12u "Remove configuration and history files"
+Pop $1
+SetCtlColors $1 "" ${MUI_BGCOLOR}
+${NSD_Check} $1 ; Check it by default
+FunctionEnd
+
+Function un.LeaveUnWelcome
+${NSD_GetState} $1 $0
+${If} $0 <> 0
+    rmDir /r "$LOCALAPPDATA\${COMPANYNAME}"
+    rmDir /r "$PROFILE\.config\ring"
+    rmDir /r "$PROFILE\.cache\ring"
+    rmDir /r "$PROFILE\.local\share\ring"
+${EndIf}
+FunctionEnd
 
 section "uninstall"
 
