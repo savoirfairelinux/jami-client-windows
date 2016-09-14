@@ -462,7 +462,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Вызов</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>

@@ -401,7 +401,7 @@ CallWidget::callChangedSlot()
 {
     if (not actualCall_)
         return;
-    ui->callerIdLabel->setText(QString(tr("%1", "%1 is the name of the caller"))
+    ui->callerIdLabel->setText(QString("%1")
                                .arg(actualCall_->formattedName()));
     ui->callerPhoto->setPixmap(
                 QPixmap::fromImage(

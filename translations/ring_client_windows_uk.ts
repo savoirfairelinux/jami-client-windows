@@ -15,7 +15,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"/>
+        <translation>Реліз: Луї-Жозеф Папінеу</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
@@ -102,7 +102,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"/>
+        <translation>видалити акаунт</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
@@ -162,13 +162,13 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"/>
+        <translation>Вибір рингтону</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Програти</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
@@ -178,12 +178,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>Аудіо кодеки</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>Відео кодеки</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
@@ -291,17 +291,17 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>Шифрування медіа потоку (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation>Кодування потоку (SRTP)</translation>
+        <translation>Шифрувати потік (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
-        <translation>Шифрувати розмову</translation>
+        <translation>Шифрування розмови</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
@@ -356,7 +356,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Пауза</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="242"/>
@@ -397,12 +397,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"/>
+        <translation>Знайти контакти або ввести ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>налаштування меню</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -412,42 +412,42 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Це ваше RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Зкопіювати та поділитися ним з ващими друзями!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"/>
+        <translation>Поділитися вашим ring id</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Подвійни клік для копіювання.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Помилка при генерації QR-коду</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"/>
+        <translation>Розмова з</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"/>
+        <translation>Почати розмову!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>віпдправити повідомлення</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>Хоче поговорити з вами!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1335"/>
@@ -457,12 +457,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Ігнорувати</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Дзвінок</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
@@ -489,22 +489,22 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>Поділитися за допомогою email</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Зв&apos;яжись зі мною за допомогою Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Моє RingId : </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>Показати QR-код</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
@@ -524,27 +524,27 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Вхідне повідомлення від %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
-        <translation type="unfinished"/>
+        <translation>Номер Виклику</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Зкопіювати Номер</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
         <source>Copy %1</source>
-        <translation type="unfinished"/>
+        <translation>Зкопіювати %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
-        <translation type="unfinished"/>
+        <translation>Виклик %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="349"/>
@@ -555,19 +555,19 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Вхідний виклик від %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation type="unfinished"/>
+        <translation>Розмова з %1</translation>
     </message>
 </context>
 <context>
@@ -585,7 +585,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>вийти з меню налаштуваннь</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
@@ -635,22 +635,22 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"/>
+        <translation>Записати Налаштування</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"/>
+        <translation>Зберегти в :</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"/>
+        <translation>Завжди робити запис</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Перевіряти оновлення автоматично кожні</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
@@ -660,12 +660,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>Перевірити оновлення</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"/>
+        <translation>Попередній перегляд не доступний від час виклику</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="903"/>
@@ -685,27 +685,27 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Пристрій Виведення</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
-        <translation type="unfinished"/>
+        <translation>Пристрій Введення</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>додати новий контакт</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Імпортувати</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Експортувати</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -730,12 +730,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>Обрати директорію</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>При імпорті облікового запису трапилася помилка.</translation>
     </message>
 </context>
 <context>
@@ -830,7 +830,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Шлях</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -840,7 +840,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Ок</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -850,18 +850,18 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Зберегти файл</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Архівні файли Ring (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Відкрити файл</translation>
     </message>
 </context>
 <context>
@@ -869,17 +869,17 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Стенд</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>чи</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Імпортувати</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
@@ -897,7 +897,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>Не знайдено жодного поштового клієнту</translation>
     </message>
 </context>
 <context>
@@ -910,7 +910,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Авто</translation>
     </message>
 </context>
 <context>
@@ -923,7 +923,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>Текстове поле</translation>
     </message>
 </context>
 <context>
@@ -931,12 +931,12 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation>Виклик на утриманні</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>Утримати / Заняти з утримування</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
@@ -946,32 +946,32 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"/>
+        <translation>Додати особу до виклику</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"/>
+        <translation>Перенесення виклику</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>Відключити мікрофон</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>Якість</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>Приєднати виклики</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Назва етикетки</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
@@ -981,7 +981,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"/>
+        <translation>Витрачено часу</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>

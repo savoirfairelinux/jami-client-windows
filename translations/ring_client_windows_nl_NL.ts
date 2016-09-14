@@ -54,7 +54,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
@@ -90,13 +90,13 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
@@ -471,13 +471,13 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
-        <translation type="unfinished"/>
+        <translation>Bellen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="150"/>
         <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>Kopieër nummer</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="156"/>
@@ -574,7 +574,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
@@ -834,7 +834,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>

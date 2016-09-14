@@ -335,17 +335,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation type="unfinished"/>
+        <translation>Verifica certificats entrats (servidor)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation type="unfinished"/>
+        <translation>Verifica certificats entrats (client)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation type="unfinished"/>
+        <translation>Exigeix certificat per a les conexions TLS entrants</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>

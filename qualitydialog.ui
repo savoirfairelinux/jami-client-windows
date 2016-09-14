@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -151,7 +151,6 @@
          <height>30</height>
         </size>
        </property>
-       <zorder>horizontalSpacer</zorder>
       </widget>
      </item>
      <item>

@@ -923,7 +923,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>Rótulo do Texto </translation>
     </message>
 </context>
 <context>
@@ -971,7 +971,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Nome do rótulo</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>

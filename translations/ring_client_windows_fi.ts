@@ -5,7 +5,7 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Tietoa</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
@@ -15,13 +15,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"/>
+        <translation>Julkaisu: Louis-Joseph Papineau</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Ring asiakasohjelma Microsoft Windowsille.
+Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -31,22 +32,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation type="unfinished"/>
+        <translation>versio</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
         <source>Created by:</source>
-        <translation type="unfinished"/>
+        <translation>Luonut:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="52"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"/>
+        <translation>Grafiikka:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="56"/>
         <source>Based on the SFLPhone project</source>
-        <translation type="unfinished"/>
+        <translation>Pohjautuu SFLPhone projektiin</translation>
     </message>
 </context>
 <context>
@@ -54,74 +55,74 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Tunnus</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation type="unfinished"/>
+        <translation>Lempinimi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parametrit</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Yhteysosoite</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjänimi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"/>
+        <translation>poista tunnus</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Välityspalvelin</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Vastaajan numero</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation type="unfinished"/>
+        <translation>Automaattivastaus</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation type="unfinished"/>
+        <translation>UPnP päällä</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
@@ -141,27 +142,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Salli puhelut tuntemattomilta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>Salli puhelut yhteystiedolta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>Salli puhelu historiasta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ring tunnuksen asetukset</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"/>
+        <translation>Soittoäänen valinta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
@@ -172,47 +173,47 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Ääni/Video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>Äänikoodekit</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>Videokoodekit</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Edistyneet asetukset</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation type="unfinished"/>
+        <translation>Rekistöröinti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation type="unfinished"/>
+        <translation>Rekistöröinnin aikakatkaisu (sekunneissa):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation type="unfinished"/>
+        <translation>Verkkoliitäntä</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
         <source>Local Port:</source>
-        <translation type="unfinished"/>
+        <translation>Paikallinen portti:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation type="unfinished"/>
+        <translation>Sama kuin paikalliset parametrit</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
@@ -222,23 +223,23 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Osoite</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>Portti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Käytä STUNia</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
         <location filename="../accountdetails.ui" line="1535"/>
         <source>Server URL</source>
-        <translation type="unfinished"/>
+        <translation>Palvelimen osoite</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
@@ -263,44 +264,44 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>RTP porttiväli</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation type="unfinished"/>
+        <translation>Minimi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation type="unfinished"/>
+        <translation>Maksimi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
         <source>Video RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Video RTP porttiväli</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Turvallisuus</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>Mediavirran salaus (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>Salaa mediavirta (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
-        <translation type="unfinished"/>
+        <translation>Neuvottelun salaus</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
@@ -310,32 +311,32 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation type="unfinished"/>
+        <translation>Salaa neuvottelu (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA sertifikaatti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjäsertifikaatti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation type="unfinished"/>
+        <translation>Henkilökohtainen salausavain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation type="unfinished"/>
+        <translation>Henkilökohtaisen salausavaimen salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation type="unfinished"/>
+        <translation>Varmenna saapuvat sertifikaatit (palvelinpuoli)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
@@ -355,17 +356,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Tauota</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Valitse tiedosto</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="244"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Tiedostot (*)</translation>
     </message>
 </context>
 <context>
@@ -378,12 +379,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"/>
+        <translation>tai näppäile numero...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished"/>
+        <translation>Lähetys</translation>
     </message>
 </context>
 <context>
@@ -401,7 +402,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>asetusvalikko</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -426,7 +427,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Virhe generoidessa QR-koodia</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
@@ -436,89 +437,89 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"/>
+        <translation>Aloita keskustelu!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>lähetä viesti</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>Haluaa puhua kanssasi!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"/>
+        <translation>Vastaa</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Sivuuta</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Soittaa</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Peru</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
-        <translation type="unfinished"/>
+        <translation>Soita</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="150"/>
         <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi numero</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="156"/>
         <location filename="../callwidget.cpp" line="300"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>Lisää yhteystietoon</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>Jaa sähköpostilla</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ota yhteyttä minuun Ringillä</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Ring tunnisteeni on:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>Näytä QR-koodi</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="239"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Näytä päivämäärä</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="243"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Näytä kehittäjä</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="271"/>
@@ -533,7 +534,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi numero</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
@@ -554,7 +555,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Saapuva puhelu %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="417"/>
@@ -574,12 +575,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -589,32 +590,32 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>Historian asetukset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"/>
+        <translation>Säilytä historiassa (päivää)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"/>
+        <translation>(0 tarkoittaa rajoittamatonta historiaa)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation type="unfinished"/>
+        <translation>Soittohistoria</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofoniasetukset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Pidä pinennettynä suljettaessa</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -624,7 +625,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profiili</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
@@ -634,7 +635,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"/>
+        <translation>Tallenneasetukset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
@@ -649,17 +650,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista päivitykset automaattisesti joka</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"/>
+        <translation>päivä</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista päivitykset</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="849"/>
@@ -669,17 +670,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="903"/>
         <source>Device Selection</source>
-        <translation type="unfinished"/>
+        <translation>Laitevalinta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="961"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Laite</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="992"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Tarkkuus</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1029"/>
@@ -694,22 +695,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>lisää uusi tunnus</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Tuo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Vie</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Tunnus</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
@@ -719,22 +720,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.cpp" line="303"/>
         <source>New Account</source>
-        <translation type="unfinished"/>
+        <translation>Uusi tunnus</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="324"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation type="unfinished"/>
+        <translation>Oletko varma että haluat tyhjentää koko historiasi?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>Valitse hakemisto</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>Virhe tunnuksen tuonnissa</translation>
     </message>
 </context>
 <context>
@@ -755,27 +756,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"/>
+        <translation>Etsi...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"/>
+        <translation>Luo uusi yhteystieto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>Uusi yhteystieto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation type="unfinished"/>
+        <translation>Syötä nimi tähän...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation>Luo</translation>
     </message>
 </context>
 <context>
@@ -783,22 +784,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"/>
+        <translation>Lähetä tekstiviesti...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Näytä päivämäärä</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Näytä kehittäjä</translation>
     </message>
 </context>
 <context>
@@ -806,22 +807,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Määrittelyt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Poistu</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Tietoa</translation>
     </message>
 </context>
 <context>
@@ -829,12 +830,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Polku</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -844,23 +845,23 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Peru</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Tallenna tiedosto</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Ring pakatut tiedostot (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Avaa tiedosto</translation>
     </message>
 </context>
 <context>
@@ -868,27 +869,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Valokuva-automaatti</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>tai</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>tuo</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Valitse tiedosto</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Tiedostot (*)</translation>
     </message>
 </context>
 <context>
@@ -896,7 +897,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>Ei oletusarvoista sähköpostiohjelmaa</translation>
     </message>
 </context>
 <context>
@@ -909,7 +910,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automaattinen</translation>
     </message>
 </context>
 <context>
@@ -930,52 +931,52 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation>Puhelu pidossa</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>Pitoon / poista pidosta</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>keskustelu</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"/>
+        <translation>Lisää henkilö puheluun</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"/>
+        <translation>Siirrä puhelu</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>Mykistä mikki</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>Laatu</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>Liity puheluihin</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Nimikenttä</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>Lisää yhteystietoon</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
@@ -990,12 +991,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation type="unfinished"/>
+        <translation>Katkaisu</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation type="unfinished"/>
+        <translation>Tauota video</translation>
     </message>
 </context>
 <context>
@@ -1003,17 +1004,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videoview.cpp" line="232"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"/>
+        <translation>Jaa näyttö</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation type="unfinished"/>
+        <translation>Jaa osa näytöstä</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation type="unfinished"/>
+        <translation>Jaa tiedosto</translation>
     </message>
 </context>
 <context>
@@ -1021,23 +1022,23 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../wizarddialog.cpp" line="58"/>
         <source>Please wait while we create your account.</source>
-        <translation type="unfinished"/>
+        <translation>Odota kun luomme tunnuksesi.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="124"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"/>
+        <translation>Valitse käyttäjänimesi:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="195"/>
         <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Seuraava</translation>
     </message>
 </context>
 </TS>
