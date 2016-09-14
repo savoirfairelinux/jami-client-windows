@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -372,9 +374,8 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
 <context>
     <name>CallUtilsDialog</name>
     <message>
-        <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="vanished">Dialog</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
@@ -390,9 +391,8 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Formular</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
@@ -427,7 +427,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Fehler bei der Erstellung des QR-Codes</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
@@ -489,22 +489,22 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>Per Mail teilen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Kontaktieren Sie mich über Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Meine RingId ist:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>QR-Code anzeigen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
@@ -558,10 +558,9 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
         <translation>Eingehender Anruf von %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>%1</translation>
+        <translation type="vanished">%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
@@ -700,12 +699,12 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Import</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Export</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -735,7 +734,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Imports des Benutzerkontos aufgetreten</translation>
     </message>
 </context>
 <context>
@@ -830,7 +829,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Pfad</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -840,7 +839,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -850,18 +849,18 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Datei speichern</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Ring Archiv-Dateien (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Datei öffnen</translation>
     </message>
 </context>
 <context>
@@ -869,17 +868,17 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>oder</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Import</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
@@ -903,9 +902,8 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
 <context>
     <name>QualityDialog</name>
     <message>
-        <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="vanished">Dialog</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
@@ -916,14 +914,8 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
 <context>
     <name>RingButton</name>
     <message>
-        <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
-        <location filename="../ringbutton.ui" line="69"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Formular</translation>
     </message>
 </context>
 <context>
@@ -971,7 +963,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
@@ -1002,17 +994,17 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="232"/>
+        <location filename="../videoview.cpp" line="233"/>
         <source>Share entire screen</source>
         <translation>Gesamten Bildschirm teilen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="236"/>
         <source>Share screen area</source>
         <translation>Bildschirmbereich teilen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="242"/>
+        <location filename="../videoview.cpp" line="243"/>
         <source>Share file</source>
         <translation>Datei teilen</translation>
     </message>

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -264,7 +266,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation>Garso RTP Prievadų Rėžis</translation>
+        <translation>Garso RTP prievadų rėžis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
@@ -326,12 +328,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation>Privatus raktas</translation>
+        <translation>Privatusis raktas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation>Privataus rakto slaptažodis</translation>
+        <translation>Privačiojo rakto slaptažodis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
@@ -372,11 +374,6 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
 <context>
     <name>CallUtilsDialog</name>
     <message>
-        <location filename="../callutilsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
         <translation>arba įrašykite numerį...</translation>
@@ -384,16 +381,11 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CallWidget</name>
-    <message>
-        <location filename="../callwidget.ui" line="20"/>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
@@ -489,17 +481,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Mano RingId yra : </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
@@ -529,12 +521,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti numerį</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
@@ -544,7 +536,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="349"/>
@@ -555,13 +547,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation>Įeinantis skambutis nuo %1</translation>
+        <translation>Gaunamasis skambutis nuo %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>%1</translation>
+        <translation type="vanished">%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
@@ -743,7 +734,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../contactdelegate.cpp" line="87"/>
         <source>&lt;Multiple contact methods&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -869,12 +860,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Nuotraukų budelė</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>arba</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
@@ -903,27 +894,9 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
 <context>
     <name>QualityDialog</name>
     <message>
-        <location filename="../qualitydialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>RingButton</name>
-    <message>
-        <location filename="../ringbutton.ui" line="26"/>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../ringbutton.ui" line="69"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>Automatinė</translation>
     </message>
 </context>
 <context>
@@ -931,12 +904,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
@@ -951,7 +924,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
@@ -966,7 +939,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
@@ -1002,17 +975,17 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="232"/>
+        <location filename="../videoview.cpp" line="233"/>
         <source>Share entire screen</source>
         <translation>Bendrinti visą ekraną</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="236"/>
         <source>Share screen area</source>
         <translation>Bendrinti ekrano sritį</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="242"/>
+        <location filename="../videoview.cpp" line="243"/>
         <source>Share file</source>
         <translation>Bendrinti failą</translation>
     </message>

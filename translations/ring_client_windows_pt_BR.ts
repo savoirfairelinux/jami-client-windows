@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -372,9 +374,8 @@ Ring é um software de comunicação distribuído e seguro.</translation>
 <context>
     <name>CallUtilsDialog</name>
     <message>
-        <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation type="vanished">Diálogo</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
@@ -390,9 +391,8 @@ Ring é um software de comunicação distribuído e seguro.</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="vanished">Formulário</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
@@ -558,10 +558,9 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <translation>Recebendo chamada de %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation>%1</translation>
+        <translation type="vanished">%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
@@ -903,9 +902,8 @@ Ring é um software de comunicação distribuído e seguro.</translation>
 <context>
     <name>QualityDialog</name>
     <message>
-        <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation type="vanished">Diálogo</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
@@ -916,14 +914,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
 <context>
     <name>RingButton</name>
     <message>
-        <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="vanished">Formulário</translation>
     </message>
     <message>
-        <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Rótulo do Texto </translation>
     </message>
 </context>
 <context>
@@ -971,7 +967,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Nome do rótulo</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
@@ -1002,17 +998,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="232"/>
+        <location filename="../videoview.cpp" line="233"/>
         <source>Share entire screen</source>
         <translation>Compartilhar tela inteira</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="236"/>
         <source>Share screen area</source>
         <translation>Compartilhar área da tela</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="242"/>
+        <location filename="../videoview.cpp" line="243"/>
         <source>Share file</source>
         <translation>Compartilhar arquivo</translation>
     </message>
