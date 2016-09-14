@@ -15,7 +15,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"/>
+        <translation>Vydání : Louis-Joseph Papineau</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
@@ -102,7 +102,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"/>
+        <translation>odstranit účet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
@@ -162,13 +162,13 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"/>
+        <translation>Výběr Vyzvánění</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Přehrát</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
@@ -178,12 +178,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>Zvukové kodeky</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>Obrazové kodeky</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
@@ -291,7 +291,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>Šifrování Datového Toku (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
@@ -306,7 +306,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation type="unfinished"/>
+        <translation>Zveřejněná Adresa</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
@@ -356,12 +356,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pozastavit</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
-        <translation>Zvolte soubor</translation>
+        <translation>Vyberte soubor</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="244"/>
@@ -397,12 +397,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"/>
+        <translation>Hledejte kontakty nebo zadejte Ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>menu nastavení</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -412,57 +412,57 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../callwidget.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Toto je vaše RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Sdílejte jej s vašimi přáteli!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"/>
+        <translation>Sdílet vaše Ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Klikněte dvakrát pro zkopírování.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Chyba při generaci QR Kódu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"/>
+        <translation>Konverzace s</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1027"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"/>
+        <translation>Začněte konverzaci !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>odeslat zprávu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>S vámi chce hovořit!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"/>
+        <translation>Přijmout</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Ignorovat</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Volání</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
@@ -489,22 +489,22 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>Sdílet e-mailem</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Kontaktujte mě přes Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Mé Ring ID je :</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>Ukázat QR Kód</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
@@ -524,27 +524,27 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Příchozí zpráva od %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
-        <translation type="unfinished"/>
+        <translation>Volat Číslo</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Kopírovat Číslo</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
         <source>Copy %1</source>
-        <translation type="unfinished"/>
+        <translation>Kopírovat %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
-        <translation type="unfinished"/>
+        <translation>Volat %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="349"/>
@@ -555,19 +555,19 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Příchozí hovor od %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation type="unfinished"/>
+        <translation>Konverzace s %1</translation>
     </message>
 </context>
 <context>
@@ -585,7 +585,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>ukončit menu nastavení</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
@@ -635,42 +635,42 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení Nahrávání</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"/>
+        <translation>Uložit do :</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"/>
+        <translation>Vždy Nahrávat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Kontrolovat aktualizace každých</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"/>
+        <translation>dní</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>Zkontrolovat aktualizace</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="849"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"/>
+        <translation>Náhled během hovoru nedostupný</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="903"/>
         <source>Device Selection</source>
-        <translation>Výběr zařízení</translation>
+        <translation>Výběr Zařízení</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="961"/>
@@ -685,27 +685,27 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Výstupní Zařízení</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
-        <translation type="unfinished"/>
+        <translation>Vstupní Zařízení</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>přidat nový účet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Exportovat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -730,12 +730,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>Vyberte Adresář</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>Chyba při importu účtu.</translation>
     </message>
 </context>
 <context>
@@ -812,12 +812,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation>Konfigurace</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Odejít</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
@@ -830,7 +830,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Cesta</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -840,7 +840,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -850,18 +850,18 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Uložit Soubor</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Archivní soubory Ring (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít Soubor</translation>
     </message>
 </context>
 <context>
@@ -869,22 +869,22 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Fotoautomat</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>nebo</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation>Zvolte soubor</translation>
+        <translation>Vyberte soubor</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="61"/>
@@ -897,7 +897,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>Nenalezen žádný výchozí e-mailový klient</translation>
     </message>
 </context>
 <context>
@@ -910,7 +910,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automaticky</translation>
     </message>
 </context>
 <context>
@@ -923,7 +923,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>TextLabel</translation>
     </message>
 </context>
 <context>
@@ -931,12 +931,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation>Hovor pozastaven</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>Pozastavit / Pokračovat</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
@@ -946,32 +946,32 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"/>
+        <translation>Připojit osobu k hovoru</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovat hovor</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>Ztlumit Mikrofon</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>Kvalita</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>Spojit Hovory</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Jmenný štítek</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
@@ -981,7 +981,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"/>
+        <translation>Uplynulý čas</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
@@ -1038,7 +1038,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
         <location filename="../wizarddialog.ui" line="195"/>
         <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Další</translation>
     </message>
 </context>
 </TS>

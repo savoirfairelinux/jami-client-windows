@@ -5,7 +5,7 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
@@ -15,7 +15,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
         <source>Release : Louis-Joseph Papineau</source>
-        <translation type="unfinished"/>
+        <translation>釋出：Louis-Joseph Papineau</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="570"/>
@@ -31,7 +31,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="33"/>
         <source>version</source>
-        <translation type="unfinished"/>
+        <translation>版本</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="40"/>
@@ -54,7 +54,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
@@ -64,12 +64,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>帳號</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="238"/>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>型</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
@@ -79,7 +79,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>參數</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
@@ -101,7 +101,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
         <source>delete account</source>
-        <translation type="unfinished"/>
+        <translation>刪除帳號</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
@@ -141,22 +141,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="699"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"/>
+        <translation>允許未知來電</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>允許通訊錄來電</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>允許歷史來電</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ring 帳號設定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
@@ -167,22 +167,22 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>播放</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>音訊/視訊</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1070"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>音訊編碼器</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1100"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>視訊編碼器</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
@@ -192,7 +192,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation type="unfinished"/>
+        <translation>註冊</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
@@ -202,7 +202,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation type="unfinished"/>
+        <translation>網路介面</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
@@ -212,27 +212,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation type="unfinished"/>
+        <translation>與本地參數相同</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation type="unfinished"/>
+        <translation>設定公開地址與連結埠：</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>地址</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>埠</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>使用STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
@@ -243,7 +243,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>使用</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
@@ -269,13 +269,13 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation type="unfinished"/>
+        <translation>最小值</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation type="unfinished"/>
+        <translation>最大值</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
@@ -290,12 +290,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>媒體串流加密(SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2355"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>加密媒體串流(SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
@@ -305,7 +305,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation type="unfinished"/>
+        <translation>公開發佈地址</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
@@ -355,17 +355,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>暫停</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="242"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>選擇檔案</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="244"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>檔案(*)</translation>
     </message>
 </context>
 <context>
@@ -378,12 +378,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"/>
+        <translation>或是輸入號碼...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished"/>
+        <translation>傳送</translation>
     </message>
 </context>
 <context>
@@ -391,17 +391,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>從</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"/>
+        <translation>從通訊錄尋找或是輸入ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>設定選單</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -416,7 +416,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="774"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"/>
+        <translation>分享你的ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="829"/>
@@ -441,89 +441,89 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="1114"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>傳送訊息</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1240"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>想要與你談天！</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1335"/>
         <source>Answer</source>
-        <translation type="unfinished"/>
+        <translation>接通</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1367"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>忽略</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>撥打</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
-        <translation>播打</translation>
+        <translation>撥打</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="150"/>
         <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>複製號碼</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="156"/>
         <location filename="../callwidget.cpp" line="300"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>加入通訊錄</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>透過email分享</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>透過Ring聯絡我</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>我的Ring ID是：</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>顯示QRCode</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>複製</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="239"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>顯示日期</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="243"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>顯示作者</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation> </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
@@ -533,7 +533,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>複製號碼</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
@@ -549,7 +549,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../callwidget.cpp" line="349"/>
         <location filename="../callwidget.cpp" line="406"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"/>
+        <translation>找不到Ring帳號</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
@@ -574,7 +574,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
@@ -584,17 +584,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>離開設定選單</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>歷史記錄設定</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"/>
+        <translation>保留歷史紀錄(天)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
@@ -604,7 +604,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation type="unfinished"/>
+        <translation>清除歷史紀錄</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
@@ -624,7 +624,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>個人檔案</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
@@ -639,7 +639,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"/>
+        <translation>儲存於:</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
@@ -649,17 +649,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>自動檢查更新每</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
         <source>days</source>
-        <translation type="unfinished"/>
+        <translation>天</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>檢查更新</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="849"/>
@@ -674,47 +674,47 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="961"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>裝置</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="992"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>解析度</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1029"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>輸出裝置</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1044"/>
         <source>Input Device</source>
-        <translation type="unfinished"/>
+        <translation>輸入裝置</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>加入新的帳號</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>載入</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>輸出</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>帳號</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>Launch Ring on Startup</source>
-        <translation type="unfinished"/>
+        <translation>啟動時執行</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="303"/>
@@ -729,7 +729,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>選擇目錄</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
@@ -750,22 +750,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation type="unfinished"/>
+        <translation>聯絡人已經存在</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"/>
+        <translation>搜尋...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"/>
+        <translation>建立新連絡人</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>新連絡人</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
@@ -775,7 +775,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation>建立</translation>
     </message>
 </context>
 <context>
@@ -783,22 +783,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"/>
+        <translation>傳送文字訊息...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>複製</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>顯示日期</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>顯示作者</translation>
     </message>
 </context>
 <context>
@@ -806,22 +806,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>離開</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>關於</translation>
     </message>
 </context>
 <context>
@@ -829,7 +829,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>路徑</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -839,17 +839,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>儲存檔案</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
@@ -860,7 +860,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>開啟檔案</translation>
     </message>
 </context>
 <context>
@@ -873,22 +873,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>或</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>載入</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>選擇檔案</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>檔案(*)</translation>
     </message>
 </context>
 <context>
@@ -917,7 +917,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>從</translation>
     </message>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
@@ -955,17 +955,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>麥克風靜音</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>品質</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>加入通話</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
@@ -975,17 +975,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>加入通訊錄 </translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"/>
+        <translation>經過時間</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -995,7 +995,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation type="unfinished"/>
+        <translation>視訊靜音</translation>
     </message>
 </context>
 <context>
@@ -1003,17 +1003,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videoview.cpp" line="232"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"/>
+        <translation>分享整個螢幕</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation type="unfinished"/>
+        <translation>分享部分螢幕</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation type="unfinished"/>
+        <translation>分享檔案</translation>
     </message>
 </context>
 <context>
@@ -1021,17 +1021,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../wizarddialog.cpp" line="58"/>
         <source>Please wait while we create your account.</source>
-        <translation type="unfinished"/>
+        <translation>請等待片刻，我們將為你創建新的帳戶</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="74"/>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="124"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"/>
+        <translation>選擇你的使用者名稱:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="195"/>

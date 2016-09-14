@@ -54,12 +54,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="60"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="175"/>
@@ -74,12 +74,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="204"/>
         <source>Alias</source>
-        <translation type="unfinished"/>
+        <translation>Ψευδώνυμο</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="308"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Παράμετροι</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="341"/>
@@ -90,13 +90,13 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="608"/>
         <location filename="../accountdetails.ui" line="1551"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Όνομα χρήστη</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="381"/>
         <location filename="../accountdetails.ui" line="1570"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Σύνθημα</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="127"/>
@@ -106,22 +106,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="424"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Διαμεσολαβητής</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="464"/>
         <source>Voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Αριθμός Voicemail</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="498"/>
         <source>Auto-answer calls</source>
-        <translation type="unfinished"/>
+        <translation>Αυτόματη απάντηση κλήσεων</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="516"/>
         <source>UPnP enabled</source>
-        <translation type="unfinished"/>
+        <translation>UPnP ενεργοποίηση</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="531"/>
@@ -167,7 +167,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Αναπαραγωγή</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="854"/>
@@ -187,22 +187,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1117"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Για προχωρημένους</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1163"/>
         <source>Registration</source>
-        <translation type="unfinished"/>
+        <translation>Εγγραφή</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1183"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation type="unfinished"/>
+        <translation>Χρονική λήξη καταχώρησης (δευτερόλεπτα):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1221"/>
         <source>Network Interface</source>
-        <translation type="unfinished"/>
+        <translation>Διεπαφή δικτύου</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1242"/>
@@ -212,17 +212,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1346"/>
         <source>Same as local parameters</source>
-        <translation type="unfinished"/>
+        <translation>Τα ίδια ως τοπικοί παράμετροι</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1367"/>
         <source>Set published address and port:</source>
-        <translation type="unfinished"/>
+        <translation>Καθορισμός δημοσιευμένης διεύθυνσης και θύρας:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1393"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Διεύθυνση</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1424"/>
@@ -232,7 +232,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1478"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Χρήση STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1494"/>
@@ -243,7 +243,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1519"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Χρήση TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1586"/>
@@ -253,39 +253,39 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1635"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>Διαπραγμάτευση συνεδρίας SDP (εφεδρικό του ICE)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation type="unfinished"/>
+        <translation>Αυτές οι ρυθμίσεις χρησιμοποιούνται μόνο κατά την διαπραγμάτευση της συνεδρία SDP, σε περίπτωση που το ICE δεν υποστηρίζεται από τον διακομιστή ή τον κόμβο.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Εύρος θυρών RTP ήχου</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
         <location filename="../accountdetails.ui" line="1869"/>
         <source>Min</source>
-        <translation type="unfinished"/>
+        <translation>Ελάχιστο</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1766"/>
         <location filename="../accountdetails.ui" line="1900"/>
         <source>Max</source>
-        <translation type="unfinished"/>
+        <translation>Μέγιστο</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1839"/>
         <source>Video RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Εύρος θυρών RTP βίντεο</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1965"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Ασφάλεια</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2337"/>
@@ -300,57 +300,57 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2022"/>
         <source>Negotiation Encryption</source>
-        <translation type="unfinished"/>
+        <translation>Κρυπτογράφηση διαπραγμάτευσης</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1316"/>
         <source>Published Address</source>
-        <translation type="unfinished"/>
+        <translation>Δημοσιευμένη διεύθυνση</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2040"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation type="unfinished"/>
+        <translation>Κρυπτογράφηση διαπραγμάτευσης (TLS)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2124"/>
         <source>CA certificate</source>
-        <translation type="unfinished"/>
+        <translation>Πιστοποιητικό CA</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2161"/>
         <source>User certificate</source>
-        <translation type="unfinished"/>
+        <translation>Πιστοποιητικό χρήστη</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation type="unfinished"/>
+        <translation>Ιδιωτικό κλειδί</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation type="unfinished"/>
+        <translation>Συνθηματικό ιδιωτικού κλειδιού</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation type="unfinished"/>
+        <translation>Επαλήθευση εισερχόμενων πιστοποιητικών (πλευρά διακομιστή)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2103"/>
         <source>Verify answer certificates (client side)</source>
-        <translation type="unfinished"/>
+        <translation>Επαλήθευση πιστοποιητικών απάντησης (πλευρά πελάτη)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2088"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation type="unfinished"/>
+        <translation>Απαίτηση πιστοποιητικού για εισερχόμενες συνδέσεις TLS</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation type="unfinished"/>
+        <translation>Χρήση προκαθορισμένων αλγόριθμων κρυπτογράφησης</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
@@ -406,7 +406,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="638"/>
         <source>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</source>
-        <translation type="unfinished"/>
+        <translation>Το Ring είναι μια ασφαλής και κατανεμημένη πλατφόρμα επικοινωνίας για ήχο, βίντεο και κουβέντα, που δεν απαιτεί ένα κεντρικό διακομιστή και αφήνει την ισχύ της ιδιωτικότητας στα χέρια του χρήστη.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="670"/>
@@ -466,18 +466,18 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="1492"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1230"/>
         <source>Call</source>
-        <translation type="unfinished"/>
+        <translation>Κλήση</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="150"/>
         <location filename="../callwidget.cpp" line="294"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>Αντιγραφή αριθμού </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="156"/>
@@ -574,12 +574,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -589,7 +589,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ρυθμίσεις ιστορικού</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
@@ -619,7 +619,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Βίντεο</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
@@ -699,12 +699,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Εισαγωγή</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Εξαγωγή</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -719,7 +719,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../configurationwidget.cpp" line="303"/>
         <source>New Account</source>
-        <translation type="unfinished"/>
+        <translation>Νέος λογαριασμός</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="324"/>
@@ -806,7 +806,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="57"/>
@@ -834,7 +834,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Σύνθημα</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -844,7 +844,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
@@ -878,7 +878,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Εισαγωγή</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
@@ -940,7 +940,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>Συνομιλία</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
@@ -1008,12 +1008,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share screen area</source>
-        <translation type="unfinished"/>
+        <translation>Μοίρασμα περιοχής της οθόνης</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="242"/>
         <source>Share file</source>
-        <translation type="unfinished"/>
+        <translation>Μοίρασμα αρχείου</translation>
     </message>
 </context>
 <context>
@@ -1037,7 +1037,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../wizarddialog.ui" line="195"/>
         <location filename="../wizarddialog.ui" line="198"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Επόμενο</translation>
     </message>
 </context>
 </TS>

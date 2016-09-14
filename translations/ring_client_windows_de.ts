@@ -427,7 +427,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Fehler bei der Erstellung des QR-Codes</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
@@ -489,22 +489,22 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>Per Mail teilen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Kontaktieren Sie mich über Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Meine RingId ist:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>QR-Code anzeigen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
@@ -700,12 +700,12 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Import</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
         <source>Export</source>
-        <translation type="unfinished"/>
+        <translation>Export</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
@@ -735,7 +735,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Imports des Benutzerkontos aufgetreten</translation>
     </message>
 </context>
 <context>
@@ -830,7 +830,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Pfad</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -840,7 +840,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -850,18 +850,18 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Datei speichern</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Ring Archiv-Dateien (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Datei öffnen</translation>
     </message>
 </context>
 <context>
@@ -869,17 +869,17 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Photobooth</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>oder</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Import</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
@@ -923,7 +923,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>Textlabel</translation>
     </message>
 </context>
 <context>
@@ -971,7 +971,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Namenslabel</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>

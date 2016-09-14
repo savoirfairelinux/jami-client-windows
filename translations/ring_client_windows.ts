@@ -373,11 +373,6 @@ Ring is a secured and distributed communication software.</source>
 <context>
     <name>CallUtilsDialog</name>
     <message>
-        <location filename="../callutilsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
         <translation type="unfinished"></translation>
@@ -390,11 +385,6 @@ Ring is a secured and distributed communication software.</source>
 </context>
 <context>
     <name>CallWidget</name>
-    <message>
-        <location filename="../callwidget.ui" line="20"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
         <source>Search contacts or enter ring ID</source>
@@ -556,12 +546,6 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="417"/>
-        <source>%1</source>
-        <comment>%1 is the name of the caller</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -904,26 +888,8 @@ Ring is a secured and distributed communication software.</source>
 <context>
     <name>QualityDialog</name>
     <message>
-        <location filename="../qualitydialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RingButton</name>
-    <message>
-        <location filename="../ringbutton.ui" line="26"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ringbutton.ui" line="69"/>
-        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1003,17 +969,17 @@ Ring is a secured and distributed communication software.</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="232"/>
+        <location filename="../videoview.cpp" line="233"/>
         <source>Share entire screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="236"/>
         <source>Share screen area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="242"/>
+        <location filename="../videoview.cpp" line="243"/>
         <source>Share file</source>
         <translation type="unfinished"></translation>
     </message>

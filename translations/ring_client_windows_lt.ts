@@ -264,7 +264,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1705"/>
         <source>Audio RTP Port Range</source>
-        <translation>Garso RTP Prievadų Rėžis</translation>
+        <translation>Garso RTP prievadų rėžis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1735"/>
@@ -326,12 +326,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2195"/>
         <source>Private key</source>
-        <translation>Privatus raktas</translation>
+        <translation>Privatusis raktas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2210"/>
         <source>Private key password</source>
-        <translation>Privataus rakto slaptažodis</translation>
+        <translation>Privačiojo rakto slaptažodis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2073"/>
@@ -499,7 +499,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Mano RingId yra : </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
@@ -534,7 +534,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti numerį</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
@@ -555,7 +555,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation>Įeinantis skambutis nuo %1</translation>
+        <translation>Gaunamasis skambutis nuo %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="417"/>
@@ -869,12 +869,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Nuotraukų budelė</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>arba</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
@@ -910,7 +910,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automatinė</translation>
     </message>
 </context>
 <context>

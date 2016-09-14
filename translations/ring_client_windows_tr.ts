@@ -10,7 +10,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Krediler</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="554"/>
@@ -147,12 +147,12 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.ui" line="726"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>Kayıtlı kişilerden aramaya izin ver</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="714"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>Geçmişten aramaya izin ver</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="674"/>
@@ -254,7 +254,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1635"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>SDP Görüşme Oturumu (ICE Geri çekilme)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1663"/>
@@ -351,7 +351,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2269"/>
         <source>Use default ciphers</source>
-        <translation type="unfinished"/>
+        <translation>Öntanımlı şifreyi kullan</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="54"/>
@@ -374,7 +374,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Karşılıklı konuşma</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
@@ -392,7 +392,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="197"/>
@@ -402,7 +402,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>ayarlar menüsü</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="638"/>
@@ -422,17 +422,17 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.ui" line="829"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Kopyalamak için çift tıklayın.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>QR Kodu oluşturulurken hata</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="944"/>
         <source>Conversation with</source>
-        <translation type="unfinished"/>
+        <translation>ile görüşme</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1027"/>
@@ -489,22 +489,22 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.cpp" line="210"/>
         <source>Share by email</source>
-        <translation type="unfinished"/>
+        <translation>eposta ile paylaşın</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Ring ile benimle iletişime geç</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Ring kimliğim:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="215"/>
         <source>Show QRCode</source>
-        <translation type="unfinished"/>
+        <translation>QR Kodu göster</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="229"/>
@@ -514,37 +514,37 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.cpp" line="239"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Tarihi görüntüle</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="243"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Yazarı görüntüle</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="271"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>%1&apos;den gelen ileti</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
         <source>Call Number</source>
-        <translation type="unfinished"/>
+        <translation>Telefon numarası</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Numarayı kopyala</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="314"/>
         <source>Copy %1</source>
-        <translation type="unfinished"/>
+        <translation>Kopyala %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="319"/>
         <source>Call %1</source>
-        <translation type="unfinished"/>
+        <translation>Ara %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="349"/>
@@ -555,13 +555,13 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../callwidget.cpp" line="431"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>%1$s&apos;dan gelen arama</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="417"/>
         <source>%1</source>
         <comment>%1 is the name of the caller</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="694"/>
@@ -585,7 +585,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>ayarlar menüsünden çık</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
@@ -600,7 +600,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"/>
+        <translation>(sınırsız geçmiş için 0 yapın)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
@@ -615,7 +615,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Kapatırken küçültülmüş olarak tut</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -625,7 +625,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
@@ -640,17 +640,17 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"/>
+        <translation>Buraya kaydet :</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"/>
+        <translation>Herzaman Kayıt</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="681"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Güncellemeleri otomatik olarak denetle</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="709"/>
@@ -700,7 +700,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1168"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>İçe aktar</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1175"/>
@@ -735,7 +735,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>Hesap içe aktarılırken bir hata oldu.</translation>
     </message>
 </context>
 <context>
@@ -794,12 +794,12 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Tarihi görüntüle</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Yazarı görüntüle</translation>
     </message>
 </context>
 <context>
@@ -817,7 +817,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="60"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Çıkış</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="84"/>
@@ -830,7 +830,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Yol</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -840,7 +840,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Tamam</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -850,18 +850,18 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Dosyayı kaydet</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation type="unfinished"/>
+        <translation>Ring arşiv dosyaları (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Dosyayı aç</translation>
     </message>
 </context>
 <context>
@@ -869,17 +869,17 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Fotograf  kabini</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>veya</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>İçe aktar</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
@@ -905,7 +905,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../qualitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Karşılıklı konuşma</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
@@ -918,12 +918,12 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../ringbutton.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../ringbutton.ui" line="69"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>MetinEtiketi</translation>
     </message>
 </context>
 <context>
@@ -936,7 +936,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>Beklet / Bekletmeyi kaldır</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
@@ -966,7 +966,7 @@ Ring güvenli ve dağıtık bir haberleşme yazılımıdır.</translation>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>Çağrılara katıl</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
