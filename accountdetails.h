@@ -58,6 +58,7 @@ private slots:
     void on_exportEndedOkButton_clicked();
     void on_cancelAddButton_clicked();
     void on_devicesStackedWidget_currentChanged(int arg1);
+    void on_registerButton_clicked();
 
 private slots:
     void onCertButtonClicked();
@@ -75,4 +76,3 @@ private:
 
     void stopRingtone();
 };
-
