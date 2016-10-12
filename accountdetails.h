@@ -58,6 +58,7 @@ private slots:
     void on_exportEndedOkButton_clicked();
     void on_cancelAddButton_clicked();
     void on_devicesStackedWidget_currentChanged(int arg1);
+    void on_registerButton_clicked();
 
 private slots:
     void onCertButtonClicked();
@@ -65,6 +66,7 @@ private slots:
     void audioCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void videoCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void exportOnRingEnded(Account::ExportOnRingStatus state, const QString& pin);
+    void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
 
 private:
     Ui::AccountDetails* ui;
@@ -75,4 +77,3 @@ private:
 
     void stopRingtone();
 };
-

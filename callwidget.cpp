@@ -186,6 +186,9 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->smartList->clearSelection();
         });
 
+        connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
+                this, SLOT(contactLineEdit_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
+
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
     }
@@ -662,16 +665,32 @@ CallWidget::historicButtonClicked(bool checked)
 }
 
 void
+CallWidget::searchContactLineEditEntry(const URI &uri)
+{
+    auto cm = PhoneDirectoryModel::instance().getNumber(uri);
+    // if its a new CM, bring it to the top
+    if (cm->lastUsed() == 0)
+        cm->setLastUsed(QDateTime::currentDateTime().toTime_t());
+
+    // select cm
+    RecentModel::instance().selectionModel()->setCurrentIndex(RecentModel::instance().getIndex(cm),
+                                                              QItemSelectionModel::ClearAndSelect);
+    ui->ringContactLineEdit->clear();
+}
+
+void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    auto cm = PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text());
-    time_t currentTime;
-    ::time(&currentTime);
-    cm->setLastUsed(currentTime);
-    ui->ringContactLineEdit->clear();
+    auto contactLineText = ui->ringContactLineEdit->text();
+    URI uri_passed = URI(contactLineText);
 
-    QModelIndex index = RecentModel::instance().getIndex(cm);
-    RecentModel::instance().selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+    if (!contactLineText.isNull() && contactLineText.length() > 0){
+
+        NameDirectory::instance().lookupName(nullptr, QString(), uri_passed);
+
+    } else {
+        searchContactLineEditEntry(uri_passed);
+    }
 }
 
 void
@@ -832,3 +851,39 @@ CallWidget::on_shareButton_clicked()
 {
     Utils::InvokeMailto(tr("Contact me on Ring"), tr("My RingId is : ") + ui->ringIdLabel->text());
 }
+
+void
+CallWidget::contactLineEdit_registeredNameFound(const Account* account,NameDirectory::LookupStatus status,
+                                                const QString& address,const QString& name)
+{
+    URI uri = URI(ui->ringContactLineEdit->text());
+    QString username_to_lookup = uri.userinfo();
+
+    if (username_to_lookup.compare(name) != 0){
+        return;
+    }
+
+    switch (status)
+    {
+        case NameDirectory::LookupStatus::SUCCESS:
+        {
+            uri = URI("ring:" + address);
+            qDebug() << uri;
+            searchContactLineEditEntry(uri);
+            break;
+        }
+        case NameDirectory::LookupStatus::INVALID_NAME:
+        {
+           qDebug() << "Invalid Ring username";
+           break;
+        }
+        case NameDirectory::LookupStatus::ERROR:
+        case NameDirectory::LookupStatus::NOT_FOUND:
+        default:
+        {
+            qDebug() << "Could not resolve Ring username";
+            break;
+        }
+    }
+}
+
