@@ -288,7 +288,8 @@ QWidget#messagingPage{
 QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
 QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
-QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton{
+QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
+QPushButton#errorPushButton, QPushButton#registerButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -300,7 +301,8 @@ QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
 QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
-QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover{
+QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
+QPushButton#registerButton:hover{
     background-color: #4dc6d6;
 }
 
@@ -309,7 +311,8 @@ QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
 QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
-QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed{
+QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
+QPushButton#registerButton:pressed{
     background-color: #34acbd;
 }
 
@@ -500,7 +503,7 @@ QSpinBox::up-button{
 QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLineEdit#lrcfg_proxy,
 QLineEdit#lrcfg_mailbox, QLineEdit#lrcfg_tlsPassword, QLineEdit#lrcfg_tlsServerName,
 QLineEdit#lrcfg_turnServerRealm, QLineEdit#lrcfg_turnServerUsername, QLineEdit#lrcfg_turnServerPassword,
-QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_username{
+QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_registeredName{
     background: transparent;
     border-radius: 0px;
     border-style: solid;
@@ -524,7 +527,7 @@ QLineEdit#lrcfg_alias:focus, QLineEdit#lrcfg_hostname:focus, QLineEdit#lrcfg_pas
 QLineEdit#lrcfg_proxy:focus, QLineEdit#lrcfg_mailbox:focus, QLineEdit#lrcfg_tlsPassword:focus,
 QLineEdit#lrcfg_tlsServerName:focus, QLineEdit#lrcfg_turnServerRealm:focus, QLineEdit#lrcfg_turnServerUsername:focus,
 QLineEdit#lrcfg_turnServerPassword:focus, QLineEdit#lrcfg_turnServer:focus, QLineEdit#lrcfg_publishedAddress:focus,
-QLineEdit#lrcfg_username:focus{
+QLineEdit#lrcfg_registeredName:focus{
     border-color: #3AC0D2;
 }
 

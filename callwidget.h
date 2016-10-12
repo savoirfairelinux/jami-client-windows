@@ -94,6 +94,7 @@ private slots:
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
+    void contactLineEdit_registeredNameFound(const Account* account,NameDirectory::LookupStatus status,const QString& address,const QString& name);
 
 private:
     Ui::CallWidget* ui;
@@ -126,5 +127,6 @@ private:
     void slidePage(QWidget* widget, bool toRight = false);
     void callStateToView(Call* value);
     void setupQRCode();
+    void searchContactLineEditEntry(const URI &uri);
 };
 
