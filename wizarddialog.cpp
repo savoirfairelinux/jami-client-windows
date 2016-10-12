@@ -20,6 +20,7 @@
 #include "ui_wizarddialog.h"
 
 #include <QMovie>
+#include <QMessageBox>
 
 #include "accountmodel.h"
 #include "account.h"
@@ -63,6 +64,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
         ui->pinEdit->hide();
         ui->label->setText(tr("Your account needs to be migrated. Choose a password."));
     }
+    ui->searchingStateLabel->clear();
 }
 
 WizardDialog::~WizardDialog()
@@ -130,6 +132,15 @@ WizardDialog::endSetup(Account::RegistrationState state)
     switch (state) {
     case Account::RegistrationState::READY:
     {
+        if (ui->signUpCheckbox->isChecked()) { // If the user wants to register its name on the blockchain
+            bool regSuccess = account_->registerName(ui->passwordEdit->text(), ui->usernameEdit->text());
+            if (!regSuccess) usernameFailedRegistration();
+            else
+                connect(account_,
+                        SIGNAL(nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)),
+                        this,
+                        SLOT(handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)));
+        }
         account_->performAction(Account::EditAction::RELOAD);
         QDialog::accept();
         break;
@@ -149,6 +160,12 @@ WizardDialog::closeEvent(QCloseEvent* event)
         exit(0);
     else
         QDialog::closeEvent(event);
+}
+
+void
+WizardDialog::usernameFailedRegistration()
+{
+    QMessageBox::warning(this, "Username not registered", "Your account has been created, but we could not register your username. Try again from the settings menu.");
 }
 
 void
@@ -206,5 +223,43 @@ WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
 
     if (ui->pinEdit->isVisible()) {
         ui->confirmPasswordEdit->setText(ui->passwordEdit->text());
+    }
+}
+
+void
+WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
+{
+    if(ui->signUpCheckbox->isChecked() && !arg1.isEmpty()) {
+        ui->searchingStateLabel->setText(tr("Searching..."));
+        disconnect(registeredNameFoundConn);
+        registeredNameFoundConn = connect(&NameDirectory::instance(),
+                                          SIGNAL(registeredNameFound(QString, NameDirectory::LookupStatus, QString, QString)),
+                                          this,
+                                          SLOT(handle_registeredNameFound(QString, NameDirectory::LookupStatus, QString, QString)));
+
+    }
+}
+
+void
+WizardDialog::handle_registeredNameFound (const QString& accountId, NameDirectory::LookupStatus status, const QString& address, const QString& name)
+{
+    Q_UNUSED(accountId)
+    Q_UNUSED(address)
+
+    if(name.compare(ui->usernameEdit->text())) { // If we received a lookup update about the name currently displayed
+        if(status != NameDirectory::LookupStatus::SUCCESS) {
+            ui->searchingStateLabel->setText(tr("Username is available."));
+        } else
+            ui->searchingStateLabel->setText(tr("Some error")); // TODO: Treat each error case (especially username already taken)
+    }
+}
+
+void
+WizardDialog::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name)
+{
+    Q_UNUSED(name)
+
+    if(status != NameDirectory::RegisterNameStatus::SUCCESS) {
+        usernameFailedRegistration();
     }
 }
