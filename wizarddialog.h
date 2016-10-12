@@ -55,17 +55,22 @@ private slots:
     void on_newAccountButton_clicked();
     void on_previousButton_clicked();
     void on_passwordEdit_textChanged(const QString& arg1);
+    void on_usernameEdit_textChanged(const QString& arg1);
 
 private slots:
     void endSetup(Account::RegistrationState state);
+    void handle_registeredNameFound(const QString& accountId, NameDirectory::LookupStatus status, const QString& address, const QString& name);
+    void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
 
 private:
     Ui::WizardDialog* ui;
     Account* account_;
     WizardMode wizardMode_;
     QMovie* movie_;
+    QMetaObject::Connection registeredNameFoundConn;
 
     void setup();
     void changePage(bool existingAccount);
+    void usernameFailedRegistration();
 };
 

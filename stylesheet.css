@@ -500,7 +500,7 @@ QSpinBox::up-button{
 QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLineEdit#lrcfg_proxy,
 QLineEdit#lrcfg_mailbox, QLineEdit#lrcfg_tlsPassword, QLineEdit#lrcfg_tlsServerName,
 QLineEdit#lrcfg_turnServerRealm, QLineEdit#lrcfg_turnServerUsername, QLineEdit#lrcfg_turnServerPassword,
-QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_username{
+QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_registeredName{
     background: transparent;
     border-radius: 0px;
     border-style: solid;
