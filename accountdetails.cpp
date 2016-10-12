@@ -22,6 +22,7 @@
 #include <QSortFilterProxyModel>
 #include <QFileDialog>
 #include <QPushButton>
+#include <QMessageBox>
 
 #include "codecmodel.h"
 #include "protocolmodel.h"
@@ -106,7 +107,14 @@ AccountDetails::setAccount(Account* currentAccount) {
     if (currentAccount_ == nullptr)
         return;
 
-    ui->lrcfg_username->setReadOnly(currentAccount_->protocol() == Account::Protocol::RING);
+    if (currentAccount_->protocol() == Account::Protocol::RING) {
+        if (currentAccount_->registeredName().isEmpty() ){ // If our user isn't registered on the blockhain
+            ui->lrcfg_username->setReadOnly(false);
+            ui->registerButton->setEnabled(true);
+        } else
+            ui->lrcfg_username->setReadOnly(true);
+            ui->registerButton->setEnabled(false);
+    }
 
     codecModel_ = currentAccount->codecModel();
     ui->audioCodecView->setModel(codecModel_->audioCodecs());
@@ -359,4 +367,36 @@ void
 AccountDetails::on_cancelAddButton_clicked()
 {
     ui->devicesStackedWidget->setCurrentIndex(0);
+}
+
+void AccountDetails::on_registerButton_clicked()
+{
+    bool regSuccess = currentAccount_->registerName(ui->lrcfg_password->text(), ui->lrcfg_username->text());
+    if (!regSuccess) {
+        QMessageBox::warning(this, "Username not registered", "Username registration failed, try again later.");
+        return;
+    }
+
+    connect(currentAccount_, SIGNAL(Account::nameRegistrationEnded), this, [=](NameDirectory::RegisterNameStatus status, const QString name) {
+        disconnect(currentAccount_, SIGNAL(Account::nameRegistrationEnded), this, nullptr);
+        switch(status) {
+        case NameDirectory::RegisterNameStatus::ALREADY_TAKEN:
+            QMessageBox::warning(this, "Username not registered", "This username is already taken, try another one.");
+            break;
+        case NameDirectory::RegisterNameStatus::INVALID_NAME:
+            QMessageBox::warning(this, "Username not registered", "This username is invalid, try another one.");
+            break;
+        case NameDirectory::RegisterNameStatus::WRONG_PASSWORD:
+            QMessageBox::warning(this, "Username not registered", "Wrong password, try again.");
+            break;
+        case NameDirectory::RegisterNameStatus::NETWORK_ERROR:
+            QMessageBox::warning(this, "Username not registered", "Network error. Try again later.");
+            break;
+        case NameDirectory::RegisterNameStatus::SUCCESS:
+            ui->lrcfg_username->setReadOnly(true);
+            ui->registerButton->setEnabled(false);
+            QMessageBox::information(this, "Username registered", name + " is registered, you can now share this name.");
+            break;
+        }
+    });
 }

@@ -57,6 +57,7 @@ private slots:
     void on_exportOnRingButton_clicked();
     void on_exportEndedOkButton_clicked();
     void on_cancelAddButton_clicked();
+    void on_registerButton_clicked();
 
 private slots:
     void onCertButtonClicked();
