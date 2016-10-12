@@ -59,14 +59,19 @@ private slots:
 
 private slots:
     void endSetup(Account::RegistrationState state);
+    void on_usernameEdit_textChanged(const QString& arg1);
+    void handle_registeredNameFound(const Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
+    void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
+    void timeoutNameLookupTimer();
 
 private:
     Ui::WizardDialog* ui;
     Account* account_;
     WizardMode wizardMode_;
     QMovie* movie_;
+    QTimer nameLookupTimer_;
 
     void setup();
     void changePage(bool existingAccount);
+    void usernameFailedRegistration();
 };
-

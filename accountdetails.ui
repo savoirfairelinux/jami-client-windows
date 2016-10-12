@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>AccountDetails</class>
  <widget class="QWidget" name="AccountDetails">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>847</width>
-    <height>895</height>
+    <height>725</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -92,23 +95,14 @@
             <x>0</x>
             <y>0</y>
             <width>843</width>
-            <height>856</height>
+            <height>692</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="spacing">
-              <number>10</number>
-             </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
-               <property name="topMargin">
-                <number>10</number>
-               </property>
                <item>
                 <widget class="QPushButton" name="deleteAccountButton">
                  <property name="minimumSize">
@@ -187,10 +181,7 @@
              </item>
              <item>
               <layout class="QFormLayout" name="formLayout">
-               <property name="verticalSpacing">
-                <number>10</number>
-               </property>
-               <item row="1" column="0">
+               <item row="0" column="0">
                 <widget class="QLabel" name="aliasLabel">
                  <property name="font">
                   <font>
@@ -208,7 +199,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
+               <item row="0" column="1">
                 <widget class="QLineEdit" name="lrcfg_alias">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -224,7 +215,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="0">
+               <item row="1" column="0">
                 <widget class="QLabel" name="typeLabel">
                  <property name="font">
                   <font>
@@ -239,7 +230,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="1">
+               <item row="1" column="1">
                 <widget class="QLabel" name="typeValueLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -254,32 +245,6 @@
                </item>
               </layout>
              </item>
-            </layout>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
-             <property name="spacing">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>10</number>
-             </property>
              <item>
               <widget class="QLabel" name="paramLabel">
                <property name="minimumSize">
@@ -318,9 +283,6 @@
              </item>
              <item>
               <layout class="QFormLayout" name="formLayout_2">
-               <property name="topMargin">
-                <number>10</number>
-               </property>
                <item row="0" column="0">
                 <widget class="QLabel" name="hostnameLabel">
                  <property name="sizePolicy">
@@ -360,6 +322,72 @@
                   </size>
                  </property>
                 </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="usernameLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>Username</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>lrcfg_registeredName</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <widget class="QLineEdit" name="lrcfg_registeredName">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="registerButton">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Register on blockchain</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item row="2" column="0">
                 <widget class="QLabel" name="passwordLabel">
@@ -588,69 +616,7 @@
                  </item>
                 </layout>
                </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="usernameLabel">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: rgb(77, 77, 77);</string>
-                 </property>
-                 <property name="text">
-                  <string>Username</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>lrcfg_username</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QLineEdit" name="lrcfg_username">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
               </layout>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_6">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Fixed</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item>
               <widget class="QLabel" name="label_27">
@@ -658,6 +624,12 @@
                 <size>
                  <width>0</width>
                  <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="font">
@@ -686,144 +658,138 @@
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="lrcfg_allowIncomingFromUnknown">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Allow Call From Unknown</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="lrcfg_allowIncomingFromHistory">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Allow Call From History</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="lrcfg_allowIncomingFromContact">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Allow Call From Contact</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_5">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Fixed</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="Line" name="line_2">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_28">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(77, 77, 77);</string>
-               </property>
-               <property name="text">
-                <string>Ringtone Selection</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout">
-               <property name="topMargin">
-                <number>0</number>
-               </property>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
                <item>
-                <widget class="QPushButton" name="playButton">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromUnknown">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
                  </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>86</width>
-                   <height>30</height>
-                  </size>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
                  </property>
                  <property name="text">
-                  <string>Play</string>
+                  <string>Allow Call From Unknown</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="ringtonesBox">
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromHistory">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>Allow Call From History</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="lrcfg_allowIncomingFromContact">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Allow Call From Contact</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_28">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
                    <height>30</height>
                   </size>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_6">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
+                 <property name="maximumSize">
                   <size>
-                   <width>40</width>
+                   <width>16777215</width>
                    <height>20</height>
                   </size>
                  </property>
-                </spacer>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>Ringtone Selection</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="playButton">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>86</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Play</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="ringtonesBox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_6">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
                </item>
               </layout>
              </item>
              <item>
-              <spacer name="verticalSpacer_8">
+              <spacer name="verticalSpacer_2">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -1136,8 +1102,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>370</width>
-            <height>1057</height>
+            <width>809</width>
+            <height>930</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1993,8 +1959,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>686</width>
-            <height>919</height>
+            <width>827</width>
+            <height>907</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -2723,38 +2689,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>lrcfg_allowIncomingFromUnknown</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>lrcfg_allowIncomingFromHistory</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>169</x>
-     <y>584</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>171</x>
-     <y>616</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lrcfg_allowIncomingFromUnknown</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>lrcfg_allowIncomingFromContact</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>115</x>
-     <y>584</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>117</x>
-     <y>648</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>lrcfg_turnEnabled</sender>
    <signal>toggled(bool)</signal>
    <receiver>lrcfg_turnServerUsername</receiver>
@@ -2802,9 +2736,41 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>lrcfg_allowIncomingFromUnknown</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>lrcfg_allowIncomingFromHistory</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>584</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>616</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lrcfg_allowIncomingFromUnknown</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>lrcfg_allowIncomingFromContact</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>584</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>117</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="publishGroup"/>
   <buttongroup name="dtmfGroup"/>
+  <buttongroup name="publishGroup"/>
  </buttongroups>
 </ui>
