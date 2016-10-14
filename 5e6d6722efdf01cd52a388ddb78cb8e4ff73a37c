@@ -1,0 +1,8 @@
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Code-Review+1: Olivier SOLDANO <olivier.soldano@savoirfairelinux.com>
+Code-Review+2: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+Submitted-by: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+Submitted-at: Fri, 14 Oct 2016 14:53:21 -0400
+Reviewed-on: https://gerrit-ring.savoirfairelinux.com/4916
+Project: ring-client-windows
+Branch: refs/heads/master
