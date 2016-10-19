@@ -360,3 +360,10 @@ AccountDetails::on_cancelAddButton_clicked()
 {
     ui->devicesStackedWidget->setCurrentIndex(0);
 }
+
+void AccountDetails::on_devicesStackedWidget_currentChanged(int pageNum)
+{
+    // We clear the password textEdit each time we leave its page
+    if (pageNum != 1)
+        ui->passwordArchiveEdit->clear();
+}
