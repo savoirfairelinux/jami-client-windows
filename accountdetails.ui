@@ -2393,7 +2393,7 @@
       <layout class="QVBoxLayout" name="verticalLayout_15">
        <item>
         <widget class="QStackedWidget" name="devicesStackedWidget">
-         <widget class="QWidget" name="page">
+         <widget class="QWidget" name="devicesListPage">
           <layout class="QVBoxLayout" name="verticalLayout_16">
            <item>
             <widget class="QTableView" name="tableView">
@@ -2435,7 +2435,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_2">
+         <widget class="QWidget" name="passwordAskingPage">
           <layout class="QVBoxLayout" name="verticalLayout_17">
            <item>
             <spacer name="verticalSpacer">
@@ -2560,7 +2560,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_3">
+         <widget class="QWidget" name="pinDisplayPage">
           <layout class="QVBoxLayout" name="verticalLayout_18">
            <item>
             <spacer name="verticalSpacer_15">

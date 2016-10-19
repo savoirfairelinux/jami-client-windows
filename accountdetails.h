@@ -57,6 +57,7 @@ private slots:
     void on_exportOnRingButton_clicked();
     void on_exportEndedOkButton_clicked();
     void on_cancelAddButton_clicked();
+    void on_devicesStackedWidget_currentChanged(int arg1);
 
 private slots:
     void onCertButtonClicked();
