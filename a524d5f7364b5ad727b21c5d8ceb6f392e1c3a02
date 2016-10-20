@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_29d8b8ee",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 66
+      },
+      "writtenOn": "2016-10-20T15:35:44Z",
+      "side": 1,
+      "message": "Is that a magic number?",
+      "revId": "a524d5f7364b5ad727b21c5d8ceb6f392e1c3a02",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
