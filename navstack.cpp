@@ -65,8 +65,10 @@ NavStack::onNavigationRequested(ScreenEnum screen)
     stackNav_.append(screen);
 
     slideStacked_->setTargetObject(navList_[screen]);
-    if(screen == CallScreen)
+    if(screen == CallScreen) {
         slideStacked_->setStartValue(-QPoint(navList_[screen]->width(), navList_[screen]->y()));
+        ((CallWidget*) stack_->currentWidget())->findRingAccount();
+    }
     else
         slideStacked_->setStartValue(QPoint(navList_[screen]->width(), navList_[screen]->y()));
     slideStacked_->setEndValue(QPoint(navList_[screen]->x(), navList_[screen]->y()));

@@ -53,6 +53,7 @@ public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
     void atExit();
+    void findRingAccount();
 
 public slots:
     void contactButtonClicked(bool checked);
@@ -118,7 +119,6 @@ private:
     constexpr static int qrSize_ = 200;
 
 private:
-    void findRingAccount();
     void setActualCall(Call* value);
     void placeCall();
     void setupOutOfCallIM();

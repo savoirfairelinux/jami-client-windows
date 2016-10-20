@@ -376,7 +376,7 @@ void CallWidget::setupQRCode()
 void
 CallWidget::findRingAccount()
 {
-    ui->ringIdLabel->text().clear();
+    ui->ringIdLabel->clear();
 
     auto a_count = AccountModel::instance().rowCount();
     for (int i = 0; i < a_count; ++i) {
