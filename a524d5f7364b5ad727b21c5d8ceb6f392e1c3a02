@@ -34,6 +34,24 @@
       "revId": "a524d5f7364b5ad727b21c5d8ceb6f392e1c3a02",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_297438ce",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2016-10-20T18:12:08Z",
+      "side": 1,
+      "message": "Done. I gave more explicit names to each page of the stack and we retrieve page number at run-time.",
+      "parentUuid": "dad5f5cf_e9e1509b",
+      "revId": "a524d5f7364b5ad727b21c5d8ceb6f392e1c3a02",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
