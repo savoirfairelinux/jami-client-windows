@@ -336,6 +336,7 @@ AccountDetails::exportOnRingEnded(Account::ExportOnRingStatus state, const QStri
     case Account::ExportOnRingStatus::SUCCESS:
     {
         ui->pinLabel->setText(pin);
+        ui->pinLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
         break;
     }
     case Account::ExportOnRingStatus::NETWORK_ERROR:
