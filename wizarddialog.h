@@ -55,6 +55,7 @@ private slots:
     void on_newAccountButton_clicked();
     void on_previousButton_clicked();
     void on_passwordEdit_textChanged(const QString& arg1);
+    void on_errorPushButton_clicked();
 
 private slots:
     void endSetup(Account::RegistrationState state);
