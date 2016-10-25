@@ -20,6 +20,7 @@
 #include "ui_wizarddialog.h"
 
 #include <QMovie>
+#include <QMessageBox>
 
 #include "accountmodel.h"
 #include "account.h"
@@ -127,6 +128,7 @@ WizardDialog::accept()
 void
 WizardDialog::endSetup(Account::RegistrationState state)
 {
+    #undef ERROR
     switch (state) {
     case Account::RegistrationState::READY:
     {
@@ -138,6 +140,16 @@ WizardDialog::endSetup(Account::RegistrationState state)
     case Account::RegistrationState::TRYING:
     case Account::RegistrationState::COUNT__:
         break;
+    case Account::RegistrationState::ERROR:
+    default:
+    {
+        ui->stackedWidget->setCurrentIndex(3);
+        disconnect(account_, SIGNAL(stateChanged(Account::RegistrationState)),
+                this, SLOT(endSetup(Account::RegistrationState)));
+        ui->passwordEdit->setEnabled(true);
+        ui->passwordEdit->clear();
+        ui->pinEdit->clear();
+    }
     }
 }
 
@@ -207,4 +219,9 @@ WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
     if (ui->pinEdit->isVisible()) {
         ui->confirmPasswordEdit->setText(ui->passwordEdit->text());
     }
+}
+
+void WizardDialog::on_errorPushButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }

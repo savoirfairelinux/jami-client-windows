@@ -59,6 +59,8 @@ private slots:
 private slots:
     void endSetup(Account::RegistrationState state);
 
+    void on_errorPushButton_clicked();
+
 private:
     Ui::WizardDialog* ui;
     Account* account_;
