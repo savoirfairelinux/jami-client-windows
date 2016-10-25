@@ -62,6 +62,7 @@ private slots:
     void handle_registeredNameFound(const QString& accountId, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
 
+
 private:
     Ui::WizardDialog* ui;
     Account* account_;
