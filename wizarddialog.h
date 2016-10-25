@@ -59,6 +59,7 @@ private slots:
 private slots:
     void endSetup(Account::RegistrationState state);
 
+
 private:
     Ui::WizardDialog* ui;
     Account* account_;
