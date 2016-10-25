@@ -127,7 +127,8 @@ WizardDialog::accept()
         account_->setArchivePin(ui->pinEdit->text());
     }
 
-    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)),
+            this, SLOT(endSetup(Account::RegistrationState)));
 
     account_->performAction(Account::EditAction::SAVE);
 
@@ -138,6 +139,9 @@ WizardDialog::accept()
 void
 WizardDialog::endSetup(Account::RegistrationState state)
 {
+    #pragma push_macro("ERROR")
+    #undef ERROR
+
     switch (state) {
     case Account::RegistrationState::READY:
     {
@@ -157,7 +161,18 @@ WizardDialog::endSetup(Account::RegistrationState state)
     case Account::RegistrationState::TRYING:
     case Account::RegistrationState::COUNT__:
         break;
+    case Account::RegistrationState::ERROR:
+    {
+        ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->errorPage));
+
+        ui->passwordEdit->clear();
+        ui->confirmPasswordEdit->clear();
+        ui->pinEdit->clear();
+        ui->passwordEdit->setEnabled(true);
+        ui->confirmPasswordEdit->setEnabled(true);
     }
+    }
+    #pragma pop_macro("ERROR")
 }
 
 void
@@ -297,4 +312,10 @@ WizardDialog::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus sta
     }
     account_->performAction(Account::EditAction::RELOAD);
     QDialog::accept();
+}
+
+void WizardDialog::on_errorPushButton_clicked()
+{
+    qDebug() << ui->stackedWidget->indexOf(ui->LoginPage);
+    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->LoginPage));
 }
