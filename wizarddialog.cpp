@@ -58,7 +58,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     movie_->start();
 
     if (wizardMode_ == MIGRATION) {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->UserDataPage));
         ui->usernameEdit->setEnabled(false);
         ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
@@ -99,7 +99,8 @@ WizardDialog::accept()
     }
 
     ui->progressLabel->setText(tr("Generating your Ring account..."));
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->errorLabel->clear();
+    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->spinnerPage));
 
     auto profile = ProfileModel::instance().selectedProfile();
 
@@ -128,7 +129,8 @@ WizardDialog::accept()
         account_->setArchivePin(ui->pinEdit->text());
     }
 
-    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)),
+            this, SLOT(endSetup(Account::RegistrationState)));
 
     account_->performAction(Account::EditAction::SAVE);
 
@@ -139,6 +141,9 @@ WizardDialog::accept()
 void
 WizardDialog::endSetup(Account::RegistrationState state)
 {
+    #pragma push_macro("ERROR")
+    #undef ERROR
+
     switch (state) {
     case Account::RegistrationState::READY:
     {
@@ -161,7 +166,19 @@ WizardDialog::endSetup(Account::RegistrationState state)
     case Account::RegistrationState::TRYING:
     case Account::RegistrationState::COUNT__:
         break;
+    case Account::RegistrationState::ERROR:
+    {
+        ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->UserDataPage));
+        ui->errorLabel->setText("An error as occured durring your account creation / registration, please try again.");
+
+        ui->passwordEdit->clear();
+        ui->confirmPasswordEdit->clear();
+        ui->pinEdit->clear();
+        ui->passwordEdit->setEnabled(true);
+        ui->confirmPasswordEdit->setEnabled(true);
     }
+    }
+    #pragma pop_macro("ERROR")
 }
 
 void
@@ -208,7 +225,7 @@ WizardDialog::on_newAccountButton_clicked()
 void
 WizardDialog::changePage(bool existingAccount)
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->UserDataPage));
 
     ui->avatarButton->setHidden(existingAccount);
     ui->ringLogo->setHidden(existingAccount);
@@ -225,10 +242,15 @@ WizardDialog::changePage(bool existingAccount)
 void
 WizardDialog::on_previousButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->indexOf(ui->LoginPage));
     ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+    ui->passwordEdit->clear();
+    ui->confirmPasswordEdit->clear();
+    ui->errorLabel->clear();
+    ui->pinEdit->clear();
+
 }
 
 void

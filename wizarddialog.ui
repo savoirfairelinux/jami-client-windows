@@ -35,6 +35,9 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
      <widget class="QWidget" name="LoginPage">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -306,6 +309,9 @@
            <pointsize>11</pointsize>
           </font>
          </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
          <property name="placeholderText">
           <string>Enter your pin</string>
          </property>
@@ -374,18 +380,12 @@
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="errorLabel">
+         <property name="text">
+          <string/>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>13</width>
-           <height>3</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item>
         <spacer name="verticalSpacer_2">
