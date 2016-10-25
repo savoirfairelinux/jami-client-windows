@@ -117,7 +117,8 @@ WizardDialog::accept()
         account_->setArchivePin(ui->pinEdit->text());
     }
 
-    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)),
+            this, SLOT(endSetup(Account::RegistrationState)));
 
     account_->performAction(Account::EditAction::SAVE);
 
@@ -128,6 +129,9 @@ WizardDialog::accept()
 void
 WizardDialog::endSetup(Account::RegistrationState state)
 {
+    #pragma push_macro("ERROR")
+    #undef ERROR
+
     switch (state) {
     case Account::RegistrationState::READY:
     {
@@ -139,7 +143,18 @@ WizardDialog::endSetup(Account::RegistrationState state)
     case Account::RegistrationState::TRYING:
     case Account::RegistrationState::COUNT__:
         break;
+    case Account::RegistrationState::ERROR:
+    {
+        ui->stackedWidget->setCurrentIndex(3);
+
+        ui->passwordEdit->clear();
+        ui->confirmPasswordEdit->clear();
+        ui->pinEdit->clear();
+        ui->passwordEdit->setEnabled(true);
+        ui->confirmPasswordEdit->setEnabled(true);
     }
+    }
+    #pragma pop_macro("ERROR")
 }
 
 void
@@ -208,4 +223,9 @@ WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
     if (ui->pinEdit->isVisible()) {
         ui->confirmPasswordEdit->setText(ui->passwordEdit->text());
     }
+}
+
+void WizardDialog::on_errorPushButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
 }
