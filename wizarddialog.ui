@@ -81,6 +81,9 @@
            <height>30</height>
           </size>
          </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
          <property name="text">
           <string>Existing Ring Account</string>
          </property>
@@ -93,6 +96,9 @@
            <width>85</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
          </property>
          <property name="text">
           <string>New Ring Account</string>
@@ -203,6 +209,9 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
          <property name="text">
           <string>Choose your username:</string>
          </property>
@@ -232,6 +241,9 @@
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -263,6 +275,9 @@
            <pointsize>11</pointsize>
           </font>
          </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
          <property name="placeholderText">
           <string>Enter your pin</string>
          </property>
@@ -289,6 +304,9 @@
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -319,6 +337,9 @@
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -370,6 +391,9 @@
              <height>30</height>
             </size>
            </property>
+           <property name="locale">
+            <locale language="English" country="Canada"/>
+           </property>
            <property name="text">
             <string>Previous</string>
            </property>
@@ -411,6 +435,9 @@
            <property name="toolTip">
             <string>Next</string>
            </property>
+           <property name="locale">
+            <locale language="English" country="Canada"/>
+           </property>
            <property name="text">
             <string>Next</string>
            </property>
@@ -427,6 +454,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="spinnerLabel">
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -434,6 +464,89 @@
           <pixmap resource="ressources.qrc">:/images/loading.gif</pixmap>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="errorPage">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="errorLabel">
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
+         <property name="text">
+          <string>Error while creating / importing account</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="errorPushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>16</horstretch>
+           <verstretch>16</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>464</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
+         <property name="text">
+          <string>Ok</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -458,6 +571,22 @@
     <hint type="destinationlabel">
      <x>300</x>
      <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>errorPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>WizardDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>249</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>184</y>
     </hint>
    </hints>
   </connection>

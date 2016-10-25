@@ -20,6 +20,7 @@
 #include "ui_wizarddialog.h"
 
 #include <QMovie>
+#include <QMessageBox>
 
 #include "accountmodel.h"
 #include "account.h"
@@ -116,17 +117,20 @@ WizardDialog::accept()
         account_->setArchivePin(ui->pinEdit->text());
     }
 
-    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)), this, SLOT(endSetup(Account::RegistrationState)));
+    connect(account_, SIGNAL(stateChanged(Account::RegistrationState)),
+            this, SLOT(endSetup(Account::RegistrationState)));
 
     account_->performAction(Account::EditAction::SAVE);
 
     profile->setAccounts({account_});
     profile->save();
+    qDebug() << "ACCEPT() OVER";
 }
 
 void
 WizardDialog::endSetup(Account::RegistrationState state)
 {
+    #undef ERROR
     switch (state) {
     case Account::RegistrationState::READY:
     {
@@ -138,6 +142,15 @@ WizardDialog::endSetup(Account::RegistrationState state)
     case Account::RegistrationState::TRYING:
     case Account::RegistrationState::COUNT__:
         break;
+    case Account::RegistrationState::ERROR:
+    {
+        ui->stackedWidget->setCurrentIndex(3);
+
+        ui->passwordEdit->clear();
+        ui->confirmPasswordEdit->clear();
+        ui->pinEdit->clear();
+        ui->passwordEdit->setEnabled(true);
+    }
     }
 }
 
