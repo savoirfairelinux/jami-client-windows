@@ -57,7 +57,8 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
 
     if (wizardMode_ == MIGRATION) {
         ui->stackedWidget->setCurrentIndex(1);
-        ui->usernameEdit->hide();
+        ui->usernameEdit->setEnabled(false);
+        ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
         ui->avatarButton->hide();
         ui->pinEdit->hide();
