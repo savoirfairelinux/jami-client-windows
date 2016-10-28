@@ -188,6 +188,10 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     auto profile = ProfileModel::instance().selectedProfile();
     ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
     ui->profileNameEdit->setText(profile->person()->formattedName());
+
+    //temporary fix hiding imports buttons
+    ui->exportButton->hide();
+    ui->importButton->hide();
 }
 
 void ConfigurationWidget::showPreview()
