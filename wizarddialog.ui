@@ -74,19 +74,6 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="existingPushButton">
-         <property name="minimumSize">
-          <size>
-           <width>85</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Existing Ring Account</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="newAccountButton">
          <property name="minimumSize">
           <size>
@@ -95,7 +82,20 @@
           </size>
          </property>
          <property name="text">
-          <string>New Ring Account</string>
+          <string>Create Ring account</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="existingPushButton">
+         <property name="minimumSize">
+          <size>
+           <width>85</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Link this device to an existing account</string>
          </property>
         </widget>
        </item>
