@@ -551,7 +551,7 @@
       <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="releaseLabel">
         <property name="text">
-         <string>Release : Louis-Joseph Papineau</string>
+         <string>Release : Beta 2 - Gaston Miron</string>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
