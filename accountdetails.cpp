@@ -203,9 +203,15 @@ AccountDetails::setAccount(Account* currentAccount) {
     if (accountProtocol == Account::Protocol::RING) {
         ui->medStreaEncry->setVisible(false);
         ui->lrcfg_tlsEnabled->setVisible(false);
+
+        ui->nameServiceURLLabel->show();
+        ui->lrcfg_nameServiceURL->show();
     } else if (accountProtocol == Account::Protocol::SIP) {
         ui->medStreaEncry->setVisible(true);
         ui->lrcfg_tlsEnabled->setVisible(true);
+
+        ui->nameServiceURLLabel->hide();
+        ui->lrcfg_nameServiceURL->hide();
     }
 
     if (ui->lrcfg_tlsEnabled->checkState() == Qt::Checked) {
