@@ -87,6 +87,11 @@ AccountDetails::AccountDetails(QWidget *parent) :
         if (currentAccount_ && currentAccount_->protocol() == Account::Protocol::RING)
             currentAccount_->setDisplayName(newAlias);
     });
+
+    connect(ui->lrcfg_nameServiceURL, &QLineEdit::textEdited, [=](const QString& newNSURL) {
+        if (currentAccount_ && currentAccount_->protocol() == Account::Protocol::RING)
+            currentAccount_->setNameServiceURL(newNSURL);
+    });
 }
 
 AccountDetails::~AccountDetails()
@@ -203,9 +208,16 @@ AccountDetails::setAccount(Account* currentAccount) {
     if (accountProtocol == Account::Protocol::RING) {
         ui->medStreaEncry->setVisible(false);
         ui->lrcfg_tlsEnabled->setVisible(false);
+
+        ui->nameServiceURLLabel->show();
+        ui->lrcfg_nameServiceURL->show();
+        ui->lrcfg_nameServiceURL->setText(currentAccount_->nameServiceURL());
     } else if (accountProtocol == Account::Protocol::SIP) {
         ui->medStreaEncry->setVisible(true);
         ui->lrcfg_tlsEnabled->setVisible(true);
+
+        ui->nameServiceURLLabel->hide();
+        ui->lrcfg_nameServiceURL->hide();
     }
 
     if (ui->lrcfg_tlsEnabled->checkState() == Qt::Checked) {
