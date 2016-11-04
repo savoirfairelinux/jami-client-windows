@@ -478,6 +478,18 @@
          </property>
         </widget>
        </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="progressLabel">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Generating your Ring account...</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>

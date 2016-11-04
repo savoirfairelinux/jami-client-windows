@@ -98,6 +98,7 @@ WizardDialog::accept()
         ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     }
 
+    ui->progressLabel->setText(tr("Generating your Ring account..."));
     ui->stackedWidget->setCurrentIndex(2);
 
     auto profile = ProfileModel::instance().selectedProfile();
@@ -144,9 +145,12 @@ WizardDialog::endSetup(Account::RegistrationState state)
         if (ui->signUpCheckbox->isChecked()) { // If the user wants to register its name on the blockchain
             bool regSuccess = account_->registerName(ui->passwordEdit->text(), ui->usernameEdit->text());
             if (!regSuccess) usernameFailedRegistration();
-            else
+            else {
                 connect(account_, SIGNAL(nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)),
                         this, SLOT(handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)));
+                ui->progressLabel->setText(tr("Registering your public username, it may take a few minutes..."));
+
+            }
         } else {
             account_->performAction(Account::EditAction::RELOAD);
             QDialog::accept();
