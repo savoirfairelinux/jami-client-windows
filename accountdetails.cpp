@@ -114,10 +114,16 @@ AccountDetails::setAccount(Account* currentAccount) {
             ui->registerButton->setText(tr("Register on blockchain"));
             ui->registerButton->show();
             ui->registerButton->setEnabled(true);
+
+            ui->nameServiceURLLabel->show();
+            ui->lrcfg_nameServiceURL->show();
         } else {
             ui->lrcfg_registeredName->setText(currentAccount_->registeredName());
             ui->lrcfg_registeredName->setReadOnly(true);
             ui->registerButton->hide();
+
+            ui->nameServiceURLLabel->hide();
+            ui->lrcfg_nameServiceURL->hide();
         }
     }
 
