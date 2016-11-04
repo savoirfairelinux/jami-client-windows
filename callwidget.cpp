@@ -419,7 +419,7 @@ CallWidget::callChangedSlot()
                     GlobalInstances::pixmapManipulator()
                     .callPhoto(actualCall_, QSize(130,130)).value<QImage>()));
 
-    if(actualCall_->state() == Call::State::OVER){
+    if(actualCall_->state() == Call::State::OVER || actualCall_->state() == Call::State::FAILURE){
         ui->outboundCallLabel->setText(actualCall_->toHumanStateName(Call::State::INITIALIZATION));
     } else {
         ui->outboundCallLabel->setText(actualCall_->toHumanStateName());
@@ -535,10 +535,12 @@ void CallWidget::callStateToView(Call* value)
         case Call::State::HOLD:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
+        case Call::State::OVER:
+            break;
         case Call::State::FAILURE:
         case Call::State::ERROR:
-        case Call::State::OVER:
             ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+            value->performAction(Call::Action::REFUSE);
             break;
         case Call::State::INITIALIZATION:
         case Call::State::CONNECTED:
