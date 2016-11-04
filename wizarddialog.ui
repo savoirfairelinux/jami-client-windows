@@ -478,6 +478,13 @@
          </property>
         </widget>
        </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Please be patient, registration can take some time...</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
