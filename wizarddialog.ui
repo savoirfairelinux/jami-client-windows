@@ -35,6 +35,9 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
      <widget class="QWidget" name="LoginPage">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -475,6 +478,13 @@
          </property>
          <property name="pixmap">
           <pixmap resource="ressources.qrc">:/images/loading.gif</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Please be patient, registration can take some time...</string>
          </property>
         </widget>
        </item>
