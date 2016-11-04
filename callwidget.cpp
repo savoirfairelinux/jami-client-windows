@@ -43,6 +43,7 @@
 #include "recentmodel.h"
 #include "contactmethod.h"
 #include "globalinstances.h"
+#include <availableaccountmodel.h>
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
@@ -681,15 +682,31 @@ CallWidget::searchContactLineEditEntry(const URI &uri)
 void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
+    bool lookup_username = false;
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
 
-    if (!contactLineText.isNull() && contactLineText.length() > 0){
+    if (!contactLineText.isNull() && !contactLineText.isEmpty()){
+        if (uri_passed.protocolHint() == URI::ProtocolHint::RING_USERNAME ) {
+            lookup_username = TRUE;
+        } else if (
+            uri_passed.protocolHint() != URI::ProtocolHint::RING && // not a RingID
+            uri_passed.schemeType() == URI::SchemeType::NONE // scheme type not specified
+        ){
+            // if no scheme type has been specified, determine ring vs sip by the first available account
+            auto idx = AvailableAccountModel::instance().index(0, 0);
+            if (idx.isValid()) {
+                auto account = idx.data((int)Ring::Role::Object).value<Account *>();
+                if (account && account->protocol() == Account::Protocol::RING)
+                    lookup_username = TRUE;
+            }
+        }
 
-        NameDirectory::instance().lookupName(nullptr, QString(), uri_passed);
-
-    } else {
-        searchContactLineEditEntry(uri_passed);
+        if (lookup_username){
+            NameDirectory::instance().lookupName(nullptr, QString(), uri_passed);
+        } else {
+            searchContactLineEditEntry(uri_passed);
+        }
     }
 }
 
