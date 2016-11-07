@@ -107,6 +107,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
     ui->accountTypeBox->setModel(accountModel_->protocolModel());
+    ui->accountTypeBox->setCurrentIndex(ui->accountTypeBox->findText("RING"));
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 
     ui->historyDaySettingsSpinBox->setValue(
