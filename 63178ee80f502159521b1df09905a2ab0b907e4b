@@ -1,0 +1,7 @@
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Code-Review+2: Nicolas Jager <nicolas.jager@savoirfairelinux.com>
+Submitted-by: Nicolas Jager <nicolas.jager@savoirfairelinux.com>
+Submitted-at: Mon, 07 Nov 2016 10:27:55 -0500
+Reviewed-on: https://gerrit-ring.savoirfairelinux.com/5436
+Project: ring-client-windows
+Branch: refs/heads/master
