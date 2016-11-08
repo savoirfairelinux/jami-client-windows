@@ -69,8 +69,13 @@ SelectAreaDialog::mousePressEvent(QMouseEvent* event)
 void
 SelectAreaDialog::mouseMoveEvent(QMouseEvent* event)
 {
+    int top    = std::min(event->globalY(), origin_.y());
+    int left   = std::min(event->globalX(), origin_.x());
+    int bottom = std::max(event->globalY(), origin_.y());
+    int right  = std::max(event->globalX(), origin_.x());
+
   if (rubberBand_)
-      rubberBand_->setGeometry(QRect(origin_, event->globalPos()));
+      rubberBand_->setGeometry(QRect(QPoint(left,top), QPoint(right,bottom)));
 }
 
 void
