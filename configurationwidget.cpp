@@ -56,9 +56,7 @@
 #include "profile.h"
 #include "person.h"
 
-#ifdef ENABLE_AUTOUPDATE
 #include "winsparkle.h"
-#endif
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(parent),
@@ -178,14 +176,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
     connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
 
-
-#ifndef ENABLE_AUTOUPDATE
-    ui->checkUpdateButton->hide();
-    ui->intervalUpdateCheckSpinBox->hide();
-    ui->updateDayLabel->hide();
-    ui->autoUpdateCheckBox->hide();
-#endif
-
     auto profile = ProfileModel::instance().selectedProfile();
     ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
     ui->profileNameEdit->setText(profile->person()->formattedName());
@@ -193,6 +183,8 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     //temporary fix hiding imports buttons
     ui->exportButton->hide();
     ui->importButton->hide();
+
+    ui->intervalUpdateCheckSpinBox->setEnabled(true);
 }
 
 void ConfigurationWidget::showPreview()
@@ -211,12 +203,10 @@ void ConfigurationWidget::showPreview()
 void
 ConfigurationWidget::showEvent(QShowEvent *event)
 {
-#ifdef ENABLE_AUTOUPDATE
     if (win_sparkle_get_automatic_check_for_updates()) {
         ui->autoUpdateCheckBox->setChecked(true);
     }
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
-#endif
     QWidget::showEvent(event);
     showPreview();
 }
@@ -357,25 +347,19 @@ ConfigurationWidget::on_closeOrMinCheckBox_toggled(bool checked)
 void
 ConfigurationWidget::on_checkUpdateButton_clicked()
 {
-#ifdef ENABLE_AUTOUPDATE
     win_sparkle_check_update_with_ui();
-#endif
 }
 
 void
 ConfigurationWidget::on_autoUpdateCheckBox_toggled(bool checked)
 {
-#ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_automatic_check_for_updates(checked);
-#endif
 }
 
 void
 ConfigurationWidget::on_intervalUpdateCheckSpinBox_valueChanged(int arg1)
 {
-#ifdef ENABLE_AUTOUPDATE
     win_sparkle_set_update_check_interval(arg1 * 86400);
-#endif
 }
 
 void
