@@ -689,11 +689,17 @@
                <pointsize>11</pointsize>
               </font>
              </property>
+             <property name="acceptDrops">
+              <bool>false</bool>
+             </property>
              <property name="styleSheet">
               <string notr="true">color: rgb(77, 77, 77);</string>
              </property>
              <property name="text">
               <string>Check for update automatically every</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -707,6 +713,12 @@
                <width>60</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="value">
+              <number>3</number>
              </property>
             </widget>
            </item>
@@ -747,8 +759,20 @@
            </property>
            <item>
             <widget class="QPushButton" name="checkUpdateButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Check for updates</string>
+              <string>Check for updates now</string>
              </property>
             </widget>
            </item>

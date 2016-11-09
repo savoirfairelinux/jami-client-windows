@@ -260,13 +260,10 @@ win32 {
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
                 QTPLUGINIMAGE QTPLATFORMS LIBSTD
 
-    ENABLE_AUTOUPDATE=$${ENABLE_AUTOUPDATE}
-    equals (ENABLE_AUTOUPDATE, True) {
-       DEFINES += ENABLE_AUTOUPDATE
-       LIBS += -L$${RING}/lib -lWinSparkle
-       WINSPARKLE.files = $${RING}/bin/WinSparkle.dll $${RING}/bin/libringclient.dll
-       WINSPARKLE.path = $$OUT_PWD/release
-       INSTALLS += WINSPARKLE
-       message("AUTO UPDATES enabled")
-    }
+    DEFINES += ENABLE_AUTOUPDATE
+    LIBS += -L$${RING}/lib -lWinSparkle
+    WINSPARKLE.files = $${RING}/bin/WinSparkle.dll $${RING}/bin/libringclient.dll
+    WINSPARKLE.path = $$OUT_PWD/release
+    INSTALLS += WINSPARKLE
+    message("AUTO UPDATES enabled")
 }
