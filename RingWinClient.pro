@@ -241,10 +241,9 @@ win32 {
                             $$RUNTIMEDIR/libharfbuzz-0.dll \
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
                             $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
-                            $$RUNTIMEDIR/libjpeg-8.dll $$RUNTIMEDIR/libiconv-2.dll \
+                            $$RUNTIMEDIR/libjpeg-62.dll $$RUNTIMEDIR/iconv.dll \
                             $$RUNTIMEDIR/libidn-11.dll $$RUNTIMEDIR/liblzma-5.dll \
-                            $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll \
-                            $$RUNTIMEDIR/iconv.dll
+                            $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$[QT_INSTALL_PLUGINS]/platforms/qwindows.dll
