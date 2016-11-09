@@ -33,9 +33,7 @@
 #include "aboutdialog.h"
 #include "settingskey.h"
 
-#ifdef ENABLE_AUTOUPDATE
 #include "winsparkle.h"
-#endif
 
 #include "callmodel.h"
 
@@ -98,8 +96,7 @@ MainWindow::MainWindow(QWidget* parent) :
     } else
         resize(1054, 600);
 
-#ifdef ENABLE_AUTOUPDATE
-    win_sparkle_set_appcast_url("http://gpl.savoirfairelinux.net/ring-download/windows/winsparkle-ring.xml");
+    win_sparkle_set_appcast_url("http://dl.ring.cx/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
     win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
@@ -112,7 +109,6 @@ MainWindow::MainWindow(QWidget* parent) :
     QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
         win_sparkle_cleanup();
     });
-#endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
 
