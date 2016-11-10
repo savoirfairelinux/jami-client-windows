@@ -58,14 +58,16 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     movie_->start();
 
     if (wizardMode_ == MIGRATION) {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentWidget(ui->profilePage);
         ui->usernameEdit->setEnabled(false);
         ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
         ui->avatarButton->hide();
         ui->pinEdit->hide();
         ui->label->setText(tr("Your account needs to be migrated. Choose a password."));
-    }
+    } else
+        ui->navBarWidget->hide();
+
     ui->searchingStateLabel->clear();
     connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
             this, SLOT(handle_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
@@ -99,7 +101,7 @@ WizardDialog::accept()
     }
 
     ui->progressLabel->setText(tr("Generating your Ring account..."));
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
     auto profile = ProfileModel::instance().selectedProfile();
 
@@ -208,7 +210,8 @@ WizardDialog::on_newAccountButton_clicked()
 void
 WizardDialog::changePage(bool existingAccount)
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentWidget(ui->profilePage);
+    ui->navBarWidget->show();
 
     ui->avatarButton->setHidden(existingAccount);
     ui->ringLogo->setHidden(existingAccount);
@@ -225,7 +228,16 @@ WizardDialog::changePage(bool existingAccount)
 void
 WizardDialog::on_previousButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    const QWidget* curWidget = ui->stackedWidget->currentWidget();
+
+    if (curWidget == ui->profilePage) {
+        ui->navBarWidget->hide();
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
+    else if (curWidget == ui->accountPage) {
+        ui->stackedWidget->setCurrentWidget(ui->profilePage);
+    }
+
     ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");

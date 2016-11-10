@@ -285,7 +285,7 @@ QWidget#messagingPage{
     background: rgb(242, 242, 242);
 }
 
-QPushButton#wizardButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
+QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
 QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
@@ -296,7 +296,7 @@ QPushButton#errorPushButton, QPushButton#registerButton{
     font: 14px;
 }
 
-QPushButton#wizardButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
+QPushButton#nextButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
 QPushButton#checkUpdateButton:hover, QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
 QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
@@ -306,7 +306,7 @@ QPushButton#registerButton:hover{
     background-color: #4dc6d6;
 }
 
-QPushButton#wizardButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
+QPushButton#nextButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
 QPushButton#checkUpdateButton:pressed, QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
 QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
