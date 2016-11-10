@@ -95,7 +95,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Link this device to an existing account</string>
+          <string>Link this device to an account</string>
          </property>
         </widget>
        </item>

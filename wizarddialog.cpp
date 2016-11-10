@@ -58,7 +58,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     movie_->start();
 
     if (wizardMode_ == MIGRATION) {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentWidget(ui->UserDataPage);
         ui->usernameEdit->setEnabled(false);
         ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
@@ -99,7 +99,7 @@ WizardDialog::accept()
     }
 
     ui->progressLabel->setText(tr("Generating your Ring account..."));
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
     auto profile = ProfileModel::instance().selectedProfile();
 
@@ -208,7 +208,7 @@ WizardDialog::on_newAccountButton_clicked()
 void
 WizardDialog::changePage(bool existingAccount)
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentWidget(ui->UserDataPage);
 
     ui->avatarButton->setHidden(existingAccount);
     ui->ringLogo->setHidden(existingAccount);
@@ -225,7 +225,7 @@ WizardDialog::changePage(bool existingAccount)
 void
 WizardDialog::on_previousButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentWidget(ui->LoginPage);
     ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
