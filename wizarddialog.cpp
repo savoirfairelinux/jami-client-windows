@@ -45,27 +45,27 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     setWindowFlags(flags);
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
-    ui->ringLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
-    ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
     ui->welcomeLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
     ui->welcomeLogo->setAlignment(Qt::AlignHCenter);
 
-    ui->usernameEdit->setText(Utils::GetCurrentUserName());
+    ui->fullNameEdit->setText(Utils::GetCurrentUserName());
 
     movie_ = new QMovie(":/images/loading.gif");
     ui->spinnerLabel->setMovie(movie_);
     movie_->start();
 
     if (wizardMode_ == MIGRATION) {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentWidget(ui->profilePage);
         ui->usernameEdit->setEnabled(false);
         ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
         ui->avatarButton->hide();
         ui->pinEdit->hide();
-        ui->label->setText(tr("Your account needs to be migrated. Choose a password."));
-    }
+        ui->usernameLabel->setText(tr("Your account needs to be migrated. Choose a password."));
+    } else
+        ui->navBarWidget->hide();
+
     ui->searchingStateLabel->clear();
     connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
             this, SLOT(handle_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
@@ -97,9 +97,12 @@ WizardDialog::accept()
         ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
         ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     }
-
-    ui->progressLabel->setText(tr("Generating your Ring account..."));
-    ui->stackedWidget->setCurrentIndex(2);
+    if (wizardMode_ == MIGRATION)
+        ui->progressLabel->setText(tr("Migrating your Ring account..."));
+    else
+        ui->progressLabel->setText(tr("Generating your Ring account..."));
+    ui->navBarWidget->hide();
+    ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
     auto profile = ProfileModel::instance().selectedProfile();
 
@@ -109,9 +112,9 @@ WizardDialog::accept()
 
     if (account_ == nullptr) {
         account_ = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
-        if (not ui->usernameEdit->text().isEmpty()) {
-            account_->setDisplayName(ui->usernameEdit->text());
-            profile->person()->setFormattedName(ui->usernameEdit->text());
+        if (not ui->fullNameEdit->text().isEmpty()) {
+            account_->setDisplayName(ui->fullNameEdit->text());
+            profile->person()->setFormattedName(ui->fullNameEdit->text());
         }
         else {
             profile->person()->setFormattedName(tr("Unknown"));
@@ -208,11 +211,17 @@ WizardDialog::on_newAccountButton_clicked()
 void
 WizardDialog::changePage(bool existingAccount)
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    if (existingAccount) { // If user want to add a device
+        ui->accountLabel->setText(tr("Add a device"));
+        ui->stackedWidget->setCurrentWidget(ui->explanationPage);
+    } else { // If user want to create a new account
+        ui->accountLabel->setText(tr("Create your account"));
+        ui->stackedWidget->setCurrentWidget(ui->profilePage);
+    }
+    ui->navBarWidget->show();
 
     ui->avatarButton->setHidden(existingAccount);
-    ui->ringLogo->setHidden(existingAccount);
-    ui->label->setHidden(existingAccount);
+    ui->usernameLabel->setHidden(existingAccount);
     ui->usernameEdit->setHidden(existingAccount);
     ui->signUpCheckbox->setHidden(existingAccount);
     ui->signUpCheckbox->setChecked(!existingAccount);
@@ -223,9 +232,41 @@ WizardDialog::changePage(bool existingAccount)
 }
 
 void
+WizardDialog::on_nextButton_clicked()
+{
+    const QWidget* curWidget = ui->stackedWidget->currentWidget();
+
+    if (curWidget == ui->profilePage) {
+        ui->stackedWidget->setCurrentWidget(ui->accountPage);
+    }
+    else if (curWidget == ui->explanationPage) {
+        ui->stackedWidget->setCurrentWidget(ui->accountPage);
+    }
+    else if (curWidget == ui->accountPage) {
+        accept();
+    }
+}
+
+void
 WizardDialog::on_previousButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    const QWidget* curWidget = ui->stackedWidget->currentWidget();
+
+    if (curWidget == ui->profilePage) {
+        ui->navBarWidget->hide();
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
+    else if (curWidget == ui->explanationPage) {
+        ui->navBarWidget->hide();
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
+    else if (curWidget == ui->accountPage) {
+        if (ui->pinEdit->isVisible()) // If we are adding a device
+            ui->stackedWidget->setCurrentWidget(ui->explanationPage);
+        else // If we are creating a new account
+            ui->stackedWidget->setCurrentWidget(ui->profilePage);
+    }
+
     ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
