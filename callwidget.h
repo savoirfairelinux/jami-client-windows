@@ -91,6 +91,7 @@ private slots:
     void callStateChanged(Call* call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel);
+    void smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();

@@ -177,6 +177,11 @@ CallWidget::CallWidget(QWidget* parent) :
                 this,
                 SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
 
+        connect(RecentModel::instance().selectionModel(),
+                SIGNAL(currentChanged(QModelIndex,QModelIndex)),
+                this,
+                SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
+
         connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
             Q_UNUSED(deselected)
             if (selected.size()) {
@@ -605,26 +610,19 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 }
 
 void
-CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel) {
-
-    Q_UNUSED(oldSel)
-
-    if (newSel.indexes().empty()) {
-        setActualCall(nullptr);
-        return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    }
-
-    auto newIdx = newSel.indexes().first();
-    if (not newIdx.isValid())
+CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
+{
+    Q_UNUSED(previousIdx);
+    if (not currentIdx.isValid())
         return;
 
-    auto newIdxCall = RecentModel::instance().getActiveCall(newIdx);
-    if (newIdxCall && newIdxCall != actualCall_) {
-        setActualCall(newIdxCall);
-    } else if (newIdxCall == nullptr){
+    auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
+    if (currentIdxCall && currentIdxCall != actualCall_) {
+        setActualCall(currentIdxCall);
+    } else if (currentIdxCall == nullptr){
         setActualCall(nullptr);
         ui->instantMessagingWidget->hide();
-        showIMOutOfCall(newIdx);
+        showIMOutOfCall(currentIdx);
     } else {
         setActualCall(nullptr);
         ui->instantMessagingWidget->hide();
@@ -632,6 +630,18 @@ CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemS
             disconnect(imConnection_);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
+}
+void
+CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel) {
+
+    Q_UNUSED(oldSel)
+    if (newSel.indexes().empty()) {
+        setActualCall(nullptr);
+        return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
+
+    auto newIdx = newSel.indexes().first();
+    smartListCurrentChanged(newIdx, newIdx);
 }
 
 void
