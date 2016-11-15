@@ -173,24 +173,9 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
         connect(RecentModel::instance().selectionModel(),
-                SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-                this,
-                SLOT(smartListSelectionChanged(QItemSelection,QItemSelection)));
-
-        connect(RecentModel::instance().selectionModel(),
                 SIGNAL(currentChanged(QModelIndex,QModelIndex)),
                 this,
                 SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
-
-        connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
-            Q_UNUSED(deselected)
-            if (selected.size()) {
-                auto idx = selected.indexes().first();
-                auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
-                ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
-            } else
-                ui->smartList->clearSelection();
-        });
 
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                 this, SLOT(contactLineEdit_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
@@ -616,32 +601,20 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
     if (not currentIdx.isValid())
         return;
 
+    //catch call of current index
     auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
-    if (currentIdxCall && currentIdxCall != actualCall_) {
+
+    if (currentIdxCall && currentIdxCall != actualCall_) { //if it is different from actual call, switch between the two
         setActualCall(currentIdxCall);
-    } else if (currentIdxCall == nullptr){
+    } else if (currentIdxCall == nullptr){ // if there is no call attached to this smartlist index (contact tab)
         setActualCall(nullptr);
-        ui->instantMessagingWidget->hide();
-        showIMOutOfCall(currentIdx);
-    } else {
+        showIMOutOfCall(currentIdx); //change page to messaging page with correct behaviour
+    } else { // if non defined behaviour disconnect instant messaging and return to welcome page
         setActualCall(nullptr);
-        ui->instantMessagingWidget->hide();
         if (imConnection_)
             disconnect(imConnection_);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
-}
-void
-CallWidget::smartListSelectionChanged(const QItemSelection& newSel, const QItemSelection& oldSel) {
-
-    Q_UNUSED(oldSel)
-    if (newSel.indexes().empty()) {
-        setActualCall(nullptr);
-        return ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    }
-
-    auto newIdx = newSel.indexes().first();
-    smartListCurrentChanged(newIdx, newIdx);
 }
 
 void
