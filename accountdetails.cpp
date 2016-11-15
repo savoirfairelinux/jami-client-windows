@@ -113,6 +113,8 @@ AccountDetails::setAccount(Account* currentAccount) {
         return;
 
     if (currentAccount_->protocol() == Account::Protocol::RING) {
+        ui->usernameLabel->setText(tr("RingID"));
+        ui->lrcfg_username->setReadOnly(true);
         if (currentAccount_->registeredName().isEmpty() ){ // If our user isn't registered on the blockhain
             ui->lrcfg_registeredName->clear();
             ui->lrcfg_registeredName->setReadOnly(false);
@@ -124,6 +126,9 @@ AccountDetails::setAccount(Account* currentAccount) {
             ui->lrcfg_registeredName->setReadOnly(true);
             ui->registerButton->hide();
         }
+    } else { // If currentAccount_ is of type SIP
+        ui->usernameLabel->setText(tr("Username"));
+        ui->lrcfg_username->setReadOnly(false);
     }
 
     codecModel_ = currentAccount->codecModel();
