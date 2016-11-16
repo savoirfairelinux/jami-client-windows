@@ -177,6 +177,17 @@ CallWidget::CallWidget(QWidget* parent) :
                 this,
                 SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
 
+        connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
+                    // lambda used to focus on the correct smartList element when switching automatically between two calls
+                    Q_UNUSED(deselected)
+                    if (selected.size()) {
+                        auto idx = selected.indexes().first();
+                        auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
+                        ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
+                    } else
+                        ui->smartList->clearSelection();
+                });
+
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                 this, SLOT(contactLineEdit_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
@@ -455,11 +466,13 @@ CallWidget::callStateChanged(Call* call, Call::State previousState)
             || call != actualCall_)
         return;
 
+    callStateToView(call);
+
     if (call->state() == Call::State::OVER) {
         setActualCall(nullptr);
+        ui->smartList->clearSelection();
         RecentModel::instance().selectionModel()->clear();
     }
-    callStateToView(call);
 }
 
 void
@@ -527,6 +540,7 @@ void CallWidget::callStateToView(Call* value)
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
             break;
         case Call::State::OVER:
+            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
             break;
         case Call::State::FAILURE:
         case Call::State::ERROR:
