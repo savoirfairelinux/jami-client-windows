@@ -601,7 +601,13 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
             m = person->phoneNumbers().first();
         }
     }
+
     if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
+
+        QPixmap map = QPixmap::fromImage(
+                        GlobalInstances::pixmapManipulator().callPhoto(m, QSize(130,130)).value<QImage());
+        ui->callingPhoto->setPixmap(map);
+
         Call* c = CallModel::instance().dialingCall(m);
         c->performAction(Call::Action::ACCEPT);
         setActualCall(c);
@@ -735,7 +741,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->uri());
     }
-    slidePage(ui->messagingPage, true);
+    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
     disconnect(imClickedConnection_);
     imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
         auto urlList = index.data(static_cast<int>(Media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
