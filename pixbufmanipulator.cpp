@@ -60,8 +60,9 @@ PixbufManipulator::scaleAndFrame(const QImage photo, const QSize& size)
 QVariant
 PixbufManipulator::callPhoto(Call* c, const QSize& size, bool displayPresence)
 {
-    if (!c || c->type() == Call::Type::CONFERENCE)
+    if (!c || c->type() == Call::Type::CONFERENCE){
         return QVariant::fromValue(scaleAndFrame(fallbackAvatar_, size));
+    }
     return callPhoto(c->peerContactMethod(), size, displayPresence);
 }
 
@@ -87,11 +88,11 @@ PixbufManipulator::contactPhoto(Person* c, const QSize& size, bool displayPresen
 
     QImage photo;
 
-    if (c->photo().isValid())
+    if (c->photo().isValid()){
         photo = c->photo().value<QImage>();
-    else
+    } else {
         photo = fallbackAvatar_;
-
+    }
     return QVariant::fromValue(scaleAndFrame(photo, size));
 }
 
