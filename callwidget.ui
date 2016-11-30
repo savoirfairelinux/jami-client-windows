@@ -635,7 +635,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Ring is a secure and distributed voice, video, and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user.</string>
+                   <string>Ring is free software for universal communication which respects the freedoms and privacy of its users.</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
