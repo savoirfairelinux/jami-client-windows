@@ -74,6 +74,16 @@ Function LaunchLink
 FunctionEnd
 
 section "install"
+        !addincludedir "../../NsProcess/Include"
+        !addplugindir "../../NsProcess/Plugin"
+        !include "nsProcess.nsh"
+        # Kill all remaining Ring processes
+        ${nsProcess::FindProcess} "Ring.exe" $R0
+        ${If} $R0 == 0
+         ${nsProcess::KillProcess} "Ring.exe" $R0
+        ${EndIf}
+        Sleep 500
+
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         setOutPath $INSTDIR
         # Files added here should be removed by the uninstaller (see section "uninstall")
