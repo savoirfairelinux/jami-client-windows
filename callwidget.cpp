@@ -332,18 +332,23 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
         auto idx = AccountModel::instance().index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
+            auto account = AccountModel::instance().getAccountByModelIndex(idx);
+            auto registeredName = account->registeredName();
             auto username = idx.data(static_cast<int>(Account::Role::Username));
-            ui->ringIdLabel->setText(username.toString());
-            setupQRCode();
+            if (registeredName.isEmpty()) {
+                ui->ringIdLabel->setText(username.toString());
+            } else
+                ui->ringIdLabel->setText(registeredName);
+            setupQRCode(username.toString());
             return;
         }
     }
     ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
 }
 
-void CallWidget::setupQRCode()
+void CallWidget::setupQRCode(QString ringID)
 {
-    auto rcode = QRcode_encodeString(ui->ringIdLabel->text().toStdString().c_str(),
+    auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
                                      0, //Let the version be decided by libqrencode
                                      QR_ECLEVEL_L, // Lowest level of error correction
                                      QR_MODE_8, // 8-bit data mode
@@ -396,9 +401,9 @@ CallWidget::findRingAccount()
                 dlg.exec();
             }
             if (ui->ringIdLabel->text().isEmpty()) {
-                auto username = account->username();
-                ui->ringIdLabel->setText(username);
-                setupQRCode();
+                auto registeredName = account->registeredName();
+                ui->ringIdLabel->setText((registeredName.isEmpty())?account->username():registeredName);
+                setupQRCode(account->username());
             }
         }
     }
