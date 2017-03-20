@@ -35,8 +35,6 @@
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
 
-class ContactDelegate;
-class HistoryDelegate;
 class SmartListDelegate;
 class ImDelegate;
 class QPropertyAnimation;
@@ -72,10 +70,8 @@ public slots:
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
-    void on_contactView_doubleClicked(const QModelIndex& index);
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
-    void on_historyList_doubleClicked(const QModelIndex& index);
     void on_sendIMButton_clicked();
     void on_imMessageEdit_returnPressed();
     void on_contactMethodComboBox_currentIndexChanged(const QString& number);
@@ -104,8 +100,6 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu* menu_;
-    ContactDelegate* contactDelegate_;
-    HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
     QPersistentModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
