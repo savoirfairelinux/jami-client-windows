@@ -1,72 +1,69 @@
+FROM fedora:25
 
-FROM nfnty/arch-mini
+ENV LANG en_US.utf8
+ENV LC_ALL en_US.utf8
 
-#the ugliest hack on earth
-VOLUME /tmp
+RUN dnf -y upgrade
 
-#Update system and add archlinuxfr repo for yaourt
-RUN pacman -Syu --noconfirm
-RUN echo "[archlinuxfr]" >> /etc/pacman.conf
-RUN echo "SigLevel = Never" >> /etc/pacman.conf
-RUN echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
-RUN cat /etc/pacman.conf
+# General
+RUN dnf -y install \
+ unzip \
+ openssh
 
-RUN pacman -Syu reflector rsync --noconfirm --needed
-RUN reflector --verbose --country 'Canada' -l 200 --sort rate --save /etc/pacman.d/mirrorlist
-RUN cat /etc/pacman.d/mirrorlist
+# Mingw 32/64
+RUN dnf -y install \
+ mingw32-binutils \
+ mingw32-gcc \
+ mingw32-headers \
+ mingw32-crt \
+ mingw32-gcc-c++ \
+ mingw32-pkg-config \
+ mingw32-nsis \
+ mingw64-binutils \
+ mingw64-gcc \
+ mingw64-headers \
+ mingw64-crt \
+ mingw64-gcc-c++ \
+ mingw64-pkg-config
 
-#ensure that base and base-devel are installed and up to date
-RUN pacman -Syu base base-devel --noconfirm --needed
+# Build environment
+RUN dnf -y install \
+ git \
+ gawk \
+ yasm \
+ gettext-devel \
+ cmake \
+ patch \
+ libtool \
+ automake \
+ make \
+ xz \
+ bzip2 \
+ which \
+ sudo
 
-#install some needed package
-RUN pacman -Syu yaourt wget git yasm cmake --noconfirm --needed
+# LRC Req
+RUN dnf -y install \
+ mingw32-qt5-qtbase \
+ mingw32-qt5-qttools \
+ mingw64-qt5-qtbase \
+ mingw64-qt5-qttools
 
-#add user
-RUN useradd joulupukki -m
-RUN echo "joulupukki ALL= NOPASSWD: ALL" >> /etc/sudoers
+# Client Req
+RUN dnf -y install \
+ mingw32-qt5-qtsvg \
+ mingw64-qt5-qtsvg \
+ mingw32-qt5-qtwinextras \
+ mingw64-qt5-qtwinextras \
+ mingw32-libidn \
+ mingw64-libidn \
+ mingw32-xz-libs \
+ mingw64-xz-libs
 
-USER joulupukki
-WORKDIR /home/joulupukki
+# Buid Env. Var.
 
-#init the key and add those used for aur packages we need
-RUN sudo pacman-key --init && sudo pacman-key --populate archlinux
-RUN gpg --keyserver hkp://keys.gnupg.net --recv-key D605848ED7E69871 9766E084FB0F43D8 4DE8FF2A63C7CC90 D9C4D26D0E604491 BB5869F064EA74AB
-
-#install cross compil tool
-RUN yaourt -S mingw-w64-toolchain mingw-w64-pkg-config --noconfirm --needed
-
-#downgrade mingw-gcc as ring-daemon is not yet compatible with v5
-RUN wget http://seblu.net/a/arm/2015/05/01/community/os/x86_64/mingw-w64-gcc-4.9.2-2-x86_64.pkg.tar.xz
-RUN sudo pacman -U mingw-w64-gcc-4.9.2-2-x86_64.pkg.tar.xz --noconfirm
-
-#set env to include perl package (pod2man needed for doc)
-ENV PATH=$PATH:/usr/bin/core_perl
-RUN env
-
-#install Qt deps
-RUN yaourt -S mingw-w64-harfbuzz --noconfirm --needed
-RUN yaourt -S mingw-w64-libdbus --noconfirm --needed
-RUN yaourt -S mingw-w64-libjpeg-turbo --noconfirm --needed
-RUN yaourt -S mingw-w64-libpng --noconfirm --needed
-RUN yaourt -S mingw-w64-openssl --noconfirm --needed
-RUN yaourt -S mingw-w64-pcre --noconfirm --needed
-RUN yaourt -S mingw-w64-sqlite --noconfirm --needed
-RUN yaourt -S mingw-w64-zlib --noconfirm --needed
-RUN yaourt -S mingw-w64-mariadb-connector-c --noconfirm --needed
-RUN yaourt -S mingw-w64-postgresql-libs --noconfirm --needed
-RUN yaourt -S mingw-w64-mariadb-connector-c --noconfirm --needed
-RUN yaourt -S mingw-w64-postgresql-libs --noconfirm --needed
-
-
-#install Qt
-RUN yaourt -S mingw-w64-qt5-base-opengl --noconfirm
-
-#install the Qt plugins used in the client
-RUN yaourt -S mingw-w64-qt5-svg --noconfirm
-RUN yaourt -S mingw-w64-qt5-imageformats --noconfirm
-
-#install the packager
-RUN yaourt -S nsis --noconfirm --needed
-
-#make sure pkg-config choose our custom path before any lib that may have been installed by Qt (e.g pcre)
-RUN sudo sed -i s/\$PKG_CONFIG_LIBDIR:\$PKG_CONFIG_PATH_CUSTOM/\$PKG_CONFIG_PATH_CUSTOM:\$PKG_CONFIG_LIBDIR/ /usr/bin/i686-w64-mingw32-pkg-config
+ENV CMAKE_PREFIX_PATH /usr/i686-w64-mingw32/sys-root/mingw/lib/cmake:/usr/x86_64-w64-mingw32/sys-root/mingw/lib/cmake
+ENV QTDIR /usr/i686-w64-mingw32/sys-root/mingw/lib/qt5/:/usr/x86_64-w64-mingw32/sys-root/mingw/lib/qt5/
+ENV PATH /usr/i686-w64-mingw32/bin/qt5/:/usr/x86_64-w64-mingw32/bin/qt5/:$PATH
+ENV CROSS_COMPILE i686-w64-mingw32-
+ENV HOST i686-w64-mingw32
