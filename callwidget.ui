@@ -112,13 +112,29 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1,18">
            <property name="spacing">
             <number>0</number>
            </property>
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
+           <item>
+            <widget class="CurrentAccountWidget" name="widget" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QWidget" name="selectBar" native="true">
              <property name="maximumSize">
@@ -236,7 +252,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_videocam_white.png</normaloff>:/images/icons/ic_videocam_white.png</iconset>
+                  <normaloff>:/images/icons/ic_search_black_18dp_2x.png</normaloff>:/images/icons/ic_search_black_18dp_2x.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1680,6 +1696,12 @@
    <class>SendContactRequestWidget</class>
    <extends>QWidget</extends>
    <header>sendcontactrequestwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CurrentAccountWidget</class>
+   <extends>QWidget</extends>
+   <header>currentaccountwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
