@@ -195,8 +195,8 @@ QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover{
     background-color: #515151;
 }
 
-QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QToolButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed{
+QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
+QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed{
     background-color: #313131;
 }
 
@@ -506,7 +506,7 @@ QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLine
 QLineEdit#lrcfg_mailbox, QLineEdit#lrcfg_tlsPassword, QLineEdit#lrcfg_tlsServerName,
 QLineEdit#lrcfg_turnServerRealm, QLineEdit#lrcfg_turnServerUsername, QLineEdit#lrcfg_turnServerPassword,
 QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_registeredName,
-QLineEdit#lrcfg_nameServiceURL, QLineEdit#lrcfg_username{
+QLineEdit#lrcfg_nameServiceURL, QLineEdit#lrcfg_username, QLineEdit#profileNameEdit{
     background: transparent;
     border-radius: 0px;
     border-style: solid;
@@ -530,7 +530,8 @@ QLineEdit#lrcfg_alias:focus, QLineEdit#lrcfg_hostname:focus, QLineEdit#lrcfg_pas
 QLineEdit#lrcfg_proxy:focus, QLineEdit#lrcfg_mailbox:focus, QLineEdit#lrcfg_tlsPassword:focus,
 QLineEdit#lrcfg_tlsServerName:focus, QLineEdit#lrcfg_turnServerRealm:focus, QLineEdit#lrcfg_turnServerUsername:focus,
 QLineEdit#lrcfg_turnServerPassword:focus, QLineEdit#lrcfg_turnServer:focus, QLineEdit#lrcfg_publishedAddress:focus,
-QLineEdit#lrcfg_registeredName:focus, QLineEdit#lrcfg_nameServiceURL:focus, QLineEdit#lrcfg_username:focus{
+QLineEdit#lrcfg_registeredName:focus, QLineEdit#lrcfg_nameServiceURL:focus, QLineEdit#lrcfg_username:focus,
+QLineEdit#profileNameEdit:focus{
     border-color: #3AC0D2;
 }
 
