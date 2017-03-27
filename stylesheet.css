@@ -184,19 +184,19 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#copyCMButton{
+QPushButton#imBackButton, QPushButton#crBackButton, QPushButton#copyCMButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
-QPushButton#copyCMButton:hover{
+QPushButton#crBackButton:hover, QPushButton#copyCMButton:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QPushButton#copyCMButton:pressed{
+QToolButton#crBackButton:pressed, QPushButton#copyCMButton:pressed{
     background-color: #313131;
 }
 
@@ -289,7 +289,7 @@ QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, 
 QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
-QPushButton#errorPushButton, QPushButton#registerButton{
+QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#contactRequestButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -302,7 +302,7 @@ QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
-QPushButton#registerButton:hover{
+QPushButton#registerButton:hover, QPushButton#contactRequestButton:hover{
     background-color: #4dc6d6;
 }
 
@@ -312,7 +312,7 @@ QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
-QPushButton#registerButton:pressed{
+QPushButton#registerButton:pressed, QPushButton#contactRequestButton:pressed{
     background-color: #34acbd;
 }
 
