@@ -35,7 +35,7 @@ SendContactRequestWidget::setup(const QModelIndex& nodeIdx)
         qDebug() << "cm ptr : " << cm;
         qDebug() << "cm->account() ptr : " << cm->account();
         if(cm->account() != nullptr){
-            cm->account()->requestTrust(cm);
+            cm->account()->sendContactRequest(cm);
         } else {
             qDebug() << "no account linked to contact method";
         }
