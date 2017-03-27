@@ -93,7 +93,7 @@ private slots:
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
-    void contactLineEdit_registeredNameFound(const Account* account,NameDirectory::LookupStatus status,const QString& address,const QString& name);
+    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
 
 private:
     Ui::CallWidget* ui;
