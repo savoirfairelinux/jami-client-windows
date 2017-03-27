@@ -56,6 +56,7 @@ public:
 public slots:
     void settingsButtonClicked();
     void showIMOutOfCall(const QModelIndex& nodeIdx);
+    void configureSendCRPageButton(const QModelIndex& nodeIdx);
     void btnComBarVideoClicked();
 
 //UI SLOTS
@@ -76,6 +77,8 @@ private slots:
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
     void on_copyCMButton_clicked();
+    void on_sendContactRequestPageButton_clicked();
+    void on_sendCRBackButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
@@ -120,5 +123,6 @@ private:
     void callStateToView(Call* value);
     void setupQRCode(QString ringID);
     void searchContactLineEditEntry(const URI &uri);
+    bool uriNeedNameLookup(const URI uri_passed);
 };
 
