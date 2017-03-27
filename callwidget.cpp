@@ -32,6 +32,7 @@
 #undef interface
 
 #include "audio/settings.h"
+#include "accountmodel.h"
 #include "personmodel.h"
 #include "person.h"
 #include "fallbackpersoncollection.h"
@@ -55,6 +56,7 @@
 #include "settingskey.h"
 
 #include "profilemodel.h"
+#include "profile.h"
 #include "peerprofilecollection.h"
 #include "localprofilecollection.h"
 
@@ -137,8 +139,14 @@ CallWidget::CallWidget(QWidget* parent) :
                         ui->smartList->clearSelection();
                 });
 
-        connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
-                this, SLOT(contactLineEdit_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
+        connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
+                this, SLOT(contactLineEdit_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
+
+        connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+                ui->currentAccountWidget, SLOT(update()));
+
+        connect(&ProfileModel::instance(), SIGNAL(ProfileModel::dataChanged(const QModelIndex&,const QModelIndex&, const QVector<int>&)),
+                ui->currentAccountWidget, SLOT(update()));
 
         connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{slidePage(ui->messagingPage);});
 
@@ -197,7 +205,8 @@ CallWidget::setupOutOfCallIM()
 }
 
 void
-CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm) {
+CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm)
+{
     Q_UNUSED(cm)
 
     if (!QApplication::focusWidget()) {
@@ -212,7 +221,8 @@ CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm) {
 }
 
 void
-CallWidget::setupSmartListMenu() {
+CallWidget::setupSmartListMenu()
+{
     ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){
         auto idx = ui->smartList->currentIndex();
@@ -357,11 +367,15 @@ CallWidget::findRingAccount()
             }
         }
     }
+
     if (ui->ringIdLabel->text().isEmpty()) {
         ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
         WizardDialog wizardDialog;
         wizardDialog.exec();
     }
+
+    ui->currentAccountWidget->update();
+
 }
 
 void
@@ -435,7 +449,8 @@ CallWidget::atExit()
 {
 }
 
-void CallWidget::callStateToView(Call* value)
+void
+CallWidget::callStateToView(Call* value)
 {
     if (value) {
         switch (value->state()) {
@@ -495,6 +510,14 @@ CallWidget::on_cancelButton_clicked()
         actualCall_->performAction(Call::Action::REFUSE);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
+}
+
+void
+CallWidget::on_smartList_clicked(const QModelIndex& index)
+{
+    RecentModel::instance().selectionModel()->setCurrentIndex(
+                RecentModel::instance().peopleProxy()->mapToSource(index),
+                QItemSelectionModel::ClearAndSelect);
 }
 
 void
@@ -739,7 +762,7 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
 void
 CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 {
-    RecentModel::instance().peopleProxy()->setFilterWildcard(text);
+    RecentModel::instance().peopleProxy()->setFilterRegExp(QRegExp(text, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
 void
@@ -763,14 +786,6 @@ CallWidget::slidePage(QWidget* widget, bool toRight)
 }
 
 void
-CallWidget::on_smartList_clicked(const QModelIndex& index)
-{
-    RecentModel::instance().selectionModel()->setCurrentIndex(
-                RecentModel::instance().peopleProxy()->mapToSource(index),
-                QItemSelectionModel::ClearAndSelect);
-}
-
-void
 CallWidget::on_copyCMButton_clicked()
 {
     auto text = ui->contactMethodComboBox->currentText();
@@ -790,7 +805,7 @@ CallWidget::on_shareButton_clicked()
 }
 
 void
-CallWidget::contactLineEdit_registeredNameFound(const Account* account,NameDirectory::LookupStatus status,
+CallWidget::contactLineEdit_registeredNameFound(Account* account,NameDirectory::LookupStatus status,
                                                 const QString& address,const QString& name)
 {
     URI uri = URI(ui->ringContactLineEdit->text());
@@ -810,7 +825,7 @@ CallWidget::contactLineEdit_registeredNameFound(const Account* account,NameDirec
             qDebug() << uri;
             searchContactLineEditEntry(uri);
             auto cm = PhoneDirectoryModel::instance().getNumber(uri);
-            //cm->setAccount(account);
+            cm->setAccount(account);
             break;
         }
         case NameDirectory::LookupStatus::INVALID_NAME:

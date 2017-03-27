@@ -72,7 +72,8 @@ SOURCES += main.cpp\
     ringbutton.cpp \
     pathpassworddialog.cpp \
     photoboothdialog.cpp \
-    sendcontactrequestwidget.cpp
+    sendcontactrequestwidget.cpp \
+    currentaccountwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -108,7 +109,8 @@ HEADERS  += mainwindow.h \
     ringbutton.h \
     pathpassworddialog.h \
     photoboothdialog.h \
-    sendcontactrequestwidget.h
+    sendcontactrequestwidget.h \
+    currentaccountwidget.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -132,7 +134,8 @@ FORMS    += mainwindow.ui \
     ringbutton.ui \
     pathpassworddialog.ui \
     photoboothdialog.ui \
-    sendcontactrequestwidget.ui
+    sendcontactrequestwidget.ui \
+    currentaccountwidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 LIBS += -lqrencode
