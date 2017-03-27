@@ -195,8 +195,8 @@ QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover{
     background-color: #515151;
 }
 
-QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QToolButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed{
+QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
+QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed{
     background-color: #313131;
 }
 
