@@ -44,7 +44,6 @@
 #include "contactmethod.h"
 #include "globalinstances.h"
 #include <availableaccountmodel.h>
-
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
@@ -540,12 +539,24 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
         setActualCall(currentIdxCall);
     } else if (currentIdxCall == nullptr){ // if there is no call attached to this smartlist index (contact tab)
         setActualCall(nullptr);
-        showIMOutOfCall(currentIdx); //change page to messaging page with correct behaviour
+        showIMOutOfCall(currentIdx); // change page to contact request of messaging page with correct behaviour
     } else { // if non defined behaviour disconnect instant messaging and return to welcome page
         setActualCall(nullptr);
         if (imConnection_)
             disconnect(imConnection_);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+    }
+}
+
+void
+CallWidget::configureCRButton(const QModelIndex& currentIdx)
+{
+    auto cmVector = RecentModel::instance().getContactMethods(currentIdx);
+    URI cmUri = cmVector[0]->uri();
+    if (cmUri.protocolHint() == URI::ProtocolHint::RING || uriNeedNameLookup(cmUri)) {
+        ui->contactRequestButton->show();
+    } else {
+        ui->contactRequestButton->hide();
     }
 }
 
@@ -595,30 +606,35 @@ CallWidget::searchContactLineEditEntry(const URI &uri)
     ui->ringContactLineEdit->clear();
 }
 
+bool
+CallWidget::uriNeedNameLookup(const URI uri_passed)
+{
+    if (uri_passed.protocolHint() == URI::ProtocolHint::RING_USERNAME ) {
+        return TRUE;
+    } else if (
+        uri_passed.protocolHint() != URI::ProtocolHint::RING && // not a RingID
+        uri_passed.schemeType() == URI::SchemeType::NONE // scheme type not specified
+    ){
+        // if no scheme type has been specified, determine ring vs sip by the first available account
+        auto idx = AvailableAccountModel::instance().index(0, 0);
+        if (idx.isValid()) {
+            auto account = idx.data((int)Ring::Role::Object).value<Account *>();
+            if (account && account->protocol() == Account::Protocol::RING)
+                return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    bool lookup_username = false;
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
 
     if (!contactLineText.isNull() && !contactLineText.isEmpty()){
-        if (uri_passed.protocolHint() == URI::ProtocolHint::RING_USERNAME ) {
-            lookup_username = TRUE;
-        } else if (
-            uri_passed.protocolHint() != URI::ProtocolHint::RING && // not a RingID
-            uri_passed.schemeType() == URI::SchemeType::NONE // scheme type not specified
-        ){
-            // if no scheme type has been specified, determine ring vs sip by the first available account
-            auto idx = AvailableAccountModel::instance().index(0, 0);
-            if (idx.isValid()) {
-                auto account = idx.data((int)Ring::Role::Object).value<Account *>();
-                if (account && account->protocol() == Account::Protocol::RING)
-                    lookup_username = TRUE;
-            }
-        }
-
-        if (lookup_username){
+        if (uriNeedNameLookup(uri_passed)){
             NameDirectory::instance().lookupName(nullptr, QString(), uri_passed);
         } else {
             searchContactLineEditEntry(uri_passed);
@@ -645,7 +661,7 @@ void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
-
+    configureCRButton(nodeIdx);
     ui->imNameLabel->setText(QString(tr("Conversation with %1", "%1 is the contact name"))
                              .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
@@ -745,6 +761,11 @@ CallWidget::on_imBackButton_clicked()
     slidePage(ui->welcomePage);
 }
 
+void CallWidget::on_crBackButton_clicked()
+{
+    slidePage(ui->messagingPage);
+}
+
 void
 CallWidget::slidePage(QWidget* widget, bool toRight)
 {
@@ -800,9 +821,13 @@ CallWidget::contactLineEdit_registeredNameFound(const Account* account,NameDirec
     {
         case NameDirectory::LookupStatus::SUCCESS:
         {
+
             uri = URI("ring:" + address);
+            qDebug() << "contactLineEdit username to search: " << username_to_lookup;
             qDebug() << uri;
             searchContactLineEditEntry(uri);
+            auto cm = PhoneDirectoryModel::instance().getNumber(uri);
+            //cm->setAccount(account);
             break;
         }
         case NameDirectory::LookupStatus::INVALID_NAME:
@@ -818,4 +843,11 @@ CallWidget::contactLineEdit_registeredNameFound(const Account* account,NameDirec
             break;
         }
     }
+}
+
+void
+CallWidget::on_contactRequestButton_clicked()
+{
+    ui->sendContactRequestWidget->setup(RecentModel::instance().selectionModel()->currentIndex());
+    slidePage(ui->sendContactRequestPage);
 }
