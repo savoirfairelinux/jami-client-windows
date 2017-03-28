@@ -45,6 +45,8 @@
 #include "contactmethod.h"
 #include "globalinstances.h"
 #include <availableaccountmodel.h>
+#include "pendingcontactrequestmodel.h"
+
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
@@ -147,6 +149,10 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->currentAccountWidget, SLOT(on_accountEnabledChanged()));
         connect(&PersonModel::instance(), SIGNAL(newPersonAdded(const Person*)),
                 ui->currentAccountWidget, SLOT(on_accountEnabledChanged()));
+
+        connect(ui->contactRequestWidget, &ContactRequestWidget::choiceMade, [this]() {
+            slidePage(ui->welcomePage);
+        });
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -298,6 +304,11 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
             } else
                 ui->ringIdLabel->setText(registeredName);
             setupQRCode(username.toString());
+
+            ui->contactReqList->setModel(account->pendingContactRequestModel());
+
+            connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
+                    this, &CallWidget::contactReqListCurrentChanged);
             return;
         }
     }
@@ -578,6 +589,16 @@ CallWidget::configureCRButton(const QModelIndex& currentIdx)
 }
 
 void
+CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
+{
+    Q_UNUSED(previousIdx)
+
+    ContactRequest* cr = currentIdx.data((int)Ring::Role::Object).value<ContactRequest*>();
+    ui->contactRequestWidget->setCurrentContactRequest(cr);
+    ui->stackedWidget->setCurrentWidget(ui->contactRequestView);
+}
+
+void
 CallWidget::placeCall()
 {
     if (ui->ringContactLineEdit->text().isEmpty())
@@ -766,9 +787,11 @@ CallWidget::on_imBackButton_clicked()
     slidePage(ui->welcomePage);
 }
 
-void CallWidget::on_crBackButton_clicked()
+void
+CallWidget::on_crBackButton_clicked()
 {
-    slidePage(ui->messagingPage);
+    ui->contactReqList->selectionModel()->clear();
+    slidePage(ui->welcomePage);
 }
 
 void
