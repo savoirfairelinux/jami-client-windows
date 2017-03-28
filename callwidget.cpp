@@ -44,6 +44,7 @@
 #include "contactmethod.h"
 #include "globalinstances.h"
 #include <availableaccountmodel.h>
+#include "pendingcontactrequestmodel.h"
 
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
@@ -291,6 +292,11 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
             } else
                 ui->ringIdLabel->setText(registeredName);
             setupQRCode(username.toString());
+
+            ui->contactReqList->setModel(account->pendingContactRequestModel());
+
+            connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
+                    this, &CallWidget::contactReqListCurrentChanged);
             return;
         }
     }
@@ -550,6 +556,16 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
 }
 
 void
+CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
+{
+    Q_UNUSED(previousIdx)
+
+    ContactRequest* cr = currentIdx.data((int)Ring::Role::Object).value<ContactRequest*>();
+    ui->contactRequestWidget->setCurrentContactRequest(cr);
+    ui->stackedWidget->setCurrentWidget(ui->contactRequestView);
+}
+
+void
 CallWidget::placeCall()
 {
     if (ui->ringContactLineEdit->text().isEmpty())
@@ -730,6 +746,13 @@ void
 CallWidget::on_imBackButton_clicked()
 {
     RecentModel::instance().selectionModel()->clear();
+    slidePage(ui->welcomePage);
+}
+
+void
+CallWidget::on_crBackButton_clicked()
+{
+    ui->contactReqList->selectionModel()->clear();
     slidePage(ui->welcomePage);
 }
 
