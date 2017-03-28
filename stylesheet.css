@@ -184,19 +184,19 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#copyCMButton{
+QPushButton#imBackButton, QPushButton#copyCMButton, QPushButton#crBackButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
-QPushButton#copyCMButton:hover{
+QPushButton#copyCMButton:hover, QPushButton#crBackButton:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QToolButton#imBackButton:pressed,
-QPushButton#copyCMButton:pressed{
+QPushButton#copyCMButton:pressed, QPushButton#crBackButton:pressed{
     background-color: #313131;
 }
 
@@ -281,7 +281,7 @@ QListView#contactView{
     background: transparent;
 }
 
-QWidget#messagingPage{
+QWidget#messagingPage, QWidget#contactRequestView{
     background: rgb(242, 242, 242);
 }
 
