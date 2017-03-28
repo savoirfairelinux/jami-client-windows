@@ -106,6 +106,11 @@ QListView#cipherListView::item:disabled
     background-color: transparent;
 }
 
+QListView#contactReqList
+{
+    border: none;
+}
+
 SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected{
     background-color: rgba(220, 220, 220, 255);
     border: none;
@@ -184,19 +189,19 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#sendCRBackButton, QPushButton#copyCMButton{
+QPushButton#imBackButton, QPushButton#sendCRBackButton, QPushButton#copyCMButton, QPushButton#pendingCRBackButton{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
-QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover{
+QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#pendingCRBackButton:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
-QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed{
+QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#pendingCRBackButton:pressed{
     background-color: #313131;
 }
 
@@ -281,7 +286,7 @@ QListView#contactView{
     background: transparent;
 }
 
-QWidget#messagingPage{
+QWidget#messagingPage, QWidget#contactRequestView{
     background: rgb(242, 242, 242);
 }
 
@@ -290,7 +295,7 @@ QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoBut
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#sendContactRequestPageButton,
-QPushButton#sendContactRequestButton {
+QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -304,7 +309,7 @@ QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushB
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#sendContactRequestPageButton:hover,
-QPushButton#sendContactRequestButton:hover {
+QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover{
     background-color: #4dc6d6;
 }
 
@@ -315,7 +320,7 @@ QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QP
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
 QPushButton#registerButton:pressed, QPushButton#sendContactRequestPageButton:pressed,
-QPushButton#sendContactRequestButton:pressed {
+QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed{
     background-color: #34acbd;
 }
 
