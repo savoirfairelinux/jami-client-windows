@@ -284,7 +284,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QStackedWidget" name="mainTabMenu">
+              <widget class="QTabWidget" name="mainTabMenu">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                  <horstretch>0</horstretch>
@@ -303,13 +303,13 @@
                  <height>16777215</height>
                 </size>
                </property>
-               <property name="lineWidth">
-                <number>0</number>
-               </property>
                <property name="currentIndex">
                 <number>0</number>
                </property>
-               <widget class="QWidget" name="mainTabMenuPage1">
+               <widget class="QWidget" name="mainTabMenuPage1_2">
+                <attribute name="title">
+                 <string>Conversations</string>
+                </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
                   <number>0</number>
@@ -344,6 +344,31 @@
                     <bool>true</bool>
                    </property>
                   </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="mainTabMenuPage2">
+                <attribute name="title">
+                 <string>Contact Requests</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QListView" name="contactReqList"/>
                  </item>
                 </layout>
                </widget>
@@ -1629,6 +1654,78 @@
                 </item>
                </layout>
               </widget>
+              <widget class="QWidget" name="contactRequestView">
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <property name="leftMargin">
+                 <number>5</number>
+                </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <item>
+                   <widget class="QPushButton" name="pendingCRBackButton">
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_13">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="ContactRequestWidget" name="contactRequestWidget" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -1680,6 +1777,12 @@
    <class>CurrentAccountWidget</class>
    <extends>QWidget</extends>
    <header>currentaccountwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ContactRequestWidget</class>
+   <extends>QWidget</extends>
+   <header>contactrequestwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
