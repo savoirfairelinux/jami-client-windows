@@ -47,6 +47,8 @@
 #include "contactmethod.h"
 #include "globalinstances.h"
 #include <availableaccountmodel.h>
+#include "pendingcontactrequestmodel.h"
+
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
@@ -149,6 +151,17 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
 
         connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{slidePage(ui->messagingPage);});
+
+        connect(ui->contactRequestWidget, &ContactRequestWidget::choiceMade, [this]() {
+            slidePage(ui->welcomePage);
+        });
+
+        connect(AccountModel::instance().userSelectionModel(), &QItemSelectionModel::currentChanged,
+                this, &CallWidget::selectedAccountChanged);
+
+        // It needs to be called manually once to initialize the ui with the account selected at start.
+        // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
+        selectedAccountChanged(AccountModel::instance().userSelectionModel()->currentIndex(), QModelIndex());
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -300,6 +313,7 @@ CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec
             } else
                 ui->ringIdLabel->setText(registeredName);
             setupQRCode(username.toString());
+
             return;
         }
     }
@@ -593,6 +607,16 @@ CallWidget::configureSendCRPageButton(const QModelIndex& currentIdx)
 }
 
 void
+CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
+{
+    Q_UNUSED(previousIdx)
+
+    ContactRequest* cr = currentIdx.data((int)Ring::Role::Object).value<ContactRequest*>();
+    ui->contactRequestWidget->setCurrentContactRequest(cr);
+    ui->stackedWidget->setCurrentWidget(ui->contactRequestView);
+}
+
+void
 CallWidget::placeCall()
 {
     if (ui->ringContactLineEdit->text().isEmpty())
@@ -681,6 +705,27 @@ CallWidget::btnComBarVideoClicked()
         return;
 
     on_smartList_doubleClicked(highLightedIndex_);
+}
+
+void
+CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous)
+{
+    Q_UNUSED(previous)
+
+    if (current.isValid()) {
+        auto ac = AccountModel::instance().getAccountByModelIndex(current);
+
+        // We update the pending CR list with those from the newly selected account
+        if (disconnect(crListSelectionConnection_)) {
+            // The selection model must be deleted by the application (see QT doc).
+            QItemSelectionModel* sMod = ui->contactReqList->selectionModel();
+            delete sMod;
+        }
+
+        ui->contactReqList->setModel(ac->pendingContactRequestModel());
+        crListSelectionConnection_ = connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
+                this, &CallWidget::contactReqListCurrentChanged);
+    }
 }
 
 void
@@ -869,4 +914,11 @@ void
 CallWidget::on_sendCRBackButton_clicked()
 {
     slidePage(ui->messagingPage);
+}
+
+void
+CallWidget::on_pendingCRBackButton_clicked()
+{
+    ui->contactReqList->selectionModel()->clear();
+    slidePage(ui->welcomePage);
 }

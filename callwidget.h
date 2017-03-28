@@ -82,17 +82,20 @@ private slots:
     void on_smartList_clicked(const QModelIndex &index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
+    void on_pendingCRBackButton_clicked();
 
 private slots:
     void callIncoming(Call* call);
     void callStateChanged(Call* call, Call::State previousState);
     void findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec);
     void smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
+    void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
-    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);    
+    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
+    void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
 
 private:
     Ui::CallWidget* ui;
@@ -109,6 +112,7 @@ private:
     QMetaObject::Connection imVisibleConnection_;
     QMetaObject::Connection callChangedConnection_;
     QMetaObject::Connection imClickedConnection_;
+    QMetaObject::Connection crListSelectionConnection_;
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
 
@@ -127,4 +131,3 @@ private:
     bool uriNeedNameLookup(const URI uri_passed);
     void processContactLineEdit();
 };
-
