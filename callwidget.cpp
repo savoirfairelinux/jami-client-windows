@@ -97,11 +97,6 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
-        connect(&AccountModel::instance()
-                , SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>))
-                , this
-                , SLOT(findRingAccount(QModelIndex, QModelIndex, QVector<int>)));
-
         RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
         RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
@@ -290,33 +285,6 @@ CallWidget::setupSmartListMenu()
     });
 }
 
-void
-CallWidget::findRingAccount(QModelIndex idx1, QModelIndex idx2, QVector<int> vec)
-{
-    Q_UNUSED(idx1)
-    Q_UNUSED(idx2)
-    Q_UNUSED(vec)
-
-    auto a_count = AccountModel::instance().rowCount();
-    for (int i = 0; i < a_count; ++i) {
-        auto idx = AccountModel::instance().index(i, 0);
-        auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
-        if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
-            auto account = AccountModel::instance().getAccountByModelIndex(idx);
-            auto registeredName = account->registeredName();
-            auto username = idx.data(static_cast<int>(Account::Role::Username));
-            if (registeredName.isEmpty()) {
-                ui->ringIdLabel->setText(username.toString());
-            } else
-                ui->ringIdLabel->setText(registeredName);
-            setupQRCode(username.toString());
-
-            return;
-        }
-    }
-    ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-}
-
 void CallWidget::setupQRCode(QString ringID)
 {
     auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
@@ -357,13 +325,14 @@ void CallWidget::setupQRCode(QString ringID)
 void
 CallWidget::findRingAccount()
 {
-    ui->ringIdLabel->clear();
+    bool ringAccountFound = false;
 
     auto a_count = AccountModel::instance().rowCount();
     for (int i = 0; i < a_count; ++i) {
         auto idx = AccountModel::instance().index(i, 0);
         auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
         if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
+            ringAccountFound = true;
             auto account = AccountModel::instance().getAccountByModelIndex(idx);
             if (account->displayName().isEmpty())
                 account->displayName() = account->alias();
@@ -371,15 +340,9 @@ CallWidget::findRingAccount()
                 WizardDialog dlg(WizardDialog::MIGRATION, account);
                 dlg.exec();
             }
-            if (ui->ringIdLabel->text().isEmpty()) {
-                auto registeredName = account->registeredName();
-                ui->ringIdLabel->setText((registeredName.isEmpty())?account->username():registeredName);
-                setupQRCode(account->username());
-            }
         }
     }
-    if (ui->ringIdLabel->text().isEmpty()) {
-        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
+    if (!ringAccountFound) {
         WizardDialog wizardDialog;
         wizardDialog.exec();
     }
@@ -688,7 +651,16 @@ CallWidget::btnComBarVideoClicked()
 void
 CallWidget::selectedAccountChanged(Account* ac) {
 
-    // We update the pending CR list with those from the newly selected account
+    // In this first part, we setup the ringIdLabel and the QRCode
+    auto protocol = ac->protocol();
+    if (protocol == Account::Protocol::RING) {
+        ui->ringIdLabel->setText((ac->registeredName().isEmpty())?ac->username():ac->registeredName());
+        setupQRCode(ac->username());
+    } else {
+        ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
+    }
+
+    // Then, we update the pending CR list with those from the newly selected account
     if (disconnect(crListSelectionConnection_)) {
         // The selection model must be deleted by the application (see QT doc).
         QItemSelectionModel* sMod = ui->contactReqList->selectionModel();
