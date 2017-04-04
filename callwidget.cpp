@@ -147,8 +147,7 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                 ui->currentAccountWidget, SLOT(update()));
 
-        connect(&ProfileModel::instance(), SIGNAL(ProfileModel::dataChanged(const QModelIndex&,const QModelIndex&, const QVector<int>&)),
-                ui->currentAccountWidget, SLOT(update()));
+        connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
 
         connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{slidePage(ui->messagingPage);});
 
@@ -638,7 +637,7 @@ CallWidget::uriNeedNameLookup(const URI uri_passed)
 }
 
 void
-CallWidget::on_ringContactLineEdit_returnPressed()
+CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
@@ -653,9 +652,15 @@ CallWidget::on_ringContactLineEdit_returnPressed()
 }
 
 void
-CallWidget::on_btnCall_clicked()
+CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    placeCall();
+    processContactLineEdit();
+}
+
+void
+CallWidget::searchBtnClicked()
+{
+    processContactLineEdit();
 }
 
 void
@@ -849,7 +854,8 @@ CallWidget::on_sendContactRequestPageButton_clicked()
     slidePage(ui->sendContactRequestPage);
 }
 
-void CallWidget::on_sendCRBackButton_clicked()
+void
+CallWidget::on_sendCRBackButton_clicked()
 {
     slidePage(ui->messagingPage);
 }

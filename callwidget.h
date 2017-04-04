@@ -62,10 +62,8 @@ public slots:
 //UI SLOTS
 public slots:
     void on_ringContactLineEdit_returnPressed();
-    void on_btnCall_clicked();
-    inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;};
+    inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;}
 
-//UI SLOTS
 private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
@@ -91,7 +89,8 @@ private slots:
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
-    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
+    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);    
+    void searchBtnClicked();
 
 private:
     Ui::CallWidget* ui;
@@ -124,5 +123,6 @@ private:
     void setupQRCode(QString ringID);
     void searchContactLineEditEntry(const URI &uri);
     bool uriNeedNameLookup(const URI uri_passed);
+    void processContactLineEdit();
 };
 
