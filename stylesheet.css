@@ -111,12 +111,14 @@ QListView#contactReqList
     border: none;
 }
 
-SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected{
+SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
+QListView#contactReqList::item:selected{
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
-SmartList::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover{
+SmartList::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
+QListView#contactReqList::item:hover{
     background-color: rgba(242, 242, 242, 255);
 }
 
