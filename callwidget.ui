@@ -234,14 +234,8 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="btnCall">
+               <widget class="QPushButton" name="searchBtn">
                 <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
                  <size>
                   <width>30</width>
                   <height>30</height>
@@ -254,29 +248,7 @@
                  <iconset resource="ressources.qrc">
                   <normaloff>:/images/icons/ic_search_black_18dp_2x.png</normaloff>:/images/icons/ic_search_black_18dp_2x.png</iconset>
                 </property>
-                <property name="iconSize">
-                 <size>
-                  <width>18</width>
-                  <height>18</height>
-                 </size>
-                </property>
                </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>0</width>
-                  <height>45</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
               <item>
                <spacer name="horizontalSpacer_2">
