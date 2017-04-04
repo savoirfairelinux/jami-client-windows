@@ -1,6 +1,8 @@
 /***************************************************************************
  * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -103,9 +105,6 @@ CallWidget::CallWidget(QWidget* parent) :
         RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
 
-        smartListDelegate_ = new SmartListDelegate();
-        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
-
         PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
         ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
 
@@ -145,8 +144,7 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                 ui->currentAccountWidget, SLOT(update()));
 
-        connect(&ProfileModel::instance(), SIGNAL(ProfileModel::dataChanged(const QModelIndex&,const QModelIndex&, const QVector<int>&)),
-                ui->currentAccountWidget, SLOT(update()));
+        connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
 
         connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{slidePage(ui->messagingPage);});
 
@@ -574,10 +572,19 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
 void
 CallWidget::configureSendCRPageButton(const QModelIndex& currentIdx)
 {
-    auto cmVector = RecentModel::instance().getContactMethods(currentIdx);
-    URI cmUri = cmVector[0]->uri();
-    if (cmUri.protocolHint() == URI::ProtocolHint::RING || uriNeedNameLookup(cmUri)) {
-        ui->sendContactRequestPageButton->show();
+   if (currentIdx.isValid()){
+        QVector<ContactMethod*> cmVector = RecentModel::instance().getContactMethods(currentIdx);
+        if (cmVector.size() == 0){
+            ui->sendContactRequestPageButton->hide();
+            return;
+        }
+
+        URI cmUri = cmVector[0]->uri();
+        if (cmUri.protocolHint() == URI::ProtocolHint::RING || uriNeedNameLookup(cmUri)) {
+            ui->sendContactRequestPageButton->show();
+        } else {
+            ui->sendContactRequestPageButton->hide();
+        }
     } else {
         ui->sendContactRequestPageButton->hide();
     }
@@ -639,7 +646,7 @@ CallWidget::uriNeedNameLookup(const URI uri_passed)
 }
 
 void
-CallWidget::on_ringContactLineEdit_returnPressed()
+CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
@@ -654,9 +661,15 @@ CallWidget::on_ringContactLineEdit_returnPressed()
 }
 
 void
-CallWidget::on_btnCall_clicked()
+CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    placeCall();
+    processContactLineEdit();
+}
+
+void
+CallWidget::searchBtnClicked()
+{
+    processContactLineEdit();
 }
 
 void
@@ -850,7 +863,8 @@ CallWidget::on_sendContactRequestPageButton_clicked()
     slidePage(ui->sendContactRequestPage);
 }
 
-void CallWidget::on_sendCRBackButton_clicked()
+void
+CallWidget::on_sendCRBackButton_clicked()
 {
     slidePage(ui->messagingPage);
 }
