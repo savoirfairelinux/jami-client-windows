@@ -58,6 +58,7 @@
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 #include "settingskey.h"
+#include "contactrequestitemdelegate.h"
 
 #include "profilemodel.h"
 #include "profile.h"
@@ -151,6 +152,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
         connect(AccountModel::instance().userSelectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::selectedAccountChanged);
+
+        ui->contactReqList->setItemDelegate(new ContactRequestItemDelegate());
 
         // It needs to be called manually once to initialize the ui with the account selected at start.
         // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.

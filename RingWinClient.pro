@@ -74,7 +74,8 @@ SOURCES += main.cpp\
     photoboothdialog.cpp \
     sendcontactrequestwidget.cpp \
     currentaccountwidget.cpp \
-    contactrequestwidget.cpp
+    contactrequestwidget.cpp \
+    contactrequestitemdelegate.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -112,7 +113,8 @@ HEADERS  += mainwindow.h \
     photoboothdialog.h \
     sendcontactrequestwidget.h \
     currentaccountwidget.h \
-    contactrequestwidget.h
+    contactrequestwidget.h \
+    contactrequestitemdelegate.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
