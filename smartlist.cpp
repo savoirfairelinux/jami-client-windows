@@ -1,6 +1,8 @@
 /***************************************************************************
  * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
