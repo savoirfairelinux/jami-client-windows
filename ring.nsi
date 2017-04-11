@@ -61,12 +61,18 @@ ${EndIf}
 function .onInit
         setShellVarContext all
         !insertmacro VerifyUserIsAdmin
+        ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "InstallLocation"
+        StrCmp $0 "" notfound
+        StrCpy $INSTDIR $0
+        Goto done
+notfound:
         StrCpy $INSTDIR "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
         ${If} ${ARCH} == "x64"
          ${If} ${RunningX64}
             StrCpy $INSTDIR "$PROGRAMFILES64\${COMPANYNAME}\${APPNAME}"
          ${EndIf}
         ${EndIf}
+done:
 functionEnd
 
 Function LaunchLink
@@ -116,7 +122,7 @@ section "install"
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayName" ${APPNAME}
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "InstallLocation" "$\"$INSTDIR$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "InstallLocation" $INSTDIR
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayIcon" "$\"$INSTDIR\ring.ico$\""
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "Publisher" "${COMPANYNAME}"
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "HelpLink" "$\"${HELPURL}$\""
