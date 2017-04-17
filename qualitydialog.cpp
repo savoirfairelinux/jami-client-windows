@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2016 by Savoir-faire Linux                                *
+ * Copyright (C) 2017 by Savoir-faire Linux                                *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Stepan Salenikovich <stepan.salenikovich@savoirfairelinux.com>  *
  *                                                                         *
