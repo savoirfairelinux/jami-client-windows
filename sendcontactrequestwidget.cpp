@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
@@ -32,8 +32,7 @@ SendContactRequestWidget::SendContactRequestWidget(QWidget *parent) :
     ui(new Ui::SendContactRequestWidget)
 {
     ui->setupUi(this);
-    ui->contactRequestInfo->setText("Contact Request Bruh!!!!\n");
-    ui->peerContactID->setText("ContactID\n");
+    ui->peerContactID->setText("ContactID"); // TODO : Display RingID/Username
 }
 
 SendContactRequestWidget::~SendContactRequestWidget()

@@ -23,7 +23,7 @@
       </size>
      </property>
      <property name="text">
-      <string/>
+      <string>ContactID</string>
      </property>
     </widget>
    </item>
@@ -36,7 +36,7 @@
       </size>
      </property>
      <property name="text">
-      <string/>
+      <string>TODO: Explain the purpose of a contact request</string>
      </property>
     </widget>
    </item>
