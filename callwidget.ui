@@ -1663,7 +1663,7 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="contactRequestView">
+              <widget class="QWidget" name="contactRequestPage">
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <property name="leftMargin">
                  <number>5</number>

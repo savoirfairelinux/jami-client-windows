@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2016 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
@@ -576,7 +576,7 @@ CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QM
 
     ContactRequest* cr = currentIdx.data((int)Ring::Role::Object).value<ContactRequest*>();
     ui->contactRequestWidget->setCurrentContactRequest(cr);
-    ui->stackedWidget->setCurrentWidget(ui->contactRequestView);
+    ui->stackedWidget->setCurrentWidget(ui->contactRequestPage);
 }
 
 void
@@ -856,7 +856,6 @@ CallWidget::contactLineEdit_registeredNameFound(Account* account,NameDirectory::
     {
         case NameDirectory::LookupStatus::SUCCESS:
         {
-
             uri = URI("ring:" + address);
             qDebug() << "contactLineEdit username to search: " << username_to_lookup;
             qDebug() << uri;

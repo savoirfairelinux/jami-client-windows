@@ -288,7 +288,7 @@ QListView#contactView{
     background: transparent;
 }
 
-QWidget#messagingPage, QWidget#contactRequestView{
+QWidget#messagingPage, QWidget#contactRequestPage{
     background: rgb(242, 242, 242);
 }
 
