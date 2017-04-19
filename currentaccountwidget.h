@@ -33,9 +33,11 @@ class CurrentAccountWidget : public QWidget
 public:
     explicit CurrentAccountWidget(QWidget *parent = 0);
     ~CurrentAccountWidget();
+    void changeSelectedIndex(int index);
 
 public slots:
     void update();
+    void setPhoto();
 
 private slots:
     void on_currentAccountSelector_currentIndexChanged(int index);
@@ -43,7 +45,6 @@ private slots:
 private:
     Ui::CurrentAccountWidget *ui;
     void setup();
-    void setPhoto();
     void updateAccounts();
 };
 

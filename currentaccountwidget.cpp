@@ -20,7 +20,7 @@
 #include "currentaccountwidget.h"
 #include "ui_currentaccountwidget.h"
 #include "globalinstances.h"
-#include "accountmodel.h"
+#include "availableaccountmodel.h"
 #include "account.h"
 #include "qstandarditemmodel.h"
 #include "profilemodel.h"
@@ -47,10 +47,10 @@ CurrentAccountWidget::setup()
 {
     ui->accountsStatus->setText("No enabled account: impossible to communicate!");
     ui->accountsStatus->hide();
+    ui->currentAccountSelector->setModel(&AvailableAccountModel::instance());
     updateAccounts();
     if (ui->currentAccountSelector->count() > 0) {
         ui->currentAccountSelector->setCurrentIndex(0);
-        emit ui->currentAccountSelector->currentIndexChanged(0);
         qDebug() << "CurrentAccount : setup over";
     } else {
         qDebug() << "CurrentAccount : No account available";
@@ -68,19 +68,6 @@ void
 CurrentAccountWidget::updateAccounts()
 {
     auto selector = ui->currentAccountSelector;
-    AccountModel* model = &(AccountModel::instance());
-    QModelIndex qIndex;
-
-    selector->clear();
-
-    for (int idx = 0; idx <=  model->rowCount() - 1; idx++){
-        qIndex = model->index(idx);
-        if (! model->getAccountByModelIndex(qIndex)->isEnabled()) {
-            qDebug() << model->getAccountByModelIndex(qIndex)->alias() << " Account is not enabled";
-        } else {
-            selector->addItem(model->getAccountByModelIndex(qIndex)->alias());
-        }
-    }
 
     if (selector->count() <= 1){
         selector->hide();
@@ -103,22 +90,16 @@ CurrentAccountWidget::setPhoto()
 {
     auto selector = ui->currentAccountSelector;
     if (selector->count() > 0) {
-        if(&ProfileModel::instance()){
-            if (ProfileModel::instance().selectedProfile()) {
-                if (ProfileModel::instance().selectedProfile()->person()){
-                    QImage img = Utils::getCirclePhoto(ProfileModel::instance().selectedProfile()->person()->photo().value<QImage>(),
-                                                       ui->idDisplayLayout->contentsRect().height());
-                    ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
-                    qDebug() << "CurrentAccount : Photo set";
-                } else {
-                    qDebug() << "CurrentAccount : selected profile has no person";
-                }
-            } else {
-                qDebug() << "CurrentAccount : Profilemodel: no selected profile";
-            }
-        } else {
-            qDebug() << "CurrentAccount : Profilemodel not set";
-        }
+        if (ProfileModel::instance().selectedProfile()) {
+            if (ProfileModel::instance().selectedProfile()->person()){
+                QImage img = Utils::getCirclePhoto(ProfileModel::instance().selectedProfile()->person()->photo().value<QImage>(),
+                                                   ui->idDisplayLayout->contentsRect().height());
+                ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
+                qDebug() << "CurrentAccount : Photo set";
+            } else
+                qDebug() << "CurrentAccount : selected profile has no person";
+        } else
+            qDebug() << "CurrentAccount : Profilemodel: no selected profile";
     } else {
         qDebug() << "CurrentAccount : account not set";
         ui->currentAccountPixmap->setPixmap(QPixmap());
@@ -132,11 +113,19 @@ CurrentAccountWidget::on_currentAccountSelector_currentIndexChanged(int index)
     Account* ac = AccountModel::instance().getAccountByModelIndex(idx);
 
     if (ac) {
-        AccountModel::instance().setUserChosenAccount(ac);
+        AvailableAccountModel::instance().selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
         setPhoto();
     } else {
         qDebug() << "CurrentAccount : account not referenced correctly";
         //null for now
+    }
+}
+
+void
+CurrentAccountWidget::changeSelectedIndex(int index)
+{
+    if (index != ui->currentAccountSelector->currentIndex()) {
+        ui->currentAccountSelector->setCurrentIndex(index);
     }
 }
 

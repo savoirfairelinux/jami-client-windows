@@ -150,14 +150,18 @@ CallWidget::CallWidget(QWidget* parent) :
             slidePage(ui->welcomePage);
         });
 
-        connect(AccountModel::instance().userSelectionModel(), &QItemSelectionModel::currentChanged,
+        connect(AvailableAccountModel::instance().selectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::selectedAccountChanged);
 
         ui->contactReqList->setItemDelegate(new ContactRequestItemDelegate());
 
         // It needs to be called manually once to initialize the ui with the account selected at start.
         // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
-        selectedAccountChanged(AccountModel::instance().userSelectionModel()->currentIndex(), QModelIndex());
+        selectedAccountChanged(AvailableAccountModel::instance().selectionModel()->currentIndex(), QModelIndex());
+
+        // This connect() is used to initialise and track changes of profile's picture
+        connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
+                ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -622,8 +626,8 @@ CallWidget::uriNeedNameLookup(const URI uri_passed)
         uri_passed.protocolHint() != URI::ProtocolHint::RING && // not a RingID
         uri_passed.schemeType() == URI::SchemeType::NONE // scheme type not specified
     ){
-        // if no scheme type has been specified, determine ring vs sip by the first available account
-        auto idx = AvailableAccountModel::instance().index(0, 0);
+        // if no scheme type has been specified, determine ring vs sip by the current selected account
+        auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
         if (idx.isValid()) {
             auto account = idx.data((int)Ring::Role::Object).value<Account *>();
             if (account && account->protocol() == Account::Protocol::RING)
@@ -639,10 +643,12 @@ CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
+    Account* ac = AvailableAccountModel::instance().selectionModel()->currentIndex()
+            .data(static_cast<int>(Ring::Role::Object)).value<Account*>();
 
     if (!contactLineText.isNull() && !contactLineText.isEmpty()){
         if (uriNeedNameLookup(uri_passed)){
-            NameDirectory::instance().lookupName(nullptr, QString(), uri_passed);
+            NameDirectory::instance().lookupName(ac, QString(), uri_passed);
         } else {
             searchContactLineEditEntry(uri_passed);
         }
@@ -676,7 +682,7 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
     Q_UNUSED(previous)
 
     if (current.isValid()) {
-        auto ac = AccountModel::instance().getAccountByModelIndex(current);
+        auto ac = current.data(static_cast<int>(Account::Role::Object)).value<Account*>();
 
         // First, we get back to the welcome view
         if (ui->stackedWidget->currentWidget() != ui->welcomePage) {
@@ -702,6 +708,10 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
         ui->contactReqList->setModel(ac->pendingContactRequestModel());
         crListSelectionConnection_ = connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::contactReqListCurrentChanged);
+
+        // We modify the currentAccountWidget to reflect the new selected account
+        // if the event wasn't triggered by this widget
+        ui->currentAccountWidget->changeSelectedIndex(current.row());
     }
 }
 
