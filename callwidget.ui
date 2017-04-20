@@ -343,6 +343,9 @@
                    <property name="headerHidden">
                     <bool>true</bool>
                    </property>
+                   <attribute name="headerMinimumSectionSize">
+                    <number>0</number>
+                   </attribute>
                   </widget>
                  </item>
                 </layout>
@@ -368,7 +371,20 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QListView" name="contactReqList"/>
+                  <widget class="ContactRequestListWidget" name="contactRequestList">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="rootIsDecorated">
+                    <bool>false</bool>
+                   </property>
+                   <attribute name="headerVisible">
+                    <bool>false</bool>
+                   </attribute>
+                   <attribute name="headerMinimumSectionSize">
+                    <number>0</number>
+                   </attribute>
+                  </widget>
                  </item>
                 </layout>
                </widget>
@@ -1793,6 +1809,11 @@
    <extends>QWidget</extends>
    <header>contactrequestwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ContactRequestListWidget</class>
+   <extends>QTreeView</extends>
+   <header>contactrequestlistwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>
