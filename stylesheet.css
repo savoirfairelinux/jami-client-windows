@@ -428,6 +428,36 @@ QPushButton#generalTabButton, QPushButton#videoTabButton, QPushButton#accountTab
     padding: 2px;
 }
 
+QPushButton#quickValidCRBtn, QPushButton#quickMuteCRBtn, QPushButton#quickBanCRBtn{
+    border-radius: 2px;
+    height:25px;
+    width:25px;
+    margin: 2px 2px 2px 2px;
+    text-align: center;
+    font: 10pt "FontAwesome";
+}
+
+QPushButton#quickValidCRBtn{
+    background-color: #66cc00;
+}
+QPushButton#quickValidCRBtn:hover{
+    background-color: #80ff00;
+}
+
+QPushButton#quickMuteCRBtn{
+    background-color: #ff9933;
+}
+QPushButton#quickMuteCRBtn:hover{
+    background-color: #ffb366;
+}
+
+QPushButton#quickBanCRBtn{
+    background-color: #ff3333;
+}
+QPushButton#quickBanCRBtn:hover{
+    background-color: #ff6666;
+}
+
 QTabBar::tab{
     background: transparent;
     color: rgb(77, 77, 77);
