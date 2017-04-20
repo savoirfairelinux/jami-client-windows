@@ -14,12 +14,11 @@ class ContactRequestListWidget : public QTreeView
 public:
     explicit ContactRequestListWidget(QWidget *parent = 0);
     ~ContactRequestListWidget();
-
     void setItemModel(QAbstractItemModel *model);
 
 private:
     Ui::ContactRequestListWidget *ui;
-    QModelIndex hoveredCRIndex_;
+    QPersistentModelIndex hoveredCRIndex_;
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
     bool eventFilter(QObject *watched, QEvent *event);
