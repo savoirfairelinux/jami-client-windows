@@ -33,6 +33,7 @@
 #undef ERROR
 #undef interface
 
+//LRC
 #include "audio/settings.h"
 #include "accountmodel.h"
 #include "personmodel.h"
@@ -48,7 +49,12 @@
 #include "globalinstances.h"
 #include <availableaccountmodel.h>
 #include "pendingcontactrequestmodel.h"
+#include "profilemodel.h"
+#include "profile.h"
+#include "peerprofilecollection.h"
+#include "localprofilecollection.h"
 
+//Client
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
@@ -60,10 +66,6 @@
 #include "settingskey.h"
 #include "contactrequestitemdelegate.h"
 
-#include "profilemodel.h"
-#include "profile.h"
-#include "peerprofilecollection.h"
-#include "localprofilecollection.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -114,6 +116,8 @@ CallWidget::CallWidget(QWidget* parent) :
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
 
+        ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
+
         findRingAccount();
         setupOutOfCallIM();
         setupSmartListMenu();
@@ -152,8 +156,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
         connect(AvailableAccountModel::instance().selectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::selectedAccountChanged);
-
-        ui->contactReqList->setItemDelegate(new ContactRequestItemDelegate());
 
         // It needs to be called manually once to initialize the ui with the account selected at start.
         // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
@@ -701,12 +703,12 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
         // Then, we update the pending CR list with those from the newly selected account
         if (disconnect(crListSelectionConnection_)) {
             // The selection model must be deleted by the application (see QT doc).
-            QItemSelectionModel* sMod = ui->contactReqList->selectionModel();
+            QItemSelectionModel* sMod = ui->contactRequestList->selectionModel();
             delete sMod;
         }
 
-        ui->contactReqList->setModel(ac->pendingContactRequestModel());
-        crListSelectionConnection_ = connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
+        ui->contactRequestList->setItemModel(ac->pendingContactRequestModel());
+        crListSelectionConnection_ = connect(ui->contactRequestList->selectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::contactReqListCurrentChanged);
 
         // Smartlist filter is refreshed to filter out CMs not linked to the new selected account
@@ -910,7 +912,7 @@ CallWidget::on_sendCRBackButton_clicked()
 void
 CallWidget::on_pendingCRBackButton_clicked()
 {
-    ui->contactReqList->selectionModel()->clear();
+    ui->contactRequestList->selectionModel()->clear();
     slidePage(ui->welcomePage);
 }
 
