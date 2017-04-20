@@ -75,7 +75,8 @@ SOURCES += main.cpp\
     sendcontactrequestwidget.cpp \
     currentaccountwidget.cpp \
     contactrequestwidget.cpp \
-    contactrequestitemdelegate.cpp
+    contactrequestitemdelegate.cpp \
+    quickactcontactrequestwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -114,7 +115,8 @@ HEADERS  += mainwindow.h \
     sendcontactrequestwidget.h \
     currentaccountwidget.h \
     contactrequestwidget.h \
-    contactrequestitemdelegate.h
+    contactrequestitemdelegate.h \
+    quickactcontactrequestwidget.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -140,7 +142,8 @@ FORMS    += mainwindow.ui \
     photoboothdialog.ui \
     sendcontactrequestwidget.ui \
     currentaccountwidget.ui \
-    contactrequestwidget.ui
+    contactrequestwidget.ui \
+    quickactcontactrequestwidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 LIBS += -lqrencode
