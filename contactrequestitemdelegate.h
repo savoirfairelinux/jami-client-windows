@@ -30,7 +30,8 @@ protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-private:
+// Form factor constants
+public:
     constexpr static int cellHeight_ = 60;
     constexpr static int sizeImage_ = 48;
     constexpr static int dxImage_ = 16;
