@@ -54,7 +54,7 @@ QScrollBar::handle:vertical, QScrollBar::handle:horizontal{
     background: rgb(255, 255, 255);
 }
 
-SmartList{
+SmartList, ContactRequestListWidget{
     background-color: white;
     border: none;
 }
@@ -112,13 +112,13 @@ QListView#contactReqList
 }
 
 SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
-QListView#contactReqList::item:selected{
+QTreeView#contactRequestList::item:selected{
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
 SmartList::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
-QListView#contactReqList::item:hover{
+QTreeView#contactRequestList::item:hover{
     background-color: rgba(242, 242, 242, 255);
 }
 
