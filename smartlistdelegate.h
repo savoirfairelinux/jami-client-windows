@@ -40,10 +40,5 @@ private:
     constexpr static int dy_ = 6;
     constexpr static int dx_ = 12;
     constexpr static int fontSize_ = 10;
-    constexpr static int pinSize_ = 12;
     constexpr static int effectiveComBarSize_ = 48;
-    int rowHighlighted_ = -1;
-
-signals:
-    void rowSelected(const QRect& rect) const;
 };
