@@ -615,6 +615,7 @@ CallWidget::searchContactLineEditEntry(const URI &uri)
     RecentModel::instance().selectionModel()->setCurrentIndex(RecentModel::instance().getIndex(cm),
                                                               QItemSelectionModel::ClearAndSelect);
     ui->ringContactLineEdit->clear();
+    cm->setAccount(AvailableAccountModel::instance().currentDefaultAccount(cm));
 }
 
 bool
@@ -643,8 +644,7 @@ CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
     URI uri_passed = URI(contactLineText);
-    Account* ac = AvailableAccountModel::instance().selectionModel()->currentIndex()
-            .data(static_cast<int>(Ring::Role::Object)).value<Account*>();
+    Account* ac = getSelectedAccount();
 
     if (!contactLineText.isNull() && !contactLineText.isEmpty()){
         if (uriNeedNameLookup(uri_passed)){
@@ -909,4 +909,15 @@ CallWidget::on_pendingCRBackButton_clicked()
 {
     ui->contactReqList->selectionModel()->clear();
     slidePage(ui->welcomePage);
+}
+
+Account*
+CallWidget::getSelectedAccount()
+{
+    auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
+    if (idx.isValid()) {
+        auto ac = idx.data(static_cast<int>(Ring::Role::Object)).value<Account*>();
+        return ac;
+    }
+    return nullptr;
 }
