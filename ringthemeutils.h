@@ -26,5 +26,6 @@ static const QColor lightGrey_ {242, 242, 242};
 static const QColor lightBlack_ {63, 63, 63};
 static const QColor grey_ {192, 192, 192};
 static const QColor red_ {251, 72, 71};
+static const QColor green_ {127, 255, 0};
 
 }
