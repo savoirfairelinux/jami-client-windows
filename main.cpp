@@ -30,6 +30,7 @@
 #include <QThread>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QFontDatabase>
 
 
 #ifdef Q_OS_WIN
@@ -160,6 +161,8 @@ main(int argc, char *argv[])
         delete sem;
     });
 #endif
+
+    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
     return a.exec();
 }
