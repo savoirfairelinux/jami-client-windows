@@ -40,5 +40,6 @@
         <file>images/qrcode.png</file>
         <file>images/icons/ic_share_black_48dp_2x.png</file>
         <file>images/loading.gif</file>
+        <file>images/FontAwesome.otf</file>
     </qresource>
 </RCC>
