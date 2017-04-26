@@ -42,6 +42,7 @@ signals:
 private slots:
     void on_acceptCRButton_clicked();
     void on_discardCRButton_clicked();
+    void on_blockCRButton_clicked();
 
 private:
     Ui::ContactRequestWidget *ui;
