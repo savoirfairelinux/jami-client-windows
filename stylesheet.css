@@ -304,6 +304,13 @@ QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#di
     font: 14px;
 }
 
+QPushButton#blockCRButton{
+    background-color: rgb(251, 72, 71);
+    border: 0px;
+    color: white;
+    font: 14px;
+}
+
 QPushButton#nextButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
 QPushButton#checkUpdateButton:hover, QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
 QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
@@ -315,6 +322,11 @@ QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QP
     background-color: #4dc6d6;
 }
 
+QPushButton#blockCRButton:hover{
+    background-color: rgb(252, 91, 90);
+}
+
+
 QPushButton#nextButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
 QPushButton#checkUpdateButton:pressed, QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
 QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
@@ -324,6 +336,9 @@ QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QP
 QPushButton#registerButton:pressed, QPushButton#sendContactRequestPageButton:pressed,
 QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed{
     background-color: #34acbd;
+}
+QPushButton#blockCRButton:pressed{
+    background-color: rgb(219, 55, 54);
 }
 
 QLineEdit#usernameEdit:enabled, QLineEdit#passwordEdit:enabled, QLineEdit#confirmPasswordEdit:enabled,

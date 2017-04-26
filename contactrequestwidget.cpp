@@ -60,3 +60,12 @@ void ContactRequestWidget::on_discardCRButton_clicked()
     setCurrentContactRequest(nullptr);
     emit choiceMade();
 }
+
+void ContactRequestWidget::on_blockCRButton_clicked()
+{
+    if (cr_ != nullptr) {
+        cr_->block();
+    }
+    setCurrentContactRequest(nullptr);
+    emit choiceMade();
+}
