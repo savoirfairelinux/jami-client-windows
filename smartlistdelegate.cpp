@@ -22,11 +22,15 @@
 #include <QSortFilterProxyModel>
 #include <QPainter>
 #include <QPixmap>
+#include <QDebug>
 
+// LRC
 #include "itemdataroles.h"
 #include "person.h"
 #include "recentmodel.h"
 #include "call.h"
+
+// Client
 #include "combar.h"
 
 #include "ringthemeutils.h"
@@ -129,7 +133,7 @@ SmartListDelegate::paint(QPainter* painter
                         rect.width(),
                         rect.height() / 2);
 
-        // The name is displayed at the avatar's left
+        // The name is displayed at the avatar's right
         QVariant name = index.data(static_cast<int>(Ring::Role::Name));
         if (name.isValid())
         {
@@ -140,22 +144,44 @@ SmartListDelegate::paint(QPainter* painter
             QFontMetrics fontMetrics(font);
             QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight
                                                                     , rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
-            painter->drawText(rectTexts, Qt::AlignBottom | Qt::AlignLeft, nameStr);
+            painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
+        }
+
+        // Display the ID under the name
+        QString idStr = index.data(static_cast<int>(Person::Role::IdOfLastCMUsed)).value<QString>();
+        pen.setColor(RingTheme::grey_);
+        painter->setPen(pen);
+        font.setItalic(true);
+        font.setBold(false);
+        painter->setFont(font);
+        QFontMetrics fontMetrics(font);
+        if (!idStr.isNull()){
+            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                                    rect.top() + rect.height()/7,
+                                    rect.width(),
+                                    rect.height()/2),
+                              Qt::AlignBottom | Qt::AlignLeft, idStr);
+
+        } else {
+            qDebug() << "This is not a Person";
         }
 
         // Finally, either last interaction date or call state is displayed
         QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
+        font.setItalic(false);
         font.setBold(false);
         painter->setFont(font);
         rectTexts.moveTop(cellHeight_/2);
         if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
         {
             painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                               rect.top() + rect.height()/2,
-                               rect.width(), rect.height()/2),
-                               Qt::AlignTop | Qt::AlignLeft, state.toString());
+                                    rect.top() + rect.height()/2,
+                                    rect.width(),
+                                    rect.height()/2),
+                                Qt::AlignLeft | Qt::AlignVCenter, state.toString());
         }
         else
         {
@@ -163,9 +189,10 @@ SmartListDelegate::paint(QPainter* painter
             if (lastUsed.isValid())
             {
                 painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                   rect.top() + rect.height()/2,
-                                   rect.width(), rect.height()/2),
-                                   Qt::AlignTop | Qt::AlignLeft, lastUsed.toString());
+                                        rect.top() + rect.height()/2,
+                                        rect.width(),
+                                        rect.height()/2),
+                                  Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
             }
         }
     }
