@@ -91,8 +91,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->qrLabel->hide();
 
-    GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
-
     try {
         callModel_ = &CallModel::instance();
 
@@ -580,8 +578,7 @@ CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QM
 {
     Q_UNUSED(previousIdx)
 
-    ContactRequest* cr = currentIdx.data((int)Ring::Role::Object).value<ContactRequest*>();
-    ui->contactRequestWidget->setCurrentContactRequest(cr);
+    ui->contactRequestWidget->setCurrentContactRequest(currentIdx);
     ui->stackedWidget->setCurrentWidget(ui->contactRequestPage);
 }
 
