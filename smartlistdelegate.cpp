@@ -98,6 +98,16 @@ SmartListDelegate::paint(QPainter* painter
         painter->drawText(pastilleRect, Qt::AlignCenter, messageCountText);
     }
 
+    // Presence indicator
+    QPainterPath outerCircle, innerCircle;
+    QPointF center(rectAvatar.left() + sizeImage_/6, (rectAvatar.bottom() - sizeImage_/6) + 1);
+    qreal outerCRadius = sizeImage_ / 6, innerCRadius = outerCRadius * 0.75;
+    outerCircle.addEllipse(center, outerCRadius, outerCRadius);
+    innerCircle.addEllipse(center, innerCRadius, innerCRadius);
+    if (index.data(static_cast<int>(Ring::Role::IsPresent)).value<bool>()) {
+        painter->fillPath(outerCircle, Qt::white);
+        painter->fillPath(innerCircle, RingTheme::green_);
+    }
     font.setPointSize(fontSize_);
     QPen pen(painter->pen());
 
