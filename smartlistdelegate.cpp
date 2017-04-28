@@ -107,7 +107,26 @@ SmartListDelegate::paint(QPainter* painter
     if (index.data(static_cast<int>(Ring::Role::IsPresent)).value<bool>()) {
         painter->fillPath(outerCircle, Qt::white);
         painter->fillPath(innerCircle, RingTheme::green_);
+
+        QFont fontSymbol("FontAwesome", 8);
+        painter->setFont(fontSymbol);
+
+        // Draw a check mark in the circle
+        painter->setPen(Qt::white);
+        painter->drawText(center.x()-5, center.y()+4, ""); // Fontawesome 0xF00C unicode char
+    } else {
+        painter->fillPath(outerCircle, RingTheme::red_);
+        painter->fillPath(innerCircle, Qt::white);
+
+        QFont fontSymbol("FontAwesome", 9);
+        painter->setFont(fontSymbol);
+
+        // Draw a cross in the circle
+        painter->setPen(RingTheme::red_);
+        painter->drawText(center.x()-5, center.y()+4, ""); // Fontawesome 0xF00D unicode char
     }
+    painter->setFont(font);
+
     font.setPointSize(fontSize_);
     QPen pen(painter->pen());
 
