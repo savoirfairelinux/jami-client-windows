@@ -709,9 +709,6 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
         crListSelectionConnection_ = connect(ui->contactReqList->selectionModel(), &QItemSelectionModel::currentChanged,
                 this, &CallWidget::contactReqListCurrentChanged);
 
-        // Smartlist filter is refreshed to filter out CMs not linked to the new selected account
-        RecentModel::instance().peopleProxy()->setFilterRegExp("");
-
         // We modify the currentAccountWidget to reflect the new selected account
         // if the event wasn't triggered by this widget
         ui->currentAccountWidget->changeSelectedIndex(current.row());
