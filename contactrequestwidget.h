@@ -34,7 +34,7 @@ class ContactRequestWidget : public QWidget
 public:
     explicit ContactRequestWidget(QWidget *parent = 0);
     ~ContactRequestWidget();
-    void setCurrentContactRequest(ContactRequest* cr);
+    void setCurrentContactRequest(const QModelIndex &current);
 
 signals:
     void choiceMade();
