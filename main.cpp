@@ -25,7 +25,8 @@
 #include "media/video.h"
 #include "media/text.h"
 #include "media/file.h"
-
+#include "globalinstances.h"
+#include "pixbufmanipulator.h"
 
 #include <QThread>
 #include <QTranslator>
@@ -66,6 +67,8 @@ main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication a(argc, argv);
+
+    GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
 
     auto startMinimized = false;
     QString uri = "";

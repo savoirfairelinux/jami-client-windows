@@ -22,6 +22,8 @@
 #include "accountmodel.h"
 #include "pendingcontactrequestmodel.h"
 #include "contactrequest.h"
+#include "globalinstances.h"
+#include "pixmapmanipulatordefault.h"
 
 #include <QPainter>
 #include <QApplication>
@@ -71,13 +73,11 @@ ContactRequestItemDelegate::paint(QPainter* painter
 
     painter->drawText(rectText,text);
 
-    // Draw a picture
-    // TODO: Draw the incoming CR picture if part of the payload
+    // Draw the picture from the vCard
     QRect rectPic(opt.rect.left() + dxImage_, opt.rect.top() + dyImage_, sizeImage_, sizeImage_);
-    drawDecoration(painter, opt, rectPic,
-                   QPixmap::fromImage(QImage(":/images/user/btn-default-userpic.svg").scaled(QSize(sizeImage_, sizeImage_),
-                                                                                             Qt::KeepAspectRatio,
-                                                                                             Qt::SmoothTransformation)));
+    auto cr = index.data(static_cast<int>(Ring::Role::Object)).value<ContactRequest*>();
+    auto photo = GlobalInstances::pixmapManipulator().contactPhoto(cr->peer(), QSize(sizeImage_, sizeImage_), false);
+    drawDecoration(painter, opt, rectPic, QPixmap::fromImage(photo.value<QImage>()));
 
     // Draw separator when item is not selected
     if (not (opt.state & QStyle::State_Selected)) {

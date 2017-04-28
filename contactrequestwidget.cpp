@@ -19,6 +19,11 @@
 
 #include "contactrequestwidget.h"
 #include "ui_contactrequestwidget.h"
+#include "person.h"
+#include "pendingcontactrequestmodel.h"
+#include "itemdataroles.h"
+#include "globalinstances.h"
+#include "pixmapmanipulatordefault.h"
 
 ContactRequestWidget::ContactRequestWidget(QWidget *parent) :
     QWidget(parent),
@@ -33,12 +38,20 @@ ContactRequestWidget::~ContactRequestWidget()
 }
 
 void
-ContactRequestWidget::setCurrentContactRequest(ContactRequest *cr)
+ContactRequestWidget::setCurrentContactRequest(const QModelIndex &current)
 {
-    cr_ = cr;
-    if (cr_ != nullptr) {
-        QString remoteId = QString::fromLocal8Bit(cr_->roleData(Qt::DisplayRole).value<QByteArray>());
-        ui->remoteIdLabel->setText(QString("Current ContactRequest: %1").arg(remoteId));
+    if (current.isValid()) {
+        auto bestId = current.data().value<QString>();
+        cr_ = current.data(static_cast<int>(Ring::Role::Object)).value<ContactRequest*>();
+        auto formattedName = current.model()->index(current.row(), PendingContactRequestModel::Columns::FORMATTED_NAME).data().value<QString>();
+        ui->nameLabel->setText(formattedName);
+        ui->bestIdLabel->setText(bestId);
+        auto photo = GlobalInstances::pixmapManipulator().contactPhoto(cr_->peer(), QSize(96, 96), false);
+
+        if(photo.isValid())
+            ui->pictureLabel->setPixmap(QPixmap::fromImage(photo.value<QImage>()));
+    } else {
+        cr_ = nullptr;
     }
 }
 
@@ -48,7 +61,7 @@ ContactRequestWidget::on_acceptCRButton_clicked()
     if (cr_ != nullptr) {
         cr_->accept();
     }
-    setCurrentContactRequest(nullptr);
+    setCurrentContactRequest(QModelIndex());
     emit choiceMade();
 }
 
@@ -57,7 +70,7 @@ void ContactRequestWidget::on_discardCRButton_clicked()
     if (cr_ != nullptr) {
         cr_->discard();
     }
-    setCurrentContactRequest(nullptr);
+    setCurrentContactRequest(QModelIndex());
     emit choiceMade();
 }
 
@@ -66,6 +79,6 @@ void ContactRequestWidget::on_blockCRButton_clicked()
     if (cr_ != nullptr) {
         cr_->block();
     }
-    setCurrentContactRequest(nullptr);
+    setCurrentContactRequest(QModelIndex());
     emit choiceMade();
 }
