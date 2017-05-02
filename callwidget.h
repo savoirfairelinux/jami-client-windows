@@ -130,4 +130,5 @@ private:
     bool uriNeedNameLookup(const URI uri_passed);
     void processContactLineEdit();
     static Account* getSelectedAccount();
+    void backToWelcomePage();
 };

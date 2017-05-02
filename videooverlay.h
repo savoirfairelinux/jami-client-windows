@@ -56,6 +56,8 @@ private slots:
     void on_qualityButton_clicked();
     void on_addToContactButton_clicked();
     void on_recButton_clicked();
+    void on_videoBackBtn_clicked();
+    void on_videoCfgBtn_clicked();
 
 private:
     Ui::VideoOverlay* ui;
@@ -66,5 +68,7 @@ private:
 
 signals:
     void setChatVisibility(bool visible);
+    void videoBackBtnClicked();
+    void videoCfgBtnClicked();
 };
 

@@ -65,6 +65,8 @@ VideoView::VideoView(QWidget* parent) :
     connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
         emit this->setChatVisibility(visible);
     });
+    connect(overlay_, &VideoOverlay::videoCfgBtnClicked, [=](){emit videoSettingsClicked();});
+    connect(overlay_, &VideoOverlay::videoBackBtnClicked, [=](){emit videoBackClicked();});
 }
 
 VideoView::~VideoView()
