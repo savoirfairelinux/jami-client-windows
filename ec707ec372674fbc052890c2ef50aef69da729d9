@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_88769705",
+        "filename": "callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2017-05-02T20:03:54Z",
+      "side": 1,
+      "message": "Should be in setActualCall IMHO. Going back to welcome page (or conversation) is probably what we always want to do when actualCall_ become nullptr",
+      "range": {
+        "startLine": 171,
+        "startChar": 68,
+        "endLine": 171,
+        "endChar": 88
+      },
+      "revId": "ec707ec372674fbc052890c2ef50aef69da729d9",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
