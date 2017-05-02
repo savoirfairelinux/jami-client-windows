@@ -53,6 +53,7 @@
 #include "profile.h"
 #include "peerprofilecollection.h"
 #include "localprofilecollection.h"
+#include "callmodel.h"
 
 //Client
 #include "wizarddialog.h"
@@ -164,6 +165,10 @@ CallWidget::CallWidget(QWidget* parent) :
         // This connect() is used to initialise and track changes of profile's picture
         connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
                 ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
+
+        connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
+        connect(ui->videoWidget, &VideoView::videoBackClicked, [=]{setActualCall(nullptr);
+                                                                    backToWelcomePage();});
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -541,17 +546,21 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
     //catch call of current index
     auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
 
-    if (currentIdxCall && currentIdxCall != actualCall_) { //if it is different from actual call, switch between the two
-        setActualCall(currentIdxCall);
-    } else if (currentIdxCall == nullptr){ // if there is no call attached to this smartlist index (contact tab)
+    if (currentIdxCall) {
+        if (currentIdxCall != actualCall_) //if it is different from actual call, switch between the two
+            setActualCall(currentIdxCall);
+    } else { // if there is no call attached to this smartlist index (contact tab)
         setActualCall(nullptr);
         showIMOutOfCall(currentIdx); // change page to contact request of messaging page with correct behaviour
-    } else { // if non defined behaviour disconnect instant messaging and return to welcome page
+    }
+    /*
+    else { // if non defined behaviour disconnect instant messaging and return to welcome page
         setActualCall(nullptr);
         if (imConnection_)
             disconnect(imConnection_);
         ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
+    */
 }
 
 void
@@ -686,8 +695,10 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
     if (current.isValid()) {
         auto ac = current.data(static_cast<int>(Account::Role::Object)).value<Account*>();
 
-        // First, we get back to the welcome view
-        if (ui->stackedWidget->currentWidget() != ui->welcomePage) {
+        // First, we get back to the welcome view (except if in call)
+
+        if (ui->stackedWidget->currentWidget() != ui->videoPage &&
+            ui->stackedWidget->currentWidget() != ui->welcomePage) {
             slidePage(ui->welcomePage);
         }
 
@@ -705,6 +716,8 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
             // The selection model must be deleted by the application (see QT doc).
             QItemSelectionModel* sMod = ui->contactRequestList->selectionModel();
             delete sMod;
+            RecentModel::instance().selectionModel()->clear();
+            slidePage(ui->welcomePage);
         }
 
         ui->contactRequestList->setItemModel(ac->pendingContactRequestModel());
@@ -714,6 +727,11 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
         // We modify the currentAccountWidget to reflect the new selected account
         // if the event wasn't triggered by this widget
         ui->currentAccountWidget->changeSelectedIndex(current.row());
+
+        if (actualCall_){
+            // keep call on foreground
+            callStateToView(actualCall_);
+        }
     }
 }
 
@@ -815,10 +833,16 @@ CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 }
 
 void
-CallWidget::on_imBackButton_clicked()
+CallWidget::backToWelcomePage()
 {
     RecentModel::instance().selectionModel()->clear();
     slidePage(ui->welcomePage);
+}
+
+void
+CallWidget::on_imBackButton_clicked()
+{
+    backToWelcomePage();
 }
 
 void

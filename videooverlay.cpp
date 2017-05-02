@@ -211,3 +211,13 @@ VideoOverlay::on_recButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::RECORD);
 }
+
+void VideoOverlay::on_videoBackBtn_clicked()
+{
+    emit videoBackBtnClicked();
+}
+
+void VideoOverlay::on_videoCfgBtn_clicked()
+{
+    emit videoCfgBtnClicked();
+}

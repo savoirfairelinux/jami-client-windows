@@ -76,5 +76,7 @@ private:
     void toggleFullScreen();
 signals:
     void setChatVisibility(bool visible);
+    void videoSettingsClicked();
+    void videoBackClicked();
 };
 
