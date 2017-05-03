@@ -834,6 +834,7 @@ CallWidget::backToWelcomePage()
 {
     RecentModel::instance().selectionModel()->clear();
     slidePage(ui->welcomePage);
+    disconnect(imConnection_);
 }
 
 void
