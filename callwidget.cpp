@@ -816,6 +816,7 @@ CallWidget::on_imBackButton_clicked()
 {
     RecentModel::instance().selectionModel()->clear();
     slidePage(ui->welcomePage);
+    disconnect(imConnection_);
 }
 
 void
