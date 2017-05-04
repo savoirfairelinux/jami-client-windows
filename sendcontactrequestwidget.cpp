@@ -23,6 +23,7 @@
 #include "ui_sendcontactrequestwidget.h"
 #include "account.h"
 #include "accountmodel.h"
+#include "availableaccountmodel.h"
 #include "recentmodel.h"
 #include "contactmethod.h"
 #include "phonedirectorymodel.h"
@@ -63,8 +64,10 @@ void SendContactRequestWidget::sendCR(const QModelIndex& nodeIdx)
         cm->account()->sendContactRequest(cm);
     } else {
         qDebug() << "no account linked to contact method";
-        cm->setAccount(AccountModel::instance().userChosenAccount());
-        cm->account()->sendContactRequest(cm);
+        auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
+        if (idx.isValid()) {
+            cm->setAccount(idx.data(static_cast<int>(Ring::Role::Object)).value<Account*>());
+            cm->account()->sendContactRequest(cm);
+        }
     }
-    //emit sendCRclicked();
 }
