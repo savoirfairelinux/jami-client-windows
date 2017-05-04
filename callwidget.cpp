@@ -135,8 +135,11 @@ CallWidget::CallWidget(QWidget* parent) :
                         auto idx = selected.indexes().first();
                         auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
                         ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
-                    } else
+                    } else {
+                        RecentModel::instance().selectionModel()->clearCurrentIndex();
                         ui->smartList->clearSelection();
+                        ui->smartList->selectionModel()->clearCurrentIndex();
+                    }
                 });
 
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
@@ -538,8 +541,12 @@ void
 CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
 {
     Q_UNUSED(previousIdx);
-    if (not currentIdx.isValid())
+    if (not currentIdx.isValid()) {
+        auto widget = ui->stackedWidget->currentWidget();
+        if (widget == ui->messagingPage || widget == ui->videoPage)
+            slidePage(ui->welcomePage);
         return;
+    }
 
     //catch call of current index
     auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
@@ -587,8 +594,14 @@ CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QM
 {
     Q_UNUSED(previousIdx)
 
-    ui->contactRequestWidget->setCurrentContactRequest(currentIdx);
-    ui->stackedWidget->setCurrentWidget(ui->contactRequestPage);
+    if (currentIdx.isValid()) {
+        ui->contactRequestWidget->setCurrentContactRequest(currentIdx);
+        ui->stackedWidget->setCurrentWidget(ui->contactRequestPage);
+    } else {
+        ui->contactRequestWidget->setCurrentContactRequest(QModelIndex());
+        if (ui->stackedWidget->currentWidget() == ui->contactRequestPage)
+            slidePage(ui->welcomePage);
+    }
 }
 
 void
@@ -710,11 +723,11 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
 
         // Then, we update the pending CR list with those from the newly selected account
         if (disconnect(crListSelectionConnection_)) {
+            ui->contactRequestList->selectionModel()->clear();
             // The selection model must be deleted by the application (see QT doc).
             QItemSelectionModel* sMod = ui->contactRequestList->selectionModel();
             delete sMod;
             RecentModel::instance().selectionModel()->clear();
-            slidePage(ui->welcomePage);
         }
 
         ui->contactRequestList->setItemModel(ac->pendingContactRequestModel());
@@ -833,7 +846,6 @@ void
 CallWidget::backToWelcomePage()
 {
     RecentModel::instance().selectionModel()->clear();
-    slidePage(ui->welcomePage);
     disconnect(imConnection_);
 }
 
@@ -925,14 +937,13 @@ CallWidget::on_sendContactRequestPageButton_clicked()
 void
 CallWidget::on_sendCRBackButton_clicked()
 {
-    slidePage(ui->messagingPage);
+    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
 }
 
 void
 CallWidget::on_pendingCRBackButton_clicked()
 {
     ui->contactRequestList->selectionModel()->clear();
-    slidePage(ui->welcomePage);
 }
 
 Account*
@@ -944,4 +955,16 @@ CallWidget::getSelectedAccount()
         return ac;
     }
     return nullptr;
+}
+
+void CallWidget::on_mainTabMenu_currentChanged(int index)
+{
+    Q_UNUSED(index)
+
+    auto current = ui->mainTabMenu->currentWidget();
+
+    if(current == ui->mainTabMenuPage1)
+        ui->contactRequestList->selectionModel()->clear();
+    else if (current == ui->mainTabMenuPage2)
+        RecentModel::instance().selectionModel()->clear();
 }

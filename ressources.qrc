@@ -41,5 +41,7 @@
         <file>images/icons/ic_share_black_48dp_2x.png</file>
         <file>images/loading.gif</file>
         <file>images/FontAwesome.otf</file>
+        <file>images/icons/ic_chat_black_24dp_2x.png</file>
+        <file>images/icons/ic_person_add_black_24dp_2x.png</file>
     </qresource>
 </RCC>
