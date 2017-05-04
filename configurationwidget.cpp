@@ -60,6 +60,8 @@
 
 #include "winsparkle.h"
 
+#include "deleteaccountdialog.h"
+
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
@@ -78,13 +80,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         accountDetails_->save();
     });
 
-    connect(accountDetails_->getDeleteAccountButton(), &QPushButton::clicked, this, [=]() {
-        auto account = accountModel_->getAccountByModelIndex(
-                    ui->accountView->currentIndex());
-        accountModel_->remove(account);
-        accountModel_->save();
-    });
-
     connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
         emit NavigationRequested(ScreenEnum::CallScreen);
     });
@@ -92,6 +87,13 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     ui->accountView->setModel(accountModel_);
     accountStateDelegate_ = new AccountStateDelegate();
     ui->accountView->setItemDelegate(accountStateDelegate_);
+
+    // connect delete button to popup trigger
+    connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
+        auto idx = ui->accountView->currentIndex();
+        DeleteAccountDialog dialog(idx);
+        dialog.exec();
+    });
 
     isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);

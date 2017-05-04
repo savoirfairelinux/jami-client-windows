@@ -94,8 +94,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>843</width>
-            <height>692</height>
+            <width>829</width>
+            <height>756</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -103,38 +103,6 @@
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
-               <item>
-                <widget class="QPushButton" name="deleteAccountButton">
-                 <property name="minimumSize">
-                  <size>
-                   <width>30</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>30</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                 <property name="toolTip">
-                  <string>delete account</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="ressources.qrc">
-                   <normaloff>:/images/icons/ic_delete_black_18dp_2x.png</normaloff>:/images/icons/ic_delete_black_18dp_2x.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>24</width>
-                   <height>24</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
                <item>
                 <widget class="QLabel" name="accountLabel">
                  <property name="sizePolicy">
@@ -1170,8 +1138,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>809</width>
-            <height>930</height>
+            <width>811</width>
+            <height>956</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -2027,8 +1995,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>827</width>
-            <height>907</height>
+            <width>829</width>
+            <height>923</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_13">
