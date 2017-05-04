@@ -457,7 +457,6 @@ QPushButton#quickBanCRBtn:hover{
 }
 
 QTabBar::tab{
-    background: transparent;
     color: rgb(77, 77, 77);
     border-radius: 0px;
     border-style: solid;
@@ -472,9 +471,22 @@ QTabBar::tab{
     height: 20px;
 }
 
+QTabWidget#mainTabMenu QTabBar::tab {
+    height: 24px;
+    width: auto;
+    padding-left: 14px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+QTabWidget#mainTabMenu QTabBar::tab:hover {
+    background-color: rgb(242, 242, 242);
+}
+
 QTabWidget::tab-bar{
     alignment: center;
 }
+
 QTabBar QToolButton{
     height: 9;
     width : 9;

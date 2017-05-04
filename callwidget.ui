@@ -306,8 +306,21 @@
                <property name="currentIndex">
                 <number>0</number>
                </property>
-               <widget class="QWidget" name="mainTabMenuPage1_2">
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <widget class="QWidget" name="mainTabMenuPage1">
+                <attribute name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_chat_black_24dp_2x.png</normaloff>:/images/icons/ic_chat_black_24dp_2x.png</iconset>
+                </attribute>
                 <attribute name="title">
+                 <string/>
+                </attribute>
+                <attribute name="toolTip">
                  <string>Conversations</string>
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -351,8 +364,15 @@
                 </layout>
                </widget>
                <widget class="QWidget" name="mainTabMenuPage2">
+                <attribute name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
+                </attribute>
                 <attribute name="title">
-                 <string>Contact Requests</string>
+                 <string/>
+                </attribute>
+                <attribute name="toolTip">
+                 <string>Contact requests</string>
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
                  <property name="spacing">
