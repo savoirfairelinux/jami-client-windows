@@ -87,6 +87,7 @@ private:
     AccountStateDelegate *accountStateDelegate_;
     QSettings settings_;
     QErrorMessage errorDlg_;
+
     void showPreview();
 };
 

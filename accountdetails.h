@@ -41,7 +41,6 @@ public:
     explicit AccountDetails(QWidget* parent = 0);
     ~AccountDetails();
 
-    QPushButton* getDeleteAccountButton();
     void setAccount(Account* currentAccount);
     void save();
 

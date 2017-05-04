@@ -325,12 +325,6 @@ AccountDetails::stopRingtone() {
         RingtoneModel::instance().play(idx);
 }
 
-QPushButton*
-AccountDetails::getDeleteAccountButton()
-{
-    return ui->deleteAccountButton;
-}
-
 void
 AccountDetails::on_addDeviceButton_clicked()
 {
