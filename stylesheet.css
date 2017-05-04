@@ -223,7 +223,7 @@ QToolButton#qrButton:checked {
     background-color: #34acbd;
 }
 
-QPushButton#deleteAccountButton, QToolButton#addAccountButton{
+QPushButton#deleteAccountBtn, QToolButton#addAccountButton{
     background: transparent;
 }
 
@@ -259,7 +259,8 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QDialog#WizardDialog, QWidget#welcomePage, QWidget#sendContactRequestPage{
+QDialog#WizardDialog, QWidget#welcomePage, QWidget#sendContactRequestPage,
+QDialog#DeleteAccountDialog{
     background: rgb(242, 242, 242);
     background-image : url(:/images/background-light.png);
     background-repeat : repeat-x;
@@ -295,14 +296,14 @@ QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoBut
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#sendContactRequestPageButton,
-QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton{
+QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn{
     background-color: #3AC0D2;
     border: 0px;
     color: white;
     font: 14px;
 }
 
-QPushButton#blockCRButton{
+QPushButton#blockCRButton, QPushButton#deleteAcceptBtn{
     background-color: rgb(251, 72, 71);
     border: 0px;
     color: white;
@@ -316,11 +317,12 @@ QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushB
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#sendContactRequestPageButton:hover,
-QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover{
+QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
+QPushButton#deleteCancelBtn:hover{
     background-color: #4dc6d6;
 }
 
-QPushButton#blockCRButton:hover{
+QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover{
     background-color: rgb(252, 91, 90);
 }
 
@@ -332,10 +334,11 @@ QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QP
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
 QPushButton#registerButton:pressed, QPushButton#sendContactRequestPageButton:pressed,
-QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed{
+QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed,
+QPushButton#deleteCancelBtn:pressed{
     background-color: #34acbd;
 }
-QPushButton#blockCRButton:pressed{
+QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed{
     background-color: rgb(219, 55, 54);
 }
 
@@ -629,3 +632,26 @@ QSlider::add-page:vertical{
 QToolButton::menu-button {image:none;}
 
 QToolButton::menu-arrow {image:none;}
+
+QLabel#accountIdLabel, QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2,
+QLabel#warningLabel{
+    background: transparent;
+    font: 11pt "Sans Serif";
+}
+
+QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2{
+    color: black;
+}
+
+QLabel#warningLabel{
+    color: red;
+}
+
+QLabel#accountIdLabel{
+    color: LightSlateGrey;
+    font-style: italic;
+}
+
+QLabel#accountAliasLabel{
+    font-weight: bold;
+}
