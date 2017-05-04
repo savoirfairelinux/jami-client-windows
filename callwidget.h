@@ -83,6 +83,7 @@ private slots:
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
     void on_pendingCRBackButton_clicked();
+    void on_mainTabMenu_currentChanged(int index);
 
 private slots:
     void callIncoming(Call* call);
