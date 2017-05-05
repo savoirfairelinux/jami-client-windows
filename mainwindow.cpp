@@ -174,6 +174,8 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 void
 MainWindow::notificationClicked() {
     showNormal();
+    activateWindow();
+    raise();
 }
 
 void
