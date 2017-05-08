@@ -1124,7 +1124,7 @@
        <item row="0" column="1">
         <layout class="QVBoxLayout" name="accountDetailLayout">
          <property name="bottomMargin">
-          <number>13</number>
+          <number>0</number>
          </property>
         </layout>
        </item>

@@ -107,13 +107,13 @@ QListView#cipherListView::item:disabled
 }
 
 SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
-QTreeView#contactRequestList::item:selected{
+QTreeView#contactRequestList::item:selected, QListView#BannedList::item:selected{
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
 SmartList::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
-QTreeView#contactRequestList::item:hover{
+QTreeView#contactRequestList::item:hover, QListView#BannedList::item:hover{
     background-color: rgba(242, 242, 242, 255);
 }
 
@@ -303,7 +303,7 @@ QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#di
     font: 14px;
 }
 
-QPushButton#blockCRButton, QPushButton#deleteAcceptBtn{
+QPushButton#blockCRButton, QPushButton#deleteAcceptBtn, QPushButton#debanButton{
     background-color: rgb(251, 72, 71);
     border: 0px;
     color: white;
@@ -322,7 +322,7 @@ QPushButton#deleteCancelBtn:hover{
     background-color: #4dc6d6;
 }
 
-QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover{
+QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover, QPushButton#debanButton:hover{
     background-color: rgb(252, 91, 90);
 }
 
@@ -338,7 +338,7 @@ QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed
 QPushButton#deleteCancelBtn:pressed{
     background-color: #34acbd;
 }
-QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed{
+QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed, QPushButton#debanButton:pressed{
     background-color: rgb(219, 55, 54);
 }
 
