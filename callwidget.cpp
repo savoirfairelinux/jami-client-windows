@@ -958,9 +958,9 @@ void
 CallWidget::on_sendContactRequestPageButton_clicked()
 {
     ui->sendContactRequestWidget->sendCR(RecentModel::instance().selectionModel()->currentIndex());
-    // temporarly changed comportment waiting for message in payload implementation
-    /*ui->sendContactRequestWidget->setup(RecentModel::instance().selectionModel()->currentIndex());
-    slidePage(ui->sendContactRequestPage);*/
+        // temporarly changed comportment waiting for message in payload implementation
+        /*ui->sendContactRequestWidget->setup(RecentModel::instance().selectionModel()->currentIndex());
+        slidePage(ui->sendContactRequestPage);*/
 }
 
 void
