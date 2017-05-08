@@ -242,6 +242,7 @@ AccountDetails::setAccount(Account* currentAccount) {
         ui->cipherListView->setVisible(true);
 
     ui->tableView->setModel((QAbstractItemModel*)currentAccount_->ringDeviceModel());
+    ui->bannedContactsWidget->setAccount(currentAccount_);
 }
 
 void
