@@ -2395,6 +2395,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_15">
        <item>
         <widget class="QStackedWidget" name="devicesStackedWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
          <widget class="QWidget" name="devicesListPage">
           <layout class="QVBoxLayout" name="verticalLayout_16">
            <item>
@@ -2645,6 +2648,21 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="bannedContactsTab">
+      <attribute name="title">
+       <string>Banned Contacts</string>
+      </attribute>
+      <widget class="BannedContactsWidget" name="bannedContactsWidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-1</y>
+         <width>841</width>
+         <height>691</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>
@@ -2654,6 +2672,12 @@
    <class>RingButton</class>
    <extends>QPushButton</extends>
    <header location="global">ringbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BannedContactsWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">bannedcontactswidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
@@ -2806,7 +2830,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="dtmfGroup"/>
   <buttongroup name="publishGroup"/>
+  <buttongroup name="dtmfGroup"/>
  </buttongroups>
 </ui>
