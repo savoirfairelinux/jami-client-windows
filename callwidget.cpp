@@ -690,6 +690,9 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
     Q_UNUSED(previous)
 
     if (current.isValid()) {
+        if (ui->selectBar->isHidden()){
+            ui->selectBar->show();
+        }
         auto ac = current.data(static_cast<int>(Account::Role::Object)).value<Account*>();
 
         // First, we get back to the welcome view (except if in call)
@@ -729,6 +732,9 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
             // keep call on foreground
             callStateToView(actualCall_);
         }
+    } else {
+        ui->selectBar->hide();
+        ui->ringIdLabel->setText("");
     }
 }
 
