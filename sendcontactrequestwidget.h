@@ -21,6 +21,7 @@
 #define SENDCONTACTREQUESTWIDGET_H
 
 #include <QWidget>
+#include "contactmethod.h"
 
 namespace Ui {
 class SendContactRequestWidget;
