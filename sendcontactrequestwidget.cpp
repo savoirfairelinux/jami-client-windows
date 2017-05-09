@@ -33,7 +33,6 @@ SendContactRequestWidget::SendContactRequestWidget(QWidget *parent) :
     ui(new Ui::SendContactRequestWidget)
 {
     ui->setupUi(this);
-    ui->peerContactID->setText("ContactID"); // TODO: Display RingID/Username
 }
 
 SendContactRequestWidget::~SendContactRequestWidget()
@@ -48,26 +47,33 @@ SendContactRequestWidget::setup(const QModelIndex& nodeIdx)
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
     disconnect(sendCRClickedConnection_);
     QString number = cmVector[0]->uri();
-    ui->peerContactID->setText(number);
+    QString name = cmVector[0]->getBestId();
+    ui->peerContactRingId->setText(number);
+    ui->peerContactBestId->setText(name);
     sendCRClickedConnection_ = connect(ui->sendContactRequestButton, &QPushButton::clicked, [this,nodeIdx]() {
         sendCR(nodeIdx);
     });
 }
 
-void SendContactRequestWidget::sendCR(const QModelIndex& nodeIdx)
+void
+SendContactRequestWidget::sendCR(const QModelIndex& nodeIdx)
 {
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
     QString number = cmVector[0]->uri();
-    auto cm = PhoneDirectoryModel::instance().getNumber(number);
+    ContactMethod* cm = PhoneDirectoryModel::instance().getNumber(number);
+
+    QString text = ui->contactRequestTextEdit->toPlainText();
 
     if(cm->account() != nullptr){
-        cm->account()->sendContactRequest(cm);
+        cm->account()->sendContactRequest(cm,text);
     } else {
         qDebug() << "no account linked to contact method";
         auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
         if (idx.isValid()) {
             cm->setAccount(idx.data(static_cast<int>(Ring::Role::Object)).value<Account*>());
-            cm->account()->sendContactRequest(cm);
+            cm->account()->sendContactRequest(cm,text);
         }
     }
+
+    ui->contactRequestTextEdit->setText("");
 }

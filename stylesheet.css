@@ -267,6 +267,21 @@ QDialog#DeleteAccountDialog{
     background-position: bottom;
 }
 
+QLabel#peerContactBestId{
+    font: 12pt "Sans Serif";
+    font-weight: bold;
+}
+
+QLabel#peerContactRingId{
+    font: 11pt "Sans Serif";
+    font-style: italic;
+    color: LightSlateGrey;
+}
+
+QLabel#contactRequestInfo{
+    font: 10pt "Sans Serif";
+}
+
 QDialog#CallUtilsDialog, QDialog#QualityDialog{
     background: transparent;
 }

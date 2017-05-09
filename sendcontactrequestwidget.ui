@@ -13,19 +13,33 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="peerContactID">
-     <property name="minimumSize">
-      <size>
-       <width>20</width>
-       <height>0</height>
-      </size>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,1,3,1,3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="topMargin">
+      <number>0</number>
      </property>
-     <property name="text">
-      <string>ContactID</string>
-     </property>
-    </widget>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="peerContactBestId">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="peerContactRingId">
+       <property name="minimumSize">
+        <size>
+         <width>20</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>ContactID</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="contactRequestInfo">
@@ -54,7 +68,43 @@
     </spacer>
    </item>
    <item>
-    <widget class="QTextEdit" name="contactRequestTextEdit"/>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3,1">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="contactRequestTextEdit"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QPushButton" name="sendContactRequestButton">
@@ -67,6 +117,12 @@
      <property name="minimumSize">
       <size>
        <width>150</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>180</width>
        <height>30</height>
       </size>
      </property>
