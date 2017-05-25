@@ -100,6 +100,11 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
             this, SLOT(deviceIndexChanged(int)));
 
+    if (ui->deviceBox->count() > 0){
+        ui->deviceBox->setCurrentIndex(0);
+    }
+
+    // accounts
     AccountModel::instance().selectionModel()->clear();
     ui->accountView->setSelectionModel(AccountModel::instance().selectionModel());
     connect(ui->accountView->selectionModel(),
@@ -170,16 +175,23 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     ui->generalTabButton->setChecked(true);
 
+    // Audio settings
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     auto outputModel = Audio::Settings::instance().outputDeviceModel();
 
     ui->outputComboBox->setModel(outputModel);
     ui->inputComboBox->setModel(inputModel);
-    ui->outputComboBox->setCurrentIndex(outputModel->selectionModel()->currentIndex().row());
-    ui->inputComboBox->setCurrentIndex(inputModel->selectionModel()->currentIndex().row());
+    if(ui->outputComboBox->count() > 0) {
+        ui->outputComboBox->setCurrentIndex(0);
+    }
+    if (ui->inputComboBox->count() > 0){
+        ui->inputComboBox->setCurrentIndex(0);
+    }
+
     connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
     connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
 
+    // profile
     auto profile = ProfileModel::instance().selectedProfile();
     ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
     ui->profileNameEdit->setText(profile->person()->formattedName());
