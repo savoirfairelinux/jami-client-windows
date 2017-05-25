@@ -75,6 +75,7 @@ private slots:
     void inputIndexChanged(int index);
     void accountPropertyChanged(Account* a, const QString& name,
                                 const QString& newVal, const QString& oldVal);
+    void framerateChanged(int idx);
 
 private:
     Ui::ConfigurationWidget *ui;
