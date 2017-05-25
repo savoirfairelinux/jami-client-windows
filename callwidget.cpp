@@ -375,12 +375,14 @@ CallWidget::callChangedSlot()
 {
     if (not actualCall_)
         return;
+
     ui->callerIdLabel->setText(QString("%1")
                                .arg(actualCall_->formattedName()));
     ui->callerPhoto->setPixmap(
                 QPixmap::fromImage(
                     GlobalInstances::pixmapManipulator()
                     .callPhoto(actualCall_, QSize(130,130)).value<QImage>()));
+    ui->callerBestIdLabel->setText(actualCall_->peerContactMethod()->bestId());
 
     if(actualCall_->state() == Call::State::OVER || actualCall_->state() == Call::State::FAILURE){
         ui->outboundCallLabel->setText(actualCall_->toHumanStateName(Call::State::INITIALIZATION));
