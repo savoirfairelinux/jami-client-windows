@@ -1381,6 +1381,16 @@
                        </property>
                       </widget>
                      </item>
+                     <item alignment="Qt::AlignHCenter">
+                      <widget class="QLabel" name="callerBestIdLabel">
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(174, 174, 174); font-style: italic;</string>
+                       </property>
+                       <property name="text">
+                        <string>BestId</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <widget class="QLabel" name="wantToTalkLabel">
                        <property name="styleSheet">
