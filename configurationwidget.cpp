@@ -27,6 +27,8 @@
 #include <QFileDialog>
 #include <QPropertyAnimation>
 #include <QtConcurrent/QtConcurrent>
+#include <QAbstractItemModel>
+#include <QModelIndex>
 
 #include "deleteaccountdialog.h"
 #include "utils.h"
@@ -40,6 +42,7 @@
 #include "video/resolution.h"
 #include "video/rate.h"
 #include "video/previewmanager.h"
+#include "video/configurationproxy.h"
 
 #include "audio/settings.h"
 #include "audio/outputdevicemodel.h"
@@ -153,12 +156,19 @@ ConfigurationWidget::initLrcConnections()
     });
 
     ui->accountView->setModel(accountModel_);
+    
+    // video devices combobox model setup
     ui->deviceBox->setModel(deviceModel_);
     connect(deviceModel_, &Video::DeviceModel::currentIndexChanged, this, &ConfigurationWidget::deviceIndexChanged);
 
     if (ui->deviceBox->count() > 0){
         ui->deviceBox->setCurrentIndex(0);
     }
+    
+    // framerateBox
+    ui->framerateBox->setModel(&Video::ConfigurationProxy::rateModel());
+
+    connect(ui->framerateBox, SIGNAL(currentIndexChanged(int)), this, SLOT(framerateChanged(int)));
 
     // accounts
     AccountModel::instance().selectionModel()->clear();
@@ -325,6 +335,18 @@ ConfigurationWidget::accountPropertyChanged(Account* a,
     Q_UNUSED(oldVal)
     accountDetails_->setAccount(a);
     AccountSerializationAdapter adapter(a, accountDetails_, accountModel_);
+}
+
+void ConfigurationWidget::framerateChanged(int idx)
+{
+    QModelIndex index = Video::ConfigurationProxy::rateModel().index(idx, 0);
+    // update selected index
+    Video::ConfigurationProxy::rateSelectionModel().setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+    // update the framerate
+    Video::ConfigurationProxy::rateSelectionModel();
+
+    qDebug() << "Framerate changed!" << index << idx;
+    qDebug() << "Current selected index" << Video::ConfigurationProxy::rateSelectionModel().currentIndex();
 }
 
 void
