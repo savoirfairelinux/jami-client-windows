@@ -61,6 +61,7 @@
 #include "contactpicker.h"
 #include "contactmethodpicker.h"
 #include "globalsystemtray.h"
+#include "historydelegate.h"
 #include "smartlistdelegate.h"
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
@@ -110,10 +111,27 @@ CallWidget::CallWidget(QWidget* parent) :
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
+        CategorizedHistoryModel::instance().
+                addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
+
+        ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance().model());
+        CategorizedHistoryModel::SortedProxy::instance().model()->sort(0, Qt::DescendingOrder);
+        ui->historyList->setHeaderHidden(true);
+        historyDelegate_ = new HistoryDelegate();
+        ui->historyList->setItemDelegate(historyDelegate_);
+
+        connect(CategorizedHistoryModel::SortedProxy::instance().model(), &QSortFilterProxyModel::layoutChanged, [=]() {
+            auto idx = CategorizedHistoryModel::SortedProxy::instance().model()->index(0,0);
+            if (idx.isValid())
+                ui->historyList->setExpanded(idx, true);
+        });
+
         connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+
+
 
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
 

@@ -408,6 +408,38 @@
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="mainTabMenuPage3">
+                <attribute name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_history_black_24dp_2x.png</normaloff>:/images/icons/ic_history_black_24dp_2x.png</iconset>
+                </attribute>
+                <attribute name="title">
+                 <string/>
+                </attribute>
+                <attribute name="toolTip">
+                 <string>History</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QTreeView" name="historyList"/>
+                 </item>
+                </layout>
+               </widget>
               </widget>
              </item>
             </layout>

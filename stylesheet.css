@@ -107,13 +107,13 @@ QListView#cipherListView::item:disabled
 }
 
 SmartList::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
-QTreeView#contactRequestList::item:selected{
+QTreeView#contactRequestList::item:selected, QTreeView#historyList::item:selected{
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
 SmartList::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
-QTreeView#contactRequestList::item:hover{
+QTreeView#contactRequestList::item:hover, QTreeView#historyList::item:hover{
     background-color: rgba(242, 242, 242, 255);
 }
 
@@ -478,8 +478,8 @@ QTabWidget#mainTabMenu QTabBar::tab {
     height: 24px;
     width: auto;
     padding-left: 14px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left:20px;
+    margin-right:20px;
 }
 
 QTabWidget#mainTabMenu QTabBar::tab:hover {

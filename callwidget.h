@@ -37,6 +37,7 @@
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
 
+class HistoryDelegate;
 class SmartListDelegate;
 class ImDelegate;
 class QPropertyAnimation;
@@ -105,6 +106,7 @@ private:
     int outputVolume_;
     int inputVolume_;
     QMenu* menu_;
+    HistoryDelegate* historyDelegate_;
     SmartListDelegate* smartListDelegate_;
     QPersistentModelIndex highLightedIndex_;
     ImDelegate* imDelegate_;
