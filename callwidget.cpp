@@ -61,6 +61,7 @@
 #include "contactpicker.h"
 #include "contactmethodpicker.h"
 #include "globalsystemtray.h"
+#include "historydelegate.h"
 #include "smartlistdelegate.h"
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
@@ -110,10 +111,27 @@ CallWidget::CallWidget(QWidget* parent) :
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
+        CategorizedHistoryModel::instance().
+                addCollection<LocalHistoryCollection>(LoadOptions::FORCE_ENABLED);
+
+        ui->historyList->setModel(CategorizedHistoryModel::SortedProxy::instance().model());
+        CategorizedHistoryModel::SortedProxy::instance().model()->sort(0, Qt::AscendingOrder);
+        ui->historyList->setHeaderHidden(true);
+        historyDelegate_ = new HistoryDelegate();
+        ui->historyList->setItemDelegate(historyDelegate_);
+
+        connect(CategorizedHistoryModel::SortedProxy::instance().model(), &QSortFilterProxyModel::layoutChanged, [=]() {
+            auto idx = CategorizedHistoryModel::SortedProxy::instance().model()->index(0,0);
+            if (idx.isValid())
+                ui->historyList->setExpanded(idx, true);
+        });
+
         connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+
+
 
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
 
@@ -517,6 +535,9 @@ CallWidget::on_cancelButton_clicked()
 void
 CallWidget::on_smartList_clicked(const QModelIndex& index)
 {
+    if (!index.isValid())
+        return;
+
     RecentModel::instance().selectionModel()->setCurrentIndex(
                 RecentModel::instance().peopleProxy()->mapToSource(index),
                 QItemSelectionModel::ClearAndSelect);
@@ -525,6 +546,9 @@ CallWidget::on_smartList_clicked(const QModelIndex& index)
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
+    if(!index.isValid())
+        return;
+
     auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
     if (RecentModel::instance().hasActiveCall(realIndex))
         return;
