@@ -40,11 +40,11 @@ QuickActContactRequestWidget::QuickActContactRequestWidget(QWidget *parent) :
     });
 
     connect(ui->quickMuteCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickValidCRBtnClicked();
+        emit quickMuteCRBtnClicked();
     });
 
     connect(ui->quickBanCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickValidCRBtnClicked();
+        emit quickBanCRBtnClicked();
     });
 
 }
