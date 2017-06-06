@@ -43,5 +43,6 @@
         <file>images/FontAwesome.otf</file>
         <file>images/icons/ic_chat_black_24dp_2x.png</file>
         <file>images/icons/ic_person_add_black_24dp_2x.png</file>
+        <file>images/waiting.gif</file>
     </qresource>
 </RCC>
