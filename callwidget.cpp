@@ -173,6 +173,10 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
         connect(ui->videoWidget, &VideoView::videoBackClicked, [=]{setActualCall(nullptr);
                                                                     backToWelcomePage();});
+        // setup searchingfor mini spinner
+        miniSpinner_ = new QMovie(":/images/waiting.gif");
+        ui->spinnerLabel->setMovie(miniSpinner_);
+        ui->spinnerLabel->hide();
 
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
@@ -458,6 +462,7 @@ CallWidget::callStateToView(Call* value)
         case Call::State::CONFERENCE:
         case Call::State::HOLD:
             ui->stackedWidget->setCurrentWidget(ui->videoPage);
+            hideMiniSpinner();
             break;
         case Call::State::OVER:
             ui->stackedWidget->setCurrentWidget(ui->welcomePage);
@@ -465,10 +470,13 @@ CallWidget::callStateToView(Call* value)
         case Call::State::FAILURE:
         case Call::State::ERROR:
             on_cancelButton_clicked();
+            hideMiniSpinner();
             break;
         case Call::State::INITIALIZATION:
         case Call::State::CONNECTED:
         case Call::State::RINGING:
+            miniSpinner_->start();
+            ui->spinnerLabel->show();
             ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
             break;
         default:
@@ -860,6 +868,14 @@ CallWidget::backToWelcomePage()
 {
     RecentModel::instance().selectionModel()->clear();
     disconnect(imConnection_);
+}
+
+void CallWidget::hideMiniSpinner()
+{
+    if(ui->spinnerLabel->isVisible()){
+        miniSpinner_->stop();
+        ui->spinnerLabel->hide();
+    }
 }
 
 void
