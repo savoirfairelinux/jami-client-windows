@@ -283,7 +283,7 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
+             <item alignment="Qt::AlignHCenter">
               <widget class="QTabWidget" name="mainTabMenu">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
@@ -312,6 +312,9 @@
                  <height>24</height>
                 </size>
                </property>
+               <property name="usesScrollButtons">
+                <bool>true</bool>
+               </property>
                <widget class="QWidget" name="mainTabMenuPage1">
                 <attribute name="icon">
                  <iconset resource="ressources.qrc">
@@ -331,7 +334,7 @@
                   <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>3</number>
                  </property>
                  <property name="rightMargin">
                   <number>0</number>
@@ -382,7 +385,7 @@
                   <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>3</number>
                  </property>
                  <property name="rightMargin">
                   <number>0</number>
@@ -427,7 +430,7 @@
                   <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>3</number>
                  </property>
                  <property name="rightMargin">
                   <number>0</number>
@@ -443,6 +446,42 @@
                    <property name="headerHidden">
                     <bool>true</bool>
                    </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="mainTabMenuPage4">
+                <attribute name="icon">
+                 <iconset resource="ressources.qrc">
+                  <normaloff>:/images/icons/ic_contacts_black_24dp_2x.png</normaloff>:/images/icons/ic_contacts_black_24dp_2x.png</iconset>
+                </attribute>
+                <attribute name="title">
+                 <string/>
+                </attribute>
+                <attribute name="toolTip">
+                 <string>Contacts</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_16">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QTreeView" name="contactTreeView">
+                   <attribute name="headerVisible">
+                    <bool>false</bool>
+                   </attribute>
                   </widget>
                  </item>
                 </layout>

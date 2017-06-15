@@ -155,7 +155,7 @@ PixbufManipulator::historySortingCategoryIcon(const CategorizedHistoryModel::Sor
     return QVariant();
 }
 QVariant
-PixbufManipulator::contactSortingCategoryIcon(const CategorizedContactModel::SortedProxy::Categories cat) const
+PixbufManipulator::contactSortingCategoryIcon(const CategorizedContactModel::Categories cat) const
 {
     Q_UNUSED(cat)
     return QVariant();
