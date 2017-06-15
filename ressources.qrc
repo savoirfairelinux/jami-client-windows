@@ -45,5 +45,6 @@
         <file>images/icons/ic_person_add_black_24dp_2x.png</file>
         <file>images/waiting.gif</file>
         <file>images/icons/ic_history_black_24dp_2x.png</file>
+        <file>images/icons/ic_contacts_black_24dp_2x.png</file>
     </qresource>
 </RCC>

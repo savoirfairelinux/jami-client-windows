@@ -126,6 +126,12 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->historyList->setExpanded(idx, true);
         });
 
+        // contacts
+        auto catCont = &CategorizedContactModel::instance();
+        auto catContSortedModel = catCont->sortedModel();
+        ui->contactTreeView->setModel(catContSortedModel);
+        ui->contactTreeView->setItemDelegate(historyDelegate_);
+
         connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
 
         smartListDelegate_ = new SmartListDelegate();
