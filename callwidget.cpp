@@ -642,7 +642,7 @@ CallWidget::settingsButtonClicked()
 void
 CallWidget::searchContactLineEditEntry(const URI &uri)
 {
-    auto cm = PhoneDirectoryModel::instance().getNumber(uri);
+    auto cm = PhoneDirectoryModel::instance().getNumber(uri, getSelectedAccount());
     // if its a new CM, bring it to the top
     if (cm->lastUsed() == 0)
         cm->setLastUsed(QDateTime::currentDateTime().toTime_t());
