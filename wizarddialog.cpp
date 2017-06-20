@@ -113,7 +113,10 @@ WizardDialog::accept()
     Utils::CreateStartupLink();
 
     if (account_ == nullptr) {
-        account_ = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
+        account_ = AccountModel::instance().add(ui->usernameEdit->text().isEmpty() ||
+                                                ui->usernameEdit->text().isNull() ? ui->fullNameEdit->text() :
+                                                                                    ui->usernameEdit->text(),
+                                                Account::Protocol::RING);
         if (not ui->fullNameEdit->text().isEmpty()) {
             account_->setDisplayName(ui->fullNameEdit->text());
             profile->person()->setFormattedName(ui->fullNameEdit->text());
