@@ -526,19 +526,6 @@
        <number>0</number>
       </property>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QLabel" name="clientVersionLabel">
-        <property name="text">
-         <string notr="true">Windows Ring v</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::AutoText</enum>
-        </property>
-        <property name="margin">
-         <number>15</number>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="gitVersionLabel">
         <property name="text">
          <string notr="true">version : </string>
