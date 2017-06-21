@@ -27,9 +27,6 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
-    ui->clientVersionLabel->setText(
-        QString("<html><head/><body><p><span style=\" font-weight:600;\">"
-                "%1 v%2</span></p></body></html>").arg(tr("Ring"), VERSION));
     ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), RING_CLIENT_BUILD_DATE));
 
     ui->creditsBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
