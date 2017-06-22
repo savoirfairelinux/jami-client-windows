@@ -32,6 +32,8 @@
 #include "utils.h"
 #include "photoboothdialog.h"
 
+const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Ring account", "Default alias for new Ring account");
+
 WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget* parent) :
     QDialog(parent),
     ui(new Ui::WizardDialog),
@@ -113,7 +115,8 @@ WizardDialog::accept()
     Utils::CreateStartupLink();
 
     if (account_ == nullptr) {
-        account_ = AccountModel::instance().add(ui->usernameEdit->text(), Account::Protocol::RING);
+        QString accountAlias = (ui->usernameEdit->text().isEmpty())? DEFAULT_RING_ACCT_ALIAS : ui->usernameEdit->text();
+        account_ = AccountModel::instance().add(accountAlias, Account::Protocol::RING);
         if (not ui->fullNameEdit->text().isEmpty()) {
             account_->setDisplayName(ui->fullNameEdit->text());
             profile->person()->setFormattedName(ui->fullNameEdit->text());
