@@ -161,22 +161,6 @@ AccountDetails::setAccount(Account* currentAccount) {
         currentAccount_->setPublishedSameAsLocal(static_cast<bool>(id));
     });
 
-    switch (currentAccount_->DTMFType()) {
-    case DtmfType::OverRtp:
-        ui->rtpRadio->setChecked(true);
-        break;
-    case DtmfType::OverSip:
-        ui->sipRadio->setChecked(true);
-        break;
-    }
-
-    ui->dtmfGroup->disconnect();
-    ui->dtmfGroup->setId(ui->rtpRadio, DtmfType::OverRtp);
-    ui->dtmfGroup->setId(ui->sipRadio, DtmfType::OverSip);
-
-    connect(ui->dtmfGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
-            [=](int id){ currentAccount_->setDTMFType(static_cast<DtmfType>(id)); });
-
     if (currentAccount_->tlsCaListCertificate())
         ui->lrcfg_tlsCaListCertificate->setText(currentAccount_->tlsCaListCertificate()->path());
     if (currentAccount_->tlsCertificate())
