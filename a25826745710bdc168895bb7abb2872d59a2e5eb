@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3841fe_00e7a641",
+        "filename": "wizarddialog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2017-06-26T18:49:25Z",
+      "side": 1,
+      "message": "can you add a context explanation to the tr() for translators?\nexplicit that is the default account name",
+      "revId": "a25826745710bdc168895bb7abb2872d59a2e5eb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
