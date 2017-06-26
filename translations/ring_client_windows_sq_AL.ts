@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<TS version="2.1" language="sq_AL">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation>Sobre</translation>
+        <translation>Mbi</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation>Créditos</translation>
+        <translation>Kredite</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="541"/>
@@ -23,28 +23,28 @@
         <location filename="../aboutdialog.ui" line="557"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>O cliente Microsoft Windows para Ring
-Ring é um software de comunicação distribuído e seguro.</translation>
+        <translation>Klienti Ring për Microsoft Windows.
+Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
         <source>version</source>
-        <translation>versão</translation>
+        <translation>version</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation>Criado por:</translation>
+        <translation>Krijuar nga:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
         <source>Artwork by:</source>
-        <translation>Artwork por:</translation>
+        <translation>Përkujdesja grafike:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Baseado no projeto SFLPhone</translation>
+        <translation>Bazuar në projektin SFLPhone</translation>
     </message>
 </context>
 <context>
@@ -52,80 +52,80 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="23"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation>Rregullime</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="63"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation>Të përgjithshme</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="137"/>
         <source>Account</source>
-        <translation>Conta</translation>
+        <translation>Llogari</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="197"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation>Lloj</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="163"/>
         <source>Alias</source>
-        <translation>Apelido</translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="241"/>
         <source>Parameters</source>
-        <translation>Parâmetros</translation>
+        <translation>Parametra</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="271"/>
         <source>Hostname</source>
-        <translation>Servidor</translation>
+        <translation>Strehëemër</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="648"/>
         <location filename="../accountdetails.ui" line="1553"/>
         <location filename="../accountdetails.cpp" line="130"/>
         <source>Username</source>
-        <translation>Nome de usuário</translation>
+        <translation>Emër përdoruesi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="377"/>
         <location filename="../accountdetails.ui" line="1572"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Krijoni llogari</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="420"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>Ndërmjetës</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="460"/>
         <source>Voicemail number</source>
-        <translation>Número do correio de voz</translation>
+        <translation>Numër voicemail</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="494"/>
         <source>Auto-answer calls</source>
-        <translation>Chamadas de Auto-Resposta</translation>
+        <translation>Vetëpërgjigju thirrjeve</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="512"/>
         <source>UPnP enabled</source>
-        <translation>UPnP ativado</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="527"/>
         <source>DTMF tone type</source>
-        <translation>Tipo de tom DTMF</translation>
+        <translation>Lloj toni DTMF</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="544"/>
         <source>RTP</source>
-        <translation>RTP</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="562"/>
@@ -135,17 +135,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="709"/>
         <source>Allow Call From Unknown</source>
-        <translation>Aceitar Chamada de Desconhecido</translation>
+        <translation>Lejo Thirrje Prej të Panjohurish</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="736"/>
         <source>Allow Call From Contact</source>
-        <translation>Aceitar Chamada de Contato</translation>
+        <translation>Lejo Thirrje Prej Kontaktesh</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="724"/>
         <source>Allow Call From History</source>
-        <translation>Aceitar Chamada de Histórico</translation>
+        <translation>Lejo Thirrje Prej Historiku</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
@@ -166,166 +166,166 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="614"/>
         <source>Name service URL</source>
-        <translation>URL do servidor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="682"/>
         <source>Ring Account Settings</source>
-        <translation>Configurações de Conta do Ring</translation>
+        <translation>Rregullime Llogarie Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="772"/>
         <source>Ringtone Selection</source>
-        <translation>Selecionar toque</translation>
+        <translation>Përzgjedhje Zileje</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="796"/>
         <location filename="../accountdetails.cpp" line="57"/>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>Luaje</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Audio/Video</source>
-        <translation>Áudio/Vídeo</translation>
+        <translation>Audio/Video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1072"/>
         <source>Audio codecs</source>
-        <translation>Codecs de Áudio</translation>
+        <translation>Kodekë audio</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1102"/>
         <source>Video codecs</source>
-        <translation>Codecs de Vídeo</translation>
+        <translation>Kodekë video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1119"/>
         <source>Advanced</source>
-        <translation>Avançado</translation>
+        <translation>Të mëtejshme</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1165"/>
         <source>Registration</source>
-        <translation>Registro</translation>
+        <translation>Regjistrim</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1185"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Tempo de expiração de registro (segundos):</translation>
+        <translation>Kohë skadimi regjistrimi (në sekonda):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1223"/>
         <source>Network Interface</source>
-        <translation>Interface de Rede</translation>
+        <translation>Ndërfaqe Rrjeti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1244"/>
         <source>Local Port:</source>
-        <translation>Porta Local:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1348"/>
         <source>Same as local parameters</source>
-        <translation>Igual aos parâmetros locais</translation>
+        <translation>Njësoj si parametrat vendorë</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1369"/>
         <source>Set published address and port:</source>
-        <translation>Configurar endereço e portas publicadas:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1395"/>
         <source>Address</source>
-        <translation>Endereço</translation>
+        <translation>Adresë</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1426"/>
         <source>Port</source>
-        <translation>Porta</translation>
+        <translation>Portë</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1480"/>
         <source>Use STUN</source>
-        <translation>Usar STUN</translation>
+        <translation>Përdor STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1496"/>
         <location filename="../accountdetails.ui" line="1537"/>
         <source>Server URL</source>
-        <translation>URL do servidor</translation>
+        <translation>URL Shërbyesi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1521"/>
         <source>Use TURN</source>
-        <translation>Usar TURN</translation>
+        <translation>Përdor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1588"/>
         <source>Realm</source>
-        <translation>Domínio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1637"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>Negociação de sessão SDP ( ICE Fallback)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1665"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Estas configurações serão apenas utilizadas durante uma negociação de sessão SDP, caso ICE não seja suportado pelo servidor ou membro.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1707"/>
         <source>Audio RTP Port Range</source>
-        <translation>Variação de portas de audio RTP</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1737"/>
         <location filename="../accountdetails.ui" line="1871"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation>Min.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1768"/>
         <location filename="../accountdetails.ui" line="1902"/>
         <source>Max</source>
-        <translation>Máx</translation>
+        <translation>Maks.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1841"/>
         <source>Video RTP Port Range</source>
-        <translation>Intervalo de portas de Video RTP</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1967"/>
         <source>Security</source>
-        <translation>Segurança</translation>
+        <translation>Siguri</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2339"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation>Criptografia de Fluxo de Mídia (SRTP)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2357"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation>Encriptar fluxo de mídia (SRTP)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>Devices</source>
-        <translation>Dispositivos</translation>
+        <translation>Pajisje</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2437"/>
         <source>Add device</source>
-        <translation>Adicionar dispositivo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2464"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Para adicionar um novo dispositivo à sua conta Ring, você deve exportar sua conta no Ring. Isso gerará um PIN que deve ser entrado em seu novo dispositivo dentro de 5 minutos desde a sua geração.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2480"/>
@@ -335,17 +335,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2508"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Anuloje</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2534"/>
         <source>Export on the Ring</source>
-        <translation>Exportar no Ring</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2586"/>
         <source>Your generated pin:</source>
-        <translation>Seu PIN gerado:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2599"/>
@@ -370,62 +370,62 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2024"/>
         <source>Negotiation Encryption</source>
-        <translation>Negociação de encriptação</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1318"/>
         <source>Published Address</source>
-        <translation>Endereço publicado</translation>
+        <translation>Adresë e Publikuar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2042"/>
         <source>Encrypt negotiation (TLS)</source>
-        <translation>Negociação de encriptação(TLS)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2126"/>
         <source>CA certificate</source>
-        <translation>Certificado de CA</translation>
+        <translation>Dëshmi AD</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2163"/>
         <source>User certificate</source>
-        <translation>Certificado de usuário</translation>
+        <translation>Dëshmi përdoruesi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2197"/>
         <source>Private key</source>
-        <translation>Chave Privada</translation>
+        <translation>Kyç privat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2212"/>
         <source>Private key password</source>
-        <translation>Senha de chave privada</translation>
+        <translation>Fjalëkalim kyçi privat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2075"/>
         <source>Verify incoming certificates (server side)</source>
-        <translation>Verificar certificados de saída (lado do servidor)</translation>
+        <translation>Verifikoji dëshmitë ardhëse (më anë të shërbyesit)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2105"/>
         <source>Verify answer certificates (client side)</source>
-        <translation>Verificar certificados de entrada (lado do cliente)</translation>
+        <translation>Verifikoji dëshmitë ardhëse (më anë të klientit)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2090"/>
         <source>Require a certificate for incoming TLS connections</source>
-        <translation>Exigir certificado para conexões TLS de entrada</translation>
+        <translation>Kërko një dëshmi për lidhje TLS ardhëse</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2271"/>
         <source>Use default ciphers</source>
-        <translation>Utilizar cifras padrão</translation>
+        <translation>Përdor shifër parazgjedhje</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pushim</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="116"/>
@@ -435,12 +435,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="275"/>
         <source>Choose File</source>
-        <translation>Escolher Arquivo</translation>
+        <translation>Zgjidhni Kartelë</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="277"/>
         <source>Files (*)</source>
-        <translation>Arquivos (*)</translation>
+        <translation>Kartela (*)</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="350"/>
@@ -455,7 +455,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="373"/>
         <source>Wrong password.</source>
-        <translation>Senha Incorreta.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="400"/>
@@ -468,7 +468,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
@@ -486,12 +486,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation>ou digite um número...</translation>
+        <translation>ose shtypni një numër…</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation>Transferência</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -499,47 +499,47 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="213"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Busque por contatos ou insira o RingID</translation>
+        <translation>Kërkoni te kontaktet ose jepni ID Ring-u</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="324"/>
         <source>Conversations</source>
-        <translation>Conversas</translation>
+        <translation>Biseda</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation>Solicitações de contatos</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="545"/>
         <source>settings menu</source>
-        <translation>menu de configurações</translation>
+        <translation>menu rregullimesh</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="627"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Ring é um software livre para comunicação universal que respeita as liberdades e privacidade de seus usuários.</translation>
+        <translation>Ring është software i lirë për komunikim universal që respekton privatësinë e përdoruesve të tij.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="659"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Esse é seu RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copie e compartilhe-o com seus amigos!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Kjo është RingID-ja juaj.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Kopjojeni dhe jepuani shokëve!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="763"/>
         <source>Share your ring id</source>
-        <translation>Compartilhar seu RingID</translation>
+        <translation>Ndani me të tjerët ID-në tuaj Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="866"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Duplo clique para copiar.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Dyklikoni që të kopjohet.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="895"/>
         <source>Error while generating QR Code</source>
-        <translation>Erro ao gerar o QRCode</translation>
+        <translation>Gabim teksa prodhohej kodi QR</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1067"/>
@@ -549,17 +549,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="1094"/>
         <source>Conversation with</source>
-        <translation>Conversar com</translation>
+        <translation>Bisedë me</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1177"/>
         <source>Start the conversation !</source>
-        <translation>Comece uma conversa!</translation>
+        <translation>Filloni bisedën!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1264"/>
         <source>send message</source>
-        <translation>enviar mensagem</translation>
+        <translation>dërgo mesazh</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1390"/>
@@ -569,113 +569,113 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="1400"/>
         <source>Wants to talk to you!</source>
-        <translation>Quer conversar com você!</translation>
+        <translation>Dëshiron të bisedojë me ju!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1495"/>
         <source>Answer</source>
-        <translation>Resposta</translation>
+        <translation>Përgjigjuni</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1527"/>
         <source>Ignore</source>
-        <translation>Ignorar</translation>
+        <translation>Shpërfille</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1598"/>
         <source>Calling</source>
-        <translation>Chamando</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1671"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Anuloje</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1380"/>
         <source>Call</source>
-        <translation>Chamar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="269"/>
         <source>Copy number</source>
-        <translation>Copiar número</translation>
+        <translation>Kopjoje numrin</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="280"/>
         <source>Add to contact</source>
-        <translation>Adicionar a contato</translation>
+        <translation>Shtoje te kontakti</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="916"/>
         <source>Contact me on Ring</source>
-        <translation>Encontre-me no Ring</translation>
+        <translation>Kontaktomëni në Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="916"/>
         <source>My RingId is : </source>
-        <translation>Meu RingID é : </translation>
+        <translation>RingID-ja ime është:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="202"/>
         <source>Copy</source>
-        <translation>Copiar</translation>
+        <translation>Kopjoje</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
         <source>Display date</source>
-        <translation>Exibir data</translation>
+        <translation>Shfaq datën</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="216"/>
         <source>Display author</source>
-        <translation>Exibir autor</translation>
+        <translation>Shfaq autorin</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="245"/>
         <source>Message incoming from %1</source>
-        <translation>Recebendo mensagem de %1</translation>
+        <translation>Mesazh ardhës nga %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="274"/>
         <source>Copy name</source>
-        <translation>Copiar nome</translation>
+        <translation>Kopjo emrin</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="290"/>
         <source>Call Number</source>
-        <translation>Chamar número</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="291"/>
         <source>Copy Number</source>
-        <translation>Copiar número</translation>
+        <translation>Kopjoje Numrin</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="294"/>
         <source>Copy %1</source>
-        <translation>Copiar %1</translation>
+        <translation>Kopjoje %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="299"/>
         <source>Call %1</source>
-        <translation>Ligar para %1</translation>
+        <translation>Thirr %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="739"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation>Nenhuma conta Ring entrada</translation>
+        <translation>S’U GJET LLOGARI RING</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="404"/>
         <source>Call incoming from %1</source>
-        <translation>Recebendo chamada de %1</translation>
+        <translation>Thirrje ardhur nga %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="774"/>
         <source>Conversation with %1</source>
         <comment>%1 is the contact name</comment>
-        <translation>Conversa com %1</translation>
+        <translation>Bisedë me %1</translation>
     </message>
 </context>
 <context>
@@ -683,47 +683,47 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Configurações</translation>
+        <translation>Rregullime</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>Geral</translation>
+        <translation>Të përgjithshme</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation>fechar menu de configurações</translation>
+        <translation>dil nga menu rregullimesh</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation>Configurações de histórico</translation>
+        <translation>Rregullime Historiku</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation>Manter histórico por (dias)</translation>
+        <translation>Historikun mbaje për (ditë)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Insira 0 para histórico ilimitado)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>Limpar histórico</translation>
+        <translation>Pastroje Historikun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation>Configurações diversas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation>Manter minimizado ao fechar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
@@ -733,32 +733,32 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation>Perfil</translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation>Emër</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation>Gravar configurações</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation>Salvar em :</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation>Sempre gravar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
@@ -768,87 +768,87 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
         <source>Check for update automatically every</source>
-        <translation>Verificar atualizações automaticamente a cada</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>days</source>
-        <translation>dias</translation>
+        <translation>ditë</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="888"/>
         <source>Preview unavailable during call</source>
-        <translation>Pré-visualização não disponível em chamadas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="942"/>
         <source>Device Selection</source>
-        <translation>Seleção de dispositivo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation>Dispositivo</translation>
+        <translation>Pajisje</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
         <source>Resolution</source>
-        <translation>Resolução</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1068"/>
         <source>Output Device</source>
-        <translation>Dispositivo de saída</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1083"/>
         <source>Input Device</source>
-        <translation>Dispositivo de entrada</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1180"/>
         <source>add new account</source>
-        <translation>adicionar nova conta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1242"/>
         <source>Import</source>
-        <translation>Importar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1249"/>
         <source>Export</source>
-        <translation>Exportar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation>Conta</translation>
+        <translation>Llogari</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
         <source>Launch Ring on Startup</source>
-        <translation>Iniciar ao ligar o Ring</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="310"/>
         <source>New Account</source>
-        <translation>Nova conta</translation>
+        <translation>Llogari e Re</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="330"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation>Você tem certeza que deseja limpar todo o seu histórico?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation>Escolher diretório</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation>Ocorreu um erro ao importar a conta.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -856,32 +856,32 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Contato existente</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation>Procurando...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation>Criar novo contato</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation>Novo Contato</translation>
+        <translation>Kontakt i Ri</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation>Entre um nome aqui...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Criar</translation>
+        <translation>Krijoje</translation>
     </message>
 </context>
 <context>
@@ -889,7 +889,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
@@ -909,7 +909,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation>Aceitar</translation>
+        <translation>Pranoje</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -919,7 +919,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation>Bloquear</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -927,7 +927,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -955,12 +955,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Anuloje</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -968,22 +968,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation>Enviar mensagem de texto...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
-        <translation>Copiar</translation>
+        <translation>Kopjoje</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation>Exibir data</translation>
+        <translation>Shfaq datën</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation>Exibir autor</translation>
+        <translation>Shfaq autorin</translation>
     </message>
 </context>
 <context>
@@ -996,17 +996,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="53"/>
         <source>Configuration</source>
-        <translation>Configuração</translation>
+        <translation>Formësim</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="56"/>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="80"/>
         <source>About</source>
-        <translation>Sobre</translation>
+        <translation>Mbi</translation>
     </message>
 </context>
 <context>
@@ -1014,38 +1014,38 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation>Caminho</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Krijoni llogari</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Anuloje</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation>Salvar arquivo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation>Arquivos Ring (*.ring)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation>Abrir arquivo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1053,27 +1053,27 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation>Photobooth</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation>ou</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation>Importar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation>Escolher Arquivo</translation>
+        <translation>Zgjidhni Kartelë</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation>Arquivos (*)</translation>
+        <translation>Kartela (*)</translation>
     </message>
 </context>
 <context>
@@ -1081,7 +1081,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation>Cliente de e-mail não encontrado</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1089,7 +1089,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation>Automático</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1097,7 +1097,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Formulário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
@@ -1120,72 +1120,72 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation>Chamada em espera</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation>Esperar / Retomar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>Conversa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation>Adicionar pessoa a conversa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation>Transferir chamada</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation>Desativar microfone</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation>Qualidade</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation>Juntar chamadas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="490"/>
         <source>Name label</source>
-        <translation>Nome do rótulo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="512"/>
         <source>Add to contact</source>
-        <translation>Adicionar a contato</translation>
+        <translation>Shtoje te kontakti</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="582"/>
         <source>Time elapsed</source>
-        <translation>Tempo decorrido</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="585"/>
         <source>00:00</source>
-        <translation>00:00</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation>Desligar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation>Desativar vídeo</translation>
+        <translation>Hiqi Zërin Videos</translation>
     </message>
 </context>
 <context>
@@ -1193,17 +1193,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
-        <translation>Compartilhar tela inteira</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
-        <translation>Compartilhar área da tela</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
-        <translation>Compartilhar arquivo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1221,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="122"/>
         <source>Unknown</source>
-        <translation>Desconhecido</translation>
+        <translation>E panjohur</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="156"/>
@@ -1261,7 +1261,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../wizarddialog.ui" line="98"/>
         <source>Link this device to an account</source>
-        <translation>Associar este dispositivo a uma conta</translation>
+        <translation>Lidheni këtë pajisje me një llogari</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
@@ -1285,7 +1285,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="159"/>
         <source>Create your profile</source>
-        <translation>Criar um Perfil</translation>
+        <translation>Krijoni profilin tuaj</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="244"/>
@@ -1296,17 +1296,17 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="297"/>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Create your account</source>
-        <translation>Criar uma conta</translation>
+        <translation>Krijoni llogarinë tuaj</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="322"/>
         <source>Choose your username:</source>
-        <translation>Escolha seu nome de usuário:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="370"/>
         <source>Choose your username</source>
-        <translation>Escolha seu nome de usuário</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="386"/>
@@ -1322,39 +1322,39 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="398"/>
         <source>Register public username (experimental)</source>
-        <translation>Registrar usuário público (experimental)</translation>
+        <translation>Regjistroni emër përdoruesi publik (eksperimentale)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="425"/>
         <source>Enter your pin</source>
-        <translation>Entre o seu pin</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="455"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Fjalëkalim</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="485"/>
         <source>Confirm password</source>
-        <translation>Confirmar senha</translation>
+        <translation>Ripohoni fjalëkalimin</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="553"/>
         <location filename="../wizarddialog.cpp" line="105"/>
         <source>Generating your Ring account...</source>
-        <translation>Criando sua conta Ring...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="589"/>
         <source>Previous</source>
-        <translation>Anterior</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="621"/>
         <location filename="../wizarddialog.ui" line="624"/>
         <source>Next</source>
-        <translation>Próximo</translation>
+        <translation>Pasuesi</translation>
     </message>
 </context>
 </TS>

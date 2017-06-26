@@ -5,7 +5,7 @@ import shutil
 
 print ("Pulling translations")
 
-os.system("tx pull -af --minimum-perc=30")
+os.system("tx pull -af --minimum-perc=1")
 
 print ("Updating .pro file")
 
@@ -32,6 +32,6 @@ os.remove(proFile + "~")
 
 print ("Updating translations")
 
-os.system("lupdate RingWinClient.pro")
+os.system("lupdate-qt5 RingWinClient.pro -no-obsolete")
 
 print ("All done you can commit now")

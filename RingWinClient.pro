@@ -167,45 +167,53 @@ RESOURCES += \
 RC_FILE = ico.rc
 
 TRANSLATIONS = \
-    translations/ring_client_windows_pa.ts \
-    translations/ring_client_windows_pt.ts \
-    translations/ring_client_windows_sv.ts \
-    translations/ring_client_windows_ar.ts \
-    translations/ring_client_windows_lt.ts \
-    translations/ring_client_windows_fr_FR.ts \
-    translations/ring_client_windows_hr.ts \
-    translations/ring_client_windows_nb.ts \
-    translations/ring_client_windows_hu.ts \
-    translations/ring_client_windows_zh.ts \
-    translations/ring_client_windows_fr.ts \
-    translations/ring_client_windows_fr_CA.ts \
-    translations/ring_client_windows_nl.ts \
-    translations/ring_client_windows_cs_CZ.ts \
-    translations/ring_client_windows_pt_BR.ts \
-    translations/ring_client_windows_id.ts \
-    translations/ring_client_windows_el.ts \
+    translations/ring_client_windows_zh_CN.ts \
     translations/ring_client_windows_pl.ts \
-    translations/ring_client_windows_pl_PL.ts \
-    translations/ring_client_windows_da_DK.ts \
-    translations/ring_client_windows_fi.ts \
-    translations/ring_client_windows_it.ts \
-    translations/ring_client_windows_it_IT.ts \
-    translations/ring_client_windows_de.ts \
-    translations/ring_client_windows_de_DE.ts \
-    translations/ring_client_windows.ts \
-    translations/ring_client_windows_eo.ts \
-    translations/ring_client_windows_uk.ts \
     translations/ring_client_windows_nl_NL.ts \
     translations/ring_client_windows_fa_IR.ts \
-    translations/ring_client_windows_es.ts \
     translations/ring_client_windows_bg.ts \
-    translations/ring_client_windows_tr.ts \
-    translations/ring_client_windows_ca.ts \
-    translations/ring_client_windows_ru_RU.ts \
-    translations/ring_client_windows_ru.ts \
-    translations/ring_client_windows_zh_CN.ts \
-    translations/ring_client_windows_zh_TW.ts \
+    translations/ring_client_windows_da_DK.ts \
+    translations/ring_client_windows_hi_IN.ts \
+    translations/ring_client_windows_hr.ts \
+    translations/ring_client_windows_ar.ts \
+    translations/ring_client_windows_ja.ts \
+    translations/ring_client_windows_pt_BR.ts \
     translations/ring_client_windows_he.ts \
+    translations/ring_client_windows.ts \
+    translations/ring_client_windows_id.ts \
+    translations/ring_client_windows_de_DE.ts \
+    translations/ring_client_windows_nb.ts \
+    translations/ring_client_windows_zh.ts \
+    translations/ring_client_windows_tr.ts \
+    translations/ring_client_windows_cs_CZ.ts \
+    translations/ring_client_windows_ms.ts \
+    translations/ring_client_windows_fr_FR.ts \
+    translations/ring_client_windows_et_EE.ts \
+    translations/ring_client_windows_fr_CA.ts \
+    translations/ring_client_windows_en_GB.ts \
+    translations/ring_client_windows_ca.ts \
+    translations/ring_client_windows_es.ts \
+    translations/ring_client_windows_ru.ts \
+    translations/ring_client_windows_ro.ts \
+    translations/ring_client_windows_it_IT.ts \
+    translations/ring_client_windows_pt.ts \
+    translations/ring_client_windows_ru_RU.ts \
+    translations/ring_client_windows_uk.ts \
+    translations/ring_client_windows_fi.ts \
+    translations/ring_client_windows_fr.ts \
+    translations/ring_client_windows_pa.ts \
+    translations/ring_client_windows_zh_TW.ts \
+    translations/ring_client_windows_de.ts \
+    translations/ring_client_windows_sv.ts \
+    translations/ring_client_windows_sk_SK.ts \
+    translations/ring_client_windows_hu.ts \
+    translations/ring_client_windows_sq_AL.ts \
+    translations/ring_client_windows_eo.ts \
+    translations/ring_client_windows_el.ts \
+    translations/ring_client_windows_nl.ts \
+    translations/ring_client_windows_lt.ts \
+    translations/ring_client_windows_pl_PL.ts \
+    translations/ring_client_windows_it.ts \
 
 maketranslationdir.target = customtarget
 maketranslationdir.commands = $(MKDIR) $$OUT_PWD/share/ring/translations/
