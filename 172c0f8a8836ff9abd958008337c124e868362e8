@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3841fe_e019e27a",
+        "filename": "wizarddialog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2017-06-26T14:56:52Z",
+      "side": 1,
+      "message": "must be translatable and use const at top to make it clear the usage.",
+      "range": {
+        "startLine": 116,
+        "startChar": 77,
+        "endLine": 116,
+        "endChar": 91
+      },
+      "revId": "172c0f8a8836ff9abd958008337c124e868362e8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
