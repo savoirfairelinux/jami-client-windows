@@ -146,10 +146,9 @@ CallWidget::CallWidget(QWidget* parent) :
             Q_UNUSED(bottomRight)
             Q_UNUSED(vec)
             auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(topLeft);
-            if (RecentModel::instance().hasActiveCall(realIdx)){
+            if (realIdx.isValid() && RecentModel::instance().hasActiveCall(realIdx)){
                 ui->smartList->selectionModel()->setCurrentIndex(realIdx,QItemSelectionModel::ClearAndSelect);
             }
-
         });
 
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
