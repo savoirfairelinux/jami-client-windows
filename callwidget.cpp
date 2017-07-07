@@ -142,6 +142,15 @@ CallWidget::CallWidget(QWidget* parent) :
                     }
                 });
 
+        connect(&RecentModel::instance(), &QAbstractItemModel::dataChanged, [=](const QModelIndex &topLeft, const QModelIndex &bottomRight,const QVector<int> &vec){
+            Q_UNUSED(bottomRight)
+            Q_UNUSED(vec)
+            auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(topLeft);
+            if (realIdx.isValid() && RecentModel::instance().hasActiveCall(realIdx)){
+                ui->smartList->selectionModel()->setCurrentIndex(realIdx,QItemSelectionModel::ClearAndSelect);
+            }
+        });
+
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                 this, SLOT(contactLineEdit_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
