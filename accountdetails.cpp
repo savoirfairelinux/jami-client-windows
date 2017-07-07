@@ -58,21 +58,6 @@ AccountDetails::AccountDetails(QWidget *parent) :
 
     });
 
-    connect(ui->lrcfg_tlsEnabled, &QCheckBox::stateChanged, [=] (int state) {
-        if(state == Qt::Checked) {
-            ui->negoEncry_1->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
-            ui->negoEncry_2->setVisible(true);
-            ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
-            ui->cipherListView->setVisible(!ui->defaultCipherCheckBox->isChecked()
-                                           && currentAccount_->protocol() != Account::Protocol::RING);
-        } else {
-            ui->negoEncry_1->setVisible(false);
-            ui->negoEncry_2->setVisible(false);
-            ui->defaultCipherCheckBox->setVisible(false);
-            ui->cipherListView->setVisible(false);
-        }
-    });
-
     connect(ui->defaultCipherCheckBox, &QCheckBox::stateChanged, [=] (int state) {
         if (state == Qt::Checked) {
             ui->cipherListView->setVisible(false);
@@ -174,12 +159,12 @@ AccountDetails::setAccount(Account* currentAccount) {
     certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKey;
 #endif
 
-    ui->srtpEnabled->disconnect();
-    connect(ui->srtpEnabled, &QCheckBox::toggled, [=](bool checked) {
+    ui->srtpEnabledChkBox->disconnect();
+    connect(ui->srtpEnabledChkBox, &QCheckBox::toggled, [=](bool checked) {
         currentAccount_->setSrtpEnabled(checked);
     });
 
-    ui->srtpEnabled->setChecked(currentAccount_->isSrtpEnabled());
+    ui->srtpEnabledChkBox->setChecked(currentAccount_->isSrtpEnabled());
 
     if (currentAccount_->cipherModel()->useDefault())
         ui->defaultCipherCheckBox->setChecked(true);
@@ -195,29 +180,14 @@ AccountDetails::setAccount(Account* currentAccount) {
 
     auto accountProtocol = currentAccount_->protocol();
     if (accountProtocol == Account::Protocol::RING) {
-        ui->medStreaEncry->setVisible(false);
-        ui->lrcfg_tlsEnabled->setVisible(false);
-
+        ui->srtpEnabledChkBox->hide();
         ui->nameServiceURLLabel->show();
         ui->lrcfg_nameServiceURL->show();
         ui->lrcfg_nameServiceURL->setText(currentAccount_->nameServiceURL());
     } else if (accountProtocol == Account::Protocol::SIP) {
-        ui->medStreaEncry->setVisible(true);
-        ui->lrcfg_tlsEnabled->setVisible(true);
-
+        ui->srtpEnabledChkBox->show();
         ui->nameServiceURLLabel->hide();
         ui->lrcfg_nameServiceURL->hide();
-    }
-
-    if (ui->lrcfg_tlsEnabled->checkState() == Qt::Checked) {
-        ui->negoEncry_1->setVisible(true);
-        ui->negoEncry_2->setVisible(true);
-        ui->defaultCipherCheckBox->setVisible(currentAccount_->protocol() != Account::Protocol::RING);
-    } else {
-        ui->negoEncry_1->setVisible(false);
-        ui->negoEncry_2->setVisible(false);
-        ui->defaultCipherCheckBox->setVisible(false);
-        ui->cipherListView->setVisible(false);
     }
 
     if (ui->defaultCipherCheckBox->checkState() == Qt::Checked)
