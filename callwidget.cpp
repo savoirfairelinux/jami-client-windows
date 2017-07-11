@@ -146,6 +146,7 @@ CallWidget::CallWidget(QWidget* parent) :
             Q_UNUSED(bottomRight)
             Q_UNUSED(vec)
             auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(topLeft);
+            
             if (realIdx.isValid() && RecentModel::instance().hasActiveCall(realIdx)){
                 ui->smartList->selectionModel()->setCurrentIndex(realIdx,QItemSelectionModel::ClearAndSelect);
             }
