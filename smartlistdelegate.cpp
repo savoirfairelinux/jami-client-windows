@@ -76,12 +76,12 @@ SmartListDelegate::paint(QPainter* painter
         QFontMetrics textFontMetrics(font);
 
         // If there is more than 10 unread messages, "10+" is displayed
-        QString messageCountText = (messageCount > 10)? "10+" : QString::number(messageCount);
+        QString messageCountText = (messageCount >= 10)? "9+" : QString::number(messageCount);
 
         // This QRect is the bounding one containing the message count to be displayed
-        QRect pastilleRect = textFontMetrics.boundingRect(QRect(rectAvatar.left() + sizeImage_/3,
-                                                                rectAvatar.bottom() - textFontMetrics.height(), sizeImage_, textFontMetrics.height()),
-                                                          Qt::AlignCenter, messageCountText);
+        QRect pastilleRect = textFontMetrics.boundingRect(QRect(rectAvatar.left() - (2 * sizeImage_)/9,
+                                                                rectAvatar.bottom() - sizeImage_/3 - textFontMetrics.height(), sizeImage_, textFontMetrics.height()),
+                                                          Qt::AlignVCenter | Qt::AlignLeft, messageCountText);
 
         // This one is larger than pastilleRect and is used to prepare the red background
         QRect bubbleRect(pastilleRect.left() - 3, pastilleRect.top(),
@@ -104,7 +104,7 @@ SmartListDelegate::paint(QPainter* painter
 
     // Presence indicator
     QPainterPath outerCircle, innerCircle;
-    QPointF center(rectAvatar.left() + sizeImage_/6, (rectAvatar.bottom() - sizeImage_/6) + 1);
+    QPointF center(rectAvatar.right() - sizeImage_/6, (rectAvatar.bottom() - sizeImage_/6) + 1);
     qreal outerCRadius = sizeImage_ / 6, innerCRadius = outerCRadius * 0.75;
     outerCircle.addEllipse(center, outerCRadius, outerCRadius);
     innerCircle.addEllipse(center, innerCRadius, innerCRadius);
