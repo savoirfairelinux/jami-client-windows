@@ -28,9 +28,9 @@
 #include "account.h"
 #include "profilemodel.h"
 #include "profile.h"
+#include "namedirectory.h"
 
 #include "utils.h"
-#include "photoboothdialog.h"
 
 const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Ring account", "Default alias for new Ring account");
 
@@ -64,7 +64,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
         ui->usernameEdit->setEnabled(false);
         ui->usernameEdit->setText(toBeMigrated->displayName());
         ui->previousButton->hide();
-        ui->avatarButton->hide();
+        ui->photoBooth->hide();
         ui->pinEdit->hide();
         ui->usernameLabel->setText(tr("Your account needs to be migrated. Choose a password."));
     } else
@@ -76,6 +76,8 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
 
     nameLookupTimer_.setSingleShot(true);
     connect(&nameLookupTimer_, QTimer::timeout, this, WizardDialog::timeoutNameLookupTimer);
+    connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, WizardDialog::on_photoTaken);
+    ui->avatarLabel->hide();
 }
 
 WizardDialog::~WizardDialog()
@@ -189,16 +191,14 @@ WizardDialog::usernameFailedRegistration()
 }
 
 void
-WizardDialog::on_avatarButton_clicked()
+WizardDialog::on_photoTaken(QString fileName)
 {
-    PhotoBoothDialog dlg;
-    dlg.exec();
-    if (dlg.result() == QDialog::Accepted) {
-        auto image = QImage(dlg.fileName_);
-        auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
-        ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarButton->width())));
-    }
+    auto image = QImage(fileName);
+    auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+    ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
+    ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
+    ui->photoBooth->stopBooth();
+    ui->avatarLabel->show();
 }
 
 void
@@ -219,13 +219,15 @@ WizardDialog::changePage(bool existingAccount)
     if (existingAccount) { // If user want to add a device
         ui->accountLabel->setText(tr("Add a device"));
         ui->stackedWidget->setCurrentWidget(ui->explanationPage);
+        ui->photoBooth->hide();
     } else { // If user want to create a new account
         ui->accountLabel->setText(tr("Create your account"));
         ui->stackedWidget->setCurrentWidget(ui->profilePage);
+        ui->photoBooth->startBooth();
+        ui->photoBooth->show();
     }
     ui->navBarWidget->show();
-
-    ui->avatarButton->setHidden(existingAccount);
+    ui->avatarLabel->setHidden(true);
     ui->usernameLabel->setHidden(existingAccount);
     ui->usernameEdit->setHidden(existingAccount);
     ui->signUpCheckbox->setHidden(existingAccount);
