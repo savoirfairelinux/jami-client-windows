@@ -27,9 +27,8 @@ import shutil
 print("== Updating from sources")
 if os.system("lupdate RingWinClient.pro -no-obsolete"):
     print("trying with 'lupdate-qt5'")
-    os.system("lupdate-qt5 RingWinClient.pro -no-obsolete")
-else:
-    raise RuntimeError("unable to find any suitable lupdate Qt tool on this system. Stopping")
+    if os.system("lupdate-qt5 RingWinClient.pro -no-obsolete"):
+        raise RuntimeError("unable to find any suitable lupdate Qt tool on this system. Stopping")
 
 print("== Pushing sources")
 os.system("tx push -s")
