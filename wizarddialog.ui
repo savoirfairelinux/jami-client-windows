@@ -222,12 +222,25 @@ p, li { white-space: pre-wrap; }
         </spacer>
        </item>
        <item alignment="Qt::AlignHCenter">
-        <widget class="QPushButton" name="avatarButton">
+        <widget class="PhotoboothWidget" name="photoBooth" native="true">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>300</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="avatarLabel">
+         <property name="enabled">
+          <bool>true</bool>
          </property>
          <property name="minimumSize">
           <size>
@@ -235,27 +248,34 @@ p, li { white-space: pre-wrap; }
            <height>100</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>100</height>
-          </size>
+         <property name="font">
+          <font>
+           <kerning>true</kerning>
+          </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <property name="text">
           <string/>
          </property>
-         <property name="icon">
-          <iconset resource="ressources.qrc">
-           <normaloff>:/images/user/btn-default-userpic.svg</normaloff>:/images/user/btn-default-userpic.svg</iconset>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
          </property>
-         <property name="iconSize">
-          <size>
-           <width>100</width>
-           <height>100</height>
-          </size>
+         <property name="pixmap">
+          <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
          </property>
-         <property name="flat">
-          <bool>true</bool>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>false</bool>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::NoTextInteraction</set>
          </property>
         </widget>
        </item>
@@ -684,6 +704,14 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PhotoboothWidget</class>
+   <extends>QWidget</extends>
+   <header>photoboothwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>

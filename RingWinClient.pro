@@ -80,7 +80,8 @@ SOURCES += main.cpp\
     contactrequestlistwidget.cpp \
     deleteaccountdialog.cpp \
     bannedcontactswidget.cpp \
-    deletecontactdialog.cpp
+    deletecontactdialog.cpp \
+    photoboothwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -124,7 +125,8 @@ HEADERS  += mainwindow.h \
     contactrequestlistwidget.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
-    deletecontactdialog.h
+    deletecontactdialog.h \
+    photoboothwidget.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -154,7 +156,8 @@ FORMS    += mainwindow.ui \
     quickactcontactrequestwidget.ui \
     deleteaccountdialog.ui \
     bannedcontactswidget.ui \
-    deletecontactdialog.ui
+    deletecontactdialog.ui \
+    photoboothwidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi
 LIBS += -lqrencode
