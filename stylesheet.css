@@ -123,15 +123,13 @@ QListView#listMessageView::item:hover{
 }
 
 QListView#listMessageView{
-    background: rgb(242, 242, 242);
+    background: rgb(255, 255, 255);
     border-top: 1px solid rgb(229, 229, 229);
+    border-bottom: 1px solid rgb(229, 229, 229);
 }
 
 QLineEdit#messageEdit, QLineEdit#imMessageEdit{
-    border-color: rgb(0, 192, 212);
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: outset;
+    border: none;
     background-color: rgb(255, 255, 255);
 }
 
@@ -234,19 +232,19 @@ QPushButton#btnvideo{
 }
 
 QPushButton#searchBtn, QPushButton#btnComBarVideo,
-QPushButton#sendButton, QPushButton#sendIMButton{
+QPushButton#sendButton, QPushButton#sendIMButton, QPushButton#sendContactRequestPageButton{
    background-color: #3AC0D2;
    border-radius: 15px;
    border:solid 1px;
 }
 
 QPushButton#searchBtn:hover, QPushButton#sendButton:hover,
-QPushButton#sendIMButton:hover, QPushButton#btnComBarVideo:hover{
+QPushButton#sendIMButton:hover, QPushButton#btnComBarVideo:hover, QPushButton#sendContactRequestPageButton:hover{
    background-color: #4dc6d6;
 }
 
 QPushButton#searchBtn:pressed, QPushButton#sendButton:pressed,
-QPushButton#sendIMButton:pressed, QPushButton#btnComBarVideo:pressed{
+QPushButton#sendIMButton:pressed, QPushButton#btnComBarVideo:pressed, QPushButton#sendContactRequestPageButton:pressed{
    background-color: #34acbd;
 }
 
@@ -288,7 +286,7 @@ QListView#contactView{
 }
 
 QWidget#messagingPage, QWidget#contactRequestPage{
-    background: rgb(242, 242, 242);
+    background: rgb(255, 255, 255);
 }
 
 QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,

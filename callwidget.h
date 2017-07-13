@@ -73,10 +73,8 @@ private slots:
     void on_smartList_doubleClicked(const QModelIndex& index);
     void on_sendIMButton_clicked();
     void on_imMessageEdit_returnPressed();
-    void on_contactMethodComboBox_currentIndexChanged(const QString& number);
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
-    void on_copyCMButton_clicked();
     void on_sendContactRequestPageButton_clicked();
     void on_sendCRBackButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
@@ -96,6 +94,7 @@ private slots:
     void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
     void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
+    void on_contactMethodComboBox_currentIndexChanged(int index);
 
 private:
     Ui::CallWidget* ui;
