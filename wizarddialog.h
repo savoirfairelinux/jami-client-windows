@@ -52,7 +52,6 @@ protected slots:
 
 //UI Slots
 private slots:
-    void on_avatarButton_clicked();
     void on_existingPushButton_clicked();
     void on_newAccountButton_clicked();
     void on_nextButton_clicked();
@@ -65,6 +64,7 @@ private slots:
     void handle_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
     void timeoutNameLookupTimer();
+    void on_photoTaken(QString fileName);
 
 private:
     Ui::WizardDialog* ui;
