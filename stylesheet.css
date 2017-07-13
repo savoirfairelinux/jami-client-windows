@@ -123,15 +123,13 @@ QListView#listMessageView::item:hover{
 }
 
 QListView#listMessageView{
-    background: rgb(242, 242, 242);
+    background: rgb(255, 255, 255);
     border-top: 1px solid rgb(229, 229, 229);
+    border-bottom: 1px solid rgb(229, 229, 229);
 }
 
 QLineEdit#messageEdit, QLineEdit#imMessageEdit{
-    border-color: rgb(0, 192, 212);
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: outset;
+    border: none;
     background-color: rgb(255, 255, 255);
 }
 
@@ -288,7 +286,7 @@ QListView#contactView{
 }
 
 QWidget#messagingPage, QWidget#contactRequestPage{
-    background: rgb(242, 242, 242);
+    background: rgb(255, 255, 255);
 }
 
 QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
