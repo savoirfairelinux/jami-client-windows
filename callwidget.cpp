@@ -781,13 +781,15 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
     configureSendCRPageButton(nodeIdx);
-    ui->imNameLabel->setText(QString(tr("Conversation with %1", "%1 is the contact name"))
-                             .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
+    ui->imNameLabel->setText(QString(tr("%1\n%2", "%1 is the contact username, %2 is the contact registered name"))
+                             .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString())
+                             .arg(nodeIdx.data(static_cast<int>(Person::Role::IdOfLastCMUsed)).value<QString>()));
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
-    ui->contactMethodComboBox->setEnabled(cmVector.size() > 1);
+    ui->contactMethodComboBox->setVisible(cmVector.size() > 1);
     foreach (const ContactMethod* cm, cmVector) {
-        ui->contactMethodComboBox->addItem(cm->uri());
+        ui->contactMethodComboBox->addItem(cm->bestId());
     }
+
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
     disconnect(imClickedConnection_);
     imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
@@ -805,14 +807,21 @@ CallWidget::on_sendIMButton_clicked()
 {
     if (ui->imMessageEdit->text().trimmed().isEmpty())
         return;
-    auto number = ui->contactMethodComboBox->currentText();
-    if (auto cm = PhoneDirectoryModel::instance().getNumber(number)) {
-        QMap<QString, QString> msg;
-        msg["text/plain"] = ui->imMessageEdit->text();
-        cm->sendOfflineTextMessage(msg);
-        ui->imMessageEdit->clear();
+
+    auto idx = RecentModel::instance().selectionModel()->currentIndex();
+    auto cmVec = RecentModel::instance().getContactMethods(idx);
+    if (cmVec.size() > 0) {
+            auto cm = cmVec[0];
+            if(!cm) {
+                qWarning() << "Contact Method not found";
+                return;
+            }
+            QMap<QString, QString> msg;
+            msg["text/plain"] = ui->imMessageEdit->text();
+            cm->sendOfflineTextMessage(msg);
+            ui->imMessageEdit->clear();
     } else {
-        qWarning() << "Contact Method not found for " << number;
+        qWarning() << "No contact method found for messaging";
     }
 }
 
@@ -822,35 +831,43 @@ CallWidget::on_imMessageEdit_returnPressed()
     on_sendIMButton_clicked();
 }
 
-void
-CallWidget::on_contactMethodComboBox_currentIndexChanged(const QString& number)
+void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
 {
-    auto cm = PhoneDirectoryModel::instance().getNumber(number);
-    if (auto txtRecording = cm->textRecording()) {
-        ui->listMessageView->setModel(txtRecording->instantMessagingModel());
-        if (imConnection_)
-            disconnect(imConnection_);
-        imConnection_ = connect(txtRecording,
-                                SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
-                                this,
-                                SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
-        auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
-        if (messagesPresent) {
-            ui->listMessageView->scrollToBottom();
-            txtRecording->setAllRead();
-        }
-        ui->listMessageView->setVisible(messagesPresent);
-        ui->noMessagesLabel->setVisible(!messagesPresent);
-        if (not messagesPresent) {
-            imVisibleConnection_ = connect(txtRecording->instantMessagingModel(),
-                                           &QAbstractItemModel::rowsInserted,
-                                           [this, txtRecording]() {
-                if (imVisibleConnection_)
-                    disconnect(imVisibleConnection_);
-                auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
-                ui->listMessageView->setVisible(messagesPresent);
-                ui->noMessagesLabel->setVisible(!messagesPresent);
-            });
+    auto idx = RecentModel::instance().selectionModel()->currentIndex();
+    auto cmVec = RecentModel::instance().getContactMethods(idx);
+    ContactMethod* cm {};
+
+    if (index < cmVec.size() && index > 0 ){
+        cm = cmVec[index];
+    }
+
+    if (cm){
+        if (auto txtRecording = cm->textRecording()) {
+            ui->listMessageView->setModel(txtRecording->instantMessagingModel());
+            if (imConnection_)
+                disconnect(imConnection_);
+            imConnection_ = connect(txtRecording,
+                                    SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
+                                    this,
+                                    SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
+            auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
+            if (messagesPresent) {
+                ui->listMessageView->scrollToBottom();
+                txtRecording->setAllRead();
+            }
+            ui->listMessageView->setVisible(messagesPresent);
+            ui->noMessagesLabel->setVisible(!messagesPresent);
+            if (not messagesPresent) {
+                imVisibleConnection_ = connect(txtRecording->instantMessagingModel(),
+                                               &QAbstractItemModel::rowsInserted,
+                                               [this, txtRecording]() {
+                    if (imVisibleConnection_)
+                        disconnect(imVisibleConnection_);
+                    auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
+                    ui->listMessageView->setVisible(messagesPresent);
+                    ui->noMessagesLabel->setVisible(!messagesPresent);
+                });
+            }
         }
     }
 }
@@ -905,13 +922,6 @@ CallWidget::slidePage(QWidget* widget, bool toRight)
     pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
     pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
     pageAnim_->start();
-}
-
-void
-CallWidget::on_copyCMButton_clicked()
-{
-    auto text = ui->contactMethodComboBox->currentText();
-    QApplication::clipboard()->setText(text);
 }
 
 void

@@ -77,7 +77,7 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="handleWidth">
-        <number>10</number>
+        <number>2</number>
        </property>
        <property name="childrenCollapsible">
         <bool>true</bool>
@@ -1047,28 +1047,6 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="sendContactRequestPageButton">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="text">
-                     <string>contact request</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <spacer name="horizontalSpacer_7">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -1083,6 +1061,12 @@
                   </item>
                   <item>
                    <widget class="QLabel" name="imNameLabel">
+                    <property name="minimumSize">
+                     <size>
+                      <width>10</width>
+                      <height>0</height>
+                     </size>
+                    </property>
                     <property name="font">
                      <font>
                       <pointsize>12</pointsize>
@@ -1091,7 +1075,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>Conversation with</string>
+                     <string/>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -1118,44 +1102,31 @@
                    <widget class="QComboBox" name="contactMethodComboBox">
                     <property name="minimumSize">
                      <size>
-                      <width>244</width>
+                      <width>160</width>
                       <height>0</height>
                      </size>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="copyCMButton">
+                   <widget class="QPushButton" name="sendContactRequestPageButton">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>30</width>
+                      <width>50</width>
                       <height>30</height>
                      </size>
                     </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
+                    <property name="styleSheet">
+                     <string notr="true"/>
                     </property>
                     <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_content_copy_white_24dp.png</normaloff>:/images/icons/ic_content_copy_white_24dp.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>18</width>
-                      <height>18</height>
-                     </size>
+                     <string>Invite</string>
                     </property>
                    </widget>
                   </item>
@@ -1223,7 +1194,7 @@
                    <number>6</number>
                   </property>
                   <property name="topMargin">
-                   <number>6</number>
+                   <number>0</number>
                   </property>
                   <property name="rightMargin">
                    <number>6</number>
@@ -1243,6 +1214,12 @@
                      <font>
                       <pointsize>10</pointsize>
                      </font>
+                    </property>
+                    <property name="inputMask">
+                     <string/>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Type your message here</string>
                     </property>
                    </widget>
                   </item>
