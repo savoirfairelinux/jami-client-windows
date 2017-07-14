@@ -594,27 +594,6 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
 }
 
 void
-CallWidget::configureSendCRPageButton(const QModelIndex& currentIdx)
-{
-   if (currentIdx.isValid()){
-        QVector<ContactMethod*> cmVector = RecentModel::instance().getContactMethods(currentIdx);
-        if (cmVector.size() == 0){
-            ui->sendContactRequestPageButton->hide();
-            return;
-        }
-
-        URI cmUri = cmVector[0]->uri();
-        if (cmUri.protocolHint() == URI::ProtocolHint::RING || uriNeedNameLookup(cmUri)) {
-            ui->sendContactRequestPageButton->show();
-        } else {
-            ui->sendContactRequestPageButton->hide();
-        }
-    } else {
-        ui->sendContactRequestPageButton->hide();
-    }
-}
-
-void
 CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
 {
     Q_UNUSED(previousIdx)
@@ -780,7 +759,6 @@ void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
-    configureSendCRPageButton(nodeIdx);
     ui->imNameLabel->setText(QString(tr("%1\n%2", "%1 is the contact username, %2 is the contact registered name"))
                              .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString())
                              .arg(nodeIdx.data(static_cast<int>(Person::Role::IdOfLastCMUsed)).value<QString>()));
@@ -789,6 +767,8 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     foreach (const ContactMethod* cm, cmVector) {
         ui->contactMethodComboBox->addItem(cm->bestId());
     }
+
+    ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cmVector[0]));
 
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
     disconnect(imClickedConnection_);
@@ -844,6 +824,7 @@ void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
     }
 
     if (cm){
+        ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cm));
         if (auto txtRecording = cm->textRecording()) {
             ui->listMessageView->setModel(txtRecording->instantMessagingModel());
             if (imConnection_)
@@ -1006,6 +987,25 @@ CallWidget::getSelectedAccount()
         return ac;
     }
     return nullptr;
+}
+
+bool
+CallWidget::shouldDisplayInviteButton(ContactMethod &cm)
+{
+    // Displaying the button for a SIP ContactMethod is a nonsense
+    if (cm.protocolHint() == URI::ProtocolHint::RING) {
+        // If we know that the other accepted us
+        if (cm.isConfirmed())
+            return false;
+
+        // If not sure, we still check if the contact method is linked to a
+        // Ring account or if the selected account is a RING one.
+        if(auto linkedAccount = cm.account())
+            return linkedAccount->protocol() == Account::Protocol::RING;
+        else if (auto acc = getSelectedAccount())
+            return acc->protocol() == Account::Protocol::RING;
+    }
+    return false;
 }
 
 void CallWidget::on_mainTabMenu_currentChanged(int index)
