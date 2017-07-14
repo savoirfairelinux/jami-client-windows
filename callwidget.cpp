@@ -781,9 +781,10 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
     configureSendCRPageButton(nodeIdx);
-    ui->imNameLabel->setText(QString(tr("%1\n%2", "%1 is the contact username, %2 is the contact registered name"))
-                             .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString())
-                             .arg(nodeIdx.data(static_cast<int>(Person::Role::IdOfLastCMUsed)).value<QString>()));
+    ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
+                                     .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
+    ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
+                                   .arg(nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString()));
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
     ui->contactMethodComboBox->setVisible(cmVector.size() > 1);
     foreach (const ContactMethod* cm, cmVector) {
