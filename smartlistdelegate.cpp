@@ -148,7 +148,7 @@ SmartListDelegate::paint(QPainter* painter
         }
 
         // Display the ID under the name
-        QString idStr = index.data(static_cast<int>(Person::Role::IdOfLastCMUsed)).value<QString>();
+        QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
         font.setItalic(true);
