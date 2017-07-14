@@ -626,8 +626,14 @@
                     <bold>false</bold>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>Ring is free software for universal communication which respects the freedoms and privacy of its users.</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -638,16 +644,16 @@
                  </widget>
                 </item>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QLabel" name="label1">
+                 <widget class="QLabel" name="thisIsYourLabel">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>300</width>
+                    <width>400</width>
                     <height>50</height>
                    </size>
                   </property>
@@ -658,8 +664,14 @@
                     <kerning>true</kerning>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #aeaeae</string>
+                  </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>This is your RingID. Copy and share it with your friends!</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -705,6 +717,9 @@
                      <font>
                       <pointsize>14</pointsize>
                      </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::Box</enum>
@@ -843,17 +858,17 @@
                   </item>
                  </layout>
                 </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QLabel" name="label2">
+                <item>
+                 <widget class="QLabel" name="copyLabel">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>300</width>
+                    <width>50</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -862,17 +877,23 @@
                     <pointsize>8</pointsize>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #aeaeae</string>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>Double-click to copy</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
                   <property name="wordWrap">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -894,6 +915,9 @@
                 </item>
                 <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="qrLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color: #aeaeae</string>
+                  </property>
                   <property name="text">
                    <string>Error while generating QR Code</string>
                   </property>
