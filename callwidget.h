@@ -58,7 +58,6 @@ public:
 public slots:
     void settingsButtonClicked();
     void showIMOutOfCall(const QModelIndex& nodeIdx);
-    void configureSendCRPageButton(const QModelIndex& nodeIdx);
     void btnComBarVideoClicked();
 
 //UI SLOTS
@@ -131,6 +130,7 @@ private:
     bool uriNeedNameLookup(const URI uri_passed);
     void processContactLineEdit();
     static Account* getSelectedAccount();
+    static bool shouldDisplayInviteButton(ContactMethod& cm);
     void backToWelcomePage();
     void hideMiniSpinner();
 };
