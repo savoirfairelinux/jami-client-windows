@@ -470,87 +470,87 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <translation>Contactverzoeken</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="545"/>
+        <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
         <translation>instellingenmenu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="627"/>
+        <location filename="../callwidget.ui" line="630"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring is vrije software voor universele communicatie, die de vrijheden en privacy van haar gebruikers eerbiedigt.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="659"/>
+        <location filename="../callwidget.ui" line="662"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Dit is je Ring-ID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Deel hem met je vrienden!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="766"/>
         <source>Share your ring id</source>
         <translation>Deel je Ring-ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="866"/>
+        <location filename="../callwidget.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Dubbelklik om te kopiëren.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="898"/>
         <source>Error while generating QR Code</source>
         <translation>Fout bij het aanmaken van QR-code</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1067"/>
-        <source>contact request</source>
-        <translation>contactverzoek</translation>
+        <location filename="../callwidget.ui" line="1129"/>
+        <source>Add to contacts</source>
+        <translation>Aan contacten toevoegen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1094"/>
-        <source>Conversation with</source>
-        <translation>Gesprek met</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1177"/>
+        <location filename="../callwidget.ui" line="1158"/>
         <source>Start the conversation !</source>
         <translation>Begin het gesprek!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1264"/>
+        <location filename="../callwidget.ui" line="1235"/>
+        <source>Type your message here</source>
+        <translation>Typ hier je bericht</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1254"/>
         <source>send message</source>
         <translation>bericht versturen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1380"/>
         <source>BestId</source>
         <translation>BestId</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1400"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Wants to talk to you!</source>
         <translation>Wil met je praten!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1495"/>
+        <location filename="../callwidget.ui" line="1485"/>
         <source>Answer</source>
         <translation>Beantwoorden</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1527"/>
+        <location filename="../callwidget.ui" line="1517"/>
         <source>Ignore</source>
         <translation>Negeren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1598"/>
+        <location filename="../callwidget.ui" line="1588"/>
         <source>Calling</source>
         <translation>Bellen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1671"/>
+        <location filename="../callwidget.ui" line="1661"/>
         <source>Cancel</source>
         <translation>Annuleren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1370"/>
         <source>Call</source>
         <translation>Oproep</translation>
     </message>
@@ -565,12 +565,20 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <translation>Aan contact toevoegen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="784"/>
+        <source>%1
+%2</source>
+        <comment>%1 is the contact username, %2 is the contact registered name</comment>
+        <translation>%1
+%2</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>Contact me on Ring</source>
         <translation>Contacteer mij via Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>My RingId is : </source>
         <translation>Mijn Ring-ID is:</translation>
     </message>
@@ -628,12 +636,6 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <location filename="../callwidget.cpp" line="414"/>
         <source>Call incoming from %1</source>
         <translation>Inkomende oproep van %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>Conversation with %1</source>
-        <comment>%1 is the contact name</comment>
-        <translation>Gesprek met %1</translation>
     </message>
 </context>
 <context>

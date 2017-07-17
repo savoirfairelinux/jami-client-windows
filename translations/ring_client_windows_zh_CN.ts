@@ -133,7 +133,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>公共用户名</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -144,7 +144,7 @@ Ring是安全的、分布式的通讯软件。</translation>
         <location filename="../accountdetails.cpp" line="386"/>
         <location filename="../accountdetails.cpp" line="391"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>在区块链上注册</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
@@ -308,7 +308,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>密码（必填）</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
@@ -328,12 +328,12 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>该PIN需要在5分钟内输入您的新设备。您可以随时生成新的PIN。</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
@@ -343,7 +343,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>已屏蔽的联系人</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -403,12 +403,12 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>正在生成您的PIN，请稍等。</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>网络错误，请稍后重试。</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
@@ -418,7 +418,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>正在注册…可能需要一些时间</translation>
     </message>
 </context>
 <context>
@@ -431,12 +431,12 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>已屏蔽的ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>从屏蔽列表中移除，并添加至通讯录</translation>
     </message>
 </context>
 <context>
@@ -470,87 +470,87 @@ Ring是安全的、分布式的通讯软件。</translation>
         <translation>联系人请求</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="545"/>
+        <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
         <translation>设置菜单</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="627"/>
+        <location filename="../callwidget.ui" line="630"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring是自由软件，尊重用户的通讯自由与隐私。</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="659"/>
+        <location filename="../callwidget.ui" line="662"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;这是您的RingID。&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;复制并发送给您的朋友！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="766"/>
         <source>Share your ring id</source>
         <translation>共享您的RingID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="866"/>
+        <location filename="../callwidget.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;双击复制&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="898"/>
         <source>Error while generating QR Code</source>
         <translation>创建二维码时产生错误</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1067"/>
-        <source>contact request</source>
-        <translation type="unfinished"/>
+        <location filename="../callwidget.ui" line="1129"/>
+        <source>Add to contacts</source>
+        <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1094"/>
-        <source>Conversation with</source>
-        <translation>会话，与</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1177"/>
+        <location filename="../callwidget.ui" line="1158"/>
         <source>Start the conversation !</source>
         <translation>开始会话！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1264"/>
+        <location filename="../callwidget.ui" line="1235"/>
+        <source>Type your message here</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1254"/>
         <source>send message</source>
         <translation>发送消息</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1380"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1400"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Wants to talk to you!</source>
         <translation>想要与您通信！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1495"/>
+        <location filename="../callwidget.ui" line="1485"/>
         <source>Answer</source>
         <translation>应答</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1527"/>
+        <location filename="../callwidget.ui" line="1517"/>
         <source>Ignore</source>
         <translation>忽略</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1598"/>
+        <location filename="../callwidget.ui" line="1588"/>
         <source>Calling</source>
         <translation>正在通话</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1671"/>
+        <location filename="../callwidget.ui" line="1661"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1370"/>
         <source>Call</source>
         <translation>通话</translation>
     </message>
@@ -565,12 +565,19 @@ Ring是安全的、分布式的通讯软件。</translation>
         <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="784"/>
+        <source>%1
+%2</source>
+        <comment>%1 is the contact username, %2 is the contact registered name</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>Contact me on Ring</source>
         <translation>在Ring上联系我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>My RingId is : </source>
         <translation>我的RingID是：</translation>
     </message>
@@ -629,12 +636,6 @@ Ring是安全的、分布式的通讯软件。</translation>
         <source>Call incoming from %1</source>
         <translation>来电：%1</translation>
     </message>
-    <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>Conversation with %1</source>
-        <comment>%1 is the contact name</comment>
-        <translation>与%1的会话</translation>
-    </message>
 </context>
 <context>
     <name>ConfigurationWidget</name>
@@ -686,7 +687,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>立即检查更新</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -721,7 +722,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>启用通知</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
@@ -852,7 +853,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>收到的联系人请求</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
@@ -872,7 +873,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>丢弃</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
@@ -893,22 +894,22 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - 删除帐户</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you realy want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>您确定要删除帐户吗？</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>该操作无法撤销</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation type="unfinished"/>
+        <translation>如果该帐户尚未导出或添加至另一设备，您将会丢失它</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
@@ -1066,7 +1067,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>联系人ID</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
@@ -1076,7 +1077,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>发送联系人请求</translation>
     </message>
 </context>
 <context>
@@ -1175,12 +1176,12 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation type="unfinished"/>
+        <translation>您的Ring帐户需要迁移。输入您的密码。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="105"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>正在迁移您的Ring帐户…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="125"/>
@@ -1190,37 +1191,37 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="159"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>正在注册您的公共用户名，可能需要几分钟…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>添加设备</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="323"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>用户名不可用。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>用户名可用。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>用户名非法。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="332"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>网络错误。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="85"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>创建Ring帐户</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="98"/>
@@ -1230,7 +1231,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>如何添加设备</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="134"/>
@@ -1244,7 +1245,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;要将此设备与另一帐户进行连接，您首先 &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;需要获取一个PIN&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;。要生成PIN：&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;在您先前使用的设备上，前往&lt;span style=&quot; font-weight:600;&quot;&gt;帐户管理&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;选择您要使用的 &lt;span style=&quot; font-weight:600;&quot;&gt;Ring帐户&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;前往&lt;span style=&quot; font-weight:600;&quot;&gt;设备&lt;/span&gt;选项卡&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;点击 &lt;span style=&quot; font-weight:600;&quot;&gt;添加设备&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;您将获得此处需要的PIN。该PIN仅在&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;10分钟&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;内有效。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="159"/>
@@ -1254,7 +1264,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="244"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>输入您的全名：</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="297"/>
@@ -1270,18 +1280,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="370"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>设置您的用户名</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="386"/>
         <location filename="../wizarddialog.cpp" line="295"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>正在搜索…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="395"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>在Ring上注册您的用户名。该用户名将由您独占。您的联系人将能够使用该用户名联系您，不必使用您的RingID。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="398"/>
@@ -1291,7 +1301,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="425"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>输入您的PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="455"/>

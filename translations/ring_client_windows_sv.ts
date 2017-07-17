@@ -470,87 +470,87 @@ Ring är säker och distribuerad kommunikationsmjukvara.</translation>
         <translation>Kontaktförfrågningar</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="545"/>
+        <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
         <translation>inställningsmeny</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="627"/>
+        <location filename="../callwidget.ui" line="630"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring är fri mjukvara för universell kommunikation, med respekt för användarens frihet och integritet.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="659"/>
+        <location filename="../callwidget.ui" line="662"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Detta är ditt Ring-ID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Kopiera och dela det med dina vänner!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="766"/>
         <source>Share your ring id</source>
         <translation>Dela ditt Ring-ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="866"/>
+        <location filename="../callwidget.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Dubbelklick för att kopiera.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="898"/>
         <source>Error while generating QR Code</source>
         <translation>Ett fel inträffade vid generering av QR-kod</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1067"/>
-        <source>contact request</source>
-        <translation>kontaktförfrågan</translation>
+        <location filename="../callwidget.ui" line="1129"/>
+        <source>Add to contacts</source>
+        <translation>Lägg till i kontakter</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1094"/>
-        <source>Conversation with</source>
-        <translation>Konversation med</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1177"/>
+        <location filename="../callwidget.ui" line="1158"/>
         <source>Start the conversation !</source>
         <translation>Starta konversationen!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1264"/>
+        <location filename="../callwidget.ui" line="1235"/>
+        <source>Type your message here</source>
+        <translation>Skriv ditt meddelande här</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1254"/>
         <source>send message</source>
         <translation>Skicka meddelande</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1380"/>
         <source>BestId</source>
         <translation>Best-ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1400"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Wants to talk to you!</source>
         <translation>Vill prata med dig!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1495"/>
+        <location filename="../callwidget.ui" line="1485"/>
         <source>Answer</source>
         <translation>Svara</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1527"/>
+        <location filename="../callwidget.ui" line="1517"/>
         <source>Ignore</source>
         <translation>Ignorera</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1598"/>
+        <location filename="../callwidget.ui" line="1588"/>
         <source>Calling</source>
         <translation>Ringer</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1671"/>
+        <location filename="../callwidget.ui" line="1661"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1370"/>
         <source>Call</source>
         <translation>Ring upp</translation>
     </message>
@@ -565,12 +565,20 @@ Ring är säker och distribuerad kommunikationsmjukvara.</translation>
         <translation>Lägg till kontakt</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="784"/>
+        <source>%1
+%2</source>
+        <comment>%1 is the contact username, %2 is the contact registered name</comment>
+        <translation>%1
+%2</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>Contact me on Ring</source>
         <translation>Kontakta mig på Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>My RingId is : </source>
         <translation>Mitt Ring-ID är:</translation>
     </message>
@@ -628,12 +636,6 @@ Ring är säker och distribuerad kommunikationsmjukvara.</translation>
         <location filename="../callwidget.cpp" line="414"/>
         <source>Call incoming from %1</source>
         <translation>Inkommande samtal från %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>Conversation with %1</source>
-        <comment>%1 is the contact name</comment>
-        <translation>Konversation med %1</translation>
     </message>
 </context>
 <context>

@@ -343,7 +343,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuoti kontaktai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -470,87 +470,87 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Kontakto užklausos</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="545"/>
+        <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
         <translation>nustatymų meniu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="627"/>
+        <location filename="../callwidget.ui" line="630"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring yra visuotiniam susisiekimui skirta laisva programinė įranga, kuri gerbia savo naudotojų laisves ir privatumą.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="659"/>
+        <location filename="../callwidget.ui" line="662"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Tai yra jūsų RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Nukopijuokite ir dalinkitės juo su savo draugais!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="766"/>
         <source>Share your ring id</source>
         <translation>Dalintis savo ring id</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="866"/>
+        <location filename="../callwidget.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Spustelėkite du kartus, kad nukopijuotumėte.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="898"/>
         <source>Error while generating QR Code</source>
         <translation>Klaida, kuriant QR kodą</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1067"/>
-        <source>contact request</source>
-        <translation type="unfinished"/>
+        <location filename="../callwidget.ui" line="1129"/>
+        <source>Add to contacts</source>
+        <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1094"/>
-        <source>Conversation with</source>
-        <translation>Pokalbis su</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1177"/>
+        <location filename="../callwidget.ui" line="1158"/>
         <source>Start the conversation !</source>
         <translation>Pradėkite pokalbį !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1264"/>
+        <location filename="../callwidget.ui" line="1235"/>
+        <source>Type your message here</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1254"/>
         <source>send message</source>
         <translation>siųsti žinutę</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1380"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1400"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Wants to talk to you!</source>
         <translation>Nori su jumis pakalbėti!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1495"/>
+        <location filename="../callwidget.ui" line="1485"/>
         <source>Answer</source>
         <translation>Atsiliepti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1527"/>
+        <location filename="../callwidget.ui" line="1517"/>
         <source>Ignore</source>
         <translation>Nepaisyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1598"/>
+        <location filename="../callwidget.ui" line="1588"/>
         <source>Calling</source>
         <translation>Skambinama</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1671"/>
+        <location filename="../callwidget.ui" line="1661"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1370"/>
         <source>Call</source>
         <translation>Skambutis</translation>
     </message>
@@ -565,12 +565,20 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="784"/>
+        <source>%1
+%2</source>
+        <comment>%1 is the contact username, %2 is the contact registered name</comment>
+        <translation>%1
+%2</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>Contact me on Ring</source>
         <translation>Susisiekite su manimi per Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="926"/>
+        <location filename="../callwidget.cpp" line="938"/>
         <source>My RingId is : </source>
         <translation>Mano RingId yra : </translation>
     </message>
@@ -628,12 +636,6 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <location filename="../callwidget.cpp" line="414"/>
         <source>Call incoming from %1</source>
         <translation>Gaunamasis skambutis nuo %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>Conversation with %1</source>
-        <comment>%1 is the contact name</comment>
-        <translation>Pokalbis su %1</translation>
     </message>
 </context>
 <context>
@@ -721,7 +723,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti pranešimus</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
@@ -872,7 +874,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>Atmesti</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
@@ -1076,7 +1078,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Siųsti kontakto užklausą</translation>
     </message>
 </context>
 <context>
@@ -1175,7 +1177,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų paskyra turi būti perkelta. Pasirinkite slaptažodį.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="105"/>
