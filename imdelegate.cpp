@@ -94,10 +94,10 @@ ImDelegate::paint(QPainter* painter,
         path.addRoundedRect(textRect, padding_, padding_);
 
         if (dir == Qt::AlignRight) {
-            painter->fillPath(path, RingTheme::blue_);
+            painter->fillPath(path, RingTheme::imBlue_);
         }
         else {
-            painter->fillPath(path, Qt::white);
+            painter->fillPath(path, RingTheme::imGrey_);
         }
 
         painter->save();
@@ -105,10 +105,7 @@ ImDelegate::paint(QPainter* painter,
         QTextDocument document;
         document.setDefaultFont(fontMsg_);
 
-        if (dir == Qt::AlignRight)
-            document.setDefaultStyleSheet("body { color : white; } i { opacity: 100; font-size : 11px; text-align : right; }");
-        else
-            document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
+        document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
 
         document.setHtml(msg);
 
