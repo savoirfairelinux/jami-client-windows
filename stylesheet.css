@@ -118,8 +118,7 @@ QTreeView#contactRequestList::item:hover, QListView#BannedList::item:hover{
 }
 
 QListView#listMessageView::item:hover{
-    background-color: rgba(229, 229, 229, 255);
-    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 255);
 }
 
 QListView#listMessageView{
