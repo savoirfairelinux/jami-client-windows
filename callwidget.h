@@ -63,7 +63,7 @@ public slots:
 //UI SLOTS
 public slots:
     void on_ringContactLineEdit_returnPressed();
-    inline void on_entered(const QModelIndex& i){highLightedIndex_ = i;}
+    inline void on_entered(const QModelIndex& i){if (i.isValid()) highLightedIndex_ = i;}
 
 private slots:
     void on_acceptButton_clicked();

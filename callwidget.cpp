@@ -128,13 +128,13 @@ CallWidget::CallWidget(QWidget* parent) :
                 this,
                 SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
 
+        //set most recent call to view
         connect(&RecentModel::instance(), &QAbstractItemModel::dataChanged, [=](const QModelIndex &topLeft, const QModelIndex &bottomRight,const QVector<int> &vec){
             Q_UNUSED(bottomRight)
             Q_UNUSED(vec)
-            auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(topLeft);
 
-            if (realIdx.isValid() && RecentModel::instance().hasActiveCall(realIdx)){
-                ui->smartList->selectionModel()->setCurrentIndex(realIdx,QItemSelectionModel::ClearAndSelect);
+            if (topLeft.isValid() && RecentModel::instance().hasActiveCall(topLeft)){
+                ui->smartList->selectionModel()->setCurrentIndex(topLeft,QItemSelectionModel::ClearAndSelect);
             }
         });
 
@@ -535,6 +535,9 @@ CallWidget::on_smartList_clicked(const QModelIndex& index)
 void
 CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
 {
+    if (!index.isValid())
+        return;
+
     auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
     if (RecentModel::instance().hasActiveCall(realIndex))
         return;
@@ -820,8 +823,6 @@ void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
 
     if (index < cmVec.size() && index >= 0 ){
         cm = cmVec[index];
-    } else {
-        qWarning() << "no contact method available";
     }
 
     if (cm){
