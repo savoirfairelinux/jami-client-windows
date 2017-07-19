@@ -42,6 +42,7 @@ public:
     void setName(const QString& name);
     void setTime(const QString& time);
     inline bool isDialogVisible(){ return dialogVisible_; };
+    void toggleContextButtons(bool visible);
 
 //UI SLOTS
 private slots:
