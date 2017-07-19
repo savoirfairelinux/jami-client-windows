@@ -80,7 +80,6 @@ private slots:
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
     void on_pendingCRBackButton_clicked();
-    void on_mainTabMenu_currentChanged(int index);
 
 private slots:
     void callIncoming(Call* call);
@@ -94,6 +93,7 @@ private slots:
     void searchBtnClicked();
     void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
     void on_contactMethodComboBox_currentIndexChanged(int index);
+    void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
     Ui::CallWidget* ui;

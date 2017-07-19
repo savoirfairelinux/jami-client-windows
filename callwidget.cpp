@@ -741,8 +741,6 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
         }
 
         ui->contactRequestList->setItemModel(ac->pendingContactRequestModel());
-        crListSelectionConnection_ = connect(ui->contactRequestList->selectionModel(), &QItemSelectionModel::currentChanged,
-                this, &CallWidget::contactReqListCurrentChanged);
 
         // We modify the currentAccountWidget to reflect the new selected account
         // if the event wasn't triggered by this widget
@@ -978,6 +976,7 @@ void
 CallWidget::on_pendingCRBackButton_clicked()
 {
     ui->contactRequestList->selectionModel()->clear();
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
 Account*
@@ -1010,14 +1009,8 @@ CallWidget::shouldDisplayInviteButton(ContactMethod &cm)
     return false;
 }
 
-void CallWidget::on_mainTabMenu_currentChanged(int index)
+void CallWidget::on_contactRequestList_clicked(const QModelIndex &index)
 {
-    Q_UNUSED(index)
-
-    auto current = ui->mainTabMenu->currentWidget();
-
-    if(current == ui->mainTabMenuPage1)
-        ui->contactRequestList->selectionModel()->clear();
-    else if (current == ui->mainTabMenuPage2)
-        RecentModel::instance().selectionModel()->clear();
+    RecentModel::instance().selectionModel()->clear();
+    contactReqListCurrentChanged(index, QModelIndex());
 }
