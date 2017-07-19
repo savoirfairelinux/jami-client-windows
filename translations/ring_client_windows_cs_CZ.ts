@@ -475,82 +475,83 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
         <translation>nabídka nastavení</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="630"/>
+        <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring je svobodný software určený k univerzální komunikaci, který respektuje svobody a práva uživatelů.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="662"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Toto je vaše RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Sdílejte jej s vašimi přáteli!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="766"/>
+        <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
         <translation>Sdílet vaše Ring ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="869"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Klikněte dvakrát pro zkopírování.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../callwidget.ui" line="671"/>
+        <source>This is your RingID.
+Copy and share it with your friends!</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="898"/>
+        <location filename="../callwidget.ui" line="888"/>
+        <source>Double-click to copy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="923"/>
         <source>Error while generating QR Code</source>
         <translation>Chyba při vytváření QR kódu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1129"/>
+        <location filename="../callwidget.ui" line="1190"/>
         <source>Add to contacts</source>
         <translation>Přidat do kontaktů</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1158"/>
+        <location filename="../callwidget.ui" line="1219"/>
         <source>Start the conversation !</source>
         <translation>Začněte konverzaci !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1235"/>
+        <location filename="../callwidget.ui" line="1296"/>
         <source>Type your message here</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1254"/>
+        <location filename="../callwidget.ui" line="1315"/>
         <source>send message</source>
         <translation>odeslat zprávu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1441"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1451"/>
         <source>Wants to talk to you!</source>
         <translation>Chce s vámi hovořit!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1485"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Answer</source>
         <translation>Přijmout</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1517"/>
+        <location filename="../callwidget.ui" line="1578"/>
         <source>Ignore</source>
         <translation>Přehlížet</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1588"/>
+        <location filename="../callwidget.ui" line="1649"/>
         <source>Calling</source>
         <translation>Volání</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1661"/>
+        <location filename="../callwidget.ui" line="1722"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1370"/>
+        <location filename="../callwidget.ui" line="1431"/>
         <source>Call</source>
         <translation>Volat</translation>
     </message>
@@ -565,19 +566,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
         <translation>Přidat do kontaktů</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>%1
-%2</source>
-        <comment>%1 is the contact username, %2 is the contact registered name</comment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="938"/>
+        <location filename="../callwidget.cpp" line="921"/>
         <source>Contact me on Ring</source>
         <translation>Spojte se se mnou přes Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="938"/>
+        <location filename="../callwidget.cpp" line="921"/>
         <source>My RingId is : </source>
         <translation>Mé Ring ID je :</translation>
     </message>
@@ -627,9 +621,21 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
         <translation>Volat %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="749"/>
+        <location filename="../callwidget.cpp" line="731"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>ŽÁDNÝ ÚČET RING NENALEZEN</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="765"/>
+        <source>%1</source>
+        <comment>%1 is the contact username</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="767"/>
+        <source>%1</source>
+        <comment>%1 is the contact unique identifier</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="414"/>

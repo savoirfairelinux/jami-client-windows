@@ -475,82 +475,83 @@ Ring е сигурен и разпределен софтуер за общув�
         <translation>меню за настройки</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="630"/>
+        <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="662"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;This is your RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Copy and share it with your friends!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Това е Вашият идентификатор за Ring.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Копирайте го и го изпратете на приятелите си!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="766"/>
+        <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
         <translation>Споделете своя идентификатор за Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="869"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Double-click to copy.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aeaeae;&quot;&gt;Щракнете два пъти за копиране.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../callwidget.ui" line="671"/>
+        <source>This is your RingID.
+Copy and share it with your friends!</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="898"/>
+        <location filename="../callwidget.ui" line="888"/>
+        <source>Double-click to copy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="923"/>
         <source>Error while generating QR Code</source>
         <translation>Грешка при създаването на QR-код</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1129"/>
+        <location filename="../callwidget.ui" line="1190"/>
         <source>Add to contacts</source>
         <translation>Добавяне към контактите</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1158"/>
+        <location filename="../callwidget.ui" line="1219"/>
         <source>Start the conversation !</source>
         <translation>Начало на разговора!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1235"/>
+        <location filename="../callwidget.ui" line="1296"/>
         <source>Type your message here</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1254"/>
+        <location filename="../callwidget.ui" line="1315"/>
         <source>send message</source>
         <translation>изпращане на съобщение</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1380"/>
+        <location filename="../callwidget.ui" line="1441"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1390"/>
+        <location filename="../callwidget.ui" line="1451"/>
         <source>Wants to talk to you!</source>
         <translation>Желае да говори с Вас!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1485"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Answer</source>
         <translation>Отговор</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1517"/>
+        <location filename="../callwidget.ui" line="1578"/>
         <source>Ignore</source>
         <translation>Игнориране</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1588"/>
+        <location filename="../callwidget.ui" line="1649"/>
         <source>Calling</source>
         <translation>Обаждане</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1661"/>
+        <location filename="../callwidget.ui" line="1722"/>
         <source>Cancel</source>
         <translation>Отказ</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1370"/>
+        <location filename="../callwidget.ui" line="1431"/>
         <source>Call</source>
         <translation>Обаждане</translation>
     </message>
@@ -565,19 +566,12 @@ Ring е сигурен и разпределен софтуер за общув�
         <translation>Добавяне към контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="784"/>
-        <source>%1
-%2</source>
-        <comment>%1 is the contact username, %2 is the contact registered name</comment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="938"/>
+        <location filename="../callwidget.cpp" line="921"/>
         <source>Contact me on Ring</source>
         <translation>Свържете се с мен в Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="938"/>
+        <location filename="../callwidget.cpp" line="921"/>
         <source>My RingId is : </source>
         <translation>Моят ид. за Ring е:</translation>
     </message>
@@ -627,9 +621,21 @@ Ring е сигурен и разпределен софтуер за общув�
         <translation>Обаждане на %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="749"/>
+        <location filename="../callwidget.cpp" line="731"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>НЕ Е ОТКРИТ АКАУНТ ЗА RING</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="765"/>
+        <source>%1</source>
+        <comment>%1 is the contact username</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="767"/>
+        <source>%1</source>
+        <comment>%1 is the contact unique identifier</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="414"/>
