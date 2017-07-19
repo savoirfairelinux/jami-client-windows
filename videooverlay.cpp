@@ -19,11 +19,15 @@
 #include "videooverlay.h"
 #include "ui_videooverlay.h"
 
+// Client
 #include "contactpicker.h"
 
+// LRC
 #include "callmodel.h"
 #include "contactmethod.h"
 #include "person.h"
+
+
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
@@ -101,6 +105,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     connect(qualityDialog_, &QualityDialog::isVisible, [this] (bool visible) {
         dialogVisible_ = visible;
     });
+
+    // temporary hide
+    ui->addPersonButton->hide();
 }
 
 VideoOverlay::~VideoOverlay()
@@ -120,6 +127,17 @@ void
 VideoOverlay::setTime(const QString& time)
 {
     ui->timerLabel->setText(time);
+}
+
+void VideoOverlay::toggleContextButtons(bool visible)
+{
+    if (! visible) {
+        ui->videoCfgBtn->hide();
+        ui->videoBackBtn->hide();
+    } else {
+        ui->videoCfgBtn->show();
+        ui->videoBackBtn->show();
+    }
 }
 
 void
