@@ -12,10 +12,10 @@
         <source>Credits</source>
         <translation>Padėkos</translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
-        <source>Release : Beta 2 - Gaston Miron</source>
-        <translation>Laida : Beta 2 - Gaston Miron</translation>
+        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -35,12 +35,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <translation>Sukūrė:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="67"/>
+        <location filename="../aboutdialog.cpp" line="70"/>
         <source>Artwork by:</source>
         <translation>Apipavidalino:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="71"/>
+        <location filename="../aboutdialog.cpp" line="74"/>
         <source>Based on the SFLPhone project</source>
         <translation>Pagrįsta SFLPhone projektu</translation>
     </message>
@@ -133,7 +133,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Viešasis naudotojo vardas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -488,12 +488,13 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
         <location filename="../callwidget.ui" line="671"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"/>
+        <translation>Tai yra jūsų RingID.
+Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite du kartus, norėdami nukopijuoti</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
@@ -598,7 +599,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="284"/>
         <source>Copy name</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti vardą</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="300"/>
@@ -629,13 +630,13 @@ Copy and share it with your friends!</source>
         <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="767"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="414"/>

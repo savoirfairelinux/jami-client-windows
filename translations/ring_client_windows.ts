@@ -14,9 +14,9 @@
         <source>Credits</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
-        <source>Release : Beta 2 - Gaston Miron</source>
+        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -36,12 +36,12 @@ Ring is a secured and distributed communication software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="67"/>
+        <location filename="../aboutdialog.cpp" line="70"/>
         <source>Artwork by:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="71"/>
+        <location filename="../aboutdialog.cpp" line="74"/>
         <source>Based on the SFLPhone project</source>
         <translation type="unfinished"></translation>
     </message>

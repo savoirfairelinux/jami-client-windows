@@ -12,9 +12,9 @@
         <source>Credits</source>
         <translation>Podziękowania</translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
-        <source>Release : Beta 2 - Gaston Miron</source>
+        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -35,12 +35,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
         <translation>Stworzone przez:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="67"/>
+        <location filename="../aboutdialog.cpp" line="70"/>
         <source>Artwork by:</source>
         <translation>Obrazki przez:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="71"/>
+        <location filename="../aboutdialog.cpp" line="74"/>
         <source>Based on the SFLPhone project</source>
         <translation>Na podstawie projektu SFLPhone</translation>
     </message>
@@ -488,7 +488,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
         <location filename="../callwidget.ui" line="671"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation type="unfinished"/>
+        <translation>To jest twój RingID. Skopiuj i podziel go ze swoimi przyjaciółmi!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="888"/>
@@ -629,13 +629,13 @@ Copy and share it with your friends!</source>
         <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="767"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="414"/>
