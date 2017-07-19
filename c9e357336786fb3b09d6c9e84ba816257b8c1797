@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3841fe_ea53786a",
+        "filename": "RingWinClient.pro",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2017-07-19T15:20:09Z",
+      "side": 1,
+      "message": "where is displayed?\nI think we should not change that: it\u0027s the internal version\nfor client only. Not the «full» version.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "c9e357336786fb3b09d6c9e84ba816257b8c1797",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
