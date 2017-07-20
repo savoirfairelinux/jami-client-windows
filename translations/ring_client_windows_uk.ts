@@ -35,12 +35,12 @@ Ring - це безпечне і децентралізоване програм�
         <translation>Стоворено:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="71"/>
         <source>Artwork by:</source>
         <translation>Намальовано:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="74"/>
+        <location filename="../aboutdialog.cpp" line="75"/>
         <source>Based on the SFLPhone project</source>
         <translation>Базується на проекті SFLPhone</translation>
     </message>
@@ -567,12 +567,12 @@ Copy and share it with your friends!</source>
         <translation>Додати до контактів</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="921"/>
+        <location filename="../callwidget.cpp" line="919"/>
         <source>Contact me on Ring</source>
         <translation>Зв&apos;яжись зі мною за допомогою Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="921"/>
+        <location filename="../callwidget.cpp" line="919"/>
         <source>My RingId is : </source>
         <translation>Моє RingId : </translation>
     </message>
@@ -627,13 +627,13 @@ Copy and share it with your friends!</source>
         <translation>АККАУНТ RING НЕ ЗНАЙДЕНО</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="763"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="767"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
@@ -1163,17 +1163,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="236"/>
         <source>Share entire screen</source>
         <translation>Поділитися частиною екрану</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="238"/>
+        <location filename="../videoview.cpp" line="239"/>
         <source>Share screen area</source>
         <translation>Поділитися екраном</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="245"/>
+        <location filename="../videoview.cpp" line="246"/>
         <source>Share file</source>
         <translation>Відправити файл</translation>
     </message>
@@ -1226,105 +1226,110 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="85"/>
+        <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="98"/>
+        <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="127"/>
+        <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="134"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
-&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
-&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../wizarddialog.ui" line="69"/>
+        <source> Welcome to</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="159"/>
+        <location filename="../wizarddialog.ui" line="179"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="244"/>
+        <location filename="../wizarddialog.ui" line="292"/>
         <source>Enter your full name:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="297"/>
+        <location filename="../wizarddialog.ui" line="348"/>
         <location filename="../wizarddialog.cpp" line="223"/>
         <source>Create your account</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="322"/>
+        <location filename="../wizarddialog.ui" line="373"/>
         <source>Choose your username:</source>
         <translation>Оберіть ваш логін:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="370"/>
+        <location filename="../wizarddialog.ui" line="421"/>
         <source>Choose your username</source>
         <translation>Оберіть ваше ім&apos;я користувача</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="386"/>
+        <location filename="../wizarddialog.ui" line="437"/>
         <location filename="../wizarddialog.cpp" line="295"/>
         <source>Searching...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="395"/>
+        <location filename="../wizarddialog.ui" line="446"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="398"/>
+        <location filename="../wizarddialog.ui" line="449"/>
         <source>Register public username (experimental)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="425"/>
+        <location filename="../wizarddialog.ui" line="476"/>
         <source>Enter your pin</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="455"/>
+        <location filename="../wizarddialog.ui" line="506"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="485"/>
+        <location filename="../wizarddialog.ui" line="536"/>
         <source>Confirm password</source>
         <translation>Підтвердити пароль</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="553"/>
+        <location filename="../wizarddialog.ui" line="604"/>
         <location filename="../wizarddialog.cpp" line="107"/>
         <source>Generating your Ring account...</source>
         <translation>Генерація вашого облікового запису Ring...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="589"/>
+        <location filename="../wizarddialog.ui" line="640"/>
         <source>Previous</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="621"/>
-        <location filename="../wizarddialog.ui" line="624"/>
+        <location filename="../wizarddialog.ui" line="672"/>
+        <location filename="../wizarddialog.ui" line="675"/>
         <source>Next</source>
         <translation>Наступний</translation>
     </message>
