@@ -71,8 +71,8 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
         ui->navBarWidget->hide();
 
     ui->searchingStateLabel->clear();
-    connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
-            this, SLOT(handle_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
+    connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
+            this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
     nameLookupTimer_.setSingleShot(true);
     connect(&nameLookupTimer_, QTimer::timeout, this, WizardDialog::timeoutNameLookupTimer);
@@ -80,8 +80,8 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
 
 WizardDialog::~WizardDialog()
 {
-    disconnect(&NameDirectory::instance(), SIGNAL(registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
-               this, SLOT(handle_registeredNameFound(const Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
+    disconnect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
+               this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
     delete ui;
 }
 
@@ -311,7 +311,7 @@ WizardDialog::timeoutNameLookupTimer()
 }
 
 void
-WizardDialog::handle_registeredNameFound (const Account* account, NameDirectory::LookupStatus status, const QString& address, const QString& name)
+WizardDialog::handle_registeredNameFound (Account* account, NameDirectory::LookupStatus status, const QString& address, const QString& name)
 {
     Q_UNUSED(account)
     Q_UNUSED(address)
