@@ -66,6 +66,7 @@
 #include "pixbufmanipulator.h"
 #include "settingskey.h"
 #include "contactrequestitemdelegate.h"
+#include "deletecontactdialog.h"
 
 
 CallWidget::CallWidget(QWidget* parent) :
@@ -119,7 +120,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
         findRingAccount();
         setupOutOfCallIM();
-        setupSmartListMenu();
+        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
@@ -181,6 +182,8 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
         connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
+
+        connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){ setupSmartListMenu(pos);});
 
         // setup searchingfor mini spinner
         miniSpinner_ = new QMovie(":/images/waiting.gif");
@@ -258,64 +261,98 @@ CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm)
 }
 
 void
-CallWidget::setupSmartListMenu()
+CallWidget::triggerDeleteContactDialog(ContactMethod *cm)
 {
-    ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){
-        auto idx = ui->smartList->currentIndex();
-        if (not idx.isValid())
-            return;
-        QPoint globalPos = ui->smartList->mapToGlobal(pos);
-        QMenu menu;
-
-        QVector<ContactMethod*> contactMethods = RecentModel::instance()
-                .getContactMethods(RecentModel::instance().peopleProxy()->mapToSource(idx));
-        if (contactMethods.isEmpty())
-            return;
-
-        if (contactMethods.size() == 1) {
-            auto contactMethod = contactMethods.at(0);
-            auto copyAction = new QAction(tr("Copy number"), this);
-            menu.addAction(copyAction);
-            connect(copyAction, &QAction::triggered, [contactMethod]() {
-                QApplication::clipboard()->setText(contactMethod->uri());
-            });
-            auto copyNameAction = new QAction(tr("Copy name"), this);
-            menu.addAction(copyNameAction);
-            connect(copyNameAction, &QAction::triggered, [contactMethod]() {
-                QApplication::clipboard()->setText(contactMethod->primaryName());
-            });
-            if (not contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
-                auto addExisting = new QAction(tr("Add to contact"), this);
-                menu.addAction(addExisting);
-                connect(addExisting, &QAction::triggered, [globalPos, contactMethod]() {
-                    ContactPicker contactPicker(contactMethod);
-                    contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
-                    contactPicker.exec();
-                });
-            }
-        }
-        else {
-           auto callMenu = menu.addMenu(tr("Call Number"));
-           auto copyMenu = menu.addMenu(tr("Copy Number"));
-           for (auto cM : contactMethods) {
-               auto uri = cM->uri();
-               auto copyAction = new QAction(tr("Copy %1").arg(uri), this);
-               copyMenu->addAction(copyAction);
-               connect(copyAction, &QAction::triggered, [uri]() {
-                   QApplication::clipboard()->setText(uri);
-               });
-               auto callAction = new QAction(tr("Call %1").arg(uri), this);
-               callMenu->addAction(callAction);
-               connect(callAction, &QAction::triggered, [cM]() {
-                   Call* c = CallModel::instance().dialingCall(cM);
-                   c->performAction(Call::Action::ACCEPT);
-               });
-           }
-        }
-        menu.exec(globalPos);
-    });
+    auto ac = getSelectedAccount();
+    auto dlg = new DeleteContactDialog(cm, ac);
+    dlg->exec();
 }
+
+void
+CallWidget::addPerson(ContactMethod* cm)
+{
+    // only one collection on windows
+    auto personCollection = PersonModel::instance().collections().at(0);
+    auto newPerson = new Person();
+    newPerson->setFormattedName(cm->bestName());
+    Person::ContactMethods cms;
+    cms.append(cm);
+    newPerson->setContactMethods(cms);
+    cm->setPerson(newPerson);
+    PersonModel::instance().addNewPerson(newPerson, personCollection);
+}
+
+void
+CallWidget::setupSmartListMenu(const QPoint& pos)
+{
+    auto idx = ui->smartList->currentIndex();
+
+    if (not idx.isValid())
+        return;
+
+    QPoint globalPos = ui->smartList->mapToGlobal(pos);
+    QMenu menu;
+    QVector<ContactMethod*> contactMethods = RecentModel::instance()
+            .getContactMethods(RecentModel::instance().peopleProxy()->mapToSource(idx));
+
+    if (contactMethods.isEmpty())
+        return;
+
+    auto contactMethod = contactMethods.first();
+
+    if (contactMethods.size() == 1){
+        auto copyAction = new QAction(tr("Copy number"), this);
+        menu.addAction(copyAction);
+        connect(copyAction, &QAction::triggered, [contactMethod]() {
+            QApplication::clipboard()->setText(contactMethod->uri());
+        });
+
+        auto copyNameAction = new QAction(tr("Copy name"), this);
+        menu.addAction(copyNameAction);
+        connect(copyNameAction, &QAction::triggered, [contactMethod]() {
+            QApplication::clipboard()->setText(contactMethod->primaryName());
+        });
+    } else {
+        auto callMenu = menu.addMenu(tr("Call Number"));
+        auto copyMenu = menu.addMenu(tr("Copy Number"));
+        for (auto cM : contactMethods) {
+            auto uri = cM->bestId();
+            auto copyAction = new QAction(tr("Copy %1").arg(uri), this);
+            copyMenu->addAction(copyAction);
+            connect(copyAction, &QAction::triggered, [uri]() {
+                QApplication::clipboard()->setText(uri);
+            });
+            auto callAction = new QAction(tr("Call %1").arg(uri), this);
+            callMenu->addAction(callAction);
+            connect(callAction, &QAction::triggered, [cM]() {
+                Call* c = CallModel::instance().dialingCall(cM);
+                c->performAction(Call::Action::ACCEPT);
+            });
+        }
+    }
+
+    if (!contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
+        auto addExisting = new QAction(tr("Add to contacts"), this);
+        menu.addAction(addExisting);
+        connect(addExisting, &QAction::triggered, [this, contactMethod]() {
+            /* uncomment and capture globalPos in lambda to reactivate popup
+            ContactPicker contactPicker(contactMethod);
+            contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
+            contactPicker.exec();
+            */
+            addPerson(contactMethod);
+        });
+    } else if (contactMethod->contact()) {
+        auto removeExisting = new QAction(tr("Remove from contacts"), this);
+        menu.addAction(removeExisting);
+        connect(removeExisting, &QAction::triggered, [this, contactMethod]() {
+            triggerDeleteContactDialog(contactMethod);
+        });
+    }
+
+    menu.exec(globalPos);
+}
+
 
 void CallWidget::setupQRCode(QString ringID)
 {
