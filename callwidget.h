@@ -133,4 +133,6 @@ private:
     static bool shouldDisplayInviteButton(ContactMethod& cm);
     void backToWelcomePage();
     void hideMiniSpinner();
+    void triggerDeleteContactDialog(ContactMethod *cm);
+    void addPerson(ContactMethod* cm);
 };
