@@ -66,6 +66,7 @@
 #include "pixbufmanipulator.h"
 #include "settingskey.h"
 #include "contactrequestitemdelegate.h"
+#include "deletecontactdialog.h"
 
 
 CallWidget::CallWidget(QWidget* parent) :
@@ -258,6 +259,17 @@ CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm)
     }
 }
 
+void CallWidget::triggerRemoveContactDialog(ContactMethod *cm)
+{
+    auto ac = getSelectedAccount();
+    if (ac) {
+        auto dlg = new DeleteContactDialog(cm, getSelectedAccount());
+        dlg->exec();
+    } else {
+        qDebug() << "No account selected cannot delete contact";
+    }
+}
+
 void
 CallWidget::setupSmartListMenu()
 {
@@ -281,18 +293,26 @@ CallWidget::setupSmartListMenu()
             connect(copyAction, &QAction::triggered, [contactMethod]() {
                 QApplication::clipboard()->setText(contactMethod->uri());
             });
+
             auto copyNameAction = new QAction(tr("Copy name"), this);
             menu.addAction(copyNameAction);
             connect(copyNameAction, &QAction::triggered, [contactMethod]() {
                 QApplication::clipboard()->setText(contactMethod->primaryName());
             });
+
             if (not contactMethod->contact() || contactMethod->contact()->isPlaceHolder()) {
-                auto addExisting = new QAction(tr("Add to contact"), this);
+                auto addExisting = new QAction(tr("Add to contacts"), this);
                 menu.addAction(addExisting);
                 connect(addExisting, &QAction::triggered, [globalPos, contactMethod]() {
                     ContactPicker contactPicker(contactMethod);
                     contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
                     contactPicker.exec();
+                });
+            } else if (contactMethod->contact()) {
+                auto removeExisting = new QAction(tr("Remove from contacts"), this);
+                menu.addAction(removeExisting);
+                connect(removeExisting, &QAction::triggered, [this, contactMethod]() {
+                    triggerRemoveContactDialog(contactMethod);
                 });
             }
         }
@@ -300,7 +320,7 @@ CallWidget::setupSmartListMenu()
            auto callMenu = menu.addMenu(tr("Call Number"));
            auto copyMenu = menu.addMenu(tr("Copy Number"));
            for (auto cM : contactMethods) {
-               auto uri = cM->uri();
+               auto uri = cM->bestId();
                auto copyAction = new QAction(tr("Copy %1").arg(uri), this);
                copyMenu->addAction(copyAction);
                connect(copyAction, &QAction::triggered, [uri]() {
@@ -312,6 +332,22 @@ CallWidget::setupSmartListMenu()
                    Call* c = CallModel::instance().dialingCall(cM);
                    c->performAction(Call::Action::ACCEPT);
                });
+               if (!cM->contact()){
+                   // overwriting pointer, possible memory leak
+                   auto addExisting = new QAction(tr("Add %1 to contacts").arg(uri), this);
+                   menu.addAction(addExisting);
+                   connect(addExisting, &QAction::triggered, [globalPos, cM]() {
+                       ContactPicker contactPicker(cM);
+                       contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
+                       contactPicker.exec();
+                   });
+               } else {
+                   auto removeExisting = new QAction(tr("Remove %1 from contacts").arg(uri), this);
+                   menu.addAction(removeExisting);
+                   connect(removeExisting, &QAction::triggered, [this, cM]() {
+                       triggerRemoveContactDialog(cM);
+                   });
+               }
            }
         }
         menu.exec(globalPos);

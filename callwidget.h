@@ -133,4 +133,5 @@ private:
     static bool shouldDisplayInviteButton(ContactMethod& cm);
     void backToWelcomePage();
     void hideMiniSpinner();
+    void triggerRemoveContactDialog(ContactMethod *cm);
 };
