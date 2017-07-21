@@ -257,7 +257,7 @@ QScrollBar::handle:vertical{
 }
 
 QDialog#WizardDialog, QWidget#welcomePage, QWidget#sendContactRequestPage,
-QDialog#DeleteAccountDialog{
+QDialog#DeleteAccountDialog, QDialog#DeleteContactDialog{
     background: rgb(242, 242, 242);
     background-image : url(:/images/background-light.png);
     background-repeat : repeat-x;
@@ -300,7 +300,7 @@ QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#di
     font: 14px;
 }
 
-QPushButton#blockCRButton, QPushButton#deleteAcceptBtn, QPushButton#debanButton{
+QPushButton#blockCRButton, QPushButton#deleteAcceptBtn, QPushButton#debanButton, QPushButton#deleteButton, QPushButton#deleteBanBtn{
     background-color: rgb(251, 72, 71);
     border: 0px;
     color: white;
@@ -319,10 +319,10 @@ QPushButton#deleteCancelBtn:hover{
     background-color: #4dc6d6;
 }
 
-QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover, QPushButton#debanButton:hover{
+QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover, QPushButton#debanButton:hover,
+QPushButton#deleteButton:hover, QPushButton#deleteBanBtn:hover{
     background-color: rgb(252, 91, 90);
 }
-
 
 QPushButton#nextButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
 QPushButton#checkUpdateButton:pressed, QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
@@ -335,7 +335,9 @@ QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed
 QPushButton#deleteCancelBtn:pressed{
     background-color: #34acbd;
 }
-QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed, QPushButton#debanButton:pressed{
+
+QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed, QPushButton#debanButton:pressed,
+QPushButton#deleteBanBtn:pressed{
     background-color: rgb(219, 55, 54);
 }
 

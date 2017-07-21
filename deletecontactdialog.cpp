@@ -16,45 +16,48 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "deleteaccountdialog.h"
-#include "ui_deleteaccountdialog.h"
+#include "deletecontactdialog.h"
+#include "ui_deletecontactdialog.h"
 
 // LRC
-#include "accountmodel.h"
-#include "itemdataroles.h"
+#include "person.h"
 #include "account.h"
+#include "bannedcontactmodel.h"
 
-DeleteAccountDialog::DeleteAccountDialog(const QModelIndex & idx, QWidget *parent) :
+DeleteContactDialog::DeleteContactDialog(ContactMethod* cm, Account* ac, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DeleteAccountDialog),
-    index_(idx)
+    ui(new Ui::DeleteContactDialog),
+    contactMethod_(cm),
+    account_(ac)
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    ui->accountAliasLabel->setText(AccountModel::instance().data(index_, Qt::DisplayRole).toString());
-    auto ac = AccountModel::instance().getAccountByModelIndex(index_);
-    if (ac->protocol() == Account::Protocol::RING){
-        ui->accountIdLabel->setAlignment(Qt::AlignCenter);
-        ui->accountIdLabel->setText((ac->registeredName().isEmpty())? ac->username(): ac->registeredName() + "\n" + ac->username());
-    } else {
-        ui->warningLabel->hide();
-    }
+    ui->contactNameLabel->setText(cm->bestName());
+    if (cm->bestName() != cm->bestId())
+        ui->contactIdLabel->setText(cm->bestId());
+    else
+        ui->contactIdLabel->hide();
 }
 
-DeleteAccountDialog::~DeleteAccountDialog()
+DeleteContactDialog::~DeleteContactDialog()
 {
     delete ui;
 }
 
-void DeleteAccountDialog::on_deleteCancelBtn_clicked()
+void DeleteContactDialog::on_deleteCancelBtn_clicked()
 {
     close();
 }
 
-void DeleteAccountDialog::on_deleteAcceptBtn_clicked()
+void DeleteContactDialog::on_deleteAcceptBtn_clicked()
 {
-    auto account = AccountModel::instance().getAccountByModelIndex(index_);
-    AccountModel::instance().remove(account);
-    AccountModel::instance().save();
-    close();
+    account_->removeContact(contactMethod_);
+    accept();
+}
+
+void DeleteContactDialog::on_deleteBanBtn_clicked()
+{
+    account_->removeContact(contactMethod_);
+    account_->bannedContactModel()->add(contactMethod_);
+    accept();
 }
