@@ -16,45 +16,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "deleteaccountdialog.h"
-#include "ui_deleteaccountdialog.h"
+#ifndef DELETECONTACTDIALOG_H
+#define DELETECONTACTDIALOG_H
+
+#include <QDialog>
 
 // LRC
-#include "accountmodel.h"
-#include "itemdataroles.h"
-#include "account.h"
+#include "contactmethod.h"
 
-DeleteAccountDialog::DeleteAccountDialog(const QModelIndex & idx, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::DeleteAccountDialog),
-    index_(idx)
-{
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    ui->setupUi(this);
-    ui->accountAliasLabel->setText(AccountModel::instance().data(index_, Qt::DisplayRole).toString());
-    auto ac = AccountModel::instance().getAccountByModelIndex(index_);
-    if (ac->protocol() == Account::Protocol::RING){
-        ui->accountIdLabel->setAlignment(Qt::AlignCenter);
-        ui->accountIdLabel->setText((ac->registeredName().isEmpty())? ac->username(): ac->registeredName() + "\n" + ac->username());
-    } else {
-        ui->warningLabel->hide();
-    }
+namespace Ui {
+class DeleteContactDialog;
 }
 
-DeleteAccountDialog::~DeleteAccountDialog()
+class DeleteContactDialog : public QDialog
 {
-    delete ui;
-}
+    Q_OBJECT
 
-void DeleteAccountDialog::on_deleteCancelBtn_clicked()
-{
-    close();
-}
+public:
+    explicit DeleteContactDialog(ContactMethod* cm, Account *ac, QWidget *parent = 0);
+    ~DeleteContactDialog();
 
-void DeleteAccountDialog::on_deleteAcceptBtn_clicked()
-{
-    auto account = AccountModel::instance().getAccountByModelIndex(index_);
-    AccountModel::instance().remove(account);
-    AccountModel::instance().save();
-    close();
-}
+private slots:
+    void on_deleteCancelBtn_clicked();
+    void on_deleteBtn_clicked();
+    void on_deleteBanBtn_clicked();
+
+private:
+    Ui::DeleteContactDialog *ui;
+    ContactMethod* contactMethod_;
+    Account* account_;
+};
+
+#endif // DELETECONTACTDIALOG_H
