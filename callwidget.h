@@ -122,7 +122,7 @@ private:
     void setActualCall(Call* value);
     void placeCall();
     void setupOutOfCallIM();
-    void setupSmartListMenu();
+    void setupSmartListMenu(const QPoint &pos);
     void slidePage(QWidget* widget, bool toRight = false);
     void callStateToView(Call* value);
     void setupQRCode(QString ringID);
@@ -133,4 +133,6 @@ private:
     static bool shouldDisplayInviteButton(ContactMethod& cm);
     void backToWelcomePage();
     void hideMiniSpinner();
+    void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);
+    void addPerson(ContactMethod* cm);
 };
