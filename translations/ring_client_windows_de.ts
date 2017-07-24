@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Freiheit, Gleichheit, Brüderlichkeit - Version 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -343,7 +343,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Gesperrte Kontakte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -408,7 +408,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler, bitte später nochmal versuchen.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
@@ -418,7 +418,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Registriere... Kann eine Weile dauern</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Doppelklick zum kopieren</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
@@ -514,7 +514,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../callwidget.ui" line="1296"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>Schreibe deine Nachricht hier</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1315"/>
@@ -574,7 +574,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../callwidget.cpp" line="919"/>
         <source>My RingId is : </source>
-        <translation>Meine RingId ist:</translation>
+        <translation>Meine Ring-ID ist:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="212"/>
@@ -880,7 +880,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
@@ -901,17 +901,17 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - Kontolöschung</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you realy want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Wollen sie wirklich das Konto löschen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>Diese Aktion ist unwiderruflich</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
@@ -1074,7 +1074,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>KontaktID</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
@@ -1084,7 +1084,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Sende eine Kontaktanfrage</translation>
     </message>
 </context>
 <context>
@@ -1183,12 +1183,12 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Ring-Konto muss migriert werden. Wählen Sie ein Passwort</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="105"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Ihr RIng-Konto wird migriert...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="125"/>
@@ -1203,32 +1203,32 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Gerät hinzufügen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="323"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername nicht verfügbar.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername verfügbar.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist ungültig.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="332"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ein Ring-Konto erstellen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
@@ -1243,7 +1243,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen bei</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1257,7 +1257,7 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
@@ -1267,7 +1267,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="292"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Geben Sie Ihren vollständigen Namen ein</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="348"/>
@@ -1289,7 +1289,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="437"/>
         <location filename="../wizarddialog.cpp" line="295"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Suchen...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="446"/>

@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Liberté, Égalité, Fraternité! - Version 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -333,7 +333,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Ce NIP doit être saisi dans votre nouvel appareil dans les 5 prochaines minutes. Vous pouvez en générer un nouveau en tout temps.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
@@ -403,7 +403,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Veuillez patienter pendant que votre NIP est généré.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
@@ -494,7 +494,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Doublie-cliquez pour copier</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
