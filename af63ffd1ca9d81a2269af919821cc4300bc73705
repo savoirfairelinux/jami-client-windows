@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3841fe_3b1ad017",
+        "filename": "translations/ring_client_windows_fr.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2017-07-25T13:17:15Z",
+      "side": 1,
+      "message": "Bad translation",
+      "range": {
+        "startLine": 497,
+        "startChar": 21,
+        "endLine": 497,
+        "endChar": 36
+      },
+      "revId": "af63ffd1ca9d81a2269af919821cc4300bc73705",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
