@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Liberté, Égalité, Fraternité - Sürüm 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -403,12 +403,12 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>PIN&apos;iniz oluşturulurken lütfen bekleyin.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Ağ Hatası. Lütfen daha sonra yeniden deneyin.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
@@ -418,7 +418,7 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Kaydediliyor... Biraz zaman alabilir</translation>
     </message>
 </context>
 <context>
@@ -431,12 +431,12 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Engellenen Kimlik</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Kişinin engelini kaldır, kişi listesine ekle</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopyalamak için çift tıkla</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
@@ -514,7 +514,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../callwidget.ui" line="1296"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>İletinizi buraya yazın</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1315"/>
@@ -916,7 +916,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Eğer bu hesap dışa aktarılmazsa veya başka bir aygıta eklenmezse kaybedilecektir.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
@@ -1183,7 +1183,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation type="unfinished"/>
+        <translation>Hesabınızın taşınması gerekiyor. Bir parola seçin.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="105"/>
@@ -1198,7 +1198,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="159"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>Herkese açık kullanıcı adınız kaydediliyor, birkaç dakika sürebilir...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
@@ -1243,7 +1243,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Hoş Geldiniz</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>

@@ -412,7 +412,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Mauvais mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -476,7 +476,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring est un logiciel libre de communication universel qui respecte la liberté et vie privée de ses utilisateurs.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
@@ -873,7 +873,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -883,7 +883,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Bloquer</translation>
     </message>
 </context>
 <context>

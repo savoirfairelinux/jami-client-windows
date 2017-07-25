@@ -413,7 +413,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Falsches Passwort.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -467,7 +467,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Kontaktanfragen</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
@@ -874,7 +874,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Akzeptieren</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -884,7 +884,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Blockieren</translation>
     </message>
 </context>
 <context>
@@ -1053,7 +1053,7 @@ Copy and share it with your friends!</source>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>Ring-Konto</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1233,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Dieses Gerät mit einem Ring-Konto verknüpfen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
