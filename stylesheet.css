@@ -184,7 +184,7 @@ QPushButton#hangupButton:pressed{
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
 QPushButton#imBackButton, QPushButton#sendCRBackButton, QPushButton#copyCMButton, QPushButton#pendingCRBackButton,
-QPushButton#videoBackBtn, QPushButton#videoCfgBtn{
+QPushButton#videoCfgBtn{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
@@ -192,13 +192,13 @@ QPushButton#videoBackBtn, QPushButton#videoCfgBtn{
 
 QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
 QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#pendingCRBackButton:hover,
-QPushButton#videoBackBtn:hover, QPushButton#videoCfgBtn:hover{
+QPushButton#videoCfgBtn:hover{
     background-color: #515151;
 }
 
 QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
 QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#pendingCRBackButton:pressed,
-QPushButton#videoBackBtn:pressed, QPushButton#videoCfgBtn:pressed{
+QPushButton#videoCfgBtn:pressed{
     background-color: #313131;
 }
 

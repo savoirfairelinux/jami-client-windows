@@ -133,10 +133,8 @@ void VideoOverlay::toggleContextButtons(bool visible)
 {
     if (! visible) {
         ui->videoCfgBtn->hide();
-        ui->videoBackBtn->hide();
     } else {
         ui->videoCfgBtn->show();
-        ui->videoBackBtn->show();
     }
 }
 
@@ -228,11 +226,6 @@ void
 VideoOverlay::on_recButton_clicked()
 {
     actionModel_->execute(UserActionModel::Action::RECORD);
-}
-
-void VideoOverlay::on_videoBackBtn_clicked()
-{
-    emit videoBackBtnClicked();
 }
 
 void VideoOverlay::on_videoCfgBtn_clicked()
