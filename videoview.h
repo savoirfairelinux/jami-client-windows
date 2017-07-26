@@ -77,6 +77,5 @@ private:
 signals:
     void setChatVisibility(bool visible);
     void videoSettingsClicked();
-    void videoBackClicked();
 };
 
