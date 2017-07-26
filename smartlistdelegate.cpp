@@ -149,22 +149,24 @@ SmartListDelegate::paint(QPainter* painter
 
         // Display the ID under the name
         QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
-        pen.setColor(RingTheme::grey_);
-        painter->setPen(pen);
-        font.setItalic(true);
-        font.setBold(false);
-        painter->setFont(font);
-        QFontMetrics fontMetrics(font);
-        if (!idStr.isNull()){
-            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
-            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                    rect.top() + rect.height()/7,
-                                    rect.width(),
-                                    rect.height()/2),
-                              Qt::AlignBottom | Qt::AlignLeft, idStr);
+        if (idStr != name.toString()){
+            pen.setColor(RingTheme::grey_);
+            painter->setPen(pen);
+            font.setItalic(true);
+            font.setBold(false);
+            painter->setFont(font);
+            QFontMetrics fontMetrics(font);
+            if (!idStr.isNull()){
+                idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+                painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                                        rect.top() + rect.height()/7,
+                                        rect.width(),
+                                        rect.height()/2),
+                                  Qt::AlignBottom | Qt::AlignLeft, idStr);
 
-        } else {
-            qDebug() << "This is not a Person";
+            } else {
+                qDebug() << "This is not a Person";
+            }
         }
 
         // Finally, either last interaction date or call state is displayed
