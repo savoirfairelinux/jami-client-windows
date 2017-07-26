@@ -133,10 +133,8 @@ void VideoOverlay::toggleContextButtons(bool visible)
 {
     if (! visible) {
         ui->videoCfgBtn->hide();
-        ui->videoBackBtn->hide();
     } else {
         ui->videoCfgBtn->show();
-        ui->videoBackBtn->show();
     }
 }
 

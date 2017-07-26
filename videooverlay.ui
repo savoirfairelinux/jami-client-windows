@@ -431,23 +431,6 @@
    <item row="0" column="2">
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QPushButton" name="videoBackBtn">
-       <property name="minimumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="ressources.qrc">
-         <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="nameLabel">
        <property name="palette">
         <palette>
