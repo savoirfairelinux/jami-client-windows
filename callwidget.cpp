@@ -181,8 +181,7 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
         connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
-        connect(ui->videoWidget, &VideoView::videoBackClicked, [=]{setActualCall(nullptr);
-                                                                    backToWelcomePage();});
+
         // setup searchingfor mini spinner
         miniSpinner_ = new QMovie(":/images/waiting.gif");
         ui->spinnerLabel->setMovie(miniSpinner_);
