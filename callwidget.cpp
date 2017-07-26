@@ -759,10 +759,20 @@ void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
+    QString name = nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString();
+    QString number = nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString();
+
     ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
-                                     .arg(nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString()));
-    ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
-                                   .arg(nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString()));
+                                     .arg(name));
+
+    if (name != number){
+        ui->imIdLabel->show();
+        ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
+                                   .arg(number));
+    } else {
+        ui->imIdLabel->hide();
+    }
+
     auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
     ui->contactMethodComboBox->setVisible(cmVector.size() > 1);
     foreach (const ContactMethod* cm, cmVector) {
