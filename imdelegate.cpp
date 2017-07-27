@@ -29,7 +29,7 @@
 #include "ringthemeutils.h"
 #include "settingskey.h"
 
-ImDelegate::ImDelegate(QObject *parent)
+ImDelegate::ImDelegate(QWidget *parent)
     : QStyledItemDelegate(parent)
 {
 }
@@ -91,7 +91,7 @@ ImDelegate::paint(QPainter* painter,
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
         QPainterPath path;
-        path.addRoundedRect(textRect, padding_, padding_);
+        path.addRoundedRect(textRect, radius_ratio, radius_ratio);
 
         if (dir == Qt::AlignRight) {
             painter->fillPath(path, RingTheme::imBlue_);
@@ -109,10 +109,10 @@ ImDelegate::paint(QPainter* painter,
 
         document.setHtml(msg);
 
-        auto textOptions = QTextOption(Qt::AlignLeft);
-        textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+        auto textOptions = QTextOption(Qt::AlignVCenter | Qt::AlignLeft);
+        textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
         document.setDefaultTextOption(textOptions);
-        document.setTextWidth(textRect.width());
+        document.setTextWidth(qMax(static_cast<qreal>(textRect.width()), 800.0));
 
         painter->translate(textRect.topLeft());
         document.drawContents(painter);
@@ -129,22 +129,22 @@ QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
     QTextDocument txtDoc;
     txtDoc.setDefaultFont(fontMsg_);
     txtDoc.setHtml(msg);
-    auto textOptions = QTextOption(Qt::AlignLeft);
-    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    auto textOptions = QTextOption(Qt::AlignCenter);
+    textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
     txtDoc.setDefaultTextOption(textOptions);
 
     if (dir == Qt::AlignLeft) {
-        txtDoc.setTextWidth(option.rect.width() - iconSize_.width() - padding_);
+        txtDoc.setTextWidth(option.rect.width() - iconSize_.width() - padding_ + 80);
         textRect.setRect(option.rect.left() + iconSize_.width() + padding_,
                          option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
+                         txtDoc.idealWidth() + padding_,
+                         txtDoc.size().height() + padding_);
     } else {
         txtDoc.setTextWidth(option.rect.width() - padding_);
-        textRect.setRect(option.rect.right() - padding_ - txtDoc.idealWidth(),
+        textRect.setRect(option.rect.right() - txtDoc.idealWidth() - padding_,
                          option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
+                         txtDoc.idealWidth() + padding_,
+                         txtDoc.size().height() + padding_);
     }
     return textRect;
 }
