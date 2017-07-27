@@ -40,7 +40,7 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
 
     this->hide();
 
-    imDelegate_ = new ImDelegate();
+    imDelegate_ = new ImDelegate(this);
     ui->listMessageView->setItemDelegate(imDelegate_);
     ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
     auto copyAction = new QAction(tr("Copy"), this);
