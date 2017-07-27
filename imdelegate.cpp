@@ -29,7 +29,7 @@
 #include "ringthemeutils.h"
 #include "settingskey.h"
 
-ImDelegate::ImDelegate(QObject *parent)
+ImDelegate::ImDelegate(QWidget *parent)
     : QStyledItemDelegate(parent)
 {
 }
@@ -86,17 +86,17 @@ ImDelegate::paint(QPainter* painter,
             opt.decorationPosition = (dir == Qt::AlignRight ?
                                           QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
             opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
-        } else
+        } else {
             opt.decorationSize = QSize();
+        }
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
         QPainterPath path;
-        path.addRoundedRect(textRect, padding_, padding_);
+        path.addRoundedRect(textRect, radius_ratio_, radius_ratio_);
 
         if (dir == Qt::AlignRight) {
             painter->fillPath(path, RingTheme::imBlue_);
-        }
-        else {
+        } else {
             painter->fillPath(path, RingTheme::imGrey_);
         }
 
@@ -104,15 +104,11 @@ ImDelegate::paint(QPainter* painter,
 
         QTextDocument document;
         document.setDefaultFont(fontMsg_);
-
-        document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
-
         document.setHtml(msg);
 
-        auto textOptions = QTextOption(Qt::AlignLeft);
-        textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+        auto textOptions = QTextOption();
+        textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
         document.setDefaultTextOption(textOptions);
-        document.setTextWidth(textRect.width());
 
         painter->translate(textRect.topLeft());
         document.drawContents(painter);
@@ -129,22 +125,20 @@ QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
     QTextDocument txtDoc;
     txtDoc.setDefaultFont(fontMsg_);
     txtDoc.setHtml(msg);
-    auto textOptions = QTextOption(Qt::AlignLeft);
-    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    auto textOptions = QTextOption(Qt::AlignVCenter);
+    textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
     txtDoc.setDefaultTextOption(textOptions);
 
     if (dir == Qt::AlignLeft) {
-        txtDoc.setTextWidth(option.rect.width() - iconSize_.width() - padding_);
         textRect.setRect(option.rect.left() + iconSize_.width() + padding_,
                          option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
+                         txtDoc.idealWidth() + padding_,
+                         txtDoc.size().height() + padding_);
     } else {
-        txtDoc.setTextWidth(option.rect.width() - padding_);
-        textRect.setRect(option.rect.right() - padding_ - txtDoc.idealWidth(),
+        textRect.setRect(option.rect.right() - txtDoc.idealWidth() - padding_,
                          option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
+                         txtDoc.idealWidth() + padding_,
+                         txtDoc.size().height() + padding_);
     }
     return textRect;
 }
