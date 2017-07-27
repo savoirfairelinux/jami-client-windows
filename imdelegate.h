@@ -25,7 +25,7 @@ class ImDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit ImDelegate(QObject *parent = 0);
+    explicit ImDelegate(QWidget *parent = 0);
     enum DisplayOptions {
         AUTHOR = 1,
         DATE
@@ -38,9 +38,6 @@ private:
     void formatMsg(const QModelIndex& index, QString& msg) const;
     QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
 
-    const QFont fontMsg_ = QFont("Arial", 10);
-    const QSize iconSize_ {38,38};
-
-    constexpr static int padding_ = 5;
+    QFont fontMsg_ = QFont("Arial", 10);
 };
 
