@@ -59,6 +59,7 @@ private:
     QImage fallbackAvatar_;
     QImage scaleAndFrame(const QImage photo, const QSize& size);
     const QSize imgSize_ {48, 48};
+    static QImage fallbackAvatar(const QSize size, const char color, const char letter);
 };
 
 } // namespace Interfaces
