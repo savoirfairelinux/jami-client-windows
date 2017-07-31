@@ -5,12 +5,12 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Quant a</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Crèdits</translation>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
@@ -59,7 +59,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="137"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="197"/>
@@ -260,7 +260,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Rang de ports de l&apos;àudio RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
@@ -352,7 +352,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1247"/>
         <source>Published Address</source>
-        <translation type="unfinished"/>
+        <translation>Adreça publicada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1961"/>
@@ -412,7 +412,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Contrasenya incorrecta.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -466,7 +466,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Peticions de contacte</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
@@ -476,7 +476,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>El Ring és un programari per a comunicacions universals que respecta la llibertat i privacitat dels seus usuaris</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
@@ -501,144 +501,144 @@ Copieu i compartiu amb les vostres amistats!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Afegir als contactes</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Trucada</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Copia el número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="763"/>
-        <source>%1</source>
-        <comment>%1 is the contact username</comment>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
+        <comment>%1 is the contact username</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="770"/>
+        <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation type="unfinished"/>
     </message>
@@ -753,7 +753,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositiu</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
@@ -788,7 +788,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Compte</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
@@ -874,7 +874,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Accepta</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -884,7 +884,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Bloqueja</translation>
     </message>
 </context>
 <context>
@@ -971,7 +971,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../mainwindow.cpp" line="80"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Quant a</translation>
     </message>
 </context>
 <context>
@@ -1052,7 +1052,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>Compte de Ring</translation>
     </message>
 </context>
 <context>
@@ -1129,22 +1129,22 @@ Copieu i compartiu amb les vostres amistats!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation type="unfinished"/>
     </message>
@@ -1162,17 +1162,17 @@ Copieu i compartiu amb les vostres amistats!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Compartir pantalla</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Compartir arxiu</translation>
     </message>

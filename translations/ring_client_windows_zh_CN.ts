@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>自由、平等、博爱 - 版本 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -494,7 +494,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>双击复制</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
@@ -502,144 +502,144 @@ Copy and share it with your friends!</source>
         <translation>创建二维码时产生错误</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>开始会话！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>在此输入您的消息</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>发送消息</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation>BestId</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>想要与您通信！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>应答</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>忽略</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>正在通话</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>通话</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>复制号码</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>在Ring上联系我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>我的RingID是：</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>显示作者</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>消息来自%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>复制名称</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation>通话号码</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>复制号码</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>复制%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation>呼叫%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>未找到Ring帐户</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>来电：%1</translation>
     </message>
@@ -865,12 +865,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation type="unfinished"/>
+        <translation>nameLabel</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation type="unfinished"/>
+        <translation>bestIdLabel</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
@@ -1079,7 +1079,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
         <source>TODO: Explain the purpose of a contact request</source>
-        <translation type="unfinished"/>
+        <translation>TODO: Explain the purpose of a contact request</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
@@ -1130,22 +1130,22 @@ Copy and share it with your friends!</source>
         <translation>加入通话</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>名称标签</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>用时</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1163,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>共享整个屏幕</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>共享屏幕区域</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>共享文件</translation>
     </message>
@@ -1243,7 +1243,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>欢迎来到</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1257,7 +1257,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;为了连接该设备到另一个账户，您首先 &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;需要获取一个 PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;。 以下是获取 PIN 的步骤:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;前往您之前使用的设备的 &lt;span style=&quot; font-weight:600;&quot;&gt;帐户管理设置&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;选择您想使用的 &lt;span style=&quot; font-weight:600;&quot;&gt;Ring 帐户&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;前往 &lt;span style=&quot; font-weight:600;&quot;&gt;设备&lt;/span&gt; 选项卡&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;选择 &lt;span style=&quot; font-weight:600;&quot;&gt;添加设备&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;这样您就会获得一个用来完成添加帐户的 PIN，该 PIN 在 &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 分钟&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;内有效。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="207"/>

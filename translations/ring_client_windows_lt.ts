@@ -333,7 +333,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Šis PIN per 5 minutes turėtų būti įvestas jūsų naujame įrenginyje. Naują PIN galite sukurti bet kuriuo metu.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
@@ -403,7 +403,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Prašome palaukti, kol yra kuriamas jūsų PIN.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
@@ -426,7 +426,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
@@ -436,7 +436,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Atblokuoti kontaktą ir pridėti į kontaktų sąrašą</translation>
     </message>
 </context>
 <context>
@@ -502,144 +502,144 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <translation>Klaida, kuriant QR kodą</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>Pradėkite pokalbį !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
         <translation>Čia rašykite savo žinutę</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>siųsti žinutę</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>Nori su jumis pakalbėti!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>Atsiliepti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>Nepaisyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>Skambinama</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Skambutis</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Kopijuoti numerį</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>Susisiekite su manimi per Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>Mano RingId yra : </translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>Kopijuoti</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>Rodyti datą</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>Rodyti autorių</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>Gauta žinutė nuo %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>Kopijuoti vardą</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>Kopijuoti numerį</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>Kopijuoti %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>NERASTA RING PASKYRA</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>Gaunamasis skambutis nuo %1</translation>
     </message>
@@ -694,7 +694,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Tikrinti dabar ar yra atnaujinimų</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -855,12 +855,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>Gaunamoji kontakto užklausa</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
@@ -893,7 +893,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
 </context>
 <context>
@@ -1069,12 +1069,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>Kontakto ID</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
@@ -1130,22 +1130,22 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>Vardo etiketė</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>Pridėti prie kontaktų</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>Praėjęs laikas</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1163,17 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>Bendrinti visą ekraną</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Bendrinti ekrano sritį</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Bendrinti failą</translation>
     </message>
@@ -1243,7 +1243,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation> Sveiki atvykę į</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1257,7 +1257,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Norėdami susieti šį įrenginį su kita paskyra, iš pradžių, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;turite gauti PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; kodą. Norėdami sukurti PIN kodą:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pereikite į ankstesnio įrenginio &lt;span style=&quot; font-weight:600;&quot;&gt;Paskyros tvarkymo nustatymą&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pasirinkite norimą naudoti &lt;span style=&quot; font-weight:600;&quot;&gt;Ring paskyrą&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pereikite į &lt;span style=&quot; font-weight:600;&quot;&gt;Įrenginių&lt;/span&gt; kortelę&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pasirinkite &lt;span style=&quot; font-weight:600;&quot;&gt;Pridėti įrenginį&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Jūs gausite šiai formai užpildyti reikalingą PIN kodą. PIN kodas galios tik &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minučių&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
@@ -1267,7 +1276,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="292"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite savo visą vardą:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="348"/>
@@ -1294,7 +1303,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="446"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Užregistruokite savo naudotojo vardą Ring sistemoje. Tai rezervuos naudotojo vardą ir tokiu būdu tik jūs galėsite jį naudoti. Jūsų draugai galės jums skambinti, vietoj jūsų RingID, naudodami jūsų naudotojo vardą.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="449"/>

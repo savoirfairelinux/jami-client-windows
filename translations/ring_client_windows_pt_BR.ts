@@ -502,144 +502,144 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Erro ao gerar o QRCode</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Adicionar aos contatos</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>Comece uma conversa!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>enviar mensagem</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>Quer conversar com você!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>Resposta</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>Ignorar</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>Chamando</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Chamar</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Copiar número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>Adicionar a contato</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>Encontre-me no Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>Meu RingID é : </translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>Exibir data</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>Exibir autor</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>Recebendo mensagem de %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>Copiar nome</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation>Chamar número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>Copiar número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>Copiar %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation>Ligar para %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>Nenhuma conta Ring entrada</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>Recebendo chamada de %1</translation>
     </message>
@@ -1130,22 +1130,22 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Juntar chamadas</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>Nome do rótulo</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>Adicionar a contato</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>Tempo decorrido</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1163,17 @@ Salve e compartilhe com seus amigos!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>Compartilhar tela inteira</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Compartilhar área da tela</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Compartilhar arquivo</translation>
     </message>

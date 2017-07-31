@@ -1,16 +1,16 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pa" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sl" version="2.0">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>O Ring</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Zasluge</translation>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
@@ -49,27 +49,27 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="23"/>
         <source>Settings</source>
-        <translation>ਸੈਟਿੰਗ</translation>
+        <translation>Nastavitve</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="63"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="137"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Račun</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="197"/>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="163"/>
         <source>Alias</source>
-        <translation type="unfinished"/>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="241"/>
@@ -79,20 +79,20 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="271"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Strežnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <location filename="../accountdetails.ui" line="1482"/>
         <location filename="../accountdetails.cpp" line="115"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uporabnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="445"/>
         <location filename="../accountdetails.ui" line="1501"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="488"/>
@@ -164,12 +164,12 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="725"/>
         <location filename="../accountdetails.cpp" line="57"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Predvajaj</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="785"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Avdio/Video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1001"/>
@@ -184,7 +184,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1048"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Napredno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1094"/>
@@ -224,7 +224,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1355"/>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>Vrata</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1409"/>
@@ -240,7 +240,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1450"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Uporabi TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1517"/>
@@ -260,7 +260,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Omočje RTP vrat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
@@ -282,7 +282,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1896"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Varnost</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2115"/>
@@ -292,7 +292,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2180"/>
         <source>Devices</source>
-        <translation type="unfinished"/>
+        <translation>Naprave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2224"/>
@@ -312,7 +312,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2321"/>
@@ -352,7 +352,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1247"/>
         <source>Published Address</source>
-        <translation type="unfinished"/>
+        <translation>Objavi naslov</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1961"/>
@@ -412,7 +412,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Napačno geslo.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -448,7 +448,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation type="unfinished"/>
+        <translation>Prevezava</translation>
     </message>
 </context>
 <context>
@@ -466,7 +466,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Zahteve za povezavo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
@@ -502,7 +502,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj v stike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1222"/>
@@ -542,17 +542,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Kličem</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
-        <translation type="unfinished"/>
+        <translation>Kliči</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="278"/>
@@ -647,12 +647,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>ਸੈਟਿੰਗ</translation>
+        <translation>Nastavitve</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -677,7 +677,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>ਇਤਿਹਾਸ ਮਿਟਾਓ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
@@ -697,7 +697,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
@@ -707,7 +707,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Ime</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
@@ -752,12 +752,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Naprava</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Resolucija</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1068"/>
@@ -787,7 +787,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Račun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
@@ -873,7 +873,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Sprejmi</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -883,7 +883,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Blokiraj</translation>
     </message>
 </context>
 <context>
@@ -919,7 +919,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
@@ -955,7 +955,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation>ਰਿੰਗ</translation>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="53"/>
@@ -970,7 +970,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="80"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>O Ring</translation>
     </message>
 </context>
 <context>
@@ -983,7 +983,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -993,7 +993,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
@@ -1051,7 +1051,7 @@ Copy and share it with your friends!</source>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>Ring račun</translation>
     </message>
 </context>
 <context>
@@ -1150,7 +1150,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation type="unfinished"/>
+        <translation>Prekini</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
@@ -1191,7 +1191,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="125"/>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Neznano</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="159"/>
@@ -1231,7 +1231,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Poveži to napravo k računu</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
@@ -1260,7 +1260,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Ustvari svoj profil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="292"/>
@@ -1297,7 +1297,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="449"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Prijavi javno ime (eksperimentalno)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="476"/>
@@ -1307,7 +1307,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="506"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="536"/>
@@ -1329,7 +1329,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="672"/>
         <location filename="../wizarddialog.ui" line="675"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Naprej</translation>
     </message>
 </context>
 </TS>

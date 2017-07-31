@@ -502,144 +502,144 @@ Kopiera och dela det med dina vänner!</translation>
         <translation>Ett fel inträffade vid generering av QR-kod</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Lägg till i kontakter</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>Starta konversationen!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
         <translation>Skriv ditt meddelande här</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>Skicka meddelande</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
         <translation>Best-ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>Vill prata med dig!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>Svara</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>Ignorera</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>Ringer</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Ring upp</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Kopiera nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>Lägg till kontakt</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>Kontakta mig på Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>Mitt Ring-ID är:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>Visa datum</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>Visa deltagare</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>Inkommande meddelande från %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>Kopiera namn</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation>Ring upp nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>Kopiera nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>Kopiera %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation>Ring %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>INGET RING-KONTO HITTADES</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>Inkommande samtal från %1</translation>
     </message>
@@ -1130,22 +1130,22 @@ Kopiera och dela det med dina vänner!</translation>
         <translation>Anslut till samtal</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>Namnetikett</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>Lägg till i kontakt</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>Förfluten tid</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1163,17 @@ Kopiera och dela det med dina vänner!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>Dela hela skärmen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Dela skärmområde</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Dela fil</translation>
     </message>
