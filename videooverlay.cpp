@@ -26,6 +26,7 @@
 #include "callmodel.h"
 #include "contactmethod.h"
 #include "person.h"
+#include "account.h"
 
 
 
@@ -90,9 +91,12 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
                 ui->joinButton->hide();
             }
+
             if (auto contactMethod =  c->peerContactMethod())
                 ui->addToContactButton->setVisible(not contactMethod->contact()
                                                    || contactMethod->contact()->isPlaceHolder());
+
+            ui->transferButton->setVisible(c->account()->isIp2ip());
         }
     });
 
@@ -105,9 +109,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     connect(qualityDialog_, &QualityDialog::isVisible, [this] (bool visible) {
         dialogVisible_ = visible;
     });
-
-    // temporary hide
-    ui->addPersonButton->hide();
 }
 
 VideoOverlay::~VideoOverlay()
