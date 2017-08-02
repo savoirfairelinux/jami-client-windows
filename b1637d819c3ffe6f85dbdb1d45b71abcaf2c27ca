@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3841fe_d2caa2a0",
+        "filename": "callwidget.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2017-08-02T20:50:17Z",
+      "side": 1,
+      "message": "Extra new line",
+      "revId": "b1637d819c3ffe6f85dbdb1d45b71abcaf2c27ca",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba3841fe_b2cf1eb0",
+        "filename": "callwidget.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2017-08-02T20:50:17Z",
+      "side": 1,
+      "message": "Not used and not defined",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "b1637d819c3ffe6f85dbdb1d45b71abcaf2c27ca",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
