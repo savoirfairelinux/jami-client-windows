@@ -502,144 +502,144 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <translation>Fehler bei der Erstellung des QR-Codes</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Zu Kontakten hinzufügen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>Unterhaltung starten!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
         <translation>Schreibe deine Nachricht hier</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>Nachricht senden</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>Möchte mit dir Sprechen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>Antwort</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>Ignorieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>Rufaufbau</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Anruf</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Nummer kopieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>Kontakt hinzufügen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>Kontaktieren Sie mich über Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>Meine Ring-ID ist:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>Anzeigedatum</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>Anzeigeauthor</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>Eingehende Nachricht von %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>Name kopieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation>Nummer anrufen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>Nummer kopieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>Kopiere %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation>%1 anrufen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>KEIN RING KONTO GEFUNDEN</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>Eingehender Anruf von %1</translation>
     </message>
@@ -916,7 +916,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Falls dieses Konto nicht exportiert oder auf ein anderes Gerät übertragen wurde, wird es verloren gehen</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
@@ -1043,6 +1043,44 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     </message>
 </context>
 <context>
+    <name>PhotoboothWidget</name>
+    <message>
+        <location filename="../photoboothwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="48"/>
+        <source>Take photo</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="68"/>
+        <source>or</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="81"/>
+        <source>Import photo</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="84"/>
+        <source>Import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.cpp" line="66"/>
+        <source>Choose File</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.cpp" line="68"/>
+        <source>Files (*)</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../utils.cpp" line="185"/>
@@ -1130,22 +1168,22 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <translation>Anruf beitreten</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>Namenslabel</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>Kontakt hinzufügen</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>Zeit vergangen</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1201,17 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>Gesamten Bildschirm teilen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Bildschirmbereich teilen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Datei teilen</translation>
     </message>
@@ -1186,19 +1224,19 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <translation>Ihr Ring-Konto muss migriert werden. Wählen Sie ein Passwort</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="105"/>
+        <location filename="../wizarddialog.cpp" line="107"/>
         <source>Migrating your Ring account...</source>
         <translation>Ihr RIng-Konto wird migriert...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="125"/>
+        <location filename="../wizarddialog.cpp" line="127"/>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="159"/>
+        <location filename="../wizarddialog.cpp" line="161"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>Dein öffentlicher Benutzername wird registriert, das kann ein paar Minuten dauern...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
@@ -1206,22 +1244,22 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <translation>Gerät hinzufügen</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="323"/>
+        <location filename="../wizarddialog.cpp" line="325"/>
         <source>Username not available.</source>
         <translation>Benutzername nicht verfügbar.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="326"/>
+        <location filename="../wizarddialog.cpp" line="328"/>
         <source>Username is available.</source>
         <translation>Benutzername verfügbar.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="329"/>
+        <location filename="../wizarddialog.cpp" line="331"/>
         <source>Username is invalid.</source>
         <translation>Benutzername ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="332"/>
+        <location filename="../wizarddialog.cpp" line="334"/>
         <source>Network error.</source>
         <translation>Netzwerkfehler</translation>
     </message>
@@ -1238,7 +1276,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Wie kann ich ein neues Gerät hinzufügen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
@@ -1265,71 +1303,71 @@ p, li { white-space: pre-wrap; }
         <translation>Erstellen Sie Ihr Profil</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="292"/>
+        <location filename="../wizarddialog.ui" line="312"/>
         <source>Enter your full name:</source>
         <translation>Geben Sie Ihren vollständigen Namen ein</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="348"/>
-        <location filename="../wizarddialog.cpp" line="223"/>
+        <location filename="../wizarddialog.ui" line="368"/>
+        <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
         <translation>Legen Sie ein Benutzerkonto an</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="373"/>
+        <location filename="../wizarddialog.ui" line="393"/>
         <source>Choose your username:</source>
         <translation>Nutzernamen wählen:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="421"/>
+        <location filename="../wizarddialog.ui" line="441"/>
         <source>Choose your username</source>
         <translation>Nutzername wählen</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="437"/>
-        <location filename="../wizarddialog.cpp" line="295"/>
+        <location filename="../wizarddialog.ui" line="457"/>
+        <location filename="../wizarddialog.cpp" line="297"/>
         <source>Searching...</source>
         <translation>Suchen...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="446"/>
+        <location filename="../wizarddialog.ui" line="466"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Registriere deinen Benutzernamen bei Ring. Dadurch wird der Benutzername reserviert, sodass nur du ihn benutzen kannst. Deine Freunde werden die Möglichkeit haben dich mit Hilfe deines Benutzernamens anzurufen anstatt dafür deine RingID zu benutzen.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="449"/>
+        <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
         <translation>Melden Sie sich für einen allgemein-bekannten Benutzername an (experimentell)</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="476"/>
+        <location filename="../wizarddialog.ui" line="496"/>
         <source>Enter your pin</source>
         <translation>Geben Sie Ihre PIN ein</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="506"/>
+        <location filename="../wizarddialog.ui" line="526"/>
         <source>Password</source>
         <translation>Passwort</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="536"/>
+        <location filename="../wizarddialog.ui" line="556"/>
         <source>Confirm password</source>
         <translation>Passwort bestätigen</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="604"/>
-        <location filename="../wizarddialog.cpp" line="107"/>
+        <location filename="../wizarddialog.ui" line="624"/>
+        <location filename="../wizarddialog.cpp" line="109"/>
         <source>Generating your Ring account...</source>
         <translation>Ihr Ring-Konto wird generiert...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="640"/>
+        <location filename="../wizarddialog.ui" line="660"/>
         <source>Previous</source>
         <translation>Vorherige</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="672"/>
-        <location filename="../wizarddialog.ui" line="675"/>
+        <location filename="../wizarddialog.ui" line="692"/>
+        <location filename="../wizarddialog.ui" line="695"/>
         <source>Next</source>
         <translation>Weiter</translation>
     </message>

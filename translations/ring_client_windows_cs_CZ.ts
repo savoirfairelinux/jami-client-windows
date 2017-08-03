@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Svoboda, rovnost, bratrství - verze 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -133,7 +133,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Veřejné uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -144,7 +144,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
         <location filename="../accountdetails.cpp" line="386"/>
         <location filename="../accountdetails.cpp" line="391"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Zaregistrovat uživatelské jméno na blockchainu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
@@ -308,7 +308,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Heslo (vyžadováno)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
@@ -328,7 +328,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
@@ -343,7 +343,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Zakázané kontakty</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -403,12 +403,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Počkejte prosím, zatímco bude váš PIN vytvářen.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Chyba v síti. Zkuste to, prosím, později znovu.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
@@ -418,7 +418,7 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Registruje se... Může to chvíli trvat</translation>
     </message>
 </context>
 <context>
@@ -431,12 +431,12 @@ Ring je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Zakázané ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit zákaz kontaktu, a přidat jej do seznamu spojení</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Dvakrát klepněte pro kopírování</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
@@ -502,144 +502,144 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Chyba při vytváření QR kódu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1190"/>
+        <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
         <translation>Přidat do kontaktů</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1219"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
         <translation>Začněte konverzaci !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1296"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>Zde zadejte svoji zprávu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1315"/>
+        <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
         <translation>odeslat zprávu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1441"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation>BestId</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1451"/>
+        <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
         <translation>Chce s vámi hovořit!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
         <translation>Přijmout</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1578"/>
+        <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
         <translation>Přehlížet</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1649"/>
+        <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
         <translation>Volání</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1722"/>
+        <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1431"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
         <translation>Volat</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="279"/>
+        <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
         <translation>Zkopírovat číslo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="290"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
         <translation>Přidat do kontaktů</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
         <translation>Spojte se se mnou přes Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="919"/>
+        <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
         <translation>Mé Ring ID je :</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="212"/>
+        <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
         <translation>Zkopírovat</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="222"/>
+        <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
         <translation>Zobrazit datum</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="226"/>
+        <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
         <translation>Zobrazit autora</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
         <translation>Příchozí zpráva od %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="284"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
         <translation>Kopírovat název</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
         <translation>Volat číslo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
         <translation>Kopírovat číslo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="304"/>
+        <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
         <translation>Kopírovat %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="309"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
         <translation>Volat %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="731"/>
+        <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>ŽÁDNÝ ÚČET RING NENALEZEN</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="763"/>
+        <location filename="../callwidget.cpp" line="765"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="770"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="414"/>
+        <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
         <translation>Příchozí hovor od %1</translation>
     </message>
@@ -694,7 +694,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Zkontrolovat aktualizace nyní</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -729,7 +729,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Povolit oznámení</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
@@ -860,17 +860,17 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>Příchozí žádost o kontakt</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation type="unfinished"/>
+        <translation>nameLabel</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation type="unfinished"/>
+        <translation>bestIdLabel</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
@@ -880,7 +880,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>Zahodit</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
@@ -901,17 +901,17 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - smazání účtu</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you realy want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Jste si jisti, že chcete smazat účet?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>Tento krok nelze odvolat</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
@@ -1043,6 +1043,44 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     </message>
 </context>
 <context>
+    <name>PhotoboothWidget</name>
+    <message>
+        <location filename="../photoboothwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="48"/>
+        <source>Take photo</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="68"/>
+        <source>or</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="81"/>
+        <source>Import photo</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.ui" line="84"/>
+        <source>Import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.cpp" line="66"/>
+        <source>Choose File</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../photoboothwidget.cpp" line="68"/>
+        <source>Files (*)</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../utils.cpp" line="185"/>
@@ -1074,7 +1112,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>ContactID</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
@@ -1084,7 +1122,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Poslat žádost o kontakt</translation>
     </message>
 </context>
 <context>
@@ -1130,22 +1168,22 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Spojit hovory</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="490"/>
+        <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
         <translation>Jmenný štítek</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="512"/>
+        <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
         <translation>Přidat do kontaktů</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="582"/>
+        <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
         <translation>Uplynulý čas</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="585"/>
+        <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1163,17 +1201,17 @@ Kopírujte a sdílejte jej s přáteli!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="236"/>
+        <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
         <translation>Sdílet celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="239"/>
+        <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
         <translation>Sdílet část obrazovky</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="246"/>
+        <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
         <translation>Sdílet soubor</translation>
     </message>
@@ -1186,49 +1224,49 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="105"/>
+        <location filename="../wizarddialog.cpp" line="107"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Přesunuje se váš účet Ring…</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="125"/>
+        <location filename="../wizarddialog.cpp" line="127"/>
         <source>Unknown</source>
         <translation>Neznámý</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="159"/>
+        <location filename="../wizarddialog.cpp" line="161"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>Registruje se vaše veřejné uživatelské jméno. Může to trvat několik minut...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Přidat zařízení</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="323"/>
+        <location filename="../wizarddialog.cpp" line="325"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno není dostupné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="326"/>
+        <location filename="../wizarddialog.cpp" line="328"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno je dostupné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="329"/>
+        <location filename="../wizarddialog.cpp" line="331"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno je neplatné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="332"/>
+        <location filename="../wizarddialog.cpp" line="334"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Chyba sítě.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit účet Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
@@ -1238,12 +1276,12 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Jak přidat zařízení</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Vítejte v</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1265,71 +1303,71 @@ p, li { white-space: pre-wrap; }
         <translation>Vytvořit vlastní profil</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="292"/>
+        <location filename="../wizarddialog.ui" line="312"/>
         <source>Enter your full name:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="348"/>
-        <location filename="../wizarddialog.cpp" line="223"/>
+        <location filename="../wizarddialog.ui" line="368"/>
+        <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
         <translation>Vytvořit vlastní účet</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="373"/>
+        <location filename="../wizarddialog.ui" line="393"/>
         <source>Choose your username:</source>
         <translation>Zvolte si vaše uživatelské jméno:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="421"/>
+        <location filename="../wizarddialog.ui" line="441"/>
         <source>Choose your username</source>
         <translation>Zvolte si uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="437"/>
-        <location filename="../wizarddialog.cpp" line="295"/>
+        <location filename="../wizarddialog.ui" line="457"/>
+        <location filename="../wizarddialog.cpp" line="297"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Hledá se...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="446"/>
+        <location filename="../wizarddialog.ui" line="466"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="449"/>
+        <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
         <translation>Zaregistrovat jméno veřejně (experimentální)</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="476"/>
+        <location filename="../wizarddialog.ui" line="496"/>
         <source>Enter your pin</source>
         <translation>Zadejte PIN</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="506"/>
+        <location filename="../wizarddialog.ui" line="526"/>
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="536"/>
+        <location filename="../wizarddialog.ui" line="556"/>
         <source>Confirm password</source>
         <translation>Potvrdit heslo</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="604"/>
-        <location filename="../wizarddialog.cpp" line="107"/>
+        <location filename="../wizarddialog.ui" line="624"/>
+        <location filename="../wizarddialog.cpp" line="109"/>
         <source>Generating your Ring account...</source>
         <translation>Vytváří se váš účet Ring…</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="640"/>
+        <location filename="../wizarddialog.ui" line="660"/>
         <source>Previous</source>
         <translation>Předchozí</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="672"/>
-        <location filename="../wizarddialog.ui" line="675"/>
+        <location filename="../wizarddialog.ui" line="692"/>
+        <location filename="../wizarddialog.ui" line="695"/>
         <source>Next</source>
         <translation>Další</translation>
     </message>
