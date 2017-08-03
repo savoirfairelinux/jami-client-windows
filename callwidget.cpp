@@ -804,6 +804,8 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cmVector[0]));
 
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+    ui->imMessageEdit->clear();
+    ui->imMessageEdit->setFocus();
     disconnect(imClickedConnection_);
     imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
         auto urlList = index.data(static_cast<int>(Media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
