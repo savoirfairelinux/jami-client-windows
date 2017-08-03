@@ -1,48 +1,48 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sl" version="2.0">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation>Névjegy</translation>
+        <translation>O Ring</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation>Készítők</translation>
+        <translation>Zasluge</translation>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Liberté, Égalité, Fraternité! -  Različica 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>A Microsoft Windows kliens a Ringhez.
-A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
+        <translation>Microsoft Windows odjemalec za Ring.
+Ring je varen in necentraliziran način komunikacije.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
         <source>version</source>
-        <translation>verzió</translation>
+        <translation>različica</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation>Szerző:</translation>
+        <translation>Ustvarjalci:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>Artwork by:</source>
-        <translation>Művészi elemek készítője:</translation>
+        <translation>Grafična podoba:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Az SFLPhone projekt alapjain</translation>
+        <translation>Osnovano na projeku SFLPhone</translation>
     </message>
 </context>
 <context>
@@ -50,50 +50,50 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="23"/>
         <source>Settings</source>
-        <translation>Beállítások</translation>
+        <translation>Nastavitve</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="63"/>
         <source>General</source>
-        <translation>Általános</translation>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="137"/>
         <source>Account</source>
-        <translation>Fiók</translation>
+        <translation>Račun</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="197"/>
         <source>Type</source>
-        <translation>Típus</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="163"/>
         <source>Alias</source>
-        <translation>Álnév</translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="241"/>
         <source>Parameters</source>
-        <translation>Paraméterek</translation>
+        <translation>Parametri</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="271"/>
         <source>Hostname</source>
-        <translation>Kiszolgálónév</translation>
+        <translation>Strežnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <location filename="../accountdetails.ui" line="1482"/>
         <location filename="../accountdetails.cpp" line="115"/>
         <source>Username</source>
-        <translation>Felhasználónév</translation>
+        <translation>Uporabnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="445"/>
         <location filename="../accountdetails.ui" line="1501"/>
         <source>Password</source>
-        <translation>Jelszó</translation>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="488"/>
@@ -103,37 +103,37 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="528"/>
         <source>Voicemail number</source>
-        <translation>Hangpostaszám</translation>
+        <translation>Številka glasovnega predala</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="562"/>
         <source>Auto-answer calls</source>
-        <translation>Hívások automatikus fogadása</translation>
+        <translation>Samodejno odgovori klice</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>UPnP enabled</source>
-        <translation>UPnP engedélyezve</translation>
+        <translation>UPnP omogočen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="638"/>
         <source>Allow Call From Unknown</source>
-        <translation>Hívások engedélyezése ismeretlenektől</translation>
+        <translation>Dovoli klice nepoznanih klicateljev</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="665"/>
         <source>Allow Call From Contact</source>
-        <translation>Hívások engedélyezése a partnerlista tagjaitól</translation>
+        <translation>Dovoli klice stika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="653"/>
         <source>Allow Call From History</source>
-        <translation>Hívások engedélyezése az előzményekben szereplőktől</translation>
+        <translation>Dovoli klice iz zgodovine</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Javno ime</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -144,281 +144,281 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
         <location filename="../accountdetails.cpp" line="386"/>
         <location filename="../accountdetails.cpp" line="391"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Prijava na &apos;blockchain&apos;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
         <source>Name service URL</source>
-        <translation>Webcím névszolgáltatás</translation>
+        <translation>URL imenske storitve</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="611"/>
         <source>Ring Account Settings</source>
-        <translation>Ringfiók beállításai</translation>
+        <translation>Nastavitve Ring računa</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="701"/>
         <source>Ringtone Selection</source>
-        <translation>Csengőhang kiválasztása</translation>
+        <translation>Izbira zvonjenja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="725"/>
         <location filename="../accountdetails.cpp" line="57"/>
         <source>Play</source>
-        <translation>Lejátszás</translation>
+        <translation>Predvajaj</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="785"/>
         <source>Audio/Video</source>
-        <translation>Hang/videó</translation>
+        <translation>Avdio/Video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1001"/>
         <source>Audio codecs</source>
-        <translation>Hangcodekek</translation>
+        <translation>Avdio kodeki</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1031"/>
         <source>Video codecs</source>
-        <translation>Videócodekek</translation>
+        <translation>Video kodeki</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1048"/>
         <source>Advanced</source>
-        <translation>Haladó</translation>
+        <translation>Napredno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1094"/>
         <source>Registration</source>
-        <translation>Regisztáció</translation>
+        <translation>Prijava</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1114"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Regisztráció érvényességének lejárta (másodpercekben):</translation>
+        <translation>Časovna omejitev prijave (sek):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1152"/>
         <source>Network Interface</source>
-        <translation>Hálózati interfész</translation>
+        <translation>Mrežni vmesnik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1173"/>
         <source>Local Port:</source>
-        <translation>Helyi port:</translation>
+        <translation>Lokalna vrata:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1277"/>
         <source>Same as local parameters</source>
-        <translation>Ugyanaz, mint a helyi paraméterek</translation>
+        <translation>Isto kot lokalni parametri</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1298"/>
         <source>Set published address and port:</source>
-        <translation>Nyilvános cím és port megadása:</translation>
+        <translation>Nastavi objavljen naslov in vrata:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1324"/>
         <source>Address</source>
-        <translation>Cím</translation>
+        <translation>Naslov</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1355"/>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Vrata</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1409"/>
         <source>Use STUN</source>
-        <translation>STUN használata</translation>
+        <translation>Uporabi STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1425"/>
         <location filename="../accountdetails.ui" line="1466"/>
         <source>Server URL</source>
-        <translation>Szerver-URL</translation>
+        <translation>URL strežnika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1450"/>
         <source>Use TURN</source>
-        <translation>TURN használata</translation>
+        <translation>Uporabi TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1517"/>
         <source>Realm</source>
-        <translation type="unfinished"/>
+        <translation>Območje (realm)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1566"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>Dogovarjanje seje SDP (ICE Fallback)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1594"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation type="unfinished"/>
+        <translation>Te nastavitve so uporabljene samo ob dogovarjanju SDP seje v primeru, da ICE protokol ni podprt s strani strežnika ali vozla.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
         <source>Audio RTP Port Range</source>
-        <translation>Hang RTP port korlát</translation>
+        <translation>Omočje RTP vrat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <location filename="../accountdetails.ui" line="1800"/>
         <source>Min</source>
-        <translation>Minimum</translation>
+        <translation>Min</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1697"/>
         <location filename="../accountdetails.ui" line="1831"/>
         <source>Max</source>
-        <translation>Maximum</translation>
+        <translation>Max</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>Video RTP Port Range</source>
-        <translation>Videó RTP port korlát</translation>
+        <translation>Območje vrat za video RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1896"/>
         <source>Security</source>
-        <translation>Biztonság</translation>
+        <translation>Varnost</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2115"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation>Média-adatfolyam titkosítása (SRTP)</translation>
+        <translation>Šifriranje pretoka vsebine (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2180"/>
         <source>Devices</source>
-        <translation>Eszközök</translation>
+        <translation>Naprave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2224"/>
         <source>Add device</source>
-        <translation>Eszköz hozzáadása</translation>
+        <translation>Dodaj napravo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2251"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Za dodati novo napravo v tvoj Ring račun, moraš izvoziti tvoj račun na Ring. To bo ustvarilo PIN, ki ga moraš vnesti na novi napravi v roku 5 minut.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Geslo (zahtevano)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
         <source>Cancel</source>
-        <translation>Mé_gse</translation>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2321"/>
         <source>Export on the Ring</source>
-        <translation type="unfinished"/>
+        <translation>Izvozi v Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2373"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Tvoj ustvarjen PIN:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Ta PIN moraš vnesti na tvoji novi napravi v roku 5 minut. Lahko ustvariš nov PIN kadarkoli.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
         <source>OK</source>
-        <translation>Rendben</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Zavrnjeni stiki</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
         <source>Encrypt media stream (SRTP)</source>
-        <translation>Média-adatfolyam titkosítása (SRTP)</translation>
+        <translation>Šifriraj pretok podatkov (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1247"/>
         <source>Published Address</source>
-        <translation>Nyilvános cím</translation>
+        <translation>Objavi naslov</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1961"/>
         <source>CA certificate</source>
-        <translation>CA-engedély</translation>
+        <translation>CA Certifikat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1998"/>
         <source>User certificate</source>
-        <translation>Felhasználói engedély</translation>
+        <translation>Osebni certifikat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2032"/>
         <source>Private key</source>
-        <translation>Privátkulcs</translation>
+        <translation>Zasebni ključ</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2047"/>
         <source>Private key password</source>
-        <translation>Privátkulcs jelszava</translation>
+        <translation>Geslo zasebnega ključa</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2127"/>
         <source>Use default ciphers</source>
-        <translation>Alapértelmezett cipherek használata</translation>
+        <translation>Uporabi privzete ćiperje</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
         <source>Pause</source>
-        <translation>Megállítás</translation>
+        <translation>Pavza</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="101"/>
         <source>RingID</source>
-        <translation type="unfinished"/>
+        <translation>RingID</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="229"/>
         <source>Choose File</source>
-        <translation>Fájl kiválasztása</translation>
+        <translation>Izberi datoteko</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="231"/>
         <source>Files (*)</source>
-        <translation>Fájlok (*)</translation>
+        <translation>Datoteke (*)</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Prosim počakaj, dokler PIN ni ustvarjen.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Napaka mreže. Prosim poskusi ponovno.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Napačno geslo.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Prijavljam... Lahko traj anekaj časa</translation>
     </message>
 </context>
 <context>
@@ -426,17 +426,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Obrazec</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Zavrnjen ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči zavrnitev stika in dodaj med aktivne stike</translation>
     </message>
 </context>
 <context>
@@ -444,12 +444,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation>vagy írjon be egy számot…</translation>
+        <translation>ali vpiši številko...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation>Átvitel</translation>
+        <translation>Prevezava</translation>
     </message>
 </context>
 <context>
@@ -457,174 +457,174 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../callwidget.ui" line="213"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Partnerek keresése vagy Ringazonosító beírása</translation>
+        <translation>Poišči stike ali vpiši RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="324"/>
         <source>Conversations</source>
-        <translation>Beszélgetések</translation>
+        <translation>Pogovori</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation>Partnerkérelmek</translation>
+        <translation>Zahteve za povezavo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
-        <translation>Beállítások menü</translation>
+        <translation>meni nastavitev</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>A Ring szabad szoftver az univerzális kommunikációhoz, amely tiszteletben tartja a felhasználók szabadságát és magánszféráját.</translation>
+        <translation>Ring je zastonj programska oprema za univerzalno komunikacijo, ki spoštuje svoboščine in zasebnost uporabnikov.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
-        <translation>Ossza meg a Ringazonosítóját</translation>
+        <translation>Deli svoj RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="671"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation>Ez az ön Ringazonosítója.
-Másolja ki és ossza meg a barátaival!</translation>
+        <translation>To je tvoj RingID.
+Kopiraj in deli s svojimi prijatelji!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopiraj z dvojnim klikom</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
         <source>Error while generating QR Code</source>
-        <translation>Hiba a QR kód generálása közben</translation>
+        <translation>Napaka med pripravo QR kode</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
         <source>Add to contacts</source>
-        <translation>Hozzáadás a partnerekhez</translation>
+        <translation>Dodaj v stike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
-        <translation>A beszélgetés indítása!</translation>
+        <translation>Začni pogovor !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>Vpiši tvoje sporočilo tukaj</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
-        <translation>üzenet küldése</translation>
+        <translation>pošlji sporočilo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation>BestID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
-        <translation>Beszélni akar önnel!</translation>
+        <translation>Želi govoriti s tabo!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
-        <translation>Válaszol</translation>
+        <translation>Odgovori</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
-        <translation>Figyelmen kívül hagy</translation>
+        <translation>Ignoriraj</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Kličem</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
-        <translation>Hívás</translation>
+        <translation>Kliči</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="278"/>
         <source>Copy number</source>
-        <translation>Szám másolása</translation>
+        <translation>Kopiraj številko</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="289"/>
         <source>Add to contact</source>
-        <translation>Hozzáadás a partnerek listájához</translation>
+        <translation>Dodaj med stike</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="928"/>
         <source>Contact me on Ring</source>
-        <translation>Az elérhetőségem a Ringen</translation>
+        <translation>Poišči me na Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="928"/>
         <source>My RingId is : </source>
-        <translation>A Ringazonosítóm:</translation>
+        <translation>Moj RingID je:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="211"/>
         <source>Copy</source>
-        <translation>Másolás</translation>
+        <translation>Kopiraj</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="221"/>
         <source>Display date</source>
-        <translation>Dátum megjelenítése</translation>
+        <translation>Prikaži datum</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="225"/>
         <source>Display author</source>
-        <translation>Szerző megjelenítése</translation>
+        <translation>Prikaži avtorja</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="254"/>
         <source>Message incoming from %1</source>
-        <translation>Bejövő üzenet a következőtől: %1</translation>
+        <translation>Dohodno sporočilo od %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="283"/>
         <source>Copy name</source>
-        <translation type="unfinished"/>
+        <translation>Kopiraj ime</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="299"/>
         <source>Call Number</source>
-        <translation>Szám hívása</translation>
+        <translation>Kliči številko</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="300"/>
         <source>Copy Number</source>
-        <translation>Szám másolása</translation>
+        <translation>Kopiraj številko</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="303"/>
         <source>Copy %1</source>
-        <translation>%1 másolása</translation>
+        <translation>Kopiraj %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="308"/>
         <source>Call %1</source>
-        <translation>%1 hívása</translation>
+        <translation>Kliči %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="730"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation>RINGFIÓK NEM TALÁLHATÓ</translation>
+        <translation>NE NAJDEM RING RAČUNA</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="765"/>
@@ -641,7 +641,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.cpp" line="413"/>
         <source>Call incoming from %1</source>
-        <translation>Bejövő hívás tőle: %1</translation>
+        <translation>Dohodni klic od %1</translation>
     </message>
 </context>
 <context>
@@ -649,57 +649,57 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>Beállítások</translation>
+        <translation>Nastavitve</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>Általános</translation>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation>kilépés a beállítások menüből</translation>
+        <translation>izhod iz nastavitev</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation>Előzmények beállításai</translation>
+        <translation>Nastavitve zgodovine</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation>Előzmények megtartása ennyi napig</translation>
+        <translation>Ohrani zgodovino za (dni)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Állítsa 0-ra a végtelen előzményekért)</translation>
+        <translation>(Vpiši 0 za neomejeno zgodovino)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>Előzmények törlése</translation>
+        <translation>Počisti zgodovino</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation>Egyéb beállítások</translation>
+        <translation>Razne nastavitve</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation>Bezáráskor legyen minimalizálva</translation>
+        <translation>Minimiziraj ob zaprtju</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Preveri posodobitve zdaj</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>Videó</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
@@ -709,112 +709,112 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation>Név</translation>
+        <translation>Ime</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation>Felvételbeállítások</translation>
+        <translation>Nastavitve snemanja</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation>Mentési hely:</translation>
+        <translation>Shrani v :</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation>Mindig legyen felvétel</translation>
+        <translation>Vedno snemaj</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Omogoči obvestila</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
         <source>Check for update automatically every</source>
-        <translation>Frissítések ellenőrzése minden</translation>
+        <translation>Samodejno preverjaj posodobitve vsakih</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>days</source>
-        <translation>nap</translation>
+        <translation>dni</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="888"/>
         <source>Preview unavailable during call</source>
-        <translation>Előnézet nem elérhető hívás közben</translation>
+        <translation>Predogled ni možen med klicem</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="942"/>
         <source>Device Selection</source>
-        <translation>Eszköz kiválasztása</translation>
+        <translation>Izbira naprave</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation>Eszköz</translation>
+        <translation>Naprava</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
         <source>Resolution</source>
-        <translation>Felbontás</translation>
+        <translation>Resolucija</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1068"/>
         <source>Output Device</source>
-        <translation>Kimeneti eszköz</translation>
+        <translation>Izhodna naprava</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1083"/>
         <source>Input Device</source>
-        <translation>Bemeneti eszköz</translation>
+        <translation>Vhodna naprava</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1180"/>
         <source>add new account</source>
-        <translation>új fiók hozzáadása</translation>
+        <translation>dodaj nov račun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1242"/>
         <source>Import</source>
-        <translation>Importálás</translation>
+        <translation>Uvoz</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1249"/>
         <source>Export</source>
-        <translation>Exportálás</translation>
+        <translation>Izvoz</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation>Fiók</translation>
+        <translation>Račun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
         <source>Launch Ring on Startup</source>
-        <translation>A Ring indítása rendszerindításkor</translation>
+        <translation>Zaženi Ring ob zagonu</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="310"/>
         <source>New Account</source>
-        <translation>Új fiók</translation>
+        <translation>Nov račun</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="330"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation>Biztos, hogy törölni akarja az összes előzményt?</translation>
+        <translation>Ali resnično želiš počistiti vso zgodovino?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation>Könyvtár kiválasztása</translation>
+        <translation>Izberi mapo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation>Hiba történt a fiók importálása közben.</translation>
+        <translation>Zgodila se je napaka med uvozom računa.</translation>
     </message>
 </context>
 <context>
@@ -822,32 +822,32 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Létező partner</translation>
+        <translation>Obstoječi račun</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation>Keresés…</translation>
+        <translation>Iščem...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation>Új partner létrehozása</translation>
+        <translation>Ustvari nov stik</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation>Új partner</translation>
+        <translation>Nov stik</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation>Név beírása ide…</translation>
+        <translation>Vpiši ime tukaj...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation>Létrehozás</translation>
+        <translation>Ustvari</translation>
     </message>
 </context>
 <context>
@@ -855,12 +855,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Obrazec</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>Dohodna zahteva stika</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
@@ -875,17 +875,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation>Elfogadás</translation>
+        <translation>Sprejmi</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>Opusti</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation>Blokkolás</translation>
+        <translation>Blokiraj</translation>
     </message>
 </context>
 <context>
@@ -893,7 +893,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Obrazec</translation>
     </message>
 </context>
 <context>
@@ -901,32 +901,32 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - brisanje računa</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you realy want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Ali resnično želiš pobrisati račun?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>Te operacije ni možno preklicati</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Če ta račun ni bil izvožen ali dodan na drugo napravo, bo izgubljen</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel</source>
-        <translation>Mé_gse</translation>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation>V redu</translation>
     </message>
 </context>
 <context>
@@ -934,22 +934,22 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation>Szöveges üzenet küldése…</translation>
+        <translation>Pošlji besedilno sporočilo</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
-        <translation>Másolás</translation>
+        <translation>Kopiraj</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation>Dátum megjelenítése</translation>
+        <translation>Prikaži datum</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation>Szerző megjelenítése</translation>
+        <translation>Prikaži avtorja</translation>
     </message>
 </context>
 <context>
@@ -962,17 +962,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../mainwindow.cpp" line="53"/>
         <source>Configuration</source>
-        <translation>Konfiguráció</translation>
+        <translation>Konfiguracija</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="56"/>
         <source>Exit</source>
-        <translation>Kilépés</translation>
+        <translation>Izhod</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="80"/>
         <source>About</source>
-        <translation>Névjegy</translation>
+        <translation>O Ring</translation>
     </message>
 </context>
 <context>
@@ -980,38 +980,38 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation>Útvonal</translation>
+        <translation>Pot</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation>Jelszó</translation>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation>V redu</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation>Fájl mentése</translation>
+        <translation>Shrani datoteko</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
         <location filename="../pathpassworddialog.cpp" line="67"/>
         <source>Ring archive files (*.ring)</source>
-        <translation>Ring archívumfájlok (*.ring)</translation>
+        <translation>Ring arhivska datoteka (*.ring)</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation>Fájl megnyitása</translation>
+        <translation>Odpri datoteko</translation>
     </message>
 </context>
 <context>
@@ -1019,27 +1019,27 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Foto stojnica</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="58"/>
         <source>or</source>
-        <translation>vagy</translation>
+        <translation>ali</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.ui" line="71"/>
         <source>Import</source>
-        <translation>Importálás</translation>
+        <translation>Uvoz</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="59"/>
         <source>Choose File</source>
-        <translation>Fájl kiválasztása</translation>
+        <translation>Izberi datoteko</translation>
     </message>
     <message>
         <location filename="../photoboothdialog.cpp" line="61"/>
         <source>Files (*)</source>
-        <translation>Fájlok (*)</translation>
+        <translation>Datoteke (*)</translation>
     </message>
 </context>
 <context>
@@ -1085,13 +1085,13 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation>Nem találtam alapértelmezett levelezőklienst</translation>
+        <translation>Ne najdem privzetega programa za e-pošto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>Ring račun</translation>
     </message>
 </context>
 <context>
@@ -1099,7 +1099,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Samodejno</translation>
     </message>
 </context>
 <context>
@@ -1107,7 +1107,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Obrazec</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
@@ -1122,7 +1122,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Pošlji zahtevo za stik</translation>
     </message>
 </context>
 <context>
@@ -1130,57 +1130,57 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation>Hívástartás</translation>
+        <translation>Klic na čakanju</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation>Tartás/Tartás megszüntetése</translation>
+        <translation>Čakanje / Nadaljevanje</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>Csevegés</translation>
+        <translation>Pogovor</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation>Személy hozzáadása a hiváshoz</translation>
+        <translation>Dodaj osebo v klic</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation>Hívásátirányítás</translation>
+        <translation>Preveži klic</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation>Mikrofon elnémítása</translation>
+        <translation>Izključi mikrofon</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation>Minőség</translation>
+        <translation>Kvaliteta</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation>Hívások csatlakozása</translation>
+        <translation>Združi klice</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
         <source>Name label</source>
-        <translation>Névcímke</translation>
+        <translation>Oznaka imena</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation>Hozzáadás a partnerek listájához</translation>
+        <translation>Dodaj med stike</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation>Eltelt idő</translation>
+        <translation>Pretečeni čas</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
@@ -1190,12 +1190,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation>Lerak</translation>
+        <translation>Prekini</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation>Videó némítása</translation>
+        <translation>Izključi video</translation>
     </message>
 </context>
 <context>
@@ -1203,17 +1203,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
-        <translation>Az egész képernyő megosztása</translation>
+        <translation>Deli celoten zaslon</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
-        <translation>Képernyő részének megosztása</translation>
+        <translation>Deli območje zaslona</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
-        <translation>Fájl megosztása</translation>
+        <translation>Deli datoteko</translation>
     </message>
 </context>
 <context>
@@ -1221,67 +1221,67 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation type="unfinished"/>
+        <translation>Tvoj račun mora biti migriran. Izberi geslo.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Migriram tvoj Ring račun...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="127"/>
         <source>Unknown</source>
-        <translation>Ismeretlen</translation>
+        <translation>Neznano</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="161"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>Prijavljam tvoje javno ime, lahko traja nekaj časa...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj napravo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="325"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Uporabniško ime ni na voljo.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="328"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Uporabniško ime je na voljo.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="331"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Uporabniško ime ni veljavno.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="334"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Napaka mreže.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ustvari Ring račun</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Poveži to napravo k računu</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Kako dodati napravo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Dobrodošli v</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1300,34 +1300,34 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Ustvari svoj profil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="312"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Vpiši svoje polno ime:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
         <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
-        <translation type="unfinished"/>
+        <translation>Ustvari svoj račun</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="393"/>
         <source>Choose your username:</source>
-        <translation>Válasszon egy felhasználónevet:</translation>
+        <translation>Izberi svoje uporabniško ime:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="441"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Izberi svoje uporabniško ime:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
         <location filename="../wizarddialog.cpp" line="297"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Iščem...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="466"/>
@@ -1337,39 +1337,39 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Prijavi javno ime (eksperimentalno)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="496"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>Vpiši svoj PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="526"/>
         <source>Password</source>
-        <translation>Jelszó</translation>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="556"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Potrdi geslo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="624"/>
         <location filename="../wizarddialog.cpp" line="109"/>
         <source>Generating your Ring account...</source>
-        <translation>A Ringfiókja létrehozása…</translation>
+        <translation>Ustvarjam tvoj Ring račun...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="660"/>
         <source>Previous</source>
-        <translation>Vissza</translation>
+        <translation>Prejšni</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="692"/>
         <location filename="../wizarddialog.ui" line="695"/>
         <source>Next</source>
-        <translation>Következő</translation>
+        <translation>Naprej</translation>
     </message>
 </context>
 </TS>
