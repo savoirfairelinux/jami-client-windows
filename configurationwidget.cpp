@@ -432,7 +432,7 @@ ConfigurationWidget::on_avatarButton_clicked()
     PhotoBoothDialog dlg;
     dlg.exec();
     if (dlg.result() == QDialog::Accepted) {
-        auto image = QImage(dlg.fileName_);
+        auto image = QImage(dlg.getOutputFileName());
         auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
         ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
         ProfileModel::instance().selectedProfile()->save();
