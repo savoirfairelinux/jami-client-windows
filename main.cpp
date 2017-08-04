@@ -68,7 +68,7 @@ main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    GlobalInstances::setPixmapManipulator(std::unique_ptr<Interfaces::PixbufManipulator>(new Interfaces::PixbufManipulator()));
+    GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
 
     auto startMinimized = false;
     QString uri = "";
