@@ -26,54 +26,18 @@
 
 PhotoBoothDialog::PhotoBoothDialog(QWidget* parent) :
     QDialog(parent),
-    fileName_(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
-              + QStringLiteral("profile.png")),
     ui(new Ui::PhotoBoothDialog)
 {
     ui->setupUi(this);
-
-    Qt::WindowFlags flags = windowFlags();
-    flags = flags & (~Qt::WindowContextHelpButtonHint);
-    setWindowFlags(flags);
-
-    ui->videoFeed->setIsFullPreview(true);
-    ui->videoFeed->setPhotoMode(true);
-    Video::PreviewManager::instance().startPreview();
+    setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
+    connect(ui->Photobooth, &PhotoboothWidget::photoTaken, [this](QString fileName){
+        fileName_ = fileName;
+        accept();
+        }
+    );
 }
 
 PhotoBoothDialog::~PhotoBoothDialog()
 {
     delete ui;
-}
-
-void
-PhotoBoothDialog::closeEvent(QCloseEvent* event)
-{
-    Q_UNUSED(event)
-    Video::PreviewManager::instance().stopPreview();
-}
-
-void
-PhotoBoothDialog::on_importButton_clicked()
-{
-    fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
-                                            "",
-                                            tr("Files (*)"));
-    if (fileName_.isEmpty())
-        fileName_ = QStandardPaths::standardLocations(
-                    QStandardPaths::TempLocation).first()
-                + QStringLiteral("profile.png");
-    else {
-        Video::PreviewManager::instance().stopPreview();
-        accept();
-    }
-}
-
-void
-PhotoBoothDialog::on_takePhotoButton_clicked()
-{
-    auto photo = ui->videoFeed->takePhoto();
-    Video::PreviewManager::instance().stopPreview();
-    photo.save(fileName_);
-    accept();
 }

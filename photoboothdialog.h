@@ -31,17 +31,9 @@ class PhotoBoothDialog : public QDialog
 public:
     explicit PhotoBoothDialog(QWidget* parent = 0);
     ~PhotoBoothDialog();
-public:
-    QString fileName_;
-
-protected:
-    void closeEvent(QCloseEvent* event);
-
-//UI SLOTS
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
+    QString& getOutputFileName() { return fileName_;}
 
 private:
     Ui::PhotoBoothDialog* ui;
+    QString fileName_;
 };
