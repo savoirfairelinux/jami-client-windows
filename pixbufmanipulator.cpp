@@ -48,8 +48,6 @@ QByteArray QImageToByteArray(QImage image)
     return ba;
 }
 
-namespace Interfaces {
-
 QImage
 PixbufManipulator::scaleAndFrame(const QImage photo, const QSize& size)
 {
@@ -139,9 +137,9 @@ PixbufManipulator::toByteArray(const QVariant& pxm)
 }
 
 QVariant
-PixbufManipulator::collectionIcon(const CollectionInterface* interface, PixmapManipulatorI::CollectionIconHint hint) const
+PixbufManipulator::collectionIcon(const CollectionInterface* colItf, PixmapManipulatorI::CollectionIconHint hint) const
 {
-    Q_UNUSED(interface)
+    Q_UNUSED(colItf)
     Q_UNUSED(hint)
     return QVariant();
 }
@@ -249,5 +247,3 @@ QImage PixbufManipulator::fallbackAvatar(const QSize size, const char color, con
 
     return avatar;
 }
-
-} // namespace Interfaces

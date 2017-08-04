@@ -29,9 +29,7 @@ class Person;
 
 QByteArray QImageToByteArray(QImage image);
 
-namespace Interfaces {
-
-class PixbufManipulator : public PixmapManipulatorI {
+class PixbufManipulator : public Interfaces::PixmapManipulatorI {
 public:
     QVariant callPhoto(Call* c, const QSize& size, bool displayPresence = true) override;
     QVariant callPhoto(const ContactMethod* n, const QSize& size, bool displayPresence = true) override;
@@ -42,7 +40,9 @@ public:
     QVariant   numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence = false, bool isPresent = false) override;
     QVariant   securityIssueIcon(const QModelIndex& index) override;
     QByteArray toByteArray(const QVariant& pxm) override;
-    QVariant   collectionIcon(const CollectionInterface* interface, PixmapManipulatorI::CollectionIconHint hint = PixmapManipulatorI::CollectionIconHint::NONE) const override;
+    QVariant   collectionIcon(const CollectionInterface* colItf,
+                              Interfaces::PixmapManipulatorI::CollectionIconHint hint =
+                                Interfaces::PixmapManipulatorI::CollectionIconHint::NONE) const override;
     QVariant   securityLevelIcon(const SecurityEvaluationModel::SecurityLevel level) const override;
     QVariant   historySortingCategoryIcon(const CategorizedHistoryModel::SortedProxy::Categories cat) const override;
     QVariant   contactSortingCategoryIcon(const CategorizedContactModel::SortedProxy::Categories cat) const override;
@@ -52,12 +52,12 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
     QVariant   decorationRole(const Account* acc) override;
+    static QImage scaleAndFrame(const QImage photo, const QSize& size);
+    static QImage scaleAndFrame(const QImage photo, const int& size);
+
 
 private:
-    QImage scaleAndFrame(const QImage photo, const QSize& size);
     const QSize imgSize_ {48, 48};
     static QImage fallbackAvatar(const QSize size, const char color, const char letter);
 };
-
-} // namespace Interfaces
 
