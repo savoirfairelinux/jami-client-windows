@@ -502,6 +502,7 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
+        <location filename="../callwidget.cpp" line="321"/>
         <source>Add to contacts</source>
         <translation>Dodaj do kontaków</translation>
     </message>
@@ -556,89 +557,89 @@ Copy and share it with your friends!</source>
         <translation>Dzwoń</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="278"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
         <translation>Skopiuj numer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="289"/>
-        <source>Add to contact</source>
-        <translation>Dodaj do kontaku</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="928"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Ring</source>
         <translation>Skontaktuj się ze mną na Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="928"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My RingId is : </source>
         <translation>Mój RingId to:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="211"/>
+        <location filename="../callwidget.cpp" line="214"/>
         <source>Copy</source>
         <translation>Skopiuj</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="221"/>
+        <location filename="../callwidget.cpp" line="224"/>
         <source>Display date</source>
         <translation>Wyświetl datę</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="225"/>
+        <location filename="../callwidget.cpp" line="228"/>
         <source>Display author</source>
         <translation>Wyświetl autora</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="254"/>
+        <location filename="../callwidget.cpp" line="257"/>
         <source>Message incoming from %1</source>
         <translation>Przychodząca wiadomość od %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="283"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Copy name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="299"/>
+        <location filename="../callwidget.cpp" line="301"/>
         <source>Call Number</source>
         <translation>Numer Połączeńia</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="302"/>
         <source>Copy Number</source>
         <translation>Skopiuj Numer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="303"/>
+        <location filename="../callwidget.cpp" line="305"/>
         <source>Copy %1</source>
         <translation>Skopiuj %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="308"/>
+        <location filename="../callwidget.cpp" line="310"/>
         <source>Call %1</source>
         <translation>Dzwoń do %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="730"/>
+        <location filename="../callwidget.cpp" line="332"/>
+        <source>Remove from contacts</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="752"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>NIE ZNALEZIONO ŻADNEGO KONTA RING</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="787"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="770"/>
+        <location filename="../callwidget.cpp" line="792"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="413"/>
+        <location filename="../callwidget.cpp" line="435"/>
         <source>Call incoming from %1</source>
         <translation>Połączenie przychodzące od %1</translation>
     </message>
@@ -929,6 +930,34 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
+    <name>DeleteContactDialog</name>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="20"/>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="47"/>
+        <source>Do you want to delete this contact?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="123"/>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="136"/>
+        <source>Delete</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="149"/>
+        <source>Delete and ban</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>InstantMessagingWidget</name>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
@@ -1046,7 +1075,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="48"/>
@@ -1056,7 +1085,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="68"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>albo</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
@@ -1066,17 +1095,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>Importuj</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz Plik</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Pliki (*)</translation>
     </message>
 </context>
 <context>

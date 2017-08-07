@@ -503,6 +503,7 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
+        <location filename="../callwidget.cpp" line="321"/>
         <source>Add to contacts</source>
         <translation>加到聯絡人</translation>
     </message>
@@ -557,89 +558,89 @@ Copy and share it with your friends!</source>
         <translation>呼叫</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="278"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="289"/>
-        <source>Add to contact</source>
-        <translation>加到聯絡人</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="928"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Ring</source>
         <translation>在 Ring 上聯絡我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="928"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My RingId is : </source>
         <translation>我的 RingId 是：</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="211"/>
+        <location filename="../callwidget.cpp" line="214"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="221"/>
+        <location filename="../callwidget.cpp" line="224"/>
         <source>Display date</source>
         <translation>顯示日期</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="225"/>
+        <location filename="../callwidget.cpp" line="228"/>
         <source>Display author</source>
         <translation>顯示作者</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="254"/>
+        <location filename="../callwidget.cpp" line="257"/>
         <source>Message incoming from %1</source>
         <translation>從 %1 來的訊息</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="283"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Copy name</source>
         <translation>複製名稱</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="299"/>
+        <location filename="../callwidget.cpp" line="301"/>
         <source>Call Number</source>
         <translation>通話號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="302"/>
         <source>Copy Number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="303"/>
+        <location filename="../callwidget.cpp" line="305"/>
         <source>Copy %1</source>
         <translation>複製 %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="308"/>
+        <location filename="../callwidget.cpp" line="310"/>
         <source>Call %1</source>
         <translation>與 %1 通話</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="730"/>
+        <location filename="../callwidget.cpp" line="332"/>
+        <source>Remove from contacts</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="752"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>找不到 Ring 帳號</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="765"/>
+        <location filename="../callwidget.cpp" line="787"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="770"/>
+        <location filename="../callwidget.cpp" line="792"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="413"/>
+        <location filename="../callwidget.cpp" line="435"/>
         <source>Call incoming from %1</source>
         <translation>從 %1 的來電</translation>
     </message>
@@ -930,6 +931,34 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
+    <name>DeleteContactDialog</name>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="20"/>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="47"/>
+        <source>Do you want to delete this contact?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="123"/>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="136"/>
+        <source>Delete</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deletecontactdialog.ui" line="149"/>
+        <source>Delete and ban</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>InstantMessagingWidget</name>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
@@ -1047,37 +1076,37 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>表單</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="48"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>照相</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="68"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>或</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>匯入圖片</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>匯入</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>選擇檔案</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>檔案 (*)</translation>
     </message>
 </context>
 <context>
