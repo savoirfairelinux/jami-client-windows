@@ -30,7 +30,7 @@
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="deletionLabel1">
      <property name="text">
-      <string>Do you realy want to delete account ?</string>
+      <string>Do you really want to delete account ?</string>
      </property>
     </widget>
    </item>
