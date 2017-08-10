@@ -265,7 +265,7 @@ win32 {
     QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
                             $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll \
                             $$RUNTIMEDIR/Qt5Xml.dll $$RUNTIMEDIR/Qt5WinExtras.dll \
-                            $$RUNTIMEDIR/Qt5Network.dll
+                            $$RUNTIMEDIR/Qt5Network.dll $$RUNTIMEDIR/Qt5Sql.dll
     QTRUNTIME.path = $$OUT_PWD/release
 
     QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll \
@@ -275,7 +275,8 @@ win32 {
                             $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
                             $$RUNTIMEDIR/libjpeg-62.dll $$RUNTIMEDIR/iconv.dll \
                             $$RUNTIMEDIR/libidn-11.dll $$RUNTIMEDIR/liblzma-5.dll \
-                            $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll
+                            $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll \
+                            $$RUNTIMEDIR/libsqlite3-0.dll
     QTDEPSRUNTIME.path = $$OUT_PWD/release
 
     QTPLATFORMS.files = $$[QT_INSTALL_PLUGINS]/platforms/qwindows.dll
@@ -284,12 +285,15 @@ win32 {
     QTPLUGINIMAGE.files = $$[QT_INSTALL_PLUGINS]/imageformats/
     QTPLUGINIMAGE.path = $$OUT_PWD/release
 
+    QTSQLDRIVERS.files = $$[QT_INSTALL_PLUGINS]/sqldrivers/qsqlite.dll
+    QTSQLDRIVERS.path = $$OUT_PWD/release/sqldrivers
+
     LIBSTD.files = $$RUNTIMEDIR/libgcc_s_sjlj-1.dll $$RUNTIMEDIR/libstdc++-6.dll \
                     $$RUNTIMEDIR/libwinpthread-1.dll $$RUNTIMEDIR/libgcc_s_seh-1.dll
     LIBSTD.path = $$OUT_PWD/release
 
     INSTALLS += RINGTONES PACKAGING LICENSE RUNTIME LRC_TRANSLATION QTRUNTIME QTDEPSRUNTIME \
-                QTPLUGINIMAGE QTPLATFORMS LIBSTD
+                QTPLUGINIMAGE QTPLATFORMS QTSQLDRIVERS LIBSTD
 
     DEFINES += ENABLE_AUTOUPDATE
     LIBS += -L$${RING}/lib -lWinSparkle
