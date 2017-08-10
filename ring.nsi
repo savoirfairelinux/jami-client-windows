@@ -146,6 +146,8 @@ section "install"
         file platforms/*
         setOutPath $INSTDIR\imageformats
         file imageformats/*
+        setOutPath $INSTDIR\sqldrivers
+        file sqldrivers/*
         setOutPath $INSTDIR\ringtones
         file ringtones/*
         setOutPath $INSTDIR\share\ring\translations
