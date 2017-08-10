@@ -221,6 +221,21 @@ QVariant PixbufManipulator::decorationRole(const Account* acc)
                                      imgSize_.width());
 }
 
+QVariant PixbufManipulator::itemPhoto(const std::string& avatar, const std::string& alias, const std::string& uri, const QSize& size, bool displayPresence)
+{
+    Q_UNUSED(displayPresence)
+
+    if (avatar.length() > 0)
+    {
+        QByteArray byteArray(avatar.c_str(), avatar.length());
+        QVariant photo = personPhoto(byteArray);
+        return QVariant::fromValue(scaleAndFrame(photo.value<QImage>(), size));
+    } else {
+        return QVariant::fromValue(fallbackAvatar(size, uri.at(0), alias.at(0)));
+    }
+
+}
+
 QImage PixbufManipulator::fallbackAvatar(const QSize size, const char color, const char letter)
 {
     // We start with a transparent avatar
