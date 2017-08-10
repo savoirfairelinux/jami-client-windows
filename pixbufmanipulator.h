@@ -23,6 +23,8 @@
 #include <memory>
 #include <interfaces/pixmapmanipulatori.h>
 
+#include "smartlistitem.h"
+
 Q_DECLARE_METATYPE(QImage);
 
 class Person;
@@ -52,12 +54,12 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
     QVariant   decorationRole(const Account* acc) override;
+    QVariant   decorationRole(const SmartListItem* item) override;
     static QImage scaleAndFrame(const QImage photo, const QSize& size);
     static QImage scaleAndFrame(const QImage photo, const int& size);
-
+    QVariant   itemPhoto(const SmartListItem* item, const QSize& size, bool displayPresence = true) override;
 
 private:
     const QSize imgSize_ {48, 48};
     static QImage fallbackAvatar(const QSize size, const char color, const char letter);
 };
-

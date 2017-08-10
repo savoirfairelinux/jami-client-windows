@@ -33,6 +33,7 @@
 #include "contactmethod.h"
 #include "profilemodel.h"
 #include "profile.h"
+#include "contactitem.h"
 
 #include "utils.h"
 #include "ringthemeutils.h"
@@ -219,6 +220,32 @@ QVariant PixbufManipulator::decorationRole(const Account* acc)
     return Utils::getCirclePhoto(ProfileModel::instance().
                                      selectedProfile()->person()->photo().value<QImage>(),
                                      imgSize_.width());
+}
+
+QVariant PixbufManipulator::itemPhoto(const SmartListItem* item, const QSize& size, bool displayPresence)
+{
+    Q_UNUSED(displayPresence)
+    if (!item)
+        return QVariant::fromValue(fallbackAvatar(size, '?', '?'));
+
+    auto avatar = item->getAvatar();
+    auto alias = item->getTitle();
+
+    std::string uri = item->getUID();
+
+    if (avatar.length() > 0)
+    {
+        QByteArray byteArray(avatar.c_str(), avatar.length());
+        QVariant photo = personPhoto(byteArray);
+        return QVariant::fromValue(scaleAndFrame(photo.value<QImage>(), size));
+    } else {
+        return QVariant::fromValue(fallbackAvatar(size, uri.at(0), alias.at(0)));
+    }
+}
+
+QVariant PixbufManipulator::decorationRole(const SmartListItem* item)
+{
+    return itemPhoto(item, imgSize_);
 }
 
 QImage PixbufManipulator::fallbackAvatar(const QSize size, const char color, const char letter)
