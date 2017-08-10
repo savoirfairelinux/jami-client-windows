@@ -52,6 +52,7 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
     QVariant   decorationRole(const Account* acc) override;
+    QVariant   itemPhoto(const std::string& avatar, const std::string& alias, const std::string& uri, const QSize& size, bool displayPresence);
 
 private:
     QImage scaleAndFrame(const QImage photo, const QSize& size);
