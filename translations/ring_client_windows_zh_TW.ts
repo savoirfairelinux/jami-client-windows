@@ -620,7 +620,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>從聯絡人中移除</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
@@ -906,8 +906,8 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>您真的想要刪除帳號嗎？</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,27 +935,27 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>對話框</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>您想要移除此聯絡人嗎？</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>刪除</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>刪除並加入黑名單</translation>
     </message>
 </context>
 <context>

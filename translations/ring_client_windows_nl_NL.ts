@@ -904,7 +904,7 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
+        <source>Do you really want to delete account ?</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -948,7 +948,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>

@@ -906,7 +906,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
+        <source>Do you really want to delete account ?</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -935,7 +935,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
@@ -945,12 +945,12 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Rezigni</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Forigi</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>

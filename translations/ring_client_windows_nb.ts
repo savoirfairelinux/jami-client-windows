@@ -905,7 +905,7 @@ Kopier og del den med dine venner!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
+        <source>Do you really want to delete account ?</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -944,12 +944,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Slett</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>

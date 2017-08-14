@@ -620,7 +620,7 @@ Kopiera och dela det med dina vänner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort från kontakter</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
@@ -906,8 +906,8 @@ Kopiera och dela det med dina vänner!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>Vill du verkligen ta bort kontot?</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,27 +935,27 @@ Kopiera och dela det med dina vänner!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>Vill du ta bort den här kontakten?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort och bannlys</translation>
     </message>
 </context>
 <context>

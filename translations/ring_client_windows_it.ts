@@ -574,7 +574,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../callwidget.cpp" line="214"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Copia</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="224"/>
@@ -754,7 +754,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
@@ -837,7 +837,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>Nuovo contatto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
@@ -847,7 +847,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation>Crea</translation>
     </message>
 </context>
 <context>
@@ -905,7 +905,7 @@ Da copiare e condividere con gli amici!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
+        <source>Do you really want to delete account ?</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -944,12 +944,12 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancella</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Cancella</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
@@ -967,7 +967,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Copia</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>

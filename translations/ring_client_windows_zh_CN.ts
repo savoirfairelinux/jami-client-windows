@@ -620,7 +620,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>从联系人中移除</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
@@ -906,8 +906,8 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>您确定要删除帐户吗？</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,27 +935,27 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>要删除该联系人吗？</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>删除并屏蔽</translation>
     </message>
 </context>
 <context>

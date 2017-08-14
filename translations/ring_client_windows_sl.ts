@@ -906,8 +906,8 @@ Kopiraj in deli s svojimi prijatelji!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>Ali resnično želiš pobrisati račun?</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -945,12 +945,12 @@ Kopiraj in deli s svojimi prijatelji!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Pobriši</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>

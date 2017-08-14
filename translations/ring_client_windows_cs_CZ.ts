@@ -906,8 +906,8 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>Jste si jisti, že chcete smazat účet?</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,7 +935,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
@@ -945,12 +945,12 @@ Kopírujte a sdílejte jej s přáteli!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Odstranit</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>

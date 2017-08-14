@@ -620,7 +620,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti iš kontaktų</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
@@ -906,8 +906,8 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>Ar tikrai norite ištrinti paskyrą?</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,27 +935,27 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialogas</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>Ar norite ištrinti šį kontaktą?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Atsisakyti</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinti ir užblokuoti</translation>
     </message>
 </context>
 <context>
@@ -1091,7 +1091,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>Importuoti nuotrauką</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>

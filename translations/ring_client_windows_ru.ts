@@ -22,7 +22,7 @@
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
         <translation>Клиент Ring для Windows.
-Ring – это приложение для безопасного и распределённого общения. </translation>
+Ring – это приложение для безопасного и распределенного общения. </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -149,7 +149,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="371"/>
         <source>Name service URL</source>
-        <translation>Адрес сервиса имён</translation>
+        <translation>URL-адрес службы имен</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="611"/>
@@ -333,7 +333,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation>Этот PIN должен быть введён на новом устройстве в течение 5 минут. Вы можете сгенерировать новый в любой момент.</translation>
+        <translation>Этот PIN должен быть введен на новом устройстве в течение 5 минут. Вы можете сгенерировать новый в любой момент.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
@@ -620,7 +620,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Удалить из контактов</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
@@ -906,8 +906,8 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
-        <source>Do you realy want to delete account ?</source>
-        <translation>Вы действительно хотите удалить аккаунт?</translation>
+        <source>Do you really want to delete account ?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -935,22 +935,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Диалог</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>Вы хотите удалить этот контакт?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
@@ -1091,7 +1091,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>Импорт фотографий</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
@@ -1250,7 +1250,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Choose a password.</source>
-        <translation>Ваш аккаунт должен быть перенесён. Выберите пароль.</translation>
+        <translation>Ваш аккаунт должен быть перенесен. Выберите пароль.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
@@ -1370,7 +1370,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="466"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation>Зарегистрируйте своё имя пользователя в Ring. Это зарезервирует имя пользователя, так что только вы сможете его использовать. Ваши друзья смогут связаться с вами по вашему имени вместо RingID.</translation>
+        <translation>Зарегистрируйте свое имя пользователя в Ring. Это зарезервирует имя пользователя, так что только вы сможете его использовать. Ваши друзья смогут связаться с вами по вашему имени вместо RingID.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="469"/>
