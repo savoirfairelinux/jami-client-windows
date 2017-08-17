@@ -65,6 +65,7 @@ private slots:
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
     void timeoutNameLookupTimer();
     void on_photoTaken(QString fileName);
+    void on_signUpCheckbox_toggled(bool checked);
 
 private:
     Ui::WizardDialog* ui;

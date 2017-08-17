@@ -66,7 +66,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
         ui->previousButton->hide();
         ui->photoBooth->hide();
         ui->pinEdit->hide();
-        ui->usernameLabel->setText(tr("Your account needs to be migrated. Choose a password."));
+        ui->infoLabel->setText(tr("Your account needs to be migrated. enter your password."));
     } else
         ui->navBarWidget->hide();
 
@@ -228,7 +228,7 @@ WizardDialog::changePage(bool existingAccount)
     }
     ui->navBarWidget->show();
     ui->avatarLabel->setHidden(true);
-    ui->usernameLabel->setHidden(existingAccount);
+    ui->infoLabel->setHidden(existingAccount);
     ui->usernameEdit->setHidden(existingAccount);
     ui->signUpCheckbox->setHidden(existingAccount);
     ui->signUpCheckbox->setChecked(!existingAccount);
@@ -349,4 +349,14 @@ WizardDialog::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus sta
     }
     account_->performAction(Account::EditAction::RELOAD);
     QDialog::accept();
+}
+
+void WizardDialog::on_signUpCheckbox_toggled(bool checked)
+{
+    if (checked) {
+        ui->usernameEdit->setEnabled(true);
+    } else {
+        ui->usernameEdit->setEnabled(false);
+        ui->usernameEdit->clear();
+    }
 }
