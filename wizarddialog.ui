@@ -383,14 +383,14 @@ p, li { white-space: pre-wrap; }
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="usernameLabel">
+        <widget class="QLabel" name="infoLabel">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Choose your username:</string>
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
