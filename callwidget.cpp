@@ -213,6 +213,7 @@ CallWidget::setupOutOfCallIM()
 
     auto copyAction = new QAction(tr("Copy"), this);
     ui->listMessageView->addAction(copyAction);
+
     connect(copyAction, &QAction::triggered, [=]() {
         auto idx = ui->listMessageView->currentIndex();
         if (idx.isValid()) {
@@ -220,21 +221,26 @@ CallWidget::setupOutOfCallIM()
             QApplication::clipboard()->setText(text.value<QString>());
         }
     });
+
     QSettings settings;
+
     auto displayDate = new QAction(tr("Display date"), this);
     displayDate->setCheckable(true);
     displayDate->setChecked(settings.value(SettingsKey::imShowDate).toBool());
     ui->listMessageView->addAction(displayDate);
+
     auto displayAuthor = new QAction(tr("Display author"), this);
     displayAuthor->setCheckable(true);
     displayAuthor->setChecked(settings.value(SettingsKey::imShowAuthor).toBool());
     ui->listMessageView->addAction(displayAuthor);
+
     auto lamdba = [=](){
         QSettings settings;
         settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
         settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
         emit imDelegate_->sizeHintChanged(QModelIndex());
     };
+
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
 
@@ -784,10 +790,22 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     QString name = nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString();
     QString number = nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString();
 
+    if (getSelectedAccount()->isIp2ip()){
+        qDebug() << "SIP account messaging";
+        ui->imMessageEdit->setPlaceholderText("No messaging possible out of call (SIP) ");
+        ui->imMessageEdit->setEnabled(false);
+        ui->sendIMButton->hide();
+    } else {
+        qDebug() << "Ring account messaging";
+        ui->imMessageEdit->setPlaceholderText("Type your message here");
+        ui->imMessageEdit->setEnabled(true);
+        ui->sendIMButton->show();
+    }
+
     ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
                                      .arg(name));
 
-    if (name != number){
+    if ( !getSelectedAccount()->isIp2ip() && name != number ){
         ui->imIdLabel->show();
         ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
                                    .arg(number));
