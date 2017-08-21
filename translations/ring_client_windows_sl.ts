@@ -563,12 +563,12 @@ Kopiraj in deli s svojimi prijatelji!</translation>
         <translation>Kopiraj številko</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Poišči me na Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Moj RingID je:</translation>
     </message>
@@ -1049,26 +1049,6 @@ Kopiraj in deli s svojimi prijatelji!</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Foto stojnica</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>ali</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Uvoz</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Izberi datoteko</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Datoteke (*)</translation>
     </message>
 </context>
 <context>

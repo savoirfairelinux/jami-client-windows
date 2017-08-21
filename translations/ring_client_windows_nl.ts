@@ -563,12 +563,12 @@ Deel hem met je vrienden!</translation>
         <translation>Nummer kopiëren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Contacteer mij via Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Mijn Ring-ID is:</translation>
     </message>
@@ -907,7 +907,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Weet je zeker dat je dit account wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -1049,26 +1049,6 @@ Deel hem met je vrienden!</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Fotoautomaat</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>of</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Importeren</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Bestand kiezen</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Bestanden (*)</translation>
     </message>
 </context>
 <context>

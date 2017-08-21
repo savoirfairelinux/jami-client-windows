@@ -15,7 +15,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Свобода, равенство, братство - Версия 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -113,7 +113,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>UPnP enabled</source>
-        <translation type="unfinished"/>
+        <translation>UPnP е активиран</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="638"/>
@@ -133,7 +133,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Общодостъпно потребителско име</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -303,12 +303,12 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="2251"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>За да добавите ново устройство в своя акаунт в Ring, трябва да изнесете акаунта си в Ring. Това ще Ви даде ПИН-код, който трябва да бъде въведен на новото устройство в рамките на 5 минути от създаването си.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Парола (задължително)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
@@ -323,12 +323,12 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="2373"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Създаденият за Вас Личен Разпознавателен Код</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>Личен Разпознавателен Код</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
@@ -343,7 +343,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Блокирани контакти</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -358,7 +358,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.ui" line="1961"/>
         <source>CA certificate</source>
-        <translation>CA сертификат</translation>
+        <translation>Сертификат от център за сертифициране</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1998"/>
@@ -413,7 +413,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Грешна парола.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -431,12 +431,12 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Блокирани IP</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Отблокиране на контакт и добавяне в списъка с контакти</translation>
     </message>
 </context>
 <context>
@@ -467,7 +467,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Заявки за нови контакти</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
@@ -477,7 +477,7 @@ Ring е сигурен и разпределен софтуер за общув�
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring е безплатен софтуер за универсална комуникация, който уважава свободата и личните данни на потребителите си.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
@@ -563,12 +563,12 @@ Copy and share it with your friends!</source>
         <translation>Копиране на номера</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Свържете се с мен в Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Моят ид. за Ring е:</translation>
     </message>
@@ -886,7 +886,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Блокиране</translation>
     </message>
 </context>
 <context>
@@ -1049,26 +1049,6 @@ Copy and share it with your friends!</source>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>или</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Внасяне</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Изберете файл</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Всички файлове (*)</translation>
     </message>
 </context>
 <context>
@@ -1329,7 +1309,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Създаване на профил</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="312"/>
@@ -1366,7 +1346,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Регистриране на публично име (експериментално)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="496"/>

@@ -563,12 +563,12 @@ Kopjojeni dhe jepuani shokëve!</translation>
         <translation>Kopjoje numrin</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Kontaktomëni në Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>RingID-ja ime është:</translation>
     </message>
@@ -1049,26 +1049,6 @@ Kopjojeni dhe jepuani shokëve!</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Zgjidhni Kartelë</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Kartela (*)</translation>
     </message>
 </context>
 <context>

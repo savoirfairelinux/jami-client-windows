@@ -562,12 +562,12 @@ Copy and share it with your friends!</source>
         <translation>Αντιγραφή αριθμού </translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation type="unfinished"/>
     </message>
@@ -875,7 +875,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Αποδοχή</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -926,7 +926,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Εντάξει</translation>
     </message>
 </context>
 <context>
@@ -1018,7 +1018,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Εντάξει</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -1047,26 +1047,6 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Εισαγωγή</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -563,12 +563,12 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
         <translation>Numarayı kopyala</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Ring&apos;de benimle iletişime geç</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Ring kimliğim:</translation>
     </message>
@@ -1049,26 +1049,6 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Fotoğraf kabini</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>veya</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>İçe Aktar</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Dosya Seç</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Dosyalar (*)</translation>
     </message>
 </context>
 <context>

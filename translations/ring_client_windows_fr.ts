@@ -563,12 +563,12 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Copier le numéro ou identifiant Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Contactez-moi sur Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Mon identifiant Ring est : </translation>
     </message>
@@ -1049,26 +1049,6 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Kiosque de photo</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>ou</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Importer</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Choisir un fichier</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Fichiers (*)</translation>
     </message>
 </context>
 <context>

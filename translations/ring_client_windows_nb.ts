@@ -5,17 +5,17 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Bidragsytere</translation>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Frihet, likhet, brorskap - Versjon 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="557"/>
@@ -26,22 +26,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
         <source>version</source>
-        <translation type="unfinished"/>
+        <translation>versjon</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation type="unfinished"/>
+        <translation>Opprettet av:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"/>
+        <translation>Omslagskunst av:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
         <source>Based on the SFLPhone project</source>
-        <translation type="unfinished"/>
+        <translation>Basert på SFLPhone-prosjektet</translation>
     </message>
 </context>
 <context>
@@ -74,7 +74,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="241"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parameter</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="271"/>
@@ -122,17 +122,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="665"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>Tillat anrop fra kontakt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="653"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>Tillat samtale fra historikk</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Offentlig brukernavn</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -143,22 +143,22 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.cpp" line="386"/>
         <location filename="../accountdetails.cpp" line="391"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Registrer på blokkjeden</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
         <source>Name service URL</source>
-        <translation type="unfinished"/>
+        <translation>Nettadresse for navnetjeneste</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="611"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Kontoinnstillinger for Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="701"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"/>
+        <translation>Ringetonevalg</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="725"/>
@@ -174,12 +174,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1001"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>Lydkodek</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1031"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1048"/>
@@ -189,7 +189,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1094"/>
         <source>Registration</source>
-        <translation type="unfinished"/>
+        <translation>Registrering</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1114"/>
@@ -199,12 +199,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1152"/>
         <source>Network Interface</source>
-        <translation type="unfinished"/>
+        <translation>Nettverksgrensesnitt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1173"/>
         <source>Local Port:</source>
-        <translation type="unfinished"/>
+        <translation>Lokal port:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1277"/>
@@ -235,7 +235,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1425"/>
         <location filename="../accountdetails.ui" line="1466"/>
         <source>Server URL</source>
-        <translation type="unfinished"/>
+        <translation>Nettadresse for tjener</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1450"/>
@@ -250,7 +250,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1566"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>SDP-øktforhandling (ICE-reserve)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1594"/>
@@ -277,7 +277,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>Video RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>RTP-portintervall for video</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1896"/>
@@ -292,22 +292,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2180"/>
         <source>Devices</source>
-        <translation type="unfinished"/>
+        <translation>Enheter</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2224"/>
         <source>Add device</source>
-        <translation type="unfinished"/>
+        <translation>Legg til enhet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2251"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>For å legge en ny enhet til din Ring-konto, eksporterer du din konto på Ring. Dette vil generere en PIN som må skrives inn på din nye enhet i løpet av 5 minutter.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Passord (kreves)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
@@ -317,17 +317,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2321"/>
         <source>Export on the Ring</source>
-        <translation type="unfinished"/>
+        <translation>Eksporter på Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2373"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Din genererte PIN:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
@@ -337,12 +337,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Bannlyste kontakter</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -382,42 +382,42 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="101"/>
         <source>RingID</source>
-        <translation type="unfinished"/>
+        <translation>RingID</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="229"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Velg fil</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="231"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Filer (*)</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Vent mens din PIN blir generert.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Nettverksfeil. Prøv igjen senere.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Feil passord.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Registrerer… Dette kan ta litt tid</translation>
     </message>
 </context>
 <context>
@@ -425,17 +425,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Bannlyst ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Fjern bannlysning av kontakt, og legg til i kontaktliste</translation>
     </message>
 </context>
 <context>
@@ -443,7 +443,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"/>
+        <translation>eller slå nummer…</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
@@ -456,7 +456,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="213"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"/>
+        <translation>Søk i kontakter eller skriv inn ringID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="324"/>
@@ -466,22 +466,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Kontaktforespørsler</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>innstillingsmeny</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring er fri programvare for universell kommunikasjon som respekteret privatlivets fred for dets brukere.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"/>
+        <translation>Del din RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="671"/>
@@ -493,12 +493,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Dobbeltklikk for å kopiere</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Feil ved generering av QR-kode</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
@@ -514,12 +514,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>Skriv din melding her</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>send melding</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -529,17 +529,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>Ønsker å snakke med deg!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
-        <translation type="unfinished"/>
+        <translation>Svar</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Ignorer</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1652"/>
@@ -559,17 +559,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="289"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>Kopier nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
-        <translation type="unfinished"/>
+        <translation>Kontakt meg på Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>Min RingID er:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="214"/>
@@ -579,12 +579,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="224"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Vis dato</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="228"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Vis utvikler</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="257"/>
@@ -594,7 +594,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="295"/>
         <source>Copy name</source>
-        <translation type="unfinished"/>
+        <translation>Kopier navn</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="301"/>
@@ -604,44 +604,44 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="302"/>
         <source>Copy Number</source>
-        <translation type="unfinished"/>
+        <translation>Kopier nummer</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="305"/>
         <source>Copy %1</source>
-        <translation type="unfinished"/>
+        <translation>Kopier %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="310"/>
         <source>Call %1</source>
-        <translation type="unfinished"/>
+        <translation>Ring %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Fjern fra kontakter</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="752"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"/>
+        <translation>INGEN RING-KONTO FUNNET</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="787"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="792"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="435"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>Innkommende anrop fra %1</translation>
     </message>
 </context>
 <context>
@@ -659,22 +659,22 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>avslutt innstillingsmeny</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>Historikkinnstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"/>
+        <translation>Behold historikk i (dager)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="415"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"/>
+        <translation>(Velg 0 for ubegrenset historikk)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
@@ -684,17 +684,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ymse innstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Behold minimert ved lukking</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Se etter oppdateringer nå</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -714,27 +714,27 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"/>
+        <translation>Opptaksinnstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
         <source>Save in :</source>
-        <translation type="unfinished"/>
+        <translation>Lagre i:</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"/>
+        <translation>Alltid ta opp</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Skru på varsler</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Se etter oppdatering hver</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
@@ -744,12 +744,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="888"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"/>
+        <translation>Forhåndsvisning utilgjengelig under samtale</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="942"/>
         <source>Device Selection</source>
-        <translation type="unfinished"/>
+        <translation>Enhetsvalg</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
@@ -759,22 +759,22 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Oppløsning</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1068"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Utgangsenhet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1083"/>
         <source>Input Device</source>
-        <translation type="unfinished"/>
+        <translation>Inngangsenhet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1180"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>legg til ny konto</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1242"/>
@@ -794,7 +794,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
         <source>Launch Ring on Startup</source>
-        <translation type="unfinished"/>
+        <translation>Kjør Ring ved oppstart</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="310"/>
@@ -804,17 +804,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="330"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation type="unfinished"/>
+        <translation>Er du sikker på at du vil tømme all din historikk?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>Velg mappe</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>En feil inntraff under importering av konto.</translation>
     </message>
 </context>
 <context>
@@ -822,17 +822,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation type="unfinished"/>
+        <translation>Eksisterende kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"/>
+        <translation>Søk…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"/>
+        <translation>Opprett ny kontakt</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
@@ -842,7 +842,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation type="unfinished"/>
+        <translation>Skriv inn navn her…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
@@ -855,12 +855,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>Innkommende kontaktforespørsel</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
@@ -885,7 +885,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Blokker</translation>
     </message>
 </context>
 <context>
@@ -893,7 +893,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Skjema</translation>
     </message>
 </context>
 <context>
@@ -906,12 +906,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Ønsker du virkelig å slette kontoen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>Denne handlingen kan ikke endres</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
@@ -926,7 +926,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -954,7 +954,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>Slett og bannlys</translation>
     </message>
 </context>
 <context>
@@ -962,7 +962,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"/>
+        <translation>Send tekstmelding…</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="46"/>
@@ -972,12 +972,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="52"/>
         <source>Display date</source>
-        <translation type="unfinished"/>
+        <translation>Vis dato</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="56"/>
         <source>Display author</source>
-        <translation type="unfinished"/>
+        <translation>Vis utvikler</translation>
     </message>
 </context>
 <context>
@@ -995,12 +995,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../mainwindow.cpp" line="56"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Avslutt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="80"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Om</translation>
     </message>
 </context>
 <context>
@@ -1008,7 +1008,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>Sti</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
@@ -1018,7 +1018,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
@@ -1028,7 +1028,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>Lagre fil</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
@@ -1039,7 +1039,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Åpne fil</translation>
     </message>
 </context>
 <context>
@@ -1049,48 +1049,28 @@ Kopier og del den med dine venner!</translation>
         <source>Photobooth</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Importer</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
     <name>PhotoboothWidget</name>
     <message>
         <location filename="../photoboothwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="48"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>Ta bilde</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="68"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>eller</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>Importer bilde</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
@@ -1100,12 +1080,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Velg fil</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Filer (*)</translation>
     </message>
 </context>
 <context>
@@ -1113,13 +1093,13 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../utils.cpp" line="185"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>Fant ingen forvalgt e-postklient</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>Ring-konto</translation>
     </message>
 </context>
 <context>
@@ -1127,7 +1107,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Auto</translation>
     </message>
 </context>
 <context>
@@ -1135,12 +1115,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>KontaktID</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
@@ -1150,7 +1130,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Send kontaktforespørsel</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1138,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation>Samtale på vent</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
@@ -1173,12 +1153,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"/>
+        <translation>Legg person til samtale</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
         <source>Transfer call</source>
-        <translation type="unfinished"/>
+        <translation>Overfør samtale</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
@@ -1188,7 +1168,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>Kvalitet</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
@@ -1203,17 +1183,17 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>Legg til kontakt</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"/>
+        <translation>Forløpt tid</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -1223,7 +1203,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation type="unfinished"/>
+        <translation>Demp video</translation>
     </message>
 </context>
 <context>
@@ -1231,7 +1211,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"/>
+        <translation>Del hele skjermen</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="238"/>
@@ -1269,47 +1249,47 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="220"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Legg til enhet</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="325"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Brukernavn ikke tilgjengelig.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="328"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Brukernavnet er tilgjengelig.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="331"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Ugyldig brukernavn.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="334"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Nettverksfeil.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Opprett Ring-konto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Lenk denne enheten til en konto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Hvordan legge til en enhet</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Velkommen til</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1328,49 +1308,49 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Opprett din profil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="312"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Skriv inn hele navnet ditt:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
         <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
-        <translation type="unfinished"/>
+        <translation>Opprett din konto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="393"/>
         <source>Choose your username:</source>
-        <translation type="unfinished"/>
+        <translation>Velg ditt brukernavn:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="441"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Velg ditt brukernavn</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
         <location filename="../wizarddialog.cpp" line="297"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Søker…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="466"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Registrer brukernavnet ditt på Ring. Dette vil reservere brukernavnet ditt slik at du kan bruke det. Dine venner vil kunne ringe deg med ditt brukernavn istedenfor din RingID.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Registrer offentlig brukernavn (eksperimentelt)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="496"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>Skriv inn din PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="526"/>
@@ -1391,7 +1371,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="660"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Forrige</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="692"/>

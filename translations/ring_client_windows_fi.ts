@@ -562,12 +562,12 @@ Copy and share it with your friends!</source>
         <translation>Kopioi numero</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Ota yhteyttä minuun Ringillä</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Ring tunnisteeni on:</translation>
     </message>
@@ -1048,26 +1048,6 @@ Copy and share it with your friends!</source>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Valokuva-automaatti</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>tai</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>tuo</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Valitse tiedosto</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Tiedostot (*)</translation>
     </message>
 </context>
 <context>

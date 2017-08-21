@@ -563,12 +563,12 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <translation>Nummer kopieren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Kontaktieren Sie mich über Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>Meine Ring-ID ist:</translation>
     </message>
@@ -907,7 +907,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Möchten Sie Ihr Konto wirklich löschen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -1049,26 +1049,6 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation>Photobooth</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>oder</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Import</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Datei auswählen</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Dateien (*)</translation>
     </message>
 </context>
 <context>

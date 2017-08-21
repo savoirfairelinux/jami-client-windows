@@ -562,12 +562,12 @@ Copieu i compartiu amb les vostres amistats!</translation>
         <translation>Copia el número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation type="unfinished"/>
     </message>
@@ -847,7 +847,7 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation>Crear</translation>
     </message>
 </context>
 <context>
@@ -1047,26 +1047,6 @@ Copieu i compartiu amb les vostres amistats!</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1328,7 +1308,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Crei el seu perfil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="312"/>

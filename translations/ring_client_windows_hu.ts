@@ -251,12 +251,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1566"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>SDP munkamenet targyalás (az ICE tartaléka)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1594"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation type="unfinished"/>
+        <translation>Ezek a beállítások csak az SDP munkamenet tárgyalásánál kerülnek használatra, ha a kiszolgáló vagy a partner nem támogatja az ICE-t</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
@@ -303,7 +303,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2251"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Ahhoz hogy új eszközt adjon a Ring fiókjához, exportálnia kell a fiókját a Ringen. Ez előállít egy PIN-t, amit meg kell adnia az új eszközén, az előállítástól számított 5 percen belül.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
@@ -318,12 +318,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2321"/>
         <source>Export on the Ring</source>
-        <translation type="unfinished"/>
+        <translation>Exportálás a Ringen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2373"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>A generált PIN:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2386"/>
@@ -563,12 +563,12 @@ Másolja ki és ossza meg a barátaival!</translation>
         <translation>Szám másolása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation>Az elérhetőségem a Ringen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation>A Ringazonosítóm:</translation>
     </message>
@@ -1050,26 +1050,6 @@ Másolja ki és ossza meg a barátaival!</translation>
         <source>Photobooth</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation>vagy</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation>Importálás</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>Fájl kiválasztása</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>Fájlok (*)</translation>
-    </message>
 </context>
 <context>
     <name>PhotoboothWidget</name>
@@ -1081,7 +1061,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="48"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>Fotó készítése</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="68"/>
@@ -1300,7 +1280,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Ezen eszköz fiókhoz kapcsolása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>

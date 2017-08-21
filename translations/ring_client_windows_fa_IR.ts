@@ -563,12 +563,12 @@ Copy and share it with your friends!</source>
         <translation>رونوشت از شماره</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="952"/>
         <source>My RingId is : </source>
         <translation type="unfinished"/>
     </message>
@@ -1049,26 +1049,6 @@ Copy and share it with your friends!</source>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="58"/>
-        <source>or</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.ui" line="71"/>
-        <source>Import</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="59"/>
-        <source>Choose File</source>
-        <translation>انتخاب فایل</translation>
-    </message>
-    <message>
-        <location filename="../photoboothdialog.cpp" line="61"/>
-        <source>Files (*)</source>
-        <translation>فایل‌ها (*)</translation>
     </message>
 </context>
 <context>
