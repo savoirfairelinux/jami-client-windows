@@ -82,7 +82,8 @@ SOURCES += main.cpp\
     bannedcontactswidget.cpp \
     photoboothwidget.cpp \
     deletecontactdialog.cpp \
-    clientsmartlistmodel.cpp
+    clientsmartlistmodel.cpp \
+    clientmessagesmodel.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -128,7 +129,8 @@ HEADERS  += mainwindow.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
     deletecontactdialog.h \
-    clientsmartlistmodel.h
+    clientsmartlistmodel.h \
+    clientmessagesmodel.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h

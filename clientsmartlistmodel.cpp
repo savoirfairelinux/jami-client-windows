@@ -106,6 +106,11 @@ QVariant ClientSmartListModel::data(const QModelIndex &index, int role) const
             return QVariant(QDateTime::fromMSecsSinceEpoch(item->getLastInteractionTimeStamp()));
         case Role::LastInteraction:
             return QVariant(QString::fromStdString(item->getLastInteraction()));
+        case Role::Messages:
+        {
+            auto history = item->getHistory();
+            return QVariant::fromValue(static_cast<void*>(ClientMessagesModel::fromMessages(history)));
+        }
         }
     }
 

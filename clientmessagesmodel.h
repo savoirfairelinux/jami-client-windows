@@ -15,49 +15,40 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#ifndef CLIENTMESSAGESMODEL_H
+#define CLIENTMESSAGESMODEL_H
 
-#ifndef CLIENTSMARTLISTMODEL_H
-#define CLIENTSMARTLISTMODEL_H
-
-// Qt include
+// Qt
 #include <QAbstractItemModel>
 
-// Client
-#include "clientmessagesmodel.h"
+// LRC
+#include "message.h"
 
-class ClientSmartListModel : public QAbstractItemModel
+class ClientMessagesModel : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
     enum Role {
-        DisplayName = Qt::UserRole+1,
-        DisplayID,
-        Picture,
-        Presence,
-        URI,
-        UnreadMessagesCount,
-        LastInteractionDate,
-        LastInteraction,
-        Messages
+        Body = Qt::UserRole+1,
+        Timestamp,
+        IsOutgoing
     };
 
-    static ClientSmartListModel& instance();
-    void setFilter(QString& filter);
+    static ClientMessagesModel *fromMessages(Messages& msgList);
 
     // QAbstractItemModel
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex &child) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    QModelIndex parent(const QModelIndex &child) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
-
-signals:
-    void showConversationView(QModelIndex idx);
 
 private:
-    explicit ClientSmartListModel(QObject *parent = 0);
+    Messages msgList_;
+
+    explicit ClientMessagesModel(Messages& msgList, QObject *parent = 0);
+
 };
 
-#endif // CLIENTSMARTLISTMODEL_H
+#endif // CLIENTMESSAGESMODEL_H
