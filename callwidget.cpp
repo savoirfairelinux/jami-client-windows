@@ -791,12 +791,10 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     QString number = nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString();
 
     if (getSelectedAccount()->isIp2ip()){
-        qDebug() << "SIP account messaging";
         ui->imMessageEdit->setPlaceholderText("No messaging possible out of call (SIP) ");
         ui->imMessageEdit->setEnabled(false);
         ui->sendIMButton->hide();
     } else {
-        qDebug() << "Ring account messaging";
         ui->imMessageEdit->setPlaceholderText("Type your message here");
         ui->imMessageEdit->setEnabled(true);
         ui->sendIMButton->show();
