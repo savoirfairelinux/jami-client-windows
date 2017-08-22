@@ -1021,7 +1021,7 @@ Copy and share it with your friends!</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_12">
+               <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,25,25,1">
                 <property name="leftMargin">
                  <number>5</number>
                 </property>
