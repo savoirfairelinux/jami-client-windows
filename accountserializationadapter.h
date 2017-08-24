@@ -34,7 +34,7 @@ class Account;
  *
  *  * QLineEdit
  */
-class LIB_EXPORT AccountSerializationAdapter : public QObject
+class Q_DECL_EXPORT AccountSerializationAdapter : public QObject
 {
    Q_OBJECT
 public:
