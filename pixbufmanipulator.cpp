@@ -194,10 +194,16 @@ QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
     QImage photo;
     if (cm && cm->contact() && cm->contact()->photo().isValid())
         photo = cm->contact()->photo().value<QImage>();
-    else
+    else if (cm){
         photo = fallbackAvatar(imgSize_,
                                cm->uri().userinfo().at(0).toLatin1(),
                                cm->bestName().at(0).toUpper().toLatin1());
+    } else {
+        photo = fallbackAvatar(imgSize_,
+                               QString("?").at(0).toLatin1(),
+                               QString("?").at(0).toUpper().toLatin1());
+    }
+
     return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
 }
 
