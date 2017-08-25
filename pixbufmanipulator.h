@@ -54,10 +54,5 @@ public:
     QVariant   decorationRole(const Account* acc) override;
     static QImage scaleAndFrame(const QImage photo, const QSize& size);
     static QImage scaleAndFrame(const QImage photo, const int& size);
-
-
-private:
-    const QSize imgSize_ {48, 48};
-    static QImage fallbackAvatar(const QSize size, const char color, const char letter);
 };
 
