@@ -38,6 +38,57 @@
 #include "ringthemeutils.h"
 #undef interface
 
+static const QSize IMAGE_SIZE {48, 48};
+
+//
+// Generate a QImage representing a dummy user avatar, when user doesn't provide it.
+// Current rendering is a flat colored circle with a centered letter.
+// The color of the letter is computed from the circle color to be visible whaterver be the circle color.
+//
+// \param color circle color
+// \param letter centerer letter
+//
+static QImage
+fallbackAvatar(const QSize size, const char color, const char letter)
+{
+    // We start with a transparent avatar
+    QImage avatar(size, QImage::Format_ARGB32);
+    avatar.fill(Qt::transparent);
+
+    // We pick a color based on the passed character
+    QColor avColor = RingTheme::avatarColors_[color % 16];
+
+    // We draw a circle with this color
+    QPainter painter(&avatar);
+    painter.setRenderHints(QPainter::Antialiasing|QPainter::SmoothPixmapTransform);
+    painter.setPen(Qt::transparent);
+    painter.setBrush(avColor);
+    painter.drawEllipse(avatar.rect());
+
+    // Then we paint a letter in the circle
+    QFont segoeFont("Segoe UI", avatar.height()/2); // We use Segoe UI as recommended by Windows guidelines
+    painter.setFont(segoeFont);
+    painter.setPen(Qt::white);
+    QRect textRect = avatar.rect();
+    textRect.moveTop(textRect.top()-(avatar.height()/20)); // Empirical value that seems to correct centering nicely
+    painter.drawText(textRect, QString(letter), QTextOption(Qt::AlignCenter));
+
+    return avatar;
+}
+
+//
+// Alias on fallbackAvatar
+//
+// \param color a QString where the first character is converted to latin1 and used as color
+// \param string a QString where the first character is converted to uppercase-latin1 and used as letter
+//
+static inline QImage
+fallbackAvatar(const QSize size, const QString& color_str, const QString& letter_str)
+{
+    return fallbackAvatar(size, color_str.at(0).toLatin1(), letter_str.at(0).toUpper().toLatin1());
+}
+
+
 /*Namespace Interfaces collide with QBuffer*/
 QByteArray QImageToByteArray(QImage image)
 {
@@ -59,8 +110,8 @@ PixbufManipulator::callPhoto(Call* c, const QSize& size, bool displayPresence)
 {
     if (!c || c->type() == Call::Type::CONFERENCE){
         return QVariant::fromValue(fallbackAvatar(size,
-                                                  c->peerContactMethod()->uri().userinfo().at(0).toLatin1(),
-                                                  c->peerContactMethod()->bestName().at(0).toUpper().toLatin1()));
+                                                  c->peerContactMethod()->uri().userinfo(),
+                                                  c->peerContactMethod()->bestName()));
     }
     return callPhoto(c->peerContactMethod(), size, displayPresence);
 }
@@ -71,9 +122,7 @@ PixbufManipulator::callPhoto(const ContactMethod* n, const QSize& size, bool dis
     if (n && n->contact()) {
         return contactPhoto(n->contact(), size, displayPresence);
     } else {
-        return QVariant::fromValue(fallbackAvatar(size,
-                                                  n->uri().userinfo().at(0).toLatin1(),
-                                                  n->bestName().at(0).toUpper().toLatin1()));
+        return QVariant::fromValue(fallbackAvatar(size, n->uri().userinfo(), n->bestName()));
     }
 }
 
@@ -93,8 +142,8 @@ PixbufManipulator::contactPhoto(Person* c, const QSize& size, bool displayPresen
         photo = c->photo().value<QImage>();
     } else {
         photo = fallbackAvatar(size,
-                               c->phoneNumbers().at(0)->uri().userinfo().at(0).toLatin1(),
-                               c->phoneNumbers().at(0)->bestName().at(0).toUpper().toLatin1());
+                               c->phoneNumbers().at(0)->uri().userinfo(),
+                               c->phoneNumbers().at(0)->bestName());
     }
     return QVariant::fromValue(scaleAndFrame(photo, size));
 }
@@ -106,7 +155,7 @@ QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& t
     const char* c_str2 = ba.data();
     if (avatar.loadFromData(data.fromBase64(data), c_str2))
         return Utils::getCirclePhoto(avatar, avatar.size().width());
-    return fallbackAvatar(imgSize_, '?', '?');
+    return fallbackAvatar(IMAGE_SIZE, '?', '?');
 }
 
 QVariant
@@ -183,10 +232,10 @@ QVariant PixbufManipulator::decorationRole(const Call* c)
         photo =  c->peerContactMethod()->contact()->photo().value<QImage>();
     }
     else
-        photo = fallbackAvatar(imgSize_,
-                               c->peerContactMethod()->uri().userinfo().at(0).toLatin1(),
-                               c->peerContactMethod()->bestName().at(0).toUpper().toLatin1());
-    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+        photo = fallbackAvatar(IMAGE_SIZE,
+                               c->peerContactMethod()->uri().userinfo(),
+                               c->peerContactMethod()->bestName());
+    return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
 
 QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
@@ -195,16 +244,14 @@ QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
     if (cm && cm->contact() && cm->contact()->photo().isValid())
         photo = cm->contact()->photo().value<QImage>();
     else if (cm){
-        photo = fallbackAvatar(imgSize_,
-                               cm->uri().userinfo().at(0).toLatin1(),
-                               cm->bestName().at(0).toUpper().toLatin1());
+        photo = fallbackAvatar(IMAGE_SIZE,
+                               cm->uri().userinfo(),
+                               cm->bestName());
     } else {
-        photo = fallbackAvatar(imgSize_,
-                               QString("?").at(0).toLatin1(),
-                               QString("?").at(0).toUpper().toLatin1());
+        photo = fallbackAvatar(IMAGE_SIZE, '?', '?');
     }
 
-    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+    return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
 
 QVariant PixbufManipulator::decorationRole(const Person* p)
@@ -213,43 +260,16 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
     if (p && p->photo().isValid())
         photo = p->photo().value<QImage>();
     else
-        photo = fallbackAvatar(imgSize_,
-                               p->phoneNumbers().at(0)->uri().userinfo().at(0).toLatin1(),
-                               p->phoneNumbers().at(0)->bestName().at(0).toUpper().toLatin1());
-    return QVariant::fromValue(scaleAndFrame(photo, imgSize_));
+        photo = fallbackAvatar(IMAGE_SIZE,
+                               p->phoneNumbers().at(0)->uri().userinfo(),
+                               p->phoneNumbers().at(0)->bestName());
+    return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
 
 QVariant PixbufManipulator::decorationRole(const Account* acc)
 {
     Q_UNUSED(acc)
     return Utils::getCirclePhoto(ProfileModel::instance().
-                                     selectedProfile()->person()->photo().value<QImage>(),
-                                     imgSize_.width());
-}
-
-QImage PixbufManipulator::fallbackAvatar(const QSize size, const char color, const char letter)
-{
-    // We start with a transparent avatar
-    QImage avatar(size, QImage::Format_ARGB32);
-    avatar.fill(Qt::transparent);
-
-    // We pick a color based on the passed character
-    QColor avColor = RingTheme::avatarColors_[color % 16];
-
-    // We draw a circle with this color
-    QPainter painter(&avatar);
-    painter.setRenderHints(QPainter::Antialiasing|QPainter::SmoothPixmapTransform);
-    painter.setPen(Qt::transparent);
-    painter.setBrush(avColor);
-    painter.drawEllipse(avatar.rect());
-
-    // Then we paint a letter in the circle
-    QFont segoeFont("Segoe UI", avatar.height()/2); // We use Segoe UI as recommended by Windows guidelines
-    painter.setFont(segoeFont);
-    painter.setPen(Qt::white);
-    QRect textRect = avatar.rect();
-    textRect.moveTop(textRect.top()-(avatar.height()/20)); // Empirical value that seems to correct centering nicely
-    painter.drawText(textRect, QString(letter), QTextOption(Qt::AlignCenter));
-
-    return avatar;
+                                 selectedProfile()->person()->photo().value<QImage>(),
+                                 IMAGE_SIZE.width());
 }
