@@ -503,7 +503,7 @@ Kopiera och dela det med dina vänner!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
-        <location filename="../callwidget.cpp" line="321"/>
+        <location filename="../callwidget.cpp" line="327"/>
         <source>Add to contacts</source>
         <translation>Lägg till i kontakter</translation>
     </message>
@@ -558,17 +558,17 @@ Kopiera och dela det med dina vänner!</translation>
         <translation>Ring upp</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="289"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Copy number</source>
         <translation>Kopiera nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="952"/>
+        <location filename="../callwidget.cpp" line="968"/>
         <source>Contact me on Ring</source>
         <translation>Kontakta mig på Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="952"/>
+        <location filename="../callwidget.cpp" line="968"/>
         <source>My RingId is : </source>
         <translation>Mitt Ring-ID är:</translation>
     </message>
@@ -578,69 +578,69 @@ Kopiera och dela det med dina vänner!</translation>
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="224"/>
+        <location filename="../callwidget.cpp" line="227"/>
         <source>Display date</source>
         <translation>Visa datum</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="228"/>
+        <location filename="../callwidget.cpp" line="232"/>
         <source>Display author</source>
         <translation>Visa deltagare</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="257"/>
+        <location filename="../callwidget.cpp" line="263"/>
         <source>Message incoming from %1</source>
         <translation>Inkommande meddelande från %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="301"/>
         <source>Copy name</source>
         <translation>Kopiera namn</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Call Number</source>
         <translation>Ring upp nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="302"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Copy Number</source>
         <translation>Kopiera nummer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="305"/>
+        <location filename="../callwidget.cpp" line="311"/>
         <source>Copy %1</source>
         <translation>Kopiera %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="310"/>
+        <location filename="../callwidget.cpp" line="316"/>
         <source>Call %1</source>
         <translation>Ring %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="332"/>
+        <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
         <translation>Ta bort från kontakter</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="752"/>
+        <location filename="../callwidget.cpp" line="758"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>INGET RING-KONTO HITTADES</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="787"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="792"/>
+        <location filename="../callwidget.cpp" line="808"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="435"/>
+        <location filename="../callwidget.cpp" line="441"/>
         <source>Call incoming from %1</source>
         <translation>Inkommande samtal från %1</translation>
     </message>
@@ -1229,8 +1229,8 @@ Kopiera och dela det med dina vänner!</translation>
     <name>WizardDialog</name>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
-        <source>Your account needs to be migrated. Choose a password.</source>
-        <translation>Ditt konto behöver migreras. Välj ett lösenord.</translation>
+        <source>Your account needs to be migrated. Enter your password.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
@@ -1330,11 +1330,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
         <translation>Skapa ditt konto</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="393"/>
-        <source>Choose your username:</source>
-        <translation>Välj ditt användarnamn:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="441"/>

@@ -502,7 +502,7 @@ Copy and share it with your friends!</source>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
-        <location filename="../callwidget.cpp" line="321"/>
+        <location filename="../callwidget.cpp" line="327"/>
         <source>Add to contacts</source>
         <translation>加到聯絡人</translation>
     </message>
@@ -557,17 +557,17 @@ Copy and share it with your friends!</source>
         <translation>撥打</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="289"/>
+        <location filename="../callwidget.cpp" line="295"/>
         <source>Copy number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="952"/>
+        <location filename="../callwidget.cpp" line="968"/>
         <source>Contact me on Ring</source>
         <translation>透過Ring聯絡我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="952"/>
+        <location filename="../callwidget.cpp" line="968"/>
         <source>My RingId is : </source>
         <translation>我的Ring ID是：</translation>
     </message>
@@ -577,69 +577,69 @@ Copy and share it with your friends!</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="224"/>
+        <location filename="../callwidget.cpp" line="227"/>
         <source>Display date</source>
         <translation>顯示日期</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="228"/>
+        <location filename="../callwidget.cpp" line="232"/>
         <source>Display author</source>
         <translation>顯示作者</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="257"/>
+        <location filename="../callwidget.cpp" line="263"/>
         <source>Message incoming from %1</source>
         <translation> </translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="301"/>
         <source>Copy name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Call Number</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="302"/>
+        <location filename="../callwidget.cpp" line="308"/>
         <source>Copy Number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="305"/>
+        <location filename="../callwidget.cpp" line="311"/>
         <source>Copy %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="310"/>
+        <location filename="../callwidget.cpp" line="316"/>
         <source>Call %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="332"/>
+        <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="752"/>
+        <location filename="../callwidget.cpp" line="758"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>找不到Ring帳號</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="787"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="792"/>
+        <location filename="../callwidget.cpp" line="808"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="435"/>
+        <location filename="../callwidget.cpp" line="441"/>
         <source>Call incoming from %1</source>
         <translation type="unfinished"/>
     </message>
@@ -1228,7 +1228,7 @@ Copy and share it with your friends!</source>
     <name>WizardDialog</name>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
-        <source>Your account needs to be migrated. Choose a password.</source>
+        <source>Your account needs to be migrated. Enter your password.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1320,11 +1320,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.cpp" line="224"/>
         <source>Create your account</source>
         <translation>创建你的账户</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="393"/>
-        <source>Choose your username:</source>
-        <translation>選擇你的使用者名稱:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="441"/>
