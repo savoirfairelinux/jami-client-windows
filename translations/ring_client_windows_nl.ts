@@ -1230,7 +1230,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Je account moet worden gemigreerd. Voer je wachtwoord in.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>

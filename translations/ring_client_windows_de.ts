@@ -525,7 +525,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation>BestID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1454"/>
@@ -1230,7 +1230,7 @@ Kopieren und teilen Sie sie mit ihren Freunden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Ring-Konto muss migriert werden. Bitte geben Sie Ihr Passwort ein.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>

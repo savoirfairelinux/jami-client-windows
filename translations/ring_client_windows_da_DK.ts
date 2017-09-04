@@ -625,7 +625,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="758"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation>INGEN RING KONTO FUNDET</translation>
+        <translation>INGEN RING-KONTO FUNDET</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="803"/>
@@ -907,7 +907,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Er du sikker på at du vil slette kontoen ?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -1230,7 +1230,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Din konto kræver migrering. Indtast dit kodeord.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>

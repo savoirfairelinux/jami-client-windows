@@ -461,7 +461,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="324"/>
         <source>Conversations</source>
-        <translation type="unfinished"/>
+        <translation>会話</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="375"/>
@@ -663,7 +663,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>履歴の設定</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>

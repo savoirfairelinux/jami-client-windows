@@ -1230,7 +1230,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų paskyra turi būti perkelta. Įveskite savo slaptažodį.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
