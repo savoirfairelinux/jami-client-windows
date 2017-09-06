@@ -102,7 +102,7 @@ MainWindow::MainWindow(QWidget* parent) :
     win_sparkle_init();
 
     if (win_sparkle_get_last_check_time() == -1) {
-        win_sparkle_set_update_check_interval(7 * 86400);
+        win_sparkle_set_update_check_interval(86400);
     }
 
     QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
