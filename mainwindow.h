@@ -24,7 +24,10 @@
 #include <QMouseEvent>
 #include <QNetworkConfigurationManager>
 
-#include "navstack.h"
+#include "navwidget.h"
+
+// LRC
+#include "call.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -60,6 +63,5 @@ private:
     explicit MainWindow(QWidget* parent = 0);
      ~MainWindow();
     Ui::MainWindow* ui;
-    NavStack* navStack_;
     QNetworkConfigurationManager netManager_;
 };

@@ -34,12 +34,19 @@
 #include "settingskey.h"
 #include "winsparkle.h"
 #include "callmodel.h"
+#include "callwidget.h"
+#include "utils.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->callwidget, CallWidget::NavigationRequested,
+            [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
+    connect(ui->configurationwidget, ConfigurationWidget::NavigationRequested,
+            [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
+    connect(ui->callwidget, CallWidget::closeRequest, this, MainWindow::closeOnRequest);
 
     QIcon icon(":images/ring.png");
 
@@ -68,11 +75,6 @@ MainWindow::MainWindow(QWidget* parent) :
     connect(&CallModel::instance(), SIGNAL(incomingCall(Call*)),
             this, SLOT(onIncomingCall(Call*)));
 
-    navStack_ = new NavStack(ui->stackedWidgetView, this);
-    connect(configAction, &QAction::triggered, [this]() {
-        navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
-    });
-
 #ifdef Q_OS_WIN
     HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
     if (sysMenu != NULL) {
@@ -92,7 +94,7 @@ MainWindow::MainWindow(QWidget* parent) :
         if (pos.rx() < screenSize.width() && pos.ry() < screenSize.height())
             move(pos);
     } else
-        resize(1054, 600);
+        resize(800, 600);
 
     win_sparkle_set_appcast_url("http://dl.ring.cx/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
@@ -197,7 +199,7 @@ MainWindow::createThumbBar()
     settings->setIcon(icon);
     settings->setDismissOnClick(true);
     connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        navStack_->onNavigationRequested(ScreenEnum::ConfScreen);
+        Utils::slidePage(ui->navStack, ui->configurationwidget);
     });
 
     thumbbar->addButton(settings);
