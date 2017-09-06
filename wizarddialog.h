@@ -48,7 +48,6 @@ public:
 // Overrided function
 protected slots:
     void accept();
-    void closeEvent(QCloseEvent* event);
 
 //UI Slots
 private slots:
@@ -66,6 +65,7 @@ private slots:
     void timeoutNameLookupTimer();
     void on_photoTaken(QString fileName);
     void on_signUpCheckbox_toggled(bool checked);
+    void closeEvent(QCloseEvent* event);
 
 private:
     Ui::WizardDialog* ui;

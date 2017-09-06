@@ -161,7 +161,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
         connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
 
-        connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{slidePage(ui->messagingPage);});
+        connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{Utils::slidePage(ui->stackedWidget, ui->messagingPage);});
 
         connect(ui->contactRequestWidget, &ContactRequestWidget::choiceMade, [this]() {
             if (getSelectedAccount()->pendingContactRequestModel()->rowCount() == 0)
@@ -597,7 +597,7 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
     if (not currentIdx.isValid()) {
         auto widget = ui->stackedWidget->currentWidget();
         if (widget == ui->messagingPage || widget == ui->videoPage)
-            slidePage(ui->welcomePage);
+            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
         if(actualCall_)
             setActualCall(nullptr);
         return;
@@ -634,7 +634,7 @@ CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QM
     } else {
         ui->contactRequestWidget->setCurrentContactRequest(QModelIndex());
         if (ui->stackedWidget->currentWidget() == ui->contactRequestPage)
-            slidePage(ui->welcomePage);
+            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
     }
 }
 
@@ -746,7 +746,7 @@ CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex
 
         if (ui->stackedWidget->currentWidget() != ui->videoPage &&
             ui->stackedWidget->currentWidget() != ui->welcomePage) {
-            slidePage(ui->welcomePage);
+            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
         }
 
         // We setup the ringIdLabel and the QRCode
@@ -941,19 +941,6 @@ void
 CallWidget::on_imBackButton_clicked()
 {
     backToWelcomePage();
-}
-
-void
-CallWidget::slidePage(QWidget* widget, bool toRight)
-{
-    short dir = (toRight ? -1 : 1);
-    ui->stackedWidget->setCurrentWidget(widget);
-    pageAnim_->setTargetObject(widget);
-    pageAnim_->setDuration(animDuration_);
-    pageAnim_->setStartValue(QPoint(widget->width() * dir, widget->y()));
-    pageAnim_->setEndValue(QPoint(widget->x(), widget->y()));
-    pageAnim_->setEasingCurve(QEasingCurve::OutQuad);
-    pageAnim_->start();
 }
 
 void

@@ -30,19 +30,22 @@
 #include <string>
 #include <QString>
 #include <QImage>
+#include <QStackedWidget>
 
-class Utils
+namespace Utils
 {
-public:
-    static bool CreateStartupLink();
-    static void DeleteStartupLink();
-    static bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
-    static bool CheckStartupLink();
-    static QString GetRingtonePath();
-    static QString GenGUID();
-    static QString GetISODate();
-    static QString GetCurrentUserName();
-    static void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
-    static QImage getCirclePhoto(const QImage original, int sizePhoto);
-};
+    constexpr int animDuration_ = 200; // animation duration for sliding page in ms
+
+    bool CreateStartupLink();
+    void DeleteStartupLink();
+    bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
+    bool CheckStartupLink();
+    QString GetRingtonePath();
+    QString GenGUID();
+    QString GetISODate();
+    QString GetCurrentUserName();
+    void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
+    QImage getCirclePhoto(const QImage original, int sizePhoto);
+    void slidePage(QStackedWidget *stack, QWidget *widget, bool toRight = false);
+}
 
