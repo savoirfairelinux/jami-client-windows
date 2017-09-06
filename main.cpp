@@ -157,6 +157,14 @@ main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("ring.cx");
     QCoreApplication::setApplicationName("Ring");
 
+    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+
+    if (not MainWindow::instance().init()) {
+        return 1;
+    }
+
+    MainWindow::instance().createThumbBar();
+
     if (not uri.isEmpty()) {
         startMinimized = false;
         MainWindow::instance().onRingEvent(uri);
@@ -169,7 +177,6 @@ main(int argc, char *argv[])
         MainWindow::instance().hide();
     }
 
-    MainWindow::instance().createThumbBar();
 
 #ifdef URI_PROTOCOL
     QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
@@ -181,8 +188,6 @@ main(int argc, char *argv[])
         delete sem;
     });
 #endif
-
-    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
     return a.exec();
 }
