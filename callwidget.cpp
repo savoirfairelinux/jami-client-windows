@@ -118,8 +118,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
 
-        findRingAccount();
-        setupOutOfCallIM();
         ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
@@ -193,6 +191,8 @@ CallWidget::CallWidget(QWidget* parent) :
     } catch (const std::exception& e) {
         qDebug() << "INIT ERROR" << e.what();
     }
+
+    setupOutOfCallIM();
 }
 
 CallWidget::~CallWidget()
@@ -382,11 +382,10 @@ void CallWidget::setupQRCode(QString ringID)
     ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_), Qt::KeepAspectRatio)));
 }
 
-void
+bool
 CallWidget::findRingAccount()
 {
     bool ringAccountFound = false;
-
     auto a_count = AccountModel::instance().rowCount();
     for (int i = 0; i < a_count; ++i) {
         auto idx = AccountModel::instance().index(i, 0);
@@ -402,13 +401,18 @@ CallWidget::findRingAccount()
             }
         }
     }
+
     if (!ringAccountFound) {
         WizardDialog wizardDialog;
         wizardDialog.exec();
+        if (wizardDialog.result() != QDialog::Accepted) {
+            return false;
+        }
     }
 
     ui->currentAccountWidget->update();
 
+    return true;
 }
 
 void
