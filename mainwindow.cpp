@@ -128,6 +128,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+bool
+MainWindow::init()
+{
+    return ui->callwidget->findRingAccount();
+}
+
 void
 MainWindow::onRingEvent(const QString& uri)
 {
