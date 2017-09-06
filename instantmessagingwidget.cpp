@@ -23,8 +23,6 @@
 #include <QClipboard>
 #include <QMenu>
 
-#include "navstack.h"
-
 #include "media/text.h"
 #include "media/textrecording.h"
 

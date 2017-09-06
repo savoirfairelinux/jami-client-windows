@@ -462,29 +462,29 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetNoConstraint</enum>
-      </property>
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QStackedWidget" name="stackedWidgetView">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QStackedWidget" name="navStack">
+      <widget class="CallWidget" name="callwidget"/>
+      <widget class="ConfigurationWidget" name="configurationwidget"/>
+     </widget>
     </item>
    </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CallWidget</class>
+   <extends>QWidget</extends>
+   <header>callwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigurationWidget</class>
+   <extends>QWidget</extends>
+   <header>configurationwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
