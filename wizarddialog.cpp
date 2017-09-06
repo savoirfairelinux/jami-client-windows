@@ -178,10 +178,11 @@ void
 WizardDialog::closeEvent(QCloseEvent* event)
 {
     Q_UNUSED(event);
-    if (wizardMode_ == WIZARD)
-        exit(0);
-    else
+    if (wizardMode_ == WIZARD){
+        done(QDialog::Rejected);
+    } else {
         QDialog::closeEvent(event);
+    }
 }
 
 void

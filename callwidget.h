@@ -53,7 +53,7 @@ public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
     void atExit();
-    void findRingAccount();
+    bool findRingAccount();
 
 public slots:
     void settingsButtonClicked();
