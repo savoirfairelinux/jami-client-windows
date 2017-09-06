@@ -32,6 +32,8 @@
 #include <QObject>
 #include <QErrorMessage>
 #include <QPainter>
+#include <QStackedWidget>
+#include <QPropertyAnimation>
 
 bool
 Utils::CreateStartupLink()
@@ -207,4 +209,20 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
     painter.drawImage(0, 0, scaledPhoto, margin, 0);
     return target;
+}
+
+void
+Utils::slidePage(QStackedWidget* stack, QWidget* widget, bool toRight)
+{
+    if (stack->indexOf(widget) != -1 && stack->currentWidget() != widget){
+        QPropertyAnimation* pageAnim = new QPropertyAnimation();
+        int dir = (toRight ? -1 : 1);
+        stack->setCurrentWidget(widget);
+        pageAnim->setTargetObject(widget);
+        pageAnim->setDuration(animDuration_);
+        pageAnim->setStartValue(QPoint(widget->width() * dir, widget->y()));
+        pageAnim->setEndValue(QPoint(widget->x(), widget->y()));
+        pageAnim->setEasingCurve(QEasingCurve::OutQuad);
+        pageAnim->start();
+    }
 }

@@ -115,7 +115,6 @@ private:
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
 
-    constexpr static int animDuration_ = 200; //msecs
     constexpr static int qrSize_ = 200;
 
 private:
