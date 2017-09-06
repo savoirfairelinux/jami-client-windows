@@ -46,7 +46,6 @@ MainWindow::MainWindow(QWidget* parent) :
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
     connect(ui->configurationwidget, ConfigurationWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
-    connect(ui->callwidget, CallWidget::closeRequest, this, MainWindow::closeOnRequest);
 
     QIcon icon(":images/ring.png");
 
@@ -127,7 +126,12 @@ MainWindow::MainWindow(QWidget* parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete navStack_;
+}
+
+bool
+MainWindow::init()
+{
+    return ui->callwidget->findRingAccount();
 }
 
 void

@@ -45,6 +45,7 @@ public:
         return *instance;
     }
     void createThumbBar();
+    bool init();
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
