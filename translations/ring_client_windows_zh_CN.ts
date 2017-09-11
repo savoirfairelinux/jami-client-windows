@@ -563,12 +563,12 @@ Copy and share it with your friends!</source>
         <translation>复制号码</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
         <translation>在Ring上联系我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
         <translation>我的RingID是：</translation>
     </message>
@@ -623,24 +623,24 @@ Copy and share it with your friends!</source>
         <translation>从联系人中移除</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="758"/>
+        <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>未找到Ring帐户</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="808"/>
+        <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="441"/>
+        <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
         <translation>来电：%1</translation>
     </message>
@@ -966,17 +966,17 @@ Copy and share it with your friends!</source>
         <translation>发送文字消息…</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="46"/>
+        <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="52"/>
+        <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="56"/>
+        <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
         <translation>显示作者</translation>
     </message>
@@ -989,17 +989,17 @@ Copy and share it with your friends!</source>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
         <translation>参数设置</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -1092,7 +1092,7 @@ Copy and share it with your friends!</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="185"/>
+        <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
         <translation>未找到默认邮件客户端</translation>
     </message>
@@ -1248,27 +1248,27 @@ Copy and share it with your friends!</source>
         <translation>正在注册您的公共用户名，可能需要几分钟…</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="220"/>
+        <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
         <translation>添加设备</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="325"/>
+        <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
         <translation>用户名不可用。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="328"/>
+        <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
         <translation>用户名可用。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="331"/>
+        <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
         <translation>用户名非法。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="334"/>
+        <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
         <translation>网络错误。</translation>
     </message>
@@ -1327,7 +1327,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
-        <location filename="../wizarddialog.cpp" line="224"/>
+        <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
         <translation>创建Ring帐户</translation>
     </message>
@@ -1338,7 +1338,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
-        <location filename="../wizarddialog.cpp" line="297"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
         <translation>正在搜索…</translation>
     </message>

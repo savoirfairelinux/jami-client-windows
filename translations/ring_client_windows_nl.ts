@@ -563,12 +563,12 @@ Deel hem met je vrienden!</translation>
         <translation>Nummer kopiëren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
         <translation>Contacteer mij via Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
         <translation>Mijn Ring-ID is:</translation>
     </message>
@@ -623,24 +623,24 @@ Deel hem met je vrienden!</translation>
         <translation>Verwijderen uit contacten</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="758"/>
+        <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>GEEN RING-ACCOUNT GEVONDEN</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="808"/>
+        <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="441"/>
+        <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
         <translation>Inkomende oproep van %1</translation>
     </message>
@@ -966,17 +966,17 @@ Deel hem met je vrienden!</translation>
         <translation>Tekstbericht versturen...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="46"/>
+        <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="52"/>
+        <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
         <translation>Datum tonen</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="56"/>
+        <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
         <translation>Auteur tonen</translation>
     </message>
@@ -989,17 +989,17 @@ Deel hem met je vrienden!</translation>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
         <translation>Configuratie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
@@ -1092,7 +1092,7 @@ Deel hem met je vrienden!</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="185"/>
+        <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
         <translation>Geen standaard-e-mailprogramma gevonden</translation>
     </message>
@@ -1248,27 +1248,27 @@ Deel hem met je vrienden!</translation>
         <translation>Je publieke gebruikersnaam wordt geregistreerd, dit kan enkele minuten duren...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="220"/>
+        <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
         <translation>Een apparaat toevoegen</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="325"/>
+        <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
         <translation>Gebruikersnaam is niet beschikbaar.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="328"/>
+        <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
         <translation>Gebruikersnaam is beschikbaar.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="331"/>
+        <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
         <translation>Gebruikersnaam is ongeldig.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="334"/>
+        <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
         <translation>Netwerkfout.</translation>
     </message>
@@ -1327,7 +1327,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
-        <location filename="../wizarddialog.cpp" line="224"/>
+        <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
         <translation>Maak je account aan</translation>
     </message>
@@ -1338,7 +1338,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
-        <location filename="../wizarddialog.cpp" line="297"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
         <translation>Zoeken...</translation>
     </message>
