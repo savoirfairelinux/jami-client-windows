@@ -563,12 +563,12 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Copier le numéro ou identifiant Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
         <translation>Contactez-moi sur Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
         <translation>Mon identifiant Ring est : </translation>
     </message>
@@ -623,24 +623,24 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Retirer des contacts</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="758"/>
+        <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>AUCUN COMPTE RING</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="808"/>
+        <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="441"/>
+        <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
         <translation>Appel entrant de %1</translation>
     </message>
@@ -966,17 +966,17 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Envoyer un message texte...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="46"/>
+        <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="52"/>
+        <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
         <translation>Afficher la date</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="56"/>
+        <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
         <translation>Afficher l&apos;auteur</translation>
     </message>
@@ -989,17 +989,17 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
         <translation>Configuration</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
         <translation>Sortir</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
         <translation>À Propos</translation>
     </message>
@@ -1092,7 +1092,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="185"/>
+        <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
         <translation>Aucun client email trouvé</translation>
     </message>
@@ -1248,27 +1248,27 @@ Copiez-le et partagez-le avec vos amis !</translation>
         <translation>Enregistrement du nom d&apos;utilisateur...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="220"/>
+        <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
         <translation>Ajouter un appareil</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="325"/>
+        <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
         <translation>Nom d&apos;utilisateur indisponible</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="328"/>
+        <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
         <translation>Nom d&apos;utilisateur disponible</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="331"/>
+        <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
         <translation>Nom d&apos;utilisateur invalide</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="334"/>
+        <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
         <translation>Erreur de réseau</translation>
     </message>
@@ -1318,7 +1318,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
-        <location filename="../wizarddialog.cpp" line="224"/>
+        <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
         <translation>Créer votre compte</translation>
     </message>
@@ -1329,7 +1329,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
-        <location filename="../wizarddialog.cpp" line="297"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
         <translation>Recherche de disponibilité...</translation>
     </message>

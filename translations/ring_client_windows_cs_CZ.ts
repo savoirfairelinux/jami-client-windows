@@ -563,12 +563,12 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Zkopírovat číslo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
         <translation>Spojte se se mnou přes Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
         <translation>Mé Ring ID je :</translation>
     </message>
@@ -623,24 +623,24 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="758"/>
+        <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>ŽÁDNÝ ÚČET RING NENALEZEN</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="808"/>
+        <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="441"/>
+        <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
         <translation>Příchozí hovor od %1</translation>
     </message>
@@ -966,17 +966,17 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Odeslat textovou zprávu...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="46"/>
+        <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
         <translation>Zkopírovat</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="52"/>
+        <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
         <translation>Zobrazit datum</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="56"/>
+        <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
         <translation>Zobrazit autora</translation>
     </message>
@@ -989,17 +989,17 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
         <translation>Odejít</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
         <translation>O aplikaci</translation>
     </message>
@@ -1092,7 +1092,7 @@ Kopírujte a sdílejte jej s přáteli!</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="185"/>
+        <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
         <translation>Nenalezen žádný výchozí e-mailový klient</translation>
     </message>
@@ -1248,27 +1248,27 @@ Kopírujte a sdílejte jej s přáteli!</translation>
         <translation>Registruje se vaše veřejné uživatelské jméno. Může to trvat několik minut...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="220"/>
+        <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
         <translation>Přidat zařízení</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="325"/>
+        <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
         <translation>Uživatelské jméno není dostupné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="328"/>
+        <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
         <translation>Uživatelské jméno je dostupné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="331"/>
+        <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
         <translation>Uživatelské jméno je neplatné.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="334"/>
+        <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
         <translation>Chyba sítě.</translation>
     </message>
@@ -1318,7 +1318,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
-        <location filename="../wizarddialog.cpp" line="224"/>
+        <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
         <translation>Vytvořit vlastní účet</translation>
     </message>
@@ -1329,7 +1329,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
-        <location filename="../wizarddialog.cpp" line="297"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
         <translation>Hledá se...</translation>
     </message>

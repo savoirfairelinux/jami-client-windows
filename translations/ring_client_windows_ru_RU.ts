@@ -562,12 +562,12 @@ Copy and share it with your friends!</source>
         <translation>Скопировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="968"/>
+        <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
         <translation>Мой RingId:</translation>
     </message>
@@ -622,24 +622,24 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="758"/>
+        <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
         <translation>УЧАТНАЯ ЗАПИСЬ RING НЕ НАЙДЕНА</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="808"/>
+        <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="441"/>
+        <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
         <translation>Входящий вызов от %1</translation>
     </message>
@@ -965,17 +965,17 @@ Copy and share it with your friends!</source>
         <translation>Отправить текстовое сообщение...</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="46"/>
+        <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="52"/>
+        <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
         <translation>Показать дату</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="56"/>
+        <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
         <translation>Показать автора</translation>
     </message>
@@ -988,17 +988,17 @@ Copy and share it with your friends!</source>
         <translation>Звонок</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
         <translation>О продукте</translation>
     </message>
@@ -1091,7 +1091,7 @@ Copy and share it with your friends!</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="185"/>
+        <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
         <translation>Не найден почтовый клиент используемый по умолчанию</translation>
     </message>
@@ -1229,7 +1229,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Ваша учетная запись должна быть перенесена. Введите ваш пароль.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
@@ -1247,27 +1247,27 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="220"/>
+        <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="325"/>
+        <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="328"/>
+        <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="331"/>
+        <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="334"/>
+        <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
         <translation type="unfinished"/>
     </message>
@@ -1317,7 +1317,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
-        <location filename="../wizarddialog.cpp" line="224"/>
+        <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
         <translation type="unfinished"/>
     </message>
@@ -1328,7 +1328,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
-        <location filename="../wizarddialog.cpp" line="297"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
         <translation type="unfinished"/>
     </message>
