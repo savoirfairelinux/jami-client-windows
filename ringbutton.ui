@@ -136,6 +136,9 @@ border-right: transparent;</string>
           <height>18</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Select folder</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>

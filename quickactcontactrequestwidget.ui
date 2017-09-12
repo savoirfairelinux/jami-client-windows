@@ -110,6 +110,9 @@
            <height>20</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Validate Contact Request Button</string>
+         </property>
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -132,6 +135,9 @@
            <height>20</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Mute contact request button</string>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -150,6 +156,9 @@
            <width>20</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>Ban contact request button</string>
          </property>
          <property name="text">
           <string/>
