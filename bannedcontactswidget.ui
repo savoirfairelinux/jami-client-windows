@@ -37,6 +37,9 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip">
+      <string>Banned contacts list</string>
+     </property>
     </widget>
    </item>
    <item>
@@ -93,6 +96,9 @@
            <width>265</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>Deban contact button</string>
          </property>
          <property name="text">
           <string>Deban contact, and add to contact list</string>

@@ -34,6 +34,9 @@
    </property>
    <item>
     <widget class="QListView" name="listMessageView">
+     <property name="toolTip">
+      <string>Message list</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -67,6 +70,9 @@
          <height>30</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Message input</string>
+       </property>
        <property name="placeholderText">
         <string>Send text message...</string>
        </property>
@@ -88,6 +94,9 @@
          <width>30</width>
          <height>30</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Send message button</string>
        </property>
        <property name="text">
         <string/>

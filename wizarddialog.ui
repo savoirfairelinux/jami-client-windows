@@ -29,6 +29,12 @@
    <iconset resource="ressources.qrc">
     <normaloff>:/images/ring.png</normaloff>:/images/ring.png</iconset>
   </property>
+  <property name="accessibleName">
+   <string>Wizard Dialog</string>
+  </property>
+  <property name="accessibleDescription">
+   <string>Account creation wizard dialog</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="bottomMargin">
     <number>0</number>
@@ -62,6 +68,9 @@
            <bold>false</bold>
           </font>
          </property>
+         <property name="accessibleName">
+          <string>Welcome Label</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">color: rgb(63, 63, 63)</string>
          </property>
@@ -94,6 +103,9 @@
        </item>
        <item>
         <widget class="QLabel" name="welcomeLogo">
+         <property name="accessibleName">
+          <string>Welcome Logo</string>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -123,6 +135,18 @@
            <height>30</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Create Ring account button</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Push button for Ring account creation start trigger</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
          <property name="text">
           <string>Create Ring account</string>
          </property>
@@ -135,6 +159,15 @@
            <width>85</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>Link device button</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Push button for device linkage start trigger</string>
          </property>
          <property name="text">
           <string>Link this device to an account</string>
@@ -235,6 +268,12 @@ p, li { white-space: pre-wrap; }
            <height>300</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Photobooth Widget</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
         </widget>
        </item>
        <item alignment="Qt::AlignHCenter">
@@ -255,6 +294,9 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="mouseTracking">
           <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Avatar display</string>
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
@@ -331,6 +373,15 @@ p, li { white-space: pre-wrap; }
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>Full name edit</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Text entry for full name input</string>
          </property>
         </widget>
        </item>
@@ -456,6 +507,12 @@ p, li { white-space: pre-wrap; }
              <pointsize>11</pointsize>
             </font>
            </property>
+           <property name="toolTip">
+            <string>Public username edit</string>
+           </property>
+           <property name="accessibleName">
+            <string/>
+           </property>
            <property name="placeholderText">
             <string>Choose your username</string>
            </property>
@@ -472,6 +529,9 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="accessibleName">
+            <string>Public username validation status</string>
+           </property>
            <property name="text">
             <string>Searching...</string>
            </property>
@@ -483,6 +543,12 @@ p, li { white-space: pre-wrap; }
         <widget class="QCheckBox" name="disablePassword">
          <property name="toolTip">
           <string>Disable password checkbox</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string/>
          </property>
          <property name="text">
           <string> I do not want to set a password</string>
@@ -507,6 +573,15 @@ p, li { white-space: pre-wrap; }
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>PIN edit</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Device linking PIN text entry</string>
          </property>
          <property name="placeholderText">
           <string>Enter your pin</string>
@@ -534,6 +609,15 @@ p, li { white-space: pre-wrap; }
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>Password text input</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Password text entry</string>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -564,6 +648,15 @@ p, li { white-space: pre-wrap; }
           <font>
            <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>Password confirmation text input</string>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>Password confirmation text input</string>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -672,6 +765,15 @@ p, li { white-space: pre-wrap; }
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Previous page button</string>
+        </property>
+        <property name="accessibleName">
+         <string/>
+        </property>
+        <property name="accessibleDescription">
+         <string>push button to access previous page of wizard</string>
+        </property>
         <property name="text">
          <string>Previous</string>
         </property>
@@ -705,7 +807,13 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="toolTip">
-         <string>Next</string>
+         <string>Next page Button</string>
+        </property>
+        <property name="accessibleName">
+         <string/>
+        </property>
+        <property name="accessibleDescription">
+         <string>Push button to access next page of wizard</string>
         </property>
         <property name="text">
          <string>Next</string>

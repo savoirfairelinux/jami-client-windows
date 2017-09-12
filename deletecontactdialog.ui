@@ -119,6 +119,9 @@
          <height>30</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Cancel contact deletion button</string>
+       </property>
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -132,6 +135,9 @@
          <height>30</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Delete contact validation button</string>
+       </property>
        <property name="text">
         <string>Delete</string>
        </property>
@@ -144,6 +150,9 @@
          <width>0</width>
          <height>30</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Delete and ban validation button</string>
        </property>
        <property name="text">
         <string>Delete and ban</string>
