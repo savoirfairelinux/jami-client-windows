@@ -93,6 +93,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>General configuration tab</string>
+            </property>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
@@ -112,6 +115,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>Audio/Video configuration tab</string>
+            </property>
             <property name="text">
              <string>Audio/Video</string>
             </property>
@@ -127,6 +133,9 @@
               <width>90</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Account configuration tab</string>
             </property>
             <property name="text">
              <string>Account</string>
@@ -168,7 +177,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>quit settings menu</string>
+         <string>quit settings menu button</string>
         </property>
         <property name="text">
          <string/>
@@ -295,6 +304,9 @@
            </item>
            <item>
             <widget class="QLineEdit" name="profileNameEdit">
+             <property name="toolTip">
+              <string>Display name text entry</string>
+             </property>
              <property name="placeholderText">
               <string>Name</string>
              </property>
@@ -381,6 +393,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Keep history time in days selector</string>
+               </property>
               </widget>
              </item>
              <item>
@@ -461,6 +476,9 @@
                 <font>
                  <pointsize>11</pointsize>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>Clear history button</string>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -575,6 +593,9 @@
              <pointsize>11</pointsize>
             </font>
            </property>
+           <property name="toolTip">
+            <string>Always record call checkbox</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(77, 77, 77);</string>
            </property>
@@ -630,6 +651,9 @@
              <pointsize>11</pointsize>
             </font>
            </property>
+           <property name="toolTip">
+            <string>Keep minimized on close checkbox</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(77, 77, 77);</string>
            </property>
@@ -644,6 +668,9 @@
             <font>
              <pointsize>11</pointsize>
             </font>
+           </property>
+           <property name="toolTip">
+            <string>Enable notifications checkbox</string>
            </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(77, 77, 77);</string>
@@ -665,6 +692,9 @@
             <font>
              <pointsize>11</pointsize>
             </font>
+           </property>
+           <property name="toolTip">
+            <string>Launch ring on startup checkbox</string>
            </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
@@ -713,6 +743,9 @@
                <width>60</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Check for updates time interval in days</string>
              </property>
              <property name="minimum">
               <number>1</number>
@@ -770,6 +803,9 @@
                <width>0</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Check for updates now button</string>
              </property>
              <property name="text">
               <string>Check for updates now</string>
@@ -961,6 +997,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="toolTip">
+                <string>video device selector combobox</string>
+               </property>
               </widget>
              </item>
              <item row="4" column="0">
@@ -992,6 +1031,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="toolTip">
+                <string>Video resolution selector combobox</string>
+               </property>
               </widget>
              </item>
              <item row="5" column="0">
@@ -1005,7 +1047,11 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QComboBox" name="framerateBox"/>
+              <widget class="QComboBox" name="framerateBox">
+               <property name="toolTip">
+                <string>Framerate selector combobox</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -1038,7 +1084,11 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QComboBox" name="outputComboBox"/>
+            <widget class="QComboBox" name="outputComboBox">
+             <property name="toolTip">
+              <string>Audio output selector combobox</string>
+             </property>
+            </widget>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_8">
@@ -1056,7 +1106,11 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QComboBox" name="inputComboBox"/>
+            <widget class="QComboBox" name="inputComboBox">
+             <property name="toolTip">
+              <string>Audio input selector combobox</string>
+             </property>
+            </widget>
            </item>
            <item row="0" column="0">
             <spacer name="verticalSpacer_6">
@@ -1206,6 +1260,9 @@
                 <height>30</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>New account type selector</string>
+              </property>
              </widget>
             </item>
             <item>
@@ -1223,7 +1280,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>add new account</string>
+               <string>add new account button</string>
               </property>
               <property name="text">
                <string/>
@@ -1260,6 +1317,9 @@
                 <height>30</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Delete selected account button</string>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -1284,6 +1344,9 @@
             </property>
             <item>
              <widget class="QPushButton" name="importButton">
+              <property name="toolTip">
+               <string>import existing account archive</string>
+              </property>
               <property name="text">
                <string>Import</string>
               </property>
@@ -1291,6 +1354,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="exportButton">
+              <property name="toolTip">
+               <string>export selected account to archive</string>
+              </property>
               <property name="text">
                <string>Export</string>
               </property>

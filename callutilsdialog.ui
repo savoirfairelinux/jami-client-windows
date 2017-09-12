@@ -49,6 +49,9 @@
       </property>
       <item>
        <widget class="QListView" name="contactView">
+        <property name="toolTip">
+         <string>existing contacts list</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -60,6 +63,9 @@
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="toolTip">
+         <string>contact transfer number text entry</string>
         </property>
         <property name="placeholderText">
          <string>or type number...</string>
@@ -99,6 +105,9 @@
            <font>
             <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="toolTip">
+           <string>Transfer call button</string>
           </property>
           <property name="text">
            <string>Transfer</string>

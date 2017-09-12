@@ -68,6 +68,9 @@
        <height>30</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>Call button</string>
+     </property>
      <property name="text">
       <string/>
      </property>

@@ -93,6 +93,9 @@
            <height>60</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Account avatar</string>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -121,6 +124,9 @@
          <height>10</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Account status</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">text: centered;</string>
        </property>
@@ -130,7 +136,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="currentAccountSelector"/>
+      <widget class="QComboBox" name="currentAccountSelector">
+       <property name="toolTip">
+        <string>account selection combobox</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
