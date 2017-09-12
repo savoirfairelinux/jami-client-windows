@@ -121,6 +121,9 @@
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Accept contact request button</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">padding-left: 15px;
 padding-right: 15px;</string>
@@ -144,6 +147,9 @@ padding-right: 15px;</string>
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Mute contact request</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">padding-left: 15px;
 padding-right: 15px;</string>
@@ -166,6 +172,9 @@ padding-right: 15px;</string>
           <width>150</width>
           <height>30</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>Ban contact request</string>
         </property>
         <property name="styleSheet">
          <string notr="true">padding-left: 15px;

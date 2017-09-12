@@ -458,6 +458,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="aboutButton">
+       <property name="toolTip">
+        <string>about button</string>
+       </property>
        <property name="text">
         <string>About</string>
        </property>
@@ -471,6 +474,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="creditsButton">
+       <property name="toolTip">
+        <string>credits button</string>
+       </property>
        <property name="text">
         <string>Credits</string>
        </property>

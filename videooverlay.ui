@@ -334,6 +334,9 @@
          <height>36</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Record call</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -576,6 +579,9 @@
          <width>30</width>
          <height>30</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Configuration</string>
        </property>
        <property name="text">
         <string/>
