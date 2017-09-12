@@ -203,6 +203,9 @@
                   <pointsize>9</pointsize>
                  </font>
                 </property>
+                <property name="toolTip">
+                 <string>Search contact text input</string>
+                </property>
                 <property name="maxLength">
                  <number>100</number>
                 </property>
@@ -240,6 +243,9 @@
                   <width>30</width>
                   <height>30</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>search button</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -302,6 +308,9 @@
                  <width>16777215</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string/>
                </property>
                <property name="currentIndex">
                 <number>0</number>
@@ -545,7 +554,7 @@
                      </size>
                     </property>
                     <property name="toolTip">
-                     <string>settings menu</string>
+                     <string>Configuration menu</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -779,7 +788,7 @@ Copy and share it with your friends!</string>
                      </size>
                     </property>
                     <property name="toolTip">
-                     <string>Share your ring id</string>
+                     <string>Show ring ID QR code</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -828,6 +837,9 @@ Copy and share it with your friends!</string>
                       <width>30</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Share ring ID button</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -964,7 +976,7 @@ Copy and share it with your friends!</string>
                      </size>
                     </property>
                     <property name="toolTip">
-                     <string/>
+                     <string>Back to homepage button</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -1054,7 +1066,7 @@ Copy and share it with your friends!</string>
                      </size>
                     </property>
                     <property name="toolTip">
-                     <string/>
+                     <string>Back to homepage button</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -1172,6 +1184,9 @@ Copy and share it with your friends!</string>
                       <width>160</width>
                       <height>0</height>
                      </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Peer contact method selector</string>
                     </property>
                    </widget>
                   </item>
@@ -1479,6 +1494,9 @@ Copy and share it with your friends!</string>
                          <height>56</height>
                         </size>
                        </property>
+                       <property name="toolTip">
+                        <string>Answer incoming call button</string>
+                       </property>
                        <property name="icon">
                         <iconset resource="ressources.qrc">
                          <normaloff>:/images/icons/ic_done_white_24dp.png</normaloff>:/images/icons/ic_done_white_24dp.png</iconset>
@@ -1520,6 +1538,9 @@ Copy and share it with your friends!</string>
                          <width>56</width>
                          <height>56</height>
                         </size>
+                       </property>
+                       <property name="toolTip">
+                        <string>Ignore incoming call button</string>
                        </property>
                        <property name="layoutDirection">
                         <enum>Qt::RightToLeft</enum>
@@ -1701,6 +1722,9 @@ Copy and share it with your friends!</string>
                        <height>64</height>
                       </size>
                      </property>
+                     <property name="toolTip">
+                      <string>Cancel outgoing call</string>
+                     </property>
                      <property name="layoutDirection">
                       <enum>Qt::LeftToRight</enum>
                      </property>
@@ -1811,6 +1835,9 @@ Copy and share it with your friends!</string>
                       <width>30</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Back to homepage button</string>
                     </property>
                     <property name="text">
                      <string/>

@@ -16,6 +16,9 @@
   <layout class="QVBoxLayout" name="verticalLayout" stretch="9,0">
    <item>
     <widget class="VideoWidget" name="videoFeed" native="true">
+     <property name="toolTip">
+      <string>Photobooth display</string>
+     </property>
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
