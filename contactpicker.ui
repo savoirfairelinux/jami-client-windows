@@ -39,6 +39,9 @@
        </item>
        <item>
         <widget class="QLineEdit" name="searchBar">
+         <property name="toolTip">
+          <string>search existing contact text entry</string>
+         </property>
          <property name="placeholderText">
           <string>Search...</string>
          </property>
@@ -48,10 +51,17 @@
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="contactView"/>
+        <widget class="QListView" name="contactView">
+         <property name="toolTip">
+          <string>existing contacts list</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="createNewButton">
+         <property name="toolTip">
+          <string>Create new contact button</string>
+         </property>
          <property name="text">
           <string>Create new contact</string>
          </property>
@@ -94,6 +104,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="nameLineEdit">
+           <property name="toolTip">
+            <string>New contact name text entry</string>
+           </property>
            <property name="placeholderText">
             <string>Enter a name here...</string>
            </property>
@@ -124,6 +137,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="okButton">
+           <property name="toolTip">
+            <string>Validate contact creation button</string>
+           </property>
            <property name="text">
             <string>Create</string>
            </property>

@@ -60,6 +60,9 @@
         </property>
         <item>
          <widget class="QSlider" name="qualitySlider">
+          <property name="toolTip">
+           <string>Quality slider</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -96,6 +99,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="autoCheckBox">
+          <property name="toolTip">
+           <string>Automatic quality checkbox</string>
+          </property>
           <property name="text">
            <string>Auto</string>
           </property>
