@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>847</width>
-    <height>725</height>
+    <height>760</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -46,6 +46,9 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip">
+      <string/>
+     </property>
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
@@ -61,6 +64,9 @@
       </property>
       <attribute name="title">
        <string>General</string>
+      </attribute>
+      <attribute name="toolTip">
+       <string>General account info configuration</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <property name="spacing">
@@ -94,8 +100,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>829</width>
-            <height>722</height>
+            <width>843</width>
+            <height>726</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -160,7 +166,7 @@
                   <string notr="true">color: rgb(77, 77, 77);</string>
                  </property>
                  <property name="text">
-                  <string>Alias</string>
+                  <string>Displayed name</string>
                  </property>
                  <property name="buddy">
                   <cstring>lrcfg_alias</cstring>
@@ -180,6 +186,9 @@
                    <width>0</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Displayed alias input</string>
                  </property>
                 </widget>
                </item>
@@ -289,6 +298,9 @@
                    <height>30</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string>Hostname URL for DHT bootstrap or SIP</string>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -334,6 +346,9 @@
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="toolTip">
+                    <string>Ring public registered username</string>
+                   </property>
                    <property name="readOnly">
                     <bool>true</bool>
                    </property>
@@ -349,6 +364,9 @@
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="toolTip">
+                    <string>Register username on blockchain button</string>
                    </property>
                    <property name="text">
                     <string>Register on blockchain</string>
@@ -389,6 +407,9 @@
                    <height>30</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string>Nameservice URL input</string>
+                 </property>
                 </widget>
                </item>
                <item row="3" column="0">
@@ -422,6 +443,9 @@
                    <width>0</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>SIP username input</string>
                  </property>
                 </widget>
                </item>
@@ -462,6 +486,9 @@
                    <width>0</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>SIP password input</string>
                  </property>
                  <property name="echoMode">
                   <enum>QLineEdit::PasswordEchoOnEdit</enum>
@@ -506,6 +533,9 @@
                    <height>30</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string>SIP proxy URL input</string>
+                 </property>
                 </widget>
                </item>
                <item row="6" column="0">
@@ -546,6 +576,9 @@
                    <height>30</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string>SIP voicemail number</string>
+                 </property>
                 </widget>
                </item>
                <item row="7" column="0">
@@ -554,6 +587,9 @@
                   <font>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="toolTip">
+                  <string>Autoanswer call checkbox</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
@@ -572,6 +608,9 @@
                   <font>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="toolTip">
+                  <string>UPnP enabled checkbox</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
@@ -631,6 +670,9 @@
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="toolTip">
+                  <string>Allow call from unknown checkbox</string>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
                  </property>
@@ -646,6 +688,9 @@
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="toolTip">
+                  <string>Allow Call From History checkbox</string>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
                  </property>
@@ -660,6 +705,9 @@
                   <font>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="toolTip">
+                  <string>Allow Call From Contact checkbox</string>
                  </property>
                  <property name="text">
                   <string>Allow Call From Contact</string>
@@ -721,6 +769,9 @@
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="toolTip">
+                    <string>Play ringtone button</string>
+                   </property>
                    <property name="text">
                     <string>Play</string>
                    </property>
@@ -733,6 +784,9 @@
                      <width>0</width>
                      <height>30</height>
                     </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>ringtone file selector</string>
                    </property>
                   </widget>
                  </item>
@@ -783,6 +837,9 @@
       </property>
       <attribute name="title">
        <string>Audio/Video</string>
+      </attribute>
+      <attribute name="toolTip">
+       <string>Audio/video codecs preferences configuration</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="0">
@@ -1047,6 +1104,9 @@
       <attribute name="title">
        <string>Advanced</string>
       </attribute>
+      <attribute name="toolTip">
+       <string>Account advanced configuration</string>
+      </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="topMargin">
         <number>0</number>
@@ -1067,8 +1127,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>813</width>
-            <height>1025</height>
+            <width>811</width>
+            <height>956</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1125,6 +1185,9 @@
                  <width>150</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string>Registration timeout selector spinbox</string>
                </property>
               </widget>
              </item>
@@ -1186,6 +1249,9 @@
                    <width>100</width>
                    <height>0</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>local port selector spinbox</string>
                  </property>
                  <property name="maximum">
                   <number>65535</number>
@@ -1270,6 +1336,9 @@
                  <pointsize>11</pointsize>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>same as local radio button</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">color: rgb(77, 77, 77);</string>
                </property>
@@ -1290,6 +1359,9 @@
                 <font>
                  <pointsize>11</pointsize>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>personalise address and ports radio button</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">color: rgb(77, 77, 77);</string>
@@ -1339,6 +1411,9 @@
                    <height>16777215</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string>ip address text input</string>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -1369,6 +1444,9 @@
                    <width>100</width>
                    <height>0</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>port selector spinbox</string>
                  </property>
                  <property name="maximum">
                   <number>65535</number>
@@ -1401,6 +1479,9 @@
                   <font>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="toolTip">
+                  <string>use STUN checkbox</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
@@ -1443,6 +1524,9 @@
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="toolTip">
+                  <string>use TURN checkbox</string>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(77, 77, 77);</string>
                  </property>
@@ -1462,6 +1546,9 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>TURN server URL input</string>
+                 </property>
                  <property name="placeholderText">
                   <string>Server URL</string>
                  </property>
@@ -1478,6 +1565,9 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>TURN server username input</string>
+                 </property>
                  <property name="placeholderText">
                   <string>Username</string>
                  </property>
@@ -1493,6 +1583,9 @@
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>TURN server password input</string>
                  </property>
                  <property name="echoMode">
                   <enum>QLineEdit::Password</enum>
@@ -1512,6 +1605,9 @@
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>TURN server Realm input</string>
                  </property>
                  <property name="placeholderText">
                   <string>Realm</string>
@@ -1678,6 +1774,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Lower boundary for audio RTP port range selector</string>
+               </property>
                <property name="maximum">
                 <number>65535</number>
                </property>
@@ -1708,6 +1807,9 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string>higher boundary for audio RTP port range selector</string>
                </property>
                <property name="maximum">
                 <number>65535</number>
@@ -1812,6 +1914,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Lower boundary for audio RTP port range selector</string>
+               </property>
                <property name="maximum">
                 <number>65535</number>
                </property>
@@ -1842,6 +1947,9 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string>higher boundary for audio RTP port range selector</string>
                </property>
                <property name="maximum">
                 <number>65535</number>
@@ -1895,6 +2003,9 @@
       <attribute name="title">
        <string>Security</string>
       </attribute>
+      <attribute name="toolTip">
+       <string>Account security configuration</string>
+      </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <property name="spacing">
         <number>0</number>
@@ -1923,7 +2034,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-34</y>
             <width>829</width>
             <height>760</height>
            </rect>
@@ -1979,6 +2090,9 @@
                    <property name="focusPolicy">
                     <enum>Qt::WheelFocus</enum>
                    </property>
+                   <property name="toolTip">
+                    <string>Certificate authaurity certificate selector</string>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -2012,6 +2126,9 @@
                      <width>500</width>
                      <height>30</height>
                     </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>User certificate selector</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -2068,6 +2185,9 @@
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="toolTip">
+                    <string>private key password input</string>
+                   </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
                    </property>
@@ -2086,6 +2206,9 @@
                      <width>500</width>
                      <height>30</height>
                     </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>User private key selector</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -2109,7 +2232,7 @@
                  </font>
                 </property>
                 <property name="toolTip">
-                 <string>Encrypt media stream (SRTP)</string>
+                 <string>Encrypt media stream (SRTP) checkbox</string>
                 </property>
                 <property name="text">
                  <string>Media Stream Encryption (SRTP)</string>
@@ -2122,6 +2245,9 @@
                  <font>
                   <pointsize>11</pointsize>
                  </font>
+                </property>
+                <property name="toolTip">
+                 <string>use default ciphers checkbox</string>
                 </property>
                 <property name="text">
                  <string>Use default ciphers</string>
@@ -2179,6 +2305,9 @@
       <attribute name="title">
        <string>Devices</string>
       </attribute>
+      <attribute name="toolTip">
+       <string>Account devices management</string>
+      </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_15">
        <item>
         <widget class="QStackedWidget" name="devicesStackedWidget">
@@ -2220,6 +2349,9 @@
                <height>30</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Add device button</string>
+             </property>
              <property name="text">
               <string>Add device</string>
              </property>
@@ -2260,6 +2392,9 @@
            </item>
            <item>
             <widget class="QLineEdit" name="passwordArchiveEdit">
+             <property name="toolTip">
+              <string>Password text input</string>
+             </property>
              <property name="echoMode">
               <enum>QLineEdit::Password</enum>
              </property>
@@ -2291,6 +2426,9 @@
                  <height>30</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Cancel account export for linking button</string>
+               </property>
                <property name="text">
                 <string>Cancel</string>
                </property>
@@ -2316,6 +2454,9 @@
                  <width>150</width>
                  <height>30</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string>Validate export on DHT for device linking button</string>
                </property>
                <property name="text">
                 <string>Export on the Ring</string>
@@ -2382,6 +2523,9 @@
                <stylestrategy>PreferAntialias</stylestrategy>
               </font>
              </property>
+             <property name="toolTip">
+              <string>Generated PIN for linking</string>
+             </property>
              <property name="text">
               <string>PIN</string>
              </property>
@@ -2411,6 +2555,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Accept PIN generation and quit button</string>
+             </property>
              <property name="text">
               <string>OK</string>
              </property>
@@ -2438,6 +2585,9 @@
      <widget class="QWidget" name="bannedContactsTab">
       <attribute name="title">
        <string>Banned Contacts</string>
+      </attribute>
+      <attribute name="toolTip">
+       <string>Account banned contacts management tab</string>
       </attribute>
       <widget class="BannedContactsWidget" name="bannedContactsWidget" native="true">
        <property name="geometry">
