@@ -20,6 +20,7 @@
 
 #include "pixbufmanipulator.h"
 
+// Qt
 #include <QSize>
 #include <QMetaType>
 #include <QImage>
@@ -28,12 +29,18 @@
 #include <QBuffer>
 #include <QPainter>
 
+// LRC
 #include "person.h"
 #include "call.h"
 #include "contactmethod.h"
 #include "profilemodel.h"
 #include "profile.h"
+#include "api/conversation.h"
+#include "api/account.h"
+#include "api/contactmodel.h"
+#include "api/contact.h"
 
+// Client
 #include "utils.h"
 #include "ringthemeutils.h"
 #undef interface
@@ -159,6 +166,26 @@ QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& t
 }
 
 QVariant
+PixbufManipulator::conversationPhoto(const lrc::api::conversation::Info &conversation, const lrc::api::account::Info &accountInfo, const QSize &size, bool displayPresence)
+{
+    Q_UNUSED(displayPresence)
+
+    // TODO Handle conversations with multiple contacts
+    auto& contact = accountInfo.contactModel->getContact(conversation.participants[0]);
+
+    auto& avatar = contact.profileInfo.avatar;
+
+    if (avatar.length() > 0)
+    {
+        QByteArray byteArray(avatar.c_str(), avatar.length());
+        QVariant photo = personPhoto(byteArray);
+        return QVariant::fromValue(scaleAndFrame(photo.value<QImage>(), size));
+    } else {
+        return QVariant::fromValue(fallbackAvatar(size, contact.profileInfo.uri.at(0), contact.profileInfo.alias.at(0)));
+    }
+}
+
+QVariant
 PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence, bool isPresent)
 {
     Q_UNUSED(p)
@@ -272,4 +299,10 @@ QVariant PixbufManipulator::decorationRole(const Account* acc)
     return Utils::getCirclePhoto(ProfileModel::instance().
                                  selectedProfile()->person()->photo().value<QImage>(),
                                  IMAGE_SIZE.width());
+}
+
+QVariant
+PixbufManipulator::decorationRole(const lrc::api::conversation::Info &conversation, const lrc::api::account::Info &accountInfo)
+{
+    return conversationPhoto(conversation, accountInfo, IMAGE_SIZE);
 }
