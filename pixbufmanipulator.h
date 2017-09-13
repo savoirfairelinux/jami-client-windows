@@ -35,6 +35,10 @@ public:
     QVariant callPhoto(const ContactMethod* n, const QSize& size, bool displayPresence = true) override;
     QVariant contactPhoto(Person* c, const QSize& size, bool displayPresence = true) override;
     QVariant personPhoto(const QByteArray& data, const QString& type = "PNG") override;
+    QVariant conversationPhoto(const lrc::api::conversation::Info& conversation,
+                               const lrc::api::account::Info& accountInfo,
+                               const QSize& size,
+                               bool displayPresence = true);
 
     /* TODO: the following methods return an empty QVariant/QByteArray */
     QVariant   numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence = false, bool isPresent = false) override;
@@ -52,6 +56,7 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
     QVariant   decorationRole(const Account* acc) override;
+    QVariant   decorationRole(const lrc::api::conversation::Info& conversation, const lrc::api::account::Info& accountInfo) override;
     static QImage scaleAndFrame(const QImage photo, const QSize& size);
     static QImage scaleAndFrame(const QImage photo, const int& size);
 };
