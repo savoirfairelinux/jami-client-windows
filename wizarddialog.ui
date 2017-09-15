@@ -403,6 +403,25 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QCheckBox" name="signUpCheckbox">
+         <property name="toolTip">
+          <string>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</string>
+         </property>
+         <property name="accessibleName">
+          <string>Public username checkbox</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>Checkbox selecting if the user wants a public username</string>
+         </property>
+         <property name="text">
+          <string>Register public username (experimental)</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
@@ -461,15 +480,12 @@ p, li { white-space: pre-wrap; }
         </layout>
        </item>
        <item alignment="Qt::AlignHCenter">
-        <widget class="QCheckBox" name="signUpCheckbox">
+        <widget class="QCheckBox" name="disablePassword">
          <property name="toolTip">
-          <string>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</string>
+          <string>Disable password checkbox</string>
          </property>
          <property name="text">
-          <string>Register public username (experimental)</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+          <string> I do not want to set a password</string>
          </property>
         </widget>
        </item>
