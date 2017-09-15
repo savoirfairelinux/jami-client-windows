@@ -67,8 +67,9 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
         ui->photoBooth->hide();
         ui->pinEdit->hide();
         ui->infoLabel->setText(tr("Your account needs to be migrated. Enter your password."));
-    } else
+    } else {
         ui->navBarWidget->hide();
+    }
 
     ui->searchingStateLabel->clear();
     connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
@@ -78,6 +79,19 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     connect(&nameLookupTimer_, QTimer::timeout, this, WizardDialog::timeoutNameLookupTimer);
     connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, WizardDialog::on_photoTaken);
     ui->avatarLabel->hide();
+    ui->disablePassword->setChecked(false);
+
+    connect(ui->disablePassword, QCheckBox::stateChanged, [=](int state){
+        if (state == Qt::Checked){
+            ui->passwordEdit->setEnabled(false);
+            ui->passwordEdit->clear();
+            ui->confirmPasswordEdit->setEnabled(false);
+            ui->confirmPasswordEdit->clear();
+        } else if (Qt::Unchecked || Qt::PartiallyChecked) {
+            ui->passwordEdit->setEnabled(true);
+            ui->confirmPasswordEdit->setEnabled(true);
+        }
+    });
 }
 
 WizardDialog::~WizardDialog()
@@ -94,7 +108,12 @@ WizardDialog::accept()
         ui->pinEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
         return;
     }
-    if (ui->passwordEdit->text().isEmpty() || ui->passwordEdit->text() != ui->confirmPasswordEdit->text()) {
+
+    if (ui->disablePassword->checkState() == Qt::Checked) {
+        ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+        ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+    } else if (ui->passwordEdit->text().isEmpty() ||
+               ui->passwordEdit->text() != ui->confirmPasswordEdit->text()) {
         ui->passwordEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
         ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
         return;
@@ -103,10 +122,12 @@ WizardDialog::accept()
         ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
         ui->pinEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
     }
+
     if (wizardMode_ == MIGRATION)
         ui->progressLabel->setText(tr("Migrating your Ring account..."));
     else
         ui->progressLabel->setText(tr("Generating your Ring account..."));
+
     ui->navBarWidget->hide();
     ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
@@ -127,6 +148,7 @@ WizardDialog::accept()
             profile->person()->setFormattedName(tr("Unknown"));
         }
     }
+
     account_->setRingtonePath(Utils::GetRingtonePath());
     account_->setUpnpEnabled(true);
 
