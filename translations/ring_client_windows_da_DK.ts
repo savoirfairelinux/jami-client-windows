@@ -93,7 +93,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
         <location filename="../accountdetails.ui" line="445"/>
         <location filename="../accountdetails.ui" line="1501"/>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Adgangskode</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="488"/>
@@ -149,17 +149,17 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
         <source>Name service URL</source>
-        <translation>Navne-service URL</translation>
+        <translation>Navnetjeneste-URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="611"/>
         <source>Ring Account Settings</source>
-        <translation>Ring-konto Indstillinger</translation>
+        <translation>Indstillinger for Ring-konto</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="701"/>
         <source>Ringtone Selection</source>
-        <translation>Ringetone-valg</translation>
+        <translation>Valg af ringetone</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="725"/>
@@ -205,7 +205,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1173"/>
         <source>Local Port:</source>
-        <translation>Lokal-port:</translation>
+        <translation>Lokal port:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1277"/>
@@ -261,7 +261,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
         <source>Audio RTP Port Range</source>
-        <translation>Portinterval for Lyd-RTP</translation>
+        <translation>Område for lyd RTP-port</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
@@ -278,7 +278,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>Video RTP Port Range</source>
-        <translation>Video RTP-port Interval</translation>
+        <translation>Område for video RTP-port</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1896"/>
@@ -308,7 +308,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation>Kodeord (påkrævet)</translation>
+        <translation>Adgangskode (påkrævet)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
@@ -363,7 +363,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1998"/>
         <source>User certificate</source>
-        <translation>Bruger-certifikat</translation>
+        <translation>Brugercertifikat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2032"/>
@@ -373,12 +373,12 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2047"/>
         <source>Private key password</source>
-        <translation>Kodeord til privat nøgle</translation>
+        <translation>Adgangskode til privat nøgle</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2127"/>
         <source>Use default ciphers</source>
-        <translation>Brug standard-cifre</translation>
+        <translation>Brug standardcifre</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
@@ -413,7 +413,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation>Forkert kodeord.</translation>
+        <translation>Forkert adgangskode.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
@@ -457,7 +457,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callwidget.ui" line="213"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Søg kontakter eller angiv Ring-ID</translation>
+        <translation>Søg efter kontakter eller indtast RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="324"/>
@@ -472,7 +472,7 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
-        <translation>indstillinger</translation>
+        <translation>indstillingsmenu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="633"/>
@@ -482,14 +482,14 @@ Ring er software til sikker og distribueret kommunikation.</translation>
     <message>
         <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
-        <translation>Del din Ring-ID</translation>
+        <translation>Del din RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="671"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
         <translation>Dette er dit RingID.
-Kopier og del den med dine venner!</translation>
+Kopiér og del den med dine venner!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="888"/>
@@ -560,7 +560,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="295"/>
         <source>Copy number</source>
-        <translation>Kopier nummer</translation>
+        <translation>Kopiér nummer</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
@@ -570,7 +570,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
-        <translation>Min Ring-ID er:</translation>
+        <translation>Mit RingID er:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="214"/>
@@ -660,12 +660,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
         <source>quit settings menu</source>
-        <translation>afslut Indstillinger menu</translation>
+        <translation>afslut indstillingsmenu</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation>Historik indstillinger</translation>
+        <translation>Historik-indstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
@@ -680,12 +680,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>Slet Historik</translation>
+        <translation>Ryd historik</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation>Andre Indstillinger</translation>
+        <translation>Diverse indstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
@@ -695,7 +695,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation>Kontroller for opdateringer nu</translation>
+        <translation>Søg efter for opdateringer nu</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
@@ -715,7 +715,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation>Optage indstillinger</translation>
+        <translation>Optage-indstillinger</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
@@ -735,7 +735,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
         <source>Check for update automatically every</source>
-        <translation>Søg efter opdateringer automatisk hver</translation>
+        <translation>Søg automatisk efter opdateringer hver</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
@@ -750,7 +750,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="942"/>
         <source>Device Selection</source>
-        <translation>Enheds-valg</translation>
+        <translation>Valg for enhed</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
@@ -780,7 +780,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1242"/>
         <source>Import</source>
-        <translation>Import</translation>
+        <translation>Importér</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1249"/>
@@ -805,7 +805,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="330"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation>Er du sikker på at du vil slette al din historik?</translation>
+        <translation>Er du sikker på, at du vil slette al din historik?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
@@ -866,12 +866,12 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation type="unfinished"/>
+        <translation>NavnEtiket</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation type="unfinished"/>
+        <translation>bedsteIdEtiket</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
@@ -907,7 +907,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation>Er du sikker på at du vil slette kontoen ?</translation>
+        <translation>Er du sikker på, at du vil slette kontoen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -1014,7 +1014,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Adgangskode</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
@@ -1076,7 +1076,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import</source>
-        <translation>Import</translation>
+        <translation>Importér</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
@@ -1094,7 +1094,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
-        <translation>Ingen standard mail klient fundet</translation>
+        <translation>Ingen standard mail-klient fundet</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="35"/>
@@ -1126,7 +1126,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
         <source>TODO: Explain the purpose of a contact request</source>
-        <translation type="unfinished"/>
+        <translation>TODO: Forklar formålet med en kontaktanmodning</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
@@ -1230,7 +1230,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Din konto kræver migrering. Indtast dit kodeord.</translation>
+        <translation>Din konto kræver migrering. Indtast din adgangskode.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
@@ -1311,9 +1311,9 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;For at forbinde denne enhed til en anden konto, skal du først &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;have fat i en PIN-kode.&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; Sådan genereres PIN-koden:&lt;/span&gt;&lt;/p&gt;
 &lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Gå til &lt;span style=&quot; font-weight:600;&quot;&gt;Kontoindstillinger &lt;/span&gt; på en enhed der har kontoen&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vælg &lt;span style=&quot; font-weight:600;&quot;&gt;Ring-kontoen&lt;/span&gt; der skal bruges&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Gå til &lt;span style=&quot; font-weight:600;&quot;&gt;Enheder&lt;/span&gt;-fanen&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Gå til &lt;span style=&quot; font-weight:600;&quot;&gt;Enheder&lt;/span&gt;-fanebladet&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vælg &lt;span style=&quot; font-weight:600;&quot;&gt;Tilføj enhed&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Nu vil du få den PIN-kode som skal indtastes her. Den er kun gyldig i &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutter&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Du vil nu få PIN-koden som skal indtastes her. Den er kun gyldig i &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutter&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
@@ -1360,12 +1360,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="526"/>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Adgangskode</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="556"/>
         <source>Confirm password</source>
-        <translation>Bekræft kodeord</translation>
+        <translation>Bekræft adgangskode</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="624"/>

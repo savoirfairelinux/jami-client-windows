@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ko_KR" version="2.0">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -10,7 +10,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="475"/>
         <source>Credits</source>
-        <translation>クレジット</translation>
+        <translation type="unfinished"/>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="541"/>
@@ -21,12 +21,13 @@
         <location filename="../aboutdialog.ui" line="557"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>마이크로소프트 윈도우즈용 Ring 클라이언트.
+Ring은 보안 기능을 가진 분산 커뮤니케이션 소프트웨어입니다.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
         <source>version</source>
-        <translation>バージョン</translation>
+        <translation>버전</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
@@ -41,7 +42,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
         <source>Based on the SFLPhone project</source>
-        <translation type="unfinished"/>
+        <translation>SFLPhone 프로젝트 기반</translation>
     </message>
 </context>
 <context>
@@ -49,90 +50,90 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="23"/>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation>설정</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="63"/>
         <source>General</source>
-        <translation>全般</translation>
+        <translation>일반</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="137"/>
         <source>Account</source>
-        <translation>アカウント</translation>
+        <translation>계정</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="197"/>
         <source>Type</source>
-        <translation>種類</translation>
+        <translation>유형</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="163"/>
         <source>Alias</source>
-        <translation>別名</translation>
+        <translation>별칭</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="241"/>
         <source>Parameters</source>
-        <translation>パラメーター</translation>
+        <translation>인자들</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="271"/>
         <source>Hostname</source>
-        <translation>ホスト名</translation>
+        <translation>호스트명</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="405"/>
         <location filename="../accountdetails.ui" line="1482"/>
         <location filename="../accountdetails.cpp" line="115"/>
         <source>Username</source>
-        <translation>ユーザー名</translation>
+        <translation>사용자명</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="445"/>
         <location filename="../accountdetails.ui" line="1501"/>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>암호</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="488"/>
         <source>Proxy</source>
-        <translation>プロキシ</translation>
+        <translation>프록시</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="528"/>
         <source>Voicemail number</source>
-        <translation>ボイスメール番号</translation>
+        <translation>음성메일 번호</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="562"/>
         <source>Auto-answer calls</source>
-        <translation>自動応答呼び出し</translation>
+        <translation>자동 응답 횟수</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>UPnP enabled</source>
-        <translation>UPnP 有効</translation>
+        <translation>UPnP 가능여부</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="638"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"/>
+        <translation>모르는 사람과 통화 허용</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="665"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>연락처 등록된 사람과 통화 허용</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="653"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>통화이력으로부터 통화 허용</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="311"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>공개 사용자명</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="354"/>
@@ -143,63 +144,63 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.cpp" line="386"/>
         <location filename="../accountdetails.cpp" line="391"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>블록체인에 등록</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="371"/>
         <source>Name service URL</source>
-        <translation>名前サービス URL</translation>
+        <translation>네임 서비스 URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="611"/>
         <source>Ring Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ring 계정 설정</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="701"/>
         <source>Ringtone Selection</source>
-        <translation type="unfinished"/>
+        <translation>통화음 선택</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="725"/>
         <location filename="../accountdetails.cpp" line="57"/>
         <source>Play</source>
-        <translation>再生</translation>
+        <translation>재생</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="785"/>
         <source>Audio/Video</source>
-        <translation>音声/動画</translation>
+        <translation>오디오/비디오</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1001"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>오디오 코덱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1031"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>비디오 코덱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1048"/>
         <source>Advanced</source>
-        <translation>詳細</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1094"/>
         <source>Registration</source>
-        <translation>登録</translation>
+        <translation>등록</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1114"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation type="unfinished"/>
+        <translation>등록 유효 시간(초):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1152"/>
         <source>Network Interface</source>
-        <translation>ネットワークインターフェイス</translation>
+        <translation>네트워크 인터페이스</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1173"/>
@@ -209,38 +210,38 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1277"/>
         <source>Same as local parameters</source>
-        <translation>ローカルパラメーターと同じ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1298"/>
         <source>Set published address and port:</source>
-        <translation type="unfinished"/>
+        <translation>공개 주소와 포트 설정하기</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1324"/>
         <source>Address</source>
-        <translation>アドレス</translation>
+        <translation>주소</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1355"/>
         <source>Port</source>
-        <translation>ポート番号</translation>
+        <translation>포트</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1409"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>STUN 사용</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1425"/>
         <location filename="../accountdetails.ui" line="1466"/>
         <source>Server URL</source>
-        <translation type="unfinished"/>
+        <translation>서버 URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1450"/>
         <source>Use TURN</source>
-        <translation>TURNを使用</translation>
+        <translation>TURN 사용</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1517"/>
@@ -260,44 +261,44 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1636"/>
         <source>Audio RTP Port Range</source>
-        <translation>音声 RTP ポートの範囲</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <location filename="../accountdetails.ui" line="1800"/>
         <source>Min</source>
-        <translation>最小</translation>
+        <translation>최소</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1697"/>
         <location filename="../accountdetails.ui" line="1831"/>
         <source>Max</source>
-        <translation>最大</translation>
+        <translation>최대</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>Video RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>비디오 RTP 포트 범위</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1896"/>
         <source>Security</source>
-        <translation>セキュリティ</translation>
+        <translation>보안</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2115"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation type="unfinished"/>
+        <translation>미디어 스트림 암호화 (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2180"/>
         <source>Devices</source>
-        <translation>端末</translation>
+        <translation>장치</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2224"/>
         <source>Add device</source>
-        <translation type="unfinished"/>
+        <translation>장치 추가하기</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2251"/>
@@ -307,12 +308,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2267"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>암호 (필수)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2295"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2321"/>
@@ -332,17 +333,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2396"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>이 PIN 번호는 5분 안에 새로운 장비에 입력해야 합니다. 언제든지 새로운 번호를 다시 생성할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2415"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2440"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>차단한 연락처</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2112"/>
@@ -352,7 +353,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1247"/>
         <source>Published Address</source>
-        <translation>発行されたアドレス</translation>
+        <translation>공개 주소</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1961"/>
@@ -367,57 +368,57 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2032"/>
         <source>Private key</source>
-        <translation>プライベートキー</translation>
+        <translation>개인키</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2047"/>
         <source>Private key password</source>
-        <translation type="unfinished"/>
+        <translation>개인키 암호</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2127"/>
         <source>Use default ciphers</source>
-        <translation type="unfinished"/>
+        <translation>기본 ciphers 사용하기</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="55"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>멈춤</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="101"/>
         <source>RingID</source>
-        <translation>RingID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="229"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>파일 선택</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="231"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>파일들 (*)</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="304"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>PIN을 생성하는 동안 잠시만 기다려주세요.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="323"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>네트워크 오류입니다. 잠시 후 다시 시도하세요.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Wrong password.</source>
-        <translation>パスワードが間違っています。</translation>
+        <translation>잘못된 암호입니다.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="354"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>등록중... 잠시만 기다려주세요.</translation>
     </message>
 </context>
 <context>
@@ -425,17 +426,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>서식</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="66"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>차단한 ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="98"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>차단 해제 후 연락처 목록에 추가</translation>
     </message>
 </context>
 <context>
@@ -443,12 +444,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callutilsdialog.ui" line="65"/>
         <source>or type number...</source>
-        <translation type="unfinished"/>
+        <translation>혹은 번호를 입력하세요...</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="104"/>
         <source>Transfer</source>
-        <translation>転送</translation>
+        <translation>보내기</translation>
     </message>
 </context>
 <context>
@@ -456,70 +457,70 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="213"/>
         <source>Search contacts or enter ring ID</source>
-        <translation type="unfinished"/>
+        <translation>연락처나 ring ID를 입력하여 찾기</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="324"/>
         <source>Conversations</source>
-        <translation>会話</translation>
+        <translation>대화</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="375"/>
         <source>Contact requests</source>
-        <translation>連絡先のリクエスト</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.ui" line="548"/>
         <source>settings menu</source>
-        <translation type="unfinished"/>
+        <translation>설정 메뉴</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="633"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Ring は、ユーザーの自由とプライバシーを尊重する普遍的なコミュニケーションのためのフリーソフトウェアです。</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.ui" line="782"/>
         <source>Share your ring id</source>
-        <translation type="unfinished"/>
+        <translation>ring id 공유하기</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="671"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation>これがあなたのRingIDです。
-コピーして友達とシェアしましょう！</translation>
+        <translation>이것이 당신의 RingID입니다.
+복사 후 당신의 친구들에게 공유하세요!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="888"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>더블클릭으로 복사하기</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="923"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>QR 생성 중 오류</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1193"/>
         <location filename="../callwidget.cpp" line="327"/>
         <source>Add to contacts</source>
-        <translation>連絡先に追加</translation>
+        <translation>연락처에 추가하기</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1222"/>
         <source>Start the conversation !</source>
-        <translation type="unfinished"/>
+        <translation>대화를 시작합니다!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1299"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>여기에 메시지를 입력하세요</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1318"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>메시지 보내기</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -529,37 +530,37 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1454"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>당신과 이야기하고 싶어합니다!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1549"/>
         <source>Answer</source>
-        <translation>応答</translation>
+        <translation>응답</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1581"/>
         <source>Ignore</source>
-        <translation>無視</translation>
+        <translation>무시</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1652"/>
         <source>Calling</source>
-        <translation>発信中</translation>
+        <translation>통화 중</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1725"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1434"/>
         <source>Call</source>
-        <translation>通話</translation>
+        <translation>통화</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="295"/>
         <source>Copy number</source>
-        <translation>番号をコピー</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
@@ -569,12 +570,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
-        <translation type="unfinished"/>
+        <translation>나의 RingId 는 :</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="214"/>
         <source>Copy</source>
-        <translation>コピー</translation>
+        <translation>복사하기</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="227"/>
@@ -589,12 +590,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="263"/>
         <source>Message incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>%1로부터 메시지</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="301"/>
         <source>Copy name</source>
-        <translation>名前をコピー</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="307"/>
@@ -619,12 +620,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>연락처에서 지우기</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation type="unfinished"/>
+        <translation>RING 계정을 찾을 수 없습니다</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="807"/>
@@ -649,12 +650,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="20"/>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation>설정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="100"/>
         <source>General</source>
-        <translation>全般</translation>
+        <translation>일반</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="171"/>
@@ -664,7 +665,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="331"/>
         <source>History Settings</source>
-        <translation>履歴の設定</translation>
+        <translation>이력 설정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="372"/>
@@ -679,42 +680,42 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="469"/>
         <source>Clear History</source>
-        <translation>履歴を消去</translation>
+        <translation>이력 삭제</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="615"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"/>
+        <translation>기타 설정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="637"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>닫을 때 최소화 유지하기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="775"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>지금 업데이트 확인하기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="116"/>
         <source>Video</source>
-        <translation>ビデオ</translation>
+        <translation>비디오</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="249"/>
         <source>Profile</source>
-        <translation>プロフィール</translation>
+        <translation>프로필</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="299"/>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation>이름</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="506"/>
         <source>Record Settings</source>
-        <translation type="unfinished"/>
+        <translation>녹화 설정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="539"/>
@@ -724,22 +725,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="582"/>
         <source>Always Record</source>
-        <translation type="unfinished"/>
+        <translation>항상 녹화하기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="652"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>알람 사용하기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="699"/>
         <source>Check for update automatically every</source>
-        <translation type="unfinished"/>
+        <translation>매번 자동 업데이트 확인</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="736"/>
         <source>days</source>
-        <translation>日</translation>
+        <translation>일</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="888"/>
@@ -749,57 +750,57 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="942"/>
         <source>Device Selection</source>
-        <translation type="unfinished"/>
+        <translation>장치 선택</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1000"/>
         <source>Device</source>
-        <translation>端末</translation>
+        <translation>장치</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1031"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>해상도</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1068"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>출력 장치</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1083"/>
         <source>Input Device</source>
-        <translation type="unfinished"/>
+        <translation>입력 장치</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1180"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>새 계정 추가하기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1242"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>가져오기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1249"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation>내보내기</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="132"/>
         <source>Account</source>
-        <translation>アカウント</translation>
+        <translation>계정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="676"/>
         <source>Launch Ring on Startup</source>
-        <translation type="unfinished"/>
+        <translation>시작 시 Ring 실행</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="310"/>
         <source>New Account</source>
-        <translation>新規アカウント</translation>
+        <translation>새 계정</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="330"/>
@@ -809,12 +810,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.cpp" line="379"/>
         <source>Choose Directory</source>
-        <translation type="unfinished"/>
+        <translation>디렉토리 선택</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="409"/>
         <source>An error occured while importing account.</source>
-        <translation type="unfinished"/>
+        <translation>계정 가져오기 중 오류가 발생하였습니다.</translation>
     </message>
 </context>
 <context>
@@ -827,27 +828,27 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>Search...</source>
-        <translation type="unfinished"/>
+        <translation>찾기...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>Create new contact</source>
-        <translation type="unfinished"/>
+        <translation>새 연락처 추가</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="75"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>새 연락처</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="98"/>
         <source>Enter a name here...</source>
-        <translation type="unfinished"/>
+        <translation>여기에 이름을 입력하세요...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation>생성하기</translation>
     </message>
 </context>
 <context>
@@ -855,7 +856,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>서식</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
@@ -875,7 +876,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="129"/>
         <source>Accept</source>
-        <translation>受け入れ</translation>
+        <translation>수락</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="152"/>
@@ -885,7 +886,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="175"/>
         <source>Block</source>
-        <translation>ブロック</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -893,7 +894,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>서식</translation>
     </message>
 </context>
 <context>
@@ -901,17 +902,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - 계정 삭제</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>정말로 계정을 삭제하시겠습니까?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>이 작업은 되돌이킬 수 없습니다</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
@@ -921,12 +922,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="164"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation>확인</translation>
     </message>
 </context>
 <context>
@@ -939,22 +940,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>이 연락처를 삭제하시겠습니까?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="136"/>
         <source>Delete</source>
-        <translation>削除</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="149"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>삭제하고 차단하기</translation>
     </message>
 </context>
 <context>
@@ -962,12 +963,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="71"/>
         <source>Send text message...</source>
-        <translation type="unfinished"/>
+        <translation>텍스트 메시지 보내기...</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="44"/>
         <source>Copy</source>
-        <translation>コピー</translation>
+        <translation>복사하기</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
@@ -985,17 +986,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation>Ring</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="59"/>
         <source>Configuration</source>
-        <translation>設定</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="62"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>종료</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="81"/>
@@ -1008,27 +1009,27 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../pathpassworddialog.ui" line="26"/>
         <source>Path</source>
-        <translation type="unfinished"/>
+        <translation>경로</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="46"/>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>암호</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="65"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation>확인</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.ui" line="72"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="60"/>
         <source>Save File</source>
-        <translation type="unfinished"/>
+        <translation>파일 저장</translation>
     </message>
     <message>
         <location filename="../pathpassworddialog.cpp" line="62"/>
@@ -1039,7 +1040,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../pathpassworddialog.cpp" line="65"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>파일 열기</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1048,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>포토부스</translation>
     </message>
 </context>
 <context>
@@ -1055,37 +1056,37 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>서식</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="48"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>사진 찍기</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="68"/>
         <source>or</source>
-        <translation type="unfinished"/>
+        <translation>또는</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="81"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>사진 가져오기</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import</source>
-        <translation type="unfinished"/>
+        <translation>가져오기</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>파일 선택하기</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>파일들 (*)</translation>
     </message>
 </context>
 <context>
@@ -1093,13 +1094,13 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>기본 메일 클라이언트를 찾을 수 없습니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="35"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation>Ringアカウント</translation>
+        <translation>Ring 계정</translation>
     </message>
 </context>
 <context>
@@ -1107,7 +1108,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../qualitydialog.ui" line="100"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>자동</translation>
     </message>
 </context>
 <context>
@@ -1115,7 +1116,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>서식</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
@@ -1125,12 +1126,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
         <source>TODO: Explain the purpose of a contact request</source>
-        <translation type="unfinished"/>
+        <translation>할 일: 연락처 요청 이유 설명하기</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>연락처 추가 요청 보내기</translation>
     </message>
 </context>
 <context>
@@ -1143,17 +1144,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>대기 / 대기해제</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation>チャット</translation>
+        <translation>대화하기</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation type="unfinished"/>
+        <translation>사용자 추가</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
@@ -1163,17 +1164,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>마이크 끄기</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="367"/>
         <source>Quality</source>
-        <translation type="unfinished"/>
+        <translation>품질</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="399"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>통화에 참여하기</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="473"/>
@@ -1183,12 +1184,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="495"/>
         <source>Add to contact</source>
-        <translation type="unfinished"/>
+        <translation>연락처에 추가</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="565"/>
         <source>Time elapsed</source>
-        <translation type="unfinished"/>
+        <translation>경과한 시간</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
@@ -1198,12 +1199,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation>受話</translation>
+        <translation>통화종료</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation>動画オフ</translation>
+        <translation>비디오 숨기기</translation>
     </message>
 </context>
 <context>
@@ -1211,17 +1212,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videoview.cpp" line="235"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"/>
+        <translation>전체화면 공유하기</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="238"/>
         <source>Share screen area</source>
-        <translation>画面を共有</translation>
+        <translation>화면 영역 공유하기</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="245"/>
         <source>Share file</source>
-        <translation>ファイルを共有</translation>
+        <translation>파일 공유하기</translation>
     </message>
 </context>
 <context>
@@ -1229,67 +1230,67 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="69"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>당신의 계정은 이전이 필요합니다. 암호를 입력하세요.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="107"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>당신의 Ring 계정을 이전 중입니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="127"/>
         <source>Unknown</source>
-        <translation>不明</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="161"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>당신의 공개 사용자명을 등록 중입니다. 잠시만 기다리세요.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="221"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>장치 추가하기</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="326"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>사용할 수 없는 사용자명입니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="329"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>사용 가능한 사용자명입니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="332"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>올바르지 않은 사용자명입니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="335"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>네트워크 오류</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="127"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ring 계정 생성</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="140"/>
         <source>Link this device to an account</source>
-        <translation>このデバイスをアカウントへリンク</translation>
+        <translation>이 장치를 계정에 연결하기</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="172"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>장치를 추가하는 법</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="69"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>환영합니다</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="179"/>
@@ -1308,71 +1309,71 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="207"/>
         <source>Create your profile</source>
-        <translation>プロフィールを作成</translation>
+        <translation>프로필 만들기</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="312"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>풀 네임을 입력하세요:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="368"/>
         <location filename="../wizarddialog.cpp" line="225"/>
         <source>Create your account</source>
-        <translation type="unfinished"/>
+        <translation>계정 생성하기</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="441"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>사용자명 선택</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="457"/>
         <location filename="../wizarddialog.cpp" line="298"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>검색 중...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="466"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Ring에서 사용할 사용자명을 등록하세요. 이는 당신만 사용할 수 있는 사용자 명입니다. 당신의 친구가 RingID를 사용하는 것 대신 사용자 이름으로 연결할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="469"/>
         <source>Register public username (experimental)</source>
-        <translation>公開ユーザー名を登録 (実験的)</translation>
+        <translation>공개 사용자명을 등록하세요 (실험중)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="496"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>PIN 번호를 입력하세요.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="526"/>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>암호</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="556"/>
         <source>Confirm password</source>
-        <translation>パスワードの再入力</translation>
+        <translation>암호 확인</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="624"/>
         <location filename="../wizarddialog.cpp" line="109"/>
         <source>Generating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Ring 계정 생성 중...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="660"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>이전</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="692"/>
         <location filename="../wizarddialog.ui" line="695"/>
         <source>Next</source>
-        <translation>次へ</translation>
+        <translation>다음</translation>
     </message>
 </context>
 </TS>
