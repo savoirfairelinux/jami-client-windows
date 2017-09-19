@@ -15,56 +15,37 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#ifndef MESSAGEMODEL_H
+#define MESSAGEMODEL_H
 
-#ifndef SMARTLISTMODEL_H
-#define SMARTLISTMODEL_H
-
-// Qt include
+// Qt
 #include <QAbstractItemModel>
 
 // LRC
-#include "api/account.h"
 #include "api/conversation.h"
-#include "api/contact.h"
 
-namespace lrc { namespace api { class ConversationModel; } }
-
-class SmartListModel : public QAbstractItemModel
+class MessageModel : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    using AccountInfo = lrc::api::account::Info;
-    using ConversationInfo = lrc::api::conversation::Info;
-    using ContactInfo = lrc::api::contact::Info;
-
     enum Role {
-        DisplayName = Qt::UserRole+1,
-        DisplayID,
-        Picture,
-        Presence,
-        URI,
-        UnreadMessagesCount,
-        LastInteractionDate,
-        LastInteraction,
-        Messages
+        Body = Qt::UserRole+1,
+        Timestamp,
+        IsOutgoing
     };
 
-    explicit SmartListModel(const AccountInfo& acc, QObject *parent = 0);
+    explicit MessageModel(const lrc::api::conversation::Info& conv, QObject *parent = 0);
 
     // QAbstractItemModel
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex &child) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    QModelIndex parent(const QModelIndex &child) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
-
-    // ConversationModel
-    void setFilter(const QString& filter);
 
 private:
-    const AccountInfo& acc_;
+    const lrc::api::conversation::Info& conv_;
 };
 
-#endif // SMARTLISTMODEL_H
+#endif // MESSAGEMODEL_H
