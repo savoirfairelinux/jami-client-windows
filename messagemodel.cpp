@@ -1,0 +1,88 @@
+/***************************************************************************
+ * Copyright (C) 2017 by Savoir-faire Linux                                *
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ *                                                                         *
+ * This program is free software; you can redistribute it and/or modify    *
+ * it under the terms of the GNU General Public License as published by    *
+ * the Free Software Foundation; either version 3 of the License, or       *
+ * (at your option) any later version.                                     *
+ *                                                                         *
+ * This program is distributed in the hope that it will be useful,         *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
+ * GNU General Public License for more details.                            *
+ *                                                                         *
+ * You should have received a copy of the GNU General Public License       *
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+ **************************************************************************/
+// Qt
+#include <QDateTime>
+
+// Client
+#include "messagemodel.h"
+
+MessageModel::MessageModel(const MessageModel::ConversationInfo &conv, const MessageModel::AccountInfo &acc, QObject *parent)
+    : QAbstractItemModel(parent),
+      conv_(conv),
+      acc_(acc)
+{
+}
+
+QModelIndex MessageModel::index(int row, int column, const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+
+    if (column != 0)
+        return QModelIndex();
+
+    auto it = conv_.interactions.find(row);
+    if (it != conv_.interactions.end())
+        return createIndex(row, column);
+
+    return QModelIndex();
+}
+
+QModelIndex MessageModel::parent(const QModelIndex &child) const
+{
+    Q_UNUSED(child)
+
+    return QModelIndex();
+}
+
+int MessageModel::rowCount(const QModelIndex &parent) const
+{
+    if (!parent.isValid())
+        return conv_.interactions.size();
+
+    return 0;
+}
+
+int MessageModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+
+    return 1;
+}
+
+QVariant MessageModel::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid())
+        return QVariant();
+
+    switch(role) {
+    case Qt::DisplayRole:
+    case Role::Body:
+        return QVariant(QString::fromStdString(conv_.interactions.at(index.row()).body));
+    case Role::IsOutgoing:
+        return QVariant(lrc::api::interaction::isOutgoing(conv_.interactions.at(index.row())));
+    case Role::Timestamp:
+        return QVariant(QDateTime::fromTime_t(conv_.interactions.at(index.row()).timestamp));
+    default:
+        return QVariant();
+    }
+}
+
+void MessageModel::sendMessage(const QString &body)
+{
+    acc_.conversationModel->sendMessage(conv_.uid, body.toStdString());
+}

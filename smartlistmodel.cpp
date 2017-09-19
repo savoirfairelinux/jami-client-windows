@@ -26,6 +26,7 @@
 // Client
 #include "smartlistmodel.h"
 #include "pixbufmanipulator.h"
+#include "messagemodel.h"
 
 SmartListModel::SmartListModel(const AccountInfo &acc, QObject *parent)
     : QAbstractItemModel(parent),
