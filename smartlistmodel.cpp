@@ -26,6 +26,7 @@
 // Client
 #include "smartlistmodel.h"
 #include "pixbufmanipulator.h"
+#include "messagemodel.h"
 
 SmartListModel::SmartListModel(const AccountInfo &acc, QObject *parent)
     : QAbstractItemModel(parent),
@@ -99,6 +100,10 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
         }
         case Role::LastInteraction:
             return QVariant(QString());
+        case Role::Messages:
+        {
+            return QVariant::fromValue(reinterpret_cast<void*>(new MessageModel(*item)));
+        }
         }
     }
 
