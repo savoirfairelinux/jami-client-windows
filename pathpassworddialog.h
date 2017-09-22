@@ -20,6 +20,8 @@
 
 #include <QDialog>
 
+#include "account.h"
+
 namespace Ui {
 class PathPasswordDialog;
 }
@@ -29,20 +31,21 @@ class PathPasswordDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit PathPasswordDialog(QWidget* parent = 0);
+    explicit PathPasswordDialog(bool exportMode = false, QWidget* parent = 0);
     ~PathPasswordDialog();
 
-    QString password_;
-    QString path_;
-    bool exportMode = false;
-
-//UI SLOTS
 private slots:
     void on_okButton_clicked();
-    void on_rejectButton_clicked();
     void on_pathButtonEdit_clicked();
     void on_passwordLineEdit_textChanged(const QString& password);
+    void endAccountMove(Account::RegistrationState state);
+    void on_cancelButton_clicked();
 
 private:
     Ui::PathPasswordDialog* ui;
+
+    QString password_;
+    QString path_;
+    Account *account_;
+    bool exportMode_;
 };
