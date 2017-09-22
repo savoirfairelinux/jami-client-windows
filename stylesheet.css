@@ -293,7 +293,8 @@ QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoBut
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#sendContactRequestPageButton,
-QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn{
+QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
+QPushButton#dhtImportBtn, QPushButton#fileImportBtn {
     background-color: #3AC0D2;
     border: 0px;
     color: white;
@@ -315,7 +316,7 @@ QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#e
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#sendContactRequestPageButton:hover,
 QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
-QPushButton#deleteCancelBtn:hover{
+QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover{
     background-color: #4dc6d6;
 }
 
@@ -332,7 +333,7 @@ QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButt
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
 QPushButton#registerButton:pressed, QPushButton#sendContactRequestPageButton:pressed,
 QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed,
-QPushButton#deleteCancelBtn:pressed{
+QPushButton#deleteCancelBtn:pressed, QPushButton#dhtImportBtn:pressed, QPushButton#fileImportBtn:pressed{
     background-color: #34acbd;
 }
 
@@ -342,7 +343,7 @@ QPushButton#deleteBanBtn:pressed{
 }
 
 QLineEdit#usernameEdit:enabled, QLineEdit#passwordEdit:enabled, QLineEdit#confirmPasswordEdit:enabled,
-QLineEdit#pinEdit:enabled, QLineEdit#fullNameEdit:enabled{
+QLineEdit#pinEdit:enabled, QLineEdit#fullNameEdit:enabled, QLineEdit#archivePasswordInput:enabled {
     border-color: rgb(0, 192, 212);
     border-radius: 5px;
     border-width: 1px;
@@ -351,7 +352,7 @@ QLineEdit#pinEdit:enabled, QLineEdit#fullNameEdit:enabled{
 }
 
 QLineEdit#usernameEdit:disabled, QLineEdit#passwordEdit:disabled, QLineEdit#confirmPasswordEdit:disabled,
-QLineEdit#pinEdit:disabled, QLineEdit#fullNameEdit:disabled{
+QLineEdit#pinEdit:disabled, QLineEdit#fullNameEdit:disabled, QLineEdit#archivePasswordInput:disabled {
     border-color: rgb(159, 157, 154);
     border-radius: 5px;
     border-width: 1px;
