@@ -38,16 +38,13 @@ public:
     enum WizardMode {
         WIZARD,
         NEW_ACCOUNT,
+        IMPORT,
         MIGRATION
     };
 
 public:
     explicit WizardDialog(WizardMode wizardMode = WIZARD, Account* toBeMigrated = nullptr, QWidget* parent = 0);
     ~WizardDialog();
-
-// Overrided function
-protected slots:
-    void accept();
 
 //UI Slots
 private slots:
@@ -66,6 +63,9 @@ private slots:
     void on_photoTaken(QString fileName);
     void on_signUpCheckbox_toggled(bool checked);
     void closeEvent(QCloseEvent* event);
+    void on_archivePathSelector_clicked();
+    void on_dhtImportBtn_clicked();
+    void on_fileImportBtn_clicked();
 
 private:
     Ui::WizardDialog* ui;
@@ -77,4 +77,10 @@ private:
     void setup();
     void changePage(bool existingAccount);
     void usernameFailedRegistration();
+    void validateFileImport();
+    void createRingAccount(const QString &displayName = QString(),
+                           const QString &password = QString(),
+                           const QString &pin = QString(),
+                           const QString &archivePath = QString());
+    void processWizardInformations();
 };

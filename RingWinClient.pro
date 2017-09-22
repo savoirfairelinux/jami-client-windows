@@ -70,7 +70,6 @@ SOURCES += main.cpp\
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
     ringbutton.cpp \
-    pathpassworddialog.cpp \
     photoboothdialog.cpp \
     sendcontactrequestwidget.cpp \
     currentaccountwidget.cpp \
@@ -114,7 +113,6 @@ HEADERS  += mainwindow.h \
     qualitydialog.h \
     ringthemeutils.h \
     ringbutton.h \
-    pathpassworddialog.h \
     photoboothdialog.h \
     sendcontactrequestwidget.h \
     currentaccountwidget.h \
@@ -147,7 +145,6 @@ FORMS    += mainwindow.ui \
     combar.ui \
     qualitydialog.ui \
     ringbutton.ui \
-    pathpassworddialog.ui \
     photoboothdialog.ui \
     sendcontactrequestwidget.ui \
     currentaccountwidget.ui \
