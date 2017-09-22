@@ -198,7 +198,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     //temporary fix hiding imports buttons
     ui->exportButton->hide();
-    ui->importButton->hide();
 
     ui->intervalUpdateCheckSpinBox->setEnabled(true);
 }
@@ -416,16 +415,16 @@ void
 ConfigurationWidget::on_importButton_clicked()
 {
     PathPasswordDialog dlg;
-    if (dlg.exec() == QDialog::Accepted)
-        if (AccountModel::instance().importAccounts(dlg.path_, dlg.password_) > 0)
-            errorDlg_.showMessage(tr("An error occured while importing account."));
+    if (dlg.exec() == QDialog::Rejected)
+        errorDlg_.showMessage(tr("An error occured while importing account."));
 }
+
 
 void
 ConfigurationWidget::on_exportButton_clicked()
 {
-    PathPasswordDialog dlg;
-    dlg.exportMode = true;
+   /*
+    PathPasswordDialog dlg(true);
     if (dlg.exec() == QDialog::Accepted) {
         auto func = [](QString path, QString password)
         {
@@ -436,7 +435,9 @@ ConfigurationWidget::on_exportButton_clicked()
         };
         QtConcurrent::run(func, dlg.path_, dlg.password_);
     }
+    */
 }
+
 
 void
 ConfigurationWidget::on_avatarButton_clicked()
