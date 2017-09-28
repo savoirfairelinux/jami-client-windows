@@ -66,6 +66,9 @@ private slots:
     void videoCodecSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void exportOnRingEnded(Account::ExportOnRingStatus state, const QString& pin);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
+    void on_changePassBtn_clicked();
+    void on_confirmChangeBtn_clicked();
+    void on_cancelChangeBtn_clicked();
 
 private:
     Ui::AccountDetails* ui;
@@ -75,4 +78,5 @@ private:
     QMap<QString, ACC_PTR > certMap_;
 
     void stopRingtone();
+    void resetPasswordChangeUI();
 };
