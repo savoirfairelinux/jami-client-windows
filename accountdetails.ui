@@ -100,8 +100,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>843</width>
-            <height>726</height>
+            <width>829</width>
+            <height>912</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -449,7 +449,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="4" column="0">
+               <item row="12" column="0">
                 <widget class="QLabel" name="passwordLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -473,7 +473,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="4" column="1">
+               <item row="12" column="1">
                 <widget class="QLineEdit" name="lrcfg_password">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -495,7 +495,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="5" column="0">
+               <item row="13" column="0">
                 <widget class="QLabel" name="proxyLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -519,7 +519,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="5" column="1">
+               <item row="13" column="1">
                 <widget class="QLineEdit" name="lrcfg_proxy">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -538,7 +538,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="6" column="0">
+               <item row="14" column="0">
                 <widget class="QLabel" name="voicemailLabel">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -562,7 +562,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="6" column="1">
+               <item row="14" column="1">
                 <widget class="QLineEdit" name="lrcfg_mailbox">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -581,7 +581,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="7" column="0">
+               <item row="15" column="0">
                 <widget class="QCheckBox" name="lrcfg_autoAnswer">
                  <property name="font">
                   <font>
@@ -599,7 +599,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="8" column="0">
+               <item row="16" column="0">
                 <widget class="QCheckBox" name="lrcfg_upnpEnabled">
                  <property name="enabled">
                   <bool>true</bool>
@@ -617,6 +617,188 @@
                  </property>
                  <property name="text">
                   <string>UPnP enabled</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QLineEdit" name="oldPasswordLineEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Old password input line</string>
+                 </property>
+                 <property name="inputMask">
+                  <string/>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Input old password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="oldPasswordLabel">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>Old Password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QLineEdit" name="newPasswordLineEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>New password text input</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Input new password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="newPasswordLabel">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>New password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QLineEdit" name="newPassConfirmationLineEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Password confirmation text input</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Input confirmation </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="newPassConfirmationLabel">
+                 <property name="font">
+                  <font>
+                   <family>Cantarell</family>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>New pass confirmation</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="changePassBtn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>500</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Change password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="confirmChangeBtn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>500</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Ok</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="cancelChangeBtn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>Cancel password change button</string>
+                   </property>
+                   <property name="text">
+                    <string>Cancel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="8" column="1">
+                <widget class="QLabel" name="changePassInfo">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(77, 77, 77);</string>
+                 </property>
+                 <property name="text">
+                  <string>Changing password ...</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -2034,7 +2216,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-34</y>
+            <y>0</y>
             <width>829</width>
             <height>760</height>
            </rect>
@@ -2608,7 +2790,7 @@
   <customwidget>
    <class>RingButton</class>
    <extends>QPushButton</extends>
-   <header location="global">ringbutton.h</header>
+   <header>ringbutton.h</header>
   </customwidget>
   <customwidget>
    <class>BannedContactsWidget</class>
