@@ -31,12 +31,14 @@ public:
     explicit RingButton(QWidget* parent = 0);
     ~RingButton();
     void setText(const QString& text);
+    QString text();
 
 protected:
     void mousePressEvent(QMouseEvent* event);
 
 private:
     Ui::RingButton* ui;
+    QString path_ {};
 
 signals:
     void clicked() const;

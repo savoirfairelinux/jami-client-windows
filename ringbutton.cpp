@@ -36,10 +36,19 @@ RingButton::~RingButton()
 void
 RingButton::setText(const QString& text)
 {
-    ui->button->setText(text);
-    ui->button->resize(ui->button->sizeHint().width(),
-                       ui->button->sizeHint().height());
+    if (! text.isEmpty() && ! text.isNull()) {
+        ui->button->setText(text);
+        ui->button->resize(ui->button->sizeHint().width(),
+                           ui->button->sizeHint().height());
+        path_ = text;
+    }
 }
+
+QString RingButton::text()
+{
+    return path_;
+}
+
 
 void
 RingButton::mousePressEvent(QMouseEvent* event)
