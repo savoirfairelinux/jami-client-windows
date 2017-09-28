@@ -37,6 +37,7 @@ AccountDetails::AccountDetails(QWidget *parent) :
     currentAccount_(nullptr)
 {
     ui->setupUi(this);
+    resetPasswordChangeUI();
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
@@ -93,6 +94,7 @@ AccountDetails::setAccount(Account* currentAccount) {
     }
 
     currentAccount_ = currentAccount;
+    resetPasswordChangeUI();
 
     if (currentAccount_ == nullptr)
         return;
@@ -397,4 +399,82 @@ void AccountDetails::handle_nameRegistrationEnded(NameDirectory::RegisterNameSta
         break;
     }
 
+}
+
+void
+AccountDetails::on_changePassBtn_clicked()
+{
+    ui->oldPasswordLabel->show();
+    ui->oldPasswordLineEdit->show();
+    ui->oldPasswordLabel->setEnabled(currentAccount_->archiveHasPassword());
+    ui->oldPasswordLineEdit->setEnabled(currentAccount_->archiveHasPassword());
+
+    ui->newPasswordLabel->show();
+    ui->newPasswordLineEdit->show();
+
+    ui->newPassConfirmationLabel->show();
+    ui->newPassConfirmationLineEdit->show();
+
+    ui->changePassBtn->hide();
+    ui->confirmChangeBtn->show();
+    ui->cancelChangeBtn->show();
+}
+
+void
+AccountDetails::on_confirmChangeBtn_clicked()
+{
+    ui->oldPasswordLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+
+    if (ui->newPassConfirmationLineEdit->text() == ui->newPasswordLineEdit->text()) {
+        ui->changePassInfo->show();
+        ui->changePassInfo->setText("Changing password ...");
+
+        // reset border stylesheet
+        ui->newPassConfirmationLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+        ui->newPasswordLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+
+        if (currentAccount_->changePassword(ui->oldPasswordLineEdit->text(), ui->newPasswordLineEdit->text())) {
+            resetPasswordChangeUI();
+            AccountModel::instance().save();
+        } else {
+            ui->oldPasswordLineEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+            ui->changePassInfo->setText("Wrong password");
+        }
+    } else {
+        // set borders red to show mismatch
+        ui->newPassConfirmationLineEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+        ui->newPasswordLineEdit->setStyleSheet("border-color: rgb(204, 0, 0);");
+        ui->changePassInfo->setText("New password and confirmation mismatched");
+        ui->changePassInfo->show();
+    }
+}
+
+void
+AccountDetails::resetPasswordChangeUI()
+{
+    ui->oldPasswordLabel->hide();
+    ui->oldPasswordLineEdit->clear();
+    ui->oldPasswordLineEdit->hide();
+    ui->oldPasswordLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+
+    ui->newPasswordLabel->hide();
+    ui->newPasswordLineEdit->clear();
+    ui->newPasswordLineEdit->hide();
+    ui->newPasswordLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+
+    ui->newPassConfirmationLabel->hide();
+    ui->newPassConfirmationLineEdit->clear();
+    ui->newPassConfirmationLineEdit->hide();
+    ui->newPassConfirmationLineEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
+
+    ui->changePassBtn->show();
+    ui->confirmChangeBtn->hide();
+    ui->cancelChangeBtn->hide();
+
+    ui->changePassInfo->hide();
+}
+
+void AccountDetails::on_cancelChangeBtn_clicked()
+{
+    resetPasswordChangeUI();
 }
