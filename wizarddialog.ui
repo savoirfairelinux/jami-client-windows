@@ -750,22 +750,6 @@ p, li { white-space: pre-wrap; }
         </layout>
        </item>
        <item alignment="Qt::AlignHCenter">
-        <widget class="QCheckBox" name="disablePassword">
-         <property name="toolTip">
-          <string>Disable password checkbox</string>
-         </property>
-         <property name="accessibleName">
-          <string/>
-         </property>
-         <property name="accessibleDescription">
-          <string/>
-         </property>
-         <property name="text">
-          <string> I do not want to set a password</string>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="pinEdit">
          <property name="minimumSize">
           <size>
