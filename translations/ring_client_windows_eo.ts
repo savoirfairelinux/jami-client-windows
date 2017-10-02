@@ -992,7 +992,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Aŭdio/Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1002,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Kontoj</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1778,7 +1778,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Agordo</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>

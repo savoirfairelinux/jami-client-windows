@@ -1000,7 +1000,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Accounts</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>

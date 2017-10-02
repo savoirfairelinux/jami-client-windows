@@ -992,7 +992,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Garsas/Vaizdas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1002,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1778,7 +1778,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Konfigūracija</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -1934,12 +1934,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Vediklio dialogas</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="36"/>
         <source>Account creation wizard dialog</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros sukūrimo vediklio dialogas</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="72"/>

@@ -143,7 +143,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>nom affiché</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -992,7 +992,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Audio/Vidéo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1002,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Comptes</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1778,7 +1778,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>

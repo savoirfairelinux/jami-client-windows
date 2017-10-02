@@ -992,7 +992,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>오디오/비디오</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>

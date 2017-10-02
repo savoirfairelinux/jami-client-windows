@@ -1001,7 +1001,7 @@ Copie e avise seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Contas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>

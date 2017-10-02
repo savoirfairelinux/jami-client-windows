@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>botão sobre</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>botão créditos</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -138,22 +138,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração das informações gerais da conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Nome em exibição</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de pseudônimo em exibição</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Endereço hostname para SIP ou DHT</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -163,12 +163,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Usuário publico registrado no Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Usuário registrado no botão do blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -189,37 +189,37 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de URL do serviço de nomes</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de usuário SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de senha SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de URL do proxy SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Número de mensagem de voz SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Checkbox do atendimento automático de ligação</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Checkbox de ativação UPnP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="650"/>
@@ -992,7 +992,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Áudio/Vídeo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1002,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Contas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1778,7 +1778,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -2049,7 +2049,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="620"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Campo de texto da Senha</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="626"/>
@@ -2060,7 +2060,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="653"/>
         <location filename="../wizarddialog.ui" line="659"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Campo de texto para confirmação da Senha</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="665"/>
@@ -2076,12 +2076,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="769"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Botão da página anterior</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="775"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Pressione botão para acessar a página anterior do assistente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
@@ -2091,12 +2091,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="810"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Botão da próxima página</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="816"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Pressione botão para acessar próxima página do assistente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="819"/>

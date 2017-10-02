@@ -992,7 +992,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Hang/videó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1002,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Fiókok</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1778,7 +1778,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Konfiguráció</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>

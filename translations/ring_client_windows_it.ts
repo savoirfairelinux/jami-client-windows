@@ -991,7 +991,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Audio/Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1001,7 +1001,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Accounts</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1777,7 +1777,7 @@ Da copiare e condividere con gli amici!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configurazione</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>

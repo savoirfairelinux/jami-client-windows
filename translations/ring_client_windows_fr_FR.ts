@@ -990,7 +990,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Audio/Video</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1776,7 +1776,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>

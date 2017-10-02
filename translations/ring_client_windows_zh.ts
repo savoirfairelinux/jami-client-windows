@@ -991,7 +991,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>音訊/視訊</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1001,7 +1001,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>帳號</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1777,7 +1777,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
