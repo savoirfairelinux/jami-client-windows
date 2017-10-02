@@ -80,19 +80,6 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     connect(&nameLookupTimer_, QTimer::timeout, this, WizardDialog::timeoutNameLookupTimer);
     connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, WizardDialog::on_photoTaken);
     ui->avatarLabel->hide();
-    ui->disablePassword->setChecked(false);
-
-    connect(ui->disablePassword, QCheckBox::stateChanged, [=](int state){
-        if (state == Qt::Checked){
-            ui->passwordEdit->setEnabled(false);
-            ui->passwordEdit->clear();
-            ui->confirmPasswordEdit->setEnabled(false);
-            ui->confirmPasswordEdit->clear();
-        } else if (Qt::Unchecked || Qt::PartiallyChecked) {
-            ui->passwordEdit->setEnabled(true);
-            ui->confirmPasswordEdit->setEnabled(true);
-        }
-    });
 }
 
 WizardDialog::~WizardDialog()
