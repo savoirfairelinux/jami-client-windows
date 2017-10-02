@@ -685,6 +685,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
@@ -745,25 +748,12 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>Searching...</string>
            </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
           </widget>
          </item>
         </layout>
-       </item>
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QCheckBox" name="disablePassword">
-         <property name="toolTip">
-          <string>Disable password checkbox</string>
-         </property>
-         <property name="accessibleName">
-          <string/>
-         </property>
-         <property name="accessibleDescription">
-          <string/>
-         </property>
-         <property name="text">
-          <string> I do not want to set a password</string>
-         </property>
-        </widget>
        </item>
        <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="pinEdit">
@@ -1040,15 +1030,15 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
+   <class>RingButton</class>
+   <extends>QPushButton</extends>
+   <header>ringbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>PhotoboothWidget</class>
    <extends>QWidget</extends>
    <header>photoboothwidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>RingButton</class>
-   <extends>QPushButton</extends>
-   <header>ringbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
