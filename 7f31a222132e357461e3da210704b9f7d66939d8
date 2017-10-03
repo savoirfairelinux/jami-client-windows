@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_9795aae6",
+        "filename": "accountdetails.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 123
+      },
+      "writtenOn": "2017-10-03T20:53:42Z",
+      "side": 1,
+      "message": "The method to call is AccountModel::save() with instance of AccountModel. The one you used is AccountDetails::save() which save codecs.",
+      "range": {
+        "startLine": 438,
+        "startChar": 12,
+        "endLine": 438,
+        "endChar": 19
+      },
+      "revId": "7f31a222132e357461e3da210704b9f7d66939d8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    }
+  ]
+}
