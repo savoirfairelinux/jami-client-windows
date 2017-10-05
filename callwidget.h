@@ -29,6 +29,7 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "clientaccountmodel.h"
 
 #include "callmodel.h"
 #include "video/renderer.h"
@@ -36,6 +37,7 @@
 #include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
+#include "api/lrc.h"
 
 class SmartListDelegate;
 class ImDelegate;
@@ -69,7 +71,6 @@ private slots:
     void on_acceptButton_clicked();
     void on_refuseButton_clicked();
     void on_cancelButton_clicked();
-    void on_smartList_doubleClicked(const QModelIndex& index);
     void on_sendIMButton_clicked();
     void on_imMessageEdit_returnPressed();
     void on_ringContactLineEdit_textChanged(const QString& text);
@@ -96,6 +97,8 @@ private slots:
     void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
+    std::unique_ptr<lrc::api::Lrc> lrc_;
+    const lrc::api::NewAccountModel& accMdl_;
     Ui::CallWidget* ui;
     Call* actualCall_;
     Video::Renderer* videoRenderer_;

@@ -32,6 +32,7 @@
 #include "utils.h"
 #undef ERROR
 #undef interface
+#undef REGISTERED
 
 //LRC
 #include "audio/settings.h"
@@ -54,6 +55,7 @@
 #include "peerprofilecollection.h"
 #include "localprofilecollection.h"
 #include "callmodel.h"
+#include "api/newaccountmodel.h"
 
 //Client
 #include "wizarddialog.h"
@@ -67,10 +69,13 @@
 #include "settingskey.h"
 #include "contactrequestitemdelegate.h"
 #include "deletecontactdialog.h"
+#include "smartlistmodel.h"
 
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
+    lrc_(new lrc::api::Lrc()),
+    accMdl_(lrc_->getAccountModel()),
     ui(new Ui::CallWidget),
     menu_(new QMenu()),
     imDelegate_(new ImDelegate())
@@ -101,15 +106,14 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
-        RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
-        RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
-        ui->smartList->setModel(RecentModel::instance().peopleProxy());
-
-        PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
-        ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
-
-        PersonModel::instance().
-                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+        // Load SmartListModel for first account
+        // TODO: Load for every account
+        if (accMdl_.getAccountList().size() > 0) {
+            qDebug() << "BURP";
+            auto* slMdl = new SmartListModel(accMdl_.getAccountInfo(accMdl_.getAccountList().at(0)));
+            ui->smartList->setModel(slMdl);
+        } else
+            qDebug() << "PLOUP";
 
         connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
 
@@ -167,17 +171,6 @@ CallWidget::CallWidget(QWidget* parent) :
             else
                 ui->contactRequestList->selectionModel()->clear();
         });
-
-        connect(AvailableAccountModel::instance().selectionModel(), &QItemSelectionModel::currentChanged,
-                this, &CallWidget::selectedAccountChanged);
-
-        // It needs to be called manually once to initialize the ui with the account selected at start.
-        // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
-        selectedAccountChanged(AvailableAccountModel::instance().selectionModel()->currentIndex(), QModelIndex());
-
-        // This connect() is used to initialise and track changes of profile's picture
-        connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-                ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
         connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
 
@@ -564,37 +557,6 @@ CallWidget::on_smartList_clicked(const QModelIndex& index)
 }
 
 void
-CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
-{
-    if (!index.isValid())
-        return;
-
-    auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
-    if (RecentModel::instance().hasActiveCall(realIndex))
-        return;
-
-    ContactMethod* m = nullptr;
-    if (auto cm = realIndex.data((int)Call::Role::ContactMethod).value<ContactMethod*>()) {
-        m = cm;
-    } else {
-        if (auto person =  realIndex.data((int)Person::Role::Object).value<Person*>()) {
-            m = person->phoneNumbers().first();
-        }
-    }
-
-    if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
-
-        QPixmap map = QPixmap::fromImage(
-                        GlobalInstances::pixmapManipulator().callPhoto(m, QSize(130,130)).value<QImage>());
-        ui->callingPhoto->setPixmap(map);
-
-        Call* c = CallModel::instance().dialingCall(m);
-        c->performAction(Call::Action::ACCEPT);
-        setActualCall(c);
-    }
-}
-
-void
 CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
 {
     Q_UNUSED(previousIdx);
@@ -702,16 +664,10 @@ void
 CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
-    URI uri_passed = URI(contactLineText);
-    Account* ac = getSelectedAccount();
-
-    if (!contactLineText.isNull() && !contactLineText.isEmpty()){
-        if (uriNeedNameLookup(uri_passed)){
-            NameDirectory::instance().lookupName(ac, QString(), uri_passed);
-        } else {
-            searchContactLineEditEntry(uri_passed);
-        }
-    }
+    auto* mdl = reinterpret_cast<SmartListModel*>(ui->smartList->model());
+    qDebug() << ">>>>>>>>>>> Smart List Model retrieved : " << static_cast<void*>(mdl);
+    qDebug() << ">>>>>>>>>>> Contact Line Text : " << contactLineText;
+    mdl->setFilter(contactLineText);
 }
 
 void
@@ -732,7 +688,7 @@ CallWidget::btnComBarVideoClicked()
     if (not highLightedIndex_.isValid())
         return;
 
-    on_smartList_doubleClicked(highLightedIndex_);
+    //on_smartList_doubleClicked(highLightedIndex_);
 }
 
 void
@@ -791,8 +747,8 @@ void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
     ui->contactMethodComboBox->clear();
-    QString name = nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString();
-    QString number = nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString();
+    QString name = nodeIdx.data(static_cast<int>(SmartListModel::Role::DisplayName)).toString();
+    QString number = nodeIdx.data(static_cast<int>(SmartListModel::Role::DisplayID)).toString();
 
     if (getSelectedAccount()->isIp2ip()){
         ui->imMessageEdit->setPlaceholderText("No messaging possible out of call (SIP) ");
