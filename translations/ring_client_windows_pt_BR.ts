@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>botão sobre</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>botão créditos</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -89,14 +89,14 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
-        <location filename="../accountdetails.ui" line="1572"/>
-        <location filename="../accountdetails.cpp" line="115"/>
+        <location filename="../accountdetails.ui" line="1754"/>
+        <location filename="../accountdetails.cpp" line="117"/>
         <source>Username</source>
         <translation>Nome de usuário</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="469"/>
-        <location filename="../accountdetails.ui" line="1594"/>
+        <location filename="../accountdetails.ui" line="1776"/>
         <source>Password</source>
         <translation>Senha</translation>
     </message>
@@ -121,39 +121,39 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <translation>UPnP ativado</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="680"/>
+        <location filename="../accountdetails.ui" line="862"/>
         <source>Allow Call From Unknown</source>
         <translation>Aceitar Chamada de Desconhecido</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="713"/>
+        <location filename="../accountdetails.ui" line="895"/>
         <source>Allow Call From Contact</source>
         <translation>Aceitar Chamada de Contato</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="698"/>
+        <location filename="../accountdetails.ui" line="880"/>
         <source>Allow Call From History</source>
         <translation>Aceitar Chamada de Histórico</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração das informações gerais da conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Nome em exibição</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de pseudônimo em exibição</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Endereço hostname para SIP ou DHT</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -163,21 +163,21 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Usuário publico registrado no Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Usuário registrado no botão do blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="106"/>
-        <location filename="../accountdetails.cpp" line="359"/>
-        <location filename="../accountdetails.cpp" line="376"/>
-        <location filename="../accountdetails.cpp" line="381"/>
-        <location filename="../accountdetails.cpp" line="386"/>
-        <location filename="../accountdetails.cpp" line="391"/>
+        <location filename="../accountdetails.cpp" line="108"/>
+        <location filename="../accountdetails.cpp" line="361"/>
+        <location filename="../accountdetails.cpp" line="378"/>
+        <location filename="../accountdetails.cpp" line="383"/>
+        <location filename="../accountdetails.cpp" line="388"/>
+        <location filename="../accountdetails.cpp" line="393"/>
         <source>Register on blockchain</source>
         <translation>Registrar no blockchain</translation>
     </message>
@@ -189,481 +189,547 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de URL do serviço de nomes</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de usuário SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de senha SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de URL do proxy SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Número de mensagem de voz SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Checkbox do atendimento automático de ligação</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
+        <translation>Checkbox de ativação UPnP</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="632"/>
+        <source>Old password input line</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="650"/>
-        <source>Ring Account Settings</source>
-        <translation>Configurações de Conta do Ring</translation>
+        <location filename="../accountdetails.ui" line="641"/>
+        <source>Input old password</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="674"/>
-        <source>Allow call from unknown checkbox</source>
+        <location filename="../accountdetails.ui" line="656"/>
+        <source>Old Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="669"/>
+        <source>New password text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="675"/>
+        <source>Input new password</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
+        <source>New password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="705"/>
+        <source>Password confirmation text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="711"/>
+        <source>Input confirmation </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="727"/>
+        <source>New pass confirmation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="751"/>
+        <source>Change password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="770"/>
+        <source>Ok</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="783"/>
+        <source>Cancel password change button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="798"/>
+        <source>Changing password ...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="832"/>
+        <source>Ring Account Settings</source>
+        <translation>Configurações de Conta do Ring</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="856"/>
+        <source>Allow call from unknown checkbox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="710"/>
+        <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="749"/>
+        <location filename="../accountdetails.ui" line="931"/>
         <source>Ringtone Selection</source>
         <translation>Selecionar toque</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="773"/>
+        <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="776"/>
-        <location filename="../accountdetails.cpp" line="57"/>
+        <location filename="../accountdetails.ui" line="958"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Play</source>
         <translation>Reproduzir</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="789"/>
+        <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="839"/>
+        <location filename="../accountdetails.ui" line="1021"/>
         <source>Audio/Video</source>
         <translation>Áudio/Vídeo</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="842"/>
+        <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1058"/>
+        <location filename="../accountdetails.ui" line="1240"/>
         <source>Audio codecs</source>
         <translation>Codecs de Áudio</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1088"/>
+        <location filename="../accountdetails.ui" line="1270"/>
         <source>Video codecs</source>
         <translation>Codecs de Vídeo</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1105"/>
+        <location filename="../accountdetails.ui" line="1287"/>
         <source>Advanced</source>
         <translation>Avançado</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1108"/>
+        <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1154"/>
+        <location filename="../accountdetails.ui" line="1336"/>
         <source>Registration</source>
         <translation>Registro</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1174"/>
+        <location filename="../accountdetails.ui" line="1356"/>
         <source>Registration expire timeout (seconds):</source>
         <translation>Tempo de expiração de registro (segundos):</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1190"/>
+        <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1215"/>
+        <location filename="../accountdetails.ui" line="1397"/>
         <source>Network Interface</source>
         <translation>Interface de Rede</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1236"/>
+        <location filename="../accountdetails.ui" line="1418"/>
         <source>Local Port:</source>
         <translation>Porta Local:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1254"/>
+        <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1340"/>
+        <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1346"/>
+        <location filename="../accountdetails.ui" line="1528"/>
         <source>Same as local parameters</source>
         <translation>Igual aos parâmetros locais</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1364"/>
+        <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1370"/>
+        <location filename="../accountdetails.ui" line="1552"/>
         <source>Set published address and port:</source>
         <translation>Configurar endereço e portas publicadas:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1396"/>
+        <location filename="../accountdetails.ui" line="1578"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1415"/>
+        <location filename="../accountdetails.ui" line="1597"/>
         <source>ip address text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1430"/>
+        <location filename="../accountdetails.ui" line="1612"/>
         <source>Port</source>
         <translation>Porta</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1449"/>
+        <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1484"/>
+        <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1490"/>
+        <location filename="../accountdetails.ui" line="1672"/>
         <source>Use STUN</source>
         <translation>Usar STUN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1506"/>
-        <location filename="../accountdetails.ui" line="1553"/>
+        <location filename="../accountdetails.ui" line="1688"/>
+        <location filename="../accountdetails.ui" line="1735"/>
         <source>Server URL</source>
         <translation>URL do servidor</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1528"/>
+        <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1534"/>
+        <location filename="../accountdetails.ui" line="1716"/>
         <source>Use TURN</source>
         <translation>Usar TURN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1550"/>
+        <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1569"/>
+        <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1588"/>
+        <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1610"/>
+        <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1613"/>
+        <location filename="../accountdetails.ui" line="1795"/>
         <source>Realm</source>
         <translation>Domínio</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1662"/>
+        <location filename="../accountdetails.ui" line="1844"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
         <translation>Negociação de sessão SDP ( ICE Fallback)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1690"/>
+        <location filename="../accountdetails.ui" line="1872"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
         <translation>Estas configurações serão apenas utilizadas durante uma negociação de sessão SDP, caso ICE não seja suportado pelo servidor ou membro.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1732"/>
+        <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
         <translation>Variação de portas de audio RTP</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1762"/>
-        <location filename="../accountdetails.ui" line="1902"/>
+        <location filename="../accountdetails.ui" line="1944"/>
+        <location filename="../accountdetails.ui" line="2084"/>
         <source>Min</source>
         <translation>Min</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1778"/>
-        <location filename="../accountdetails.ui" line="1918"/>
+        <location filename="../accountdetails.ui" line="1960"/>
+        <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1796"/>
-        <location filename="../accountdetails.ui" line="1936"/>
+        <location filename="../accountdetails.ui" line="1978"/>
+        <location filename="../accountdetails.ui" line="2118"/>
         <source>Max</source>
         <translation>Máx</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1812"/>
-        <location filename="../accountdetails.ui" line="1952"/>
+        <location filename="../accountdetails.ui" line="1994"/>
+        <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1872"/>
+        <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
         <translation>Intervalo de portas de Video RTP</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2004"/>
+        <location filename="../accountdetails.ui" line="2186"/>
         <source>Security</source>
         <translation>Segurança</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2007"/>
+        <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2094"/>
+        <location filename="../accountdetails.ui" line="2276"/>
         <source>Certificate authaurity certificate selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2131"/>
+        <location filename="../accountdetails.ui" line="2313"/>
         <source>User certificate selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2189"/>
+        <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2211"/>
+        <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2235"/>
+        <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2238"/>
+        <location filename="../accountdetails.ui" line="2420"/>
         <source>Media Stream Encryption (SRTP)</source>
         <translation>Criptografia de Fluxo de Mídia (SRTP)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2250"/>
+        <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2306"/>
+        <location filename="../accountdetails.ui" line="2488"/>
         <source>Devices</source>
         <translation>Dispositivos</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2309"/>
+        <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2353"/>
+        <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2356"/>
+        <location filename="../accountdetails.ui" line="2538"/>
         <source>Add device</source>
         <translation>Adicionar dispositivo</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2383"/>
+        <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
         <translation>Para adicionar um novo dispositivo à sua conta Ring, você deve exportar sua conta no Ring. Isso gerará um PIN que deve ser entrado em seu novo dispositivo dentro de 5 minutos desde a sua geração.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2396"/>
+        <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2402"/>
+        <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
         <translation>Senha (necessária)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2430"/>
+        <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2433"/>
+        <location filename="../accountdetails.ui" line="786"/>
+        <location filename="../accountdetails.ui" line="2615"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2459"/>
+        <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2462"/>
+        <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the Ring</source>
         <translation>Exportar no Ring</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2514"/>
+        <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
         <translation>Seu PIN gerado:</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2527"/>
+        <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2530"/>
+        <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
         <translation>PIN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2540"/>
+        <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
         <translation>Este PIN deve ser inserido no seu novo dispositivo nos próximos 5 minutos. Você pode ter que gerar um novo a qualquer momento.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2559"/>
+        <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2562"/>
+        <location filename="../accountdetails.ui" line="2744"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2587"/>
+        <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
         <translation>Contatos Banidos</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2590"/>
+        <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1313"/>
+        <location filename="../accountdetails.ui" line="1495"/>
         <source>Published Address</source>
         <translation>Endereço publicado</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2072"/>
+        <location filename="../accountdetails.ui" line="2254"/>
         <source>CA certificate</source>
         <translation>Certificado de CA</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2112"/>
+        <location filename="../accountdetails.ui" line="2294"/>
         <source>User certificate</source>
         <translation>Certificado de usuário</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2149"/>
+        <location filename="../accountdetails.ui" line="2331"/>
         <source>Private key</source>
         <translation>Chave Privada</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2164"/>
+        <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
         <translation>Senha de chave privada</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2253"/>
+        <location filename="../accountdetails.ui" line="2435"/>
         <source>Use default ciphers</source>
         <translation>Utilizar cifras padrão</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="55"/>
+        <location filename="../accountdetails.cpp" line="56"/>
         <source>Pause</source>
         <translation>Pausar</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="101"/>
+        <location filename="../accountdetails.cpp" line="103"/>
         <source>RingID</source>
         <translation>RingID</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="229"/>
+        <location filename="../accountdetails.cpp" line="231"/>
         <source>Choose File</source>
         <translation>Escolher Arquivo</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Files (*)</source>
         <translation>Arquivos (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="304"/>
+        <location filename="../accountdetails.cpp" line="306"/>
         <source>Please wait while your PIN is generated.</source>
         <translation>Por favor aguarde enquanto seu PIN é gerado.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="323"/>
+        <location filename="../accountdetails.cpp" line="325"/>
         <source>Network Error. Please try again later.</source>
         <translation>Erro de Rede. Por favor tente novamente mais tarde.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="327"/>
+        <location filename="../accountdetails.cpp" line="329"/>
         <source>Wrong password.</source>
         <translation>Senha Incorreta.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="354"/>
+        <location filename="../accountdetails.cpp" line="356"/>
         <source>Registering... It may take some time</source>
         <translation>Registrando... Isto pode tomar algum tempo</translation>
     </message>
@@ -992,7 +1058,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>Áudio/Vídeo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
@@ -1002,7 +1068,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Contas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1211,22 +1277,12 @@ Salve e compartilhe com seus amigos!</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="1310"/>
-        <source>Import account archive button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="1313"/>
-        <source>Import</source>
-        <translation>Importar</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="1320"/>
+        <location filename="../configurationwidget.ui" line="1323"/>
         <source>Export account button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../configurationwidget.ui" line="1323"/>
+        <location filename="../configurationwidget.ui" line="1326"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
@@ -1236,24 +1292,19 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Iniciar ao ligar o Ring</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="322"/>
+        <location filename="../configurationwidget.cpp" line="320"/>
         <source>New Account</source>
         <translation>Nova conta</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="342"/>
+        <location filename="../configurationwidget.cpp" line="340"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>Você tem certeza que deseja limpar todo o seu histórico?</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="391"/>
+        <location filename="../configurationwidget.cpp" line="389"/>
         <source>Choose Directory</source>
         <translation>Escolher diretório</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.cpp" line="421"/>
-        <source>An error occured while importing account.</source>
-        <translation>Ocorreu um erro ao importar a conta.</translation>
     </message>
 </context>
 <context>
@@ -1538,45 +1589,6 @@ Salve e compartilhe com seus amigos!</translation>
     </message>
 </context>
 <context>
-    <name>PathPasswordDialog</name>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="26"/>
-        <source>Path</source>
-        <translation>Caminho</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="46"/>
-        <source>Password</source>
-        <translation>Senha</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="65"/>
-        <source>Ok</source>
-        <translation>Ok</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="72"/>
-        <source>Cancel</source>
-        <translation>Cancelar</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="60"/>
-        <source>Save File</source>
-        <translation>Salvar arquivo</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="62"/>
-        <location filename="../pathpassworddialog.cpp" line="67"/>
-        <source>Ring archive files (*.ring)</source>
-        <translation>Arquivos Ring (*.ring)</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="65"/>
-        <source>Open File</source>
-        <translation>Abrir arquivo</translation>
-    </message>
-</context>
-<context>
     <name>PhotoBoothDialog</name>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
@@ -1635,7 +1647,7 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Cliente de e-mail não encontrado</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="35"/>
+        <location filename="../wizarddialog.cpp" line="36"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
         <translation>Conta Ring</translation>
@@ -1778,7 +1790,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -1812,49 +1824,64 @@ Salve e compartilhe com seus amigos!</translation>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="69"/>
+        <location filename="../wizarddialog.cpp" line="70"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>Sua conta precisa ser migrada. Entre com sua senha.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="127"/>
+        <location filename="../wizarddialog.cpp" line="96"/>
         <source>Migrating your Ring account...</source>
         <translation>Migrando sua conta do Ring...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="148"/>
-        <source>Unknown</source>
-        <translation>Desconhecido</translation>
+        <location filename="../wizarddialog.cpp" line="98"/>
+        <source>Importing account archive...</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="183"/>
+        <location filename="../wizarddialog.cpp" line="151"/>
         <source>Registering your public username, it may take a few minutes...</source>
         <translation>Registrando seu usuário público, isto pode tomar alguns minutos...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="243"/>
+        <location filename="../wizarddialog.cpp" line="170"/>
+        <source>An error has occured during your account creation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="227"/>
         <source>Add a device</source>
         <translation>Adicionar dispositivo</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="348"/>
+        <location filename="../wizarddialog.cpp" line="339"/>
         <source>Username not available.</source>
         <translation>Usuário não disponível.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="351"/>
+        <location filename="../wizarddialog.cpp" line="342"/>
         <source>Username is available.</source>
         <translation>Usuário disponível.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="354"/>
+        <location filename="../wizarddialog.cpp" line="345"/>
         <source>Username is invalid.</source>
         <translation>Usuário é inválido.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="357"/>
+        <location filename="../wizarddialog.cpp" line="348"/>
         <source>Network error.</source>
         <translation>Erro na Rede.</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="402"/>
+        <source>Open File</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="404"/>
+        <source>Ring archive files (*.gz);; All files (*)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -1867,7 +1894,7 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Associar este dispositivo a uma conta</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="205"/>
+        <location filename="../wizarddialog.ui" line="322"/>
         <source>How to add a device</source>
         <translation>Como adicionar um dispositivo</translation>
     </message>
@@ -1877,7 +1904,7 @@ Salve e compartilhe com seus amigos!</translation>
         <translation>Bem vindo ao</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="212"/>
+        <location filename="../wizarddialog.ui" line="329"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1900,34 +1927,34 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Você irá receber o PIN necessário para completar este formulário. Este PIN só será válido por &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutos&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="240"/>
+        <location filename="../wizarddialog.ui" line="450"/>
         <source>Create your profile</source>
         <translation>Criar um Perfil</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="354"/>
+        <location filename="../wizarddialog.ui" line="564"/>
         <source>Enter your full name:</source>
         <translation>Digite seu nome completo:</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="419"/>
-        <location filename="../wizarddialog.cpp" line="247"/>
+        <location filename="../wizarddialog.ui" line="629"/>
+        <location filename="../wizarddialog.cpp" line="231"/>
         <source>Create your account</source>
         <translation>Criar uma conta</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="517"/>
+        <location filename="../wizarddialog.ui" line="730"/>
         <source>Choose your username</source>
         <translation>Escolha seu nome de usuário</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="536"/>
-        <location filename="../wizarddialog.cpp" line="320"/>
+        <location filename="../wizarddialog.ui" line="749"/>
+        <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
         <translation>Buscando...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="460"/>
+        <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
         <translation>Registre seu usuário no Ring. Isto irá reservar o usuário para que apenas você possa o utilizar. Seus amigos serão capazes de chama-lo com seu usuário ao invés de com seu RingID</translation>
     </message>
@@ -1972,134 +1999,174 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="272"/>
+        <location filename="../wizarddialog.ui" line="205"/>
+        <source>Select link method</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="254"/>
+        <source>Link account to device from the network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="257"/>
+        <source>Link account from DHT</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="270"/>
+        <source>Link from exported account archive file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="273"/>
+        <source>Link account from file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="357"/>
+        <source>Select file to import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="382"/>
+        <source>Account archive path:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="389"/>
+        <source>Account archive path selector</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="406"/>
+        <source>Archive password:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="413"/>
+        <source>Archive passord input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="299"/>
+        <location filename="../wizarddialog.ui" line="509"/>
         <source>Avatar display</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="378"/>
+        <location filename="../wizarddialog.ui" line="588"/>
         <source>Full name edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="384"/>
+        <location filename="../wizarddialog.ui" line="594"/>
         <source>Text entry for full name input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="463"/>
+        <location filename="../wizarddialog.ui" line="673"/>
         <source>Public username checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="466"/>
+        <location filename="../wizarddialog.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="469"/>
+        <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
         <translation>Registrar usuário público (experimental)</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="511"/>
+        <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="533"/>
+        <location filename="../wizarddialog.ui" line="746"/>
         <source>Public username validation status</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="545"/>
-        <source>Disable password checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="554"/>
-        <source> I do not want to set a password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="578"/>
+        <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="584"/>
+        <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="587"/>
+        <location filename="../wizarddialog.ui" line="787"/>
         <source>Enter your pin</source>
         <translation>Entre o seu pin</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="614"/>
+        <location filename="../wizarddialog.ui" line="814"/>
         <source>Password text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="620"/>
+        <location filename="../wizarddialog.ui" line="820"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Campo de texto da Senha</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="626"/>
+        <location filename="../wizarddialog.ui" line="826"/>
         <source>Password</source>
         <translation>Senha</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="653"/>
-        <location filename="../wizarddialog.ui" line="659"/>
+        <location filename="../wizarddialog.ui" line="853"/>
+        <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Campo de texto para confirmação da Senha</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="665"/>
+        <location filename="../wizarddialog.ui" line="865"/>
         <source>Confirm password</source>
         <translation>Confirmar senha</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="733"/>
-        <location filename="../wizarddialog.cpp" line="129"/>
+        <location filename="../wizarddialog.ui" line="933"/>
+        <location filename="../wizarddialog.cpp" line="100"/>
         <source>Generating your Ring account...</source>
         <translation>Criando sua conta Ring...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="769"/>
+        <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Botão da página anterior</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="775"/>
+        <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Pressione botão para acessar a página anterior do assistente</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="778"/>
+        <location filename="../wizarddialog.ui" line="978"/>
         <source>Previous</source>
         <translation>Anterior</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="810"/>
+        <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Botão da próxima página</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="816"/>
+        <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Pressione botão para acessar próxima página do assistente</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="819"/>
+        <location filename="../wizarddialog.ui" line="1019"/>
         <source>Next</source>
         <translation>Próximo</translation>
     </message>

@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>關於按鈕</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>感謝按鈕</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -89,14 +89,14 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
-        <location filename="../accountdetails.ui" line="1572"/>
-        <location filename="../accountdetails.cpp" line="115"/>
+        <location filename="../accountdetails.ui" line="1754"/>
+        <location filename="../accountdetails.cpp" line="117"/>
         <source>Username</source>
         <translation>使用者名稱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="469"/>
-        <location filename="../accountdetails.ui" line="1594"/>
+        <location filename="../accountdetails.ui" line="1776"/>
         <source>Password</source>
         <translation>密碼</translation>
     </message>
@@ -121,39 +121,39 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
         <translation>UPnP 已啟用</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="680"/>
+        <location filename="../accountdetails.ui" line="862"/>
         <source>Allow Call From Unknown</source>
         <translation>允許從未知對象的通話</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="713"/>
+        <location filename="../accountdetails.ui" line="895"/>
         <source>Allow Call From Contact</source>
         <translation>允許從聯絡人來的通話</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="698"/>
+        <location filename="../accountdetails.ui" line="880"/>
         <source>Allow Call From History</source>
         <translation>允許從歷史紀錄而來的通話</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>一般帳號資訊設定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>顯示名稱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>顯示別稱輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>DHT bootstrap 或 SIP 的主機名稱 URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -163,21 +163,21 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Ring 公開註冊使用者名稱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>在區塊鏈按鈕上註冊使用者名稱</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="106"/>
-        <location filename="../accountdetails.cpp" line="359"/>
-        <location filename="../accountdetails.cpp" line="376"/>
-        <location filename="../accountdetails.cpp" line="381"/>
-        <location filename="../accountdetails.cpp" line="386"/>
-        <location filename="../accountdetails.cpp" line="391"/>
+        <location filename="../accountdetails.cpp" line="108"/>
+        <location filename="../accountdetails.cpp" line="361"/>
+        <location filename="../accountdetails.cpp" line="378"/>
+        <location filename="../accountdetails.cpp" line="383"/>
+        <location filename="../accountdetails.cpp" line="388"/>
+        <location filename="../accountdetails.cpp" line="393"/>
         <source>Register on blockchain</source>
         <translation>在區塊鏈上註冊</translation>
     </message>
@@ -189,481 +189,547 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>名稱服務 URL 輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>SIP 使用者名稱輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>SIP 密碼輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>SIP 代理伺服器 URL 輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>SIP 語音郵件數</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>通話自動答覆勾選框</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
+        <translation>UPnP 啟用勾選框</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="632"/>
+        <source>Old password input line</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="650"/>
-        <source>Ring Account Settings</source>
-        <translation>Ring 帳號設定</translation>
+        <location filename="../accountdetails.ui" line="641"/>
+        <source>Input old password</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="674"/>
-        <source>Allow call from unknown checkbox</source>
+        <location filename="../accountdetails.ui" line="656"/>
+        <source>Old Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="669"/>
+        <source>New password text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="675"/>
+        <source>Input new password</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
+        <source>New password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="705"/>
+        <source>Password confirmation text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="711"/>
+        <source>Input confirmation </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="727"/>
+        <source>New pass confirmation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="751"/>
+        <source>Change password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="770"/>
+        <source>Ok</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="783"/>
+        <source>Cancel password change button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="798"/>
+        <source>Changing password ...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="832"/>
+        <source>Ring Account Settings</source>
+        <translation>Ring 帳號設定</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="856"/>
+        <source>Allow call from unknown checkbox</source>
+        <translation>允許未知通話勾選框</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation type="unfinished"/>
+        <translation>允許歷史通話勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="710"/>
+        <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation type="unfinished"/>
+        <translation>允許從聯絡人而來的通話勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="749"/>
+        <location filename="../accountdetails.ui" line="931"/>
         <source>Ringtone Selection</source>
         <translation>鈴聲選取</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="773"/>
+        <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>播放鈴聲按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="776"/>
-        <location filename="../accountdetails.cpp" line="57"/>
+        <location filename="../accountdetails.ui" line="958"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Play</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="789"/>
+        <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>鈴聲檔案選擇器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="839"/>
+        <location filename="../accountdetails.ui" line="1021"/>
         <source>Audio/Video</source>
         <translation>音訊／視訊</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="842"/>
+        <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>音訊／視訊編解碼器偏好設定</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1058"/>
+        <location filename="../accountdetails.ui" line="1240"/>
         <source>Audio codecs</source>
         <translation>音訊編解碼器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1088"/>
+        <location filename="../accountdetails.ui" line="1270"/>
         <source>Video codecs</source>
         <translation>視訊編解碼器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1105"/>
+        <location filename="../accountdetails.ui" line="1287"/>
         <source>Advanced</source>
         <translation>進階</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1108"/>
+        <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>帳號進階設定</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1154"/>
+        <location filename="../accountdetails.ui" line="1336"/>
         <source>Registration</source>
         <translation>註冊</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1174"/>
+        <location filename="../accountdetails.ui" line="1356"/>
         <source>Registration expire timeout (seconds):</source>
         <translation>註冊過期逾時（秒）：</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1190"/>
+        <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>註冊逾時選擇器選擇框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1215"/>
+        <location filename="../accountdetails.ui" line="1397"/>
         <source>Network Interface</source>
         <translation>網路介面</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1236"/>
+        <location filename="../accountdetails.ui" line="1418"/>
         <source>Local Port:</source>
         <translation>本機連接埠：</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1254"/>
+        <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>本機埠選擇器框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1340"/>
+        <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
-        <translation type="unfinished"/>
+        <translation>與本機相同單選按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1346"/>
+        <location filename="../accountdetails.ui" line="1528"/>
         <source>Same as local parameters</source>
         <translation>與本機參數相同</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1364"/>
+        <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation type="unfinished"/>
+        <translation>個人化地址與連接埠單選按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1370"/>
+        <location filename="../accountdetails.ui" line="1552"/>
         <source>Set published address and port:</source>
         <translation>設定公開位置與連接埠：</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1396"/>
+        <location filename="../accountdetails.ui" line="1578"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1415"/>
+        <location filename="../accountdetails.ui" line="1597"/>
         <source>ip address text input</source>
-        <translation type="unfinished"/>
+        <translation>IP 位置文字輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1430"/>
+        <location filename="../accountdetails.ui" line="1612"/>
         <source>Port</source>
         <translation>連接埠</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1449"/>
+        <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>連接埠選擇器框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1484"/>
+        <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>使用 STUN 勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1490"/>
+        <location filename="../accountdetails.ui" line="1672"/>
         <source>Use STUN</source>
         <translation>使用 STUN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1506"/>
-        <location filename="../accountdetails.ui" line="1553"/>
+        <location filename="../accountdetails.ui" line="1688"/>
+        <location filename="../accountdetails.ui" line="1735"/>
         <source>Server URL</source>
         <translation>伺服器網址</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1528"/>
+        <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>使用 TURN 勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1534"/>
+        <location filename="../accountdetails.ui" line="1716"/>
         <source>Use TURN</source>
         <translation>使用 TURN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1550"/>
+        <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>TURN 伺服器輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1569"/>
+        <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>TURN 伺服器使用者名稱輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1588"/>
+        <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>TURN 伺服器密碼輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1610"/>
+        <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>TURN 伺服器範圍輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1613"/>
+        <location filename="../accountdetails.ui" line="1795"/>
         <source>Realm</source>
         <translation>領域</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1662"/>
+        <location filename="../accountdetails.ui" line="1844"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
         <translation>SDP 工作階段協商（ICE 退回）</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1690"/>
+        <location filename="../accountdetails.ui" line="1872"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
         <translation>這些設定將僅用於 SDP 工作階段協商，以防伺服器或對方不支援 ICE。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1732"/>
+        <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
         <translation>音訊 RTP 連接埠範圍</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1762"/>
-        <location filename="../accountdetails.ui" line="1902"/>
+        <location filename="../accountdetails.ui" line="1944"/>
+        <location filename="../accountdetails.ui" line="2084"/>
         <source>Min</source>
         <translation>最小值</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1778"/>
-        <location filename="../accountdetails.ui" line="1918"/>
+        <location filename="../accountdetails.ui" line="1960"/>
+        <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>音訊 RTP 連接埠的下限範圍選擇器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1796"/>
-        <location filename="../accountdetails.ui" line="1936"/>
+        <location filename="../accountdetails.ui" line="1978"/>
+        <location filename="../accountdetails.ui" line="2118"/>
         <source>Max</source>
         <translation>最大值</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1812"/>
-        <location filename="../accountdetails.ui" line="1952"/>
+        <location filename="../accountdetails.ui" line="1994"/>
+        <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>音訊 RTP 連接埠的上限範圍選擇器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1872"/>
+        <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
         <translation>視訊 RTP 連接埠範圍</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2004"/>
+        <location filename="../accountdetails.ui" line="2186"/>
         <source>Security</source>
         <translation>安全性</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2007"/>
-        <source>Account security configuration</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2094"/>
-        <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2131"/>
-        <source>User certificate selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../accountdetails.ui" line="2189"/>
+        <source>Account security configuration</source>
+        <translation>帳號安全性設定</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="2276"/>
+        <source>Certificate authaurity certificate selector</source>
+        <translation>憑證簽發者選擇器</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="2313"/>
+        <source>User certificate selector</source>
+        <translation>使用者憑證選擇器</translation>
+    </message>
+    <message>
+        <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation type="unfinished"/>
+        <translation>私密金鑰密碼輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2211"/>
+        <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>使用者私密金鑰選擇器</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2235"/>
+        <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation type="unfinished"/>
+        <translation>加密媒體串流 (SRTP) 勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2238"/>
+        <location filename="../accountdetails.ui" line="2420"/>
         <source>Media Stream Encryption (SRTP)</source>
         <translation>媒體串流加密（SRTP）</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2250"/>
+        <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation type="unfinished"/>
+        <translation>使用預設密碼本勾選框</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2306"/>
+        <location filename="../accountdetails.ui" line="2488"/>
         <source>Devices</source>
         <translation>裝置</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2309"/>
+        <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>帳號裝置管理</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2353"/>
+        <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>新增裝置按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2356"/>
+        <location filename="../accountdetails.ui" line="2538"/>
         <source>Add device</source>
         <translation>新增裝置</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2383"/>
+        <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
         <translation>要新增新裝置到您的 Ring 帳號，您要先在 Ring 上匯出您的帳號。這將會生成 PIN 碼，必須在生成後的 5 分鐘內輸入到您的新裝置上。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2396"/>
+        <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>密碼文字輸入</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2402"/>
+        <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
         <translation>密碼（必要）</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2430"/>
+        <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
-        <translation type="unfinished"/>
+        <translation>取消帳號匯出連結按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2433"/>
+        <location filename="../accountdetails.ui" line="786"/>
+        <location filename="../accountdetails.ui" line="2615"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2459"/>
+        <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
+        <translation>驗證供裝置連結在 DHT 上匯出按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2462"/>
+        <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the Ring</source>
         <translation>在 Ring 上匯出</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2514"/>
+        <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
         <translation>您的已生成 PIN 碼：</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2527"/>
+        <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>已生成供連結之 PIN</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2530"/>
+        <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
         <translation>PIN 碼</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2540"/>
+        <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
         <translation>這個 PIN 碼應該要在 5 分鐘內於您的新裝置上輸入。您可以在任何時候生成新的。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2559"/>
+        <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>接受 PIN 生成與結束按鈕</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2562"/>
+        <location filename="../accountdetails.ui" line="2744"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2587"/>
+        <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
         <translation>黑名單聯絡人</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2590"/>
+        <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation type="unfinished"/>
+        <translation>帳號已阻擋聯絡人管理分頁</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="1313"/>
+        <location filename="../accountdetails.ui" line="1495"/>
         <source>Published Address</source>
         <translation>公開位置</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2072"/>
+        <location filename="../accountdetails.ui" line="2254"/>
         <source>CA certificate</source>
         <translation>CA 證書</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2112"/>
+        <location filename="../accountdetails.ui" line="2294"/>
         <source>User certificate</source>
         <translation>使用者證書</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2149"/>
+        <location filename="../accountdetails.ui" line="2331"/>
         <source>Private key</source>
         <translation>私密金鑰</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2164"/>
+        <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
         <translation>私密金鑰密碼</translation>
     </message>
     <message>
-        <location filename="../accountdetails.ui" line="2253"/>
+        <location filename="../accountdetails.ui" line="2435"/>
         <source>Use default ciphers</source>
         <translation>使用預設加密法</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="55"/>
+        <location filename="../accountdetails.cpp" line="56"/>
         <source>Pause</source>
         <translation>暫停</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="101"/>
+        <location filename="../accountdetails.cpp" line="103"/>
         <source>RingID</source>
         <translation>RingID</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="229"/>
+        <location filename="../accountdetails.cpp" line="231"/>
         <source>Choose File</source>
         <translation>選擇檔案</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Files (*)</source>
         <translation>檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="304"/>
+        <location filename="../accountdetails.cpp" line="306"/>
         <source>Please wait while your PIN is generated.</source>
         <translation>請等待您的 PIN 碼生成。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="323"/>
+        <location filename="../accountdetails.cpp" line="325"/>
         <source>Network Error. Please try again later.</source>
         <translation>網路錯誤。請稍後再試。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="327"/>
+        <location filename="../accountdetails.cpp" line="329"/>
         <source>Wrong password.</source>
         <translation>錯誤的密碼。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="354"/>
+        <location filename="../accountdetails.cpp" line="356"/>
         <source>Registering... It may take some time</source>
         <translation>正在註冊... 這會耗費一些時間</translation>
     </message>
@@ -678,7 +744,7 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>已阻擋聯絡人清單</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -688,7 +754,7 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>取消阻擋聯絡人按鈕</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -701,12 +767,12 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>既存的聯絡人清單</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
         <source>contact transfer number text entry</source>
-        <translation type="unfinished"/>
+        <translation>聯絡人轉接號碼文字項目</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
@@ -716,7 +782,7 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="110"/>
         <source>Transfer call button</source>
-        <translation type="unfinished"/>
+        <translation>轉接按鈕</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="113"/>
@@ -749,17 +815,17 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../callwidget.ui" line="207"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>搜尋聯絡人文字輸入</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>搜尋按鈕</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>設定選單</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -771,12 +837,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="791"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>顯示 Ring ID 二維條碼</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>分享 Ring ID 按鈕</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="900"/>
@@ -793,12 +859,12 @@ Copy and share it with your friends!</source>
         <location filename="../callwidget.ui" line="1069"/>
         <location filename="../callwidget.ui" line="1840"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>回到首頁按鈕</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1189"/>
         <source>Peer contact method selector</source>
-        <translation type="unfinished"/>
+        <translation>對方聯絡人方法選擇器</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
@@ -834,12 +900,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>答覆來電按鈕</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1543"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>忽略來電按鈕</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1570"/>
@@ -859,7 +925,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>取消去電</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1749"/>
@@ -964,7 +1030,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>通話按鈕</translation>
     </message>
 </context>
 <context>
@@ -977,7 +1043,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>一般設定分頁</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -987,22 +1053,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>音訊／視訊設定分頁</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"/>
+        <translation>音訊／視訊</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>帳號設定分頁</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
         <source>Accounts</source>
-        <translation type="unfinished"/>
+        <translation>帳號</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
@@ -1052,12 +1118,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation type="unfinished"/>
+        <translation>大頭貼（點選以變更）</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
         <source>Display name text input</source>
-        <translation type="unfinished"/>
+        <translation>顯示名稱文字輸入</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="314"/>
@@ -1067,12 +1133,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="400"/>
         <source>Number of days of history kept</source>
-        <translation type="unfinished"/>
+        <translation>保留幾天的歷史</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
         <source>clear history button</source>
-        <translation type="unfinished"/>
+        <translation>清除歷史按鈕</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
@@ -1087,12 +1153,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="573"/>
         <source>Call records path</source>
-        <translation type="unfinished"/>
+        <translation>通話紀錄路徑</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
         <source>Always record calls checkbox</source>
-        <translation type="unfinished"/>
+        <translation>總是記錄通話勾選框</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="609"/>
@@ -1102,12 +1168,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>keep minimized on close checkbox</source>
-        <translation type="unfinished"/>
+        <translation>在關閉時最小化勾選框</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>啟用通知勾選框</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
@@ -1117,12 +1183,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="703"/>
         <source>Launch ring on startup checkbox</source>
-        <translation type="unfinished"/>
+        <translation>在開機時啟動 Ring 勾選框</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="732"/>
         <source>Autamatic update checks checkbox</source>
-        <translation type="unfinished"/>
+        <translation>自動檢查更新勾選框</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="738"/>
@@ -1132,7 +1198,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="757"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>檢查更新間隔（以天計）選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="778"/>
@@ -1142,7 +1208,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="817"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>立刻檢查更新按鈕</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="933"/>
@@ -1158,7 +1224,7 @@ Copy and share it with your friends!</source>
         <location filename="../configurationwidget.ui" line="1042"/>
         <location filename="../configurationwidget.ui" line="1061"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>視訊裝置選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1048"/>
@@ -1173,7 +1239,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1095"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>視訊裝置解析度選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1122"/>
@@ -1183,7 +1249,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1129"/>
         <source>Audio output device selector</source>
-        <translation type="unfinished"/>
+        <translation>音訊輸出裝置選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
@@ -1193,12 +1259,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1148"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>音訊輸入裝置選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1226"/>
         <source>New account type selector</source>
-        <translation type="unfinished"/>
+        <translation>新帳號類型選擇器</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1245"/>
@@ -1208,25 +1274,15 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="1310"/>
-        <source>Import account archive button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="1313"/>
-        <source>Import</source>
-        <translation>匯入</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.ui" line="1320"/>
-        <source>Export account button</source>
-        <translation type="unfinished"/>
+        <translation>刪除帳號按鈕</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
+        <source>Export account button</source>
+        <translation>匯出帳號按鈕</translation>
+    </message>
+    <message>
+        <location filename="../configurationwidget.ui" line="1326"/>
         <source>Export</source>
         <translation>匯出</translation>
     </message>
@@ -1236,24 +1292,19 @@ Copy and share it with your friends!</source>
         <translation>開機時啟動 Ring</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="322"/>
+        <location filename="../configurationwidget.cpp" line="320"/>
         <source>New Account</source>
         <translation>新增帳號</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="342"/>
+        <location filename="../configurationwidget.cpp" line="340"/>
         <source>Are you sure you want to clear all your history?</source>
         <translation>您確定您要清除您所有的歷史？</translation>
     </message>
     <message>
-        <location filename="../configurationwidget.cpp" line="391"/>
+        <location filename="../configurationwidget.cpp" line="389"/>
         <source>Choose Directory</source>
         <translation>選擇資料夾</translation>
-    </message>
-    <message>
-        <location filename="../configurationwidget.cpp" line="421"/>
-        <source>An error occured while importing account.</source>
-        <translation>當匯入帳號時遇到錯誤。</translation>
     </message>
 </context>
 <context>
@@ -1266,7 +1317,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>search existing contact text entry</source>
-        <translation type="unfinished"/>
+        <translation>搜尋既有的聯絡人文字項目</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="46"/>
@@ -1276,12 +1327,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>既存的聯絡人清單</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
         <source>Create new contact button</source>
-        <translation type="unfinished"/>
+        <translation>建立新聯絡人按鈕</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="66"/>
@@ -1296,7 +1347,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="108"/>
         <source>New contact name text entry</source>
-        <translation type="unfinished"/>
+        <translation>新聯絡人名稱文字項目</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
@@ -1306,7 +1357,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
         <source>Validate contact creation button</source>
-        <translation type="unfinished"/>
+        <translation>驗證聯絡人建立按鈕</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="144"/>
@@ -1339,7 +1390,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
         <source>Accept contact request button</source>
-        <translation type="unfinished"/>
+        <translation>接受聯絡人請求按鈕</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="132"/>
@@ -1349,7 +1400,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="151"/>
         <source>Mute contact request</source>
-        <translation type="unfinished"/>
+        <translation>聯絡人靜音請求</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="158"/>
@@ -1359,7 +1410,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation type="unfinished"/>
+        <translation>阻擋聯絡人請求</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1377,17 +1428,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>帳號大頭貼</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>帳號狀態</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
         <source>account selection combobox</source>
-        <translation type="unfinished"/>
+        <translation>帳號選擇複選框</translation>
     </message>
 </context>
 <context>
@@ -1415,7 +1466,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>取消聯絡人刪除按鈕</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="141"/>
@@ -1425,7 +1476,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>驗證聯絡人刪除按鈕</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
@@ -1448,7 +1499,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>取消聯絡人刪除按鈕</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="126"/>
@@ -1458,7 +1509,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="139"/>
         <source>Delete contact validation button</source>
-        <translation type="unfinished"/>
+        <translation>刪除帳號驗證按鈕</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="142"/>
@@ -1468,7 +1519,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="155"/>
         <source>Delete and ban validation button</source>
-        <translation type="unfinished"/>
+        <translation>刪除並阻擋驗證按鈕</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
@@ -1481,12 +1532,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>訊息清單</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
         <source>Message input</source>
-        <translation type="unfinished"/>
+        <translation>訊息輸入</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="77"/>
@@ -1496,7 +1547,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
         <source>Send message button</source>
-        <translation type="unfinished"/>
+        <translation>傳送訊息按鈕</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="44"/>
@@ -1538,45 +1589,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>PathPasswordDialog</name>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="26"/>
-        <source>Path</source>
-        <translation>路徑</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="46"/>
-        <source>Password</source>
-        <translation>密碼</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="65"/>
-        <source>Ok</source>
-        <translation>確定</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.ui" line="72"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="60"/>
-        <source>Save File</source>
-        <translation>儲存檔案</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="62"/>
-        <location filename="../pathpassworddialog.cpp" line="67"/>
-        <source>Ring archive files (*.ring)</source>
-        <translation>Ring 歸檔 (*.ring)</translation>
-    </message>
-    <message>
-        <location filename="../pathpassworddialog.cpp" line="65"/>
-        <source>Open File</source>
-        <translation>開啟檔案</translation>
-    </message>
-</context>
-<context>
     <name>PhotoBoothDialog</name>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
@@ -1594,7 +1606,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>大頭貼相機顯示</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
@@ -1635,7 +1647,7 @@ Copy and share it with your friends!</source>
         <translation>找不到預設的電子郵件客戶端</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="35"/>
+        <location filename="../wizarddialog.cpp" line="36"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
         <translation>Ring 帳號</translation>
@@ -1646,12 +1658,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../qualitydialog.ui" line="64"/>
         <source>Quality slider</source>
-        <translation type="unfinished"/>
+        <translation>品質滑桿</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="103"/>
         <source>Automatic quality checkbox</source>
-        <translation type="unfinished"/>
+        <translation>自動品質勾選框</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
@@ -1664,17 +1676,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="114"/>
         <source>Validate Contact Request Button</source>
-        <translation type="unfinished"/>
+        <translation>驗證聯絡人請求按鈕</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="139"/>
         <source>Mute contact request button</source>
-        <translation type="unfinished"/>
+        <translation>聯絡人靜音請求按鈕</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="161"/>
         <source>Ban contact request button</source>
-        <translation type="unfinished"/>
+        <translation>阻擋聯絡人請求按鈕</translation>
     </message>
 </context>
 <context>
@@ -1682,7 +1694,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>選擇資料夾</translation>
     </message>
 </context>
 <context>
@@ -1743,7 +1755,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>記錄通話</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -1778,7 +1790,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="584"/>
         <source>Configuration</source>
-        <translation type="unfinished"/>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
@@ -1812,49 +1824,64 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="69"/>
+        <location filename="../wizarddialog.cpp" line="70"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>您的帳號需要遷移。輸入您的密碼。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="127"/>
+        <location filename="../wizarddialog.cpp" line="96"/>
         <source>Migrating your Ring account...</source>
         <translation>正在遷移您的 Ring 帳號...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="148"/>
-        <source>Unknown</source>
-        <translation>未知</translation>
+        <location filename="../wizarddialog.cpp" line="98"/>
+        <source>Importing account archive...</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="183"/>
+        <location filename="../wizarddialog.cpp" line="151"/>
         <source>Registering your public username, it may take a few minutes...</source>
         <translation>正在註冊您的公開使用者名稱，這可能會耗費數分鐘...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="243"/>
+        <location filename="../wizarddialog.cpp" line="170"/>
+        <source>An error has occured during your account creation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="227"/>
         <source>Add a device</source>
         <translation>新增裝置</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="348"/>
+        <location filename="../wizarddialog.cpp" line="339"/>
         <source>Username not available.</source>
         <translation>使用者名稱不可用</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="351"/>
+        <location filename="../wizarddialog.cpp" line="342"/>
         <source>Username is available.</source>
         <translation>使用者名稱可用。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="354"/>
+        <location filename="../wizarddialog.cpp" line="345"/>
         <source>Username is invalid.</source>
         <translation>使用者名稱無效。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="357"/>
+        <location filename="../wizarddialog.cpp" line="348"/>
         <source>Network error.</source>
         <translation>網路錯誤。</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="402"/>
+        <source>Open File</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="404"/>
+        <source>Ring archive files (*.gz);; All files (*)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -1867,7 +1894,7 @@ Copy and share it with your friends!</source>
         <translation>連結這個裝置到一個帳號</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="205"/>
+        <location filename="../wizarddialog.ui" line="322"/>
         <source>How to add a device</source>
         <translation>如何新增裝置</translation>
     </message>
@@ -1877,7 +1904,7 @@ Copy and share it with your friends!</source>
         <translation>歡迎來到</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="212"/>
+        <location filename="../wizarddialog.ui" line="329"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1900,206 +1927,246 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;您將會得到必要的 PIN 碼以完成此表單。PIN 碼僅在 &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 分鐘&lt;/span&gt;內有效&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="240"/>
+        <location filename="../wizarddialog.ui" line="450"/>
         <source>Create your profile</source>
         <translation>建立您的檔案</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="354"/>
+        <location filename="../wizarddialog.ui" line="564"/>
         <source>Enter your full name:</source>
         <translation>輸入您的完整名稱：</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="419"/>
-        <location filename="../wizarddialog.cpp" line="247"/>
+        <location filename="../wizarddialog.ui" line="629"/>
+        <location filename="../wizarddialog.cpp" line="231"/>
         <source>Create your account</source>
         <translation>建立您的帳號</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="517"/>
+        <location filename="../wizarddialog.ui" line="730"/>
         <source>Choose your username</source>
         <translation>選擇您的使用者名稱</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="536"/>
-        <location filename="../wizarddialog.cpp" line="320"/>
+        <location filename="../wizarddialog.ui" line="749"/>
+        <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
         <translation>正在搜尋...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="460"/>
+        <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
         <translation>在 Ring 上註冊您的使用者名稱。這將會保留使用者名稱，只有您可以使用它。您的朋友將可以使用您的使用者名稱來與您通話，而不用使用您的 RingID。</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation type="unfinished"/>
+        <translation>精靈視窗</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="36"/>
         <source>Account creation wizard dialog</source>
-        <translation type="unfinished"/>
+        <translation>建立帳號精靈對話框</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>歡迎標籤</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>歡迎圖示</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation type="unfinished"/>
+        <translation>建立 Ring 帳號按鈕</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Ring 帳號建立開始觸發請按下按鈕</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>連結裝置按鈕</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
         <source>Push button for device linkage start trigger</source>
+        <translation>裝置連結開始觸發請按下按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="205"/>
+        <source>Select link method</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="272"/>
+        <location filename="../wizarddialog.ui" line="254"/>
+        <source>Link account to device from the network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="257"/>
+        <source>Link account from DHT</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="270"/>
+        <source>Link from exported account archive file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="273"/>
+        <source>Link account from file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="357"/>
+        <source>Select file to import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="382"/>
+        <source>Account archive path:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="389"/>
+        <source>Account archive path selector</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="406"/>
+        <source>Archive password:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="413"/>
+        <source>Archive passord input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
-        <translation type="unfinished"/>
+        <translation>大頭貼相機小工具</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="299"/>
+        <location filename="../wizarddialog.ui" line="509"/>
         <source>Avatar display</source>
-        <translation type="unfinished"/>
+        <translation>大頭貼顯示</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="378"/>
+        <location filename="../wizarddialog.ui" line="588"/>
         <source>Full name edit</source>
-        <translation type="unfinished"/>
+        <translation>完整名稱編輯</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="384"/>
+        <location filename="../wizarddialog.ui" line="594"/>
         <source>Text entry for full name input</source>
-        <translation type="unfinished"/>
+        <translation>完整名稱輸入的文字項目</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="463"/>
+        <location filename="../wizarddialog.ui" line="673"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>公開使用者名稱勾選框</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="466"/>
+        <location filename="../wizarddialog.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>若使用者想要一個公開的使用者名稱就在勾選框打勾</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="469"/>
+        <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
         <translation>註冊公開的使用者名稱（實驗性）</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="511"/>
+        <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>公開使用者名稱編輯</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="533"/>
+        <location filename="../wizarddialog.ui" line="746"/>
         <source>Public username validation status</source>
-        <translation type="unfinished"/>
+        <translation>公開使用者名稱驗證狀態</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="545"/>
-        <source>Disable password checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="554"/>
-        <source> I do not want to set a password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="578"/>
+        <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>PIN 編輯</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="584"/>
+        <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation type="unfinished"/>
+        <translation>裝置連結 PIN 文字項目</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="587"/>
+        <location filename="../wizarddialog.ui" line="787"/>
         <source>Enter your pin</source>
         <translation>輸入您的 PIN 碼</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="614"/>
+        <location filename="../wizarddialog.ui" line="814"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>密碼文字輸入</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="620"/>
+        <location filename="../wizarddialog.ui" line="820"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>密碼文字項目</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="626"/>
+        <location filename="../wizarddialog.ui" line="826"/>
         <source>Password</source>
         <translation>密碼</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="653"/>
-        <location filename="../wizarddialog.ui" line="659"/>
+        <location filename="../wizarddialog.ui" line="853"/>
+        <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>確認密碼文字輸入</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="665"/>
+        <location filename="../wizarddialog.ui" line="865"/>
         <source>Confirm password</source>
         <translation>確認密碼</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="733"/>
-        <location filename="../wizarddialog.cpp" line="129"/>
+        <location filename="../wizarddialog.ui" line="933"/>
+        <location filename="../wizarddialog.cpp" line="100"/>
         <source>Generating your Ring account...</source>
         <translation>正在生成您的 Ring 帳號...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="769"/>
+        <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>先前頁面按鈕</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="775"/>
+        <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>存取前一頁精靈請按下按鈕</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="778"/>
+        <location filename="../wizarddialog.ui" line="978"/>
         <source>Previous</source>
         <translation>先前</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="810"/>
+        <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>下一頁按鈕</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="816"/>
+        <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>存取下一頁精靈請按下按鈕</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="819"/>
+        <location filename="../wizarddialog.ui" line="1019"/>
         <source>Next</source>
         <translation>下一個</translation>
     </message>
