@@ -20,6 +20,12 @@
 
 #include <QWidget>
 
+//STL
+#include <memory>
+
+// LRC
+#include "api/lrc.h"
+
 enum ScreenEnum {
     //DO not add main widget screen before callScreen
     CallScreen,
