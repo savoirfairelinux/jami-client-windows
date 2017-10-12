@@ -29,9 +29,15 @@
 #include "accountdetails.h"
 #include "accountstatedelegate.h"
 
-#include "accountmodel.h"
+#include "clientaccountmodel.h"
 #include "video/devicemodel.h"
 #include "codecmodel.h"
+
+// STL
+#include <memory>
+
+// LRC
+#include "api/lrc.h"
 
 namespace Ui {
 class ConfigurationWidget;
@@ -44,6 +50,8 @@ class ConfigurationWidget : public NavWidget
 public:
     explicit ConfigurationWidget(QWidget *parent = 0);
     ~ConfigurationWidget();
+    void initLrcConnections();
+    void setLrc(std::shared_ptr<lrc::api::Lrc> &lrc);
 
 protected:
     void showEvent(QShowEvent *event);
@@ -76,17 +84,17 @@ private slots:
                                 const QString& newVal, const QString& oldVal);
 
 private:
+    std::shared_ptr<lrc::api::Lrc> lrc_;
     Ui::ConfigurationWidget *ui;
-    AccountModel* accountModel_;
+    ClientAccountModel* accountModel_;
     QMetaObject::Connection accountConnection_;
     Video::DeviceModel* deviceModel_;
     CodecModel* codecModel_;
     bool isLoading_;
     AccountDetails* accountDetails_;
-    AccountStateDelegate *accountStateDelegate_;
     QSettings settings_;
     QErrorMessage errorDlg_;
-
     void showPreview();
+    void initUI();
 };
 

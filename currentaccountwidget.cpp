@@ -34,7 +34,6 @@ CurrentAccountWidget::CurrentAccountWidget(QWidget *parent) :
     ui(new Ui::CurrentAccountWidget)
 {
     ui->setupUi(this);
-    setup();
 }
 
 CurrentAccountWidget::~CurrentAccountWidget()
@@ -43,11 +42,12 @@ CurrentAccountWidget::~CurrentAccountWidget()
 }
 
 void
-CurrentAccountWidget::setup()
+CurrentAccountWidget::setup(ClientAccountModel* accountModel)
 {
     ui->accountsStatus->setText("No enabled account: impossible to communicate!");
     ui->accountsStatus->hide();
-    ui->currentAccountSelector->setModel(&AvailableAccountModel::instance());
+    ui->currentAccountSelector->setModel(accountModel);
+    accountModel_ = accountModel;
     updateAccounts();
     if (ui->currentAccountSelector->count() > 0) {
         ui->currentAccountSelector->setCurrentIndex(0);
@@ -90,16 +90,13 @@ CurrentAccountWidget::setPhoto()
 {
     auto selector = ui->currentAccountSelector;
     if (selector->count() > 0) {
-        if (ProfileModel::instance().selectedProfile()) {
-            if (ProfileModel::instance().selectedProfile()->person()){
-                QImage img = Utils::getCirclePhoto(ProfileModel::instance().selectedProfile()->person()->photo().value<QImage>(),
+        if (accountModel_) {
+            QImage img = Utils::getCirclePhoto(accountModel_->selectedAccountIndex().data(ClientAccountModel::Role::Avatar).value<QImage>(),
                                                    ui->idDisplayLayout->contentsRect().height());
-                ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
-                qDebug() << "CurrentAccount : Photo set";
-            } else
-                qDebug() << "CurrentAccount : selected profile has no person";
+            ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
+            qDebug() << "CurrentAccount : Photo set";
         } else
-            qDebug() << "CurrentAccount : Profilemodel: no selected profile";
+            qDebug() << "no account model";
     } else {
         qDebug() << "CurrentAccount : account not set";
         ui->currentAccountPixmap->setPixmap(QPixmap());
@@ -109,16 +106,11 @@ CurrentAccountWidget::setPhoto()
 void
 CurrentAccountWidget::on_currentAccountSelector_currentIndexChanged(int index)
 {
+    qDebug() << "<<<<<<<<<<<<<<<<<<<<<<<<<<<< new index in combobox" << index;
     QModelIndex idx = ui->currentAccountSelector->model()->index(index,0);
-    Account* ac = AccountModel::instance().getAccountByModelIndex(idx);
-
-    if (ac) {
-        AvailableAccountModel::instance().selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
-        setPhoto();
-    } else {
-        qDebug() << "CurrentAccount : account not referenced correctly";
-        //null for now
-    }
+    qDebug() << "<<<<<<<<<<<<<<<<<<<<<<<<" << idx << idx.row() << idx.column();
+    accountModel_->setSelectedAccount(idx);
+//    setPhoto();
 }
 
 void
