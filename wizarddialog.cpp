@@ -395,7 +395,8 @@ WizardDialog::validateFileImport()
     }
 }
 
-void WizardDialog::on_archivePathSelector_clicked()
+void
+WizardDialog::on_archivePathSelector_clicked()
 {
     QString filePath;
     filePath = QFileDialog::getOpenFileName(this,
