@@ -190,15 +190,22 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
     connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
 
-    // profile
-    auto profile = ProfileModel::instance().selectedProfile();
-    ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
-    ui->profileNameEdit->setText(profile->person()->formattedName());
-
     //temporary fix hiding imports buttons
     ui->exportButton->hide();
 
     ui->intervalUpdateCheckSpinBox->setEnabled(true);
+}
+
+void
+ConfigurationWidget::initLrcConnections()
+{
+
+}
+
+void
+ConfigurationWidget::setLrc(std::shared_ptr<lrc::api::Lrc> &lrc)
+{
+    lrc_ = lrc;
 }
 
 void ConfigurationWidget::showPreview()
