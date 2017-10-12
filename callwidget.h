@@ -27,13 +27,17 @@
 #include <QItemSelection>
 #include <QMovie>
 
+// Client
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "clientaccountmodel.h"
 
+// LRC
+#include "namedirectory.h"
+#include "uri.h"
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
-#include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
 
@@ -54,6 +58,8 @@ public:
     ~CallWidget();
     void atExit();
     bool findRingAccount();
+    void initLrcConnections();
+    void setLrc(std::shared_ptr<lrc::api::Lrc>& lrc);
 
 public slots:
     void settingsButtonClicked();
@@ -91,21 +97,21 @@ private slots:
     void callChangedSlot();
     void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
-    void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
+    void selectedAccountChanged(const QModelIndex &current);
     void on_contactMethodComboBox_currentIndexChanged(int index);
     void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
     Ui::CallWidget* ui;
+    std::shared_ptr<lrc::api::Lrc> lrc_;
+    ClientAccountModel* accMdl_ ;
     Call* actualCall_;
     Video::Renderer* videoRenderer_;
     CallModel* callModel_;
     int outputVolume_;
     int inputVolume_;
     QMenu* menu_;
-    SmartListDelegate* smartListDelegate_;
     QPersistentModelIndex highLightedIndex_;
-    ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
     QMetaObject::Connection callChangedConnection_;
@@ -114,7 +120,6 @@ private:
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
-
     constexpr static int qrSize_ = 200;
 
 private:
@@ -133,4 +138,5 @@ private:
     void backToWelcomePage();
     void hideMiniSpinner();
     void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);
+    void initUI();
 };

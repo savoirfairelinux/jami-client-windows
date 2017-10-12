@@ -19,6 +19,7 @@
 #define CLIENTACCOUNTMODEL_H
 
 #include <QAbstractItemModel>
+#include <QPersistentModelIndex>
 
 // LRC
 #include "api/account.h"
@@ -43,7 +44,6 @@ public:
         BestId,
         BestName,
         Type
-
     };
 
     explicit ClientAccountModel(const lrc::api::NewAccountModel &mdl, QObject *parent = 0);

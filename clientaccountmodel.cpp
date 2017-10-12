@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2017 by Savoir-faire Linux                                *
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -27,6 +28,14 @@
 #include "smartlistmodel.h"
 #include "ringthemeutils.h"
 
+//temporary
+#include <QImage>
+#include "pixbufmanipulator.h"
+#include <QPainter>
+#include <QFont>
+#include <QTextOption>
+#include <QFile>
+
 // LRC
 #include "api/newaccountmodel.h"
 #include "api/account.h"
@@ -36,7 +45,8 @@ ClientAccountModel::ClientAccountModel(const lrc::api::NewAccountModel& mdl, QOb
       mdl_(mdl)
 {}
 
-QModelIndex ClientAccountModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex
+ClientAccountModel::index(int row, int column, const QModelIndex &parent) const
 {
     if(parent.isValid())
         return QModelIndex();
@@ -50,14 +60,16 @@ QModelIndex ClientAccountModel::index(int row, int column, const QModelIndex &pa
     return QModelIndex();
 }
 
-QModelIndex ClientAccountModel::parent(const QModelIndex &index) const
+QModelIndex
+ClientAccountModel::parent(const QModelIndex &index) const
 {
     Q_UNUSED(index)
 
     return QModelIndex();
 }
 
-int ClientAccountModel::rowCount(const QModelIndex &parent) const
+int
+ClientAccountModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid())
         return mdl_.getAccountList().size();
@@ -65,7 +77,8 @@ int ClientAccountModel::rowCount(const QModelIndex &parent) const
     return 0;
 }
 
-int ClientAccountModel::columnCount(const QModelIndex &parent) const
+int
+ClientAccountModel::columnCount(const QModelIndex &parent) const
 {
     if (!parent.isValid())
         return 1;
@@ -73,7 +86,8 @@ int ClientAccountModel::columnCount(const QModelIndex &parent) const
     return 0;
 }
 
-QVariant ClientAccountModel::data(const QModelIndex &index, int role) const
+QVariant
+ClientAccountModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -83,8 +97,7 @@ QVariant ClientAccountModel::data(const QModelIndex &index, int role) const
     switch(role) {
     case Qt::DisplayRole:
     case Role::Alias:
-        // TODO Display account alias instead of id
-        return QVariant(QString::fromStdString(accInfo.id));
+        return QVariant(QString::fromStdString(accInfo.profileInfo.alias));
     case Role::SmartListModel:
         return QVariant::fromValue<::SmartListModel*>(new ::SmartListModel(accInfo));
     case Role::Avatar:
@@ -146,7 +159,8 @@ QVariant ClientAccountModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-Qt::ItemFlags ClientAccountModel::flags(const QModelIndex &index) const
+Qt::ItemFlags
+ClientAccountModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return QAbstractItemModel::flags(index);
@@ -154,12 +168,14 @@ Qt::ItemFlags ClientAccountModel::flags(const QModelIndex &index) const
         return QAbstractItemModel::flags(index) | Qt::ItemNeverHasChildren;
 }
 
-std::vector<std::__cxx11::string> ClientAccountModel::getAccountList() const
+std::vector<std::__cxx11::string>
+ClientAccountModel::getAccountList() const
 {
     return mdl_.getAccountList();
 }
 
-const lrc::api::account::Info &ClientAccountModel::getAccountInfo(const std::__cxx11::string &accountId) const
+const
+lrc::api::account::Info &ClientAccountModel::getAccountInfo(const std::__cxx11::string &accountId) const
 {
     return mdl_.getAccountInfo(accountId);
 }
