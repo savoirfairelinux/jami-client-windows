@@ -17,16 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-//temporary
-//TODO remove
-#include <QImage>
-#include <QPainter>
-#include <QFont>
-
 // Client
 #include "clientaccountmodel.h"
 #include "smartlistmodel.h"
-#include "ringthemeutils.h"
 
 //temporary
 #include <QImage>
@@ -135,6 +128,7 @@ ClientAccountModel::data(const QModelIndex &index, int role) const
             return QVariant(QImage::fromData(QByteArray::fromBase64(byteArray.toStdString().c_str())));
         }
     }
+<<<<<<< HEAD
 //    case Role::Id:
 //        return QVariant(QString::fromStdString(accInfo.id));
     case Role::Uri:
@@ -154,8 +148,10 @@ ClientAccountModel::data(const QModelIndex &index, int role) const
     }
     case Role::Type:
         return QVariant::fromValue<lrc::api::profile::Type>(accInfo.profileInfo.type);
-    case Role::ProfileInfo:
-        return QVariant::fromValue<lrc::api::profile::Info>(accInfo.profileInfo);
+=======
+    case Role::Id:
+        return QVariant(QString::fromStdString(accInfo.id));
+>>>>>>> 9456cea... WIP integrate new account model in win32 & cleanup
     }
 
     return QVariant();
@@ -192,5 +188,8 @@ void
 ClientAccountModel::setSelectedAccount(QModelIndex& newAccountIndex)
 {
     selectedAccountRow_ = newAccountIndex.row();
+<<<<<<< HEAD
     emit currentAccountChanged(newAccountIndex);
+=======
+>>>>>>> 9456cea... WIP integrate new account model in win32 & cleanup
 }

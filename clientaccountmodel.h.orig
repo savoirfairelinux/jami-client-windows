@@ -19,6 +19,7 @@
 #define CLIENTACCOUNTMODEL_H
 
 #include <QAbstractItemModel>
+#include <QPersistentModelIndex>
 
 // LRC
 #include "api/account.h"
@@ -26,7 +27,6 @@
 
 Q_DECLARE_METATYPE(lrc::api::profile::Type)
 Q_DECLARE_METATYPE(lrc::api::account::Status)
-Q_DECLARE_METATYPE(lrc::api::profile::Info)
 
 namespace lrc { namespace api { class NewAccountModel; } }
 
@@ -39,12 +39,16 @@ public:
         Alias = Qt::UserRole+1,
         SmartListModel,
         Avatar,
+<<<<<<< HEAD
 //        Id,
         Uri,
         BestId,
         BestName,
-        Type,
-        ProfileInfo
+        Type
+
+=======
+        Id
+>>>>>>> 9456cea... WIP integrate new account model in win32 & cleanup
     };
 
     explicit ClientAccountModel(const lrc::api::NewAccountModel &mdl, QObject *parent = 0);
@@ -68,9 +72,12 @@ public:
 public slots:
     void setSelectedAccount(QModelIndex& newAccountIndex);
 
+<<<<<<< HEAD
 signals:
     void currentAccountChanged(const QModelIndex& newIndex);
 
+=======
+>>>>>>> 9456cea... WIP integrate new account model in win32 & cleanup
 private:
     const lrc::api::NewAccountModel& mdl_;
     int selectedAccountRow_;
