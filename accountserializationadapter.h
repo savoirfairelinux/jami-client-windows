@@ -20,6 +20,8 @@
 
 #include "typedefs.h"
 
+#include "clientaccountmodel.h"
+
 class QWidget;
 class Account;
 
@@ -38,7 +40,7 @@ class Q_DECL_EXPORT AccountSerializationAdapter : public QObject
 {
    Q_OBJECT
 public:
-   AccountSerializationAdapter(Account* a, QWidget* w);
+   AccountSerializationAdapter(Account* a, QWidget* w, ClientAccountModel* cam);
    virtual ~AccountSerializationAdapter();
 };
 

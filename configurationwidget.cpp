@@ -28,6 +28,13 @@
 #include <QPropertyAnimation>
 #include <QtConcurrent/QtConcurrent>
 
+#include "deleteaccountdialog.h"
+#include "utils.h"
+#include "photoboothdialog.h"
+#include "wizarddialog.h"
+#include "mainwindow.h"
+
+// LRC
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
@@ -43,9 +50,6 @@
 #include "accountserializationadapter.h"
 #include "accountstatedelegate.h"
 #include "settingskey.h"
-#include "utils.h"
-#include "photoboothdialog.h"
-#include "wizarddialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -57,35 +61,33 @@
 #include "profile.h"
 #include "person.h"
 
-#include "winsparkle.h"
+#include "api/lrc.h"
 
-#include "deleteaccountdialog.h"
+#include "winsparkle.h"
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
-    accountModel_(&AccountModel::instance()),
-    deviceModel_(&Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
-    ui->setupUi(this);
+    initUI();
+}
 
-    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
-        if (CallModel::instance().getActiveCalls().size() == 0
-                && Video::PreviewManager::instance().isPreviewing()) {
-            Video::PreviewManager::instance().stopPreview();
-        }
-        accountModel_->save();
-        accountDetails_->save();
-    });
+ConfigurationWidget::~ConfigurationWidget()
+{
+    delete ui;
+}
+
+void
+ConfigurationWidget::initUI()
+{
+    ui->setupUi(this);
 
     connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
         emit NavigationRequested(ScreenEnum::CallScreen);
     });
 
-    ui->accountView->setModel(accountModel_);
-    accountStateDelegate_ = new AccountStateDelegate();
-    ui->accountView->setItemDelegate(accountStateDelegate_);
+    ui->accountView->setItemDelegate(new AccountStateDelegate());
 
     // connect delete button to popup trigger
     connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
@@ -95,9 +97,64 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     });
 
     isLoading_ = true;
+
+    ui->videoView->setIsFullPreview(true);
+
+    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->generalPage);
+            ui->videoTabButton->setChecked(false);
+            ui->accountTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->videoPage);
+            ui->accountTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->accountPage);
+            ui->videoTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    ui->generalTabButton->setChecked(true);
+
+    //temporary fix hiding imports buttons
+    ui->exportButton->hide();
+
+    ui->intervalUpdateCheckSpinBox->setEnabled(true);
+
+    // doesnt work with new syntax
+    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
+    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
+}
+
+void
+ConfigurationWidget::initLrcConnections()
+{
+    lrc_ = static_cast<MainWindow*>(parent())->getLrc();
+    accountModel_ = new ClientAccountModel(lrc_->getAccountModel());
+    deviceModel_ = &Video::DeviceModel::instance();
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
+        if (CallModel::instance().getActiveCalls().size() == 0
+                && Video::PreviewManager::instance().isPreviewing()) {
+            Video::PreviewManager::instance().stopPreview();
+        }
+        AccountModel::instance().save();
+        accountDetails_->save();
+    });
+
+    ui->accountView->setModel(accountModel_);
     ui->deviceBox->setModel(deviceModel_);
-    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(deviceIndexChanged(int)));
+    connect(deviceModel_, &Video::DeviceModel::currentIndexChanged, this, &ConfigurationWidget::deviceIndexChanged);
 
     if (ui->deviceBox->count() > 0){
         ui->deviceBox->setCurrentIndex(0);
@@ -112,7 +169,7 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     ui->accountView->setCurrentIndex(accountModel_->index(0));
     ui->accountDetailLayout->addWidget(accountDetails_);
-    ui->accountTypeBox->setModel(accountModel_->protocolModel());
+    ui->accountTypeBox->setModel(AccountModel::instance().protocolModel());
     ui->accountTypeBox->setCurrentIndex(ui->accountTypeBox->findText("RING"));
     ui->startupBox->setChecked(Utils::CheckStartupLink());
 
@@ -134,8 +191,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         }
     });
 
-    ui->videoView->setIsFullPreview(true);
-
     auto recordPath = Media::RecordingModel::instance().recordPath();
     if (recordPath.isEmpty()) {
         recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
@@ -148,31 +203,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         Media::RecordingModel::instance().setAlwaysRecording(checked);
     });
 
-    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->generalPage);
-            ui->videoTabButton->setChecked(false);
-            ui->accountTabButton->setChecked(false);
-        }
-    });
-
-    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->videoPage);
-            ui->accountTabButton->setChecked(false);
-            ui->generalTabButton->setChecked(false);
-        }
-    });
-
-    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->accountPage);
-            ui->videoTabButton->setChecked(false);
-            ui->generalTabButton->setChecked(false);
-        }
-    });
-
-    ui->generalTabButton->setChecked(true);
 
     // Audio settings
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
@@ -187,21 +217,14 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         ui->inputComboBox->setCurrentIndex(0);
     }
 
-    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
-    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
-
     // profile
     auto profile = ProfileModel::instance().selectedProfile();
     ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
     ui->profileNameEdit->setText(profile->person()->formattedName());
-
-    //temporary fix hiding imports buttons
-    ui->exportButton->hide();
-
-    ui->intervalUpdateCheckSpinBox->setEnabled(true);
 }
 
-void ConfigurationWidget::showPreview()
+void
+ConfigurationWidget::showPreview()
 {
     if (ui->stackedWidget->currentIndex() == 1
             && CallModel::instance().getActiveCalls().size() == 0) {
@@ -225,11 +248,6 @@ ConfigurationWidget::showEvent(QShowEvent *event)
     showPreview();
 }
 
-ConfigurationWidget::~ConfigurationWidget()
-{
-    delete ui;
-    delete accountStateDelegate_;
-}
 
 void
 ConfigurationWidget::deviceIndexChanged(int index)
@@ -284,11 +302,11 @@ ConfigurationWidget::accountSelected(QItemSelection itemSel)
     if (accountConnection_)
         disconnect(accountConnection_);
 
-    auto account = accountModel_->getAccountByModelIndex(
+    auto account = AccountModel::instance().getAccountByModelIndex(
                 ui->accountView->currentIndex());
     accountDetails_->setAccount(account);
     if (account) {
-        AccountSerializationAdapter adapter(account, accountDetails_);
+        AccountSerializationAdapter adapter(account, accountDetails_, accountModel_);
         accountConnection_= connect(account,
                                     SIGNAL(propertyChanged(Account*,QString,QString,QString)),
                                     this,
@@ -306,7 +324,7 @@ ConfigurationWidget::accountPropertyChanged(Account* a,
     Q_UNUSED(newVal)
     Q_UNUSED(oldVal)
     accountDetails_->setAccount(a);
-    AccountSerializationAdapter adapter(a, accountDetails_);
+    AccountSerializationAdapter adapter(a, accountDetails_, accountModel_);
 }
 
 void
@@ -317,9 +335,9 @@ ConfigurationWidget::on_addAccountButton_clicked()
         WizardDialog dlg(WizardDialog::NEW_ACCOUNT);
         dlg.exec();
     } else {
-        auto account = accountModel_->add(tr("New Account"), type);
+        auto account = AccountModel::instance().add(tr("New Account"), type);
         account->setRingtonePath(Utils::GetRingtonePath());
-        accountModel_->save();
+        AccountModel::instance().save();
     }
 }
 
