@@ -32,7 +32,7 @@ public:
         SmartListModel
     };
 
-    explicit ClientAccountModel(lrc::api::NewAccountModel& mdl, QObject *parent = 0);
+    explicit ClientAccountModel(const lrc::api::NewAccountModel &mdl, QObject *parent = 0);
 
     // QAbstractItemModel
     QModelIndex index(int row, int column,
@@ -44,7 +44,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 private:
-    lrc::api::NewAccountModel& mdl_;
+    const lrc::api::NewAccountModel& mdl_;
 };
 
 #endif // CLIENTACCOUNTMODEL_H

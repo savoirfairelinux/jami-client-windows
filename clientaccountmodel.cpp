@@ -24,7 +24,7 @@
 #include "api/newaccountmodel.h"
 #include "api/account.h"
 
-ClientAccountModel::ClientAccountModel(lrc::api::NewAccountModel& mdl, QObject *parent)
+ClientAccountModel::ClientAccountModel(const lrc::api::NewAccountModel& mdl, QObject *parent)
     : QAbstractItemModel(parent),
       mdl_(mdl)
 {}
