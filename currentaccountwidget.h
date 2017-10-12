@@ -22,6 +22,8 @@
 
 #include <QWidget>
 
+#include "clientaccountmodel.h"
+
 namespace Ui {
 class CurrentAccountWidget;
 }
@@ -34,6 +36,7 @@ public:
     explicit CurrentAccountWidget(QWidget *parent = 0);
     ~CurrentAccountWidget();
     void changeSelectedIndex(int index);
+    void setup(ClientAccountModel *accountModel);
 
 public slots:
     void update();
@@ -44,8 +47,11 @@ private slots:
 
 private:
     Ui::CurrentAccountWidget *ui;
-    void setup();
+    ClientAccountModel *accountModel_;
+    QPixmap photo_ {};
     void updateAccounts();
+    void paintEvent(QPaintEvent *e);
+    void resizeEvent(QResizeEvent *e);
 };
 
 #endif // CURRENTACCOUNTWIDGET_H

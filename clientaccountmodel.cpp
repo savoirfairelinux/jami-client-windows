@@ -154,6 +154,8 @@ ClientAccountModel::data(const QModelIndex &index, int role) const
     }
     case Role::Type:
         return QVariant::fromValue<lrc::api::profile::Type>(accInfo.profileInfo.type);
+    case Role::ProfileInfo:
+        return QVariant::fromValue<lrc::api::profile::Info>(accInfo.profileInfo);
     }
 
     return QVariant();

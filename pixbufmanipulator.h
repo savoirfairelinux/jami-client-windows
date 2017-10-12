@@ -23,6 +23,9 @@
 #include <memory>
 #include <interfaces/pixmapmanipulatori.h>
 
+//TODO remove
+#include "ringthemeutils.h"
+
 Q_DECLARE_METATYPE(QImage);
 
 class Person;

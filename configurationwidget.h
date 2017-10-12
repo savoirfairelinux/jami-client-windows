@@ -44,6 +44,8 @@ class ConfigurationWidget : public NavWidget
 public:
     explicit ConfigurationWidget(QWidget *parent = 0);
     ~ConfigurationWidget();
+    void initLrcConnections();
+    void setLrc(std::shared_ptr<lrc::api::Lrc> &lrc);
 
 protected:
     void showEvent(QShowEvent *event);
@@ -77,6 +79,7 @@ private slots:
 
 private:
     Ui::ConfigurationWidget *ui;
+    std::shared_ptr<lrc::api::Lrc> lrc_;
     AccountModel* accountModel_;
     QMetaObject::Connection accountConnection_;
     Video::DeviceModel* deviceModel_;
