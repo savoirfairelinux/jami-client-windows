@@ -35,6 +35,9 @@
 #include <QStackedWidget>
 #include <QPropertyAnimation>
 
+//temp
+#include <QDebug>
+
 bool
 Utils::CreateStartupLink()
 {
@@ -198,6 +201,8 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     QPainter painter(&target);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.setBrush(QBrush(Qt::white));
+
+    qDebug() << "TEST <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     auto scaledPhoto = original
             .scaled(sizePhoto, sizePhoto, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation)
             .convertToFormat(QImage::Format_ARGB32_Premultiplied);
