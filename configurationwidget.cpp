@@ -28,6 +28,13 @@
 #include <QPropertyAnimation>
 #include <QtConcurrent/QtConcurrent>
 
+#include "deleteaccountdialog.h"
+#include "utils.h"
+#include "photoboothdialog.h"
+#include "wizarddialog.h"
+#include "mainwindow.h"
+
+// LRC
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
@@ -43,9 +50,6 @@
 #include "accountserializationadapter.h"
 #include "accountstatedelegate.h"
 #include "settingskey.h"
-#include "utils.h"
-#include "photoboothdialog.h"
-#include "wizarddialog.h"
 
 #include "accountmodel.h"
 #include "protocolmodel.h"
@@ -57,18 +61,87 @@
 #include "profile.h"
 #include "person.h"
 
-#include "winsparkle.h"
+#include "api/lrc.h"
 
-#include "deleteaccountdialog.h"
+#include "winsparkle.h"
 
 ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     NavWidget(parent),
     ui(new Ui::ConfigurationWidget),
-    accountModel_(&AccountModel::instance()),
-    deviceModel_(&Video::DeviceModel::instance()),
     accountDetails_(new AccountDetails())
 {
+    initUI();
+}
+
+ConfigurationWidget::~ConfigurationWidget()
+{
+    delete ui;
+}
+
+void
+ConfigurationWidget::initUI()
+{
     ui->setupUi(this);
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
+        emit NavigationRequested(ScreenEnum::CallScreen);
+    });
+
+    ui->accountView->setItemDelegate(new AccountStateDelegate());
+
+    // connect delete button to popup trigger
+    connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
+        auto idx = ui->accountView->currentIndex();
+        DeleteAccountDialog dialog(idx);
+        dialog.exec();
+    });
+
+    isLoading_ = true;
+
+    ui->videoView->setIsFullPreview(true);
+
+    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->generalPage);
+            ui->videoTabButton->setChecked(false);
+            ui->accountTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->videoPage);
+            ui->accountTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->accountPage);
+            ui->videoTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    ui->generalTabButton->setChecked(true);
+
+    //temporary fix hiding imports buttons
+    ui->exportButton->hide();
+
+    ui->intervalUpdateCheckSpinBox->setEnabled(true);
+
+    // doesnt work with new syntax
+    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
+    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
+}
+
+void
+ConfigurationWidget::initLrcConnections()
+{
+    lrc_ = static_cast<MainWindow*>(parent())->getLrc();
+    accountModel_ = new ClientAccountModel(lrc_->getAccountModel());
+    deviceModel_ = &Video::DeviceModel::instance();
 
     connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
         if (CallModel::instance().getActiveCalls().size() == 0
@@ -79,25 +152,9 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         accountDetails_->save();
     });
 
-    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
-        emit NavigationRequested(ScreenEnum::CallScreen);
-    });
-
     ui->accountView->setModel(accountModel_);
-    accountStateDelegate_ = new AccountStateDelegate();
-    ui->accountView->setItemDelegate(accountStateDelegate_);
-
-    // connect delete button to popup trigger
-    connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
-        auto idx = ui->accountView->currentIndex();
-        DeleteAccountDialog dialog(idx);
-        dialog.exec();
-    });
-
-    isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);
-    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(deviceIndexChanged(int)));
+    connect(deviceModel_, &Video::DeviceModel::currentIndexChanged, this, &ConfigurationWidget::deviceIndexChanged);
 
     if (ui->deviceBox->count() > 0){
         ui->deviceBox->setCurrentIndex(0);
@@ -134,8 +191,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         }
     });
 
-    ui->videoView->setIsFullPreview(true);
-
     auto recordPath = Media::RecordingModel::instance().recordPath();
     if (recordPath.isEmpty()) {
         recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
@@ -148,31 +203,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         Media::RecordingModel::instance().setAlwaysRecording(checked);
     });
 
-    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->generalPage);
-            ui->videoTabButton->setChecked(false);
-            ui->accountTabButton->setChecked(false);
-        }
-    });
-
-    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->videoPage);
-            ui->accountTabButton->setChecked(false);
-            ui->generalTabButton->setChecked(false);
-        }
-    });
-
-    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
-        if (toggled) {
-            ui->stackedWidget->setCurrentWidget(ui->accountPage);
-            ui->videoTabButton->setChecked(false);
-            ui->generalTabButton->setChecked(false);
-        }
-    });
-
-    ui->generalTabButton->setChecked(true);
 
     // Audio settings
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
@@ -187,21 +217,14 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         ui->inputComboBox->setCurrentIndex(0);
     }
 
-    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
-    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
-
     // profile
     auto profile = ProfileModel::instance().selectedProfile();
     ui->avatarButton->setIcon(QPixmap::fromImage(Utils::getCirclePhoto(profile->person()->photo().value<QImage>(), ui->avatarButton->width())));
     ui->profileNameEdit->setText(profile->person()->formattedName());
-
-    //temporary fix hiding imports buttons
-    ui->exportButton->hide();
-
-    ui->intervalUpdateCheckSpinBox->setEnabled(true);
 }
 
-void ConfigurationWidget::showPreview()
+void
+ConfigurationWidget::showPreview()
 {
     if (ui->stackedWidget->currentIndex() == 1
             && CallModel::instance().getActiveCalls().size() == 0) {
@@ -225,11 +248,6 @@ ConfigurationWidget::showEvent(QShowEvent *event)
     showPreview();
 }
 
-ConfigurationWidget::~ConfigurationWidget()
-{
-    delete ui;
-    delete accountStateDelegate_;
-}
 
 void
 ConfigurationWidget::deviceIndexChanged(int index)

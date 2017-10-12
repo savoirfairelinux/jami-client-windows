@@ -26,7 +26,11 @@
 
 #include "navwidget.h"
 
+// STL
+#include <memory>
+
 // LRC
+#include "api/lrc.h"
 #include "call.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
@@ -46,6 +50,7 @@ public:
     }
     void createThumbBar();
     bool init();
+    std::shared_ptr<lrc::api::Lrc> getLrc();
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -63,6 +68,8 @@ private slots:
 private:
     explicit MainWindow(QWidget* parent = 0);
      ~MainWindow();
+
+    std::shared_ptr<lrc::api::Lrc> lrc_ {};
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
 };
