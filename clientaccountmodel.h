@@ -26,6 +26,7 @@
 
 Q_DECLARE_METATYPE(lrc::api::profile::Type)
 Q_DECLARE_METATYPE(lrc::api::account::Status)
+Q_DECLARE_METATYPE(lrc::api::profile::Info)
 
 namespace lrc { namespace api { class NewAccountModel; } }
 
@@ -42,7 +43,8 @@ public:
         Uri,
         BestId,
         BestName,
-        Type
+        Type,
+        ProfileInfo
     };
 
     explicit ClientAccountModel(const lrc::api::NewAccountModel &mdl, QObject *parent = 0);

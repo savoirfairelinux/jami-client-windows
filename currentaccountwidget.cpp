@@ -28,13 +28,16 @@
 #include "person.h"
 #include "utils.h"
 
+#include "clientaccountmodel.h"
+
+#include <QPaintEvent>
+
 
 CurrentAccountWidget::CurrentAccountWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CurrentAccountWidget)
 {
     ui->setupUi(this);
-    setup();
 }
 
 CurrentAccountWidget::~CurrentAccountWidget()
@@ -43,12 +46,15 @@ CurrentAccountWidget::~CurrentAccountWidget()
 }
 
 void
-CurrentAccountWidget::setup()
+CurrentAccountWidget::setup(ClientAccountModel* accountModel)
 {
     ui->accountsStatus->setText("No enabled account: impossible to communicate!");
     ui->accountsStatus->hide();
-    ui->currentAccountSelector->setModel(&AvailableAccountModel::instance());
+    accountModel_ = accountModel; // must be set before setmodel()
+    ui->currentAccountSelector->setModel(accountModel);
     updateAccounts();
+    connect(accountModel_, &QAbstractItemModel::layoutChanged, this, &CurrentAccountWidget::update);
+
     if (ui->currentAccountSelector->count() > 0) {
         ui->currentAccountSelector->setCurrentIndex(0);
         qDebug() << "CurrentAccount : setup over";
@@ -61,7 +67,7 @@ void
 CurrentAccountWidget::update()
 {
     updateAccounts();
-
+    setPhoto();
 }
 
 void
@@ -69,11 +75,10 @@ CurrentAccountWidget::updateAccounts()
 {
     auto selector = ui->currentAccountSelector;
 
-    if (selector->count() <= 1){
+    if (accountModel_->rowCount() <= 1){
         selector->hide();
-        if (selector->count() < 1) {
+        if (accountModel_->rowCount() < 1) {
             ui->accountsStatus->show();
-            setPhoto();
         } else {
             ui->accountsStatus->hide();
         }
@@ -83,42 +88,47 @@ CurrentAccountWidget::updateAccounts()
     }
 }
 
-
-
 void
 CurrentAccountWidget::setPhoto()
 {
     auto selector = ui->currentAccountSelector;
     if (selector->count() > 0) {
-        if (ProfileModel::instance().selectedProfile()) {
-            if (ProfileModel::instance().selectedProfile()->person()){
-                QImage img = Utils::getCirclePhoto(ProfileModel::instance().selectedProfile()->person()->photo().value<QImage>(),
-                                                   ui->idDisplayLayout->contentsRect().height());
-                ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
-                qDebug() << "CurrentAccount : Photo set";
-            } else
-                qDebug() << "CurrentAccount : selected profile has no person";
+        if (accountModel_) {
+            QImage img = accountModel_->selectedAccountIndex().data(ClientAccountModel::Role::Avatar).value<QImage>();
+            img = Utils::getCirclePhoto(img, ui->idDisplayLayout->contentsRect().height());
+            photo_ = QPixmap::fromImage(img);
+            ui->currentAccountPixmap->setPixmap(photo_);
+            qDebug() << "CurrentAccount : Photo set";
         } else
-            qDebug() << "CurrentAccount : Profilemodel: no selected profile";
+            qDebug() << "no account model";
     } else {
-        qDebug() << "CurrentAccount : account not set";
+        qDebug() << "Current account widget : no account available";
         ui->currentAccountPixmap->setPixmap(QPixmap());
     }
+}
+
+void
+CurrentAccountWidget::resizeEvent(QResizeEvent *e)
+{
+    QWidget::resizeEvent(e);
+    setPhoto();
+}
+
+void
+CurrentAccountWidget::paintEvent(QPaintEvent *e)
+{
+    if (photo_.isNull()) {
+        setPhoto();
+    }
+    QWidget::paintEvent(e);
 }
 
 void
 CurrentAccountWidget::on_currentAccountSelector_currentIndexChanged(int index)
 {
     QModelIndex idx = ui->currentAccountSelector->model()->index(index,0);
-    Account* ac = AccountModel::instance().getAccountByModelIndex(idx);
-
-    if (ac) {
-        AvailableAccountModel::instance().selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
-        setPhoto();
-    } else {
-        qDebug() << "CurrentAccount : account not referenced correctly";
-        //null for now
-    }
+    accountModel_->setSelectedAccount(idx);
+    setPhoto();
 }
 
 void

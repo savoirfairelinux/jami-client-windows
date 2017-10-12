@@ -27,13 +27,18 @@
 #include <QItemSelection>
 #include <QMovie>
 
+// Client
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "clientaccountmodel.h"
+#include "messagemodel.h"
 
+// LRC
+#include "namedirectory.h"
+#include "uri.h"
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
-#include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
 
@@ -54,10 +59,12 @@ public:
     ~CallWidget();
     void atExit();
     bool findRingAccount();
+    void initLrcConnections();
+    void setLrc(std::shared_ptr<lrc::api::Lrc>& lrc);
 
 public slots:
     void settingsButtonClicked();
-    void showIMOutOfCall(const QModelIndex& nodeIdx);
+    void showIMOutOfCall(MessageModel* mdl);
     void btnComBarVideoClicked();
 
 //UI SLOTS
@@ -76,7 +83,6 @@ private slots:
     void on_imBackButton_clicked();
     void on_sendContactRequestPageButton_clicked();
     void on_sendCRBackButton_clicked();
-    void on_smartList_clicked(const QModelIndex &index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
     void on_pendingCRBackButton_clicked();
@@ -84,28 +90,26 @@ private slots:
 private slots:
     void callIncoming(Call* call);
     void callStateChanged(Call* call, Call::State previousState);
-    void smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
     void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
-    void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
-    void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
+    void selectedAccountChanged(const QModelIndex &current);
     void on_contactMethodComboBox_currentIndexChanged(int index);
     void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
     Ui::CallWidget* ui;
+    std::shared_ptr<lrc::api::Lrc> lrc_;
+    ClientAccountModel* accMdl_ ;
     Call* actualCall_;
     Video::Renderer* videoRenderer_;
     CallModel* callModel_;
     int outputVolume_;
     int inputVolume_;
     QMenu* menu_;
-    SmartListDelegate* smartListDelegate_;
     QPersistentModelIndex highLightedIndex_;
-    ImDelegate* imDelegate_;
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
     QMetaObject::Connection callChangedConnection_;
@@ -114,7 +118,6 @@ private:
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
-
     constexpr static int qrSize_ = 200;
 
 private:
@@ -133,4 +136,5 @@ private:
     void backToWelcomePage();
     void hideMiniSpinner();
     void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);
+    void initUI();
 };
