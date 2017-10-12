@@ -19,6 +19,7 @@
 #define CLIENTACCOUNTMODEL_H
 
 #include <QAbstractItemModel>
+#include <QModelIndex>
 
 // LRC
 #include "api/account.h"
@@ -32,7 +33,9 @@ class ClientAccountModel : public QAbstractItemModel
 public:
     enum Role {
         Alias = Qt::UserRole+1,
-        SmartListModel
+        SmartListModel,
+        Avatar,
+        Id
     };
 
     explicit ClientAccountModel(const lrc::api::NewAccountModel &mdl, QObject *parent = 0);
@@ -50,8 +53,15 @@ public:
     std::vector<std::string> getAccountList() const;
     const lrc::api::account::Info &getAccountInfo(const std::string& accountId) const;
 
+    // client side actions
+    QModelIndex& selectedAccountIndex();
+
+public slots:
+    void selectedAccountChanged(QModelIndex& newAccountIndex);
+
 private:
     const lrc::api::NewAccountModel& mdl_;
+    QModelIndex selectedAccountIndex_ {};
 };
 
 #endif // CLIENTACCOUNTMODEL_H

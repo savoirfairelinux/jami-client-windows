@@ -54,6 +54,9 @@
 #include "peerprofilecollection.h"
 #include "localprofilecollection.h"
 #include "callmodel.h"
+#include "api/newaccountmodel.h"
+#include "api/account.h"
+#include "mainwindow.h"
 
 //Client
 #include "wizarddialog.h"
@@ -67,13 +70,27 @@
 #include "settingskey.h"
 #include "contactrequestitemdelegate.h"
 #include "deletecontactdialog.h"
+#include "smartlistmodel.h"
 
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
-    menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    menu_(new QMenu())
+{
+    initUI();
+}
+
+CallWidget::~CallWidget()
+{
+    delete ui;
+    delete menu_;
+    delete pageAnim_;
+    delete shareMenu_;
+}
+
+void
+CallWidget::initUI()
 {
     ui->setupUi(this);
 
@@ -84,8 +101,10 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->settingsButton, &QPushButton::clicked, this, &CallWidget::settingsButtonClicked);
 
-    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
-            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+    connect(ui->videoWidget, &VideoView::setChatVisibility,
+            ui->instantMessagingWidget, &InstantMessagingWidget::setVisible);
+
+    connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){ setupSmartListMenu(pos);});
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -93,32 +112,42 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->qrLabel->hide();
 
+    ui->smartList->setSmartListItemDelegate(new SmartListDelegate());
+    ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
+
+    connect(ui->searchBtn, &QPushButton::clicked, this, &CallWidget::searchBtnClicked);
+    connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{Utils::slidePage(ui->stackedWidget, ui->messagingPage);});
+    connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
+
+    // setup searchingfor mini spinner
+    miniSpinner_ = new QMovie(":/images/waiting.gif");
+    ui->spinnerLabel->setMovie(miniSpinner_);
+    ui->spinnerLabel->hide();
+}
+
+void
+CallWidget::initLrcConnections()
+{
     try {
+        accMdl_ = new ClientAccountModel(lrc_->getAccountModel());
         callModel_ = &CallModel::instance();
 
-        connect(callModel_, SIGNAL(incomingCall(Call*)),
-                this, SLOT(callIncoming(Call*)));
-        connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
-                this, SLOT(callStateChanged(Call*, Call::State)));
+        connect(callModel_, &CallModel::incomingCall, this, &CallWidget::callIncoming);
+        connect(callModel_, &CallModel::callStateChanged, this, &CallWidget::callStateChanged);
 
-        RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
-        RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
-        ui->smartList->setModel(RecentModel::instance().peopleProxy());
-
-        PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
-        ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
-
-        PersonModel::instance().
-                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
+       // Load SmartListModel for first account
+        // TODO: Load for every account
+        if (accMdl_->getAccountList().size() > 0) {
+            qDebug() << "BURP";
+            auto* slMdl = new SmartListModel(accMdl_->getAccountInfo(accMdl_->getAccountList().at(0)));
+            qDebug() << QString::fromUtf8(accMdl_->getAccountInfo(accMdl_->getAccountList().at(0)).id.c_str()) << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+            ui->smartList->setModel(slMdl);
+        } else
+            qDebug() << "PLOUP";
 
         connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
-
-        smartListDelegate_ = new SmartListDelegate();
-        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
-
-        ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
-
-        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
@@ -157,9 +186,6 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                 ui->currentAccountWidget, SLOT(update()));
 
-        connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
-
-        connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{Utils::slidePage(ui->stackedWidget, ui->messagingPage);});
 
         connect(ui->contactRequestWidget, &ContactRequestWidget::choiceMade, [this]() {
             if (getSelectedAccount()->pendingContactRequestModel()->rowCount() == 0)
@@ -168,47 +194,21 @@ CallWidget::CallWidget(QWidget* parent) :
                 ui->contactRequestList->selectionModel()->clear();
         });
 
-        connect(AvailableAccountModel::instance().selectionModel(), &QItemSelectionModel::currentChanged,
-                this, &CallWidget::selectedAccountChanged);
-
-        // It needs to be called manually once to initialize the ui with the account selected at start.
-        // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
-        selectedAccountChanged(AvailableAccountModel::instance().selectionModel()->currentIndex(), QModelIndex());
-
-        // This connect() is used to initialise and track changes of profile's picture
-        connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-                ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
-
-        connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
-
-        connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){ setupSmartListMenu(pos);});
-
-        // setup searchingfor mini spinner
-        miniSpinner_ = new QMovie(":/images/waiting.gif");
-        ui->spinnerLabel->setMovie(miniSpinner_);
-        ui->spinnerLabel->hide();
-
-    } catch (const std::exception& e) {
-        qDebug() << "INIT ERROR" << e.what();
+   } catch (const std::exception& e) {
+        qDebug() << "UI ELEMENTS (LRC RELATED) INIT ERROR" << e.what();
     }
-
-    setupOutOfCallIM();
 }
 
-CallWidget::~CallWidget()
+void
+CallWidget::setLrc(std::shared_ptr<lrc::api::Lrc>& lrc)
 {
-    delete ui;
-    delete menu_;
-    delete imDelegate_;
-    delete pageAnim_;
-    delete smartListDelegate_;
-    delete shareMenu_;
+    lrc_ = lrc;
 }
 
 void
 CallWidget::setupOutOfCallIM()
 {
-    ui->listMessageView->setItemDelegate(imDelegate_);
+    ui->listMessageView->setItemDelegate(new ImDelegate());
     ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
 
     auto copyAction = new QAction(tr("Copy"), this);
@@ -238,7 +238,7 @@ CallWidget::setupOutOfCallIM()
         QSettings settings;
         settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
         settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
-        emit imDelegate_->sizeHintChanged(QModelIndex());
+        emit ui->listMessageView->itemDelegate()->sizeHintChanged(QModelIndex());
     };
 
     connect(displayAuthor, &QAction::triggered, lamdba);
@@ -345,7 +345,8 @@ CallWidget::setupSmartListMenu(const QPoint& pos)
     menu.exec(globalPos);
 }
 
-void CallWidget::setupQRCode(QString ringID)
+void
+CallWidget::setupQRCode(QString ringID)
 {
     auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
                                      0, //Let the version be decided by libqrencode
@@ -866,7 +867,8 @@ CallWidget::on_imMessageEdit_returnPressed()
     on_sendIMButton_clicked();
 }
 
-void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
+void
+CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
 {
     auto idx = RecentModel::instance().selectionModel()->currentIndex();
     auto cmVec = RecentModel::instance().getContactMethods(idx);
@@ -933,7 +935,8 @@ CallWidget::backToWelcomePage()
     disconnect(imConnection_);
 }
 
-void CallWidget::hideMiniSpinner()
+void
+CallWidget::hideMiniSpinner()
 {
     if(ui->spinnerLabel->isVisible()){
         miniSpinner_->stop();
@@ -1049,7 +1052,8 @@ CallWidget::shouldDisplayInviteButton(ContactMethod &cm)
     return false;
 }
 
-void CallWidget::on_contactRequestList_clicked(const QModelIndex &index)
+void
+CallWidget::on_contactRequestList_clicked(const QModelIndex &index)
 {
     RecentModel::instance().selectionModel()->clear();
     contactReqListCurrentChanged(index, QModelIndex());

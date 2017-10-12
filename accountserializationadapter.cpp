@@ -183,11 +183,11 @@ static void hideLabel(QWidget* w) {
     }
 }
 
-AccountSerializationAdapter::AccountSerializationAdapter(Account* a, QWidget* w) : QObject(w)
+AccountSerializationAdapter::AccountSerializationAdapter(Account* a, QWidget* w, ClientAccountModel* cam) : QObject(w)
 {
     static QHash<QByteArray, int> reverse;
     if (reverse.isEmpty()) {
-        const QHash<int, QByteArray> a = AccountModel::instance().roleNames();
+        const QHash<int, QByteArray> a = AccountModel::instance().roleNames(); // temporary direct access to old model waiting for implementation
         for (QHash<int, QByteArray>::const_iterator i = a.begin(); i != a.end(); ++i) {
             reverse[i.value()] = i.key();
         }
