@@ -37,11 +37,25 @@
 #include "callwidget.h"
 #include "utils.h"
 
+// STL
+#include <memory>
+
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
+    lrc_(new lrc::api::Lrc()),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    {
+    // must be after setupUi
+    ui->callwidget->setLrc(lrc_);
+    ui->callwidget->initLrcConnections();
+
+    ui->configurationwidget->setLrc(lrc_);
+    ui->configurationwidget->initLrcConnections();
+    }
+
     connect(ui->callwidget, CallWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
     connect(ui->configurationwidget, ConfigurationWidget::NavigationRequested,
@@ -132,6 +146,11 @@ bool
 MainWindow::init()
 {
     return ui->callwidget->findRingAccount();
+}
+
+std::shared_ptr<lrc::api::Lrc> MainWindow::getLrc()
+{
+    return lrc_;
 }
 
 void
