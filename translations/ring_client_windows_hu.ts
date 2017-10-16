@@ -249,7 +249,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Új jelszó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Fájl megnyitása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

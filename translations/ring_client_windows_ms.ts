@@ -249,7 +249,7 @@ Ring adalah aplikasi komunikasi yang sulit dan tersebar.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Kata laluan baharu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>

@@ -249,7 +249,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Fjalëkalim i ri</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>

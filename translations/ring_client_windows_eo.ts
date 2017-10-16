@@ -249,7 +249,7 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Nova pasvorto</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring estas sekura kaj disa komunikprogramo.</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Okej</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Malfermi Dosieron</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

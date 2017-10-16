@@ -249,7 +249,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>新密码</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>打开文件</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

@@ -249,7 +249,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Nieuw wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -269,12 +269,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord wijzigen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Oké</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Bestand openen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

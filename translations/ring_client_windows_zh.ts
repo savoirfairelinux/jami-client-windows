@@ -273,7 +273,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1875,7 +1875,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>開啟檔案</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

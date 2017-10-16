@@ -249,12 +249,12 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>新密碼</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>確認密碼文字輸入</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
@@ -269,12 +269,12 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>變更密碼</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>開啟檔案</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

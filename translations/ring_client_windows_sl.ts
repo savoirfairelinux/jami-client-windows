@@ -249,7 +249,7 @@ Ring je varen in necentraliziran način komunikacije.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Novo geslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring je varen in necentraliziran način komunikacije.</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>V redu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Kopiraj in deli s svojimi prijatelji!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Odpri datoteko</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

@@ -274,7 +274,7 @@ Ring은 보안 기능을 가진 분산 커뮤니케이션 소프트웨어입니�
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>확인</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>파일 열기</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

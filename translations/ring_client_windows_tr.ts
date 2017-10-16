@@ -249,7 +249,7 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Yeni parola</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Tamam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Kopyala ve arkadaşlarınla paylaş!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Dosyayı Aç</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

@@ -248,7 +248,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Nova contrasenya</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>

@@ -249,7 +249,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Naujas slaptažodis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -269,12 +269,12 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Pakeisti slaptažodį</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Gerai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Atverti failą</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

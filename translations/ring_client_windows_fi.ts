@@ -249,7 +249,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Uusi salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -274,7 +274,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Vahvista</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1875,7 +1875,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Avaa tiedosto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

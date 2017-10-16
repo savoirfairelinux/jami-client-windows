@@ -249,12 +249,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Nova senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Campo de texto para confirmação da Senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
@@ -269,12 +269,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Mudar senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Abrir arquivo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>

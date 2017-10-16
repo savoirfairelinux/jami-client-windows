@@ -249,12 +249,12 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation type="unfinished"/>
+        <translation>Nytt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Passordsbekreftelsestekst-inndata</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
@@ -269,12 +269,12 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Endre passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -1876,7 +1876,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Åpne fil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
