@@ -92,11 +92,14 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                 ui->joinButton->hide();
             }
 
-            if (auto contactMethod =  c->peerContactMethod())
+            if (auto* contactMethod =  c->peerContactMethod())
                 ui->addToContactButton->setVisible(not contactMethod->contact()
                                                    || contactMethod->contact()->isPlaceHolder());
 
-            ui->transferButton->setVisible(c->account()->isIp2ip());
+            if (auto* acc = c->account())
+                ui->transferButton->setVisible(acc->isIp2ip());
+            else
+                ui->transferButton->setVisible(false); // Hide transferButton as fallback so it is not displayed for Ring calls
         }
     });
 
