@@ -10,7 +10,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>Le bouton à-propos </translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
