@@ -28,6 +28,7 @@
 #include "navwidget.h"
 #include "accountdetails.h"
 #include "accountstatedelegate.h"
+#include "clientaccountmodel.h"
 
 #include "accountmodel.h"
 #include "video/devicemodel.h"
