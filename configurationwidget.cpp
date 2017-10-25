@@ -57,6 +57,11 @@
 #include "profile.h"
 #include "person.h"
 
+// New LRC
+#include "api/lrc.h"
+#include "api/profile.h"
+#include "api/account.h"
+
 #include "winsparkle.h"
 
 #include "deleteaccountdialog.h"
@@ -95,6 +100,62 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     });
 
     isLoading_ = true;
+
+    ui->videoView->setIsFullPreview(true);
+
+    connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->generalPage);
+            ui->videoTabButton->setChecked(false);
+            ui->accountTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->videoTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->videoPage);
+            ui->accountTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    connect(ui->accountTabButton, &QPushButton::toggled, [=] (bool toggled) {
+        if (toggled) {
+            Utils::slidePage(ui->stackedWidget, ui->accountPage);
+            ui->videoTabButton->setChecked(false);
+            ui->generalTabButton->setChecked(false);
+        }
+    });
+
+    ui->generalTabButton->setChecked(true);
+
+    //temporary fix hiding imports buttons
+    ui->exportButton->hide();
+
+    ui->intervalUpdateCheckSpinBox->setEnabled(true);
+
+    // doesnt work with new syntax
+    connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
+    connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
+}
+
+void
+ConfigurationWidget::initLrcConnections()
+{
+    // models used
+    accountModel_ = &AccountModel::instance();
+    deviceModel_ = &Video::DeviceModel::instance();
+
+    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
+        if (CallModel::instance().getActiveCalls().size() == 0
+                && Video::PreviewManager::instance().isPreviewing()) {
+            Video::PreviewManager::instance().stopPreview();
+        }
+        AccountModel::instance().save();
+        accountDetails_->save();
+    });
+
+    ui->accountView->setModel(accountModel_);
     ui->deviceBox->setModel(deviceModel_);
     connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
             this, SLOT(deviceIndexChanged(int)));
@@ -190,16 +251,14 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     connect(ui->outputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(outputIndexChanged(int)));
     connect(ui->inputComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(inputIndexChanged(int)));
 
+    // profile
+    const auto currentAccountIndex = accountModel_->selectionModel()->currentIndex();
+    ui->profileNameEdit->setText(currentAccountIndex.data(static_cast<int>(Account::Role::Alias)).value<QString>());
+
     //temporary fix hiding imports buttons
     ui->exportButton->hide();
 
     ui->intervalUpdateCheckSpinBox->setEnabled(true);
-}
-
-void
-ConfigurationWidget::initLrcConnections()
-{
-
 }
 
 void
@@ -453,8 +512,8 @@ ConfigurationWidget::on_avatarButton_clicked()
 void
 ConfigurationWidget::on_profileNameEdit_textEdited(const QString& name)
 {
-    ProfileModel::instance().selectedProfile()->person()->setFormattedName(name);
-    ProfileModel::instance().selectedProfile()->save();
+    if (currentAccount_ && currentAccount_->protocol() == Account::Protocol::RING)
+        currentAccount_->setDisplayName(name);
 }
 
 void
