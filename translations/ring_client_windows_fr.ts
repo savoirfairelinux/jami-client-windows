@@ -15,7 +15,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>Bouton de crédits</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -138,7 +138,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration des informations générales du compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -148,7 +148,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Affichage du nom</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
@@ -209,7 +209,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Numéro de boite vocale SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
@@ -229,22 +229,22 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Entrer votre ancien mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Ancien mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Entrée de votre nouveau mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Entrer votre nouveau mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -254,12 +254,12 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Texte de confirmation de l&apos;entrée du mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Entrer la confirmation</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
@@ -279,12 +279,12 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Bouton d&apos;annulation du changement de mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Modification de mot de passe...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -530,7 +530,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration de la sécurité du compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -550,7 +550,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser la clé privée du sélecteur</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
@@ -820,12 +820,12 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>Bouton de recherche</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Menu de configuration</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -2120,7 +2120,7 @@ Vos amis pourront vous appeler avec ce nom plutôt que votre RingID.</translatio
         <location filename="../wizarddialog.ui" line="853"/>
         <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Texte de confirmation de l&apos;entrée du mot de passe</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="865"/>
