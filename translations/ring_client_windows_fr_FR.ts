@@ -5,12 +5,12 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="465"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>A propos </translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>à propos du bouton</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
@@ -36,12 +36,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
         <source>version</source>
-        <translation type="unfinished"/>
+        <translation>version</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation type="unfinished"/>
+        <translation>créer par</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
@@ -69,7 +69,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="143"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="206"/>
@@ -79,19 +79,19 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="250"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>parametres</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="280"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>nom d&apos;hôte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
         <location filename="../accountdetails.cpp" line="117"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="469"/>
@@ -107,12 +107,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="558"/>
         <source>Voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>boite vocale </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation type="unfinished"/>
+        <translation>Réponse automatique de l&apos;appel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
@@ -122,17 +122,17 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
         <source>Allow Call From Unknown</source>
-        <translation type="unfinished"/>
+        <translation>autoriser les appels connu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="895"/>
         <source>Allow Call From Contact</source>
-        <translation type="unfinished"/>
+        <translation>Autoriser l&apos;appel du contact</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="880"/>
         <source>Allow Call From History</source>
-        <translation type="unfinished"/>
+        <translation>Autoriser l&apos;appel depuis l&apos;historique</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
@@ -142,7 +142,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Affichage du nom</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -157,7 +157,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>nom public</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
@@ -228,12 +228,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>entrée ancien mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>ancien mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -243,7 +243,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>entrée  le nouveau mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -258,22 +258,22 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>confirmation d&apos;entrée</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Nouvelle confirmation de passage</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>changer le mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>d&apos;accord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -319,7 +319,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="958"/>
         <location filename="../accountdetails.cpp" line="58"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>jouer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
@@ -440,7 +440,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1688"/>
         <location filename="../accountdetails.ui" line="1735"/>
         <source>Server URL</source>
-        <translation type="unfinished"/>
+        <translation>URL du serveur</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
@@ -524,7 +524,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2186"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>securité</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
@@ -705,7 +705,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="231"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>choisir un fichier</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="233"/>
@@ -799,7 +799,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="333"/>
         <source>Conversations</source>
-        <translation type="unfinished"/>
+        <translation>Conversation</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="384"/>
@@ -819,12 +819,12 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>bouton de recherche</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Menu de configuration</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -883,7 +883,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1333"/>
         <source>send message</source>
-        <translation type="unfinished"/>
+        <translation>Envoyer un message </translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1459"/>
@@ -978,7 +978,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="307"/>
         <source>Call Number</source>
-        <translation type="unfinished"/>
+        <translation>Numéro de téléphone</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="308"/>
@@ -998,7 +998,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Retirer du contact</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="762"/>
@@ -1267,7 +1267,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1245"/>
         <source>add new account</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un nouveau contact </translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
@@ -1292,7 +1292,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.cpp" line="320"/>
         <source>New Account</source>
-        <translation type="unfinished"/>
+        <translation>Nouveau compte</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="340"/>
@@ -1340,7 +1340,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="85"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>Nouveau contact</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="108"/>
@@ -1479,7 +1479,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>d&apos;accord</translation>
     </message>
 </context>
 <context>
@@ -1583,7 +1583,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../mainwindow.cpp" line="81"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>A propos </translation>
     </message>
 </context>
 <context>
@@ -1629,7 +1629,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>choisir un fichier</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
