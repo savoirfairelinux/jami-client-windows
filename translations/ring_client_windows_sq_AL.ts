@@ -25,7 +25,7 @@
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation type="unfinished"/>
+        <translation>Liri, Barazi, Vëllazëri - Version 1.0</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
