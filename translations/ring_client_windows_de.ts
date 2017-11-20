@@ -269,7 +269,7 @@ Ring ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ändern</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>

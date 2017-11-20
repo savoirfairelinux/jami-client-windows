@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>over-knop</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>met-dank-aan-knop</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -138,22 +138,22 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuratie van algemeneaccountinformatie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Getoonde naam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Getoonde aliasinvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Hostnaam-URL voor DHT-bootstrap of SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -163,7 +163,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Publiek geregistreerde Ring-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
@@ -194,22 +194,22 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>SIP-gebruikersnaaminvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>SIP-wachtwoordinvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>SIP-proxy-URL-invoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>SIP-voicemailnummer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
@@ -229,12 +229,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Voer je oude wachtwoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Oud wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -244,7 +244,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Voer je nieuwe wachtwoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -254,12 +254,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoordbevestigingstekstinvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Invoerbevestiging</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
@@ -284,7 +284,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord wijzigen…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -335,7 +335,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuratie voor audio-/videocodecvoorkeuren</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -355,7 +355,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Geavanceerde accountconfiguratie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -530,7 +530,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Accountbeveiligingsconfiguratie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -575,7 +575,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Accountapparaatbeheer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
@@ -595,7 +595,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
@@ -631,7 +631,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>Pincode gegenereerd voor koppelen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -767,7 +767,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>bestaande contactenlijst</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
@@ -820,12 +820,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>zoekknop</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Configuratiemenu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -837,7 +837,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../callwidget.ui" line="791"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Toon QR-code voor Ring-ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
@@ -1118,7 +1118,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation type="unfinished"/>
+        <translation>Avatar (klik om te wijzigen)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
@@ -1133,7 +1133,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="400"/>
         <source>Number of days of history kept</source>
-        <translation type="unfinished"/>
+        <translation>Aantal dagen dat geschiedenis bijgehouden moet worden</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
@@ -1153,7 +1153,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="573"/>
         <source>Call records path</source>
-        <translation type="unfinished"/>
+        <translation>Pad voor gespreksopnamen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
@@ -1327,7 +1327,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>bestaande contactenlijst</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
@@ -1428,12 +1428,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>Accountavatar</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>Accountstatus</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
@@ -1532,12 +1532,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>Berichtenlijst</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
         <source>Message input</source>
-        <translation type="unfinished"/>
+        <translation>Berichtinvoer</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="77"/>
@@ -1694,7 +1694,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Kies een map</translation>
     </message>
 </context>
 <context>
@@ -1755,7 +1755,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Gesprek opnemen</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -1836,7 +1836,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Accountarchief importeren…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
@@ -1846,7 +1846,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout opgetreden bij het aanmaken van je account</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
@@ -1881,7 +1881,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Ring-archiefbestanden (*.gz);; Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -2001,37 +2001,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="205"/>
         <source>Select link method</source>
-        <translation type="unfinished"/>
+        <translation>Kies een koppelmethode</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="254"/>
         <source>Link account to device from the network</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen aan apparaat van het netwerk</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="257"/>
         <source>Link account from DHT</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen van DHT</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="270"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Koppelen van geëxporteerd accountarchiefbestand</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
         <source>Link account from file</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen van bestand</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Kies een bestand om te importeren</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation type="unfinished"/>
+        <translation>Accountarchiefpad:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
@@ -2041,12 +2041,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Archiefwachtwoord:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
         <source>Archive passord input</source>
-        <translation type="unfinished"/>
+        <translation>Archiefwachtwoordinvoer</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
@@ -2056,7 +2056,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="509"/>
         <source>Avatar display</source>
-        <translation type="unfinished"/>
+        <translation>Avatarweergave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="588"/>
@@ -2111,12 +2111,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="814"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="820"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="826"/>
@@ -2127,7 +2127,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="853"/>
         <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoordbevestigingstekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="865"/>
