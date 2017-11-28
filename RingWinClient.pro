@@ -155,7 +155,7 @@ FORMS    += mainwindow.ui \
     photoboothwidget.ui \
     deletecontactdialog.ui
 
-win32: LIBS += -lole32 -luuid -lshlwapi
+win32: LIBS += -lole32 -luuid -lshlwapi -lgdi32
 LIBS += -lqrencode
 
 INCLUDEPATH += $${RING}/include/libringclient
@@ -270,7 +270,7 @@ win32 {
                             $$RUNTIMEDIR/libfreetype-6.dll $$RUNTIMEDIR/libglib-2.0-0.dll \
                             $$RUNTIMEDIR/libharfbuzz-0.dll \
                             $$RUNTIMEDIR/libintl-8.dll $$RUNTIMEDIR/libpcre-1.dll \
-                            $$RUNTIMEDIR/libpcre16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
+                            $$RUNTIMEDIR/libpcre2-16-0.dll $$RUNTIMEDIR/libpng16-16.dll \
                             $$RUNTIMEDIR/libjpeg-62.dll $$RUNTIMEDIR/iconv.dll \
                             $$RUNTIMEDIR/libidn-11.dll $$RUNTIMEDIR/liblzma-5.dll \
                             $$RUNTIMEDIR/libGLESv2.dll $$RUNTIMEDIR/libbz2-1.dll \
