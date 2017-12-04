@@ -2094,7 +2094,7 @@ Vos amis pourront vous appeler avec ce nom plutôt que votre RingID.</translatio
     <message>
         <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation type="unfinished"/>
+        <translation>Champ de saisie du NIP de l&apos;appareil associé</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="787"/>
