@@ -32,7 +32,7 @@
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
         <translation>Klienti Ring për Microsoft Windows.
-Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</translation>
+Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -491,7 +491,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation type="unfinished"/>
+        <translation>Interval Porte Audio RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
@@ -726,7 +726,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../accountdetails.cpp" line="329"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Fjalëkalim gabuar.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="356"/>
@@ -787,7 +787,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../callutilsdialog.ui" line="113"/>
         <source>Transfer</source>
-        <translation type="unfinished"/>
+        <translation>Shpërngule</translation>
     </message>
 </context>
 <context>
@@ -805,7 +805,7 @@ Ring-u është një software komunikimesh të siguruara dhe të shpërndara.</tr
     <message>
         <location filename="../callwidget.ui" line="384"/>
         <source>Contact requests</source>
-        <translation type="unfinished"/>
+        <translation>Kërkesa kontakti</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="642"/>
@@ -920,7 +920,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../callwidget.ui" line="1673"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Po thirret</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
@@ -1415,7 +1415,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Bllokoje</translation>
     </message>
 </context>
 <context>
@@ -1795,7 +1795,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../videooverlay.ui" line="87"/>
         <source>Hangup</source>
-        <translation type="unfinished"/>
+        <translation>Mbylle</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="297"/>

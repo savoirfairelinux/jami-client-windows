@@ -153,7 +153,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Adresse des nœuds d&apos;amorçage ou du serveur SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -204,7 +204,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>Adresse du proxy SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
@@ -335,7 +335,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration des préférences des codecs audio et vidéo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -1173,7 +1173,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Activer les notifications</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
@@ -1259,12 +1259,12 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1148"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Sélecteur d&apos;entrée audio </translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1226"/>
         <source>New account type selector</source>
-        <translation type="unfinished"/>
+        <translation>Sélecteur de nouveau compte</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1245"/>
