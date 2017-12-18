@@ -224,7 +224,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Linha de entrada da senha antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
@@ -234,7 +234,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Senha antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -284,7 +284,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Mudando senha...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -355,7 +355,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configurações avançadas da conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -540,7 +540,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
         <source>User certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Seletor de certificado do usuário</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
@@ -744,7 +744,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de contatos banidos</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -820,7 +820,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>Botão de busca</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
@@ -1030,7 +1030,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>Botão de chamadas</translation>
     </message>
 </context>
 <context>
@@ -1532,7 +1532,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de mensagens</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
@@ -1694,7 +1694,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Selecionar pasta</translation>
     </message>
 </context>
 <context>
@@ -1755,7 +1755,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Gravar chamada</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -2096,7 +2096,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>Editar PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="784"/>

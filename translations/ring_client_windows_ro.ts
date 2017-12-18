@@ -809,7 +809,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="642"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring este un software gratuit pentru comunicații universale care respectă libertățile individuale și dorința de anonimitate a utilizatorilor.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="207"/>

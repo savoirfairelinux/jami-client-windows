@@ -636,7 +636,7 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -1611,7 +1611,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>Bëni një foto</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1942,7 +1942,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Po kërkohet…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
