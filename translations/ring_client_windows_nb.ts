@@ -234,7 +234,7 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Gammelt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -259,7 +259,7 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Inndatabekreftelse</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
@@ -1836,7 +1836,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Importerer kontoarkiv…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
@@ -1846,7 +1846,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation type="unfinished"/>
+        <translation>En feil inntraff under opprettelse av kontoen din</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
@@ -1881,7 +1881,7 @@ Kopier og del den med dine venner!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Ring-arkivfiler (*.gz);; Alle filer (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -2001,7 +2001,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="205"/>
         <source>Select link method</source>
-        <translation type="unfinished"/>
+        <translation>Velg lenkemetode</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="254"/>
@@ -2021,17 +2021,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
         <source>Link account from file</source>
-        <translation type="unfinished"/>
+        <translation>Lenk konto fra fil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Velg fil å importere</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation type="unfinished"/>
+        <translation>Kontoarkiveringssti:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
@@ -2041,7 +2041,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Arkivpassord:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>

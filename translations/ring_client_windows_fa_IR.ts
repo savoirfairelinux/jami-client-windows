@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>درباره دکمه</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه دست‌اندرکاران</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -31,7 +31,7 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>نسخه رینگ برای میکروسافت ویندوز
+        <translation>نسخه رینگ برای مایکروسافت ویندوز
 رینگ یک نرم‌افزار ارتباطی امن و توزیع شده است.</translation>
     </message>
     <message>
@@ -47,7 +47,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"/>
+        <translation>اثر هنری توسط:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
@@ -249,7 +249,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation>گذرواژهٔ نو</translation>
+        <translation>گذرواژه جدید</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
@@ -320,7 +320,7 @@ Ring is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="958"/>
         <location filename="../accountdetails.cpp" line="58"/>
         <source>Play</source>
-        <translation>ش</translation>
+        <translation>پخش</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
@@ -636,7 +636,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>پین</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -696,7 +696,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.cpp" line="56"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>مکث</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="103"/>
@@ -1011,13 +1011,13 @@ Copy and share it with your friends!</source>
         <location filename="../callwidget.cpp" line="807"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="812"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="445"/>
@@ -1030,7 +1030,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه تماس</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>زبانه پیکربندی همگانی</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1053,7 +1053,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>زبانه پیکربندی صدا /  تصویر</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1063,7 +1063,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>زبانه پیکربندی حساب‌ها</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1073,22 +1073,22 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="180"/>
         <source>quit settings menu</source>
-        <translation type="unfinished"/>
+        <translation>منوی تنظیمات را ترک کنید</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="346"/>
         <source>History Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات تاریخچه</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="387"/>
         <source>Keep History for (days)</source>
-        <translation type="unfinished"/>
+        <translation>نگه داشتن تاریخچه برای (روز)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="433"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation type="unfinished"/>
+        <translation>(برای تنظیم تاریخچه به صورت نامحدود 0 قرار دهید)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="490"/>
@@ -1098,7 +1098,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="642"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات متفرقه</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="667"/>
