@@ -168,7 +168,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation>Enregistrez le nom d&apos;usager sur le bouton blockchain.</translation>
+        <translation>Enregistrez le nom d&apos;usager sur le blockchain.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -754,7 +754,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation>contact de boutton</translation>
+        <translation>Débloquer le contact </translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -895,7 +895,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../callwidget.ui" line="1469"/>
         <source>Wants to talk to you!</source>
-        <translation>Veut parler avec vous !</translation>
+        <translation>souhaite entrer en communication !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
@@ -2081,7 +2081,7 @@ Vos amis pourront vous appeler avec ce nom plutôt que votre RingID.</translatio
     <message>
         <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation>Enregistrer un nom d&apos;utilisateur public (expérimental)</translation>
+        <translation>Enregistrer un nom d&apos;utilisateur public</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="724"/>
