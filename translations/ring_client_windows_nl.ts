@@ -158,17 +158,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation>Publieke gebruikersnaam</translation>
+        <translation>Openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation>Publiek geregistreerde Ring-gebruikersnaam</translation>
+        <translation>Openbaar geregistreerde Ring-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Knop gebruikersnaam registreren op de blokketen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -189,7 +189,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Invoer voor naamdienst-URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
@@ -214,17 +214,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje oproepen automatisch beantwoorden</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje UPnP ingeschakeld</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Invoerregel oud wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
@@ -239,7 +239,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer nieuw wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
@@ -264,7 +264,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Bevestiging nieuw wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -279,7 +279,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Knop wachtwoordwijziging annuleren</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
@@ -294,17 +294,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje oproepen van onbekenden toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje oproepen uit geschiedenis toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje oproepen uit contacten toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="931"/>
@@ -314,7 +314,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>Knop beltoon afspelen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
@@ -325,7 +325,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>selectie beltoonbestand</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -370,7 +370,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>Spinveld registratietime-outselectie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -385,12 +385,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>spinveld lokalepoortselectie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
-        <translation type="unfinished"/>
+        <translation>keuzerondje gelijk aan lokaal</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1528"/>
@@ -400,7 +400,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation type="unfinished"/>
+        <translation>keuzerondje adres en poorten personaliseren</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
@@ -415,7 +415,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1597"/>
         <source>ip address text input</source>
-        <translation type="unfinished"/>
+        <translation>tekstinvoer IP-adres</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1612"/>
@@ -425,12 +425,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>spinveld poortselectie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>selectievakje STUN gebruiken</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -446,7 +446,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>selectievakje TURN gebruiken</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -456,22 +456,22 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>Invoer TURN-server-URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>Invoer TURN-server-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>Invoer TURN-server-wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>Invoer TURN-server-Realm</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -503,7 +503,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie ondergrens voor audio-RTP-poortbereik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -515,7 +515,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <location filename="../accountdetails.ui" line="1994"/>
         <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>selectie bovengrens voor audio-RTP-poortbereik</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
@@ -535,27 +535,27 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
         <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie certificeringsinstantiecertificaat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
         <source>User certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie gebruikerscertificaat</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation type="unfinished"/>
+        <translation>invoer wachtwoord geheime sleutel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie persoonlijke sleutel van gebruiker</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje mediastream versleutelen (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2420"/>
@@ -565,7 +565,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation type="unfinished"/>
+        <translation>selectievakje standaardcodering gebruiken</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
@@ -580,7 +580,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Knop apparaat toevoegen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -605,7 +605,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
-        <translation type="unfinished"/>
+        <translation>Knop account exporteren voor koppelen annuleren</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="786"/>
@@ -616,7 +616,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
+        <translation>Knop export op DHT voor apparaten koppelen bevestigen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
@@ -646,7 +646,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>Knop pin genereren aanvaarden en afsluiten</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -661,7 +661,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation type="unfinished"/>
+        <translation>Tabblad accountbeheer verbannen contacten</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
@@ -744,7 +744,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lijst met geblokkeerde contacten</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -754,7 +754,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Knop verbanning contact opheffen</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -772,7 +772,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
         <source>contact transfer number text entry</source>
-        <translation type="unfinished"/>
+        <translation>tekstinvoer contactoverdrachtnummer</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
@@ -782,7 +782,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="110"/>
         <source>Transfer call button</source>
-        <translation type="unfinished"/>
+        <translation>Knop gesprek overdragen</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="113"/>
@@ -815,7 +815,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="207"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer contact zoeken</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="248"/>
@@ -842,7 +842,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Knop Ring-ID delen</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="900"/>
@@ -859,12 +859,12 @@ Deel hem met je vrienden!</translation>
         <location filename="../callwidget.ui" line="1069"/>
         <location filename="../callwidget.ui" line="1840"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>Knop terug naar startpagina</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1189"/>
         <source>Peer contact method selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie peercontactmethode</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
@@ -900,12 +900,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Knop inkomende oproep beantwoorden</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1543"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Knop inkomende oproep negeren</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1570"/>
@@ -925,7 +925,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Uitgaande oproep annuleren</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1749"/>
@@ -1030,7 +1030,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>Knop bellen</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Tabblad algemene configuratie</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1053,7 +1053,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Tabblad audio-/videoconfiguratie</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1063,7 +1063,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Tabblad accountconfiguratie</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1123,7 +1123,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
         <source>Display name text input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer getoonde naam</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="314"/>
@@ -1138,7 +1138,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
         <source>clear history button</source>
-        <translation type="unfinished"/>
+        <translation>knop geschiedenis wissen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
@@ -1158,7 +1158,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
         <source>Always record calls checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje oproepen altijd opnemen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="609"/>
@@ -1168,12 +1168,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>keep minimized on close checkbox</source>
-        <translation type="unfinished"/>
+        <translation>selectievakje minimaliseren bij sluiten</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>selectievakje meldingen inschakelen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
@@ -1183,12 +1183,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="703"/>
         <source>Launch ring on startup checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje Ring automatisch starten</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="732"/>
         <source>Autamatic update checks checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje automatisch controleren op updates</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="738"/>
@@ -1198,7 +1198,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="757"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie interval in dagen tussen controles op updates</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="778"/>
@@ -1208,7 +1208,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="817"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Knop nu controleren op updates</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="933"/>
@@ -1224,7 +1224,7 @@ Deel hem met je vrienden!</translation>
         <location filename="../configurationwidget.ui" line="1042"/>
         <location filename="../configurationwidget.ui" line="1061"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie video-apparaat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1048"/>
@@ -1239,7 +1239,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1095"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie video-apparaatresolutie</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1122"/>
@@ -1249,7 +1249,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1129"/>
         <source>Audio output device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie audio-uitvoerapparaat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
@@ -1259,12 +1259,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1148"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie audio-invoerapparaat</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1226"/>
         <source>New account type selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie nieuw accounttype</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1245"/>
@@ -1274,12 +1274,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop account verwijderen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
         <source>Export account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop account exporteren</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1326"/>
@@ -1317,7 +1317,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>search existing contact text entry</source>
-        <translation type="unfinished"/>
+        <translation>tekstinvoer zoeken naar bestaand contact</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="46"/>
@@ -1332,7 +1332,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
         <source>Create new contact button</source>
-        <translation type="unfinished"/>
+        <translation>Knop nieuw contact aanmaken</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="66"/>
@@ -1347,7 +1347,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="108"/>
         <source>New contact name text entry</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer nieuwe contactnaam</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
@@ -1357,7 +1357,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
         <source>Validate contact creation button</source>
-        <translation type="unfinished"/>
+        <translation>Knop aanmaken contact bevestigen</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="144"/>
@@ -1390,7 +1390,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
         <source>Accept contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contactverzoek aanvaarden</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="132"/>
@@ -1400,7 +1400,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="151"/>
         <source>Mute contact request</source>
-        <translation type="unfinished"/>
+        <translation>Contactverzoek dempen</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="158"/>
@@ -1410,7 +1410,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation type="unfinished"/>
+        <translation>Contactverzoek verbannen</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1438,7 +1438,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
         <source>account selection combobox</source>
-        <translation type="unfinished"/>
+        <translation>meerkeuzelijst accountselectie</translation>
     </message>
 </context>
 <context>
@@ -1466,7 +1466,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Knop account verwijderen annuleren</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="141"/>
@@ -1476,7 +1476,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contact verwijderen bevestigen</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
@@ -1499,7 +1499,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contact verwijderen annuleren</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="126"/>
@@ -1509,7 +1509,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="139"/>
         <source>Delete contact validation button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contactbevestiging verwijderen</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="142"/>
@@ -1519,7 +1519,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="155"/>
         <source>Delete and ban validation button</source>
-        <translation type="unfinished"/>
+        <translation>Knop bevestiging verwijderen en verbannen</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
@@ -1547,7 +1547,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
         <source>Send message button</source>
-        <translation type="unfinished"/>
+        <translation>Knop bericht versturen</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="44"/>
@@ -1606,7 +1606,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Fotoautomaatweergave</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
@@ -1658,12 +1658,12 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="64"/>
         <source>Quality slider</source>
-        <translation type="unfinished"/>
+        <translation>Schuifbalk kwaliteit</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="103"/>
         <source>Automatic quality checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje automatische kwaliteit</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
@@ -1676,17 +1676,17 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="114"/>
         <source>Validate Contact Request Button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contactverzoek bevestigen</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="139"/>
         <source>Mute contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contactverzoek dempen</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="161"/>
         <source>Ban contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Knop contactverzoek verbannen</translation>
     </message>
 </context>
 <context>
@@ -1841,7 +1841,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation>Je publieke gebruikersnaam wordt geregistreerd, dit kan enkele minuten duren...</translation>
+        <translation>Je openbare gebruikersnaam wordt geregistreerd, dit kan enkele minuten duren…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
@@ -1961,42 +1961,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoogvenster</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="36"/>
         <source>Account creation wizard dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoogvenster voor aanmaken van account</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlabel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlogo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop Ring-account aanmaken</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor starten van aanmaken van Ring-account na druk op knop</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Knop apparaat koppelen</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor koppelen van apparaat na druk op knop</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="205"/>
@@ -2036,7 +2036,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie accountarchiefpad</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
@@ -2051,7 +2051,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
-        <translation type="unfinished"/>
+        <translation>Fotoautomaatwidget</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="509"/>
@@ -2061,47 +2061,47 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="588"/>
         <source>Full name edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken volledige naam</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="594"/>
         <source>Text entry for full name input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer voor volledige naam</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="673"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakje om te kiezen of de gebruiker een openbare gebruikersnaam wil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation>Registreer een publieke gebruikersnaam (experimenteel)</translation>
+        <translation>Registreer een openbare gebruikersnaam (experimenteel)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="746"/>
         <source>Public username validation status</source>
-        <translation type="unfinished"/>
+        <translation>Status bevestiging openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken pincode</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer pincode koppelen apparaat</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="787"/>
@@ -2143,12 +2143,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Knop vorige pagina</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>druk op de knop om naar de vorige pagina van de assistent te gaan</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="978"/>
@@ -2158,12 +2158,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Knop volgende pagina</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Druk op de knop om naar de volgende pagina van de assistent te gaan</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1019"/>
