@@ -15,7 +15,7 @@ GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --alw
 
 RING_CLIENT_BUILD_DATE = $$(RING_CLIENT_BUILD_DATE)
 isEmpty(RING_CLIENT_BUILD_DATE){
-RING_CLIENT_BUILD_DATE = $$system(date +%s)
+RING_CLIENT_BUILD_DATE = $$system(date +%Y%m%d)
 }
 NIGHTLY_VERSION =$$system(date +'%Y%m%d')
 
