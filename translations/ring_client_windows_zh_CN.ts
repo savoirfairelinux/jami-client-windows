@@ -22,10 +22,10 @@
         <source>Credits</source>
         <translation>致谢</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation>自由、平等、博爱 - 版本 1.0</translation>
+        <source>In varietate concordia</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>

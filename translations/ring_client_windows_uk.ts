@@ -22,9 +22,9 @@
         <source>Credits</source>
         <translation>Подяки</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
+        <source>In varietate concordia</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -810,7 +810,7 @@ Ring - це безпечне і децентралізоване програм�
     <message>
         <location filename="../callwidget.ui" line="642"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring - це безкоштовне програмне забезпечення для спілкування, яке поважає свободу та конфіденційність своїх користувачів.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="207"/>

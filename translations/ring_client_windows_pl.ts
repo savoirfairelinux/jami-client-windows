@@ -22,9 +22,9 @@
         <source>Credits</source>
         <translation>Podziękowania</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
+        <source>In varietate concordia</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1941,7 +1941,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Szukam...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>

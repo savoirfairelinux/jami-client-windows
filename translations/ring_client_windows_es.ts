@@ -22,10 +22,10 @@
         <source>Credits</source>
         <translation>Créditos</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation>Libertad, igualdad y fraternidad. Versión 1.0</translation>
+        <source>In varietate concordia</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -837,7 +837,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="791"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar la Ring ID como código QR</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
@@ -2021,12 +2021,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
         <source>Link account from file</source>
-        <translation type="unfinished"/>
+        <translation>Vincule cuenta desde archivo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Seleccione el archivo a importar</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>

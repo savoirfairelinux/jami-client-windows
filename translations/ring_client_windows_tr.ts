@@ -22,10 +22,10 @@
         <source>Credits</source>
         <translation>Krediler</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Liberté, Égalité, Fraternité - Version 1.0</source>
-        <translation>Liberté, Égalité, Fraternité - Sürüm 1.0</translation>
+        <source>In varietate concordia</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
