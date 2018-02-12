@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>In varietate concordia</source>
-        <translation type="unfinished"/>
+        <translation>In varietate concordia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -777,7 +777,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
         <source>or type number...</source>
-        <translation>of geef een nummer in...</translation>
+        <translation>of voer een nummer in…</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="110"/>
@@ -795,7 +795,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="216"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Zoek contacten of geef een Ring-ID in</translation>
+        <translation>Zoek contacten of voer een Ring-ID in</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="333"/>
@@ -1322,7 +1322,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="46"/>
         <source>Search...</source>
-        <translation>Zoeken...</translation>
+        <translation>Zoeken…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
@@ -1352,7 +1352,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
         <source>Enter a name here...</source>
-        <translation>Voer hier een naam in...</translation>
+        <translation>Voer hier een naam in…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
@@ -1542,7 +1542,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="77"/>
         <source>Send text message...</source>
-        <translation>Tekstbericht versturen...</translation>
+        <translation>Tekstbericht versturen…</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
@@ -1717,7 +1717,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation>Contactverzoek verzenden</translation>
+        <translation>Contactverzoek versturen</translation>
     </message>
 </context>
 <context>
@@ -1831,7 +1831,7 @@ Deel hem met je vrienden!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="96"/>
         <source>Migrating your Ring account...</source>
-        <translation>Je Ring-account wordt gemigreerd...</translation>
+        <translation>Je Ring-account wordt gemigreerd…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
@@ -1951,7 +1951,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation>Zoeken...</translation>
+        <translation>Zoeken…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
@@ -2138,7 +2138,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="933"/>
         <location filename="../wizarddialog.cpp" line="100"/>
         <source>Generating your Ring account...</source>
-        <translation>Je Ring-account wordt aangemaakt...</translation>
+        <translation>Je Ring-account wordt aangemaakt…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
