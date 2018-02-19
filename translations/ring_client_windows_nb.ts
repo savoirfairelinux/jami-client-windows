@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>In varietate concordia</source>
-        <translation type="unfinished"/>
+        <translation>In varietate concordia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -224,12 +224,12 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Inndatalinje for gammelt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Skriv inn gammelt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
@@ -239,12 +239,12 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinndata for nytt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Skriv inn nytt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -264,7 +264,7 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Bekreftelse av nytt passord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -279,12 +279,12 @@ Ring er sikker og distribuert kommunikasjonsprogramvare.</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Knapp for avbryting av passordsendring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Endrer passord…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -2006,17 +2006,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="254"/>
         <source>Link account to device from the network</source>
-        <translation type="unfinished"/>
+        <translation>Lenk konto til enhet fra nettverket</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="257"/>
         <source>Link account from DHT</source>
-        <translation type="unfinished"/>
+        <translation>Lenk konto fra DHT</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="270"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Lenk fra eksportert kontoarkivfil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
@@ -2036,7 +2036,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation type="unfinished"/>
+        <translation>Kontoarkiveringssti-velger</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
@@ -2046,7 +2046,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
         <source>Archive passord input</source>
-        <translation type="unfinished"/>
+        <translation>Arkivpassord-inndata</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
