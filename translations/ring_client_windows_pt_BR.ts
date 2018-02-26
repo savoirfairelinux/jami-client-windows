@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>In varietate concordia</source>
-        <translation type="unfinished"/>
+        <translation>Em variada concordia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -229,7 +229,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Insira a senha antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
@@ -239,12 +239,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Nova entrada de texto de senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Insira nova senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -259,12 +259,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Confirmação de entrada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Confirmação da nova senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -279,7 +279,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar o botão de mudança de senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
@@ -294,17 +294,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Caixa de seleção &quot;permitir chamada de desconhecidos&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Caixa de seleção &quot;Aceitar Chamada do Histórico&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Caixa de seleção &quot;Aceitar Chamada de Contato&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="931"/>
@@ -314,7 +314,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>Botão &quot;tocar campainha&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
@@ -325,7 +325,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>seletor de arquivo da campainha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -335,7 +335,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração de preferências dos codecs de áudio/vídeo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -370,7 +370,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>Seletor de tempo limite de registro spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -385,12 +385,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>seletor de porta local spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
-        <translation type="unfinished"/>
+        <translation>mesmo que botão de rádio local</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1528"/>
@@ -400,7 +400,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation type="unfinished"/>
+        <translation>seletor para personalizar endereço e portas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
@@ -415,7 +415,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1597"/>
         <source>ip address text input</source>
-        <translation type="unfinished"/>
+        <translation>entrada de texto para endereço IP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1612"/>
@@ -425,12 +425,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>seletor de porta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>caixa de seleção &quot;usar STUN&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -446,7 +446,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>caixa de seleção &quot;usar TURN&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -456,22 +456,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>Campo para URL do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>Campo para nome de usuário do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>Campo para senha do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>Campo para domínio do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -503,7 +503,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>Seletor do valor de graves das portas para áudio RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -530,12 +530,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração da segurança da conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
         <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Seletor do certificado de autoridade</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
@@ -545,12 +545,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de senha de chave privada </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>Seletor de chave privada do usuário</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
@@ -575,12 +575,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Gerenciamento de dispositivos de conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Botão &quot;adicionar dispositivo&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -595,7 +595,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de texto de senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
@@ -631,7 +631,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>PIN gerado para vinculação</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -646,7 +646,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>Botão &quot;aceitar a geração de PIN e sair&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -754,7 +754,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Botão &quot;anular banimento de contato&quot;</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -767,7 +767,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>lista de contatos existente</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>

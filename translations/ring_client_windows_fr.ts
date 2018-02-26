@@ -85,7 +85,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="280"/>
         <source>Hostname</source>
-        <translation>Nom de machine</translation>
+        <translation>Nom d&apos;hôte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -224,7 +224,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation>Ligne d&apos;entrée du vieux mots de passe </translation>
+        <translation>Ligne d&apos;entrée du vieux mot de passe</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
@@ -1000,7 +1000,7 @@ Copiez-le et partagez-le avec vos amis !</translation>
     <message>
         <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
-        <translation>Retirer des contacts</translation>
+        <translation>Supprimer des contacts</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="762"/>
