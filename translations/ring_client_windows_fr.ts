@@ -795,7 +795,7 @@ Ring est un logiciel de communication sécurisé et distribué.</translation>
     <message>
         <location filename="../callwidget.ui" line="216"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Rechercher dans les contacts ou entrer un ring ID</translation>
+        <translation>Rechercher dans les contacts ou entrer un ringID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="333"/>

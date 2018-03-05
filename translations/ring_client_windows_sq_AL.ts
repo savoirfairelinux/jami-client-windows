@@ -772,7 +772,7 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
         <source>contact transfer number text entry</source>
-        <translation type="unfinished"/>
+        <translation>dhënie teksti për numër shpërnguljeje kontakti</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
@@ -1765,12 +1765,12 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../videooverlay.ui" line="402"/>
         <source>Join Calls</source>
-        <translation type="unfinished"/>
+        <translation>Merrni Pjesë Në Thirrje</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="476"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Etiketë emri</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="498"/>
