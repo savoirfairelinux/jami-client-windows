@@ -195,6 +195,7 @@ TRANSLATIONS = \
     translations/ring_client_windows_en_GB.ts \
     translations/ring_client_windows_pl_PL.ts \
     translations/ring_client_windows.ts \
+    translations/ring_client_windows_eu.ts \
     translations/ring_client_windows_eo.ts \
     translations/ring_client_windows_nl_NL.ts \
     translations/ring_client_windows_ru_RU.ts \
