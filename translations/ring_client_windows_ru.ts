@@ -269,7 +269,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Изменить пароль</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -1451,7 +1451,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Вы действительно хотите удалить аккаунт?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>

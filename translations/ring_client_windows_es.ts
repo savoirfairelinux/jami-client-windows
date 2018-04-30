@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de Acerca de</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de Créditos</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>In varietate concordia</source>
-        <translation type="unfinished"/>
+        <translation>En variegata concordia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -138,12 +138,12 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de información general de la cuenta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Nombre mostrado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -153,7 +153,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de host URL para DHT bootstrap o SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -163,12 +163,12 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario público registrado en Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Registrar Nombre de usuario en el botón blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -189,17 +189,17 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada URL de servicio de nombres</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de nombre de usuario SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de contraseña SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
@@ -214,27 +214,27 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casilla de verificación de llamada de respuesta automática</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casilla de UPnP habilitado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Antigua línea de entrada de contraseña</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Ingresa la contraseña anterior</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña anterior</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
