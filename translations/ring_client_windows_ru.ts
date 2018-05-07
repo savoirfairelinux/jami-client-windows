@@ -31,8 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>Клиент Ring для Windows.
-Ring – это приложение для безопасного и распределенного общения. </translation>
+        <translation>Клиент Ring для Microsoft Windows.
+Ring – это приложение с распределённой архитектурой для безопасного общения.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -123,7 +123,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="862"/>
         <source>Allow Call From Unknown</source>
-        <translation>Разрешать звонки от незнакомых</translation>
+        <translation>Разрешать звонки от незнакомых лиц</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="895"/>
@@ -143,7 +143,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Отображаемое имя</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -234,7 +234,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Старый пароль</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -244,7 +244,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Введите новый пароль</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -284,7 +284,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Изменение пароля…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -330,12 +330,12 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
         <source>Audio/Video</source>
-        <translation>Звук/Видео</translation>
+        <translation>Аудио/Видео</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Настройки параметров аудио/видео кодеков</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -355,7 +355,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Дополнительные настройки аккаунта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -435,13 +435,13 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
         <source>Use STUN</source>
-        <translation>Исполльзовать STUN</translation>
+        <translation>Использовать STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1688"/>
         <location filename="../accountdetails.ui" line="1735"/>
         <source>Server URL</source>
-        <translation>Адрес сервера</translation>
+        <translation>URL сервера</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
@@ -530,7 +530,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Настройки безопасности аккаунта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -575,7 +575,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Управление устройствами аккаунта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
@@ -686,12 +686,12 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
-        <translation>Пароль к закрытому ключу</translation>
+        <translation>Пароль закрытого ключа</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2435"/>
         <source>Use default ciphers</source>
-        <translation>Использовать шифрование по-умолчанию</translation>
+        <translation>Использовать стандартные шифры</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="56"/>
@@ -744,7 +744,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Список заблокированных контактов</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -825,7 +825,7 @@ Ring – это приложение для безопасного и распр
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -837,7 +837,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="791"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Показать Ring ID QR код</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
@@ -875,7 +875,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1237"/>
         <source>Start the conversation !</source>
-        <translation>Начните разговор!</translation>
+        <translation>Начать разговор!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1314"/>
@@ -925,7 +925,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Отменить исходящий вызов</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1749"/>
@@ -1083,12 +1083,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="387"/>
         <source>Keep History for (days)</source>
-        <translation>Хранить историю (дней):</translation>
+        <translation>Хранить историю (дней)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="433"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(0 = хранить всю историю)</translation>
+        <translation>(Установите 0 для неограниченного хранения)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="490"/>
@@ -1118,7 +1118,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation type="unfinished"/>
+        <translation>Аватар (нажмите для изменения)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
@@ -1153,7 +1153,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="573"/>
         <source>Call records path</source>
-        <translation type="unfinished"/>
+        <translation>Путь для записей разговоров</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
@@ -1352,7 +1352,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
         <source>Enter a name here...</source>
-        <translation>Введите имя...</translation>
+        <translation>Введите имя…</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
@@ -1410,7 +1410,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation type="unfinished"/>
+        <translation>Заблокировать запрос на добавление в контакты</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1428,12 +1428,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>Аватар аккаунта</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>Статус аккаунта</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
@@ -1524,7 +1524,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>Удалить и заблокировать</translation>
     </message>
 </context>
 <context>
@@ -1542,7 +1542,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="77"/>
         <source>Send text message...</source>
-        <translation>Отправить текстовое сообщение...</translation>
+        <translation>Отправить текстовое сообщение…</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
@@ -1621,7 +1621,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import photo</source>
-        <translation>Импорт фотографий</translation>
+        <translation>Импортировать фото</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="87"/>
@@ -1755,7 +1755,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Записать разговор</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -1846,7 +1846,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation type="unfinished"/>
+        <translation>Произошла ошибка при создании вашего аккаунта</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
@@ -1881,7 +1881,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Архивы Ring (*.gz);; Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -2026,12 +2026,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Выберите файл для импорта</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation type="unfinished"/>
+        <translation>Путь к архиву с аккаунтом:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
@@ -2041,7 +2041,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Пароль архива:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
@@ -2148,7 +2148,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>нажмите кнопку для перехода к предыдущей странице Мастера</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="978"/>
@@ -2163,7 +2163,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите кнопку для перехода к следующей странице Мастера</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1019"/>
