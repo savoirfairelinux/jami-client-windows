@@ -284,7 +284,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Cambiando contraseña ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -744,7 +744,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de contactos bloqueados</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -754,7 +754,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de desbloqueo de contactos</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -820,7 +820,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>botón de búsqueda</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
@@ -1030,7 +1030,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de llamada</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Pestaña de configuración general</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1063,7 +1063,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Pestaña de configuración de cuentas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1274,7 +1274,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de eliminar cuenta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
@@ -1428,7 +1428,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>Avatar de cuenta</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
@@ -1532,7 +1532,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de mensajes</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
@@ -1755,7 +1755,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Grabar llamada</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
