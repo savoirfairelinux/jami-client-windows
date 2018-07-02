@@ -269,7 +269,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>تغییر رمز عبور</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -1735,7 +1735,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="154"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>چت</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
