@@ -234,7 +234,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Senasis slaptažodis</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -284,7 +284,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Keičiamas slaptažodis ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -530,7 +530,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros saugumo konfigūracija</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -575,7 +575,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros įrenginių tvarkymas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
@@ -744,7 +744,7 @@ Ring yra saugi ir paskirstytoji susisiekimo programinė įranga.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuotų kontaktų sąrašas</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -1428,12 +1428,12 @@ Nukopijuokite ir dalinkitės juo su savo draugais!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros avataras</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros būsena</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>

@@ -269,7 +269,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megváltoztatása</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -636,7 +636,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -726,7 +726,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.cpp" line="329"/>
         <source>Wrong password.</source>
-        <translation type="unfinished"/>
+        <translation>Hibás jelszó.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="356"/>
@@ -920,7 +920,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="1673"/>
         <source>Calling</source>
-        <translation type="unfinished"/>
+        <translation>Hívás</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
@@ -1650,7 +1650,7 @@ Másolja ki és ossza meg a barátaival!</translation>
         <location filename="../wizarddialog.cpp" line="36"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation type="unfinished"/>
+        <translation>RING fiók</translation>
     </message>
 </context>
 <context>
@@ -1668,7 +1668,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus</translation>
     </message>
 </context>
 <context>
@@ -1920,7 +1920,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="450"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Saját profil létrehozása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="564"/>
@@ -1942,7 +1942,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Keresés… </translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
@@ -2123,7 +2123,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="865"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megerősítése</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="933"/>

@@ -239,7 +239,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de texto de nueva contraseña</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
@@ -284,7 +284,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Cambiando contraseña ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -355,7 +355,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuración avanzada de la cuenta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -530,7 +530,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de seguridad de la cuenta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -580,7 +580,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de agregar dispositivo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -744,7 +744,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de contactos bloqueados</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -754,7 +754,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de desbloqueo de contactos</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -820,12 +820,12 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>botón de búsqueda</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Menú de configuración</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -842,7 +842,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de compartir el ID de Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="900"/>
@@ -925,7 +925,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar llamada saliente</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1749"/>
@@ -1030,7 +1030,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de llamada</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Pestaña de configuración general</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1053,7 +1053,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Pestaña de configuración de Audio / Vídeo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1063,7 +1063,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Pestaña de configuración de cuentas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1118,7 +1118,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation type="unfinished"/>
+        <translation>Avatar (clic para cambiar)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
@@ -1138,7 +1138,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
         <source>clear history button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de limpiar historial</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
@@ -1274,7 +1274,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de eliminar cuenta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
@@ -1400,7 +1400,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="151"/>
         <source>Mute contact request</source>
-        <translation type="unfinished"/>
+        <translation>Solicitud de silenciar contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="158"/>
@@ -1410,7 +1410,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation type="unfinished"/>
+        <translation>Solicitud de bloqueo de contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1428,12 +1428,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>Avatar de cuenta</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>Estado de la cuenta</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
@@ -1532,7 +1532,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de mensajes</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
@@ -1663,7 +1663,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../qualitydialog.ui" line="103"/>
         <source>Automatic quality checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casilla de calidad automática</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
@@ -1755,7 +1755,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Grabar llamada</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -1826,7 +1826,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="70"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Debe migrar su cuenta. Introduzca su contraseña.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="96"/>
@@ -1846,7 +1846,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation type="unfinished"/>
+        <translation>Se produjo un error durante la creación de su cuenta</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
@@ -1971,12 +1971,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Etiqueta de Bienvenida</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Logo de Bienvenida</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
@@ -2061,7 +2061,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="588"/>
         <source>Full name edit</source>
-        <translation type="unfinished"/>
+        <translation>Editar nombre completo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="594"/>
@@ -2086,7 +2086,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Editar nombre de usuario público</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="746"/>
@@ -2096,7 +2096,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>Editar PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="784"/>
@@ -2143,7 +2143,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de página anterior</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
@@ -2158,7 +2158,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de página siguiente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
