@@ -23,6 +23,7 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
+#include <ciso646>
 #else //LINUX
 #define LPCWSTR char*
 #endif

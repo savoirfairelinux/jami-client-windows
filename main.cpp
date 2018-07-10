@@ -33,9 +33,14 @@
 #include <QLibraryInfo>
 #include <QFontDatabase>
 
+#include <ciso646>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
+#endif
+
+#ifdef _MSC_VER
+#include <gnutls/gnutls.h>
 #endif
 
 #ifdef URI_PROTOCOL
@@ -158,6 +163,10 @@ main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Ring");
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+
+#ifdef _MSC_VER
+    gnutls_global_init();
+#endif
 
     if (not MainWindow::instance().init()) {
         return 1;

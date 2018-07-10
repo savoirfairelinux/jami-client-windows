@@ -42,9 +42,9 @@ MainWindow::MainWindow(QWidget* parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->callwidget, CallWidget::NavigationRequested,
+    connect(ui->callwidget, &CallWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
-    connect(ui->configurationwidget, ConfigurationWidget::NavigationRequested,
+    connect(ui->configurationwidget, &ConfigurationWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
 
     QIcon icon(":images/ring.png");
