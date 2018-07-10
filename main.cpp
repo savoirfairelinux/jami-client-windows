@@ -36,6 +36,8 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
+#include <ciso646>
+#include <gnutls/gnutls.h>
 #endif
 
 #ifdef URI_PROTOCOL
@@ -159,6 +161,10 @@ main(int argc, char *argv[])
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
+#ifdef _MSC_VER
+    gnutls_global_init();
+#endif
+
     if (not MainWindow::instance().init()) {
         return 1;
     }
@@ -189,5 +195,12 @@ main(int argc, char *argv[])
     });
 #endif
 
-    return a.exec();
+    auto ret = a.exec();
+
+    //QCoreApplication::quit();
+    QCoreApplication::exit();
+    GlobalSystemTray::instance().deleteLater();
+    GlobalSystemTray::instance().hide();
+
+    return ret;
 }

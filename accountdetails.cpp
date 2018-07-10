@@ -30,6 +30,8 @@
 #include "ciphermodel.h"
 #include "ringtonemodel.h"
 
+#include <ciso646>
+
 AccountDetails::AccountDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccountDetails),
@@ -156,9 +158,9 @@ AccountDetails::setAccount(Account* currentAccount) {
         ui->lrcfg_tlsPrivateKeyCertificate->setText(currentAccount_->tlsPrivateKey());
 
 #ifdef Q_OS_WIN
-    certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
-    certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
-    certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKey;
+    //certMap_[ui->lrcfg_tlsCaListCertificate->objectName()] = &currentAccount_->setTlsCaListCertificate;
+    //certMap_[ui->lrcfg_tlsCertificate->objectName()] = &currentAccount_->setTlsCertificate;
+    //certMap_[ui->lrcfg_tlsPrivateKeyCertificate->objectName()] = &currentAccount_->setTlsPrivateKey;
 #endif
 
     ui->srtpEnabledChkBox->disconnect();

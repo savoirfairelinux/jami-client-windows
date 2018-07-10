@@ -28,6 +28,8 @@
 #include <QPainter>
 #include <QApplication>
 
+#include <ciso646>
+
 ContactRequestItemDelegate::ContactRequestItemDelegate(QObject* parent) :
     QItemDelegate(parent)
 {}
