@@ -32,8 +32,9 @@
 
 // Client
 #include "combar.h"
-
 #include "ringthemeutils.h"
+
+#include <ciso646>
 
 SmartListDelegate::SmartListDelegate(QObject* parent) :
     QItemDelegate(parent)

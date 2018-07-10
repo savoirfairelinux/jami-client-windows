@@ -244,14 +244,14 @@ CallWidget::setupOutOfCallIM()
     connect(displayAuthor, &QAction::triggered, lamdba);
     connect(displayDate, &QAction::triggered, lamdba);
 
-    connect(&::Media::RecordingModel::instance(),
-            SIGNAL(newTextMessage(::Media::TextRecording*, ContactMethod*)),
+    connect(&::LRCMedia::RecordingModel::instance(),
+            SIGNAL(newTextMessage(::LRCMedia::TextRecording*, ContactMethod*)),
             this,
-            SLOT(onIncomingMessage(::Media::TextRecording*, ContactMethod*)));
+            SLOT(onIncomingMessage(::LRCMedia::TextRecording*, ContactMethod*)));
 }
 
 void
-CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm)
+CallWidget::onIncomingMessage(::LRCMedia::TextRecording* t, ContactMethod* cm)
 {
     Q_UNUSED(cm)
 
@@ -261,7 +261,7 @@ CallWidget::onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm)
         GlobalSystemTray::instance()
                 .showMessage("Ring",
                              QString(tr("Message incoming from %1")).arg(
-                                 idx.data((int)Media::TextRecording::Role::AuthorDisplayname).toString()));
+                                 idx.data((int)LRCMedia::TextRecording::Role::AuthorDisplayname).toString()));
         QApplication::alert(this, 5000);
     }
 }
@@ -828,7 +828,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     ui->imMessageEdit->setFocus();
     disconnect(imClickedConnection_);
     imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
-        auto urlList = index.data(static_cast<int>(Media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
+        auto urlList = index.data(static_cast<int>(LRCMedia::TextRecording::Role::LinkList)).value<QList<QUrl>>();
         if (urlList.size() == 1)
             QDesktopServices::openUrl(urlList.at(0));
         else if (urlList.size()) {
@@ -883,9 +883,9 @@ void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
             if (imConnection_)
                 disconnect(imConnection_);
             imConnection_ = connect(txtRecording,
-                                    SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)),
+                                    SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,LRCMedia::Media::Direction)),
                                     this,
-                                    SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,Media::Media::Direction)));
+                                    SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,LRCMedia::Media::Direction)));
             auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
             if (messagesPresent) {
                 ui->listMessageView->scrollToBottom();
@@ -911,7 +911,7 @@ void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
 void
 CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
                                        ContactMethod* cm,
-                                       Media::Media::Direction dir)
+                                       LRCMedia::Media::Direction dir)
 {
     Q_UNUSED(message)
     Q_UNUSED(dir)

@@ -29,6 +29,8 @@
 #include "account.h"
 #include "codecmodel.h"
 
+#include <ciso646>
+
 QualityDialog::QualityDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::QualityDialog),

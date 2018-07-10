@@ -20,6 +20,7 @@
 
 #ifdef Q_OS_WIN
 #define WIN32_LEAN_AND_MEAN 1
+#define NOMINMAX
 #include <windows.h>
 #include <winuser.h>
 
@@ -87,7 +88,7 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         QApplication::restoreOverrideCursor();
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
-            if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
+            if (auto outVideo = call->firstMedia<LRCMedia::Video>(LRCMedia::Media::Direction::OUT)) {
                 QRect realRect = rubberBand_->geometry();
 #ifdef Q_OS_WIN
                 if (QGuiApplication::primaryScreen()->devicePixelRatio() > 1.0) {
