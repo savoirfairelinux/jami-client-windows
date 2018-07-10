@@ -30,6 +30,8 @@
 #include "globalsystemtray.h"
 #include "settingskey.h"
 
+#include <ciso646>
+
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InstantMessagingWidget)
@@ -77,13 +79,13 @@ InstantMessagingWidget::setMediaText(Call *call)
     ui->listMessageView->disconnect();
     ui->messageEdit->disconnect();
     if (call != nullptr) {
-        connect(call, SIGNAL(mediaAdded(Media::Media*)),
-                this, SLOT(mediaAdd(Media::Media*)));
-        Media::Text *textMedia = nullptr;
-        if (call->hasMedia(Media::Media::Type::TEXT, Media::Media::Direction::OUT)) {
-            textMedia = call->firstMedia<Media::Text>(Media::Media::Direction::OUT);
+        connect(call, SIGNAL(mediaAdded(LRCMedia::Media*)),
+                this, SLOT(mediaAdd(LRCMedia::Media*)));
+        LRCMedia::Text *textMedia = nullptr;
+        if (call->hasMedia(LRCMedia::Media::Type::TEXT, LRCMedia::Media::Direction::OUT)) {
+            textMedia = call->firstMedia<LRCMedia::Text>(LRCMedia::Media::Direction::OUT);
         } else {
-            textMedia = call->addOutgoingMedia<Media::Text>();
+            textMedia = call->addOutgoingMedia<LRCMedia::Text>();
         }
         if (textMedia) {
             ui->listMessageView->setModel(
@@ -105,23 +107,23 @@ InstantMessagingWidget::setMediaText(Call *call)
 }
 
 void
-InstantMessagingWidget::mediaAdd(Media::Media *media)
+InstantMessagingWidget::mediaAdd(LRCMedia::Media *media)
 {
     switch(media->type()) {
-    case Media::Media::Type::AUDIO:
+    case LRCMedia::Media::Type::AUDIO:
         break;
-    case Media::Media::Type::VIDEO:
+    case LRCMedia::Media::Type::VIDEO:
         break;
-    case Media::Media::Type::TEXT:
-        if (media->direction() == Media::Text::Direction::IN) {
-            connect(static_cast<Media::Text*>(media),
+    case LRCMedia::Media::Type::TEXT:
+        if (media->direction() == LRCMedia::Text::Direction::IN) {
+            connect(static_cast<LRCMedia::Text*>(media),
                     SIGNAL(messageReceived(QMap<QString,QString>)),
                     this,
                     SLOT(onMsgReceived(QMap<QString,QString>)));
             this->show();
         }
         break;
-    case Media::Media::Type::FILE:
+    case LRCMedia::Media::Type::FILE:
         break;
     default:
         break;

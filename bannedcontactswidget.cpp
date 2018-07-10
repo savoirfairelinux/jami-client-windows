@@ -28,6 +28,7 @@
 #include "account.h"
 #include "bannedcontactmodel.h"
 
+#include <ciso646>
 
 /* Widget */
 
