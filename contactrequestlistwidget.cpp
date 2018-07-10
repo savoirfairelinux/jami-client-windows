@@ -30,6 +30,8 @@
 #include <QAbstractItemView>
 #include <QEvent>
 
+#include <ciso646>
+
 ContactRequestListWidget::ContactRequestListWidget(QWidget *parent) :
     QTreeView(parent)
 {

@@ -26,6 +26,8 @@
 
 #include "smartlistdelegate.h"
 
+#include <ciso646>
+
 class QPropertyAnimation;
 class QGraphicsOpacityEffect;
 
