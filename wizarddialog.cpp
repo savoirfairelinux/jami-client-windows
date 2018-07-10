@@ -77,8 +77,8 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
             this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
     nameLookupTimer_.setSingleShot(true);
-    connect(&nameLookupTimer_, QTimer::timeout, this, WizardDialog::timeoutNameLookupTimer);
-    connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, WizardDialog::on_photoTaken);
+    connect(&nameLookupTimer_, &QTimer::timeout, this, &WizardDialog::timeoutNameLookupTimer);
+    connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, &WizardDialog::on_photoTaken);
     ui->avatarLabel->hide();
 }
 

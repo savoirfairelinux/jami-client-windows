@@ -27,6 +27,8 @@
 #include "combar.h"
 #include "smartlist.h"
 
+#include <ciso646>
+
 SmartList::SmartList(QWidget *parent) :
     QTreeView(parent)
 {

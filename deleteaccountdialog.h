@@ -35,7 +35,7 @@ public:
     ~DeleteAccountDialog();
 
 signals:
-    deleteAcceptClicked();
+    void deleteAcceptClicked();
 
 private slots:
     void on_deleteCancelBtn_clicked();
