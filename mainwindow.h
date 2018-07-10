@@ -44,6 +44,7 @@ public:
         static auto instance = new MainWindow();
         return *instance;
     }
+
     void createThumbBar();
     bool init();
 

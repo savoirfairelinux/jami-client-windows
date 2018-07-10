@@ -313,13 +313,16 @@
                 <string/>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="iconSize">
                 <size>
                  <width>24</width>
                  <height>24</height>
                 </size>
+               </property>
+               <property name="elideMode">
+                <enum>Qt::ElideNone</enum>
                </property>
                <widget class="QWidget" name="mainTabMenuPage1">
                 <attribute name="icon">

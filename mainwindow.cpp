@@ -20,6 +20,7 @@
 #include "ui_mainwindow.h"
 
 #include <QDesktopWidget>
+#include <QDebug>
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -41,10 +42,15 @@ MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    qDebug() << "MainWindow::MainWindow 1 \n";
+
     ui->setupUi(this);
-    connect(ui->callwidget, CallWidget::NavigationRequested,
+
+    qDebug() << "MainWindow::MainWindow 2 \n";
+
+    connect(ui->callwidget, &CallWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
-    connect(ui->configurationwidget, ConfigurationWidget::NavigationRequested,
+    connect(ui->configurationwidget, &ConfigurationWidget::NavigationRequested,
             [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
 
     QIcon icon(":images/ring.png");
@@ -61,7 +67,7 @@ MainWindow::MainWindow(QWidget* parent) :
 
     auto exitAction = new QAction(tr("Exit"), this);
     connect(exitAction, &QAction::triggered, [this](){
-        QCoreApplication::exit();
+        QCoreApplication::exit(EXIT_FAILURE);
     });
     menu->addAction(exitAction);
 
@@ -131,7 +137,8 @@ MainWindow::~MainWindow()
 bool
 MainWindow::init()
 {
-    return ui->callwidget->findRingAccount();
+   qDebug() << "MainWindow::init\n";
+   return ui->callwidget->findRingAccount();
 }
 
 void
