@@ -544,7 +544,7 @@
       <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="releaseLabel">
         <property name="text">
-         <string>In varietate concordia</string>
+         <string>Live free or die</string>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
