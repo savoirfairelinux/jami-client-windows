@@ -375,7 +375,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
         <source>Network Interface</source>
-        <translation>Interface de Red</translation>
+        <translation>Interfaz de Red</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1418"/>
@@ -767,7 +767,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de contactos existentes</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
@@ -1327,12 +1327,12 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de contactos existentes</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
         <source>Create new contact button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de crear nuevo contacto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="66"/>
@@ -1390,7 +1390,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
         <source>Accept contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de aceptar la solicitud de contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="132"/>
@@ -1466,7 +1466,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de cancelar la eliminación del contacto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="141"/>
@@ -1476,7 +1476,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de validar la eliminación del contacto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
@@ -1499,7 +1499,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de cancelar la eliminación del contacto</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="126"/>
@@ -1509,7 +1509,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="139"/>
         <source>Delete contact validation button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de eliminar la validacion del contacto</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="142"/>
@@ -1519,7 +1519,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deletecontactdialog.ui" line="155"/>
         <source>Delete and ban validation button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de validar la eliminación y el bloqueo</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
@@ -1547,7 +1547,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
         <source>Send message button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de enviar mensaje</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="44"/>
@@ -1676,17 +1676,17 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="114"/>
         <source>Validate Contact Request Button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de solicitud de validar contacto</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="139"/>
         <source>Mute contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de solicitud de silenciar contacto </translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="161"/>
         <source>Ban contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de solicitud de bloqueo de contacto</translation>
     </message>
 </context>
 <context>
@@ -1981,7 +1981,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de crear cuenta de Ring</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="145"/>
@@ -1991,7 +1991,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de vincular dispositivo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
