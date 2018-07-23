@@ -24,8 +24,8 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>In varietate concordia</source>
-        <translation>En variegata concordia</translation>
+        <source>Live Free or Die</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -314,7 +314,7 @@ Ring es un programa de comunicación distribuido y seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de reproducir tono de llamada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>

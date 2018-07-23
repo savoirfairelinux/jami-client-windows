@@ -24,7 +24,7 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>In varietate concordia</source>
+        <source>Live Free or Die</source>
         <translation type="unfinished"/>
     </message>
     <message>
