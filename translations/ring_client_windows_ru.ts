@@ -676,7 +676,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../accountdetails.ui" line="2294"/>
         <source>User certificate</source>
-        <translation>Пользовательский сертификат</translation>
+        <translation>Сертификат пользователя</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2331"/>
@@ -744,7 +744,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation>Список заблокированных контактов</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>

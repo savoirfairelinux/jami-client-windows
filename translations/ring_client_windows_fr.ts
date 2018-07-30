@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Live Free or Die</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
