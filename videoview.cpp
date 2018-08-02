@@ -175,7 +175,7 @@ VideoView::dropEvent(QDropEvent* event)
 {
     auto urls = event->mimeData()->urls();
     if (auto call = CallModel::instance().selectedCall()) {
-        if (auto outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT)) {
+        if (auto outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT)) {
             outVideo->sourceModel()->setFile(urls.at(0));
         }
     }
@@ -204,11 +204,11 @@ VideoView::showContextMenu(const QPoint& pos)
     QPoint globalPos = this->mapToGlobal(pos);
 
     QMenu menu;
-    media::Video* outVideo = nullptr;
+    Media::Video* outVideo = nullptr;
     int activeIndex = -1;
 
     if (auto call = CallModel::instance().selectedCall()) {
-        outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT);
+        outVideo = call->firstMedia<Media::Video>(Media::Media::Direction::OUT);
         if (outVideo)
             activeIndex = outVideo->sourceModel()->activeIndex();
     }

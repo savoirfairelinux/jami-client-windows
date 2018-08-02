@@ -49,7 +49,7 @@ private slots:
     void on_sendButton_clicked();
 
 private slots:
-    void mediaAdd(media::Media *media);
+    void mediaAdd(Media::Media *media);
     void onMsgReceived(const QMap<QString, QString>& message);
 
 private:

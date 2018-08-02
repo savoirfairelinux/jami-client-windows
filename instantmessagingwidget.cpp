@@ -77,13 +77,13 @@ InstantMessagingWidget::setMediaText(Call *call)
     ui->listMessageView->disconnect();
     ui->messageEdit->disconnect();
     if (call != nullptr) {
-        connect(call, SIGNAL(mediaAdded(media::Media*)),
-                this, SLOT(mediaAdd(media::Media*)));
-        media::Text *textMedia = nullptr;
-        if (call->hasMedia(media::Media::Type::TEXT, media::Media::Direction::OUT)) {
-            textMedia = call->firstMedia<media::Text>(media::Media::Direction::OUT);
+        connect(call, SIGNAL(mediaAdded(Media::Media*)),
+                this, SLOT(mediaAdd(Media::Media*)));
+        Media::Text *textMedia = nullptr;
+        if (call->hasMedia(Media::Media::Type::TEXT, Media::Media::Direction::OUT)) {
+            textMedia = call->firstMedia<Media::Text>(Media::Media::Direction::OUT);
         } else {
-            textMedia = call->addOutgoingMedia<media::Text>();
+            textMedia = call->addOutgoingMedia<Media::Text>();
         }
         if (textMedia) {
             ui->listMessageView->setModel(
@@ -105,23 +105,23 @@ InstantMessagingWidget::setMediaText(Call *call)
 }
 
 void
-InstantMessagingWidget::mediaAdd(media::Media *media)
+InstantMessagingWidget::mediaAdd(Media::Media *media)
 {
     switch(media->type()) {
-    case media::Media::Type::AUDIO:
+    case Media::Media::Type::AUDIO:
         break;
-    case media::Media::Type::VIDEO:
+    case Media::Media::Type::VIDEO:
         break;
-    case media::Media::Type::TEXT:
-        if (media->direction() == media::Text::Direction::IN) {
-            connect(static_cast<media::Text*>(media),
+    case Media::Media::Type::TEXT:
+        if (media->direction() == Media::Text::Direction::IN) {
+            connect(static_cast<Media::Text*>(media),
                     SIGNAL(messageReceived(QMap<QString,QString>)),
                     this,
                     SLOT(onMsgReceived(QMap<QString,QString>)));
             this->show();
         }
         break;
-    case media::Media::Type::FILE:
+    case Media::Media::Type::FILE:
         break;
     default:
         break;
