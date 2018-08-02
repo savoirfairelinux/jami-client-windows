@@ -189,5 +189,11 @@ main(int argc, char *argv[])
     });
 #endif
 
-    return a.exec();
+    auto ret = a.exec();
+
+    QCoreApplication::exit();
+    GlobalSystemTray::instance().deleteLater();
+    GlobalSystemTray::instance().hide();
+
+    return ret;
 }
