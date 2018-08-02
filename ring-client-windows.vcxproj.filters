@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aboutdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountdetails.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountserializationadapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountstatedelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bannedcontactswidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="callutilsdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="callwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="combar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="configurationwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactmethodpicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactpicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactrequestitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactrequestlistwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactrequestwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="currentaccountwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="deleteaccountdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="deletecontactdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="globalsystemtray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="idlabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instantmessagingwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="navwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="photoboothdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="photoboothwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pixbufmanipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qualitydialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quickactcontactrequestwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ringbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ringcontactlineedit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="selectareadialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sendcontactrequestwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videooverlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videoview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videowidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windowscontactbackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wizarddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="aboutdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountdetails.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountserializationadapter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountstatedelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="bannedcontactswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="callutilsdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="callwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="combar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="configurationwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="contactmethodpicker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="contactpicker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="contactrequestitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="contactrequestlistwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="contactrequestwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="currentaccountwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="deleteaccountdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="deletecontactdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="globalsystemtray.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="idlabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="imdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="instantmessagingwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="navwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="photoboothdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="photoboothwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="pixbufmanipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="qualitydialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="quickactcontactrequestwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ringbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ringcontactlineedit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="ringthemeutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="selectareadialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="sendcontactrequestwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="settingskey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="smartlist.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="videooverlay.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="videoview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="videowidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="windowscontactbackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="wizarddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="ui_aboutdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_accountdetails.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_bannedcontactswidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_callutilsdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_callwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_combar.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_configurationwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_contactmethodpicker.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_contactpicker.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_contactrequestwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_currentaccountwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_deleteaccountdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_deletecontactdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_instantmessagingwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_mainwindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_photoboothdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_photoboothwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_qualitydialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_quickactcontactrequestwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_ringbutton.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_sendcontactrequestwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_videooverlay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_videoview.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_wizarddialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="translations\ring_client_windows.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ar.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_bg.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ca.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_cs_CZ.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_da_DK.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_de.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_de_DE.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_el.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_en_GB.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_eo.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_es.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_es_AR.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_et_EE.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_eu.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_fa_IR.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_fi.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_fr.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_fr_CA.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_fr_FR.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_he.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_hi_IN.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_hr.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_hu.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_id.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_it.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_it_IT.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ja.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ko_KR.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_lt.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ms.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_nb.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_nl.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_nl_BE.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_nl_NL.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_pa.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_pl.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_pl_PL.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_pt.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_pt_BR.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ro.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ru.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_ru_RU.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_sk_SK.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_sl.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_sq_AL.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_sv.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_tr.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_uk.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_zh.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_zh_CN.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="translations\ring_client_windows_zh_TW.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="aboutdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="accountdetails.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="bannedcontactswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="callutilsdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="callwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="combar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="configurationwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="contactmethodpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="contactpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="contactrequestwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="currentaccountwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="deleteaccountdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="deletecontactdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="instantmessagingwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="photoboothdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="photoboothwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="qualitydialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="quickactcontactrequestwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ringbutton.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="sendcontactrequestwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="videooverlay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="videoview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="wizarddialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\FontAwesome.otf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\background-dark.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\background-light.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\user\btn-default-userpic.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_add_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_back_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_drop_down_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_drop_down_black_9dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_drop_up_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_drop_up_black_9dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_forward_white_48dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_tab_next_black_9dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_arrow_tab_previous_black_9dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_call_transfer_white_24px.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_chat_black_24dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_chat_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_check_white_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_close_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_content_copy_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_delete_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_done_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_folder_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_group_add_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_high_quality_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_mic_off_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_pause_white_100px.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_pause_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_person_add_black_24dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_person_add_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_photo_camera_white_24dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_search_black_18dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_send_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_settings_white_48dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_share_black_48dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_videocam_off_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_videocam_white.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\ic_voicemail_white_24dp_2x.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\loading.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\logo-ring-standard-coul.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\qrcode.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="ressources.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="images\ring.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\spikeMask.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="stylesheet.css">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\waiting.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ico.rc" />
+  </ItemGroup>
+</Project>
