@@ -136,16 +136,16 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
 
     ui->videoView->setIsFullPreview(true);
 
-    auto recordPath = LRCMedia::RecordingModel::instance().recordPath();
+    auto recordPath = media::RecordingModel::instance().recordPath();
     if (recordPath.isEmpty()) {
         recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-        LRCMedia::RecordingModel::instance().setRecordPath(recordPath);
+        media::RecordingModel::instance().setRecordPath(recordPath);
     }
-    ui->recordPath->setText(LRCMedia::RecordingModel::instance().recordPath());
+    ui->recordPath->setText(media::RecordingModel::instance().recordPath());
 
-    ui->alwaysRecordCheckBox->setChecked(LRCMedia::RecordingModel::instance().isAlwaysRecording());
+    ui->alwaysRecordCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
     connect(ui->alwaysRecordCheckBox, &QCheckBox::clicked, [](bool checked){
-        LRCMedia::RecordingModel::instance().setAlwaysRecording(checked);
+        media::RecordingModel::instance().setAlwaysRecording(checked);
     });
 
     connect(ui->generalTabButton, &QPushButton::toggled, [=] (bool toggled) {
@@ -387,11 +387,11 @@ void
 ConfigurationWidget::on_recordPath_clicked()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Directory"),
-                                                 LRCMedia::RecordingModel::instance().recordPath(),
+                                                 media::RecordingModel::instance().recordPath(),
                                                  QFileDialog::ShowDirsOnly
                                                  | QFileDialog::DontResolveSymlinks);
     if (not dir.isEmpty()) {
-        LRCMedia::RecordingModel::instance().setRecordPath(dir);
+        media::RecordingModel::instance().setRecordPath(dir);
         ui->recordPath->setText(dir);
     }
 }

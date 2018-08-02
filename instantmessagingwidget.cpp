@@ -79,13 +79,13 @@ InstantMessagingWidget::setMediaText(Call *call)
     ui->listMessageView->disconnect();
     ui->messageEdit->disconnect();
     if (call != nullptr) {
-        connect(call, SIGNAL(mediaAdded(LRCMedia::Media*)),
-                this, SLOT(mediaAdd(LRCMedia::Media*)));
-        LRCMedia::Text *textMedia = nullptr;
-        if (call->hasMedia(LRCMedia::Media::Type::TEXT, LRCMedia::Media::Direction::OUT)) {
-            textMedia = call->firstMedia<LRCMedia::Text>(LRCMedia::Media::Direction::OUT);
+        connect(call, SIGNAL(mediaAdded(media::Media*)),
+                this, SLOT(mediaAdd(media::Media*)));
+        media::Text *textMedia = nullptr;
+        if (call->hasMedia(media::Media::Type::TEXT, media::Media::Direction::OUT)) {
+            textMedia = call->firstMedia<media::Text>(media::Media::Direction::OUT);
         } else {
-            textMedia = call->addOutgoingMedia<LRCMedia::Text>();
+            textMedia = call->addOutgoingMedia<media::Text>();
         }
         if (textMedia) {
             ui->listMessageView->setModel(
@@ -107,23 +107,23 @@ InstantMessagingWidget::setMediaText(Call *call)
 }
 
 void
-InstantMessagingWidget::mediaAdd(LRCMedia::Media *media)
+InstantMessagingWidget::mediaAdd(media::Media *media)
 {
     switch(media->type()) {
-    case LRCMedia::Media::Type::AUDIO:
+    case media::Media::Type::AUDIO:
         break;
-    case LRCMedia::Media::Type::VIDEO:
+    case media::Media::Type::VIDEO:
         break;
-    case LRCMedia::Media::Type::TEXT:
-        if (media->direction() == LRCMedia::Text::Direction::IN) {
-            connect(static_cast<LRCMedia::Text*>(media),
+    case media::Media::Type::TEXT:
+        if (media->direction() == media::Text::Direction::IN) {
+            connect(static_cast<media::Text*>(media),
                     SIGNAL(messageReceived(QMap<QString,QString>)),
                     this,
                     SLOT(onMsgReceived(QMap<QString,QString>)));
             this->show();
         }
         break;
-    case LRCMedia::Media::Type::FILE:
+    case media::Media::Type::FILE:
         break;
     default:
         break;

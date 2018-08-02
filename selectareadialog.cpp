@@ -88,7 +88,7 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         QApplication::restoreOverrideCursor();
         releaseMouse();
         if (auto call = CallModel::instance().selectedCall()) {
-            if (auto outVideo = call->firstMedia<LRCMedia::Video>(LRCMedia::Media::Direction::OUT)) {
+            if (auto outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT)) {
                 QRect realRect = rubberBand_->geometry();
 #ifdef Q_OS_WIN
                 if (QGuiApplication::primaryScreen()->devicePixelRatio() > 1.0) {
