@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0F6318E4-4C06-384E-BCA8-F344DA187957}</ProjectGuid>
+    <RootNamespace>Ring</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>Ring</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>Ring</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Ring</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ring</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)../daemon/contrib/msvc/include;$(ProjectDir)../lrc/src;$(ProjectDir)../client-windows/winsparkle/include;$(ProjectDir)../client-windows/qrencode-win32/qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4068;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <SDLCheck>true</SDLCheck>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\daemon\MSVC\x64\ReleaseLib_win32\bin\dring.lib;..\lrc\msvc\src\qtwrapper\Release\qtwrapper.lib;..\lrc\msvc\release\ringclient_static.lib;.\winsparkle\x64\release\WinSparkle.lib;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib\qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;$(QTDIR)\lib\qtmain.lib;$(QTDIR)\lib\Qt5Svg.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5WinExtras.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Xml.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Core.lib;$(QTDIR)\lib\Qt5Sql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;C:\Users\fner\Desktop\RINGVS2017\ring-project\daemon\contrib\msvc\lib\x64;C:\Users\fner\Desktop\RINGVS2017\ring-project\daemon\MSVC\x64\ReleaseLib_win32\bin;C:\Users\fner\Desktop\RINGVS2017\ring-project\lrc\msvc\release;.\winsparkle\x64\release;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\Ring.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>2.0</Version>
+      <ForceFileOutput>MultiplyDefinedSymbolOnly</ForceFileOutput>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)../daemon/contrib/msvc/include;$(ProjectDir)../lrc/src;$(ProjectDir)../client-windows/winsparkle/include;$(ProjectDir)../client-windows/qrencode-win32/qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;release;%(AdditionalIncludeDirectories)</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>ressources</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+    <QtUic>
+      <InputFile>%(FullPath)</InputFile>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)../lrc/src;$(ProjectDir)../client-windows/winsparkle/include;$(ProjectDir)../client-windows/qrencode-win32/qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;debug;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4068;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\qtmaind.lib;shell32.lib;C:\Users\fner\Desktop\RINGVS2017\ring-project\daemon\MSVC\x64\DebugLib_win32\bin\dringd.lib;C:\Users\fner\Desktop\RINGVS2017\ring-project\lrc\msvc\debug\ringclient_s.lib;.\winsparkle\x64\release\WinSparkle.lib;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib\qrcodelib.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Mmdevapi.lib;$(QTDIR)\lib\Qt5Svgd.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5WinExtrasd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Xmld.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Cored.lib;$(QTDIR)\lib\Qt5Sqld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;$(QTDIR)\lib;C:\Users\fner\Desktop\RINGVS2017\ring-project\daemon\contrib\msvc\lib\x64;C:\Users\fner\Desktop\RINGVS2017\ring-project\daemon\MSVC\x64\ReleaseLib\bin;C:\Users\fner\Desktop\RINGVS2017\ring-project\lrc\msvc\release;.\winsparkle\x64\release;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\Ring.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>2.0</Version>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtRcc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InitFuncName>ressources</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)../lrc/src;$(ProjectDir)../client-windows/winsparkle/include;$(ProjectDir)../client-windows/qrencode-win32/qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;debug;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</IncludePath>
+    </QtMoc>
+    <QtUic>
+      <InputFile>%(FullPath)</InputFile>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="aboutdialog.cpp" />
+    <ClCompile Include="accountdetails.cpp" />
+    <ClCompile Include="accountserializationadapter.cpp" />
+    <ClCompile Include="accountstatedelegate.cpp" />
+    <ClCompile Include="bannedcontactswidget.cpp" />
+    <ClCompile Include="callutilsdialog.cpp" />
+    <ClCompile Include="callwidget.cpp" />
+    <ClCompile Include="combar.cpp" />
+    <ClCompile Include="configurationwidget.cpp" />
+    <ClCompile Include="contactmethodpicker.cpp" />
+    <ClCompile Include="contactpicker.cpp" />
+    <ClCompile Include="contactrequestitemdelegate.cpp" />
+    <ClCompile Include="contactrequestlistwidget.cpp" />
+    <ClCompile Include="contactrequestwidget.cpp" />
+    <ClCompile Include="currentaccountwidget.cpp" />
+    <ClCompile Include="deleteaccountdialog.cpp" />
+    <ClCompile Include="deletecontactdialog.cpp" />
+    <ClCompile Include="globalsystemtray.cpp" />
+    <ClCompile Include="idlabel.cpp" />
+    <ClCompile Include="imdelegate.cpp" />
+    <ClCompile Include="instantmessagingwidget.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="navwidget.cpp" />
+    <ClCompile Include="photoboothdialog.cpp" />
+    <ClCompile Include="photoboothwidget.cpp" />
+    <ClCompile Include="pixbufmanipulator.cpp" />
+    <ClCompile Include="qualitydialog.cpp" />
+    <ClCompile Include="quickactcontactrequestwidget.cpp" />
+    <ClCompile Include="ringbutton.cpp" />
+    <ClCompile Include="ringcontactlineedit.cpp" />
+    <ClCompile Include="selectareadialog.cpp" />
+    <ClCompile Include="sendcontactrequestwidget.cpp" />
+    <ClCompile Include="smartlist.cpp" />
+    <ClCompile Include="smartlistdelegate.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="videooverlay.cpp" />
+    <ClCompile Include="videoview.cpp" />
+    <ClCompile Include="videowidget.cpp" />
+    <ClCompile Include="windowscontactbackend.cpp" />
+    <ClCompile Include="wizarddialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="aboutdialog.h">
+    </QtMoc>
+    <QtMoc Include="accountdetails.h">
+    </QtMoc>
+    <QtMoc Include="accountserializationadapter.h">
+    </QtMoc>
+    <QtMoc Include="accountstatedelegate.h">
+    </QtMoc>
+    <QtMoc Include="bannedcontactswidget.h">
+    </QtMoc>
+    <QtMoc Include="callutilsdialog.h">
+    </QtMoc>
+    <QtMoc Include="callwidget.h">
+    </QtMoc>
+    <QtMoc Include="combar.h">
+    </QtMoc>
+    <QtMoc Include="configurationwidget.h">
+    </QtMoc>
+    <QtMoc Include="contactmethodpicker.h">
+    </QtMoc>
+    <QtMoc Include="contactpicker.h">
+    </QtMoc>
+    <ClInclude Include="contactrequestitemdelegate.h" />
+    <QtMoc Include="contactrequestlistwidget.h">
+    </QtMoc>
+    <QtMoc Include="contactrequestwidget.h">
+    </QtMoc>
+    <QtMoc Include="currentaccountwidget.h">
+    </QtMoc>
+    <QtMoc Include="deleteaccountdialog.h">
+    </QtMoc>
+    <QtMoc Include="deletecontactdialog.h">
+    </QtMoc>
+    <QtMoc Include="globalsystemtray.h">
+    </QtMoc>
+    <QtMoc Include="idlabel.h">
+    </QtMoc>
+    <QtMoc Include="imdelegate.h">
+    </QtMoc>
+    <QtMoc Include="instantmessagingwidget.h">
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
+    </QtMoc>
+    <QtMoc Include="navwidget.h">
+    </QtMoc>
+    <QtMoc Include="photoboothdialog.h">
+    </QtMoc>
+    <QtMoc Include="photoboothwidget.h">
+    </QtMoc>
+    <ClInclude Include="pixbufmanipulator.h" />
+    <QtMoc Include="qualitydialog.h">
+    </QtMoc>
+    <QtMoc Include="quickactcontactrequestwidget.h">
+    </QtMoc>
+    <QtMoc Include="ringbutton.h">
+    </QtMoc>
+    <QtMoc Include="ringcontactlineedit.h">
+    </QtMoc>
+    <ClInclude Include="ringthemeutils.h" />
+    <QtMoc Include="selectareadialog.h">
+    </QtMoc>
+    <QtMoc Include="sendcontactrequestwidget.h">
+    </QtMoc>
+    <ClInclude Include="settingskey.h" />
+    <QtMoc Include="smartlist.h">
+    </QtMoc>
+    <QtMoc Include="smartlistdelegate.h">
+    </QtMoc>
+    <ClInclude Include="utils.h" />
+    <QtMoc Include="videooverlay.h">
+    </QtMoc>
+    <QtMoc Include="videoview.h">
+    </QtMoc>
+    <QtMoc Include="videowidget.h">
+    </QtMoc>
+    <ClInclude Include="windowscontactbackend.h" />
+    <QtMoc Include="wizarddialog.h">
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="ui_aboutdialog.h" />
+    <ClInclude Include="ui_accountdetails.h" />
+    <ClInclude Include="ui_bannedcontactswidget.h" />
+    <ClInclude Include="ui_callutilsdialog.h" />
+    <ClInclude Include="ui_callwidget.h" />
+    <ClInclude Include="ui_combar.h" />
+    <ClInclude Include="ui_configurationwidget.h" />
+    <ClInclude Include="ui_contactmethodpicker.h" />
+    <ClInclude Include="ui_contactpicker.h" />
+    <ClInclude Include="ui_contactrequestwidget.h" />
+    <ClInclude Include="ui_currentaccountwidget.h" />
+    <ClInclude Include="ui_deleteaccountdialog.h" />
+    <ClInclude Include="ui_deletecontactdialog.h" />
+    <ClInclude Include="ui_instantmessagingwidget.h" />
+    <ClInclude Include="ui_mainwindow.h" />
+    <ClInclude Include="ui_photoboothdialog.h" />
+    <ClInclude Include="ui_photoboothwidget.h" />
+    <ClInclude Include="ui_qualitydialog.h" />
+    <ClInclude Include="ui_quickactcontactrequestwidget.h" />
+    <ClInclude Include="ui_ringbutton.h" />
+    <ClInclude Include="ui_sendcontactrequestwidget.h" />
+    <ClInclude Include="ui_videooverlay.h" />
+    <ClInclude Include="ui_videoview.h" />
+    <ClInclude Include="ui_wizarddialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="translations\ring_client_windows.ts" />
+    <None Include="translations\ring_client_windows_ar.ts" />
+    <None Include="translations\ring_client_windows_bg.ts" />
+    <None Include="translations\ring_client_windows_ca.ts" />
+    <None Include="translations\ring_client_windows_cs_CZ.ts" />
+    <None Include="translations\ring_client_windows_da_DK.ts" />
+    <None Include="translations\ring_client_windows_de.ts" />
+    <None Include="translations\ring_client_windows_de_DE.ts" />
+    <None Include="translations\ring_client_windows_el.ts" />
+    <None Include="translations\ring_client_windows_en_GB.ts" />
+    <None Include="translations\ring_client_windows_eo.ts" />
+    <None Include="translations\ring_client_windows_es.ts" />
+    <None Include="translations\ring_client_windows_es_AR.ts" />
+    <None Include="translations\ring_client_windows_et_EE.ts" />
+    <None Include="translations\ring_client_windows_eu.ts" />
+    <None Include="translations\ring_client_windows_fa_IR.ts" />
+    <None Include="translations\ring_client_windows_fi.ts" />
+    <None Include="translations\ring_client_windows_fr.ts" />
+    <None Include="translations\ring_client_windows_fr_CA.ts" />
+    <None Include="translations\ring_client_windows_fr_FR.ts" />
+    <None Include="translations\ring_client_windows_he.ts" />
+    <None Include="translations\ring_client_windows_hi_IN.ts" />
+    <None Include="translations\ring_client_windows_hr.ts" />
+    <None Include="translations\ring_client_windows_hu.ts" />
+    <None Include="translations\ring_client_windows_id.ts" />
+    <None Include="translations\ring_client_windows_it.ts" />
+    <None Include="translations\ring_client_windows_it_IT.ts" />
+    <None Include="translations\ring_client_windows_ja.ts" />
+    <None Include="translations\ring_client_windows_ko_KR.ts" />
+    <None Include="translations\ring_client_windows_lt.ts" />
+    <None Include="translations\ring_client_windows_ms.ts" />
+    <None Include="translations\ring_client_windows_nb.ts" />
+    <None Include="translations\ring_client_windows_nl.ts" />
+    <None Include="translations\ring_client_windows_nl_BE.ts" />
+    <None Include="translations\ring_client_windows_nl_NL.ts" />
+    <None Include="translations\ring_client_windows_pa.ts" />
+    <None Include="translations\ring_client_windows_pl.ts" />
+    <None Include="translations\ring_client_windows_pl_PL.ts" />
+    <None Include="translations\ring_client_windows_pt.ts" />
+    <None Include="translations\ring_client_windows_pt_BR.ts" />
+    <None Include="translations\ring_client_windows_ro.ts" />
+    <None Include="translations\ring_client_windows_ru.ts" />
+    <None Include="translations\ring_client_windows_ru_RU.ts" />
+    <None Include="translations\ring_client_windows_sk_SK.ts" />
+    <None Include="translations\ring_client_windows_sl.ts" />
+    <None Include="translations\ring_client_windows_sq_AL.ts" />
+    <None Include="translations\ring_client_windows_sv.ts" />
+    <None Include="translations\ring_client_windows_tr.ts" />
+    <None Include="translations\ring_client_windows_uk.ts" />
+    <None Include="translations\ring_client_windows_zh.ts" />
+    <None Include="translations\ring_client_windows_zh_CN.ts" />
+    <None Include="translations\ring_client_windows_zh_TW.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="aboutdialog.ui">
+    </QtUic>
+    <QtUic Include="accountdetails.ui">
+    </QtUic>
+    <QtUic Include="bannedcontactswidget.ui">
+    </QtUic>
+    <QtUic Include="callutilsdialog.ui">
+    </QtUic>
+    <QtUic Include="callwidget.ui">
+    </QtUic>
+    <QtUic Include="combar.ui">
+    </QtUic>
+    <QtUic Include="configurationwidget.ui">
+    </QtUic>
+    <QtUic Include="contactmethodpicker.ui">
+    </QtUic>
+    <QtUic Include="contactpicker.ui">
+    </QtUic>
+    <QtUic Include="contactrequestwidget.ui">
+    </QtUic>
+    <QtUic Include="currentaccountwidget.ui">
+    </QtUic>
+    <QtUic Include="deleteaccountdialog.ui">
+    </QtUic>
+    <QtUic Include="deletecontactdialog.ui">
+    </QtUic>
+    <QtUic Include="instantmessagingwidget.ui">
+    </QtUic>
+    <QtUic Include="mainwindow.ui">
+    </QtUic>
+    <QtUic Include="photoboothdialog.ui">
+    </QtUic>
+    <QtUic Include="photoboothwidget.ui">
+    </QtUic>
+    <QtUic Include="qualitydialog.ui">
+    </QtUic>
+    <QtUic Include="quickactcontactrequestwidget.ui">
+    </QtUic>
+    <QtUic Include="ringbutton.ui">
+    </QtUic>
+    <QtUic Include="sendcontactrequestwidget.ui">
+    </QtUic>
+    <QtUic Include="videooverlay.ui">
+    </QtUic>
+    <QtUic Include="videoview.ui">
+    </QtUic>
+    <QtUic Include="wizarddialog.ui">
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\FontAwesome.otf" />
+    <None Include="images\background-dark.png" />
+    <None Include="images\background-light.png" />
+    <None Include="images\user\btn-default-userpic.svg" />
+    <None Include="images\icons\ic_add_black_18dp_2x.png" />
+    <None Include="images\icons\ic_arrow_back_white_24dp.png" />
+    <None Include="images\icons\ic_arrow_drop_down_black_18dp_2x.png" />
+    <None Include="images\icons\ic_arrow_drop_down_black_9dp_2x.png" />
+    <None Include="images\icons\ic_arrow_drop_up_black_18dp_2x.png" />
+    <None Include="images\icons\ic_arrow_drop_up_black_9dp_2x.png" />
+    <None Include="images\icons\ic_arrow_forward_white_48dp_2x.png" />
+    <None Include="images\icons\ic_arrow_tab_next_black_9dp_2x.png" />
+    <None Include="images\icons\ic_arrow_tab_previous_black_9dp_2x.png" />
+    <None Include="images\icons\ic_call_transfer_white_24px.png" />
+    <None Include="images\icons\ic_chat_black_24dp_2x.png" />
+    <None Include="images\icons\ic_chat_white_24dp.png" />
+    <None Include="images\icons\ic_check_white_18dp_2x.png" />
+    <None Include="images\icons\ic_close_white_24dp.png" />
+    <None Include="images\icons\ic_content_copy_white_24dp.png" />
+    <None Include="images\icons\ic_delete_black_18dp_2x.png" />
+    <None Include="images\icons\ic_done_white_24dp.png" />
+    <None Include="images\icons\ic_folder_black_18dp_2x.png" />
+    <None Include="images\icons\ic_group_add_white_24dp.png" />
+    <None Include="images\icons\ic_high_quality_white_24dp.png" />
+    <None Include="images\icons\ic_mic_off_white_24dp.png" />
+    <None Include="images\icons\ic_pause_white_100px.png" />
+    <None Include="images\icons\ic_pause_white_24dp.png" />
+    <None Include="images\icons\ic_person_add_black_24dp_2x.png" />
+    <None Include="images\icons\ic_person_add_white_24dp.png" />
+    <None Include="images\icons\ic_photo_camera_white_24dp_2x.png" />
+    <None Include="images\icons\ic_search_black_18dp_2x.png" />
+    <None Include="images\icons\ic_send_white_24dp.png" />
+    <None Include="images\icons\ic_settings_white_48dp_2x.png" />
+    <None Include="images\icons\ic_share_black_48dp_2x.png" />
+    <None Include="images\icons\ic_videocam_off_white_24dp.png" />
+    <None Include="images\icons\ic_videocam_white.png" />
+    <None Include="images\icons\ic_voicemail_white_24dp_2x.png" />
+    <None Include="images\loading.gif" />
+    <None Include="images\logo-ring-standard-coul.png" />
+    <None Include="images\qrcode.png" />
+    <QtRcc Include="ressources.qrc">
+    </QtRcc>
+    <None Include="images\ring.png" />
+    <None Include="images\spikeMask.png" />
+    <None Include="stylesheet.css" />
+    <None Include="images\waiting.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ico.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" Qt5Version_x0020_x64="Qt 5.9.4" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
