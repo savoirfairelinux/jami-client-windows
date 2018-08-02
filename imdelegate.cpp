@@ -41,11 +41,11 @@ ImDelegate::formatMsg(const QModelIndex& index, QString& msg) const
     QStringList meta;
     if (settings.value(SettingsKey::imShowAuthor).toBool()) {
         meta << index.data(
-                    static_cast<int>(Media::TextRecording::Role::AuthorDisplayname)).toString();
+                    static_cast<int>(media::TextRecording::Role::AuthorDisplayname)).toString();
     }
     if (settings.value(SettingsKey::imShowDate).toBool()) {
         auto timeStamp = index.data(
-                    static_cast<int>(Media::TextRecording::Role::Timestamp)).value<uint>();
+                    static_cast<int>(media::TextRecording::Role::Timestamp)).value<uint>();
         auto date = QDateTime::fromTime_t(timeStamp);
         auto now = QDateTime::currentDateTime();
         if (now.date() == date.date())
@@ -69,12 +69,12 @@ ImDelegate::paint(QPainter* painter,
     painter->setFont(fontMsg_);
 
     if (index.isValid()) {
-        auto msg = index.data(static_cast<int>(Media::TextRecording::Role::FormattedHtml)).toString();
+        auto msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
         opt.text.clear();
         QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
 
-        auto dir = index.data(static_cast<int>(Media::TextRecording::Role::Direction))
-                .value<Media::Media::Direction>() == Media::Media::Direction::IN
+        auto dir = index.data(static_cast<int>(media::TextRecording::Role::Direction))
+                .value<media::Media::Direction>() == media::Media::Direction::IN
                 ? Qt::AlignLeft : Qt::AlignRight;
 
         formatMsg(index, msg);
@@ -156,11 +156,11 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
     QStyleOptionViewItem opt = option;
     opt.font = fontMsg_;
 
-    QString msg = index.data(static_cast<int>(Media::TextRecording::Role::FormattedHtml)).toString();
+    QString msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
 
     auto dir = index.data(
-                static_cast<int>(Media::TextRecording::Role::Direction))
-            .value<Media::Media::Direction>() == Media::Media::Direction::IN
+                static_cast<int>(media::TextRecording::Role::Direction))
+            .value<media::Media::Direction>() == media::Media::Direction::IN
             ? Qt::AlignLeft : Qt::AlignRight;
 
     formatMsg(index, msg);
