@@ -86,8 +86,8 @@ private slots:
     void callStateChanged(Call* call, Call::State previousState);
     void smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
-    void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm,Media::Media::Direction dir);
-    void onIncomingMessage(::Media::TextRecording* t, ContactMethod* cm);
+    void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm, media::Media::Direction dir);
+    void onIncomingMessage(::media::TextRecording* t, ContactMethod* cm);
     void callChangedSlot();
     void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
