@@ -90,7 +90,7 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
         <translation>使用者名稱</translation>
     </message>
@@ -172,12 +172,12 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation>在區塊鏈上註冊</translation>
     </message>
@@ -318,7 +318,7 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
         <translation>播放</translation>
     </message>
@@ -694,42 +694,42 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
         <translation>使用預設加密法</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>暫停</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation>RingID</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>選擇檔案</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
         <translation>檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation>請等待您的 PIN 碼生成。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation>網路錯誤。請稍後再試。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation>錯誤的密碼。</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation>正在註冊... 這會耗費一些時間</translation>
     </message>

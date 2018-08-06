@@ -5,7 +5,7 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="465"/>
         <source>About</source>
-        <translation>О продукте</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
@@ -20,19 +20,19 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation>Кредиты</translation>
+        <translation>Благодарности</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Live Free or Die</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
         <translation>Microsoft Windows клиент для Ring.
-Ring защищенное и распределенное программное обеспечение</translation>
+Ring — программное обеспечение для защищённой связи с распределённой архитектурой.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -42,7 +42,7 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Это ваш RingID.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aeaeae;&quot;&gt;Скопировать и поделиться с друзьями!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
@@ -85,14 +85,14 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../accountdetails.ui" line="280"/>
         <source>Hostname</source>
-        <translation>Узел</translation>
+        <translation>Имя компьютера</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
-        <translation>Пользователь</translation>
+        <translation>Имя пользователя</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="469"/>
@@ -113,12 +113,12 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation>Автоответчик</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
         <source>UPnP enabled</source>
-        <translation>UPnP</translation>
+        <translation>UPnP включен</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -172,12 +172,12 @@ Ring защищенное и распределенное программное
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation type="unfinished"/>
     </message>
@@ -274,7 +274,7 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation>Да</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
@@ -318,7 +318,7 @@ Ring защищенное и распределенное программное
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
         <translation>Воспроизвести</translation>
     </message>
@@ -491,7 +491,7 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation>Диапазон портов RTP</translation>
+        <translation>Диапазон портов RTP для звука</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
@@ -666,12 +666,12 @@ Ring защищенное и распределенное программное
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
         <source>Published Address</source>
-        <translation>Публичный адрес</translation>
+        <translation>Публикуемый адрес</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2254"/>
         <source>CA certificate</source>
-        <translation>CA сертификат</translation>
+        <translation>Сертификат удостоверяющего центра</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2294"/>
@@ -694,42 +694,42 @@ Ring защищенное и распределенное программное
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>Выбрать файл</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
-        <translation>Файлы(*)</translation>
+        <translation>Файлы (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation type="unfinished"/>
     </message>

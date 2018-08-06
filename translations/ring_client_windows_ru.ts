@@ -90,7 +90,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
         <translation>Имя пользователя</translation>
     </message>
@@ -172,12 +172,12 @@ Ring – это приложение с распределённой архит�
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation>Зарегистрировать в блокчейн</translation>
     </message>
@@ -318,9 +318,9 @@ Ring – это приложение с распределённой архит�
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
-        <translation>Играть</translation>
+        <translation>Проиграть</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
@@ -395,7 +395,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../accountdetails.ui" line="1528"/>
         <source>Same as local parameters</source>
-        <translation>Такие же, как и локальные параметры</translation>
+        <translation>Аналогично локальным параметрам</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
@@ -486,12 +486,12 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../accountdetails.ui" line="1872"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Данные параметры используются только во время SDP согласования сессии в случае, если ICE не поддерживается сервером или пиром.</translation>
+        <translation>Данные параметры используются только во время согласования сессии SDP в случае, если ICE не поддерживается сервером или пиром.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation>Диапазон портов для RTP аудио</translation>
+        <translation>Диапазон портов RTP для звука</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
@@ -520,7 +520,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
-        <translation>Диапазон портов для RTP видео</translation>
+        <translation>Диапазон портов RTP для видео</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2186"/>
@@ -694,42 +694,42 @@ Ring – это приложение с распределённой архит�
         <translation>Использовать стандартные шифры</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation>RingID</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation>Пожалуйста, подождите, пока генерируется ваш PIN.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation>Ошибка сети. Пожалуйста, повторите попытку позднее.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation>Неверный пароль.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation>Регистрация… Это может занять некоторое время</translation>
     </message>
@@ -810,7 +810,7 @@ Ring – это приложение с распределённой архит�
     <message>
         <location filename="../callwidget.ui" line="642"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Ring — это свободная программа для всеобщей связи, уважающая свободы и конфиденциальность ее пользователей.</translation>
+        <translation>Ring — это свободная программа для связи, уважающая свободу и конфиденциальность пользователей.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="207"/>
@@ -1093,7 +1093,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../configurationwidget.ui" line="490"/>
         <source>Clear History</source>
-        <translation>Удалить историю сообщений</translation>
+        <translation>Очистить историю</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="642"/>
@@ -1481,7 +1481,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -1611,7 +1611,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation>Сделать фото</translation>
+        <translation>Сфотографировать</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1770,7 +1770,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../videooverlay.ui" line="476"/>
         <source>Name label</source>
-        <translation>Имя</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="498"/>
@@ -1836,7 +1836,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Импорт архива с аккаунтом…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
