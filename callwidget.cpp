@@ -20,6 +20,7 @@
 
 #include "callwidget.h"
 #include "ui_callwidget.h"
+#include "mainwindow.h"
 
 #include <QClipboard>
 #include <QDesktopServices>
@@ -119,6 +120,17 @@ CallWidget::CallWidget(QWidget* parent) :
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
 
         ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
+        
+        QObject::connect(ui->reloadStyleSheetButton, &QPushButton::clicked, []() {
+            qDebug() << "reloading stylesheet";
+            QFile file("C:\\Users\\fner\\Desktop\\RINGVS2017\\ring-project\\client-windows\\stylesheet.css");
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+            {
+                auto fileContent = file.readAll();
+                MainWindow::instance().setStyleSheet(fileContent);
+                file.close();
+            }
+        });
 
         connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
