@@ -107,6 +107,17 @@ MainWindow::MainWindow(QWidget* parent) :
         Q_UNUSED(online)
         AccountModel::instance().slotConnectivityChanged();
     });
+
+
+    //QFile file(":/stylesheet.css");
+    QFile file("C:\\Users\\fner\\Desktop\\RINGVS2017\\ring-project\\client-windows\\stylesheet.css");
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        auto fileContent = file.readAll();
+        this->setStyleSheet(fileContent);
+        file.close();
+    }
+
 }
 
 MainWindow::~MainWindow()
