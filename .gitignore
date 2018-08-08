@@ -1,1 +1,10 @@
 *.user
+
+GeneratedFiles/
+.vs/
+x64/
+x86/
+[wW]in32/
+.qmake.stash
+debug/
+release/
