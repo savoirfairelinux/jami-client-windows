@@ -46,7 +46,7 @@ VideoView::VideoView(QWidget* parent) :
 
     connect(&CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
             this, SLOT(callStateChanged(Call*, Call::State)));
-
+ 
     overlay_ = new VideoOverlay(this);
     auto effect = new QGraphicsOpacityEffect(overlay_);
     effect->setOpacity(maxOverlayOpacity_);
@@ -58,6 +58,12 @@ VideoView::VideoView(QWidget* parent) :
     fadeAnim_->setStartValue(effect->opacity());
     fadeAnim_->setEndValue(0);
     fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
+ 
+    // Setup the timer to start the fade when the mouse stops moving
+    this->setMouseTracking(true);
+    overlay_->setMouseTracking(true);
+    fadeTimer_.setSingleShot(true);
+    connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(fadeOverlayOut()));
 
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
@@ -119,15 +125,27 @@ void
 VideoView::enterEvent(QEvent* event)
 {
     Q_UNUSED(event)
-    fadeAnim_->stop();
-    fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(), fadeAnim_->startValue());
+    showOverlay();
 }
 
 void
 VideoView::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event)
-    if(not overlay_->isDialogVisible())
+    fadeOverlayOut();
+}
+
+void
+VideoView::showOverlay()
+{
+    fadeAnim_->stop();
+    fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(), fadeAnim_->startValue());
+}
+
+void
+VideoView::fadeOverlayOut()
+{
+    if (not overlay_->isDialogVisible())
         fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
 }
 
@@ -333,6 +351,13 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
 void
 VideoView::mouseMoveEvent(QMouseEvent* event)
 {
+    // start/restart the timer after which the overlay will fade
+    if (fadeTimer_.isActive()) {
+        showOverlay();
+    } else {
+        fadeTimer_.start(startfadeOverlayTime_);
+    }
+ 
     QRect& previewRect =  ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
         if (previewRect.left() > 0

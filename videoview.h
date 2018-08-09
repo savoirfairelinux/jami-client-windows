@@ -54,11 +54,14 @@ private slots:
     void updateCall();
     void showContextMenu(const QPoint& pos);
     void slotVideoStarted(Video::Renderer* renderer);
+    void fadeOverlayOut();
+    void showOverlay();
 
 private:
     Ui::VideoView* ui;
     VideoOverlay* overlay_;
     QPropertyAnimation* fadeAnim_;
+    QTimer fadeTimer_;
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
@@ -71,6 +74,10 @@ private:
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;
     constexpr static int minimalSize_ = 100;
+
+    // Time before the overlay starts fading out after the mouse stops
+    // moving within the videoview.
+    constexpr static int startfadeOverlayTime_ = 2000; //msec
 
     // TODO: fix when changing Qt version
     // Full(1.0) opacity bug affecting many Qt version (macOS + win10)
