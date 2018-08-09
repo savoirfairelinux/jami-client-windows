@@ -49,7 +49,7 @@ VideoView::VideoView(QWidget* parent) :
 
     overlay_ = new VideoOverlay(this);
     auto effect = new QGraphicsOpacityEffect(overlay_);
-    effect->setOpacity(1.0);
+    effect->setOpacity(maxOverlayOpacity_);
     overlay_->setGraphicsEffect(effect);
     fadeAnim_ = new QPropertyAnimation(this);
     fadeAnim_->setTargetObject(effect);
