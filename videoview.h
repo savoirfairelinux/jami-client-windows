@@ -23,6 +23,8 @@
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 
+#include <limits.h>
+
 #include "videooverlay.h"
 
 namespace Ui {
@@ -68,9 +70,17 @@ private:
     bool draggingPreview_ = false;
     bool resizingPreview_ = false;
 
-    constexpr static int fadeOverlayTime_ = 2000; //msec
+    constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;
     constexpr static int minimalSize_ = 100;
+
+    // TODO: fix when changing Qt version
+    // Full(1.0) opacity bug affecting many Qt version (macOS + win10)
+    // causing the render to take a buggy code path which can be avoided
+    // by using opacity values other than precisely 1.0.
+    // https://bugreports.qt.io/browse/QTBUG-65981
+    // https://bugreports.qt.io/browse/QTBUG-66803
+    constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
 
 private:
     void toggleFullScreen();
