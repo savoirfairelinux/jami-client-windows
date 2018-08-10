@@ -62,7 +62,10 @@ private slots:
 
 private:
     explicit MainWindow(QWidget* parent = 0);
-     ~MainWindow();
+    ~MainWindow();
+
+    void readSettingsFromRegistry();
+    
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
 };

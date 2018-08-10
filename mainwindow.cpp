@@ -83,17 +83,7 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 #endif
 
-    QSettings settings;
-    QVariant size = settings.value(SettingsKey::savedSize);
-    QVariant posV = settings.value(SettingsKey::savedPos);
-    if (size.isValid() && posV.isValid()) {
-        resize(size.toSize());
-        auto screenSize = QApplication::desktop()->screenGeometry();
-        auto pos = posV.toPoint();
-        if (pos.rx() < screenSize.width() && pos.ry() < screenSize.height())
-            move(pos);
-    } else
-        resize(800, 600);
+    readSettingsFromRegistry();
 
     win_sparkle_set_appcast_url("http://dl.ring.cx/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
@@ -111,9 +101,6 @@ MainWindow::MainWindow(QWidget* parent) :
 
     setContextMenuPolicy(Qt::NoContextMenu);
 
-    if (not settings.contains(SettingsKey::enableNotifications)) {
-        settings.setValue(SettingsKey::enableNotifications, true);
-    }
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 
     connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged, [=](bool online) {
@@ -227,7 +214,19 @@ MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
-        settings.setValue(SettingsKey::savedSize, size());
-        settings.setValue(SettingsKey::savedPos, pos());
+        settings.setValue(SettingsKey::geometry, saveGeometry());
+        settings.setValue(SettingsKey::windowState, saveState());
+    }
+    QMainWindow::closeEvent(event);
+}
+
+void
+MainWindow::readSettingsFromRegistry()
+{
+    QSettings settings;
+    restoreGeometry(settings.value(SettingsKey::geometry).toByteArray());
+    restoreState(settings.value(SettingsKey::windowState).toByteArray());
+    if (not settings.contains(SettingsKey::enableNotifications)) {
+        settings.setValue(SettingsKey::enableNotifications, true);
     }
 }
