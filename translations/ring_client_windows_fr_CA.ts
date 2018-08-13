@@ -42,7 +42,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="37"/>
         <source>Created by:</source>
-        <translation>Créé par:</translation>
+        <translation>Créé par :</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
@@ -90,7 +90,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
         <translation>Nom d&apos;utilisateur</translation>
     </message>
@@ -138,7 +138,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation>Info general comfiguration compte</translation>
+        <translation>Configuration des informations générales du compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -172,12 +172,12 @@ Ring is a secured and distributed communication software.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation type="unfinished"/>
     </message>
@@ -318,7 +318,7 @@ Ring is a secured and distributed communication software.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
         <translation>Jouer</translation>
     </message>
@@ -530,7 +530,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation>Confirmations de la sécurité du compte</translation>
+        <translation>Confirmation de la sécurité du compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -590,7 +590,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Pour associer un nouvel appareil à un compte Ring, vous exportez votre compte sur le réseau Ring. Cela générera un numéro PIN que vous devrez saisir dans votre nouvel appareil dans les 10 minutes.</translation>
+        <translation>Pour associer un nouvel appareil à un compte Ring, vous exportez votre compte sur le réseau Ring. Cela générera un numéro NIP que vous devrez saisir dans votre nouvel appareil dans les 10 minutes.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -626,7 +626,7 @@ Ring is a secured and distributed communication software.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation>Votre nip généré :</translation>
+        <translation>Votre NIP généré :</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
@@ -694,42 +694,42 @@ Ring is a secured and distributed communication software.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>Pause</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation>Identificateur Ring</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>Choisir le fichier</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
         <translation>Fichiers (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation>Veuillez attendre que votre NIP soit généré.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation>Erreur de réseau. Veuillez réessayer plus tard.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation>Mauvais mot de passe</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation>Enregistrement... Cela peut prendre un moment</translation>
     </message>
@@ -831,7 +831,8 @@ Ring is a secured and distributed communication software.</translation>
         <location filename="../callwidget.ui" line="680"/>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
-        <translation>Ceci est votre RingId. Copiez et partagez le avec vos amis!</translation>
+        <translation>Ceci est votre RingID. 
+Copiez et partagez-le avec vos amis !</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="791"/>
@@ -894,7 +895,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../callwidget.ui" line="1469"/>
         <source>Wants to talk to you!</source>
-        <translation>Veut vous parler!</translation>
+        <translation>veut vous parler!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
@@ -1850,7 +1851,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
         <source>Add a device</source>
-        <translation>ajouter un devise</translation>
+        <translation>Ajouter un appareil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="339"/>

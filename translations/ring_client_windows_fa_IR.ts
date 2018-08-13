@@ -90,7 +90,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
         <translation>نام کاربری</translation>
     </message>
@@ -172,12 +172,12 @@ Ring is a secured and distributed communication software.</source>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation type="unfinished"/>
     </message>
@@ -318,7 +318,7 @@ Ring is a secured and distributed communication software.</source>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
         <translation>پخش</translation>
     </message>
@@ -694,42 +694,42 @@ Ring is a secured and distributed communication software.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>مکث</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation>آی‌دی رینگ</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>انتخاب فایل</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
         <translation>فایل‌ها (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation>کلمه عبور اشتباه است.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation type="unfinished"/>
     </message>
@@ -800,7 +800,7 @@ Ring is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="333"/>
         <source>Conversations</source>
-        <translation type="unfinished"/>
+        <translation> گفتگو</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="384"/>
@@ -1611,7 +1611,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>عکس  بگیرید!</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1942,7 +1942,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>در حال جستجو...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>

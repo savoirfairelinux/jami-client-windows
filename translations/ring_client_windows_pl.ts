@@ -90,7 +90,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
         <location filename="../accountdetails.ui" line="1754"/>
-        <location filename="../accountdetails.cpp" line="117"/>
+        <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
         <translation>Nazwa użytkownika</translation>
     </message>
@@ -172,12 +172,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
-        <location filename="../accountdetails.cpp" line="108"/>
-        <location filename="../accountdetails.cpp" line="361"/>
-        <location filename="../accountdetails.cpp" line="378"/>
-        <location filename="../accountdetails.cpp" line="383"/>
-        <location filename="../accountdetails.cpp" line="388"/>
-        <location filename="../accountdetails.cpp" line="393"/>
+        <location filename="../accountdetails.cpp" line="110"/>
+        <location filename="../accountdetails.cpp" line="363"/>
+        <location filename="../accountdetails.cpp" line="380"/>
+        <location filename="../accountdetails.cpp" line="385"/>
+        <location filename="../accountdetails.cpp" line="390"/>
+        <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
         <translation type="unfinished"/>
     </message>
@@ -318,7 +318,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
-        <location filename="../accountdetails.cpp" line="58"/>
+        <location filename="../accountdetails.cpp" line="60"/>
         <source>Play</source>
         <translation>Graj</translation>
     </message>
@@ -694,42 +694,42 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
         <translation>Użyj domyślnych szyfrów</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="56"/>
+        <location filename="../accountdetails.cpp" line="58"/>
         <source>Pause</source>
         <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="103"/>
+        <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="231"/>
+        <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
         <translation>Wybierz Plik</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="233"/>
+        <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
         <translation>Pliki (*)</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="306"/>
+        <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="325"/>
+        <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="329"/>
+        <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
         <translation>Błędne hasło.</translation>
     </message>
     <message>
-        <location filename="../accountdetails.cpp" line="356"/>
+        <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
         <translation type="unfinished"/>
     </message>
