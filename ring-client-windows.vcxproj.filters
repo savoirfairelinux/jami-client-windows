@@ -761,4 +761,9 @@
   <ItemGroup>
     <ResourceCompile Include="ico.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lrcinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

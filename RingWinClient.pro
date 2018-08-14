@@ -123,7 +123,8 @@ HEADERS  += mainwindow.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
-    deletecontactdialog.h
+    deletecontactdialog.h \
+    lrcinstance.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
