@@ -27,6 +27,7 @@
 #include "media/file.h"
 #include "globalinstances.h"
 #include "pixbufmanipulator.h"
+#include "lrcinstance.h"
 
 #include <QThread>
 #include <QTranslator>
@@ -53,6 +54,15 @@ void
 Console()
 {
 #ifdef Q_OS_WIN
+#ifdef _MSC_VER
+    // Print debug to output window if using VS
+    QObject::connect(
+        &LRCInstance::behaviorController(),
+        &lrc::api::BehaviorController::debugMessageReceived,
+        [](const std::string& message) {
+            OutputDebugStringA((message + "\n").c_str());
+        });
+#else
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
@@ -63,6 +73,7 @@ Console()
 
     SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coordInfo);
     SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),ENABLE_QUICK_EDIT_MODE| ENABLE_EXTENDED_FLAGS);
+#endif
 #endif
 }
 
@@ -77,6 +88,12 @@ main(int argc, char *argv[])
 
     auto startMinimized = false;
     QString uri = "";
+
+#ifdef _MSC_VER
+    gnutls_global_init();
+#endif
+
+    LRCInstance::init();
 
     for (auto string : QCoreApplication::arguments()) {
         if (string == "-m" || string == "--minimized")
@@ -163,10 +180,6 @@ main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Ring");
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
-
-#ifdef _MSC_VER
-    gnutls_global_init();
-#endif
 
     if (not MainWindow::instance().init()) {
         return 1;

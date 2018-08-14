@@ -107,7 +107,6 @@ MainWindow::MainWindow(QWidget* parent) :
         Q_UNUSED(online)
         AccountModel::instance().slotConnectivityChanged();
     });
-
 }
 
 MainWindow::~MainWindow()
