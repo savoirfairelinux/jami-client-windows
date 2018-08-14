@@ -59,13 +59,14 @@ private slots:
     void onIncomingCall(Call* call);
     void switchNormalMaximize();
     void notificationClicked();
+    void debugMessageReceived(const std::string& message);
 
 private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
     void readSettingsFromRegistry();
-    
+
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
 };

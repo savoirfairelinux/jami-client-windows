@@ -37,6 +37,53 @@
 #include "callwidget.h"
 #include "utils.h"
 
+ // New LRC
+#undef ERROR
+#include "api/lrc.h"
+#include "api/account.h"
+#include "api/newaccountmodel.h"
+#include "api/newcallmodel.h"
+#include "api/behaviorcontroller.h"
+#include "api/conversation.h"
+#include "api/contactmodel.h"
+#include "api/contact.h"
+#include "api/datatransfermodel.h"
+
+class GlobalLRCWrapper {
+public:
+    static inline lrc::api::Lrc& getAPI() {
+        return *(instance().lrc_);
+    };
+    static inline void connectivityChanged() {
+        instance().lrc_->connectivityChanged();
+    };
+    static inline const lrc::api::NewAccountModel& accountModel() {
+        return instance().lrc_->getAccountModel();
+    };
+    static inline const lrc::api::BehaviorController& behaviorController() {
+        return instance().lrc_->getBehaviorController();
+    };
+    static inline const lrc::api::DataTransferModel& dataTransferModel() {
+        return instance().lrc_->getDataTransferModel();
+    };
+    static inline bool isConnected() {
+        return instance().lrc_->isConnected();
+    };
+
+private:
+    std::unique_ptr<lrc::api::Lrc> lrc_;
+
+    static GlobalLRCWrapper& instance() {
+        static GlobalLRCWrapper instance_;
+        return instance_;
+    }
+
+    GlobalLRCWrapper() {
+        lrc_ = std::make_unique<lrc::api::Lrc>();
+    };
+};
+
+
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -108,6 +155,23 @@ MainWindow::MainWindow(QWidget* parent) :
         AccountModel::instance().slotConnectivityChanged();
     });
 
+    // init LRC
+    auto accountList = GlobalLRCWrapper::accountModel().getAccountList();
+    for (auto& accountId : accountList) {
+        qDebug() << "NEW LRC **** ACC_ID: " << accountId.c_str() << "\n";
+    }
+
+    QObject::connect(   &GlobalLRCWrapper::behaviorController(),
+                        &lrc::api::BehaviorController::debugMessageReceived,
+                        this,
+                        &MainWindow::debugMessageReceived);
+
+}
+
+void
+MainWindow::debugMessageReceived(const std::string& message)
+{
+    OutputDebugStringW(L"***************************DAEMON DEBUG***************************");
 }
 
 MainWindow::~MainWindow()
