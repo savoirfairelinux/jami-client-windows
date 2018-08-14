@@ -65,7 +65,7 @@ private:
     ~MainWindow();
 
     void readSettingsFromRegistry();
-    
+
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
 };

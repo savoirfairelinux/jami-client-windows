@@ -25,8 +25,9 @@ isEmpty(QMAKE_LRELEASE) {
     QMAKE_LRELEASE = lrelease
 }
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES +=
+    main.cpp\
+    mainwindow.cpp \
     callwidget.cpp \
     configurationwidget.cpp \
     navwidget.cpp \
@@ -67,7 +68,8 @@ SOURCES += main.cpp\
     photoboothwidget.cpp \
     deletecontactdialog.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  +=
+    mainwindow.h \
     callwidget.h \
     configurationwidget.h \
     navwidget.h \
@@ -108,14 +110,16 @@ HEADERS  += mainwindow.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
-    deletecontactdialog.h
+    deletecontactdialog.h \
+    lrcinstance.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
  SOURCES += shmclient.cpp
 }
 
-FORMS    += mainwindow.ui \
+FORMS    +=
+    mainwindow.ui \
     callwidget.ui \
     configurationwidget.ui \
     accountdetails.ui \
