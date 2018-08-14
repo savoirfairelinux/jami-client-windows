@@ -29,7 +29,7 @@ BUILD=$${BUILD}
 TARGET = Ring
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++14
 
 contains(BUILD, Debug) {
     QMAKE_STRIP = echo
@@ -123,7 +123,8 @@ HEADERS  += mainwindow.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
-    deletecontactdialog.h
+    deletecontactdialog.h \
+    lrcinstance.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
