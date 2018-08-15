@@ -52,6 +52,16 @@ ContactRequestItemDelegate::paint(QPainter* painter
     QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
     style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
+    bool selected = false;
+    if (option.state & QStyle::State_Selected) {
+        selected = true;
+        opt.state ^= QStyle::State_Selected;
+        painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+    }
+    else if (option.state & QStyle::State_MouseOver) {
+        painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+    }
+
     // Then, we print the text
     QFont font(painter->font());
     font.setPointSize(10);
@@ -80,16 +90,6 @@ ContactRequestItemDelegate::paint(QPainter* painter
     auto cr = index.data(static_cast<int>(Ring::Role::Object)).value<ContactRequest*>();
     auto photo = GlobalInstances::pixmapManipulator().contactPhoto(cr->peer(), QSize(sizeImage_, sizeImage_), false);
     drawDecoration(painter, opt, rectPic, QPixmap::fromImage(photo.value<QImage>()));
-
-    // Draw separator when item is not selected
-    if (not (opt.state & QStyle::State_Selected)) {
-        QRect rect(opt.rect);
-        pen.setColor(RingTheme::lightGrey_);
-        painter->setPen(pen);
-        painter->drawLine(rect.left() + separatorYPadding_, rect.bottom(),
-                          rect.right() - separatorYPadding_,
-                          rect.bottom());
-    }
 }
 
 QSize
