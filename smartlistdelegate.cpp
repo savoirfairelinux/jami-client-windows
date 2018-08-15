@@ -58,6 +58,16 @@ SmartListDelegate::paint(QPainter* painter
     QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
     style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
+    bool selected = false;
+    if (option.state & QStyle::State_Selected) {
+        selected = true;
+        opt.state ^= QStyle::State_Selected;
+        painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+    }
+    else if (option.state & QStyle::State_MouseOver) {
+        painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+    }
+
     QRect &rect = opt.rect;
 
     // Avatar drawing
@@ -116,83 +126,84 @@ SmartListDelegate::paint(QPainter* painter
     font.setPointSize(fontSize_);
     QPen pen(painter->pen());
 
-    if (index.column() == 0)
+    if (index.column() != 0) {
+        if (selected) {
+            opt.state ^= QStyle::State_Selected;
+        }
+        QItemDelegate::paint(painter, opt, index);
+        return;
+    }
+
+    painter->setPen(pen);
+
+    QRect rectTexts(16 + rect.left() + dx_ + sizeImage_,
+                    rect.top(),
+                    rect.width(),
+                    rect.height() / 2);
+
+    // The name is displayed at the avatar's right
+    QVariant name = index.data(static_cast<int>(Ring::Role::Name));
+    if (name.isValid())
     {
+        pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
+        font.setBold(true);
+        painter->setFont(font);
+        QFontMetrics fontMetrics(font);
+        QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight
+                                                                , rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+        painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
+    }
 
-        QRect rectTexts(16 + rect.left() + dx_ + sizeImage_,
-                        rect.top(),
-                        rect.width(),
-                        rect.height() / 2);
-
-        // The name is displayed at the avatar's right
-        QVariant name = index.data(static_cast<int>(Ring::Role::Name));
-        if (name.isValid())
-        {
-            pen.setColor(RingTheme::lightBlack_);
-            painter->setPen(pen);
-            font.setBold(true);
-            painter->setFont(font);
-            QFontMetrics fontMetrics(font);
-            QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight
-                                                                    , rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
-            painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
-        }
-
-        // Display the ID under the name
-        QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
-        if (idStr != name.toString()){
-            pen.setColor(RingTheme::grey_);
-            painter->setPen(pen);
-            font.setItalic(true);
-            font.setBold(false);
-            painter->setFont(font);
-            QFontMetrics fontMetrics(font);
-            if (!idStr.isNull()){
-                idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
-                painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                        rect.top() + rect.height()/7,
-                                        rect.width(),
-                                        rect.height()/2),
-                                  Qt::AlignBottom | Qt::AlignLeft, idStr);
-
-            } else {
-                qDebug() << "This is not a Person";
-            }
-        }
-
-        // Finally, either last interaction date or call state is displayed
-        QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
+    // Display the ID under the name
+    QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
+    if (idStr != name.toString()){
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
-        font.setItalic(false);
+        font.setItalic(true);
         font.setBold(false);
         painter->setFont(font);
-        rectTexts.moveTop(cellHeight_/2);
-        if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
+        QFontMetrics fontMetrics(font);
+        if (!idStr.isNull()){
+            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                                    rect.top() + rect.height()/7,
+                                    rect.width(),
+                                    rect.height()/2),
+                              Qt::AlignBottom | Qt::AlignLeft, idStr);
+
+        } else {
+            qDebug() << "This is not a Person";
+        }
+    }
+
+    // Finally, either last interaction date or call state is displayed
+    QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
+    pen.setColor(RingTheme::grey_);
+    painter->setPen(pen);
+    font.setItalic(false);
+    font.setBold(false);
+    painter->setFont(font);
+    rectTexts.moveTop(cellHeight_/2);
+    if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
+    {
+        painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                                rect.top() + rect.height()/2,
+                                rect.width(),
+                                rect.height()/2),
+                            Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+    }
+    else
+    {
+        QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
+        if (lastUsed.isValid())
         {
             painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
                                     rect.top() + rect.height()/2,
                                     rect.width(),
                                     rect.height()/2),
-                                Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+                              Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
         }
-        else
-        {
-            QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
-            if (lastUsed.isValid())
-            {
-                painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                        rect.top() + rect.height()/2,
-                                        rect.width(),
-                                        rect.height()/2),
-                                  Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
-            }
-        }
-    }
-    else
-    {
-        QItemDelegate::paint(painter, opt, index);
     }
 }
 
