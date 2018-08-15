@@ -116,15 +116,6 @@ SmartListDelegate::paint(QPainter* painter
     font.setPointSize(fontSize_);
     QPen pen(painter->pen());
 
-    // A lightGrey separator is painted at the bottom if the current item is not selected
-    if (not (opt.state & QStyle::State_Selected)) {
-        pen.setColor(RingTheme::lightGrey_);
-        painter->setPen(pen);
-        painter->drawLine(rect.left() + 20, rect.bottom(),
-                          rect.right() - 20,
-                          rect.bottom());
-    }
-
     if (index.column() == 0)
     {
         painter->setPen(pen);
