@@ -426,7 +426,7 @@ CallWidget::callChangedSlot()
     ui->callerPhoto->setPixmap(
                 QPixmap::fromImage(
                     GlobalInstances::pixmapManipulator()
-                    .callPhoto(actualCall_, QSize(130,130)).value<QImage>()));
+                    .callPhoto(actualCall_, QSize(128, 128)).value<QImage>()));
     ui->callerBestIdLabel->setText(actualCall_->peerContactMethod()->bestId());
 
     if(actualCall_->state() == Call::State::OVER || actualCall_->state() == Call::State::FAILURE){

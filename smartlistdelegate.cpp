@@ -77,7 +77,8 @@ SmartListDelegate::paint(QPainter* painter
 
     QRect rectAvatar(16 + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
     drawDecoration(painter, opt, rectAvatar,
-                   QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>()));
+                   QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
+                   .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
     QFont font(painter->font());
 
