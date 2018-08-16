@@ -34,6 +34,7 @@ static const QColor green_ {127, 255, 0};
 static const QColor smartlistSelection_ { 237, 237, 237 };
 static const QColor smartlistHighlight_ { 242, 242, 242 };
 
+static const QColor defaultAvatarColor_ = { "#ff9e9e9e" }; //Grey
 static const QColor avatarColors_[] {
     {"#fff44336"}, //Red
     {"#ffe91e63"}, //Pink

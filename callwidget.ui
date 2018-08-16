@@ -1433,7 +1433,7 @@ Copy and share it with your friends!</string>
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+                        <pixmap resource="ressources.qrc">:/images/default-avatar-overlay.svg</pixmap>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -1657,7 +1657,7 @@ Copy and share it with your friends!</string>
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="ressources.qrc">:/images/user/btn-default-userpic.svg</pixmap>
+                      <pixmap resource="ressources.qrc">:/images/default-avatar-overlay.svg</pixmap>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
