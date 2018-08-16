@@ -27,7 +27,7 @@
 #include "profile.h"
 #include "person.h"
 #include "utils.h"
-
+#include "globalinstances.h"
 
 CurrentAccountWidget::CurrentAccountWidget(QWidget *parent) :
     QWidget(parent),
@@ -83,18 +83,16 @@ CurrentAccountWidget::updateAccounts()
     }
 }
 
-
-
 void
 CurrentAccountWidget::setPhoto()
 {
     auto selector = ui->currentAccountSelector;
     if (selector->count() > 0) {
         if (ProfileModel::instance().selectedProfile()) {
-            if (ProfileModel::instance().selectedProfile()->person()){
-                QImage img = Utils::getCirclePhoto(ProfileModel::instance().selectedProfile()->person()->photo().value<QImage>(),
-                                                   ui->idDisplayLayout->contentsRect().height());
-                ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(img));
+            if (auto p = ProfileModel::instance().selectedProfile()->person()) {
+                QVariant avatarImage = ProfileModel::instance().selectedProfile()->person()->roleData(Qt::DecorationRole);
+                QImage image = Utils::getCirclePhoto(avatarImage.value<QImage>(), ui->idDisplayLayout->contentsRect().height());
+                ui->currentAccountPixmap->setPixmap(QPixmap::fromImage(image));
                 qDebug() << "CurrentAccount : Photo set";
             } else
                 qDebug() << "CurrentAccount : selected profile has no person";
