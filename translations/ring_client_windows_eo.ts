@@ -1806,17 +1806,17 @@ Kopiu kaj kunhavigu ĝin kun viaj amikoj!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="253"/>
         <source>Share entire screen</source>
         <translation>Kunhavigi tutan ekranon</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="238"/>
+        <location filename="../videoview.cpp" line="256"/>
         <source>Share screen area</source>
         <translation>Kunhavigi areon de ekrano</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="245"/>
+        <location filename="../videoview.cpp" line="263"/>
         <source>Share file</source>
         <translation>Kunhavigi dosieron</translation>
     </message>

@@ -113,7 +113,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation>Automatyczne odbierz połączeńia</translation>
+        <translation>Automatyczne odbieraj połączenia</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
@@ -269,7 +269,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Zmień hasło</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -585,12 +585,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
         <source>Add device</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj urządzenie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Są dwie możliwości dodawania nowego urządzenia do konta. Eksport  do pliku w ustawieniach konta. Plik ten jest chroniony hasłem, które trzeba podać przy dodawaniu konta z tego pliku do nowego urządzenia. Albo wygenerowanie kodu PIN, ważnego przez 5 minut, by dodać konto z sieci. Kod PIN wpisuje się potem łącznie z hasłem do naszego konta na urządzeniu, które chcemy dodać do konta.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -621,12 +621,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the Ring</source>
-        <translation type="unfinished"/>
+        <translation>Wyeksportuj konto Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Twój wygenerowany PIN:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
@@ -636,7 +636,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -701,7 +701,7 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
-        <translation type="unfinished"/>
+        <translation>ID Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="233"/>
@@ -1610,7 +1610,7 @@ Copy and share it with your friends!</source>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>Zrób zdjęcie</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1805,17 +1805,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="253"/>
         <source>Share entire screen</source>
         <translation>Podziel się obszarem ekranu</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="238"/>
+        <location filename="../videoview.cpp" line="256"/>
         <source>Share screen area</source>
         <translation>Podziel się obszar ekranu</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="245"/>
+        <location filename="../videoview.cpp" line="263"/>
         <source>Share file</source>
         <translation>Podziel się plikiem</translation>
     </message>
@@ -2143,7 +2143,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="978"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Poprzednie</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>

@@ -1806,17 +1806,17 @@ Kopier og del den med dine venner!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="253"/>
         <source>Share entire screen</source>
         <translation>Del hele skjermen</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="238"/>
+        <location filename="../videoview.cpp" line="256"/>
         <source>Share screen area</source>
         <translation>Del skjermområde</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="245"/>
+        <location filename="../videoview.cpp" line="263"/>
         <source>Share file</source>
         <translation>Del fil</translation>
     </message>

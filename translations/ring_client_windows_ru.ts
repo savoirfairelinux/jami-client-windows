@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Живи свободным или умри</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -1806,17 +1806,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="235"/>
+        <location filename="../videoview.cpp" line="253"/>
         <source>Share entire screen</source>
         <translation>Транслировать весь экран</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="238"/>
+        <location filename="../videoview.cpp" line="256"/>
         <source>Share screen area</source>
         <translation>Транслировать область экрана</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="245"/>
+        <location filename="../videoview.cpp" line="263"/>
         <source>Share file</source>
         <translation>Поделиться файлом</translation>
     </message>
@@ -2143,7 +2143,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>кнопка Предыдущая страница</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
@@ -2158,7 +2158,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка Следующая страница</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
