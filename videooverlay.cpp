@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -28,7 +29,8 @@
 #include "person.h"
 #include "account.h"
 
-
+#include "lrcinstance.h"
+#include "utils.h"
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
@@ -38,70 +40,15 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 {
     ui->setupUi(this);
 
+    ui->bottomButtons->setMouseTracking(true);
+
     ui->chatButton->setCheckable(true);
 
-    actionModel_ = CallModel::instance().userActionModel();
     setAttribute(Qt::WA_NoSystemBackground);
 
     ui->noMicButton->setCheckable(true);
 
-    connect(actionModel_,&UserActionModel::dataChanged, [=](const QModelIndex& tl, const QModelIndex& br) {
-        const int first(tl.row()),last(br.row());
-        for(int i = first; i <= last;i++) {
-            const QModelIndex& idx = actionModel_->index(i,0);
-            switch (idx.data(UserActionModel::Role::ACTION).value<UserActionModel::Action>()) {
-            case UserActionModel::Action::MUTE_AUDIO:
-                ui->noMicButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                ui->noMicButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
-                break;
-            case UserActionModel::Action::MUTE_VIDEO:
-                ui->noVideoButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                ui->noVideoButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
-                break;
-            case UserActionModel::Action::HOLD:
-                ui->holdButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                ui->holdButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
-                ui->onHoldLabel->setVisible(idx.data(Qt::CheckStateRole).value<bool>());
-                break;
-            case UserActionModel::Action::RECORD:
-                ui->recButton->setChecked(idx.data(Qt::CheckStateRole).value<bool>());
-                ui->recButton->setEnabled(idx.flags() & Qt::ItemIsEnabled);
-            default:
-                break;
-            }
-        }
-    });
-
-    connect(CallModel::instance().selectionModel(), &QItemSelectionModel::currentChanged, [=](const QModelIndex &current, const QModelIndex &previous) {
-        Q_UNUSED(previous)
-        Call* c = current.data(static_cast<int>(Call::Role::Object)).value<Call*>();
-        if (c) {
-            if (c->hasParentCall()) {
-                ui->holdButton->hide();
-                ui->transferButton->hide();
-                ui->addPersonButton->hide();
-                ui->chatButton->hide();
-
-                ui->joinButton->show();
-            } else {
-                ui->holdButton->show();
-                ui->transferButton->show();
-                ui->addPersonButton->show();
-                ui->chatButton->show();
-
-                ui->joinButton->hide();
-            }
-
-            if (auto* contactMethod =  c->peerContactMethod())
-                ui->addToContactButton->setVisible(not contactMethod->contact()
-                                                   || contactMethod->contact()->isPlaceHolder());
-
-            if (auto* acc = c->account())
-                ui->transferButton->setVisible(acc->isIp2ip());
-            else
-                ui->transferButton->setVisible(false); // Hide transferButton as fallback so it is not displayed for Ring calls
-        }
-    });
+    ui->onHoldLabel->setVisible(false);
 
     transferDialog_->setAttribute(Qt::WA_TranslucentBackground);
     connect(transferDialog_, &CallUtilsDialog::isVisible, [this] (bool visible) {
@@ -143,9 +90,28 @@ void VideoOverlay::toggleContextButtons(bool visible)
 }
 
 void
+VideoOverlay::setVideoMuteVisibility(bool visible)
+{
+    ui->noVideoButton->setVisible(visible);
+}
+
+bool
+VideoOverlay::shouldShowOverlay()
+{
+    return ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse();
+}
+
+void
 VideoOverlay::on_hangupButton_clicked()
 {
-    actionModel_->execute(UserActionModel::Action::HANGUP);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid,
+        *LRCInstance::getCurrentConversationModel());
+    auto& callId = conversation->callId;
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (callModel->hasCall(callId)) {
+        callModel->hangUp(callId);
+    }
     ui->chatButton->setChecked(false);
 }
 
@@ -182,25 +148,52 @@ VideoOverlay::on_addPersonButton_clicked()
 void
 VideoOverlay::on_holdButton_clicked()
 {
-    actionModel_->execute(UserActionModel::Action::HOLD);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid,
+        *LRCInstance::getCurrentConversationModel());
+    auto& callId = conversation->callId;
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (callModel->hasCall(callId)) {
+        auto onHold = callModel->getCall(callId).status == lrc::api::call::Status::PAUSED;
+        ui->holdButton->setChecked(!onHold);
+        ui->onHoldLabel->setVisible(!onHold);
+        callModel->togglePause(callId);
+    }
 }
 
 void
 VideoOverlay::on_noMicButton_clicked()
 {
-    actionModel_->execute(UserActionModel::Action::MUTE_AUDIO);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid,
+        *LRCInstance::getCurrentConversationModel());
+    auto& callId = conversation->callId;
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (callModel->hasCall(callId)) {
+        ui->noMicButton->setChecked(callModel->getCall(callId).audioMuted);
+        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::AUDIO);
+    }
 }
 
 void
 VideoOverlay::on_noVideoButton_clicked()
 {
-    actionModel_->execute(UserActionModel::Action::MUTE_VIDEO);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid,
+        *LRCInstance::getCurrentConversationModel());
+    auto& callId = conversation->callId;
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (callModel->hasCall(callId)) {
+        ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
+        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
+    }
 }
 
 
 void VideoOverlay::on_joinButton_clicked()
 {
-    CallModel::instance().selectedCall()->joinToParent();
+    // TODO:(newlrc) conferences
+    //CallModel::instance().selectedCall()->joinToParent();
 }
 
 void
@@ -215,21 +208,16 @@ VideoOverlay::on_qualityButton_clicked()
 }
 
 void
-VideoOverlay::on_addToContactButton_clicked()
-{
-    QPoint globalPos = mapToGlobal(ui->addToContactButton->pos());
-    if (auto contactMethod = CallModel::instance().selectedCall()->peerContactMethod()) {
-        ContactPicker contactPicker(contactMethod);
-        contactPicker.move(globalPos.x(),
-                           globalPos.y() + ui->addToContactButton->height());
-        contactPicker.exec();
-    }
-}
-
-void
 VideoOverlay::on_recButton_clicked()
 {
-    actionModel_->execute(UserActionModel::Action::RECORD);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid,
+        *LRCInstance::getCurrentConversationModel());
+    auto& callId = conversation->callId;
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (callModel->hasCall(callId)) {
+        callModel->toggleAudioRecord(callId);
+    }
 }
 
 void VideoOverlay::on_videoCfgBtn_clicked()

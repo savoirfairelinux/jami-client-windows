@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017 by Savoir-faire Linux                                *
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -14,30 +14,31 @@
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- ***************************************************************************/
+ **************************************************************************/
 
 #pragma once
 
 #include <QObject>
 #include <QItemDelegate>
 
-class ContactRequestItemDelegate : public QItemDelegate
+class QPainter;
+
+class InviteItemDelegate : public QItemDelegate
 {
+    Q_OBJECT
 public:
-    ContactRequestItemDelegate(QObject* parent = 0);
+    explicit InviteItemDelegate(QObject* parent = 0);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    constexpr static int cellHeight_ = 60;
     constexpr static int sizeImage_ = 48;
-    constexpr static int dxImage_ = 16;
-    constexpr static int dyImage_ = 6;
+    constexpr static int cellHeight_ = 60;
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int fontSize_ = 10;
 
-    constexpr static int dxText_ = dxImage_ + sizeImage_ + 12;
-    constexpr static int dyText_ = 13;
-
-    constexpr static int separatorYPadding_ = 20;
+    mutable std::map<int, bool> highlightMap_;
 };

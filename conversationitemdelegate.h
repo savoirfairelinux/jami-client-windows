@@ -23,11 +23,11 @@
 
 class QPainter;
 
-class SmartListDelegate : public QItemDelegate
+class ConversationItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit SmartListDelegate(QObject* parent = 0);
+    explicit ConversationItemDelegate(QObject* parent = 0);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -39,5 +39,6 @@ private:
     constexpr static int dy_ = 6;
     constexpr static int dx_ = 12;
     constexpr static int fontSize_ = 10;
-    constexpr static int effectiveComBarSize_ = 48;
+
+    mutable std::map<int, bool> highlightMap_;
 };

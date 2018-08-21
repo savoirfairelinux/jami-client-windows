@@ -46,23 +46,6 @@ InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     connect(copyAction, &QAction::triggered, [=]() {
         copyToClipboard();
     });
-    QSettings settings;
-    auto displayDate = new QAction(tr("Display date"), this);
-    displayDate->setCheckable(true);
-    displayDate->setChecked(settings.value(SettingsKey::imShowDate).toBool());
-    ui->listMessageView->addAction(displayDate);
-    auto displayAuthor = new QAction(tr("Display author"), this);
-    displayAuthor->setCheckable(true);
-    displayAuthor->setChecked(settings.value(SettingsKey::imShowAuthor).toBool());
-    ui->listMessageView->addAction(displayAuthor);
-    auto lamdba = [=](){
-        QSettings settings;
-        settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
-        settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
-        emit imDelegate_->sizeHintChanged(QModelIndex());
-    };
-    connect(displayAuthor, &QAction::triggered, lamdba);
-    connect(displayDate, &QAction::triggered, lamdba);
 }
 
 InstantMessagingWidget::~InstantMessagingWidget()
@@ -86,12 +69,9 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia = call->addOutgoingMedia<media::Text>();
         }
         if (textMedia) {
-            ui->listMessageView->setModel(
-                        textMedia->recording()->
-                        instantMessagingModel());
+            ui->listMessageView->setModel(textMedia->recording()->instantMessagingModel());
             ui->listMessageView->scrollToBottom();
-            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]()
-            {
+            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]() {
                 if (not ui->messageEdit->text().trimmed().isEmpty()) {
                     QMap<QString, QString> messages;
                     messages["text/plain"] = ui->messageEdit->text();
