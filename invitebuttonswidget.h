@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017 by Savoir-faire Linux                                *
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -14,30 +14,29 @@
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- ***************************************************************************/
+ **************************************************************************/
 
 #pragma once
 
-#include <QObject>
-#include <QItemDelegate>
+#include <QWidget>
 
-class ContactRequestItemDelegate : public QItemDelegate
+namespace Ui {
+class InviteButtonsWidget;
+}
+
+class InviteButtonsWidget : public QWidget
 {
+    Q_OBJECT
 public:
-    ContactRequestItemDelegate(QObject* parent = 0);
-
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    explicit InviteButtonsWidget(QWidget* parent = 0);
+    ~InviteButtonsWidget();
 
 private:
-    constexpr static int cellHeight_ = 60;
-    constexpr static int sizeImage_ = 48;
-    constexpr static int dxImage_ = 16;
-    constexpr static int dyImage_ = 6;
+    Ui::InviteButtonsWidget* ui;
 
-    constexpr static int dxText_ = dxImage_ + sizeImage_ + 12;
-    constexpr static int dyText_ = 13;
+signals:
+    void btnAcceptInviteClicked() const;
+    void btnIgnoreInviteClicked() const;
+    void btnBlockInviteClicked() const;
 
-    constexpr static int separatorYPadding_ = 20;
 };

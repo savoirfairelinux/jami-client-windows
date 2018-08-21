@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,32 +15,23 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QTreeView>
+#include "api/profile.h"
+#include "smartlistselectorbuttonnotifier.h"
 
-class SmartListDelegate;
+#include <QPushButton>
 
-class SmartList : public QTreeView
+class SmartlistSelectorButtonNotifier : public QPushButton
 {
     Q_OBJECT
+
 public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
-    void setSmartListItemDelegate(SmartListDelegate* delegate);
+    SmartlistSelectorButtonNotifier(QWidget *parent = 0);
+    void setTypeFilter(lrc::api::profile::Type filter);
 
 protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paintEvent(QPaintEvent *event);
 
-private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
-
-signals:
-    void btnVideoClicked() const;
+    lrc::api::profile::Type typeFilter_{ lrc::api::profile::Type::INVALID };
 };

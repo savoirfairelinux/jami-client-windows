@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,32 +19,31 @@
 
 #pragma once
 
-#include <QDialog>
+#include <QTreeView>
 
-#include "person.h"
-#include "personmodel.h"
+class ConversationItemDelegate;
 
-namespace Ui {
-class ContactMethodPicker;
-}
-
-class ContactMethodPicker final : public QDialog
+class SmartListView : public QTreeView
 {
     Q_OBJECT
-
 public:
-    explicit ContactMethodPicker(const Person::ContactMethods &cM, QWidget *parent = 0);
-    ~ContactMethodPicker();
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
 
-    ContactMethod* getSelected() const;
-
-//UI SLOTS
-private slots:
-    void on_contactMethodListWidget_clicked(const QModelIndex &index);
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mousePressEvent(QMouseEvent *event);
+    bool eventFilter(QObject* watched, QEvent* event);
+    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    Ui::ContactMethodPicker *ui;
-    const Person::ContactMethods& contactMethods_;
-    int index_;
-};
+    void hideButtonsWidgets();
+    QModelIndex hoveredRow_;
 
+signals:
+    void btnAcceptInviteClicked(const QModelIndex& index) const;
+    void btnBlockInviteClicked(const QModelIndex& index) const;
+    void btnIgnoreInviteClicked(const QModelIndex& index) const;
+
+};
