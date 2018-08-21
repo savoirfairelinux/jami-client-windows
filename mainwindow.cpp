@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -42,10 +43,19 @@ MainWindow::MainWindow(QWidget* parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     connect(ui->callwidget, &CallWidget::NavigationRequested,
-            [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
+            [this](ScreenEnum scr) {
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+        });
+
     connect(ui->configurationwidget, &ConfigurationWidget::NavigationRequested,
-            [this](ScreenEnum scr){Utils::slidePage(ui->navStack, ui->navStack->widget(scr));});
+            [this](ScreenEnum scr) {
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+            if (scr == ScreenEnum::CallScreen) {
+                ui->callwidget->update();
+            }
+        });
 
     QIcon icon(":images/ring.png");
 
@@ -189,7 +199,7 @@ MainWindow::createThumbBar()
     settings->setIcon(icon);
     settings->setDismissOnClick(true);
     connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        Utils::slidePage(ui->navStack, ui->configurationwidget);
+        Utils::setStackWidget(ui->navStack, ui->configurationwidget);
     });
 
     thumbbar->addButton(settings);
