@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,29 +15,23 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QObject>
-#include <QItemDelegate>
+#include "api/profile.h"
+#include "smartlistselectorbuttonnotifier.h"
 
-class QPainter;
+#include <QPushButton>
 
-class SmartListDelegate : public QItemDelegate
+class SmartlistSelectorButtonNotifier : public QPushButton
 {
     Q_OBJECT
+
 public:
-    explicit SmartListDelegate(QObject* parent = 0);
+    SmartlistSelectorButtonNotifier(QWidget *parent = 0);
+    void setTypeFilter(lrc::api::profile::Type filter);
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paintEvent(QPaintEvent *event);
 
-private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int dy_ = 6;
-    constexpr static int dx_ = 12;
-    constexpr static int fontSize_ = 10;
-    constexpr static int effectiveComBarSize_ = 48;
+    lrc::api::profile::Type typeFilter_{ lrc::api::profile::Type::INVALID };
 };

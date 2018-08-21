@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -21,20 +21,20 @@
 #include <QWidget>
 
 namespace Ui {
-class ComBar;
+class InviteButtonsWidget;
 }
 
-class ComBar : public QWidget
+class InviteButtonsWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ComBar(QWidget* parent = 0);
-    ~ComBar();
+    explicit InviteButtonsWidget(QWidget* parent = 0);
+    ~InviteButtonsWidget();
 
 private:
-    Ui::ComBar* ui;
+    Ui::InviteButtonsWidget* ui;
 
 signals:
-    void btnVideoClicked() const;
+    void btnAcceptInviteClicked() const;
 
 };

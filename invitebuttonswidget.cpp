@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,31 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef QUICKACTCONTACTREQUESTWIDGET_H
-#define QUICKACTCONTACTREQUESTWIDGET_H
+#include "ui_invitebuttonswidget.h"
 
-#include <QWidget>
+#include "invitebuttonswidget.h"
 
+InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::InviteButtonsWidget)
+{
+    ui->setupUi(this);
+    connect(ui->btnAcceptInvite, &QPushButton::clicked, this,
+        [=]() {
+            emit btnAcceptInviteClicked();
+        });
 
-namespace Ui {
-class QuickActContactRequestWidget;
 }
 
-class QuickActContactRequestWidget : public QWidget
+InviteButtonsWidget::~InviteButtonsWidget()
 {
-    Q_OBJECT
-
-public:
-    explicit QuickActContactRequestWidget(QWidget *parent = 0);
-    ~QuickActContactRequestWidget();
-
-signals:
-    void quickValidCRBtnClicked();
-    void quickMuteCRBtnClicked();
-    void quickBanCRBtnClicked();
-
-private:
-    Ui::QuickActContactRequestWidget *ui;
-};
-
-#endif // QUICKACTCONTACTREQUESTWIDGET_H
+    disconnect(this);
+    delete ui;
+}
