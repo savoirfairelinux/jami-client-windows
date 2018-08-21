@@ -43,6 +43,8 @@ public:
     void setTime(const QString& time);
     inline bool isDialogVisible(){ return dialogVisible_; };
     void toggleContextButtons(bool visible);
+    void setVideoMuteVisibility(bool visible);
+    bool shouldShowOverlay();
 
 //UI SLOTS
 private slots:
@@ -55,13 +57,11 @@ private slots:
     void on_noMicButton_clicked();
     void on_noVideoButton_clicked();
     void on_qualityButton_clicked();
-    void on_addToContactButton_clicked();
     void on_recButton_clicked();
     void on_videoCfgBtn_clicked();
 
 private:
     Ui::VideoOverlay* ui;
-    UserActionModel* actionModel_;
     CallUtilsDialog* transferDialog_;
     QualityDialog* qualityDialog_;
     bool dialogVisible_ = false;

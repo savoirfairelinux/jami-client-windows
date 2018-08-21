@@ -37,15 +37,16 @@ Global
 		RelWithDebInfo|x86 = RelWithDebInfo|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x64.ActiveCfg = Debug|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x64.Build.0 = Debug|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x86.ActiveCfg = Debug|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x64.ActiveCfg = Debug|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x64.Build.0 = Debug|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x64.ActiveCfg = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x64.Build.0 = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x86.ActiveCfg = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.Debug|x86.Build.0 = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x64.ActiveCfg = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x64.Build.0 = Release|x64
 		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x86.ActiveCfg = Release|x64
 		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib_win32|x86.Build.0 = Release|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x64.ActiveCfg = Debug|x64
-		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x64.Build.0 = Debug|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x64.ActiveCfg = Release|x64
+		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x64.Build.0 = Release|x64
 		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x86.ActiveCfg = Release|x64
 		{0F6318E4-4C06-384E-BCA8-F344DA187957}.DebugLib|x86.Build.0 = Release|x64
 		{0F6318E4-4C06-384E-BCA8-F344DA187957}.MinSizeRel|x64.ActiveCfg = Release|x64
