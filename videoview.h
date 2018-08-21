@@ -37,6 +37,7 @@ public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
     void pushRenderer(Call* call);
+    void pushRenderer(const std::string& callUid);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -80,7 +81,7 @@ private:
     constexpr static int startfadeOverlayTime_ = 2000; //msec
 
     // TODO: fix when changing Qt version
-    // Full(1.0) opacity bug affecting many Qt version (macOS + win10)
+    // Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
     // causing the render to take a buggy code path which can be avoided
     // by using opacity values other than precisely 1.0.
     // https://bugreports.qt.io/browse/QTBUG-65981

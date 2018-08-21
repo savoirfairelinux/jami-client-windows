@@ -3,6 +3,7 @@
 * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -29,13 +30,24 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "smartlistmodel.h"
 
+// old LRC
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
+
+// new LRC
+#include "globalinstances.h"
+#include "api/newaccountmodel.h"
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contact.h"
+#include "api/contactmodel.h"
+#include "api/newcallmodel.h"
 
 class SmartListDelegate;
 class ImDelegate;
@@ -52,7 +64,6 @@ class CallWidget : public NavWidget
 public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
-    void atExit();
     bool findRingAccount();
 
 public slots:
@@ -82,24 +93,19 @@ private slots:
     void on_pendingCRBackButton_clicked();
 
 private slots:
-    void callIncoming(Call* call);
-    void callStateChanged(Call* call, Call::State previousState);
     void smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm, media::Media::Direction dir);
     void onIncomingMessage(::media::TextRecording* t, ContactMethod* cm);
-    void callChangedSlot();
+    void onIncomingMessage(const lrc::api::interaction::Info& interaction);
     void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
     void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
-    void on_contactMethodComboBox_currentIndexChanged(int index);
     void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
     Ui::CallWidget* ui;
-    Call* actualCall_;
     Video::Renderer* videoRenderer_;
-    CallModel* callModel_;
     int outputVolume_;
     int inputVolume_;
     QMenu* menu_;
@@ -115,21 +121,41 @@ private:
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
 
+    // new lrc
+    std::unique_ptr<SmartListModel> smartListModel_;
+    std::unique_ptr<MessageModel> messageModel_;
+    QMetaObject::Connection modelSortedConnection_;
+    QMetaObject::Connection modelUpdatedConnection_;
+    QMetaObject::Connection filterChangedConnection_;
+    QMetaObject::Connection newConversationConnection_;
+    QMetaObject::Connection conversationRemovedConnection_;
+    QMetaObject::Connection newInteractionConnection_;
+    QMetaObject::Connection interactionStatusUpdatedConnection_;
+    QMetaObject::Connection conversationClearedConnection;
+    QMetaObject::Connection selectedCallChanged_;
+
     constexpr static int qrSize_ = 200;
 
 private:
-    void setActualCall(Call* value);
+    // new lrc
+    void selectConversation(const QModelIndex& current);
+    bool connectConversationModel();
+    void updateConversationView(const std::string& convUid);
+    void setActualCall(const std::string& callUid);
+    void callStateToView(const std::string & callUid);
+    void showConversationView();
+    void selectSmartlistItem(const std::string& convUid);
+    QImage imageForSelectedConv();
+    const std::string& selectedAccountId();
+    const std::string& selectedConvUid();
+
     void placeCall();
     void setupOutOfCallIM();
     void setupSmartListMenu(const QPoint &pos);
-    void slidePage(QWidget* widget, bool toRight = false);
-    void callStateToView(Call* value);
     void setupQRCode(QString ringID);
     void searchContactLineEditEntry(const URI &uri);
     bool uriNeedNameLookup(const URI uri_passed);
     void processContactLineEdit();
-    static Account* getSelectedAccount();
-    static bool shouldDisplayInviteButton(ContactMethod& cm);
     void backToWelcomePage();
     void hideMiniSpinner();
     void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);

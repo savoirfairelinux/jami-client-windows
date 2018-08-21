@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,55 +19,23 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QMenu>
+#include <QListView>
 
-#include "useractionmodel.h"
+class SmartListDelegate;
 
-#include "callutilsdialog.h"
-#include "qualitydialog.h"
-
-namespace Ui {
-class VideoOverlay;
-}
-
-class VideoOverlay : public QWidget
+class SmartListView : public QListView
 {
     Q_OBJECT
-
 public:
-    explicit VideoOverlay(QWidget* parent = 0);
-    ~VideoOverlay();
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
+    void setSmartListItemDelegate(SmartListDelegate* delegate);
 
-public:
-    void setName(const QString& name);
-    void setTime(const QString& time);
-    inline bool isDialogVisible(){ return dialogVisible_; };
-    void toggleContextButtons(bool visible);
-    void setVideoMuteVisibility(bool visible);
-
-//UI SLOTS
-private slots:
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
-    void on_holdButton_clicked();
-    void on_joinButton_clicked();
-    void on_noMicButton_clicked();
-    void on_noVideoButton_clicked();
-    void on_qualityButton_clicked();
-    void on_recButton_clicked();
-    void on_videoCfgBtn_clicked();
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
 
 private:
-    Ui::VideoOverlay* ui;
-    CallUtilsDialog* transferDialog_;
-    QualityDialog* qualityDialog_;
-    bool dialogVisible_ = false;
+    SmartListDelegate* smartListDelegate_;
 
-signals:
-    void setChatVisibility(bool visible);
-    void videoCfgBtnClicked();
 };
-

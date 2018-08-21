@@ -21,6 +21,11 @@
 #undef ERROR
 #endif
 
+// for getSelectedAccount()
+#include "accountmodel.h"
+#include "availableaccountmodel.h""
+#include "recentmodel.h"
+
 #include "api/lrc.h"
 #include "api/account.h"
 #include "api/newaccountmodel.h"
@@ -55,15 +60,61 @@ public:
         return instance().lrc_->isConnected();
     };
 
+    static Account*
+    getSelectedAccount()
+    {
+        auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
+        if (idx.isValid()) {
+            auto ac = idx.data(static_cast<int>(Ring::Role::Object)).value<Account*>();
+            return ac;
+        }
+        return nullptr;
+    }
+
+    static const lrc::api::account::Info&
+    getCurrentAccountInfo() {
+        auto currentAccountId = getSelectedAccount()->id().toStdString();
+        return accountModel().getAccountInfo(currentAccountId);
+    };
+
+    static lrc::api::ConversationModel*
+    getCurrentConversationModel() {
+        return getCurrentAccountInfo().conversationModel.get();
+    };
+
+    static lrc::api::NewCallModel*
+    getCurrentCallModel() {
+        return getCurrentAccountInfo().callModel.get();
+    };
+
+    static const std::string& getSelectedAccountId() {
+        return instance().selectedAccountId;
+    };
+
+    static void setSelectedAccountId(const std::string& accountId) {
+        instance().selectedAccountId = accountId;
+    };
+
+    static const std::string& getSelectedConvId() {
+        return instance().selectedConvUid;
+    };
+
+    static void setSelectedConvId(const std::string& convUid) {
+        instance().selectedConvUid = convUid;
+    };
+
 private:
     std::unique_ptr<lrc::api::Lrc> lrc_;
 
     static LRCInstance& instance() {
         static LRCInstance instance_;
         return instance_;
-    }
+    };
 
     LRCInstance() {
         lrc_ = std::make_unique<lrc::api::Lrc>();
     };
+
+    std::string selectedAccountId;
+    std::string selectedConvUid;
 };
