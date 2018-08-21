@@ -226,3 +226,82 @@ Utils::slidePage(QStackedWidget* stack, QWidget* widget, bool toRight)
         pageAnim->start();
     }
 }
+
+inline std::string
+removeEndlines(const std::string& str)
+{
+    std::string trimmed(str);
+    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\n'), trimmed.end());
+    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\r'), trimmed.end());
+    return trimmed;
+}
+
+std::string
+Utils::bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+    if (!contact.registeredName.empty()) {
+        return removeEndlines(contact.registeredName);
+    }
+    return removeEndlines(contact.profileInfo.uri);
+}
+
+std::string
+Utils::bestIdForAccount(const lrc::api::account::Info& account)
+{
+    if (!account.registeredName.empty()) {
+        return removeEndlines(account.registeredName);
+    }
+    return removeEndlines(account.profileInfo.uri);
+}
+
+std::string
+Utils::bestNameForAccount(const lrc::api::account::Info& account)
+{
+    if (account.profileInfo.alias.empty()) {
+        return bestIdForAccount(account);
+    }
+    return account.profileInfo.alias;
+}
+
+std::string
+Utils::bestIdForContact(const lrc::api::contact::Info& contact)
+{
+    if (!contact.registeredName.empty()) {
+        return removeEndlines(contact.registeredName);
+    }
+    return removeEndlines(contact.profileInfo.uri);
+}
+
+std::string
+Utils::bestNameForContact(const lrc::api::contact::Info& contact)
+{
+    auto alias = removeEndlines(contact.profileInfo.alias);
+    if (alias.length() == 0) {
+        return bestIdForContact(contact);
+    }
+    return alias;
+}
+
+std::string
+Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+    auto alias = removeEndlines(contact.profileInfo.alias);
+    if (alias.length() == 0) {
+        return bestIdForConversation(conv, model);
+    }
+    return alias;
+}
+
+lrc::api::profile::Type
+Utils::profileType(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    try {
+        auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+        return contact.profileInfo.type;
+    }
+    catch (...) {
+        return lrc::api::profile::Type::INVALID;
+    }
+}

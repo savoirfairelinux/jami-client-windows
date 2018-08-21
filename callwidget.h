@@ -29,13 +29,24 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "smartlistmodel.h"
 
+// old LRC
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
+
+// new LRC
+#include "globalinstances.h"
+#include "api/newaccountmodel.h"
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contact.h"
+#include "api/contactmodel.h"
+#include "api/newcallmodel.h"
 
 class SmartListDelegate;
 class ImDelegate;
@@ -92,7 +103,6 @@ private slots:
     void contactLineEdit_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void searchBtnClicked();
     void selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous);
-    void on_contactMethodComboBox_currentIndexChanged(int index);
     void on_contactRequestList_clicked(const QModelIndex &index);
 
 private:
@@ -115,6 +125,22 @@ private:
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
 
+    SmartListModel* smartListModel_;
+
+    // new LRC
+    QMetaObject::Connection modelSortedConnection_;
+    QMetaObject::Connection modelUpdatedConnection_;
+    QMetaObject::Connection filterChangedConnection_;
+    QMetaObject::Connection newConversationConnection_;
+    QMetaObject::Connection conversationRemovedConnection_;
+    QMetaObject::Connection newInteractionConnection_;
+    QMetaObject::Connection interactionStatusUpdatedConnection_;
+    QMetaObject::Connection conversationClearedConnection;
+    std::string selectedAccountId_;
+    lrc::api::ConversationModel* convModel_;
+    std::string selectedUid_;
+    lrc::api::profile::Type currentFilterType;
+
     constexpr static int qrSize_ = 200;
 
 private:
@@ -133,4 +159,7 @@ private:
     void backToWelcomePage();
     void hideMiniSpinner();
     void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);
+
+    // new LRC
+    bool setConversationModel(lrc::api::ConversationModel* conversationModel);
 };

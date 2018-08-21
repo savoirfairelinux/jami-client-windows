@@ -24,6 +24,7 @@
 #ifdef Q_OS_WIN
 #include <windows.h>
 #include <ciso646>
+#undef ERROR
 #else //LINUX
 #define LPCWSTR char*
 #endif
@@ -32,6 +33,11 @@
 #include <QString>
 #include <QImage>
 #include <QStackedWidget>
+
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contactmodel.h"
+#include "api/contact.h"
 
 namespace Utils
 {
@@ -48,5 +54,13 @@ namespace Utils
     void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
     QImage getCirclePhoto(const QImage original, int sizePhoto);
     void slidePage(QStackedWidget *stack, QWidget *widget, bool toRight = false);
+
+    std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
+    std::string bestIdForAccount(const lrc::api::account::Info & account);
+    std::string bestNameForAccount(const lrc::api::account::Info & account);
+    std::string bestIdForContact(const lrc::api::contact::Info & contact);
+    std::string bestNameForContact(const lrc::api::contact::Info & contact);
+    std::string bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+    lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
 }
 
