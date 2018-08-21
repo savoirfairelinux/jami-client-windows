@@ -156,9 +156,6 @@
     <ClCompile Include="sendcontactrequestwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="smartlist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="smartlistdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -178,6 +175,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="wizarddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -284,9 +287,6 @@
     <ClInclude Include="settingskey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="smartlist.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="smartlistdelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -306,6 +306,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <QtMoc Include="wizarddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

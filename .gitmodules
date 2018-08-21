@@ -1,6 +1,8 @@
 [submodule "winsparkle"]
-	path = winsparkle
-	url = git://github.com/vslavik/winsparkle.git
+    path = winsparkle
+    url = git://github.com/vslavik/winsparkle.git
+    ignore = all
 [submodule "libqrencode"]
-	path = libqrencode
-	url = https://github.com/fukuchi/libqrencode.git
+    path = libqrencode
+    url = https://github.com/fukuchi/libqrencode.git
+    ignore = all
