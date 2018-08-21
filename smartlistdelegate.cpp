@@ -31,7 +31,7 @@
 #include "call.h"
 
 // Client
-#include "combar.h"
+#include "smartlistmodel.h"
 #include "ringthemeutils.h"
 
 #include <ciso646>
@@ -47,6 +47,7 @@ SmartListDelegate::paint(QPainter* painter
                         , const QModelIndex& index
                         ) const
 {
+    qDebug() << "SmartListitem-paint";
     QStyleOptionViewItem opt(option);
     painter->setRenderHint(QPainter::Antialiasing);
 
@@ -143,21 +144,22 @@ SmartListDelegate::paint(QPainter* painter
                     rect.height() / 2);
 
     // The name is displayed at the avatar's right
-    QVariant name = index.data(static_cast<int>(Ring::Role::Name));
+    QVariant name = index.data(static_cast<int>(SmartListModel::Role::DisplayName));
     if (name.isValid())
     {
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
+        font.setItalic(false);
         font.setBold(true);
         painter->setFont(font);
         QFontMetrics fontMetrics(font);
-        QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight
-                                                                , rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+        QString nameStr = fontMetrics.elidedText(name.value<QString>(), Qt::ElideRight,
+                                                 rectTexts.width()- sizeImage_ - dx_);
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
     }
 
     // Display the ID under the name
-    QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
+    QString idStr = index.data(static_cast<int>(SmartListModel::Role::DisplayID)).value<QString>();
     if (idStr != name.toString()){
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
@@ -166,11 +168,11 @@ SmartListDelegate::paint(QPainter* painter
         painter->setFont(font);
         QFontMetrics fontMetrics(font);
         if (!idStr.isNull()){
-            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - dx_);
             painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                    rect.top() + rect.height()/7,
-                                    rect.width(),
-                                    rect.height()/2),
+                              rect.top() + rect.height()/7,
+                              rect.width(),
+                              rect.height()/2),
                               Qt::AlignBottom | Qt::AlignLeft, idStr);
 
         } else {
@@ -178,34 +180,32 @@ SmartListDelegate::paint(QPainter* painter
         }
     }
 
-    // Finally, either last interaction date or call state is displayed
-    QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
-    pen.setColor(RingTheme::grey_);
-    painter->setPen(pen);
-    font.setItalic(false);
-    font.setBold(false);
-    painter->setFont(font);
-    rectTexts.moveTop(cellHeight_/2);
-    if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
-    {
+    // top-right: last interaction date/time 
+    QVariant lastUsed = index.data(static_cast<int>(SmartListModel::Role::LastInteractionDate));
+    if (lastUsed.isValid()) {
         painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                rect.top() + rect.height()/2,
-                                rect.width(),
-                                rect.height()/2),
-                            Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+                          rect.top() + rect.height() / 2,
+                          rect.width(),
+                          rect.height() / 2),
+                          Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
     }
-    else
-    {
-        QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
-        if (lastUsed.isValid())
-        {
-            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                    rect.top() + rect.height()/2,
-                                    rect.width(),
-                                    rect.height()/2),
-                              Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
-        }
-    }
+
+    // bottom-right: last interaction snippet
+    // TODO
+    /*QVariant state = index.data(static_cast<int>(SmartListModel::Role::LastInteraction));
+    if (state.isValid()) {
+        pen.setColor(RingTheme::grey_);
+        painter->setPen(pen);
+        font.setItalic(false);
+        font.setBold(false);
+        painter->setFont(font);
+        rectTexts.moveTop(cellHeight_ / 2);
+        painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                          rect.top() + rect.height() / 2,
+                          rect.width(),
+                          rect.height() / 2),
+                          Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+    }*/
 }
 
 QSize

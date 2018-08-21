@@ -28,6 +28,8 @@
 
 #include "ringthemeutils.h"
 #include "settingskey.h"
+#include "messagemodel.h"
+#include "utils.h"
 
 ImDelegate::ImDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -41,11 +43,11 @@ ImDelegate::formatMsg(const QModelIndex& index, QString& msg) const
     QStringList meta;
     if (settings.value(SettingsKey::imShowAuthor).toBool()) {
         meta << index.data(
-                    static_cast<int>(media::TextRecording::Role::AuthorDisplayname)).toString();
+                    static_cast<int>(MessageModel::Role::DisplayName)).toString();
     }
     if (settings.value(SettingsKey::imShowDate).toBool()) {
         auto timeStamp = index.data(
-                    static_cast<int>(media::TextRecording::Role::Timestamp)).value<uint>();
+                    static_cast<int>(MessageModel::Role::InteractionDate)).value<uint>();
         auto date = QDateTime::fromTime_t(timeStamp);
         auto now = QDateTime::currentDateTime();
         if (now.date() == date.date())
@@ -61,6 +63,7 @@ ImDelegate::paint(QPainter* painter,
                   const QStyleOptionViewItem& option,
                   const QModelIndex& index) const
 {
+    qDebug() << "message-paint";
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     painter->setRenderHint(QPainter::Antialiasing);
@@ -69,13 +72,15 @@ ImDelegate::paint(QPainter* painter,
     painter->setFont(fontMsg_);
 
     if (index.isValid()) {
-        auto msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
+        auto msg = index.data(static_cast<int>(MessageModel::Role::Body)).toString();
         opt.text.clear();
         QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
 
-        auto dir = index.data(static_cast<int>(media::TextRecording::Role::Direction))
-                .value<media::Media::Direction>() == media::Media::Direction::IN
-                ? Qt::AlignLeft : Qt::AlignRight;
+        auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+        auto isGenerated = Utils::isInteractionGenerated(
+            static_cast<lrc::api::interaction::Type>(
+                index.data(static_cast<int>(MessageModel::Role::Type)).value<int>()));
+        auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
         formatMsg(index, msg);
 
@@ -83,11 +88,16 @@ ImDelegate::paint(QPainter* painter,
 
         if (dir == Qt::AlignLeft) {
             opt.decorationSize = iconSize_;
-            opt.decorationPosition = (dir == Qt::AlignRight ?
-                                          QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
+            opt.decorationPosition = QStyleOptionViewItem::Left;
             opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
-        } else
+        } else if (dir == Qt::AlignHCenter) {
+            opt.decorationSize = iconSize_;
+            opt.decorationPosition = QStyleOptionViewItem::Left;
+            opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
+        } else {
             opt.decorationSize = QSize();
+            opt.decorationPosition = QStyleOptionViewItem::Right;
+        }
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
         QPainterPath path;
@@ -158,10 +168,11 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     QString msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
 
-    auto dir = index.data(
-                static_cast<int>(media::TextRecording::Role::Direction))
-            .value<media::Media::Direction>() == media::Media::Direction::IN
-            ? Qt::AlignLeft : Qt::AlignRight;
+    auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+    auto isGenerated = Utils::isInteractionGenerated(
+        static_cast<lrc::api::interaction::Type>(
+            index.data(static_cast<int>(MessageModel::Role::Type)).value<int>()));
+    auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
     formatMsg(index, msg);
 
