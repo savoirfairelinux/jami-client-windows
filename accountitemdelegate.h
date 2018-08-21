@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,32 +15,27 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#pragma once
 
-#ifndef QUICKACTCONTACTREQUESTWIDGET_H
-#define QUICKACTCONTACTREQUESTWIDGET_H
+#include <QPainter>
+#include <QTextDocument>
+#include <QItemDelegate>
 
-#include <QWidget>
-
-
-namespace Ui {
-class QuickActContactRequestWidget;
-}
-
-class QuickActContactRequestWidget : public QWidget
+class AccountItemDelegate : public QItemDelegate
 {
     Q_OBJECT
-
 public:
-    explicit QuickActContactRequestWidget(QWidget *parent = 0);
-    ~QuickActContactRequestWidget();
+    explicit AccountItemDelegate(QObject *parent = nullptr);
 
-signals:
-    void quickValidCRBtnClicked();
-    void quickMuteCRBtnClicked();
-    void quickBanCRBtnClicked();
+protected:
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    Ui::QuickActContactRequestWidget *ui;
+    constexpr static int fontSize_ = 10;
+    const QFont font_ = QFont("Arial", fontSize_);
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int avatarSize_ = 36;
+    constexpr static int cellHeight_ = 48;
 };
-
-#endif // QUICKACTCONTACTREQUESTWIDGET_H

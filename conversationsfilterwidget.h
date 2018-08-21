@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,29 +15,27 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QObject>
-#include <QItemDelegate>
+#include "api/profile.h"
+#include "smartlistselectorbuttonnotifier.h"
 
-class QPainter;
+#include <QWidget>
 
-class SmartListDelegate : public QItemDelegate
+class ConversationsFilterWidget : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit SmartListDelegate(QObject* parent = 0);
+    explicit ConversationsFilterWidget(QWidget *parent = 0);
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paintEvent(QPaintEvent *event);
 
 private:
-    constexpr static int sizeImage_ = 48;
-    constexpr static int cellHeight_ = 60;
-    constexpr static int dy_ = 6;
-    constexpr static int dx_ = 12;
-    constexpr static int fontSize_ = 10;
-    constexpr static int effectiveComBarSize_ = 48;
+    void handleNotifierOverlay(const QString& buttonName,
+                               SmartlistSelectorButtonNotifier*& notifier,
+                               lrc::api::profile::Type filter);
+    SmartlistSelectorButtonNotifier* unreadMessagesNotifier_{ nullptr };
+    SmartlistSelectorButtonNotifier* pendingInvitesNotifier_{ nullptr };
 };

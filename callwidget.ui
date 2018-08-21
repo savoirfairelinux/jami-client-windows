@@ -112,7 +112,7 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1,18">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
            <property name="spacing">
             <number>0</number>
            </property>
@@ -122,7 +122,7 @@
            <item>
             <widget class="CurrentAccountWidget" name="currentAccountWidget" native="true">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -130,22 +130,31 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>60</height>
               </size>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QWidget" name="selectBar" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>324</width>
-               <height>16777215</height>
+               <width>16777214</width>
+               <height>30</height>
               </size>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <layout class="QHBoxLayout" name="_2" stretch="0,0,0">
               <property name="spacing">
                <number>0</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <property name="leftMargin">
                <number>0</number>
@@ -169,7 +178,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>16</width>
+                  <width>10</width>
                   <height>38</height>
                  </size>
                 </property>
@@ -181,14 +190,14 @@
                  <bool>true</bool>
                 </property>
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>244</width>
+                  <width>266</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -202,6 +211,9 @@
                  <font>
                   <pointsize>9</pointsize>
                  </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>IBeamCursor</cursorShape>
                 </property>
                 <property name="toolTip">
                  <string>Search contact text input</string>
@@ -221,42 +233,6 @@
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>10</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="searchBtn">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>search button</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_search_black_18dp_2x.png</normaloff>:/images/icons/ic_search_black_18dp_2x.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item>
                <spacer name="horizontalSpacer_2">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -266,8 +242,8 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>20</height>
+                  <width>10</width>
+                  <height>38</height>
                  </size>
                 </property>
                </spacer>
@@ -276,150 +252,73 @@
             </widget>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QTabWidget" name="mainTabMenu">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <widget class="QWidget" name="mainTabMenuPage1">
-                <attribute name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_chat_black_24dp_2x.png</normaloff>:/images/icons/ic_chat_black_24dp_2x.png</iconset>
-                </attribute>
-                <attribute name="title">
-                 <string/>
-                </attribute>
-                <attribute name="toolTip">
-                 <string>Conversations</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_6">
+            <widget class="QWidget" name="smartListWidget" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>1</number>
+              </property>
+              <property name="topMargin">
+               <number>1</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="ConversationsFilterWidget" name="conversationsFilterWidget" native="true">
+                <layout class="QHBoxLayout" name="conversationFilterLayout">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="rightMargin">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <item>
-                  <widget class="SmartList" name="smartList">
-                   <property name="minimumSize">
-                    <size>
-                     <width>324</width>
-                     <height>0</height>
-                    </size>
+                  <widget class="QPushButton" name="buttonConversations">
+                   <property name="toolTip">
+                    <string>Show conversations</string>
                    </property>
-                   <property name="mouseTracking">
-                    <bool>true</bool>
+                   <property name="text">
+                    <string>Conversations</string>
                    </property>
-                   <property name="indentation">
-                    <number>0</number>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="buttonInvites">
+                   <property name="toolTip">
+                    <string>Show invites</string>
                    </property>
-                   <property name="headerHidden">
-                    <bool>true</bool>
+                   <property name="text">
+                    <string>Invites</string>
                    </property>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
                   </widget>
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="mainTabMenuPage2">
-                <attribute name="icon">
-                 <iconset resource="ressources.qrc">
-                  <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
-                </attribute>
-                <attribute name="title">
-                 <string/>
-                </attribute>
-                <attribute name="toolTip">
-                 <string>Contact requests</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_7">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="ContactRequestListWidget" name="contactRequestList">
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="rootIsDecorated">
-                    <bool>false</bool>
-                   </property>
-                   <attribute name="headerVisible">
-                    <bool>false</bool>
-                   </attribute>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
-                  </widget>
-                 </item>
-                </layout>
+              </item>
+              <item>
+               <widget class="SmartListView" name="smartList">
+                <property name="autoScrollMargin">
+                 <number>16</number>
+                </property>
                </widget>
-              </widget>
-             </item>
-            </layout>
+              </item>
+             </layout>
+            </widget>
            </item>
           </layout>
          </item>
@@ -490,7 +389,7 @@
                <string/>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -677,8 +576,10 @@
                    <string notr="true">color: #aeaeae</string>
                   </property>
                   <property name="text">
-                   <string>This is your RingID.
-Copy and share it with your friends!</string>
+                   <string>
+                                        This is your RingID.
+                                        Copy and share it with your friends!
+                                      </string>
                   </property>
                   <property name="textFormat">
                    <enum>Qt::PlainText</enum>
@@ -1033,7 +934,7 @@ Copy and share it with your friends!</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,25,25,1">
+               <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,25,1">
                 <property name="leftMargin">
                  <number>5</number>
                 </property>
@@ -1178,19 +1079,6 @@ Copy and share it with your friends!</string>
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="contactMethodComboBox">
-                    <property name="minimumSize">
-                     <size>
-                      <width>160</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="toolTip">
-                     <string>Peer contact method selector</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <widget class="QPushButton" name="sendContactRequestPageButton">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1220,23 +1108,6 @@ Copy and share it with your friends!</string>
                    </widget>
                   </item>
                  </layout>
-                </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QLabel" name="noMessagesLabel">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>12</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Start the conversation !</string>
-                  </property>
-                 </widget>
                 </item>
                 <item>
                  <widget class="QListView" name="listMessageView">
@@ -1918,9 +1789,9 @@ Copy and share it with your friends!</string>
    <header>idlabel.h</header>
   </customwidget>
   <customwidget>
-   <class>SmartList</class>
-   <extends>QTreeView</extends>
-   <header>smartlist.h</header>
+   <class>SmartListView</class>
+   <extends>QListView</extends>
+   <header>smartlistview.h</header>
   </customwidget>
   <customwidget>
    <class>SendContactRequestWidget</class>
@@ -1941,9 +1812,10 @@ Copy and share it with your friends!</string>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ContactRequestListWidget</class>
-   <extends>QTreeView</extends>
-   <header>contactrequestlistwidget.h</header>
+    <class>ConversationsFilterWidget</class>
+    <extends>QWidget</extends>
+    <header>conversationsfilterwidget.h</header>
+    <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

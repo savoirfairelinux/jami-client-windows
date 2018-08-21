@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017 by Savoir-faire Linux                                *
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -14,30 +14,24 @@
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- ***************************************************************************/
-
+ **************************************************************************/
 #pragma once
 
-#include <QObject>
-#include <QItemDelegate>
+#include "api/profile.h"
+#include "smartlistselectorbuttonnotifier.h"
 
-class ContactRequestItemDelegate : public QItemDelegate
+#include <QPushButton>
+
+class SmartlistSelectorButtonNotifier : public QPushButton
 {
+    Q_OBJECT
+
 public:
-    ContactRequestItemDelegate(QObject* parent = 0);
+    SmartlistSelectorButtonNotifier(QWidget *parent = 0);
+    void setTypeFilter(lrc::api::profile::Type filter);
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paintEvent(QPaintEvent *event);
 
-private:
-    constexpr static int cellHeight_ = 60;
-    constexpr static int sizeImage_ = 48;
-    constexpr static int dxImage_ = 16;
-    constexpr static int dyImage_ = 6;
-
-    constexpr static int dxText_ = dxImage_ + sizeImage_ + 12;
-    constexpr static int dyText_ = 13;
-
-    constexpr static int separatorYPadding_ = 20;
+    lrc::api::profile::Type typeFilter_{ lrc::api::profile::Type::INVALID };
 };

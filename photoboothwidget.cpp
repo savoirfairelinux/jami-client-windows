@@ -33,7 +33,6 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     ui->setupUi(this);
     ui->videoFeed->setIsFullPreview(true);
     ui->videoFeed->setPhotoMode(true);
-    startBooth();
 }
 
 PhotoboothWidget::~PhotoboothWidget()
@@ -44,12 +43,7 @@ PhotoboothWidget::~PhotoboothWidget()
 
 void PhotoboothWidget::startBooth()
 {
-    // // // //
-    // stop (or start before) to give Preview manager some time to start
-    // TODO go modify the daemon to ensure starting upon calling videomanager::startCamera
     Video::PreviewManager::instance().stopPreview();
-    // // // //
-
     Video::PreviewManager::instance().startPreview();
     ui->videoFeed->show();
 }

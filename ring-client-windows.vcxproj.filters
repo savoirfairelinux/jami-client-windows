@@ -75,9 +75,6 @@
     <ClCompile Include="callutilsdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="callwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="combar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,12 +85,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="contactpicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="contactrequestitemdelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="contactrequestlistwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="contactrequestwidget.cpp">
@@ -141,9 +132,6 @@
     <ClCompile Include="qualitydialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="quickactcontactrequestwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ringbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -154,12 +142,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sendcontactrequestwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="smartlist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="smartlistdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">
@@ -178,6 +160,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="wizarddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="callwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conversationitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conversationsfilterwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smartlistselectorbuttonnotifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -213,12 +222,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="contactpicker.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClInclude Include="contactrequestitemdelegate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <QtMoc Include="contactrequestlistwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="contactrequestwidget.h">
@@ -263,9 +266,6 @@
     <QtMoc Include="qualitydialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="quickactcontactrequestwidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ringbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -284,12 +284,6 @@
     <ClInclude Include="settingskey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="smartlist.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="smartlistdelegate.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -306,6 +300,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <QtMoc Include="wizarddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="messagemodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountlistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="conversationitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="conversationsfilterwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistselectorbuttonnotifier.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
