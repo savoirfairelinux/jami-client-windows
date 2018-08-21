@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,29 +19,19 @@
 
 #pragma once
 
-#include <QTreeView>
+#include <QListView>
 
 class SmartListDelegate;
 
-class SmartList : public QTreeView
+class SmartListView : public QListView
 {
     Q_OBJECT
 public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
-    void setSmartListItemDelegate(SmartListDelegate* delegate);
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
 
 protected:
     void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
-
-signals:
-    void btnVideoClicked() const;
 };

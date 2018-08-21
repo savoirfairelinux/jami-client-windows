@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -24,6 +25,9 @@
 #ifdef Q_OS_WIN
 #include <windows.h>
 #include <ciso646>
+#undef OUT
+#undef IN
+#undef ERROR
 #else //LINUX
 #define LPCWSTR char*
 #endif
@@ -32,6 +36,11 @@
 #include <QString>
 #include <QImage>
 #include <QStackedWidget>
+
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contactmodel.h"
+#include "api/contact.h"
 
 namespace Utils
 {
@@ -47,6 +56,48 @@ namespace Utils
     QString GetCurrentUserName();
     void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
     QImage getCirclePhoto(const QImage original, int sizePhoto);
-    void slidePage(QStackedWidget *stack, QWidget *widget, bool toRight = false);
-}
+    void setStackWidget(QStackedWidget *stack, QWidget *widget);
 
+    std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
+    std::string bestIdForAccount(const lrc::api::account::Info & account);
+    std::string bestNameForAccount(const lrc::api::account::Info & account);
+    std::string bestIdForContact(const lrc::api::contact::Info & contact);
+    std::string bestNameForContact(const lrc::api::contact::Info & contact);
+    std::string bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+    lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+    std::string formatTimeString(const std::time_t& timestamp);
+    lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);
+    lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model);
+    bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
+    bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
+
+    // helpers
+    template<typename E>
+    constexpr inline typename std::enable_if<   std::is_enum<E>::value,
+        typename std::underlying_type<E>::type
+    >::type
+    toUnderlyingValue(E e) noexcept
+    {
+        return static_cast<typename std::underlying_type<E>::type >(e);
+    }
+
+    template<typename E, typename T>
+    constexpr inline typename std::enable_if<   std::is_enum<E>::value && std::is_integral<T>::value,
+        E
+    >::type
+    toEnum(T value) noexcept
+    {
+        return static_cast<E>(value);
+    }
+
+    template<typename T>
+    ptrdiff_t
+    indexInVector(const std::vector<T>& vec, const T& item)
+    {
+        auto it = std::find(vec.begin(), vec.end(), item);
+        if (it == vec.end()) {
+            return -1;
+        }
+        return std::distance(vec.begin(), it);
+    }
+}

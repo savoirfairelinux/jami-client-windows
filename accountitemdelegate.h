@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,42 +15,27 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#pragma once
 
-#include "quickactcontactrequestwidget.h"
-#include "ui_quickactcontactrequestwidget.h"
+#include <QPainter>
+#include <QTextDocument>
+#include <QItemDelegate>
 
-#include <QFont>
-
-// CLIENT
-#include "contactrequestitemdelegate.h"
-
-QuickActContactRequestWidget::QuickActContactRequestWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::QuickActContactRequestWidget)
+class AccountItemDelegate : public QItemDelegate
 {
-    ui->setupUi(this);
+    Q_OBJECT
+public:
+    explicit AccountItemDelegate(QObject *parent = nullptr);
 
-    // set symbols in buttons using FontAwsome
-    ui->quickValidCRBtn->setText(QChar(0xf00c));
-    ui->quickMuteCRBtn->setText(QChar(0xf12d));
-    ui->quickBanCRBtn->setText(QChar(0xf00d));
+protected:
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-    connect(ui->quickValidCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickValidCRBtnClicked();
-    });
-
-    connect(ui->quickMuteCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickMuteCRBtnClicked();
-    });
-
-    connect(ui->quickBanCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickBanCRBtnClicked();
-    });
-
-}
-
-QuickActContactRequestWidget::~QuickActContactRequestWidget()
-{
-    disconnect(this);
-    delete ui;
-}
+private:
+    constexpr static int fontSize_ = 10;
+    const QFont font_ = QFont("Arial", fontSize_);
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int avatarSize_ = 36;
+    constexpr static int cellHeight_ = 48;
+};

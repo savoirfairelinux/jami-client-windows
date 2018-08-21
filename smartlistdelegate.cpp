@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -24,14 +25,8 @@
 #include <QPixmap>
 #include <QDebug>
 
-// LRC
-#include "itemdataroles.h"
-#include "person.h"
-#include "recentmodel.h"
-#include "call.h"
-
 // Client
-#include "combar.h"
+#include "smartlistmodel.h"
 #include "ringthemeutils.h"
 
 #include <ciso646>
@@ -83,49 +78,42 @@ SmartListDelegate::paint(QPainter* painter
     QFont font(painter->font());
 
     // If there's unread messages, a message count is displayed
-    if (auto messageCount = index.data(static_cast<int>(Ring::Role::UnreadTextMessageCount)).toInt()) {
-        font.setPointSize(8);
-        QFontMetrics textFontMetrics(font);
+    if (auto messageCount = index.data(static_cast<int>(SmartListModel::Role::UnreadMessagesCount)).toInt()) {
+        QString messageCountText = (messageCount > 9) ? "9+" : QString::number(messageCount);
+        qreal fontSize = messageCountText.count() > 1 ? 7 : 8;
+        font.setPointSize(fontSize);
+        QFontMetrics textFontMetrics(font); 
 
-        // If there is more than 10 unread messages, "10+" is displayed
-        QString messageCountText = (messageCount >= 10)? "9+" : QString::number(messageCount);
+        // ellipse
+        QPainterPath ellipse;
+        qreal ellipseHeight = sizeImage_ / 6;
+        qreal ellipseWidth = ellipseHeight;
+        QPointF ellipseCenter(rectAvatar.right() - ellipseWidth, rectAvatar.top() + ellipseHeight + 1);
+        QRect ellipseRect(ellipseCenter.x() - ellipseWidth, ellipseCenter.y() - ellipseHeight,
+            ellipseWidth * 2, ellipseHeight * 2);
+        ellipse.addRoundedRect(ellipseRect, ellipseWidth, ellipseHeight);
+        painter->fillPath(ellipse, RingTheme::red_);
 
-        // This QRect is the bounding one containing the message count to be displayed
-        QRect pastilleRect = textFontMetrics.boundingRect(QRect(rectAvatar.left() - (2 * sizeImage_)/9,
-                                                                rectAvatar.bottom() - sizeImage_/3 - textFontMetrics.height(), sizeImage_, textFontMetrics.height()),
-                                                          Qt::AlignVCenter | Qt::AlignLeft, messageCountText);
-
-        // This one is larger than pastilleRect and is used to prepare the red background
-        QRect bubbleRect(pastilleRect.left() - 3, pastilleRect.top(),
-                         pastilleRect.width() + 6, pastilleRect.height() + 1);
-
-        // The background is displayed
-        QPainterPath path;
-        path.addRoundedRect(bubbleRect, 3, 3);
-        QPen pen(RingTheme::red_, 5);
-        painter->setOpacity(0.9);
-        painter->setPen(pen);
-        painter->fillPath(path, RingTheme::red_);
-
-        // Then the message count
+        // text
         painter->setPen(Qt::white);
         painter->setOpacity(1);
         painter->setFont(font);
-        painter->drawText(pastilleRect, Qt::AlignCenter, messageCountText);
+        ellipseRect.setTop(ellipseRect.top() - 2);
+        painter->drawText(ellipseRect, Qt::AlignCenter, messageCountText);
     }
 
     // Presence indicator
-    QPainterPath outerCircle, innerCircle;
-    QPointF center(rectAvatar.right() - sizeImage_/6, (rectAvatar.bottom() - sizeImage_/6) + 1);
-    qreal outerCRadius = sizeImage_ / 6, innerCRadius = outerCRadius * 0.75;
-    outerCircle.addEllipse(center, outerCRadius, outerCRadius);
-    innerCircle.addEllipse(center, innerCRadius, innerCRadius);
-    if (index.data(static_cast<int>(Ring::Role::IsPresent)).value<bool>()) {
+    if (index.data(static_cast<int>(SmartListModel::Role::Presence)).value<bool>()) {
+        qreal radius = sizeImage_ / 6; 
+        QPainterPath outerCircle, innerCircle;
+        QPointF center(rectAvatar.right() - radius, (rectAvatar.bottom() - radius) + 1);
+        qreal outerCRadius = radius;
+        qreal innerCRadius = outerCRadius * 0.75;
+        outerCircle.addEllipse(center, outerCRadius, outerCRadius);
+        innerCircle.addEllipse(center, innerCRadius, innerCRadius);
         painter->fillPath(outerCircle, Qt::white);
         painter->fillPath(innerCircle, RingTheme::green_);
     }
-    font.setPointSize(fontSize_);
-    QPen pen(painter->pen());
 
     if (index.column() != 0) {
         if (selected) {
@@ -135,6 +123,8 @@ SmartListDelegate::paint(QPainter* painter
         return;
     }
 
+    font.setPointSize(fontSize_);
+    QPen pen(painter->pen());
     painter->setPen(pen);
 
     QRect rectTexts(16 + rect.left() + dx_ + sizeImage_,
@@ -143,34 +133,34 @@ SmartListDelegate::paint(QPainter* painter
                     rect.height() / 2);
 
     // The name is displayed at the avatar's right
-    QVariant name = index.data(static_cast<int>(Ring::Role::Name));
-    if (name.isValid())
-    {
+    QVariant name = index.data(static_cast<int>(SmartListModel::Role::DisplayName));
+    if (name.isValid()) {
+        font.setItalic(false);
+        font.setBold(true);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        font.setBold(true);
         painter->setFont(font);
         QFontMetrics fontMetrics(font);
-        QString nameStr = fontMetrics.elidedText(name.toString(), Qt::ElideRight
-                                                                , rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+        QString nameStr = fontMetrics.elidedText(name.value<QString>(), Qt::ElideRight,
+                                                 rectTexts.width()- sizeImage_ - dx_);
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
     }
 
     // Display the ID under the name
-    QString idStr = index.data(static_cast<int>(Ring::Role::Number)).value<QString>();
+    QString idStr = index.data(static_cast<int>(SmartListModel::Role::DisplayID)).value<QString>();
     if (idStr != name.toString()){
+        font.setItalic(false);
+        font.setBold(false);
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
-        font.setItalic(true);
-        font.setBold(false);
         painter->setFont(font);
         QFontMetrics fontMetrics(font);
         if (!idStr.isNull()){
-            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - effectiveComBarSize_ - dx_);
+            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectTexts.width()- sizeImage_ - dx_);
             painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                    rect.top() + rect.height()/7,
-                                    rect.width(),
-                                    rect.height()/2),
+                              rect.top() + rect.height()/7,
+                              rect.width(),
+                              rect.height()/2),
                               Qt::AlignBottom | Qt::AlignLeft, idStr);
 
         } else {
@@ -178,40 +168,44 @@ SmartListDelegate::paint(QPainter* painter
         }
     }
 
-    // Finally, either last interaction date or call state is displayed
-    QVariant state = index.data(static_cast<int>(Ring::Role::FormattedState));
-    pen.setColor(RingTheme::grey_);
-    painter->setPen(pen);
-    font.setItalic(false);
-    font.setBold(false);
-    painter->setFont(font);
-    rectTexts.moveTop(cellHeight_/2);
-    if (state.isValid() && RecentModel::instance().getActiveCall(RecentModel::instance().peopleProxy()->mapToSource(index)))
-    {
+    // top-right: last interaction date/time
+    QVariant lastUsed = index.data(static_cast<int>(SmartListModel::Role::LastInteractionDate));
+    if (lastUsed.isValid()) {
+        font.setItalic(false);
+        font.setBold(false);
+        pen.setColor(RingTheme::grey_);
+        painter->setPen(pen);
+        painter->setFont(font);
         painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                rect.top() + rect.height()/2,
-                                rect.width(),
-                                rect.height()/2),
-                            Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+                          rect.top() + rect.height() / 2,
+                          rect.width(),
+                          rect.height() / 2),
+                          Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
     }
-    else
-    {
-        QVariant lastUsed = index.data(static_cast<int>(Ring::Role::FormattedLastUsed));
-        if (lastUsed.isValid())
-        {
-            painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
-                                    rect.top() + rect.height()/2,
-                                    rect.width(),
-                                    rect.height()/2),
-                              Qt::AlignLeft | Qt::AlignVCenter, lastUsed.toString());
-        }
-    }
+
+    // bottom-right: last interaction snippet
+    // TODO
+    /*QVariant state = index.data(static_cast<int>(SmartListModel::Role::LastInteraction));
+    if (state.isValid()) {
+        font.setItalic(false);
+        font.setBold(false);
+        pen.setColor(RingTheme::grey_);
+        painter->setPen(pen);
+        font.setItalic(false);
+        font.setBold(false);
+        painter->setFont(font);
+        rectTexts.moveTop(cellHeight_ / 2);
+        painter->drawText(QRect(16 + rect.left() + dx_ + sizeImage_,
+                          rect.top() + rect.height() / 2,
+                          rect.width(),
+                          rect.height() / 2),
+                          Qt::AlignLeft | Qt::AlignVCenter, state.toString());
+    }*/
 }
 
 QSize
-SmartListDelegate::sizeHint(const QStyleOptionViewItem& option
-                           , const QModelIndex& index
-                           ) const
+SmartListDelegate::sizeHint(const QStyleOptionViewItem& option,
+                            const QModelIndex& index) const
 {
     QSize size = QItemDelegate::sizeHint(option, index);
     size.setHeight(cellHeight_);
