@@ -29,13 +29,24 @@
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
+#include "smartlistmodel.h"
 
+// old LRC
 #include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
+
+// new LRC
+#include "globalinstances.h"
+#include "api/newaccountmodel.h"
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contact.h"
+#include "api/contactmodel.h"
+#include "api/newcallmodel.h"
 
 class SmartListDelegate;
 class ImDelegate;
@@ -114,6 +125,14 @@ private:
     QPropertyAnimation* pageAnim_;
     QMenu* shareMenu_;
     QMovie* miniSpinner_;
+
+    SmartListModel* smartListModel_;
+
+    // new LRC
+    std::string selectedAccountId_;
+    lrc::api::ConversationModel* convModel_;
+    std::string selectedUid_;
+    lrc::api::profile::Type currentFilterType;
 
     constexpr static int qrSize_ = 200;
 

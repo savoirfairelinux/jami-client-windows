@@ -25,6 +25,7 @@
 #include <QDesktopServices>
 
 #include <memory>
+#include <assert.h>
 
 #include "qrencode.h"
 
@@ -68,6 +69,7 @@
 #include "contactrequestitemdelegate.h"
 #include "deletecontactdialog.h"
 
+#include "lrcinstance.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -101,6 +103,7 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
+        // old
         RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
         RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
@@ -111,16 +114,19 @@ CallWidget::CallWidget(QWidget* parent) :
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
-        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
+        // new
+        auto accountList = LRCInstance::accountModel().getAccountList();
+        assert(accountList.size() > 0);
+        auto& currentAccountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(0));
+        smartListModel_ = new SmartListModel(currentAccountInfo, parent);
+        ui->smartList->setModel(smartListModel_);
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(ui->smartList, &QListView::entered, this, &CallWidget::on_entered);
 
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
-
-        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
-
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
 
         connect(RecentModel::instance().selectionModel(),
                 SIGNAL(currentChanged(QModelIndex,QModelIndex)),
@@ -154,6 +160,7 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                 this, SLOT(contactLineEdit_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
+        // switch account
         connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                 ui->currentAccountWidget, SLOT(update()));
 
