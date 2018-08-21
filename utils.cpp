@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -27,13 +28,18 @@
 #include <shlwapi.h>
 #endif
 
-
 //Qt
 #include <QObject>
 #include <QErrorMessage>
 #include <QPainter>
 #include <QStackedWidget>
 #include <QPropertyAnimation>
+#include <QApplication>
+
+#include "globalinstances.h"
+#include "pixbufmanipulator.h"
+
+#include "globalsystemtray.h"
 
 bool
 Utils::CreateStartupLink()
@@ -212,17 +218,161 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
 }
 
 void
-Utils::slidePage(QStackedWidget* stack, QWidget* widget, bool toRight)
+Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 {
-    if (stack->indexOf(widget) != -1 && stack->currentWidget() != widget){
-        QPropertyAnimation* pageAnim = new QPropertyAnimation();
-        int dir = (toRight ? -1 : 1);
+    if (stack->indexOf(widget) != -1 && stack->currentWidget() != widget) {
         stack->setCurrentWidget(widget);
-        pageAnim->setTargetObject(widget);
-        pageAnim->setDuration(animDuration_);
-        pageAnim->setStartValue(QPoint(widget->width() * dir, widget->y()));
-        pageAnim->setEndValue(QPoint(widget->x(), widget->y()));
-        pageAnim->setEasingCurve(QEasingCurve::OutQuad);
-        pageAnim->start();
     }
+}
+
+void Utils::showSystemNotification(QWidget* widget, const QString & message, long delay)
+{
+    GlobalSystemTray::instance().showMessage("Ring", message);
+    QApplication::alert(widget, delay);
+}
+
+// new lrc helpers
+
+inline std::string
+removeEndlines(const std::string& str)
+{
+    std::string trimmed(str);
+    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\n'), trimmed.end());
+    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\r'), trimmed.end());
+    return trimmed;
+}
+
+std::string
+Utils::bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+    if (!contact.registeredName.empty()) {
+        return removeEndlines(contact.registeredName);
+    }
+    return removeEndlines(contact.profileInfo.uri);
+}
+
+std::string
+Utils::bestIdForAccount(const lrc::api::account::Info& account)
+{
+    if (!account.registeredName.empty()) {
+        return removeEndlines(account.registeredName);
+    }
+    return removeEndlines(account.profileInfo.uri);
+}
+
+std::string
+Utils::bestNameForAccount(const lrc::api::account::Info& account)
+{
+    if (account.profileInfo.alias.empty()) {
+        return bestIdForAccount(account);
+    }
+    return account.profileInfo.alias;
+}
+
+std::string
+Utils::bestIdForContact(const lrc::api::contact::Info& contact)
+{
+    if (!contact.registeredName.empty()) {
+        return removeEndlines(contact.registeredName);
+    }
+    return removeEndlines(contact.profileInfo.uri);
+}
+
+std::string
+Utils::bestNameForContact(const lrc::api::contact::Info& contact)
+{
+    auto alias = removeEndlines(contact.profileInfo.alias);
+    if (alias.length() == 0) {
+        return bestIdForContact(contact);
+    }
+    return alias;
+}
+
+std::string
+Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+    auto alias = removeEndlines(contact.profileInfo.alias);
+    if (alias.length() == 0) {
+        return bestIdForConversation(conv, model);
+    }
+    return alias;
+}
+
+lrc::api::profile::Type
+Utils::profileType(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+{
+    try {
+        auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+        return contact.profileInfo.type;
+    }
+    catch (...) {
+        return lrc::api::profile::Type::INVALID;
+    }
+}
+
+std::string
+Utils::formatTimeString(const std::time_t& timestamp)
+{
+    std::time_t now = std::time(nullptr);
+    char interactionDay[64];
+    char nowDay[64];
+    std::strftime(interactionDay, sizeof(interactionDay), "%D", std::localtime(&timestamp));
+    std::strftime(nowDay, sizeof(nowDay), "%D", std::localtime(&now));
+    if (std::string(interactionDay) == std::string(nowDay)) {
+        char interactionTime[64];
+        std::strftime(interactionTime, sizeof(interactionTime), "%R", std::localtime(&timestamp));
+        return interactionTime;
+    }
+    else {
+        return interactionDay;
+    }
+}
+
+lrc::api::ConversationModel::ConversationQueue::const_iterator
+Utils::getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model) {
+    return std::find_if(model.allFilteredConversations().begin(), model.allFilteredConversations().end(),
+        [&](const lrc::api::conversation::Info& conv) {
+            return uid == conv.uid;
+        });
+}
+
+lrc::api::ConversationModel::ConversationQueue::const_iterator
+Utils::getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model) {
+    return std::find_if(model.allFilteredConversations().begin(), model.allFilteredConversations().end(),
+        [&](const lrc::api::conversation::Info& conv) {
+            return uri == conv.participants[0];
+        });
+}
+
+bool
+Utils::isInteractionGenerated(const lrc::api::interaction::Type& type)
+{
+    return  type == lrc::api::interaction::Type::CALL ||
+            type == lrc::api::interaction::Type::CONTACT;
+}
+
+bool
+Utils::isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model)
+{
+    auto contact = model.owner.contactModel->getContact(contactUid);
+    return  (contact.profileInfo.type == lrc::api::profile::Type::PENDING ||
+            contact.profileInfo.type == lrc::api::profile::Type::TEMPORARY ||
+            contact.profileInfo.type == lrc::api::profile::Type::RING ||
+            contact.profileInfo.type == lrc::api::profile::Type::SIP) &&
+            !contact.profileInfo.uri.empty();
+}
+
+QImage
+Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::Info& accountInfo)
+{
+    auto& convModel = accountInfo.conversationModel;
+    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+    if (conversation == (*convModel).allFilteredConversations().end()) {
+        return QImage();
+    }
+
+    QVariant var = GlobalInstances::pixmapManipulator().decorationRole(*conversation, accountInfo);
+    return var.value<QImage>();
 }

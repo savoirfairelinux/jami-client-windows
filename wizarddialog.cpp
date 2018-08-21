@@ -3,6 +3,7 @@
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -35,7 +36,7 @@
 
 const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Ring account", "Default alias for new Ring account");
 
-WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget* parent) :
+WizardDialog::WizardDialog(WizardMode wizardMode, AccountInfo* toBeMigrated, QWidget* parent) :
     QDialog(parent),
     ui(new Ui::WizardDialog),
     account_(toBeMigrated),
@@ -61,9 +62,9 @@ WizardDialog::WizardDialog(WizardMode wizardMode, Account* toBeMigrated, QWidget
     movie_->start();
 
     if (wizardMode_ == MIGRATION) {
-        Utils::slidePage(ui->stackedWidget, ui->profilePage);
+        Utils::setStackWidget(ui->stackedWidget, ui->profilePage);
         ui->usernameEdit->setEnabled(false);
-        ui->usernameEdit->setText(toBeMigrated->displayName());
+        ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
         ui->previousButton->hide();
         ui->photoBooth->hide();
         ui->pinEdit->hide();
@@ -126,55 +127,7 @@ WizardDialog::processWizardInformations()
         ui->pinEdit->clear();
     }
 
-    ui->navBarWidget->hide();
-    Utils::slidePage(ui->stackedWidget, ui->spinnerPage);
-    repaint();
     Utils::CreateStartupLink();
-}
-
-void
-WizardDialog::endSetup(Account::RegistrationState state)
-{
-#pragma push_macro("ERROR")
-#undef ERROR
-    switch (state) {
-        case Account::RegistrationState::UNREGISTERED:
-        case Account::RegistrationState::READY:
-            if (ui->signUpCheckbox->isChecked()) { // If the user wants to register its name on the blockchain
-                bool regSuccess = account_->registerName(ui->passwordEdit->text(), ui->usernameEdit->text());
-                ui->usernameEdit->clear();
-                if (!regSuccess) {
-                    usernameFailedRegistration();
-                } else {
-                    connect(account_, SIGNAL(nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)),
-                            this, SLOT(handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)));
-                    ui->progressLabel->setText(tr("Registering your public username, it may take a few minutes..."));
-                }
-            } else {
-                account_->performAction(Account::EditAction::RELOAD);
-                accept();
-            }
-
-            { //avoid scope crossing init
-                auto profile = ProfileModel::instance().selectedProfile();
-                if (profile && AccountModel::instance().size() == 1) {
-                    profile->setAccounts({account_});
-                    profile->save();
-                }
-            }
-            break;
-        case Account::RegistrationState::ERROR:
-            ui->spinnerLabel->hide();
-            ui->navBarWidget->show();
-            ui->nextButton->hide();
-            ui->progressLabel->setText(tr("An error has occured during your account creation"));
-            AccountModel::instance().remove(account_);
-            break;
-        case Account::RegistrationState::TRYING:
-        case Account::RegistrationState::COUNT__:
-            break;
-    }
-#pragma pop_macro("ERROR")
 }
 
 void
@@ -186,12 +139,6 @@ WizardDialog::closeEvent(QCloseEvent* event)
     } else {
         QDialog::closeEvent(event);
     }
-}
-
-void
-WizardDialog::usernameFailedRegistration()
-{
-    QMessageBox::warning(this, "Username not registered", "Your account has been created, but we could not register your username. Try again from the settings menu.");
 }
 
 void
@@ -210,7 +157,7 @@ WizardDialog::on_existingPushButton_clicked()
 {
     ui->navBarWidget->show();
     ui->nextButton->hide();
-    Utils::slidePage(ui->stackedWidget, ui->linkMethodPage);
+    Utils::setStackWidget(ui->stackedWidget, ui->linkMethodPage);
 }
 
 void
@@ -225,11 +172,11 @@ WizardDialog::changePage(bool existingAccount)
 {
     if (existingAccount) { // If user want to add a device
         ui->accountLabel->setText(tr("Add a device"));
-        Utils::slidePage(ui->stackedWidget, ui->explanationPage);
+        Utils::setStackWidget(ui->stackedWidget, ui->explanationPage);
         ui->photoBooth->hide();
     } else { // If user want to create a new account
         ui->accountLabel->setText(tr("Create your account"));
-        Utils::slidePage(ui->stackedWidget, ui->profilePage);
+        Utils::setStackWidget(ui->stackedWidget, ui->profilePage);
         ui->photoBooth->startBooth();
         ui->photoBooth->show();
     }
@@ -249,9 +196,11 @@ void
 WizardDialog::on_nextButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
-
+    if (curWidget == ui->profilePage) {
+        ui->photoBooth->stopBooth();
+    }
     if (curWidget == ui->profilePage || curWidget == ui->explanationPage) {
-        Utils::slidePage(ui->stackedWidget, ui->accountPage);
+        Utils::setStackWidget(ui->stackedWidget, ui->accountPage);
     } else if (curWidget == ui->accountPage) {
         processWizardInformations();
     } else if (curWidget == ui->fileImportPage) {
@@ -266,17 +215,21 @@ WizardDialog::on_previousButton_clicked()
 
     if (curWidget == ui->profilePage) {
         ui->navBarWidget->hide();
-        Utils::slidePage(ui->stackedWidget, ui->welcomePage);
+        Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
     } else if (curWidget == ui->explanationPage || curWidget == ui->fileImportPage) {
         ui->navBarWidget->show();
         ui->nextButton->hide();
-        Utils::slidePage(ui->stackedWidget, ui->linkMethodPage);
+        Utils::setStackWidget(ui->stackedWidget, ui->linkMethodPage);
     } else if (curWidget == ui->accountPage) {
 
-        if (ui->pinEdit->isVisible()) // If we are adding a device
-            Utils::slidePage(ui->stackedWidget, ui->explanationPage);
-        else // If we are creating a new account
-            Utils::slidePage(ui->stackedWidget, ui->profilePage);
+        if (ui->pinEdit->isVisible()) {
+            // If we are adding a device
+            Utils::setStackWidget(ui->stackedWidget, ui->explanationPage);
+        } else {
+            ui->photoBooth->startBooth();
+            ui->photoBooth->show();
+            Utils::setStackWidget(ui->stackedWidget, ui->profilePage);
+        }
 
         ui->passwordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
         ui->confirmPasswordEdit->setStyleSheet("border-color: rgb(0, 192, 212);");
@@ -285,11 +238,11 @@ WizardDialog::on_previousButton_clicked()
     } else if (curWidget == ui->linkMethodPage) {
         ui->navBarWidget->hide();
         ui->nextButton->show();
-        Utils::slidePage(ui->stackedWidget, ui->welcomePage);
+        Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
     } else if (curWidget == ui->spinnerPage) {
         ui->nextButton->show();
         ui->navBarWidget->hide();
-        Utils::slidePage(ui->stackedWidget, ui->welcomePage);
+        Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
     }
 }
 
@@ -354,14 +307,8 @@ WizardDialog::handle_registeredNameFound (Account* account, NameDirectory::Looku
 void
 WizardDialog::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name)
 {
-    Q_UNUSED(name)
-
-    disconnect(account_, SIGNAL(nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)),
-               this, SLOT(handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus,QString)));
-    if(status != NameDirectory::RegisterNameStatus::SUCCESS) {
-        usernameFailedRegistration();
-    }
-    account_->performAction(Account::EditAction::RELOAD);
+    Q_UNUSED(name);
+    Q_UNUSED(status);
     accept();
 }
 
@@ -417,35 +364,30 @@ WizardDialog::createRingAccount(const QString &displayName,
                                 const QString &pin,
                                 const QString &archivePath)
 {
-    QString alias = (displayName.isEmpty() || displayName.isNull()) ? DEFAULT_RING_ACCT_ALIAS :
-                                                                      displayName;
-    // set display name
-    account_ = AccountModel::instance().add(alias, Account::Protocol::RING);
-    account_->setDisplayName(alias);
+    QtConcurrent::run(
+        [=] {
+            LRCInstance::accountModel().createNewAccount(
+                lrc::api::profile::Type::RING,
+                displayName.toStdString(),
+                archivePath.toStdString(),
+                password.toStdString(),
+                pin.toStdString()
+            );
+        });
 
-    // archive properties
-    account_->setArchivePassword(password);
-    // import from DHT
-    if (!pin.isEmpty() && !pin.isNull())
-        account_->setArchivePin(pin);
-    // import from file
-    if (!archivePath.isEmpty() && !archivePath.isNull())
-        account_->setArchivePath(archivePath);
+    connect(&LRCInstance::accountModel(),
+        &lrc::api::NewAccountModel::accountAdded,
+        [this](const std::string& accountId) {
+            //set default ringtone
+            auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+            confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+            LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+            accept();
+        });
 
-    // set default UPNP behavior
-    account_->setUpnpEnabled(true);
-
-    //set default ringtone
-    account_->setRingtonePath(Utils::GetRingtonePath());
-
-    connect(account_, &Account::stateChanged, this, &WizardDialog::endSetup);
-
-    account_->performAction(Account::EditAction::SAVE);
-    auto profile = ProfileModel::instance().selectedProfile();
-    if (profile && AccountModel::instance().size() == 1) {
-        profile->person()->setFormattedName(alias);
-    }
-
+    ui->navBarWidget->hide();
+    Utils::setStackWidget(ui->stackedWidget, ui->spinnerPage);
+    repaint();
 }
 
 void
@@ -461,6 +403,6 @@ WizardDialog::on_fileImportBtn_clicked()
     ui->navBarWidget->show();
     ui->nextButton->show();
     wizardMode_ = IMPORT;
-    Utils::slidePage(ui->stackedWidget, ui->fileImportPage);
+    Utils::setStackWidget(ui->stackedWidget, ui->fileImportPage);
 
 }

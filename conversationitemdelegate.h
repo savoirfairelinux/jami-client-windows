@@ -23,21 +23,27 @@
 
 class QPainter;
 
-class SmartListDelegate : public QItemDelegate
+class ConversationItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit SmartListDelegate(QObject* parent = 0);
+    explicit ConversationItemDelegate(QObject* parent = 0);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
+    void paintRingConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
+    void paintRingInviteConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
+    void paintSIPConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;
     constexpr static int dy_ = 6;
     constexpr static int dx_ = 12;
     constexpr static int fontSize_ = 10;
-    constexpr static int effectiveComBarSize_ = 48;
+    constexpr static int infoTextWidth_ = 144;
+
+    mutable std::map<int, bool> highlightMap_;
 };
