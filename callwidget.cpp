@@ -25,6 +25,7 @@
 #include <QDesktopServices>
 
 #include <memory>
+#include <assert.h>
 
 #include "qrencode.h"
 
@@ -68,6 +69,7 @@
 #include "contactrequestitemdelegate.h"
 #include "deletecontactdialog.h"
 
+#include "lrcinstance.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -101,6 +103,7 @@ CallWidget::CallWidget(QWidget* parent) :
         connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
                 this, SLOT(callStateChanged(Call*, Call::State)));
 
+        // old
         RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
         RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
         ui->smartList->setModel(RecentModel::instance().peopleProxy());
@@ -111,21 +114,29 @@ CallWidget::CallWidget(QWidget* parent) :
         PersonModel::instance().
                 addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
 
-        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
+        // new
+        auto accountList = LRCInstance::accountModel().getAccountList();
+        assert(accountList.size() > 0);
+        auto& currentAccountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(0));
+        smartListModel_ = new SmartListModel(currentAccountInfo, parent);
+        ui->smartList->setModel(smartListModel_);
 
         smartListDelegate_ = new SmartListDelegate();
         ui->smartList->setSmartListItemDelegate(smartListDelegate_);
+        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(ui->smartList, &QListView::entered, this, &CallWidget::on_entered);
 
         ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
 
-        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
-
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
-
-        connect(RecentModel::instance().selectionModel(),
+        /*connect(RecentModel::instance().selectionModel(),
                 SIGNAL(currentChanged(QModelIndex,QModelIndex)),
                 this,
-                SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
+                SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));*/
+
+        connect(ui->smartList->selectionModel(),
+                SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+                this,
+                SLOT(smartListCurrentChanged(QModelIndex, QModelIndex)));
 
         //set most recent call to view
         connect(&RecentModel::instance(), &QAbstractItemModel::dataChanged, [=](const QModelIndex &topLeft, const QModelIndex &bottomRight,const QVector<int> &vec){
@@ -137,6 +148,7 @@ CallWidget::CallWidget(QWidget* parent) :
             }
         });
 
+        // TODO:(newlrc)
         connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
                     // lambda used to focus on the correct smartList element when switching automatically between two calls
                     Q_UNUSED(deselected)
@@ -151,9 +163,24 @@ CallWidget::CallWidget(QWidget* parent) :
                     }
                 });
 
+        connect(ui->smartList->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [=](const QItemSelection &selected, const QItemSelection &deselected) {
+                // lambda used to focus on the correct smartList element when switching automatically between two calls
+                Q_UNUSED(deselected)
+                if (selected.size()) {
+                    auto idx = selected.indexes().first();
+                    ui->smartList->selectionModel()->setCurrentIndex(idx, QItemSelectionModel::ClearAndSelect);
+                }
+                else {
+                    ui->smartList->clearSelection();
+                    ui->smartList->selectionModel()->clearCurrentIndex();
+                }
+            });
+
         connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                 this, SLOT(contactLineEdit_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
+        // switch account
         connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                 ui->currentAccountWidget, SLOT(update()));
 
@@ -273,6 +300,7 @@ CallWidget::triggerDeleteContactDialog(ContactMethod *cm, Account *ac)
     dlg->exec();
 }
 
+// TODO:(newlrc) Context Menu
 void
 CallWidget::setupSmartListMenu(const QPoint& pos)
 {
@@ -607,8 +635,9 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
         return;
     }
 
+    showIMOutOfCall(currentIdx);
     //catch call of current index
-    auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
+    /*auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
 
     if (currentIdxCall) {
         if (currentIdxCall != actualCall_) //if it is different from actual call, switch between the two
@@ -616,7 +645,7 @@ CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelI
     } else { // if there is no call attached to this smartlist index (contact tab)
         setActualCall(nullptr);
         showIMOutOfCall(currentIdx); // change page to contact request of messaging page with correct behaviour
-    }
+    }*/
     /*
     else { // if non defined behaviour disconnect instant messaging and return to welcome page
         setActualCall(nullptr);
@@ -821,7 +850,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
         ui->contactMethodComboBox->addItem(cm->bestId());
     }
 
-    ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cmVector[0]));
+    //ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cmVector[0]));
 
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
     ui->imMessageEdit->clear();
@@ -1053,4 +1082,76 @@ void CallWidget::on_contactRequestList_clicked(const QModelIndex &index)
 {
     RecentModel::instance().selectionModel()->clear();
     contactReqListCurrentChanged(index, QModelIndex());
+}
+
+bool
+CallWidget::setConversationModel(lrc::api::ConversationModel* conversationModel)
+{
+    if (convModel_ == conversationModel) {
+        return false;
+    }
+
+    convModel_ = conversationModel;
+    selectedUid_.clear(); // Clear selected conversation as the selected account is being changed
+    QObject::disconnect(modelSortedConnection_);
+    QObject::disconnect(modelUpdatedConnection_);
+    QObject::disconnect(filterChangedConnection_);
+    QObject::disconnect(newConversationConnection_);
+    QObject::disconnect(conversationRemovedConnection_);
+    QObject::disconnect(conversationClearedConnection);
+    QObject::disconnect(interactionStatusUpdatedConnection_);
+    QObject::disconnect(newInteractionConnection_);
+
+    //[self reloadData];
+    if (convModel_ != nullptr) {
+        modelSortedConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::modelSorted,
+            [this]() {
+                qDebug() << "modelSorted";
+                //[self reloadData];
+            });
+        modelUpdatedConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::conversationUpdated,
+            [this](const std::string& convUid) {
+                qDebug() << "conversationUpdated";
+                //[self reloadConversationWithUid : [NSString stringWithUTF8String : convUid.c_str()]];
+            });
+        filterChangedConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::filterChanged,
+            [this]() {
+                qDebug() << "filterChanged";
+                //[self reloadData];
+            });
+        newConversationConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::newConversation,
+            [this](const std::string& convUid) {
+                qDebug() << "newConversation";
+                //[self reloadData];
+                //[self updateConversationForNewContact : [NSString stringWithUTF8String : convUid.c_str()]];
+            });
+        conversationRemovedConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::conversationRemoved,
+            [this]() {
+                //[delegate listTypeChanged];
+                //[self reloadData];
+            });
+        conversationClearedConnection = QObject::connect(convModel_, &lrc::api::ConversationModel::conversationCleared,
+            [this](const std::string& convUid) {
+                qDebug() << "conversationCleared";
+                //[self deselect];
+                //[delegate listTypeChanged];
+            });
+        interactionStatusUpdatedConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::interactionStatusUpdated,
+            [this](const std::string& convUid) {
+                qDebug() << "interactionStatusUpdated";
+                if (convUid != selectedUid_)
+                    return;
+                //[self reloadConversationWithUid : [NSString stringWithUTF8String : convUid.c_str()]];
+            });
+        newInteractionConnection_ = QObject::connect(convModel_, &lrc::api::ConversationModel::newInteraction,
+            [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
+                qDebug() << "newInteraction";
+                if (convUid == selectedUid_) {
+                    convModel_->clearUnreadInteractions(convUid);
+                }
+            });
+        convModel_->setFilter(""); // Reset the filter
+    }
+    //[searchField setStringValue : @""];
+    return true;
 }
