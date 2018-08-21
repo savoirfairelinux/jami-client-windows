@@ -25,9 +25,8 @@ isEmpty(QMAKE_LRELEASE) {
     QMAKE_LRELEASE = lrelease
 }
 
-SOURCES +=
-    main.cpp\
-    mainwindow.cpp \
+SOURCES += main.cpp\
+        mainwindow.cpp \
     callwidget.cpp \
     configurationwidget.cpp \
     navwidget.cpp \
@@ -51,7 +50,6 @@ SOURCES +=
     callutilsdialog.cpp \
     combar.cpp \
     idlabel.cpp \
-    smartlist.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
@@ -66,10 +64,11 @@ SOURCES +=
     deleteaccountdialog.cpp \
     bannedcontactswidget.cpp \
     photoboothwidget.cpp \
-    deletecontactdialog.cpp
+    deletecontactdialog.cpp \
+    smartlistmodel.cpp \
+    smartlistview.cpp
 
-HEADERS  +=
-    mainwindow.h \
+HEADERS  += mainwindow.h \
     callwidget.h \
     configurationwidget.h \
     navwidget.h \
@@ -94,7 +93,6 @@ HEADERS  +=
     callutilsdialog.h \
     combar.h \
     idlabel.h \
-    smartlist.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
@@ -111,7 +109,9 @@ HEADERS  +=
     bannedcontactswidget.h \
     photoboothwidget.h \
     deletecontactdialog.h \
-    lrcinstance.h
+    lrcinstance.h \
+    smartlistmodel.h \
+    smartlistview.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h

@@ -47,7 +47,7 @@ CurrentAccountWidget::setup()
 {
     ui->accountsStatus->setText("No enabled account: impossible to communicate!");
     ui->accountsStatus->hide();
-    ui->currentAccountSelector->setModel(&AvailableAccountModel::instance());
+    //ui->currentAccountSelector->setModel(&AvailableAccountModel::instance());
     updateAccounts();
     if (ui->currentAccountSelector->count() > 0) {
         ui->currentAccountSelector->setCurrentIndex(0);

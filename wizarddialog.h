@@ -26,6 +26,9 @@
 #include "account.h"
 #include "person.h"
 
+// new lrc
+#include "lrcinstance.h"
+
 namespace Ui {
 class WizardDialog;
 }
@@ -35,6 +38,8 @@ class WizardDialog : public QDialog
     Q_OBJECT
 
 public:
+    using AccountInfo = lrc::api::account::Info;
+
     enum WizardMode {
         WIZARD,
         NEW_ACCOUNT,
@@ -43,7 +48,7 @@ public:
     };
 
 public:
-    explicit WizardDialog(WizardMode wizardMode = WIZARD, Account* toBeMigrated = nullptr, QWidget* parent = 0);
+    explicit WizardDialog(WizardMode wizardMode = WIZARD, AccountInfo* toBeMigrated = nullptr, QWidget* parent = 0);
     ~WizardDialog();
 
 //UI Slots
@@ -55,7 +60,7 @@ private slots:
     void on_passwordEdit_textChanged(const QString& arg1);
 
 private slots:
-    void endSetup(Account::RegistrationState state);
+    void endSetup(const std::string& accountID);
     void on_usernameEdit_textChanged(const QString& arg1);
     void handle_registeredNameFound(Account *account, NameDirectory::LookupStatus status, const QString& address, const QString& name);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
@@ -69,14 +74,13 @@ private slots:
 
 private:
     Ui::WizardDialog* ui;
-    Account* account_;
+    AccountInfo* account_;
     WizardMode wizardMode_;
     QMovie* movie_;
     QTimer nameLookupTimer_;
 
     void setup();
     void changePage(bool existingAccount);
-    void usernameFailedRegistration();
     void validateFileImport();
     void createRingAccount(const QString &displayName = QString(),
                            const QString &password = QString(),
