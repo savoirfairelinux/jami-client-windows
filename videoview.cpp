@@ -19,6 +19,9 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
+#include "utils.h"
+#include "lrcinstance.h"
+
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
 #include "recentmodel.h"
@@ -46,7 +49,7 @@ VideoView::VideoView(QWidget* parent) :
 
     connect(&CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
             this, SLOT(callStateChanged(Call*, Call::State)));
- 
+
     overlay_ = new VideoOverlay(this);
     auto effect = new QGraphicsOpacityEffect(overlay_);
     effect->setOpacity(maxOverlayOpacity_);
@@ -58,7 +61,7 @@ VideoView::VideoView(QWidget* parent) :
     fadeAnim_->setStartValue(effect->opacity());
     fadeAnim_->setEndValue(0);
     fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
- 
+
     // Setup the timer to start the fade when the mouse stops moving
     this->setMouseTracking(true);
     overlay_->setMouseTracking(true);
@@ -145,8 +148,9 @@ VideoView::showOverlay()
 void
 VideoView::fadeOverlayOut()
 {
-    if (not overlay_->isDialogVisible())
+    if (!overlay_->isDialogVisible() && !overlay_->shouldShowOverlay()) {
         fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
+    }
 }
 
 void
@@ -192,8 +196,19 @@ void
 VideoView::dropEvent(QDropEvent* event)
 {
     auto urls = event->mimeData()->urls();
-    if (auto call = CallModel::instance().selectedCall()) {
-        if (auto outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT)) {
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
+    auto callList = CallModel::instance().getActiveCalls();
+    Call* thisCall = nullptr;
+    for (auto call : callList) {
+        if (call->historyId() == QString::fromStdString(conversation->callId)) {
+            thisCall = call;
+            break;
+        }
+    }
+    if (thisCall) {
+        if (auto outVideo = thisCall->firstMedia<media::Video>(media::Media::Direction::OUT)) {
             outVideo->sourceModel()->setFile(urls.at(0));
         }
     }
@@ -225,8 +240,19 @@ VideoView::showContextMenu(const QPoint& pos)
     media::Video* outVideo = nullptr;
     int activeIndex = -1;
 
-    if (auto call = CallModel::instance().selectedCall()) {
-        outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT);
+    auto selectedConvUid = LRCInstance::getSelectedConvUid();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
+    auto callList = CallModel::instance().getActiveCalls();
+    Call* thisCall = nullptr;
+    for (auto call : callList) {
+        if (call->historyId() == QString::fromStdString(conversation->callId)) {
+            thisCall = call;
+            break;
+        }
+    }
+    if (thisCall) {
+        outVideo = thisCall->firstMedia<media::Video>(media::Media::Direction::OUT);
         if (outVideo)
             activeIndex = outVideo->sourceModel()->activeIndex();
     }
@@ -316,6 +342,26 @@ VideoView::pushRenderer(Call* call) {
 }
 
 void
+VideoView::pushRenderer(const std::string& callUid) {
+    auto callModel = LRCInstance::getCurrentCallModel();
+
+    QObject::disconnect(videoStartedConnection_);
+    if (!callModel->hasCall(callUid)) {
+        return;
+    }
+
+    auto call = callModel->getCall(callUid);
+
+    videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
+        [this](const std::string& callId, Video::Renderer* renderer) {
+            Q_UNUSED(callId);
+            slotVideoStarted(renderer);
+            this->overlay_->setVideoMuteVisibility(LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+        });
+    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+}
+
+void
 VideoView::slotVideoStarted(Video::Renderer* renderer) {
     ui->videoWidget->show();
     ui->videoWidget->setDistantRenderer(renderer);
@@ -357,7 +403,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
     } else {
         fadeTimer_.start(startfadeOverlayTime_);
     }
- 
+
     QRect& previewRect =  ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
         if (previewRect.left() > 0
