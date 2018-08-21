@@ -18,32 +18,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
+#include "smartlistview.h"
+#include "smartlistdelegate.h"
+
 #include <QStyledItemDelegate>
 #include <QEvent>
-#include <QTreeWidgetItem>
+#include <QTableWidgetItem>
 #include <QScrollBar>
-
-#include "smartlistdelegate.h"
-#include "combar.h"
-#include "smartlist.h"
 
 #include <ciso646>
 
-SmartList::SmartList(QWidget *parent) :
-    QTreeView(parent)
+SmartListView::SmartListView(QWidget *parent) :
+    QListView(parent)
 {
     verticalScrollBar()->hide();
 
     connect(this, &QAbstractItemView::entered, [this](const QModelIndex & index) {
-        auto widget = indexWidget(index);
-        if (!widget) {
-            ComBar* bar = new ComBar();
-            setIndexWidget(index, bar);
-            connect(bar, &ComBar::btnVideoClicked, this, [=](){ emit btnVideoClicked(); });
-        }
-        else if (index.isValid())
-            indexWidget(index)->setVisible(true);
-
+        indexWidget(index)->setVisible(true);
         if(hoveredRow_.isValid() and indexWidget(hoveredRow_))
             indexWidget(hoveredRow_)->setVisible(false);
 
@@ -53,20 +44,20 @@ SmartList::SmartList(QWidget *parent) :
     setVerticalScrollMode(ScrollPerPixel);
 }
 
-SmartList::~SmartList()
+SmartListView::~SmartListView()
 {
     reset();
 }
 
 void
-SmartList::enterEvent(QEvent* event)
+SmartListView::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
     verticalScrollBar()->show();
 }
 
 void
-SmartList::leaveEvent(QEvent* event)
+SmartListView::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event);
 
@@ -75,7 +66,7 @@ SmartList::leaveEvent(QEvent* event)
 }
 
 void
-SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
+SmartListView::setSmartListItemDelegate(SmartListDelegate* delegate)
 {
     if (delegate) {
         setItemDelegate(delegate);
@@ -84,7 +75,7 @@ SmartList::setSmartListItemDelegate(SmartListDelegate* delegate)
 }
 
 bool
-SmartList::eventFilter(QObject* watched, QEvent* event)
+SmartListView::eventFilter(QObject* watched, QEvent* event)
 {
 
     if (qobject_cast<QScrollBar*>(watched) && event->type() == QEvent::Enter) {
@@ -97,12 +88,12 @@ SmartList::eventFilter(QObject* watched, QEvent* event)
 
 
 void
-SmartList::drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
+SmartListView::drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     if(index == hoveredRow_ && indexWidget(hoveredRow_))
         indexWidget(index)->setVisible(true);
     else if(indexWidget(index))
         indexWidget(index)->setVisible(false);
 
-    QTreeView::drawRow(painter, option, index);
+    QListView::drawFrame(painter);
 }

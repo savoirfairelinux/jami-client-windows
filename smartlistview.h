@@ -18,16 +18,16 @@
 
 #pragma once
 
-#include <QTreeView>
+#include <QListView>
 
 class SmartListDelegate;
 
-class SmartList : public QTreeView
+class SmartListView : public QListView
 {
     Q_OBJECT
 public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
     void setSmartListItemDelegate(SmartListDelegate* delegate);
 
 protected:
@@ -39,7 +39,6 @@ protected:
 private:
     SmartListDelegate* smartListDelegate_;
     QPersistentModelIndex hoveredRow_;
-    void removeCombar();
 
 signals:
     void btnVideoClicked() const;
