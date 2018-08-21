@@ -349,7 +349,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="SmartList" name="smartList">
+                  <widget class="SmartListView" name="smartList">
                    <property name="minimumSize">
                     <size>
                      <width>324</width>
@@ -1918,9 +1918,9 @@ Copy and share it with your friends!</string>
    <header>idlabel.h</header>
   </customwidget>
   <customwidget>
-   <class>SmartList</class>
-   <extends>QTreeView</extends>
-   <header>smartlist.h</header>
+   <class>SmartListView</class>
+   <extends>QListView</extends>
+   <header>smartlistview.h</header>
   </customwidget>
   <customwidget>
    <class>SendContactRequestWidget</class>
