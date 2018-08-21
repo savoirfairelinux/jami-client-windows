@@ -19,6 +19,8 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
+#include "lrcinstance.h"
+
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
 #include "recentmodel.h"
@@ -145,8 +147,9 @@ VideoView::showOverlay()
 void
 VideoView::fadeOverlayOut()
 {
-    if (not overlay_->isDialogVisible())
+    if (!overlay_->isDialogVisible() && !overlay_->shouldShowOverlay()) {
         fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
+    }
 }
 
 void
@@ -313,6 +316,26 @@ VideoView::pushRenderer(Call* call) {
                 SLOT(slotVideoStarted(Video::Renderer*)));
     }
     ui->videoWidget->setPreviewDisplay(call->type() != Call::Type::CONFERENCE);
+}
+
+void
+VideoView::pushRenderer(const std::string& callUid) {
+    auto callModel = LRCInstance::getCurrentCallModel();
+    
+    QObject::disconnect(videoStartedConnection_);
+    if (!callModel->hasCall(callUid)) {
+        return;
+    }
+
+    auto call = callModel->getCall(callUid);
+
+    videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
+        [this](const std::string& callId, Video::Renderer* renderer) {
+            Q_UNUSED(callId);
+            slotVideoStarted(renderer);
+            this->overlay_->setVideoMuteVisibility(LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+        });
+    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
 }
 
 void

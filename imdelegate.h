@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QPainter>
+#include <QTextDocument>
 #include <QStyledItemDelegate>
 
 class ImDelegate : public QStyledItemDelegate
@@ -26,21 +27,21 @@ class ImDelegate : public QStyledItemDelegate
     Q_OBJECT
 public:
     explicit ImDelegate(QObject *parent = 0);
-    enum DisplayOptions {
-        AUTHOR = 1,
-        DATE
-    };
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 private:
     void formatMsg(const QModelIndex& index, QString& msg) const;
-    QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QString& msg, const QStyleOptionViewItem &option) const;
+    QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QStyleOptionViewItem &option,
+        QTextDocument& txtDoc) const;
 
     const QFont fontMsg_ = QFont("Arial", 10);
-    const QSize iconSize_ {38,38};
+    const QString defaultStylesheet_ = QString("body { color : black; } i { opacity: 100; font-size : 10px; text-align : right; }");
+    const QSize iconSize_ {38, 38};
 
+    constexpr static int margin_ = 5;
     constexpr static int padding_ = 5;
+    constexpr static int bubbleRadius_ = 12;
 };
 
