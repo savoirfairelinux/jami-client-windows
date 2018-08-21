@@ -34,7 +34,7 @@ CallUtilsDialog::CallUtilsDialog(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::CallUtilsDialog),
     confMode_(false),
-    smartListDelegate_(nullptr),
+    conversationItemDelegate_(nullptr),
     notCurrentProxyModel_(nullptr),
     spikeMask_(new QPixmap(":/images/spikeMask.png"))
 {
@@ -62,7 +62,7 @@ CallUtilsDialog::~CallUtilsDialog()
     delete effect_;
     delete spikeMask_;
     delete fadeAnim_;
-    delete smartListDelegate_;
+    delete conversationItemDelegate_;
     delete notCurrentProxyModel_;
     delete ui;
 }
@@ -77,10 +77,10 @@ CallUtilsDialog::showEvent(QShowEvent* event)
         notCurrentProxyModel_ = new NotCurrentProxyModel(&RecentModel::instance());
     }
     ui->contactView->setModel(notCurrentProxyModel_);
-    if (not smartListDelegate_) {
-        smartListDelegate_ = new SmartListDelegate();
+    if (not conversationItemDelegate_) {
+        conversationItemDelegate_ = new ConversationItemDelegate();
     }
-    ui->contactView->setItemDelegate(smartListDelegate_);
+    ui->contactView->setItemDelegate(conversationItemDelegate_);
 
     emit(isVisible(true));
 

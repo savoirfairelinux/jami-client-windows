@@ -44,5 +44,7 @@
         <file>images/icons/ic_person_add_black_24dp_2x.png</file>
         <file>images/waiting.gif</file>
         <file>images/default-avatar-overlay.svg</file>
+		<file>images/icons/ic_clear-24px.svg</file>
+		<file>images/icons/ic_block-24px.svg</file>
     </qresource>
 </RCC>

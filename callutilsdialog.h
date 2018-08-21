@@ -24,7 +24,7 @@
 #include "callmodel.h"
 #include "recentmodel.h"
 
-#include "smartlistdelegate.h"
+#include "conversationitemdelegate.h"
 
 #include <ciso646>
 
@@ -79,7 +79,7 @@ private slots:
 private:
     Ui::CallUtilsDialog* ui;
     bool confMode_;
-    SmartListDelegate* smartListDelegate_;
+    ConversationItemDelegate* conversationItemDelegate_;
     NotCurrentProxyModel* notCurrentProxyModel_;
     QPixmap* spikeMask_;
     QPropertyAnimation* fadeAnim_;

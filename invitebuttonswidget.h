@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,32 +18,25 @@
 
 #pragma once
 
-#include <QDialog>
-
-#include "person.h"
-#include "personmodel.h"
+#include <QWidget>
 
 namespace Ui {
-class ContactMethodPicker;
+class InviteButtonsWidget;
 }
 
-class ContactMethodPicker final : public QDialog
+class InviteButtonsWidget : public QWidget
 {
     Q_OBJECT
-
 public:
-    explicit ContactMethodPicker(const Person::ContactMethods &cM, QWidget *parent = 0);
-    ~ContactMethodPicker();
-
-    ContactMethod* getSelected() const;
-
-//UI SLOTS
-private slots:
-    void on_contactMethodListWidget_clicked(const QModelIndex &index);
+    explicit InviteButtonsWidget(QWidget* parent = 0);
+    ~InviteButtonsWidget();
 
 private:
-    Ui::ContactMethodPicker *ui;
-    const Person::ContactMethods& contactMethods_;
-    int index_;
-};
+    Ui::InviteButtonsWidget* ui;
 
+signals:
+    void btnAcceptInviteClicked() const;
+    void btnIgnoreInviteClicked() const;
+    void btnBlockInviteClicked() const;
+
+};
