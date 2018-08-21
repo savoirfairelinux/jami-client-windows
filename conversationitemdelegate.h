@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,29 +18,32 @@
 
 #pragma once
 
-#include <QTreeView>
+#include <QObject>
+#include <QItemDelegate>
 
-class SmartListDelegate;
+class QPainter;
 
-class SmartList : public QTreeView
+class ConversationItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
-    void setSmartListItemDelegate(SmartListDelegate* delegate);
+    explicit ConversationItemDelegate(QObject* parent = 0);
 
 protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
+    void paintRingConversationItem(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
+    void paintRingInviteConversationItem(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
+    void paintSIPConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-signals:
-    void btnVideoClicked() const;
+    constexpr static int sizeImage_ = 48;
+    constexpr static int cellHeight_ = 60;
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int fontSize_ = 10;
+    constexpr static int infoTextWidth_ = 144;
+
+    mutable std::map<int, bool> highlightMap_;
 };
