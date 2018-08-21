@@ -52,6 +52,8 @@ public:
     QVariant   decorationRole(const ContactMethod* cm) override;
     QVariant   decorationRole(const Person* p) override;
     QVariant   decorationRole(const Account* acc) override;
+    QVariant   decorationRole(const lrc::api::conversation::Info& conversation,
+                              const lrc::api::account::Info& accountInfo) override;
     static QImage scaleAndFrame(const QImage photo, const QSize& size);
     static QImage scaleAndFrame(const QImage photo, const int& size);
 };

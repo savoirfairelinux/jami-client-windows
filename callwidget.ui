@@ -349,7 +349,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="SmartList" name="smartList">
+                  <widget class="SmartListView" name="smartList">
                    <property name="minimumSize">
                     <size>
                      <width>324</width>
@@ -359,15 +359,6 @@
                    <property name="mouseTracking">
                     <bool>true</bool>
                    </property>
-                   <property name="indentation">
-                    <number>0</number>
-                   </property>
-                   <property name="headerHidden">
-                    <bool>true</bool>
-                   </property>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
                   </widget>
                  </item>
                 </layout>
@@ -490,7 +481,7 @@
                <string/>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1033,7 +1024,7 @@ Copy and share it with your friends!</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,25,25,1">
+               <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,25,1">
                 <property name="leftMargin">
                  <number>5</number>
                 </property>
@@ -1178,19 +1169,6 @@ Copy and share it with your friends!</string>
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="contactMethodComboBox">
-                    <property name="minimumSize">
-                     <size>
-                      <width>160</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="toolTip">
-                     <string>Peer contact method selector</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <widget class="QPushButton" name="sendContactRequestPageButton">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1220,23 +1198,6 @@ Copy and share it with your friends!</string>
                    </widget>
                   </item>
                  </layout>
-                </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QLabel" name="noMessagesLabel">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>12</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Start the conversation !</string>
-                  </property>
-                 </widget>
                 </item>
                 <item>
                  <widget class="QListView" name="listMessageView">
@@ -1918,9 +1879,9 @@ Copy and share it with your friends!</string>
    <header>idlabel.h</header>
   </customwidget>
   <customwidget>
-   <class>SmartList</class>
-   <extends>QTreeView</extends>
-   <header>smartlist.h</header>
+   <class>SmartListView</class>
+   <extends>QListView</extends>
+   <header>smartlistview.h</header>
   </customwidget>
   <customwidget>
    <class>SendContactRequestWidget</class>
