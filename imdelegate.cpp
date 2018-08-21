@@ -28,6 +28,8 @@
 
 #include "ringthemeutils.h"
 #include "settingskey.h"
+#include "messagemodel.h"
+#include "utils.h"
 
 ImDelegate::ImDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -41,11 +43,11 @@ ImDelegate::formatMsg(const QModelIndex& index, QString& msg) const
     QStringList meta;
     if (settings.value(SettingsKey::imShowAuthor).toBool()) {
         meta << index.data(
-                    static_cast<int>(media::TextRecording::Role::AuthorDisplayname)).toString();
+                    static_cast<int>(MessageModel::Role::DisplayName)).toString();
     }
     if (settings.value(SettingsKey::imShowDate).toBool()) {
         auto timeStamp = index.data(
-                    static_cast<int>(media::TextRecording::Role::Timestamp)).value<uint>();
+                    static_cast<int>(MessageModel::Role::InteractionDate)).value<uint>();
         auto date = QDateTime::fromTime_t(timeStamp);
         auto now = QDateTime::currentDateTime();
         if (now.date() == date.date())
@@ -61,6 +63,10 @@ ImDelegate::paint(QPainter* painter,
                   const QStyleOptionViewItem& option,
                   const QModelIndex& index) const
 {
+    if (index.isValid()) {
+        return;
+    }
+
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     painter->setRenderHint(QPainter::Antialiasing);
@@ -68,56 +74,61 @@ ImDelegate::paint(QPainter* painter,
     opt.font = fontMsg_;
     painter->setFont(fontMsg_);
 
-    if (index.isValid()) {
-        auto msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
-        opt.text.clear();
-        QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
+    auto msg = index.data(static_cast<int>(MessageModel::Role::Body)).toString();
+    opt.text.clear();
+    QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
 
-        auto dir = index.data(static_cast<int>(media::TextRecording::Role::Direction))
-                .value<media::Media::Direction>() == media::Media::Direction::IN
-                ? Qt::AlignLeft : Qt::AlignRight;
+    auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+    auto isGenerated = Utils::isInteractionGenerated(
+        static_cast<lrc::api::interaction::Type>(
+            index.data(static_cast<int>(MessageModel::Role::Type)).value<int>()));
+    auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
-        formatMsg(index, msg);
+    formatMsg(index, msg);
 
-        QRect textRect = getBoundingRect(dir, msg, opt);
+    QRect textRect = getBoundingRect(dir, msg, opt);
 
-        if (dir == Qt::AlignLeft) {
-            opt.decorationSize = iconSize_;
-            opt.decorationPosition = (dir == Qt::AlignRight ?
-                                          QStyleOptionViewItem::Right : QStyleOptionViewItem::Left);
-            opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
-        } else
-            opt.decorationSize = QSize();
-        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
-
-        QPainterPath path;
-        path.addRoundedRect(textRect, padding_, padding_);
-
-        if (dir == Qt::AlignRight) {
-            painter->fillPath(path, RingTheme::imBlue_);
-        }
-        else {
-            painter->fillPath(path, RingTheme::imGrey_);
-        }
-
-        painter->save();
-
-        QTextDocument document;
-        document.setDefaultFont(fontMsg_);
-
-        document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
-
-        document.setHtml(msg);
-
-        auto textOptions = QTextOption(Qt::AlignLeft);
-        textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
-        document.setDefaultTextOption(textOptions);
-        document.setTextWidth(textRect.width());
-
-        painter->translate(textRect.topLeft());
-        document.drawContents(painter);
-        painter->restore();
+    if (dir == Qt::AlignLeft) {
+        opt.decorationSize = iconSize_;
+        opt.decorationPosition = QStyleOptionViewItem::Left;
+        opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
+    } else if (dir == Qt::AlignHCenter) {
+        opt.decorationSize = iconSize_;
+        opt.decorationPosition = QStyleOptionViewItem::Left;
+        opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
+    } else {
+        opt.decorationSize = QSize();
+        opt.decorationPosition = QStyleOptionViewItem::Right;
     }
+    style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
+
+    QPainterPath path;
+    path.addRoundedRect(textRect, padding_, padding_);
+
+    if (dir == Qt::AlignRight) {
+        painter->fillPath(path, RingTheme::imBlue_);
+    }
+    else {
+        painter->fillPath(path, RingTheme::imGrey_);
+    }
+
+    painter->save();
+
+    QTextDocument document;
+    document.setDefaultFont(fontMsg_);
+
+    document.setDefaultStyleSheet("body { color : black; } i { opacity: 100; font-size : 11px; text-align : right; }");
+
+    document.setHtml(msg);
+
+    auto textOptions = QTextOption(Qt::AlignLeft);
+    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    document.setDefaultTextOption(textOptions);
+    document.setTextWidth(textRect.width());
+
+    painter->translate(textRect.topLeft());
+    document.drawContents(painter);
+    painter->restore();
 }
 
 QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
@@ -158,10 +169,11 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     QString msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
 
-    auto dir = index.data(
-                static_cast<int>(media::TextRecording::Role::Direction))
-            .value<media::Media::Direction>() == media::Media::Direction::IN
-            ? Qt::AlignLeft : Qt::AlignRight;
+    auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+    auto isGenerated = Utils::isInteractionGenerated(
+        static_cast<lrc::api::interaction::Type>(
+            index.data(static_cast<int>(MessageModel::Role::Type)).value<int>()));
+    auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
     formatMsg(index, msg);
 

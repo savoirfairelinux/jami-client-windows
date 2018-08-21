@@ -86,12 +86,9 @@ InstantMessagingWidget::setMediaText(Call *call)
             textMedia = call->addOutgoingMedia<media::Text>();
         }
         if (textMedia) {
-            ui->listMessageView->setModel(
-                        textMedia->recording()->
-                        instantMessagingModel());
+            ui->listMessageView->setModel(textMedia->recording()->instantMessagingModel());
             ui->listMessageView->scrollToBottom();
-            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]()
-            {
+            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]() {
                 if (not ui->messageEdit->text().trimmed().isEmpty()) {
                     QMap<QString, QString> messages;
                     messages["text/plain"] = ui->messageEdit->text();
