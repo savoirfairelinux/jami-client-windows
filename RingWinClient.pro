@@ -65,7 +65,6 @@ SOURCES += main.cpp\
     callutilsdialog.cpp \
     combar.cpp \
     idlabel.cpp \
-    smartlist.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
@@ -76,11 +75,13 @@ SOURCES += main.cpp\
     contactrequestwidget.cpp \
     contactrequestitemdelegate.cpp \
     quickactcontactrequestwidget.cpp \
-    contactrequestlistwidget.cpp \
+    contactrequestlistview.cpp \
     deleteaccountdialog.cpp \
     bannedcontactswidget.cpp \
     photoboothwidget.cpp \
-    deletecontactdialog.cpp
+    deletecontactdialog.cpp \
+    smartlistmodel.cpp \
+    smartlistview.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -107,7 +108,6 @@ HEADERS  += mainwindow.h \
     callutilsdialog.h \
     combar.h \
     idlabel.h \
-    smartlist.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
@@ -119,12 +119,14 @@ HEADERS  += mainwindow.h \
     contactrequestwidget.h \
     contactrequestitemdelegate.h \
     quickactcontactrequestwidget.h \
-    contactrequestlistwidget.h \
+    contactrequestlistview.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
     deletecontactdialog.h \
-    lrcinstance.h
+    lrcinstance.h \
+    smartlistmodel.h \
+    smartlistview.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
