@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1128</width>
-    <height>724</height>
+    <width>843</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -112,7 +112,7 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1,18">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,18">
            <property name="spacing">
             <number>0</number>
            </property>
@@ -130,7 +130,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>64</height>
               </size>
              </property>
             </widget>
@@ -349,7 +349,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="SmartList" name="smartList">
+                  <widget class="SmartListView" name="smartList" native="true">
                    <property name="minimumSize">
                     <size>
                      <width>324</width>
@@ -359,15 +359,12 @@
                    <property name="mouseTracking">
                     <bool>true</bool>
                    </property>
-                   <property name="indentation">
+                   <property name="indentation" stdset="0">
                     <number>0</number>
                    </property>
-                   <property name="headerHidden">
+                   <property name="headerHidden" stdset="0">
                     <bool>true</bool>
                    </property>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
                   </widget>
                  </item>
                 </layout>
@@ -1918,11 +1915,6 @@ Copy and share it with your friends!</string>
    <header>idlabel.h</header>
   </customwidget>
   <customwidget>
-   <class>SmartList</class>
-   <extends>QTreeView</extends>
-   <header>smartlist.h</header>
-  </customwidget>
-  <customwidget>
    <class>SendContactRequestWidget</class>
    <extends>QWidget</extends>
    <header>sendcontactrequestwidget.h</header>
@@ -1944,6 +1936,11 @@ Copy and share it with your friends!</string>
    <class>ContactRequestListWidget</class>
    <extends>QTreeView</extends>
    <header>contactrequestlistwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SmartListView</class>
+   <extends>QWidget</extends>
+   <header>smartlistview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

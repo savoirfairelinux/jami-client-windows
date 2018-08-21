@@ -35,6 +35,13 @@
 #include "contactmethod.h"
 #include "profilemodel.h"
 #include "profile.h"
+#include "globalinstances.h"
+
+ // new LRC
+#include <api/contactmodel.h>
+#include <api/conversation.h>
+#include <api/account.h>
+#include <api/contact.h>
 
 #include "utils.h"
 #include "ringthemeutils.h"
@@ -52,8 +59,7 @@ getAvatarColor(const QString& canonicalUri) {
         return RingTheme::defaultAvatarColor_;
     }
     uint8_t colorsLength = sizeof(RingTheme::avatarColors_) / sizeof(QColor);
-    bool ok;
-    auto colorIndex = QString(h.at(0)).toUInt(&ok, colorsLength);
+    auto colorIndex = std::string("0123456789abcdef").find(h.at(0).toLatin1());
     return RingTheme::avatarColors_[colorIndex];
 }
 
@@ -84,6 +90,8 @@ fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& 
 
     // If a letter was passed, then we paint a letter in the circle,
     // otherwise we draw the default avatar icon
+    QString letterStrCleaned(letterStr);
+    letterStrCleaned.remove(QRegExp("[\\n\\t\\r]"));
     if (!letterStr.isEmpty()) {
         auto letter = letterStr.at(0).toUpper().toLatin1();
         QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
@@ -104,8 +112,7 @@ fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& 
 }
 
 QImage
-fallbackAvatar
-(const QSize size, const ContactMethod* cm)
+fallbackAvatar(const QSize size, const ContactMethod* cm)
 {
     if (cm == nullptr) {
         return QImage();
@@ -119,6 +126,14 @@ fallbackAvatar
                             cm->uri().full(),
                             letterStr);
     return image;
+}
+
+QImage
+fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri)
+{
+    return fallbackAvatar(size,
+                          QString::fromStdString(uri),
+                          QString::fromStdString(alias));
 }
 
 /*Namespace Interfaces collide with QBuffer*/
@@ -174,11 +189,12 @@ PixbufManipulator::contactPhoto(Person* p, const QSize& size, bool displayPresen
 QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& type)
 {
     QImage avatar;
-    QByteArray ba = type.toLatin1();
-    const char* c_str2 = ba.data();
-    if (avatar.loadFromData(data.fromBase64(data), c_str2))
-        return Utils::getCirclePhoto(avatar, avatar.size().width());
-    return fallbackAvatar(IMAGE_SIZE, QString());
+    const bool ret = avatar.loadFromData(QByteArray::fromBase64(data), type.toLatin1());
+    if (!ret) {
+        qDebug() << "vCard image loading failed";
+        return QVariant();
+    }
+    return QPixmap::fromImage(Utils::getCirclePhoto(avatar, avatar.size().width()));
 }
 
 QVariant
@@ -286,4 +302,63 @@ QVariant PixbufManipulator::decorationRole(const Account* acc)
     return Utils::getCirclePhoto(ProfileModel::instance().
                                  selectedProfile()->person()->photo().value<QImage>(),
                                  IMAGE_SIZE.width());
+}
+
+QVariant
+PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversationInfo,
+                                  const lrc::api::account::Info & accountInfo)
+{
+    QImage photo;
+    auto contacts = conversationInfo.participants;
+    if (!contacts.empty()) {
+        try {
+            // Get first contact photo
+            auto contactUri = contacts.front();
+            auto contactInfo = accountInfo.contactModel->getContact(contactUri);
+            auto contactPhoto = contactInfo.profileInfo.avatar;
+            auto bestName = Utils::bestNameForContact(contactInfo);
+            auto bestId = Utils::bestIdForContact(contactInfo);
+            if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
+                contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
+                photo = fallbackAvatar(IMAGE_SIZE, QString(), QString());
+            }
+            else if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP) {
+                photo = fallbackAvatar(IMAGE_SIZE,
+                                       QString::fromStdString("sip:" + bestId),
+                                       QString::fromStdString(""));
+            }
+            else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.empty()) {
+                photo = fallbackAvatar(IMAGE_SIZE, QString(), QString());
+            }
+            else if (!contactPhoto.empty()) {
+                QByteArray byteArray(contactPhoto.c_str(), contactPhoto.length());
+                photo = personPhoto(byteArray, nullptr).value<QImage>();
+            }
+            else {
+                photo = fallbackAvatar(IMAGE_SIZE,
+                                       QString::fromStdString("ring:" + bestId),
+                                       QString::fromStdString(bestName));
+            }
+        }
+        catch (...) {}
+    }
+    return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
+}
+
+QVariant
+PixbufManipulator::accountPhoto(const lrc::api::account::Info& accountInfo)
+{
+    QImage photo;
+    if (!accountInfo.profileInfo.avatar.empty()) {
+        QByteArray ba = QByteArray::fromStdString(accountInfo.profileInfo.avatar);
+        photo = GlobalInstances::pixmapManipulator().personPhoto(ba, nullptr).value<QImage>();
+    }
+    else {
+        auto bestId = Utils::bestIdForAccount(accountInfo);
+        auto bestName = Utils::bestNameForAccount(accountInfo);
+        photo = fallbackAvatar( IMAGE_SIZE,
+                                QString::fromStdString("ring:" + bestId),
+                                QString::fromStdString(bestName));
+    }
+    return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }

@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,32 +15,27 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QTreeView>
+#include <QPainter>
+#include <QTextDocument>
+#include <QItemDelegate>
 
-class SmartListDelegate;
-
-class SmartList : public QTreeView
+class AccountItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
-    void setSmartListItemDelegate(SmartListDelegate* delegate);
+    explicit AccountItemDelegate(QObject *parent = nullptr);
 
 protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
-
-signals:
-    void btnVideoClicked() const;
+    constexpr static int fontSize_ = 10;
+    const QFont font_ = QFont("Arial", fontSize_);
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int avatarSize_ = 36;
+    constexpr static int cellHeight_ = 48;
 };
