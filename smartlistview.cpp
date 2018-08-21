@@ -1,6 +1,9 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,31 +19,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef QUICKACTCONTACTREQUESTWIDGET_H
-#define QUICKACTCONTACTREQUESTWIDGET_H
+#include "smartlistview.h"
 
-#include <QWidget>
+#include <QScrollBar>
+#include <QMouseEvent>
 
+#include <ciso646>
 
-namespace Ui {
-class QuickActContactRequestWidget;
+SmartListView::SmartListView(QWidget *parent) :
+    QListView(parent)
+{
+    verticalScrollBar()->setEnabled(true);
+    setVerticalScrollMode(ScrollPerPixel);
+    verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 0px; }");
+
+    // TODO: visible overlay scrollbar
+
+    setDragEnabled(true);
+    setAcceptDrops(true);
+    setDropIndicatorShown(true);
+    setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
-class QuickActContactRequestWidget : public QWidget
+SmartListView::~SmartListView()
 {
-    Q_OBJECT
+    reset();
+}
 
-public:
-    explicit QuickActContactRequestWidget(QWidget *parent = 0);
-    ~QuickActContactRequestWidget();
+void
+SmartListView::enterEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+}
 
-signals:
-    void quickValidCRBtnClicked();
-    void quickMuteCRBtnClicked();
-    void quickBanCRBtnClicked();
+void
+SmartListView::leaveEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+}
 
-private:
-    Ui::QuickActContactRequestWidget *ui;
-};
-
-#endif // QUICKACTCONTACTREQUESTWIDGET_H
+void
+SmartListView::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::RightButton) {
+        emit customContextMenuRequested(event->pos());
+    } else {
+        QListView::mousePressEvent(event);
+    }
+}
