@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,15 +19,23 @@
 
 #pragma once
 
-namespace SettingsKey {
+#include <QListView>
 
-constexpr static char closeOrMinimized[] = "closeOrMin";
-constexpr static char autoAnswer[] = "autoAnswer";
-constexpr static char geometry[] = "geometry";
-constexpr static char windowState[] = "windowState";
-constexpr static char enableNotifications[] = "enableNotifications";
-}
+class SmartListDelegate;
 
-#define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
+class SmartListView : public QListView
+{
+    Q_OBJECT
+public:
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
+    void setSmartListItemDelegate(SmartListDelegate* delegate);
 
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
 
+private:
+    SmartListDelegate* smartListDelegate_;
+
+};
