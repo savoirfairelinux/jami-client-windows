@@ -1,6 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,41 +17,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "quickactcontactrequestwidget.h"
-#include "ui_quickactcontactrequestwidget.h"
+#pragma once
 
-#include <QFont>
+#include <QListView>
 
-// CLIENT
-#include "contactrequestitemdelegate.h"
+class SmartListDelegate;
 
-QuickActContactRequestWidget::QuickActContactRequestWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::QuickActContactRequestWidget)
+class SmartListView : public QListView
 {
-    ui->setupUi(this);
+    Q_OBJECT
+public:
+    explicit SmartListView(QWidget* parent = 0);
+    ~SmartListView();
 
-    // set symbols in buttons using FontAwsome
-    ui->quickValidCRBtn->setText(QChar(0xf00c));
-    ui->quickMuteCRBtn->setText(QChar(0xf12d));
-    ui->quickBanCRBtn->setText(QChar(0xf00d));
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
 
-    connect(ui->quickValidCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickValidCRBtnClicked();
-    });
+private:
+    SmartListDelegate* smartListDelegate_;
 
-    connect(ui->quickMuteCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickMuteCRBtnClicked();
-    });
-
-    connect(ui->quickBanCRBtn, &QPushButton::clicked, this, [=](){
-        emit quickBanCRBtnClicked();
-    });
-
-}
-
-QuickActContactRequestWidget::~QuickActContactRequestWidget()
-{
-    disconnect(this);
-    delete ui;
-}
+};
