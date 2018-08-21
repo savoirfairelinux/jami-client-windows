@@ -1,8 +1,9 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -33,41 +34,22 @@
 #undef ERROR
 #undef interface
 
-//LRC
-#include "audio/settings.h"
-#include "accountmodel.h"
-#include "personmodel.h"
-#include "person.h"
-#include "fallbackpersoncollection.h"
-#include "categorizedcontactmodel.h"
-#include "localhistorycollection.h"
-#include "media/text.h"
-#include "media/recording.h"
-#include "media/recordingmodel.h"
-#include "recentmodel.h"
-#include "contactmethod.h"
+// lrc
 #include "globalinstances.h"
-#include <availableaccountmodel.h>
-#include "pendingcontactrequestmodel.h"
 #include "profilemodel.h"
-#include "profile.h"
-#include "peerprofilecollection.h"
 #include "localprofilecollection.h"
-#include "callmodel.h"
 
-//Client
+// client
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "contactpicker.h"
-#include "contactmethodpicker.h"
 #include "globalsystemtray.h"
-#include "smartlistdelegate.h"
+#include "conversationitemdelegate.h"
 #include "imdelegate.h"
 #include "pixbufmanipulator.h"
 #include "settingskey.h"
-#include "contactrequestitemdelegate.h"
-#include "deletecontactdialog.h"
-
+#include "lrcinstance.h"
+#include "messagemodel.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -77,15 +59,9 @@ CallWidget::CallWidget(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    pageAnim_ = new QPropertyAnimation(ui->welcomePage, "pos", this);
+    using namespace lrc::api;
 
-    setActualCall(nullptr);
-    videoRenderer_ = nullptr;
-
-    connect(ui->settingsButton, &QPushButton::clicked, this, &CallWidget::settingsButtonClicked);
-
-    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
-            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+    QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
 
     QPixmap logo(":/images/logo-ring-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -93,106 +69,92 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->qrLabel->hide();
 
-    try {
-        callModel_ = &CallModel::instance();
+    videoRenderer_ = nullptr;
 
-        connect(callModel_, SIGNAL(incomingCall(Call*)),
-                this, SLOT(callIncoming(Call*)));
-        connect(callModel_, SIGNAL(callStateChanged(Call*, Call::State)),
-                this, SLOT(callStateChanged(Call*, Call::State)));
+    // this line is not welcome here, and must be removed
+    ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
 
-        RecentModel::instance().peopleProxy()->setFilterRole(static_cast<int>(Ring::Role::Name));
-        RecentModel::instance().peopleProxy()->setFilterCaseSensitivity(Qt::CaseInsensitive);
-        ui->smartList->setModel(RecentModel::instance().peopleProxy());
-
-        PersonModel::instance().addCollection<PeerProfileCollection>(LoadOptions::FORCE_ENABLED);
-        ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
-
-        PersonModel::instance().
-                addCollection<WindowsContactBackend>(LoadOptions::FORCE_ENABLED);
-
-        connect(ui->smartList, &QTreeView::entered, this, &CallWidget::on_entered);
-
-        smartListDelegate_ = new SmartListDelegate();
-        ui->smartList->setSmartListItemDelegate(smartListDelegate_);
-
-        ui->contactRequestList->setItemDelegate(new ContactRequestItemDelegate());
-
-        ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
-
-        connect(ui->smartList, &SmartList::btnVideoClicked, this, &CallWidget::btnComBarVideoClicked);
-
-        connect(RecentModel::instance().selectionModel(),
-                SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-                this,
-                SLOT(smartListCurrentChanged(QModelIndex,QModelIndex)));
-
-        //set most recent call to view
-        connect(&RecentModel::instance(), &QAbstractItemModel::dataChanged, [=](const QModelIndex &topLeft, const QModelIndex &bottomRight,const QVector<int> &vec){
-            Q_UNUSED(bottomRight)
-            Q_UNUSED(vec)
-
-            if (topLeft.isValid() && RecentModel::instance().hasActiveCall(topLeft)){
-                ui->smartList->selectionModel()->setCurrentIndex(topLeft,QItemSelectionModel::ClearAndSelect);
+    // select last used account if stored in registry
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (!accountList.empty()) {
+        std::string accountIdToStartWith;
+        QSettings settings;
+        if (settings.contains(SettingsKey::selectedAccount)) {
+            accountIdToStartWith = settings
+                .value(SettingsKey::selectedAccount, true)
+                .value<QString>()
+                .toStdString();
+            if (Utils::indexInVector(accountList, accountIdToStartWith) == -1) {
+                accountIdToStartWith = accountList.at(0);
             }
-        });
-
-        connect(RecentModel::instance().selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected, const QItemSelection &deselected) {
-                    // lambda used to focus on the correct smartList element when switching automatically between two calls
-                    Q_UNUSED(deselected)
-                    if (selected.size()) {
-                        auto idx = selected.indexes().first();
-                        auto realIdx = RecentModel::instance().peopleProxy()->mapFromSource(idx);
-                        ui->smartList->selectionModel()->setCurrentIndex(realIdx, QItemSelectionModel::ClearAndSelect);
-                    } else {
-                        RecentModel::instance().selectionModel()->clearCurrentIndex();
-                        ui->smartList->clearSelection();
-                        ui->smartList->selectionModel()->clearCurrentIndex();
-                    }
-                });
-
-        connect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
-                this, SLOT(contactLineEdit_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
-
-        connect(&AccountModel::instance(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-                ui->currentAccountWidget, SLOT(update()));
-
-        connect(ui->searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchBtnClicked()));
-
-        connect(ui->sendContactRequestWidget, &SendContactRequestWidget::sendCRclicked, [=]{Utils::slidePage(ui->stackedWidget, ui->messagingPage);});
-
-        connect(ui->contactRequestWidget, &ContactRequestWidget::choiceMade, [this]() {
-            if (getSelectedAccount()->pendingContactRequestModel()->rowCount() == 0)
-                ui->mainTabMenu->setCurrentWidget(ui->mainTabMenuPage1);
-            else
-                ui->contactRequestList->selectionModel()->clear();
-        });
-
-        connect(AvailableAccountModel::instance().selectionModel(), &QItemSelectionModel::currentChanged,
-                this, &CallWidget::selectedAccountChanged);
-
-        // It needs to be called manually once to initialize the ui with the account selected at start.
-        // The second argument (previous) is set to an invalid QModelIndex as it is the first selection.
-        selectedAccountChanged(AvailableAccountModel::instance().selectionModel()->currentIndex(), QModelIndex());
-
-        // This connect() is used to initialise and track changes of profile's picture
-        connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-                ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
-
-        connect(ui->videoWidget, &VideoView::videoSettingsClicked, this, &CallWidget::settingsButtonClicked);
-
-        connect(ui->smartList, &QListView::customContextMenuRequested, [=](const QPoint& pos){ setupSmartListMenu(pos);});
-
-        // setup searchingfor mini spinner
-        miniSpinner_ = new QMovie(":/images/waiting.gif");
-        ui->spinnerLabel->setMovie(miniSpinner_);
-        ui->spinnerLabel->hide();
-
-    } catch (const std::exception& e) {
-        qDebug() << "INIT ERROR" << e.what();
+        }
+        else {
+            accountIdToStartWith = accountList.at(0);
+        }
+        setSelectedAccount(accountIdToStartWith);
+        // get account index and set the currentAccountWidget selector
+        auto index = Utils::indexInVector(accountList, accountIdToStartWith);
+        if (index != -1) {
+            ui->currentAccountWidget->changeSelectedIndex(index);
+        }
     }
 
+    // conversation list
+    conversationItemDelegate_ = new ConversationItemDelegate();
+    ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    // setup searchingfor mini spinner
+    miniSpinner_ = new QMovie(":/images/waiting.gif");
+    ui->spinnerLabel->setMovie(miniSpinner_);
+    ui->spinnerLabel->hide();
+
+    // set to welcome view
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     setupOutOfCallIM();
+
+    // connections
+    connect(ui->settingsButton, &QPushButton::clicked,
+            this, &CallWidget::settingsButtonClicked);
+
+    connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
+            ui->instantMessagingWidget, SLOT(setVisible(bool)));
+
+    connect(ui->videoWidget, &VideoView::videoSettingsClicked,
+            this, &CallWidget::settingsButtonClicked);
+
+    connect(ui->buttonConversations, &QPushButton::clicked,
+            this, &CallWidget::conversationsButtonClicked);
+
+    connect(ui->buttonInvites, &QPushButton::clicked,
+            this, &CallWidget::invitationsButtonClicked);
+
+    connect(ui->currentAccountWidget, &CurrentAccountWidget::currentAccountChanged,
+            this, &CallWidget::currentAccountChanged);
+
+    // TODO(new lrc)
+    connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
+            ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
+
+    connect(ui->smartList, &QListView::customContextMenuRequested,
+            this, &CallWidget::slotCustomContextMenuRequested);
+
+    connect(ui->smartList, &SmartListView::btnAcceptInviteClicked,
+            this, &CallWidget::slotAcceptInviteClicked);
+
+    connect(ui->smartList, &SmartListView::btnBlockInviteClicked,
+            this, &CallWidget::slotBlockInviteClicked);
+
+    connect(ui->smartList, &SmartListView::btnIgnoreInviteClicked,
+            this, &CallWidget::slotIgnoreInviteClicked);
+
+    connect(&LRCInstance::behaviorController(), &BehaviorController::showCallView,
+            this, &CallWidget::slotShowCallView);
+
+    connect(&LRCInstance::behaviorController(), &BehaviorController::showIncomingCallView,
+            this, &CallWidget::slotShowIncomingCallView);
+
+    connect(&LRCInstance::behaviorController(), &BehaviorController::showChatView,
+            this, &CallWidget::slotShowChatView);
 }
 
 CallWidget::~CallWidget()
@@ -200,9 +162,7 @@ CallWidget::~CallWidget()
     delete ui;
     delete menu_;
     delete imDelegate_;
-    delete pageAnim_;
-    delete smartListDelegate_;
-    delete shareMenu_;
+    delete conversationItemDelegate_;
 }
 
 void
@@ -221,131 +181,108 @@ CallWidget::setupOutOfCallIM()
             QApplication::clipboard()->setText(text.value<QString>());
         }
     });
-
-    QSettings settings;
-
-    auto displayDate = new QAction(tr("Display date"), this);
-    displayDate->setCheckable(true);
-    displayDate->setChecked(settings.value(SettingsKey::imShowDate).toBool());
-    ui->listMessageView->addAction(displayDate);
-
-    auto displayAuthor = new QAction(tr("Display author"), this);
-    displayAuthor->setCheckable(true);
-    displayAuthor->setChecked(settings.value(SettingsKey::imShowAuthor).toBool());
-    ui->listMessageView->addAction(displayAuthor);
-
-    auto lamdba = [=](){
-        QSettings settings;
-        settings.setValue(SettingsKey::imShowAuthor, displayAuthor->isChecked());
-        settings.setValue(SettingsKey::imShowDate, displayDate->isChecked());
-        emit imDelegate_->sizeHintChanged(QModelIndex());
-    };
-
-    connect(displayAuthor, &QAction::triggered, lamdba);
-    connect(displayDate, &QAction::triggered, lamdba);
-
-    connect(&::media::RecordingModel::instance(),
-            SIGNAL(newTextMessage(::media::TextRecording*, ContactMethod*)),
-            this,
-            SLOT(onIncomingMessage(::media::TextRecording*, ContactMethod*)));
 }
 
 void
-CallWidget::onIncomingMessage(::media::TextRecording* t, ContactMethod* cm)
+CallWidget::onIncomingMessage(const std::string& convUid,
+                              uint64_t interactionId,
+                              const lrc::api::interaction::Info& interaction)
 {
-    Q_UNUSED(cm)
-
+    Q_UNUSED(interactionId);
     if (!QApplication::focusWidget()) {
-        auto idx = t->instantTextMessagingModel()->
-                index(t->instantTextMessagingModel()->rowCount()-1, 0);
-        GlobalSystemTray::instance()
-                .showMessage("Ring",
-                             QString(tr("Message incoming from %1")).arg(
-                                 idx.data((int)media::TextRecording::Role::AuthorDisplayname).toString()));
-        QApplication::alert(this, 5000);
+        Utils::showSystemNotification(this,
+            QString(tr("Message incoming from %1"))
+            .arg(QString::fromStdString(interaction.body)));
     }
+    updateConversationView(convUid);
+    ui->conversationsFilterWidget->update();
 }
 
 void
-CallWidget::triggerDeleteContactDialog(ContactMethod *cm, Account *ac)
+CallWidget::setupSmartListContextMenu(const QPoint& pos)
 {
-    auto dlg = new DeleteContactDialog(cm, ac);
-    dlg->exec();
-}
-
-void
-CallWidget::setupSmartListMenu(const QPoint& pos)
-{
-    auto idx = ui->smartList->currentIndex();
-
-    if (not idx.isValid())
-        return;
-
     QPoint globalPos = ui->smartList->mapToGlobal(pos);
-    QMenu menu;
-    QVector<ContactMethod*> contactMethods = RecentModel::instance()
-            .getContactMethods(RecentModel::instance().peopleProxy()->mapToSource(idx));
-
-    if (contactMethods.isEmpty())
+    auto index = ui->smartList->indexAt(pos);
+    if (not index.isValid()) {
         return;
-
-    auto contactMethod = contactMethods.first();
-
-    if (contactMethods.size() == 1){
-        auto copyAction = new QAction(tr("Copy number"), this);
-        menu.addAction(copyAction);
-        connect(copyAction, &QAction::triggered, [contactMethod]() {
-            QApplication::clipboard()->setText(contactMethod->uri());
-        });
-
-        auto copyNameAction = new QAction(tr("Copy name"), this);
-        menu.addAction(copyNameAction);
-        connect(copyNameAction, &QAction::triggered, [contactMethod]() {
-            QApplication::clipboard()->setText(contactMethod->primaryName());
-        });
-    } else {
-        auto callMenu = menu.addMenu(tr("Call Number"));
-        auto copyMenu = menu.addMenu(tr("Copy Number"));
-        for (auto cM : contactMethods) {
-            auto uri = cM->bestId();
-            auto copyAction = new QAction(tr("Copy %1").arg(uri), this);
-            copyMenu->addAction(copyAction);
-            connect(copyAction, &QAction::triggered, [uri]() {
-                QApplication::clipboard()->setText(uri);
-            });
-            auto callAction = new QAction(tr("Call %1").arg(uri), this);
-            callMenu->addAction(callAction);
-            connect(callAction, &QAction::triggered, [cM]() {
-                Call* c = CallModel::instance().dialingCall(cM);
-                c->performAction(Call::Action::ACCEPT);
-            });
-        }
     }
 
-    auto ac = getSelectedAccount();
-    if (ac && !ac->hasContact(contactMethod)) {
-        auto addExisting = new QAction(tr("Add to contacts"), this);
-        menu.addAction(addExisting);
-        connect(addExisting, &QAction::triggered, [this, contactMethod, ac]() {
-            /* uncomment and capture globalPos in lambda to reactivate popup
-            ContactPicker contactPicker(contactMethod);
-            contactPicker.move(globalPos.x(), globalPos.y() - (contactPicker.height()/2));
-            contactPicker.exec();
-            */
-            ac->addContact(contactMethod);
-        });
-    } else if (ac) {
-        auto removeExisting = new QAction(tr("Remove from contacts"), this);
-        menu.addAction(removeExisting);
-        connect(removeExisting, &QAction::triggered, [this, contactMethod, ac]() {
-            triggerDeleteContactDialog(contactMethod, ac);
-        });
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID))
+        .value<QString>()
+        .toStdString();
+    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+    auto contactUid = (*conversation).participants.at(0);
+    auto contact = LRCInstance::getCurrentAccountInfo().contactModel.get()->getContact(contactUid);
+
+    if (!Utils::isContactValid(contactUid, *convModel)) {
+        return;
     }
 
+    QMenu menu;
+
+    // video call
+    auto videoCallAction = new QAction(tr("Start video call"), this);
+    menu.addAction(videoCallAction);
+    connect(videoCallAction, &QAction::triggered,
+        [this, convUid, conversation, convModel]() {
+            convModel->placeCall(convUid);
+            ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
+            if (convUid != selectedConvUid()) {
+                selectConversation(*conversation, *convModel);
+            }
+        });
+    // audio call
+    auto audioCallAction = new QAction(tr("Start audio call"), this);
+    menu.addAction(audioCallAction);
+    connect(audioCallAction, &QAction::triggered,
+        [this, convUid, conversation, convModel]() {
+            convModel->placeAudioOnlyCall(convUid);
+            ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
+            if (convUid != selectedConvUid()) {
+                selectConversation(*conversation, *convModel);
+            }
+        });
+
+    if (contact.profileInfo.type == lrc::api::profile::Type::RING) {
+        // separator
+        menu.addSeparator();
+
+        // clear conversation
+        auto clearConversationAction = new QAction(tr("Clear conversation"), this);
+        menu.addAction(clearConversationAction);
+        connect(clearConversationAction, &QAction::triggered,
+            [convUid]() {
+                LRCInstance::getCurrentConversationModel()->clearHistory(convUid);
+            });
+        // block contact
+        auto blockContactAction = new QAction(tr("Block contact"), this);
+        menu.addAction(blockContactAction);
+        connect(blockContactAction, &QAction::triggered,
+            [convUid]() {
+                LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
+            });
+
+        // separator
+        menu.addSeparator();
+
+        // copy number(infohash)
+        auto copyNumberAction = new QAction(tr("Copy number"), this);
+        menu.addAction(copyNumberAction);
+        connect(copyNumberAction, &QAction::triggered,
+            [contact]() {
+                QApplication::clipboard()->setText(
+                    QString::fromStdString(contact.profileInfo.uri)
+                );
+            });
+    }
+    smartListModel_->isContextMenuOpen_ = true;
     menu.exec(globalPos);
+    smartListModel_->isContextMenuOpen_ = false;
 }
 
-void CallWidget::setupQRCode(QString ringID)
+void
+CallWidget::setupQRCode(QString ringID)
 {
     auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
                                      0, //Let the version be decided by libqrencode
@@ -379,24 +316,22 @@ void CallWidget::setupQRCode(QString ringID)
     }
     painter.end();
     QRcode_free(rcode);
-    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_), Qt::KeepAspectRatio)));
+    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_),
+                           Qt::KeepAspectRatio)));
 }
 
 bool
 CallWidget::findRingAccount()
 {
     bool ringAccountFound = false;
-    auto a_count = AccountModel::instance().rowCount();
-    for (int i = 0; i < a_count; ++i) {
-        auto idx = AccountModel::instance().index(i, 0);
-        auto protocol = idx.data(static_cast<int>(Account::Role::Proto));
-        if (static_cast<Account::Protocol>(protocol.toUInt()) == Account::Protocol::RING) {
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    for (int i = 0; i < accountList.size(); ++i) {
+        auto accountId = accountList.at(i);
+        auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+        if (accountInfo.profileInfo.type == lrc::api::profile::Type::RING) {
             ringAccountFound = true;
-            auto account = AccountModel::instance().getAccountByModelIndex(idx);
-            if (account->displayName().isEmpty())
-                account->displayName() = account->alias();
-            if (account->needsMigration()) {
-                WizardDialog dlg(WizardDialog::MIGRATION, account);
+            if (accountInfo.status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+                WizardDialog dlg(WizardDialog::MIGRATION);
                 dlg.exec();
             }
         }
@@ -416,151 +351,80 @@ CallWidget::findRingAccount()
 }
 
 void
-CallWidget::callChangedSlot()
+CallWidget::on_smartList_clicked(const QModelIndex& index)
 {
-    if (not actualCall_)
-        return;
-
-    ui->callerIdLabel->setText(QString("%1")
-                               .arg(actualCall_->formattedName()));
-    ui->callerPhoto->setPixmap(
-                QPixmap::fromImage(
-                    GlobalInstances::pixmapManipulator()
-                    .callPhoto(actualCall_, QSize(128, 128)).value<QImage>()));
-    ui->callerBestIdLabel->setText(actualCall_->peerContactMethod()->bestId());
-
-    if(actualCall_->state() == Call::State::OVER || actualCall_->state() == Call::State::FAILURE){
-        ui->outboundCallLabel->setText(actualCall_->toHumanStateName(Call::State::INITIALIZATION));
-    } else {
-        ui->outboundCallLabel->setText(actualCall_->toHumanStateName());
-    }
-}
-
-void
-CallWidget::callIncoming(Call* call)
-{
-    if (!QApplication::focusWidget()) {
-        GlobalSystemTray::instance()
-                .showMessage("Ring",
-                             QString(tr("Call incoming from %1")).arg(call->formattedName()));
-        QApplication::alert(this, 5000);
-    }
-
-    setActualCall(call);
+    Q_UNUSED(index);
 }
 
 void
 CallWidget::on_acceptButton_clicked()
 {
-    if (actualCall_ != nullptr)
-        actualCall_->performAction(Call::Action::ACCEPT);
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid(), *convModel);
+    callModel->accept(conversation->callId);
 }
 
 void
 CallWidget::on_refuseButton_clicked()
 {
-    if (actualCall_ == nullptr)
-        return;
-    actualCall_->performAction(Call::Action::REFUSE);
-    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    setActualCall(nullptr);
-}
-
-void
-CallWidget::callStateChanged(Call* call, Call::State previousState)
-{
-    Q_UNUSED(previousState)
-    if (call == nullptr
-            || call != actualCall_)
-        return;
-
-    callStateToView(call);
-
-    if (call->state() == Call::State::OVER) {
-        setActualCall(nullptr);
-        ui->smartList->clearSelection();
-        RecentModel::instance().selectionModel()->clear();
-    }
-}
-
-void
-CallWidget::atExit()
-{
-}
-
-void
-CallWidget::callStateToView(Call* value)
-{
-    if (value) {
-        switch (value->state()) {
-        case Call::State::INCOMING:
-            if (not value->account()->isAutoAnswer())
-                ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
-            else
-                ui->stackedWidget->setCurrentWidget(ui->videoPage);
-            break;
-        case Call::State::CURRENT:
-        case Call::State::CONFERENCE:
-        case Call::State::HOLD:
-            ui->stackedWidget->setCurrentWidget(ui->videoPage);
-            hideMiniSpinner();
-            break;
-        case Call::State::OVER:
-            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-            break;
-        case Call::State::FAILURE:
-        case Call::State::ERROR:
-            on_cancelButton_clicked();
-            hideMiniSpinner();
-            break;
-        case Call::State::INITIALIZATION:
-        case Call::State::CONNECTED:
-        case Call::State::RINGING:
-            miniSpinner_->start();
-            ui->spinnerLabel->show();
-            ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
-            break;
-        default:
-            qWarning() << "Call state not handled doing nothing : "
-                       << value->toHumanStateName();
-            break;
-        }
-    }
-}
-
-void
-CallWidget::setActualCall(Call* value)
-{
-    actualCall_ = value;
-    CallModel::instance().selectCall(value);
-    ui->videoWidget->pushRenderer(value);
-    ui->instantMessagingWidget->setMediaText(actualCall_);
-    callStateToView(value);
-    if (actualCall_) {
-        callChangedConnection_ = connect(actualCall_,
-                                         SIGNAL(changed()),
-                                         this,
-                                         SLOT(callChangedSlot()));
-    } else
-        disconnect(callChangedConnection_);
-
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid(), *convModel);
+    LRCInstance::getCurrentCallModel()->hangUp(conversation->callId);
+    showConversationView();
 }
 
 void
 CallWidget::on_cancelButton_clicked()
 {
-    if (actualCall_){
-        actualCall_->performAction(Call::Action::REFUSE);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    }
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(selectedConvUid(), *convModel);
+    LRCInstance::getCurrentCallModel()->hangUp(conversation->callId);
+    showConversationView();
 }
 
 void
-CallWidget::on_smartList_clicked(const QModelIndex& index)
+CallWidget::showConversationView()
 {
-    RecentModel::instance().selectionModel()->setCurrentIndex(
-                RecentModel::instance().peopleProxy()->mapToSource(index),
-                QItemSelectionModel::ClearAndSelect);
+    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
+    ui->imMessageEdit->clear();
+    ui->imMessageEdit->setFocus();
+    disconnect(imClickedConnection_);
+    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
+        auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
+        if (urlList.size() == 1) {
+            QDesktopServices::openUrl(urlList.at(0));
+        } else if (urlList.size()) {
+            //TODO Handle multiple url in one message
+        }
+    });
+}
+
+void
+CallWidget::selectSmartlistItem(const std::string & convUid)
+{
+    if (convUid.empty()) {
+        return;
+    }
+    ui->smartList->selectionModel()->setCurrentIndex(QModelIndex(), QItemSelectionModel::Deselect);
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+    if (conversation == convModel->allFilteredConversations().end()) {
+        return;
+    }
+    auto contactURI = QString::fromStdString((*conversation).participants[0]);
+    if (contactURI.isEmpty() ||
+        convModel->owner.contactModel->getContact(contactURI.toStdString()).profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
+        return;
+    }
+    for (int row = 0; row < smartListModel_->rowCount(); row++) {
+        QModelIndex index = smartListModel_->index(row);
+        auto indexContactURI = index.data(SmartListModel::Role::URI).value<QString>();
+        if (indexContactURI == contactURI) {
+            ui->smartList->selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+            return;
+        }
+    }
 }
 
 void
@@ -569,62 +433,46 @@ CallWidget::on_smartList_doubleClicked(const QModelIndex& index)
     if (!index.isValid())
         return;
 
-    auto realIndex = RecentModel::instance().peopleProxy()->mapToSource(index);
-    if (RecentModel::instance().hasActiveCall(realIndex))
-        return;
+    LRCInstance::getCurrentConversationModel()->placeCall(selectedConvUid());
 
-    ContactMethod* m = nullptr;
-    if (auto cm = realIndex.data((int)Call::Role::ContactMethod).value<ContactMethod*>()) {
-        m = cm;
-    } else {
-        if (auto person =  realIndex.data((int)Person::Role::Object).value<Person*>()) {
-            m = person->phoneNumbers().first();
-        }
-    }
+    ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(selectedConvUid())));
+}
 
-    if (m && !RecentModel::instance().index(0, 0, realIndex).isValid()) {
+QImage
+CallWidget::imageForConv(const std::string& convUid)
+{
+    return Utils::conversationPhoto(convUid, LRCInstance::getCurrentAccountInfo());
+}
 
-        QPixmap map = QPixmap::fromImage(
-                        GlobalInstances::pixmapManipulator().callPhoto(m, QSize(130,130)).value<QImage>());
-        ui->callingPhoto->setPixmap(map);
+const std::string&
+CallWidget::selectedAccountId()
+{
+    return LRCInstance::getSelectedAccountId();
+}
 
-        Call* c = CallModel::instance().dialingCall(m);
-        c->performAction(Call::Action::ACCEPT);
-        setActualCall(c);
-    }
+const std::string&
+CallWidget::selectedConvUid()
+{
+    return LRCInstance::getSelectedConvUid();
 }
 
 void
-CallWidget::smartListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
+CallWidget::smartListSelectionChanged(const QItemSelection  &selected, const QItemSelection  &deselected)
 {
-    Q_UNUSED(previousIdx);
-    if (not currentIdx.isValid()) {
-        auto widget = ui->stackedWidget->currentWidget();
-        if (widget == ui->messagingPage || widget == ui->videoPage)
-            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
-        if(actualCall_)
-            setActualCall(nullptr);
+    Q_UNUSED(deselected);
+    QModelIndexList indices = selected.indexes();
+
+    if (indices.isEmpty()) {
         return;
     }
 
-    //catch call of current index
-    auto currentIdxCall = RecentModel::instance().getActiveCall(currentIdx);
+    auto selectedIndex = indices.at(0);
 
-    if (currentIdxCall) {
-        if (currentIdxCall != actualCall_) //if it is different from actual call, switch between the two
-            setActualCall(currentIdxCall);
-    } else { // if there is no call attached to this smartlist index (contact tab)
-        setActualCall(nullptr);
-        showIMOutOfCall(currentIdx); // change page to contact request of messaging page with correct behaviour
+    if (not selectedIndex.isValid()) {
+        return;
     }
-    /*
-    else { // if non defined behaviour disconnect instant messaging and return to welcome page
-        setActualCall(nullptr);
-        if (imConnection_)
-            disconnect(imConnection_);
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    }
-    */
+
+    selectConversation(selectedIndex);
 }
 
 void
@@ -638,7 +486,7 @@ CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QM
     } else {
         ui->contactRequestWidget->setCurrentContactRequest(QModelIndex());
         if (ui->stackedWidget->currentWidget() == ui->contactRequestPage)
-            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
+            Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
     }
 }
 
@@ -657,144 +505,219 @@ CallWidget::placeCall()
 }
 
 void
+CallWidget::conversationsButtonClicked()
+{
+    setConversationFilter(lrc::api::profile::Type::RING);
+}
+
+void
+CallWidget::invitationsButtonClicked()
+{
+    setConversationFilter(lrc::api::profile::Type::PENDING);
+}
+
+void
 CallWidget::settingsButtonClicked()
 {
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
 void
-CallWidget::searchContactLineEditEntry(const URI &uri)
-{
-    auto cm = PhoneDirectoryModel::instance().getNumber(uri, getSelectedAccount());
-    // if its a new CM, bring it to the top
-    if (cm->lastUsed() == 0)
-        cm->setLastUsed(QDateTime::currentDateTime().toTime_t());
-
-    // select cm
-    RecentModel::instance().selectionModel()->setCurrentIndex(RecentModel::instance().getIndex(cm),
-                                                              QItemSelectionModel::ClearAndSelect);
-    ui->ringContactLineEdit->clear();
-    cm->setAccount(AvailableAccountModel::instance().currentDefaultAccount(cm));
-}
-
-bool
-CallWidget::uriNeedNameLookup(const URI uri_passed)
-{
-    if (uri_passed.protocolHint() == URI::ProtocolHint::RING_USERNAME ) {
-        return TRUE;
-    } else if (
-        uri_passed.protocolHint() != URI::ProtocolHint::RING && // not a RingID
-        uri_passed.schemeType() == URI::SchemeType::NONE // scheme type not specified
-    ){
-        // if no scheme type has been specified, determine ring vs sip by the current selected account
-        auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
-        if (idx.isValid()) {
-            auto account = idx.data((int)Ring::Role::Object).value<Account *>();
-            if (account && account->protocol() == Account::Protocol::RING)
-                return TRUE;
-        }
-    }
-
-    return FALSE;
-}
-
-void
 CallWidget::processContactLineEdit()
 {
     auto contactLineText = ui->ringContactLineEdit->text();
-    URI uri_passed = URI(contactLineText);
-    Account* ac = getSelectedAccount();
-
-    if (!contactLineText.isNull() && !contactLineText.isEmpty()){
-        if (uriNeedNameLookup(uri_passed)){
-            NameDirectory::instance().lookupName(ac, QString(), uri_passed);
-        } else {
-            searchContactLineEditEntry(uri_passed);
-        }
-    }
+    setConversationFilter(contactLineText);
 }
 
 void
 CallWidget::on_ringContactLineEdit_returnPressed()
 {
-    processContactLineEdit();
+    // select current temporary item and show conversation
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversations = convModel->allFilteredConversations();
+    auto contactIsValid = Utils::isContactValid(conversations.at(0).participants.at(0), *convModel);
+    if (!conversations.empty() && contactIsValid) {
+        selectConversation(smartListModel_->index(0));
+    }
 }
 
-void
-CallWidget::searchBtnClicked()
+void CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
 {
-    processContactLineEdit();
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
+    LRCInstance::getCurrentConversationModel()->makePermanent(convUid.toStdString());
 }
 
-void
-CallWidget::btnComBarVideoClicked()
+void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
 {
-    if (not highLightedIndex_.isValid())
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), true);
+}
+
+void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
+{
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString());
+}
+
+void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
+{
+    setupSmartListContextMenu(pos);
+}
+
+void CallWidget::slotShowCallView(const std::string& accountId,
+                                  const lrc::api::conversation::Info& convInfo)
+{
+    Q_UNUSED(accountId);
+    Q_UNUSED(convInfo);
+    qDebug() << "BehaviorController::showCallView";
+    ui->stackedWidget->setCurrentWidget(ui->videoPage);
+    hideMiniSpinner();
+}
+
+void CallWidget::slotShowIncomingCallView(const std::string& accountId,
+                                          const lrc::api::conversation::Info& convInfo) {
+    Q_UNUSED(accountId);
+    qDebug() << "BehaviorController::showIncomingCallView";
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto call = callModel->getCall(convInfo.callId);
+    if (call.isOutgoing) {
+        miniSpinner_->start();
+        ui->spinnerLabel->show();
+        ui->stackedWidget->setCurrentWidget(ui->outboundCallPage);
+    }
+    else {
+        selectSmartlistItem(convInfo.uid);
+        auto selectedAccountId = LRCInstance::getCurrentAccountInfo().id;
+        auto accountProperties = LRCInstance::accountModel().getAccountConfig(selectedAccountId);
+        if (!accountProperties.autoAnswer) {
+            ui->stackedWidget->setCurrentWidget(ui->callInvitePage);
+        }
+        else {
+            ui->stackedWidget->setCurrentWidget(ui->videoPage);
+        }
+        if (!QApplication::focusWidget()) {
+            auto formattedName = Utils::bestNameForConversation(convInfo, *LRCInstance::getCurrentConversationModel());
+            Utils::showSystemNotification(this,
+                QString(tr("Call incoming from %1")).arg(QString::fromStdString(formattedName)));
+        }
+    }
+
+    if (!callModel->hasCall(convInfo.callId)) {
         return;
+    }
 
-    on_smartList_doubleClicked(highLightedIndex_);
+    ui->videoWidget->pushRenderer(convInfo.callId);
+    // TODO:(new lrc) in call chat
+    //ui->instantMessagingWidget->setMediaText(actualCall_);
+
+    disconnect(selectedCallChanged_);
+    selectedCallChanged_ = connect(
+        callModel,
+        &lrc::api::NewCallModel::callStatusChanged,
+        [this, callModel](const std::string& callUid) {
+            auto call = callModel->getCall(callUid);
+            qDebug() << "NewCallModel::callStatusChanged: " << static_cast<int>(call.status);
+        }
+    );
+
+    ui->callerPhoto->setPixmap(QPixmap::fromImage(imageForConv(selectedConvUid())));
+}
+
+void CallWidget::slotShowChatView(const std::string& accountId,
+                      const lrc::api::conversation::Info& convInfo) {
+    Q_UNUSED(accountId);
+    Q_UNUSED(convInfo);
+    qDebug() << "BehaviorController::showChatView";
+    showConversationView();
 }
 
 void
-CallWidget::selectedAccountChanged(const QModelIndex &current, const QModelIndex &previous)
+CallWidget::currentAccountChanged(const QModelIndex &current)
 {
-    Q_UNUSED(previous)
-
-    if (current.isValid()) {
-        if (ui->selectBar->isHidden()){
-            ui->selectBar->show();
-        }
-        auto ac = current.data(static_cast<int>(Account::Role::Object)).value<Account*>();
-
-        // First, we get back to the welcome view (except if in call)
-
-        if (ui->stackedWidget->currentWidget() != ui->videoPage &&
-            ui->stackedWidget->currentWidget() != ui->welcomePage) {
-            Utils::slidePage(ui->stackedWidget, ui->welcomePage);
-        }
-
-        // We setup the ringIdLabel and the QRCode
-        auto protocol = ac->protocol();
-        if (protocol == Account::Protocol::RING) {
-            ui->ringIdLabel->setText((ac->registeredName().isEmpty())?ac->username():ac->registeredName());
-            setupQRCode(ac->username());
-        } else {
-            ui->ringIdLabel->setText(tr("NO RING ACCOUNT FOUND"));
-        }
-
-        // Then, we update the pending CR list with those from the newly selected account
-        if (disconnect(crListSelectionConnection_)) {
-            ui->contactRequestList->selectionModel()->clear();
-            // The selection model must be deleted by the application (see QT doc).
-            QItemSelectionModel* sMod = ui->contactRequestList->selectionModel();
-            delete sMod;
-            RecentModel::instance().selectionModel()->clear();
-        }
-
-        ui->contactRequestList->setItemModel(ac->pendingContactRequestModel());
-
-        // We modify the currentAccountWidget to reflect the new selected account
-        // if the event wasn't triggered by this widget
-        ui->currentAccountWidget->changeSelectedIndex(current.row());
-
-        if (actualCall_){
-            // keep call on foreground
-            callStateToView(actualCall_);
-        }
-    } else {
+    if (!current.isValid()) {
         ui->selectBar->hide();
         ui->ringIdLabel->setText("");
+        return;
     }
+    if (ui->selectBar->isHidden()){
+        ui->selectBar->show();
+    }
+
+    auto accountId = current.data(static_cast<int>(AccountListModel::Role::ID)).value<QString>().toStdString();
+
+    setSelectedAccount(accountId);
+}
+
+void
+CallWidget::setSelectedAccount(const std::string& accountId)
+{
+    LRCInstance::setSelectedAccountId(accountId);
+
+    // First, we get back to the welcome view (except if in call)
+    if (ui->stackedWidget->currentWidget() != ui->videoPage &&
+        ui->stackedWidget->currentWidget() != ui->welcomePage) {
+        Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
+    }
+
+    // We setup the ringIdLabel and the QRCode
+    auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+    auto id = accountInfo.registeredName.empty() ? accountInfo.profileInfo.uri : accountInfo.registeredName;
+    auto isRingAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
+    if (isRingAccount) {
+        ui->ringIdLabel->setText(QString::fromStdString(id));
+        setupQRCode(QString::fromStdString(accountInfo.profileInfo.uri));
+    }
+
+    updateSmartList();
+    currentTypeFilter_ = accountInfo.profileInfo.type;
+    LRCInstance::getCurrentConversationModel()->setFilter(accountInfo.profileInfo.type);
+    updateConversationsFilterWidget();
+    connectConversationModel();
+}
+
+void CallWidget::setConversationFilter(lrc::api::profile::Type filter)
+{
+    if (currentTypeFilter_ == filter) {
+        return;
+    }
+    currentTypeFilter_ = filter;
+    LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
+}
+
+void CallWidget::updateConversationsFilterWidget()
+{
+    auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
+    if (invites == 0 && currentTypeFilter_ == lrc::api::profile::Type::PENDING) {
+        currentTypeFilter_ = lrc::api::profile::Type::RING;
+        LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
+    }
+    ui->conversationsFilterWidget->setVisible(invites);
+    ui->verticalSpacer_3->changeSize(0, 10 * (1 - static_cast<bool>(invites)));
+}
+
+void CallWidget::setConversationFilter(const QString & filter)
+{
+    LRCInstance::getCurrentConversationModel()->setFilter(filter.toStdString());
 }
 
 void
 CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 {
-    ui->contactMethodComboBox->clear();
-    QString name = nodeIdx.data(static_cast<int>(Ring::Role::Name)).toString();
-    QString number = nodeIdx.data(static_cast<int>(Ring::Role::Number)).toString();
+    QString displayName = nodeIdx.data(static_cast<int>(SmartListModel::Role::DisplayName)).toString();
+    QString displayId = nodeIdx.data(static_cast<int>(SmartListModel::Role::DisplayID)).toString();
+    QString contactURI = nodeIdx.data(static_cast<int>(SmartListModel::Role::URI)).toString();
 
-    if (getSelectedAccount()->isIp2ip()){
+    bool isContact = false;
+    auto selectedAccountId = LRCInstance::getSelectedAccountId();
+    auto& accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
+    bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
+    try {
+        accountInfo.contactModel->getContact(contactURI.toStdString());
+        isContact = true;
+    }
+    catch (...) {}
+
+    if (!isRINGAccount){
         ui->imMessageEdit->setPlaceholderText("No messaging possible out of call (SIP) ");
         ui->imMessageEdit->setEnabled(false);
         ui->sendIMButton->hide();
@@ -805,58 +728,38 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     }
 
     ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
-                                     .arg(name));
+                                    .arg(displayName));
 
-    if ( !getSelectedAccount()->isIp2ip() && name != number ){
+    if (isRINGAccount && displayName != displayId){
         ui->imIdLabel->show();
         ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
-                                   .arg(number));
+                                    .arg(displayId));
     } else {
         ui->imIdLabel->hide();
     }
 
-    auto cmVector = RecentModel::instance().getContactMethods(nodeIdx);
-    ui->contactMethodComboBox->setVisible(cmVector.size() > 1);
-    foreach (const ContactMethod* cm, cmVector) {
-        ui->contactMethodComboBox->addItem(cm->bestId());
-    }
+    bool shouldShowSendContactRequestBtn = !isContact && isRINGAccount;
+    ui->sendContactRequestPageButton->setVisible(shouldShowSendContactRequestBtn);
 
-    ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cmVector[0]));
+    showConversationView();
 
-    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
-    ui->imMessageEdit->clear();
-    ui->imMessageEdit->setFocus();
-    disconnect(imClickedConnection_);
-    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
-        auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
-        if (urlList.size() == 1)
-            QDesktopServices::openUrl(urlList.at(0));
-        else if (urlList.size()) {
-            //TODO Handle multiple url in one message
-        }
-    });
+    auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
+                                                             *LRCInstance::getCurrentConversationModel());
+    messageModel_.reset(new MessageModel(*currentConversation, accountInfo, this->parent()));
+    ui->listMessageView->setModel(messageModel_.get());
+    ui->listMessageView->scrollToBottom();
 }
 
 void
 CallWidget::on_sendIMButton_clicked()
 {
-    if (ui->imMessageEdit->text().trimmed().isEmpty())
-        return;
-
-    auto idx = RecentModel::instance().selectionModel()->currentIndex();
-    auto cmVec = RecentModel::instance().getContactMethods(idx);
-    if (cmVec.size() > 0) {
-            auto cm = cmVec[0];
-            if(!cm) {
-                qWarning() << "Contact Method not found";
-                return;
-            }
-            QMap<QString, QString> msg;
-            msg["text/plain"] = ui->imMessageEdit->text();
-            cm->sendOfflineTextMessage(msg);
-            ui->imMessageEdit->clear();
-    } else {
-        qWarning() << "No contact method found for messaging";
+    auto msg = ui->imMessageEdit->text();
+    if (msg.trimmed().isEmpty()) return;
+    ui->imMessageEdit->clear();
+    try {
+        LRCInstance::getCurrentConversationModel()->sendMessage(selectedConvUid(), msg.toStdString());
+    } catch (...) {
+        qDebug() << "exception when sending message";
     }
 }
 
@@ -864,48 +767,6 @@ void
 CallWidget::on_imMessageEdit_returnPressed()
 {
     on_sendIMButton_clicked();
-}
-
-void CallWidget::on_contactMethodComboBox_currentIndexChanged(int index)
-{
-    auto idx = RecentModel::instance().selectionModel()->currentIndex();
-    auto cmVec = RecentModel::instance().getContactMethods(idx);
-    ContactMethod* cm {};
-
-    if (index < cmVec.size() && index >= 0 ){
-        cm = cmVec[index];
-    }
-
-    if (cm){
-        ui->sendContactRequestPageButton->setVisible(shouldDisplayInviteButton(*cm));
-        if (auto txtRecording = cm->textRecording()) {
-            ui->listMessageView->setModel(txtRecording->instantMessagingModel());
-            if (imConnection_)
-                disconnect(imConnection_);
-            imConnection_ = connect(txtRecording,
-                                    SIGNAL(messageInserted(QMap<QString,QString>,ContactMethod*,media::Media::Direction)),
-                                    this,
-                                    SLOT(slotAccountMessageReceived(QMap<QString,QString>,ContactMethod*,media::Media::Direction)));
-            auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
-            if (messagesPresent) {
-                ui->listMessageView->scrollToBottom();
-                txtRecording->setAllRead();
-            }
-            ui->listMessageView->setVisible(messagesPresent);
-            ui->noMessagesLabel->setVisible(!messagesPresent);
-            if (not messagesPresent) {
-                imVisibleConnection_ = connect(txtRecording->instantMessagingModel(),
-                                               &QAbstractItemModel::rowsInserted,
-                                               [this, txtRecording]() {
-                    if (imVisibleConnection_)
-                        disconnect(imVisibleConnection_);
-                    auto messagesPresent = txtRecording->instantMessagingModel()->rowCount() > 0;
-                    ui->listMessageView->setVisible(messagesPresent);
-                    ui->noMessagesLabel->setVisible(!messagesPresent);
-                });
-            }
-        }
-    }
 }
 
 void
@@ -923,17 +784,19 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
 void
 CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 {
-    RecentModel::instance().peopleProxy()->setFilterRegExp(QRegExp(text, Qt::CaseInsensitive, QRegExp::FixedString));
+    Q_UNUSED(text);
+    processContactLineEdit();
 }
 
 void
 CallWidget::backToWelcomePage()
 {
-    RecentModel::instance().selectionModel()->clear();
-    disconnect(imConnection_);
+    deselectConversation();
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
-void CallWidget::hideMiniSpinner()
+void
+CallWidget::hideMiniSpinner()
 {
     if(ui->spinnerLabel->isVisible()){
         miniSpinner_->stop();
@@ -960,50 +823,9 @@ CallWidget::on_shareButton_clicked()
 }
 
 void
-CallWidget::contactLineEdit_registeredNameFound(Account* account,NameDirectory::LookupStatus status,
-                                                const QString& address,const QString& name)
-{
-    URI uri = URI(ui->ringContactLineEdit->text());
-    QString username_to_lookup = uri.userinfo();
-
-    if (username_to_lookup.compare(name) != 0){
-        return;
-    }
-
-    switch (status)
-    {
-        case NameDirectory::LookupStatus::SUCCESS:
-        {
-            uri = URI("ring:" + address);
-            qDebug() << "contactLineEdit username to search: " << username_to_lookup;
-            qDebug() << uri;
-            searchContactLineEditEntry(uri);
-            auto cm = PhoneDirectoryModel::instance().getNumber(uri);
-            cm->setAccount(account);
-            break;
-        }
-        case NameDirectory::LookupStatus::INVALID_NAME:
-        {
-           qDebug() << "Invalid Ring username";
-           break;
-        }
-        case NameDirectory::LookupStatus::ERROR:
-        case NameDirectory::LookupStatus::NOT_FOUND:
-        default:
-        {
-            qDebug() << "Could not resolve Ring username";
-            break;
-        }
-    }
-}
-
-void
 CallWidget::on_sendContactRequestPageButton_clicked()
 {
-    ui->sendContactRequestWidget->sendCR(RecentModel::instance().selectionModel()->currentIndex());
-        // temporarly changed comportment waiting for message in payload implementation
-        /*ui->sendContactRequestWidget->setup(RecentModel::instance().selectionModel()->currentIndex());
-        slidePage(ui->sendContactRequestPage);*/
+    LRCInstance::getCurrentConversationModel()->makePermanent(selectedConvUid());
 }
 
 void
@@ -1015,42 +837,223 @@ CallWidget::on_sendCRBackButton_clicked()
 void
 CallWidget::on_pendingCRBackButton_clicked()
 {
-    ui->contactRequestList->selectionModel()->clear();
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
-Account*
-CallWidget::getSelectedAccount()
+bool
+CallWidget::connectConversationModel()
 {
-    auto idx = AvailableAccountModel::instance().selectionModel()->currentIndex();
-    if (idx.isValid()) {
-        auto ac = idx.data(static_cast<int>(Ring::Role::Object)).value<Account*>();
-        return ac;
+    auto currentConversationModel = LRCInstance::getCurrentAccountInfo().conversationModel.get();
+
+    if (ui->smartList->selectionModel()) {
+        ui->smartList->selectionModel()->setCurrentIndex(QModelIndex(), QItemSelectionModel::Deselect);
     }
-    return nullptr;
+
+    QObject::disconnect(modelSortedConnection_);
+    QObject::disconnect(modelUpdatedConnection_);
+    QObject::disconnect(filterChangedConnection_);
+    QObject::disconnect(newConversationConnection_);
+    QObject::disconnect(conversationRemovedConnection_);
+    QObject::disconnect(conversationClearedConnection);
+    QObject::disconnect(interactionStatusUpdatedConnection_);
+    QObject::disconnect(newInteractionConnection_);
+
+    modelSortedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::modelSorted,
+        [this]() {
+            updateConversationsFilterWidget();
+            selectSmartlistItem(selectedConvUid());
+            ui->smartList->update();
+        }
+    );
+    modelUpdatedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::conversationUpdated,
+        [this](const std::string& convUid) {
+            Q_UNUSED(convUid);
+            ui->smartList->update();
+        }
+    );
+    filterChangedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::filterChanged,
+        [this]() {
+            updateSmartList();
+            updateConversationsFilterWidget();
+            ui->smartList->update();
+        }
+    );
+    newConversationConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::newConversation,
+        [this](const std::string& convUid) {
+            updateSmartList();
+            updateConversationForNewContact(convUid);
+            ui->conversationsFilterWidget->update();
+        }
+    );
+    conversationRemovedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::conversationRemoved,
+        [this]() {
+            backToWelcomePage();
+        }
+    );
+    conversationClearedConnection = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::conversationCleared,
+        [this](const std::string& convUid) {
+            updateConversationView(convUid);
+            // if currently selected,
+            // switch to welcome screen (deselecting current smartlist item )
+            if (convUid != selectedConvUid()) {
+                return;
+            }
+            backToWelcomePage();
+        }
+    );
+    interactionStatusUpdatedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::interactionStatusUpdated,
+        [this](const std::string& convUid) {
+            if (convUid != selectedConvUid()) {
+                return;
+            }
+            updateConversationView(convUid);
+        }
+    );
+    newInteractionConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::newInteraction,
+        [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
+            onIncomingMessage(convUid, interactionId, interaction);
+        }
+    );
+    currentConversationModel->setFilter("");
+    // clear search field
+    ui->ringContactLineEdit->setText("");
+    return true;
+}
+
+void
+CallWidget::updateConversationView(const std::string& convUid)
+{
+    if (convUid != selectedConvUid()) {
+        return;
+    }
+
+    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
+    auto currentConversationModel = currentAccountInfo.conversationModel.get();
+    currentConversationModel->clearUnreadInteractions(convUid);
+    ui->conversationsFilterWidget->update();
+    auto currentConversation = Utils::getConversationFromUid(convUid,
+                                                             *currentConversationModel);
+    if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
+        return;
+    }
+    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
+    ui->listMessageView->setModel(messageModel_.get());
+    ui->listMessageView->scrollToBottom();
+}
+
+void
+CallWidget::selectConversation(const QModelIndex& index)
+{
+    auto currentConversationModel = LRCInstance::getCurrentConversationModel();
+
+    if (currentConversationModel == nullptr || !index.isValid()) {
+        return;
+    }
+
+    const auto item = currentConversationModel->filteredConversation(index.row());
+
+    if (selectConversation(item, *currentConversationModel)) {
+        auto convUid = selectedConvUid();
+        if (!lastConvUid_.compare(convUid)) {
+            return;
+        }
+        lastConvUid_.assign(convUid);
+        auto currentConversationModel = LRCInstance::getCurrentConversationModel();
+        auto callModel = LRCInstance::getCurrentCallModel();
+        auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
+        const auto item = currentConversationModel->filteredConversation(index.row());
+        if (callModel->hasCall(conversation->callId)) {
+            ui->stackedWidget->setCurrentWidget(ui->videoPage);
+        }
+        else {
+            showIMOutOfCall(index);
+        }
+    }
 }
 
 bool
-CallWidget::shouldDisplayInviteButton(ContactMethod &cm)
+CallWidget::selectConversation( const lrc::api::conversation::Info& item,
+                                lrc::api::ConversationModel& convModel)
 {
-    // Displaying the button for a SIP ContactMethod is a nonsense
-    if (cm.protocolHint() == URI::ProtocolHint::RING) {
-        // If we know that the other accepted us
-        if (cm.isConfirmed())
-            return false;
-
-        // If not sure, we still check if the contact method is linked to a
-        // Ring account or if the selected account is a RING one.
-        if(auto linkedAccount = cm.account())
-            return linkedAccount->protocol() == Account::Protocol::RING;
-        else if (auto acc = getSelectedAccount())
-            return acc->protocol() == Account::Protocol::RING;
+    if (selectedConvUid() == item.uid) {
+        return false;
+    } else if (item.participants.size() > 0) {
+        convModel.selectConversation(item.uid);
+        LRCInstance::setSelectedConvId(item.uid);
+        convModel.clearUnreadInteractions(item.uid);
+        ui->conversationsFilterWidget->update();
+        return true;
     }
-    return false;
 }
 
-void CallWidget::on_contactRequestList_clicked(const QModelIndex &index)
+void
+CallWidget::deselectConversation()
 {
-    RecentModel::instance().selectionModel()->clear();
-    contactReqListCurrentChanged(index, QModelIndex());
+    auto currentConversationModel = LRCInstance::getCurrentConversationModel();
+
+    if (currentConversationModel == nullptr) {
+        return;
+    }
+
+    currentConversationModel->selectConversation("");
+    LRCInstance::setSelectedConvId("");
+
+    ui->smartList->selectionModel()->clear();
+    disconnect(imConnection_);
+}
+
+void
+CallWidget::updateConversationForNewContact(const std::string& convUid)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    if (convModel == nullptr) {
+        return;
+    }
+    ui->ringContactLineEdit->setText("");
+    auto selectedUid = selectedConvUid();
+    auto it = Utils::getConversationFromUid(convUid, *convModel);
+    if (it != convModel->allFilteredConversations().end()) {
+        try {
+            auto contact = convModel->owner.contactModel->getContact(it->participants[0]);
+            if (!contact.profileInfo.uri.empty() && contact.profileInfo.uri.compare(selectedUid) == 0) {
+                LRCInstance::setSelectedConvId(convUid);
+                convModel->selectConversation(convUid);
+            }
+        } catch (...) {
+            return;
+        }
+    }
+}
+
+void
+CallWidget::updateSmartList()
+{
+    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
+    smartListModel_.reset(new SmartListModel(currentAccountInfo, this->parent()));
+    ui->smartList->setModel(smartListModel_.get());
+    ui->smartList->setItemDelegate(new ConversationItemDelegate());
+
+    // smartlist selection
+    QObject::disconnect(smartlistSelectionConnection_);
+    smartlistSelectionConnection_ = connect(ui->smartList->selectionModel(),
+        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+        this,
+        SLOT(smartListSelectionChanged(QItemSelection, QItemSelection)));
+}
+
+void
+CallWidget::update()
+{
+    ui->currentAccountWidget->update();
+    updateSmartList();
+    updateConversationsFilterWidget();
+    connectConversationModel();
 }

@@ -29,7 +29,6 @@
 #include "pixbufmanipulator.h"
 #include "lrcinstance.h"
 
-#include <QThread>
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QFontDatabase>

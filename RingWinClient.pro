@@ -41,7 +41,7 @@ isEmpty(QMAKE_LRELEASE) {
 }
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     callwidget.cpp \
     configurationwidget.cpp \
     navwidget.cpp \
@@ -59,13 +59,11 @@ SOURCES += main.cpp\
     videooverlay.cpp \
     imdelegate.cpp \
     contactpicker.cpp \
-    contactmethodpicker.cpp \
     globalsystemtray.cpp \
-    smartlistdelegate.cpp \
+    conversationitemdelegate.cpp \
+    conversationsfilterwidget.cpp \
     callutilsdialog.cpp \
-    combar.cpp \
     idlabel.cpp \
-    smartlist.cpp \
     ringcontactlineedit.cpp \
     pixbufmanipulator.cpp \
     qualitydialog.cpp \
@@ -74,13 +72,16 @@ SOURCES += main.cpp\
     sendcontactrequestwidget.cpp \
     currentaccountwidget.cpp \
     contactrequestwidget.cpp \
-    contactrequestitemdelegate.cpp \
-    quickactcontactrequestwidget.cpp \
-    contactrequestlistwidget.cpp \
+    smartlistselectorbuttonnotifier.cpp \
     deleteaccountdialog.cpp \
     bannedcontactswidget.cpp \
     photoboothwidget.cpp \
-    deletecontactdialog.cpp
+    smartlistmodel.cpp \
+    smartlistview.cpp \
+    accountitemdelegate.cpp \
+    accountlistmodel.cpp \
+    messagemodel.cpp \
+    invitebuttonswidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -100,14 +101,12 @@ HEADERS  += mainwindow.h \
     videooverlay.h \
     imdelegate.h \
     contactpicker.h \
-    contactmethodpicker.h \
     settingskey.h \
     globalsystemtray.h \
-    smartlistdelegate.h \
+    conversationitemdelegate.h \
+    conversationsfilterwidget.h \
     callutilsdialog.h \
-    combar.h \
     idlabel.h \
-    smartlist.h \
     ringcontactlineedit.h \
     pixbufmanipulator.h \
     qualitydialog.h \
@@ -117,14 +116,17 @@ HEADERS  += mainwindow.h \
     sendcontactrequestwidget.h \
     currentaccountwidget.h \
     contactrequestwidget.h \
-    contactrequestitemdelegate.h \
-    quickactcontactrequestwidget.h \
-    contactrequestlistwidget.h \
+    smartlistselectorbuttonnotifier.h \
     deleteaccountdialog.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
-    deletecontactdialog.h \
-    lrcinstance.h
+    lrcinstance.h \
+    smartlistmodel.h \
+    smartlistview.h \
+    accountitemdelegate.h \
+    accountlistmodel.h \
+    messagemodel.h \
+    invitebuttonswidget.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -141,20 +143,17 @@ FORMS    += mainwindow.ui \
     videoview.ui \
     videooverlay.ui \
     contactpicker.ui \
-    contactmethodpicker.ui \
     callutilsdialog.ui \
-    combar.ui \
     qualitydialog.ui \
     ringbutton.ui \
     photoboothdialog.ui \
     sendcontactrequestwidget.ui \
     currentaccountwidget.ui \
     contactrequestwidget.ui \
-    quickactcontactrequestwidget.ui \
     deleteaccountdialog.ui \
     bannedcontactswidget.ui \
     photoboothwidget.ui \
-    deletecontactdialog.ui
+    invitebuttonswidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi -lgdi32
 LIBS += -lqrencode
@@ -193,6 +192,7 @@ TRANSLATIONS = \
     translations/ring_client_windows_nl.ts \
     translations/ring_client_windows_it_IT.ts \
     translations/ring_client_windows_bg.ts \
+    translations/ring_client_windows_pt_PT.ts \
     translations/ring_client_windows_id.ts \
     translations/ring_client_windows_en_GB.ts \
     translations/ring_client_windows_pl_PL.ts \
