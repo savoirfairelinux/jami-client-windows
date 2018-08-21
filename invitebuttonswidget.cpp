@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,35 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#ifndef DELETECONTACTDIALOG_H
-#define DELETECONTACTDIALOG_H
+#include "ui_invitebuttonswidget.h"
 
-#include <QDialog>
+#include "invitebuttonswidget.h"
 
-// LRC
-#include "contactmethod.h"
+InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::InviteButtonsWidget)
+{
+    ui->setupUi(this);
+    connect(ui->btnAcceptInvite, &QPushButton::clicked, this,
+        [=]() {
+            emit btnAcceptInviteClicked();
+        });
+    connect(ui->btnIgnoreInvite, &QPushButton::clicked, this,
+        [=]() {
+            emit btnIgnoreInviteClicked();
+        });
+    connect(ui->btnBlockInvite, &QPushButton::clicked, this,
+        [=]() {
+            emit btnBlockInviteClicked();
+        });
 
-namespace Ui {
-class DeleteContactDialog;
 }
 
-class DeleteContactDialog : public QDialog
+InviteButtonsWidget::~InviteButtonsWidget()
 {
-    Q_OBJECT
-
-public:
-    explicit DeleteContactDialog(ContactMethod* cm, Account *ac, QWidget *parent = 0);
-    ~DeleteContactDialog();
-
-private slots:
-    void on_deleteCancelBtn_clicked();
-    void on_deleteAcceptBtn_clicked();
-    void on_deleteBanBtn_clicked();
-
-private:
-    Ui::DeleteContactDialog *ui;
-    ContactMethod* contactMethod_;
-    Account* account_;
-};
-
-#endif // DELETECONTACTDIALOG_H
+    disconnect(this);
+    delete ui;
+}

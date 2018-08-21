@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,24 +15,26 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#pragma once
 
-#include "ui_combar.h"
+#include <QPainter>
+#include <QItemDelegate>
 
-#include "combar.h"
-
-ComBar::ComBar(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::ComBar)
+class AccountItemDelegate : public QItemDelegate
 {
-    ui->setupUi(this);
-    connect(ui->btnComBarVideo, &QPushButton::clicked , this , [=](){
-        emit btnVideoClicked();
-    });
+    Q_OBJECT
+public:
+    explicit AccountItemDelegate(QObject *parent = nullptr);
 
-}
+protected:
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-ComBar::~ComBar()
-{
-    disconnect(this);
-    delete ui;
-}
+private:
+    constexpr static int fontSize_ = 10;
+    const QFont font_ = QFont("Arial", fontSize_);
+    constexpr static int dy_ = 6;
+    constexpr static int dx_ = 12;
+    constexpr static int avatarSize_ = 36;
+    constexpr static int cellHeight_ = 48;
+};
