@@ -180,6 +180,9 @@
     <ClCompile Include="wizarddialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="smartlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -306,6 +309,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <QtMoc Include="wizarddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="smartlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

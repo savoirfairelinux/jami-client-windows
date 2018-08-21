@@ -80,7 +80,8 @@ SOURCES += main.cpp\
     deleteaccountdialog.cpp \
     bannedcontactswidget.cpp \
     photoboothwidget.cpp \
-    deletecontactdialog.cpp
+    deletecontactdialog.cpp \
+    smartlistmodel.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -124,7 +125,8 @@ HEADERS  += mainwindow.h \
     bannedcontactswidget.h \
     photoboothwidget.h \
     deletecontactdialog.h \
-    lrcinstance.h
+    lrcinstance.h \
+    smartlistmodel.h
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
