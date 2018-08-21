@@ -24,8 +24,6 @@ constexpr static char closeOrMinimized[] = "closeOrMin";
 constexpr static char autoAnswer[] = "autoAnswer";
 constexpr static char geometry[] = "geometry";
 constexpr static char windowState[] = "windowState";
-constexpr static char imShowAuthor[] = "imShowAuthor";
-constexpr static char imShowDate[] = "imShowDate";
 constexpr static char enableNotifications[] = "enableNotifications";
 }
 

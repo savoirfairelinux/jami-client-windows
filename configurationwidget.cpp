@@ -77,9 +77,6 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         }
         accountModel_->save();
         accountDetails_->save();
-    });
-
-    connect(ui->exitSettingsButton, &QPushButton::clicked, this, [=]() {
         emit NavigationRequested(ScreenEnum::CallScreen);
     });
 
