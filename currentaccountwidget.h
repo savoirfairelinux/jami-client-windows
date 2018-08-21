@@ -22,6 +22,9 @@
 
 #include <QWidget>
 
+#include "accountlistmodel.h"
+#include "accountitemdelegate.h"
+
 namespace Ui {
 class CurrentAccountWidget;
 }
@@ -35,6 +38,9 @@ public:
     ~CurrentAccountWidget();
     void changeSelectedIndex(int index);
 
+signals:
+    void accountSelectionChanged(const QModelIndex& current);
+
 public slots:
     void update();
     void setPhoto();
@@ -43,8 +49,9 @@ private slots:
     void on_currentAccountSelector_currentIndexChanged(int index);
 
 private:
+    AccountItemDelegate * accountItemDelegate_;
+    std::unique_ptr<AccountListModel> accountListModel_;
     Ui::CurrentAccountWidget *ui;
-    void setup();
     void updateAccounts();
 };
 
