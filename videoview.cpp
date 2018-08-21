@@ -19,6 +19,8 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
+#include "lrcinstance.h"
+
 #include "video/devicemodel.h"
 #include "video/sourcemodel.h"
 #include "recentmodel.h"
@@ -313,6 +315,30 @@ VideoView::pushRenderer(Call* call) {
                 SLOT(slotVideoStarted(Video::Renderer*)));
     }
     ui->videoWidget->setPreviewDisplay(call->type() != Call::Type::CONFERENCE);
+}
+
+void
+VideoView::pushRenderer(const std::string& callUid) {
+    auto callModel = LRCInstance::getCurrentCallModel();
+    if (!callModel->hasCall(callUid)) {
+        disconnect(videoStartedConnection_);
+        return;
+    }
+
+    auto call = callModel->getCall(callUid);
+
+    if (auto renderer = callModel->getRenderer(callUid)) {
+        slotVideoStarted(renderer);
+    }
+    else {
+        QObject::disconnect(videoStartedConnection_);
+        videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
+            [this](const std::string& callId, Video::Renderer* renderer) {
+                qDebug() << "NewCallModel::remotePreviewStarted";
+                slotVideoStarted(renderer);
+            });
+    }
+    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
 }
 
 void
