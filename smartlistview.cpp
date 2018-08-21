@@ -1,6 +1,9 @@
 /***************************************************************************
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,31 +19,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "smartlistview.h"
+#include "smartlistdelegate.h"
 
-#include <QTreeView>
+#include <QScrollBar>
 
-class SmartListDelegate;
+#include <ciso646>
 
-class SmartList : public QTreeView
+SmartListView::SmartListView(QWidget *parent) :
+    QListView(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartList(QWidget* parent = 0);
-    ~SmartList();
-    void setSmartListItemDelegate(SmartListDelegate* delegate);
+    verticalScrollBar()->hide();
+    setVerticalScrollMode(ScrollPerPixel);
+}
 
-protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+SmartListView::~SmartListView()
+{
+    reset();
+}
 
-private:
-    SmartListDelegate* smartListDelegate_;
-    QPersistentModelIndex hoveredRow_;
-    void removeCombar();
+void
+SmartListView::enterEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+    verticalScrollBar()->show();
+}
 
-signals:
-    void btnVideoClicked() const;
-};
+void
+SmartListView::leaveEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+    verticalScrollBar()->hide();
+}
+
+void
+SmartListView::setSmartListItemDelegate(SmartListDelegate* delegate)
+{
+    if (delegate) {
+        setItemDelegate(delegate);
+        smartListDelegate_ = delegate;
+    }
+}
