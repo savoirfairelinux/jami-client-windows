@@ -8,3 +8,4 @@ x86/
 .qmake.stash
 debug/
 release/
+qrencode-win32/
