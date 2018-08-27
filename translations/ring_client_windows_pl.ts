@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>przycisk o programie</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>przycisk zasługi</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Live Free or Die</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -138,12 +138,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Ustawienia ogólne konta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Wyświetlana nazwa</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -158,17 +158,17 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Publiczna nazwa użytkownika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Publicznie zarejestrowana nazwa Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Zarejestruj nazwę użytkownika w blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -179,12 +179,12 @@ Ring jest strzeżonym i rozdzielonym programem komunikacyjnym.</translation>
         <location filename="../accountdetails.cpp" line="390"/>
         <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Zarejestruj w blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
         <source>Name service URL</source>
-        <translation type="unfinished"/>
+        <translation>URL serwera nazw</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
