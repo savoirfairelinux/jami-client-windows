@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>Névjegye gombja</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>Közreműködők gombja</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -138,37 +138,37 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Általános fiókinformációk konfigurálása</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Megjelenített név</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Megjelenített álnév bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Gépnév URL rendszerbetöltő DHT-nek vagy SIP-nek</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Ring nyilvánosan regisztrált felhasználónév</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználónév regisztrálása blokkláncon gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -179,7 +179,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
         <location filename="../accountdetails.cpp" line="390"/>
         <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Regisztráljon a blokkláncon</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
@@ -189,62 +189,62 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Névszolgáltató URL bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>SIP felhasználónév bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>SIP jelszó bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>SIP proxy URL bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>SIP hangpostaszám</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus válasz hívás jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
+        <translation>UPnP engedélyezett jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Régi jelszó beviteli sor</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg a régi jelszót</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Régi jelszó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Új jelszó beviteli szöveg</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg az új jelszót</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -254,17 +254,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megerősítési szövegbevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Bemeneti megerősítés</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Új átmenet megerősítése </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -279,12 +279,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Mégsem jelszó módosítás gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megváltoztatása…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -294,17 +294,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Hívás engedélyezése az ismeretlen jelölőnégyzetből</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Hívások engedélyezése az előzményekben szereplők jelölőnégyzetéből</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Hívások engedélyezése a partnerlista tagjainak jelölőnégyzetéből</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="931"/>
@@ -314,7 +314,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>Csengőhang lejátszása gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
@@ -325,7 +325,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>csengőhang fájl választó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -335,7 +335,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Audió / videó kodek beállításainak konfigurálása</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -355,7 +355,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Fiók speciális konfiguráció</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -370,7 +370,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>Regisztrációs időtúllépés választó spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -385,12 +385,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>helyi port választó spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
-        <translation type="unfinished"/>
+        <translation>ugyanaz, mint a helyi rádió gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1528"/>
@@ -400,7 +400,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation type="unfinished"/>
+        <translation>személyre szabott cím és portok rádió gombja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
@@ -415,7 +415,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1597"/>
         <source>ip address text input</source>
-        <translation type="unfinished"/>
+        <translation>IP címes szövegbevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1612"/>
@@ -425,12 +425,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>port választó spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>használja a STUN jelölőnégyzetet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -446,7 +446,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>használja a TURN jelölőnégyzetet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -456,27 +456,27 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>TURN szerver URL bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>TURN szerver felhasználónév bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>TURN szerver jelszó bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>TURN szerver Realm bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
         <source>Realm</source>
-        <translation type="unfinished"/>
+        <translation>Tartomány</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1844"/>
@@ -503,7 +503,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>Alsó határok az audió RTP port tartomány választóhoz</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -515,7 +515,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
         <location filename="../accountdetails.ui" line="1994"/>
         <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>Felső határok az audió RTP port tartomány választóhoz</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
@@ -530,32 +530,32 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Fiók biztonsági konfigurációja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
         <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Tanúsítvány kibocsátó tanúsítvány választó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
         <source>User certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználói tanúsítvány választó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation type="unfinished"/>
+        <translation>Titkos kulcs jelszava bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználói privát kulcs választó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Média-adatfolyam titkosítása (SRTP) jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2420"/>
@@ -565,7 +565,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation type="unfinished"/>
+        <translation>alapértelmezett titkosírások használata jelölőnégyzetet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
@@ -575,12 +575,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Fiók eszközök kezelése</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Eszköz hozzáadása gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -595,17 +595,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó szövegbevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó (kötelező)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
-        <translation type="unfinished"/>
+        <translation>Fiók exportálásának visszavonása összekapcsoláshoz gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="786"/>
@@ -616,7 +616,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
+        <translation>Ellenőrizze a kivitelt a DHT-n készülék összekapcsolása gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
@@ -631,7 +631,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>Létrehozott PIN-kód az összekapcsoláshoz</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -641,12 +641,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Ezt a PIN-kódot kell beírni az új eszközön 5 percen belül. Létrehozhatunk egy újat bármikor.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>PIN-kód létrehozásának elfogadása és kilépés gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -656,12 +656,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Letiltott partnerek</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation type="unfinished"/>
+        <translation>Tiltott partnerek fiók kezelő lap</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
@@ -716,12 +716,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation type="unfinished"/>
+        <translation>Kérem várjon, amíg létrehozzuk az Ön PIN-kódját.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Hálózati hiba. Kérjük, hogy próbálja újra később.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="331"/>
@@ -731,7 +731,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
-        <translation type="unfinished"/>
+        <translation>Regisztráció…Ez eltarthat egy ideig</translation>
     </message>
 </context>
 <context>
@@ -739,27 +739,27 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Feladó</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Letiltott partnerek listája</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Tiltott azonosító</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Deban kapcsolat gomb</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Feloldja a partnert és hozzáadja a partner listához</translation>
     </message>
 </context>
 <context>
@@ -767,12 +767,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Meglévő kapcsolatok listája</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
         <source>contact transfer number text entry</source>
-        <translation type="unfinished"/>
+        <translation>kapcsolati átviteli szám szövegbevitel</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
@@ -782,7 +782,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="110"/>
         <source>Transfer call button</source>
-        <translation type="unfinished"/>
+        <translation>Hívásátirányítás gomb</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="113"/>
@@ -815,17 +815,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../callwidget.ui" line="207"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Keresés kapcsolati szövegbevitel</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation type="unfinished"/>
+        <translation>keresés gomb</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
         <source>Configuration menu</source>
-        <translation type="unfinished"/>
+        <translation>Konfigurációs menü</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="680"/>
@@ -837,17 +837,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="791"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Ring azonosító QR-kód mutatása</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Ring azonosító megosztó gomb</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="900"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Kattintson duplán a másolásra</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="935"/>
@@ -859,12 +859,12 @@ Másolja ki és ossza meg a barátaival!</translation>
         <location filename="../callwidget.ui" line="1069"/>
         <location filename="../callwidget.ui" line="1840"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>Vissza a főoldalra gomb</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1189"/>
         <source>Peer contact method selector</source>
-        <translation type="unfinished"/>
+        <translation>Peer kapcsolat mód választó</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
@@ -880,7 +880,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="1314"/>
         <source>Type your message here</source>
-        <translation type="unfinished"/>
+        <translation>Üzenet írása itt</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1333"/>
@@ -890,7 +890,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="1459"/>
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation>Legjobb azonosító</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1469"/>
@@ -900,12 +900,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Bejövő hívás fogadása gomb</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1543"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Bejövő hívás figyelmen kívül hagyása gomb</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1570"/>
@@ -925,7 +925,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Kimenő hívás visszavonása</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1749"/>
@@ -975,7 +975,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.cpp" line="301"/>
         <source>Copy name</source>
-        <translation type="unfinished"/>
+        <translation>Másolás neve</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="307"/>
@@ -1000,7 +1000,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
-        <translation type="unfinished"/>
+        <translation>Partner eltávolítása</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="762"/>
@@ -1030,7 +1030,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../combar.ui" line="72"/>
         <source>Call button</source>
-        <translation type="unfinished"/>
+        <translation>Hívó gomb</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Általános konfigurációs lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1053,7 +1053,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Audió / Videó konfigurációs lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1063,7 +1063,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation type="unfinished"/>
+        <translation>Fiókok konfigurálása lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1108,7 +1108,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="820"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Frissítések ellenőrzése most</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="258"/>
@@ -1118,12 +1118,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation type="unfinished"/>
+        <translation>Avatar (kattintson a változtatáshoz)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
         <source>Display name text input</source>
-        <translation type="unfinished"/>
+        <translation>Megjelenítési név szövegbevitel</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="314"/>
@@ -1133,12 +1133,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="400"/>
         <source>Number of days of history kept</source>
-        <translation type="unfinished"/>
+        <translation>Napok száma az előzmények tartásához</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
         <source>clear history button</source>
-        <translation type="unfinished"/>
+        <translation>Előzmények törlése gomb</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
@@ -1153,12 +1153,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="573"/>
         <source>Call records path</source>
-        <translation type="unfinished"/>
+        <translation>Hívásnapló útvonal</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
         <source>Always record calls checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Mindig hívás rögzítés jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="609"/>
@@ -1168,27 +1168,27 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>keep minimized on close checkbox</source>
-        <translation type="unfinished"/>
+        <translation>bezáráskor legyen minimalizálva jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>értesítések engedélyezése jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Értesítések engedélyezése</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="703"/>
         <source>Launch ring on startup checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Ring indítása rendszerindításkor jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="732"/>
         <source>Autamatic update checks checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus frissítés ellenőrző jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="738"/>
@@ -1198,7 +1198,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="757"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Időközönkénti frissítések ellenőrzése napi választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="778"/>
@@ -1208,7 +1208,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="817"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Frissítések ellenőrzése most gomb</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="933"/>
@@ -1224,7 +1224,7 @@ Másolja ki és ossza meg a barátaival!</translation>
         <location filename="../configurationwidget.ui" line="1042"/>
         <location filename="../configurationwidget.ui" line="1061"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Videó eszköz választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1048"/>
@@ -1239,7 +1239,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1095"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>Videó eszköz felbontás választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1122"/>
@@ -1249,7 +1249,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1129"/>
         <source>Audio output device selector</source>
-        <translation type="unfinished"/>
+        <translation>Audió kimeneti eszköz választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
@@ -1259,12 +1259,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1148"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Audió bemeneti eszköz választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1226"/>
         <source>New account type selector</source>
-        <translation type="unfinished"/>
+        <translation>Új fiók típus választó</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1245"/>
@@ -1274,12 +1274,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation type="unfinished"/>
+        <translation>Fiók törlése gomb</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
         <source>Export account button</source>
-        <translation type="unfinished"/>
+        <translation>Fiók exportálása gomb</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1326"/>
@@ -1317,7 +1317,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>search existing contact text entry</source>
-        <translation type="unfinished"/>
+        <translation>keresés meglévő kapcsolat szövegbeviteli</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="46"/>
@@ -1327,12 +1327,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>existing contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Meglévő kapcsolatok listája</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
         <source>Create new contact button</source>
-        <translation type="unfinished"/>
+        <translation>Új partner létrehozása gomb</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="66"/>
@@ -1347,7 +1347,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactpicker.ui" line="108"/>
         <source>New contact name text entry</source>
-        <translation type="unfinished"/>
+        <translation>Új kapcsolat neve szövegbevitel</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
@@ -1357,7 +1357,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
         <source>Validate contact creation button</source>
-        <translation type="unfinished"/>
+        <translation>kapcsolat létrehozásának ellenőrzése  gomb</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="144"/>
@@ -1370,27 +1370,27 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Feladó</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation type="unfinished"/>
+        <translation>Bejövő kapcsolatfelvételi kérelem</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation type="unfinished"/>
+        <translation>név Címke</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation type="unfinished"/>
+        <translation>Legjobb azonosító címke</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
         <source>Accept contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Kapcsolatfelvételi kérelem elfogadása gomb</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="132"/>
@@ -1400,17 +1400,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="151"/>
         <source>Mute contact request</source>
-        <translation type="unfinished"/>
+        <translation>Elrejtett kapcsolatfelvételi kérelem</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="158"/>
         <source>Discard</source>
-        <translation type="unfinished"/>
+        <translation>Elveti</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation type="unfinished"/>
+        <translation>Letiltott kapcsolatfelvételi kérelem</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1423,22 +1423,22 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Feladó</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="97"/>
         <source>Account avatar</source>
-        <translation type="unfinished"/>
+        <translation>avatar fiók</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="128"/>
         <source>Account status</source>
-        <translation type="unfinished"/>
+        <translation>Fiók állapota</translation>
     </message>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
         <source>account selection combobox</source>
-        <translation type="unfinished"/>
+        <translation>számla kiválasztása legördülő menüből</translation>
     </message>
 </context>
 <context>
@@ -1446,27 +1446,27 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Ring - fiók törlése</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation type="unfinished"/>
+        <translation>Tényleg szeretné törölni a fiókot?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation type="unfinished"/>
+        <translation>Ez a művelet visszavonhatatlan</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Ha ezt a fiókot nem exportálták vagy hozzáadták egy másik eszközhöz, akkor ez el fog veszni</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Mégsem kapcsolat törlése gomb</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="141"/>
@@ -1476,7 +1476,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Kapcsolat törlésének ellenőrzése gomb</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
@@ -1489,17 +1489,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Párbeszédpanel</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation type="unfinished"/>
+        <translation>Szeretné törölni ezt a partnert?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
+        <translation>Mégsem kapcsolat törlése gomb</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="126"/>
@@ -1509,7 +1509,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="139"/>
         <source>Delete contact validation button</source>
-        <translation type="unfinished"/>
+        <translation>Partner törlésének ellenőrzése gomb</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="142"/>
@@ -1519,12 +1519,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="155"/>
         <source>Delete and ban validation button</source>
-        <translation type="unfinished"/>
+        <translation>Törlés és tiltás ellenőrzése gomb</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
         <source>Delete and ban</source>
-        <translation type="unfinished"/>
+        <translation>Törlés és tiltás</translation>
     </message>
 </context>
 <context>
@@ -1532,12 +1532,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
         <source>Message list</source>
-        <translation type="unfinished"/>
+        <translation>Üzenet lista</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="74"/>
         <source>Message input</source>
-        <translation type="unfinished"/>
+        <translation>Üzenetek bevitele</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.ui" line="77"/>
@@ -1547,7 +1547,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../instantmessagingwidget.ui" line="99"/>
         <source>Send message button</source>
-        <translation type="unfinished"/>
+        <translation>Üzenet küldés gomb</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="44"/>
@@ -1593,7 +1593,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Fénykép automata</translation>
     </message>
 </context>
 <context>
@@ -1601,12 +1601,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Feladó</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Fénykép automata kijelző</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
@@ -1621,7 +1621,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>Fénykép importálása</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="87"/>
@@ -1658,12 +1658,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="64"/>
         <source>Quality slider</source>
-        <translation type="unfinished"/>
+        <translation>Minőség csúszka</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="103"/>
         <source>Automatic quality checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus minőségellenőrizés jelölőnégyzet </translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
@@ -1676,17 +1676,17 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="114"/>
         <source>Validate Contact Request Button</source>
-        <translation type="unfinished"/>
+        <translation>Kapcsolatfelvételi kérelem ellenőrzése gomb</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="139"/>
         <source>Mute contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Elrejtett kapcsolatfelvételi kérelem gomb</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="161"/>
         <source>Ban contact request button</source>
-        <translation type="unfinished"/>
+        <translation>Letiltott kapcsolatfelvételi kérelem gomb</translation>
     </message>
 </context>
 <context>
@@ -1694,7 +1694,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Mappa kijelölése</translation>
     </message>
 </context>
 <context>
@@ -1702,22 +1702,22 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Feladó</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="26"/>
         <source>ContactID</source>
-        <translation type="unfinished"/>
+        <translation>Kapcsolatazonosító</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
         <source>TODO: Explain the purpose of a contact request</source>
-        <translation type="unfinished"/>
+        <translation>CSINÁLNI: Magyarázza meg a kapcsolatfelvételi kérelmét célját</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation type="unfinished"/>
+        <translation>Kapcsolatkérés küldése</translation>
     </message>
 </context>
 <context>
@@ -1755,7 +1755,7 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Hívás felvétele</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="370"/>
@@ -1826,52 +1826,52 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="70"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Fiókját át kell vinni. Adja meg a jelszavát.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="96"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Ring-fiók átvitele…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Fiók archívum importálása…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév regisztrálása néhány percet vesz igénybe…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation type="unfinished"/>
+        <translation>Hiba történt a fiók  létrehozása során</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Eszköz hozzáadása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="339"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználónév nem elérhető.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="342"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználónév elérhető.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="345"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Felhasználónév érvénytelen.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="348"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Hálózati hiba.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
@@ -1881,12 +1881,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Ring archív fájlok (* .gz) ;; Minden fájl (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ring fiók létrehozása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="173"/>
@@ -1896,12 +1896,12 @@ Másolja ki és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="322"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Hogyan adjunk egy eszközt hozzá</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="78"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Isten hozott</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="329"/>
@@ -1915,7 +1915,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; Először az eszköz összekapcsolása egy másik fiókkal &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt; meg kell szereznie a PIN-kódot &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;A PIN kód létrehozása:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Fiókkezelés beállítása &lt;/span&gt;egy korábbi eszközről &lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Ring fiók &lt;/span&gt;szeretné használni&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Eszközök&lt;/span&gt;lap&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza&lt;span style=&quot; font-weight:600;&quot;&gt;Eszköz hozzáadása&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Kapja meg a szükséges PIN-kódot az űrlap kitöltéséhez. A PIN -kód csak érvényes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 percig&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="450"/>
@@ -1925,7 +1934,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="564"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>A teljes név megadása:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="629"/>
@@ -1936,7 +1945,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="730"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Válasszon egy felhasználónevet</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="749"/>
@@ -1947,167 +1956,167 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Regisztrálja felhasználónevét a Ring-en. Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni. Ismerősei képesek lesznek felhívni a felhasználónevét a Ring azonosító használata helyett.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Varázsló párbeszédpanel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="36"/>
         <source>Account creation wizard dialog</source>
-        <translation type="unfinished"/>
+        <translation>Fiók létrehozása varázsló párbeszédpanel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Üdvözlő címke</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Üdvözlő jelkép</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation type="unfinished"/>
+        <translation>Ring fiók létrehozása gomb</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Nyomógomb a Ring fiók létrehozás indításának aktivizálásához </translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Összekapcsoló eszköz gombja</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Nyomógomb a készülék összekapcsolásának indítási triggerjére</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="205"/>
         <source>Select link method</source>
-        <translation type="unfinished"/>
+        <translation>Válasszon összekapcsolási módszert</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="254"/>
         <source>Link account to device from the network</source>
-        <translation type="unfinished"/>
+        <translation>Csatlakoztassa a fiókot az eszközhöz a hálózatról</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="257"/>
         <source>Link account from DHT</source>
-        <translation type="unfinished"/>
+        <translation>Fiók összekapcsolása DHT-ből</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="270"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Exportált fiók összekapcsolása archív fájlból</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
         <source>Link account from file</source>
-        <translation type="unfinished"/>
+        <translation>Fiók összekapcsolása fájlból</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Válassza ki az importálni kívánt fájlt</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation type="unfinished"/>
+        <translation>Fiók archívum útvonal:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation type="unfinished"/>
+        <translation>Fiók archívum útvonal választó </translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Archívum jelszó:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
         <source>Archive passord input</source>
-        <translation type="unfinished"/>
+        <translation>Archívum jelszó bevitele</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
-        <translation type="unfinished"/>
+        <translation>Fénykép automata modul</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="509"/>
         <source>Avatar display</source>
-        <translation type="unfinished"/>
+        <translation>Avatar megjelenítése</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="588"/>
         <source>Full name edit</source>
-        <translation type="unfinished"/>
+        <translation>Teljes név szerkesztése</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="594"/>
         <source>Text entry for full name input</source>
-        <translation type="unfinished"/>
+        <translation>Szövegbevitel a teljes névbevitelhez</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="673"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Válassza ki a jelölőnégyzetet, ha a felhasználó nyilvános felhasználónevet szeretne</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév regisztrálása (kísérleti):</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév szerkesztés</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="746"/>
         <source>Public username validation status</source>
-        <translation type="unfinished"/>
+        <translation>Nyilvános felhasználónév ellenőrzése állapot</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>PIN-kód szerkesztése</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation type="unfinished"/>
+        <translation>Eszköz összekapcsolása PIN-kód szövegbevitel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="787"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>PIN-kód megadása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="814"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó szövegbevitel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="820"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó beírása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="826"/>
@@ -2118,7 +2127,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="853"/>
         <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megerősítési szövegbevitel</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="865"/>
@@ -2134,12 +2143,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Előző oldal gombja</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>nyomógomb az előző oldal hozzáférésének varázslója</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="978"/>
@@ -2149,12 +2158,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Következő oldal gombja</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Nyomógomb a következő oldal hozzáférésének varázslója</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1019"/>
