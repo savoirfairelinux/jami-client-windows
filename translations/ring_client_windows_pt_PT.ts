@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_PT" version="2.0">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -31,8 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>O cliente Microsoft Windows para Ring
-Ring é um software de comunicação distribuído e seguro.</translation>
+        <translation>O cliente Microsoft Windows para o Ring
+O Ring é um programa de comunicação distribuído e seguro.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -47,7 +47,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>Artwork by:</source>
-        <translation>Artwork por:</translation>
+        <translation>Arte por:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
@@ -92,13 +92,13 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <location filename="../accountdetails.ui" line="1754"/>
         <location filename="../accountdetails.cpp" line="119"/>
         <source>Username</source>
-        <translation>Nome de usuário</translation>
+        <translation>Nome de utilizador</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="469"/>
         <location filename="../accountdetails.ui" line="1776"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="515"/>
@@ -113,7 +113,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation>Chamadas de Auto-Resposta</translation>
+        <translation>Atender chamadas automaticamente</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
@@ -128,7 +128,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="895"/>
         <source>Allow Call From Contact</source>
-        <translation>Aceitar Chamada de Contato</translation>
+        <translation>Aceitar Chamada de Contacto</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="880"/>
@@ -143,32 +143,32 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation>Nome em exibição</translation>
+        <translation>Nome mostrado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation>Entrada de pseudônimo em exibição</translation>
+        <translation>Entrada de apelido em exibição</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation>Endereço do servidor para SIP ou DHT</translation>
+        <translation>Endereço do servidor para SIP ou inicialização DHT</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation>Usuário publico</translation>
+        <translation>Nome de utilizador público</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation>Usuário publico registrado no Ring</translation>
+        <translation>Nome de utilizador público registado no Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation>Botão de registar usuário no blockchain</translation>
+        <translation>Botão de registar nome de utilizador na cadeia de blocos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -179,12 +179,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <location filename="../accountdetails.cpp" line="390"/>
         <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
-        <translation>Registrar no blockchain</translation>
+        <translation>Registar na cadeia de blocos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
         <source>Name service URL</source>
-        <translation>URL do servidor</translation>
+        <translation>URL do serviço de nomes</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
@@ -194,12 +194,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation>Entrada de usuário SIP</translation>
+        <translation>Entrada de nome de utilizador SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation>Entrada de senha SIP</translation>
+        <translation>Entrada de palavra-chave SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
@@ -209,52 +209,52 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation>Número de mensagem de voz SIP</translation>
+        <translation>Número de correio de voz SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation>Checkbox do atendimento automático de ligação</translation>
+        <translation>Caixa de visto &quot;Atender chamadas automaticamente&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation>Checkbox de ativação UPnP</translation>
+        <translation>Caixa de visto &quot;UPnP ativado&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation>Linha de entrada da senha antiga</translation>
+        <translation>Linha de entrada da palavra-chave antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation>Insira a senha antiga</translation>
+        <translation>Introduza a palavra-chave antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation>Senha antiga</translation>
+        <translation>Palavra-chave Antiga</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation>Nova entrada de texto de senha</translation>
+        <translation>Nova entrada de texto de palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation>Insira nova senha</translation>
+        <translation>Insira a nova palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
         <source>New password</source>
-        <translation>Nova senha</translation>
+        <translation>Nova palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation>Campo de texto para confirmação da Senha</translation>
+        <translation>Campo de texto para confirmação da palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
@@ -264,57 +264,57 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation>Confirmação da nova senha</translation>
+        <translation>Confirmação da nova palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation>Mudar senha</translation>
+        <translation>Alterar palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation>Botão de cancelar a mudança de senha</translation>
+        <translation>Botão de cancelar a alteração da palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation>Mudando senha...</translation>
+        <translation>A alterar palavra-chave...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Ring Account Settings</source>
-        <translation>Configurações de Conta do Ring</translation>
+        <translation>Configurações da Conta Ring</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation>Caixa de seleção &quot;permitir chamada de desconhecidos&quot;</translation>
+        <translation>Caixa de visto &quot;Aceitar Chamadas de Desconhecidos&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation>Caixa de seleção &quot;Aceitar Chamada do Histórico&quot;</translation>
+        <translation>Caixa de visto &quot;Aceitar Chamada do Histórico&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation>Caixa de seleção &quot;Aceitar Chamada de Contato&quot;</translation>
+        <translation>Caixa de seleção &quot;Aceitar Chamadas de Contacto&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="931"/>
         <source>Ringtone Selection</source>
-        <translation>Selecionar toque</translation>
+        <translation>Seleção de Toque de Chamada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation>Botão &quot;tocar campainha&quot;</translation>
+        <translation>Botão de reproduzir toque de chamada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
@@ -325,7 +325,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation>seletor de arquivo da campainha</translation>
+        <translation>seletor de ficheiro do toque de chamada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -340,12 +340,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
         <source>Audio codecs</source>
-        <translation>Codecs de Áudio</translation>
+        <translation>Codecs de áudio</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1270"/>
         <source>Video codecs</source>
-        <translation>Codecs de Vídeo</translation>
+        <translation>Codecs de vídeo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1287"/>
@@ -360,22 +360,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
         <source>Registration</source>
-        <translation>Registro</translation>
+        <translation>Registo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1356"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Tempo de expiração de registro (segundos):</translation>
+        <translation>Tempo de expiração de registo (segundos):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation>Seletor de tempo limite de registro spinbox</translation>
+        <translation>Seletor de tempo limite de registo spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
         <source>Network Interface</source>
-        <translation>Interface de Rede</translation>
+        <translation>Interface da Rede</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1418"/>
@@ -390,7 +390,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
         <source>same as local radio button</source>
-        <translation>mesmo que botão de rádio local</translation>
+        <translation>o mesmo que o botão de opção local</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1528"/>
@@ -400,12 +400,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation>seletor para personalizar endereço e portas</translation>
+        <translation>botão de opção para personalizar endereço e portas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
         <source>Set published address and port:</source>
-        <translation>Configurar endereço e portas publicadas:</translation>
+        <translation>Definir endereço e portas publicadas:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1578"/>
@@ -425,12 +425,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation>seletor de porta</translation>
+        <translation>caixa numérica de cimabaixo do seletor de portas</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation>caixa de seleção &quot;usar STUN&quot;</translation>
+        <translation>caixa de visto de &quot;usar STUN&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -446,7 +446,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation>caixa de seleção &quot;usar TURN&quot;</translation>
+        <translation>caixa de visto de &quot;usar TURN&quot;</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -461,12 +461,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation>Campo para nome de usuário do servidor TURN</translation>
+        <translation>Campo para o nome de utilizador do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation>Campo para senha do servidor TURN</translation>
+        <translation>Campo para a palavra-chave do servidor TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
@@ -481,29 +481,29 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1844"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>Negociação de sessão SDP ( ICE Fallback)</translation>
+        <translation>Negociação de Sessão SDP (ICE Fallback)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1872"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Estas configurações serão apenas utilizadas durante uma negociação de sessão SDP, caso ICE não seja suportado pelo servidor ou membro.</translation>
+        <translation>Estas configurações serão apenas utilizadas durante uma negociação de sessão SDP, caso o ICE não seja suportado pelo servidor ou membro.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation>Variação de portas de áudio RTP</translation>
+        <translation>Intervalo de portas RTP de áudio</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
         <location filename="../accountdetails.ui" line="2084"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation>Mín</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation>Seletor do valor de graves das portas para áudio RTP</translation>
+        <translation>Seletor do intervalo de portas RTP áudio de limites baixos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -515,12 +515,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <location filename="../accountdetails.ui" line="1994"/>
         <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
-        <translation>limite máximo para o seletor de faixa de porta RTP de áudio</translation>
+        <translation>Seletor do intervalo de portas RTP áudio de limites altos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
-        <translation>Intervalo de portas de vídeo RTP</translation>
+        <translation>Intervalo de portas RTP de vídeo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2186"/>
@@ -540,32 +540,32 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
         <source>User certificate selector</source>
-        <translation>Seletor de certificado do usuário</translation>
+        <translation>Seletor de certificado do utilizador</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation>Entrada de senha de chave privada </translation>
+        <translation>entrada de palavra-chave da chave privada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation>Seletor de chave privada do usuário</translation>
+        <translation>Seletor de chave privada do utilizador</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation>Caixa de seleção para criptografar fluxo de mídia (SRTP)</translation>
+        <translation>Caixa de visto para criptografar fluxo de media (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2420"/>
         <source>Media Stream Encryption (SRTP)</source>
-        <translation>Criptografia de Fluxo de Mídia (SRTP)</translation>
+        <translation>Encriptação do Fluxo de Média (SRTP)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation>Caixa de seleção para usar cifras padrão</translation>
+        <translation>Caixa de visto para usar cifras padrão</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
@@ -575,7 +575,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation>Gerenciamento de dispositivos de conta</translation>
+        <translation>Gestão de dispositivos de conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
@@ -590,22 +590,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Para adicionar um novo dispositivo à sua conta Ring, você deve exportar sua conta no Ring. Isso gerará um PIN que deve ser entrado em seu novo dispositivo dentro de 5 minutos desde a sua geração.</translation>
+        <translation>Para adicionar um novo dispositivo à sua conta Ring, deve exportar sua conta no Ring. Isso irá gerar um PIN que deve ser introduzido no seu novo dispositivo dentro de 5 minutos desde a sua geração.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation>Entrada de texto de senha</translation>
+        <translation>Entrada de texto da palavra-chave</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
-        <translation>Senha (necessária)</translation>
+        <translation>Palavra-chave (necessária)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
-        <translation>Cancelar a exportação da conta para o botão de vinculação</translation>
+        <translation>Cancelar a exportação da conta para o botão de associação</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="786"/>
@@ -616,7 +616,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation>Valida exportação via DHT para o botão de vinculação de dispositivo</translation>
+        <translation>Valida a exportação via DHT para o botão de associação do dispositivo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
@@ -626,12 +626,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation>Seu PIN gerado:</translation>
+        <translation>O seu PIN gerado:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation>PIN gerado para vinculação</translation>
+        <translation>PIN gerado para associar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -641,7 +641,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation>Este PIN deve ser inserido no seu novo dispositivo nos próximos 5 minutos. Você pode ter que gerar um novo a qualquer momento.</translation>
+        <translation>Este PIN deve ser inserido no seu novo dispositivo nos próximos 5 minutos. Pode ter que gerar um novo a qualquer momento.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
@@ -656,17 +656,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
-        <translation>Contatos Banidos</translation>
+        <translation>Contactos Banidos</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation>Conta banida - aba de gerenciamento de contatos</translation>
+        <translation>Aba de gestão de contactos banidos da conta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
         <source>Published Address</source>
-        <translation>Endereço publicado</translation>
+        <translation>Endereço Publicado</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2254"/>
@@ -676,17 +676,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2294"/>
         <source>User certificate</source>
-        <translation>Certificado de usuário</translation>
+        <translation>Certificado de utilizador</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2331"/>
         <source>Private key</source>
-        <translation>Chave Privada</translation>
+        <translation>Chave privada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
-        <translation>Senha de chave privada</translation>
+        <translation>Palavra-chave  de chave provada</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2435"/>
@@ -706,17 +706,17 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
-        <translation>Escolher Arquivo</translation>
+        <translation>Escolher Ficheiro</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="235"/>
         <source>Files (*)</source>
-        <translation>Arquivos (*)</translation>
+        <translation>Ficheiros (*)</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation>Por favor aguarde enquanto seu PIN é gerado.</translation>
+        <translation>Por favor aguarde enquanto o seu PIN é gerado.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
@@ -726,12 +726,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="331"/>
         <source>Wrong password.</source>
-        <translation>Senha Incorreta.</translation>
+        <translation>Palavra-chave errada.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
-        <translation>Registrando... Isto pode tomar algum tempo</translation>
+        <translation>A registar... Isto pode levar algum tempo</translation>
     </message>
 </context>
 <context>
@@ -744,7 +744,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation>Lista de contatos banidos</translation>
+        <translation>Lista de contactos banidos</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -754,12 +754,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation>Botão &quot;anular banimento de contato&quot;</translation>
+        <translation>Botão &quot;desbanir contacto&quot;</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
         <source>Deban contact, and add to contact list</source>
-        <translation>Repatriar, e adicionar a lista de contatos</translation>
+        <translation>Desbanir e adicionar à lista de contactos</translation>
     </message>
 </context>
 <context>
@@ -767,12 +767,12 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="53"/>
         <source>existing contacts list</source>
-        <translation>lista de contatos existente</translation>
+        <translation>lista de contactos existentes</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="68"/>
         <source>contact transfer number text entry</source>
-        <translation>Campo de entrada de texto do número de transferência do contato</translation>
+        <translation>campo de entrada de texto do número de transferência do contacto</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
@@ -787,7 +787,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="113"/>
         <source>Transfer</source>
-        <translation>Transferência</translation>
+        <translation>Transferir</translation>
     </message>
 </context>
 <context>
@@ -795,7 +795,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="216"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Busque por contatos ou insira o RingID</translation>
+        <translation>Pesquisar contactos ou inserir o RingID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="333"/>
@@ -805,22 +805,22 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../callwidget.ui" line="384"/>
         <source>Contact requests</source>
-        <translation>Solicitações de contatos</translation>
+        <translation>Solicitações de contactos</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="642"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Ring é um software livre para comunicação universal que respeita as liberdades e privacidade de seus usuários.</translation>
+        <translation>O Ring é um programa livre para comunicação universal que respeita as liberdades e privacidade dos seus utilizadores.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="207"/>
         <source>Search contact text input</source>
-        <translation>Entrada de texto para busca de contato </translation>
+        <translation>Entrada de texto para pesquisa de contacto</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="248"/>
         <source>search button</source>
-        <translation>Botão de busca</translation>
+        <translation>botão de pesquisa</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="557"/>
@@ -832,7 +832,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
         <source>This is your RingID.
 Copy and share it with your friends!</source>
         <translation>Este é o seu RingID.
-Salve e compartilhe com seus amigos!</translation>
+Copie e partilhe com os seus amigos!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="791"/>
@@ -842,7 +842,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="842"/>
         <source>Share ring ID button</source>
-        <translation>Botão para compartilhar o seu Id do Ring</translation>
+        <translation>Botão para partilhar o seu ID do Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="900"/>
@@ -864,23 +864,23 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="1189"/>
         <source>Peer contact method selector</source>
-        <translation>Seletor do método de contato do parceiro</translation>
+        <translation>Seletor do método de contacto do parceiro</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
         <location filename="../callwidget.cpp" line="327"/>
         <source>Add to contacts</source>
-        <translation>Adicionar aos contatos</translation>
+        <translation>Adicionar aos contactos</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1237"/>
         <source>Start the conversation !</source>
-        <translation>Comece uma conversa!</translation>
+        <translation>Inicie a conversa!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1314"/>
         <source>Type your message here</source>
-        <translation>Digite sua mensagem aqui</translation>
+        <translation>Digite a sua mensagem aqui</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1333"/>
@@ -895,7 +895,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="1469"/>
         <source>Wants to talk to you!</source>
-        <translation>Quer conversar com você!</translation>
+        <translation>Quer conversar consigo!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1498"/>
@@ -920,7 +920,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="1673"/>
         <source>Calling</source>
-        <translation>Chamando</translation>
+        <translation>A chamar</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1726"/>
@@ -945,12 +945,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
         <source>Contact me on Ring</source>
-        <translation>Encontre-me no Ring</translation>
+        <translation>Contacte-me no Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="959"/>
         <source>My RingId is : </source>
-        <translation>Meu RingID é : </translation>
+        <translation>O meu RingID é: </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="214"/>
@@ -960,17 +960,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.cpp" line="227"/>
         <source>Display date</source>
-        <translation>Exibir data</translation>
+        <translation>Mostrar data</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="232"/>
         <source>Display author</source>
-        <translation>Exibir autor</translation>
+        <translation>Mostrar autor</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="263"/>
         <source>Message incoming from %1</source>
-        <translation>Recebendo mensagem de %1</translation>
+        <translation>A receber mensagem de %1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="301"/>
@@ -980,12 +980,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.cpp" line="307"/>
         <source>Call Number</source>
-        <translation>Chamar número</translation>
+        <translation>Chamar Número</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="308"/>
         <source>Copy Number</source>
-        <translation>Copiar número</translation>
+        <translation>Copiar Número</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="311"/>
@@ -1000,12 +1000,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.cpp" line="338"/>
         <source>Remove from contacts</source>
-        <translation>Remover dos contatos</translation>
+        <translation>Remover dos contactos</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="762"/>
         <source>NO RING ACCOUNT FOUND</source>
-        <translation>Nenhuma conta Ring entrada</translation>
+        <translation>NENHUMA CONTA RING ENCONTRADA</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="807"/>
@@ -1022,7 +1022,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.cpp" line="445"/>
         <source>Call incoming from %1</source>
-        <translation>Recebendo chamada de %1</translation>
+        <translation>A receber chamada de %1</translation>
     </message>
 </context>
 <context>
@@ -1053,7 +1053,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation>Aba de configurações de áudio/vídeo</translation>
+        <translation>Aba de configurações de áudio / vídeo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1078,27 +1078,27 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="346"/>
         <source>History Settings</source>
-        <translation>Configurações de histórico</translation>
+        <translation>Configurações de Histórico</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="387"/>
         <source>Keep History for (days)</source>
-        <translation>Manter histórico por (dias)</translation>
+        <translation>Manter Histórico por (dias)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="433"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Insira 0 para histórico ilimitado)</translation>
+        <translation>(usar 0 para histórico ilimitado)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="490"/>
         <source>Clear History</source>
-        <translation>Limpar histórico</translation>
+        <translation>Limpar Histórico</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="642"/>
         <source>Misc. Settings</source>
-        <translation>Configurações diversas</translation>
+        <translation>Configurações Diversas</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="667"/>
@@ -1108,7 +1108,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="820"/>
         <source>Check for updates now</source>
-        <translation>Checar por atualizações agora</translation>
+        <translation>Verificar se existem atualizações</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="258"/>
@@ -1118,12 +1118,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="288"/>
         <source>Avatar (click to change)</source>
-        <translation>Avatar (clique para mudar)</translation>
+        <translation>Avatar (clique para alterar)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="311"/>
         <source>Display name text input</source>
-        <translation>Entrada de texto para exibir nome</translation>
+        <translation>Entrada de texto para nome mostrado</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="314"/>
@@ -1133,12 +1133,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="400"/>
         <source>Number of days of history kept</source>
-        <translation>Número de dias que o histórico será mantido</translation>
+        <translation>Número de dias em que o histórico será mantido</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
         <source>clear history button</source>
-        <translation>Botão para limpar histórico</translation>
+        <translation>botão para limpar histórico</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
@@ -1148,7 +1148,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="560"/>
         <source>Save in :</source>
-        <translation>Salvar em :</translation>
+        <translation>Gravar em :</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="573"/>
@@ -1158,22 +1158,22 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
         <source>Always record calls checkbox</source>
-        <translation>Caixa de seleção para sempre gravar as chamadas</translation>
+        <translation>Caixa de visto &quot;Gravar sempre as chamadas&quot;</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="609"/>
         <source>Always Record</source>
-        <translation>Sempre gravar</translation>
+        <translation>Gravar Sempre</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>keep minimized on close checkbox</source>
-        <translation>Caixa de seleção para manter minimizado ao fechar</translation>
+        <translation>Caixa de visto &quot;Manter minimizado ao fechar&quot;</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation>Caixa de seleção para habilitar notificações</translation>
+        <translation>Caixa de visto &quot;Ativar notificações&quot;</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
@@ -1183,12 +1183,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="703"/>
         <source>Launch ring on startup checkbox</source>
-        <translation>Caixa de seleção para executar o Ring na inicialização</translation>
+        <translation>Caixa de visto &quot;Executar o Ring ao iniciar&quot;</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="732"/>
         <source>Autamatic update checks checkbox</source>
-        <translation>Caixa de seleção para verificar atualizações automaticamente</translation>
+        <translation>Caixa de visto &quot;Verificar atualizações automaticamente&quot;</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="738"/>
@@ -1198,7 +1198,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="757"/>
         <source>Interval between update checks in days selector</source>
-        <translation>Seletor do intervalo da verificação de atualizaçôes em dias</translation>
+        <translation>Seletor do intervalo em dias entre verificação de atualizações</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="778"/>
@@ -1218,7 +1218,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="987"/>
         <source>Device Selection</source>
-        <translation>Seleção de dispositivo</translation>
+        <translation>Seleção de Dispositivo</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1042"/>
@@ -1244,7 +1244,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1122"/>
         <source>Output Device</source>
-        <translation>Dispositivo de saída</translation>
+        <translation>Dispositivo de Saída</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1129"/>
@@ -1254,7 +1254,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1141"/>
         <source>Input Device</source>
-        <translation>Dispositivo de entrada</translation>
+        <translation>Dispositivo de Entrada</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1148"/>
@@ -1274,7 +1274,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="1283"/>
         <source>Delete account button</source>
-        <translation>Botão para apagar conta</translation>
+        <translation>Botão para eliminar conta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="1323"/>
@@ -1294,17 +1294,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.cpp" line="320"/>
         <source>New Account</source>
-        <translation>Nova conta</translation>
+        <translation>Nova Conta</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="340"/>
         <source>Are you sure you want to clear all your history?</source>
-        <translation>Você tem certeza que deseja limpar todo o seu histórico?</translation>
+        <translation>Tem a certeza que deseja eliminar todo o seu histórico?</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="389"/>
         <source>Choose Directory</source>
-        <translation>Escolher diretório</translation>
+        <translation>Escolher Diretório</translation>
     </message>
 </context>
 <context>
@@ -1312,32 +1312,32 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../contactpicker.ui" line="33"/>
         <source>Existing Contact</source>
-        <translation>Contato existente</translation>
+        <translation>Contacto Existente</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="43"/>
         <source>search existing contact text entry</source>
-        <translation>Entrada de texto para busca de contato existente</translation>
+        <translation>Entrada de texto para pesquisar contacto existente</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="46"/>
         <source>Search...</source>
-        <translation>Procurando...</translation>
+        <translation>Pesquisar...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="56"/>
         <source>existing contacts list</source>
-        <translation>lista de contatos existentes</translation>
+        <translation>lista de contactos existentes</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="63"/>
         <source>Create new contact button</source>
-        <translation>Botão para criar novo contato</translation>
+        <translation>Botão para criar novo contacto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="66"/>
         <source>Create new contact</source>
-        <translation>Criar novo contato</translation>
+        <translation>Criar novo contacto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="85"/>
@@ -1347,17 +1347,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../contactpicker.ui" line="108"/>
         <source>New contact name text entry</source>
-        <translation>Entrada de texto para nome do novo contato</translation>
+        <translation>Entrada de texto para nome do novo contacto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="111"/>
         <source>Enter a name here...</source>
-        <translation>Entre um nome aqui...</translation>
+        <translation>Introduza um nome aqui...</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="141"/>
         <source>Validate contact creation button</source>
-        <translation>Botão de validação de criação de contato</translation>
+        <translation>Botão de validação de criação de contacto</translation>
     </message>
     <message>
         <location filename="../contactpicker.ui" line="144"/>
@@ -1375,22 +1375,22 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="28"/>
         <source>Incoming Contact Request</source>
-        <translation>Requisição de Contato Recebida</translation>
+        <translation>Pedido de Contacto Recebido</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation>Alias de Nome</translation>
+        <translation>Rótulo do nome</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation>Alias de bestID</translation>
+        <translation>Rótulo do BestID</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
         <source>Accept contact request button</source>
-        <translation>Botão para aceitar solicitação de contato</translation>
+        <translation>Botão para aceitar pedido de contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="132"/>
@@ -1400,7 +1400,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="151"/>
         <source>Mute contact request</source>
-        <translation>Ignorar solicitação de contato</translation>
+        <translation>Ignorar pedido de contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="158"/>
@@ -1410,7 +1410,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../contactrequestwidget.ui" line="177"/>
         <source>Ban contact request</source>
-        <translation>Banir solicitação de contato</translation>
+        <translation>Banir pedido de contacto</translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="184"/>
@@ -1438,7 +1438,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../currentaccountwidget.ui" line="141"/>
         <source>account selection combobox</source>
-        <translation>Caixa de seleção de conta</translation>
+        <translation>caixa de combinação de seleção de conta</translation>
     </message>
 </context>
 <context>
@@ -1446,12 +1446,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation>Ring - remoção de conta</translation>
+        <translation>Ring - eliminação de conta</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation>Tem certeza que deseja deletar sua conta?</translation>
+        <translation>Tem certeza que quer eliminar a sua conta?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="66"/>
@@ -1461,12 +1461,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation>Se esta conta não foi exportada, ou adicionada a outro dispositivo, ela será perdida</translation>
+        <translation>Se esta conta não foi exportada ou adicionada a outro dispositivo, ela será perdida</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation>Botão para cancelar exclusão de contato</translation>
+        <translation>Botão para cancelar eliminação de contacto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="141"/>
@@ -1476,12 +1476,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation>Botão para validar exclusão de contato</translation>
+        <translation>Botão para validar eliminação de contacto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="170"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -1494,12 +1494,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="47"/>
         <source>Do you want to delete this contact?</source>
-        <translation>Você quer deletar este contato?</translation>
+        <translation>Quer eliminar este contacto?</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="123"/>
         <source>Cancel contact deletion button</source>
-        <translation>Botão para cancelar exclusão de contato</translation>
+        <translation>Botão para cancelar eliminação de contacto</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="126"/>
@@ -1509,22 +1509,22 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../deletecontactdialog.ui" line="139"/>
         <source>Delete contact validation button</source>
-        <translation>Botão para validar exclusão de contato</translation>
+        <translation>Botão para validar eliminação de contacto</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="142"/>
         <source>Delete</source>
-        <translation>Deletar</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="155"/>
         <source>Delete and ban validation button</source>
-        <translation>Botão para validar exclusão e banimento de contato</translation>
+        <translation>Botão para validar eliminação e banimento de contacto</translation>
     </message>
     <message>
         <location filename="../deletecontactdialog.ui" line="158"/>
         <source>Delete and ban</source>
-        <translation>Deletar e banir</translation>
+        <translation>Eliminar e banir</translation>
     </message>
 </context>
 <context>
@@ -1557,12 +1557,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="50"/>
         <source>Display date</source>
-        <translation>Exibir data</translation>
+        <translation>Mostrar data</translation>
     </message>
     <message>
         <location filename="../instantmessagingwidget.cpp" line="54"/>
         <source>Display author</source>
-        <translation>Exibir autor</translation>
+        <translation>Mostrar autor</translation>
     </message>
 </context>
 <context>
@@ -1606,12 +1606,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Photobooth display</source>
-        <translation>Exibir foto instantânea</translation>
+        <translation>Mostrar foto instantânea</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation>Tirar foto</translation>
+        <translation>Tirar fotografia</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1631,12 +1631,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../photoboothwidget.cpp" line="66"/>
         <source>Choose File</source>
-        <translation>Escolher Arquivo</translation>
+        <translation>Escolher Ficheiro</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="68"/>
         <source>Files (*)</source>
-        <translation>Arquivos (*)</translation>
+        <translation>Ficheiros (*)</translation>
     </message>
 </context>
 <context>
@@ -1644,7 +1644,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../utils.cpp" line="187"/>
         <source>No default mail client found</source>
-        <translation>Cliente de e-mail não encontrado</translation>
+        <translation>Cliente de e-mail padrão não encontrado</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="36"/>
@@ -1663,7 +1663,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../qualitydialog.ui" line="103"/>
         <source>Automatic quality checkbox</source>
-        <translation>Caixa de seleção para qualidade automática</translation>
+        <translation>Caixa de visto para qualidade automática</translation>
     </message>
     <message>
         <location filename="../qualitydialog.ui" line="106"/>
@@ -1676,17 +1676,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="114"/>
         <source>Validate Contact Request Button</source>
-        <translation>Botão para validar solicitação de contato</translation>
+        <translation>Botão para validar pedido de contacto</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="139"/>
         <source>Mute contact request button</source>
-        <translation>Botão para ignorar solicitação de contato</translation>
+        <translation>Botão para ignorar pedido de contacto</translation>
     </message>
     <message>
         <location filename="../quickactcontactrequestwidget.ui" line="161"/>
         <source>Ban contact request button</source>
-        <translation>Botão para banir solicitação de contato</translation>
+        <translation>Botão para banir pedido de contacto</translation>
     </message>
 </context>
 <context>
@@ -1694,7 +1694,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation>Selecionar pasta</translation>
+        <translation>Select folder</translation>
     </message>
 </context>
 <context>
@@ -1712,12 +1712,12 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="39"/>
         <source>TODO: Explain the purpose of a contact request</source>
-        <translation>A FAZER: Explicar o motivo de uma requisição de contato</translation>
+        <translation>A FAZER: explicar o motivo de um pedido de contacto</translation>
     </message>
     <message>
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
-        <translation>Enviar requisição de contato</translation>
+        <translation>Enviar pedido de contacto</translation>
     </message>
 </context>
 <context>
@@ -1725,7 +1725,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="42"/>
         <source>Call on Hold</source>
-        <translation>Chamada em espera</translation>
+        <translation>Chamada em Espera</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="119"/>
@@ -1740,7 +1740,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="186"/>
         <source>Add person to call</source>
-        <translation>Adicionar pessoa a conversa</translation>
+        <translation>Adicionar pessoa à conversa</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="218"/>
@@ -1750,7 +1750,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="256"/>
         <source>Mute Mic</source>
-        <translation>Desativar microfone</translation>
+        <translation>Desativar Microfone</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="338"/>
@@ -1765,17 +1765,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="402"/>
         <source>Join Calls</source>
-        <translation>Juntar chamadas</translation>
+        <translation>Juntar Chamadas</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="476"/>
         <source>Name label</source>
-        <translation>Nome do rótulo</translation>
+        <translation>Rótulo do nome</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="498"/>
         <source>Add to contact</source>
-        <translation>Adicionar a contato</translation>
+        <translation>Adicionar a contacto</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="568"/>
@@ -1800,7 +1800,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videooverlay.ui" line="297"/>
         <source>Mute Video</source>
-        <translation>Desativar vídeo</translation>
+        <translation>Tirar Som ao Vídeo</translation>
     </message>
 </context>
 <context>
@@ -1808,17 +1808,17 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../videoview.cpp" line="253"/>
         <source>Share entire screen</source>
-        <translation>Compartilhar tela inteira</translation>
+        <translation>Partilhar ecrã inteiro</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="256"/>
         <source>Share screen area</source>
-        <translation>Compartilhar área da tela</translation>
+        <translation>Partilhar área do ecrã</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="263"/>
         <source>Share file</source>
-        <translation>Compartilhar arquivo</translation>
+        <translation>Partilhar ficheiro</translation>
     </message>
 </context>
 <context>
@@ -1826,27 +1826,27 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="70"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Sua conta precisa ser migrada. Entre com sua senha.</translation>
+        <translation>A sua conta tem de ser migrada. Introduza a sua palavra-chave.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="96"/>
         <source>Migrating your Ring account...</source>
-        <translation>Migrando sua conta do Ring...</translation>
+        <translation>A migrar a sua conta do Ring...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="98"/>
         <source>Importing account archive...</source>
-        <translation>Importando arquivo da conta...</translation>
+        <translation>A importar ficheiro da conta...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="151"/>
         <source>Registering your public username, it may take a few minutes...</source>
-        <translation>Registrando seu usuário público, isto pode tomar alguns minutos...</translation>
+        <translation>A registar o seu nome público de utilizador, isto pode demorar alguns minutos...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="170"/>
         <source>An error has occured during your account creation</source>
-        <translation>Houve um erro durante a criação da sua conta</translation>
+        <translation>Ocorreu um erro durante a criação da sua conta</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="227"/>
@@ -1856,32 +1856,32 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="339"/>
         <source>Username not available.</source>
-        <translation>Usuário não disponível.</translation>
+        <translation>Nome de utilizador não disponível.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="342"/>
         <source>Username is available.</source>
-        <translation>Usuário disponível.</translation>
+        <translation>Nome de utilizador está disponível.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="345"/>
         <source>Username is invalid.</source>
-        <translation>Usuário é inválido.</translation>
+        <translation>O nome de utilizador não é válido.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="348"/>
         <source>Network error.</source>
-        <translation>Erro na Rede.</translation>
+        <translation>Erro na rede.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="402"/>
         <source>Open File</source>
-        <translation>Abrir arquivo</translation>
+        <translation>Abrir Ficheiro</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="404"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation>Arquivos do Ring (*.gz);; Todos arquivos (*)</translation>
+        <translation>Ficheiro do Ring (*.gz);; Todos os ficheiros (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
@@ -1901,7 +1901,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="78"/>
         <source> Welcome to</source>
-        <translation>Bem-vindo ao</translation>
+        <translation>Bem-vindo(a) ao</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="329"/>
@@ -1919,49 +1919,49 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Para conectar este dispositivo em outra conta, você primeiro &lt;/span&gt;precisa obter um código PIN.&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; para gerar um código PIN,&lt;/span&gt;&lt;/span&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vá para a &lt;span style=&quot; font-weight:600;&quot;&gt;Configuração de administração da conta&lt;/span&gt; de um dispositivo anterior&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Escolha a opção &lt;span style=&quot; font-weight:600;&quot;&gt;Conta Ring&lt;/span&gt; que você quer usar&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vá para a &lt;span style=&quot; font-weight:600;&quot;&gt;aba de dispositivos&lt;/span&gt;&lt;/li&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Para associar este dispositivo a outra conta, primeiro &lt;/span&gt;tem de obter um código PIN.&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; Para gerar um código PIN,&lt;/span&gt;&lt;/span&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vá a &lt;span style=&quot; font-weight:600;&quot;&gt;Configurações da gestão da conta&lt;/span&gt; de um dispositivo anterior&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Escolha a opção &lt;span style=&quot; font-weight:600;&quot;&gt;Conta Ring&lt;/span&gt; que quer usar.&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; Aceda à &lt;span style=&quot; font-weight:600;&quot;&gt;aba de dispositivos&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Selecione &lt;span style=&quot; font-weight:600;&quot;&gt;Adicionar um dispositivo&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Você irá receber o PIN necessário para completar este formulário. Este PIN só será válido por &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutos&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Irá receber o PIN necessário para completar este formulário. Este PIN só será válido por &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutos&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="450"/>
         <source>Create your profile</source>
-        <translation>Criar um Perfil</translation>
+        <translation>Criar o seu perfil</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="564"/>
         <source>Enter your full name:</source>
-        <translation>Digite seu nome completo:</translation>
+        <translation>Introduza o seu nome completo:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="629"/>
         <location filename="../wizarddialog.cpp" line="231"/>
         <source>Create your account</source>
-        <translation>Criar uma conta</translation>
+        <translation>Criar a sua conta</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="730"/>
         <source>Choose your username</source>
-        <translation>Escolha seu nome de usuário</translation>
+        <translation>Escolha o seu nome de utilizador</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="311"/>
         <source>Searching...</source>
-        <translation>Buscando...</translation>
+        <translation>A pesquisar...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation>Registre seu usuário no Ring. Isto irá reservar o usuário para que apenas você possa o utilizar. Seus amigos serão capazes de contatá-lo com seu usuário ao invés de com seu RingID</translation>
+        <translation>Registe o seu nome de utilizador no Ring. Isto irá reservar o nome de utilizador para que apenas você o possa utilizar. Os seus amigos serão capazes de contactá-lo com seu nome de utilizador em vez do seu RingID</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation>Caixa de diálogo do assistente</translation>
+        <translation>Caixa de Diálogo do Assistente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="36"/>
@@ -1971,12 +1971,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation>Legenda de boas-vindas</translation>
+        <translation>Rótulo de Boas-Vindas</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation>Logotipo de boas-vindas</translation>
+        <translation>Logótipo de Boas-Vindas</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
@@ -2001,7 +2001,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="205"/>
         <source>Select link method</source>
-        <translation>Método de seleção do link</translation>
+        <translation>Método de seleção da associação</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="254"/>
@@ -2011,52 +2011,52 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="257"/>
         <source>Link account from DHT</source>
-        <translation>Associar à uma conta do DHT</translation>
+        <translation>Associar a uma conta do DHT</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="270"/>
         <source>Link from exported account archive file</source>
-        <translation>Link do arquivo da conta exportada</translation>
+        <translation>Link do ficheiro da conta exportada</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="273"/>
         <source>Link account from file</source>
-        <translation>Associar conta a partir do arquivo</translation>
+        <translation>Associar conta a partir do ficheiro</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
         <source>Select file to import</source>
-        <translation>Selecione um arquivo para importar</translation>
+        <translation>Selecione o ficheiro a importar</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation>Diretório do arquivo da conta:</translation>
+        <translation>Diretório do ficheiro da conta:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation>Seletor do diretório do arquivo da conta</translation>
+        <translation>Seletor do diretório do ficheiro da conta</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation>Senha do arquivo:</translation>
+        <translation>Palavra-chave do ficheiro:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
         <source>Archive passord input</source>
-        <translation>Entrada de senha de arquivo</translation>
+        <translation>Entrada de palavra-chave do ficheiro</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
-        <translation>Assistente de foto instantânea</translation>
+        <translation>Assistente de Foto Instantânea</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="509"/>
         <source>Avatar display</source>
-        <translation>Exibir avatar</translation>
+        <translation>Visualização do avatar</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="588"/>
@@ -2071,27 +2071,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="673"/>
         <source>Public username checkbox</source>
-        <translation>Caixa de seleção para nome de usuário público</translation>
+        <translation>Caixa de visto para o nome público de utilizador</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation>Caixa de seleção para indicar se o usuário deseja um nome de usuário público</translation>
+        <translation>Caixa de visto para indicar se o utilizador quer um nome público de utilizador</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation>Registrar usuário público (experimental)</translation>
+        <translation>Registar nome público de utilizador (experimental)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="724"/>
         <source>Public username edit</source>
-        <translation>Editar nome de usuário público</translation>
+        <translation>Editar nome público de utilizador</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="746"/>
         <source>Public username validation status</source>
-        <translation>Estado de validação do nome de usuário público</translation>
+        <translation>Estado de validação do nome público de utilizador</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="778"/>
@@ -2106,49 +2106,49 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="787"/>
         <source>Enter your pin</source>
-        <translation>Entre o seu PIN</translation>
+        <translation>Introduza o seu PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="814"/>
         <source>Password text input</source>
-        <translation>Entrada de texto de senha</translation>
+        <translation>Entrada de texto da palavra-chave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="820"/>
         <source>Password text entry</source>
-        <translation>Campo de texto da Senha</translation>
+        <translation>Campo de texto da palavra-chave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="826"/>
         <source>Password</source>
-        <translation>Senha</translation>
+        <translation>Palavra-chave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="853"/>
         <location filename="../wizarddialog.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation>Campo de texto para confirmação da Senha</translation>
+        <translation>Campo de texto para confirmação da palavra-chave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="865"/>
         <source>Confirm password</source>
-        <translation>Confirmar senha</translation>
+        <translation>Confirmar palavra-chave</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="933"/>
         <location filename="../wizarddialog.cpp" line="100"/>
         <source>Generating your Ring account...</source>
-        <translation>Criando sua conta Ring...</translation>
+        <translation>A gerar a sua conta Ring...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
         <source>Previous page button</source>
-        <translation>Botão da página anterior</translation>
+        <translation>Botão de página anterior</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation>Pressione botão para acessar a página anterior do assistente</translation>
+        <translation>Botão de pressionar para aceder à página anterior do assistente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="978"/>
@@ -2158,12 +2158,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation>Botão da próxima página</translation>
+        <translation>Botão de página seguinte</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation>Pressione botão para acessar próxima página do assistente</translation>
+        <translation>Botão de pressionar para aceder à página seguinte do assistente</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="1019"/>
