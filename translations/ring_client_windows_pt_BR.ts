@@ -153,7 +153,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation>Endereço hostname para SIP ou DHT</translation>
+        <translation>Endereço do servidor para SIP ou DHT</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -168,7 +168,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation>Usuário registrado no botão do blockchain</translation>
+        <translation>Botão de registar usuário no blockchain</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -279,7 +279,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation>Cancelar o botão de mudança de senha</translation>
+        <translation>Botão de cancelar a mudança de senha</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
@@ -491,7 +491,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation>Variação de portas de audio RTP</translation>
+        <translation>Variação de portas de áudio RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
@@ -520,7 +520,7 @@ Ring é um software de comunicação distribuído e seguro.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
-        <translation>Intervalo de portas de Video RTP</translation>
+        <translation>Intervalo de portas de vídeo RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2186"/>
@@ -852,7 +852,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../callwidget.ui" line="935"/>
         <source>Error while generating QR Code</source>
-        <translation>Erro ao gerar o QRCode</translation>
+        <translation>Erro ao gerar o Código QR</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="979"/>
@@ -1143,7 +1143,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="527"/>
         <source>Record Settings</source>
-        <translation>Gravar configurações</translation>
+        <translation>Configurações de Gravação</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="560"/>
@@ -1289,7 +1289,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../configurationwidget.ui" line="712"/>
         <source>Launch Ring on Startup</source>
-        <translation>Iniciar ao ligar o Ring</translation>
+        <translation>Executar o Ring ao iniciar</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="320"/>
@@ -1593,7 +1593,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation>Photobooth</translation>
+        <translation>Foto instantânea</translation>
     </message>
 </context>
 <context>
@@ -1901,7 +1901,7 @@ Salve e compartilhe com seus amigos!</translation>
     <message>
         <location filename="../wizarddialog.ui" line="78"/>
         <source> Welcome to</source>
-        <translation>Bem vindo ao</translation>
+        <translation>Bem-vindo ao</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="329"/>
@@ -1919,7 +1919,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Para conectar este dispositivo em ontra conta, você primeiro &lt;/span&gt;precisa obter um código PIN.&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; para gerar um código PIN,&lt;/span&gt;&lt;/span&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Para conectar este dispositivo em outra conta, você primeiro &lt;/span&gt;precisa obter um código PIN.&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; para gerar um código PIN,&lt;/span&gt;&lt;/span&gt;
 &lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vá para a &lt;span style=&quot; font-weight:600;&quot;&gt;Configuração de administração da conta&lt;/span&gt; de um dispositivo anterior&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Escolha a opção &lt;span style=&quot; font-weight:600;&quot;&gt;Conta Ring&lt;/span&gt; que você quer usar&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vá para a &lt;span style=&quot; font-weight:600;&quot;&gt;aba de dispositivos&lt;/span&gt;&lt;/li&gt;
@@ -1956,7 +1956,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation>Registre seu usuário no Ring. Isto irá reservar o usuário para que apenas você possa o utilizar. Seus amigos serão capazes de chama-lo com seu usuário ao invés de com seu RingID</translation>
+        <translation>Registre seu usuário no Ring. Isto irá reservar o usuário para que apenas você possa o utilizar. Seus amigos serão capazes de contatá-lo com seu usuário ao invés de com seu RingID</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
@@ -2101,12 +2101,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation>Campo de texto para o NIP de associação de dispositivo</translation>
+        <translation>Campo de texto para o PIN de associação de dispositivo</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="787"/>
         <source>Enter your pin</source>
-        <translation>Entre o seu pin</translation>
+        <translation>Entre o seu PIN</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="814"/>

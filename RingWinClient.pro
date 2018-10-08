@@ -193,6 +193,7 @@ TRANSLATIONS = \
     translations/ring_client_windows_nl.ts \
     translations/ring_client_windows_it_IT.ts \
     translations/ring_client_windows_bg.ts \
+    translations/ring_client_windows_pt_PT.ts \
     translations/ring_client_windows_id.ts \
     translations/ring_client_windows_en_GB.ts \
     translations/ring_client_windows_pl_PL.ts \
