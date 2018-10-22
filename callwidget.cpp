@@ -692,7 +692,7 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
-    ui->verticalSpacer_3->changeSize(0, 10 * (1 - static_cast<bool>(invites)));
+    ui->missingButtonsDummyWidget->setVisible(!invites);
 }
 
 void CallWidget::setConversationFilter(const QString & filter)
