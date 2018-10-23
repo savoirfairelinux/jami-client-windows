@@ -24,6 +24,7 @@
 
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QComboBox>
 
 #include <memory>
 
@@ -69,6 +70,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->qrLabel->hide();
 
+    // disable dropdown shadow on combobox
+ //   ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
+
     videoRenderer_ = nullptr;
 
     // this line is not welcome here, and must be removed
@@ -92,12 +96,20 @@ CallWidget::CallWidget(QWidget* parent) :
             accountIdToStartWith = accountList.at(0);
         }
         setSelectedAccount(accountIdToStartWith);
-        // get account index and set the currentAccountWidget selector
+        // get account index and set the currentAccountComboBox
         auto index = Utils::indexInVector(accountList, accountIdToStartWith);
         if (index != -1) {
-            ui->currentAccountWidget->changeSelectedIndex(index);
+            ui->currentAccountComboBox->setCurrentIndex(index);
+            ui->currentAccountComboBox->importLabelPhoto(index);
         }
     }
+
+    // change call widget current account if combobox index changed
+    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        [=](int index) { setSelectedAccount(accountList.at(index)); });
+
+    //disable dropdown shadow on combobox
+    ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 
     // conversation list
     conversationItemDelegate_ = new ConversationItemDelegate();
@@ -127,13 +139,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->buttonInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
-
-    connect(ui->currentAccountWidget, &CurrentAccountWidget::currentAccountChanged,
-            this, &CallWidget::currentAccountChanged);
-
-    // TODO(new lrc)
-    connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-            ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
     connect(ui->smartList, &QListView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
@@ -344,9 +349,6 @@ CallWidget::findRingAccount()
             return false;
         }
     }
-
-    ui->currentAccountWidget->update();
-
     return true;
 }
 
@@ -1052,7 +1054,6 @@ CallWidget::updateSmartList()
 void
 CallWidget::update()
 {
-    ui->currentAccountWidget->update();
     updateSmartList();
     updateConversationsFilterWidget();
     connectConversationModel();
