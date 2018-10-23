@@ -47,7 +47,7 @@
 #include "ringthemeutils.h"
 #undef interface
 
-static const QSize IMAGE_SIZE {128, 128};
+static const QSize IMAGE_SIZE {45, 45};
 
 QColor
 getAvatarColor(const QString& canonicalUri) {
