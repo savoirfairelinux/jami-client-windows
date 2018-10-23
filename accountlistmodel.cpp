@@ -51,7 +51,7 @@ int AccountListModel::columnCount(const QModelIndex &parent) const
 QVariant AccountListModel::data(const QModelIndex &index, int role) const
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
-    if (!index.isValid() || accountList.size() == 0) {
+    if (!index.isValid() || accountList.size() <= index.row()) {
         return QVariant();
     }
 

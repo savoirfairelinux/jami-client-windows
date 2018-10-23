@@ -183,6 +183,9 @@
     <ClCompile Include="invitebuttonswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wizardwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -312,6 +315,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="invitebuttonswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="wizardwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -609,6 +615,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="invitebuttonswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="wizardwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

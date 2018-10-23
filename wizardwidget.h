@@ -1,8 +1,9 @@
 /**************************************************************************
-* Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+* Copyright (C) 2015-2018 by Savoir-faire Linux                           *
 * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -27,12 +28,13 @@
 #include "person.h"
 
 #include "lrcinstance.h"
+#include "navwidget.h"
 
 namespace Ui {
-class WizardDialog;
+class WizardWidget;
 }
 
-class WizardDialog : public QDialog
+class WizardWidget : public NavWidget
 {
     Q_OBJECT
 
@@ -47,8 +49,8 @@ public:
     };
 
 public:
-    explicit WizardDialog(WizardMode wizardMode = WIZARD, AccountInfo* toBeMigrated = nullptr, QWidget* parent = 0);
-    ~WizardDialog();
+    explicit WizardWidget(WizardMode wizardMode = WIZARD, AccountInfo* toBeMigrated = nullptr, QWidget* parent = 0);
+    ~WizardWidget();
 
 //UI Slots
 private slots:
@@ -65,18 +67,18 @@ private slots:
     void timeoutNameLookupTimer();
     void on_photoTaken(QString fileName);
     void on_signUpCheckbox_toggled(bool checked);
-    void closeEvent(QCloseEvent* event);
     void on_archivePathSelector_clicked();
     void on_dhtImportBtn_clicked();
     void on_fileImportBtn_clicked();
-    void slotAccountAdded(const std::string & accountId);
 
 private:
-    Ui::WizardDialog* ui;
+    Ui::WizardWidget* ui;
     AccountInfo* account_;
     WizardMode wizardMode_;
     QMovie* movie_;
     QTimer nameLookupTimer_;
+
+    QMetaObject::Connection accountAddedConnection_;
 
     void setup();
     void changePage(bool existingAccount);

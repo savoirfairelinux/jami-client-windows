@@ -1,26 +1,26 @@
- /**************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/**************************************************************************
+* Copyright (C) 2015-2018 by Savoir-faire Linux                           *
+* Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+* Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+* Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+*                                                                         *
+* This program is free software; you can redistribute it and/or modify    *
+* it under the terms of the GNU General Public License as published by    *
+* the Free Software Foundation; either version 3 of the License, or       *
+* (at your option) any later version.                                     *
+*                                                                         *
+* This program is distributed in the hope that it will be useful,         *
+* but WITHOUT ANY WARRANTY; without even the implied warranty of          *
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
+* GNU General Public License for more details.                            *
+*                                                                         *
+* You should have received a copy of the GNU General Public License       *
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+**************************************************************************/
 
-#include "wizarddialog.h"
-#include "ui_wizarddialog.h"
+#include "wizardwidget.h"
+#include "ui_wizardwidget.h"
 
 #include <QMovie>
 #include <QMessageBox>
@@ -36,9 +36,9 @@
 
 const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Ring account", "Default alias for new Ring account");
 
-WizardDialog::WizardDialog(WizardMode wizardMode, AccountInfo* toBeMigrated, QWidget* parent) :
-    QDialog(parent),
-    ui(new Ui::WizardDialog),
+WizardWidget::WizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrated, QWidget* parent) :
+    NavWidget(parent),
+    ui(new Ui::WizardWidget),
     account_(toBeMigrated),
     wizardMode_(wizardMode),
     nameLookupTimer_(this)
@@ -78,12 +78,12 @@ WizardDialog::WizardDialog(WizardMode wizardMode, AccountInfo* toBeMigrated, QWi
             this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
 
     nameLookupTimer_.setSingleShot(true);
-    connect(&nameLookupTimer_, &QTimer::timeout, this, &WizardDialog::timeoutNameLookupTimer);
-    connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, &WizardDialog::on_photoTaken);
+    connect(&nameLookupTimer_, &QTimer::timeout, this, &WizardWidget::timeoutNameLookupTimer);
+    connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, &WizardWidget::on_photoTaken);
     ui->avatarLabel->hide();
 }
 
-WizardDialog::~WizardDialog()
+WizardWidget::~WizardWidget()
 {
     disconnect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
@@ -91,7 +91,7 @@ WizardDialog::~WizardDialog()
 }
 
 void
-WizardDialog::processWizardInformations()
+WizardWidget::processWizardInformations()
 {
     if (wizardMode_ == MIGRATION)
         ui->progressLabel->setText(tr("Migrating your Ring account..."));
@@ -131,18 +131,7 @@ WizardDialog::processWizardInformations()
 }
 
 void
-WizardDialog::closeEvent(QCloseEvent* event)
-{
-    Q_UNUSED(event);
-    if (wizardMode_ == WIZARD){
-        done(QDialog::Rejected);
-    } else {
-        QDialog::closeEvent(event);
-    }
-}
-
-void
-WizardDialog::on_photoTaken(QString fileName)
+WizardWidget::on_photoTaken(QString fileName)
 {
     auto image = QImage(fileName);
     auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
@@ -153,7 +142,7 @@ WizardDialog::on_photoTaken(QString fileName)
 }
 
 void
-WizardDialog::on_existingPushButton_clicked()
+WizardWidget::on_existingPushButton_clicked()
 {
     ui->navBarWidget->show();
     ui->nextButton->hide();
@@ -161,14 +150,14 @@ WizardDialog::on_existingPushButton_clicked()
 }
 
 void
-WizardDialog::on_newAccountButton_clicked()
+WizardWidget::on_newAccountButton_clicked()
 {
     wizardMode_ = NEW_ACCOUNT;
     changePage(false);
 }
 
 void
-WizardDialog::changePage(bool existingAccount)
+WizardWidget::changePage(bool existingAccount)
 {
     if (existingAccount) { // If user want to add a device
         ui->accountLabel->setText(tr("Add a device"));
@@ -193,7 +182,7 @@ WizardDialog::changePage(bool existingAccount)
 }
 
 void
-WizardDialog::on_nextButton_clicked()
+WizardWidget::on_nextButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
     if (curWidget == ui->profilePage) {
@@ -209,7 +198,7 @@ WizardDialog::on_nextButton_clicked()
 }
 
 void
-WizardDialog::on_previousButton_clicked()
+WizardWidget::on_previousButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
 
@@ -247,7 +236,7 @@ WizardDialog::on_previousButton_clicked()
 }
 
 void
-WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
+WizardWidget::on_passwordEdit_textChanged(const QString& arg1)
 {
     Q_UNUSED(arg1)
 
@@ -257,7 +246,7 @@ WizardDialog::on_passwordEdit_textChanged(const QString& arg1)
 }
 
 void
-WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
+WizardWidget::on_usernameEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1)
     if(ui->signUpCheckbox->isChecked() && !arg1.isEmpty()) {
@@ -270,7 +259,7 @@ WizardDialog::on_usernameEdit_textChanged(const QString &arg1)
 }
 
 void
-WizardDialog::timeoutNameLookupTimer()
+WizardWidget::timeoutNameLookupTimer()
 {
     if(ui->signUpCheckbox->isChecked() && !ui->usernameEdit->text().isEmpty()) {
         NameDirectory::instance().lookupName(nullptr, QString(), ui->usernameEdit->text());
@@ -280,7 +269,7 @@ WizardDialog::timeoutNameLookupTimer()
 }
 
 void
-WizardDialog::handle_registeredNameFound (Account* account, NameDirectory::LookupStatus status, const QString& address, const QString& name)
+WizardWidget::handle_registeredNameFound (Account* account, NameDirectory::LookupStatus status, const QString& address, const QString& name)
 {
     Q_UNUSED(account)
     Q_UNUSED(address)
@@ -305,15 +294,14 @@ WizardDialog::handle_registeredNameFound (Account* account, NameDirectory::Looku
 }
 
 void
-WizardDialog::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name)
+WizardWidget::handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name)
 {
     Q_UNUSED(name);
     Q_UNUSED(status);
-    accept();
 }
 
 void
-WizardDialog::on_signUpCheckbox_toggled(bool checked)
+WizardWidget::on_signUpCheckbox_toggled(bool checked)
 {
     if (checked) {
         ui->usernameEdit->setEnabled(true);
@@ -324,7 +312,7 @@ WizardDialog::on_signUpCheckbox_toggled(bool checked)
 }
 
 void
-WizardDialog::validateFileImport()
+WizardWidget::validateFileImport()
 {
     // reset original color
     ui->archivePasswordInput->setStyleSheet("border-color: rgb(0, 192, 212);");
@@ -342,7 +330,7 @@ WizardDialog::validateFileImport()
     }
 }
 
-void WizardDialog::on_archivePathSelector_clicked()
+void WizardWidget::on_archivePathSelector_clicked()
 {
     QString filePath;
     filePath = QFileDialog::getOpenFileName(this,
@@ -359,7 +347,7 @@ void WizardDialog::on_archivePathSelector_clicked()
 }
 
 void
-WizardDialog::createRingAccount(const QString &displayName,
+WizardWidget::createRingAccount(const QString &displayName,
                                 const QString &password,
                                 const QString &pin,
                                 const QString &archivePath)
@@ -375,8 +363,18 @@ WizardDialog::createRingAccount(const QString &displayName,
             );
         });
 
-    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-            this, &WizardDialog::slotAccountAdded);
+    QMetaObject::Connection* toDisconnect = &accountAddedConnection_;
+    accountAddedConnection_ = connect(&LRCInstance::accountModel(),
+        &lrc::api::NewAccountModel::accountAdded,
+        [this, toDisconnect](const std::string& accountId) {
+            //set default ringtone
+            auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+            confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+            LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+            emit NavigationRequested(ScreenEnum::CallScreen);
+            QObject::disconnect(*toDisconnect);
+        });
+
 
     ui->navBarWidget->hide();
     Utils::setStackWidget(ui->stackedWidget, ui->spinnerPage);
@@ -384,23 +382,14 @@ WizardDialog::createRingAccount(const QString &displayName,
 }
 
 void
-WizardDialog::slotAccountAdded(const std::string& accountId)
-{
-    auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-    confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
-    LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-    accept();
-}
-
-void
-WizardDialog::on_dhtImportBtn_clicked()
+WizardWidget::on_dhtImportBtn_clicked()
 {
     ui->nextButton->show();
     changePage(true);
 }
 
 void
-WizardDialog::on_fileImportBtn_clicked()
+WizardWidget::on_fileImportBtn_clicked()
 {
     ui->navBarWidget->show();
     ui->nextButton->show();
