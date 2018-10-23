@@ -117,6 +117,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="currentaccountcombobox.cpp" />
     <ClCompile Include="aboutdialog.cpp" />
     <ClCompile Include="accountdetails.cpp" />
     <ClCompile Include="accountitemdelegate.cpp" />
@@ -134,7 +135,6 @@
     <ClCompile Include="configurationwidget.cpp" />
     <ClCompile Include="contactpicker.cpp" />
     <ClCompile Include="contactrequestwidget.cpp" />
-    <ClCompile Include="currentaccountwidget.cpp" />
     <ClCompile Include="deleteaccountdialog.cpp" />
     <ClCompile Include="globalsystemtray.cpp" />
     <ClCompile Include="idlabel.cpp" />
@@ -184,6 +184,7 @@
     <QtMoc Include="callutilsdialog.h">
     </QtMoc>
     <QtMoc Include="callwidget.h">
+      <SubType>Designer</SubType>
     </QtMoc>
     <QtMoc Include="configurationwidget.h">
     </QtMoc>
@@ -198,8 +199,6 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
     </QtMoc>
     <QtMoc Include="contactrequestwidget.h">
-    </QtMoc>
-    <QtMoc Include="currentaccountwidget.h">
     </QtMoc>
     <QtMoc Include="deleteaccountdialog.h">
     </QtMoc>
@@ -220,6 +219,10 @@
     <QtMoc Include="photoboothwidget.h">
     </QtMoc>
     <QtMoc Include="invitebuttonswidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
+    </QtMoc>
+    <QtMoc Include="currentaccountcombobox.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </QtMoc>
@@ -292,7 +295,6 @@
     <ClInclude Include="ui_configurationwidget.h" />
     <ClInclude Include="ui_contactpicker.h" />
     <ClInclude Include="ui_contactrequestwidget.h" />
-    <ClInclude Include="ui_currentaccountwidget.h" />
     <ClInclude Include="ui_deleteaccountdialog.h" />
     <ClInclude Include="ui_instantmessagingwidget.h" />
     <ClInclude Include="ui_mainwindow.h" />
@@ -377,8 +379,6 @@
     <QtUic Include="contactpicker.ui">
     </QtUic>
     <QtUic Include="contactrequestwidget.ui">
-    </QtUic>
-    <QtUic Include="currentaccountwidget.ui">
     </QtUic>
     <QtUic Include="deleteaccountdialog.ui">
     </QtUic>
