@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1128</width>
-    <height>724</height>
+    <width>747</width>
+    <height>639</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -101,7 +101,7 @@
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
            <item>
-            <widget class="CurrentAccountWidget" name="currentAccountWidget" native="true">
+            <widget class="CurrentAccountComboBox" name="currentAccountComboBox" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -113,6 +113,12 @@
                <width>0</width>
                <height>60</height>
               </size>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
             </widget>
            </item>
@@ -1812,12 +1818,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>CurrentAccountWidget</class>
-   <extends>QWidget</extends>
-   <header>currentaccountwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ContactRequestWidget</class>
    <extends>QWidget</extends>
    <header>contactrequestwidget.h</header>
@@ -1828,6 +1828,11 @@
    <extends>QWidget</extends>
    <header>conversationsfilterwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CurrentAccountComboBox</class>
+   <extends>QWidget</extends>
+   <header>currentaccountcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
