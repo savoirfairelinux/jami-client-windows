@@ -24,6 +24,7 @@
 
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QComboBox>
 
 #include <memory>
 
@@ -92,12 +93,16 @@ CallWidget::CallWidget(QWidget* parent) :
             accountIdToStartWith = accountList.at(0);
         }
         setSelectedAccount(accountIdToStartWith);
-        // get account index and set the currentAccountWidget selector
+        // get account index and set the currentAccountComboBox
         auto index = Utils::indexInVector(accountList, accountIdToStartWith);
         if (index != -1) {
-            ui->currentAccountWidget->changeSelectedIndex(index);
+            ui->currentAccountComboBox->setCurrentIndex(index);
+            ui->currentAccountComboBox->importLabelPhoto(index);
         }
     }
+
+    //disable dropdown shadow on combobox
+    ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 
     // conversation list
     conversationItemDelegate_ = new ConversationItemDelegate();
@@ -126,13 +131,6 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->buttonInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
 
-    connect(ui->currentAccountWidget, &CurrentAccountWidget::currentAccountChanged,
-            this, &CallWidget::currentAccountChanged);
-
-    // TODO(new lrc)
-    connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-            ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
-
     connect(ui->smartList, &QListView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
 
@@ -153,6 +151,10 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(&LRCInstance::behaviorController(), &BehaviorController::showChatView,
             this, &CallWidget::slotShowChatView);
+
+    // change call widget current account if combobox index changed
+    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &CallWidget::slotAccountChanged);
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
@@ -533,6 +535,12 @@ void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
 void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
 {
     setupSmartListContextMenu(pos);
+}
+
+void CallWidget::slotAccountChanged(int index)
+{
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    setSelectedAccount(accountList.at(index));
 }
 
 void CallWidget::slotShowCallView(const std::string& accountId,
@@ -1023,7 +1031,6 @@ CallWidget::updateSmartList()
 void
 CallWidget::update()
 {
-    ui->currentAccountWidget->update();
     updateSmartList();
     updateConversationsFilterWidget();
     connectConversationModel();
