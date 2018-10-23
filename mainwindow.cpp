@@ -117,17 +117,18 @@ MainWindow::MainWindow(QWidget* parent) :
         Q_UNUSED(online)
         AccountModel::instance().slotConnectivityChanged();
     });
+
+
+    if (LRCInstance::accountModel().getAccountList().size()) {
+        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::CallScreen));
+    } else {
+        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::WizardScreen));
+    }
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-bool
-MainWindow::init()
-{
-    return ui->callwidget->findRingAccount();
 }
 
 void
@@ -218,6 +219,7 @@ MainWindow::switchNormalMaximize()
 void
 MainWindow::closeEvent(QCloseEvent* event)
 {
+    Video::PreviewManager::instance().stopPreview();
     QSettings settings;
     if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
         this->hide();

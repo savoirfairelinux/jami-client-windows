@@ -169,8 +169,13 @@
     <ClCompile Include="videowidget.cpp" />
     <ClCompile Include="windowscontactbackend.cpp" />
     <ClCompile Include="wizarddialog.cpp" />
+    <ClCompile Include="wizardwidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="wizardwidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
+    </QtMoc>
     <QtMoc Include="aboutdialog.h">
     </QtMoc>
     <QtMoc Include="accountdetails.h">
@@ -386,6 +391,7 @@
     </QtUic>
     <QtUic Include="invitebuttonswidget.ui" />
     <QtUic Include="mainwindow.ui">
+      <SubType>Designer</SubType>
     </QtUic>
     <QtUic Include="photoboothdialog.ui">
     </QtUic>
@@ -404,6 +410,9 @@
     <QtUic Include="videoview.ui">
     </QtUic>
     <QtUic Include="wizarddialog.ui">
+    </QtUic>
+    <QtUic Include="wizardwidget.ui">
+      <SubType>Designer</SubType>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
