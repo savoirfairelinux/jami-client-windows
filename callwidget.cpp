@@ -24,6 +24,7 @@
 
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QComboBox>
 
 #include <memory>
 
@@ -78,26 +79,38 @@ CallWidget::CallWidget(QWidget* parent) :
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!accountList.empty()) {
         std::string accountIdToStartWith;
+        int accountIndexToStartWith;
         QSettings settings;
         if (settings.contains(SettingsKey::selectedAccount)) {
             accountIdToStartWith = settings
                 .value(SettingsKey::selectedAccount, true)
                 .value<QString>()
                 .toStdString();
+
+            accountIndexToStartWith = settings
+                .value(SettingsKey::selectedAccount, true)
+                .value<int>();
             if (Utils::indexInVector(accountList, accountIdToStartWith) == -1) {
                 accountIdToStartWith = accountList.at(0);
+                accountIndexToStartWith = 0;
             }
         }
         else {
             accountIdToStartWith = accountList.at(0);
+            accountIndexToStartWith = 0;
         }
         setSelectedAccount(accountIdToStartWith);
-        // get account index and set the currentAccountWidget selector
+        // get account index and set the currentAccountComboBox
         auto index = Utils::indexInVector(accountList, accountIdToStartWith);
         if (index != -1) {
-            ui->currentAccountWidget->changeSelectedIndex(index);
+            ui->currentAccountComboBox->setCurrentIndex(index);
         }
+        ui->currentAccountComboBox->CurrentAccountComboBox::importLabelPhoto(accountIndexToStartWith);
     }
+
+    // change call widget current account if combobox index changed
+    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        [=](int index) { setSelectedAccount(accountList.at(index)); });
 
     // conversation list
     conversationItemDelegate_ = new ConversationItemDelegate();
@@ -127,13 +140,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->buttonInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
-
-    connect(ui->currentAccountWidget, &CurrentAccountWidget::currentAccountChanged,
-            this, &CallWidget::currentAccountChanged);
-
-    // TODO(new lrc)
-    connect(&ProfileModel::instance(), &ProfileModel::dataChanged,
-            ui->currentAccountWidget, &CurrentAccountWidget::setPhoto);
 
     connect(ui->smartList, &QListView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
@@ -344,9 +350,6 @@ CallWidget::findRingAccount()
             return false;
         }
     }
-
-    ui->currentAccountWidget->update();
-
     return true;
 }
 
@@ -1052,7 +1055,6 @@ CallWidget::updateSmartList()
 void
 CallWidget::update()
 {
-    ui->currentAccountWidget->update();
     updateSmartList();
     updateConversationsFilterWidget();
     connectConversationModel();
