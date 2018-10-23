@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -298,6 +299,32 @@ Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const l
         return bestIdForConversation(conv, model);
     }
     return alias;
+}
+
+// returns empty string if only infoHash is available, second best identifier otherwise
+std::string
+Utils::secondBestNameForAccount(const lrc::api::account::Info& account)
+{
+    auto alias = removeEndlines(account.profileInfo.alias);
+    auto registeredName = removeEndlines(account.registeredName);
+    auto infoHash = account.profileInfo.uri;
+
+    if (!alias.length() == 0) { // if alias exists
+        if (!registeredName.length() == 0) { // if registeredName exists
+            return registeredName;
+        }
+        else {
+            return infoHash;
+        }
+    }
+    else {
+        if (!registeredName.length() == 0) { // if registeredName exists
+            return infoHash;
+        }
+        else {
+            return "";
+        }
+    }
 }
 
 lrc::api::profile::Type

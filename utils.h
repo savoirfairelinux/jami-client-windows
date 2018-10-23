@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -65,6 +66,7 @@ namespace Utils
     std::string bestIdForContact(const lrc::api::contact::Info & contact);
     std::string bestNameForContact(const lrc::api::contact::Info & contact);
     std::string bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+    std::string secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
     lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
     std::string formatTimeString(const std::time_t& timestamp);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);

@@ -77,7 +77,7 @@ AccountItemDelegate::paint(QPainter* painter,
     // Presence indicator
     QPainterPath outerCircle, innerCircle;
     QPointF center(rectAvatar.right() - avatarSize_ / 6, (rectAvatar.bottom() - avatarSize_ / 6) + 1);
-    qreal outerCRadius = avatarSize_ / 6, innerCRadius = outerCRadius * 0.75;
+    qreal outerCRadius = avatarSize_ / 6, innerCRadius = outerCRadius * 0.85;
     outerCircle.addEllipse(center, outerCRadius, outerCRadius);
     innerCircle.addEllipse(center, innerCRadius, innerCRadius);
     auto status = index.data(static_cast<int>(AccountListModel::Role::Status)).value<int>();
