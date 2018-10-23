@@ -75,6 +75,7 @@ public slots:
     void slotBlockInviteClicked(const QModelIndex& index);
     void slotIgnoreInviteClicked(const QModelIndex& index);
     void slotCustomContextMenuRequested(const QPoint & pos);
+    void slotAccountChanged(int index);
     void slotShowCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
     void slotShowIncomingCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
     void slotShowChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
