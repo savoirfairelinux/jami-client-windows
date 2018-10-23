@@ -64,7 +64,6 @@ class CallWidget : public NavWidget
 public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
-    bool findRingAccount();
 
 public slots:
     void on_ringContactLineEdit_returnPressed();

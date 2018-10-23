@@ -22,6 +22,7 @@
 
 enum ScreenEnum {
     //DO not add main widget screen before callScreen
+    WizardScreen,
     CallScreen,
     ConfScreen,
     END
