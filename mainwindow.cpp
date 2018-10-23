@@ -37,12 +37,18 @@
 #include "callmodel.h"
 #include "callwidget.h"
 #include "utils.h"
+#include "wizarddialog.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->wizardwidget, &WizardWidget::NavigationRequested,
+        [this](ScreenEnum scr) {
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+        });
 
     connect(ui->callwidget, &CallWidget::NavigationRequested,
             [this](ScreenEnum scr) {
@@ -117,17 +123,27 @@ MainWindow::MainWindow(QWidget* parent) :
         Q_UNUSED(online)
         AccountModel::instance().slotConnectivityChanged();
     });
+
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (accountList.size()) {
+        for (const auto& accountId : accountList) {
+            auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            if (accountInfo.profileInfo.type == lrc::api::profile::Type::RING) {
+                if (accountInfo.status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+                    WizardDialog dlg(WizardDialog::MIGRATION);
+                    dlg.exec();
+                }
+            }
+        }
+        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::CallScreen));
+    } else {
+        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::WizardScreen));
+    }
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-bool
-MainWindow::init()
-{
-    return ui->callwidget->findRingAccount();
 }
 
 void
@@ -218,6 +234,7 @@ MainWindow::switchNormalMaximize()
 void
 MainWindow::closeEvent(QCloseEvent* event)
 {
+    Video::PreviewManager::instance().stopPreview();
     QSettings settings;
     if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
         this->hide();

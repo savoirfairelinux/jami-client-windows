@@ -180,10 +180,6 @@ main(int argc, char *argv[])
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
-    if (not MainWindow::instance().init()) {
-        return 1;
-    }
-
     MainWindow::instance().createThumbBar();
 
     if (not uri.isEmpty()) {
