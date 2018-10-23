@@ -84,9 +84,6 @@
     <ClCompile Include="contactrequestwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="currentaccountwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="deleteaccountdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -183,6 +180,9 @@
     <ClCompile Include="invitebuttonswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="currentaccountcombobox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -213,9 +213,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="contactrequestwidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="currentaccountwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="deleteaccountdialog.h">
@@ -314,6 +311,9 @@
     <QtMoc Include="invitebuttonswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="currentaccountcombobox.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -344,9 +344,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_contactrequestwidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_currentaccountwidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_deleteaccountdialog.h">
@@ -567,9 +564,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="contactrequestwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="currentaccountwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="deleteaccountdialog.ui">
