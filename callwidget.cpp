@@ -108,8 +108,6 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->spinnerLabel->setMovie(miniSpinner_);
     ui->spinnerLabel->hide();
 
-    // set to welcome view
-    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     setupOutOfCallIM();
 
     // connections
@@ -155,6 +153,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(&LRCInstance::behaviorController(), &BehaviorController::showChatView,
             this, &CallWidget::slotShowChatView);
+
+    // set first view to welcome view
+    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
 CallWidget::~CallWidget()
@@ -318,36 +319,6 @@ CallWidget::setupQRCode(QString ringID)
     QRcode_free(rcode);
     ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_),
                            Qt::KeepAspectRatio)));
-}
-
-bool
-CallWidget::findRingAccount()
-{
-    bool ringAccountFound = false;
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    for (int i = 0; i < accountList.size(); ++i) {
-        auto accountId = accountList.at(i);
-        auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-        if (accountInfo.profileInfo.type == lrc::api::profile::Type::RING) {
-            ringAccountFound = true;
-            if (accountInfo.status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-                WizardDialog dlg(WizardDialog::MIGRATION);
-                dlg.exec();
-            }
-        }
-    }
-
-    if (!ringAccountFound) {
-        WizardDialog wizardDialog;
-        wizardDialog.exec();
-        if (wizardDialog.result() != QDialog::Accepted) {
-            return false;
-        }
-    }
-
-    ui->currentAccountWidget->update();
-
-    return true;
 }
 
 void

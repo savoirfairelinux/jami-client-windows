@@ -89,6 +89,9 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
         auto idx = ui->accountView->currentIndex();
         DeleteAccountDialog dialog(idx);
         dialog.exec();
+        if (!LRCInstance::accountModel().getAccountList().size()) {
+            emit NavigationRequested(ScreenEnum::WizardScreen);
+        }
     });
 
     isLoading_ = true;
