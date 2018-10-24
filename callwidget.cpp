@@ -25,6 +25,7 @@
 #include <QClipboard>
 #include <QDesktopServices>
 #include <QComboBox>
+#include <QGraphicsDropShadowEffect>
 
 #include <memory>
 
@@ -70,9 +71,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->qrLabel->hide();
 
-    // disable dropdown shadow on combobox
- //   ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
-
     videoRenderer_ = nullptr;
 
     // this line is not welcome here, and must be removed
@@ -103,10 +101,6 @@ CallWidget::CallWidget(QWidget* parent) :
             ui->currentAccountComboBox->importLabelPhoto(index);
         }
     }
-
-    // change call widget current account if combobox index changed
-    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        [=](int index) { setSelectedAccount(accountList.at(index)); });
 
     //disable dropdown shadow on combobox
     ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
@@ -160,6 +154,11 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(&LRCInstance::behaviorController(), &BehaviorController::showChatView,
             this, &CallWidget::slotShowChatView);
+
+    // change call widget current account if combobox index changed
+    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        [=](int index) { setSelectedAccount(accountList.at(index)); });
+
 }
 
 CallWidget::~CallWidget()
@@ -637,12 +636,12 @@ void
 CallWidget::currentAccountChanged(const QModelIndex &current)
 {
     if (!current.isValid()) {
-        ui->selectBar->hide();
+        ui->ringContactLineEdit->hide();
         ui->ringIdLabel->setText("");
         return;
     }
-    if (ui->selectBar->isHidden()){
-        ui->selectBar->show();
+    if (ui->ringContactLineEdit->isHidden()){
+        ui->ringContactLineEdit->show();
     }
 
     auto accountId = current.data(static_cast<int>(AccountListModel::Role::ID)).value<QString>().toStdString();
@@ -694,7 +693,7 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
-    ui->verticalSpacer_3->changeSize(0, 10 * (1 - static_cast<bool>(invites)));
+//    ui->verticalSpacer_3->changeSize(0, 10 * (1 - static_cast<bool>(invites)));
 }
 
 void CallWidget::setConversationFilter(const QString & filter)

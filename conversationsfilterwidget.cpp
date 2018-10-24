@@ -21,6 +21,8 @@
 #include "ringthemeutils.h"
 
 #include <QPainter>
+#include <QgraphicsDropShadowEffect>
+
 
 static inline const QRect
 getNotifierRect(const QRect& buttonRect)
@@ -35,6 +37,12 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
                                                  SmartlistSelectorButtonNotifier*& notifier,
                                                  lrc::api::profile::Type filter)
 {
+    // shadow effect
+    QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect;
+    shadowEffect->setBlurRadius(8);
+    shadowEffect->setOffset(0);
+
+
     auto button = this->findChild<QPushButton*>(buttonName);
     if (!button) {
         return;
@@ -45,6 +53,7 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
         notifier->setTypeFilter(filter);
         notifier->hide();
         QObject::connect(notifier, SIGNAL(clicked()), button, SLOT(click()));
+        button->setGraphicsEffect(shadowEffect);
     } else {
         notifier->setGeometry(getNotifierRect(button->frameGeometry()));
         notifier->show();

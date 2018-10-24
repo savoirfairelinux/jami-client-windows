@@ -45,6 +45,7 @@ ConversationItemDelegate::paint(QPainter* painter
     QStyleOptionViewItem opt(option);
     painter->setRenderHint(QPainter::Antialiasing);
 
+
     // Not having focus removes dotted lines around the item
     if (opt.state & QStyle::State_HasFocus)
         opt.state ^= QStyle::State_HasFocus;
@@ -119,7 +120,7 @@ ConversationItemDelegate::paint(QPainter* painter
         QPainterPath outerCircle, innerCircle;
         QPointF center(rectAvatar.right() - radius, (rectAvatar.bottom() - radius) + 1);
         qreal outerCRadius = radius;
-        qreal innerCRadius = outerCRadius * 0.75;
+        qreal innerCRadius = outerCRadius * 0.85;
         outerCircle.addEllipse(center, outerCRadius, outerCRadius);
         innerCircle.addEllipse(center, innerCRadius, innerCRadius);
         painter->fillPath(outerCircle, Qt::white);

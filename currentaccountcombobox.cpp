@@ -43,7 +43,9 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 
     // combobox index changed and so must the avatar
     connect(this, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        [=](const int& index) {importLabelPhoto(index); });
+        [this](const int& index) {
+            importLabelPhoto(index);
+        });
 
     // account added to combobox
     connect(&LRCInstance::accountModel(),
@@ -54,7 +56,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
             if (it != accountList.end()) {
                 this->setCurrentIndex(std::distance(accountList.begin(), it));
             }
-    });
+        });
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -77,7 +79,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     // create box in which to draw avatar and presence indicator
     QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
-    QRect comboBoxRect(52, 2, 322, cellHeight_-4); // [screen awareness]
+    QRect comboBoxRect(cellHeight_ + 3, 2, this->width(), cellHeight_-6); // [screen awareness]
 
 
     // define and set the two fonts
@@ -108,16 +110,16 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.fillPath(innerCircle, RingTheme::presenceGreen_);
     }
 
-    // write primary and secondary account identifiers to combobox label
-    const int elidConst = 85; // [screen awareness]
+    const int elidCalibrationConst = 70; // [screen awareness]
 
+    // write primary and secondary account identifiers to combobox label
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
-    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst);
+    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, this->width() - elidCalibrationConst);
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
     QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
-    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - 2); // [screen awareness]
+    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, this->width() - elidCalibrationConst - 10); // [screen awareness]
 
     if (secondaryAccountID.length()) { // if secondary accound id exists
         painter.setFont(fontSecondary);
