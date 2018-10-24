@@ -37,6 +37,7 @@
 #include <QString>
 #include <QImage>
 #include <QStackedWidget>
+#include <QGraphicsDropShadowEffect>
 
 #include "api/conversationmodel.h"
 #include "api/account.h"
@@ -74,6 +75,7 @@ namespace Utils
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
+    QGraphicsDropShadowEffect* generateShadowEffect();
 
     // helpers
     template<typename E>

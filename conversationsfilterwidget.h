@@ -21,6 +21,8 @@
 #include "smartlistselectorbuttonnotifier.h"
 
 #include <QWidget>
+#include <QGraphicsDropShadowEffect>
+
 
 class ConversationsFilterWidget : public QWidget
 {

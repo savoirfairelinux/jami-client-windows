@@ -22,6 +22,13 @@
 
 #include <QPainter>
 
+
+ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
+    : QWidget(parent)
+{
+}
+
+
 static inline const QRect
 getNotifierRect(const QRect& buttonRect)
 {
@@ -35,6 +42,10 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
                                                  SmartlistSelectorButtonNotifier*& notifier,
                                                  lrc::api::profile::Type filter)
 {
+    QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect();
+    shadowEffect->setBlurRadius(8);
+    shadowEffect->setOffset(0);
+
     auto button = this->findChild<QPushButton*>(buttonName);
     if (!button) {
         return;
@@ -49,12 +60,9 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
         notifier->setGeometry(getNotifierRect(button->frameGeometry()));
         notifier->show();
     }
+    //button->setGraphicsEffect(shadowEffect);
 }
 
-ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
-    : QWidget(parent)
-{
-}
 
 void ConversationsFilterWidget::paintEvent(QPaintEvent * event)
 {
