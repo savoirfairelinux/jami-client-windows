@@ -32,6 +32,7 @@
 #include "api/contactmodel.h"
 #include "api/contact.h"
 #include "api/datatransfermodel.h"
+#include "api/conversationmodel.h"
 
 #include <settingskey.h>
 
