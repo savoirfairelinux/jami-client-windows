@@ -22,6 +22,7 @@
 
 #include <QWidget>
 
+
 class ConversationsFilterWidget : public QWidget
 {
     Q_OBJECT

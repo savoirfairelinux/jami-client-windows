@@ -25,6 +25,7 @@
 #include <QClipboard>
 #include <QDesktopServices>
 #include <QComboBox>
+#include <QGraphicsDropShadowEffect>
 
 #include <memory>
 
@@ -158,6 +159,10 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+
+    ui->ringContactLineEdit->setGraphicsEffect(Utils::generateShadowEffect());
+    ui->buttonConversations->setGraphicsEffect(Utils::generateShadowEffect());
+    ui->buttonInvites->setGraphicsEffect(Utils::generateShadowEffect());
 }
 
 CallWidget::~CallWidget()
@@ -611,23 +616,6 @@ void CallWidget::slotShowChatView(const std::string& accountId,
 }
 
 void
-CallWidget::currentAccountChanged(const QModelIndex &current)
-{
-    if (!current.isValid()) {
-        ui->selectBar->hide();
-        ui->ringIdLabel->setText("");
-        return;
-    }
-    if (ui->selectBar->isHidden()){
-        ui->selectBar->show();
-    }
-
-    auto accountId = current.data(static_cast<int>(AccountListModel::Role::ID)).value<QString>().toStdString();
-
-    setSelectedAccount(accountId);
-}
-
-void
 CallWidget::setSelectedAccount(const std::string& accountId)
 {
     LRCInstance::setSelectedAccountId(accountId);
@@ -671,7 +659,6 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
-    ui->missingButtonsDummyWidget->setVisible(!invites);
 }
 
 void CallWidget::setConversationFilter(const QString & filter)
