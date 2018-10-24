@@ -112,7 +112,6 @@ private:
     void setupSmartListContextMenu(const QPoint &pos);
     void setupQRCode(QString ringID);
     void backToWelcomePage();
-    void triggerDeleteContactDialog(ContactMethod *cm, Account *ac);
 
     // lrc
     void selectConversation(const QModelIndex& index);

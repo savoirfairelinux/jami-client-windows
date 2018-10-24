@@ -26,6 +26,7 @@
 #include "media/media.h"
 
 #include "imdelegate.h"
+#include "messagemodel.h"
 
 namespace Ui {
 class InstantMessagingWidget;
@@ -38,7 +39,8 @@ class InstantMessagingWidget final : public QWidget
 public:
     explicit InstantMessagingWidget(QWidget *parent = 0);
     ~InstantMessagingWidget();
-    void setMediaText(Call* call);
+    void setupCallMessaging(const std::string& callId,
+                            MessageModel *messageModel);
 
 protected:
     virtual void keyPressEvent(QKeyEvent *event) override;
@@ -49,13 +51,17 @@ private slots:
     void on_sendButton_clicked();
 
 private slots:
-    void mediaAdd(media::Media *media);
-    void onMsgReceived(const QMap<QString, QString>& message);
+    void onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction);
 
 private:
     Ui::InstantMessagingWidget *ui;
     ImDelegate* imDelegate_;
+    std::unique_ptr<MessageModel> messageModel_;
     QSettings settings_;
+    QMetaObject::Connection newInteractionConnection_;
+
     void copyToClipboard();
+    void updateConversationView(const std::string& convUid);
+
 };
 
