@@ -586,8 +586,8 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     }
 
     ui->videoWidget->pushRenderer(convInfo.callId);
-    // TODO:(new lrc) in call chat
-    //ui->instantMessagingWidget->setMediaText(actualCall_);
+
+    ui->instantMessagingWidget->setupCallMessaging(convInfo.callId, messageModel_.get());
 
     disconnect(selectedCallChanged_);
     selectedCallChanged_ = connect(
@@ -733,7 +733,9 @@ void
 CallWidget::on_sendIMButton_clicked()
 {
     auto msg = ui->imMessageEdit->text();
-    if (msg.trimmed().isEmpty()) return;
+    if (msg.trimmed().isEmpty()) {
+        return;
+    }
     ui->imMessageEdit->clear();
     try {
         LRCInstance::getCurrentConversationModel()->sendMessage(selectedConvUid(), msg.toStdString());
@@ -843,37 +845,32 @@ CallWidget::connectConversationModel()
             updateConversationsFilterWidget();
             selectSmartlistItem(selectedConvUid());
             ui->smartList->update();
-        }
-    );
+        });
     modelUpdatedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::conversationUpdated,
         [this](const std::string& convUid) {
             Q_UNUSED(convUid);
             ui->smartList->update();
-        }
-    );
+        });
     filterChangedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::filterChanged,
         [this]() {
             updateSmartList();
             updateConversationsFilterWidget();
             ui->smartList->update();
-        }
-    );
+        });
     newConversationConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::newConversation,
         [this](const std::string& convUid) {
             updateSmartList();
             updateConversationForNewContact(convUid);
             ui->conversationsFilterWidget->update();
-        }
-    );
+        });
     conversationRemovedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::conversationRemoved,
         [this]() {
             backToWelcomePage();
-        }
-    );
+        });
     conversationClearedConnection = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::conversationCleared,
         [this](const std::string& convUid) {
@@ -884,8 +881,7 @@ CallWidget::connectConversationModel()
                 return;
             }
             backToWelcomePage();
-        }
-    );
+        });
     interactionStatusUpdatedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::interactionStatusUpdated,
         [this](const std::string& convUid) {
@@ -893,14 +889,12 @@ CallWidget::connectConversationModel()
                 return;
             }
             updateConversationView(convUid);
-        }
-    );
+        });
     newInteractionConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::newInteraction,
         [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
             onIncomingMessage(convUid, interactionId, interaction);
-        }
-    );
+        });
     currentConversationModel->setFilter("");
     // clear search field
     ui->ringContactLineEdit->setText("");
