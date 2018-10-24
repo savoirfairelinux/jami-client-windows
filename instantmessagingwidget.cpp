@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -29,6 +30,8 @@
 #include "imdelegate.h"
 #include "globalsystemtray.h"
 #include "settingskey.h"
+#include "lrcinstance.h"
+#include "utils.h"
 
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
@@ -55,57 +58,41 @@ InstantMessagingWidget::~InstantMessagingWidget()
 }
 
 void
-InstantMessagingWidget::setMediaText(Call *call)
+InstantMessagingWidget::setupCallMessaging(const std::string& callId,
+                                           MessageModel *messageModel)
 {
     ui->listMessageView->disconnect();
     ui->messageEdit->disconnect();
-    if (call != nullptr) {
-        connect(call, SIGNAL(mediaAdded(media::Media*)),
-                this, SLOT(mediaAdd(media::Media*)));
-        media::Text *textMedia = nullptr;
-        if (call->hasMedia(media::Media::Type::TEXT, media::Media::Direction::OUT)) {
-            textMedia = call->firstMedia<media::Text>(media::Media::Direction::OUT);
-        } else {
-            textMedia = call->addOutgoingMedia<media::Text>();
-        }
-        if (textMedia) {
-            ui->listMessageView->setModel(textMedia->recording()->instantMessagingModel());
-            ui->listMessageView->scrollToBottom();
-            connect(ui->messageEdit, &QLineEdit::returnPressed, [=]() {
-                if (not ui->messageEdit->text().trimmed().isEmpty()) {
-                    QMap<QString, QString> messages;
-                    messages["text/plain"] = ui->messageEdit->text();
-                    textMedia->send(messages);
-                    ui->messageEdit->clear();
-                    ui->listMessageView->scrollToBottom();
-                }
-            });
-        }
+    if (messageModel == nullptr) {
+        return;
     }
-}
 
-void
-InstantMessagingWidget::mediaAdd(media::Media *media)
-{
-    switch(media->type()) {
-    case media::Media::Type::AUDIO:
-        break;
-    case media::Media::Type::VIDEO:
-        break;
-    case media::Media::Type::TEXT:
-        if (media->direction() == media::Text::Direction::IN) {
-            connect(static_cast<media::Text*>(media),
-                    SIGNAL(messageReceived(QMap<QString,QString>)),
-                    this,
-                    SLOT(onMsgReceived(QMap<QString,QString>)));
-            this->show();
-        }
-        break;
-    case media::Media::Type::FILE:
-        break;
-    default:
-        break;
-    }
+    using namespace lrc::api;
+
+    ui->listMessageView->setModel(messageModel);
+    ui->listMessageView->scrollToBottom();
+    connect(ui->messageEdit, &QLineEdit::returnPressed,
+        [=]() {
+            auto msg = ui->messageEdit->text();
+            if (msg.trimmed().isEmpty()) {
+                return;
+            }
+            ui->messageEdit->clear();
+            try {
+                auto selectedConvUid = LRCInstance::getSelectedConvUid();
+                LRCInstance::getCurrentConversationModel()->sendMessage(selectedConvUid, msg.toStdString());
+            }
+            catch (...) {
+                qDebug() << "exception when sending message";
+            }
+            ui->listMessageView->scrollToBottom();
+        });
+
+    QObject::disconnect(newInteractionConnection_);
+    newInteractionConnection_ = QObject::connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::newInteraction,
+        [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
+            onIncomingMessage(convUid, interactionId, interaction);
+        });
 }
 
 void
@@ -135,18 +122,33 @@ InstantMessagingWidget::copyToClipboard()
 }
 
 void
+InstantMessagingWidget::updateConversationView(const std::string & convUid)
+{
+    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
+    auto currentConversationModel = currentAccountInfo.conversationModel.get();
+    currentConversationModel->clearUnreadInteractions(convUid);
+    auto currentConversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
+    if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
+        return;
+    }
+    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
+    ui->listMessageView->setModel(messageModel_.get());
+    ui->listMessageView->scrollToBottom();
+    this->show();
+}
+
+void
 InstantMessagingWidget::on_sendButton_clicked()
 {
     emit ui->messageEdit->returnPressed();
 }
 
 void
-InstantMessagingWidget::onMsgReceived(const QMap<QString,QString>& message)
+InstantMessagingWidget::onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction)
 {
     if (!QApplication::activeWindow() && settings_.value(SettingsKey::enableNotifications).toBool()) {
-        GlobalSystemTray::instance().showMessage("Ring: Message Received", message["text/plain"]);
+        GlobalSystemTray::instance().showMessage("Ring: Message Received", QString::fromStdString(interaction.body));
         QApplication::alert(this, 5000);
     }
-    ui->listMessageView->scrollToBottom();
-    this->show();
+    updateConversationView(convUid);
 }
