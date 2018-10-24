@@ -69,7 +69,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    QPoint p(2, 2);
+    QPoint p(12, 2);
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing, QPainter::TextAntialiasing);
 
@@ -79,7 +79,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     // create box in which to draw avatar and presence indicator
     QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
-    QRect comboBoxRect(52, 2, 322, cellHeight_-4); // [screen awareness]
+    QRect comboBoxRect(cellHeight_ + p.x() + 2, 4, 322, cellHeight_- 10); // [screen awareness]
 
 
     // define and set the two fonts
@@ -101,7 +101,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     if (accountStatus == lrc::api::account::Status::REGISTERED) {
         // paint the presence indicator circle
         QPainterPath outerCircle, innerCircle;
-        QPointF presenceCenter(40.0, 40.0);
+        QPointF presenceCenter(40.0 + p.x(), 40.0);
         qreal outerCircleRadius = cellHeight_/6.5;
         qreal innerCircleRadius = outerCircleRadius - 1;
         outerCircle.addEllipse(presenceCenter, outerCircleRadius, outerCircleRadius);
@@ -111,15 +111,15 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     // write primary and secondary account identifiers to combobox label
-    const int elidConst = 85; // [screen awareness]
+    const int elidConst = 60; // [screen awareness]
 
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
-    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst);
+    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, this->width() - elidConst);
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
     QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
-    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - 2); // [screen awareness]
+    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, this->width() - elidConst - 2); // [screen awareness]
 
     if (secondaryAccountID.length()) { // if secondary accound id exists
         painter.setFont(fontSecondary);

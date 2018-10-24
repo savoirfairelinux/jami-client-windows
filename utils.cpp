@@ -403,3 +403,12 @@ Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::I
     QVariant var = GlobalInstances::pixmapManipulator().decorationRole(*conversation, accountInfo);
     return var.value<QImage>();
 }
+
+QGraphicsDropShadowEffect*
+Utils::generateShadowEffect()
+{
+    QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect();
+    shadowEffect->setBlurRadius(8);
+    shadowEffect->setOffset(0);
+    return shadowEffect;
+}

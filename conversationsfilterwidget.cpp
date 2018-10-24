@@ -22,6 +22,13 @@
 
 #include <QPainter>
 
+
+ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
+    : QWidget(parent)
+{
+}
+
+
 static inline const QRect
 getNotifierRect(const QRect& buttonRect)
 {
@@ -51,10 +58,6 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
     }
 }
 
-ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
-    : QWidget(parent)
-{
-}
 
 void ConversationsFilterWidget::paintEvent(QPaintEvent * event)
 {

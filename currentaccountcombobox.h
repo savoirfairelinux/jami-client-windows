@@ -42,5 +42,5 @@ private:
     std::unique_ptr<AccountListModel> accountListModel_;
 
     QPixmap currentAccountAvatarImage_;
-    int cellHeight_ = 48; // [screen awareness]
+    int cellHeight_ = 50; // [screen awareness]
 };
