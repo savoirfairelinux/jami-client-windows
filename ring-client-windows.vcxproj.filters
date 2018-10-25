@@ -186,6 +186,12 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="customPushButton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conversationfilterbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -318,6 +324,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="currentaccountcombobox.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="conversationfilterbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -758,6 +767,9 @@
   <ItemGroup>
     <ClInclude Include="lrcinstance.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="customPushButton.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

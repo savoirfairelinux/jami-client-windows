@@ -70,7 +70,6 @@ SOURCES += main.cpp\
     ringbutton.cpp \
     photoboothdialog.cpp \
     sendcontactrequestwidget.cpp \
-    currentaccountwidget.cpp \
     contactrequestwidget.cpp \
     smartlistselectorbuttonnotifier.cpp \
     deleteaccountdialog.cpp \
@@ -82,7 +81,9 @@ SOURCES += main.cpp\
     accountlistmodel.cpp \
     messagemodel.cpp \
     invitebuttonswidget.cpp \
-	wizardwidget.cpp
+	wizardwidget.cpp \
+	currentaccountcombobox.cpp \
+	conversationsfilterwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -115,7 +116,6 @@ HEADERS  += mainwindow.h \
     ringbutton.h \
     photoboothdialog.h \
     sendcontactrequestwidget.h \
-    currentaccountwidget.h \
     contactrequestwidget.h \
     smartlistselectorbuttonnotifier.h \
     deleteaccountdialog.h \
@@ -128,7 +128,10 @@ HEADERS  += mainwindow.h \
     accountlistmodel.h \
     messagemodel.h \
     invitebuttonswidget.h \
-	wizardwidget.h
+	wizardwidget.h \
+	currentaccountcombobox.h \
+	conversationsfilterwidget.cpp
+
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -150,7 +153,6 @@ FORMS    += mainwindow.ui \
     ringbutton.ui \
     photoboothdialog.ui \
     sendcontactrequestwidget.ui \
-    currentaccountwidget.ui \
     contactrequestwidget.ui \
     deleteaccountdialog.ui \
     bannedcontactswidget.ui \

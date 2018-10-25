@@ -46,9 +46,6 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                 setCurrentIndex(index);
             });
 
-
-
-
     // account added to combobox
     connect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,

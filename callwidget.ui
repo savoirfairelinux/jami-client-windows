@@ -237,6 +237,12 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_4">
                  <property name="spacing">
                   <number>8</number>
@@ -254,21 +260,21 @@
                   <number>5</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="buttonConversations">
+                  <widget class="ConversationFilterButton" name="buttonConversations" native="true">
                    <property name="toolTip">
                     <string>Show conversations</string>
                    </property>
-                   <property name="text">
+                   <property name="text" stdset="0">
                     <string>Conversations</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="buttonInvites">
+                  <widget class="ConversationFilterButton" name="buttonInvites" native="true">
                    <property name="toolTip">
                     <string>Show invites</string>
                    </property>
-                   <property name="text">
+                   <property name="text" stdset="0">
                     <string>Invites</string>
                    </property>
                   </widget>
@@ -1803,6 +1809,11 @@
    <class>CurrentAccountComboBox</class>
    <extends>QWidget</extends>
    <header>currentaccountcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConversationFilterButton</class>
+   <extends>QWidget</extends>
+   <header>conversationfilterbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
