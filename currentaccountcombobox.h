@@ -28,15 +28,18 @@ namespace Ui {
 class CurrentAccountComboBox : public QComboBox
 {
     Q_OBJECT
-        CurrentAccountComboBox(const CurrentAccountComboBox& cpy);
+    CurrentAccountComboBox(const CurrentAccountComboBox& cpy);
 
 public:
     explicit CurrentAccountComboBox(QWidget* parent = nullptr);
     ~CurrentAccountComboBox();
-    void importLabelPhoto(const int& index);
+    void accountListUpdate();
+    void setCurrentIndex(int index);
+
 
 private:
     void paintEvent(QPaintEvent* e);
+    void importLabelPhoto(int index);
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;

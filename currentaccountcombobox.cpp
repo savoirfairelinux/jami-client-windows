@@ -36,15 +36,14 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 {
     Q_UNUSED(parent);
 
-    accountListModel_ = std::make_unique<AccountListModel>();
-    this->setModel(accountListModel_.get());
+    accountListUpdate();
     accountItemDelegate_ = new AccountItemDelegate();
     this->setItemDelegate(accountItemDelegate_);
 
     // combobox index changed and so must the avatar
     connect(this, QOverload<int>::of(&QComboBox::currentIndexChanged),
             [=](const int& index) {
-                importLabelPhoto(index);
+                setCurrentIndex(index);
             });
 
     // account added to combobox
@@ -71,7 +70,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     QPoint p(12, 2);
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing, QPainter::TextAntialiasing);
+    painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
     QStyleOption opt;
     opt.init(this);
@@ -79,8 +78,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     // create box in which to draw avatar and presence indicator
     QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
-    QRect comboBoxRect(cellHeight_ + p.x() + 2, 4, 322, cellHeight_- 10); // [screen awareness]
-
+    QRect comboBoxRect(cellHeight_ + p.x() + 2, 4, this->width() - cellHeight_ + p.x(), cellHeight_- 10); // [screen awareness]
 
     // define and set the two fonts
     QFont fontPrimary = painter.font();
@@ -111,7 +109,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     // write primary and secondary account identifiers to combobox label
-    const int elidConst = 60; // [screen awareness]
+    const int elidConst = 80; // [screen awareness]
 
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
@@ -138,8 +136,22 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
 // import account background account pixmap and scale pixmap to fit in label
 void
-CurrentAccountComboBox::importLabelPhoto(const int& index)
+CurrentAccountComboBox::importLabelPhoto(int index)
 {
-    currentAccountAvatarImage_ = accountListModel_->data(accountListModel_->index(index), // [efficiency improvement]
+    currentAccountAvatarImage_ = accountListModel_->data(accountListModel_->index(index, 0), // [efficiency improvement]
         AccountListModel::Role::Picture).value<QPixmap>().scaledToHeight(cellHeight_ - 4, Qt::SmoothTransformation);
+}
+
+void
+CurrentAccountComboBox::setCurrentIndex(int index)
+{
+    importLabelPhoto(index);
+    QComboBox::setCurrentIndex(index);
+}
+
+void
+CurrentAccountComboBox::accountListUpdate()
+{
+    accountListModel_.reset(new AccountListModel());
+    this->setModel(accountListModel_.get());
 }

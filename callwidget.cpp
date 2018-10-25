@@ -98,7 +98,6 @@ CallWidget::CallWidget(QWidget* parent) :
         auto index = Utils::indexInVector(accountList, accountIdToStartWith);
         if (index != -1) {
             ui->currentAccountComboBox->setCurrentIndex(index);
-            ui->currentAccountComboBox->importLabelPhoto(index);
         }
     }
 
