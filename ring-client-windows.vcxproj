@@ -319,6 +319,7 @@
     <ClInclude Include="ui_wizarddialog.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\icons\round-settings-24px.svg" />
     <None Include="translations\ring_client_windows.ts" />
     <None Include="translations\ring_client_windows_ar.ts" />
     <None Include="translations\ring_client_windows_bg.ts" />

@@ -25,6 +25,13 @@ ConversationFilterButton::ConversationFilterButton()
     connect(this, &ConversationFilterButton::pressed, this, &ConversationFilterButton::setSelected);
 }
 
+ConversationFilterButton::ConversationFilterButton(QWidget* widget)
+{
+    Q_UNUSED(widget)
+    setCheckable(false);
+    connect(this, &ConversationFilterButton::pressed, this, &ConversationFilterButton::setSelected);
+}
+
 
 ConversationFilterButton::~ConversationFilterButton()
 {

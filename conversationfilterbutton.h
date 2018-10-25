@@ -30,6 +30,7 @@ class ConversationFilterButton : public QPushButton
     ConversationFilterButton(const ConversationFilterButton& cpy);
 public:
     ConversationFilterButton();
+    ConversationFilterButton(QWidget * widget);
     ~ConversationFilterButton();
 
 public slots:
