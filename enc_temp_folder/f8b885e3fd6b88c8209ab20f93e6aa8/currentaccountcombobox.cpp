@@ -155,6 +155,6 @@ void CurrentAccountComboBox::setCurrentIndex(const int& index)
 
 void CurrentAccountComboBox::accountListUpdate()
 {
-    accountListModel_.reset(new AccountListModel());
+    accountListModel_ = std::make_unique<AccountListModel>();
     this->setModel(accountListModel_.get());
 }
