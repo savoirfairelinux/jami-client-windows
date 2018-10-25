@@ -4,6 +4,7 @@
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -156,12 +157,21 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &CallWidget::slotAccountChanged);
 
+    ui->buttonConversations->setSelected();
+
+    //// connect conversation filter buttons to act as radio buttons
+    connect(ui->buttonInvites, &ConversationFilterButton::clicked, ui->buttonConversations, &ConversationFilterButton::setUnselected);
+    connect(ui->buttonConversations, &ConversationFilterButton::clicked, ui->buttonInvites, &ConversationFilterButton::setUnselected);
+
+
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 
     ui->ringContactLineEdit->setGraphicsEffect(Utils::generateShadowEffect());
     ui->buttonConversations->setGraphicsEffect(Utils::generateShadowEffect());
     ui->buttonInvites->setGraphicsEffect(Utils::generateShadowEffect());
+
 }
 
 CallWidget::~CallWidget()
