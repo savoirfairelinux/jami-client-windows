@@ -157,21 +157,46 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &CallWidget::slotAccountChanged);
 
-    ui->buttonConversations->setSelected();
-
     //// connect conversation filter buttons to act as radio buttons
     connect(ui->buttonInvites, &ConversationFilterButton::clicked, ui->buttonConversations, &ConversationFilterButton::setUnselected);
     connect(ui->buttonConversations, &ConversationFilterButton::clicked, ui->buttonInvites, &ConversationFilterButton::setUnselected);
 
+    connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
+        [this] {
+            ui->buttonConversations->setSelected();
+            ui->buttonInvites->setUnselected();
+    });
 
 
+
+
+    ui->buttonConversations->setSelected();
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 
     ui->ringContactLineEdit->setGraphicsEffect(Utils::generateShadowEffect());
     ui->buttonConversations->setGraphicsEffect(Utils::generateShadowEffect());
     ui->buttonInvites->setGraphicsEffect(Utils::generateShadowEffect());
+    ui->settingsButton->setGraphicsEffect(Utils::generateShadowEffect());
 
+
+
+    accountSettingsAction_.setText("Account Settings");
+    generalSettingsAction_.setText("General Settings");
+
+    settingsMenu_.addAction(&accountSettingsAction_);
+    settingsMenu_.addAction(&generalSettingsAction_);
+
+    ui->settingsPushButton->setMenu(&settingsMenu_);
+
+    // draw gear icon over settingsPushButton
+    QPainter painter(this);
+
+    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.drawPixmap(ui->settingsButton->x(), ui->settingsButton->y(), ui->settingsButton->width(), ui->settingsButton->height(), gearPixmap_);
+
+    painter.end();
 }
 
 CallWidget::~CallWidget()

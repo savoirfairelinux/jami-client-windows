@@ -119,15 +119,18 @@
                <number>0</number>
               </property>
               <item>
-               <layout class="QVBoxLayout" name="comboBoxLayout_3">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <property name="spacing">
                  <number>0</number>
                 </property>
                 <property name="leftMargin">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <property name="topMargin">
                  <number>10</number>
+                </property>
+                <property name="rightMargin">
+                 <number>2</number>
                 </property>
                 <property name="bottomMargin">
                  <number>2</number>
@@ -160,12 +163,34 @@
                   </property>
                  </widget>
                 </item>
+                <item>
+                 <widget class="QPushButton" name="settingsPushButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background: #f1f1f1; border: 0px; border-radius: 3px;</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="searchbarLayout">
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
                 <property name="spacing">
-                 <number>6</number>
+                 <number>5</number>
                 </property>
                 <property name="leftMargin">
                  <number>10</number>

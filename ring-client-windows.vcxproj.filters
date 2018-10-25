@@ -186,9 +186,6 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="customPushButton.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="conversationfilterbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -555,6 +552,9 @@
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="images\icons\round-settings-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
@@ -767,9 +767,6 @@
   <ItemGroup>
     <ClInclude Include="lrcinstance.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="customPushButton.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

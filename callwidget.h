@@ -149,6 +149,11 @@ private:
 
     constexpr static int qrSize_ = 200;
 
+    QMenu settingsMenu_;
+    QAction accountSettingsAction_;
+    QAction generalSettingsAction_;
+    QPixmap gearPixmap_;
+
     // lrc
     Video::Renderer* videoRenderer_;
     std::string lastConvUid_ {};
