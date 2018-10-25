@@ -549,7 +549,7 @@ void CallWidget::slotAccountChanged(int index)
 }
 
 void CallWidget::slotShowCallView(const std::string& accountId,
-                                  const lrc::api::conversation::Info& convInfo)
+const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
@@ -559,7 +559,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
 }
 
 void CallWidget::slotShowIncomingCallView(const std::string& accountId,
-                                          const lrc::api::conversation::Info& convInfo) {
+    const lrc::api::conversation::Info& convInfo) {
     Q_UNUSED(accountId);
     qDebug() << "BehaviorController::showIncomingCallView";
     auto callModel = LRCInstance::getCurrentCallModel();
@@ -608,7 +608,7 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
 }
 
 void CallWidget::slotShowChatView(const std::string& accountId,
-                      const lrc::api::conversation::Info& convInfo) {
+    const lrc::api::conversation::Info& convInfo) {
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
     qDebug() << "BehaviorController::showChatView";
