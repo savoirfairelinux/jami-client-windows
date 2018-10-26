@@ -117,7 +117,7 @@ CallWidget::CallWidget(QWidget* parent) :
     setupOutOfCallIM();
 
     // connections
-    connect(ui->settingsButton, &QPushButton::clicked,
+    connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
             this, &CallWidget::settingsButtonClicked);
 
     connect(ui->videoWidget, SIGNAL(setChatVisibility(bool)),
@@ -168,35 +168,9 @@ CallWidget::CallWidget(QWidget* parent) :
     });
 
 
-
-
-    ui->buttonConversations->setSelected();
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-
-    ui->ringContactLineEdit->setGraphicsEffect(Utils::generateShadowEffect());
-    ui->buttonConversations->setGraphicsEffect(Utils::generateShadowEffect());
-    ui->buttonInvites->setGraphicsEffect(Utils::generateShadowEffect());
-    ui->settingsButton->setGraphicsEffect(Utils::generateShadowEffect());
-
-
-
-    accountSettingsAction_.setText("Account Settings");
-    generalSettingsAction_.setText("General Settings");
-
-    settingsMenu_.addAction(&accountSettingsAction_);
-    settingsMenu_.addAction(&generalSettingsAction_);
-
-    ui->settingsPushButton->setMenu(&settingsMenu_);
-
-    // draw gear icon over settingsPushButton
-    QPainter painter(this);
-
-    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.drawPixmap(ui->settingsButton->x(), ui->settingsButton->y(), ui->settingsButton->width(), ui->settingsButton->height(), gearPixmap_);
-
-    painter.end();
+    ui->buttonConversations->setSelected();
 }
 
 CallWidget::~CallWidget()

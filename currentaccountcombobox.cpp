@@ -56,6 +56,11 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                     this->setCurrentIndex(std::distance(accountList.begin(), it));
                 }
             });
+
+    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+
+    gearRect_.setHeight(24);
+    gearRect_.setWidth(24);
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -71,6 +76,9 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     QPoint p(12, 2);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
+
+    gearPoint_.setX(this->width() - 30);
+    gearPoint_.setY(this->height() / 2 - 12);
 
     QStyleOption opt;
     opt.init(this);
@@ -110,7 +118,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     // write primary and secondary account identifiers to combobox label
-    const int elidConst = 80; // [screen awareness]
+    const int elidConst = 100; // [screen awareness]
 
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
@@ -132,6 +140,11 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     else {
         this->setEnabled(true);
     }
+
+    painter.drawPixmap(gearPoint_, gearPixmap_);
+
+
+
     painter.end();
 }
 
@@ -144,14 +157,32 @@ CurrentAccountComboBox::importLabelPhoto(const int& index)
 }
 
 
-void CurrentAccountComboBox::setCurrentIndex(const int& index)
+void
+CurrentAccountComboBox::setCurrentIndex(const int& index)
 {
     importLabelPhoto(index);
     QComboBox::setCurrentIndex(index);
 }
 
-void CurrentAccountComboBox::accountListUpdate()
+void
+CurrentAccountComboBox::accountListUpdate()
 {
     accountListModel_.reset(new AccountListModel());
     this->setModel(accountListModel_.get());
+}
+
+void
+CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
+{
+    gearRect_.setTopLeft(gearPoint_);
+    gearRect_.setHeight(24);
+    gearRect_.setWidth(24);
+
+
+    if (!gearRect_.contains(mouseEvent->localPos().toPoint())) {
+        QComboBox::mousePressEvent(mouseEvent);
+    }
+    else {
+        emit settingsButtonClicked();
+    }
 }

@@ -238,8 +238,8 @@ QPushButton#videoCfgBtn:pressed{
 
 QToolButton#qrButton, QToolButton#shareButton{
     background-color: #3AC0D2;
-    border-radius: 15px;
-    border:solid 1px;
+    border-radius: 3px;
+    border:solid 0px;
 }
 
 QToolButton#qrButton:hover, QToolButton#shareButton:hover{

@@ -75,7 +75,7 @@ namespace Utils
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
-    QGraphicsDropShadowEffect* generateShadowEffect();
+    QGraphicsDropShadowEffect* generateShadowEffect(const int& radius = 8);
 
     // helpers
     template<typename E>

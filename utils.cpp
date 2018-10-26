@@ -405,10 +405,11 @@ Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::I
 }
 
 QGraphicsDropShadowEffect*
-Utils::generateShadowEffect()
+
+Utils::generateShadowEffect(const int& radius)
 {
     QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect();
-    shadowEffect->setBlurRadius(8);
+    shadowEffect->setBlurRadius(radius);
     shadowEffect->setOffset(0);
     return shadowEffect;
 }

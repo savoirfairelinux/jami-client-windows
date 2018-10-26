@@ -36,14 +36,22 @@ public:
     void accountListUpdate();
     void setCurrentIndex(const int& index);
 
+signals:
+    void settingsButtonClicked();
+
 
 private:
     void paintEvent(QPaintEvent* e);
     void importLabelPhoto(const int& index);
+    void mousePressEvent(QMouseEvent * mouseEvent);
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
 
     QPixmap currentAccountAvatarImage_;
     int cellHeight_ = 50; // [screen awareness]
+
+    QPoint gearPoint_;
+    QPixmap gearPixmap_;
+    QRect gearRect_;
 };
