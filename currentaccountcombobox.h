@@ -18,6 +18,7 @@
  **************************************************************************/
 #pragma once
 #include <QComboBox>
+#include <QLabel>
 #include "accountlistmodel.h"
 #include "accountitemdelegate.h"
 
@@ -36,14 +37,31 @@ public:
     void accountListUpdate();
     void setCurrentIndex(int index);
 
+signals:
+    void settingsButtonClicked();
 
 private:
     void paintEvent(QPaintEvent* e);
     void importLabelPhoto(int index);
+    void mousePressEvent(QMouseEvent* mouseEvent);
+
+    void mouseMoveEvent(QMouseEvent* event);
+    void leaveEvent(QEvent * event);
+
+    void showPopup();
+    void hidePopup();
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
 
     QPixmap currentAccountAvatarImage_;
-    int cellHeight_ = 48; // [screen awareness]
+    int cellHeight_ = 50; // [screen awareness]
+    const int elidConst = 35; // [screen awareness]
+    const int gearBorder_ = 4;
+    const int gearSize_ = 24;
+    bool popupPresent = false;
+
+    QPoint gearPoint_;
+    QPixmap gearPixmap_;
+    QLabel gearLabel_;
 };

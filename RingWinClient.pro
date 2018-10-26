@@ -82,7 +82,8 @@ SOURCES += main.cpp\
     messagemodel.cpp \
     invitebuttonswidget.cpp \
 	wizardwidget.cpp \
-	currentaccountcombobox.cpp
+	currentaccountcombobox.cpp \
+	conversationfilterbutton.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -128,7 +129,9 @@ HEADERS  += mainwindow.h \
     messagemodel.h \
     invitebuttonswidget.h \
 	wizardwidget.h \
-	currentaccountcombobox.h
+	currentaccountcombobox.h \
+	conversationfilterbutton.cpp
+
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
