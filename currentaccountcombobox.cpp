@@ -36,6 +36,9 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 {
     Q_UNUSED(parent);
 
+    setMouseTracking(true);
+    gearLabel_.setMouseTracking(true);
+
     accountListUpdate();
     accountItemDelegate_ = new AccountItemDelegate();
     this->setItemDelegate(accountItemDelegate_);
@@ -56,6 +59,10 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                     this->setCurrentIndex(std::distance(accountList.begin(), it));
                 }
             });
+
+    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.setParent(this);
+    gearLabel_.setStyleSheet("background: transparent;");
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -68,7 +75,12 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    QPoint p(2, 2);
+    gearPoint_.setX(this->width() - gearSize_ - 2 * gearBorder_);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - gearBorder_);
+    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(), gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
+    gearLabel_.setMargin(gearBorder_);
+
+    QPoint p(12, 2);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
@@ -99,7 +111,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     if (accountStatus == lrc::api::account::Status::REGISTERED) {
         // paint the presence indicator circle
         QPainterPath outerCircle, innerCircle;
-        QPointF presenceCenter(40.0, 40.0);
+        QPointF presenceCenter(40.0 + p.x(), 40.0);
         qreal outerCircleRadius = cellHeight_/6.5;
         qreal innerCircleRadius = outerCircleRadius - 1;
         outerCircle.addEllipse(presenceCenter, outerCircleRadius, outerCircleRadius);
@@ -109,15 +121,13 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     // write primary and secondary account identifiers to combobox label
-    const int elidConst = 80; // [screen awareness]
-
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
-    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst);
+    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - gearSize_*!popupPresent);
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
     QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
-    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - 2); // [screen awareness]
+    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - 2 - gearSize_ *!popupPresent); // [screen awareness]
 
     if (secondaryAccountID.length()) { // if secondary accound id exists
         painter.setFont(fontSecondary);
@@ -131,7 +141,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     else {
         this->setEnabled(true);
     }
-    painter.end();
+    gearLabel_.setPixmap(gearPixmap_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -154,4 +164,53 @@ CurrentAccountComboBox::accountListUpdate()
 {
     accountListModel_.reset(new AccountListModel());
     this->setModel(accountListModel_.get());
+}
+
+// if gearLabel is clicked
+void
+CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
+{
+    if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
+        QComboBox::mousePressEvent(mouseEvent);
+    }
+    else {
+        emit settingsButtonClicked();
+    }
+}
+
+// if gear label is hovered over
+void
+CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
+{
+    if (gearLabel_.frameGeometry().contains(mouseEvent->x(), mouseEvent->y())) {
+        QComboBox::mouseMoveEvent(mouseEvent);
+        gearLabel_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 8px;");
+        return;
+    }
+
+    gearLabel_.setStyleSheet("background: transparent;");
+}
+
+void
+CurrentAccountComboBox::showPopup()
+{
+    gearPixmap_.load("");
+    popupPresent = true;
+    QComboBox::showPopup();
+}
+
+void
+CurrentAccountComboBox::hidePopup()
+{
+    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    popupPresent = false;
+    QComboBox::hidePopup();
+
+}
+
+void
+CurrentAccountComboBox::leaveEvent(QEvent* event)
+{
+    gearLabel_.setStyleSheet("background: transparent;");
+    QComboBox::leaveEvent(event);
 }
