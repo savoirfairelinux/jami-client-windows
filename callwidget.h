@@ -4,6 +4,7 @@
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+* Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -103,7 +104,6 @@ private slots:
     void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
     void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm, media::Media::Direction dir);
     void onIncomingMessage(const std::string & convUid, uint64_t interactionId, const lrc::api::interaction::Info & interaction);
-    void currentAccountChanged(const QModelIndex &current);
 
 private:
     void placeCall();
@@ -167,6 +167,4 @@ private:
     QMetaObject::Connection conversationClearedConnection;
     QMetaObject::Connection selectedCallChanged_;
     QMetaObject::Connection smartlistSelectionConnection_;
-
-
 };
