@@ -186,6 +186,9 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="conversationfilterbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -318,6 +321,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="currentaccountcombobox.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="conversationfilterbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

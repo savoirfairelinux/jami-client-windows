@@ -93,7 +93,7 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
            <property name="spacing">
             <number>0</number>
            </property>
@@ -291,7 +291,7 @@
                   <number>10</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="buttonConversations">
+                  <widget class="ConversationFilterButton" name="buttonConversations">
                    <property name="toolTip">
                     <string>Show conversations</string>
                    </property>
@@ -301,11 +301,11 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="buttonInvites">
+                  <widget class="ConversationFilterButton" name="buttonInvites" native="true">
                    <property name="toolTip">
                     <string>Show invites</string>
                    </property>
-                   <property name="text">
+                   <property name="text" stdset="0">
                     <string>Invites</string>
                    </property>
                   </widget>
@@ -337,6 +337,35 @@
               </item>
              </layout>
             </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="SmartListView" name="smartList">
+               <property name="autoScrollMargin">
+                <number>16</number>
+               </property>
+               <property name="indentation">
+                <number>0</number>
+               </property>
+               <property name="rootIsDecorated">
+                <bool>false</bool>
+               </property>
+               <property name="itemsExpandable">
+                <bool>false</bool>
+               </property>
+               <property name="expandsOnDoubleClick">
+                <bool>false</bool>
+               </property>
+               <attribute name="headerVisible">
+                <bool>false</bool>
+               </attribute>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>

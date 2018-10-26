@@ -81,8 +81,9 @@ SOURCES += main.cpp\
     accountlistmodel.cpp \
     messagemodel.cpp \
     invitebuttonswidget.cpp \
-	wizardwidget.cpp \
-	currentaccountcombobox.cpp
+    wizardwidget.cpp \
+    currentaccountcombobox.cpp \
+    conversationfilterbutton.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -127,8 +128,10 @@ HEADERS  += mainwindow.h \
     accountlistmodel.h \
     messagemodel.h \
     invitebuttonswidget.h \
-	wizardwidget.h \
-	currentaccountcombobox.h
+    wizardwidget.h \
+    currentaccountcombobox.h \
+    conversationfilterbutton.h
+
 
 contains(DEFINES, URI_PROTOCOL) {
  HEADERS += shmclient.h
@@ -155,7 +158,7 @@ FORMS    += mainwindow.ui \
     bannedcontactswidget.ui \
     photoboothwidget.ui \
     invitebuttonswidget.ui \
-	wizardwidget.ui
+    wizardwidget.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi -lgdi32
 LIBS += -lqrencode
