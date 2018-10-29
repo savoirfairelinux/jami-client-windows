@@ -90,8 +90,7 @@ private slots:
     void on_imMessageEdit_returnPressed();
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
-    void on_sendContactRequestPageButton_clicked();
-    void on_sendCRBackButton_clicked();
+    void on_sendContactRequestButton_clicked();
     void on_smartList_clicked(const QModelIndex &index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
