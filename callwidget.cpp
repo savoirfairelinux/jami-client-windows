@@ -153,9 +153,17 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(&LRCInstance::behaviorController(), &BehaviorController::showChatView,
             this, &CallWidget::slotShowChatView);
 
-    // change call widget current account if combobox index changed
     connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &CallWidget::slotAccountChanged);
+
+    connect(ui->sendContactRequestButton, &QPushButton::clicked,
+            this, &CallWidget::on_sendContactRequestButton_clicked);
+
+    connect(ui->btnAudioCall, &QPushButton::clicked,
+            this, &CallWidget::on_sendContactRequestButton_clicked);
+
+    connect(ui->btnVideoCall, &QPushButton::clicked,
+            this, &CallWidget::on_sendContactRequestButton_clicked);
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
@@ -705,7 +713,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     }
 
     bool shouldShowSendContactRequestBtn = !isContact && isRINGAccount;
-    ui->sendContactRequestPageButton->setVisible(shouldShowSendContactRequestBtn);
+    ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     showConversationView();
 
@@ -791,21 +799,31 @@ CallWidget::on_shareButton_clicked()
 }
 
 void
-CallWidget::on_sendContactRequestPageButton_clicked()
+CallWidget::on_sendContactRequestButton_clicked()
 {
     LRCInstance::getCurrentConversationModel()->makePermanent(selectedConvUid());
-}
-
-void
-CallWidget::on_sendCRBackButton_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->messagingPage);
 }
 
 void
 CallWidget::on_pendingCRBackButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+}
+
+void
+CallWidget::on_btnAudioCall_clicked()
+{
+    auto convUid = LRCInstance::getSelectedConvUid();
+    LRCInstance::getCurrentConversationModel()->placeAudioOnlyCall(convUid);
+    ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
+}
+
+void
+CallWidget::on_btnVideoCall_clicked()
+{
+    auto convUid = LRCInstance::getSelectedConvUid();
+    LRCInstance::getCurrentConversationModel()->placeCall(convUid);
+    ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
 }
 
 bool
