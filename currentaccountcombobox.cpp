@@ -58,7 +58,6 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
             });
 
     gearPixmap_.load(":/images/icons/round-settings-24px.svg");
-
     gearRect_.setHeight(24);
     gearRect_.setWidth(24);
 }
