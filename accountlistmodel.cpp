@@ -62,7 +62,7 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     case Qt::DisplayRole:
         return QVariant(QString::fromStdString(accountInfo.profileInfo.alias));
     case Role::Username:
-        return QVariant(QString::fromStdString(accountInfo.profileInfo.uri));
+        return QVariant(QString::fromStdString(Utils::secondBestNameForAccount(accountInfo)));
     case Role::Type:
         return QVariant(Utils::toUnderlyingValue<lrc::api::profile::Type>(accountInfo.profileInfo.type));
     case Role::Status:
