@@ -10,11 +10,11 @@ QPushButton#refuseButton, QPushButton#cancelButton{
     border:solid 1px;
 }
 
-QPushButton#searchBtn:hover, QPushButton#acceptButton:hover{
+QPushButton#acceptButton:hover{
     background-color: #5db761;
 }
 
-QPushButton#searchBtn:pressed, QPushButton#acceptButton:pressed{
+QPushButton#acceptButton:pressed{
     background-color: #449d48;
 }
 
@@ -43,7 +43,9 @@ QPushButton#buttonConversations:pressed, QPushButton#buttonInvites:pressed {
     background-color: rgb(212, 212, 212);
 }
 
-QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite, QPushButton#btnBlockInvite {
+QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
+QPushButton#btnBlockInvite, QPushButton#btnAudioCall, QPushButton#btnVideoCall,
+QPushButton#sendContactRequestButton, QPushButton#sendButton, QPushButton#sendIMButton {
     background-color: transparent;
     border-style: solid;
     border-width: 0px;
@@ -58,6 +60,16 @@ QPushButton#btnAcceptInvite:hover, QPushButton#btnIgnoreInvite:hover, QPushButto
 
 QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushButton#btnBlockInvite:pressed {
     background-color: rgb(187, 187, 187);
+}
+
+QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
+QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover {
+    background-color: rgb(237, 237, 237);
+}
+
+QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
+QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed {
+    background-color: rgb(212, 212, 212);
 }
 
 QWidget#callInvitePage, QWidget#outboundCallPage{
@@ -151,10 +163,6 @@ QListView#contactRequestList::item:hover, QListView#BannedList::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
-QListView#listMessageView::item:hover{
-    background-color: rgba(255, 255, 255, 255);
-}
-
 QListView#listMessageView{
     background: rgb(255, 255, 255);
     border-top: 1px solid rgb(229, 229, 229);
@@ -217,20 +225,20 @@ QPushButton#hangupButton:pressed{
 }
 
 QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#imBackButton, QPushButton#sendCRBackButton, QPushButton#copyCMButton, QPushButton#pendingCRBackButton,
+QPushButton#sendCRBackButton, QPushButton#copyCMButton, QPushButton#pendingCRBackButton,
 QPushButton#videoCfgBtn{
     background-color: #414141;
     border-radius: 15px;
     border:solid 1px;
 }
 
-QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover, QPushButton#imBackButton:hover,
+QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover,
 QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#pendingCRBackButton:hover,
 QPushButton#videoCfgBtn:hover{
     background-color: #515151;
 }
 
-QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed, QPushButton#imBackButton:pressed,
+QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed,
 QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#pendingCRBackButton:pressed,
 QPushButton#videoCfgBtn:pressed{
     background-color: #313131;
@@ -262,23 +270,6 @@ QPushButton#btnvideo{
     background-color: #3AC0D2;
     border-radius: 15px;
     border:solid 1px;
-}
-
-QPushButton#searchBtn, QPushButton#btnComBarVideo,
-QPushButton#sendButton, QPushButton#sendIMButton, QPushButton#sendContactRequestPageButton{
-   background-color: #3AC0D2;
-   border-radius: 15px;
-   border:solid 1px;
-}
-
-QPushButton#searchBtn:hover, QPushButton#sendButton:hover,
-QPushButton#sendIMButton:hover, QPushButton#btnComBarVideo:hover, QPushButton#sendContactRequestPageButton:hover{
-   background-color: #4dc6d6;
-}
-
-QPushButton#searchBtn:pressed, QPushButton#sendButton:pressed,
-QPushButton#sendIMButton:pressed, QPushButton#btnComBarVideo:pressed, QPushButton#sendContactRequestPageButton:pressed{
-   background-color: #34acbd;
 }
 
 QScrollBar:vertical{
@@ -326,8 +317,7 @@ QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, 
 QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
-QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#sendContactRequestPageButton,
-QPushButton#sendContactRequestButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
+QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
 QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, QPushButton#confirmChangeBtn {
     background-color: #3AC0D2;
     border: 0px;
@@ -349,8 +339,7 @@ QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
-QPushButton#registerButton:hover, QPushButton#sendContactRequestPageButton:hover,
-QPushButton#sendContactRequestButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
+QPushButton#registerButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
 QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover,
 QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover{
     background-color: #4dc6d6;
@@ -367,8 +356,7 @@ QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
-QPushButton#registerButton:pressed, QPushButton#sendContactRequestPageButton:pressed,
-QPushButton#sendContactRequestButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed,
+QPushButton#registerButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed,
 QPushButton#deleteCancelBtn:pressed, QPushButton#dhtImportBtn:pressed, QPushButton#fileImportBtn:pressed,
 QPushButton#changePassBtn:pressed, QPushButton#confirmChangeBtn:pressed {
     background-color: #34acbd;
