@@ -117,8 +117,6 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     // write primary and secondary account identifiers to combobox label
-    const int elidConst = 100; // [screen awareness]
-
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
     primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, this->width() - elidConst);
@@ -133,6 +131,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.drawText(comboBoxRect, (Qt::AlignBottom | Qt::AlignLeft), secondaryAccountID);
     }
 
+    // disable popup if there's no need for it (ie. only one account)
     if (LRCInstance::accountModel().getAccountList().size() <= 1) {
         this->setDisabled(true);
     }
@@ -141,10 +140,6 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     painter.drawPixmap(gearPoint_, gearPixmap_);
-
-
-
-    painter.end();
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -184,4 +179,23 @@ CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
     else {
         emit settingsButtonClicked();
     }
+}
+
+
+void
+CurrentAccountComboBox::showPopup()
+{
+    gearPixmap_.load("");
+    elidConst -= gearRect_.width();
+    QComboBox::showPopup();
+}
+
+
+void
+CurrentAccountComboBox::hidePopup()
+{
+    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    elidConst += gearRect_.width();
+    QComboBox::hidePopup();
+
 }

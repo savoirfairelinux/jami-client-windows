@@ -45,11 +45,16 @@ private:
     void importLabelPhoto(const int& index);
     void mousePressEvent(QMouseEvent * mouseEvent);
 
+    void showPopup();
+    void hidePopup();
+
+
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
 
     QPixmap currentAccountAvatarImage_;
     int cellHeight_ = 50; // [screen awareness]
+    int elidConst = 95; // [screen awareness]
 
     QPoint gearPoint_;
     QPixmap gearPixmap_;
