@@ -20,9 +20,9 @@
 
 #include <QPainter>
 #include <QTextDocument>
-#include <QStyledItemDelegate>
+#include <QItemDelegate>
 
-class ImDelegate : public QStyledItemDelegate
+class ImDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
@@ -38,8 +38,7 @@ private:
 
     const QFont fontMsg_ = QFont("Arial", 10);
     const QString defaultStylesheet_ = QString("body { color : black; } i { opacity: 100; font-size : 10px; text-align : right; }");
-    const QSize iconSize_ {38, 38};
-
+    constexpr static int sizeImage_ = 38;
     constexpr static int margin_ = 5;
     constexpr static int padding_ = 5;
     constexpr static int bubbleRadius_ = 12;

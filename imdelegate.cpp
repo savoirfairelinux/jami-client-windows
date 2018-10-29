@@ -32,7 +32,7 @@
 #include "utils.h"
 
 ImDelegate::ImDelegate(QObject *parent)
-    : QStyledItemDelegate(parent)
+    : QItemDelegate(parent)
 {
 }
 
@@ -66,14 +66,13 @@ ImDelegate::paint(QPainter* painter,
     auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
     QStyleOptionViewItem opt = option;
-    initStyleOption(&opt, index);
+
     painter->setRenderHint(QPainter::Antialiasing);
 
     opt.font = fontMsg_;
     painter->setFont(fontMsg_);
 
     opt.text.clear();
-    QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
 
     formatMsg(index, msg);
 
@@ -89,15 +88,22 @@ ImDelegate::paint(QPainter* painter,
     document.setTextWidth(textRect.width());
 
     if (dir == Qt::AlignLeft) {
-        opt.decorationSize = iconSize_;
+        // avatar
+        opt.decorationSize = QSize(sizeImage_, sizeImage_);
         opt.decorationPosition = QStyleOptionViewItem::Left;
-        opt.decorationAlignment = Qt::AlignTop | Qt::AlignHCenter;
-        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
+        opt.decorationAlignment = Qt::AlignCenter;
+        QRect rectAvatar(margin_ + opt.rect.left(),
+                         margin_ + opt.rect.top(),
+                         sizeImage_, sizeImage_);
+        drawDecoration(painter, opt, rectAvatar,
+                       QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
+                       .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     } else {
         opt.decorationSize = QSize();
         opt.decorationPosition = QStyleOptionViewItem::Right;
     }
 
+    // message bubble
     QPainterPath path;
     path.addRoundedRect(textRect, bubbleRadius_, bubbleRadius_);
 
@@ -111,6 +117,7 @@ ImDelegate::paint(QPainter* painter,
 
     painter->save();
 
+    // text
     painter->translate(textRect.topLeft());
     document.drawContents(painter);
     painter->restore();
@@ -123,8 +130,8 @@ QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
     QRect textRect;
 
     if (dir == Qt::AlignLeft) {
-        txtDoc.setTextWidth(option.rect.width() - iconSize_.width() - padding_);
-        textRect.setRect(option.rect.left() + iconSize_.width() + padding_,
+        txtDoc.setTextWidth(option.rect.width() - sizeImage_ - padding_);
+        textRect.setRect(option.rect.left() + sizeImage_ + padding_,
                          option.rect.top() + padding_,
                          txtDoc.idealWidth(),
                          txtDoc.size().height());
@@ -174,8 +181,8 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
     QSize size(boundingRect.width() + 2 * margin_, boundingRect.height());
 
     /* Keep the minimum height needed. */
-    if(size.height() < iconSize_.height())
-        size.setHeight(iconSize_.height());
+    if(size.height() < sizeImage_)
+        size.setHeight(sizeImage_);
 
     size.setHeight(size.height() + 2 * margin_);
 

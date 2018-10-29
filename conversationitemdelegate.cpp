@@ -22,7 +22,6 @@
 #include <QApplication>
 #include <QPainter>
 #include <QPixmap>
-#include <QDebug>
 
 // Client
 #include "smartlistmodel.h"
@@ -49,21 +48,13 @@ ConversationItemDelegate::paint(QPainter* painter
     if (opt.state & QStyle::State_HasFocus)
         opt.state ^= QStyle::State_HasFocus;
 
-    // First, we draw the control itself
-    QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
-    style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
-
     auto isContextMenuOpen = index.data(static_cast<int>(SmartListModel::Role::ContextMenuOpen)).value<bool>();
     bool selected = false;
     if (option.state & QStyle::State_Selected) {
         selected = true;
         opt.state ^= QStyle::State_Selected;
     } else if (!isContextMenuOpen) {
-        if (option.state & QStyle::State_MouseOver) {
-            highlightMap_[index.row()] = true;
-        } else {
-            highlightMap_[index.row()] = false;
-        }
+        highlightMap_[index.row()] = option.state & QStyle::State_MouseOver;
     }
 
     // One does not simply keep the highlighted state drawn when the context
