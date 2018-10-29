@@ -292,7 +292,7 @@
              </property>
              <property name="icon">
               <iconset resource="ressources.qrc">
-               <normaloff>:/images/default-avatar-overlay.svg</normaloff>:/images/default-avatar-overlay.svg</iconset>
+               <normaloff>:/images/default_avatar_overlay.svg</normaloff>:/images/default_avatar_overlay.svg</iconset>
              </property>
              <property name="iconSize">
               <size>

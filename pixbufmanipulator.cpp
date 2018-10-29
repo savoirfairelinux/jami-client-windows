@@ -99,7 +99,7 @@ fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& 
         overlayRect.moveTop(overlayRect.top() + margin * 0.5);
         overlayRect.setWidth(overlayRect.width() - margin);
         overlayRect.setHeight(overlayRect.height() - margin);
-        painter.drawPixmap(overlayRect, QPixmap(":/images/default-avatar-overlay.svg"));
+        painter.drawPixmap(overlayRect, QPixmap(":/images/default_avatar_overlay.svg"));
     }
 
     return avatar;
