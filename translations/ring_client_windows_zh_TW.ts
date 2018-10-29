@@ -793,244 +793,206 @@ RIng 是一個安全且分散式的通訊軟體。</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="216"/>
+        <location filename="../callwidget.ui" line="215"/>
         <source>Search contacts or enter ring ID</source>
         <translation>搜尋聯絡人或輸入 ring ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="333"/>
+        <location filename="../callwidget.ui" line="296"/>
+        <source>Show conversations</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="299"/>
         <source>Conversations</source>
         <translation>對話</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="384"/>
-        <source>Contact requests</source>
-        <translation>聯絡人請求</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="642"/>
+        <location filename="../callwidget.ui" line="559"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring 是一套通用通訊的自由軟體，其尊重使用者的自由與隱私。</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="207"/>
+        <location filename="../callwidget.ui" line="206"/>
         <source>Search contact text input</source>
         <translation>搜尋聯絡人文字輸入</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="248"/>
-        <source>search button</source>
-        <translation>搜尋按鈕</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="557"/>
+        <location filename="../callwidget.ui" line="474"/>
         <source>Configuration menu</source>
         <translation>設定選單</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="680"/>
-        <source>This is your RingID.
-Copy and share it with your friends!</source>
-        <translation>這是你的 RingID。
-複製並與你的朋友分享！</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="791"/>
+        <location filename="../callwidget.ui" line="710"/>
         <source>Show ring ID QR code</source>
         <translation>顯示 Ring ID 二維條碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="842"/>
+        <location filename="../callwidget.ui" line="761"/>
         <source>Share ring ID button</source>
         <translation>分享 Ring ID 按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="900"/>
+        <location filename="../callwidget.ui" line="819"/>
         <source>Double-click to copy</source>
         <translation>雙擊以複製</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="935"/>
+        <location filename="../callwidget.ui" line="854"/>
         <source>Error while generating QR Code</source>
         <translation>產生 QR Code 時發生錯誤</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="979"/>
-        <location filename="../callwidget.ui" line="1069"/>
-        <location filename="../callwidget.ui" line="1840"/>
+        <location filename="../callwidget.ui" line="898"/>
+        <location filename="../callwidget.ui" line="988"/>
+        <location filename="../callwidget.ui" line="1729"/>
         <source>Back to homepage button</source>
         <translation>回到首頁按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1189"/>
-        <source>Peer contact method selector</source>
-        <translation>對方聯絡人方法選擇器</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1208"/>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.ui" line="1114"/>
         <source>Add to contacts</source>
         <translation>加到聯絡人</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
-        <source>Start the conversation !</source>
-        <translation>開始通話！</translation>
+        <location filename="../callwidget.ui" line="306"/>
+        <source>Show invites</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1314"/>
+        <location filename="../callwidget.ui" line="309"/>
+        <source>Invites</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="597"/>
+        <source>
+                                        This is your RingID.
+                                        Copy and share it with your friends!
+                                      </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1203"/>
         <source>Type your message here</source>
         <translation>在這裡輸入您的訊息</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1333"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>send message</source>
         <translation>傳送訊息</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1459"/>
+        <location filename="../callwidget.ui" line="1348"/>
         <source>BestId</source>
         <translation>BestId</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1469"/>
+        <location filename="../callwidget.ui" line="1358"/>
         <source>Wants to talk to you!</source>
         <translation>想要與您說說話！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1498"/>
+        <location filename="../callwidget.ui" line="1387"/>
         <source>Answer incoming call button</source>
         <translation>答覆來電按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1543"/>
+        <location filename="../callwidget.ui" line="1432"/>
         <source>Ignore incoming call button</source>
         <translation>忽略來電按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1570"/>
+        <location filename="../callwidget.ui" line="1459"/>
         <source>Answer</source>
         <translation>回覆</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1602"/>
+        <location filename="../callwidget.ui" line="1491"/>
         <source>Ignore</source>
         <translation>忽略</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1673"/>
+        <location filename="../callwidget.ui" line="1562"/>
         <source>Calling</source>
         <translation>正在通話</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1726"/>
+        <location filename="../callwidget.ui" line="1615"/>
         <source>Cancel outgoing call</source>
         <translation>取消去電</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1749"/>
+        <location filename="../callwidget.ui" line="1638"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1449"/>
+        <location filename="../callwidget.ui" line="1338"/>
         <source>Call</source>
         <translation>呼叫</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="228"/>
+        <source>Start video call</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="239"/>
+        <source>Start audio call</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="255"/>
+        <source>Clear conversation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="262"/>
+        <source>Block contact</source>
+        <translation>阻擋連絡人</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="273"/>
         <source>Copy number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="959"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>Contact me on Ring</source>
         <translation>在 Ring 上聯絡我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="959"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>My RingId is : </source>
         <translation>我的 RingId 是：</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="214"/>
+        <location filename="../callwidget.cpp" line="177"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="227"/>
-        <source>Display date</source>
-        <translation>顯示日期</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="232"/>
-        <source>Display author</source>
-        <translation>顯示作者</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="263"/>
+        <location filename="../callwidget.cpp" line="197"/>
         <source>Message incoming from %1</source>
         <translation>從 %1 來的訊息</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
-        <source>Copy name</source>
-        <translation>複製名稱</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="307"/>
-        <source>Call Number</source>
-        <translation>通話號碼</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="308"/>
-        <source>Copy Number</source>
-        <translation>複製號碼</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="311"/>
-        <source>Copy %1</source>
-        <translation>複製 %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="316"/>
-        <source>Call %1</source>
-        <translation>與 %1 通話</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="338"/>
-        <source>Remove from contacts</source>
-        <translation>從聯絡人中移除</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="762"/>
-        <source>NO RING ACCOUNT FOUND</source>
-        <translation>找不到 Ring 帳號</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="807"/>
+        <location filename="../callwidget.cpp" line="709"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="812"/>
+        <location filename="../callwidget.cpp" line="714"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="445"/>
+        <location filename="../callwidget.cpp" line="580"/>
         <source>Call incoming from %1</source>
         <translation>從 %1 的來電</translation>
-    </message>
-</context>
-<context>
-    <name>ComBar</name>
-    <message>
-        <location filename="../combar.ui" line="72"/>
-        <source>Call button</source>
-        <translation>通話按鈕</translation>
     </message>
 </context>
 <context>
@@ -1419,29 +1381,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>CurrentAccountWidget</name>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="26"/>
-        <source>Form</source>
-        <translation>表單</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="97"/>
-        <source>Account avatar</source>
-        <translation>帳號大頭貼</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="128"/>
-        <source>Account status</source>
-        <translation>帳號狀態</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="141"/>
-        <source>account selection combobox</source>
-        <translation>帳號選擇複選框</translation>
-    </message>
-</context>
-<context>
     <name>DeleteAccountDialog</name>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
@@ -1485,49 +1424,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>DeleteContactDialog</name>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="20"/>
-        <source>Dialog</source>
-        <translation>對話框</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="47"/>
-        <source>Do you want to delete this contact?</source>
-        <translation>您想要移除此聯絡人嗎？</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="123"/>
-        <source>Cancel contact deletion button</source>
-        <translation>取消聯絡人刪除按鈕</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="126"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="139"/>
-        <source>Delete contact validation button</source>
-        <translation>刪除帳號驗證按鈕</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="142"/>
-        <source>Delete</source>
-        <translation>刪除</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="155"/>
-        <source>Delete and ban validation button</source>
-        <translation>刪除並阻擋驗證按鈕</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="158"/>
-        <source>Delete and ban</source>
-        <translation>刪除並加入黑名單</translation>
-    </message>
-</context>
-<context>
     <name>InstantMessagingWidget</name>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
@@ -1550,19 +1446,27 @@ Copy and share it with your friends!</source>
         <translation>傳送訊息按鈕</translation>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="44"/>
+        <location filename="../instantmessagingwidget.cpp" line="47"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
+</context>
+<context>
+    <name>InviteButtonsWidget</name>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="50"/>
-        <source>Display date</source>
-        <translation>顯示日期</translation>
+        <location filename="../invitebuttonswidget.ui" line="72"/>
+        <source>Accept invite</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="54"/>
-        <source>Display author</source>
-        <translation>顯示作者</translation>
+        <location filename="../invitebuttonswidget.ui" line="104"/>
+        <source>Ignore invite</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../invitebuttonswidget.ui" line="136"/>
+        <source>Block person</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1573,17 +1477,17 @@ Copy and share it with your friends!</source>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="59"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Configuration</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="62"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Exit</source>
         <translation>離開</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="81"/>
+        <location filename="../mainwindow.cpp" line="97"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
@@ -1629,12 +1533,12 @@ Copy and share it with your friends!</source>
         <translation>匯入</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="66"/>
+        <location filename="../photoboothwidget.cpp" line="60"/>
         <source>Choose File</source>
         <translation>選擇檔案</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="68"/>
+        <location filename="../photoboothwidget.cpp" line="62"/>
         <source>Files (*)</source>
         <translation>檔案 (*)</translation>
     </message>
@@ -1642,12 +1546,13 @@ Copy and share it with your friends!</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="187"/>
+        <location filename="../utils.cpp" line="194"/>
         <source>No default mail client found</source>
         <translation>找不到預設的電子郵件客戶端</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="36"/>
+        <location filename="../wizarddialog.cpp" line="37"/>
+        <location filename="../wizardwidget.cpp" line="37"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
         <translation>Ring 帳號</translation>
@@ -1669,24 +1574,6 @@ Copy and share it with your friends!</source>
         <location filename="../qualitydialog.ui" line="106"/>
         <source>Auto</source>
         <translation>自動</translation>
-    </message>
-</context>
-<context>
-    <name>QuickActContactRequestWidget</name>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="114"/>
-        <source>Validate Contact Request Button</source>
-        <translation>驗證聯絡人請求按鈕</translation>
-    </message>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="139"/>
-        <source>Mute contact request button</source>
-        <translation>聯絡人靜音請求按鈕</translation>
-    </message>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="161"/>
-        <source>Ban contact request button</source>
-        <translation>阻擋聯絡人請求按鈕</translation>
     </message>
 </context>
 <context>
@@ -1723,82 +1610,77 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="42"/>
+        <location filename="../videooverlay.ui" line="557"/>
         <source>Call on Hold</source>
         <translation>保留中的通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="119"/>
+        <location filename="../videooverlay.ui" line="89"/>
         <source>Hold / Unhold</source>
         <translation>保留／繼續通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="154"/>
+        <location filename="../videooverlay.ui" line="124"/>
         <source>Chat</source>
         <translation>聊天</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="186"/>
+        <location filename="../videooverlay.ui" line="156"/>
         <source>Add person to call</source>
         <translation>新增人物到通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="218"/>
+        <location filename="../videooverlay.ui" line="188"/>
         <source>Transfer call</source>
         <translation>轉送通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="256"/>
+        <location filename="../videooverlay.ui" line="226"/>
         <source>Mute Mic</source>
         <translation>麥克風靜音</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="338"/>
+        <location filename="../videooverlay.ui" line="308"/>
         <source>Record call</source>
         <translation>記錄通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="370"/>
+        <location filename="../videooverlay.ui" line="340"/>
         <source>Quality</source>
         <translation>品質</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="402"/>
+        <location filename="../videooverlay.ui" line="372"/>
         <source>Join Calls</source>
         <translation>加入通話</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="476"/>
+        <location filename="../videooverlay.ui" line="448"/>
         <source>Name label</source>
         <translation>名稱標籤</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="498"/>
-        <source>Add to contact</source>
-        <translation>加到聯絡人</translation>
-    </message>
-    <message>
-        <location filename="../videooverlay.ui" line="568"/>
+        <location filename="../videooverlay.ui" line="508"/>
         <source>Time elapsed</source>
         <translation>時間流逝</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="571"/>
+        <location filename="../videooverlay.ui" line="511"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="584"/>
+        <location filename="../videooverlay.ui" line="524"/>
         <source>Configuration</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="87"/>
+        <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>掛斷</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="297"/>
+        <location filename="../videooverlay.ui" line="267"/>
         <source>Mute Video</source>
         <translation>視訊靜音</translation>
     </message>
@@ -1806,17 +1688,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="253"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>分享整個螢幕</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="256"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>分享螢幕區域</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="263"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>分享檔案</translation>
     </message>
@@ -1824,62 +1706,52 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="70"/>
+        <location filename="../wizarddialog.cpp" line="71"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>您的帳號需要遷移。輸入您的密碼。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="96"/>
+        <location filename="../wizarddialog.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
         <translation>正在遷移您的 Ring 帳號...</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="98"/>
+        <location filename="../wizarddialog.cpp" line="99"/>
         <source>Importing account archive...</source>
         <translation>正在匯入帳號封存檔……</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="151"/>
-        <source>Registering your public username, it may take a few minutes...</source>
-        <translation>正在註冊您的公開使用者名稱，這可能會耗費數分鐘...</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="170"/>
-        <source>An error has occured during your account creation</source>
-        <translation>在建立您的帳號時發生錯誤</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="227"/>
+        <location filename="../wizarddialog.cpp" line="174"/>
         <source>Add a device</source>
         <translation>新增裝置</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="339"/>
+        <location filename="../wizarddialog.cpp" line="292"/>
         <source>Username not available.</source>
         <translation>使用者名稱不可用</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="342"/>
+        <location filename="../wizarddialog.cpp" line="295"/>
         <source>Username is available.</source>
         <translation>使用者名稱可用。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="345"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Username is invalid.</source>
         <translation>使用者名稱無效。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="348"/>
+        <location filename="../wizarddialog.cpp" line="301"/>
         <source>Network error.</source>
         <translation>網路錯誤。</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="402"/>
+        <location filename="../wizarddialog.cpp" line="349"/>
         <source>Open File</source>
         <translation>開啟檔案</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="404"/>
+        <location filename="../wizarddialog.cpp" line="351"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
         <translation>Ring 封存檔 (*.gz);; 所有檔案 (*)</translation>
     </message>
@@ -1938,7 +1810,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="629"/>
-        <location filename="../wizarddialog.cpp" line="231"/>
+        <location filename="../wizarddialog.cpp" line="178"/>
         <source>Create your account</source>
         <translation>建立您的帳號</translation>
     </message>
@@ -1949,7 +1821,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="749"/>
-        <location filename="../wizarddialog.cpp" line="311"/>
+        <location filename="../wizarddialog.cpp" line="264"/>
         <source>Searching...</source>
         <translation>正在搜尋...</translation>
     </message>
@@ -2136,7 +2008,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="933"/>
-        <location filename="../wizarddialog.cpp" line="100"/>
+        <location filename="../wizarddialog.cpp" line="101"/>
         <source>Generating your Ring account...</source>
         <translation>正在生成您的 Ring 帳號...</translation>
     </message>
@@ -2169,6 +2041,346 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="1019"/>
         <source>Next</source>
         <translation>下一個</translation>
+    </message>
+</context>
+<context>
+    <name>WizardWidget</name>
+    <message>
+        <location filename="../wizardwidget.ui" line="33"/>
+        <source>Wizard Dialog</source>
+        <translation>精靈視窗</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="36"/>
+        <source>Account creation wizard dialog</source>
+        <translation>建立帳號精靈對話框</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="72"/>
+        <source>Welcome Label</source>
+        <translation>歡迎標籤</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="78"/>
+        <source> Welcome to</source>
+        <translation>歡迎來到</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="107"/>
+        <source>Welcome Logo</source>
+        <translation>歡迎圖示</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="139"/>
+        <source>Create Ring account button</source>
+        <translation>建立 Ring 帳號按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="145"/>
+        <source>Push button for Ring account creation start trigger</source>
+        <translation>Ring 帳號建立開始觸發請按下按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="151"/>
+        <source>Create Ring account</source>
+        <translation>建立 Ring 帳號</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="164"/>
+        <source>Link device button</source>
+        <translation>連結裝置按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="170"/>
+        <source>Push button for device linkage start trigger</source>
+        <translation>裝置連結開始觸發請按下按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="173"/>
+        <source>Link this device to an account</source>
+        <translation>連結這個裝置到一個帳號</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="205"/>
+        <source>Select link method</source>
+        <translation>選取連結方法</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="254"/>
+        <source>Link account to device from the network</source>
+        <translation>從網路連結帳號到裝置</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="257"/>
+        <source>Link account from DHT</source>
+        <translation>從 DHT 連結帳號</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="270"/>
+        <source>Link from exported account archive file</source>
+        <translation>從已匯出的帳號封存檔連結</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="273"/>
+        <source>Link account from file</source>
+        <translation>從檔案連結帳號</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="322"/>
+        <source>How to add a device</source>
+        <translation>如何新增裝置</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="329"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;要連結此裝置到其他帳號，首先您&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;需要取得 PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; 碼。要生成 PIN 碼：&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;到&lt;span style=&quot; font-weight:600;&quot;&gt;帳號管理設定頁面&lt;/span&gt;在前一臺裝置&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;選擇您想要使用的 &lt;span style=&quot; font-weight:600;&quot;&gt;Ring 帳號&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;到&lt;span style=&quot; font-weight:600;&quot;&gt;裝置&lt;/span&gt;分頁&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;選取&lt;span style=&quot; font-weight:600;&quot;&gt;新增裝置&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;您將會得到必要的 PIN 碼以完成此表單。PIN 碼僅在 &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 分鐘&lt;/span&gt;內有效&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="357"/>
+        <source>Select file to import</source>
+        <translation>選取要匯入的檔案</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="382"/>
+        <source>Account archive path:</source>
+        <translation>帳號封存檔路徑</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="389"/>
+        <source>Account archive path selector</source>
+        <translation>帳號封存檔路徑選取器</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="406"/>
+        <source>Archive password:</source>
+        <translation>封存檔密碼</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="413"/>
+        <source>Archive passord input</source>
+        <translation>封存檔密碼輸入</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="450"/>
+        <source>Create your profile</source>
+        <translation>建立您的介紹</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="482"/>
+        <source>Photobooth Widget</source>
+        <translation>大頭貼相機小工具</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="509"/>
+        <source>Avatar display</source>
+        <translation>大頭貼顯示</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="564"/>
+        <source>Enter your full name:</source>
+        <translation>輸入您的完整名稱：</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="588"/>
+        <source>Full name edit</source>
+        <translation>完整名稱編輯</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="594"/>
+        <source>Text entry for full name input</source>
+        <translation>完整名稱輸入的文字項目</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="629"/>
+        <location filename="../wizardwidget.cpp" line="167"/>
+        <source>Create your account</source>
+        <translation>建立您的帳號</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="670"/>
+        <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
+        <translation>在 Ring 上註冊您的使用者名稱。這將會保留使用者名稱，只有您可以使用它。您的朋友將可以使用您的使用者名稱來與您通話，而不用使用您的 RingID。</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="673"/>
+        <source>Public username checkbox</source>
+        <translation>公開使用者名稱勾選框</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="676"/>
+        <source>Checkbox selecting if the user wants a public username</source>
+        <translation>若使用者想要一個公開的使用者名稱就在勾選框打勾</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="679"/>
+        <source>Register public username (experimental)</source>
+        <translation>註冊公開的使用者名稱（實驗性）</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="724"/>
+        <source>Public username edit</source>
+        <translation>公開使用者名稱編輯</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="730"/>
+        <source>Choose your username</source>
+        <translation>選擇您的使用者名稱</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="746"/>
+        <source>Public username validation status</source>
+        <translation>公開使用者名稱驗證狀態</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="749"/>
+        <location filename="../wizardwidget.cpp" line="253"/>
+        <source>Searching...</source>
+        <translation>正在搜尋...</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="778"/>
+        <source>PIN edit</source>
+        <translation>PIN 編輯</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="784"/>
+        <source>Device linking PIN text entry</source>
+        <translation>裝置連結 PIN 文字項目</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="787"/>
+        <source>Enter your pin</source>
+        <translation>輸入您的 PIN 碼</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="814"/>
+        <source>Password text input</source>
+        <translation>密碼文字輸入</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="820"/>
+        <source>Password text entry</source>
+        <translation>密碼文字項目</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="826"/>
+        <source>Password</source>
+        <translation>密碼</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="853"/>
+        <location filename="../wizardwidget.ui" line="859"/>
+        <source>Password confirmation text input</source>
+        <translation>確認密碼文字輸入</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="865"/>
+        <source>Confirm password</source>
+        <translation>確認密碼</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="933"/>
+        <location filename="../wizardwidget.cpp" line="101"/>
+        <source>Generating your Ring account...</source>
+        <translation>正在生成您的 Ring 帳號...</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="969"/>
+        <source>Previous page button</source>
+        <translation>先前頁面按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="975"/>
+        <source>push button to access previous page of wizard</source>
+        <translation>存取前一頁精靈請按下按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="978"/>
+        <source>Previous</source>
+        <translation>前一個</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1010"/>
+        <source>Next page Button</source>
+        <translation>下一頁按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1016"/>
+        <source>Push button to access next page of wizard</source>
+        <translation>存取下一頁精靈請按下按鈕</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1019"/>
+        <source>Next</source>
+        <translation>下一個</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="71"/>
+        <source>Your account needs to be migrated. Enter your password.</source>
+        <translation>您的帳號需要遷移。輸入您的密碼。</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="97"/>
+        <source>Migrating your Ring account...</source>
+        <translation>正在遷移您的 Ring 帳號...</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="99"/>
+        <source>Importing account archive...</source>
+        <translation>正在匯入帳號封存檔……</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="163"/>
+        <source>Add a device</source>
+        <translation>新增裝置</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="281"/>
+        <source>Username not available.</source>
+        <translation>使用者名稱不可用</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="284"/>
+        <source>Username is available.</source>
+        <translation>使用者名稱可用。</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="287"/>
+        <source>Username is invalid.</source>
+        <translation>使用者名稱無效。</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="290"/>
+        <source>Network error.</source>
+        <translation>網路錯誤。</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="337"/>
+        <source>Open File</source>
+        <translation>開啟檔案</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="339"/>
+        <source>Ring archive files (*.gz);; All files (*)</source>
+        <translation>Ring 封存檔 (*.gz);; 所有檔案 (*)</translation>
     </message>
 </context>
 </TS>

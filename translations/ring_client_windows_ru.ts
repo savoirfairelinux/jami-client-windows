@@ -793,244 +793,206 @@ Ring – это приложение с распределённой архит�
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="216"/>
+        <location filename="../callwidget.ui" line="215"/>
         <source>Search contacts or enter ring ID</source>
         <translation>Найдите контакты или введите Ring ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="333"/>
+        <location filename="../callwidget.ui" line="296"/>
+        <source>Show conversations</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="299"/>
         <source>Conversations</source>
         <translation>Разговоры</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="384"/>
-        <source>Contact requests</source>
-        <translation>Запросы на добавление в контакты</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="642"/>
+        <location filename="../callwidget.ui" line="559"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring — это свободная программа для связи, уважающая свободу и конфиденциальность пользователей.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="207"/>
+        <location filename="../callwidget.ui" line="206"/>
         <source>Search contact text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="248"/>
-        <source>search button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="557"/>
+        <location filename="../callwidget.ui" line="474"/>
         <source>Configuration menu</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="680"/>
-        <source>This is your RingID.
-Copy and share it with your friends!</source>
-        <translation>Это ваш RingID.
-Скопируйте и поделитесь им с вашими друзьями!</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="791"/>
+        <location filename="../callwidget.ui" line="710"/>
         <source>Show ring ID QR code</source>
         <translation>Показать Ring ID QR код</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="842"/>
+        <location filename="../callwidget.ui" line="761"/>
         <source>Share ring ID button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="900"/>
+        <location filename="../callwidget.ui" line="819"/>
         <source>Double-click to copy</source>
         <translation>Двойной клик для копирования</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="935"/>
+        <location filename="../callwidget.ui" line="854"/>
         <source>Error while generating QR Code</source>
         <translation>Ошибка при создании QR кода</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="979"/>
-        <location filename="../callwidget.ui" line="1069"/>
-        <location filename="../callwidget.ui" line="1840"/>
+        <location filename="../callwidget.ui" line="898"/>
+        <location filename="../callwidget.ui" line="988"/>
+        <location filename="../callwidget.ui" line="1729"/>
         <source>Back to homepage button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1189"/>
-        <source>Peer contact method selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1208"/>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.ui" line="1114"/>
         <source>Add to contacts</source>
         <translation>Добавить в контакты</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
-        <source>Start the conversation !</source>
-        <translation>Начать разговор!</translation>
+        <location filename="../callwidget.ui" line="306"/>
+        <source>Show invites</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1314"/>
+        <location filename="../callwidget.ui" line="309"/>
+        <source>Invites</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="597"/>
+        <source>
+                                        This is your RingID.
+                                        Copy and share it with your friends!
+                                      </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1203"/>
         <source>Type your message here</source>
         <translation>Введите ваше сообщение здесь</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1333"/>
+        <location filename="../callwidget.ui" line="1222"/>
         <source>send message</source>
         <translation>отправить сообщение</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1459"/>
+        <location filename="../callwidget.ui" line="1348"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1469"/>
+        <location filename="../callwidget.ui" line="1358"/>
         <source>Wants to talk to you!</source>
         <translation>Хочет поговорить с вами!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1498"/>
+        <location filename="../callwidget.ui" line="1387"/>
         <source>Answer incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1543"/>
+        <location filename="../callwidget.ui" line="1432"/>
         <source>Ignore incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1570"/>
+        <location filename="../callwidget.ui" line="1459"/>
         <source>Answer</source>
         <translation>Ответить</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1602"/>
+        <location filename="../callwidget.ui" line="1491"/>
         <source>Ignore</source>
         <translation>Игнорировать</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1673"/>
+        <location filename="../callwidget.ui" line="1562"/>
         <source>Calling</source>
         <translation>Вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1726"/>
+        <location filename="../callwidget.ui" line="1615"/>
         <source>Cancel outgoing call</source>
         <translation>Отменить исходящий вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1749"/>
+        <location filename="../callwidget.ui" line="1638"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1449"/>
+        <location filename="../callwidget.ui" line="1338"/>
         <source>Call</source>
         <translation>Звонок</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="295"/>
+        <location filename="../callwidget.cpp" line="228"/>
+        <source>Start video call</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="239"/>
+        <source>Start audio call</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="255"/>
+        <source>Clear conversation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="262"/>
+        <source>Block contact</source>
+        <translation>Заблокировать контакт</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="273"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="959"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>Contact me on Ring</source>
         <translation>Свяжись со мной в Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="959"/>
+        <location filename="../callwidget.cpp" line="803"/>
         <source>My RingId is : </source>
         <translation>Мой Ring ID:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="214"/>
+        <location filename="../callwidget.cpp" line="177"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="227"/>
-        <source>Display date</source>
-        <translation>Отображать дату</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="232"/>
-        <source>Display author</source>
-        <translation>Отображать имя</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="263"/>
+        <location filename="../callwidget.cpp" line="197"/>
         <source>Message incoming from %1</source>
         <translation>Сообщение от %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="301"/>
-        <source>Copy name</source>
-        <translation>Копировать имя</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="307"/>
-        <source>Call Number</source>
-        <translation>Позвонить по номеру</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="308"/>
-        <source>Copy Number</source>
-        <translation>Копировать номер</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="311"/>
-        <source>Copy %1</source>
-        <translation>Копировать %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="316"/>
-        <source>Call %1</source>
-        <translation>Позвонить %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="338"/>
-        <source>Remove from contacts</source>
-        <translation>Удалить из контактов</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="762"/>
-        <source>NO RING ACCOUNT FOUND</source>
-        <translation>НЕ НАЙДЕН АККАУНТ RING</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="807"/>
+        <location filename="../callwidget.cpp" line="709"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="812"/>
+        <location filename="../callwidget.cpp" line="714"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="445"/>
+        <location filename="../callwidget.cpp" line="580"/>
         <source>Call incoming from %1</source>
         <translation>Звонок от %1</translation>
-    </message>
-</context>
-<context>
-    <name>ComBar</name>
-    <message>
-        <location filename="../combar.ui" line="72"/>
-        <source>Call button</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1419,29 +1381,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>CurrentAccountWidget</name>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="26"/>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="97"/>
-        <source>Account avatar</source>
-        <translation>Аватар аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="128"/>
-        <source>Account status</source>
-        <translation>Статус аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../currentaccountwidget.ui" line="141"/>
-        <source>account selection combobox</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>DeleteAccountDialog</name>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
@@ -1485,49 +1424,6 @@ Copy and share it with your friends!</source>
     </message>
 </context>
 <context>
-    <name>DeleteContactDialog</name>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="20"/>
-        <source>Dialog</source>
-        <translation>Диалог</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="47"/>
-        <source>Do you want to delete this contact?</source>
-        <translation>Вы хотите удалить этот контакт?</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="123"/>
-        <source>Cancel contact deletion button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="126"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="139"/>
-        <source>Delete contact validation button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="142"/>
-        <source>Delete</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="155"/>
-        <source>Delete and ban validation button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../deletecontactdialog.ui" line="158"/>
-        <source>Delete and ban</source>
-        <translation>Удалить и заблокировать</translation>
-    </message>
-</context>
-<context>
     <name>InstantMessagingWidget</name>
     <message>
         <location filename="../instantmessagingwidget.ui" line="38"/>
@@ -1550,19 +1446,27 @@ Copy and share it with your friends!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="44"/>
+        <location filename="../instantmessagingwidget.cpp" line="47"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
+</context>
+<context>
+    <name>InviteButtonsWidget</name>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="50"/>
-        <source>Display date</source>
-        <translation>Отображать дату</translation>
+        <location filename="../invitebuttonswidget.ui" line="72"/>
+        <source>Accept invite</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../instantmessagingwidget.cpp" line="54"/>
-        <source>Display author</source>
-        <translation>Отображать имя</translation>
+        <location filename="../invitebuttonswidget.ui" line="104"/>
+        <source>Ignore invite</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../invitebuttonswidget.ui" line="136"/>
+        <source>Block person</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1573,17 +1477,17 @@ Copy and share it with your friends!</source>
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="59"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Configuration</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="62"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="81"/>
+        <location filename="../mainwindow.cpp" line="97"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -1629,12 +1533,12 @@ Copy and share it with your friends!</source>
         <translation>Импорт</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="66"/>
+        <location filename="../photoboothwidget.cpp" line="60"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="68"/>
+        <location filename="../photoboothwidget.cpp" line="62"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
     </message>
@@ -1642,12 +1546,13 @@ Copy and share it with your friends!</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="187"/>
+        <location filename="../utils.cpp" line="194"/>
         <source>No default mail client found</source>
         <translation>Не найден почтовый клиент по умолчанию</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="36"/>
+        <location filename="../wizarddialog.cpp" line="37"/>
+        <location filename="../wizardwidget.cpp" line="37"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
         <translation>Аккаунт Ring</translation>
@@ -1669,24 +1574,6 @@ Copy and share it with your friends!</source>
         <location filename="../qualitydialog.ui" line="106"/>
         <source>Auto</source>
         <translation>Авто</translation>
-    </message>
-</context>
-<context>
-    <name>QuickActContactRequestWidget</name>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="114"/>
-        <source>Validate Contact Request Button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="139"/>
-        <source>Mute contact request button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../quickactcontactrequestwidget.ui" line="161"/>
-        <source>Ban contact request button</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1723,82 +1610,77 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="42"/>
+        <location filename="../videooverlay.ui" line="557"/>
         <source>Call on Hold</source>
         <translation>Звонок приостановлен</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="119"/>
+        <location filename="../videooverlay.ui" line="89"/>
         <source>Hold / Unhold</source>
         <translation>Приостановить / Возобновить</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="154"/>
+        <location filename="../videooverlay.ui" line="124"/>
         <source>Chat</source>
         <translation>Чат</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="186"/>
+        <location filename="../videooverlay.ui" line="156"/>
         <source>Add person to call</source>
         <translation>Добавить человека к звонку</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="218"/>
+        <location filename="../videooverlay.ui" line="188"/>
         <source>Transfer call</source>
         <translation>Передать звонок</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="256"/>
+        <location filename="../videooverlay.ui" line="226"/>
         <source>Mute Mic</source>
         <translation>Выключить микрофон</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="338"/>
+        <location filename="../videooverlay.ui" line="308"/>
         <source>Record call</source>
         <translation>Записать разговор</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="370"/>
+        <location filename="../videooverlay.ui" line="340"/>
         <source>Quality</source>
         <translation>Качество</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="402"/>
+        <location filename="../videooverlay.ui" line="372"/>
         <source>Join Calls</source>
         <translation>Присоединиться к звонкам</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="476"/>
+        <location filename="../videooverlay.ui" line="448"/>
         <source>Name label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="498"/>
-        <source>Add to contact</source>
-        <translation>Добавить в контакт</translation>
-    </message>
-    <message>
-        <location filename="../videooverlay.ui" line="568"/>
+        <location filename="../videooverlay.ui" line="508"/>
         <source>Time elapsed</source>
         <translation>Прошло времени</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="571"/>
+        <location filename="../videooverlay.ui" line="511"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="584"/>
+        <location filename="../videooverlay.ui" line="524"/>
         <source>Configuration</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="87"/>
+        <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>Повесить трубку</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="297"/>
+        <location filename="../videooverlay.ui" line="267"/>
         <source>Mute Video</source>
         <translation>Выключить видео</translation>
     </message>
@@ -1806,17 +1688,17 @@ Copy and share it with your friends!</source>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="253"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>Транслировать весь экран</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="256"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>Транслировать область экрана</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="263"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>Поделиться файлом</translation>
     </message>
@@ -1824,62 +1706,52 @@ Copy and share it with your friends!</source>
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.cpp" line="70"/>
+        <location filename="../wizarddialog.cpp" line="71"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>Ваша учетная запись должна быть перенесена. Введите ваш пароль.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="96"/>
+        <location filename="../wizarddialog.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
         <translation>Переносим ваш аккаунт Ring…</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="98"/>
+        <location filename="../wizarddialog.cpp" line="99"/>
         <source>Importing account archive...</source>
         <translation>Импорт архива с аккаунтом…</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="151"/>
-        <source>Registering your public username, it may take a few minutes...</source>
-        <translation>Регистрируем ваше публичное имя пользователя, это может занять несколько минут…</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="170"/>
-        <source>An error has occured during your account creation</source>
-        <translation>Произошла ошибка при создании вашего аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="227"/>
+        <location filename="../wizarddialog.cpp" line="174"/>
         <source>Add a device</source>
         <translation>Добавить устройство</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="339"/>
+        <location filename="../wizarddialog.cpp" line="292"/>
         <source>Username not available.</source>
         <translation>Имя пользователя недоступно.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="342"/>
+        <location filename="../wizarddialog.cpp" line="295"/>
         <source>Username is available.</source>
         <translation>Имя пользователя доступно.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="345"/>
+        <location filename="../wizarddialog.cpp" line="298"/>
         <source>Username is invalid.</source>
         <translation>Недопустимое имя пользователя.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="348"/>
+        <location filename="../wizarddialog.cpp" line="301"/>
         <source>Network error.</source>
         <translation>Ошибка сети.</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="402"/>
+        <location filename="../wizarddialog.cpp" line="349"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="404"/>
+        <location filename="../wizarddialog.cpp" line="351"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
         <translation>Архивы Ring (*.gz);; Все файлы (*)</translation>
     </message>
@@ -1938,7 +1810,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="629"/>
-        <location filename="../wizarddialog.cpp" line="231"/>
+        <location filename="../wizarddialog.cpp" line="178"/>
         <source>Create your account</source>
         <translation>Создайте свой аккаунт</translation>
     </message>
@@ -1949,7 +1821,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="749"/>
-        <location filename="../wizarddialog.cpp" line="311"/>
+        <location filename="../wizarddialog.cpp" line="264"/>
         <source>Searching...</source>
         <translation>Поиск…</translation>
     </message>
@@ -2136,7 +2008,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="933"/>
-        <location filename="../wizarddialog.cpp" line="100"/>
+        <location filename="../wizarddialog.cpp" line="101"/>
         <source>Generating your Ring account...</source>
         <translation>Создание вашего аккаунта Ring...</translation>
     </message>
@@ -2169,6 +2041,346 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="1019"/>
         <source>Next</source>
         <translation>Далее</translation>
+    </message>
+</context>
+<context>
+    <name>WizardWidget</name>
+    <message>
+        <location filename="../wizardwidget.ui" line="33"/>
+        <source>Wizard Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="36"/>
+        <source>Account creation wizard dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="72"/>
+        <source>Welcome Label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="78"/>
+        <source> Welcome to</source>
+        <translation>Добро пожаловать в</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="107"/>
+        <source>Welcome Logo</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="139"/>
+        <source>Create Ring account button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="145"/>
+        <source>Push button for Ring account creation start trigger</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="151"/>
+        <source>Create Ring account</source>
+        <translation>Создать аккаунт Ring</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="164"/>
+        <source>Link device button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="170"/>
+        <source>Push button for device linkage start trigger</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="173"/>
+        <source>Link this device to an account</source>
+        <translation>Привязать это устройство к аккаунту</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="205"/>
+        <source>Select link method</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="254"/>
+        <source>Link account to device from the network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="257"/>
+        <source>Link account from DHT</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="270"/>
+        <source>Link from exported account archive file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="273"/>
+        <source>Link account from file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="322"/>
+        <source>How to add a device</source>
+        <translation>Как добавить устройство</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="329"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
+&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Для привязки этого устройства к другому аккаунту вам сначала &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;/span&gt;нужно получить PIN&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; код. Чтобы сгенерировать PIN код:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Перейдите в &lt;span style=&quot; font-weight:600;&quot;&gt;настройки аккаунта&lt;/span&gt; на предыдущем устройстве&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Выберите нужный &lt;span style=&quot; font-weight:600;&quot;&gt;аккаунт Ring&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Перейдите на вкладку &lt;span style=&quot; font-weight:600;&quot;&gt;Устройства&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Выберите &lt;span style=&quot; font-weight:600;&quot;&gt;Добавить устройство&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Вы получите PIN, необходимый для заполнения этой формы. PIN код действителен только в течение &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 минут&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="357"/>
+        <source>Select file to import</source>
+        <translation>Выберите файл для импорта</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="382"/>
+        <source>Account archive path:</source>
+        <translation>Путь к архиву с аккаунтом:</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="389"/>
+        <source>Account archive path selector</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="406"/>
+        <source>Archive password:</source>
+        <translation>Пароль архива:</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="413"/>
+        <source>Archive passord input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="450"/>
+        <source>Create your profile</source>
+        <translation>Создайте свой профиль</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="482"/>
+        <source>Photobooth Widget</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="509"/>
+        <source>Avatar display</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="564"/>
+        <source>Enter your full name:</source>
+        <translation>Введите ваше полное имя:</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="588"/>
+        <source>Full name edit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="594"/>
+        <source>Text entry for full name input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="629"/>
+        <location filename="../wizardwidget.cpp" line="167"/>
+        <source>Create your account</source>
+        <translation>Создайте свой аккаунт</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="670"/>
+        <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
+        <translation>Зарегистрируйте свое имя пользователя в Ring. Это зарезервирует имя пользователя, так что только вы сможете его использовать. Ваши друзья смогут связаться с вами по вашему имени вместо RingID.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="673"/>
+        <source>Public username checkbox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="676"/>
+        <source>Checkbox selecting if the user wants a public username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="679"/>
+        <source>Register public username (experimental)</source>
+        <translation>Зарегистрировать публичное имя (экспериментальная функция)</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="724"/>
+        <source>Public username edit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="730"/>
+        <source>Choose your username</source>
+        <translation>Выберите ваше имя пользователя</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="746"/>
+        <source>Public username validation status</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="749"/>
+        <location filename="../wizardwidget.cpp" line="253"/>
+        <source>Searching...</source>
+        <translation>Поиск…</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="778"/>
+        <source>PIN edit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="784"/>
+        <source>Device linking PIN text entry</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="787"/>
+        <source>Enter your pin</source>
+        <translation>Введите ваш PIN</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="814"/>
+        <source>Password text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="820"/>
+        <source>Password text entry</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="826"/>
+        <source>Password</source>
+        <translation>Пароль</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="853"/>
+        <location filename="../wizardwidget.ui" line="859"/>
+        <source>Password confirmation text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="865"/>
+        <source>Confirm password</source>
+        <translation>Подтверждение пароля</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="933"/>
+        <location filename="../wizardwidget.cpp" line="101"/>
+        <source>Generating your Ring account...</source>
+        <translation>Создание вашего аккаунта Ring...</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="969"/>
+        <source>Previous page button</source>
+        <translation>кнопка Предыдущая страница</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="975"/>
+        <source>push button to access previous page of wizard</source>
+        <translation>нажмите кнопку для перехода к предыдущей странице Мастера</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="978"/>
+        <source>Previous</source>
+        <translation>Назад</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1010"/>
+        <source>Next page Button</source>
+        <translation>Кнопка Следующая страница</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1016"/>
+        <source>Push button to access next page of wizard</source>
+        <translation>Нажмите кнопку для перехода к следующей странице Мастера</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="1019"/>
+        <source>Next</source>
+        <translation>Далее</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="71"/>
+        <source>Your account needs to be migrated. Enter your password.</source>
+        <translation>Ваша учетная запись должна быть перенесена. Введите ваш пароль.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="97"/>
+        <source>Migrating your Ring account...</source>
+        <translation>Переносим ваш аккаунт Ring…</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="99"/>
+        <source>Importing account archive...</source>
+        <translation>Импорт архива с аккаунтом…</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="163"/>
+        <source>Add a device</source>
+        <translation>Добавить устройство</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="281"/>
+        <source>Username not available.</source>
+        <translation>Имя пользователя недоступно.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="284"/>
+        <source>Username is available.</source>
+        <translation>Имя пользователя доступно.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="287"/>
+        <source>Username is invalid.</source>
+        <translation>Недопустимое имя пользователя.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="290"/>
+        <source>Network error.</source>
+        <translation>Ошибка сети.</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="337"/>
+        <source>Open File</source>
+        <translation>Открыть файл</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.cpp" line="339"/>
+        <source>Ring archive files (*.gz);; All files (*)</source>
+        <translation>Архивы Ring (*.gz);; Все файлы (*)</translation>
     </message>
 </context>
 </TS>
