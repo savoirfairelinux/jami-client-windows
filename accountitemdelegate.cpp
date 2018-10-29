@@ -112,7 +112,8 @@ AccountItemDelegate::paint(QPainter* painter,
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
     }
 
-    // Display the ID under the name
+    // Display the secondary ID under the name
+
     QString idStr = index.data(static_cast<int>(AccountListModel::Role::Username)).value<QString>();
     if (idStr != name.toString()) {
         font.setItalic(false);
