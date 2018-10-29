@@ -941,7 +941,29 @@
                    <number>0</number>
                   </property>
                   <item>
+                   <spacer name="horizontalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>7</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <widget class="QPushButton" name="imBackButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -962,7 +984,7 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
+                      <normaloff>:/images/icons/ic_arrow_back_24px.svg</normaloff>:/images/icons/ic_arrow_back_24px.svg</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -984,7 +1006,7 @@
                      <number>0</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>4</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="imNameLabel">
@@ -1054,6 +1076,22 @@
                    </layout>
                   </item>
                   <item>
+                   <spacer name="verticalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>0</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <spacer name="horizontalSpacer_6">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -1067,7 +1105,65 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="sendContactRequestPageButton">
+                   <widget class="QPushButton" name="btnAudioCall">
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/icons/ic_phone_24px.svg</normaloff>:/images/icons/ic_phone_24px.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnVideoCall">
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="ressources.qrc">
+                      <normaloff>:/images/icons/ic_video_call_24px.svg</normaloff>:/images/icons/ic_video_call_24px.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="sendContactRequestButton">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1075,6 +1171,12 @@
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
                      <size>
                       <width>30</width>
                       <height>30</height>
@@ -1091,9 +1193,31 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_person_add_white_24dp.png</normaloff>:/images/icons/ic_person_add_white_24dp.png</iconset>
+                      <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
                     </property>
                    </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>7</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </item>
@@ -1145,7 +1269,7 @@
                    <number>6</number>
                   </property>
                   <property name="topMargin">
-                   <number>0</number>
+                   <number>3</number>
                   </property>
                   <property name="rightMargin">
                    <number>6</number>
@@ -1196,7 +1320,7 @@
                     </property>
                     <property name="icon">
                      <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_send_white_24dp.png</normaloff>:/images/icons/ic_send_white_24dp.png</iconset>
+                      <normaloff>:/images/icons/ic_send_24px.svg</normaloff>:/images/icons/ic_send_24px.svg</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -1292,7 +1416,7 @@
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap resource="ressources.qrc">:/images/default-avatar-overlay.svg</pixmap>
+                        <pixmap>:/images/default-avatar-overlay.svg</pixmap>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -1516,7 +1640,7 @@
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="ressources.qrc">:/images/default-avatar-overlay.svg</pixmap>
+                      <pixmap>:/images/default-avatar-overlay.svg</pixmap>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
