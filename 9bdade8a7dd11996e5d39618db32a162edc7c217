@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4aa6597_71354b39",
+        "filename": "ressources.qrc",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 612
+      },
+      "writtenOn": "2018-10-30T19:18:17Z",
+      "side": 1,
+      "message": "i had this same problem",
+      "revId": "9bdade8a7dd11996e5d39618db32a162edc7c217",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
