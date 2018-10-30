@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
-    <height>544</height>
+    <width>705</width>
+    <height>535</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -422,7 +422,7 @@
            <item>
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>General Settings</string>
+              <string>Current Account Settings</string>
              </property>
             </widget>
            </item>
@@ -744,6 +744,9 @@
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
