@@ -192,6 +192,9 @@
     <ClCompile Include="animationhelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="settingswidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -324,6 +327,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="animationhelpers.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="settingswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -633,6 +639,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="wizardwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="settingswidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="animatedoverlay.ui">
