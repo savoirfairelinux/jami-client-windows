@@ -31,7 +31,6 @@
 
 #undef REGISTERED
 
-
 CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 {
     Q_UNUSED(parent);
@@ -75,9 +74,10 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    gearPoint_.setX(this->width() - gearSize_ - 2 * gearBorder_);
-    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - gearBorder_);
-    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(), gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
+    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
+    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
+                           gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
     gearLabel_.setMargin(gearBorder_);
 
     QPoint p(12, 2);
@@ -123,11 +123,13 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     // write primary and secondary account identifiers to combobox label
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     painter.setPen(Qt::black);
-    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - gearSize_*!popupPresent);
+    primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight,
+                                                    comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_));
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
     QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
-    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight, comboBoxRect.width() - elidConst - 2 - gearSize_ *!popupPresent); // [screen awareness]
+    secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight,
+                                                        comboBoxRect.width() - elidConst - 2 - (popupPresent ? 0 : 2 * gearSize_)); // [screen awareness]
 
     if (secondaryAccountID.length()) { // if secondary accound id exists
         painter.setFont(fontSecondary);
@@ -135,12 +137,8 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.drawText(comboBoxRect, (Qt::AlignBottom | Qt::AlignLeft), secondaryAccountID);
     }
 
-    if (LRCInstance::accountModel().getAccountList().size() <= 1) {
-        this->setDisabled(true);
-    }
-    else {
-        this->setEnabled(true);
-    }
+    this->setEnabled(LRCInstance::accountModel().getAccountList().size() > 1);
+
     gearLabel_.setPixmap(gearPixmap_);
 }
 
@@ -172,8 +170,7 @@ CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
 {
     if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
         QComboBox::mousePressEvent(mouseEvent);
-    }
-    else {
+    } else {
         emit settingsButtonClicked();
     }
 }

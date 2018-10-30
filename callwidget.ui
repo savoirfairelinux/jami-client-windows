@@ -93,12 +93,15 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
            <property name="spacing">
             <number>0</number>
            </property>
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <property name="topMargin">
+            <number>4</number>
            </property>
            <item>
             <widget class="CurrentAccountComboBox" name="currentAccountComboBox" native="true">
@@ -240,7 +243,7 @@
            </item>
            <item>
             <widget class="QWidget" name="smartListWidget" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,0">
+             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
               <property name="spacing">
                <number>0</number>
               </property>
@@ -257,22 +260,6 @@
                <number>1</number>
               </property>
               <item>
-               <widget class="QWidget" name="missingButtonsDummyWidget" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>10</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="ConversationsFilterWidget" name="conversationsFilterWidget" native="true">
                 <layout class="QHBoxLayout" name="conversationFilterLayout">
                  <property name="spacing">
@@ -288,14 +275,14 @@
                   <number>10</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <item>
-                  <widget class="ConversationFilterButton" name="buttonConversations">
+                  <widget class="ConversationFilterButton" name="buttonConversations" native="true">
                    <property name="toolTip">
                     <string>Show conversations</string>
                    </property>
-                   <property name="text">
+                   <property name="text" stdset="0">
                     <string>Conversations</string>
                    </property>
                   </widget>
@@ -314,58 +301,39 @@
                </widget>
               </item>
               <item>
-               <widget class="SmartListView" name="smartList">
-                <property name="autoScrollMargin">
-                 <number>16</number>
-                </property>
-                <property name="indentation">
+               <layout class="QVBoxLayout" name="verticalLayout_13">
+                <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="rootIsDecorated">
-                 <bool>false</bool>
+                <property name="topMargin">
+                 <number>10</number>
                 </property>
-                <property name="itemsExpandable">
-                 <bool>false</bool>
-                </property>
-                <property name="expandsOnDoubleClick">
-                 <bool>false</bool>
-                </property>
-                <attribute name="headerVisible">
-                 <bool>false</bool>
-                </attribute>
-               </widget>
+                <item>
+                 <widget class="SmartListView" name="smartList">
+                  <property name="autoScrollMargin">
+                   <number>16</number>
+                  </property>
+                  <property name="indentation">
+                   <number>0</number>
+                  </property>
+                  <property name="rootIsDecorated">
+                   <bool>false</bool>
+                  </property>
+                  <property name="itemsExpandable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="expandsOnDoubleClick">
+                   <bool>false</bool>
+                  </property>
+                  <attribute name="headerVisible">
+                   <bool>false</bool>
+                  </attribute>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_13">
-             <property name="topMargin">
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="SmartListView" name="smartList">
-               <property name="autoScrollMargin">
-                <number>16</number>
-               </property>
-               <property name="indentation">
-                <number>0</number>
-               </property>
-               <property name="rootIsDecorated">
-                <bool>false</bool>
-               </property>
-               <property name="itemsExpandable">
-                <bool>false</bool>
-               </property>
-               <property name="expandsOnDoubleClick">
-                <bool>false</bool>
-               </property>
-               <attribute name="headerVisible">
-                <bool>false</bool>
-               </attribute>
-              </widget>
-             </item>
-            </layout>
            </item>
           </layout>
          </item>
@@ -2073,6 +2041,11 @@
    <class>CurrentAccountComboBox</class>
    <extends>QWidget</extends>
    <header>currentaccountcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConversationFilterButton</class>
+   <extends>QWidget</extends>
+   <header>conversationfilterbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

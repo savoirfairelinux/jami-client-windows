@@ -170,8 +170,11 @@ CallWidget::CallWidget(QWidget* parent) :
             this, &CallWidget::on_sendContactRequestButton_clicked);
 
     // connect conversation filter buttons to act as radio buttons
-    connect(ui->buttonInvites, &ConversationFilterButton::clicked, ui->buttonConversations, &ConversationFilterButton::setUnselected);
-    connect(ui->buttonConversations, &ConversationFilterButton::clicked, ui->buttonInvites, &ConversationFilterButton::setUnselected);
+    connect(ui->buttonInvites, &ConversationFilterButton::clicked,
+            ui->buttonConversations, &ConversationFilterButton::setUnselected);
+
+    connect(ui->buttonConversations, &ConversationFilterButton::clicked,
+            ui->buttonInvites, &ConversationFilterButton::setUnselected);
 
     connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
         [this] {
@@ -610,8 +613,8 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     }
 
     ui->videoWidget->pushRenderer(convInfo.callId);
-    // TODO:(new lrc) in call chat
-    //ui->instantMessagingWidget->setMediaText(actualCall_);
+
+    ui->instantMessagingWidget->setupCallMessaging(convInfo.callId, messageModel_.get());
 
     disconnect(selectedCallChanged_);
     selectedCallChanged_ = connect(
