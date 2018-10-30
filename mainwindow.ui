@@ -464,6 +464,7 @@
     <item>
      <widget class="QStackedWidget" name="navStack">
       <widget class="WizardWidget" name="wizardwidget"/>
+      <widget class="SettingsWidget" name="settingswidget"/>
       <widget class="CallWidget" name="callwidget"/>
       <widget class="ConfigurationWidget" name="configurationwidget"/>
      </widget>
@@ -490,6 +491,11 @@
    <extends>QWidget</extends>
    <header>wizardwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingsWidget</class>
+   <extends>QWidget</extends>
+   <header>settingswidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>
