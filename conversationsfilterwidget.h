@@ -30,9 +30,10 @@ public:
     explicit ConversationsFilterWidget(QWidget *parent = 0);
 
 protected:
-    virtual void paintEvent(QPaintEvent *event);
+    void resizeEvent(QResizeEvent * event);
 
 private:
+    void updateNotifier(lrc::api::profile::Type typeFilter);
     void handleNotifierOverlay(const QString& buttonName,
                                SmartlistSelectorButtonNotifier*& notifier,
                                lrc::api::profile::Type filter);
