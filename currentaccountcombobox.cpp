@@ -60,8 +60,10 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
             });
 
     gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.setPixmap(gearPixmap_);
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
+    setupSettingsButton();
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -74,19 +76,13 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
-    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
-    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
-                           gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
-    gearLabel_.setMargin(gearBorder_);
-
     QPoint p(12, 2);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
     QStyleOption opt;
     opt.init(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter);
 
     // create box in which to draw avatar and presence indicator
     QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
@@ -136,10 +132,21 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.setPen(Qt::lightGray);
         painter.drawText(comboBoxRect, (Qt::AlignBottom | Qt::AlignLeft), secondaryAccountID);
     }
+}
 
-    this->setEnabled(LRCInstance::accountModel().getAccountList().size() > 1);
+void CurrentAccountComboBox::resizeEvent(QResizeEvent * event)
+{
+    setupSettingsButton();
+}
 
-    gearLabel_.setPixmap(gearPixmap_);
+void
+CurrentAccountComboBox::setupSettingsButton()
+{
+    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
+    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
+        gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
+    gearLabel_.setMargin(gearBorder_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -191,7 +198,7 @@ CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
 void
 CurrentAccountComboBox::showPopup()
 {
-    gearPixmap_.load("");
+    gearLabel_.hide();
     popupPresent = true;
     QComboBox::showPopup();
 }
@@ -199,7 +206,7 @@ CurrentAccountComboBox::showPopup()
 void
 CurrentAccountComboBox::hidePopup()
 {
-    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.show();
     popupPresent = false;
     QComboBox::hidePopup();
 
