@@ -128,29 +128,13 @@ SmartListView::eventFilter(QObject* watched, QEvent* event)
 }
 
 void
-SmartListView::hideButtonsWidgets()
-{
-    auto model = this->model();
-    if (!model) {
-        return;
-    }
-    for (int i = 0; i < model->rowCount(); ++i) {
-        auto index = model->index(i, 0);
-        if (index.isValid() && indexWidget(index)) {
-            qDebug() << "hide a ButtonsWidgets";
-            indexWidget(index)->setVisible(false);
-        }
-    }
-}
-
-void
 SmartListView::drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     if (index == hoveredRow_ && indexWidget(hoveredRow_)) {
         indexWidget(index)->setVisible(true);
     }
     else if (indexWidget(index)) {
-        indexWidget(index)->setVisible(false);
+        //indexWidget(index)->setVisible(false);
     }
     QTreeView::drawRow(painter, option, index);
 }

@@ -22,16 +22,23 @@
 #include <QApplication>
 #include <QPainter>
 #include <QPixmap>
+#include <QFontDatabase>
+#include <QFile>
+#include <QAbstractItemView>
 
 // Client
 #include "smartlistmodel.h"
 #include "ringthemeutils.h"
 #include "utils.h"
+#include "lrcinstance.h"
 
 #include <ciso646>
 
-ConversationItemDelegate::ConversationItemDelegate(QObject* parent) :
-    QItemDelegate(parent)
+static bool hasc = false;
+
+ConversationItemDelegate::ConversationItemDelegate(QAbstractItemView & view, QObject* parent) :
+    QItemDelegate(parent),
+    view_(view)
 {
 }
 
@@ -42,7 +49,7 @@ ConversationItemDelegate::paint(QPainter* painter
                         ) const
 {
     QStyleOptionViewItem opt(option);
-    painter->setRenderHint(QPainter::Antialiasing);
+    painter->setRenderHint(QPainter::Antialiasing, true);
 
     // Not having focus removes dotted lines around the item
     if (opt.state & QStyle::State_HasFocus)
@@ -56,6 +63,34 @@ ConversationItemDelegate::paint(QPainter* painter
     } else if (!isContextMenuOpen) {
         highlightMap_[index.row()] = option.state & QStyle::State_MouseOver;
     }
+
+    /*if (!hasc) {
+        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID))
+            .value<QString>()
+            .toStdString();
+        auto convModel = LRCInstance::getCurrentConversationModel();
+        auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+        auto callModel = LRCInstance::getCurrentCallModel();
+        auto hasCall = callModel->hasCall((*conversation).callId);
+        if (hasCall) {
+            hasc = true;
+            auto widget = view_.indexWidget(index);
+            if (!widget) {
+                auto blinkingWidget = new AnimatedOverlay();
+                view_.setIndexWidget(index, blinkingWidget);
+            } else {
+                widget->show();
+            }
+        } else {
+            if (auto widget = view_.indexWidget(index)) {
+                view_.setIndexWidget(index, nullptr);
+            }
+        }
+    } else {
+        if (auto widget = view_.indexWidget(index))
+            widget->show();
+    }*/
+
 
     // One does not simply keep the highlighted state drawn when the context
     // menu is open…
@@ -139,8 +174,10 @@ ConversationItemDelegate::paint(QPainter* painter
 
 QSize
 ConversationItemDelegate::sizeHint(const QStyleOptionViewItem& option,
-                            const QModelIndex& index) const
+                                   const QModelIndex& index) const
 {
+    Q_UNUSED(option);
+    Q_UNUSED(index);
     return QSize(0, cellHeight_);
 }
 
@@ -150,6 +187,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
                                                     const QRect& rect,
                                                     const QModelIndex& index) const
 {
+    Q_UNUSED(option);
     QFont font(painter->font());
     font.setPointSize(fontSize_);
     QPen pen(painter->pen());
@@ -218,21 +256,57 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
         painter->drawText(rectInfo1, Qt::AlignVCenter | Qt::AlignRight, lastUsedStr);
     }
 
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID))
+        .value<QString>()
+        .toStdString();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto hasCall = callModel->hasCall((*conversation).callId);
+    if (hasCall) {
+        // DRAW IN CALL
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setItalic(false);
+        emojiMsgFont.setBold(false);
+        emojiMsgFont.setPointSize(fontSize_);
+        painter->setOpacity(0.7);
+        painter->setFont(emojiMsgFont);
+        return;
+    }
     // bottom-right: last interaction snippet
     QString interactionStr = index.data(static_cast<int>(SmartListModel::Role::LastInteraction)).value<QString>();
     if (!interactionStr.isNull()) {
-        // remove phone glyphs
-        interactionStr.replace(QChar(0xd83d), "");
-        interactionStr.replace(QChar(0xdd7d), "");
-        interactionStr.replace(QChar(0xdcde), "");
-
-        font.setItalic(false);
-        font.setBold(false);
-        pen.setColor(RingTheme::grey_);
-        painter->setPen(pen);
-        painter->setFont(font);
+        painter->save();
+        interactionStr = interactionStr.simplified();
+        auto type = Utils::toEnum<lrc::api::interaction::Type>(index
+            .data(static_cast<int>(SmartListModel::Role::LastInteractionType))
+            .value<int>());
+        if (type == lrc::api::interaction::Type::CALL ||
+            type == lrc::api::interaction::Type::CONTACT) {
+            font.setItalic(false);
+            font.setBold(false);
+            pen.setColor(RingTheme::grey_.darker(140));
+            painter->setPen(pen);
+            painter->setFont(font);
+            // strip emojis if it's a call/contact type message
+            VectorUInt emojiless;
+            for (auto unicode : interactionStr.toUcs4()) {
+                if (!(unicode >= 0x1F000 && unicode <= 0x1FFFF)) {
+                    emojiless.push_back(unicode);
+                }
+            }
+            interactionStr = QString::fromUcs4(&emojiless.at(0), emojiless.size());
+        } else {
+            QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+            emojiMsgFont.setItalic(false);
+            emojiMsgFont.setBold(false);
+            emojiMsgFont.setPointSize(fontSize_);
+            painter->setOpacity(0.7);
+            painter->setFont(emojiMsgFont);
+        }
         interactionStr = fontMetrics.elidedText(interactionStr, Qt::ElideRight, rectInfo2.width());
         painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, interactionStr);
+        painter->restore();
     }
 }
 
@@ -268,7 +342,7 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
     QFontMetrics fontMetrics(font);
 
     // The name is displayed at the avatar's right
-    QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();;
+    QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
         font.setItalic(false);
         font.setBold(true);
@@ -293,6 +367,11 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
 }
 
 void
-ConversationItemDelegate::paintSIPConversationItem(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+ConversationItemDelegate::paintSIPConversationItem(QPainter* painter,
+                                                   const QStyleOptionViewItem& option,
+                                                   const QModelIndex& index) const
 {
+    Q_UNUSED(painter);
+    Q_UNUSED(option);
+    Q_UNUSED(index);
 }

@@ -78,7 +78,7 @@ CallUtilsDialog::showEvent(QShowEvent* event)
     }
     ui->contactView->setModel(notCurrentProxyModel_);
     if (not conversationItemDelegate_) {
-        conversationItemDelegate_ = new ConversationItemDelegate();
+        conversationItemDelegate_ = new ConversationItemDelegate(*ui->contactView);
     }
     ui->contactView->setItemDelegate(conversationItemDelegate_);
 

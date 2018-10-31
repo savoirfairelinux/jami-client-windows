@@ -18,9 +18,32 @@
 
 #include "conversationsfilterwidget.h"
 
-#include "ringthemeutils.h"
-
 #include <QPainter>
+#include <QDebug>
+
+#include "ringthemeutils.h"
+#include "lrcinstance.h"
+
+ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
+    : QWidget(parent)
+{
+}
+
+void ConversationsFilterWidget::resizeEvent(QResizeEvent * event)
+{
+    using namespace lrc::api::profile;
+    updateNotifier(Type::RING);
+    updateNotifier(Type::PENDING);
+}
+
+void
+ConversationsFilterWidget::updateNotifier(lrc::api::profile::Type typeFilter)
+{
+    using namespace lrc::api::profile;
+    handleNotifierOverlay((typeFilter == Type::RING) ? "btnConversations" : "btnInvites",
+                          (typeFilter == Type::RING) ? unreadMessagesNotifier_ : pendingInvitesNotifier_,
+                          typeFilter);
+}
 
 static inline const QRect
 getNotifierRect(const QRect& buttonRect)
@@ -32,8 +55,8 @@ getNotifierRect(const QRect& buttonRect)
 
 void
 ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
-                                                 SmartlistSelectorButtonNotifier*& notifier,
-                                                 lrc::api::profile::Type filter)
+    SmartlistSelectorButtonNotifier*& notifier,
+    lrc::api::profile::Type filter)
 {
     auto button = this->findChild<QPushButton*>(buttonName);
     if (!button) {
@@ -45,22 +68,9 @@ ConversationsFilterWidget::handleNotifierOverlay(const QString& buttonName,
         notifier->setTypeFilter(filter);
         notifier->hide();
         QObject::connect(notifier, SIGNAL(clicked()), button, SLOT(click()));
-    } else {
+    }
+    else {
         notifier->setGeometry(getNotifierRect(button->frameGeometry()));
         notifier->show();
     }
-}
-
-ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
-    : QWidget(parent)
-{
-}
-
-void ConversationsFilterWidget::paintEvent(QPaintEvent * event)
-{
-    QWidget::paintEvent(event);
-
-    using namespace lrc::api::profile;
-    handleNotifierOverlay("buttonConversations", unreadMessagesNotifier_, Type::RING);
-    handleNotifierOverlay("buttonInvites", pendingInvitesNotifier_, Type::PENDING);
 }

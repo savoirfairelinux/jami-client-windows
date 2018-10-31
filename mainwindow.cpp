@@ -243,6 +243,7 @@ MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
     }
+    LRCInstance::reset();
     QMainWindow::closeEvent(event);
 }
 

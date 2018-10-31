@@ -217,7 +217,8 @@ VideoView::dropEvent(QDropEvent* event)
 void
 VideoView::toggleFullScreen()
 {
-    overlay_->toggleContextButtons(isFullScreen());
+    qDebug() << "toggle FS";
+    /*overlay_->toggleContextButtons(isFullScreen());
     if(isFullScreen()) {
         dynamic_cast<QSplitter*>(oldParent_)->insertWidget(0,this);
         this->resize(oldSize_.width(), oldSize_.height());
@@ -228,7 +229,7 @@ VideoView::toggleFullScreen()
         this->setParent(0);
         this->showFullScreen();
     }
-    ui->videoWidget->setResetPreview(true);
+    ui->videoWidget->setResetPreview(true);*/
 }
 
 void
