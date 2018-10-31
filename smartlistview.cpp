@@ -44,7 +44,7 @@ SmartListView::SmartListView(QWidget *parent) :
     setMouseTracking(true);
     installEventFilter(this);
 
-    QObject::connect(this, &QAbstractItemView::entered,
+    QObject::connect(this, &QAbstractItemView::clicked,
         [this](const QModelIndex & index) {
             auto type = Utils::toEnum<lrc::api::profile::Type>(
                 index.data(static_cast<int>(SmartListModel::Role::ContactType)).value<int>()
@@ -125,22 +125,6 @@ SmartListView::eventFilter(QObject* watched, QEvent* event)
         return true;
     }
     return QObject::eventFilter(watched, event);
-}
-
-void
-SmartListView::hideButtonsWidgets()
-{
-    auto model = this->model();
-    if (!model) {
-        return;
-    }
-    for (int i = 0; i < model->rowCount(); ++i) {
-        auto index = model->index(i, 0);
-        if (index.isValid() && indexWidget(index)) {
-            qDebug() << "hide a ButtonsWidgets";
-            indexWidget(index)->setVisible(false);
-        }
-    }
 }
 
 void

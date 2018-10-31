@@ -29,7 +29,6 @@
 
 // Client
 #include "pixbufmanipulator.h"
-#include "messagemodel.h"
 #include "utils.h"
 
 SmartListModel::SmartListModel(const lrc::api::account::Info &acc, QObject *parent)
@@ -95,6 +94,8 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
             }
             case Role::LastInteraction:
                 return QVariant(QString::fromStdString(item.interactions.at(item.lastMessageUid).body));
+            case Role::LastInteractionType:
+                return QVariant(Utils::toUnderlyingValue(item.interactions.at(item.lastMessageUid).type));
             case Role::ContactType:
             {
                 auto& contact = acc_.contactModel->getContact(item.participants[0]);
@@ -103,7 +104,7 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
             case Role::UID:
                 return QVariant(QString::fromStdString(item.uid));
             case Role::ContextMenuOpen:
-                return QVariant(isContextMenuOpen_);
+                return QVariant(isContextMenuOpen);
             }
         } catch (...) {}
     }
