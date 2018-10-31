@@ -37,8 +37,10 @@ public:
     void accountListUpdate();
     void setCurrentIndex(int index);
 
+==== BASE ====
 signals:
     void settingsButtonClicked();
+    void setLeftWidgetSize(int size);
 
 protected:
     void paintEvent(QPaintEvent* e);

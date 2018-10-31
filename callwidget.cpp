@@ -193,6 +193,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // chat view
     ui->messageView->buildView();
+
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
 }
 
 CallWidget::~CallWidget()
@@ -502,6 +504,7 @@ CallWidget::invitationsButtonClicked()
 void
 CallWidget::settingsButtonClicked()
 {
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
