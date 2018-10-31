@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QItemDelegate>
 
 namespace Ui {
 class InviteButtonsWidget;
