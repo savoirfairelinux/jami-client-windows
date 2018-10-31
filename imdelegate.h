@@ -22,6 +22,7 @@
 #include <QTextDocument>
 #include <QItemDelegate>
 
+
 class ImDelegate : public QItemDelegate
 {
     Q_OBJECT

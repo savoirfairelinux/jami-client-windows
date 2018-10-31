@@ -30,6 +30,7 @@
 #include "settingskey.h"
 #include "messagemodel.h"
 #include "utils.h"
+#include "lrcinstance.h"
 
 ImDelegate::ImDelegate(QObject *parent)
     : QItemDelegate(parent)
@@ -188,4 +189,3 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
 
     return size;
 }
-
