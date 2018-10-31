@@ -60,8 +60,10 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
             });
 
     gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.setPixmap(gearPixmap_);
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
+    setupSettingsButton();
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -73,12 +75,7 @@ void
 CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
-
-    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
-    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
-    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
-                           gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
-    gearLabel_.setMargin(gearBorder_);
+    qDebug() << "CurrentAccountComboBox::paintEvent(QPaintEvent* e)";
 
     QPoint p(12, 2);
     QPainter painter(this);
@@ -86,7 +83,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     QStyleOption opt;
     opt.init(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter);
 
     // create box in which to draw avatar and presence indicator
     QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
@@ -138,8 +135,21 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     this->setEnabled(LRCInstance::accountModel().getAccountList().size() > 1);
+}
 
-    gearLabel_.setPixmap(gearPixmap_);
+void CurrentAccountComboBox::resizeEvent(QResizeEvent * event)
+{
+    setupSettingsButton();
+}
+
+void
+CurrentAccountComboBox::setupSettingsButton()
+{
+    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
+    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
+        gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
+    gearLabel_.setMargin(gearBorder_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label

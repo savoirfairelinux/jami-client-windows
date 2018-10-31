@@ -18,20 +18,32 @@
 #pragma once
 
 // Qt include
-#include <QAbstractItemModel>
+#include <QAbstractListModel>
 
 // LRC
 #include "api/account.h"
 #include "api/conversation.h"
 #include "api/contact.h"
 
-class MessageModel : public QAbstractItemModel
+Q_DECLARE_METATYPE(lrc::api::conversation::Info);
+
+ // message sequencing
+enum class MsgSeq {
+    SINGLE_WITH_TIME = 0,
+    SINGLE_WITHOUT_TIME = 1,
+    FIRST_WITH_TIME = 2,
+    FIRST_WITHOUT_TIME = 3,
+    MIDDLE_IN_SEQUENCE = 5,
+    LAST_IN_SEQUENCE = 6,
+};
+
+class MessageModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
     using AccountInfo = lrc::api::account::Info;
     using ConversationInfo = lrc::api::conversation::Info;
-    using ContactInfo = lrc::api::contact::Info;
+    using InteractionInfo = lrc::api::interaction::Info;
 
     enum Role {
         Body = Qt::UserRole + 1,
@@ -42,7 +54,10 @@ public:
         DataTransferStatus,
         InteractionDate,
         Direction,
-        Type
+        Type,
+        Conversation,
+        Sequencing,
+        HasIndexWidget
     };
 
     explicit MessageModel(const ConversationInfo& conv, const AccountInfo& acc, QObject *parent = 0);
@@ -55,7 +70,19 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    MsgSeq computeSequencing(const QModelIndex& index) const;
+    bool sequenceChanged(InteractionInfo & firstInteraction, InteractionInfo & secondInteraction) const;
+    bool sequenceTimeChanged(InteractionInfo& firstInteraction, InteractionInfo& secondInteraction) const;
+    bool sequenceAuthorChanged(InteractionInfo & firstInteraction, InteractionInfo & secondInteraction) const;
+    const std::string & timeForMessage(time_t msgTime) const;
+    const ConversationInfo& conv_;
+
+    // hack for selectablemessagewidget
+    mutable std::vector<int> disposeBag_;
+
 private:
-    ConversationInfo conv_;
     const AccountInfo& acc_;
+
+    // use to lookup sequencing by uid
+    mutable std::map<uint64_t, MsgSeq> sequencingCache_;
 };

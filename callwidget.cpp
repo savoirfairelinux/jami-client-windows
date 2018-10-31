@@ -114,9 +114,9 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->spinnerLabel->setMovie(miniSpinner_);
     ui->spinnerLabel->hide();
 
-    ui->listMessageView->verticalScrollBar()->setEnabled(true);
+   /* ui->listMessageView->verticalScrollBar()->setEnabled(true);
     ui->listMessageView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    ui->listMessageView->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 0px; }");
+    ui->listMessageView->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 0px; }");*/
 
     setupOutOfCallIM();
 
@@ -130,13 +130,13 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoWidget, &VideoView::videoSettingsClicked,
             this, &CallWidget::settingsButtonClicked);
 
-    connect(ui->buttonConversations, &QPushButton::clicked,
+    connect(ui->btnConversations, &QPushButton::clicked,
             this, &CallWidget::conversationsButtonClicked);
 
-    connect(ui->buttonInvites, &QPushButton::clicked,
+    connect(ui->btnInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
 
-    connect(ui->smartList, &QListView::customContextMenuRequested,
+    connect(ui->smartList, &QTreeView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
 
     connect(ui->smartList, &SmartListView::btnAcceptInviteClicked,
@@ -169,22 +169,36 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->btnVideoCall, &QPushButton::clicked,
             this, &CallWidget::on_sendContactRequestButton_clicked);
 
-    // connect conversation filter buttons to act as radio buttons
-    connect(ui->buttonInvites, &ConversationFilterButton::clicked,
-            ui->buttonConversations, &ConversationFilterButton::setUnselected);
-
-    connect(ui->buttonConversations, &ConversationFilterButton::clicked,
-            ui->buttonInvites, &ConversationFilterButton::setUnselected);
-
     connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
         [this] {
-            ui->buttonConversations->setSelected();
-            ui->buttonInvites->setUnselected();
-    });
+            ui->btnConversations->setChecked(true);
+            ui->btnInvites->setChecked(false);
+        });
+
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    ui->buttonConversations->setSelected();
+    ui->btnConversations->setChecked(true);
+
+    ///
+    // chat view
+    ///
+
+    //QUrl chatSourceHTML("qrc:/chatview.html");
+    QUrl chatSourceHTML("file:///C:/Users/fner/Projects/ring-project/client-windows/chatview.html");
+    ui->messageView->page()->load(chatSourceHTML);
+
+    connect(ui->messageView, &QWebEngineView::loadFinished,
+        [this] {
+            //QFile cssFile(":/chatview.css");
+            QFile cssFile("C:/Users/fner/Projects/ring-project/client-windows/chatview.css");
+            if (cssFile.open(QIODevice::ReadOnly)) {
+                QString cssData = cssFile.readAll();
+                ui->messageView->insertStyleSheet("chatcss", cssData);
+            } else {
+                qDebug() << "can't open css file";
+            }
+        });
 }
 
 CallWidget::~CallWidget()
@@ -198,7 +212,7 @@ CallWidget::~CallWidget()
 void
 CallWidget::setupOutOfCallIM()
 {
-    ui->listMessageView->setItemDelegate(imDelegate_);
+    /*ui->listMessageView->setItemDelegate(imDelegate_);
     ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
 
     auto copyAction = new QAction(tr("Copy"), this);
@@ -210,7 +224,7 @@ CallWidget::setupOutOfCallIM()
             auto text = ui->listMessageView->model()->data(idx);
             QApplication::clipboard()->setText(text.value<QString>());
         }
-    });
+    });*/
 }
 
 void
@@ -306,9 +320,9 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
                 );
             });
     }
-    smartListModel_->isContextMenuOpen_ = true;
+    smartListModel_->isContextMenuOpen = true;
     menu.exec(globalPos);
-    smartListModel_->isContextMenuOpen_ = false;
+    smartListModel_->isContextMenuOpen = false;
 }
 
 void
@@ -390,14 +404,14 @@ CallWidget::showConversationView()
     ui->imMessageEdit->clear();
     ui->imMessageEdit->setFocus();
     disconnect(imClickedConnection_);
-    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
-        auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
-        if (urlList.size() == 1) {
-            QDesktopServices::openUrl(urlList.at(0));
-        } else if (urlList.size()) {
-            //TODO Handle multiple url in one message
-        }
-    });
+    //imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
+    //    auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
+    //    if (urlList.size() == 1) {
+    //        QDesktopServices::openUrl(urlList.at(0));
+    //    } else if (urlList.size()) {
+    //        //TODO Handle multiple url in one message
+    //    }
+    //});
 }
 
 void
@@ -507,12 +521,16 @@ CallWidget::placeCall()
 void
 CallWidget::conversationsButtonClicked()
 {
+    ui->btnConversations->setChecked(true);
+    ui->btnInvites->setChecked(false);
     setConversationFilter(lrc::api::profile::Type::RING);
 }
 
 void
 CallWidget::invitationsButtonClicked()
 {
+    ui->btnConversations->setChecked(false);
+    ui->btnInvites->setChecked(true);
     setConversationFilter(lrc::api::profile::Type::PENDING);
 }
 
@@ -734,8 +752,14 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
                                                              *LRCInstance::getCurrentConversationModel());
     messageModel_.reset(new MessageModel(*currentConversation, accountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
-    ui->listMessageView->scrollToBottom();
+    /*ui->listMessageView->clear();
+    for (int i = 0; i < messageModel_.get()->rowCount(); ++i) {
+        auto item = messageModel_.get()->index(i);
+        auto msg = item.data(static_cast<int>(MessageModel::Role::Body)).value<QString>();
+        ui->listMessageView->addItem(msg);
+    }*/
+   /* ui->listMessageView->setModel(messageModel_.get());
+    ui->listMessageView->scrollToBottom();*/
 }
 
 void
@@ -765,7 +789,7 @@ CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
     Q_UNUSED(message)
     Q_UNUSED(dir)
 
-    ui->listMessageView->scrollToBottom();
+    //ui->listMessageView->scrollToBottom();
     cm->textRecording()->setAllRead();
 }
 
@@ -942,9 +966,15 @@ CallWidget::updateConversationView(const std::string& convUid)
     if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
         return;
     }
-    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
-    ui->listMessageView->scrollToBottom();
+    /*ui->listMessageView->clear();
+    for (int i = 0; i < messageModel_.get()->rowCount(); ++i) {
+        auto item = messageModel_.get()->index(i);
+        auto msg = item.data(static_cast<int>(MessageModel::Role::Body)).value<QString>();
+        ui->listMessageView->addItem(msg);
+        qDebug() << "addItem";
+    }*/
+    emit messageModel_->layoutChanged();
+    //ui->listMessageView->scrollToBottom();
 }
 
 void

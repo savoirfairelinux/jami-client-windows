@@ -93,9 +93,6 @@
     <ClCompile Include="idlabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="imdelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="instantmessagingwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -186,7 +183,10 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="conversationfilterbutton.cpp">
+    <ClCompile Include="imdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagewebview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -323,7 +323,7 @@
     <QtMoc Include="currentaccountcombobox.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="conversationfilterbutton.h">
+    <QtMoc Include="messagewebview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -551,6 +551,12 @@
     </None>
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
+    </None>
+    <None Include="chatview.html">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chatview.css">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
