@@ -1304,6 +1304,9 @@
                      </property>
                      <item>
                       <widget class="QListView" name="listMessageView">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
                          <horstretch>0</horstretch>
@@ -1319,7 +1322,7 @@
                        <property name="maximumSize">
                         <size>
                          <width>640</width>
-                         <height>16777215</height>
+                         <height>0</height>
                         </size>
                        </property>
                        <property name="font">
@@ -1353,6 +1356,33 @@
                        </property>
                        <property name="selectionRectVisible">
                         <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWebEngineView" name="webEngineView">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>640</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="url">
+                        <url>
+                         <string>about:blank</string>
+                        </url>
                        </property>
                       </widget>
                      </item>
@@ -1992,6 +2022,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
   <customwidget>
    <class>InstantMessagingWidget</class>
    <extends>QWidget</extends>

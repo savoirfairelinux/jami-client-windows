@@ -182,6 +182,36 @@ CallWidget::CallWidget(QWidget* parent) :
             ui->buttonInvites->setUnselected();
     });
 
+    QString html =
+        "<!DOCTYPE html>                     "
+        "<html>                              "
+        "<body>                              "
+        "                                    "
+        "<h2>An Unordered HTML List</h2>   "
+        "                                    "
+        "<ul>                                "
+        "<li>Coffee</li>                   "
+        "<li>Tea</li>                      "
+        "<li>Milk</li>                     "
+        "</ul>                             "
+        "                                    "
+        "<h2>An Ordered HTML List</h2>     "
+        "                                    "
+        "<ol>                                "
+        "<li>Coffee</li>                   "
+        "<li>Tea</li>                      "
+        "<li>Milk</li>                     "
+        "</ol>                             "
+        "                                    "
+        "</body>                           "
+        "</html>                           ";
+
+    ui->webEngineView->setHtml(html);
+    /*connect(ui->webEngineView, &QWebEngineView::loadFinished, this, &MainWindow::adjustLocation);
+    connect(ui->webEngineView, &QWebEngineView::titleChanged, this, &MainWindow::adjustTitle);
+    connect(ui->webEngineView, &QWebEngineView::loadProgress, this, &MainWindow::setProgress);
+    connect(ui->webEngineView, &QWebEngineView::loadFinished, this, &MainWindow::finishLoading);*/
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->buttonConversations->setSelected();

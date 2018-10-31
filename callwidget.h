@@ -28,6 +28,7 @@
 #include <QMenu>
 #include <QItemSelection>
 #include <QMovie>
+#include <QtWebEngineWidgets/QWebEngineView>
 
 #include "navwidget.h"
 #include "instantmessagingwidget.h"
