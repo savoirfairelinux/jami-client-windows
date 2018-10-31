@@ -1,7 +1,10 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: JÃ¤ger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2017-2018 by Savoir-faire Linux                           *
+ * Author: Alexandre Viau <alexandre.viau@savoirfairelinux.com>            *
+ * Author: Sébastien Blin <sebastien.blin@savoirfairelinux.com>            *
+ * Author: Hugo Lefeuvre <hugo.lefeuvre@savoirfairelinux.com>              *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -19,28 +22,19 @@
 
 #pragma once
 
-#include <QTreeView>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QFile>
 
-class SmartListView : public QTreeView
-{
-    Q_OBJECT
-public:
-    explicit SmartListView(QWidget* parent = 0);
-    ~SmartListView();
+#include "api/conversationmodel.h"
 
-protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-
-private:
-    QModelIndex hoveredRow_;
-
-signals:
-    void btnAcceptInviteClicked(const QModelIndex& index) const;
-    void btnBlockInviteClicked(const QModelIndex& index) const;
-    void btnIgnoreInviteClicked(const QModelIndex& index) const;
-
-};
+QJsonObject buildInteractionJson(lrc::api::ConversationModel& conversationModel,
+                                 const uint64_t msgId,
+                                 const lrc::api::interaction::Info& interaction);
+QString interactionToJsonInteractionObject(lrc::api::ConversationModel& conversationModel,
+                                           const uint64_t msgId,
+                                           const lrc::api::interaction::Info& interaction);
+QString interactionsToJsonArrayObject(lrc::api::ConversationModel& conversationModel,
+                                      const std::map<uint64_t,
+                                      lrc::api::interaction::Info> interactions);

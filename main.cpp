@@ -17,6 +17,7 @@
  **************************************************************************/
 
 #include "mainwindow.h"
+
 #include <QApplication>
 #include <QFile>
 
@@ -34,6 +35,8 @@
 #include <QFontDatabase>
 
 #include <ciso646>
+
+#include "utils.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
