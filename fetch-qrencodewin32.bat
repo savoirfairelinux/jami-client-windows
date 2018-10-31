@@ -35,7 +35,9 @@ if %PROCESSOR_ARCHITECTURE%==x86 (
 set path=%path:"=%
 call "%VSLATESTDIR%"\\VC\\Auxiliary\\Build\\vcvarsall.bat %Comp_x64%
 
-git clone --depth=1 https://github.com/BlueDragon747/qrencode-win32.git
+if not exist "qrencode-win32" (
+	git clone --depth=1 https://github.com/BlueDragon747/qrencode-win32.git
+)
 
 msbuild qrencode-win32/qrencode-win32/vc8/qrcodelib/qrcodelib.vcxproj %MSBUILD_ARGS%
 

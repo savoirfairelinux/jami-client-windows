@@ -37,7 +37,6 @@ InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
         [=]() {
             emit btnBlockInviteClicked();
         });
-
 }
 
 InviteButtonsWidget::~InviteButtonsWidget()

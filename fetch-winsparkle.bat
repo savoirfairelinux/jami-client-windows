@@ -1,6 +1,11 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+set cloneSubmodules=N
+if "%1" == "/c" (
+	set cloneSubmodules=Y
+)
+
 set SRC=%~dp0
 
 set MSBUILD_ARGS=/nologo /p:useenv=true /p:Configuration=Release /p:Platform=x64 /verbosity:normal /maxcpucount:%NUMBER_OF_PROCESSORS%
@@ -35,7 +40,15 @@ if %PROCESSOR_ARCHITECTURE%==x86 (
 set path=%path:"=%
 call "%VSLATESTDIR%"\\VC\\Auxiliary\\Build\\vcvarsall.bat %Comp_x64%
 
-git clone --depth=1 https://github.com/vslavik/winsparkle.git
+if not exist "winsparkle" (
+	git clone --depth=1 https://github.com/vslavik/winsparkle.git
+)
+
+if "%cloneSubmodules%" neq "N" (
+    cd winsparkle
+	git submodule init
+	git submodule update
+)
 
 msbuild winsparkle/WinSparkle-2015.vcxproj %MSBUILD_ARGS%
 

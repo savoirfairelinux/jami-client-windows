@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -19,49 +19,56 @@
 #pragma once
 
 #include <QWidget>
-#include <QKeyEvent>
-#include <QSettings>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
+#include <QMovie>
 
-#include "call.h"
-#include "media/media.h"
-
-#include "imdelegate.h"
-#include "messagemodel.h"
-
-namespace Ui {
-class InstantMessagingWidget;
-}
-
-class InstantMessagingWidget final : public QWidget
+class OpacityAnimation : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit InstantMessagingWidget(QWidget *parent = 0);
-    ~InstantMessagingWidget();
-    void setupCallMessaging(const std::string& callId,
-                            MessageModel *messageModel);
+    explicit OpacityAnimation(QWidget* target, QObject* parent = nullptr);
+    ~OpacityAnimation();
 
-protected:
-    virtual void keyPressEvent(QKeyEvent *event) override;
-    virtual void showEvent(QShowEvent * event) override;
+    void setFPS(const int& fps);
+    void setFrameTime(const int& milliseconds);
+    void setDuration(const int& milliseconds);
+    void setStartValue(const double& value);
+    void setEndValue(const double& value);
 
-//UI SLOTS
+    void start();
+    void stop();
+
 private slots:
-    void on_sendButton_clicked();
-
-private slots:
-    void onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction);
+    void updateAnimation();
 
 private:
-    Ui::InstantMessagingWidget *ui;
-    ImDelegate* imDelegate_;
-    std::unique_ptr<MessageModel> messageModel_;
-    QSettings settings_;
-    QMetaObject::Connection newInteractionConnection_;
+    QGraphicsOpacityEffect* effect_;
+    double value_;
 
-    void copyToClipboard();
-    void updateConversationView(const std::string& convUid);
+    QWidget* target_;
+    QTimer* timer_;
+    int frameTime_;
+    double t_;
+    int duration_;
 
+    double startValue_;
+    double endValue_;
 };
 
+namespace Ui {
+class AnimatedOverlay;
+}
+
+class AnimatedOverlay : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit AnimatedOverlay(QColor color, QWidget* parent = 0);
+    ~AnimatedOverlay();
+
+private:
+    Ui::AnimatedOverlay* ui;
+
+    OpacityAnimation* oa_;
+};

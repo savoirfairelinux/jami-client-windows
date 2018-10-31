@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,31 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include <QDesktopServices>
 
-#include <QPainter>
-#include <QTextDocument>
-#include <QItemDelegate>
+#include "messagewebpage.h"
 
-class ImDelegate : public QItemDelegate
+MessageWebPage::MessageWebPage(QWidget *parent)
+    : QWebEnginePage(parent)
 {
-    Q_OBJECT
-public:
-    explicit ImDelegate(QObject *parent = 0);
+}
 
-protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
-private:
-    void formatMsg(const QModelIndex& index, QString& msg) const;
-    QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QStyleOptionViewItem &option,
-        QTextDocument& txtDoc) const;
+MessageWebPage::~MessageWebPage()
+{
+}
 
-    const QFont fontMsg_ = QFont("Arial", 10);
-    const QString defaultStylesheet_ = QString("body { color : black; } i { opacity: 100; font-size : 10px; text-align : right; }");
-    constexpr static int sizeImage_ = 38;
-    constexpr static int margin_ = 5;
-    constexpr static int padding_ = 5;
-    constexpr static int bubbleRadius_ = 12;
-};
+bool
+MessageWebPage::acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool isMainFrame)
+{
+    qDebug() << "acceptNavigationRequest(" << url << "," << type << "," << isMainFrame << ")";
 
+    if (type == QWebEnginePage::NavigationTypeLinkClicked) {
+        QDesktopServices::openUrl(url);
+        return false;
+    }
+    return true;
+}

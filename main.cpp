@@ -17,6 +17,7 @@
  **************************************************************************/
 
 #include "mainwindow.h"
+
 #include <QApplication>
 #include <QFile>
 
@@ -35,11 +36,13 @@
 
 #include <ciso646>
 
+#include "utils.h"
+
 #ifdef Q_OS_WIN
 #include <windows.h>
 #endif
 
-#ifdef _MSC_VER
+#if defined _MSC_VER && !COMPILE_ONLY
 #include <gnutls/gnutls.h>
 #endif
 
@@ -88,7 +91,7 @@ main(int argc, char *argv[])
     auto startMinimized = false;
     QString uri = "";
 
-#ifdef _MSC_VER
+#if defined _MSC_VER && !COMPILE_ONLY
     gnutls_global_init();
 #endif
 
