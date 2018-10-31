@@ -31,6 +31,7 @@ static const QColor red_ {251, 72, 71};
 static const QColor lightRed_ {252, 91, 90};
 static const QColor darkRed_ {219, 55, 54};
 static const QColor notificationRed_{ 255, 59, 48 };
+static const QColor urgentOrange_{ 255, 165, 0 };
 static const QColor green_ {127, 255, 0};
 static const QColor presenceGreen_{ 76, 217, 100 };
 static const QColor smartlistSelection_ { 237, 237, 237 };

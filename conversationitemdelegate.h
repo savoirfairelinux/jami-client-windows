@@ -21,13 +21,15 @@
 #include <QObject>
 #include <QItemDelegate>
 
+#include <chrono>
+
 class QPainter;
 
 class ConversationItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit ConversationItemDelegate(QObject* parent = 0);
+    explicit ConversationItemDelegate(QAbstractItemView & view, QObject* parent = 0);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -37,6 +39,8 @@ private:
     void paintRingConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
     void paintRingInviteConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
     void paintSIPConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+    QAbstractItemView& view_;
 
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;

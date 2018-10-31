@@ -26,7 +26,7 @@ QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
     background-color: #db3c30;
 }
 
-QPushButton#buttonConversations, QPushButton#buttonInvites {
+QPushButton#btnConversations, QPushButton#btnInvites {
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
@@ -35,12 +35,16 @@ QPushButton#buttonConversations, QPushButton#buttonInvites {
 	color: rgb(32, 32, 32);
 }
 
-QPushButton#buttonConversations:hover, QPushButton#buttonInvites:hover {
+QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
     background-color: rgb(237, 237, 237);
 }
 
-QPushButton#buttonConversations:pressed, QPushButton#buttonInvites:pressed {
+QPushButton#btnConversations:pressed, QPushButton#btnInvites:pressed {
     background-color: rgb(212, 212, 212);
+}
+
+QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
+    background-color: rgb(237, 237, 237);
 }
 
 QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
@@ -163,9 +167,8 @@ QListView#contactRequestList::item:hover, QListView#BannedList::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
-QListView#listMessageView{
-    background: rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(240, 240, 240);
+QWidget#sendIMWidget {
+	border-top: 2px solid rgb(240, 240, 240);
 }
 
 QWidget#messagingHeaderWidget{
@@ -175,6 +178,7 @@ QWidget#messagingHeaderWidget{
 QLineEdit#messageEdit, QLineEdit#imMessageEdit{
     border: none;
     background-color: rgb(255, 255, 255);
+	padding: 0px;
 }
 
 QLineEdit#numberBar{
