@@ -36,6 +36,7 @@
 #include <QStackedWidget>
 #include <QPropertyAnimation>
 #include <QApplication>
+#include <QFile>
 
 #include "globalinstances.h"
 #include "pixbufmanipulator.h"
@@ -402,4 +403,16 @@ Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::I
 
     QVariant var = GlobalInstances::pixmapManipulator().decorationRole(*conversation, accountInfo);
     return var.value<QImage>();
+}
+
+QByteArray
+Utils::QByteArrayFromFile(const QString& filename)
+{
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly)) {
+        return file.readAll();
+    } else {
+        qDebug() << "can't open file";
+        return QByteArray();
+    }
 }

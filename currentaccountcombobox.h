@@ -40,14 +40,16 @@ public:
 signals:
     void settingsButtonClicked();
 
-private:
+protected:
     void paintEvent(QPaintEvent* e);
-    void importLabelPhoto(int index);
+    void resizeEvent(QResizeEvent *event);
     void mousePressEvent(QMouseEvent* mouseEvent);
-
     void mouseMoveEvent(QMouseEvent* event);
     void leaveEvent(QEvent * event);
 
+private:
+    void importLabelPhoto(int index);
+    void setupSettingsButton();
     void showPopup();
     void hidePopup();
 

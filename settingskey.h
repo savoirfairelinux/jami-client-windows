@@ -26,6 +26,7 @@ constexpr static char geometry[] = "geometry";
 constexpr static char windowState[] = "windowState";
 constexpr static char enableNotifications[] = "enableNotifications";
 constexpr static char selectedAccount[] = "selectedAccount";
+constexpr static char mainSplitterState[] = "mainSplitterState";
 }
 
 #define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
