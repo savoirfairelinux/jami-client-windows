@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>746</width>
-    <height>639</height>
+    <width>988</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -278,22 +278,28 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="ConversationFilterButton" name="buttonConversations" native="true">
+                  <widget class="QPushButton" name="btnConversations">
                    <property name="toolTip">
                     <string>Show conversations</string>
                    </property>
-                   <property name="text" stdset="0">
+                   <property name="text">
                     <string>Conversations</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="ConversationFilterButton" name="buttonInvites" native="true">
+                  <widget class="QPushButton" name="btnInvites">
                    <property name="toolTip">
                     <string>Show invites</string>
                    </property>
-                   <property name="text" stdset="0">
+                   <property name="text">
                     <string>Invites</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -1303,58 +1309,7 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QListView" name="listMessageView">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>200</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>640</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <stylestrategy>PreferAntialias</stylestrategy>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::NoFrame</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Sunken</enum>
-                       </property>
-                       <property name="horizontalScrollBarPolicy">
-                        <enum>Qt::ScrollBarAsNeeded</enum>
-                       </property>
-                       <property name="verticalScrollMode">
-                        <enum>QAbstractItemView::ScrollPerPixel</enum>
-                       </property>
-                       <property name="horizontalScrollMode">
-                        <enum>QAbstractItemView::ScrollPerPixel</enum>
-                       </property>
-                       <property name="spacing">
-                        <number>1</number>
-                       </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                       <property name="selectionRectVisible">
-                        <bool>false</bool>
-                       </property>
-                      </widget>
+                      <widget class="MessageWebView" name="messageView"/>
                      </item>
                      <item>
                       <layout class="QHBoxLayout" name="imSendHBoxLayout">
@@ -1993,6 +1948,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+  <customwidget>
    <class>InstantMessagingWidget</class>
    <extends>QWidget</extends>
    <header>instantmessagingwidget.h</header>
@@ -2043,9 +2003,9 @@
    <header>currentaccountcombobox.h</header>
   </customwidget>
   <customwidget>
-   <class>ConversationFilterButton</class>
-   <extends>QWidget</extends>
-   <header>conversationfilterbutton.h</header>
+   <class>MessageWebView</class>
+   <extends>QWebEngineView</extends>
+   <header>messagewebview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -36,6 +36,7 @@
 #include <QStackedWidget>
 #include <QPropertyAnimation>
 #include <QApplication>
+#include <QFile>
 
 #include "globalinstances.h"
 #include "pixbufmanipulator.h"
@@ -402,4 +403,48 @@ Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::I
 
     QVariant var = GlobalInstances::pixmapManipulator().decorationRole(*conversation, accountInfo);
     return var.value<QImage>();
+}
+
+QRect
+Utils::getBoundingRect(const Qt::AlignmentFlag& dir,
+                       const QStyleOptionViewItem &option,
+                       QTextDocument& txtDoc)
+{
+    QRect textRect;
+
+    if (dir == Qt::AlignLeft) {
+        txtDoc.setTextWidth(option.rect.width());
+        textRect.setRect(option.rect.left(),
+            option.rect.top(),
+            txtDoc.idealWidth(),
+            txtDoc.size().height());
+    }
+    else if (dir == Qt::AlignHCenter) {
+        txtDoc.setTextWidth(option.rect.width());
+        auto optCenter = option.rect.left() + option.rect.width() / 2;
+        textRect.setRect(optCenter - txtDoc.idealWidth() / 2,
+            option.rect.top(),
+            txtDoc.idealWidth(),
+            txtDoc.size().height());
+    }
+    else if (dir == Qt::AlignRight) {
+        txtDoc.setTextWidth(option.rect.width());
+        textRect.setRect(option.rect.right() - txtDoc.idealWidth(),
+            option.rect.top(),
+            txtDoc.idealWidth(),
+            txtDoc.size().height());
+    }
+    return textRect;
+}
+
+QString
+Utils::QStringFromFile(const QString& filename)
+{
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly)) {
+        return file.readAll();
+    } else {
+        qDebug() << "can't open file";
+        return QString();
+    }
 }
