@@ -37,6 +37,8 @@
 #include <QString>
 #include <QImage>
 #include <QStackedWidget>
+#include <QTextDocument>
+#include <QItemDelegate>
 
 #include "api/conversationmodel.h"
 #include "api/account.h"
@@ -74,8 +76,8 @@ namespace Utils
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
+    QByteArray QByteArrayFromFile(const QString& filename);
 
-    // helpers
     template<typename E>
     constexpr inline typename std::enable_if<   std::is_enum<E>::value,
         typename std::underlying_type<E>::type
