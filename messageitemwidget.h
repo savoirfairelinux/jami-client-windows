@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,53 +15,28 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
 #include <QWidget>
-#include <QKeyEvent>
-#include <QSettings>
-
-#include "call.h"
-#include "media/media.h"
-
-#include "imdelegate.h"
-#include "messagemodel.h"
+#include <QTextBrowser>
 
 namespace Ui {
-class InstantMessagingWidget;
+class MessageItemWidget;
 }
 
-class InstantMessagingWidget final : public QWidget
+class MessageItemWidget : public QWidget
 {
     Q_OBJECT
-
 public:
-    explicit InstantMessagingWidget(QWidget *parent = 0);
-    ~InstantMessagingWidget();
-    void setupCallMessaging(const std::string& callId,
-                            MessageModel *messageModel);
+    explicit MessageItemWidget(QModelIndex index, QObject* parent = 0);
+    ~MessageItemWidget();
 
 protected:
-    virtual void keyPressEvent(QKeyEvent *event) override;
-    virtual void showEvent(QShowEvent * event) override;
-
-//UI SLOTS
-private slots:
-    void on_sendButton_clicked();
-
-private slots:
-    void onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction);
+    void paintEvent(QPaintEvent* e);
 
 private:
-    Ui::InstantMessagingWidget *ui;
-    ImDelegate* imDelegate_;
-    std::unique_ptr<MessageModel> messageModel_;
-    QSettings settings_;
-    QMetaObject::Connection newInteractionConnection_;
+    Ui::MessageItemWidget* ui;
 
-    void copyToClipboard();
-    void updateConversationView(const std::string& convUid);
+    const QModelIndex& index_;
 
 };
-
