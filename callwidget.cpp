@@ -136,7 +136,7 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->buttonInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
 
-    connect(ui->smartList, &QListView::customContextMenuRequested,
+    connect(ui->smartList, &QTreeView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
 
     connect(ui->smartList, &SmartListView::btnAcceptInviteClicked,
@@ -306,9 +306,9 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
                 );
             });
     }
-    smartListModel_->isContextMenuOpen_ = true;
+    smartListModel_->isContextMenuOpen = true;
     menu.exec(globalPos);
-    smartListModel_->isContextMenuOpen_ = false;
+    smartListModel_->isContextMenuOpen = false;
 }
 
 void
@@ -390,14 +390,14 @@ CallWidget::showConversationView()
     ui->imMessageEdit->clear();
     ui->imMessageEdit->setFocus();
     disconnect(imClickedConnection_);
-    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
-        auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
-        if (urlList.size() == 1) {
-            QDesktopServices::openUrl(urlList.at(0));
-        } else if (urlList.size()) {
-            //TODO Handle multiple url in one message
-        }
-    });
+    //imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
+    //    auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
+    //    if (urlList.size() == 1) {
+    //        QDesktopServices::openUrl(urlList.at(0));
+    //    } else if (urlList.size()) {
+    //        //TODO Handle multiple url in one message
+    //    }
+    //});
 }
 
 void
@@ -734,6 +734,12 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
                                                              *LRCInstance::getCurrentConversationModel());
     messageModel_.reset(new MessageModel(*currentConversation, accountInfo, this->parent()));
+    /*ui->listMessageView->clear();
+    for (int i = 0; i < messageModel_.get()->rowCount(); ++i) {
+        auto item = messageModel_.get()->index(i);
+        auto msg = item.data(static_cast<int>(MessageModel::Role::Body)).value<QString>();
+        ui->listMessageView->addItem(msg);
+    }*/
     ui->listMessageView->setModel(messageModel_.get());
     ui->listMessageView->scrollToBottom();
 }
@@ -942,8 +948,14 @@ CallWidget::updateConversationView(const std::string& convUid)
     if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
         return;
     }
-    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
+    /*ui->listMessageView->clear();
+    for (int i = 0; i < messageModel_.get()->rowCount(); ++i) {
+        auto item = messageModel_.get()->index(i);
+        auto msg = item.data(static_cast<int>(MessageModel::Role::Body)).value<QString>();
+        ui->listMessageView->addItem(msg);
+        qDebug() << "addItem";
+    }*/
+    emit messageModel_->layoutChanged();
     ui->listMessageView->scrollToBottom();
 }
 

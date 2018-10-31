@@ -93,9 +93,6 @@
     <ClCompile Include="idlabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="imdelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="instantmessagingwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -188,6 +185,18 @@
     </ClCompile>
     <ClCompile Include="conversationfilterbutton.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="selectablemessagewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagelistview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagetextbrowser.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +333,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="conversationfilterbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="selectablemessagewidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="messagelistview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="messagetextbrowser.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -618,6 +636,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="wizardwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="selectablemessagewidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

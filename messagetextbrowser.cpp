@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -17,30 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "messagetextbrowser.h"
 
-#include <QTreeView>
+#include <QApplication>
+#include <QMouseEvent>
+#include <QDebug>
+#include <qdrag.h>
 
-class SmartListView : public QTreeView
+MessageTextBrowser::MessageTextBrowser(QWidget* parent)
+    : QTextBrowser(parent)
 {
-    Q_OBJECT
-public:
-    explicit SmartListView(QWidget* parent = 0);
-    ~SmartListView();
+    setAcceptDrops(true);
+}
 
-protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+MessageTextBrowser::~MessageTextBrowser()
+{
+}
 
-private:
-    QModelIndex hoveredRow_;
-
-signals:
-    void btnAcceptInviteClicked(const QModelIndex& index) const;
-    void btnBlockInviteClicked(const QModelIndex& index) const;
-    void btnIgnoreInviteClicked(const QModelIndex& index) const;
-
-};
+void MessageTextBrowser::dragEnterEvent(QDragEnterEvent * event)
+{
+    emit startDrag();
+}

@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -19,28 +18,24 @@
 
 #pragma once
 
-#include <QTreeView>
+#include <QTextBrowser>
+#include <QDrag>
+#include <QPointer>
+#include <QMimeData>
 
-class SmartListView : public QTreeView
+class MessageTextBrowser : public QTextBrowser
 {
     Q_OBJECT
 public:
-    explicit SmartListView(QWidget* parent = 0);
-    ~SmartListView();
+    explicit MessageTextBrowser(QWidget* parent = 0);
+    ~MessageTextBrowser();
 
 protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-
-private:
-    QModelIndex hoveredRow_;
+    void dragEnterEvent(QDragEnterEvent *event);
+    //void mouseReleaseEvent(QMouseEvent *event);
 
 signals:
-    void btnAcceptInviteClicked(const QModelIndex& index) const;
-    void btnBlockInviteClicked(const QModelIndex& index) const;
-    void btnIgnoreInviteClicked(const QModelIndex& index) const;
+    void startDrag();
+    void endDrag();
 
 };
