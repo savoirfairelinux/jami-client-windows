@@ -1,0 +1,28 @@
+﻿<html>
+<!-- Empty head might be needed for setSenderImage -->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" href="chatview.css">-->
+    <script type="text/javascript" src="linkify.js"></script>
+    <script type="text/javascript" src="linkify-html.js"></script>
+    <script type="text/javascript" src="linkify-string.js"></script>
+    <script type="text/javascript" src="qwebchannel.js"></script>
+</head>
+<body>
+    <div class="navbar-wrapper">
+        <div id="invitation">
+            <div id="text">
+            </div>
+            <div id="actions">
+                <div id="accept-btn" class="invitation-button button-green" onclick="acceptInvitation()">Accept</div>
+                <div id="refuse-btn" class="invitation-button button-red" onclick="refuseInvitation()">Refuse</div>
+                <div id="block-btn" class="invitation-button button-red" onclick="blockConversation()">Block</div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="messages" onscroll="onScrolled()"></div>
+    </div>
+</body>
+</html>
