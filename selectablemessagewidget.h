@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,31 +15,45 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QTreeView>
+#include <QWidget>
+#include <QItemDelegate>
 
-class SmartListView : public QTreeView
+namespace Ui {
+class SelectableMessageWidget;
+}
+
+class SelectableMessageWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SmartListView(QWidget* parent = 0);
-    ~SmartListView();
+    explicit SelectableMessageWidget(  QModelIndex index,
+                                        QWidget* parent = 0);
+    ~SelectableMessageWidget();
+
+    bool isFreeable();
 
 protected:
-    void enterEvent(QEvent* event);
     void leaveEvent(QEvent* event);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent  *event);
     void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paintEvent(QPaintEvent* e);
 
 private:
-    QModelIndex hoveredRow_;
+    Ui::SelectableMessageWidget* ui;
+
+    QWidget* parent_;
+    QModelIndex index_;
+    QString msg_;
+    bool isFreeable_;
+
+private slots:
+    void slotStartDrag();
+    void slotEndDrag();
 
 signals:
-    void btnAcceptInviteClicked(const QModelIndex& index) const;
-    void btnBlockInviteClicked(const QModelIndex& index) const;
-    void btnIgnoreInviteClicked(const QModelIndex& index) const;
+    void exited() const;
 
 };

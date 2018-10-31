@@ -1303,7 +1303,7 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QListView" name="listMessageView">
+                      <widget class="MessageListView" name="listMessageView">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
                          <horstretch>0</horstretch>
@@ -1345,15 +1345,18 @@
                        <property name="horizontalScrollMode">
                         <enum>QAbstractItemView::ScrollPerPixel</enum>
                        </property>
-                       <property name="spacing">
-                        <number>1</number>
+                       <property name="indentation">
+                        <number>0</number>
                        </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                       <property name="selectionRectVisible">
+                       <property name="rootIsDecorated">
                         <bool>false</bool>
                        </property>
+                       <property name="itemsExpandable">
+                        <bool>false</bool>
+                       </property>
+                       <attribute name="headerVisible">
+                        <bool>false</bool>
+                       </attribute>
                       </widget>
                      </item>
                      <item>
@@ -1992,6 +1995,12 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+    <class>MessageListView</class>
+    <extends>QListView</extends>
+    <header>messagelistview.h</header>
+    <container>1</container>
+  </customwidget>
   <customwidget>
    <class>InstantMessagingWidget</class>
    <extends>QWidget</extends>

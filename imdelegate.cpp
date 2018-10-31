@@ -22,14 +22,28 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDateTime>
+#include <QListView>
 
-#include "media/text.h"
-#include "media/textrecording.h"
 
 #include "ringthemeutils.h"
 #include "settingskey.h"
 #include "messagemodel.h"
 #include "utils.h"
+#include "lrcinstance.h"
+#include "selectablemessagewidget.h"
+
+static QString
+QStringFromMsgSeq(const MsgSeq& msgseq)
+{
+    switch (msgseq) {
+    case MsgSeq::FIRST_WITHOUT_TIME: return QString("FIRST_WITHOUT_TIME");
+    case MsgSeq::FIRST_WITH_TIME: return QString("FIRST_WITH_TIME");
+    case MsgSeq::LAST_IN_SEQUENCE: return QString("LAST_IN_SEQUENCE");
+    case MsgSeq::MIDDLE_IN_SEQUENCE: return QString("MIDDLE_IN_SEQUENCE");
+    case MsgSeq::SINGLE_WITHOUT_TIME: return QString("SINGLE_WITHOUT_TIME");
+    case MsgSeq::SINGLE_WITH_TIME: return QString("SINGLE_WITH_TIME");
+    }
+}
 
 ImDelegate::ImDelegate(QObject *parent)
     : QItemDelegate(parent)
@@ -39,7 +53,10 @@ ImDelegate::ImDelegate(QObject *parent)
 void
 ImDelegate::formatMsg(const QModelIndex& index, QString& msgString) const
 {
-    auto date = index.data(static_cast<int>(MessageModel::Role::InteractionDate)).value<QDateTime>();
+    auto date = QDateTime::fromTime_t(index
+        .data(static_cast<int>(MessageModel::Role::InteractionDate))
+        .value<time_t>()
+    );
     auto now = QDateTime::currentDateTime();
     QString dateString;
     if (now.date() == date.date()) {
@@ -47,7 +64,7 @@ ImDelegate::formatMsg(const QModelIndex& index, QString& msgString) const
     } else {
         dateString = date.toString();
     }
-    msgString = QString("%1<br><footer><i>%2</i></footer>").arg(msgString, dateString);
+    msgString = QString("<p>%1</p>").arg(msgString);
 }
 
 void
@@ -59,9 +76,15 @@ ImDelegate::paint(QPainter* painter,
         return;
     }
 
-    auto msg = index.data(static_cast<int>(MessageModel::Role::Body)).toString();
-    auto type = static_cast<lrc::api::interaction::Type>(index.data(static_cast<int>(MessageModel::Role::Type)).value<int>());
-    auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+    auto msg = index
+        .data(static_cast<int>(MessageModel::Role::Body))
+        .value<QString>();
+    auto type = static_cast<lrc::api::interaction::Type>(index
+        .data(static_cast<int>(MessageModel::Role::Type))
+        .value<int>());
+    auto isOutgoing = index
+        .data(static_cast<int>(MessageModel::Role::Direction))
+        .value<bool>();
     auto isGenerated = Utils::isInteractionGenerated(type);
     auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
@@ -69,87 +92,63 @@ ImDelegate::paint(QPainter* painter,
 
     painter->setRenderHint(QPainter::Antialiasing);
 
-    opt.font = fontMsg_;
-    painter->setFont(fontMsg_);
-
     opt.text.clear();
+
+    auto sequencing = Utils::toEnum<MsgSeq>(index
+        .data(static_cast<int>(MessageModel::Role::Sequencing))
+        .value<int>()
+        );
+
+    //qDebug() << "MSG_SEQ: " << index.row() << ", " << QStringFromMsgSeq(sequencing);
 
     formatMsg(index, msg);
 
-    QTextDocument document;
-    document.setDefaultStyleSheet(defaultStylesheet_);
-    document.setDefaultFont(fontMsg_);
+    QTextDocument  document;
+    document.setDefaultStyleSheet(RingTheme::defaultMsgStylesheet_);
     document.setHtml(msg);
     auto textOptions = QTextOption(Qt::AlignLeft);
-    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
     document.setDefaultTextOption(textOptions);
 
-    QRect textRect = getBoundingRect(dir, opt, document);
+    QRect textRect = Utils::getBoundingRect(dir, opt, document);
+    //qDebug() << "textRect:" << textRect;
     document.setTextWidth(textRect.width());
 
-    if (dir == Qt::AlignLeft) {
-        // avatar
+    auto shouldDrawAvatar = (sequencing == MsgSeq::LAST_IN_SEQUENCE ||
+                             sequencing == MsgSeq::SINGLE_WITHOUT_TIME ||
+                             sequencing == MsgSeq::SINGLE_WITH_TIME);
+
+    //painter->fillRect(option.rect, isGenerated ? Qt::lightGray : (isOutgoing ? Qt::red : Qt::blue));
+
+    if (isOutgoing) {
+        opt.decorationSize = QSize();
+        opt.decorationPosition = QStyleOptionViewItem::Right;
+    } else if (shouldDrawAvatar) {
         opt.decorationSize = QSize(sizeImage_, sizeImage_);
         opt.decorationPosition = QStyleOptionViewItem::Left;
         opt.decorationAlignment = Qt::AlignCenter;
-        QRect rectAvatar(margin_ + opt.rect.left(),
-                         margin_ + opt.rect.top(),
-                         sizeImage_, sizeImage_);
+        QRect rectAvatar(margin_ + opt.rect.left(), opt.rect.top(), sizeImage_, sizeImage_);
         drawDecoration(painter, opt, rectAvatar,
-                       QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
-                       .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    } else {
-        opt.decorationSize = QSize();
-        opt.decorationPosition = QStyleOptionViewItem::Right;
+            QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
+            .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 
     // message bubble
-    QPainterPath path;
-    path.addRoundedRect(textRect, bubbleRadius_, bubbleRadius_);
-
-    if (dir == Qt::AlignRight) {
-        painter->fillPath(path, RingTheme::imGrey_);
-    } else if (dir == Qt::AlignHCenter) {
-        painter->fillPath(path, Qt::transparent);
-    } else {
-        painter->fillPath(path, RingTheme::imBlue_);
+    if (!isGenerated) {
+        paintBubble(painter, textRect, sequencing, isOutgoing);
     }
 
     painter->save();
 
-    // text
-    painter->translate(textRect.topLeft());
-    document.drawContents(painter);
-    painter->restore();
-}
-
-QRect ImDelegate::getBoundingRect(const Qt::AlignmentFlag& dir,
-                                  const QStyleOptionViewItem &option,
-                                  QTextDocument& txtDoc) const
-{
-    QRect textRect;
-
-    if (dir == Qt::AlignLeft) {
-        txtDoc.setTextWidth(option.rect.width() - sizeImage_ - padding_);
-        textRect.setRect(option.rect.left() + sizeImage_ + padding_,
-                         option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
-    } else if (dir == Qt::AlignHCenter) {
-        txtDoc.setTextWidth(option.rect.width() - padding_);
-        auto optCenter = option.rect.left() + option.rect.width() / 2;
-        textRect.setRect(optCenter - txtDoc.idealWidth() / 2,
-                         option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
-    } else {
-        txtDoc.setTextWidth(option.rect.width() - padding_);
-        textRect.setRect(option.rect.right() - padding_ - txtDoc.idealWidth(),
-                         option.rect.top() + padding_,
-                         txtDoc.idealWidth(),
-                         txtDoc.size().height());
+    // HACK: only draw text if not hovering, when selectabletextwidget is displayed
+    auto hasIndexWidget = index
+        .data(static_cast<int>(MessageModel::Role::HasIndexWidget))
+        .value<bool>();
+    if ((!hasIndexWidget || isGenerated)) {
+        painter->translate(textRect.topLeft());
+        document.drawContents(painter);
+        painter->restore();
     }
-    return textRect;
 }
 
 QSize
@@ -157,35 +156,89 @@ ImDelegate::sizeHint(const QStyleOptionViewItem& option,
                      const QModelIndex& index) const
 {
     QStyleOptionViewItem opt = option;
-    opt.font = fontMsg_;
 
-    QString msg = index.data(static_cast<int>(media::TextRecording::Role::FormattedHtml)).toString();
+    QString msg = index.data(static_cast<int>(MessageModel::Role::Body)).toString();
 
-    auto isOutgoing = index.data(static_cast<int>(MessageModel::Role::Direction)).value<bool>();
+    auto isOutgoing = index
+        .data(static_cast<int>(MessageModel::Role::Direction))
+        .value<bool>();
     auto isGenerated = Utils::isInteractionGenerated(
-        static_cast<lrc::api::interaction::Type>(index.data(static_cast<int>(MessageModel::Role::Type)).value<int>())
+        static_cast<lrc::api::interaction::Type>(index
+            .data(static_cast<int>(MessageModel::Role::Type))
+            .value<int>())
     );
     auto dir = isGenerated ? Qt::AlignHCenter : (isOutgoing ? Qt::AlignRight : Qt::AlignLeft);
 
     formatMsg(index, msg);
 
     QTextDocument document;
-    document.setDefaultFont(fontMsg_);
+    document.setDefaultStyleSheet(RingTheme::defaultMsgStylesheet_);
     document.setHtml(msg);
     auto textOptions = QTextOption(Qt::AlignLeft);
-    textOptions.setWrapMode(QTextOption::WrapMode::WordWrap);
+    textOptions.setWrapMode(QTextOption::WrapMode::WrapAtWordBoundaryOrAnywhere);
     document.setDefaultTextOption(textOptions);
 
-    QRect boundingRect = getBoundingRect(dir, opt, document);
+    QRect boundingRect = Utils::getBoundingRect(dir, opt, document);
+    document.setTextWidth(opt.rect.width());
 
-    QSize size(boundingRect.width() + 2 * margin_, boundingRect.height());
+    QSize size(boundingRect.width(), boundingRect.height());
 
     /* Keep the minimum height needed. */
-    if(size.height() < sizeImage_)
+    if (!isOutgoing && !isGenerated && size.height() < sizeImage_) {
         size.setHeight(sizeImage_);
-
-    size.setHeight(size.height() + 2 * margin_);
+    }
+    //qDebug() << "sizeHint boundingRect:" << boundingRect;
+    size.setHeight(size.height());
 
     return size;
 }
 
+void
+ImDelegate::paintBubble(QPainter* painter, const QRect& rect, const MsgSeq& msgseq, bool outgoing) const
+{
+    QPainterPath path;
+    path.setFillRule(Qt::WindingFill);
+    path.addRoundedRect(rect, bubbleRadius_, bubbleRadius_);
+    switch (msgseq) {
+    case MsgSeq::FIRST_WITHOUT_TIME:
+    case MsgSeq::FIRST_WITH_TIME: {
+        int left = outgoing ? rect.right() - bubbleRadius_ : rect.left();
+        // bottom
+        path.addRect(QRect(left,
+            rect.bottom() - bubbleRadius_ + 1,
+            bubbleRadius_ + 1,
+            bubbleRadius_));
+        break;
+
+    }
+    case MsgSeq::LAST_IN_SEQUENCE: {
+        int left = outgoing ? rect.right() - bubbleRadius_ : rect.left();
+        // top
+        path.addRect(QRect(left,
+            rect.top(),
+            bubbleRadius_ + 1,
+            bubbleRadius_));
+        break;
+
+    }
+    case MsgSeq::MIDDLE_IN_SEQUENCE: {
+        int left = outgoing ? rect.right() - bubbleRadius_ : rect.left();
+        // top
+        path.addRect(QRect(left,
+            rect.top(),
+            bubbleRadius_ + 1,
+            bubbleRadius_));
+        // bottom
+        path.addRect(QRect(left,
+            rect.bottom() - bubbleRadius_ + 1,
+            bubbleRadius_ + 1,
+            bubbleRadius_));
+        break;
+    }
+    case MsgSeq::SINGLE_WITHOUT_TIME:
+    case MsgSeq::SINGLE_WITH_TIME: {
+        break;
+    }
+    }
+    painter->fillPath(path.simplified(), outgoing ? RingTheme::imGrey_ : RingTheme::imBlue_);
+}
