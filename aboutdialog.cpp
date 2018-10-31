@@ -19,6 +19,8 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 
+#include "version.h"
+
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AboutDialog)
@@ -27,7 +29,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
-    ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), NIGHTLY_VERSION));
+    ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), QString(VERSION_STRING)));
 
     ui->creditsBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">"
