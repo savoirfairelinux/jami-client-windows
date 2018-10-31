@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -99,7 +99,7 @@
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <InputFile>%(FullPath)</InputFile>
       <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)../daemon/contrib/msvc/include;$(ProjectDir)../lrc/src;$(ProjectDir)../client-windows/winsparkle/include;$(ProjectDir)../client-windows/qrencode-win32/qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;release;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;%(AdditionalIncludeDirectories)</IncludePath>
     </QtMoc>
     <QtRcc>
       <InitFuncName>ressources</InitFuncName>
@@ -139,11 +139,17 @@
     <ClCompile Include="deleteaccountdialog.cpp" />
     <ClCompile Include="globalsystemtray.cpp" />
     <ClCompile Include="idlabel.cpp" />
-    <ClCompile Include="imdelegate.cpp" />
+    <ClCompile Include="imdelegate.cpp">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
+    </ClCompile>
     <ClCompile Include="instantmessagingwidget.cpp" />
     <ClCompile Include="invitebuttonswidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="messagelistview.cpp" />
     <ClCompile Include="messagemodel.cpp" />
     <ClCompile Include="navwidget.cpp" />
     <ClCompile Include="photoboothdialog.cpp" />
@@ -152,6 +158,7 @@
     <ClCompile Include="qualitydialog.cpp" />
     <ClCompile Include="ringbutton.cpp" />
     <ClCompile Include="ringcontactlineedit.cpp" />
+    <ClCompile Include="selectablemessagewidget.cpp" />
     <ClCompile Include="selectareadialog.cpp" />
     <ClCompile Include="sendcontactrequestwidget.cpp" />
     <ClCompile Include="conversationsfilterwidget.cpp">
@@ -241,6 +248,10 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
     </QtMoc>
+    <QtMoc Include="messagelistview.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
+    </QtMoc>
     <ClInclude Include="pixbufmanipulator.h" />
     <QtMoc Include="qualitydialog.h">
     </QtMoc>
@@ -252,6 +263,10 @@
     <QtMoc Include="selectareadialog.h">
     </QtMoc>
     <QtMoc Include="sendcontactrequestwidget.h">
+    </QtMoc>
+    <QtMoc Include="selectablemessagewidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </QtMoc>
     <ClInclude Include="settingskey.h" />
     <QtMoc Include="smartlistview.h">
@@ -407,6 +422,9 @@
     <QtUic Include="quickactcontactrequestwidget.ui">
     </QtUic>
     <QtUic Include="ringbutton.ui">
+    </QtUic>
+    <QtUic Include="selectablemessagewidget.ui">
+      <SubType>Designer</SubType>
     </QtUic>
     <QtUic Include="sendcontactrequestwidget.ui">
     </QtUic>

@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -17,30 +16,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "ui_selectablemessagewidget.h"
 
-#include <QTreeView>
+#include "selectablemessagewidget.h"
 
-class SmartListView : public QTreeView
+#include <QPainter>
+#include <QDebug>
+
+
+#include "messagemodel.h"
+
+SelectableMessageWidget::SelectableMessageWidget(QModelIndex index, QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::SelectableMessageWidget),
+    index_(index)
 {
-    Q_OBJECT
-public:
-    explicit SmartListView(QWidget* parent = 0);
-    ~SmartListView();
+    parent_ = parent;
+    ui->setupUi(this);
+    QString msg = index.data(static_cast<int>(MessageModel::Role::Body)).toString();
+    ui->msg->setHtml(QString("<p>%1</p>").arg(msg));
+    ui->msg->setStyleSheet("border: none; background-color: transparent;color: '#ff0f0f'; opacity: 100; font-size : 16px; text-align : left;");
+}
 
-protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject* watched, QEvent* event);
-    void drawRow(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+SelectableMessageWidget::~SelectableMessageWidget()
+{
+    delete ui;
+}
 
-private:
-    QModelIndex hoveredRow_;
+void SelectableMessageWidget::leaveEvent(QEvent * event)
+{
+    emit exited();
+}
 
-signals:
-    void btnAcceptInviteClicked(const QModelIndex& index) const;
-    void btnBlockInviteClicked(const QModelIndex& index) const;
-    void btnIgnoreInviteClicked(const QModelIndex& index) const;
-
-};
+void
+SelectableMessageWidget::paintEvent(QPaintEvent* e)
+{
+    Q_UNUSED(e);
+    QPainter painter(this);
+    painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
+    QStyleOption opt;
+    opt.init(this);
+    ui->msg->setGeometry(parent_->frameGeometry());
+}

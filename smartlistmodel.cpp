@@ -103,7 +103,7 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
             case Role::UID:
                 return QVariant(QString::fromStdString(item.uid));
             case Role::ContextMenuOpen:
-                return QVariant(isContextMenuOpen_);
+                return QVariant(isContextMenuOpen);
             }
         } catch (...) {}
     }
