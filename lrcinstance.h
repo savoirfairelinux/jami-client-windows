@@ -93,6 +93,14 @@ public:
         instance().selectedConvUid = convUid;
     };
 
+    static void reset(bool newInstance = false) {
+        if (newInstance) {
+            instance().lrc_.reset(new lrc::api::Lrc());
+        } else {
+            instance().lrc_.reset();
+        }
+    };
+
 private:
     std::unique_ptr<lrc::api::Lrc> lrc_;
 

@@ -53,11 +53,9 @@ SOURCES += main.cpp\
     windowscontactbackend.cpp \
     selectareadialog.cpp \
     accountserializationadapter.cpp \
-    instantmessagingwidget.cpp \
     accountstatedelegate.cpp \
     videoview.cpp \
     videooverlay.cpp \
-    imdelegate.cpp \
     contactpicker.cpp \
     globalsystemtray.cpp \
     conversationitemdelegate.cpp \
@@ -79,11 +77,14 @@ SOURCES += main.cpp\
     smartlistview.cpp \
     accountitemdelegate.cpp \
     accountlistmodel.cpp \
-    messagemodel.cpp \
     invitebuttonswidget.cpp \
     wizardwidget.cpp \
     currentaccountcombobox.cpp \
-    conversationfilterbutton.cpp
+    conversationfilterbutton.cpp \
+    messagewebpage.cpp \
+    messagewebview.cpp \
+    webchathelpers.cpp \
+    animationhelpers.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -97,11 +98,9 @@ HEADERS  += mainwindow.h \
     windowscontactbackend.h \
     selectareadialog.h \
     accountserializationadapter.h \
-    instantmessagingwidget.h \
     accountstatedelegate.h \
     videoview.h \
     videooverlay.h \
-    imdelegate.h \
     contactpicker.h \
     settingskey.h \
     globalsystemtray.h \
@@ -126,11 +125,14 @@ HEADERS  += mainwindow.h \
     smartlistview.h \
     accountitemdelegate.h \
     accountlistmodel.h \
-    messagemodel.h \
     invitebuttonswidget.h \
     wizardwidget.h \
     currentaccountcombobox.h \
-    conversationfilterbutton.h
+    conversationfilterbutton.h \
+    messagewebpage.h \
+    messagewebview.h \
+    webchathelpers.h \
+    animationhelpers.h
 
 
 contains(DEFINES, URI_PROTOCOL) {
@@ -144,7 +146,6 @@ FORMS    += mainwindow.ui \
     accountdetails.ui \
     aboutdialog.ui \
     wizarddialog.ui \
-    instantmessagingwidget.ui \
     videoview.ui \
     videooverlay.ui \
     contactpicker.ui \
@@ -158,7 +159,8 @@ FORMS    += mainwindow.ui \
     bannedcontactswidget.ui \
     photoboothwidget.ui \
     invitebuttonswidget.ui \
-    wizardwidget.ui
+    wizardwidget.ui \
+    animatedoverlay.ui
 
 win32: LIBS += -lole32 -luuid -lshlwapi -lgdi32
 LIBS += -lqrencode
@@ -273,7 +275,9 @@ win32 {
     QTRUNTIME.files = $$RUNTIMEDIR/Qt5Core.dll $$RUNTIMEDIR/Qt5Widgets.dll \
                             $$RUNTIMEDIR/Qt5Gui.dll $$RUNTIMEDIR/Qt5Svg.dll \
                             $$RUNTIMEDIR/Qt5Xml.dll $$RUNTIMEDIR/Qt5WinExtras.dll \
-                            $$RUNTIMEDIR/Qt5Network.dll $$RUNTIMEDIR/Qt5Sql.dll
+                            $$RUNTIMEDIR/Qt5Network.dll $$RUNTIMEDIR/Qt5Sql.dll \
+                            $$RUNTIMEDIR/Qt5WebEngineWidgets.dll $$RUNTIMEDIR/Qt5WebChannel.dll
+
     QTRUNTIME.path = $$OUT_PWD/release
 
     QTDEPSRUNTIME.files = $$RUNTIMEDIR/zlib1.dll \

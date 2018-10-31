@@ -38,6 +38,7 @@
 #include "callwidget.h"
 #include "utils.h"
 #include "wizarddialog.h"
+#include "version.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -102,7 +103,7 @@ MainWindow::MainWindow(QWidget* parent) :
     readSettingsFromRegistry();
 
     win_sparkle_set_appcast_url("http://dl.ring.cx/windows/winsparkle-ring.xml");
-    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(NIGHTLY_VERSION).toStdWString().c_str());
+    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", VERSION_QSTRING.toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
     win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
     win_sparkle_init();
@@ -243,6 +244,7 @@ MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
     }
+    LRCInstance::reset();
     QMainWindow::closeEvent(event);
 }
 
