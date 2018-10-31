@@ -55,6 +55,9 @@
       <Extensions>ts;xlf</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Resource Files\web">
+      <UniqueIdentifier>{faf8f8a4-eb67-49df-a082-2fd64189e62c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aboutdialog.cpp">
@@ -91,12 +94,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="idlabel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="imdelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="instantmessagingwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -156,9 +153,6 @@
     <ClCompile Include="smartlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagemodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="accountlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -186,7 +180,13 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="conversationfilterbutton.cpp">
+    <ClCompile Include="messagewebview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagewebpage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="webchathelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -228,12 +228,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="idlabel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="imdelegate.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="instantmessagingwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="mainwindow.h">
@@ -296,9 +290,6 @@
     <QtMoc Include="smartlistview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="messagemodel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="accountlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -323,7 +314,10 @@
     <QtMoc Include="currentaccountcombobox.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="conversationfilterbutton.h">
+    <QtMoc Include="messagewebview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="messagewebpage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -359,9 +353,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_deleteaccountdialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_instantmessagingwidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_mainwindow.h">
@@ -552,6 +543,24 @@
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="web\chatview.css">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="web\chatview.html">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="web\linkify.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="web\linkify-html.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="web\linkify-string.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="web\chatview.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
@@ -579,9 +588,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="deleteaccountdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="instantmessagingwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="mainwindow.ui">
@@ -763,6 +769,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lrcinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webchathelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
