@@ -66,6 +66,9 @@ public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
 
+signals:
+    void setLeftSizeWidget(int size);
+
 public slots:
     void on_ringContactLineEdit_returnPressed();
 

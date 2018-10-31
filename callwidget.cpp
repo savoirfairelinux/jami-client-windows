@@ -185,6 +185,8 @@ CallWidget::CallWidget(QWidget* parent) :
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->buttonConversations->setSelected();
+
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
 }
 
 CallWidget::~CallWidget()
@@ -519,6 +521,7 @@ CallWidget::invitationsButtonClicked()
 void
 CallWidget::settingsButtonClicked()
 {
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 

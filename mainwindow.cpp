@@ -38,9 +38,11 @@
 #include "callwidget.h"
 #include "utils.h"
 #include "wizarddialog.h"
+#include "settingswidget.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
+
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -62,6 +64,11 @@ MainWindow::MainWindow(QWidget* parent) :
                 ui->callwidget->update();
             }
         });
+
+    connect(ui->callwidget, &CallWidget::setLeftSizeWidget, [=](int size) {
+            ui->settingswidget->getLeftWidgetSize(size);
+        }
+    );
 
     QIcon icon(":images/ring.png");
 
@@ -254,5 +261,15 @@ MainWindow::readSettingsFromRegistry()
     restoreState(settings.value(SettingsKey::windowState).toByteArray());
     if (not settings.contains(SettingsKey::enableNotifications)) {
         settings.setValue(SettingsKey::enableNotifications, true);
+    }
+}
+
+void
+MainWindow::resizeEvent(QResizeEvent* event)
+{
+    QMainWindow::resizeEvent(event);
+
+    if (ui->settingswidget->isVisible()) {
+        ui->settingswidget->resize();
     }
 }

@@ -39,6 +39,7 @@ public:
 
 signals:
     void settingsButtonClicked();
+    void setLeftWidgetSize(int size);
 
 private:
     void paintEvent(QPaintEvent* e);

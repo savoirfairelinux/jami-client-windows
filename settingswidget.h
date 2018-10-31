@@ -1,6 +1,9 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -17,56 +20,43 @@
  **************************************************************************/
 
 #pragma once
-
-#include "globalsystemtray.h"
-
-#include <QMainWindow>
-#include <QMouseEvent>
-#include <QNetworkConfigurationManager>
+#include <QItemSelection>
+#include <QSettings>
+#include <QErrorMessage>
 
 #include "navwidget.h"
+#include "accountdetails.h"
+#include "accountstatedelegate.h"
 
-// LRC
-#include "call.h"
+#include "accountmodel.h"
+#include "video/devicemodel.h"
+#include "codecmodel.h"
 
-static constexpr char IDM_ABOUTBOX = 0x0010;
+
 
 namespace Ui {
-class MainWindow;
+    class SettingsWidget;
 }
 
-class MainWindow : public QMainWindow
+class SettingsWidget : public NavWidget
 {
     Q_OBJECT
+    SettingsWidget(const SettingsWidget& cpy);
 
 public:
-    inline static MainWindow& instance()  {
-        static auto instance = new MainWindow();
-        return *instance;
-    }
-    void createThumbBar();
-    bool init();
-    void resizeEvent(QResizeEvent* event);
-
-protected:
-    bool nativeEvent(const QByteArray& eventType, void* message, long* result);
-    void closeEvent(QCloseEvent* event);
+    explicit SettingsWidget(QWidget* parent = nullptr);
+    ~SettingsWidget();
+    void resize();
 
 public slots:
-    void onRingEvent(const QString& uri);
-
-private slots:
-    void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call* call);
-    void switchNormalMaximize();
-    void notificationClicked();
+    void getLeftWidgetSize(int size);
 
 private:
-    explicit MainWindow(QWidget* parent = 0);
-    ~MainWindow();
+    enum Button {accountSettingsButton, generalSettingsButton, avSettingsButton};
 
-    void readSettingsFromRegistry();
-
-    Ui::MainWindow* ui;
-    QNetworkConfigurationManager netManager_;
+    void setSelected(Button sel);
+    Ui::SettingsWidget* ui;
+    int leftWidgetSize_ = 324;
+    Button pastButton_ = Button::generalSettingsButton;
+    QPalette* palette;
 };
