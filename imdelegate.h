@@ -22,6 +22,8 @@
 #include <QTextDocument>
 #include <QItemDelegate>
 
+enum class MsgSeq;
+
 class ImDelegate : public QItemDelegate
 {
     Q_OBJECT
@@ -31,16 +33,21 @@ public:
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+        const QModelIndex &index) const override;
+
 private:
     void formatMsg(const QModelIndex& index, QString& msg) const;
     QRect getBoundingRect(const Qt::AlignmentFlag& dir, const QStyleOptionViewItem &option,
         QTextDocument& txtDoc) const;
 
-    const QFont fontMsg_ = QFont("Arial", 10);
-    const QString defaultStylesheet_ = QString("body { color : black; } i { opacity: 100; font-size : 10px; text-align : right; }");
-    constexpr static int sizeImage_ = 38;
+    void paintBubble(QPainter* painter, const QRect& rect, const MsgSeq& msgseq, bool outgoing) const;
+
+    //const QFont fontMsg_ = QFont("Arial", 10);
+    const QString defaultStylesheet_ = QString("p { color: '#0f0f0f'; opacity: 100; font-size : 16px; text-align : left; }");
+    constexpr static int sizeImage_ = 24;
     constexpr static int margin_ = 5;
     constexpr static int padding_ = 5;
     constexpr static int bubbleRadius_ = 12;
 };
-
