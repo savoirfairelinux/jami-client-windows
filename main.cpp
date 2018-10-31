@@ -17,6 +17,7 @@
  **************************************************************************/
 
 #include "mainwindow.h"
+
 #include <QApplication>
 #include <QFile>
 
@@ -34,6 +35,8 @@
 #include <QFontDatabase>
 
 #include <ciso646>
+
+#include "utils.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -167,12 +170,15 @@ main(int argc, char *argv[])
     font.setFamily("Segoe UI");
     a.setFont(font);
 
-    QFile file(":/stylesheet.css");
+    /*QFile file(":/stylesheet.css");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         a.setStyleSheet(file.readAll());
         file.close();
-    }
+    }*/
+
+    QString filepath("C:/Users/fner/Projects/ring-project/client-windows/stylesheet.css");
+    a.setStyleSheet(Utils::QStringFromFile(filepath));
 
     QCoreApplication::setOrganizationName("Savoir-faire Linux");
     QCoreApplication::setOrganizationDomain("ring.cx");

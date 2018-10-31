@@ -226,13 +226,24 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
         interactionStr.replace(QChar(0xdd7d), "");
         interactionStr.replace(QChar(0xdcde), "");
 
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setItalic(false);
+        emojiMsgFont.setBold(false);
+        emojiMsgFont.setPointSize(fontSize_);
+
+
         font.setItalic(false);
         font.setBold(false);
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
-        painter->setFont(font);
+        //painter->setFont(font);
+        painter->save();
+        painter->setOpacity(0.6);
+        painter->setFont(emojiMsgFont);
         interactionStr = fontMetrics.elidedText(interactionStr, Qt::ElideRight, rectInfo2.width());
+
         painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, interactionStr);
+        painter->restore();
     }
 }
 

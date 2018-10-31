@@ -62,7 +62,8 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    bool isContextMenuOpen_{false};
+    // hack for context menu highlight retention
+    bool isContextMenuOpen{ false };
 
 private:
     const AccountInfo& acc_;

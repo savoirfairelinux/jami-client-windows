@@ -56,4 +56,6 @@ static const QColor avatarColors_[] {
     {"#ff607d8b"}  //Blue Grey
 };
 
+static const QString defaultMsgStylesheet_ = QString("p { color: '#0f0f0f'; opacity: 100; font-size : 16px; text-align : left; }");
+
 }
