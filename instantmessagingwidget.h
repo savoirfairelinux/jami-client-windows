@@ -25,8 +25,7 @@
 #include "call.h"
 #include "media/media.h"
 
-#include "imdelegate.h"
-#include "messagemodel.h"
+#include "messagewebview.h"
 
 namespace Ui {
 class InstantMessagingWidget;
@@ -39,28 +38,20 @@ class InstantMessagingWidget final : public QWidget
 public:
     explicit InstantMessagingWidget(QWidget *parent = 0);
     ~InstantMessagingWidget();
-    void setupCallMessaging(const std::string& callId,
-                            MessageModel *messageModel);
+    void setupCallMessaging(const std::string& convUid, MessageWebView* webView);
 
 protected:
-    virtual void keyPressEvent(QKeyEvent *event) override;
     virtual void showEvent(QShowEvent * event) override;
-
-//UI SLOTS
-private slots:
-    void on_sendButton_clicked();
 
 private slots:
     void onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction);
 
 private:
     Ui::InstantMessagingWidget *ui;
-    ImDelegate* imDelegate_;
-    std::unique_ptr<MessageModel> messageModel_;
     QSettings settings_;
     QMetaObject::Connection newInteractionConnection_;
+    MessageWebView* messageView_;
 
-    void copyToClipboard();
     void updateConversationView(const std::string& convUid);
 
 };

@@ -27,6 +27,7 @@
 #include <QClipboard>
 #include <QDesktopServices>
 #include <QComboBox>
+#include <QWebEngineScript>
 
 #include <memory>
 
@@ -48,17 +49,14 @@
 #include "contactpicker.h"
 #include "globalsystemtray.h"
 #include "conversationitemdelegate.h"
-#include "imdelegate.h"
 #include "pixbufmanipulator.h"
 #include "settingskey.h"
 #include "lrcinstance.h"
-#include "messagemodel.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
-    menu_(new QMenu()),
-    imDelegate_(new ImDelegate())
+    menu_(new QMenu())
 {
     ui->setupUi(this);
 
@@ -114,12 +112,6 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->spinnerLabel->setMovie(miniSpinner_);
     ui->spinnerLabel->hide();
 
-    ui->listMessageView->verticalScrollBar()->setEnabled(true);
-    ui->listMessageView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    ui->listMessageView->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 0px; }");
-
-    setupOutOfCallIM();
-
     // connections
     connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
             this, &CallWidget::settingsButtonClicked);
@@ -130,13 +122,13 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoWidget, &VideoView::videoSettingsClicked,
             this, &CallWidget::settingsButtonClicked);
 
-    connect(ui->buttonConversations, &QPushButton::clicked,
+    connect(ui->btnConversations, &QPushButton::clicked,
             this, &CallWidget::conversationsButtonClicked);
 
-    connect(ui->buttonInvites, &QPushButton::clicked,
+    connect(ui->btnInvites, &QPushButton::clicked,
             this, &CallWidget::invitationsButtonClicked);
 
-    connect(ui->smartList, &QListView::customContextMenuRequested,
+    connect(ui->smartList, &QTreeView::customContextMenuRequested,
             this, &CallWidget::slotCustomContextMenuRequested);
 
     connect(ui->smartList, &SmartListView::btnAcceptInviteClicked,
@@ -169,48 +161,26 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->btnVideoCall, &QPushButton::clicked,
             this, &CallWidget::on_sendContactRequestButton_clicked);
 
-    // connect conversation filter buttons to act as radio buttons
-    connect(ui->buttonInvites, &ConversationFilterButton::clicked,
-            ui->buttonConversations, &ConversationFilterButton::setUnselected);
-
-    connect(ui->buttonConversations, &ConversationFilterButton::clicked,
-            ui->buttonInvites, &ConversationFilterButton::setUnselected);
-
     connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
         [this] {
-            ui->buttonConversations->setSelected();
-            ui->buttonInvites->setUnselected();
-    });
+            ui->btnConversations->setChecked(true);
+            ui->btnInvites->setChecked(false);
+        });
+
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-    ui->buttonConversations->setSelected();
+    ui->btnConversations->setChecked(true);
+
+    // chat view
+    ui->messageView->buildView();
 }
 
 CallWidget::~CallWidget()
 {
     delete ui;
     delete menu_;
-    delete imDelegate_;
     delete conversationItemDelegate_;
-}
-
-void
-CallWidget::setupOutOfCallIM()
-{
-    ui->listMessageView->setItemDelegate(imDelegate_);
-    ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
-
-    auto copyAction = new QAction(tr("Copy"), this);
-    ui->listMessageView->addAction(copyAction);
-
-    connect(copyAction, &QAction::triggered, [=]() {
-        auto idx = ui->listMessageView->currentIndex();
-        if (idx.isValid()) {
-            auto text = ui->listMessageView->model()->data(idx);
-            QApplication::clipboard()->setText(text.value<QString>());
-        }
-    });
 }
 
 void
@@ -224,7 +194,17 @@ CallWidget::onIncomingMessage(const std::string& convUid,
             QString(tr("Message incoming from %1"))
             .arg(QString::fromStdString(interaction.body)));
     }
-    updateConversationView(convUid);
+    if (convUid != selectedConvUid()) {
+        return;
+    }
+
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    convModel->clearUnreadInteractions(convUid);
+    auto currentConversation = Utils::getConversationFromUid(convUid, *convModel);
+    if (currentConversation == convModel->allFilteredConversations().end()) {
+        return;
+    }
+    ui->messageView->printNewInteraction(*convModel, interactionId, interaction);
     ui->conversationsFilterWidget->update();
 }
 
@@ -306,9 +286,9 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
                 );
             });
     }
-    smartListModel_->isContextMenuOpen_ = true;
+    smartListModel_->isContextMenuOpen = true;
     menu.exec(globalPos);
-    smartListModel_->isContextMenuOpen_ = false;
+    smartListModel_->isContextMenuOpen = false;
 }
 
 void
@@ -387,17 +367,8 @@ void
 CallWidget::showConversationView()
 {
     ui->stackedWidget->setCurrentWidget(ui->messagingPage);
-    ui->imMessageEdit->clear();
-    ui->imMessageEdit->setFocus();
-    disconnect(imClickedConnection_);
-    imClickedConnection_ = connect(ui->listMessageView, &QListView::clicked, [this](const QModelIndex& index) {
-        auto urlList = index.data(static_cast<int>(media::TextRecording::Role::LinkList)).value<QList<QUrl>>();
-        if (urlList.size() == 1) {
-            QDesktopServices::openUrl(urlList.at(0));
-        } else if (urlList.size()) {
-            //TODO Handle multiple url in one message
-        }
-    });
+    ui->messageView->setFocus();
+
 }
 
 void
@@ -476,21 +447,6 @@ CallWidget::smartListSelectionChanged(const QItemSelection  &selected, const QIt
 }
 
 void
-CallWidget::contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx)
-{
-    Q_UNUSED(previousIdx)
-
-    if (currentIdx.isValid()) {
-        ui->contactRequestWidget->setCurrentContactRequest(currentIdx);
-        ui->stackedWidget->setCurrentWidget(ui->contactRequestPage);
-    } else {
-        ui->contactRequestWidget->setCurrentContactRequest(QModelIndex());
-        if (ui->stackedWidget->currentWidget() == ui->contactRequestPage)
-            Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
-    }
-}
-
-void
 CallWidget::placeCall()
 {
     if (ui->ringContactLineEdit->text().isEmpty())
@@ -507,12 +463,16 @@ CallWidget::placeCall()
 void
 CallWidget::conversationsButtonClicked()
 {
+    ui->btnConversations->setChecked(true);
+    ui->btnInvites->setChecked(false);
     setConversationFilter(lrc::api::profile::Type::RING);
 }
 
 void
 CallWidget::invitationsButtonClicked()
 {
+    ui->btnConversations->setChecked(false);
+    ui->btnInvites->setChecked(true);
     setConversationFilter(lrc::api::profile::Type::PENDING);
 }
 
@@ -535,8 +495,8 @@ CallWidget::on_ringContactLineEdit_returnPressed()
     // select current temporary item and show conversation
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto conversations = convModel->allFilteredConversations();
-    auto contactIsValid = Utils::isContactValid(conversations.at(0).participants.at(0), *convModel);
-    if (!conversations.empty() && contactIsValid) {
+    if (!conversations.empty() &&
+        Utils::isContactValid(conversations.at(0).participants.at(0), *convModel)) {
         selectConversation(smartListModel_->index(0));
     }
 }
@@ -614,7 +574,7 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
 
     ui->videoWidget->pushRenderer(convInfo.callId);
 
-    ui->instantMessagingWidget->setupCallMessaging(convInfo.callId, messageModel_.get());
+    ui->instantMessagingWidget->setupCallMessaging(convInfo.uid, ui->messageView);
 
     disconnect(selectedCallChanged_);
     selectedCallChanged_ = connect(
@@ -705,16 +665,6 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     }
     catch (...) {}
 
-    if (!isRINGAccount){
-        ui->imMessageEdit->setPlaceholderText("No messaging possible out of call (SIP) ");
-        ui->imMessageEdit->setEnabled(false);
-        ui->sendIMButton->hide();
-    } else {
-        ui->imMessageEdit->setPlaceholderText("Type your message here");
-        ui->imMessageEdit->setEnabled(true);
-        ui->sendIMButton->show();
-    }
-
     ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
                                     .arg(displayName));
 
@@ -731,42 +681,32 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
 
     showConversationView();
 
+    auto convModel = LRCInstance::getCurrentConversationModel();
     auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
-                                                             *LRCInstance::getCurrentConversationModel());
-    messageModel_.reset(new MessageModel(*currentConversation, accountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
-    ui->listMessageView->scrollToBottom();
-}
+                                                             *convModel);
+    ui->messageView->clear();
+    ui->messageView->printHistory(*convModel, currentConversation->interactions);
 
-void
-CallWidget::on_sendIMButton_clicked()
-{
-    auto msg = ui->imMessageEdit->text();
-    if (msg.trimmed().isEmpty()) return;
-    ui->imMessageEdit->clear();
+    // Contact Avatars
+    auto accInfo = &LRCInstance::getCurrentAccountInfo();
+    auto contactUri = currentConversation->participants.front();
     try {
-        LRCInstance::getCurrentConversationModel()->sendMessage(selectedConvUid(), msg.toStdString());
-    } catch (...) {
-        qDebug() << "exception when sending message";
-    }
-}
-
-void
-CallWidget::on_imMessageEdit_returnPressed()
-{
-    on_sendIMButton_clicked();
-}
-
-void
-CallWidget::slotAccountMessageReceived(const QMap<QString,QString> message,
-                                       ContactMethod* cm,
-                                       media::Media::Direction dir)
-{
-    Q_UNUSED(message)
-    Q_UNUSED(dir)
-
-    ui->listMessageView->scrollToBottom();
-    cm->textRecording()->setAllRead();
+        auto& contact = accInfo->contactModel->getContact(contactUri);
+        if (!contact.profileInfo.avatar.empty()) {
+            ui->messageView->setSenderImage(
+                accInfo->contactModel->getContactProfileId(contactUri),
+                contact.profileInfo.avatar);
+        } else {
+            auto avatar = Utils::conversationPhoto(selectedConvUid(), *accInfo);
+            QByteArray ba;
+            QBuffer bu(&ba);
+            avatar.save(&bu, "PNG");
+            std::string avatarString = ba.toBase64().toStdString();
+            ui->messageView->setSenderImage(
+                accInfo->contactModel->getContactProfileId(contactUri),
+                avatarString);
+        }
+    } catch (...) { }
 }
 
 void
@@ -855,6 +795,7 @@ CallWidget::connectConversationModel()
     QObject::disconnect(conversationClearedConnection);
     QObject::disconnect(interactionStatusUpdatedConnection_);
     QObject::disconnect(newInteractionConnection_);
+    QObject::disconnect(interactionRemovedConnection_);
 
     modelSortedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::modelSorted,
@@ -896,7 +837,7 @@ CallWidget::connectConversationModel()
     conversationClearedConnection = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::conversationCleared,
         [this](const std::string& convUid) {
-            updateConversationView(convUid);
+            ui->messageView->clear();
             // if currently selected,
             // switch to welcome screen (deselecting current smartlist item )
             if (convUid != selectedConvUid()) {
@@ -907,17 +848,28 @@ CallWidget::connectConversationModel()
     );
     interactionStatusUpdatedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::interactionStatusUpdated,
-        [this](const std::string& convUid) {
+        [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
             if (convUid != selectedConvUid()) {
                 return;
             }
-            updateConversationView(convUid);
+            auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
+            auto currentConversationModel = currentAccountInfo.conversationModel.get();
+            currentConversationModel->clearUnreadInteractions(convUid);
+            ui->conversationsFilterWidget->update();
+            ui->messageView->updateInteraction(*currentConversationModel, interactionId, interaction);
         }
     );
     newInteractionConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::newInteraction,
         [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
             onIncomingMessage(convUid, interactionId, interaction);
+        }
+    );
+    interactionRemovedConnection_ = QObject::connect(
+        currentConversationModel, &lrc::api::ConversationModel::interactionRemoved,
+        [this](const std::string& convUid, uint64_t interactionId) {
+            Q_UNUSED(convUid);
+            ui->messageView->removeInteraction(interactionId);
         }
     );
     currentConversationModel->setFilter("");
@@ -933,18 +885,8 @@ CallWidget::updateConversationView(const std::string& convUid)
         return;
     }
 
-    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
-    auto currentConversationModel = currentAccountInfo.conversationModel.get();
-    currentConversationModel->clearUnreadInteractions(convUid);
-    ui->conversationsFilterWidget->update();
-    auto currentConversation = Utils::getConversationFromUid(convUid,
-                                                             *currentConversationModel);
-    if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
-        return;
-    }
-    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
-    ui->listMessageView->scrollToBottom();
+
+
 }
 
 void

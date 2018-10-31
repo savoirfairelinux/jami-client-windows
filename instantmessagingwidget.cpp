@@ -22,12 +22,9 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QBuffer>
 #include <QMenu>
 
-#include "media/text.h"
-#include "media/textrecording.h"
-
-#include "imdelegate.h"
 #include "globalsystemtray.h"
 #include "settingskey.h"
 #include "lrcinstance.h"
@@ -35,112 +32,69 @@
 
 InstantMessagingWidget::InstantMessagingWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::InstantMessagingWidget)
+    ui(new Ui::InstantMessagingWidget),
+    messageView_(nullptr)
 {
     ui->setupUi(this);
 
     this->hide();
 
-    imDelegate_ = new ImDelegate();
-    ui->listMessageView->setItemDelegate(imDelegate_);
-    ui->listMessageView->setContextMenuPolicy(Qt::ActionsContextMenu);
-    auto copyAction = new QAction(tr("Copy"), this);
-    ui->listMessageView->addAction(copyAction);
-    connect(copyAction, &QAction::triggered, [=]() {
-        copyToClipboard();
-    });
 }
 
 InstantMessagingWidget::~InstantMessagingWidget()
 {
     delete ui;
-    delete imDelegate_;
 }
 
 void
-InstantMessagingWidget::setupCallMessaging(const std::string& callId,
-                                           MessageModel *messageModel)
+InstantMessagingWidget::setupCallMessaging(const std::string& convUid,
+    MessageWebView* webView)
 {
-    ui->listMessageView->disconnect();
-    ui->messageEdit->disconnect();
-    if (messageModel == nullptr) {
-        return;
-    }
+    messageView_ = webView;
+    ui->verticalLayout->addWidget(messageView_);
 
-    using namespace lrc::api;
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+    convModel->clearUnreadInteractions(convUid);
+    messageView_->clear();
+    messageView_->printHistory(*convModel, conversation->interactions);
 
-    ui->listMessageView->setModel(messageModel);
-    ui->listMessageView->scrollToBottom();
-    connect(ui->messageEdit, &QLineEdit::returnPressed,
-        [=]() {
-            auto msg = ui->messageEdit->text();
-            if (msg.trimmed().isEmpty()) {
-                return;
-            }
-            ui->messageEdit->clear();
-            try {
-                auto selectedConvUid = LRCInstance::getSelectedConvUid();
-                LRCInstance::getCurrentConversationModel()->sendMessage(selectedConvUid, msg.toStdString());
-            }
-            catch (...) {
-                qDebug() << "exception when sending message";
-            }
-            ui->listMessageView->scrollToBottom();
-        });
+    // Contact Avatars
+    auto accInfo = &LRCInstance::getCurrentAccountInfo();
+    auto contactUri = conversation->participants.front();
+    try {
+        auto& contact = accInfo->contactModel->getContact(contactUri);
+        if (!contact.profileInfo.avatar.empty()) {
+            messageView_->setSenderImage(
+                accInfo->contactModel->getContactProfileId(contactUri),
+                contact.profileInfo.avatar);
+        } else {
+            auto avatar = Utils::conversationPhoto(conversation->uid, *accInfo);
+            QByteArray ba;
+            QBuffer bu(&ba);
+            avatar.save(&bu, "PNG");
+            std::string avatarString = ba.toBase64().toStdString();
+            messageView_->setSenderImage(
+                accInfo->contactModel->getContactProfileId(contactUri),
+                avatarString);
+        }
+    } catch (...) {}
 
-    QObject::disconnect(newInteractionConnection_);
-    newInteractionConnection_ = QObject::connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::newInteraction,
-        [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
-            onIncomingMessage(convUid, interactionId, interaction);
-        });
-}
-
-void
-InstantMessagingWidget::keyPressEvent(QKeyEvent *event)
-{
-    if (event->matches(QKeySequence::Copy)) {
-        copyToClipboard();
-    }
+    this->show();
 }
 
 void
 InstantMessagingWidget::showEvent(QShowEvent *event)
 {
-    Q_UNUSED(event)
-    ui->messageEdit->setFocus();
-}
-
-void
-InstantMessagingWidget::copyToClipboard()
-{
-    auto idx = ui->listMessageView->currentIndex();
-    if (idx.isValid()) {
-        auto text = ui->listMessageView->model()->data(idx);
-
-        QApplication::clipboard()->setText(text.value<QString>());
-    }
+    Q_UNUSED(event);
+    if (messageView_)
+        messageView_->setFocus();
 }
 
 void
 InstantMessagingWidget::updateConversationView(const std::string & convUid)
 {
-    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
-    auto currentConversationModel = currentAccountInfo.conversationModel.get();
-    currentConversationModel->clearUnreadInteractions(convUid);
-    auto currentConversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
-    if (currentConversation == currentConversationModel->allFilteredConversations().end()) {
-        return;
-    }
-    messageModel_.reset(new MessageModel(*currentConversation, currentAccountInfo, this->parent()));
-    ui->listMessageView->setModel(messageModel_.get());
-    ui->listMessageView->scrollToBottom();
-    this->show();
-}
 
-void
-InstantMessagingWidget::on_sendButton_clicked()
-{
-    emit ui->messageEdit->returnPressed();
 }
 
 void
@@ -150,5 +104,11 @@ InstantMessagingWidget::onIncomingMessage(const std::string& convUid, uint64_t i
         GlobalSystemTray::instance().showMessage("Ring: Message Received", QString::fromStdString(interaction.body));
         QApplication::alert(this, 5000);
     }
-    updateConversationView(convUid);
+    /*auto convModel = LRCInstance::getCurrentConversationModel();
+    convModel->clearUnreadInteractions(convUid);
+    auto currentConversation = Utils::getConversationFromUid(convUid, *convModel);
+    if (currentConversation == convModel->allFilteredConversations().end()) {
+        return;
+    }
+    ui->messageView->printNewInteraction(*convModel, interactionId, interaction);*/
 }

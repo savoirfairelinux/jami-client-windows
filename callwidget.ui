@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>746</width>
-    <height>639</height>
+    <width>1006</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -72,7 +72,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>324</width>
+          <width>320</width>
           <height>0</height>
          </size>
         </property>
@@ -278,22 +278,28 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="ConversationFilterButton" name="buttonConversations" native="true">
+                  <widget class="QPushButton" name="btnConversations">
                    <property name="toolTip">
                     <string>Show conversations</string>
                    </property>
-                   <property name="text" stdset="0">
+                   <property name="text">
                     <string>Conversations</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="ConversationFilterButton" name="buttonInvites" native="true">
+                  <widget class="QPushButton" name="btnInvites">
                    <property name="toolTip">
                     <string>Show invites</string>
                    </property>
-                   <property name="text" stdset="0">
+                   <property name="text">
                     <string>Invites</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -342,7 +348,7 @@
        <widget class="QWidget" name="widgetSplitterRight" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
+          <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
@@ -404,7 +410,7 @@
                <string/>
               </property>
               <property name="currentIndex">
-               <number>2</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="welcomePage">
                <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -870,84 +876,18 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="sendContactRequestPage">
-               <layout class="QVBoxLayout" name="verticalLayout_7">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_10">
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QPushButton" name="sendCRBackButton">
-                    <property name="minimumSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="toolTip">
-                     <string>Back to homepage button</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>18</width>
-                      <height>18</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_14">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="SendContactRequestWidget" name="sendContactRequestWidget" native="true">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="locale">
-                   <locale language="English" country="UnitedStates"/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
               <widget class="QWidget" name="messagingPage">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0">
                 <property name="spacing">
@@ -1234,18 +1174,18 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="messagesHBoxLayout" stretch="0,0,0">
+                 <layout class="QHBoxLayout" name="messagesHBoxLayout" stretch="0,1,0">
                   <property name="spacing">
                    <number>0</number>
                   </property>
                   <property name="leftMargin">
-                   <number>10</number>
+                   <number>0</number>
                   </property>
                   <property name="topMargin">
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>10</number>
+                   <number>0</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
@@ -1256,7 +1196,7 @@
                      <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Maximum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -1269,20 +1209,20 @@
                   <item>
                    <widget class="QWidget" name="messagesListWidget" native="true">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>200</width>
+                      <width>199</width>
                       <height>0</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>640</width>
+                      <width>680</width>
                       <height>16777215</height>
                      </size>
                     </property>
@@ -1303,127 +1243,7 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QListView" name="listMessageView">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>200</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>640</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <stylestrategy>PreferAntialias</stylestrategy>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::NoFrame</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Sunken</enum>
-                       </property>
-                       <property name="horizontalScrollBarPolicy">
-                        <enum>Qt::ScrollBarAsNeeded</enum>
-                       </property>
-                       <property name="verticalScrollMode">
-                        <enum>QAbstractItemView::ScrollPerPixel</enum>
-                       </property>
-                       <property name="horizontalScrollMode">
-                        <enum>QAbstractItemView::ScrollPerPixel</enum>
-                       </property>
-                       <property name="spacing">
-                        <number>1</number>
-                       </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                       <property name="selectionRectVisible">
-                        <bool>false</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="imSendHBoxLayout">
-                       <property name="leftMargin">
-                        <number>16</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>16</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>6</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>16</number>
-                       </property>
-                       <item>
-                        <widget class="QLineEdit" name="imMessageEdit">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="inputMask">
-                          <string/>
-                         </property>
-                         <property name="placeholderText">
-                          <string>Type your message here</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="sendIMButton">
-                         <property name="minimumSize">
-                          <size>
-                           <width>30</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>30</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="toolTip">
-                          <string>send message</string>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="ressources.qrc">
-                           <normaloff>:/images/icons/ic_send_24px.svg</normaloff>:/images/icons/ic_send_24px.svg</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>18</width>
-                           <height>18</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                      <widget class="MessageWebView" name="messageView"/>
                      </item>
                     </layout>
                    </widget>
@@ -1434,7 +1254,7 @@
                      <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Maximum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -1903,81 +1723,6 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="contactRequestPage">
-               <layout class="QVBoxLayout" name="verticalLayout_8">
-                <property name="leftMargin">
-                 <number>5</number>
-                </property>
-                <property name="topMargin">
-                 <number>5</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_2">
-                  <item>
-                   <widget class="QPushButton" name="pendingCRBackButton">
-                    <property name="minimumSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="toolTip">
-                     <string>Back to homepage button</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="ressources.qrc">
-                      <normaloff>:/images/icons/ic_arrow_back_white_24dp.png</normaloff>:/images/icons/ic_arrow_back_white_24dp.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>18</width>
-                      <height>18</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_13">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="ContactRequestWidget" name="contactRequestWidget" native="true">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
              </widget>
             </item>
            </layout>
@@ -1992,6 +1737,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
   <customwidget>
    <class>InstantMessagingWidget</class>
    <extends>QWidget</extends>
@@ -2020,18 +1770,6 @@
    <header>smartlistview.h</header>
   </customwidget>
   <customwidget>
-   <class>SendContactRequestWidget</class>
-   <extends>QWidget</extends>
-   <header>sendcontactrequestwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ContactRequestWidget</class>
-   <extends>QWidget</extends>
-   <header>contactrequestwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ConversationsFilterWidget</class>
    <extends>QWidget</extends>
    <header>conversationsfilterwidget.h</header>
@@ -2043,9 +1781,9 @@
    <header>currentaccountcombobox.h</header>
   </customwidget>
   <customwidget>
-   <class>ConversationFilterButton</class>
-   <extends>QWidget</extends>
-   <header>conversationfilterbutton.h</header>
+   <class>MessageWebView</class>
+   <extends>QWebEngineView</extends>
+   <header>messagewebview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

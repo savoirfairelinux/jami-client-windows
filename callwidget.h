@@ -51,7 +51,6 @@
 #include "api/newcallmodel.h"
 
 class ConversationItemDelegate;
-class ImDelegate;
 class QPropertyAnimation;
 
 namespace Ui {
@@ -87,8 +86,6 @@ private slots:
     void on_refuseButton_clicked();
     void on_cancelButton_clicked();
     void on_smartList_doubleClicked(const QModelIndex& index);
-    void on_sendIMButton_clicked();
-    void on_imMessageEdit_returnPressed();
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
     void on_sendContactRequestButton_clicked();
@@ -101,15 +98,12 @@ private slots:
 
 private slots:
     void smartListSelectionChanged(const QItemSelection  &selected, const QItemSelection  &deselected);
-    void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
-    void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm, media::Media::Direction dir);
     void onIncomingMessage(const std::string & convUid, uint64_t interactionId, const lrc::api::interaction::Info & interaction);
 
 private:
     void placeCall();
     void conversationsButtonClicked();
     void invitationsButtonClicked();
-    void setupOutOfCallIM();
     void setupSmartListContextMenu(const QPoint &pos);
     void setupQRCode(QString ringID);
     void backToWelcomePage();
@@ -137,7 +131,6 @@ private:
 
     QMenu* menu_;
     ConversationItemDelegate* conversationItemDelegate_;
-    ImDelegate* imDelegate_;
 
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
@@ -156,7 +149,6 @@ private:
     lrc::api::profile::Type currentTypeFilter_{};
 
     std::unique_ptr<SmartListModel> smartListModel_;
-    std::unique_ptr<MessageModel> messageModel_;
     QMetaObject::Connection modelSortedConnection_;
     QMetaObject::Connection modelUpdatedConnection_;
     QMetaObject::Connection filterChangedConnection_;
@@ -167,4 +159,5 @@ private:
     QMetaObject::Connection conversationClearedConnection;
     QMetaObject::Connection selectedCallChanged_;
     QMetaObject::Connection smartlistSelectionConnection_;
+    QMetaObject::Connection interactionRemovedConnection_;
 };
