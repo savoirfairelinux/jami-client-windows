@@ -27,11 +27,14 @@
 #include "api/conversationmodel.h"
 
 // Client
+#include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
 
+using InteractionInfo = lrc::api::interaction::Info;
+
 MessageModel::MessageModel(const ConversationInfo& conv, const AccountInfo& acc, QObject *parent)
-    : QAbstractItemModel(parent),
+    : QAbstractListModel(parent),
     conv_(conv),
     acc_(acc)
 {
@@ -80,7 +83,7 @@ QVariant MessageModel::data(const QModelIndex &index, int role) const
     case Role::InteractionDate:
     {
         auto& date = item.timestamp;
-        return QVariant(QDateTime::fromTime_t(date));
+        return QVariant(date);
     }
     case Role::Status:
         return QVariant::fromValue(static_cast<int>(item.status));
@@ -88,6 +91,27 @@ QVariant MessageModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue(lrc::api::interaction::isOutgoing(item));
     case Role::Type:
         return QVariant::fromValue(static_cast<int>(item.type));
+    case Role::Conversation:
+        return QVariant::fromValue(conv_);
+    case Role::Sequencing:
+    {
+        auto interactionId = (*it).first;
+        auto sequencingIt = sequencingCache_.find(interactionId);
+        if (sequencingIt == sequencingCache_.end()) {
+            qDebug() << "sequencing entry not found in cache";
+            auto newSequencing = computeSequencing(index);
+            sequencingCache_.insert(std::pair<uint64_t, MsgSeq>(interactionId, newSequencing));
+            return QVariant::fromValue(Utils::toUnderlyingValue(newSequencing));
+        }
+        return QVariant::fromValue(Utils::toUnderlyingValue((*sequencingIt).second));
+    }
+    case HasIndexWidget:
+    {
+        if (Utils::indexInVector(disposeBag_, index.row()) != -1) {
+            return QVariant::fromValue(true);
+        }
+        return QVariant::fromValue(false);
+    }
     }
     return QVariant();
 }
@@ -120,4 +144,143 @@ Qt::ItemFlags MessageModel::flags(const QModelIndex &index) const
         flags &= ~(Qt::ItemIsSelectable);
     }
     return flags;
+}
+
+MsgSeq
+MessageModel::computeSequencing(const QModelIndex& index) const {
+    auto conv = index
+        .data(static_cast<int>(MessageModel::Role::Conversation))
+        .value<MessageModel::ConversationInfo>();
+
+    auto row = index.row();
+
+    auto it = conv.interactions.begin();
+    std::advance(it, row);
+    auto interaction = it->second;
+
+    if (interaction.type != lrc::api::interaction::Type::TEXT ||
+        conv.interactions.size() == 1) {
+        return MsgSeq::SINGLE_WITH_TIME;
+    }
+
+    if (row == 0) {
+        auto end = conv.interactions.end();
+        if (it == conv.interactions.end()) {
+            return MsgSeq::SINGLE_WITH_TIME;
+        }
+        auto nextIt = it;
+        nextIt++;
+        auto nextInteraction = nextIt->second;
+        if (sequenceChanged(interaction, nextInteraction)) {
+            return MsgSeq::SINGLE_WITH_TIME;
+        }
+        return MsgSeq::FIRST_WITH_TIME;
+    }
+
+    if (row == rowCount() - 1) {
+        if (it == conv.interactions.begin()) {
+            return MsgSeq::SINGLE_WITH_TIME;
+        }
+        auto previousIt = it;
+        previousIt--;
+        auto previousInteraction = previousIt->second;
+        bool timeChanged = sequenceTimeChanged(interaction, previousInteraction);
+        bool authorChanged = sequenceAuthorChanged(interaction, previousInteraction);
+        if (!timeChanged && !authorChanged) {
+            return MsgSeq::LAST_IN_SEQUENCE;
+        }
+        if (!timeChanged && authorChanged) {
+            return MsgSeq::SINGLE_WITHOUT_TIME;
+        }
+        return MsgSeq::SINGLE_WITH_TIME;
+    }
+    if (it == conv.interactions.begin() || it == conv.interactions.end()) {
+        return MsgSeq::SINGLE_WITH_TIME;
+    }
+
+    auto previousIt = it;
+    previousIt--;
+    auto previousInteraction = previousIt->second;
+    auto nextIt = it;
+    nextIt++;
+    auto nextInteraction = nextIt->second;
+
+    bool timeChanged = sequenceTimeChanged(interaction, previousInteraction);
+    bool authorChanged = sequenceAuthorChanged(interaction, previousInteraction);
+    bool sequenceWillChange = sequenceChanged(interaction, nextInteraction);
+    if (previousInteraction.type == lrc::api::interaction::Type::OUTGOING_DATA_TRANSFER ||
+        previousInteraction.type == lrc::api::interaction::Type::INCOMING_DATA_TRANSFER) {
+        if (!sequenceWillChange) {
+            return MsgSeq::FIRST_WITH_TIME;
+        }
+        return MsgSeq::SINGLE_WITH_TIME;
+    }
+    if (!sequenceWillChange) {
+        if (!timeChanged && !authorChanged) {
+            return MsgSeq::MIDDLE_IN_SEQUENCE;
+        }
+        if (timeChanged) {
+            return MsgSeq::FIRST_WITH_TIME;
+        }
+        return MsgSeq::FIRST_WITHOUT_TIME;
+    } if (!timeChanged && !authorChanged) {
+        return MsgSeq::LAST_IN_SEQUENCE;
+    } if (timeChanged) {
+        return MsgSeq::SINGLE_WITH_TIME;
+    }
+    return MsgSeq::SINGLE_WITHOUT_TIME;
+}
+
+bool
+MessageModel::sequenceChanged(InteractionInfo& firstInteraction, InteractionInfo& secondInteraction) const {
+    return (sequenceTimeChanged(firstInteraction, secondInteraction) || sequenceAuthorChanged(firstInteraction, secondInteraction));
+}
+
+bool
+MessageModel::sequenceTimeChanged(InteractionInfo& firstInteraction, InteractionInfo& secondInteraction) const {
+    bool timeChanged = false;
+   /* NSDate* firstMessageTime = [NSDate dateWithTimeIntervalSince1970 : firstInteraction.timestamp];
+    NSDate* secondMessageTime = [NSDate dateWithTimeIntervalSince1970 : secondInteraction.timestamp];
+    bool hourComp = [[NSCalendar currentCalendar] compareDate:firstMessageTime toDate : secondMessageTime toUnitGranularity : NSCalendarUnitHour];
+    bool minutComp = [[NSCalendar currentCalendar] compareDate:firstMessageTime toDate : secondMessageTime toUnitGranularity : NSCalendarUnitMinute];
+    if (hourComp != NSOrderedSame || minutComp != NSOrderedSame) {
+        timeChanged = true;
+    }*/
+    return timeChanged;
+}
+
+bool
+MessageModel::sequenceAuthorChanged(InteractionInfo& firstInteraction, InteractionInfo& secondInteraction) const {
+    bool authorChanged = true;
+    bool isOutgoing = lrc::api::interaction::isOutgoing(firstInteraction);
+    if ((secondInteraction.type == lrc::api::interaction::Type::TEXT) && (isOutgoing == lrc::api::interaction::isOutgoing(secondInteraction))) {
+        authorChanged = false;
+    }
+    return authorChanged;
+}
+
+const std::string&
+MessageModel::timeForMessage(time_t msgTime) const {
+    /* NSDate *today = [NSDate date];
+     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+     [dateFormatter setLocale : [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale currentLocale] localeIdentifier]]];
+     if ([[NSCalendar currentCalendar] compareDate:today
+         toDate : msgTime
+         toUnitGranularity : NSCalendarUnitYear] != NSOrderedSame) {
+         return[NSDateFormatter localizedStringFromDate : msgTime dateStyle : NSDateFormatterMediumStyle timeStyle : NSDateFormatterMediumStyle];
+     }
+
+     if ([[NSCalendar currentCalendar] compareDate:today
+         toDate : msgTime
+         toUnitGranularity : NSCalendarUnitDay] != NSOrderedSame ||
+         [[NSCalendar currentCalendar] compareDate:today
+         toDate : msgTime
+         toUnitGranularity : NSCalendarUnitMonth] != NSOrderedSame) {
+         [dateFormatter setDateFormat : @"MMM dd, HH:mm"];
+             return[dateFormatter stringFromDate : msgTime];
+     }
+
+     [dateFormatter setDateFormat : @"HH:mm"];
+         return[dateFormatter stringFromDate : msgTime];*/
+    return "";
 }

@@ -101,15 +101,12 @@ private slots:
 
 private slots:
     void smartListSelectionChanged(const QItemSelection  &selected, const QItemSelection  &deselected);
-    void contactReqListCurrentChanged(const QModelIndex &currentIdx, const QModelIndex &previousIdx);
-    void slotAccountMessageReceived(const QMap<QString,QString> message,ContactMethod* cm, media::Media::Direction dir);
     void onIncomingMessage(const std::string & convUid, uint64_t interactionId, const lrc::api::interaction::Info & interaction);
 
 private:
     void placeCall();
     void conversationsButtonClicked();
     void invitationsButtonClicked();
-    void setupOutOfCallIM();
     void setupSmartListContextMenu(const QPoint &pos);
     void setupQRCode(QString ringID);
     void backToWelcomePage();
@@ -167,4 +164,5 @@ private:
     QMetaObject::Connection conversationClearedConnection;
     QMetaObject::Connection selectedCallChanged_;
     QMetaObject::Connection smartlistSelectionConnection_;
+    QMetaObject::Connection interactionRemovedConnection_;
 };
