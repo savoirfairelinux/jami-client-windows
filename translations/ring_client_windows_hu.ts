@@ -138,7 +138,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation>Általános fiókinformációk konfigurálása</translation>
+        <translation>Általános fiókinformáció beállítások</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -335,7 +335,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation>Audió / videó kodek beállításainak konfigurálása</translation>
+        <translation>Audió- és videó-kodek beállítások</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -355,7 +355,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation>Fiók speciális konfiguráció</translation>
+        <translation>Fiók haladó beállítások</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -365,7 +365,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1356"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Regisztráció érvényességének lejárta (másodpercekben):</translation>
+        <translation>Regisztráció érvényességének lejárta (másodperc):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
@@ -441,7 +441,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
         <location filename="../accountdetails.ui" line="1688"/>
         <location filename="../accountdetails.ui" line="1735"/>
         <source>Server URL</source>
-        <translation>Szerver-URL</translation>
+        <translation>Kiszolgáló-URL</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
@@ -456,22 +456,22 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation>TURN szerver URL bemenet</translation>
+        <translation>TURN kiszolgáló-URL bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation>TURN szerver felhasználónév bemenet</translation>
+        <translation>TURN kiszolgáló felhasználónév bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation>TURN szerver jelszó bemenet</translation>
+        <translation>TURN kiszolgáló jelszó bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation>TURN szerver Realm bemenet</translation>
+        <translation>TURN kiszolgáló tartomány bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -530,7 +530,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation>Fiók biztonsági konfigurációja</translation>
+        <translation>Fiók biztonsági beállítások</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -793,204 +793,207 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="215"/>
+        <location filename="../callwidget.ui" line="218"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Partnerek keresése vagy Ringazonosító beírása</translation>
+        <translation>Partnerek keresése vagy Ring azonosító beírása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="296"/>
+        <location filename="../callwidget.ui" line="283"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Beszélgetések megjelenítése</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="299"/>
+        <location filename="../callwidget.ui" line="286"/>
         <source>Conversations</source>
         <translation>Beszélgetések</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="559"/>
+        <location filename="../callwidget.ui" line="556"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>A Ring szabad szoftver az univerzális kommunikációhoz, amely tiszteletben tartja a felhasználók szabadságát és magánszféráját.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="206"/>
+        <location filename="../callwidget.ui" line="209"/>
         <source>Search contact text input</source>
         <translation>Keresés kapcsolati szövegbevitel</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="474"/>
+        <location filename="../callwidget.ui" line="471"/>
         <source>Configuration menu</source>
-        <translation>Konfigurációs menü</translation>
+        <translation>Beállítások menü</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="710"/>
+        <location filename="../callwidget.ui" line="707"/>
         <source>Show ring ID QR code</source>
         <translation>Ring azonosító QR-kód mutatása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="761"/>
+        <location filename="../callwidget.ui" line="758"/>
         <source>Share ring ID button</source>
         <translation>Ring azonosító megosztó gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="819"/>
+        <location filename="../callwidget.ui" line="816"/>
         <source>Double-click to copy</source>
         <translation>Kattintson duplán a másolásra</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="854"/>
+        <location filename="../callwidget.ui" line="851"/>
         <source>Error while generating QR Code</source>
         <translation>Hiba a QR kód generálása közben</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="898"/>
-        <location filename="../callwidget.ui" line="988"/>
-        <location filename="../callwidget.ui" line="1729"/>
+        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="1007"/>
+        <location filename="../callwidget.ui" line="1937"/>
         <source>Back to homepage button</source>
         <translation>Vissza a főoldalra gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1114"/>
+        <location filename="../callwidget.ui" line="1213"/>
         <source>Add to contacts</source>
         <translation>Hozzáadás a partnerekhez</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="306"/>
+        <location filename="../callwidget.ui" line="293"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Meghívás megjelenítése</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="309"/>
+        <location filename="../callwidget.ui" line="296"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Meghívás</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="597"/>
+        <location filename="../callwidget.ui" line="594"/>
         <source>
                                         This is your RingID.
                                         Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+                                        Ez az Ön Ring azonosítója.
+                                        Másolja és ossza meg a barátaival!
+                                      </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1203"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Type your message here</source>
         <translation>Üzenet írása itt</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1222"/>
+        <location filename="../callwidget.ui" line="1409"/>
         <source>send message</source>
         <translation>üzenet küldése</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1348"/>
+        <location filename="../callwidget.ui" line="1556"/>
         <source>BestId</source>
         <translation>Legjobb azonosító</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1358"/>
+        <location filename="../callwidget.ui" line="1566"/>
         <source>Wants to talk to you!</source>
         <translation>Beszélni akar önnel!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1387"/>
+        <location filename="../callwidget.ui" line="1595"/>
         <source>Answer incoming call button</source>
         <translation>Bejövő hívás fogadása gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1432"/>
+        <location filename="../callwidget.ui" line="1640"/>
         <source>Ignore incoming call button</source>
         <translation>Bejövő hívás figyelmen kívül hagyása gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1459"/>
+        <location filename="../callwidget.ui" line="1667"/>
         <source>Answer</source>
         <translation>Válaszol</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1491"/>
+        <location filename="../callwidget.ui" line="1699"/>
         <source>Ignore</source>
         <translation>Figyelmen kívül hagy</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1562"/>
+        <location filename="../callwidget.ui" line="1770"/>
         <source>Calling</source>
         <translation>Hívás</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1615"/>
+        <location filename="../callwidget.ui" line="1823"/>
         <source>Cancel outgoing call</source>
         <translation>Kimenő hívás visszavonása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1638"/>
+        <location filename="../callwidget.ui" line="1846"/>
         <source>Cancel</source>
         <translation>Mégse</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1338"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Call</source>
         <translation>Hívás</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="228"/>
-        <source>Start video call</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="239"/>
-        <source>Start audio call</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../callwidget.cpp" line="255"/>
-        <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <source>Start video call</source>
+        <translation>Videóhívás indítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="262"/>
+        <location filename="../callwidget.cpp" line="266"/>
+        <source>Start audio call</source>
+        <translation>Hanghívás indítása</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="282"/>
+        <source>Clear conversation</source>
+        <translation>Beszélgetés törlése</translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Block contact</source>
         <translation>Blokkolt partner</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="273"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy number</source>
         <translation>Szám másolása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>Contact me on Ring</source>
         <translation>Az elérhetőségem a Ringen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>My RingId is : </source>
-        <translation>A Ringazonosítóm:</translation>
+        <translation>A Ring azonosítóm:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="177"/>
+        <location filename="../callwidget.cpp" line="204"/>
         <source>Copy</source>
         <translation>Másolás</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
+        <location filename="../callwidget.cpp" line="224"/>
         <source>Message incoming from %1</source>
         <translation>Bejövő üzenet a következőtől: %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="709"/>
+        <location filename="../callwidget.cpp" line="718"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="714"/>
+        <location filename="../callwidget.cpp" line="723"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="580"/>
+        <location filename="../callwidget.cpp" line="607"/>
         <source>Call incoming from %1</source>
         <translation>Bejövő hívás tőle: %1</translation>
     </message>
@@ -1005,7 +1008,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../configurationwidget.ui" line="97"/>
         <source>General configuration tab</source>
-        <translation>Általános konfigurációs lap</translation>
+        <translation>Általános beállítások lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="103"/>
@@ -1015,7 +1018,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../configurationwidget.ui" line="119"/>
         <source>Audio / Video configuration tab</source>
-        <translation>Audió / Videó konfigurációs lap</translation>
+        <translation>Audió és videó beállítások lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="122"/>
@@ -1025,7 +1028,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../configurationwidget.ui" line="138"/>
         <source>Accounts configuration tab</source>
-        <translation>Fiókok konfigurálása lap</translation>
+        <translation>Fiókok beállítások lap</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="141"/>
@@ -1456,17 +1459,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../invitebuttonswidget.ui" line="72"/>
         <source>Accept invite</source>
-        <translation type="unfinished"/>
+        <translation>Meghívás elfogadása</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="104"/>
         <source>Ignore invite</source>
-        <translation type="unfinished"/>
+        <translation>Meghívás mellőzése</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="136"/>
         <source>Block person</source>
-        <translation type="unfinished"/>
+        <translation>Személy blokkolása</translation>
     </message>
 </context>
 <context>
@@ -1479,7 +1482,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../mainwindow.cpp" line="75"/>
         <source>Configuration</source>
-        <translation>Konfiguráció</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="78"/>
@@ -1672,7 +1675,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../videooverlay.ui" line="524"/>
         <source>Configuration</source>
-        <translation>Konfiguráció</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="57"/>

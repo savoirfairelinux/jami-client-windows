@@ -793,79 +793,79 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="215"/>
+        <location filename="../callwidget.ui" line="218"/>
         <source>Search contacts or enter ring ID</source>
         <translation>Zoekt contacten of voerd ne Ring-ID in</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="296"/>
+        <location filename="../callwidget.ui" line="283"/>
         <source>Show conversations</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="299"/>
+        <location filename="../callwidget.ui" line="286"/>
         <source>Conversations</source>
         <translation>Gesprekken</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="559"/>
+        <location filename="../callwidget.ui" line="556"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring is vrije software voor universele communicatie, die de vrijheden en privacy van haar gebruikers eerbiedigd.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="206"/>
+        <location filename="../callwidget.ui" line="209"/>
         <source>Search contact text input</source>
         <translation>Tekstinvoer contact zoeken</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="474"/>
+        <location filename="../callwidget.ui" line="471"/>
         <source>Configuration menu</source>
         <translation>Configuratiemenu</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="710"/>
+        <location filename="../callwidget.ui" line="707"/>
         <source>Show ring ID QR code</source>
         <translation>Toond QR-code voor Ring-ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="761"/>
+        <location filename="../callwidget.ui" line="758"/>
         <source>Share ring ID button</source>
         <translation>Knop Ring-ID delen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="819"/>
+        <location filename="../callwidget.ui" line="816"/>
         <source>Double-click to copy</source>
         <translation>Dubbelklik voor te kopiëren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="854"/>
+        <location filename="../callwidget.ui" line="851"/>
         <source>Error while generating QR Code</source>
         <translation>Fout bij aanmaken van QR-code</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="898"/>
-        <location filename="../callwidget.ui" line="988"/>
-        <location filename="../callwidget.ui" line="1729"/>
+        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="1007"/>
+        <location filename="../callwidget.ui" line="1937"/>
         <source>Back to homepage button</source>
         <translation>Knop terug naar startpagina</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1114"/>
+        <location filename="../callwidget.ui" line="1213"/>
         <source>Add to contacts</source>
         <translation>Aan contacten toevoegen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="306"/>
+        <location filename="../callwidget.ui" line="293"/>
         <source>Show invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="309"/>
+        <location filename="../callwidget.ui" line="296"/>
         <source>Invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="597"/>
+        <location filename="../callwidget.ui" line="594"/>
         <source>
                                         This is your RingID.
                                         Copy and share it with your friends!
@@ -873,124 +873,124 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1203"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Type your message here</source>
         <translation>Typt hier uw bericht</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1222"/>
+        <location filename="../callwidget.ui" line="1409"/>
         <source>send message</source>
         <translation>bericht versturen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1348"/>
+        <location filename="../callwidget.ui" line="1556"/>
         <source>BestId</source>
         <translation>BestId</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1358"/>
+        <location filename="../callwidget.ui" line="1566"/>
         <source>Wants to talk to you!</source>
         <translation>Wild met u spreken!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1387"/>
+        <location filename="../callwidget.ui" line="1595"/>
         <source>Answer incoming call button</source>
         <translation>Knop inkomenden oproep beantwoorden</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1432"/>
+        <location filename="../callwidget.ui" line="1640"/>
         <source>Ignore incoming call button</source>
         <translation>Knop inkomenden oproep negeren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1459"/>
+        <location filename="../callwidget.ui" line="1667"/>
         <source>Answer</source>
         <translation>Beantwoorden</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1491"/>
+        <location filename="../callwidget.ui" line="1699"/>
         <source>Ignore</source>
         <translation>Negeren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1562"/>
+        <location filename="../callwidget.ui" line="1770"/>
         <source>Calling</source>
         <translation>Bellen</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1615"/>
+        <location filename="../callwidget.ui" line="1823"/>
         <source>Cancel outgoing call</source>
         <translation>Uitgaanden oproep annuleren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1638"/>
+        <location filename="../callwidget.ui" line="1846"/>
         <source>Cancel</source>
         <translation>Annuleren</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1338"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Call</source>
         <translation>Bellen</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="228"/>
+        <location filename="../callwidget.cpp" line="255"/>
         <source>Start video call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="239"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="282"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="262"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Blokkeer contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="273"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy number</source>
         <translation>Nummer kopiëren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>Contact me on Ring</source>
         <translation>Contacteerd mij via Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>My RingId is : </source>
         <translation>Mijne Ring-ID is:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="177"/>
+        <location filename="../callwidget.cpp" line="204"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
+        <location filename="../callwidget.cpp" line="224"/>
         <source>Message incoming from %1</source>
         <translation>Inkomend bericht van %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="709"/>
+        <location filename="../callwidget.cpp" line="718"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="714"/>
+        <location filename="../callwidget.cpp" line="723"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="580"/>
+        <location filename="../callwidget.cpp" line="607"/>
         <source>Call incoming from %1</source>
         <translation>Inkomenden oproep van %1</translation>
     </message>
@@ -2048,87 +2048,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="33"/>
         <source>Wizard Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoogvenster</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="36"/>
         <source>Account creation wizard dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoogvenster voor aanmaken van account</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="72"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlabel</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="78"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Welkom bij</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="107"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlogo</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop Ring-account aanmaken</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor starten van aanmaken van Ring-account na druk op knop</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="151"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ring-account aanmaken</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="164"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Knop apparaat koppelen</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="170"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor koppelen van apparaat na druk op knop</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="173"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Dit apparaat aan nen account koppelen</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="205"/>
         <source>Select link method</source>
-        <translation type="unfinished"/>
+        <translation>Kiesd een koppelingsmethode</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="254"/>
         <source>Link account to device from the network</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen aan apparaat van het netwerk</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="257"/>
         <source>Link account from DHT</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen van DHT</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="270"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Koppelen van geëxporteerd accountarchiefbestand</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="273"/>
         <source>Link account from file</source>
-        <translation type="unfinished"/>
+        <translation>Account koppelen van bestand</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="322"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Hoe voeg ik een apparaat toe</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="329"/>
@@ -2142,236 +2142,245 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Voor dit apparaat aan nen anderen account te koppelen moe’ g’eerst&lt;/span&gt; &lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;een pincode verkrijgen&lt;/span&gt;. &lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Voor de pincode te beheren:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ga naar &lt;span style=&quot; font-weight:600;&quot;&gt;d’accountbeheerinstellingen&lt;/span&gt; van een vorig apparaat&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Kiesd de &lt;span style=&quot; font-weight:600;&quot;&gt;Ring-account&lt;/span&gt; die ge wild gebruiken&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ga naar het tabblad &lt;span style=&quot; font-weight:600;&quot;&gt;&lt;/li&gt;Apparaten
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Selecteerd &lt;span style=&quot; font-weight:600;&quot;&gt;Een apparaat toevoegen&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Ge zuld de pincode krijgen die ge nodig hebd voor dit proces te voltooien. De pincode is slechts &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minuten&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; geldig.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="357"/>
         <source>Select file to import</source>
-        <translation type="unfinished"/>
+        <translation>Kiesd een bestand voor t’importeren</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="382"/>
         <source>Account archive path:</source>
-        <translation type="unfinished"/>
+        <translation>Accountarchiefpad:</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie accountarchiefpad</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Archiefpaswoord:</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="413"/>
         <source>Archive passord input</source>
-        <translation type="unfinished"/>
+        <translation>Archiefpaswoordinvoer</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="450"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Maakt uw profiel aan</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="482"/>
         <source>Photobooth Widget</source>
-        <translation type="unfinished"/>
+        <translation>Fotoautomaatwidget</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="509"/>
         <source>Avatar display</source>
-        <translation type="unfinished"/>
+        <translation>Avatarweergave</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="564"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Voerd uwe volledige naam in:</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="588"/>
         <source>Full name edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken volledige naam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="594"/>
         <source>Text entry for full name input</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer voor volledige naam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="629"/>
         <location filename="../wizardwidget.cpp" line="167"/>
         <source>Create your account</source>
-        <translation type="unfinished"/>
+        <translation>Maakt uwen account aan</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Registreerd uwe gebruikersnaam op de Ring, zodat enkel gij ze kund gebruiken. Uw vrienden gaan u kunnen bellen aan d’hand van uwe gebruikersnaam ipv uwe Ring-ID.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="673"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakske openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="676"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakske voor te kiezen of da’ de gebruiker nen openbare gebruikersnaam wild</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Registreerd nen openbare gebruikersnaam (experimenteel):</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="724"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="730"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Kiesd uwe gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="746"/>
         <source>Public username validation status</source>
-        <translation type="unfinished"/>
+        <translation>Status bevestiging openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="749"/>
         <location filename="../wizardwidget.cpp" line="253"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Zoeken…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="778"/>
         <source>PIN edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken pincode</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="784"/>
         <source>Device linking PIN text entry</source>
-        <translation type="unfinished"/>
+        <translation>Tekstinvoer pincode koppelen apparaat</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="787"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>Voerd uw pincode in</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="814"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="820"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="826"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="853"/>
         <location filename="../wizardwidget.ui" line="859"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordbevestigingstekstinvoer</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="865"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Bevestigd paswoord</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="933"/>
         <location filename="../wizardwidget.cpp" line="101"/>
         <source>Generating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Uwe Ring-account word aangemaakt…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="969"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Knop vorige pagina</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="975"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>drukt op de knop voor naar de vorige pagina van den assistent te gaan</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="978"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Vorige</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="1010"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Knop volgende pagina</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="1016"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Drukt op de knop voor naar de volgende pagina van den assistent te gaan</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="1019"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Volgende</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="71"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Uwen account moe worden gemigreerd. Voerd uw paswoord in.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Uwe Ring-account word gemigreerd…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="99"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Accountarchief importeren…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="163"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Een apparaat toevoegen</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="281"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam is nie beschikbaar.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="284"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam is beschikbaar.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="287"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam is ongeldig.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="290"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Netwerkfout.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="337"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Bestand openen</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="339"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Ring-archiefbestanden (*.gz);; Alle bestanden (*)</translation>
     </message>
 </context>
 </TS>

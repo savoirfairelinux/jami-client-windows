@@ -793,79 +793,79 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="215"/>
+        <location filename="../callwidget.ui" line="218"/>
         <source>Search contacts or enter ring ID</source>
         <translation>Kişileri ara veya Ring kimliği gir</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="296"/>
+        <location filename="../callwidget.ui" line="283"/>
         <source>Show conversations</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="299"/>
+        <location filename="../callwidget.ui" line="286"/>
         <source>Conversations</source>
         <translation>Konuşmalar</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="559"/>
+        <location filename="../callwidget.ui" line="556"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring; kullanıcılarının özgürlüklerine ve gizliliğine önem veren, evrensel iletişim için özgür yazılımdır.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="206"/>
+        <location filename="../callwidget.ui" line="209"/>
         <source>Search contact text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="474"/>
+        <location filename="../callwidget.ui" line="471"/>
         <source>Configuration menu</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="710"/>
+        <location filename="../callwidget.ui" line="707"/>
         <source>Show ring ID QR code</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="761"/>
+        <location filename="../callwidget.ui" line="758"/>
         <source>Share ring ID button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="819"/>
+        <location filename="../callwidget.ui" line="816"/>
         <source>Double-click to copy</source>
         <translation>Kopyalamak için çift tıkla</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="854"/>
+        <location filename="../callwidget.ui" line="851"/>
         <source>Error while generating QR Code</source>
         <translation>QR Kodu oluşturulurken hata</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="898"/>
-        <location filename="../callwidget.ui" line="988"/>
-        <location filename="../callwidget.ui" line="1729"/>
+        <location filename="../callwidget.ui" line="895"/>
+        <location filename="../callwidget.ui" line="1007"/>
+        <location filename="../callwidget.ui" line="1937"/>
         <source>Back to homepage button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1114"/>
+        <location filename="../callwidget.ui" line="1213"/>
         <source>Add to contacts</source>
         <translation>Kişilere ekle</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="306"/>
+        <location filename="../callwidget.ui" line="293"/>
         <source>Show invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="309"/>
+        <location filename="../callwidget.ui" line="296"/>
         <source>Invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="597"/>
+        <location filename="../callwidget.ui" line="594"/>
         <source>
                                         This is your RingID.
                                         Copy and share it with your friends!
@@ -873,124 +873,124 @@ Ring güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1203"/>
+        <location filename="../callwidget.ui" line="1390"/>
         <source>Type your message here</source>
         <translation>İletinizi buraya yazın</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1222"/>
+        <location filename="../callwidget.ui" line="1409"/>
         <source>send message</source>
         <translation>ileti gönder</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1348"/>
+        <location filename="../callwidget.ui" line="1556"/>
         <source>BestId</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1358"/>
+        <location filename="../callwidget.ui" line="1566"/>
         <source>Wants to talk to you!</source>
         <translation>Sizinle konuşmak istiyor!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1387"/>
+        <location filename="../callwidget.ui" line="1595"/>
         <source>Answer incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1432"/>
+        <location filename="../callwidget.ui" line="1640"/>
         <source>Ignore incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1459"/>
+        <location filename="../callwidget.ui" line="1667"/>
         <source>Answer</source>
         <translation>Yanıtla</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1491"/>
+        <location filename="../callwidget.ui" line="1699"/>
         <source>Ignore</source>
         <translation>Göz ardı et</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1562"/>
+        <location filename="../callwidget.ui" line="1770"/>
         <source>Calling</source>
         <translation>Aranıyor</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1615"/>
+        <location filename="../callwidget.ui" line="1823"/>
         <source>Cancel outgoing call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1638"/>
+        <location filename="../callwidget.ui" line="1846"/>
         <source>Cancel</source>
         <translation>İptal</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1338"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Call</source>
         <translation>Ara</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="228"/>
+        <location filename="../callwidget.cpp" line="255"/>
         <source>Start video call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="239"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="282"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="262"/>
+        <location filename="../callwidget.cpp" line="289"/>
         <source>Block contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="273"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Copy number</source>
         <translation>Numarayı kopyala</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>Contact me on Ring</source>
         <translation>Ring&apos;de benimle iletişime geç</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="803"/>
+        <location filename="../callwidget.cpp" line="810"/>
         <source>My RingId is : </source>
         <translation>Ring kimliğim:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="177"/>
+        <location filename="../callwidget.cpp" line="204"/>
         <source>Copy</source>
         <translation>Kopyala</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="197"/>
+        <location filename="../callwidget.cpp" line="224"/>
         <source>Message incoming from %1</source>
         <translation>%1&apos;den gelen ileti</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="709"/>
+        <location filename="../callwidget.cpp" line="718"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="714"/>
+        <location filename="../callwidget.cpp" line="723"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="580"/>
+        <location filename="../callwidget.cpp" line="607"/>
         <source>Call incoming from %1</source>
         <translation>%1$s&apos;dan gelen arama</translation>
     </message>
@@ -2054,7 +2054,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="78"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Hoş Geldiniz</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="107"/>
@@ -2074,7 +2074,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="151"/>
         <source>Create Ring account</source>
-        <translation type="unfinished"/>
+        <translation>Ring Hesabı Oluştur</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="164"/>
@@ -2089,7 +2089,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="173"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Bu aygıtı bir hesaba bağla</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="205"/>
@@ -2119,7 +2119,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="322"/>
         <source>How to add a device</source>
-        <translation type="unfinished"/>
+        <translation>Bir aygıt nasıl eklenir</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="329"/>
@@ -2163,7 +2163,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="450"/>
         <source>Create your profile</source>
-        <translation type="unfinished"/>
+        <translation>Profilinizi oluşturun</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="482"/>
@@ -2178,7 +2178,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="564"/>
         <source>Enter your full name:</source>
-        <translation type="unfinished"/>
+        <translation>Tam adınızı girin:</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="588"/>
@@ -2194,12 +2194,12 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizardwidget.ui" line="629"/>
         <location filename="../wizardwidget.cpp" line="167"/>
         <source>Create your account</source>
-        <translation type="unfinished"/>
+        <translation>Hesabınızı oluşturun</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adınızı Ring sisteminde kaydedin. Bu işlem kullanıcı adınızı yalnızca sizin için ayıracak ve arkadaşlarınız sizi RingID&apos;niz yerine kullanıcı adınızı kullanarak arayabilecek.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="673"/>
@@ -2214,7 +2214,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="679"/>
         <source>Register public username (experimental)</source>
-        <translation type="unfinished"/>
+        <translation>Halka açık kullanıcı adı kaydet (deneysel)</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="724"/>
@@ -2224,7 +2224,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="730"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adınızı seçin</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="746"/>
@@ -2235,7 +2235,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizardwidget.ui" line="749"/>
         <location filename="../wizardwidget.cpp" line="253"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Arama yapılıyor...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="778"/>
@@ -2250,7 +2250,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="787"/>
         <source>Enter your pin</source>
-        <translation type="unfinished"/>
+        <translation>Pin&apos;inizi girin</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="814"/>
@@ -2265,7 +2265,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="826"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Parola</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="853"/>
@@ -2276,13 +2276,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="865"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Parolayı onayla</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="933"/>
         <location filename="../wizardwidget.cpp" line="101"/>
         <source>Generating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Ring hesabınız oluşturuluyor...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="969"/>
@@ -2297,7 +2297,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="978"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Önceki</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="1010"/>
@@ -2312,7 +2312,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="1019"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>İleri</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="71"/>
@@ -2322,7 +2322,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
-        <translation type="unfinished"/>
+        <translation>Ring hesabınız göç ettiriliyor...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="99"/>
@@ -2332,32 +2332,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="163"/>
         <source>Add a device</source>
-        <translation type="unfinished"/>
+        <translation>Bir aygıt ekle</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="281"/>
         <source>Username not available.</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adı uygun değil</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="284"/>
         <source>Username is available.</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adı uygun</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="287"/>
         <source>Username is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adı geçersiz.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="290"/>
         <source>Network error.</source>
-        <translation type="unfinished"/>
+        <translation>Ağ hatası.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="337"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Dosyayı Aç</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="339"/>
