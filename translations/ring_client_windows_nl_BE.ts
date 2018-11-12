@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Leef in Vrijheid of Sterf</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -148,7 +148,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation>Getoonden aliasinvoer</translation>
+        <translation>Getoonde aliasinvoer</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
@@ -214,12 +214,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation>Selectievakske oproepen automatisch beantwoorden</translation>
+        <translation>Selectievak oproepen automatisch beantwoorden</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation>Selectievakske UPnP ingeschakeld</translation>
+        <translation>Selectievak UPnP ingeschakeld</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
@@ -229,7 +229,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation>Voerd uw oud paswoord in</translation>
+        <translation>Voer uw oud paswoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
@@ -244,7 +244,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation>Voerd uw nieuw paswoord in</translation>
+        <translation>Voer uw nieuw paswoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -294,17 +294,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation>Selectievakske oproepen van onbekenden toestaan</translation>
+        <translation>Selectievak Oproepen van onbekenden toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
         <source>Allow Call From History checkbox</source>
-        <translation>Selectievakske oproepen uit oproepsgeschiedenis toestaan</translation>
+        <translation>Selectievak Oproepen uit oproepsgeschiedenis toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="892"/>
         <source>Allow Call From Contact checkbox</source>
-        <translation>Selectievakske oproepen uit contacten toestaan</translation>
+        <translation>Selectievak Oproepen uit contacten toestaan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="931"/>
@@ -405,7 +405,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
         <source>Set published address and port:</source>
-        <translation>Steld gepubliceerd adres en poort in:</translation>
+        <translation>Stel gepubliceerd adres en poort in:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1578"/>
@@ -430,12 +430,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation>selectievakske STUN gebruiken</translation>
+        <translation>Gebruik STUN selectievak</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
         <source>Use STUN</source>
-        <translation>STUN gebruiken</translation>
+        <translation>Gebruik STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1688"/>
@@ -446,12 +446,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation>selectievakske TURN gebruiken</translation>
+        <translation>gebruik TURN selectievak</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
         <source>Use TURN</source>
-        <translation>TURN gebruiken</translation>
+        <translation>Gebruik TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
@@ -486,7 +486,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1872"/>
         <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Deze instellingen worden enkel gebruikt tijdens SDP-sessieonderhandelingen in geval ICE nie ondersteund word door de server of de gebruiker.</translation>
+        <translation>Deze instellingen worden enkel gebruikt tijdens SDP-sessieonderhandelingen indien ICE niet ondersteund wordt door de server of de gebruiker.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
@@ -555,7 +555,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
         <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation>Selectievakske mediastream versleutelen (SRTP)</translation>
+        <translation>Mediastream versleutelen (SRTP) selectievak</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2420"/>
@@ -565,7 +565,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation>selectievakske standaardcodering gebruiken</translation>
+        <translation>selectievak standaardcodering gebruiken</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
@@ -590,7 +590,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Voor een nieuw apparaat aan uwe Ring-account toe te voegen, moet g’uwen account exporteren naar de Ring. Dit zal een pincode genereren die ge binnen de 5 minuten op uw nieuw apparaat moet invoeren.</translation>
+        <translation>Om een nieuw apparaat aan uw Ring-account toe te voegen, dient u uw account exporteren naar de Ring. Dit zal een pincode genereren die u binnen de 5 minuten op uw nieuw apparaat moet invoeren.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -641,7 +641,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation>Deze pincode moet binnen de 5 minuten op uw nieuw apparaat worden ingevoerd. Ge kund op elk moment een nieuwe code genereren.</translation>
+        <translation>Deze pincode moet binnen de 5 minuten op uw nieuw apparaat worden ingevoerd. U kan op elk moment een nieuwe code genereren.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
@@ -706,7 +706,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="233"/>
         <source>Choose File</source>
-        <translation>Kiesd een bestand</translation>
+        <translation>Kies een bestand</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="235"/>
@@ -716,12 +716,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="308"/>
         <source>Please wait while your PIN is generated.</source>
-        <translation>Uw pincode word gegenereerd, efkens geduld.</translation>
+        <translation>Uw pincode word gegenereerd, even geduld.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="327"/>
         <source>Network Error. Please try again later.</source>
-        <translation>Netwerkfout, probeerd het later opnieuw.</translation>
+        <translation>Netwerkfout, probeer het later opnieuw.</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="331"/>
@@ -731,7 +731,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
-        <translation>Bezig met registreren… Dit kan efkens duren</translation>
+        <translation>Bezig met registreren… Dit kan even duren</translation>
     </message>
 </context>
 <context>
@@ -744,12 +744,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation>Lijst me’ geblokkeerde contacten</translation>
+        <translation>Lijst met geblokkeerde contacten</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
         <source>Banned ID</source>
-        <translation>Geblokkeerden ID</translation>
+        <translation>Geblokkeerde ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
@@ -777,7 +777,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callutilsdialog.ui" line="71"/>
         <source>or type number...</source>
-        <translation>of voerd een nummer in…</translation>
+        <translation>of voer een nummer in…</translation>
     </message>
     <message>
         <location filename="../callutilsdialog.ui" line="110"/>
@@ -795,12 +795,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="218"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Zoekt contacten of voerd ne Ring-ID in</translation>
+        <translation>Zoekt contacten of voer een Ring-ID in</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="283"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Toon gesprekken</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="286"/>
@@ -810,7 +810,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="556"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Ring is vrije software voor universele communicatie, die de vrijheden en privacy van haar gebruikers eerbiedigd.</translation>
+        <translation>Ring is vrije software voor universele communicatie, die de vrijheden en privacy van haar gebruikers eerbiedigt.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="209"/>
@@ -825,7 +825,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="707"/>
         <source>Show ring ID QR code</source>
-        <translation>Toond QR-code voor Ring-ID</translation>
+        <translation>Toon QR-code voor Ring-ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="758"/>
@@ -857,12 +857,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="293"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Toon uitgenodigden</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="296"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Uitgenodigden</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="594"/>
@@ -870,12 +870,15 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
                                         This is your RingID.
                                         Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+                                        Dit is uw RingID.
+                                        Kopieer het en deel het met uw vrienden!
+                                      </translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1390"/>
         <source>Type your message here</source>
-        <translation>Typt hier uw bericht</translation>
+        <translation>Tik hier uw bericht</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1409"/>
@@ -890,17 +893,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="1566"/>
         <source>Wants to talk to you!</source>
-        <translation>Wild met u spreken!</translation>
+        <translation>Wilt met u spreken!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1595"/>
         <source>Answer incoming call button</source>
-        <translation>Knop inkomenden oproep beantwoorden</translation>
+        <translation>Knop inkomende oproep beantwoorden</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1640"/>
         <source>Ignore incoming call button</source>
-        <translation>Knop inkomenden oproep negeren</translation>
+        <translation>Knop inkomende oproep negeren</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1667"/>
@@ -920,7 +923,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="1823"/>
         <source>Cancel outgoing call</source>
-        <translation>Uitgaanden oproep annuleren</translation>
+        <translation>Uitgaande oproep annuleren</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1846"/>
@@ -935,17 +938,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.cpp" line="255"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Video-oproep starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="266"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Audio-oproep starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="282"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Wis het gesprek</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="289"/>
@@ -960,12 +963,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.cpp" line="810"/>
         <source>Contact me on Ring</source>
-        <translation>Contacteerd mij via Ring</translation>
+        <translation>Contacteer mij via Ring</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="810"/>
         <source>My RingId is : </source>
-        <translation>Mijne Ring-ID is:</translation>
+        <translation>Mijn Ring-ID is:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="204"/>
@@ -992,7 +995,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.cpp" line="607"/>
         <source>Call incoming from %1</source>
-        <translation>Inkomenden oproep van %1</translation>
+        <translation>Inkomende oproep van %1</translation>
     </message>
 </context>
 <context>
@@ -1050,7 +1053,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="433"/>
         <source>(Set to 0 for unlimited history)</source>
-        <translation>(Kiesd 0 voor onbeperkte geschiedenis)</translation>
+        <translation>(Kies 0 voor onbeperkte geschiedenis)</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="490"/>
@@ -1060,7 +1063,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="642"/>
         <source>Misc. Settings</source>
-        <translation>Div. instellingen</translation>
+        <translation>Diverse instellingen</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="667"/>
@@ -1095,7 +1098,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="400"/>
         <source>Number of days of history kept</source>
-        <translation>Aantal dagen da’ de geschiedenis moe worden bijg’houden</translation>
+        <translation>Aantal dagen dat de geschiedenis moet worden bijgehouden</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="484"/>
@@ -1120,7 +1123,7 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="603"/>
         <source>Always record calls checkbox</source>
-        <translation>Selectievakske oproepen altijd opnemen</translation>
+        <translation>Oproepen altijd opnemen selectievak</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="609"/>
@@ -1130,12 +1133,12 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../configurationwidget.ui" line="661"/>
         <source>keep minimized on close checkbox</source>
-        <translation>selectievakske minimaliseren bij sluiten</translation>
+        <translation>Minimaliseren bij sluiten selectievak</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="679"/>
         <source>enable notifications checkbox</source>
-        <translation>selectievakske meldingen inschakelen</translation>
+        <translation>Meldingen inschakelen selectievak</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="685"/>
@@ -1456,17 +1459,17 @@ Ring is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../invitebuttonswidget.ui" line="72"/>
         <source>Accept invite</source>
-        <translation type="unfinished"/>
+        <translation>Aanvaard uitnodiging</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="104"/>
         <source>Ignore invite</source>
-        <translation type="unfinished"/>
+        <translation>Negeer uitnodiging</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="136"/>
         <source>Block person</source>
-        <translation type="unfinished"/>
+        <translation>Blokkeer de persoon</translation>
     </message>
 </context>
 <context>
