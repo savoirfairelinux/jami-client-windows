@@ -135,6 +135,7 @@ private:
     void setConversationFilter(const QString& filter);
     void setConversationFilter(lrc::api::profile::Type filter);
     void updateConversationsFilterWidget();
+    void updateComboBox();
     const std::string& selectedAccountId();
     const std::string& selectedConvUid();
 

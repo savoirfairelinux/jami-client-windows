@@ -694,3 +694,26 @@ QLabel#accountIdLabel{
 QLabel#accountAliasLabel{
     font-weight: bold;
 }
+
+/* setAvatarDialog { */
+QPushButton#pictureButton:default, QPushButton#fileButton:default {
+    background-color: rgb(0, 192, 213,);
+}
+
+QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
+    background-color: rgb(0, 0, 213);
+}
+/* } setAvatarDialog */
+
+
+/* SettingsWidget { */
+QPushButton#accountSettingsButton:default, QPushButton#generalSettingsButton:default,
+QPushButton#avSettingsButton:default {
+    background-color: rgb(0, 192, 213,);
+}
+
+QPushButton#accountSettingsButton:checked, QPushButton#generalSettingsButton:checked,
+QPushButton#avSettingsButton:checked {
+    background-color: rgb(0, 0, 213);
+}
+/* } SettingsWidget */

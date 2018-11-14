@@ -74,8 +74,8 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_);
-    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_);
+    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_ + 3);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_ + 5);
     gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
                            gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
     gearLabel_.setMargin(gearBorder_);
@@ -210,4 +210,10 @@ CurrentAccountComboBox::leaveEvent(QEvent* event)
 {
     gearLabel_.setStyleSheet("background: transparent;");
     QComboBox::leaveEvent(event);
+}
+
+void
+CurrentAccountComboBox::updateComboBoxDisplay()
+{
+    importLabelPhoto(LRCInstance::getCurrentAccountIndex());
 }

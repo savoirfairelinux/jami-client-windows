@@ -23,10 +23,15 @@
 #include <QItemSelection>
 #include <QSettings>
 #include <QErrorMessage>
+#include <QScrollArea>
+#include <QVBoxLayout>
+#include <QTimer>
 
 #include "navwidget.h"
 #include "accountdetails.h"
 #include "accountstatedelegate.h"
+
+#include "advancedsettingswidget.h"
 
 #include "accountmodel.h"
 #include "video/devicemodel.h"
@@ -49,14 +54,45 @@ public:
     void resize();
 
 public slots:
-    void getLeftWidgetSize(int size);
+    void updateSettings(int size);
 
 private:
     enum Button {accountSettingsButton, generalSettingsButton, avSettingsButton};
 
     void setSelected(Button sel);
+    void updateAccountInfoDisplayed();
+
+    void resizeEvent(QResizeEvent* event);
+
     Ui::SettingsWidget* ui;
+
+// currentAccountSettings {
+    void verifyRegisteredName();
+    void toggleAdvancedSettings();
+    void passwordClicked();
+    void avatarClicked();
+    void replaceWidgets(QWidget* widgetGone, QWidget* widgetAppeared);
+
+    AdvancedSettingsWidget* advancedSettingsWidget_;
+    QScrollArea* scrollArea_;
     int leftWidgetSize_ = 324;
     Button pastButton_ = Button::generalSettingsButton;
-    QPalette* palette;
+    bool advancedSettingsDropped_ = false;
+
+    int avatarSize_;
+    QTimer* lookupNameTimer_;
+    QPushButton* registerNameBtn_;
+
+    QString pixLocation_;
+
+//    QPushButton registeredNameBtn_;
+
+// } currentAccountSettings
+
+
+// generalSettings {
+
+
+// } generalSettings
+
 };

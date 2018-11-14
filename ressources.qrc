@@ -44,12 +44,17 @@
         <file>images/icons/ic_person_add_black_24dp_2x.png</file>
         <file>images/waiting.gif</file>
         <file>images/default_avatar_overlay.svg</file>
-	<file>images/icons/ic_clear_24px.svg</file>
-	<file>images/icons/ic_block_24px.svg</file>
-	<file>images/icons/ic_phone_24px.svg</file>
-	<file>images/icons/ic_video_call_24px.svg</file>
-	<file>images/icons/ic_arrow_back_24px.svg</file>
-	<file>images/icons/ic_send_24px.svg</file>
-	<file>images/icons/round-settings-24px.svg</file>	
+        <file>images/icons/ic_clear_24px.svg</file>
+        <file>images/icons/ic_block_24px.svg</file>
+        <file>images/icons/ic_phone_24px.svg</file>
+        <file>images/icons/ic_video_call_24px.svg</file>
+        <file>images/icons/ic_arrow_back_24px.svg</file>
+        <file>images/icons/ic_send_24px.svg</file>
+        <file>images/icons/round-settings-24px.svg</file>
+        <file>images/icons/round-add-24px.svg</file>
+        <file>images/icons/round-arrow_drop_down-24px.svg</file>
+        <file>images/icons/round-arrow_right-24px.svg</file>
+        <file>images/icons/baseline-create_new_folder-24px.svg</file>
+        <file>images/icons/round-arrow_drop_up-24px.svg</file>
     </qresource>
 </RCC>
