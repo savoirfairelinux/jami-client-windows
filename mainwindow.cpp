@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget* parent) :
         });
 
     connect(ui->callwidget, &CallWidget::setLeftSizeWidget, [=](int size) {
-            ui->settingswidget->getLeftWidgetSize(size);
+            ui->settingswidget->updateSettings(size);
         }
     );
 

@@ -1066,9 +1066,16 @@ CallWidget::updateSmartList()
 }
 
 void
+CallWidget::updateComboBox()
+{
+    ui->currentAccountComboBox->updateComboBoxDisplay();
+}
+
+void
 CallWidget::update()
 {
     updateSmartList();
     updateConversationsFilterWidget();
+    updateComboBox();
     connectConversationModel();
 }

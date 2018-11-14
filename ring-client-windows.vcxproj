@@ -92,7 +92,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dring.lib;qtwrapper.lib;ringclient_static.lib;WinSparkle.lib;qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;qtmain.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Gui.lib;Qt5Xml.lib;Qt5Network.lib;Qt5Core.lib;Qt5Sql.lib;Qt5WebEngineWidgets.lib;Qt5WebChannel.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dring.lib;qtwrapper.lib;ringclient_static.lib;WinSparkle.lib;qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;qtmain.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Gui.lib;Qt5Xml.lib;Qt5Network.lib;Qt5Core.lib;Qt5Sql.lib;Qt5WebEngineWidgets.lib;Qt5WebChannel.lib;Qt5Multimedia.lib;Qt5MultimediaWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;..\ring-daemon\contrib\msvc\lib\x64;..\daemon\contrib\msvc\lib\x64;..\ring-daemon\MSVC\x64\ReleaseLib_win32\bin;..\daemon\MSVC\x64\ReleaseLib_win32\bin;..\ring-lrc\msvc\release;..\lrc\msvc\release;..\ring-lrc\msvc\src\qtwrapper\Release;..\lrc\msvc\src\qtwrapper\Release;.\winsparkle\x64\release;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" /ignore:4006,4049,4078,4098 /LTCG /NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -219,6 +219,8 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="advancedsettingswidget.cpp" />
+    <ClCompile Include="avatargraphicsview.cpp" />
     <ClCompile Include="animationhelpers.cpp" />
     <ClCompile Include="currentaccountcombobox.cpp" />
     <ClCompile Include="aboutdialog.cpp" />
@@ -251,6 +253,7 @@
     <ClCompile Include="messagewebpage.cpp" />
     <ClCompile Include="messagewebview.cpp" />
     <ClCompile Include="navwidget.cpp" />
+    <ClCompile Include="passworddialog.cpp" />
     <ClCompile Include="photoboothdialog.cpp" />
     <ClCompile Include="photoboothwidget.cpp" />
     <ClCompile Include="pixbufmanipulator.cpp" />
@@ -269,6 +272,7 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
       <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </ClCompile>
+    <ClCompile Include="setavatardialog.cpp" />
     <ClCompile Include="settingswidget.cpp" />
     <ClCompile Include="smartlistselectorbuttonnotifier.cpp" />
     <ClCompile Include="smartlistview.cpp" />
@@ -355,6 +359,14 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
       <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </QtMoc>
+    <QtMoc Include="advancedsettingswidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
+    </QtMoc>
+    <QtMoc Include="avatargraphicsview.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_MULTIMEDIA_LIB;QT_MULTIMEDIAWIDGETS_LIB</Define>
+    </QtMoc>
     <ClInclude Include="lrcinstance.h" />
     <QtMoc Include="messagewebview.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
@@ -368,6 +380,10 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
       <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </QtMoc>
+    <QtMoc Include="passworddialog.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_MULTIMEDIA_LIB;QT_MULTIMEDIAWIDGETS_LIB</Define>
+    </QtMoc>
     <ClInclude Include="pixbufmanipulator.h" />
     <QtMoc Include="qualitydialog.h">
     </QtMoc>
@@ -379,6 +395,10 @@
     <QtMoc Include="selectareadialog.h">
     </QtMoc>
     <QtMoc Include="sendcontactrequestwidget.h">
+    </QtMoc>
+    <QtMoc Include="setavatardialog.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </QtMoc>
     <ClInclude Include="settingskey.h" />
     <QtMoc Include="smartlistview.h">
@@ -534,6 +554,7 @@
     <QtUic Include="animatedoverlay.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="advancedsettingswidget.ui" />
     <QtUic Include="bannedcontactswidget.ui">
     </QtUic>
     <QtUic Include="callutilsdialog.ui">
@@ -553,6 +574,9 @@
     <QtUic Include="mainwindow.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="passworddialog.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
     <QtUic Include="photoboothdialog.ui">
     </QtUic>
     <QtUic Include="photoboothwidget.ui">
@@ -565,7 +589,12 @@
     </QtUic>
     <QtUic Include="sendcontactrequestwidget.ui">
     </QtUic>
-    <QtUic Include="settingswidget.ui" />
+    <QtUic Include="setavatardialog.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
+    <QtUic Include="settingswidget.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
     <QtUic Include="videooverlay.ui">
     </QtUic>
     <QtUic Include="videoview.ui">

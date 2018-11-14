@@ -195,6 +195,18 @@
     <ClCompile Include="settingswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="passworddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="advancedsettingswidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="setavatardialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="avatargraphicsview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -330,6 +342,18 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="settingswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="passworddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="advancedsettingswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="setavatardialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="avatargraphicsview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -642,6 +666,15 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="settingswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="passworddialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="advancedsettingswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="setavatardialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="animatedoverlay.ui">

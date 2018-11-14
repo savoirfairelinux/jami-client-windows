@@ -218,3 +218,9 @@ CurrentAccountComboBox::leaveEvent(QEvent* event)
     gearLabel_.setStyleSheet("background: transparent;");
     QComboBox::leaveEvent(event);
 }
+
+void
+CurrentAccountComboBox::updateComboBoxDisplay()
+{
+    importLabelPhoto(LRCInstance::getCurrentAccountIndex());
+}
