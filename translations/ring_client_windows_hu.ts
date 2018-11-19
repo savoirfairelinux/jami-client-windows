@@ -545,12 +545,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation>Titkos kulcs jelszava bemenet</translation>
+        <translation>Személyes kulcs jelszava bemenet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation>Felhasználói privát kulcs választó</translation>
+        <translation>Felhasználói személyes kulcs választó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
@@ -681,12 +681,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2331"/>
         <source>Private key</source>
-        <translation>Privátkulcs</translation>
+        <translation>Személyes kulcs</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
-        <translation>Privátkulcs jelszava</translation>
+        <translation>Személyes kulcs jelszava</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2435"/>

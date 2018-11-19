@@ -20,7 +20,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Tekijät</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
@@ -31,8 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>Ring asiakasohjelma Microsoft Windowsille.
-Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
+        <translation>Ring-asiakasohjelma Microsoft Windowsille.
+Ring on turvallinen ja hajautettu viestintäsovellus.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="30"/>
@@ -52,7 +52,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../aboutdialog.cpp" line="75"/>
         <source>Based on the SFLPhone project</source>
-        <translation>Pohjautuu SFLPhone projektiin</translation>
+        <translation>Pohjautuu SFLPhone-projektiin</translation>
     </message>
 </context>
 <context>
@@ -179,7 +179,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
         <location filename="../accountdetails.cpp" line="390"/>
         <location filename="../accountdetails.cpp" line="395"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröi lohkoketjuun</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
@@ -229,7 +229,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Syötä vanha salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
@@ -244,7 +244,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Syötä uusi salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -284,7 +284,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Vaihdetaan salasanaa ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
@@ -570,7 +570,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
         <source>Devices</source>
-        <translation type="unfinished"/>
+        <translation>Laitteet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
@@ -1515,7 +1515,7 @@ Ring on turvallinen ja hajautettu keskustelusovellus.</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
         <source>Take photo</source>
-        <translation type="unfinished"/>
+        <translation>Ota valokuva</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="71"/>
@@ -1814,7 +1814,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="749"/>
         <location filename="../wizarddialog.cpp" line="264"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Etsitään...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
@@ -2235,7 +2235,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizardwidget.ui" line="749"/>
         <location filename="../wizardwidget.cpp" line="253"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Etsitään...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="778"/>
