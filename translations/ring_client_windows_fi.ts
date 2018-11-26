@@ -269,7 +269,7 @@ Ring on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda salasana</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -1525,7 +1525,7 @@ Ring on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="84"/>
         <source>Import photo</source>
-        <translation type="unfinished"/>
+        <translation>Tuo valokuva</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="87"/>
@@ -1548,7 +1548,7 @@ Ring on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../utils.cpp" line="194"/>
         <source>No default mail client found</source>
-        <translation>Ei oletusarvoista sähköpostiohjelmaa</translation>
+        <translation>Oletussähköpostiohjelmaa ei löytynyt</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="37"/>
