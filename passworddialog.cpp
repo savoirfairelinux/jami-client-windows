@@ -15,6 +15,7 @@
 * You should have received a copy of the GNU General Public License       *
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
 **************************************************************************/
+#include <QTimer>
 
 #include "passworddialog.h"
 #include "ui_passworddialog.h"
@@ -31,10 +32,13 @@ PasswordDialog::PasswordDialog(QWidget* parent)
     ui->newPsswdEdit->setEchoMode(QLineEdit::Password);
     ui->confirmNewPsswdEdit->setEchoMode(QLineEdit::Password);
 
-    connect(ui->currentPsswdEdit, &QLineEdit::textChanged, [=](const QString& text) {
-        updatePasswordDialog(text); }
-    );
+    if (!LRCInstance::getCurrAccConfig().archiveHasPassword) {
+        ui->currentPsswdEdit->hide();
+    } else {
+        ui->currentPsswdEdit->show();
+    }
 
+    connect(ui->currentPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
     connect(ui->newPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
     connect(ui->confirmNewPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
 
@@ -43,43 +47,15 @@ PasswordDialog::PasswordDialog(QWidget* parent)
         }
     );
 
-    connect(ui->backToSettingsButton, &QPushButton::clicked, [=]() {
-        done(0);
-        }
-    );
+    connect(ui->cancelButton, &QPushButton::clicked, this, &PasswordDialog::closeSlot);
 
-    connect(ui->backToSettingsButton_2, &QPushButton::clicked, [=]() {
-        done(0);
-        }
-    );
-
-    connect(ui->cancelButton, &QPushButton::clicked, [=]() {
-        done(0);
-        }
-    );
-
-    updatePasswordDialog("");
     ui->confirmButton->setEnabled(false);
 }
 
 PasswordDialog::~PasswordDialog()
 {
-    disconnect(this);
     delete ui;
 }
-
-void
-PasswordDialog::updatePasswordDialog(const QString& text)
-{
-    ui->currentPsswdEdit->setStyleSheet("border: 1px solid red;");
-
-    std::string psswd = text.toStdString();
-    if (LRCInstance::currentAccountPasswordMatch(psswd)) {
-        ui->currentPsswdEdit->setStyleSheet("border: 1px solid green;");
-    }
-    freeConfirmButton();
-}
-
 
 // only sets new password if both new passwords match
 void
@@ -98,8 +74,7 @@ PasswordDialog::validateNewPsswd()
 void
 PasswordDialog::freeConfirmButton()
 {
-    if (ui->newPsswdEdit->text() == ui->confirmNewPsswdEdit->text() &&
-        LRCInstance::currentAccountPasswordMatch(ui->currentPsswdEdit->text().toStdString())) {
+    if (ui->newPsswdEdit->text() == ui->confirmNewPsswdEdit->text()) {
         ui->confirmButton->setEnabled(true);
     }
     else {
@@ -110,13 +85,24 @@ PasswordDialog::freeConfirmButton()
 void
 PasswordDialog::savePassword()
 {
-    // if change successfull
-    if (!LRCInstance::changeCurrentPassword(LRCInstance::getSelectedAccountId(),
-        ui->currentPsswdEdit->text().toStdString(), ui->newPsswdEdit->text().toStdString(),
-        ui->confirmNewPsswdEdit->text().toStdString())) {
-        ui->stackedWidget->setCurrentWidget(ui->psswdSuccessfullyChanged);
+    if (LRCInstance::editableAccountModel()->changeAccountPassword(LRCInstance::getCurrAccId(),
+        ui->currentPsswdEdit->text().toStdString(), ui->newPsswdEdit->text().toStdString())) {
+        ui->userMessageLabel->setText(tr("Password Changed Successfully"));
+
+        auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+        ui->newPsswdEdit->text().isEmpty() ? confProps.archiveHasPassword = false : confProps.archiveHasPassword = true;
+        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+
+        ui->cancelButton->hide();
+        ui->confirmButton->hide();
+        ui->currentPsswdEdit->hide();
+        ui->newPsswdEdit->hide();
+        ui->confirmNewPsswdEdit->hide();
+
+        QTimer::singleShot(900, this, SLOT(closeSlot()));
     }
-    else { // if change unsuccessfull
-        ui->stackedWidget->setCurrentWidget(ui->psswdFailedToChange);
+    else {
+        ui->userMessageLabel->setText(tr("Current Password Incorrect"));
+        ui->currentPsswdEdit->setText("");
     }
 }

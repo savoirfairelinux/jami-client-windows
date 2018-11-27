@@ -265,13 +265,3 @@ MainWindow::readSettingsFromRegistry()
         settings.setValue(SettingsKey::enableNotifications, true);
     }
 }
-
-void
-MainWindow::resizeEvent(QResizeEvent* event)
-{
-    QMainWindow::resizeEvent(event);
-
-    if (ui->settingswidget->isVisible()) {
-        ui->settingswidget->resize();
-    }
-}

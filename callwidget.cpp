@@ -441,7 +441,7 @@ CallWidget::imageForConv(const std::string& convUid)
 const std::string&
 CallWidget::selectedAccountId()
 {
-    return LRCInstance::getSelectedAccountId();
+    return LRCInstance::getCurrAccId();
 }
 
 const std::string&
@@ -730,7 +730,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     QString contactURI = nodeIdx.data(static_cast<int>(SmartListModel::Role::URI)).toString();
 
     bool isContact = false;
-    auto selectedAccountId = LRCInstance::getSelectedAccountId();
+    auto selectedAccountId = LRCInstance::getCurrAccId();
     auto& accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
     bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
     try {

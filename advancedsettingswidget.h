@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QListWidgetItem>
 
 namespace Ui {
     class AdvancedSettingsWidget;
@@ -35,4 +36,54 @@ public:
 
 private:
     Ui::AdvancedSettingsWidget* ui;
+    void updateAdvancedSettings();
+
+private slots:
+// call settings
+    void setCallsUntrusted(bool state);
+    void setAutoAnswerCalls(bool state);
+    void setEnableRingtone(bool state);
+
+    void openFileCustomRingtone();
+
+// name server
+    void setNameServer(const QString& name);
+
+// openDHT config
+    void setEnableProxy(bool state);
+
+    void setProxyAddress(const QString& name);
+    void setBootstrapAddress(const QString& name);
+
+// security
+    void openFileCACert();
+    void openFileUserCert();
+    void openFilePrivateKey();
+
+// connectivity
+    void setUseUPnP(bool state);
+    void setUseTURN(bool state);
+    void setUseSTUN(bool state);
+
+    void setTURNAddress(const QString& name);
+    void setTURNUsername(const QString& name);
+    void setTURNPsswd(const QString& name);
+    void setSTUNAddress(const QString& name);
+
+// codecs
+    void updateAudioCodecs();
+    void updateVideoCodecs();
+
+    void audioCodecsStateChange(QListWidgetItem* item = nullptr);
+    void videoCodecsStateChange(QListWidgetItem* item = nullptr);
+
+    void decreaseAudioCodecPriority();
+    void increaseAudioCodecPriority();
+
+    void decreaseVideoCodecPriority();
+    void increaseVideoCodecPriority();
+
+    void setVideoState(int state);
+
+
 };

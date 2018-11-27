@@ -33,8 +33,8 @@ public:
     ~PasswordDialog();
 
 private slots:
-    void updatePasswordDialog(const QString& text);
     void validateNewPsswd();
+    inline void closeSlot() { done(0); };
 
 private:
     Ui::PasswordDialog* ui;
