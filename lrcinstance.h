@@ -1,6 +1,7 @@
 /**************************************************************************
 | Copyright (C) 2015-2018 by Savoir-faire Linux                           |
 | Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          |
+| Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      |
 |                                                                         |
 | This program is free software; you can redistribute it and/or modify    |
 | it under the terms of the GNU General Public License as published by    |
@@ -13,7 +14,7 @@
 | GNU General Public License for more details.                            |
 |                                                                         |
 | You should have received a copy of the GNU General Public License       |
-| along with this program.  If not, see <http://www.gnu.org/licenses/>.   |
+| along with this program.  If not, see <https://www.gnu.org/licenses/>.   |
 **************************************************************************/
 #pragma once
 
@@ -39,6 +40,7 @@
 #include "accountlistmodel.h"
 
 #include "account.h"
+//#include "instancemanager.cpp"
 
 #include <settingskey.h>
 
@@ -72,7 +74,7 @@ public:
 
     static const lrc::api::account::Info&
     getCurrentAccountInfo() {
-        return accountModel().getAccountInfo(instance().selectedAccountId);
+        return accountModel().getAccountInfo(getCurrAccId());
     };
 
     static lrc::api::ConversationModel*
@@ -85,8 +87,15 @@ public:
         return getCurrentAccountInfo().callModel.get();
     };
 
-    static const std::string& getSelectedAccountId() {
-        return instance().selectedAccountId;
+    static const int getAccountNumList() {
+        return accountModel().getAccountList().size();
+    };
+
+    static const std::string& getCurrAccId() {
+        if (!instance().selectedAccountId.empty()) {
+            return instance().selectedAccountId;
+        }
+        return accountModel().getAccountList()[0];
     };
 
     static void setSelectedAccountId(const std::string& accountId) {
@@ -105,61 +114,47 @@ public:
 
     static const int getCurrentAccountIndex(){
         for (int i = 0; i < accountModel().getAccountList().size(); i++) {
-            if (accountModel().getAccountList()[i] == instance().selectedAccountId) {
+            if (accountModel().getAccountList()[i] == getCurrAccId()) {
                 return i;
             }
         }
         return -1;
     };
 
-// return 1 if password matches
-    static const bool currentAccountPasswordMatch(const std::string& passwd) {
-        if (passwd == instance().accountModel().getAccountConfig(instance().getSelectedAccountId()).password) {
-            return 1;
-        }
-        else return 0;
-    };
+//// return 1 if password matches
+//    static const bool currAccPasswordMatch(const std::string& passwd) {
+//        if (passwd == instance().accountModel().getAccountConfig(instance().getCurrAccId()).password) {
+//            return 1;
+//        }
+//        return 0;
+//    };
+//
+//// performs all password error checking (returns 0 if change successfull)
+//    static const bool changeCurrAccPassword(const std::string& accountId,
+//        const std::string& currentPassword, const std::string& newPassword, const std::string& newPasswordConfirm) {
+//        if (newPassword == newPasswordConfirm && currAccPasswordMatch(currentPassword)) {
+//            return !instance().accountModel().changeAccountPassword(accountId, currentPassword, newPassword);
+//        }
+//        return 1;
+//    };
 
-// performs all password error checking (returns 0 if change successfull)
-    static const bool changeCurrentPassword(const std::string& accountId,
-        const std::string& currentPassword, const std::string& newPassword, const std::string& newPasswordConfirm) {
-        if (newPassword == newPasswordConfirm && currentAccountPasswordMatch(currentPassword)) {
-            return !instance().accountModel().changeAccountPassword(accountId, currentPassword, newPassword);
-        }
-        return 1;
-    };
-
-    static const QVariant getCurrentAccountData(int role) { // [efficiency improvement]
+    static const QVariant getCurrAccData(int role) { // [efficiency improvement]
         return instance().accountListModel_.data(instance().accountListModel_.index(getCurrentAccountIndex()), role);
     };
 
-    // validates the registeredName of user
-    // returns 0 if registeredName is valid
-    // returns 1 if registeredName does not have form of valid registeredName
-    // returns 2 if registeredName is already taken
-    static const int currentAccountRegisteredNameValidity(const QString& registeredName) {
-        qDebug() << "!!!!!!!! lrcInstance !!!!!!!!!!!!!" << registeredName << NameDirectory::instance().lookupName(nullptr, QString(), registeredName);
-        QRegularExpression regExp(" ");
-        if (registeredName.size() > 3 && !registeredName.contains(regExp)) {
-            if (!NameDirectory::instance().lookupName(nullptr, QString(), registeredName)) {
-                return 0;
-            }
-            else {
-                return 2;
-            }
-        }
-        else {
-            return 1;
-        }
+// account settings setters
+    static void setCurrAccAvatar(const std::string& avatar) {
+        instance().editableAccountModel()->setAvatar(getCurrAccId(), avatar);
     };
 
-    static void setCurrentAccountEnabledState(bool state) {
-        instance().editableAccountModel()->enableAccount(instance().selectedAccountId, state);
+    static void setCurrAccDisplayName(const std::string& alias) {
+        instance().editableAccountModel()->setAlias(getCurrAccId(), alias);
     };
 
-    static void setCurrentAccountAvatar(const std::string& avatar) {
-        instance().editableAccountModel()->setAvatar(getSelectedAccountId(), avatar);
-    };
+    static const lrc::api::account::ConfProperties_t& getCurrAccConfig() {
+        return instance().getCurrentAccountInfo().confProperties;
+    }
+
 
 private:
     std::unique_ptr<lrc::api::Lrc> lrc_;

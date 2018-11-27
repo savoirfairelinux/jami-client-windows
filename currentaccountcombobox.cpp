@@ -59,7 +59,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                 }
             });
 
-    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.setPixmap(QPixmap(":/images/icons/round-settings-24px.svg"));
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
 }
@@ -136,10 +136,6 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.setPen(Qt::lightGray);
         painter.drawText(comboBoxRect, (Qt::AlignBottom | Qt::AlignLeft), secondaryAccountID);
     }
-
-    this->setEnabled(LRCInstance::accountModel().getAccountList().size() > 1);
-
-    gearLabel_.setPixmap(gearPixmap_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -191,7 +187,7 @@ CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
 void
 CurrentAccountComboBox::showPopup()
 {
-    gearPixmap_.load("");
+    gearLabel_.hide();
     popupPresent = true;
     QComboBox::showPopup();
 }
@@ -199,10 +195,9 @@ CurrentAccountComboBox::showPopup()
 void
 CurrentAccountComboBox::hidePopup()
 {
-    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
+    gearLabel_.show();
     popupPresent = false;
     QComboBox::hidePopup();
-
 }
 
 void

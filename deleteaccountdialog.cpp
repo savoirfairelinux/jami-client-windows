@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -19,26 +20,22 @@
 #include "deleteaccountdialog.h"
 #include "ui_deleteaccountdialog.h"
 
-// LRC
-#include "accountmodel.h"
-#include "itemdataroles.h"
-#include "account.h"
+#include "lrcinstance.h"
+#include "utils.h"
 
-DeleteAccountDialog::DeleteAccountDialog(const QModelIndex & idx, QWidget *parent) :
+DeleteAccountDialog::DeleteAccountDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DeleteAccountDialog),
-    index_(idx)
+    ui(new Ui::DeleteAccountDialog)
 {
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    ui->accountAliasLabel->setText(AccountModel::instance().data(index_, Qt::DisplayRole).toString());
-    auto ac = AccountModel::instance().getAccountByModelIndex(index_);
-    if (ac->protocol() == Account::Protocol::RING){
-        ui->accountIdLabel->setAlignment(Qt::AlignCenter);
-        ui->accountIdLabel->setText((ac->registeredName().isEmpty())? ac->username(): ac->registeredName() + "\n" + ac->username());
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::RING){
+        ui->labelBestId->setText(QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo())));
+        ui->labelAccountHash->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
     } else {
-        ui->warningLabel->hide();
+        ui->labelWarning->hide();
     }
+    connect(ui->btnDeleteAccept, &QPushButton::clicked, this, &DeleteAccountDialog::on_deleteAcceptBtn_clicked);
+    connect(ui->btnDeleteCancel, &QPushButton::clicked, this, &DeleteAccountDialog::on_deleteCancelBtn_clicked);
 }
 
 DeleteAccountDialog::~DeleteAccountDialog()
@@ -46,15 +43,15 @@ DeleteAccountDialog::~DeleteAccountDialog()
     delete ui;
 }
 
-void DeleteAccountDialog::on_deleteCancelBtn_clicked()
+void
+DeleteAccountDialog::on_deleteCancelBtn_clicked()
 {
-    close();
+    done(0);
 }
 
-void DeleteAccountDialog::on_deleteAcceptBtn_clicked()
+void
+DeleteAccountDialog::on_deleteAcceptBtn_clicked()
 {
-    auto account = AccountModel::instance().getAccountByModelIndex(index_);
-    AccountModel::instance().remove(account);
-    AccountModel::instance().save();
-    close();
+    LRCInstance::editableAccountModel()->removeAccount(LRCInstance::getCurrAccId());
+    done(0);
 }

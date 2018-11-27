@@ -128,7 +128,6 @@ Utils::GetRingtonePath() {
 
     QString ringtonePath = QString::fromWCharArray(workingDirectory);
     ringtonePath += QStringLiteral("\\ringtones\\default.wav");
-
     return ringtonePath;
 #else
     return QString("/usr/local");

@@ -183,7 +183,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
     QFontMetrics fontMetrics(font);
 
     // The name is displayed at the avatar's right
-    QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();;
+    QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
         font.setItalic(false);
         font.setBold(true);

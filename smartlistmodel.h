@@ -66,5 +66,4 @@ public:
 
 private:
     const AccountInfo& acc_;
-
 };

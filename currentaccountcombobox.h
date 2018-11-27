@@ -63,6 +63,5 @@ private:
     bool popupPresent = false;
 
     QPoint gearPoint_;
-    QPixmap gearPixmap_;
     QLabel gearLabel_;
 };

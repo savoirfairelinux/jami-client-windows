@@ -1,8 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,28 +13,23 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
 #pragma once
-#include <QItemSelection>
-#include <QSettings>
-#include <QErrorMessage>
 #include <QScrollArea>
-#include <QVBoxLayout>
-#include <QTimer>
+#include <QSettings>
 
 #include "navwidget.h"
 #include "accountdetails.h"
 #include "accountstatedelegate.h"
+#include "lrcinstance.h"
 
 #include "advancedsettingswidget.h"
+#include "bannedlistmodel.h"
 
-#include "accountmodel.h"
-#include "video/devicemodel.h"
-#include "codecmodel.h"
-
-
+#include "linkdevwidget.h"
+#include "ui_linkdevwidget.h"
 
 namespace Ui {
     class SettingsWidget;
@@ -51,13 +43,15 @@ class SettingsWidget : public NavWidget
 public:
     explicit SettingsWidget(QWidget* parent = nullptr);
     ~SettingsWidget();
-    void resize();
+    void resize(int size);
 
 public slots:
     void updateSettings(int size);
 
 private:
     enum Button {accountSettingsButton, generalSettingsButton, avSettingsButton};
+    enum RegName {BLANK, INVALIDFORM, TAKEN, FREE, SEARCHING};
+    enum List {DevList, BannedContacts};
 
     void setSelected(Button sel);
     void updateAccountInfoDisplayed();
@@ -67,32 +61,60 @@ private:
     Ui::SettingsWidget* ui;
 
 // currentAccountSettings {
-    void verifyRegisteredName();
-    void toggleAdvancedSettings();
+    //void setScrollWidgetSize();
+
     void passwordClicked();
     void avatarClicked();
-    void replaceWidgets(QWidget* widgetGone, QWidget* widgetAppeared);
+
+    void afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName);
+    QString registeredName_;
+
+    bool validateRegNameForm(const QString& regName);
 
     AdvancedSettingsWidget* advancedSettingsWidget_;
     QScrollArea* scrollArea_;
-    int leftWidgetSize_ = 324;
     Button pastButton_ = Button::generalSettingsButton;
     bool advancedSettingsDropped_ = false;
+    bool bannedContactsShown_ = false;
 
     int avatarSize_;
-    QTimer* lookupNameTimer_;
-    QPushButton* registerNameBtn_;
 
-    QString pixLocation_;
+    void setRegNameUi(RegName stat);
+    bool regNameBtn_ = false;
 
-//    QPushButton registeredNameBtn_;
+    const int itemHeight_ = 55;
 
-// } currentAccountSettings
+    void removeDeviceSlot(int index);
+    void unban(int index);
+
+    LinkDevWidget* linkDevWidget;
+    void setConnections();
+
+
+private slots:
+    void verifyRegisteredNameSlot();
+    void beforeNameLookup();
+    void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
+        const std::string& address, const std::string& name);
+    void regNameRegisteredSlot();
+    void setAccEnableSlot(int state);
+    void delAccountSlot();
+
+    void toggleAdvancedSettings();
+    void toggleBannedContacts();
+    void exportAccountSlot();
+
+    void updateAndShowDevicesSlot();
+    void updateAndShowBannedContactsSlot();
+
+    void showLinkDevSlot();
+    void showCurrentAccountSlot();
 
 
 // generalSettings {
+private:
+    QSettings settings_;
 
 
-// } generalSettings
 
 };

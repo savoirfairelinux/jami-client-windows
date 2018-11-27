@@ -159,9 +159,6 @@
     <ClCompile Include="messagemodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="accountlistmodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="accountitemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -202,6 +199,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="avatargraphicsview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="regnamedialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bannedlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="settingsitemwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="linkdevwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -354,6 +366,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="avatargraphicsview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="regnamedialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="bannedlistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="linkdevwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -582,6 +603,27 @@
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="images\icons\round-folder-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\round-edit-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\baseline-arrow_drop_up-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\round-remove_circle-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\round-save_alt-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\round-undo-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\icons\round-close-24px.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
@@ -660,6 +702,15 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="setavatardialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="regnamedialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="deviceeditwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="linkdevwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -807,5 +858,13 @@
     <ClInclude Include="lrcinstance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="settingsitemwidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\ajax-loader.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

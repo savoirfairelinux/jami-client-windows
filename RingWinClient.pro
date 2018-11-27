@@ -83,7 +83,8 @@ SOURCES += main.cpp\
     invitebuttonswidget.cpp \
     wizardwidget.cpp \
     currentaccountcombobox.cpp \
-    conversationfilterbutton.cpp
+    conversationfilterbutton.cpp \
+	settingsitemwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -130,7 +131,9 @@ HEADERS  += mainwindow.h \
     invitebuttonswidget.h \
     wizardwidget.h \
     currentaccountcombobox.h \
-    conversationfilterbutton.h
+    conversationfilterbutton.h \
+	settingsitemwidget.h
+
 
 
 contains(DEFINES, URI_PROTOCOL) {

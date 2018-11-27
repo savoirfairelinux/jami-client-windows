@@ -45,5 +45,4 @@ signals:
     void btnAcceptInviteClicked(const QModelIndex& index) const;
     void btnBlockInviteClicked(const QModelIndex& index) const;
     void btnIgnoreInviteClicked(const QModelIndex& index) const;
-
 };

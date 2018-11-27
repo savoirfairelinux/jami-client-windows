@@ -54,7 +54,13 @@
         <file>images/icons/round-add-24px.svg</file>
         <file>images/icons/round-arrow_drop_down-24px.svg</file>
         <file>images/icons/round-arrow_right-24px.svg</file>
-        <file>images/icons/baseline-create_new_folder-24px.svg</file>
         <file>images/icons/round-arrow_drop_up-24px.svg</file>
+        <file>images/icons/round-edit-24px.svg</file>
+        <file>images/icons/baseline-arrow_drop_up-24px.svg</file>
+        <file>images/icons/round-remove_circle-24px.svg</file>
+        <file>images/icons/round-save_alt-24px.svg</file>
+        <file>images/icons/round-undo-24px.svg</file>
+        <file>images/icons/round-close-24px.svg</file>
+        <file>images/ajax-loader.gif</file>
     </qresource>
 </RCC>
