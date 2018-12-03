@@ -11,4 +11,4 @@ release/
 qrencode-win32/
 *.dll
 .gitignore
-*.ps1
+*.qm
