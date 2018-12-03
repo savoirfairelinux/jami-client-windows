@@ -141,6 +141,9 @@ section "install"
         # Files added here should be removed by the uninstaller (see section "uninstall")
         file "Ring.exe"
         file "ring.ico"
+        file "qtwebengine_resources.pak"
+        file "QtWebEngineProcess.exe"
+        file "icudtl.dat"
         file *.dll
         setOutPath $INSTDIR\platforms
         file platforms/*

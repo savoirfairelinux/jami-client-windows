@@ -92,7 +92,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dring.lib;qtwrapper.lib;ringclient_static.lib;WinSparkle.lib;qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;qtmain.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Gui.lib;Qt5Xml.lib;Qt5Network.lib;Qt5Core.lib;$(QTDIR)\lib\Qt5Sql.lib;$(QTDIR)\lib\Qt5WebEngineWidgets.lib;$(QTDIR)\lib\Qt5WebChannel.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dring.lib;qtwrapper.lib;ringclient_static.lib;WinSparkle.lib;qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;qtmain.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Gui.lib;Qt5Xml.lib;Qt5Network.lib;Qt5Core.lib;Qt5Sql.lib;Qt5WebEngineWidgets.lib;Qt5WebChannel.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;..\ring-daemon\contrib\msvc\lib\x64;..\daemon\contrib\msvc\lib\x64;..\ring-daemon\MSVC\x64\ReleaseLib_win32\bin;..\daemon\MSVC\x64\ReleaseLib_win32\bin;..\ring-lrc\msvc\release;..\lrc\msvc\release;..\ring-lrc\msvc\src\qtwrapper\Release;..\lrc\msvc\src\qtwrapper\Release;.\winsparkle\x64\release;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" /ignore:4006,4049,4078,4098 /LTCG /NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
