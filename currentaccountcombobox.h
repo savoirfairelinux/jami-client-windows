@@ -36,6 +36,7 @@ public:
     ~CurrentAccountComboBox();
     void accountListUpdate();
     void setCurrentIndex(int index);
+    void updateComboBoxDisplay();
 
 signals:
     void settingsButtonClicked();
@@ -64,6 +65,5 @@ private:
     bool popupPresent = false;
 
     QPoint gearPoint_;
-    QPixmap gearPixmap_;
     QLabel gearLabel_;
 };
