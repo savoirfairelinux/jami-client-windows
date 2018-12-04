@@ -465,6 +465,7 @@
      <widget class="QStackedWidget" name="navStack">
       <widget class="WizardWidget" name="wizardwidget"/>
       <widget class="CallWidget" name="callwidget"/>
+      <widget class="SettingsWidget" name="settingswidget"/>
       <widget class="ConfigurationWidget" name="configurationwidget"/>
      </widget>
     </item>
