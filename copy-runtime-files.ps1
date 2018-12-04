@@ -64,6 +64,8 @@ $FilesToCopy = @(
     "$QtDir\bin\Qt5Widgets.dll",
     "$QtDir\bin\Qt5WinExtras.dll",
     "$QtDir\bin\Qt5Xml.dll",
+    "$QtDir\bin\Qt5Multimedia.dll",
+    "$QtDir\bin\Qt5MultimediaWidgets.dll",
     "$QtDir\bin\QtWebEngineProcess.exe",
     "$QtDir\resources\qtwebengine_resources.pak",
     "$QtDir\resources\icudtl.dat"

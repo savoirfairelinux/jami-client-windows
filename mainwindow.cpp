@@ -39,9 +39,11 @@
 #include "utils.h"
 #include "wizarddialog.h"
 #include "version.h"
+#include "settingswidget.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
+
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -56,13 +58,18 @@ MainWindow::MainWindow(QWidget* parent) :
             Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
         });
 
-    connect(ui->configurationwidget, &ConfigurationWidget::NavigationRequested,
+    connect(ui->settingswidget, &SettingsWidget::NavigationRequested,
             [this](ScreenEnum scr) {
             Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
             if (scr == ScreenEnum::CallScreen) {
                 ui->callwidget->update();
             }
         });
+
+    connect(ui->callwidget, &CallWidget::setLeftSizeWidget, [=](int size) {
+            ui->settingswidget->updateSettings(size);
+        }
+    );
 
     QIcon icon(":images/ring.png");
 
