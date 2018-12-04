@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,7 +21,6 @@
 #define DELETEACCOUNTDIALOG_H
 
 #include <QDialog>
-#include <QModelIndex>
 
 namespace Ui {
 class DeleteAccountDialog;
@@ -31,20 +31,17 @@ class DeleteAccountDialog : public QDialog
     Q_OBJECT
 
 public:
-    DeleteAccountDialog(const QModelIndex & idx, QWidget *parent = 0);
+    DeleteAccountDialog(QWidget *parent = nullptr);
     ~DeleteAccountDialog();
-
-signals:
-    void deleteAcceptClicked();
 
 private slots:
     void on_deleteCancelBtn_clicked();
-
     void on_deleteAcceptBtn_clicked();
+signals:
+    void deleteAcceptClicked();
 
 private:
     Ui::DeleteAccountDialog *ui;
-    QModelIndex index_;
 };
 
 #endif // DELETEACCOUNTDIALOG_H
