@@ -59,8 +59,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                 }
             });
 
-    gearPixmap_.load(":/images/icons/round-settings-24px.svg");
-    gearLabel_.setPixmap(gearPixmap_);
+    gearLabel_.setPixmap(QPixmap(":/images/icons/round-settings-24px.svg"));
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
     setupSettingsButton();
@@ -209,7 +208,6 @@ CurrentAccountComboBox::hidePopup()
     gearLabel_.show();
     popupPresent = false;
     QComboBox::hidePopup();
-
 }
 
 void
@@ -217,4 +215,10 @@ CurrentAccountComboBox::leaveEvent(QEvent* event)
 {
     gearLabel_.setStyleSheet("background: transparent;");
     QComboBox::leaveEvent(event);
+}
+
+void
+CurrentAccountComboBox::updateComboBoxDisplay()
+{
+    importLabelPhoto(LRCInstance::getCurrentAccountIndex());
 }
