@@ -64,6 +64,9 @@ public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
 
+signals:
+    void setLeftSizeWidget(int size);
+
 public slots:
     void on_ringContactLineEdit_returnPressed();
 
@@ -125,6 +128,7 @@ private:
     void setConversationFilter(const QString& filter);
     void setConversationFilter(lrc::api::profile::Type filter);
     void updateConversationsFilterWidget();
+    void updateComboBox();
     const std::string& selectedAccountId();
     const std::string& selectedConvUid();
 

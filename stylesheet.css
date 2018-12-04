@@ -266,10 +266,6 @@ QToolButton#qrButton:checked {
     background-color: rgb(237, 237, 237);
 }
 
-QPushButton#deleteAccountBtn, QToolButton#addAccountButton{
-    background: transparent;
-}
-
 QPushButton#btnvideo{
     background-color: #3AC0D2;
     border-radius: 15px;
@@ -326,7 +322,7 @@ QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, 
     font: 14px;
 }
 
-QPushButton#blockCRButton, QPushButton#deleteAcceptBtn, QPushButton#debanButton, QPushButton#deleteButton, QPushButton#deleteBanBtn,
+QPushButton#blockCRButton, QPushButton#debanButton, QPushButton#deleteBanBtn,
 QPushButton#cancelChangeBtn {
     background-color: rgb(251, 72, 71);
     border: 0px;
@@ -692,3 +688,26 @@ QLabel#accountIdLabel{
 QLabel#accountAliasLabel{
     font-weight: bold;
 }
+
+/* setAvatarDialog { */
+QPushButton#pictureButton:default, QPushButton#fileButton:default {
+    background-color: rgb(0, 192, 213,);
+}
+
+QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
+    background-color: rgb(0, 0, 213);
+}
+/* } setAvatarDialog */
+
+
+/* SettingsWidget { */
+QPushButton#accountSettingsButton:default, QPushButton#generalSettingsButton:default,
+QPushButton#avSettingsButton:default {
+    background-color: rgb(0, 192, 213,);
+}
+
+QPushButton#accountSettingsButton:checked, QPushButton#generalSettingsButton:checked,
+QPushButton#avSettingsButton:checked {
+    background-color: rgb(0, 0, 213);
+}
+/* } SettingsWidget */

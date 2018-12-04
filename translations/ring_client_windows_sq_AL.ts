@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sq_AL" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sq_AL">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -25,7 +27,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -370,7 +372,7 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -385,7 +387,7 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
@@ -425,7 +427,7 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
@@ -471,12 +473,12 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
         <source>Realm</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1844"/>
@@ -735,6 +737,144 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     </message>
 </context>
 <context>
+    <name>AdvancedSettingsWidget</name>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formular</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="47"/>
+        <source>Call Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="67"/>
+        <source>Allow Calls From Untrusted Peers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="76"/>
+        <source>Auto Answer Calls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="91"/>
+        <source>Enable Custom Ringtone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="107"/>
+        <source>Add a custom ringtone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="174"/>
+        <source>Name Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="195"/>
+        <source>Address</source>
+        <translation type="unfinished">Adresë</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="269"/>
+        <source>OpenDHT Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="292"/>
+        <source>Enable Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="343"/>
+        <source>Bootstrap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="417"/>
+        <source>Security</source>
+        <translation type="unfinished">Siguri</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="429"/>
+        <source>Private Key Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="436"/>
+        <source>User Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="458"/>
+        <source>no password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="465"/>
+        <source>Private Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="472"/>
+        <source>CA Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="649"/>
+        <source>Connectivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="684"/>
+        <source>        TURN Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="713"/>
+        <source>Use STUN</source>
+        <translation type="unfinished">Përdor STUN</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="730"/>
+        <source>STUN Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="737"/>
+        <source>        TURN Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="744"/>
+        <source>        TURN Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="751"/>
+        <source>Use UPnP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="758"/>
+        <source>Use TURN</source>
+        <translation type="unfinished">Përdor TURN</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="802"/>
+        <source>Audio Codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="821"/>
+        <source>Video Codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BannedContactsWidget</name>
     <message>
         <location filename="../bannedcontactswidget.ui" line="20"/>
@@ -800,7 +940,13 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../callwidget.ui" line="283"/>
         <source>Show conversations</source>
+<<<<<<< HEAD
         <translation>Shfaq biseda</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../callwidget.ui" line="286"/>
@@ -808,7 +954,13 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <translation>Biseda</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="556"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="559"/>
+=======
+        <location filename="../callwidget.ui" line="518"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Ring është software i lirë për komunikim universal që respekton privatësinë e përdoruesve të tij.</translation>
     </message>
@@ -818,182 +970,407 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <translation>Dhënie teksti kërkimi kontakti</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="471"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="474"/>
+=======
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Configuration menu</source>
-        <translation>Menu formësimi</translation>
+        <translation type="vanished">Menu formësimi</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="707"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="710"/>
+=======
+        <location filename="../callwidget.ui" line="669"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Show ring ID QR code</source>
         <translation>Shfaq kod QR ID-je Ring-u</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="758"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="761"/>
+=======
+        <location filename="../callwidget.ui" line="720"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Share ring ID button</source>
         <translation>Buton Ndani ID Ringu Me të Tjerët</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="816"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="819"/>
+=======
+        <location filename="../callwidget.ui" line="778"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Double-click to copy</source>
         <translation>Dyklikojeni që të kopjohet</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="851"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="854"/>
+=======
+        <location filename="../callwidget.ui" line="813"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Error while generating QR Code</source>
         <translation>Gabim teksa prodhohej kodi QR</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="895"/>
         <location filename="../callwidget.ui" line="1007"/>
         <location filename="../callwidget.ui" line="1937"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="898"/>
+        <location filename="../callwidget.ui" line="988"/>
+        <location filename="../callwidget.ui" line="1729"/>
+=======
+        <location filename="../callwidget.ui" line="857"/>
+        <location filename="../callwidget.ui" line="969"/>
+        <location filename="../callwidget.ui" line="1899"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Back to homepage button</source>
         <translation>Buton Mbrapsht te faqja hyrëse</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1213"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1114"/>
+=======
+        <location filename="../callwidget.ui" line="1175"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Add to contacts</source>
         <translation>Shtoje te kontaktet</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="293"/>
         <source>Show invites</source>
+<<<<<<< HEAD
         <translation>Shfaq ftesa</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../callwidget.ui" line="296"/>
         <source>Invites</source>
+<<<<<<< HEAD
         <translation>Ftesa</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="594"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="597"/>
+=======
+        <location filename="../callwidget.ui" line="556"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>
                                         This is your RingID.
                                         Copy and share it with your friends!
                                       </source>
+<<<<<<< HEAD
         <translation>
                                         Kjo është RingID juaj.
                                         Kopjojeni dhe jepuani shokëve tuaj!
                                       </translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1390"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1203"/>
+=======
+        <location filename="../callwidget.ui" line="1352"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Type your message here</source>
         <translation>Shtypni këtu mesazhin tuaj</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1409"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1222"/>
+=======
+        <location filename="../callwidget.ui" line="1371"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>send message</source>
         <translation>dërgo mesazh</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1556"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1348"/>
+=======
+        <location filename="../callwidget.ui" line="1518"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>BestId</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1566"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1358"/>
+=======
+        <location filename="../callwidget.ui" line="1528"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Wants to talk to you!</source>
         <translation>Dëshiron të bisedojë me ju!</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1595"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1387"/>
+=======
+        <location filename="../callwidget.ui" line="1557"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Answer incoming call button</source>
         <translation>Buton Përgjigjuni thirrjes ardhëse</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1640"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1432"/>
+=======
+        <location filename="../callwidget.ui" line="1602"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Ignore incoming call button</source>
         <translation>Buton Shpërfille thirrjen ardhëse</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1667"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1459"/>
+=======
+        <location filename="../callwidget.ui" line="1629"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Answer</source>
         <translation>Përgjigjuni</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1699"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1491"/>
+=======
+        <location filename="../callwidget.ui" line="1661"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Ignore</source>
         <translation>Shpërfille</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1770"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1562"/>
+=======
+        <location filename="../callwidget.ui" line="1732"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Calling</source>
         <translation>Po thirret</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1823"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1615"/>
+=======
+        <location filename="../callwidget.ui" line="1785"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Cancel outgoing call</source>
         <translation>Anuloje dërgimin e thirrjes</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1846"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1638"/>
+=======
+        <location filename="../callwidget.ui" line="1808"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Cancel</source>
         <translation>Anuloje</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.ui" line="1546"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.ui" line="1338"/>
+=======
+        <location filename="../callwidget.ui" line="1508"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Call</source>
         <translation>Thirre</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="255"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="228"/>
+=======
+        <location filename="../callwidget.cpp" line="257"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Start video call</source>
+<<<<<<< HEAD
         <translation>Filloni thirrje video</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="266"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="239"/>
+=======
+        <location filename="../callwidget.cpp" line="268"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Start audio call</source>
+<<<<<<< HEAD
         <translation>Filloni thirrje audio</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="282"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="255"/>
+=======
+        <location filename="../callwidget.cpp" line="284"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Clear conversation</source>
         <translation>Pastroje bisedën</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="289"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="262"/>
+=======
+        <location filename="../callwidget.cpp" line="291"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Block contact</source>
         <translation>Bllokojeni kontaktin</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="300"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="273"/>
+=======
+        <location filename="../callwidget.cpp" line="302"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Copy number</source>
         <translation>Kopjoje numrin</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="810"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="803"/>
+=======
+        <location filename="../callwidget.cpp" line="813"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Contact me on Ring</source>
         <translation>Kontaktomëni në Ring</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="810"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="803"/>
+=======
+        <location filename="../callwidget.cpp" line="813"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>My RingId is : </source>
         <translation>RingID-ja ime është:</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="204"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="177"/>
+=======
+        <location filename="../callwidget.cpp" line="206"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Copy</source>
         <translation>Kopjoje</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="224"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="197"/>
+=======
+        <location filename="../callwidget.cpp" line="226"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Message incoming from %1</source>
         <translation>Mesazh ardhës nga %1</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="718"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="709"/>
+=======
+        <location filename="../callwidget.cpp" line="721"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="723"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="714"/>
+=======
+        <location filename="../callwidget.cpp" line="726"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../callwidget.cpp" line="607"/>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <location filename="../callwidget.cpp" line="580"/>
+=======
+        <location filename="../callwidget.cpp" line="610"/>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
         <source>Call incoming from %1</source>
         <translation>Thirrje ardhur nga %1</translation>
     </message>
@@ -1345,12 +1722,12 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../contactrequestwidget.ui" line="87"/>
         <source>nameLabel</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="103"/>
         <source>bestIdLabel</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../contactrequestwidget.ui" line="125"/>
@@ -1386,44 +1763,80 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
 <context>
     <name>DeleteAccountDialog</name>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation>Ring - fshirje llogarie</translation>
+        <translation type="vanished">Ring - fshirje llogarie</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="33"/>
         <source>Do you really want to delete account ?</source>
-        <translation>Doni vërtet të fshihet llogaria?</translation>
+        <translation type="vanished">Doni vërtet të fshihet llogaria?</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="66"/>
         <source>This action is irrevocable</source>
-        <translation>Ky veprim është i paprapësueshëm </translation>
+        <translation type="vanished">Ky veprim është i paprapësueshëm </translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="73"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be lost</source>
-        <translation>Nëse kjo llogari s’është eksportuar, ose shtuar te një tjetër pajisje, do të humbë</translation>
+        <translation type="vanished">Nëse kjo llogari s’është eksportuar, ose shtuar te një tjetër pajisje, do të humbë</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="138"/>
         <source>Cancel contact deletion button</source>
-        <translation>Buton Anuloni fshirje kontakti</translation>
+        <translation type="vanished">Buton Anuloni fshirje kontakti</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="141"/>
+        <location filename="../deleteaccountdialog.ui" line="35"/>
+        <source>Account deletion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="55"/>
+        <source>Do you really want to delete the following account?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="135"/>
+        <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="212"/>
+        <source>Permanently delete account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="218"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="250"/>
+        <source>Cancel account deletion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deleteaccountdialog.ui" line="256"/>
         <source>Cancel</source>
         <translation>Anuloje</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="167"/>
         <source>Validate contact deletion button</source>
-        <translation>Buton vleftësimi fshirjeje kontakti</translation>
+        <translation type="vanished">Buton vleftësimi fshirjeje kontakti</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="170"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
+    </message>
+</context>
+<context>
+    <name>Form</name>
+    <message>
+        <location filename="../deviceeditwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formular</translation>
+    </message>
+    <message>
+        <location filename="../deviceeditwidget.ui" line="36"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1459,17 +1872,35 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../invitebuttonswidget.ui" line="72"/>
         <source>Accept invite</source>
+<<<<<<< HEAD
         <translation>Pranoje ftesën</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="104"/>
         <source>Ignore invite</source>
+<<<<<<< HEAD
         <translation>Shpërfille ftesën</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="136"/>
         <source>Block person</source>
+<<<<<<< HEAD
         <translation>Bllokoje personin</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
 </context>
 <context>
@@ -1480,19 +1911,68 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <translation>Ring</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="75"/>
+        <location filename="../mainwindow.cpp" line="82"/>
         <source>Configuration</source>
         <translation>Formësim</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="85"/>
         <source>Exit</source>
         <translation>Dalje</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="97"/>
+        <location filename="../mainwindow.cpp" line="104"/>
         <source>About</source>
         <translation>Mbi</translation>
+    </message>
+</context>
+<context>
+    <name>PasswordDialog</name>
+    <message>
+        <location filename="../passworddialog.ui" line="32"/>
+        <source>Change Account Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="87"/>
+        <source>Enter Current Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="119"/>
+        <source>Enter New Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="135"/>
+        <source>Confirm New Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="165"/>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="184"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Anuloje</translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="212"/>
+        <source>Your account password has been successfully changed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="231"/>
+        <location filename="../passworddialog.ui" line="276"/>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="257"/>
+        <source>The password change has failed. The password has not changed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1500,7 +1980,13 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
+<<<<<<< HEAD
         <translation>Kioskë fotosh</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
 </context>
 <context>
@@ -1513,7 +1999,13 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Photobooth display</source>
+<<<<<<< HEAD
         <translation>Shfaqje kioske fotosh</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="51"/>
@@ -1560,6 +2052,21 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <comment>Default alias for new Ring account</comment>
         <translation>Llogari Ring</translation>
     </message>
+    <message>
+        <location filename="../settingsitemwidget.cpp" line="68"/>
+        <source>Edit Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsitemwidget.cpp" line="74"/>
+        <source>Unlink Device From Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsitemwidget.cpp" line="91"/>
+        <source>Unban Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QualityDialog</name>
@@ -1577,6 +2084,57 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <location filename="../qualitydialog.ui" line="106"/>
         <source>Auto</source>
         <translation>Auto</translation>
+    </message>
+</context>
+<context>
+    <name>QuickActContactRequestWidget</name>
+    <message>
+        <location filename="../quickactcontactrequestwidget.ui" line="114"/>
+        <source>Validate Contact Request Button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../quickactcontactrequestwidget.ui" line="139"/>
+        <source>Mute contact request button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../quickactcontactrequestwidget.ui" line="161"/>
+        <source>Ban contact request button</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegNameDialog</name>
+    <message>
+        <location filename="../regnamedialog.ui" line="17"/>
+        <source>Set Registered Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="40"/>
+        <source>Are you sure you would like to register this name?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="53"/>
+        <source>Once associated to this account, it cannot be changed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="66"/>
+        <source>Confirm Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="79"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Anuloje</translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="92"/>
+        <source>Your new registered name would be:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1608,6 +2166,298 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <location filename="../sendcontactrequestwidget.ui" line="78"/>
         <source>Send contact request</source>
         <translation>Dërgoni kërkesë kontakti</translation>
+    </message>
+</context>
+<context>
+    <name>SetAvatarDialog</name>
+    <message>
+        <location filename="../setavatardialog.ui" line="32"/>
+        <source>Change Your Avatar Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="81"/>
+        <source>Take A Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="103"/>
+        <source>Choose A File From Your Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="119"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="138"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Anuloje</translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.cpp" line="77"/>
+        <source>Take Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.cpp" line="162"/>
+        <source>Open Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.cpp" line="162"/>
+        <source>Image Files (*.png *.jpg *.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsWidget</name>
+    <message>
+        <location filename="../settingswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formular</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="189"/>
+        <source>Current Account Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="222"/>
+        <source>General Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="255"/>
+        <source>Audio/Visual Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="385"/>
+        <source>keep minimized on close checkbox</source>
+        <translation type="unfinished">Kutizë Mbaje të minimizuar kur dilet</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="391"/>
+        <source>Keep minimized on close</source>
+        <translation type="unfinished">Mbaje të minimizuar kur dilet</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="403"/>
+        <source>enable notifications checkbox</source>
+        <translation type="unfinished">Kutizë Aktivizo njoftimet</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="409"/>
+        <source>Enable notifications</source>
+        <translation type="unfinished">Aktivizo njoftime</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="427"/>
+        <source>Launch ring on startup checkbox</source>
+        <translation type="unfinished">Kutizë Nise Ring-un gjatë nisjes së sistemit</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="436"/>
+        <source>Launch Ring on Startup</source>
+        <translation type="unfinished">Nise Ring-un gjatë Nisjes së Sistemit</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="456"/>
+        <source>Autamatic update checks checkbox</source>
+        <translation type="unfinished">Kutizë Kontrolle të vetvetishme për përditësime</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="462"/>
+        <source>Check for update automatically every</source>
+        <translation type="unfinished">Kontrollo vetvetiu për përditësime çdo</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="481"/>
+        <source>Interval between update checks in days selector</source>
+        <translation type="unfinished">Përzgjedhës intervali mes kontrollesh për përditësime, në ditë</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="526"/>
+        <source>Check for updates now button</source>
+        <translation type="unfinished">Buton Kontrollo tani për përditësime</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="529"/>
+        <source>Check for updates now</source>
+        <translation type="unfinished">Kontrollo tani për përditësime</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="759"/>
+        <source>Account Enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="800"/>
+        <source>Registered Username: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="855"/>
+        <source>Type here to register a username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="895"/>
+        <source>     RingID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1028"/>
+        <source>Change Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1074"/>
+        <source>Export Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1093"/>
+        <source>Delete Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1116"/>
+        <location filename="../settingswidget.cpp" line="275"/>
+        <location filename="../settingswidget.cpp" line="298"/>
+        <source>Linked Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1230"/>
+        <source>Link Another Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1315"/>
+        <location filename="../settingswidget.cpp" line="276"/>
+        <location filename="../settingswidget.cpp" line="297"/>
+        <source>Banned Contacts</source>
+        <translation type="unfinished">Kontakte të Dëbuar</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1408"/>
+        <source>Advanced Account Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1505"/>
+        <source>Device Selection</source>
+        <translation type="unfinished">Përzgjedhje Pajisjeje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1550"/>
+        <location filename="../settingswidget.ui" line="1569"/>
+        <source>Video device selector</source>
+        <translation type="unfinished">Përzgjedhës pajisje video</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1556"/>
+        <source>Device</source>
+        <translation type="unfinished">Pajisje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1603"/>
+        <source>Resolution</source>
+        <translation type="unfinished">Qartësi</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1616"/>
+        <source>Video device resolution selector</source>
+        <translation type="unfinished">Përzgjedhës qartësie pajisje video</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1674"/>
+        <source>Output Device</source>
+        <translation type="unfinished">Pajisje Në Dalje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1681"/>
+        <source>Audio output device selector</source>
+        <translation type="unfinished">Përzgjedhës pajisje audio në dalje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1706"/>
+        <source>Input Device</source>
+        <translation type="unfinished">Pajisje Në Hyrje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1713"/>
+        <source>Audio input device selector</source>
+        <translation type="unfinished">Përzgjedhës pajisje audio në hyrje</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="102"/>
+        <source>Enter the displayed name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="413"/>
+        <source>Registered Name: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="421"/>
+        <source>Invalid Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="423"/>
+        <source>A registered name should not have any spaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="429"/>
+        <source>Not Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="431"/>
+        <source>This name is already taken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="437"/>
+        <source>Register Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="439"/>
+        <source>This name is available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="445"/>
+        <source>Searching...</source>
+        <translation type="unfinished">Po kërkohet…</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="446"/>
+        <source>Verifying that this name is available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="496"/>
+        <source>Remove Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="497"/>
+        <source>Enter the password on this device: 
+Leave empty if no password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="524"/>
+        <source>Export Account Here</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1783,12 +2633,12 @@ Ring-u është një software komunikimi të siguruar dhe të shpërndarë.</tran
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1926,7 +2776,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="482"/>
         <source>Photobooth Widget</source>
+<<<<<<< HEAD
         <translation>Widget Kioske Fotosh</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="509"/>
@@ -2138,12 +2994,12 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Ring account&lt;/span&gt; you want to use&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2189,7 +3045,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="482"/>
         <source>Photobooth Widget</source>
+<<<<<<< HEAD
         <translation>Widget Kioske Fotosh</translation>
+||||||| parent of 3e887b3... finished list view but converting to listwidget
+        <translation type="unfinished"/>
+=======
+        <translation type="unfinished"></translation>
+>>>>>>> 3e887b3... finished list view but converting to listwidget
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="509"/>

@@ -46,6 +46,7 @@ public:
     }
     void createThumbBar();
     bool init();
+    //void resizeEvent(QResizeEvent* event);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
