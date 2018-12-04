@@ -84,15 +84,15 @@ ConfigurationWidget::ConfigurationWidget(QWidget *parent) :
     accountStateDelegate_ = new AccountStateDelegate();
     ui->accountView->setItemDelegate(accountStateDelegate_);
 
-    // connect delete button to popup trigger
-    connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
-        auto idx = ui->accountView->currentIndex();
-        DeleteAccountDialog dialog(idx);
-        dialog.exec();
-        if (!LRCInstance::accountModel().getAccountList().size()) {
-            emit NavigationRequested(ScreenEnum::WizardScreen);
-        }
-    });
+    //// connect delete button to popup trigger
+    //connect(ui->deleteAccountBtn, &QPushButton::clicked, [=](){
+    //    auto idx = ui->accountView->currentIndex();
+    //    DeleteAccountDialog dialog(idx);
+    //    dialog.exec();
+    //    if (!LRCInstance::accountModel().getAccountList().size()) {
+    //        emit NavigationRequested(ScreenEnum::WizardScreen);
+    //    }
+    //});
 
     isLoading_ = true;
     ui->deviceBox->setModel(deviceModel_);
