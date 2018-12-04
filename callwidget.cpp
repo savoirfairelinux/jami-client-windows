@@ -193,6 +193,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // chat view
     ui->messageView->buildView();
+
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
 }
 
 CallWidget::~CallWidget()
@@ -439,7 +441,7 @@ CallWidget::imageForConv(const std::string& convUid)
 const std::string&
 CallWidget::selectedAccountId()
 {
-    return LRCInstance::getSelectedAccountId();
+    return LRCInstance::getCurrAccId();
 }
 
 const std::string&
@@ -502,6 +504,7 @@ CallWidget::invitationsButtonClicked()
 void
 CallWidget::settingsButtonClicked()
 {
+    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
     emit NavigationRequested(ScreenEnum::ConfScreen);
 }
 
@@ -727,7 +730,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     QString contactURI = nodeIdx.data(static_cast<int>(SmartListModel::Role::URI)).toString();
 
     bool isContact = false;
-    auto selectedAccountId = LRCInstance::getSelectedAccountId();
+    auto selectedAccountId = LRCInstance::getCurrAccId();
     auto& accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
     bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
     try {
@@ -1063,9 +1066,16 @@ CallWidget::updateSmartList()
 }
 
 void
+CallWidget::updateComboBox()
+{
+    ui->currentAccountComboBox->updateComboBoxDisplay();
+}
+
+void
 CallWidget::update()
 {
     updateSmartList();
     updateConversationsFilterWidget();
+    updateComboBox();
     connectConversationModel();
 }
