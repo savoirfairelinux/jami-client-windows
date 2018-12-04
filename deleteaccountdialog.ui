@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>DeleteAccountDialog</class>
  <widget class="QDialog" name="DeleteAccountDialog">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,73 +13,135 @@
     <height>240</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Ring - account deletion</string>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="3,3,1,1,1,0,3,0">
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>240</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>240</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Account deletion</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: white;</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="3,1,1,0,0,0,0,0">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="labelDeletion">
+     <property name="maximumSize">
       <size>
-       <width>20</width>
+       <width>16777215</width>
        <height>40</height>
       </size>
      </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="deletionLabel1">
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>Do you really want to delete account ?</string>
+      <string>Do you really want to delete the following account?</string>
      </property>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="accountAliasLabel">
+    <widget class="QLabel" name="labelBestId">
      <property name="minimumSize">
       <size>
        <width>30</width>
        <height>0</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="accountIdLabel">
+    <widget class="QLabel" name="labelAccountHash">
      <property name="minimumSize">
       <size>
        <width>20</width>
        <height>0</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string/>
      </property>
-    </widget>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="deletionLabel2">
-     <property name="text">
-      <string>This action is irrevocable</string>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="warningLabel">
+    <widget class="QLabel" name="labelWarning">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>250</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: red;</string>
+     </property>
      <property name="text">
-      <string>If this account hasn't been exported, or added to another device, it will be lost</string>
+      <string>If this account hasn't been exported, or added to another device, it will be irrevocably lost.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>3</number>
      </property>
     </widget>
    </item>
@@ -85,10 +150,13 @@
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>20</height>
       </size>
      </property>
     </spacer>
@@ -121,9 +189,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="deleteCancelBtn">
+      <widget class="QPushButton" name="btnDeleteAccept">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -134,11 +202,20 @@
          <height>30</height>
         </size>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>130</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="toolTip">
-        <string>Cancel contact deletion button</string>
+        <string>Permanently delete account</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0px;; border-radius:3px; background: rgb(245, 245, 245);</string>
        </property>
        <property name="text">
-        <string>Cancel</string>
+        <string>Delete</string>
        </property>
       </widget>
      </item>
@@ -156,7 +233,13 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="deleteAcceptBtn">
+      <widget class="QPushButton" name="btnDeleteCancel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>130</width>
@@ -164,10 +247,13 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>Validate contact deletion button</string>
+        <string>Cancel account deletion</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0px; border-radius:3px; background: rgb(245, 245, 245);</string>
        </property>
        <property name="text">
-        <string>Ok</string>
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
@@ -185,6 +271,22 @@
       </spacer>
      </item>
     </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

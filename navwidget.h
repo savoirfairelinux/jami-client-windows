@@ -25,6 +25,7 @@ enum ScreenEnum {
     WizardScreen,
     CallScreen,
     ConfScreen,
+    SetttingsScreen,
     END
 };
 

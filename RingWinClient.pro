@@ -80,11 +80,11 @@ SOURCES += main.cpp\
     invitebuttonswidget.cpp \
     wizardwidget.cpp \
     currentaccountcombobox.cpp \
-    conversationfilterbutton.cpp \
     messagewebpage.cpp \
     messagewebview.cpp \
     webchathelpers.cpp \
-    animationhelpers.cpp
+    animationhelpers.cpp \
+    settingsitemwidget.cpp
 
 HEADERS  += mainwindow.h \
     callwidget.h \
@@ -128,11 +128,11 @@ HEADERS  += mainwindow.h \
     invitebuttonswidget.h \
     wizardwidget.h \
     currentaccountcombobox.h \
-    conversationfilterbutton.h \
     messagewebpage.h \
     messagewebview.h \
     webchathelpers.h \
-    animationhelpers.h
+    animationhelpers.h \
+    settingsitemwidget.h
 
 
 contains(DEFINES, URI_PROTOCOL) {
