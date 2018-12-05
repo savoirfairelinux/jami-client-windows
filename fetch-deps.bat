@@ -17,7 +17,7 @@ git checkout 6e7bb8554852d7f964fd176c440dd29cc772f2dc
 %APPLY_CMD% ..\winsparkle.patch
 if "%cloneSubmodules%" neq "N" (
     git submodule init
-    git submodule update
+    git submodule update --depth=1
 )
 cd ..
 
