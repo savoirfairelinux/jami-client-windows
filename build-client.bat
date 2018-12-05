@@ -6,6 +6,7 @@ setlocal
 if "%1" == "/?" goto Usage
 if "%~1" == "" goto Usage
 
+set doDeps=N
 set doCompile=N
 set doBuild=N
 
@@ -15,6 +16,8 @@ if "%1"=="compile" (
     set doCompile=Y
 ) else if "%1"=="build" (
     set doBuild=Y
+) else if "%1"=="deps" (
+    set doDeps=Y
 ) else (
     goto Usage
 )
@@ -80,10 +83,22 @@ if "%arch%" neq "N" (
         goto compileClient
     ) else if "%doBuild%" neq "N" (
         goto buildClient
+    ) else if "%doDeps%" neq "N" (
+        goto buildDeps
     )
     goto :eof
 )
 goto Usage
+
+:buildDeps
+set TOBUILD=qrencode-win32\qrencode-win32\vc8\qrcodelib\qrcodelib.vcxproj
+msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release-Lib %MSBUILD_ARGS%
+set TOBUILD=winsparkle\WinSparkle-2015.sln
+set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=4
+%WGET_CMD% https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+nuget restore %TOBUILD%
+msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release %MSBUILD_ARGS%
+goto cleanup
 
 :compileClient
 msbuild ring-client-windows.vcxproj /verbosity:normal /p:Configuration=ReleaseCompile %MSBUILD_ARGS%
