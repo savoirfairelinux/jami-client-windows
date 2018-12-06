@@ -1,4 +1,10 @@
-﻿write-host "copying runtime files..."
+﻿[cmdletbinding()]
+param (
+    [string]$daemonDir,
+    [string]$lrcDir
+);
+
+write-host "copying runtime files..."
 
 $QtDir = "C:\Qt\5.9.4\msvc2017_64"
 $ClientDir = split-path -parent $MyInvocation.MyCommand.Definition
@@ -6,25 +12,25 @@ $ClientDir = split-path -parent $MyInvocation.MyCommand.Definition
 $OutDir = $ClientDir + "\x64\Release"
 New-Item -ItemType directory -Path $OutDir -Force
 
-if (-not (Test-Path env:daemonDir)) {
-    $env:daemonDir = '$ClientDir\..\daemon'
+if (-not ($daemonDir)) {
+    $daemonDir = '$ClientDir\..\daemon'
 }
 
-if (-not (Test-Path env:lrcDir)) {
-    $env:lrcDir = '$ClientDir\..\lrc'
+if (-not ($lrcDir)) {
+    $lrcDir = '$ClientDir\..\lrc'
 }
 
 # dependency bin files
 $FilesToCopy = @(
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avcodec-58.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avutil-56.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avformat-58.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avdevice-58.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swresample-3.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swscale-5.dll",
-    "$env:daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avfilter-7.dll",
-    "$env:daemonDir\contrib\build\restbed\dependency\openssl\out32dll\libeay32.dll",
-    "$env:daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avcodec-58.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avutil-56.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avformat-58.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avdevice-58.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swresample-3.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swscale-5.dll",
+    "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avfilter-7.dll",
+    "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\libeay32.dll",
+    "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
     "$ClientDir\winsparkle\x64\Release\WinSparkle.dll",
     "$ClientDir\ring.nsi",
     "$ClientDir\images\ring.ico"
@@ -108,7 +114,7 @@ Get-ChildItem -Path $RingtonePath -Include *.ul, *.wav, *.ogg -Recurse | ForEach
 $lrelease = "$QtDir\bin\lrelease.exe"
 
 # lrc translations
-$lrcTSPath = "$env:lrcDir\translations"
+$lrcTSPath = "$lrcDir\translations"
 Get-ChildItem -Path $lrcTSPath -Include *.ts -Recurse | ForEach-Object {
     & $lrelease $_.FullName
 }
