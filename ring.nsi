@@ -146,17 +146,17 @@ section "install"
         file "icudtl.dat"
         file *.dll
         setOutPath $INSTDIR\platforms
-        file platforms/*
+        file platforms\*
         setOutPath $INSTDIR\imageformats
-        file imageformats/*
+        file imageformats\*
         setOutPath $INSTDIR\sqldrivers
-        file sqldrivers/*
+        file sqldrivers\*
         setOutPath $INSTDIR\ringtones
-        file ringtones/*
+        file ringtones\*
         setOutPath $INSTDIR\share\ring\translations
-        file share/ring/translations/*
+        file share\ring\translations\*
         setOutPath $INSTDIR\share\libringclient\translations
-        file share/libringclient/translations/*
+        file share\libringclient\translations\*
 
         # Uninstaller - See function un.onInit and section "uninstall" for configuration
         writeUninstaller "$INSTDIR\uninstall.exe"

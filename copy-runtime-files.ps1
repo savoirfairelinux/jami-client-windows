@@ -34,6 +34,7 @@ $FilesToCopy = @(
     "$ClientDir\winsparkle\x64\Release\WinSparkle.dll",
     "$ClientDir\ring.nsi",
     "$ClientDir\images\ring.ico"
+    "$ClientDir\License.rtf"
     )
 foreach ($i in $FilesToCopy) {
     write-host "copying: " $i " => " $OutDir
