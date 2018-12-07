@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb6c4932_06968975",
+        "filename": "avatargraphicsscene.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "need this?",
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe3ec0c_6bcc91f4",
+        "filename": "bannedlistmodel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "need this?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b445eda_4b224e27",
+        "filename": "bannedlistmodel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "extra indent here",
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7392f44_909fc1e7",
+        "filename": "configurationwidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "need this?",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83692bce_f33aecbd",
+        "filename": "ring-client-windows.vcxproj",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "hmmm... good thing this SDK is installed on the jenkins slave",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345f6fbe_b8c5b4ca",
+        "filename": "settingswidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "?",
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b575c4_9395c20b",
+        "filename": "settingswidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "need this?",
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe6ae95_0671f28d",
+        "filename": "settingswidget.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-07T21:21:25Z",
+      "side": 1,
+      "message": "need this?",
+      "revId": "4e981f2f67d684d7e574f50e0a0b7a160d468827",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
