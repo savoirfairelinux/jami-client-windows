@@ -38,7 +38,7 @@ private:
     void paintEvent(QPaintEvent* e);
 
     const qreal zoomIncrement_ = 1.03;
-    int circleSize_ = 160;
+    int circleSize_ = 130;
 
     QPainterPath japanPath_;
 };

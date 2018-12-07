@@ -13,7 +13,7 @@
 * GNU General Public License for more details.                            *
 *                                                                         *
 * You should have received a copy of the GNU General Public License       *
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
 **************************************************************************/
 
 #include <QtMultimedia\QCameraInfo>
@@ -35,36 +35,32 @@ SetAvatarDialog::SetAvatarDialog(QWidget* parent)
     :   QDialog(parent),
         ui(new Ui::SetAvatarDialog),
         videoWidget_(new QCameraViewfinder(this)),
-        takePictureButton_(new QPushButton(this))
+        camera_(new QCamera)
 {
     ui->setupUi(this);
 
-    ui->fileButton->setCheckable(true);
-    ui->pictureButton->setCheckable(true);
-    ui->pictureButton->setChecked(true);
-
-    connect(ui->cancelButton, &QPushButton::clicked, [=]() {
+    connect(ui->cancelButton, &QPushButton::clicked, [&]() {
         done(0);
         }
     );
 
-    connect(ui->saveButton, &QPushButton::clicked, [=]() {
+    connect(ui->saveButton, &QPushButton::clicked, [&]() {
         saveAvatar();
         }
     );
 
-    connect(ui->fileButton, &QPushButton::clicked, [=]() {
-        selectFileBtn();
+    connect(ui->selectFileButton, &QPushButton::clicked, [&]() {
+        openFileManager();
         }
     );
 
-    connect(ui->pictureButton, &QPushButton::clicked, [=]() {
-        selectPictureBtn();
-        }
-    );
-
-    connect(takePictureButton_, &QPushButton::clicked, [=]() {
+    connect(ui->takePictureButton, &QPushButton::clicked, [&]() {
         captureImage();
+        }
+    );
+
+    connect(ui->cameraButton, &QPushButton::clicked, [&]() {
+        pictureMode();
         }
     );
 
@@ -72,9 +68,6 @@ SetAvatarDialog::SetAvatarDialog(QWidget* parent)
 
     videoWidget_->setGeometry(ui->graphicsView->x(), ui->graphicsView->y(),
         ui->graphicsView->width(), ui->graphicsView->height());
-
-    takePictureButton_->setStyleSheet("background: white; border: 0px;");
-    takePictureButton_->setText(tr("Take Picture"));
 
     show();
     pictureMode();
@@ -84,7 +77,6 @@ SetAvatarDialog::SetAvatarDialog(QWidget* parent)
 SetAvatarDialog::~SetAvatarDialog()
 {
     disconnect(this);
-    delete takePictureButton_;
     delete mediaPlayer_;
     delete videoWidget_;
     delete imageCapture_;
@@ -95,7 +87,6 @@ SetAvatarDialog::~SetAvatarDialog()
 void
 SetAvatarDialog::startCamera()
 {
-    camera_ = new QCamera;
     imageCapture_ = new QCameraImageCapture(camera_, this);
 
     camera_->setCaptureMode(QCamera::CaptureViewfinder);
@@ -119,6 +110,8 @@ SetAvatarDialog::checkCamAvailable()
 void
 SetAvatarDialog::pictureMode()
 {
+    qDebug() << "&&&&&&&&&&&&&&&&&&&&";
+
     if (checkCamAvailable()) {
         camera_ = new QCamera(QCamera::FrontFace);
         camera_->setViewfinder(videoWidget_);
@@ -128,10 +121,11 @@ SetAvatarDialog::pictureMode()
 
         camera_->start();
 
-        takePictureButton_->setGeometry(ui->saveButton->x(), ui->saveButton->y(),
-            ui->saveButton->width(), ui->saveButton->height());
         ui->saveButton->hide();
-        takePictureButton_->show();
+        ui->cameraButton->hide();
+
+        ui->takePictureButton->show();
+        ui->selectFileButton->show();
     }
     else {
         openFileManager(); // no camera detected so open file manager
@@ -144,11 +138,11 @@ SetAvatarDialog::editMode()
     camera_->stop();
     camera_->unlock();
 
-    ui->fileButton->setChecked(false);
-    ui->pictureButton->setChecked(false);
+    ui->takePictureButton->hide();
 
-    takePictureButton_->hide();
     ui->saveButton->show();
+    ui->cameraButton->show();
+    ui->selectFileButton->show();
 
     videoWidget_->hide();
     ui->graphicsView->show();
@@ -189,7 +183,7 @@ SetAvatarDialog::captureImage()
     if (imageCapture_->isCaptureDestinationSupported(QCameraImageCapture::CaptureToFile)) {
         camera_->searchAndLock();
         camera_->start();
-        imageCapture_->capture("catsarerarebutfurryandsquishyandwhatarethechancesthatsomeonehasafilewiththisname.png");
+        imageCapture_->capture();
     }
 }
 
@@ -197,8 +191,9 @@ SetAvatarDialog::captureImage()
 void
 SetAvatarDialog::saveAvatar()
 {
-    avatarSize_ = avatarSize_ * 2;
-    QRect avatarRect((this->width() - avatarSize_)/2, (this->height() - avatarSize_)/2,
+    avatarSize_ *= 2;
+
+    QRect avatarRect((ui->graphicsView->width() - avatarSize_)/2 + ui->graphicsView->x(), (ui->graphicsView->height() - avatarSize_)/2 + ui->graphicsView->y(),
         avatarSize_, avatarSize_);
 
     QRegion avatarRegion(avatarRect.x() - ui->graphicsView->x(), avatarRect.y() - ui->graphicsView->y(),
@@ -235,22 +230,6 @@ SetAvatarDialog::imageCaptureSlot(int useless, const QString& text)
     if (!rawPixmap_.isNull()){
         editMode();
     }
-    QFile file(text); // not ideal to store to disk (use buffer) [todo]
+    QFile file(text);
     file.remove();
-}
-
-void
-SetAvatarDialog::selectPictureBtn()
-{
-    ui->pictureButton->setChecked(true);
-    ui->fileButton->setChecked(false);
-    pictureMode();
-}
-
-void
-SetAvatarDialog::selectFileBtn()
-{
-    ui->pictureButton->setChecked(false);
-    ui->fileButton->setChecked(true);
-    openFileManager();
 }

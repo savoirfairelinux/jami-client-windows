@@ -72,7 +72,6 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
         else {
             button_->setIcon(QPixmap(":/images/icons/round-remove_circle-24px.svg"));
             button_->setToolTip(QObject::tr("Unlink Device From Account"));
-
         }
         nameEdit_->show();
         idlabel_->show();

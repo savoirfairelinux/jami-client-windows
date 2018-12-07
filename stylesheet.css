@@ -311,7 +311,7 @@ QWidget#messagingPage, QWidget#contactRequestPage{
 }
 
 QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
-QPushButton#checkUpdateButton, QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
+QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
@@ -331,7 +331,7 @@ QPushButton#cancelChangeBtn {
 }
 
 QPushButton#nextButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
-QPushButton#checkUpdateButton:hover, QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
+QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
 QPushButton#takePhotoButton:hover, QPushButton#importButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover,
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
@@ -348,7 +348,7 @@ QPushButton#deleteButton:hover, QPushButton#deleteBanBtn:hover, QPushButton#canc
 }
 
 QPushButton#nextButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
-QPushButton#checkUpdateButton:pressed, QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
+QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed,
 QPushButton#takePhotoButton:pressed, QPushButton#importButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed,
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
@@ -701,13 +701,5 @@ QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
 
 
 /* SettingsWidget { */
-QPushButton#accountSettingsButton:default, QPushButton#generalSettingsButton:default,
-QPushButton#avSettingsButton:default {
-    background-color: rgb(0, 192, 213,);
-}
 
-QPushButton#accountSettingsButton:checked, QPushButton#generalSettingsButton:checked,
-QPushButton#avSettingsButton:checked {
-    background-color: rgb(0, 0, 213);
-}
 /* } SettingsWidget */

@@ -1,6 +1,9 @@
 /***************************************************************************
  * Copyright (C) 2018 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,7 +23,10 @@
 #include <QModelIndex>
 #include <QFileDialog>
 #include <QInputDialog>
+#include <QStandardPaths>
+#include <QMessageBox>
 
+// account settings
 #include "api/newdevicemodel.h"
 #include "settingsitemwidget.h"
 
@@ -40,17 +46,42 @@
 #include "deleteaccountdialog.h"
 #include "ui_deleteaccountdialog.h"
 
+
+// general Settings
+#include "winsparkle.h"
+#include "media/recordingmodel.h"
+
+// av setttings
+#include "audio/settings.h"
+#include "audio/outputdevicemodel.h"
+#include "audio/inputdevicemodel.h"
+
+#include "video/devicemodel.h"
+#include "video/channel.h"
+#include "video/resolution.h"
+#include "video/rate.h"
+#include "video/previewmanager.h"
+
+#include "callmodel.h"
+
+
+
+
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
-      ui(new Ui::SettingsWidget),
-      scrollArea_(new QScrollArea)
+    ui(new Ui::SettingsWidget),
+    scrollArea_(new QScrollArea),
+    deviceModel_(&Video::DeviceModel::instance()),
+    gif(new QMovie(":/images/ajax-loader.gif"))
 {
     ui->setupUi(this);
 
-    ui->accountSettingsButton->setCheckable(true);
-    ui->generalSettingsButton->setCheckable(true);
-    ui->avSettingsButton->setCheckable(true);
+    ui->accountSettingsButton->setAutoFillBackground(true);
+    ui->generalSettingsButton->setAutoFillBackground(true);
+    ui->avSettingsButton->setAutoFillBackground(true);
+
     ui->accountSettingsButton->setChecked(true);
+
     ui->exitSettingsButton->setIconSize(QSize(24, 24));
     ui->exitSettingsButton->setIcon(QPixmap(":/images/icons/round-close-24px.svg"));
 
@@ -67,12 +98,6 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     ui->currentRingID->setReadOnly(true);
 
-    //scrollArea_->setWidgetResizable(true);
-    //scrollArea_->setParent(ui->currentAccountSettingsScrollWidget);
-    //scrollArea_->setWidget(ui->currentAccountSettingsScrollWidget);
-    //scrollArea_->setStyleSheet("border: 0px;");
-    //scrollArea_->resize(ui->currentAccountSettingsScrollWidget->width(), this->height());
-
     avatarSize_ = ui->currentAccountAvatar->width();
 
     ui->currentAccountAvatar->setIconSize(QSize(avatarSize_, avatarSize_));
@@ -82,7 +107,32 @@ SettingsWidget::SettingsWidget(QWidget* parent)
         ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
     ui->currentAccountAvatar->setMask(avatarClickableRegion);
 
-    // safe space below
+    QString styleS(
+        "QPushButton{"
+        "  background-color: rgb(245, 245, 245);"
+        "  border: 0px;"
+        "}"
+        " QPushButton:hover{"
+        "     background-color: rgb(250, 250, 250);"
+        "     border: 0px;"
+        " }"
+
+        "QPushButton:checked{"
+        "    background-color: white;"
+        "    border: 0px;"
+        "}"
+    );
+
+    ui->accountSettingsButton->setStyleSheet(styleS);
+    ui->generalSettingsButton->setStyleSheet(styleS);
+    ui->avSettingsButton->setStyleSheet(styleS);
+
+    ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
+    ui->linkDevPushButton->setIcon(QPixmap(":/images/icons/round-add-24px.svg"));
+    ui->blockedContactsBtn->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
+
+    ui->advancedSettingsOffsetLabel->show();
+
     setConnections();
 }
 
@@ -117,7 +167,6 @@ SettingsWidget::setSelected(Button sel)
     case Button::accountSettingsButton:
         ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
         if (pastButton_ == Button::generalSettingsButton) {
-
             ui->accountSettingsButton->setChecked(true);
             ui->generalSettingsButton->setChecked(false);
             break;
@@ -129,6 +178,7 @@ SettingsWidget::setSelected(Button sel)
         }
     case Button::generalSettingsButton:
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
+        populateGeneralSettings();
         if (pastButton_ == Button::avSettingsButton) {
             ui->generalSettingsButton->setChecked(true);
             ui->avSettingsButton->setChecked(false);
@@ -141,6 +191,7 @@ SettingsWidget::setSelected(Button sel)
         }
     case Button::avSettingsButton:
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
+        populateAVSettings();
         if (pastButton_ == Button::accountSettingsButton) {
             ui->avSettingsButton->setChecked(true);
             ui->accountSettingsButton->setChecked(false);
@@ -203,12 +254,17 @@ SettingsWidget::toggleAdvancedSettings()
     if (advancedSettingsDropped_) {
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
         ui->currentAccountSettingsScrollLayout->removeWidget(advancedSettingsWidget_);
+        ui->scrollBarLabel->show();
+        ui->advancedSettingsOffsetLabel->hide();
         delete advancedSettingsWidget_;
     }
-    else { // if advanced settings shown
+    else { // will show advanced settings next
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
-        advancedSettingsWidget_ = new AdvancedSettingsWidget(this);
+        advancedSettingsWidget_ = new AdvancedSettingsWidget(ui->scrollAreaWidgetContents);
+        advancedSettingsWidget_->setMaximumWidth(ui->scrollAreaWidgetContents->width() - 10);
         ui->currentAccountSettingsScrollLayout->addWidget(advancedSettingsWidget_);
+        ui->advancedSettingsOffsetLabel->show();
+        ui->scrollBarLabel->hide();
     }
     advancedSettingsDropped_ = !advancedSettingsDropped_;
 }
@@ -314,52 +370,64 @@ SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const st
 
 void SettingsWidget::setRegNameUi(RegName stat)
 {
+    disconnect(gif, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
+    disconnect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
+
     switch (stat) {
     case RegName::BLANK:
-        ui->currentRegisteredID->setStyleSheet("border: 0px; border-radius: 3px;");
+        ui->currentRegisteredID->setStyleSheet("padding-left: 5px; border: 0px; border-radius: 3px; border: 1px solid rgb(245, 245, 245);");
         regNameBtn_ = false;
-        ui->currentRegisteredIDBtn->setText(tr("Registered Name: "));
-        ui->currentRegisteredIDBtn->setToolTip(tr(""));
         ui->currentRegisteredID->setToolTip(tr(""));
-        ui->currentRegisteredIDBtn->setStyleSheet("background: white;");
+        ui->regNameButton->setIcon(QPixmap());
+        ui->regNameButton->setEnabled(false);
         break;
 
     case RegName::INVALIDFORM:
-        ui->currentRegisteredID->setStyleSheet("border: 1px solid red; border-radius: 3px;");
+        ui->currentRegisteredID->setStyleSheet("padding-left: 5px; border: 1px solid red; border-radius: 3px;");
         regNameBtn_ = false;
-        ui->currentRegisteredIDBtn->setText(tr("Invalid Name"));
-        ui->currentRegisteredIDBtn->setToolTip(tr(""));
-        ui->currentRegisteredID->setToolTip(tr("A registered name should not have any spaces")); // [confirm]
-        ui->currentRegisteredIDBtn->setStyleSheet("background: white;");
+        ui->currentRegisteredID->setToolTip(tr("A registered name should not have any spaces and must be at least three letters long"));
+        ui->regNameButton->setIcon(QPixmap(":/images/icons/round-error-24px.svg"));
+        ui->regNameButton->setToolTip(tr("A registered name should not have any spaces and must be at least three letters long"));
+        ui->regNameButton->setEnabled(true);
         break;
 
     case RegName::TAKEN:
-        ui->currentRegisteredID->setStyleSheet("border: 1px solid orange; border-radius: 3px;");
+        ui->currentRegisteredID->setStyleSheet("padding-left: 5px; border: 1px solid orange; border-radius: 3px;");
         regNameBtn_ = false;
-        ui->currentRegisteredIDBtn->setText(tr("Not Available"));
-        ui->currentRegisteredIDBtn->setToolTip(tr(""));
-        ui->currentRegisteredID->setToolTip(tr("This name is already taken")); // [confirm]
-        ui->currentRegisteredIDBtn->setStyleSheet("background: white;");
+        ui->currentRegisteredID->setToolTip(tr("This name is already taken"));
+        ui->regNameButton->setIcon(QPixmap(":/images/icons/round-error-24px.svg"));
+        ui->regNameButton->setToolTip(tr("This registered name is already taken"));
+        ui->regNameButton->setEnabled(true);
         break;
 
     case RegName::FREE:
-        ui->currentRegisteredID->setStyleSheet("border: 1px solid green; border-radius: 3px;");
+        ui->currentRegisteredID->setStyleSheet("padding-left: 5px; border: 1px solid green; border-radius: 3px;");
         regNameBtn_ = true;
-        ui->currentRegisteredIDBtn->setText(tr("Register Name"));
-        ui->currentRegisteredIDBtn->setToolTip(tr(""));
-        ui->currentRegisteredID->setToolTip(tr("This name is available")); // [confirm]
-        ui->currentRegisteredIDBtn->setStyleSheet("background: #e8f5e9; border-radius: 3px;");
+        ui->currentRegisteredID->setToolTip(tr("This name is available"));
+        ui->regNameButton->setIcon(QPixmap(":/images/icons/round-check_circle-24px.svg"));
+        ui->regNameButton->setToolTip(tr("Register this name"));
+        ui->regNameButton->setEnabled(true);
+
+        connect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
+
         break;
 
     case RegName::SEARCHING:
-        ui->currentRegisteredID->setStyleSheet("border: 1px solid orange; border-radius: 3px;");
+        ui->currentRegisteredID->setStyleSheet("padding-left: 5px; border: 1px solid rgb(2, 187, 213); border-radius: 3px;");
         regNameBtn_ = false;
-        ui->currentRegisteredIDBtn->setText(tr("Searching..."));
-        ui->currentRegisteredIDBtn->setToolTip(tr("Verifying that this name is available")); // [confirm]
         ui->currentRegisteredID->setToolTip(tr(""));
-        ui->currentRegisteredIDBtn->setStyleSheet("background: white;");
+
+        connect(gif, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
+        gif->start();
+        ui->regNameButton->setEnabled(false);
+
         break;
     }
+}
+void SettingsWidget::setButtonIconSlot(int frame)
+{
+    Q_UNUSED(frame);
+    ui->regNameButton->setIcon(QIcon(gif->currentPixmap()));
 }
 
 void
@@ -392,6 +460,7 @@ SettingsWidget::delAccountSlot()
 {
     DeleteAccountDialog delDialog(this);
     delDialog.exec();
+
     if (!LRCInstance::accountModel().getAccountList().size()) {
         emit NavigationRequested(ScreenEnum::WizardScreen);
     }
@@ -406,13 +475,25 @@ SettingsWidget::removeDeviceSlot(int index)
     auto it = deviceList.begin();
 
     std::advance(it, index);
+    QString psswd;
 
-    bool ok;
-    QString psswd = QInputDialog::getText(this, tr("Remove Device"),
-        tr("Enter the password on this device: \nLeave empty if no password."), QLineEdit::Password,
-        QDir::home().dirName(), &ok);
+    bool ok = false;
+    if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
+        psswd = QInputDialog::getText(this, tr("Remove Device"),
+            tr("Enter the password on this device to confirm the removal of this device"), QLineEdit::Password,
+            QDir::home().dirName(), &ok);
+    }
+    else {
+        psswd = "";
+        QMessageBox devDel;
+        devDel.setText(tr("Please confirm that you wish to remove this device"));
+        devDel.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+        devDel.setDefaultButton(QMessageBox::Cancel);
+        if (devDel.exec() == QMessageBox::Ok) { goto delete_; }
+    }
 
     if (ok) {
+        delete_:
         LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, psswd.toStdString());
         updateAndShowDevicesSlot();
     }
@@ -501,11 +582,16 @@ SettingsWidget::updateAndShowBannedContactsSlot()
 void
 SettingsWidget::showLinkDevSlot()
 {
-    ui->currentAccountSettingsScrollWidget->hide();
-    linkDevWidget = new LinkDevWidget(ui->scrollAreaWidgetContents);
+    if (!advancedSettingsWidget_) { delete advancedSettingsWidget_; }
 
-    linkDevWidget->setGeometry(ui->currentAccountSettingsScrollWidget->rect());
+    linkDevWidget = new LinkDevWidget(ui->scrollAreaWidgetContents);
+    linkDevWidget->setMinimumWidth(600);
+
+    ui->accountHorLayout->insertWidget(1, linkDevWidget);
+
     linkDevWidget->show();
+    ui->centralWidget->hide();
+
     connect(linkDevWidget->cancelBtn(), &QPushButton::clicked, this, &SettingsWidget::showCurrentAccountSlot);
     connect(linkDevWidget->endCancelBtn(), &QPushButton::clicked, this, &SettingsWidget::showCurrentAccountSlot);
 }
@@ -514,10 +600,9 @@ void
 SettingsWidget::showCurrentAccountSlot()
 {
     disconnect(linkDevWidget);
-    ui->currentAccountSettingsScrollWidget->setGeometry(linkDevWidget->rect());
-    ui->currentAccountSettingsScrollWidget->show();
 
     delete linkDevWidget;
+    ui->centralWidget->show();
 }
 
 void
@@ -570,8 +655,6 @@ SettingsWidget::setConnections()
     // connect "link device" button
     connect(ui->linkDevPushButton, &QPushButton::clicked, this, &SettingsWidget::showLinkDevSlot);
 
-    connect(ui->currentRegisteredIDBtn, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
-
     // update banned accounts automatically
     connect(LRCInstance::getCurrentAccountInfo().contactModel.get(), &lrc::api::ContactModel::modelUpdated,
         this, &SettingsWidget::updateAndShowBannedContactsSlot);
@@ -588,10 +671,245 @@ SettingsWidget::setConnections()
     }
     );
 
+    // general settings
+
+    connect(ui->notificationCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setNotificationsSlot);
+
+    connect(ui->closeOrMinCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setClosedOrMinSlot);
+
+    connect(ui->downloadButton, &QPushButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
+
+    connect(ui->alwaysRecordingCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setAlwaysRecordingSlot);
+
+    connect(ui->checkUpdateButton, &QPushButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
+
+    connect(ui->intervalUpdateCheckSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsWidget::setUpdateIntervalSlot);
+
+    connect(ui->autoUpdateCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setUpdateAutomaticSlot);
+
+    // audio / visual settings
+
+    connect(ui->recordPathButton, &QPushButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
 }
-//
-//void
-//SettingsWidget::setScrollWidgetSize()
-//{
-//    ui->currentAccountSettingsScrollWidget->setFixedWidth(ui->)
-//}
+
+
+// *************************  General Settings  *************************
+
+void SettingsWidget::populateGeneralSettings()
+{
+    settings_ = new QSettings;
+    //dataTransferModel_ = new lrc::api::DataTransferModel;
+
+    // settings
+    ui->downloadButton->setText(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
+    ui->closeOrMinCheckBox->setChecked(settings_->value(SettingsKey::closeOrMinimized).toBool());
+    ui->notificationCheckBox->setChecked(settings_->value(SettingsKey::enableNotifications).toBool());
+
+    //recordings
+    ui->alwaysRecordingCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
+
+    if (media::RecordingModel::instance().recordPath().isEmpty()) {
+        QString recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+        media::RecordingModel::instance().setRecordPath(recordPath);
+    }
+    ui->recordPathButton->setText(media::RecordingModel::instance().recordPath());
+
+
+    ui->autoUpdateCheckBox->setChecked(win_sparkle_get_automatic_check_for_updates());
+    ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
+
+}
+
+void
+SettingsWidget::setNotificationsSlot(int state)
+{
+    if (state == Qt::CheckState::Unchecked) {
+        settings_->setValue(SettingsKey::enableNotifications, false);
+    } else {
+        settings_->setValue(SettingsKey::enableNotifications, true);
+    }
+}
+
+void
+SettingsWidget::setClosedOrMinSlot(int state)
+{
+    if (state == Qt::CheckState::Unchecked) {
+        settings_->setValue(SettingsKey::closeOrMinimized, false);
+    }
+    else {
+        settings_->setValue(SettingsKey::closeOrMinimized, true);
+    }
+}
+
+void
+SettingsWidget::checkForUpdateSlot()
+{
+    win_sparkle_check_update_with_ui();
+}
+
+void
+SettingsWidget::setUpdateIntervalSlot(int value)
+{
+    win_sparkle_set_update_check_interval(value * 86400);
+}
+
+void
+SettingsWidget::setUpdateAutomaticSlot(int state)
+{
+    if (state == Qt::CheckState::Unchecked) {
+        win_sparkle_set_automatic_check_for_updates(false);
+        ui->intervalUpdateCheckSpinBox->setEnabled(false);
+    } else {
+        win_sparkle_set_automatic_check_for_updates(true);
+        ui->intervalUpdateCheckSpinBox->setEnabled(true);
+    }
+}
+
+void
+SettingsWidget::openDownloadFolderSlot()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Downloads"),
+        QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), QFileDialog::ShowDirsOnly
+        | QFileDialog::DontResolveSymlinks);
+
+    if (!dir.isEmpty()) {
+        QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) = dir;
+        ui->downloadButton->setText(dir);
+    }
+}
+
+void
+SettingsWidget::setAlwaysRecordingSlot(int state)
+{
+    if (state == Qt::CheckState::Unchecked) {
+        media::RecordingModel::instance().setAlwaysRecording(false);
+    } else {
+        media::RecordingModel::instance().setAlwaysRecording(true);
+    }
+}
+
+void
+SettingsWidget::openRecordFolderSlot()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Recordings"),
+        media::RecordingModel::instance().recordPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    if (!dir.isEmpty()) {
+        media::RecordingModel::instance().setRecordPath(dir);
+        ui->recordPathButton->setText(media::RecordingModel::instance().recordPath());
+    }
+}
+
+
+// *************************  Audio/Visual Settings  *************************
+
+void
+SettingsWidget::populateAVSettings()
+{
+    ui->deviceBox->setModel(deviceModel_);
+    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(deviceIndexChanged(int)));
+
+    if (ui->deviceBox->count() > 0) {
+        ui->deviceBox->setCurrentIndex(0);
+        deviceBoxCurrentIndexChangedSlot(0);
+    }
+
+    // Audio settings
+    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    auto outputModel = Audio::Settings::instance().outputDeviceModel();
+
+    ui->outputComboBox->setModel(outputModel);
+    ui->inputComboBox->setModel(inputModel);
+    if (ui->outputComboBox->count() > 0) {
+        ui->outputComboBox->setCurrentIndex(0);
+    }
+    if (ui->inputComboBox->count() > 0) {
+        ui->inputComboBox->setCurrentIndex(0);
+    }
+
+    connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::outputDevIndexChangedSlot);
+    connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::inputdevIndexChangedSlot);
+
+    connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+        &SettingsWidget::deviceBoxCurrentIndexChangedSlot);
+    connect(ui->sizeBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+        &SettingsWidget::sizeBoxCurrentIndexChangedSlot);
+
+    isLoading_ = true;
+
+    showPreview();
+}
+
+void
+SettingsWidget::showPreview()
+{
+    if (!CallModel::instance().getActiveCalls().size()) {
+        ui->previewUnavailableLabel->hide();
+        ui->videoWidget->show();
+        Video::PreviewManager::instance().startPreview();
+        ui->videoWidget->setIsFullPreview(true);
+    } else {
+        ui->previewUnavailableLabel->show();
+        ui->videoWidget->hide();
+    }
+}
+
+void
+SettingsWidget::deviceBoxCurrentIndexChangedSlot(int index)
+{
+    if (index < 0) {
+        return;
+    }
+
+    if (!isLoading_)
+        deviceModel_->setActive(index);
+
+    auto device = deviceModel_->activeDevice();
+
+    ui->sizeBox->clear();
+
+    isLoading_ = true;
+    if (device->channelList().size() > 0) {
+        for (auto resolution : device->channelList()[0]->validResolutions()) {
+            ui->sizeBox->addItem(resolution->name());
+        }
+    }
+    ui->sizeBox->setCurrentIndex(
+        device->channelList()[0]->activeResolution()->relativeIndex());
+    isLoading_ = false;
+}
+
+void
+SettingsWidget::sizeBoxCurrentIndexChangedSlot(int index)
+{
+    auto device = deviceModel_->activeDevice();
+
+    if (index < 0) return;
+
+    device->channelList()[0]->setActiveResolution(device->channelList()[0]->validResolutions()[index]);
+}
+
+void
+SettingsWidget::deviceIndexChanged(int index)
+{
+    ui->deviceBox->setCurrentIndex(index);
+
+    ui->videoLayout->update();
+}
+
+void
+SettingsWidget::outputDevIndexChangedSlot(int index)
+{
+    auto outputModel = Audio::Settings::instance().outputDeviceModel();
+    outputModel->selectionModel()->setCurrentIndex(outputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}
+
+void
+SettingsWidget::inputdevIndexChangedSlot(int index)
+{
+    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}

@@ -13,7 +13,6 @@
         <file>images/ring.png</file>
         <file>images/spikeMask.png</file>
         <file>images/waiting.gif</file>
-        <file>images/icons/baseline-arrow_drop_up-24px.svg</file>
         <file>images/icons/ic_add_black_18dp_2x.png</file>
         <file>images/icons/ic_arrow_back_24px.svg</file>
         <file>images/icons/ic_arrow_back_white_24dp.png</file>
@@ -61,7 +60,6 @@
         <file>images/icons/round-edit-24px.svg</file>
         <file>images/icons/round-folder-24px.svg</file>
         <file>images/icons/round-remove_circle-24px.svg</file>
-        <file>images/icons/round-save_alt-24px.svg</file>
         <file>images/icons/round-settings-24px.svg</file>
         <file>images/icons/round-undo-24px.svg</file>
         <file>web/chatview.css</file>
@@ -71,5 +69,8 @@
         <file>web/linkify-html.js</file>
         <file>web/linkify-string.js</file>
         <file>web/qwebchannel.js</file>
+        <file>images/icons/round-check_circle-24px.svg</file>
+        <file>images/icons/round-error-24px.svg</file>
+        <file>images/icons/round-save_alt-24px.svg</file>
     </qresource>
 </RCC>

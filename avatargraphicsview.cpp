@@ -47,13 +47,13 @@ AvatarGraphicsView::paintEvent(QPaintEvent* e)
     QGraphicsView::paintEvent(e);
     QPainter painter(viewport());
 
-    QPainterPath square; // [efficiency improvement]
-    square.addRect(0, 0, width(), height()); // [efficiency improvement]
+    QPainterPath square;
+    square.addRect(0, 0, width(), height());
 
-    QPainterPath circle; // [efficiency improvement]
-    circle.addEllipse(QPoint(width() / 2 - 0.5, height() / 2 - 0.5), circleSize_ + 1, circleSize_ + 1); // [efficiency improvement]
+    QPainterPath circle;
+    circle.addEllipse(QPoint(width() / 2 - 0.5, height() / 2 - 0.5), circleSize_ + 1, circleSize_ + 1);
 
-    japanPath_ = square.subtracted(circle); // [efficiency improvement]
+    japanPath_ = square.subtracted(circle);
 
     painter.fillPath(japanPath_, QBrush(Qt::Dense7Pattern));
 }

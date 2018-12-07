@@ -40,7 +40,7 @@
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -158,7 +158,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <property name="topMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
@@ -167,7 +167,7 @@
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -253,7 +253,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <property name="topMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
@@ -262,7 +262,7 @@
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -401,7 +401,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_16">
       <property name="topMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
@@ -410,7 +410,7 @@
        <widget class="QLabel" name="label_17">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -633,7 +633,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_8">
       <property name="topMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
@@ -642,7 +642,7 @@
        <widget class="QLabel" name="label_11">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -784,7 +784,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_14">
       <property name="topMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
@@ -795,6 +795,18 @@
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
            <widget class="QLabel" name="audioLabel">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>10</pointsize>
@@ -918,6 +930,18 @@
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QCheckBox" name="videoCheckBox">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>10</pointsize>

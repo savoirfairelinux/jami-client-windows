@@ -13,7 +13,7 @@
 * GNU General Public License for more details.                            *
 *                                                                         *
 * You should have received a copy of the GNU General Public License       *
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
 **************************************************************************/
 
 #pragma once
@@ -71,9 +71,7 @@ private:
 
     bool checkCamAvailable();
 
-    int avatarSize_ = 160;
-
-    QPushButton* takePictureButton_;
+    int avatarSize_ = 130;
 
     QMediaPlayer* mediaPlayer_;
 
@@ -84,7 +82,4 @@ private:
 
     QPixmap rawPixmap_;
     QPixmap finalAvatarPixmap_;
-
-    void selectPictureBtn();
-    void selectFileBtn();
 };

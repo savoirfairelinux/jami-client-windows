@@ -19,6 +19,7 @@
 #pragma once
 #include <QScrollArea>
 #include <QSettings>
+#include <QMovie>
 
 #include "navwidget.h"
 #include "accountdetails.h"
@@ -30,6 +31,14 @@
 
 #include "linkdevwidget.h"
 #include "ui_linkdevwidget.h"
+
+ // general settings
+#include "api/datatransfermodel.h"
+#include "typedefs.h"
+
+// av settings
+#include "video/devicemodel.h"
+
 
 namespace Ui {
     class SettingsWidget;
@@ -61,8 +70,6 @@ private:
     Ui::SettingsWidget* ui;
 
 // currentAccountSettings {
-    //void setScrollWidgetSize();
-
     void passwordClicked();
     void avatarClicked();
 
@@ -87,8 +94,10 @@ private:
     void removeDeviceSlot(int index);
     void unban(int index);
 
-    LinkDevWidget* linkDevWidget;
     void setConnections();
+    QMovie* gif;
+
+    LinkDevWidget* linkDevWidget;
 
 
 private slots:
@@ -110,11 +119,38 @@ private slots:
     void showLinkDevSlot();
     void showCurrentAccountSlot();
 
+    void setButtonIconSlot(int frame);
 
-// generalSettings {
+
+
+    // *************************  General Settings  *************************
 private:
-    QSettings settings_;
+    void populateGeneralSettings();
 
+    QSettings* settings_;
 
+private slots:
+    void setNotificationsSlot(int state);
+    void checkForUpdateSlot();
+    void setClosedOrMinSlot(int state);
+    void openDownloadFolderSlot();
+    void setAlwaysRecordingSlot(int state);
+    void openRecordFolderSlot();
+    void setUpdateIntervalSlot(int value);
+    void setUpdateAutomaticSlot(int state);
+
+    // *************************  Audio/Visual Settings  *************************
+private:
+    void populateAVSettings();
+    Video::DeviceModel* deviceModel_;
+    void showPreview();
+    bool isLoading_;
+
+private slots:
+    void deviceIndexChanged(int index);
+    void deviceBoxCurrentIndexChangedSlot(int index);
+    void sizeBoxCurrentIndexChangedSlot(int index);
+    void outputDevIndexChangedSlot(int index);
+    void inputdevIndexChangedSlot(int index);
 
 };

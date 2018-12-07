@@ -14,7 +14,7 @@
 | GNU General Public License for more details.                            |
 |                                                                         |
 | You should have received a copy of the GNU General Public License       |
-| along with this program.  If not, see <https://www.gnu.org/licenses/>.   |
+| along with this program.  If not, see <https://www.gnu.org/licenses/>.  |
 **************************************************************************/
 #pragma once
 
@@ -67,7 +67,9 @@ public:
     static const lrc::api::DataTransferModel& dataTransferModel() {
         return instance().lrc_->getDataTransferModel();
     };
-
+    static lrc::api::DataTransferModel* editableDataTransferModel() {
+        return const_cast<lrc::api::DataTransferModel*>(&instance().lrc_->getDataTransferModel());
+    };
     static bool isConnected() {
         return instance().lrc_->isConnected();
     };
@@ -129,24 +131,7 @@ public:
         return -1;
     };
 
-//// return 1 if password matches
-//    static const bool currAccPasswordMatch(const std::string& passwd) {
-//        if (passwd == instance().accountModel().getAccountConfig(instance().getCurrAccId()).password) {
-//            return 1;
-//        }
-//        return 0;
-//    };
-//
-//// performs all password error checking (returns 0 if change successfull)
-//    static const bool changeCurrAccPassword(const std::string& accountId,
-//        const std::string& currentPassword, const std::string& newPassword, const std::string& newPasswordConfirm) {
-//        if (newPassword == newPasswordConfirm && currAccPasswordMatch(currentPassword)) {
-//            return !instance().accountModel().changeAccountPassword(accountId, currentPassword, newPassword);
-//        }
-//        return 1;
-//    };
-
-    static const QVariant getCurrAccData(int role) { // [efficiency improvement]
+    static const QVariant getCurrAccData(int role) {
         return instance().accountListModel_.data(instance().accountListModel_.index(getCurrentAccountIndex()), role);
     };
 
