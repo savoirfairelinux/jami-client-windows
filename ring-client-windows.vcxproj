@@ -600,6 +600,7 @@
     <QtUic Include="mainwindow.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="newwizardwidget.ui" />
     <QtUic Include="passworddialog.ui">
       <SubType>Designer</SubType>
     </QtUic>
