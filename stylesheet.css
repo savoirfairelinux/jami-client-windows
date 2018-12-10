@@ -271,7 +271,7 @@ QPushButton#deleteAccountBtn, QToolButton#addAccountButton{
 }
 
 QPushButton#btnvideo{
-    background-color: #3AC0D2;
+    background-color: #109ede;
     border-radius: 15px;
     border:solid 1px;
 }
@@ -320,7 +320,7 @@ QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previo
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
 QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, QPushButton#confirmChangeBtn {
-    background-color: #3AC0D2;
+    background-color: #109ede;
     border: 0px;
     color: white;
     font: 14px;
@@ -430,8 +430,8 @@ QRadioButton::indicator:unchecked{
 }
 
 QRadioButton::indicator:checked{
-    background: #3AC0D2;
-    border-color: #3AC0D2;
+    background: #109ede;
+    border-color: #109ede;
     image: url(":/images/icons/ic_check_white_18dp_2x.png");
 }
 
@@ -535,7 +535,7 @@ QTabBar QToolButton::right-arrow{
 
 QPushButton#generalTabButton:checked, QPushButton#videoTabButton:checked, QPushButton#accountTabButton:checked,
 QTabBar::tab:selected{
-    border-color: #3AC0D2;
+    border-color: #109ede;
 }
 
 QTabWidget::pane{
@@ -566,7 +566,7 @@ QSpinBox#historyDaySettingsSpinBox:focus, QSpinBox#lrcfg_tlsNegotiationTimeoutSe
 QSpinBox#lrcfg_registrationExpire:focus, QSpinBox#lrcfg_localPort:focus, QSpinBox#lrcfg_publishedPort:focus,
 QSpinBox#lrcfg_audioPortMin:focus, QSpinBox#lrcfg_audioPortMax:focus, QSpinBox#lrcfg_videoPortMin:focus,
 QSpinBox#lrcfg_videoPortMax:focus{
-    border-color: #3AC0D2;
+    border-color: #109ede;
 }
 
 QCheckBox::indicator{
@@ -625,7 +625,7 @@ QLineEdit#lrcfg_tlsServerName:focus, QLineEdit#lrcfg_turnServerRealm:focus, QLin
 QLineEdit#lrcfg_turnServerPassword:focus, QLineEdit#lrcfg_turnServer:focus, QLineEdit#lrcfg_publishedAddress:focus,
 QLineEdit#lrcfg_registeredName:focus, QLineEdit#lrcfg_nameServiceURL:focus, QLineEdit#lrcfg_username:focus,
 QLineEdit#profileNameEdit:focus{
-    border-color: #3AC0D2;
+    border-color: #109ede;
 }
 
 QTabWidget#tabWidget{
@@ -653,7 +653,7 @@ QSlider::groove:vertical{
 
 QSlider::handle:vertical{
     height: 10px;
-    background: #3AC0D2;
+    background: #109ede;
     border-radius: 5px;
     margin: 0 -4px;
 }
@@ -663,7 +663,7 @@ QSlider::sub-page:vertical{
 }
 
 QSlider::add-page:vertical{
-    background: #3AC0D2;
+    background: #109ede;
 }
 
 QToolButton::menu-button {image:none;}

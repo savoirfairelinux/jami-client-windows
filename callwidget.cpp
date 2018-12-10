@@ -66,7 +66,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
     QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
 
-    QPixmap logo(":/images/logo-ring-standard-coul.png");
+    QPixmap logo(":/images/logo-jami-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
@@ -819,7 +819,7 @@ CallWidget::on_qrButton_toggled(bool checked)
 void
 CallWidget::on_shareButton_clicked()
 {
-    Utils::InvokeMailto(tr("Contact me on Ring"), tr("My RingId is : ") + ui->ringIdLabel->text());
+    Utils::InvokeMailto(tr("Contact me on Jami"), tr("My Id is : ") + ui->ringIdLabel->text());
 }
 
 void
