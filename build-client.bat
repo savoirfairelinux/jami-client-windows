@@ -1,4 +1,4 @@
-:: Ring - native Windows client project build script
+:: Jami - native Windows client project build script
 
 @echo off
 setlocal

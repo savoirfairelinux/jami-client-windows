@@ -1,6 +1,6 @@
-!define APPNAME "Ring"
+!define APPNAME "Jami"
 !define COMPANYNAME "Savoir-Faire Linux"
-!define DESCRIPTION "The Ring client for Windows"
+!define DESCRIPTION "The Jami client for Windows"
 # These three must be integers
 !define VERSIONMAJOR 1
 !define VERSIONMINOR 0
@@ -8,8 +8,8 @@
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
 !define HELPURL "https://projects.savoirfairelinux.com/projects/ring/wiki" # "Support Information" link
-!define UPDATEURL "http://ring.cx/en/documentation/windows-installation" # "Product Updates" link
-!define ABOUTURL "http://ring.cx/en#about" # "Publisher" link
+!define UPDATEURL "http://jami.net/en/documentation/windows-installation" # "Product Updates" link
+!define ABOUTURL "http://jami.net/en#about" # "Publisher" link
 
 !include "MUI2.nsh"
 
@@ -20,7 +20,7 @@
 !define MUI_UNINSTALLER
 !define MUI_UNCONFIRMPAGE
    !define MUI_FINISHPAGE_RUN
-   !define MUI_FINISHPAGE_RUN_TEXT "Launch Ring"
+   !define MUI_FINISHPAGE_RUN_TEXT "Launch Jami"
    !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
 
 !insertmacro MUI_PAGE_WELCOME
@@ -122,25 +122,25 @@ done:
 functionEnd
 
 Function LaunchLink
-  ExecShell "" "$DESKTOP\Ring.lnk"
+  ExecShell "" "$DESKTOP\Jami.lnk"
 FunctionEnd
 
 section "install"
         !addincludedir "../../NsProcess/Include"
         !addplugindir "../../NsProcess/Plugin"
         !include "nsProcess.nsh"
-        # Kill all remaining Ring processes
-        ${nsProcess::FindProcess} "Ring.exe" $R0
+        # Kill all remaining Jami processes
+        ${nsProcess::FindProcess} "Jami.exe" $R0
         ${If} $R0 == 0
-         ${nsProcess::KillProcess} "Ring.exe" $R0
+         ${nsProcess::KillProcess} "Jami.exe" $R0
         ${EndIf}
         Sleep 500
 
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         setOutPath $INSTDIR
         # Files added here should be removed by the uninstaller (see section "uninstall")
-        file "Ring.exe"
-        file "ring.ico"
+        file "Jami.exe"
+        file "jami.ico"
         file "qtwebengine_resources.pak"
         file "QtWebEngineProcess.exe"
         file "icudtl.dat"
@@ -163,18 +163,18 @@ section "install"
 
         SetOutPath $INSTDIR
         #Desktop
-        CreateShortCut "$DESKTOP\Ring.lnk" "$INSTDIR\Ring.exe" ""
+        CreateShortCut "$DESKTOP\Jami.lnk" "$INSTDIR\Jami.exe" ""
 
         # Start Menu
         createDirectory "$SMPROGRAMS\${COMPANYNAME}"
-        createShortCut "$SMPROGRAMS\${COMPANYNAME}\${APPNAME}.lnk" "$INSTDIR\Ring.exe" "" "$INSTDIR\ring.ico"
+        createShortCut "$SMPROGRAMS\${COMPANYNAME}\${APPNAME}.lnk" "$INSTDIR\Jami.exe" "" "$INSTDIR\jami.ico"
 
         # Registry information for add/remove programs
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayName" ${APPNAME}
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "InstallLocation" $INSTDIR
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayIcon" "$\"$INSTDIR\ring.ico$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayIcon" "$\"$INSTDIR\jami.ico$\""
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "Publisher" "${COMPANYNAME}"
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "HelpLink" "$\"${HELPURL}$\""
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "URLUpdateInfo" "$\"${UPDATEURL}$\""
@@ -191,8 +191,8 @@ section "install"
 
         # Write ring protocol in registry
         WriteRegStr HKCR "ring" "URL Protocol" "$\"$\""
-        WriteRegStr HKCR "ring\DefaultIcon" "" "$\"$INSTDIR\Ring.exe,1$\""
-        WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Ring.exe$\" $\"%1$\""
+        WriteRegStr HKCR "ring\DefaultIcon" "" "$\"$INSTDIR\Jami.exe,1$\""
+        WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Jami.exe$\" $\"%1$\""
 sectionEnd
 
 # Uninstaller
@@ -232,8 +232,8 @@ section "uninstall"
         rmDir "$SMPROGRAMS\${COMPANYNAME}"
 
         # Remove files
-        delete $INSTDIR\Ring.exe
-        delete $INSTDIR\ring.ico
+        delete $INSTDIR\Jami.exe
+        delete $INSTDIR\jami.ico
         delete $INSTDIR\*.dll
         rmDir /r $INSTDIR\platforms
         rmDir /r $INSTDIR\imageformats

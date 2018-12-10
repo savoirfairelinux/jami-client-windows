@@ -178,8 +178,8 @@ main(int argc, char *argv[])
     }
 
     QCoreApplication::setOrganizationName("Savoir-faire Linux");
-    QCoreApplication::setOrganizationDomain("ring.cx");
-    QCoreApplication::setApplicationName("Ring");
+    QCoreApplication::setOrganizationDomain("jami.net");
+    QCoreApplication::setApplicationName("Jami");
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 

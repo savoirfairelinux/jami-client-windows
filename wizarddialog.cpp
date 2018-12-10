@@ -34,7 +34,7 @@
 
 #include "utils.h"
 
-const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Ring account", "Default alias for new Ring account");
+const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Jami account", "Default alias for new Jami account");
 
 WizardDialog::WizardDialog(WizardMode wizardMode, AccountInfo* toBeMigrated, QWidget* parent) :
     QDialog(parent),
@@ -50,7 +50,7 @@ WizardDialog::WizardDialog(WizardMode wizardMode, AccountInfo* toBeMigrated, QWi
 
     setWindowFlags(flags);
 
-    QPixmap logo(":/images/logo-ring-standard-coul.png");
+    QPixmap logo(":/images/logo-jami-standard-coul.png");
 
     ui->welcomeLogo->setPixmap(logo.scaledToHeight(65, Qt::SmoothTransformation));
     ui->welcomeLogo->setAlignment(Qt::AlignHCenter);
@@ -94,11 +94,11 @@ void
 WizardDialog::processWizardInformations()
 {
     if (wizardMode_ == MIGRATION)
-        ui->progressLabel->setText(tr("Migrating your Ring account..."));
+        ui->progressLabel->setText(tr("Migrating your Jami account..."));
     else if (wizardMode_ == IMPORT)
         ui->progressLabel->setText(tr("Importing account archive..."));
     else
-        ui->progressLabel->setText(tr("Generating your Ring account..."));
+        ui->progressLabel->setText(tr("Generating your Jami account..."));
 
     if (wizardMode_ != IMPORT) {
         if (ui->pinEdit->isVisible() && ui->pinEdit->text().isEmpty()) {
@@ -348,7 +348,7 @@ void WizardDialog::on_archivePathSelector_clicked()
     filePath = QFileDialog::getOpenFileName(this,
                                             tr("Open File"),
                                             QString(),
-                                            tr("Ring archive files (*.gz);; All files (*)"));
+                                            tr("Jami archive files (*.gz);; All files (*)"));
 
     // for export get current account archive path
     // for import use set path

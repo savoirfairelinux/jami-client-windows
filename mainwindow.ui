@@ -432,11 +432,11 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Ring</string>
+   <string>Jami</string>
   </property>
   <property name="windowIcon">
    <iconset resource="ressources.qrc">
-    <normaloff>:/images/ring.png</normaloff>:/images/ring.png</iconset>
+    <normaloff>:/images/jami.png</normaloff>:/images/jami.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">

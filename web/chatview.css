@@ -2,7 +2,7 @@
 
 :root {
     /* color definitions */
-    --ring-light-blue: rgba(59, 193, 211, 0.3);
+    --jami-light-blue: rgba(59, 193, 211, 0.3);
     /* main properties */
     /* --bg-color: #f2f2f2; same as macOS client */
     --bg-color: #ffffff; /* same as macOS client */
@@ -190,7 +190,7 @@ body {
 
 #invitation {
     visibility: hidden;
-    background: var(--ring-light-blue);
+    background: var(--jami-light-blue);
     position: absolute;
     width: 100%;
     /* hairline */
