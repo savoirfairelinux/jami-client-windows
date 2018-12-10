@@ -347,7 +347,7 @@
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>Ring public registered username</string>
+                    <string>Public registered username</string>
                    </property>
                    <property name="readOnly">
                     <bool>true</bool>
@@ -829,7 +829,7 @@
                 <string notr="true">color: rgb(77, 77, 77);</string>
                </property>
                <property name="text">
-                <string>Ring Account Settings</string>
+                <string>Account Settings</string>
                </property>
                <property name="buddy">
                 <cstring>lrcfg_allowIncomingFromUnknown</cstring>
@@ -2562,7 +2562,7 @@
               <number>1</number>
              </property>
              <property name="text">
-              <string>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</string>
+              <string>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2641,7 +2641,7 @@
                 <string>Validate export on DHT for device linking button</string>
                </property>
                <property name="text">
-                <string>Export on the Ring</string>
+                <string>Export on the network</string>
                </property>
               </widget>
              </item>
