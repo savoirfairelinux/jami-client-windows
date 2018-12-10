@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>500</height>
+    <width>621</width>
+    <height>629</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -36,12 +36,24 @@
    <string>Account creation wizard dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
-    <widget class="QStackedWidget" name="stackedWidget">
-     <property name="currentIndex">
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <property name="spacing">
       <number>0</number>
      </property>
      <widget class="QWidget" name="welcomePage">
@@ -243,34 +255,68 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="QPushButton" name="dhtImportBtn">
+            <widget class="QPushButton" name="previousButton">
              <property name="minimumSize">
               <size>
-               <width>0</width>
+               <width>85</width>
                <height>30</height>
               </size>
              </property>
              <property name="toolTip">
-              <string>Link account to device from the network</string>
+              <string>Previous page button</string>
+             </property>
+             <property name="accessibleName">
+              <string/>
+             </property>
+             <property name="accessibleDescription">
+              <string>push button to access previous page of wizard</string>
              </property>
              <property name="text">
-              <string>Link account from DHT</string>
+              <string>Previous</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="fileImportBtn">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="nextButton">
              <property name="minimumSize">
               <size>
-               <width>0</width>
+               <width>85</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>85</width>
                <height>30</height>
               </size>
              </property>
              <property name="toolTip">
-              <string>Link from exported account archive file</string>
+              <string>Next page Button</string>
+             </property>
+             <property name="accessibleName">
+              <string/>
+             </property>
+             <property name="accessibleDescription">
+              <string>Push button to access next page of wizard</string>
              </property>
              <property name="text">
-              <string>Link account from file</string>
+              <string>Next</string>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
