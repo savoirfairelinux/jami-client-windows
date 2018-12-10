@@ -56,7 +56,7 @@ Utils::CreateStartupLink()
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Ring.lnk");
+    linkPath += TEXT("\\Jami.lnk");
 
     return Utils::CreateLink(programPath.c_str(), linkPath.c_str());
 #else
@@ -101,7 +101,7 @@ Utils::DeleteStartupLink() {
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Ring.lnk");
+    linkPath += TEXT("\\Jami.lnk");
 
     DeleteFile(linkPath.c_str());
 #endif
@@ -114,7 +114,7 @@ Utils::CheckStartupLink() {
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Ring.lnk");
+    linkPath += TEXT("\\Jami.lnk");
     return PathFileExists(linkPath.c_str());
 #else
     return true;
@@ -229,7 +229,7 @@ Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 
 void Utils::showSystemNotification(QWidget* widget, const QString & message, long delay)
 {
-    GlobalSystemTray::instance().showMessage("Ring", message);
+    GlobalSystemTray::instance().showMessage("Jami", message);
     QApplication::alert(widget, delay);
 }
 

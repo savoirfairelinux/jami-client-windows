@@ -1,8 +1,8 @@
 <RCC>
   <qresource prefix="/">
     <file>stylesheet.css</file>
-    <file>images/ring.png</file>
-    <file>images/logo-ring-standard-coul.png</file>
+    <file>images/jami.png</file>
+    <file>images/logo-jami-standard-coul.png</file>
     <file>images/icons/ic_arrow_back_white_24dp.png</file>
     <file>images/icons/ic_mic_off_white_24dp.png</file>
     <file>images/icons/ic_person_add_white_24dp.png</file>
