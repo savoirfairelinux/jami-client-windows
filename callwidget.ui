@@ -506,7 +506,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>Ring is free software for universal communication which respects the freedoms and privacy of its users.</string>
+                   <string>Jami is free software for universal communication which respects the freedoms and privacy of its users.</string>
                   </property>
                   <property name="textFormat">
                    <enum>Qt::PlainText</enum>
@@ -545,7 +545,7 @@
                   </property>
                   <property name="text">
                    <string>
- This is your RingID.
+ This is your ID.
 Copy and share it with your friends!
                                       </string>
                   </property>

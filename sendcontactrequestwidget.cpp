@@ -33,7 +33,7 @@ SendContactRequestWidget::SendContactRequestWidget(QWidget *parent) :
     ui(new Ui::SendContactRequestWidget)
 {
     ui->setupUi(this);
-    ui->peerContactID->setText("ContactID"); // TODO: Display RingID/Username
+    ui->peerContactID->setText("ContactID"); // TODO: Display ID/Username
 }
 
 SendContactRequestWidget::~SendContactRequestWidget()
