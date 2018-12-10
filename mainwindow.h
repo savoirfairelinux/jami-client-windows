@@ -25,6 +25,7 @@
 #include <QNetworkConfigurationManager>
 
 #include "navwidget.h"
+#include "settingswidget.h"
 
 // LRC
 #include "call.h"
@@ -65,6 +66,9 @@ private:
     ~MainWindow();
 
     void readSettingsFromRegistry();
+    void removeSettingsWidget();
+    int addSettingsWidget();
+    SettingsWidget* getSettingsWidget();
 
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;

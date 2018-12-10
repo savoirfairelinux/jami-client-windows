@@ -67,7 +67,7 @@
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
     ui(new Ui::SettingsWidget),
-    scrollArea_(new QScrollArea),
+    scrollArea_(new QScrollArea(this)),
     deviceModel_(&Video::DeviceModel::instance()),
     gif(new QMovie(":/images/ajax-loader.gif"))
 {
@@ -148,8 +148,6 @@ SettingsWidget::leaveSettingsSlot()
 
 SettingsWidget::~SettingsWidget()
 {
-    delete advancedSettingsWidget_;
-    delete scrollArea_;
     delete ui;
 }
 
@@ -276,7 +274,7 @@ SettingsWidget::toggleAdvancedSettings()
     }
     else { // will show advanced settings next
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
-        advancedSettingsWidget_ = new AdvancedSettingsWidget(ui->scrollAreaWidgetContents);
+        advancedSettingsWidget_ = new AdvancedSettingsWidget(this);
         advancedSettingsWidget_->setMaximumWidth(ui->scrollAreaWidgetContents->width() - 10);
         ui->currentAccountSettingsScrollLayout->addWidget(advancedSettingsWidget_);
         ui->advancedSettingsOffsetLabel->show();

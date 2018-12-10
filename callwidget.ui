@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1250</width>
-    <height>729</height>
+    <width>1230</width>
+    <height>657</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -332,6 +332,12 @@
                  </property>
                  <item>
                   <widget class="SmartListView" name="smartList">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="autoScrollMargin">
                     <number>16</number>
                    </property>
@@ -430,6 +436,12 @@
                <number>0</number>
               </property>
               <widget class="QWidget" name="welcomePage">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_15">
                 <property name="spacing">
                  <number>0</number>
@@ -488,7 +500,7 @@
                 <item>
                  <widget class="QLabel" name="ringLogo">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Maximum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -519,39 +531,73 @@
                   </property>
                  </widget>
                 </item>
-                <item alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="descLabel">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <property name="leftMargin">
+                   <number>10</number>
                   </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
+                  <property name="topMargin">
+                   <number>0</number>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
+                  <property name="rightMargin">
+                   <number>10</number>
                   </property>
-                  <property name="text">
-                   <string>Jami is free software for universal communication which respects the freedoms and privacy of its users.</string>
+                  <property name="spacing">
+                   <number>0</number>
                   </property>
-                  <property name="textFormat">
-                   <enum>Qt::PlainText</enum>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="descLabel">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>400</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>400</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="baseSize">
+                     <size>
+                      <width>400</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>Jami is free software for universal communication which respects the freedoms and privacy of its users.</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::PlainText</enum>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                <item>
                  <widget class="QLabel" name="thisIsYourLabel">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
@@ -561,7 +607,7 @@
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>400</width>
+                    <width>0</width>
                     <height>50</height>
                    </size>
                   </property>
@@ -827,13 +873,22 @@ Copy and share it with your friends!
                   </property>
                  </spacer>
                 </item>
-                <item alignment="Qt::AlignHCenter">
+                <item>
                  <widget class="QLabel" name="qrLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">color: #aeaeae</string>
                   </property>
                   <property name="text">
                    <string>Error while generating QR Code</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -897,7 +952,7 @@ Copy and share it with your friends!
                     </sizepolicy>
                    </property>
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="videoPage">
                     <property name="sizePolicy">
