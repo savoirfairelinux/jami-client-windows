@@ -320,7 +320,7 @@
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="text">
-                 <string>Exporting account on the ring</string>
+                 <string>Exporting account on the network</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

@@ -1357,7 +1357,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                  </font>
                                 </property>
                                 <property name="text">
-                                 <string>RingID</string>
+                                 <string>ID</string>
                                 </property>
                                </widget>
                               </item>

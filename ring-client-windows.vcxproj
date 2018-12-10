@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0F6318E4-4C06-384E-BCA8-F344DA187957}</ProjectGuid>
-    <RootNamespace>Ring</RootNamespace>
+    <RootNamespace>Jami</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -24,7 +24,7 @@
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
     <IntermediateDirectory>release\</IntermediateDirectory>
-    <PrimaryOutput>Ring</PrimaryOutput>
+    <PrimaryOutput>Jami</PrimaryOutput>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'" Label="Configuration">
     <PlatformToolset>v141</PlatformToolset>
@@ -33,7 +33,7 @@
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <IntermediateDirectory>release\</IntermediateDirectory>
-    <PrimaryOutput>Ring</PrimaryOutput>
+    <PrimaryOutput>Jami</PrimaryOutput>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
@@ -58,8 +58,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">$(Platform)\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">$(Platform)\$(Configuration)\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Ring</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">Ring</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Jami</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">Jami</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -99,7 +99,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
       <LinkIncremental>false</LinkIncremental>
-      <OutputFile>$(OutDir)\Ring.exe</OutputFile>
+      <OutputFile>$(OutDir)\Jami.exe</OutputFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <SubSystem>Windows</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -174,7 +174,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
       <LinkIncremental>false</LinkIncremental>
-      <OutputFile>$(OutDir)\Ring.exe</OutputFile>
+      <OutputFile>$(OutDir)\Jami.exe</OutputFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <SubSystem>Windows</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -620,12 +620,12 @@
     <None Include="images\icons\ic_videocam_white.png" />
     <None Include="images\icons\ic_voicemail_white_24dp_2x.png" />
     <None Include="images\loading.gif" />
-    <None Include="images\logo-ring-standard-coul.png" />
+    <None Include="images\logo-jami-standard-coul.png" />
     <None Include="images\qrcode.png" />
     <QtRcc Include="ressources.qrc">
       <SubType>Designer</SubType>
     </QtRcc>
-    <None Include="images\ring.png" />
+    <None Include="images\jami.png" />
     <None Include="images\spikeMask.png" />
     <None Include="stylesheet.css" />
     <None Include="images\waiting.gif" />
