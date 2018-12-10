@@ -176,7 +176,9 @@ void
 CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
 {
     if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
-        QComboBox::mousePressEvent(mouseEvent);
+        if (count() > 1) {
+            QComboBox::mousePressEvent(mouseEvent);
+        }
     } else {
         emit settingsButtonClicked();
     }
