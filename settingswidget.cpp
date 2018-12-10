@@ -133,7 +133,16 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     ui->advancedSettingsOffsetLabel->show();
 
-    setConnections();
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (accountList.empty()) {
+        connect(&LRCInstance::accountModel(),
+            &lrc::api::NewAccountModel::accountAdded,
+            [this](const std::string& accountId) {
+                setConnections();
+            });
+    } else {
+        setConnections();
+    }
 }
 
 void
