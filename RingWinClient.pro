@@ -26,7 +26,7 @@ DEFINES += RING_CLIENT_BUILD_DATE=\"\\\"$$RING_CLIENT_BUILD_DATE\\\"\"
 DEFINES += LRC_IMPORT
 
 BUILD=$${BUILD}
-TARGET = Ring
+TARGET = Jami
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++14
@@ -258,7 +258,7 @@ win32 {
     RINGTONES.files = $${RING}/share/ring/ringtones
     RINGTONES.path = $$OUT_PWD/release
 
-    PACKAGING.files = ring.nsi images/ring.ico
+    PACKAGING.files = ring.nsi images/jami.ico
     PACKAGING.path = $$OUT_PWD/release
 
     LICENSE.files = License.rtf

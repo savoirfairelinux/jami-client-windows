@@ -86,8 +86,8 @@ main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    QCoreApplication::setOrganizationDomain("ring.cx");
-    QCoreApplication::setApplicationName("Ring");
+    QCoreApplication::setOrganizationDomain("jami.net");
+    QCoreApplication::setApplicationName("Jami");
 
     GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
 
