@@ -829,7 +829,7 @@
     <None Include="images\loading.gif">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="images\logo-ring-standard-coul.png">
+    <None Include="images\logo-jami-standard-coul.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="images\qrcode.png">
@@ -838,7 +838,7 @@
     <QtRcc Include="ressources.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <None Include="images\ring.png">
+    <None Include="images\jami.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="images\spikeMask.png">

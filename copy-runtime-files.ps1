@@ -33,7 +33,7 @@ $FilesToCopy = @(
     "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
     "$ClientDir\winsparkle\x64\Release\WinSparkle.dll",
     "$ClientDir\ring.nsi",
-    "$ClientDir\images\ring.ico"
+    "$ClientDir\images\jami.ico"
     "$ClientDir\License.rtf"
     )
 foreach ($i in $FilesToCopy) {

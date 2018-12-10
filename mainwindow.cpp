@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget* parent) :
         }
     );
 
-    QIcon icon(":images/ring.png");
+    QIcon icon(":images/jami.png");
 
     this->setWindowIcon(icon);
 
@@ -109,8 +109,8 @@ MainWindow::MainWindow(QWidget* parent) :
 
     readSettingsFromRegistry();
 
-    win_sparkle_set_appcast_url("http://dl.ring.cx/windows/winsparkle-ring.xml");
-    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Ring", QString(VERSION_STRING).toStdWString().c_str());
+    win_sparkle_set_appcast_url("http://dl.jami.net/windows/winsparkle-ring.xml");
+    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
     win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
     win_sparkle_init();
