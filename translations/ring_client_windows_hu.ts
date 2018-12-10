@@ -31,26 +31,26 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Ring.
 Ring is a secured and distributed communication software.</source>
-        <translation>A Microsoft Windows kliens a Ringhez.
-A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
+        <translation>A Microsoft Windows ügyfél a Jamihoz.
+A Jami egy biztonságos és osztott közlés szoftver</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="30"/>
+        <location filename="../aboutdialog.cpp" line="32"/>
         <source>version</source>
         <translation>verzió</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="37"/>
+        <location filename="../aboutdialog.cpp" line="39"/>
         <source>Created by:</source>
         <translation>Szerző:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="71"/>
+        <location filename="../aboutdialog.cpp" line="73"/>
         <source>Artwork by:</source>
         <translation>Művészi elemek készítője:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="75"/>
+        <location filename="../aboutdialog.cpp" line="77"/>
         <source>Based on the SFLPhone project</source>
         <translation>Az SFLPhone projekt alapjain</translation>
     </message>
@@ -163,7 +163,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Ring public registered username</source>
-        <translation>Ring nyilvánosan regisztrált felhasználónév</translation>
+        <translation>Jami nyilvánosan regisztrált felhasználónév</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
@@ -289,7 +289,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Ring Account Settings</source>
-        <translation>Ringfiók beállításai</translation>
+        <translation>Fiók beállítások</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
@@ -590,7 +590,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Ring account, you export your account on the Ring. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Ahhoz hogy új eszközt adjon a Ring fiókjához, exportálnia kell a fiókját a Ringen. Ez előállít egy PIN-t, amit meg kell adnia az új eszközén, az előállítástól számított 5 percen belül.</translation>
+        <translation>Ahhoz hogy új eszközt adjon a Jami fiókjához, exportálnia kell a fiókját a Jami-n. Ez előállít egy PIN-t, amit meg kell adnia az új eszközén, az előállítástól számított 5 percen belül.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -621,7 +621,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the Ring</source>
-        <translation>Exportálás a Ringen</translation>
+        <translation>Exportálás a Jami-n</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
@@ -701,7 +701,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.cpp" line="105"/>
         <source>RingID</source>
-        <translation>Ring azonosító</translation>
+        <translation>Jami azonosító</translation>
     </message>
     <message>
         <location filename="../accountdetails.cpp" line="233"/>
@@ -731,7 +731,15 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../accountdetails.cpp" line="358"/>
         <source>Registering... It may take some time</source>
-        <translation>Regisztráció…Ez eltarthat egy ideig</translation>
+        <translation>Regisztráció… Ez eltarthat egy ideig</translation>
+    </message>
+</context>
+<context>
+    <name>AnimatedOverlay</name>
+    <message>
+        <location filename="../animatedoverlay.ui" line="14"/>
+        <source>Form</source>
+        <translation>Feladó</translation>
     </message>
 </context>
 <context>
@@ -793,207 +801,178 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="218"/>
+        <location filename="../callwidget.ui" line="228"/>
         <source>Search contacts or enter ring ID</source>
-        <translation>Partnerek keresése vagy Ring azonosító beírása</translation>
+        <translation>Partnerek keresése vagy Jami azonosító beírása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="283"/>
+        <location filename="../callwidget.ui" line="293"/>
         <source>Show conversations</source>
         <translation>Beszélgetések megjelenítése</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="286"/>
+        <location filename="../callwidget.ui" line="296"/>
         <source>Conversations</source>
         <translation>Beszélgetések</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="556"/>
+        <location filename="../callwidget.ui" line="509"/>
         <source>Ring is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>A Ring szabad szoftver az univerzális kommunikációhoz, amely tiszteletben tartja a felhasználók szabadságát és magánszféráját.</translation>
+        <translation>A Jami szabad szoftver az egyetemes közléshez, amely tiszteletben tartja a felhasználók szabadságát és magánszféráját.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="209"/>
+        <location filename="../callwidget.ui" line="219"/>
         <source>Search contact text input</source>
         <translation>Keresés kapcsolati szövegbevitel</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="471"/>
-        <source>Configuration menu</source>
-        <translation>Beállítások menü</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="707"/>
+        <location filename="../callwidget.ui" line="660"/>
         <source>Show ring ID QR code</source>
-        <translation>Ring azonosító QR-kód mutatása</translation>
+        <translation>Jami azonosító QR-kód mutatása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="758"/>
+        <location filename="../callwidget.ui" line="711"/>
         <source>Share ring ID button</source>
         <translation>Ring azonosító megosztó gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="816"/>
+        <location filename="../callwidget.ui" line="769"/>
         <source>Double-click to copy</source>
         <translation>Kattintson duplán a másolásra</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="851"/>
+        <location filename="../callwidget.ui" line="804"/>
         <source>Error while generating QR Code</source>
         <translation>Hiba a QR kód generálása közben</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="895"/>
-        <location filename="../callwidget.ui" line="1007"/>
-        <location filename="../callwidget.ui" line="1937"/>
+        <location filename="../callwidget.ui" line="1023"/>
+        <location filename="../callwidget.ui" line="1273"/>
+        <source>best name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1047"/>
+        <source>best Id</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1558"/>
         <source>Back to homepage button</source>
         <translation>Vissza a főoldalra gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1213"/>
+        <location filename="../callwidget.ui" line="1764"/>
         <source>Add to contacts</source>
         <translation>Hozzáadás a partnerekhez</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="293"/>
+        <location filename="../callwidget.ui" line="306"/>
         <source>Show invites</source>
         <translation>Meghívás megjelenítése</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="296"/>
+        <location filename="../callwidget.ui" line="309"/>
         <source>Invites</source>
         <translation>Meghívás</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="594"/>
-        <source>
-                                        This is your RingID.
-                                        Copy and share it with your friends!
-                                      </source>
-        <translation>
-                                        Ez az Ön Ring azonosítója.
-                                        Másolja és ossza meg a barátaival!
-                                      </translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1390"/>
-        <source>Type your message here</source>
-        <translation>Üzenet írása itt</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1409"/>
-        <source>send message</source>
-        <translation>üzenet küldése</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1556"/>
-        <source>BestId</source>
-        <translation>Legjobb azonosító</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1566"/>
+        <location filename="../callwidget.ui" line="1283"/>
         <source>Wants to talk to you!</source>
         <translation>Beszélni akar önnel!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1595"/>
+        <location filename="../callwidget.ui" line="1356"/>
         <source>Answer incoming call button</source>
         <translation>Bejövő hívás fogadása gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1640"/>
+        <location filename="../callwidget.ui" line="1428"/>
         <source>Ignore incoming call button</source>
         <translation>Bejövő hívás figyelmen kívül hagyása gomb</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1667"/>
+        <location filename="../callwidget.ui" line="1378"/>
         <source>Answer</source>
         <translation>Válaszol</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1699"/>
+        <location filename="../callwidget.ui" line="547"/>
+        <source>
+ This is your RingID.
+Copy and share it with your friends!
+                                      </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1456"/>
         <source>Ignore</source>
         <translation>Figyelmen kívül hagy</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1770"/>
-        <source>Calling</source>
-        <translation>Hívás</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="1823"/>
+        <location filename="../callwidget.ui" line="1119"/>
         <source>Cancel outgoing call</source>
         <translation>Kimenő hívás visszavonása</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1846"/>
+        <location filename="../callwidget.ui" line="1144"/>
         <source>Cancel</source>
         <translation>Mégse</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
-        <source>Call</source>
-        <translation>Hívás</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="255"/>
+        <location filename="../callwidget.cpp" line="256"/>
         <source>Start video call</source>
         <translation>Videóhívás indítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="267"/>
         <source>Start audio call</source>
         <translation>Hanghívás indítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="282"/>
+        <location filename="../callwidget.cpp" line="283"/>
         <source>Clear conversation</source>
         <translation>Beszélgetés törlése</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="289"/>
+        <location filename="../callwidget.cpp" line="290"/>
         <source>Block contact</source>
         <translation>Blokkolt partner</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="301"/>
         <source>Copy number</source>
         <translation>Szám másolása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="810"/>
+        <location filename="../callwidget.cpp" line="822"/>
         <source>Contact me on Ring</source>
-        <translation>Az elérhetőségem a Ringen</translation>
+        <translation>Az elérhetőségem a Jami-n</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="810"/>
+        <location filename="../callwidget.cpp" line="822"/>
         <source>My RingId is : </source>
-        <translation>A Ring azonosítóm:</translation>
+        <translation>A Jami azonosítóm:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="204"/>
-        <source>Copy</source>
-        <translation>Másolás</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="224"/>
+        <location filename="../callwidget.cpp" line="215"/>
         <source>Message incoming from %1</source>
         <translation>Bejövő üzenet a következőtől: %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="718"/>
+        <location filename="../callwidget.cpp" line="739"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="723"/>
+        <location filename="../callwidget.cpp" line="744"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="607"/>
+        <location filename="../callwidget.cpp" line="600"/>
         <source>Call incoming from %1</source>
         <translation>Bejövő hívás tőle: %1</translation>
     </message>
@@ -1148,7 +1127,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../configurationwidget.ui" line="703"/>
         <source>Launch ring on startup checkbox</source>
-        <translation>Ring indítása rendszerindításkor jelölőnégyzet</translation>
+        <translation>Jami indítása rendszerindításkor jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../configurationwidget.ui" line="732"/>
@@ -1254,7 +1233,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../configurationwidget.ui" line="712"/>
         <source>Launch Ring on Startup</source>
-        <translation>A Ring indítása rendszerindításkor</translation>
+        <translation>A Jami indítása rendszerindításkor</translation>
     </message>
     <message>
         <location filename="../configurationwidget.cpp" line="320"/>
@@ -1388,7 +1367,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="14"/>
         <source>Ring - account deletion</source>
-        <translation>Ring - fiók törlése</translation>
+        <translation>Jami fiók törlése</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="33"/>
@@ -1427,34 +1406,6 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     </message>
 </context>
 <context>
-    <name>InstantMessagingWidget</name>
-    <message>
-        <location filename="../instantmessagingwidget.ui" line="38"/>
-        <source>Message list</source>
-        <translation>Üzenet lista</translation>
-    </message>
-    <message>
-        <location filename="../instantmessagingwidget.ui" line="74"/>
-        <source>Message input</source>
-        <translation>Üzenetek bevitele</translation>
-    </message>
-    <message>
-        <location filename="../instantmessagingwidget.ui" line="77"/>
-        <source>Send text message...</source>
-        <translation>Szöveges üzenet küldése…</translation>
-    </message>
-    <message>
-        <location filename="../instantmessagingwidget.ui" line="99"/>
-        <source>Send message button</source>
-        <translation>Üzenet küldés gomb</translation>
-    </message>
-    <message>
-        <location filename="../instantmessagingwidget.cpp" line="47"/>
-        <source>Copy</source>
-        <translation>Másolás</translation>
-    </message>
-</context>
-<context>
     <name>InviteButtonsWidget</name>
     <message>
         <location filename="../invitebuttonswidget.ui" line="72"/>
@@ -1477,20 +1428,20 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Ring</source>
-        <translation>Ring</translation>
+        <translation>Jami</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="75"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Configuration</source>
         <translation>Beállítások</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="79"/>
         <source>Exit</source>
         <translation>Kilépés</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="97"/>
+        <location filename="../mainwindow.cpp" line="98"/>
         <source>About</source>
         <translation>Névjegy</translation>
     </message>
@@ -1547,18 +1498,31 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     </message>
 </context>
 <context>
+    <name>PrivateBridging</name>
+    <message>
+        <location filename="../messagewebview.cpp" line="331"/>
+        <source>Choose File</source>
+        <translation>Fájl kiválasztása</translation>
+    </message>
+    <message>
+        <location filename="../messagewebview.cpp" line="331"/>
+        <source>Files (*)</source>
+        <translation>Fájlok (*)</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="194"/>
+        <location filename="../utils.cpp" line="195"/>
         <source>No default mail client found</source>
-        <translation>Nem találtam alapértelmezett levelezőklienst</translation>
+        <translation>Nem találtam alapértelmezett levelezőügyfélt</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="37"/>
         <location filename="../wizardwidget.cpp" line="37"/>
         <source>Ring account</source>
         <comment>Default alias for new Ring account</comment>
-        <translation>RING fiók</translation>
+        <translation>Jami fiók</translation>
     </message>
 </context>
 <context>
@@ -1691,17 +1655,17 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Az egész képernyő megosztása</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Képernyő részének megosztása</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Fájl megosztása</translation>
     </message>
@@ -1716,7 +1680,7 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
-        <translation>Ring-fiók átvitele…</translation>
+        <translation>Jami fiók átvitele…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="99"/>
@@ -1756,12 +1720,12 @@ A Ring egy biztonságos és osztott kommunikációs szoftver</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="351"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation>Ring archív fájlok (* .gz) ;; Minden fájl (*)</translation>
+        <translation>Jami archív fájlok (* .gz) ;; Minden fájl (*)</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
         <source>Create Ring account</source>
-        <translation>Ring fiók létrehozása</translation>
+        <translation>Jami fiók létrehozása</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="173"/>
@@ -1796,7 +1760,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; Először az eszköz összekapcsolása egy másik fiókkal &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt; meg kell szereznie a PIN-kódot &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;A PIN kód létrehozása:&lt;/span&gt;&lt;/p&gt;
 &lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Fiókkezelés beállítása &lt;/span&gt;egy korábbi eszközről &lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Ring fiók &lt;/span&gt;szeretné használni&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Jami fiók &lt;/span&gt;szeretné használni&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Eszközök&lt;/span&gt;lap&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza&lt;span style=&quot; font-weight:600;&quot;&gt;Eszköz hozzáadása&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Kapja meg a szükséges PIN-kódot az űrlap kitöltéséhez. A PIN -kód csak érvényes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 percig&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</translation>
@@ -1831,7 +1795,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation>Regisztrálja felhasználónevét a Ring-en. Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni. Ismerősei képesek lesznek felhívni a felhasználónevét a Ring azonosító használata helyett.</translation>
+        <translation>Regisztrálja felhasználónevét a Jami-n. Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni. Ismerősei képesek lesznek felhívni a felhasználónevét a Jami azonosító használata helyett.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="33"/>
@@ -1856,12 +1820,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation>Ring fiók létrehozása gomb</translation>
+        <translation>Jami fiók létrehozása gomb</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation>Nyomógomb a Ring fiók létrehozás indításának aktivizálásához </translation>
+        <translation>Nyomógomb a Jami fiók létrehozás indításának aktivizálásához </translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
@@ -2013,7 +1977,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="933"/>
         <location filename="../wizarddialog.cpp" line="101"/>
         <source>Generating your Ring account...</source>
-        <translation>A Ringfiókja létrehozása…</translation>
+        <translation>A Jami fiókja létrehozása…</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
@@ -2076,17 +2040,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="139"/>
         <source>Create Ring account button</source>
-        <translation>Ring fiók létrehozása gomb</translation>
+        <translation>Jami fiók létrehozása gomb</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="145"/>
         <source>Push button for Ring account creation start trigger</source>
-        <translation>Nyomógomb a Ring fiók létrehozás indításának aktivizálásához </translation>
+        <translation>Nyomógomb a Jami fiók létrehozás indításának aktivizálásához </translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="151"/>
         <source>Create Ring account</source>
-        <translation>Ring fiók létrehozása</translation>
+        <translation>Jami fiók létrehozása</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="164"/>
@@ -2151,7 +2115,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; Először az eszköz összekapcsolása egy másik fiókkal &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt; meg kell szereznie a PIN-kódot &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;A PIN kód létrehozása:&lt;/span&gt;&lt;/p&gt;
 &lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Fiókkezelés beállítása &lt;/span&gt;egy korábbi eszközről &lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Ring fiók &lt;/span&gt;szeretné használni&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Jami fiók &lt;/span&gt;szeretné használni&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a&lt;span style=&quot; font-weight:600;&quot;&gt;Eszközök&lt;/span&gt;lap&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza&lt;span style=&quot; font-weight:600;&quot;&gt;Eszköz hozzáadása&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Kapja meg a szükséges PIN-kódot az űrlap kitöltéséhez. A PIN -kód csak érvényes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 percig&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</translation>
@@ -2220,7 +2184,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="670"/>
         <source>Register your username on the Ring. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your RingID.</source>
-        <translation>Regisztrálja felhasználónevét a Ring-en. Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni. Ismerősei képesek lesznek felhívni a felhasználónevét a Ring azonosító használata helyett.</translation>
+        <translation>Regisztrálja felhasználónevét a Jami-n. Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni. Ismerősei képesek lesznek felhívni a felhasználónevét a Jami azonosító használata helyett.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="673"/>
@@ -2303,7 +2267,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizardwidget.ui" line="933"/>
         <location filename="../wizardwidget.cpp" line="101"/>
         <source>Generating your Ring account...</source>
-        <translation>A Ring fiókja létrehozása…</translation>
+        <translation>A Jami fiókja létrehozása…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="969"/>
@@ -2343,7 +2307,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="97"/>
         <source>Migrating your Ring account...</source>
-        <translation>Ring-fiók átvitele…</translation>
+        <translation>Jami fiók átvitele…</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="99"/>
@@ -2383,7 +2347,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="339"/>
         <source>Ring archive files (*.gz);; All files (*)</source>
-        <translation>Ring archív fájlok (* .gz) ;; Minden fájl (*)</translation>
+        <translation>Jami archív fájlok (* .gz) ;; Minden fájl (*)</translation>
     </message>
 </context>
 </TS>
