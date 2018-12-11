@@ -19,6 +19,7 @@
 #include "linkdevwidget.h"
 
 #include <QMovie>
+#include <QTimer>
 
 LinkDevWidget::LinkDevWidget(QWidget* parent)
     : QWidget(parent),
@@ -32,9 +33,10 @@ LinkDevWidget::LinkDevWidget(QWidget* parent)
         setGeneratingPage();
     }
 
-    connect(ui->enterBtn, &QPushButton::clicked, this, &LinkDevWidget::setGeneratingPage);
+    connect(ui->enterBtn, &QPushButton::clicked,
+            this, &LinkDevWidget::setGeneratingPage);
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::exportOnRingEnded,
-        this, &LinkDevWidget::setExportPage);
+            this, &LinkDevWidget::setExportPage);
 }
 
 LinkDevWidget::~LinkDevWidget()
@@ -52,6 +54,17 @@ LinkDevWidget::setGeneratingPage()
     ui->spinningLabel->show();
     movie->start();
 
+    timeout_ = new QTimer(this);
+    timeout_->setInterval(exportTimeout_);
+    timeout_->setSingleShot(true);
+    connect(timeout_, &QTimer::timeout, this,
+        [&]() {
+            setExportPage(std::string(),
+                          lrc::api::account::ExportOnRingStatus::NETWORK_ERROR,
+                          std::string());
+        });
+    timeout_->start();
+
     LRCInstance::accountModel().exportOnRing(LRCInstance::getCurrAccId(), ui->passwordLineEdit->text().toStdString());
 }
 
@@ -59,6 +72,8 @@ void
 LinkDevWidget::setExportPage(const std::string& accountId, lrc::api::account::ExportOnRingStatus status, const std::string& pin)
 {
     Q_UNUSED(accountId);
+    timeout_->stop();
+
     ui->stackedWidget->setCurrentWidget(ui->end);
 
     switch (status) {
@@ -73,6 +88,7 @@ LinkDevWidget::setExportPage(const std::string& accountId, lrc::api::account::Ex
         break;
 
     default:
+        disconnect();
         ui->label_4->setText(tr("Something went wrong.\nPlease try again later."));
         ui->label_5->hide();
         ui->label_6->hide();
