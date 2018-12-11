@@ -64,9 +64,6 @@
 
 #include "callmodel.h"
 
-
-
-
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
     ui(new Ui::SettingsWidget),
@@ -133,31 +130,20 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     ui->advancedSettingsOffsetLabel->show();
 
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    if (accountList.empty()) {
-        connect(&LRCInstance::accountModel(),
-            &lrc::api::NewAccountModel::accountAdded,
-            [this](const std::string& accountId) {
-                setConnections();
-            });
-    } else {
-        setConnections();
-    }
+    setConnections();
 }
 
 void
 SettingsWidget::leaveSettingsSlot()
 {
-    emit NavigationRequested(ScreenEnum::CallScreen);
     if (advancedSettingsDropped_) {
         toggleAdvancedSettings();
     }
 
-    if (avSettingsHaveAppeared) {
-        ui->videoWidget->previewStopped();
-        ui->videoWidget->renderingStopped();
-        avSettingsHaveAppeared = false;
-    }
+    Video::PreviewManager::instance().stopPreview();
+    saveSizeIndex();
+
+    emit NavigationRequested(ScreenEnum::CallScreen);
 }
 
 SettingsWidget::~SettingsWidget()
@@ -186,11 +172,14 @@ SettingsWidget::resize(int size)
 void
 SettingsWidget::setSelected(Button sel)
 {
+    saveSizeIndex();
+
     switch (sel)
     {
     case Button::accountSettingsButton:
-        if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
+        Video::PreviewManager::instance().stopPreview();
 
+        if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
         ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
         if (pastButton_ == Button::generalSettingsButton) {
             ui->accountSettingsButton->setChecked(true);
@@ -203,6 +192,8 @@ SettingsWidget::setSelected(Button sel)
             break;
         }
     case Button::generalSettingsButton:
+        Video::PreviewManager::instance().stopPreview();
+
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
         populateGeneralSettings();
         if (pastButton_ == Button::avSettingsButton) {
@@ -217,7 +208,7 @@ SettingsWidget::setSelected(Button sel)
         }
     case Button::avSettingsButton:
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
-        if (!avSettingsHaveAppeared) { populateAVSettings(); }
+        populateAVSettings();
         if (pastButton_ == Button::accountSettingsButton) {
             ui->avSettingsButton->setChecked(true);
             ui->accountSettingsButton->setChecked(false);
@@ -736,7 +727,6 @@ void SettingsWidget::populateGeneralSettings()
 
     ui->autoUpdateCheckBox->setChecked(win_sparkle_get_automatic_check_for_updates());
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
-
 }
 
 void
@@ -830,8 +820,11 @@ SettingsWidget::populateAVSettings()
         this, SLOT(deviceIndexChanged(int)));
 
     if (ui->deviceBox->count() > 0) {
-        ui->deviceBox->setCurrentIndex(0);
         deviceBoxCurrentIndexChangedSlot(0);
+    }
+
+    if (currentResIndex >= 0) {
+        ui->sizeBox->setCurrentIndex(currentResIndex);
     }
 
     // Audio settings
@@ -847,6 +840,10 @@ SettingsWidget::populateAVSettings()
         ui->inputComboBox->setCurrentIndex(0);
     }
 
+    isLoading_ = true;
+
+    showPreview();
+
     connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::outputDevIndexChangedSlot);
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -856,11 +853,13 @@ SettingsWidget::populateAVSettings()
         &SettingsWidget::deviceBoxCurrentIndexChangedSlot);
     connect(ui->sizeBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
         &SettingsWidget::sizeBoxCurrentIndexChangedSlot);
+}
 
-    isLoading_ = true;
-    avSettingsHaveAppeared = true;
 
-    showPreview();
+void
+SettingsWidget::saveSizeIndex()
+{
+    currentResIndex = ui->sizeBox->currentIndex();
 }
 
 void
@@ -869,7 +868,7 @@ SettingsWidget::showPreview()
     if (!CallModel::instance().getActiveCalls().size()) {
         ui->previewUnavailableLabel->hide();
         ui->videoWidget->show();
-        Video::PreviewManager::instance().startPreview();
+        startVideo();
         ui->videoWidget->setIsFullPreview(true);
     } else {
         ui->previewUnavailableLabel->show();
@@ -932,4 +931,17 @@ SettingsWidget::inputdevIndexChangedSlot(int index)
 {
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
+}
+
+void
+SettingsWidget::startVideo()
+{
+    Video::PreviewManager::instance().stopPreview();
+    Video::PreviewManager::instance().startPreview();
+}
+
+void
+SettingsWidget::stopVideo()
+{
+    Video::PreviewManager::instance().stopPreview();
 }

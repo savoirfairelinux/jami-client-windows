@@ -64,7 +64,6 @@ private:
     void updateAccountInfoDisplayed();
 
     void resizeEvent(QResizeEvent* event);
-    bool avSettingsHaveAppeared = false;
 
     Ui::SettingsWidget* ui;
 
@@ -121,7 +120,6 @@ private slots:
     void setButtonIconSlot(int frame);
 
 
-
     // *************************  General Settings  *************************
 private:
     void populateGeneralSettings();
@@ -141,9 +139,14 @@ private slots:
     // *************************  Audio/Visual Settings  *************************
 private:
     void populateAVSettings();
+    void saveSizeIndex();
     Video::DeviceModel* deviceModel_;
     void showPreview();
     bool isLoading_;
+    int currentResIndex = -1;
+
+    void startVideo();
+    void stopVideo();
 
 private slots:
     void deviceIndexChanged(int index);

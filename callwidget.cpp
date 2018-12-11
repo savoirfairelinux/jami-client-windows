@@ -185,7 +185,6 @@ CallWidget::CallWidget(QWidget* parent) :
             ui->btnInvites->setChecked(false);
         });
 
-
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);

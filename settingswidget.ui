@@ -400,7 +400,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
          <string notr="true">background: white;</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="generalSettings">
          <property name="sizePolicy">
@@ -1039,7 +1039,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>701</width>
+               <width>642</width>
                <height>883</height>
               </rect>
              </property>
