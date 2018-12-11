@@ -258,12 +258,12 @@ SettingsWidget::updateAccountInfoDisplayed()
     ui->displayNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
 
     updateAndShowDevicesSlot();
+    bannedContactsShown_ = false;
     if (!LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts().size()){
         ui->blockedContactsBtn->hide();
     } else {
         ui->blockedContactsBtn->show();
     }
-    bannedContactsShown_ = false;
 }
 
 void
@@ -298,9 +298,11 @@ void
 SettingsWidget::toggleBannedContacts()
 {
     if (bannedContactsShown_) { // will show linked devices next
+        bannedContactsShown_ = false;
         updateAndShowDevicesSlot();
     }
     else { // will show banned contacts next
+        bannedContactsShown_ = true;
         updateAndShowBannedContactsSlot();
     }
 }
@@ -574,34 +576,34 @@ SettingsWidget::updateAndShowDevicesSlot()
             );
         }
     }
-    bannedContactsShown_ = false;
 }
 
 void
 SettingsWidget::updateAndShowBannedContactsSlot()
 {
-    ui->settingsListWidget->clear();
+    if (bannedContactsShown_) {
+        ui->settingsListWidget->clear();
 
-    ui->label->setText(tr("Blocked Contacts"));
-    ui->blockedContactsBtn->setText(tr("Linked Devices"));
-    ui->linkDevPushButton->hide();
+        ui->label->setText(tr("Blocked Contacts"));
+        ui->blockedContactsBtn->setText(tr("Linked Devices"));
+        ui->linkDevPushButton->hide();
 
-    auto bannedContactList = LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts();
+        auto bannedContactList = LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts();
 
-    int i = 0;
+        int i = 0;
 
-    for (auto it = bannedContactList.begin(); it != bannedContactList.end(); ++it, ++i) {
-        SettingsItemWidget* item = new SettingsItemWidget(itemHeight_, i, true, ui->settingsListWidget);
-        item->setSizeHint(QSize(ui->settingsListWidget->width(), itemHeight_));
-        ui->settingsListWidget->addItem(item);
+        for (auto it = bannedContactList.begin(); it != bannedContactList.end(); ++it, ++i) {
+            SettingsItemWidget* item = new SettingsItemWidget(itemHeight_, i, true, ui->settingsListWidget);
+            item->setSizeHint(QSize(ui->settingsListWidget->width(), itemHeight_));
+            ui->settingsListWidget->addItem(item);
 
-        connect(item->button_, &QPushButton::clicked, [this, i]() {
-            unban(i);
+            connect(item->button_, &QPushButton::clicked, [this, i]() {
+                unban(i);
             }
-        );
+            );
+        }
+        if (!bannedContactList.size()) { updateAndShowDevicesSlot(); ui->blockedContactsBtn->hide(); }
     }
-    bannedContactsShown_ = true;
-    if (!bannedContactList.size()) { updateAndShowDevicesSlot(); ui->blockedContactsBtn->hide(); }
 }
 
 void
