@@ -42,8 +42,12 @@ public:
 
 private:
     Ui::LinkDevWidget* ui;
+    const int exportTimeout = 10000;
+
+    QTimer* timeout_;
 
 private slots:
     void setGeneratingPage();
-    void setExportPage(const std::string& accountId, lrc::api::account::ExportOnRingStatus status, const std::string& pin);
+    void setExportPage(const std::string& accountId,
+        lrc::api::account::ExportOnRingStatus status, const std::string& pin);
 };
