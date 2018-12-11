@@ -505,7 +505,7 @@ SettingsWidget::removeDeviceSlot(int index)
     bool ok = false;
     if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
         psswd = QInputDialog::getText(this, tr("Remove Device"),
-            tr("Enter the password on this device to confirm the removal of this device"), QLineEdit::Password,
+            tr("Enter this account's password to confirm the removal of this device"), QLineEdit::Password,
             QDir::home().dirName(), &ok);
     }
     else {
@@ -684,7 +684,7 @@ SettingsWidget::setConnections()
         this, &SettingsWidget::updateAndShowDevicesSlot);
 
     // account settings setters {
-    connect(ui->accountEnableCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setAccEnableSlot);
+    connect(ui->accountEnableCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setAccEnableSlot);
 
     connect(ui->displayNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
         LRCInstance::setCurrAccDisplayName(displayName.toStdString());
@@ -693,19 +693,19 @@ SettingsWidget::setConnections()
 
     // general settings
 
-    connect(ui->notificationCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setNotificationsSlot);
+    connect(ui->notificationCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setNotificationsSlot);
 
-    connect(ui->closeOrMinCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setClosedOrMinSlot);
+    connect(ui->closeOrMinCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setClosedOrMinSlot);
 
-    connect(ui->downloadButton, &QPushButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
+    connect(ui->downloadButton, &QAbstractButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
 
-    connect(ui->alwaysRecordingCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setAlwaysRecordingSlot);
+    connect(ui->alwaysRecordingCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setAlwaysRecordingSlot);
 
-    connect(ui->checkUpdateButton, &QPushButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
+    connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
 
     connect(ui->intervalUpdateCheckSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsWidget::setUpdateIntervalSlot);
 
-    connect(ui->autoUpdateCheckBox, &QCheckBox::stateChanged, this, &SettingsWidget::setUpdateAutomaticSlot);
+    connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setUpdateAutomaticSlot);
 
     // audio / visual settings
 
