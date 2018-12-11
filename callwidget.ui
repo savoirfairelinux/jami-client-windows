@@ -57,6 +57,9 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="opaqueResize">
+        <bool>true</bool>
+       </property>
        <property name="handleWidth">
         <number>2</number>
        </property>
@@ -65,18 +68,24 @@
        </property>
        <widget class="QWidget" name="widgetSplitterLeft" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>320</width>
+          <width>300</width>
           <height>0</height>
          </size>
         </property>
-        <layout class="QGridLayout" name="gridLayout_3">
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetMinimumSize</enum>
+         </property>
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -89,10 +98,7 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="0">
+         <item>
           <widget class="QWidget" name="sidePanelLayoutWidget" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
             <property name="spacing">
