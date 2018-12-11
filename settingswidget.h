@@ -98,7 +98,6 @@ private:
 
     LinkDevWidget* linkDevWidget;
 
-
 private slots:
     void leaveSettingsSlot();
     void verifyRegisteredNameSlot();

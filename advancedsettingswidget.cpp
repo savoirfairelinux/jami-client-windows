@@ -33,17 +33,17 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     updateAdvancedSettings();
 ///////////////////////////////////////////////////////////////////////////////
     // call settings
-    connect(ui->checkBoxUntrusted, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setCallsUntrusted);
-    connect(ui->checkBoxCustomRingtone, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setEnableRingtone);
-    connect(ui->checkBoxAutoAnswer, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setAutoAnswerCalls);
+    connect(ui->checkBoxUntrusted, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setCallsUntrusted);
+    connect(ui->checkBoxCustomRingtone, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setEnableRingtone);
+    connect(ui->checkBoxAutoAnswer, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setAutoAnswerCalls);
     connect(ui->btnRingtone, &QPushButton::clicked, this, &AdvancedSettingsWidget::openFileCustomRingtone);
-    connect(ui->checkBoxCustomRingtone, &QCheckBox::stateChanged, [this](int state) { ui->btnRingtone->setEnabled((bool)state); });
+    connect(ui->checkBoxCustomRingtone, &QAbstractButton::clicked, [this](int state) { ui->btnRingtone->setEnabled((bool)state); });
 
     // name server
     connect(ui->lineEditNameServer, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setNameServer);
 
     // openDHT config
-    connect(ui->checkBoxEnableProxy, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setEnableProxy);
+    connect(ui->checkBoxEnableProxy, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setEnableProxy);
 
     connect(ui->lineEditProxy, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setProxyAddress);
     connect(ui->lineEditBootstrap, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setBootstrapAddress);
@@ -54,9 +54,9 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->btnPrivateKey, &QPushButton::clicked, this, &AdvancedSettingsWidget::openFilePrivateKey);
 
     // connectivity
-    connect(ui->checkBoxUPnP, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setUseUPnP);
-    connect(ui->checkBoxTurnEnable, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setUseTURN);
-    connect(ui->checkBoxSTUNEnable, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setUseSTUN);
+    connect(ui->checkBoxUPnP, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseUPnP);
+    connect(ui->checkBoxTurnEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseTURN);
+    connect(ui->checkBoxSTUNEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseSTUN);
 
     connect(ui->lineEditTurnAddress, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setTURNAddress);
     connect(ui->lineEditTurnUsername, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setTURNUsername);
@@ -67,7 +67,7 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->audioListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::audioCodecsStateChange);
     connect(ui->videoListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::videoCodecsStateChange);
 
-    connect(ui->videoCheckBox, &QCheckBox::stateChanged, this, &AdvancedSettingsWidget::setVideoState);
+    connect(ui->videoCheckBox, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setVideoState);
 
     // codec priority setting
     connect(ui->audioDownPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::decreaseAudioCodecPriority);
