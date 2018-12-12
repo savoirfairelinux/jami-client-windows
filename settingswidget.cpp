@@ -720,7 +720,7 @@ void SettingsWidget::populateGeneralSettings()
     settings_ = new QSettings;
 
     // settings
-    ui->downloadButton->setText(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
+    ui->downloadButton->setText(settings_->value(SettingsKey::downloadPath).toString());
     ui->closeOrMinCheckBox->setChecked(settings_->value(SettingsKey::closeOrMinimized).toBool());
     ui->notificationCheckBox->setChecked(settings_->value(SettingsKey::enableNotifications).toBool());
 
@@ -733,10 +733,8 @@ void SettingsWidget::populateGeneralSettings()
     }
     ui->recordPathButton->setText(media::RecordingModel::instance().recordPath());
 
-
     ui->autoUpdateCheckBox->setChecked(win_sparkle_get_automatic_check_for_updates());
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
-
 }
 
 void
@@ -792,8 +790,9 @@ SettingsWidget::openDownloadFolderSlot()
         | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
-        QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) = dir;
         ui->downloadButton->setText(dir);
+        settings_->setValue(SettingsKey::downloadPath, dir);
+        LRCInstance::editableDataTransferModel()->downloadDirectory = dir.toStdString() + "/";
     }
 }
 
