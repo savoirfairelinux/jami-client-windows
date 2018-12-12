@@ -63,13 +63,7 @@
     <ClCompile Include="aboutdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="accountserializationadapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bannedcontactswidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="contactrequestwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="deleteaccountdialog.cpp">
@@ -206,16 +200,10 @@
     <QtMoc Include="aboutdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="accountserializationadapter.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="bannedcontactswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="callwidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="contactrequestwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="deleteaccountdialog.h">
@@ -353,9 +341,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_callwidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_contactrequestwidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_deleteaccountdialog.h">
@@ -570,9 +555,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="callwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="contactrequestwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="deleteaccountdialog.ui">

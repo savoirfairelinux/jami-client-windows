@@ -226,7 +226,6 @@
     <ClCompile Include="currentaccountcombobox.cpp" />
     <ClCompile Include="aboutdialog.cpp" />
     <ClCompile Include="accountitemdelegate.cpp" />
-    <ClCompile Include="accountserializationadapter.cpp" />
     <ClCompile Include="accountlistmodel.cpp" />
     <ClCompile Include="bannedcontactswidget.cpp" />
     <ClCompile Include="callwidget.cpp">
@@ -239,7 +238,6 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
       <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
     </ClCompile>
-    <ClCompile Include="contactrequestwidget.cpp" />
     <ClCompile Include="deleteaccountdialog.cpp" />
     <ClCompile Include="globalsystemtray.cpp" />
     <ClCompile Include="idlabel.cpp" />
@@ -293,8 +291,6 @@
     </QtMoc>
     <QtMoc Include="aboutdialog.h">
     </QtMoc>
-    <QtMoc Include="accountserializationadapter.h">
-    </QtMoc>
     <QtMoc Include="bannedcontactswidget.h">
     </QtMoc>
     <QtMoc Include="callwidget.h">
@@ -311,8 +307,6 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
       <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_SVG_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
-    </QtMoc>
-    <QtMoc Include="contactrequestwidget.h">
     </QtMoc>
     <QtMoc Include="deleteaccountdialog.h">
     </QtMoc>
@@ -468,7 +462,6 @@
     <ClInclude Include="ui_aboutdialog.h" />
     <ClInclude Include="ui_bannedcontactswidget.h" />
     <ClInclude Include="ui_callwidget.h" />
-    <ClInclude Include="ui_contactrequestwidget.h" />
     <ClInclude Include="ui_deleteaccountdialog.h" />
     <ClInclude Include="ui_mainwindow.h" />
     <ClInclude Include="ui_photoboothdialog.h" />
@@ -552,8 +545,6 @@
     </QtUic>
     <QtUic Include="callwidget.ui">
       <SubType>Designer</SubType>
-    </QtUic>
-    <QtUic Include="contactrequestwidget.ui">
     </QtUic>
     <QtUic Include="deleteaccountdialog.ui">
       <SubType>Designer</SubType>
