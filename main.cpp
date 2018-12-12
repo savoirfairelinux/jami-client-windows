@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -53,18 +54,9 @@
 REGISTER_MEDIA();
 
 void
-Console()
+consoleDebug()
 {
 #ifdef Q_OS_WIN
-#ifdef _MSC_VER
-    // Print debug to output window if using VS
-    QObject::connect(
-        &LRCInstance::behaviorController(),
-        &lrc::api::BehaviorController::debugMessageReceived,
-        [](const std::string& message) {
-            OutputDebugStringA((message + "\n").c_str());
-        });
-#else
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
@@ -76,7 +68,36 @@ Console()
     SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coordInfo);
     SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),ENABLE_QUICK_EDIT_MODE| ENABLE_EXTENDED_FLAGS);
 #endif
+}
+
+#ifdef _MSC_VER
+void
+vsConsoleDebug()
+{
+
+    // Print debug to output window if using VS
+    QObject::connect(
+        &LRCInstance::behaviorController(),
+        &lrc::api::BehaviorController::debugMessageReceived,
+        [](const std::string& message) {
+            OutputDebugStringA((message + "\n").c_str());
+        });
+}
 #endif
+
+void
+fileDebug(QFile& debugFile)
+{
+    QObject::connect(
+        &LRCInstance::behaviorController(),
+        &lrc::api::BehaviorController::debugMessageReceived,
+        [&debugFile](const std::string& message) {
+            if (debugFile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+                auto msg = (message + "\n").c_str();
+                debugFile.write(msg, qstrlen(msg));
+                debugFile.close();
+            }
+        });
 }
 
 int
@@ -89,8 +110,6 @@ main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("ring.cx");
     QCoreApplication::setApplicationName("Ring");
 
-    GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
-
     auto startMinimized = false;
     QString uri = "";
 
@@ -98,13 +117,28 @@ main(int argc, char *argv[])
     gnutls_global_init();
 #endif
 
+    GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
     LRCInstance::init();
 
+    QFile debugFile("debug.log");
+
     for (auto string : QCoreApplication::arguments()) {
-        if (string == "-m" || string == "--minimized")
+        if (string == "-m" || string == "--minimized") {
             startMinimized = true;
-        if (string == "-d" || string == "--debug")
-            Console();
+        }
+        if (string == "-f" || string == "--file") {
+            debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
+            debugFile.close();
+            fileDebug(debugFile);
+        }
+        if (string == "-d" || string == "--debug") {
+            consoleDebug();
+        }
+#ifdef _MSC_VER
+        else if (string == "-c" || string == "--vsconsole") {
+            vsConsoleDebug();
+        }
+#endif
         if (string.startsWith("ring:")) {
             uri = string;
         }
@@ -209,6 +243,8 @@ main(int argc, char *argv[])
 #endif
 
     auto ret = a.exec();
+
+    FreeConsole();
 
     QCoreApplication::exit();
     GlobalSystemTray::instance().deleteLater();
