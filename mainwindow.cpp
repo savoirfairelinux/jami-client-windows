@@ -261,6 +261,8 @@ MainWindow::readSettingsFromRegistry()
     QSettings settings;
     restoreGeometry(settings.value(SettingsKey::geometry).toByteArray());
     restoreState(settings.value(SettingsKey::windowState).toByteArray());
+    LRCInstance::editableDataTransferModel()->downloadDirectory = settings.
+        value(SettingsKey::downloadPath, "Downloads").toString().toStdString() + "/";
     if (not settings.contains(SettingsKey::enableNotifications)) {
         settings.setValue(SettingsKey::enableNotifications, true);
     }
