@@ -22,11 +22,6 @@
 #include "utils.h"
 #include "lrcinstance.h"
 
-#include "video/devicemodel.h"
-#include "video/sourcemodel.h"
-#include "recentmodel.h"
-#include "media/video.h"
-
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
 #include <QDesktopWidget>
@@ -325,24 +320,6 @@ VideoView::showContextMenu(const QPoint& pos)
 }
 
 void
-VideoView::pushRenderer(Call* call) {
-    if (not call) {
-        disconnect(videoStartedConnection_);
-        return;
-    }
-    if (auto renderer = call->videoRenderer()) {
-        slotVideoStarted(renderer);
-    } else {
-        disconnect(videoStartedConnection_);
-        videoStartedConnection_ = connect(call,
-                SIGNAL(videoStarted(Video::Renderer*)),
-                this,
-                SLOT(slotVideoStarted(Video::Renderer*)));
-    }
-    ui->videoWidget->setPreviewDisplay(call->type() != Call::Type::CONFERENCE);
-}
-
-void
 VideoView::pushRenderer(const std::string& callUid) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -357,7 +334,7 @@ VideoView::pushRenderer(const std::string& callUid) {
         [this](const std::string& callId, Video::Renderer* renderer) {
             Q_UNUSED(callId);
             slotVideoStarted(renderer);
-            this->overlay_->setVideoMuteVisibility(LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+            this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
         });
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
 }

@@ -46,7 +46,6 @@
 // client
 #include "wizarddialog.h"
 #include "windowscontactbackend.h"
-#include "contactpicker.h"
 #include "globalsystemtray.h"
 #include "conversationitemdelegate.h"
 #include "pixbufmanipulator.h"
@@ -505,7 +504,7 @@ void
 CallWidget::settingsButtonClicked()
 {
     emit setLeftSizeWidget(ui->currentAccountComboBox->width());
-    emit NavigationRequested(ScreenEnum::ConfScreen);
+    emit NavigationRequested(ScreenEnum::SetttingsScreen);
 }
 
 void

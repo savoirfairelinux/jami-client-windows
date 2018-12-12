@@ -21,11 +21,6 @@
 #include <QWidget>
 #include <QMenu>
 
-#include "useractionmodel.h"
-
-#include "callutilsdialog.h"
-#include "qualitydialog.h"
-
 namespace Ui {
 class VideoOverlay;
 }
@@ -50,20 +45,14 @@ public:
 private slots:
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
-    void on_transferButton_clicked();
-    void on_addPersonButton_clicked();
     void on_holdButton_clicked();
-    void on_joinButton_clicked();
     void on_noMicButton_clicked();
     void on_noVideoButton_clicked();
-    void on_qualityButton_clicked();
     void on_recButton_clicked();
     void on_videoCfgBtn_clicked();
 
 private:
     Ui::VideoOverlay* ui;
-    CallUtilsDialog* transferDialog_;
-    QualityDialog* qualityDialog_;
     bool dialogVisible_ = false;
 
 signals:

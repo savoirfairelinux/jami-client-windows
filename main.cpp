@@ -86,6 +86,9 @@ main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
+    QCoreApplication::setOrganizationDomain("ring.cx");
+    QCoreApplication::setApplicationName("Ring");
+
     GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
 
     auto startMinimized = false;
@@ -176,10 +179,6 @@ main(int argc, char *argv[])
         a.setStyleSheet(file.readAll());
         file.close();
     }
-
-    QCoreApplication::setOrganizationName("Savoir-faire Linux");
-    QCoreApplication::setOrganizationDomain("ring.cx");
-    QCoreApplication::setApplicationName("Ring");
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 

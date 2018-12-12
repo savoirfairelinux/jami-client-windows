@@ -23,6 +23,11 @@
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 
+#include "callmodel.h"
+#include "video/devicemodel.h"
+#include "video/sourcemodel.h"
+#include "media/video.h"
+
 #include "videooverlay.h"
 
 namespace Ui {
@@ -36,7 +41,6 @@ class VideoView : public QWidget
 public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
-    void pushRenderer(Call* call);
     void pushRenderer(const std::string& callUid);
 
 protected:

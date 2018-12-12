@@ -22,8 +22,6 @@
 #include <QMovie>
 
 #include "navwidget.h"
-#include "accountdetails.h"
-#include "accountstatedelegate.h"
 #include "lrcinstance.h"
 
 #include "advancedsettingswidget.h"
