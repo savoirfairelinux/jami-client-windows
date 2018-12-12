@@ -223,7 +223,7 @@ MainWindow::createThumbBar()
     settings->setIcon(icon);
     settings->setDismissOnClick(true);
     connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        Utils::setStackWidget(ui->navStack, ui->configurationwidget);
+        Utils::setStackWidget(ui->navStack, ui->settingswidget);
     });
 
     thumbbar->addButton(settings);

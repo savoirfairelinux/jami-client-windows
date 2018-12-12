@@ -466,7 +466,6 @@
       <widget class="WizardWidget" name="wizardwidget"/>
       <widget class="CallWidget" name="callwidget"/>
       <widget class="SettingsWidget" name="settingswidget"/>
-      <widget class="ConfigurationWidget" name="configurationwidget"/>
      </widget>
     </item>
    </layout>
@@ -481,16 +480,15 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ConfigurationWidget</class>
-   <extends>QWidget</extends>
-   <header>configurationwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>WizardWidget</class>
    <extends>QWidget</extends>
    <header>wizardwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingsWidget</class>
+   <extends>QWidget</extends>
+   <header>settingswidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

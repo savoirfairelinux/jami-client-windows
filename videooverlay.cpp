@@ -20,9 +20,6 @@
 #include "videooverlay.h"
 #include "ui_videooverlay.h"
 
-// Client
-#include "contactpicker.h"
-
 // LRC
 #include "callmodel.h"
 #include "contactmethod.h"
@@ -34,9 +31,7 @@
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
-    ui(new Ui::VideoOverlay),
-    transferDialog_(new CallUtilsDialog()),
-    qualityDialog_(new QualityDialog())
+    ui(new Ui::VideoOverlay)
 {
     ui->setupUi(this);
 
@@ -49,23 +44,11 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->noMicButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
-
-    transferDialog_->setAttribute(Qt::WA_TranslucentBackground);
-    connect(transferDialog_, &CallUtilsDialog::isVisible, [this] (bool visible) {
-        dialogVisible_ = visible;
-    });
-
-    qualityDialog_->setAttribute(Qt::WA_TranslucentBackground);
-    connect(qualityDialog_, &QualityDialog::isVisible, [this] (bool visible) {
-        dialogVisible_ = visible;
-    });
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
-    delete transferDialog_;
-    delete qualityDialog_;
 }
 
 void
@@ -122,30 +105,6 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::on_transferButton_clicked()
-{
-    transferDialog_->setConfMode(false);
-    auto pos = this->mapToGlobal(ui->transferButton->pos());
-    transferDialog_->move(pos.x()
-                          - transferDialog_->size().width()/2
-                          + ui->transferButton->size().width()/2,
-                          pos.y() - (transferDialog_->height()));
-    transferDialog_->show();
-}
-
-void
-VideoOverlay::on_addPersonButton_clicked()
-{
-    transferDialog_->setConfMode(true);
-    auto pos = this->mapToGlobal(ui->addPersonButton->pos());
-    transferDialog_->move(pos.x()
-                          - transferDialog_->size().width()/2
-                          + ui->addPersonButton->size().width()/2,
-                          pos.y() - (transferDialog_->height()));
-    transferDialog_->show();
-}
-
-void
 VideoOverlay::on_holdButton_clicked()
 {
     auto selectedConvUid = LRCInstance::getSelectedConvUid();
@@ -187,24 +146,6 @@ VideoOverlay::on_noVideoButton_clicked()
         ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
         callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
     }
-}
-
-
-void VideoOverlay::on_joinButton_clicked()
-{
-    // TODO:(newlrc) conferences
-    //CallModel::instance().selectedCall()->joinToParent();
-}
-
-void
-VideoOverlay::on_qualityButton_clicked()
-{
-    auto pos = this->mapToGlobal(ui->qualityButton->pos());
-    qualityDialog_->move(pos.x()
-              - qualityDialog_->size().width()/2
-              + ui->qualityButton->size().width()/2,
-              pos.y() - (qualityDialog_->height()));
-    qualityDialog_->show();
 }
 
 void
