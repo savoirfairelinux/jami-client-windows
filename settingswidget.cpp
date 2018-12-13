@@ -480,6 +480,7 @@ SettingsWidget::delAccountSlot()
     delDialog.exec();
 
     if (!LRCInstance::accountModel().getAccountList().size()) {
+        LRCInstance::setSelectedAccountId("");
         emit NavigationRequested(ScreenEnum::WizardScreen);
     }
 }

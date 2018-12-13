@@ -94,10 +94,10 @@ public:
     };
 
     static const std::string& getCurrAccId() {
-        if (!instance().selectedAccountId.empty()) {
-            return instance().selectedAccountId;
+        if (instance().selectedAccountId.empty()) {
+            instance().selectedAccountId = accountModel().getAccountList().at(0);
         }
-        return accountModel().getAccountList()[0];
+        return instance().selectedAccountId;
     };
 
     static void setSelectedAccountId(const std::string& accountId) {
