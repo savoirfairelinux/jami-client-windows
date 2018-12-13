@@ -223,6 +223,7 @@ CallWidget::onIncomingMessage(const std::string& convUid,
             QString(tr("Message incoming from %1"))
             .arg(QString::fromStdString(bestName)));
     }
+    updateConversationsFilterWidget();
     if (convUid != selectedConvUid()) {
         return;
     }
@@ -234,7 +235,6 @@ CallWidget::onIncomingMessage(const std::string& convUid,
         return;
     }
     ui->messageView->printNewInteraction(*convModel, interactionId, interaction);
-    ui->conversationsFilterWidget->update();
 }
 
 void
@@ -726,6 +726,7 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
+    ui->conversationsFilterWidget->updateBadges();
     ui->conversationsFilterWidget->update();
 }
 
