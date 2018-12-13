@@ -193,13 +193,20 @@ CallWidget::CallWidget(QWidget* parent) :
     // chat view
     ui->messageView->buildView();
 
-    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
+    // hide the call stack
+    ui->callStackWidget->hide();
 }
 
 CallWidget::~CallWidget()
 {
     delete ui;
     delete menu_;
+}
+
+int
+CallWidget::getLeftPanelWidth()
+{
+    return ui->currentAccountComboBox->width();
 }
 
 void
@@ -510,7 +517,6 @@ CallWidget::invitationsButtonClicked()
 void
 CallWidget::settingsButtonClicked()
 {
-    emit setLeftSizeWidget(ui->currentAccountComboBox->width());
     emit NavigationRequested(ScreenEnum::SetttingsScreen);
 }
 

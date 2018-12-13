@@ -39,7 +39,6 @@
 #include "utils.h"
 #include "wizarddialog.h"
 #include "version.h"
-#include "settingswidget.h"
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -50,26 +49,21 @@ MainWindow::MainWindow(QWidget* parent) :
 
     connect(ui->wizardwidget, &WizardWidget::NavigationRequested,
         [this](ScreenEnum scr) {
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+            int index = scr;
+            if (scr == ScreenEnum::SetttingsScreen) {
+                index = addSettingsWidget();
+            }
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
         });
 
     connect(ui->callwidget, &CallWidget::NavigationRequested,
-            [this](ScreenEnum scr) {
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
-        });
-
-    connect(ui->settingswidget, &SettingsWidget::NavigationRequested,
-            [this](ScreenEnum scr) {
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
-            if (scr == ScreenEnum::CallScreen) {
-                ui->callwidget->update();
+        [this](ScreenEnum scr) {
+            int index = scr;
+            if (scr == ScreenEnum::SetttingsScreen) {
+                index = addSettingsWidget();
             }
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
         });
-
-    connect(ui->callwidget, &CallWidget::setLeftSizeWidget, [=](int size) {
-            ui->settingswidget->updateSettings(size);
-        }
-    );
 
     QIcon icon(":images/jami.png");
 
@@ -80,13 +74,24 @@ MainWindow::MainWindow(QWidget* parent) :
 
     QMenu* menu = new QMenu();
 
-    auto configAction = new QAction(tr("Configuration"), this);
+    auto configAction = new QAction(tr("Settings"), this);
+    connect(configAction, &QAction::triggered,
+        [this]() {
+            if (auto settingsWidget = getSettingsWidget()) {
+                Utils::setStackWidget(ui->navStack, settingsWidget);
+            } else {
+                auto index = addSettingsWidget();
+                Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
+            }
+            setWindowState(Qt::WindowActive);
+        });
     menu->addAction(configAction);
 
     auto exitAction = new QAction(tr("Exit"), this);
-    connect(exitAction, &QAction::triggered, [this](){
-        QCoreApplication::exit();
-    });
+    connect(exitAction, &QAction::triggered,
+        [this]() {
+            QCoreApplication::exit();
+        });
     menu->addAction(exitAction);
 
     sysIcon.setContextMenu(menu);
@@ -152,6 +157,41 @@ MainWindow::MainWindow(QWidget* parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+int
+MainWindow::addSettingsWidget()
+{
+    int index = -1;
+    if (ui->navStack->count() < ScreenEnum::SetttingsScreen + 1) {
+        auto settingsWidget = new SettingsWidget(this);
+        settingsWidget->updateSettings(ui->callwidget->getLeftPanelWidth());
+        index = ui->navStack->addWidget(settingsWidget);
+        connect(settingsWidget, &SettingsWidget::NavigationRequested,
+            [this](ScreenEnum scr) {
+                Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+                removeSettingsWidget();
+                if (scr == ScreenEnum::CallScreen) {
+                    ui->callwidget->update();
+                }
+            });
+    }
+    return index;
+}
+
+void
+MainWindow::removeSettingsWidget()
+{
+    if (auto settingsWidget = getSettingsWidget()) {
+        ui->navStack->removeWidget(settingsWidget);
+        settingsWidget->deleteLater();
+    }
+}
+
+SettingsWidget*
+MainWindow::getSettingsWidget()
+{
+    return qobject_cast<SettingsWidget*>(ui->navStack->widget(ScreenEnum::SetttingsScreen));
 }
 
 void
@@ -223,7 +263,12 @@ MainWindow::createThumbBar()
     settings->setIcon(icon);
     settings->setDismissOnClick(true);
     connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        Utils::setStackWidget(ui->navStack, ui->settingswidget);
+        if (auto settingsWidget = getSettingsWidget()) {
+            Utils::setStackWidget(ui->navStack, settingsWidget);
+        } else {
+            auto index = addSettingsWidget();
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
+        }
     });
 
     thumbbar->addButton(settings);
