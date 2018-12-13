@@ -29,6 +29,7 @@
 #include <QComboBox>
 #include <QWebEngineScript>
 
+#include <algorithm>
 #include <memory>
 
 #include "qrencode.h"
@@ -764,6 +765,12 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     auto contactUri = currentConversation->participants.front();
     try {
         auto& contact = accInfo->contactModel->getContact(contactUri);
+        auto bestName = Utils::bestNameForConversation(*currentConversation, *convModel);
+        ui->messageView->setInvitation(
+            (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
+            bestName,
+            accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
+        );
         if (!contact.profileInfo.avatar.empty()) {
             ui->messageView->setSenderImage(
                 accInfo->contactModel->getContactProfileId(contactUri),
