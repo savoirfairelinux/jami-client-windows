@@ -66,9 +66,6 @@ private:
     ~MainWindow();
 
     void readSettingsFromRegistry();
-    void removeSettingsWidget();
-    int addSettingsWidget();
-    SettingsWidget* getSettingsWidget();
 
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;

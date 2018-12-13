@@ -131,6 +131,9 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->advancedSettingsOffsetLabel->show();
 
     setConnections();
+
+    ui->leftSettingsWidget->setVisible(false);
+    ui->rightSettingsWidget->setVisible(false);
 }
 
 void
@@ -165,6 +168,14 @@ SettingsWidget::resize(int size)
 {
     ui->rightSettingsWidget->setGeometry(size, 0, this->width() - size, this->height());
     ui->accountSettingsButton->setFixedWidth(size);
+}
+
+void
+SettingsWidget::navigated(bool to)
+{
+    qDebug() << "SettingsWidget navigated: " << (to ? "to" : "from");
+    ui->leftSettingsWidget->setVisible(to);
+    ui->rightSettingsWidget->setVisible(to);
 }
 
 void

@@ -66,6 +66,9 @@ public:
 
     int getLeftPanelWidth();
 
+    // NavWidget
+    virtual void navigated(bool to);
+
 public slots:
     void on_ringContactLineEdit_returnPressed();
 

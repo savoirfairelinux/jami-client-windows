@@ -52,6 +52,9 @@ public:
     ~SettingsWidget();
     void resize(int size);
 
+    // NavWidget
+    virtual void navigated(bool to);
+
 public slots:
     void updateSettings(int size);
 
