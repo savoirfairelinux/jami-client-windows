@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccc7f558_7aa82c89",
+        "filename": "settingswidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2018-12-13T21:55:26Z",
+      "side": 1,
+      "message": "Who delete this pointer?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "6c18a021698118cd4797e6b1830e5aa62dcf5adb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
