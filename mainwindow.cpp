@@ -150,6 +150,8 @@ MainWindow::MainWindow(QWidget* parent) :
         }
         Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::CallScreen));
     } else {
+        setMinimumSize(512, 512);
+        setMaximumSize(512, 512);
         Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::WizardScreen));
     }
 }
