@@ -195,6 +195,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // hide the call stack
     ui->callStackWidget->hide();
+
+    // hide most items
+    ui->mainLayoutWidget->hide();
 }
 
 CallWidget::~CallWidget()
