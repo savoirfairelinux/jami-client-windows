@@ -29,11 +29,16 @@ ConversationsFilterWidget::ConversationsFilterWidget(QWidget *parent)
 {
 }
 
-void ConversationsFilterWidget::resizeEvent(QResizeEvent * event)
+void ConversationsFilterWidget::updateBadges()
 {
     using namespace lrc::api::profile;
     updateNotifier(Type::RING);
     updateNotifier(Type::PENDING);
+}
+
+void ConversationsFilterWidget::resizeEvent(QResizeEvent * event)
+{
+    updateBadges();
 }
 
 void

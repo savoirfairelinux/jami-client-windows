@@ -29,6 +29,8 @@ class ConversationsFilterWidget : public QWidget
 public:
     explicit ConversationsFilterWidget(QWidget *parent = 0);
 
+    void updateBadges();
+
 protected:
     void resizeEvent(QResizeEvent * event);
 
