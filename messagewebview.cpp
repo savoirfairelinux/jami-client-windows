@@ -2,7 +2,7 @@
  * Copyright (C) 2017-2018 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Alexandre Viau <alexandre.viau@savoirfairelinux.com>            *
- * Author: Sébastien Blin <sebastien.blin@savoirfairelinux.com>            *
+ * Author: Sï¿½bastien Blin <sebastien.blin@savoirfairelinux.com>            *
  * Author: Hugo Lefeuvre <hugo.lefeuvre@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -213,10 +213,10 @@ MessageWebView::setSenderImage(const std::string& sender,
 }
 
 void
-MessageWebView::setInvitation(bool show, const std::string& contactUri)
+MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
 {
-    QString s = QString::fromLatin1(show ? "showInvitation(\"%1\")" : "showInvitation()")
-        .arg(QString(contactUri.c_str()));
+    QString s = QString::fromLatin1(show ? "showInvitation(\"%1\", \"%2\")" : "showInvitation()")
+        .arg(QString(contactUri.c_str())).arg(QString(contactId.c_str()));
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
