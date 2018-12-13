@@ -287,6 +287,13 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
             [convUid]() {
                 LRCInstance::getCurrentConversationModel()->clearHistory(convUid);
             });
+        // remove contact
+        auto removeContactAction = new QAction(tr("Remove contact"), this);
+        menu.addAction(removeContactAction);
+        connect(removeContactAction, &QAction::triggered,
+            [convUid]() {
+                LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
+            });
         // block contact
         auto blockContactAction = new QAction(tr("Block contact"), this);
         menu.addAction(blockContactAction);
@@ -541,7 +548,7 @@ void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
 void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
 {
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString());
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), false);
 }
 
 void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
