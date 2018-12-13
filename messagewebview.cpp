@@ -366,7 +366,7 @@ PrivateBridging::discardInvitation()
 {
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
-        LRCInstance::getCurrentConversationModel()->removeConversation(convUid);
+        LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
     } catch (...) {
         qDebug() << "JS bridging - exception during makePermanent";
     }
