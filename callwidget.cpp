@@ -227,7 +227,7 @@ CallWidget::onIncomingMessage(const std::string& convUid,
         return;
     }
     ui->messageView->printNewInteraction(*convModel, interactionId, interaction);
-    ui->conversationsFilterWidget->update();
+    updateConversationsFilterWidget();
 }
 
 void
