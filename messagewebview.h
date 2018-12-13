@@ -39,7 +39,9 @@ public:
     Q_INVOKABLE int sendMessage(const QString & arg);
     Q_INVOKABLE int sendFile();
     Q_INVOKABLE int log(const QString& arg);
-
+    Q_INVOKABLE int acceptInvitation();
+    Q_INVOKABLE int refuseInvitation();
+    Q_INVOKABLE int blockConversation();
 };
 
 class MessageWebView : public QWebEngineView
@@ -68,7 +70,7 @@ public:
                       lrc::api::interaction::Info> interactions);
     void setSenderImage(const std::string& sender,
                         const std::string& senderImage);
-    void setInvitation(bool show, const std::string& contactUri);
+    void setInvitation(bool show, const std::string& contactUri, const std::string& contactId);
     void hideMessages();
 
 private slots:
