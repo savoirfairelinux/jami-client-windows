@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66db1b42_b44143c5",
+        "filename": "callwidget.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2018-12-13T19:54:47Z",
+      "side": 1,
+      "message": "use helper funcs in Utils",
+      "range": {
+        "startLine": 768,
+        "startChar": 8,
+        "endLine": 778,
+        "endChar": 10
+      },
+      "revId": "7415b801cac50e858b54232450bc7975bddb8eee",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
