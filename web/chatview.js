@@ -15,7 +15,7 @@ const scrollBuffer = 20
 const initialScrollBufferFactor = 3
 // Some signal like the onscrolled signals are debounced so that the their
 // assigned function isn't fired too often
-const debounceTime = 200
+const debounceTime = 200 
 
 /* Buffers */
 // current index in the history buffer
@@ -28,6 +28,7 @@ var historyBuffer = []
 const messageBar        = document.getElementById("sendMessage")
 const messageBarInput   = document.getElementById("message")
 const invitation        = document.getElementById("invitation")
+const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 
@@ -125,19 +126,25 @@ function back_to_bottom() {
  * Otherwise, invitation div is updated.
  *
  * @param contactAlias
+ * @param contactId
  */
 /* exported showInvitation */
-function showInvitation(contactAlias) {
+function showInvitation(contactAlias, contactId) {
     if (!contactAlias) {
         if (hasInvitation) {
             hasInvitation = false
             invitation.style.visibility = ""
         }
     } else {
+        if (!inviteImage.classList.contains('sender_image')) {
+            inviteImage.classList.add('sender_image');
+        }
+        if (!inviteImage.classList.contains(`sender_image_${contactId}`)) {
+            inviteImage.classList.add(`sender_image_${contactId}`);
+        }
         hasInvitation = true
-        invitationText.innerHTML = "<h1>" + contactAlias + " sends you an invitation</h1>"
-      + "Do you want to add them to the conversations list?<br>"
-      + "Note: you can automatically accept this invitation by sending a message."
+        invitationText.innerHTML = "<b>" + contactAlias + " is not in your contacts</b><br/>"
+            + "Note: you can automatically accept this invitation by sending a message."
         invitation.style.visibility = "visible"
     }
 }
@@ -253,6 +260,19 @@ function sendMessage()
         messageBarInput.value = ""
         window.jsbridge.sendMessage(message)
     }
+}
+
+/* exported acceptInvitation */
+function acceptInvitation() {
+    window.jsbridge.acceptInvitation()
+}
+/* exported refuseInvitation */
+function refuseInvitation() {
+    window.jsbridge.refuseInvitation()
+}
+/* exported blockConversation */
+function blockConversation() {
+    window.jsbridge.blockConversation()
 }
 
 /* exported sendFile */
@@ -1499,6 +1519,6 @@ function setSenderImage(set_sender_image_object)
 
     style.type = "text/css"
     style.id = sender_image_id
-    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 32px;width: 32px;}"
+    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");}"
     document.head.appendChild(style)
 }
