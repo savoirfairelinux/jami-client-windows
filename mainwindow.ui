@@ -465,6 +465,14 @@
      <widget class="QStackedWidget" name="navStack">
       <widget class="WizardWidget" name="wizardwidget"/>
       <widget class="CallWidget" name="callwidget"/>
+      <widget class="SettingsWidget" name="settingswidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -483,6 +491,11 @@
    <extends>QWidget</extends>
    <header>wizardwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingsWidget</class>
+   <extends>QWidget</extends>
+   <header>settingswidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

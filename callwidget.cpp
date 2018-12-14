@@ -195,12 +195,26 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // hide the call stack
     ui->callStackWidget->hide();
+
+    ui->containerWidget->setVisible(false);
 }
 
 CallWidget::~CallWidget()
 {
     delete ui;
     delete menu_;
+}
+
+void
+CallWidget::navigated(bool to)
+{
+    ui->containerWidget->setVisible(to);
+    if (to) {
+        updateSmartList();
+    } else {
+        QObject::disconnect(smartlistSelectionConnection_);
+        smartListModel_.reset(nullptr);
+    }
 }
 
 int
@@ -1072,7 +1086,7 @@ void
 CallWidget::updateSmartList()
 {
     auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
-    smartListModel_.reset(new SmartListModel(currentAccountInfo, this->parent()));
+    smartListModel_.reset(new SmartListModel(currentAccountInfo, this));
     ui->smartList->setModel(smartListModel_.get());
     ui->smartList->setItemDelegate(new ConversationItemDelegate());
 

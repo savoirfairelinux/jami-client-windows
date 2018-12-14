@@ -130,7 +130,26 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     ui->advancedSettingsOffsetLabel->show();
 
-    setConnections();
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (!accountList.size()) {
+        QMetaObject::Connection* toDisconnect = &accountAddedConnection_;
+        accountAddedConnection_ = connect(&LRCInstance::accountModel(),
+            &lrc::api::NewAccountModel::accountAdded,
+            [this, toDisconnect](const std::string& accountId) {
+                setConnections();
+                QObject::disconnect(*toDisconnect);
+            });
+    } else {
+        setConnections();
+    }
+
+    ui->containerWidget->setVisible(false);
+}
+
+void
+SettingsWidget::navigated(bool to)
+{
+    ui->containerWidget->setVisible(to);
 }
 
 void
