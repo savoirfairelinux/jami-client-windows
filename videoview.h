@@ -97,5 +97,7 @@ private:
 signals:
     void setChatVisibility(bool visible);
     void videoSettingsClicked();
+    void toggleFullScreenClicked();
+    void closing();
 };
 

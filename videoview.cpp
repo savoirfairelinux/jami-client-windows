@@ -156,12 +156,10 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
     if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
         timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
-    }
-    else {
+    } else {
         QObject::disconnect(timerConnection_);
         emit setChatVisibility(false);
-        if (isFullScreen())
-            toggleFullScreen();
+        emit closing();
     }
 }
 
@@ -212,19 +210,7 @@ VideoView::dropEvent(QDropEvent* event)
 void
 VideoView::toggleFullScreen()
 {
-    qDebug() << "toggle FS";
-    /*overlay_->toggleContextButtons(isFullScreen());
-    if(isFullScreen()) {
-        dynamic_cast<QSplitter*>(oldParent_)->insertWidget(0,this);
-        this->resize(oldSize_.width(), oldSize_.height());
-        this->showNormal();
-    } else {
-        oldSize_ = this->size();
-        oldParent_ = static_cast<QWidget*>(this->parent());
-        this->setParent(0);
-        this->showFullScreen();
-    }
-    ui->videoWidget->setResetPreview(true);*/
+    emit toggleFullScreenClicked();
 }
 
 void

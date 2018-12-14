@@ -141,6 +141,12 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoWidget, &VideoView::videoSettingsClicked,
             this, &CallWidget::settingsButtonClicked);
 
+    connect(ui->videoWidget, &VideoView::toggleFullScreenClicked,
+        this, &CallWidget::slotToggleFullScreenClicked);
+
+    connect(ui->videoWidget, &VideoView::closing,
+        this, &CallWidget::slotVideoViewDestroyed);
+
     connect(ui->btnConversations, &QPushButton::clicked,
             this, &CallWidget::conversationsButtonClicked);
 
@@ -680,6 +686,30 @@ void CallWidget::slotShowChatView(const std::string& accountId,
 
     ui->callStackWidget->hide();
     showConversationView();
+}
+
+void
+CallWidget::slotToggleFullScreenClicked()
+{
+    if (ui->mainActivityWidget->isFullScreen()) {
+        ui->stackedWidget->addWidget(ui->mainActivityWidget);
+        ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->showNormal();
+    } else {
+        ui->stackedWidget->removeWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->setParent(0);
+        ui->mainActivityWidget->showFullScreen();
+    }
+}
+
+void
+CallWidget::slotVideoViewDestroyed()
+{
+    if (ui->mainActivityWidget->isFullScreen()) {
+        ui->stackedWidget->addWidget(ui->mainActivityWidget);
+        ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->showNormal();
+    }
 }
 
 void
