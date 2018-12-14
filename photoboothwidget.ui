@@ -14,6 +14,21 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="9,0">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="VideoWidget" name="videoFeed" native="true">
      <property name="toolTip">
@@ -27,7 +42,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="topMargin">
-      <number>10</number>
+      <number>0</number>
      </property>
      <item>
       <spacer name="horizontalSpacer_3">
@@ -44,31 +59,24 @@
      </item>
      <item>
       <widget class="QPushButton" name="takePhotoButton">
-       <property name="enabled">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
-       <property name="toolTip">
-        <string>Take photo</string>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/images/icons/ic_photo_camera_white_24dp_2x.png</normaloff>:/images/icons/ic_photo_camera_white_24dp_2x.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>36</width>
-         <height>36</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>or</string>
+         <normaloff>:/images/icons/ic_video_call_24px.svg</normaloff>:/images/icons/ic_video_call_24px.svg</iconset>
        </property>
       </widget>
      </item>
@@ -76,21 +84,22 @@
       <widget class="QPushButton" name="importButton">
        <property name="minimumSize">
         <size>
-         <width>60</width>
-         <height>30</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
-       <property name="toolTip">
-        <string>Import photo</string>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
        <property name="text">
-        <string>Import</string>
+        <string/>
        </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>30</height>
-        </size>
+       <property name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/images/icons/ic_folder_black_18dp_2x.png</normaloff>:/images/icons/ic_folder_black_18dp_2x.png</iconset>
        </property>
       </widget>
      </item>

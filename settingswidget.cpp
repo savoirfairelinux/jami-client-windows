@@ -153,6 +153,10 @@ SettingsWidget::navigated(bool to)
     ui->containerWidget->setVisible(to);
 }
 
+void SettingsWidget::updateCustomUI()
+{
+}
+
 void
 SettingsWidget::leaveSettingsSlot()
 {

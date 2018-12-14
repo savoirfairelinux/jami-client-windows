@@ -90,6 +90,16 @@ RingContactLineEdit{
     background-color: rgb(242, 242, 242);
 }
 
+.QLineEdit{
+    border-color: rgb(242, 242, 242);
+    border-radius: 15px;
+    border-width: 2px;
+    background-color: rgb(242, 242, 242);
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 30px;
+}
+
 QScrollBar:vertical, QScrollBar:horizontal{
     background:white; width:0px;
 }
@@ -161,18 +171,8 @@ QListView#contactRequestList::item:hover, QListView#BannedList::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
-QWidget#sendIMWidget {
-	border-top: 2px solid rgb(240, 240, 240);
-}
-
 QWidget#messagingHeaderWidget{
 	border-bottom: 2px solid rgb(240, 240, 240);
-}
-
-QLineEdit#messageEdit, QLineEdit#imMessageEdit{
-    border: none;
-    background-color: rgb(255, 255, 255);
-	padding: 0px;
 }
 
 QLineEdit#numberBar{
@@ -315,11 +315,27 @@ QPushButton#photoButton, QPushButton#takePhotoButton, QPushButton#importButton,
 QPushButton#existingPushButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
-QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, QPushButton#confirmChangeBtn {
-    background-color: #109ede;
+QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, QPushButton#confirmChangeBtn, QPushButton#backButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #109ede, stop: 1.0 #2b5084);
     border: 0px;
+    border-radius: 15px;
+    height: 30px;
     color: white;
     font: 14px;
+}
+
+QPushButton#nextButton:disabled, QPushButton#playButton:disabled, QPushButton#clearHistoryButton:disabled,
+QPushButton#doTransferButton:disabled, QPushButton#photoButton:disabled,
+QPushButton#takePhotoButton:disabled, QPushButton#importButton:disabled,
+QPushButton#existingPushButton:disabled, QPushButton#newAccountButton:disabled, QPushButton#previousButton:disabled,
+QPushButton#exportButton:disabled, QPushButton#cancelAddButton:disabled, QPushButton#exportOnRingButton:disabled,
+QPushButton#addDeviceButton:disabled, QPushButton#exportEndedOkButton:disabled, QPushButton#errorPushButton:disabled,
+QPushButton#registerButton:disabled, QPushButton#acceptCRButton:disabled, QPushButton#discardCRButton:disabled,
+QPushButton#deleteCancelBtn:disabled, QPushButton#dhtImportBtn:disabled, QPushButton#fileImportBtn:disabled,
+QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled {
+    background: rgba(242, 242, 242, 0.8);
+    color: grey;
 }
 
 QPushButton#blockCRButton, QPushButton#debanButton, QPushButton#deleteBanBtn,
@@ -338,8 +354,10 @@ QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#e
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
 QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover,
-QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover{
-    background-color: #2b4b7e;
+QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover, QPushButton#backButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #2b4b7e, stop: 1.0 #001d4d);
+    color: white;
 }
 
 QPushButton#blockCRButton:hover, QPushButton#deleteAcceptBtn:hover, QPushButton#debanButton:hover,
@@ -355,33 +373,15 @@ QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButt
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
 QPushButton#registerButton:pressed, QPushButton#acceptCRButton:pressed, QPushButton#discardCRButton:pressed,
 QPushButton#deleteCancelBtn:pressed, QPushButton#dhtImportBtn:pressed, QPushButton#fileImportBtn:pressed,
-QPushButton#changePassBtn:pressed, QPushButton#confirmChangeBtn:pressed {
-    background-color: #2b4b7e;
+QPushButton#changePassBtn:pressed, QPushButton#confirmChangeBtn:pressed, QPushButton#backButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #043161, stop: 1.0 #00113f);
+    color: white;
 }
 
 QPushButton#blockCRButton:pressed, QPushButton#deleteAcceptBtn:pressed, QPushButton#debanButton:pressed,
 QPushButton#deleteBanBtn:pressed, QPushButton#cancelChangeBtn:pressed{
     background-color: rgb(219, 55, 54);
-}
-
-QLineEdit#usernameEdit:enabled, QLineEdit#passwordEdit:enabled, QLineEdit#confirmPasswordEdit:enabled,
-QLineEdit#pinEdit:enabled, QLineEdit#fullNameEdit:enabled, QLineEdit#archivePasswordInput:enabled,
-QLineEdit#oldPasswordLineEdit:enabled, QLineEdit#newPassConfirmationLineEdit:enabled, QLineEdit#newPasswordLineEdit:enabled{
-    border-color: rgb(0, 192, 212);
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: outset;
-    background-color: rgb(255, 255, 255);
-}
-
-QLineEdit#usernameEdit:disabled, QLineEdit#passwordEdit:disabled, QLineEdit#confirmPasswordEdit:disabled,
-QLineEdit#pinEdit:disabled, QLineEdit#fullNameEdit:disabled, QLineEdit#archivePasswordInput:disabled,
-QLineEdit#oldPasswordLineEdit:disabled{
-    border-color: rgb(159, 157, 154);
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: outset;
-    background-color: rgb(239, 235, 231);
 }
 
 QComboBox{
@@ -408,7 +408,7 @@ QComboBox::down-arrow{
 }
 
 QComboBox::drop-down{
-    border-radius: 0px;
+    border: 0;
     width: 36px;
 }
 

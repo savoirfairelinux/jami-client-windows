@@ -77,6 +77,7 @@ namespace Utils
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
     QByteArray QByteArrayFromFile(const QString& filename);
+    QPixmap generateTintedPixmap(const QString& filename, QColor color);
 
     template<typename E>
     constexpr inline typename std::enable_if<   std::is_enum<E>::value,

@@ -53,6 +53,7 @@ public:
 
     // NavWidget
     virtual void navigated(bool to);
+    virtual void updateCustomUI();
 
 public slots:
     void updateSettings(int size);

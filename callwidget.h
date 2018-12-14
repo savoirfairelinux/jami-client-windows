@@ -68,6 +68,7 @@ public:
 
     // NavWidget
     virtual void navigated(bool to);
+    virtual void updateCustomUI();
 
 public slots:
     void on_ringContactLineEdit_returnPressed();
@@ -98,7 +99,6 @@ private slots:
     void on_smartList_clicked(const QModelIndex &index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
-    void on_pendingCRBackButton_clicked();
     void on_btnAudioCall_clicked();
     void on_btnVideoCall_clicked();
 

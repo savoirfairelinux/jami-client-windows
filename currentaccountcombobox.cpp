@@ -39,7 +39,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
     gearLabel_.setMouseTracking(true);
 
     accountListUpdate();
-    accountItemDelegate_ = new AccountItemDelegate();
+    accountItemDelegate_ = new AccountItemDelegate(this);
     this->setItemDelegate(accountItemDelegate_);
 
     // combobox index changed and so must the avatar
@@ -131,6 +131,10 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.setPen(Qt::lightGray);
         painter.drawText(comboBoxRect, (Qt::AlignBottom | Qt::AlignLeft), secondaryAccountID);
     }
+
+    if (QWidget* popupWidget = this->findChild<QFrame*>()) {
+        popupWidget->setStyleSheet("QFrame{border: 0px;border-bottom: 1px solid #f0f0f0;}");
+    }
 }
 
 void CurrentAccountComboBox::resizeEvent(QResizeEvent* event)
@@ -160,8 +164,13 @@ CurrentAccountComboBox::importLabelPhoto(int index)
 void
 CurrentAccountComboBox::setCurrentIndex(int index)
 {
-    importLabelPhoto(index);
-    QComboBox::setCurrentIndex(index);
+    auto accountListSize = LRCInstance::accountModel().getAccountList().size();
+    if (index == accountListSize) {
+        emit newAccountClicked();
+    } else if (index < accountListSize) {
+        importLabelPhoto(index);
+        QComboBox::setCurrentIndex(index);
+    }
 }
 
 void
@@ -176,9 +185,7 @@ void
 CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
 {
     if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
-        if (count() > 1) {
-            QComboBox::mousePressEvent(mouseEvent);
-        }
+        QComboBox::mousePressEvent(mouseEvent);
     } else {
         emit settingsButtonClicked();
     }

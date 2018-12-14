@@ -37,6 +37,7 @@ public:
     ~NavWidget();
 
     virtual void navigated(bool to) = 0;
+    virtual void updateCustomUI() = 0;
 
 signals:
     void NavigationRequested(ScreenEnum screen);
