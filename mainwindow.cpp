@@ -21,6 +21,8 @@
 #include "ui_mainwindow.h"
 
 #include <QDesktopWidget>
+#include <QWindow>
+#include <QScreen>
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -47,23 +49,18 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->wizardwidget, &WizardWidget::NavigationRequested,
-        [this](ScreenEnum scr) {
-            int index = scr;
-            if (scr == ScreenEnum::SetttingsScreen) {
-                index = addSettingsWidget();
-            }
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
-        });
+    for (int i = 0; i < ui->navStack->count(); ++i) {
+        if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
+            connect(navWidget, &NavWidget::NavigationRequested,
+                [this](ScreenEnum scr) {
+                    Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
+                });
+        }
+    }
 
-    connect(ui->callwidget, &CallWidget::NavigationRequested,
-        [this](ScreenEnum scr) {
-            int index = scr;
-            if (scr == ScreenEnum::SetttingsScreen) {
-                index = addSettingsWidget();
-            }
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
-        });
+    connect(ui->navStack, SIGNAL(currentChanged(int)),
+            this, SLOT(slotCurrentChanged(int)),
+            Qt::QueuedConnection);
 
     QIcon icon(":images/jami.png");
 
@@ -77,12 +74,7 @@ MainWindow::MainWindow(QWidget* parent) :
     auto configAction = new QAction(tr("Settings"), this);
     connect(configAction, &QAction::triggered,
         [this]() {
-            if (auto settingsWidget = getSettingsWidget()) {
-                Utils::setStackWidget(ui->navStack, settingsWidget);
-            } else {
-                auto index = addSettingsWidget();
-                Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
-            }
+            Utils::setStackWidget(ui->navStack, ui->settingswidget);
             setWindowState(Qt::WindowActive);
         });
     menu->addAction(configAction);
@@ -112,8 +104,6 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 #endif
 
-    readSettingsFromRegistry();
-
     win_sparkle_set_appcast_url("http://dl.jami.net/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
@@ -137,21 +127,26 @@ MainWindow::MainWindow(QWidget* parent) :
         AccountModel::instance().slotConnectivityChanged();
     });
 
+    auto flags_ = windowFlags();
+
     auto accountList = LRCInstance::accountModel().getAccountList();
+    ScreenEnum startScreen;
     if (accountList.size()) {
-        for (const auto& accountId : accountList) {
-            auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-            if (accountInfo.profileInfo.type == lrc::api::profile::Type::RING) {
-                if (accountInfo.status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-                    WizardDialog dlg(WizardDialog::MIGRATION);
-                    dlg.exec();
-                }
-            }
-        }
-        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::CallScreen));
+        readSettingsFromRegistry();
+        startScreen = ScreenEnum::CallScreen;
     } else {
-        Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::WizardScreen));
+        startScreen = ScreenEnum::WizardScreen;
     }
+
+    Utils::setStackWidget(ui->navStack, ui->navStack->widget(startScreen));
+    if (startScreen == ScreenEnum::WizardScreen) {
+        setWindowSize(startScreen);
+    }
+    if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(startScreen))) {
+        navWidget->navigated(true);
+    }
+
+    lastScr_ = startScreen;
 }
 
 MainWindow::~MainWindow()
@@ -159,39 +154,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-int
-MainWindow::addSettingsWidget()
-{
-    int index = -1;
-    if (ui->navStack->count() < ScreenEnum::SetttingsScreen + 1) {
-        auto settingsWidget = new SettingsWidget(this);
-        settingsWidget->updateSettings(ui->callwidget->getLeftPanelWidth());
-        index = ui->navStack->addWidget(settingsWidget);
-        connect(settingsWidget, &SettingsWidget::NavigationRequested,
-            [this](ScreenEnum scr) {
-                Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
-                removeSettingsWidget();
-                if (scr == ScreenEnum::CallScreen) {
-                    ui->callwidget->update();
-                }
-            });
-    }
-    return index;
-}
-
 void
-MainWindow::removeSettingsWidget()
+MainWindow::slotCurrentChanged(int index)
 {
-    if (auto settingsWidget = getSettingsWidget()) {
-        ui->navStack->removeWidget(settingsWidget);
-        settingsWidget->deleteLater();
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    auto firstUse =
+        (accountList.size() == 1 && lastScr_ == ScreenEnum::WizardScreen) ||
+        !accountList.size();
+    for (int i = 0; i < ui->navStack->count(); ++i) {
+        if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
+            navWidget->navigated(index == i);
+        }
     }
-}
 
-SettingsWidget*
-MainWindow::getSettingsWidget()
-{
-    return qobject_cast<SettingsWidget*>(ui->navStack->widget(ScreenEnum::SetttingsScreen));
+    auto scr = Utils::toEnum<ScreenEnum>(index);
+    setWindowSize(scr, firstUse);
+    lastScr_ = scr;
 }
 
 void
@@ -263,12 +241,7 @@ MainWindow::createThumbBar()
     settings->setIcon(icon);
     settings->setDismissOnClick(true);
     connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        if (auto settingsWidget = getSettingsWidget()) {
-            Utils::setStackWidget(ui->navStack, settingsWidget);
-        } else {
-            auto index = addSettingsWidget();
-            Utils::setStackWidget(ui->navStack, ui->navStack->widget(index));
-        }
+        Utils::setStackWidget(ui->navStack, ui->settingswidget);
     });
 
     thumbbar->addButton(settings);
@@ -311,4 +284,57 @@ MainWindow::readSettingsFromRegistry()
     if (not settings.contains(SettingsKey::enableNotifications)) {
         settings.setValue(SettingsKey::enableNotifications, true);
     }
+}
+
+void
+MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
+{
+    auto screenNumber = qApp->desktop()->screenNumber();
+    QScreen* screen = qApp->screens().at(screenNumber);
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (scr == ScreenEnum::CallScreen ||
+        scr == ScreenEnum::SetttingsScreen) {
+        setMinimumSize(894, 600);
+        setMaximumSize(16777215, 16777215);
+    } else if (!accountList.size()) {
+        hide();
+        setMinimumSize(512, 512);
+        setMaximumSize(512, 512);
+        setFixedSize(512, 512);
+    }
+    if (firstUse || !accountList.size()) {
+        setGeometry(
+            QStyle::alignedRect(
+                Qt::LeftToRight,
+                Qt::AlignCenter,
+                size(),
+                qApp->desktop()->screenGeometry(screenNumber)
+            )
+        );
+        windowHandle()->setScreen(screen);
+        if (scr == ScreenEnum::WizardScreen) {
+            setWindowFlags(Qt::Dialog);
+            setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
+        } else {
+            setWindowFlags(flags_);
+        }
+        adjustSize();
+        updateGeometry();
+        update();
+        show();
+    }
+}
+
+void
+MainWindow::show()
+{
+    QMainWindow::show();
+    disconnect(screenChangedConnection_);
+    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
+        [this](QScreen* screen) {
+            qDebug() << "screen changed: " << screen->name();
+            adjustSize();
+            updateGeometry();
+            update();
+        });
 }

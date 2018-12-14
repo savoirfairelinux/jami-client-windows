@@ -36,8 +36,11 @@ public:
     explicit NavWidget(QWidget* parent = 0);
     ~NavWidget();
 
+    virtual void navigated(bool to) = 0;
+
 signals:
     void NavigationRequested(ScreenEnum screen);
     void BackRequested();
+
 };
 

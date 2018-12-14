@@ -52,6 +52,9 @@ public:
     explicit WizardWidget(WizardMode wizardMode = WIZARD, AccountInfo* toBeMigrated = nullptr, QWidget* parent = 0);
     ~WizardWidget();
 
+    // NavWidget
+    virtual void navigated(bool to);
+
 //UI Slots
 private slots:
     void on_existingPushButton_clicked();
