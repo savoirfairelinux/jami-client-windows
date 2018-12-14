@@ -146,6 +146,12 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoWidget, &VideoView::videoSettingsClicked,
             this, &CallWidget::settingsButtonClicked);
 
+    connect(ui->videoWidget, &VideoView::toggleFullScreenClicked,
+        this, &CallWidget::slotToggleFullScreenClicked);
+
+    connect(ui->videoWidget, &VideoView::closing,
+        this, &CallWidget::slotVideoViewDestroyed);
+
     connect(ui->btnConversations, &QPushButton::clicked,
             this, &CallWidget::conversationsButtonClicked);
 
@@ -730,7 +736,10 @@ CallWidget::slotVideoViewDestroyed(const std::string& callid)
     auto currentConversationModel = LRCInstance::getCurrentConversationModel();
     auto callModel = LRCInstance::getCurrentCallModel();
     auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
-    if (callid != conversation->callId) return;
+    if (conversation != currentConversationModel->allFilteredConversations().end() &&
+        callid != conversation->callId) {
+        return;
+    }
     if (ui->mainActivityWidget->isFullScreen()) {
         ui->stackedWidget->addWidget(ui->mainActivityWidget);
         ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
