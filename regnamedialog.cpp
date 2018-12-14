@@ -19,23 +19,29 @@
 #include "regnamedialog.h"
 #include "ui_regnamedialog.h"
 
+#include <QTimer>
+
 RegNameDialog::RegNameDialog(const QString& newRegName, QWidget* parent)
-    :ui(new Ui::RegNameDialog),
-    QDialog(parent)
+    :QDialog(parent),
+    ui(new Ui::RegNameDialog),
+    registeredName_(newRegName),
+    gif(new QMovie(":/images/ajax-loader.gif"))
 {
     ui->setupUi(this);
+
+    ui->stackedWidget->setCurrentWidget(ui->startPage);
     ui->registeredName->setText(newRegName);
 
-    connect(ui->confirmBtn, &QPushButton::clicked, [this]() {
-        accept();
-        }
-    );
+    connect(ui->startPageConfirmBtn, &QPushButton::clicked, this, &RegNameDialog::startNameRegistration);
 
-    connect(ui->cancelBtn, &QPushButton::clicked, [this]() {
+    connect(ui->startPageCancelBtn, &QPushButton::clicked, [this]() {
         reject();
         }
     );
-    ui->registeredName->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
+    // get name registration result
+    connect(LRCInstance::editableAccountModel(), &lrc::api::NewAccountModel::nameRegistrationEnded,
+        this, &RegNameDialog::nameRegistrationResultSlot);
 }
 
 RegNameDialog::~RegNameDialog()
@@ -44,3 +50,34 @@ RegNameDialog::~RegNameDialog()
     delete ui;
 }
 
+void
+RegNameDialog::startNameRegistration()
+{
+    LRCInstance::editableAccountModel()->registerName(LRCInstance::getCurrAccId(),
+        "", registeredName_.toStdString());
+    startSpinner();
+}
+
+void
+RegNameDialog::nameRegistrationResultSlot(const std::string& accountId,
+    lrc::api::account::RegisterNameStatus status, const std::string& registerdName)
+{
+    gif->stop();
+
+    if(status == lrc::api::account::RegisterNameStatus::SUCCESS) {
+        ui->stackedWidget->setCurrentWidget(ui->nameRegisteredPage);
+        QTimer::singleShot(1000, this, &RegNameDialog::accept);
+    } else {
+        ui->stackedWidget->setCurrentWidget(ui->nameNotRegisteredPage);
+        QTimer::singleShot(1000, this, &RegNameDialog::reject);
+    }
+}
+
+void
+RegNameDialog::startSpinner()
+{
+    ui->stackedWidget->setCurrentWidget(ui->loadingPage);
+
+    ui->spinnerLabel->setMovie(gif);
+    gif->start();
+}

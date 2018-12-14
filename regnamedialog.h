@@ -18,6 +18,10 @@
 
 #pragma once
 #include <QDialog>
+#include <QMovie>
+
+#include "lrcinstance.h"
+#include "api/newaccountmodel.h"
 
 namespace Ui {
     class RegNameDialog;
@@ -26,12 +30,21 @@ namespace Ui {
 class RegNameDialog : public QDialog
 {
     Q_OBJECT
-    RegNameDialog(const RegNameDialog& cpy);
+        RegNameDialog(const RegNameDialog& cpy);
 
 public:
     RegNameDialog(const QString& newRegName = "", QWidget* parent = nullptr);
     ~RegNameDialog();
 
+private slots:
+    void nameRegistrationResultSlot(const std::string& accountId,
+        lrc::api::account::RegisterNameStatus status, const std::string& registerdName);
+    void startNameRegistration();
+
 private:
     Ui::RegNameDialog* ui;
+    QString registeredName_;
+    QMovie* gif;
+
+    void startSpinner();
 };

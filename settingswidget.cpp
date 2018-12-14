@@ -228,8 +228,6 @@ SettingsWidget::updateAccountInfoDisplayed()
     ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
     ui->currentRingID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
 
-    ui->currentRegisteredID->setReadOnly(true);
-
 // if no registered name is found for account
     if (LRCInstance::getCurrentAccountInfo().registeredName.empty()) {
         ui->currentRegisteredID->setReadOnly(false);
@@ -348,8 +346,7 @@ SettingsWidget::validateRegNameForm(const QString& regName)
     QRegularExpression regExp(" ");
     if (regName.size() > 2 && !regName.contains(regExp)) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -425,7 +422,6 @@ void SettingsWidget::setRegNameUi(RegName stat)
         ui->regNameButton->setEnabled(true);
 
         connect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
-
         break;
 
     case RegName::SEARCHING:
@@ -436,11 +432,12 @@ void SettingsWidget::setRegNameUi(RegName stat)
         connect(gif, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
         gif->start();
         ui->regNameButton->setEnabled(false);
-
         break;
     }
 }
-void SettingsWidget::setButtonIconSlot(int frame)
+
+void
+SettingsWidget::setButtonIconSlot(int frame)
 {
     Q_UNUSED(frame);
     ui->regNameButton->setIcon(QIcon(gif->currentPixmap()));
@@ -452,10 +449,13 @@ SettingsWidget::regNameRegisteredSlot()
     if (!regNameBtn_) { return; }
 
     RegNameDialog regNameDialog(registeredName_, this);
-    if (regNameDialog.exec() == QDialog::Accepted) { // if user confirms regName choice
+    if (regNameDialog.exec() == QDialog::Accepted) {
         ui->currentRegisteredID->setReadOnly(true);
-    }
-    else {
+        ui->currentRegisteredID->setText(registeredName_);
+
+        lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
+    } else {
         ui->currentRegisteredID->setText("");
         registeredName_ = "";
     }
@@ -676,7 +676,7 @@ SettingsWidget::setConnections()
         this, &SettingsWidget::updateAndShowDevicesSlot);
 
     // account settings setters {
-    connect(ui->accountEnableCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::setAccEnableSlot);
+    connect(ui->accountEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
 
     connect(ui->displayNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
         LRCInstance::setCurrAccDisplayName(displayName.toStdString());
