@@ -415,3 +415,17 @@ Utils::QByteArrayFromFile(const QString& filename)
         return QByteArray();
     }
 }
+
+QPixmap
+Utils::generateTintedPixmap(const QString& filename, QColor color)
+{
+    QPixmap px(filename);
+    QImage tmpImage = px.toImage();
+    for (int y = 0; y < tmpImage.height(); y++) {
+        for (int x = 0; x < tmpImage.width(); x++) {
+            color.setAlpha(tmpImage.pixelColor(x, y).alpha());
+            tmpImage.setPixelColor(x, y, color);
+        }
+    }
+    return QPixmap::fromImage(tmpImage);
+}

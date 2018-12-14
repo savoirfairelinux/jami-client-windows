@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget* parent) :
     QIcon icon(":images/jami.png");
 
     this->setWindowIcon(icon);
+    setWindowTitle(" ");
 
     GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
     sysIcon.setIcon(icon);
@@ -147,6 +148,15 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 
     lastScr_ = startScreen;
+
+    connect(windowHandle(), &QWindow::activeChanged,
+        [this]() {
+            auto screenNumber = qApp->desktop()->screenNumber();
+            QScreen* screen = qApp->screens().at(screenNumber);
+            windowHandle()->setScreen(nullptr);
+            windowHandle()->setScreen(screen);
+        });
+
 }
 
 MainWindow::~MainWindow()
@@ -297,7 +307,6 @@ void
 MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 {
     auto screenNumber = qApp->desktop()->screenNumber();
-    QScreen* screen = qApp->screens().at(screenNumber);
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
         hide();
@@ -315,7 +324,6 @@ MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
                 qApp->desktop()->screenGeometry(screenNumber)
             )
         );
-        windowHandle()->setScreen(screen);
         if (scr == ScreenEnum::WizardScreen) {
             setWindowFlags(Qt::Dialog);
             setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
@@ -336,8 +344,21 @@ MainWindow::show()
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
         [this](QScreen* screen) {
+            Q_UNUSED(screen);
             adjustSize();
             updateGeometry();
             update();
+            // a little delay won't hurt ;)
+            QTimer::singleShot(100, this,
+                [this] {
+                    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+                });
         });
+}
+
+void
+MainWindow::resizeEvent(QResizeEvent* event)
+{
+    Q_UNUSED(event);
+    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }

@@ -25,6 +25,7 @@
 #include "utils.h"
 #include "accountlistmodel.h"
 #include "ringthemeutils.h"
+#include "lrcinstance.h"
 
 #undef REGISTERED
 
@@ -62,6 +63,20 @@ AccountItemDelegate::paint(QPainter* painter,
 
     QRect &rect = opt.rect;
 
+    QFont font(painter->font());
+    font.setPointSize(fontSize_);
+    QPen pen(painter->pen());
+
+    // is it the add account row?
+    if (index.row() == LRCInstance::accountModel().getAccountList().size()) {
+        pen.setColor(RingTheme::lightBlack_);
+        painter->setPen(pen);
+        painter->setFont(font);
+        QFontMetrics fontMetrics(font);
+        painter->drawText(rect, Qt::AlignVCenter | Qt::AlignHCenter, tr("Add Account") + "+");
+        return;
+    }
+
     // Avatar drawing
     opt.decorationSize = QSize(avatarSize_, avatarSize_);
     opt.decorationPosition = QStyleOptionViewItem::Left;
@@ -71,8 +86,6 @@ AccountItemDelegate::paint(QPainter* painter,
     drawDecoration(painter, opt, rectAvatar,
         QPixmap::fromImage(index.data(AccountListModel::Role::Picture).value<QImage>())
         .scaled(avatarSize_, avatarSize_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-
-    QFont font(painter->font());
 
     // Presence indicator
     QPainterPath outerCircle, innerCircle;
@@ -86,9 +99,6 @@ AccountItemDelegate::paint(QPainter* painter,
         painter->fillPath(outerCircle, Qt::white);
         painter->fillPath(innerCircle, RingTheme::presenceGreen_);
     }
-
-    font.setPointSize(fontSize_);
-    QPen pen(painter->pen());
 
     painter->setPen(pen);
 

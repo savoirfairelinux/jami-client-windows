@@ -128,6 +128,11 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
             this, &CallWidget::settingsButtonClicked);
 
+    connect(ui->currentAccountComboBox, &CurrentAccountComboBox::newAccountClicked,
+        [this]() {
+            emit NavigationRequested(ScreenEnum::WizardScreen);
+        });
+
     connect(ui->videoWidget, &VideoView::setChatVisibility,
         [this](bool visible) {
             if (visible) {
@@ -223,10 +228,15 @@ CallWidget::navigated(bool to)
     if (to) {
         updateSmartList();
         connectConversationModel();
+        ui->currentAccountComboBox->accountListUpdate();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
     }
+}
+
+void CallWidget::updateCustomUI()
+{
 }
 
 int
@@ -592,8 +602,12 @@ void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
 
 void CallWidget::slotAccountChanged(int index)
 {
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    setSelectedAccount(accountList.at(index));
+    try {
+        auto accountList = LRCInstance::accountModel().getAccountList();
+        setSelectedAccount(accountList.at(index));
+    } catch (...) {
+        qWarning() << "exception changing account";
+    }
 }
 
 void CallWidget::slotShowCallView(const std::string& accountId,
@@ -912,12 +926,6 @@ void
 CallWidget::on_sendContactRequestButton_clicked()
 {
     LRCInstance::getCurrentConversationModel()->makePermanent(selectedConvUid());
-}
-
-void
-CallWidget::on_pendingCRBackButton_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
 void

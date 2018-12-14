@@ -43,8 +43,11 @@ private:
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
+    bool takePhotoState_;
+
 signals:
     void photoTaken(QString fileName);
+    void photoReady();
 };
 
 #endif // PHOTOBOOTHWIDGET_H

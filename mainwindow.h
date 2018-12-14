@@ -59,6 +59,7 @@ public:
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
     void closeEvent(QCloseEvent* event);
+    void resizeEvent(QResizeEvent *event);
 
 public slots:
     void onRingEvent(const QString& uri);
