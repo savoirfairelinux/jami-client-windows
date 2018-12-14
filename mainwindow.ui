@@ -473,6 +473,7 @@
         </sizepolicy>
        </property>
       </widget>
+      <widget class="NewWizardWidget" name="newwizardwidget"/>
      </widget>
     </item>
    </layout>
@@ -496,6 +497,12 @@
    <class>SettingsWidget</class>
    <extends>QWidget</extends>
    <header>settingswidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>NewWizardWidget</class>
+   <extends>QWidget</extends>
+   <header>newwizardwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

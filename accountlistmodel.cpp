@@ -37,7 +37,7 @@ AccountListModel::AccountListModel(QObject *parent)
 int AccountListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        return LRCInstance::accountModel().getAccountList().size(); // count
+        return LRCInstance::accountModel().getAccountList().size() + 1; // count
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
