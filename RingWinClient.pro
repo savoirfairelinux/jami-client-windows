@@ -44,6 +44,7 @@ SOURCES += main.cpp\
     mainwindow.cpp \
     callwidget.cpp \
     configurationwidget.cpp \
+    conversationview.cpp \
     navwidget.cpp \
     accountdetails.cpp \
     aboutdialog.cpp \
@@ -89,6 +90,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     callwidget.h \
     configurationwidget.h \
+    conversationview.h \
     navwidget.h \
     accountdetails.h \
     aboutdialog.h \
