@@ -32,6 +32,12 @@
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
+static constexpr uint32_t QtMaxDimension = 16777215;
+static constexpr uint32_t mainWindowMinWidth = 1088;
+static constexpr uint32_t mainWindowMinHeight = 600;
+static constexpr uint32_t wizardDialogWidth = 512;
+static constexpr uint32_t wizardDialogHeight = 512;
+
 namespace Ui {
 class MainWindow;
 }
@@ -48,6 +54,8 @@ public:
     void createThumbBar();
     bool init();
 
+    void show();
+
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
     void closeEvent(QCloseEvent* event);
@@ -56,6 +64,7 @@ public slots:
     void onRingEvent(const QString& uri);
 
 private slots:
+    void slotCurrentChanged(int index);
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void onIncomingCall(Call* call);
     void switchNormalMaximize();
@@ -65,11 +74,13 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
+    void setWindowSize(ScreenEnum scr, bool firstUse = false);
+    ScreenEnum lastScr_;
+    Qt::WindowFlags flags_;
+
     void readSettingsFromRegistry();
-    void removeSettingsWidget();
-    int addSettingsWidget();
-    SettingsWidget* getSettingsWidget();
 
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
+    QMetaObject::Connection screenChangedConnection_;
 };

@@ -52,6 +52,9 @@ public:
     ~SettingsWidget();
     void resize(int size);
 
+    // NavWidget
+    virtual void navigated(bool to);
+
 public slots:
     void updateSettings(int size);
 
@@ -125,6 +128,8 @@ private:
     void populateGeneralSettings();
 
     QSettings* settings_;
+
+    QMetaObject::Connection accountAddedConnection_;
 
 private slots:
     void setNotificationsSlot(int state);
