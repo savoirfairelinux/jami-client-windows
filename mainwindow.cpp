@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget* parent) :
     QIcon icon(":images/jami.png");
 
     this->setWindowIcon(icon);
+    setWindowTitle(" ");
 
     GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
     sysIcon.setIcon(icon);
