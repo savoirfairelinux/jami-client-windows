@@ -284,10 +284,8 @@ PrivateBridging::acceptFile(const QString& arg)
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->getTransferInfo(interactionUid, info);
 
-        auto downloadsFolder = QSettings().value(SettingsKey::downloadPath, "Downloads").toString().toStdString() + "/";
-
         // get full path
-        std::string filename = downloadsFolder.c_str();
+        std::string filename = LRCInstance::dataTransferModel().downloadDirectory.c_str();
         if (!filename.empty() && filename.back() != '/')
             filename += "/";
         auto wantedFilename = filename + info.displayName;

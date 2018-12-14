@@ -601,6 +601,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Minimum</enum>
+                     </property>
                      <property name="sizeHint" stdset="0">
                       <size>
                        <width>40</width>
@@ -616,7 +619,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>150</width>
+                       <width>50</width>
                        <height>30</height>
                       </size>
                      </property>
@@ -628,8 +631,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton {background: rgb(245, 245, 245); border: 0px; border-radius: 3px; padding: 5px;}
-QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 3px;}
-QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 3px;}</string>
+QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 3px; padding: 5px;}
+QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 3px; padding: 5px;}
+</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -721,7 +725,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                         <enum>Qt::Horizontal</enum>
                        </property>
                        <property name="sizeType">
-                        <enum>QSizePolicy::MinimumExpanding</enum>
+                        <enum>QSizePolicy::Minimum</enum>
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
@@ -735,7 +739,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                       <widget class="QPushButton" name="recordPathButton">
                        <property name="minimumSize">
                         <size>
-                         <width>150</width>
+                         <width>50</width>
                          <height>30</height>
                         </size>
                        </property>
@@ -747,8 +751,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {background: rgb(245, 245, 245); border: 0px; border-radius: 3px; padding: 5px;}
-QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 3px;}
-QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 3px;}</string>
+QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 3px; padding: 5px;}
+QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 3px; padding: 5px;}
+</string>
                        </property>
                        <property name="text">
                         <string/>
@@ -1039,8 +1044,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>649</width>
-               <height>908</height>
+               <width>642</width>
+               <height>883</height>
               </rect>
              </property>
              <property name="styleSheet">
