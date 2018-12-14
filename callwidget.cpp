@@ -195,12 +195,21 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // hide the call stack
     ui->callStackWidget->hide();
+
+    ui->containerWidget->setVisible(false);
 }
 
 CallWidget::~CallWidget()
 {
     delete ui;
     delete menu_;
+}
+
+void
+CallWidget::navigated(bool to)
+{
+    ui->containerWidget->setVisible(to);
+    to ? update() : void();
 }
 
 int

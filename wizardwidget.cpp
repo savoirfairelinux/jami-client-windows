@@ -81,6 +81,9 @@ WizardWidget::WizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrated, QWi
     connect(&nameLookupTimer_, &QTimer::timeout, this, &WizardWidget::timeoutNameLookupTimer);
     connect(ui->photoBooth, &PhotoboothWidget::photoTaken, this, &WizardWidget::on_photoTaken);
     ui->avatarLabel->hide();
+
+    ui->navBarWidget->setVisible(false);
+    ui->stackedWidget->setVisible(false);
 }
 
 WizardWidget::~WizardWidget()
@@ -88,6 +91,12 @@ WizardWidget::~WizardWidget()
     disconnect(&NameDirectory::instance(), SIGNAL(registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)),
                this, SLOT(handle_registeredNameFound(Account*,NameDirectory::LookupStatus,const QString&,const QString&)));
     delete ui;
+}
+
+void
+WizardWidget::navigated(bool to)
+{
+    ui->containerWidget->setVisible(to);
 }
 
 void

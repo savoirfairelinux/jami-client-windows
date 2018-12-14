@@ -131,6 +131,8 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->advancedSettingsOffsetLabel->show();
 
     setConnections();
+
+    ui->containerWidget->setVisible(false);
 }
 
 void
@@ -149,6 +151,12 @@ SettingsWidget::leaveSettingsSlot()
 SettingsWidget::~SettingsWidget()
 {
     delete ui;
+}
+
+void
+SettingsWidget::navigated(bool to)
+{
+    ui->containerWidget->setVisible(to);
 }
 
 // called at every callwidget -> settingsWidget navigation
