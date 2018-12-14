@@ -128,6 +128,11 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
             this, &CallWidget::settingsButtonClicked);
 
+    connect(ui->currentAccountComboBox, &CurrentAccountComboBox::newAccountClicked,
+        [this]() {
+            emit NavigationRequested(ScreenEnum::WizardScreen);
+        });
+
     connect(ui->videoWidget, &VideoView::setChatVisibility,
         [this](bool visible) {
             if (visible) {
@@ -592,8 +597,12 @@ void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
 
 void CallWidget::slotAccountChanged(int index)
 {
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    setSelectedAccount(accountList.at(index));
+    try {
+        auto accountList = LRCInstance::accountModel().getAccountList();
+        setSelectedAccount(accountList.at(index));
+    } catch (...) {
+        qWarning() << "exception changing account";
+    }
 }
 
 void CallWidget::slotShowCallView(const std::string& accountId,

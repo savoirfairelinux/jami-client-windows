@@ -160,8 +160,13 @@ CurrentAccountComboBox::importLabelPhoto(int index)
 void
 CurrentAccountComboBox::setCurrentIndex(int index)
 {
-    importLabelPhoto(index);
-    QComboBox::setCurrentIndex(index);
+    auto accountListSize = LRCInstance::accountModel().getAccountList().size();
+    if (index == accountListSize) {
+        emit newAccountClicked();
+    } else if (index < accountListSize) {
+        importLabelPhoto(index);
+        QComboBox::setCurrentIndex(index);
+    }
 }
 
 void

@@ -40,6 +40,7 @@ public:
 
 signals:
     void settingsButtonClicked();
+    void newAccountClicked();
 
 protected:
     void paintEvent(QPaintEvent* e);

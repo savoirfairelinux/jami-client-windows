@@ -37,7 +37,7 @@ AccountListModel::AccountListModel(QObject *parent)
 int AccountListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        return LRCInstance::accountModel().getAccountList().size(); // count
+        return LRCInstance::accountModel().getAccountList().size() + 1; // count
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
@@ -100,6 +100,8 @@ Qt::ItemFlags AccountListModel::flags(const QModelIndex &index) const
     auto flags = QAbstractItemModel::flags(index) | Qt::ItemNeverHasChildren | Qt::ItemIsSelectable;
     if (!index.isValid()) {
         return QAbstractItemModel::flags(index);
-    }
+    }/* else if (index.row() == LRCInstance::accountModel().getAccountList().size()) {
+        flags &= ~(Qt::ItemIsSelectable);
+    }*/
     return flags;
 }
