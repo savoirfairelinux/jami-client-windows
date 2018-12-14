@@ -40,6 +40,7 @@ public:
 
 signals:
     void settingsButtonClicked();
+    void newAccountClicked();
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -47,12 +48,12 @@ protected:
     void mousePressEvent(QMouseEvent* mouseEvent);
     void mouseMoveEvent(QMouseEvent* event);
     void leaveEvent(QEvent * event);
+    void showPopup();
+    void hidePopup();
 
 private:
     void importLabelPhoto(int index);
     void setupSettingsButton();
-    void showPopup();
-    void hidePopup();
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;

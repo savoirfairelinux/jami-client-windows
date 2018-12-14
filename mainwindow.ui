@@ -463,7 +463,7 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="navStack">
-      <widget class="WizardWidget" name="wizardwidget"/>
+      <widget class="NewWizardWidget" name="wizardwidget"/>
       <widget class="CallWidget" name="callwidget"/>
       <widget class="SettingsWidget" name="settingswidget">
        <property name="sizePolicy">
@@ -487,15 +487,15 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>WizardWidget</class>
-   <extends>QWidget</extends>
-   <header>wizardwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>SettingsWidget</class>
    <extends>QWidget</extends>
    <header>settingswidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>NewWizardWidget</class>
+   <extends>QWidget</extends>
+   <header>newwizardwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
