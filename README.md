@@ -1,4 +1,4 @@
-# Windows client for Jani
+# Windows client for Jami
 
 For more information about the jami project, see the following:
 
