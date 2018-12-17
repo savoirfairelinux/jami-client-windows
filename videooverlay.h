@@ -40,6 +40,8 @@ public:
     void toggleContextButtons(bool visible);
     void setVideoMuteVisibility(bool visible);
     bool shouldShowOverlay();
+    void simulateShowChatview(bool checked);
+    bool getShowChatView();
 
 //UI SLOTS
 private slots:

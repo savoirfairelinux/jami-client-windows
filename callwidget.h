@@ -83,6 +83,8 @@ public slots:
     void slotShowCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
     void slotShowIncomingCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
     void slotShowChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void slotToggleFullScreenClicked();
+    void slotVideoViewDestroyed(const std::string& callid);
     void update();
 
 private slots:
