@@ -85,6 +85,18 @@ VideoOverlay::shouldShowOverlay()
 }
 
 void
+VideoOverlay::simulateShowChatview(bool checked)
+{
+    ui->chatButton->setChecked(checked);
+}
+
+bool
+VideoOverlay::getShowChatView()
+{
+    return ui->chatButton->isChecked();
+}
+
+void
 VideoOverlay::on_hangupButton_clicked()
 {
     auto selectedConvUid = LRCInstance::getSelectedConvUid();

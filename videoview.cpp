@@ -70,6 +70,20 @@ VideoView::VideoView(QWidget* parent) :
         emit this->setChatVisibility(visible);
     });
     connect(overlay_, &VideoOverlay::videoCfgBtnClicked, [=](){emit videoSettingsClicked();});
+
+
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    connect(convModel, &lrc::api::ConversationModel::newInteraction,
+        [this](const std::string& uid, uint64_t, lrc::api::interaction::Info info) {
+        if (info.type == lrc::api::interaction::Type::CALL) {
+            return;
+        }
+        auto selectedConvUid = LRCInstance::getSelectedConvUid();
+        if (uid == selectedConvUid) {
+            overlay_->simulateShowChatview(true);
+        }
+    });
+
 }
 
 VideoView::~VideoView()
@@ -159,8 +173,20 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
     } else {
         QObject::disconnect(timerConnection_);
         emit setChatVisibility(false);
-        emit closing();
+        try {
+            if (call)
+                emit closing(call->historyId().toStdString());
+        }
+        catch (...) {
+            qWarning() << "VideoView::callStateChanged except";
+        }
     }
+}
+
+void
+VideoView::showChatviewIfToggled()
+{
+    emit setChatVisibility(overlay_->getShowChatView());
 }
 
 void
