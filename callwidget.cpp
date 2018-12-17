@@ -109,6 +109,7 @@ CallWidget::CallWidget(QWidget* parent) :
     }
 
     ui->mainActivitySplitter->setCollapsible(0, false);
+    ui->mainActivitySplitter->setCollapsible(1, false);
     ui->splitter->setCollapsible(0, false);
     ui->splitter->setCollapsible(1, false);
 
@@ -129,7 +130,11 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->videoWidget, &VideoView::setChatVisibility,
         [this](bool visible) {
-            ui->callStackWidget->hide();
+            if (visible) {
+                ui->messagesWidget->show();
+            } else {
+                ui->messagesWidget->hide();
+            }
         });
 
     connect(ui->mainActivitySplitter, &QSplitter::splitterMoved,
@@ -419,7 +424,9 @@ CallWidget::showConversationView()
 {
     ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
     ui->messageView->setFocus();
-
+    if (ui->messagesWidget->isHidden()) {
+        ui->messagesWidget->show();
+    }
 }
 
 void
@@ -591,6 +598,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     qDebug() << "slotShowCallView";
     ui->callStackWidget->show();
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
+    ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
 }
 
@@ -640,6 +648,10 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
             ui->callStackWidget->setCurrentWidget(ui->incomingCallPage);
             ui->callStackWidget->show();
         }
+    }
+
+    if (ui->messagesWidget->isHidden()) {
+        ui->messagesWidget->show();
     }
 
     // flashing index widget during call
@@ -694,6 +706,36 @@ void CallWidget::slotShowChatView(const std::string& accountId,
     }
 
     ui->callStackWidget->hide();
+    showConversationView();
+}
+
+void
+CallWidget::slotToggleFullScreenClicked()
+{
+    if (ui->mainActivityWidget->isFullScreen()) {
+        ui->stackedWidget->addWidget(ui->mainActivityWidget);
+        ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->showNormal();
+    } else {
+        ui->stackedWidget->removeWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->setParent(0);
+        ui->mainActivityWidget->showFullScreen();
+    }
+}
+
+void
+CallWidget::slotVideoViewDestroyed(const std::string& callid)
+{
+    auto convUid = LRCInstance::getSelectedConvUid();
+    auto currentConversationModel = LRCInstance::getCurrentConversationModel();
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
+    if (callid != conversation->callId) return;
+    if (ui->mainActivityWidget->isFullScreen()) {
+        ui->stackedWidget->addWidget(ui->mainActivityWidget);
+        ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+        ui->mainActivityWidget->showNormal();
+    }
     showConversationView();
 }
 
@@ -786,8 +828,6 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
                                                              *convModel);
     ui->messageView->clear();
     ui->messageView->printHistory(*convModel, currentConversation->interactions);
-
-    showConversationView();
 
     // Contact Avatars
     auto accInfo = &LRCInstance::getCurrentAccountInfo();
@@ -993,9 +1033,6 @@ CallWidget::updateConversationView(const std::string& convUid)
     if (convUid != selectedConvUid()) {
         return;
     }
-
-
-
 }
 
 void

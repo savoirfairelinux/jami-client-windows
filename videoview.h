@@ -42,6 +42,7 @@ public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
     void pushRenderer(const std::string& callUid);
+    void showChatviewIfToggled();
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -97,5 +98,7 @@ private:
 signals:
     void setChatVisibility(bool visible);
     void videoSettingsClicked();
+    void toggleFullScreenClicked();
+    void closing(const std::string& callid);
 };
 

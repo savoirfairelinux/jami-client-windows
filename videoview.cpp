@@ -70,6 +70,20 @@ VideoView::VideoView(QWidget* parent) :
         emit this->setChatVisibility(visible);
     });
     connect(overlay_, &VideoOverlay::videoCfgBtnClicked, [=](){emit videoSettingsClicked();});
+
+
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    connect(convModel, &lrc::api::ConversationModel::newInteraction,
+        [this](const std::string& uid, uint64_t, lrc::api::interaction::Info info) {
+        if (info.type == lrc::api::interaction::Type::CALL) {
+            return;
+        }
+        auto selectedConvUid = LRCInstance::getSelectedConvUid();
+        if (uid == selectedConvUid) {
+            overlay_->simulateShowChatview(true);
+        }
+    });
+
 }
 
 VideoView::~VideoView()
@@ -156,13 +170,23 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
     if (call->state() == Call::State::CURRENT) {
         ui->videoWidget->show();
         timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
-    }
-    else {
+    } else {
         QObject::disconnect(timerConnection_);
         emit setChatVisibility(false);
-        if (isFullScreen())
-            toggleFullScreen();
+        try {
+            if (call) {
+                emit closing(call->historyId().toStdString());
+            }
+        } catch (...) {
+            qWarning() << "VideoView::callStateChanged except";
+        }
     }
+}
+
+void
+VideoView::showChatviewIfToggled()
+{
+    emit setChatVisibility(overlay_->getShowChatView());
 }
 
 void
@@ -212,19 +236,7 @@ VideoView::dropEvent(QDropEvent* event)
 void
 VideoView::toggleFullScreen()
 {
-    qDebug() << "toggle FS";
-    /*overlay_->toggleContextButtons(isFullScreen());
-    if(isFullScreen()) {
-        dynamic_cast<QSplitter*>(oldParent_)->insertWidget(0,this);
-        this->resize(oldSize_.width(), oldSize_.height());
-        this->showNormal();
-    } else {
-        oldSize_ = this->size();
-        oldParent_ = static_cast<QWidget*>(this->parent());
-        this->setParent(0);
-        this->showFullScreen();
-    }
-    ui->videoWidget->setResetPreview(true);*/
+    emit toggleFullScreenClicked();
 }
 
 void
