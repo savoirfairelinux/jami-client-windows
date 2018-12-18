@@ -820,6 +820,19 @@ SettingsWidget::populateAVSettings()
     connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
         this, SLOT(deviceIndexChanged(int)));
 
+    // Audio settings
+    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    auto outputModel = Audio::Settings::instance().outputDeviceModel();
+
+    ui->inputComboBox->setModel(inputModel);
+    ui->outputComboBox->setModel(outputModel);
+
+    auto inputIndex = inputModel->selectionModel()->currentIndex();
+    auto outputIndex = outputModel->selectionModel()->currentIndex();
+
+    ui->inputComboBox->setCurrentIndex(inputIndex.row());
+    ui->outputComboBox->setCurrentIndex(outputIndex.row());
+
     if (ui->deviceBox->count() > 0) {
         deviceBoxCurrentIndexChangedSlot(0);
     }
@@ -827,23 +840,6 @@ SettingsWidget::populateAVSettings()
     if (currentResIndex >= 0) {
         ui->sizeBox->setCurrentIndex(currentResIndex);
     }
-
-    // Audio settings
-    auto inputModel = Audio::Settings::instance().inputDeviceModel();
-    auto outputModel = Audio::Settings::instance().outputDeviceModel();
-
-    ui->outputComboBox->setModel(outputModel);
-    ui->inputComboBox->setModel(inputModel);
-    if (ui->outputComboBox->count() > 0) {
-        ui->outputComboBox->setCurrentIndex(0);
-    }
-    if (ui->inputComboBox->count() > 0) {
-        ui->inputComboBox->setCurrentIndex(0);
-    }
-
-    isLoading_ = true;
-
-    showPreview();
 
     connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::outputDevIndexChangedSlot);
@@ -854,6 +850,8 @@ SettingsWidget::populateAVSettings()
         &SettingsWidget::deviceBoxCurrentIndexChangedSlot);
     connect(ui->sizeBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
         &SettingsWidget::sizeBoxCurrentIndexChangedSlot);
+
+    showPreview();
 }
 
 
@@ -884,14 +882,12 @@ SettingsWidget::deviceBoxCurrentIndexChangedSlot(int index)
         return;
     }
 
-    if (!isLoading_)
-        deviceModel_->setActive(index);
+    deviceModel_->setActive(index);
 
     auto device = deviceModel_->activeDevice();
 
     ui->sizeBox->clear();
 
-    isLoading_ = true;
     if (device->channelList().size() > 0) {
         for (auto resolution : device->channelList()[0]->validResolutions()) {
             ui->sizeBox->addItem(resolution->name());
@@ -899,17 +895,22 @@ SettingsWidget::deviceBoxCurrentIndexChangedSlot(int index)
     }
     ui->sizeBox->setCurrentIndex(
         device->channelList()[0]->activeResolution()->relativeIndex());
-    isLoading_ = false;
 }
 
 void
 SettingsWidget::sizeBoxCurrentIndexChangedSlot(int index)
 {
+    if (index < 0) {
+        return;
+    }
+
     auto device = deviceModel_->activeDevice();
 
-    if (index < 0) return;
-
     device->channelList()[0]->setActiveResolution(device->channelList()[0]->validResolutions()[index]);
+
+    QTimer::singleShot(200, this, [this]() {
+    deviceModel_->setActive(ui->deviceBox->currentIndex());
+    });
 }
 
 void

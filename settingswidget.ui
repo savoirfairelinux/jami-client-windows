@@ -400,7 +400,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
          <string notr="true">background: white;</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="generalSettings">
          <property name="sizePolicy">
@@ -1039,8 +1039,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>649</width>
-               <height>908</height>
+               <width>701</width>
+               <height>883</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -2425,8 +2425,14 @@ padding-left: 15px;
                            <height>0</height>
                           </size>
                          </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>320</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
                          <property name="toolTip">
-                          <string>Audio input device selector</string>
+                          <string>Select Your Audio Input</string>
                          </property>
                         </widget>
                        </item>
@@ -2484,12 +2490,12 @@ padding-left: 15px;
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>200</width>
+                           <width>320</width>
                            <height>16777215</height>
                           </size>
                          </property>
                          <property name="toolTip">
-                          <string>Choose the output device</string>
+                          <string>Select Your Audio Output</string>
                          </property>
                         </widget>
                        </item>
@@ -2594,12 +2600,12 @@ padding-left: 15px;
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>16777215</width>
+                         <width>320</width>
                          <height>16777215</height>
                         </size>
                        </property>
                        <property name="toolTip">
-                        <string>Video device selector</string>
+                        <string>Select Your Video Input</string>
                        </property>
                       </widget>
                      </item>
@@ -2651,12 +2657,12 @@ padding-left: 15px;
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>16777215</width>
+                         <width>320</width>
                          <height>16777215</height>
                         </size>
                        </property>
                        <property name="toolTip">
-                        <string>Video device resolution selector</string>
+                        <string>Select Your Video Resolution</string>
                        </property>
                       </widget>
                      </item>
