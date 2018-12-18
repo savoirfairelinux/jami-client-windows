@@ -419,7 +419,7 @@ a:hover {
     display: none;
 }
 
-.sender_image {
+.sender_image, .invite_sender_image {
     border-radius: 50%;
     margin: 8px 10px 0px 10px;
 }
