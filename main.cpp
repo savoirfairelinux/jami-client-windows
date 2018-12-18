@@ -108,7 +108,7 @@ main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QCoreApplication::setOrganizationDomain("jami.net");
-    QCoreApplication::setApplicationName("Jami");
+    QCoreApplication::setApplicationName("Ring");
 
     auto startMinimized = false;
     QString uri = "";
