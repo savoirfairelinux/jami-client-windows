@@ -136,11 +136,11 @@ function showInvitation(contactAlias, contactId) {
             invitation.style.visibility = ""
         }
     } else {
-        if (!inviteImage.classList.contains('sender_image')) {
-            inviteImage.classList.add('sender_image');
+        if (!inviteImage.classList.contains('invite_sender_image')) {
+            inviteImage.classList.add('invite_sender_image');
         }
-        if (!inviteImage.classList.contains(`sender_image_${contactId}`)) {
-            inviteImage.classList.add(`sender_image_${contactId}`);
+        if (!inviteImage.classList.contains(`invite_sender_image_${contactId}`)) {
+            inviteImage.classList.add(`invite_sender_image_${contactId}`);
         }
         hasInvitation = true
         invitationText.innerHTML = "<b>" + contactAlias + " is not in your contacts</b><br/>"
@@ -1507,8 +1507,9 @@ function setSenderImage(set_sender_image_object)
     var sender_contact_method = set_sender_image_object["sender_contact_method"],
         sender_image = set_sender_image_object["sender_image"],
         sender_image_id = "sender_image_" + sender_contact_method,
+        invite_sender_image_id = "invite_sender_image_" + sender_contact_method,
         currentSenderImage = document.getElementById(sender_image_id), // Remove the currently set sender image
-        style
+        style, invite_style
 
     if (currentSenderImage) {
         currentSenderImage.parentNode.removeChild(currentSenderImage)
@@ -1519,6 +1520,13 @@ function setSenderImage(set_sender_image_object)
 
     style.type = "text/css"
     style.id = sender_image_id
-    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");}"
+    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 32px;width: 32px;}"
     document.head.appendChild(style)
+
+    invite_style = document.createElement("style")
+
+    invite_style.type = "text/css"
+    invite_style.id = invite_sender_image_id
+    invite_style.innerHTML = "." + invite_sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 48px;width: 48px;}"
+    document.head.appendChild(invite_style)
 }
