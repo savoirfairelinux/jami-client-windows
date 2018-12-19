@@ -43,6 +43,7 @@ public:
     ~VideoView();
     void pushRenderer(const std::string& callUid);
     void showChatviewIfToggled();
+    void simulateShowChatview(bool checked);
 
 protected:
     void resizeEvent(QResizeEvent* event);
