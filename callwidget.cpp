@@ -1021,6 +1021,12 @@ CallWidget::connectConversationModel()
         currentConversationModel, &lrc::api::ConversationModel::newInteraction,
         [this](const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction) {
             onIncomingMessage(convUid, interactionId, interaction);
+            if (interaction.type == lrc::api::interaction::Type::CALL) {
+                return;
+            }
+            if (convUid == selectedConvUid()) {
+                ui->videoWidget->simulateShowChatview(true);
+            }
         }
     );
     interactionRemovedConnection_ = QObject::connect(
