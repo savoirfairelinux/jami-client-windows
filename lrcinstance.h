@@ -26,6 +26,7 @@
 #include <QRegularExpression>
 #include <QPixmap>
 #include <QBuffer>
+#include <QObject>
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -44,7 +45,8 @@
 
 #include <settingskey.h>
 
-class LRCInstance {
+class LRCInstance : public QObject {
+    Q_OBJECT
 public:
     static void init() {
         instance();
@@ -148,6 +150,32 @@ public:
         return instance().getCurrentAccountInfo().confProperties;
     }
 
+    void
+    connectAccount(const std::string& accId)
+    {
+        auto callModel = lrc_->getAccountModel().getAccountInfo(accId).callModel.get();
+        QObject::connect(callModel, &lrc::api::NewCallModel::callStarted,
+            [this, accId](const std::string& callId) {
+                auto callIds = callIdList_[accId];
+                callIds.emplace_back(callId);
+            });
+        QObject::connect(callModel, &lrc::api::NewCallModel::callEnded,
+            [this, accId](const std::string& callId) {
+                try {
+                    auto callIds = callIdList_.at(accId);
+                    auto toErase = std::find(callIds.begin(), callIds.end(), callId);
+                    if (toErase != callIds.end()) {
+                        callIds.erase(toErase);
+                    }
+                } catch (...) {}
+            });
+    }
+
+    void
+    disconnectAccount(const std::string& accId)
+    {
+        (void)accId;
+    }
 
 private:
     std::unique_ptr<lrc::api::Lrc> lrc_;
@@ -160,8 +188,26 @@ private:
 
     LRCInstance() {
         lrc_ = std::make_unique<lrc::api::Lrc>();
+
+
+        for (auto accountId : lrc_->getAccountModel().getAccountList()) {
+            connectAccount(accountId);
+        }
+
+        QObject::connect(&lrc_->getAccountModel(), &lrc::api::NewAccountModel::accountAdded,
+            [this](const std::string& accountId) {
+                connectAccount(accountId);
+            });
+
+        QObject::connect(&lrc_->getAccountModel(), &lrc::api::NewAccountModel::accountRemoved,
+            [this](const std::string& accountId) {
+                disconnectAccount(accountId);
+            });
     };
 
     std::string selectedAccountId;
     std::string selectedConvUid;
+
+    std::map<std::string, std::vector<std::string>> callIdList_;
+    std::map<std::string, std::pair<QMetaObject::Connection, QMetaObject::Connection>> conList_;
 };
