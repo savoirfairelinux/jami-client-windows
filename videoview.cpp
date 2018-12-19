@@ -70,6 +70,7 @@ VideoView::VideoView(QWidget* parent) :
         emit this->setChatVisibility(visible);
     });
     connect(overlay_, &VideoOverlay::videoCfgBtnClicked, [=](){emit videoSettingsClicked();});
+
 }
 
 VideoView::~VideoView()
@@ -186,7 +187,6 @@ VideoView::updateCall()
 {
     if (auto call = CallModel::instance().selectedCall()) {
         overlay_->setName(call->formattedName());
-        overlay_->setTime(call->length());
     }
 }
 

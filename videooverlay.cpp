@@ -31,7 +31,8 @@
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
-    ui(new Ui::VideoOverlay)
+    ui(new Ui::VideoOverlay),
+    oneSecondTimer_(new QTimer(this))
 {
     ui->setupUi(this);
 
@@ -44,6 +45,12 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->noMicButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
+
+    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
+        [this](const std::string& tempCallId) { callId = tempCallId; });
+
+    connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
+    oneSecondTimer_->start(1000);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -58,9 +65,35 @@ VideoOverlay::setName(const QString& name)
 }
 
 void
-VideoOverlay::setTime(const QString& time)
+VideoOverlay::setTime()
 {
-    ui->timerLabel->setText(time);
+    if (callId.empty()) { return; }
+
+    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
+    if(callInfo.status == lrc::api::call::Status::IN_PROGRESS) {
+
+        int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
+            std::chrono::steady_clock::now() - callInfo.startTime).count();
+
+        QString labelSec;
+        QString labelMin;
+
+        int numMinutes = numSeconds / 60;
+        int remainder = numSeconds - numMinutes * 60;
+        if (remainder < 10) {
+            labelSec = ":0" + QString::number(remainder);
+        } else {
+            labelSec = ":" + QString::number(remainder);
+        }
+
+        if (numMinutes < 10) {
+            labelMin = "0" + QString::number(numMinutes);
+        } else {
+            labelMin = QString::number(numMinutes);
+        }
+
+        ui->timerLabel->setText(labelMin + labelSec);
+    }
 }
 
 void VideoOverlay::toggleContextButtons(bool visible)

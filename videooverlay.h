@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QMenu>
+#include <QTimer>
 
 namespace Ui {
 class VideoOverlay;
@@ -35,13 +36,15 @@ public:
 
 public:
     void setName(const QString& name);
-    void setTime(const QString& time);
     inline bool isDialogVisible(){ return dialogVisible_; };
     void toggleContextButtons(bool visible);
     void setVideoMuteVisibility(bool visible);
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
+
+public slots:
+    void setTime();
 
 //UI SLOTS
 private slots:
@@ -56,6 +59,8 @@ private slots:
 private:
     Ui::VideoOverlay* ui;
     bool dialogVisible_ = false;
+    QTimer* oneSecondTimer_;
+    std::string callId;
 
 signals:
     void setChatVisibility(bool visible);
