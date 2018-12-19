@@ -49,9 +49,6 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
-    setMaximumSize(QtMaxDimension, QtMaxDimension);
-
     for (int i = 0; i < ui->navStack->count(); ++i) {
         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
             connect(navWidget, &NavWidget::NavigationRequested,
@@ -305,6 +302,9 @@ MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
     if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
         hide();
         setFixedSize(wizardDialogWidth, wizardDialogHeight);
+    } else {
+        setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
+        setMaximumSize(QtMaxDimension, QtMaxDimension);
     }
     if (firstUse || !accountList.size()) {
         setGeometry(
