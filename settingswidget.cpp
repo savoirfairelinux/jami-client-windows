@@ -25,6 +25,7 @@
 #include <QInputDialog>
 #include <QStandardPaths>
 #include <QMessageBox>
+#include <QSettings>
 
 // account settings
 #include "api/newdevicemodel.h"
@@ -636,9 +637,10 @@ void
 SettingsWidget::showCurrentAccountSlot()
 {
     disconnect(linkDevWidget);
-
     delete linkDevWidget;
+
     ui->centralWidget->show();
+    updateAndShowDevicesSlot();
 }
 
 void
@@ -728,12 +730,12 @@ SettingsWidget::setConnections()
 
 void SettingsWidget::populateGeneralSettings()
 {
-    settings_ = new QSettings;
+    QSettings settings;
 
     // settings
-    ui->downloadButton->setText(settings_->value(SettingsKey::downloadPath).toString());
-    ui->closeOrMinCheckBox->setChecked(settings_->value(SettingsKey::closeOrMinimized).toBool());
-    ui->notificationCheckBox->setChecked(settings_->value(SettingsKey::enableNotifications).toBool());
+    ui->downloadButton->setText(QString::fromStdString(LRCInstance::dataTransferModel().downloadDirectory));
+    ui->closeOrMinCheckBox->setChecked(settings.value(SettingsKey::closeOrMinimized).toBool());
+    ui->notificationCheckBox->setChecked(settings.value(SettingsKey::enableNotifications).toBool());
 
     //recordings
     ui->alwaysRecordingCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
@@ -751,21 +753,23 @@ void SettingsWidget::populateGeneralSettings()
 void
 SettingsWidget::setNotificationsSlot(int state)
 {
+    QSettings settings;
     if (state == Qt::CheckState::Unchecked) {
-        settings_->setValue(SettingsKey::enableNotifications, false);
+        settings.setValue(SettingsKey::enableNotifications, false);
     } else {
-        settings_->setValue(SettingsKey::enableNotifications, true);
+        settings.setValue(SettingsKey::enableNotifications, true);
     }
 }
 
 void
 SettingsWidget::setClosedOrMinSlot(int state)
 {
+    QSettings settings;
     if (state == Qt::CheckState::Unchecked) {
-        settings_->setValue(SettingsKey::closeOrMinimized, false);
+        settings.setValue(SettingsKey::closeOrMinimized, false);
     }
     else {
-        settings_->setValue(SettingsKey::closeOrMinimized, true);
+        settings.setValue(SettingsKey::closeOrMinimized, true);
     }
 }
 
@@ -796,13 +800,14 @@ SettingsWidget::setUpdateAutomaticSlot(int state)
 void
 SettingsWidget::openDownloadFolderSlot()
 {
+    QSettings settings;
     QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Downloads"),
         QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), QFileDialog::ShowDirsOnly
         | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
         ui->downloadButton->setText(dir);
-        settings_->setValue(SettingsKey::downloadPath, dir);
+        settings.setValue(SettingsKey::downloadPath, dir);
         LRCInstance::editableDataTransferModel()->downloadDirectory = dir.toStdString() + "/";
     }
 }

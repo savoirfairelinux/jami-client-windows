@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
-    <height>882</height>
+    <width>898</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <property name="spacing">
-    <number>10</number>
+    <number>0</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -405,12 +405,12 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
            <property name="minimumSize">
             <size>
              <width>500</width>
-             <height>600</height>
+             <height>590</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>80000</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -418,7 +418,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
             <string notr="true">background: white;</string>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -429,8 +429,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
             </property>
             <property name="minimumSize">
              <size>
-              <width>600</width>
-              <height>850</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -485,8 +485,14 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                   </size>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,0,0,0,0,0,0,0,0,0,0,0,0,0,3">
+                   <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2,0,0,0,0,0,0,0,0,0,0,0,0,0,5">
                     <item>
                      <spacer name="verticalSpacer_2">
                       <property name="orientation">
@@ -647,6 +653,21 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                           <height>30</height>
                          </size>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton {background: rgb(245, 245, 245); border: 0px; border-radius: 3px; padding: 5px;}
+QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 3px;}
+QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 3px;}</string>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>24</width>
+                          <height>24</height>
+                         </size>
+                        </property>
                        </widget>
                       </item>
                      </layout>
@@ -656,10 +677,13 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
                       </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>40</height>
+                        <height>30</height>
                        </size>
                       </property>
                      </spacer>
@@ -1003,8 +1027,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
             </property>
             <property name="minimumSize">
              <size>
-              <width>600</width>
-              <height>860</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -1034,6 +1058,12 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
              </property>
              <item>
               <widget class="QScrollArea" name="scrollArea">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>580</height>
+                </size>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -1057,16 +1087,34 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>713</width>
-                  <height>908</height>
+                  <width>696</width>
+                  <height>647</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
                  <string notr="true"/>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <layout class="QHBoxLayout" name="accountHorLayout" stretch="2,0,0,3">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
                    <item>
                     <spacer name="horizontalSpacer_6">
                      <property name="orientation">
@@ -1075,7 +1123,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                      <property name="sizeHint" stdset="0">
                       <size>
                        <width>460</width>
-                       <height>811</height>
+                       <height>0</height>
                       </size>
                      </property>
                     </spacer>
@@ -1084,11 +1132,26 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                     <widget class="QWidget" name="centralWidget" native="true">
                      <property name="minimumSize">
                       <size>
-                       <width>600</width>
+                       <width>0</width>
                        <height>0</height>
                       </size>
                      </property>
-                     <layout class="QVBoxLayout" name="currentAccountSettingsScrollLayout" stretch="2,0,0,0,0,0,0,0,0,3,0,2">
+                     <layout class="QVBoxLayout" name="currentAccountSettingsScrollLayout" stretch="3,0,0,1,0,0,0,0,3,0,5">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <spacer name="verticalSpacer_7">
                         <property name="orientation">
@@ -1100,23 +1163,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_19">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Fixed</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>600</width>
-                          <height>20</height>
+                          <height>10</height>
                          </size>
                         </property>
                        </spacer>
@@ -1132,60 +1179,145 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                            <number>0</number>
                           </property>
                           <property name="leftMargin">
-                           <number>10</number>
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
                           </property>
                           <item>
-                           <widget class="QPushButton" name="currentAccountAvatar">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
+                           <spacer name="verticalSpacer_15">
+                            <property name="orientation">
+                             <enum>Qt::Vertical</enum>
                             </property>
-                            <property name="minimumSize">
+                            <property name="sizeHint" stdset="0">
                              <size>
-                              <width>160</width>
-                              <height>160</height>
+                              <width>20</width>
+                              <height>10</height>
                              </size>
                             </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>160</width>
-                              <height>160</height>
-                             </size>
+                           </spacer>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_2">
+                            <property name="bottomMargin">
+                             <number>20</number>
                             </property>
-                            <property name="font">
-                             <font>
-                              <stylestrategy>PreferAntialias</stylestrategy>
-                             </font>
+                            <item>
+                             <widget class="QPushButton" name="currentAccountAvatar">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>150</width>
+                                <height>150</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>150</width>
+                                <height>150</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <stylestrategy>PreferAntialias</stylestrategy>
+                               </font>
+                              </property>
+                              <property name="cursor">
+                               <cursorShape>PointingHandCursor</cursorShape>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: none;</string>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="iconSize">
+                               <size>
+                                <width>160</width>
+                                <height>160</height>
+                               </size>
+                              </property>
+                              <property name="flat">
+                               <bool>false</bool>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_64" stretch="0">
+                            <property name="spacing">
+                             <number>0</number>
                             </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
+                            <property name="topMargin">
+                             <number>0</number>
                             </property>
-                            <property name="styleSheet">
-                             <string notr="true">border: none;</string>
+                            <property name="rightMargin">
+                             <number>0</number>
                             </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>160</width>
-                              <height>160</height>
-                             </size>
-                            </property>
-                            <property name="flat">
-                             <bool>false</bool>
-                            </property>
-                           </widget>
+                            <item>
+                             <widget class="QLineEdit" name="displayNameLineEdit">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>170</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>170</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <stylestrategy>PreferAntialias</stylestrategy>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: 0px; border-radius: 3px; background: rgb(245, 245, 245);</string>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </item>
                          </layout>
                         </item>
                         <item>
                          <layout class="QVBoxLayout" name="verticalLayout_18">
-                          <property name="topMargin">
-                           <number>10</number>
+                          <property name="spacing">
+                           <number>0</number>
                           </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <spacer name="verticalSpacer_13">
+                            <property name="orientation">
+                             <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>20</width>
+                              <height>10</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <layout class="QHBoxLayout" name="horizontalLayout_58" stretch="0,40">
                             <property name="spacing">
@@ -1204,7 +1336,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>110</width>
+                                <width>114</width>
                                 <height>0</height>
                                </size>
                               </property>
@@ -1281,6 +1413,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                    <property name="alignment">
                                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                                    </property>
+                                   <property name="textInteractionFlags">
+                                    <set>Qt::NoTextInteraction</set>
+                                   </property>
                                   </widget>
                                  </item>
                                 </layout>
@@ -1308,9 +1443,18 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="currentRegisteredIDLabel">
+                                   <property name="enabled">
+                                    <bool>true</bool>
+                                   </property>
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
                                    <property name="minimumSize">
                                     <size>
-                                     <width>90</width>
+                                     <width>0</width>
                                      <height>32</height>
                                     </size>
                                    </property>
@@ -1320,8 +1464,19 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                      <height>32</height>
                                     </size>
                                    </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>8</pointsize>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>Registered Name</string>
+                                   </property>
+                                   <property name="alignment">
+                                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                   </property>
+                                   <property name="textInteractionFlags">
+                                    <set>Qt::NoTextInteraction</set>
                                    </property>
                                   </widget>
                                  </item>
@@ -1377,61 +1532,81 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                    <property name="text">
                                     <string>ID</string>
                                    </property>
+                                   <property name="textInteractionFlags">
+                                    <set>Qt::NoTextInteraction</set>
+                                   </property>
                                   </widget>
                                  </item>
                                 </layout>
                                </item>
                                <item>
-                                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                                 <item>
+                                <layout class="QGridLayout" name="gridLayout_2">
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <item row="0" column="0">
                                   <spacer name="horizontalSpacer_25">
                                    <property name="orientation">
                                     <enum>Qt::Horizontal</enum>
                                    </property>
                                    <property name="sizeHint" stdset="0">
                                     <size>
-                                     <width>40</width>
+                                     <width>1</width>
                                      <height>20</height>
                                     </size>
                                    </property>
                                   </spacer>
                                  </item>
-                                 <item>
+                                 <item row="0" column="1">
                                   <widget class="QLabel" name="label_7">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
-                                     <height>30</height>
+                                     <height>26</height>
                                     </size>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
                                      <width>16777215</width>
-                                     <height>30</height>
+                                     <height>26</height>
                                     </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>8</pointsize>
+                                    </font>
                                    </property>
                                    <property name="text">
                                     <string>Password</string>
                                    </property>
+                                   <property name="alignment">
+                                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                   </property>
+                                   <property name="textInteractionFlags">
+                                    <set>Qt::NoTextInteraction</set>
+                                   </property>
                                   </widget>
                                  </item>
+                                 <item row="1" column="1">
+                                  <spacer name="verticalSpacer_16">
+                                   <property name="orientation">
+                                    <enum>Qt::Vertical</enum>
+                                   </property>
+                                   <property name="sizeType">
+                                    <enum>QSizePolicy::Fixed</enum>
+                                   </property>
+                                   <property name="sizeHint" stdset="0">
+                                    <size>
+                                     <width>20</width>
+                                     <height>2</height>
+                                    </size>
+                                   </property>
+                                  </spacer>
+                                 </item>
                                 </layout>
-                               </item>
-                               <item>
-                                <spacer name="verticalSpacer_28">
-                                 <property name="orientation">
-                                  <enum>Qt::Vertical</enum>
-                                 </property>
-                                 <property name="sizeType">
-                                  <enum>QSizePolicy::MinimumExpanding</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>20</width>
-                                   <height>8</height>
-                                  </size>
-                                 </property>
-                                </spacer>
                                </item>
                               </layout>
                              </widget>
@@ -1521,7 +1696,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>144444</width>
+                                    <width>16777215</width>
                                     <height>32</height>
                                    </size>
                                   </property>
@@ -1630,7 +1805,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                   </property>
                                   <property name="font">
                                    <font>
-                                    <pointsize>9</pointsize>
+                                    <pointsize>8</pointsize>
                                     <stylestrategy>PreferAntialias</stylestrategy>
                                    </font>
                                   </property>
@@ -1669,7 +1844,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                               <item>
                                <layout class="QHBoxLayout" name="horizontalLayout_63">
                                 <property name="leftMargin">
-                                 <number>5</number>
+                                 <number>0</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>0</number>
@@ -1728,23 +1903,96 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                 </item>
                                </layout>
                               </item>
-                              <item>
-                               <spacer name="verticalSpacer_8">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeType">
-                                 <enum>QSizePolicy::MinimumExpanding</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>8</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
                              </layout>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_65">
+                            <property name="spacing">
+                             <number>15</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <spacer name="horizontalSpacer_19">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::MinimumExpanding</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>30</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="btnExportAccount">
+                              <property name="minimumSize">
+                               <size>
+                                <width>150</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: 0px; border-radius: 3px; background: #e8f5e9;</string>
+                              </property>
+                              <property name="text">
+                               <string>Export Account</string>
+                              </property>
+                              <property name="flat">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="btnDeletAccount">
+                              <property name="minimumSize">
+                               <size>
+                                <width>150</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: 0px; border-radius: 3px; background:#ffebee;</string>
+                              </property>
+                              <property name="text">
+                               <string>Delete Account</string>
+                              </property>
+                              <property name="flat">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_26">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::MinimumExpanding</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>30</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
                             </item>
                            </layout>
                           </item>
@@ -1753,167 +2001,39 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                        </layout>
                       </item>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_64" stretch="0,0">
-                        <property name="spacing">
-                         <number>10</number>
+                       <spacer name="verticalSpacer_8">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
                         </property>
-                        <property name="topMargin">
-                         <number>0</number>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Fixed</enum>
                         </property>
-                        <item>
-                         <widget class="QLineEdit" name="displayNameLineEdit">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>180</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>180</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <stylestrategy>PreferAntialias</stylestrategy>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">border: 0px; border-radius: 3px; background: rgb(245, 245, 245);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_45">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::MinimumExpanding</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>400</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
                       </item>
                       <item>
-                       <layout class="QGridLayout" name="gridLayout_8">
-                        <property name="topMargin">
-                         <number>30</number>
+                       <spacer name="verticalSpacer_12">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
                         </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>30</height>
+                         </size>
                         </property>
-                        <item row="1" column="0">
-                         <spacer name="verticalSpacer_30">
-                          <property name="orientation">
-                           <enum>Qt::Vertical</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Fixed</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>20</width>
-                            <height>32</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item row="0" column="0">
-                         <layout class="QHBoxLayout" name="horizontalLayout_65">
-                          <property name="spacing">
-                           <number>50</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>50</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>20</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>50</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>20</number>
-                          </property>
-                          <item>
-                           <widget class="QPushButton" name="btnExportAccount">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">border: 0px; border-radius: 3px; background: #e8f5e9;</string>
-                            </property>
-                            <property name="text">
-                             <string>Export Account</string>
-                            </property>
-                            <property name="flat">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="btnDeletAccount">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">border: 0px; border-radius: 3px; background:#ffebee;</string>
-                            </property>
-                            <property name="text">
-                             <string>Delete Account</string>
-                            </property>
-                            <property name="flat">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>11</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Linked Devices</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                       </spacer>
                       </item>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_66">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
                         <property name="leftMargin">
                          <number>0</number>
                         </property>
@@ -1926,6 +2046,40 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                         <property name="bottomMargin">
                          <number>3</number>
                         </property>
+                        <item>
+                         <layout class="QGridLayout" name="gridLayout_8">
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="label">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>30</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>11</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Linked Devices</string>
+                            </property>
+                            <property name="textInteractionFlags">
+                             <set>Qt::NoTextInteraction</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
                         <item>
                          <spacer name="horizontalSpacer_46">
                           <property name="orientation">
@@ -1962,7 +2116,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>80000</width>
+                            <width>16777215</width>
                             <height>30</height>
                            </size>
                           </property>
@@ -1998,13 +2152,13 @@ padding: 5px;
                         <property name="minimumSize">
                          <size>
                           <width>600</width>
-                          <height>0</height>
+                          <height>140</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
                           <width>16777215</width>
-                          <height>200</height>
+                          <height>130</height>
                          </size>
                         </property>
                         <property name="styleSheet">
@@ -2107,6 +2261,9 @@ padding-left: 15px;
                         <property name="text">
                          <string/>
                         </property>
+                        <property name="textInteractionFlags">
+                         <set>Qt::NoTextInteraction</set>
+                        </property>
                        </widget>
                       </item>
                       <item>
@@ -2120,7 +2277,7 @@ padding-left: 15px;
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>15</height>
+                          <height>10</height>
                          </size>
                         </property>
                        </spacer>
@@ -2159,7 +2316,7 @@ padding-left: 15px;
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>600</width>
+                            <width>16777215</width>
                             <height>30</height>
                            </size>
                           </property>
@@ -2246,6 +2403,9 @@ padding-left: 15px;
                      <property name="textFormat">
                       <enum>Qt::PlainText</enum>
                      </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::NoTextInteraction</set>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -2256,7 +2416,7 @@ padding-left: 15px;
                      <property name="sizeHint" stdset="0">
                       <size>
                        <width>697</width>
-                       <height>811</height>
+                       <height>0</height>
                       </size>
                      </property>
                     </spacer>
@@ -2317,7 +2477,7 @@ padding-left: 15px;
                  <number>0</number>
                 </property>
                 <item>
-                 <layout class="QGridLayout" name="gridLayout">
+                 <layout class="QGridLayout" name="gridLayout" columnstretch="2,0,3">
                   <item row="0" column="0">
                    <spacer name="horizontalSpacer">
                     <property name="orientation">
@@ -2348,7 +2508,7 @@ padding-left: 15px;
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,1,0,2,2,1,0">
+                    <layout class="QVBoxLayout" name="verticalLayout_8" stretch="2,0,0,0,0,2,1,5">
                      <property name="spacing">
                       <number>0</number>
                      </property>
@@ -2383,7 +2543,7 @@ padding-left: 15px;
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_9">
                        <property name="spacing">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
                        <item>
                         <widget class="QLabel" name="label_16">
@@ -2444,6 +2604,9 @@ padding-left: 15px;
                              <property name="text">
                               <string>Microphone</string>
                              </property>
+                             <property name="textInteractionFlags">
+                              <set>Qt::NoTextInteraction</set>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -2465,6 +2628,12 @@ padding-left: 15px;
                               <size>
                                <width>360</width>
                                <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>360</width>
+                               <height>16777215</height>
                               </size>
                              </property>
                              <property name="toolTip">
@@ -2504,6 +2673,9 @@ padding-left: 15px;
                              <property name="text">
                               <string>Output Device</string>
                              </property>
+                             <property name="textInteractionFlags">
+                              <set>Qt::NoTextInteraction</set>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -2529,7 +2701,7 @@ padding-left: 15px;
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>200</width>
+                               <width>360</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -2550,12 +2722,12 @@ padding-left: 15px;
                         <enum>Qt::Vertical</enum>
                        </property>
                        <property name="sizeType">
-                        <enum>QSizePolicy::Fixed</enum>
+                        <enum>QSizePolicy::Minimum</enum>
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
                          <width>20</width>
-                         <height>20</height>
+                         <height>10</height>
                         </size>
                        </property>
                       </spacer>
@@ -2563,7 +2735,7 @@ padding-left: 15px;
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_6">
                        <property name="spacing">
-                        <number>7</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -2615,6 +2787,9 @@ padding-left: 15px;
                              <property name="text">
                               <string>Device</string>
                              </property>
+                             <property name="textInteractionFlags">
+                              <set>Qt::NoTextInteraction</set>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -2646,7 +2821,7 @@ padding-left: 15px;
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>16777215</width>
+                               <width>360</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -2671,6 +2846,9 @@ padding-left: 15px;
                              </property>
                              <property name="text">
                               <string>Resolution</string>
+                             </property>
+                             <property name="textInteractionFlags">
+                              <set>Qt::NoTextInteraction</set>
                              </property>
                             </widget>
                            </item>
@@ -2703,7 +2881,7 @@ padding-left: 15px;
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>16777215</width>
+                               <width>360</width>
                                <height>16777215</height>
                               </size>
                              </property>

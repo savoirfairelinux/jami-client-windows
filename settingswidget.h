@@ -18,7 +18,6 @@
 
 #pragma once
 #include <QScrollArea>
-#include <QSettings>
 #include <QMovie>
 
 #include "navwidget.h"
@@ -126,9 +125,6 @@ private slots:
     // *************************  General Settings  *************************
 private:
     void populateGeneralSettings();
-
-    QSettings* settings_;
-
     QMetaObject::Connection accountAddedConnection_;
 
 private slots:
