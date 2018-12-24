@@ -686,6 +686,14 @@ Jami is a secured and distributed communication software.</source>
     </message>
 </context>
 <context>
+    <name>AccountItemDelegate</name>
+    <message>
+        <location filename="../accountitemdelegate.cpp" line="76"/>
+        <source>Add Account</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>AnimatedOverlay</name>
     <message>
         <location filename="../animatedoverlay.ui" line="14"/>
@@ -724,32 +732,32 @@ Jami is a secured and distributed communication software.</source>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="299"/>
+        <location filename="../callwidget.ui" line="324"/>
         <source>Show conversations</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="302"/>
+        <location filename="../callwidget.ui" line="327"/>
         <source>Conversations</source>
         <translation>会话</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="225"/>
+        <location filename="../callwidget.ui" line="244"/>
         <source>Search contact text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="234"/>
+        <location filename="../callwidget.ui" line="253"/>
         <source>Search contacts or enter ID</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="585"/>
+        <location filename="../callwidget.ui" line="610"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="625"/>
+        <location filename="../callwidget.ui" line="650"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -757,150 +765,150 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="738"/>
+        <location filename="../callwidget.ui" line="763"/>
         <source>Show ring ID QR code</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="789"/>
+        <location filename="../callwidget.ui" line="814"/>
         <source>Share ring ID button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="847"/>
+        <location filename="../callwidget.ui" line="872"/>
         <source>Double-click to copy</source>
         <translation>双击复制</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="888"/>
+        <location filename="../callwidget.ui" line="913"/>
         <source>Error while generating QR Code</source>
         <translation>创建二维码时产生错误</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1110"/>
-        <location filename="../callwidget.ui" line="1360"/>
+        <location filename="../callwidget.ui" line="1141"/>
+        <location filename="../callwidget.ui" line="1391"/>
         <source>best name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1134"/>
+        <location filename="../callwidget.ui" line="1165"/>
         <source>best Id</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1645"/>
+        <location filename="../callwidget.ui" line="1682"/>
         <source>Back to homepage button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1851"/>
+        <location filename="../callwidget.ui" line="1891"/>
         <source>Add to contacts</source>
         <translation>加入通讯录</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="312"/>
+        <location filename="../callwidget.ui" line="337"/>
         <source>Show invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="315"/>
+        <location filename="../callwidget.ui" line="340"/>
         <source>Invites</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1370"/>
+        <location filename="../callwidget.ui" line="1401"/>
         <source>Wants to talk to you!</source>
         <translation>想要与您通信！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1443"/>
+        <location filename="../callwidget.ui" line="1474"/>
         <source>Answer incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1515"/>
+        <location filename="../callwidget.ui" line="1546"/>
         <source>Ignore incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1465"/>
+        <location filename="../callwidget.ui" line="1496"/>
         <source>Answer</source>
         <translation>应答</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1543"/>
+        <location filename="../callwidget.ui" line="1574"/>
         <source>Ignore</source>
         <translation>忽略</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1206"/>
+        <location filename="../callwidget.ui" line="1237"/>
         <source>Cancel outgoing call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1231"/>
+        <location filename="../callwidget.ui" line="1262"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="264"/>
+        <location filename="../callwidget.cpp" line="300"/>
         <source>Start video call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="275"/>
+        <location filename="../callwidget.cpp" line="311"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="291"/>
+        <location filename="../callwidget.cpp" line="327"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="298"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Remove contact</source>
         <translation>删除联系人</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="305"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Block contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="316"/>
+        <location filename="../callwidget.cpp" line="352"/>
         <source>Copy number</source>
         <translation>复制号码</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="844"/>
+        <location filename="../callwidget.cpp" line="922"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="844"/>
+        <location filename="../callwidget.cpp" line="922"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="223"/>
+        <location filename="../callwidget.cpp" line="259"/>
         <source>Message incoming from %1</source>
         <translation>消息来自%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="755"/>
+        <location filename="../callwidget.cpp" line="835"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="760"/>
+        <location filename="../callwidget.cpp" line="840"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="615"/>
+        <location filename="../callwidget.cpp" line="658"/>
         <source>Call incoming from %1</source>
         <translation>来电：%1</translation>
     </message>
@@ -964,17 +972,17 @@ Copy and share it with your friends!
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="90"/>
+        <location filename="../mainwindow.cpp" line="83"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="110"/>
+        <location filename="../mainwindow.cpp" line="103"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -995,42 +1003,22 @@ Copy and share it with your friends!
 <context>
     <name>PhotoboothWidget</name>
     <message>
-        <location filename="../photoboothwidget.ui" line="14"/>
+        <location filename="../photoboothwidget.ui" line="20"/>
         <source>Form</source>
         <translation>表单</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.ui" line="20"/>
+        <location filename="../photoboothwidget.ui" line="129"/>
         <source>Photobooth display</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../photoboothwidget.ui" line="51"/>
-        <source>Take photo</source>
-        <translation>拍照</translation>
-    </message>
-    <message>
-        <location filename="../photoboothwidget.ui" line="71"/>
-        <source>or</source>
-        <translation>或</translation>
-    </message>
-    <message>
-        <location filename="../photoboothwidget.ui" line="84"/>
-        <source>Import photo</source>
-        <translation>导入照片</translation>
-    </message>
-    <message>
-        <location filename="../photoboothwidget.ui" line="87"/>
-        <source>Import</source>
-        <translation>倒入</translation>
-    </message>
-    <message>
-        <location filename="../photoboothwidget.cpp" line="60"/>
+        <location filename="../photoboothwidget.cpp" line="71"/>
         <source>Choose File</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="62"/>
+        <location filename="../photoboothwidget.cpp" line="73"/>
         <source>Files (*)</source>
         <translation>文件 (*)</translation>
     </message>
@@ -1038,12 +1026,12 @@ Copy and share it with your friends!
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="339"/>
+        <location filename="../messagewebview.cpp" line="337"/>
         <source>Choose File</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="339"/>
+        <location filename="../messagewebview.cpp" line="337"/>
         <source>Files (*)</source>
         <translation>文件 (*)</translation>
     </message>
@@ -1147,17 +1135,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="275"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>共享整个屏幕</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="278"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>共享屏幕区域</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="285"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>共享文件</translation>
     </message>
@@ -1506,147 +1494,71 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="72"/>
+        <location filename="../wizardwidget.ui" line="99"/>
         <source>Welcome Label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="78"/>
+        <location filename="../wizardwidget.ui" line="105"/>
         <source> Welcome to</source>
         <translation>欢迎来到</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="107"/>
+        <location filename="../wizardwidget.ui" line="134"/>
         <source>Welcome Logo</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="164"/>
+        <location filename="../wizardwidget.ui" line="191"/>
         <source>Link device button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="170"/>
+        <location filename="../wizardwidget.ui" line="197"/>
         <source>Push button for device linkage start trigger</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="173"/>
+        <location filename="../wizardwidget.ui" line="200"/>
         <source>Link this device to an account</source>
         <translation>将此设备与一个帐户进行连接</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="205"/>
+        <location filename="../wizardwidget.ui" line="232"/>
         <source>Select link method</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="254"/>
+        <location filename="../wizardwidget.ui" line="281"/>
         <source>Link account to device from the network</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="257"/>
+        <location filename="../wizardwidget.ui" line="284"/>
         <source>Link account from DHT</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="270"/>
+        <location filename="../wizardwidget.ui" line="297"/>
         <source>Link from exported account archive file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="273"/>
+        <location filename="../wizardwidget.ui" line="300"/>
         <source>Link account from file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="322"/>
+        <location filename="../wizardwidget.ui" line="349"/>
         <source>How to add a device</source>
         <translation>如何添加设备</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="357"/>
-        <source>Select file to import</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="382"/>
-        <source>Account archive path:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="389"/>
-        <source>Account archive path selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="406"/>
-        <source>Archive password:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="413"/>
-        <source>Archive passord input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="450"/>
-        <source>Create your profile</source>
-        <translation>创建您的帐户资料</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="482"/>
-        <source>Photobooth Widget</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="509"/>
-        <source>Avatar display</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="564"/>
-        <source>Enter your full name:</source>
-        <translation>输入您的全名：</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="588"/>
-        <source>Full name edit</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="594"/>
-        <source>Text entry for full name input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="629"/>
-        <location filename="../wizardwidget.cpp" line="167"/>
-        <source>Create your account</source>
-        <translation>创建Ring帐户</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="139"/>
-        <source>Create Jami account button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="145"/>
-        <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="151"/>
-        <source>Create Jami account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="329"/>
+        <location filename="../wizardwidget.ui" line="356"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
 &lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Jami account&lt;/span&gt; you want to use&lt;/li&gt;
@@ -1656,170 +1568,246 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="670"/>
+        <location filename="../wizardwidget.ui" line="384"/>
+        <source>Select file to import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="409"/>
+        <source>Account archive path:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="416"/>
+        <source>Account archive path selector</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="433"/>
+        <source>Archive password:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="440"/>
+        <source>Archive passord input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="477"/>
+        <source>Create your profile</source>
+        <translation>创建您的帐户资料</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="509"/>
+        <source>Photobooth Widget</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="536"/>
+        <source>Avatar display</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="591"/>
+        <source>Enter your full name:</source>
+        <translation>输入您的全名：</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="615"/>
+        <source>Full name edit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="621"/>
+        <source>Text entry for full name input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="656"/>
+        <location filename="../wizardwidget.cpp" line="171"/>
+        <source>Create your account</source>
+        <translation>创建Ring帐户</translation>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="166"/>
+        <source>Create Jami account button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="172"/>
+        <source>Push button for Jami account creation start trigger</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="178"/>
+        <source>Create Jami account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../wizardwidget.ui" line="697"/>
         <source>Register your username on the Jami. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your ID.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="673"/>
+        <location filename="../wizardwidget.ui" line="700"/>
         <source>Public username checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="676"/>
+        <location filename="../wizardwidget.ui" line="703"/>
         <source>Checkbox selecting if the user wants a public username</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="679"/>
+        <location filename="../wizardwidget.ui" line="706"/>
         <source>Register public username (experimental)</source>
         <translation>注册公共用户名（试验性）</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="724"/>
+        <location filename="../wizardwidget.ui" line="751"/>
         <source>Public username edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="730"/>
+        <location filename="../wizardwidget.ui" line="757"/>
         <source>Choose your username</source>
         <translation>设置您的用户名</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="746"/>
+        <location filename="../wizardwidget.ui" line="773"/>
         <source>Public username validation status</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="749"/>
-        <location filename="../wizardwidget.cpp" line="253"/>
+        <location filename="../wizardwidget.ui" line="776"/>
+        <location filename="../wizardwidget.cpp" line="257"/>
         <source>Searching...</source>
         <translation>正在搜索…</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="778"/>
+        <location filename="../wizardwidget.ui" line="805"/>
         <source>PIN edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="784"/>
+        <location filename="../wizardwidget.ui" line="811"/>
         <source>Device linking PIN text entry</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="787"/>
+        <location filename="../wizardwidget.ui" line="814"/>
         <source>Enter your pin</source>
         <translation>输入您的PIN</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="814"/>
+        <location filename="../wizardwidget.ui" line="841"/>
         <source>Password text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="820"/>
+        <location filename="../wizardwidget.ui" line="847"/>
         <source>Password text entry</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="826"/>
+        <location filename="../wizardwidget.ui" line="853"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="853"/>
-        <location filename="../wizardwidget.ui" line="859"/>
+        <location filename="../wizardwidget.ui" line="880"/>
+        <location filename="../wizardwidget.ui" line="886"/>
         <source>Password confirmation text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="865"/>
+        <location filename="../wizardwidget.ui" line="892"/>
         <source>Confirm password</source>
         <translation>确认密码</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="933"/>
-        <location filename="../wizardwidget.cpp" line="101"/>
+        <location filename="../wizardwidget.ui" line="960"/>
+        <location filename="../wizardwidget.cpp" line="105"/>
         <source>Generating your Jami account...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="969"/>
+        <location filename="../wizardwidget.ui" line="996"/>
         <source>Previous page button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="975"/>
+        <location filename="../wizardwidget.ui" line="1002"/>
         <source>push button to access previous page of wizard</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="978"/>
+        <location filename="../wizardwidget.ui" line="1005"/>
         <source>Previous</source>
         <translation>上一步</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="1010"/>
+        <location filename="../wizardwidget.ui" line="1037"/>
         <source>Next page Button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="1016"/>
+        <location filename="../wizardwidget.ui" line="1043"/>
         <source>Push button to access next page of wizard</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.ui" line="1019"/>
+        <location filename="../wizardwidget.ui" line="1046"/>
         <source>Next</source>
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="71"/>
+        <location filename="../wizardwidget.cpp" line="66"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>您的Ring帐户可以被更新。\n请输入您的密码。</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="97"/>
+        <location filename="../wizardwidget.cpp" line="101"/>
         <source>Migrating your Jami account...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="99"/>
+        <location filename="../wizardwidget.cpp" line="103"/>
         <source>Importing account archive...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="163"/>
+        <location filename="../wizardwidget.cpp" line="167"/>
         <source>Add a device</source>
         <translation>添加设备</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="281"/>
+        <location filename="../wizardwidget.cpp" line="285"/>
         <source>Username not available.</source>
         <translation>用户名不可用。</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="284"/>
+        <location filename="../wizardwidget.cpp" line="288"/>
         <source>Username is available.</source>
         <translation>用户名可用。</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="287"/>
+        <location filename="../wizardwidget.cpp" line="291"/>
         <source>Username is invalid.</source>
         <translation>用户名非法。</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="290"/>
+        <location filename="../wizardwidget.cpp" line="294"/>
         <source>Network error.</source>
         <translation>网络错误。</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="337"/>
+        <location filename="../wizardwidget.cpp" line="341"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../wizardwidget.cpp" line="339"/>
+        <location filename="../wizardwidget.cpp" line="343"/>
         <source>Jami archive files (*.gz);; All files (*)</source>
         <translation type="unfinished"/>
     </message>
