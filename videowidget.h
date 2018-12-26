@@ -37,7 +37,7 @@ public:
     void setPreviewDisplay(bool display);
     void setDistantRenderer(Video::Renderer* renderer);
     void setIsFullPreview(bool full);
-    inline void setResetPreview(bool reset){ resetPreview_ = reset; }
+    inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
     void setPhotoMode(bool isPhotoMode);
     QImage takePhoto();
 
@@ -64,7 +64,11 @@ private:
     QRect previewGeometry_;
     bool resetPreview_ = false;
     bool photoMode_ = false;
+    bool hasFrame_ = false;
 
     constexpr static int previewMargin_ = 15;
+
+private:
+    void paintBackgroundColor(QPainter* painter, QColor color);
 };
 

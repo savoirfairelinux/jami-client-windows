@@ -21,25 +21,39 @@
 
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <QGraphicsOpacityEffect>
+#include <QtConcurrent/QtConcurrent>
 
 #include "video/previewmanager.h"
-#include "profilemodel.h"
-#include "profile.h"
-#include "account.h"
-#include "person.h"
 
 #include "utils.h"
+#include "lrcinstance.h"
 
 
 PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     QWidget(parent),
-    fileName_(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
-              + QStringLiteral("profile.png")),
+    fileName_(""),
     ui(new Ui::PhotoboothWidget)
 {
     ui->setupUi(this);
     ui->videoFeed->setIsFullPreview(true);
     ui->videoFeed->setPhotoMode(true);
+
+    flashOverlay_ = new QLabel(this);
+    flashOverlay_->setStyleSheet("background-color:#fff");
+    flashOverlay_->hide();
+    QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect(this);
+    flashOverlay_->setGraphicsEffect(effect);
+    flashAnimation_ = new QPropertyAnimation(this);
+    flashAnimation_->setTargetObject(effect);
+    flashAnimation_->setPropertyName("opacity");
+    flashAnimation_->setDuration(600);
+    flashAnimation_->setStartValue(1);
+    flashAnimation_->setEndValue(0);
+    flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
+
+    takePhotoState_ = true;
+    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 PhotoboothWidget::~PhotoboothWidget()
@@ -50,11 +64,13 @@ PhotoboothWidget::~PhotoboothWidget()
 
 void PhotoboothWidget::startBooth()
 {
+    ui->videoFeed->setResetPreview(true);
     Video::PreviewManager::instance().stopPreview();
     Video::PreviewManager::instance().startPreview();
     ui->videoFeed->show();
     ui->avatarLabel->hide();
     takePhotoState_ = true;
+    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 void PhotoboothWidget::stopBooth()
@@ -63,43 +79,57 @@ void PhotoboothWidget::stopBooth()
     ui->videoFeed->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
+    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-refresh-24px.svg"));
 }
 
 void
 PhotoboothWidget::on_importButton_clicked()
 {
+    Video::PreviewManager::instance().stopPreview();
+    auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
-                                            "",
-                                            tr("Files (*)"));
+                                             picturesDir,
+                                             tr("Image Files (*.jpg, *.jpeg, *png)"));
     if (fileName_.isEmpty()) {
-        fileName_ = QStandardPaths::standardLocations(
-            QStandardPaths::TempLocation).first()
-            + QStringLiteral("profile.png");
-    } else {
-        Video::PreviewManager::instance().stopPreview();
+        Video::PreviewManager::instance().startPreview();
+        return;
     }
+    Video::PreviewManager::instance().stopPreview();
     auto image = QImage(fileName_);
     auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-    ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
-    ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
-    emit photoTaken(fileName_);
+    auto avatarPixmap = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
+    LRCInstance::setCurrAccAvatar(avatarPixmap);
+    ui->avatarLabel->setPixmap(avatarPixmap);
+    stopBooth();
 }
 
 void
 PhotoboothWidget::on_takePhotoButton_clicked()
 {
     if (!takePhotoState_) {
-        takePhotoState_ = true;
-        ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
-        emit photoReady();
+        startBooth();
+        return;
     } else {
-        auto photo = ui->videoFeed->takePhoto();
-        Video::PreviewManager::instance().stopPreview();
-        photo.save(fileName_);
-        auto avatar = photo.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-        ProfileModel::instance().selectedProfile()->person()->setPhoto(avatar);
-        ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
-        ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-refresh-24px.svg"));
-        emit photoTaken(fileName_);
+        auto videoRect = ui->videoFeed->rect();
+        QPoint avatarLabelPos = ui->videoFeed->mapTo(this, videoRect.topLeft());
+        flashOverlay_->setGeometry(
+            avatarLabelPos.x(),
+            avatarLabelPos.y(),
+            videoRect.width(),
+            videoRect.height()
+        );
+        flashOverlay_->show();
+        flashAnimation_->start(QPropertyAnimation::KeepWhenStopped);
+
+        QtConcurrent::run(
+            [=] {
+                Video::PreviewManager::instance().stopPreview();
+                auto photo = ui->videoFeed->takePhoto();
+                auto avatar = photo.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+                auto avatarPixmap = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
+                LRCInstance::setCurrAccAvatar(avatarPixmap);
+                ui->avatarLabel->setPixmap(avatarPixmap);
+                stopBooth();
+            });
     }
 }

@@ -27,10 +27,6 @@
 #include <QFileDialog>
 #include <QBitmap>
 
-#include "accountmodel.h"
-#include "account.h"
-#include "profilemodel.h"
-#include "profile.h"
 #include "namedirectory.h"
 
 #include "utils.h"
@@ -51,8 +47,6 @@ NewWizardWidget::NewWizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrate
 
     ui->welcomeLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
     ui->welcomeLogo->setAlignment(Qt::AlignHCenter);
-
-    ui->fullNameEdit->setText(Utils::GetCurrentUserName());
 
     creationSpinnerMovie_ = new QMovie(":/images/jami_eclipse_spinner.gif");
     ui->spinnerLabel->setMovie(creationSpinnerMovie_);
@@ -98,14 +92,6 @@ NewWizardWidget::NewWizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrate
     connect(ui->confirmPasswordEdit, &QLineEdit::textChanged,
         [this] {
             validateWizardProgression();
-        });
-
-    connect(ui->setAvatarWidget, &PhotoboothWidget::photoTaken,
-            this, &NewWizardWidget::on_photoTaken);
-
-    connect(ui->setAvatarWidget, &PhotoboothWidget::photoReady,
-        [this] {
-            ui->setAvatarWidget->startBooth();
         });
 
     ui->containerWidget->setVisible(false);
@@ -176,12 +162,6 @@ NewWizardWidget::processWizardInformations()
 }
 
 void
-NewWizardWidget::on_photoTaken(QString fileName)
-{
-    ui->setAvatarWidget->stopBooth();
-}
-
-void
 NewWizardWidget::on_existingPushButton_clicked()
 {
     changePage(ui->linkRingAccountPage);
@@ -210,6 +190,7 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->confirmPasswordEdit->clear();
         ui->signUpCheckbox->setChecked(true);
         ui->usernameEdit->setEnabled(true);
+        ui->fullNameEdit->setText(Utils::GetCurrentUserName());
         setNavBarVisibility(true);
         updateCustomUI();
         registeredNameFoundConnection_ = connect(
