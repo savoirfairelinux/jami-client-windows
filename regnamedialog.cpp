@@ -62,6 +62,9 @@ void
 RegNameDialog::nameRegistrationResultSlot(const std::string& accountId,
     lrc::api::account::RegisterNameStatus status, const std::string& registerdName)
 {
+    Q_UNUSED(accountId);
+    Q_UNUSED(registerdName);
+
     gif->stop();
 
     if(status == lrc::api::account::RegisterNameStatus::SUCCESS) {

@@ -20,12 +20,12 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QMutex>
 
 #include <memory>
 
 #include "video/renderer.h"
 #include "video/previewmanager.h"
-#include "callmodel.h"
 
 class VideoWidget : public QWidget
 {

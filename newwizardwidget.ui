@@ -869,7 +869,7 @@
                           <number>0</number>
                          </property>
                          <item row="0" column="0">
-                          <widget class="QWidget" name="verticalWidget" native="true">
+                          <widget class="QWidget" name="verticalWidget1" native="true">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
                              <horstretch>0</horstretch>
