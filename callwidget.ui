@@ -1322,7 +1322,7 @@ Copy and share it with your friends!
                           <height>420</height>
                          </size>
                         </property>
-                        <layout class="QVBoxLayout" name="callInvite" stretch="0,2,1,2,1,9">
+                        <layout class="QVBoxLayout" name="callInviteLayout" stretch="0,2,1,2,1,9">
                          <property name="spacing">
                           <number>0</number>
                          </property>
