@@ -20,6 +20,8 @@
 #define PHOTOBOOTHWIDGET_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QPropertyAnimation>
 
 namespace Ui {
 class PhotoboothWidget;
@@ -43,11 +45,14 @@ private:
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
+    QLabel* flashOverlay_;
+    QPropertyAnimation *flashAnimation_;
+
     bool takePhotoState_;
 
 signals:
     void photoTaken(QString fileName);
-    void photoReady();
+
 };
 
 #endif // PHOTOBOOTHWIDGET_H

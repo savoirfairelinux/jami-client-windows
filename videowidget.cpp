@@ -105,8 +105,8 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
         }
     }
-    if (previewRenderer_ && isPreviewDisplayed_) {
-        {
+    if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
+        if (previewRenderer_) {
             QMutexLocker lock(&mutex_);
             if (currentPreviewFrame_.storage.size() != 0
                  && currentPreviewFrame_.storage.size() ==
@@ -116,6 +116,7 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
                                                previewRenderer_->size().width(),
                                                previewRenderer_->size().height(),
                                                QImage::Format_ARGB32_Premultiplied));
+                hasFrame_ = true;
 
             }
         }
@@ -149,8 +150,21 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
 
             painter.drawImage(previewGeometry_, scaledPreview);
         }
+    } else if (photoMode_) {
+        paintBackgroundColor(&painter, Qt::black);
     }
     painter.end();
+}
+
+void
+VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
+{
+    QImage black(1, 1, QImage::Format_ARGB32);
+    black.fill(color);
+    QImage scaledPreview = Utils::getCirclePhoto(black, height());
+    previewGeometry_.setWidth(scaledPreview.width());
+    previewGeometry_.setHeight(scaledPreview.height());
+    painter->drawImage(previewGeometry_, scaledPreview);
 }
 
 void

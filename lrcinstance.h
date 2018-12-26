@@ -136,6 +136,14 @@ public:
             .index(getCurrentAccountIndex()), AccountListModel::Role::Picture).value<QPixmap>();
     };
 
+    static void setCurrAccAvatar(const QPixmap& avatarPixmap) {
+        QByteArray ba;
+        QBuffer bu(&ba);
+        bu.open(QIODevice::WriteOnly);
+        avatarPixmap.save(&bu, "PNG");
+        instance().editableAccountModel()->setAvatar(getCurrAccId(), ba.toBase64().toStdString());
+    };
+
     static void setCurrAccAvatar(const std::string& avatar) {
         instance().editableAccountModel()->setAvatar(getCurrAccId(), avatar);
     };
