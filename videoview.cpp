@@ -178,6 +178,7 @@ VideoView::showChatviewIfToggled()
 void
 VideoView::simulateShowChatview(bool checked)
 {
+    Q_UNUSED(checked);
     overlay_->simulateShowChatview(true);
 }
 

@@ -144,6 +144,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->mainActivitySplitter, &QSplitter::splitterMoved,
         [this](int pos, int index) {
+            Q_UNUSED(index);
+            Q_UNUSED(pos);
             QSettings settings;
             settings.setValue(SettingsKey::mainSplitterState, ui->mainActivitySplitter->saveState());
         });
@@ -748,7 +750,6 @@ CallWidget::slotVideoViewDestroyed(const std::string& callid)
 {
     auto convUid = LRCInstance::getSelectedConvUid();
     auto currentConversationModel = LRCInstance::getCurrentConversationModel();
-    auto callModel = LRCInstance::getCurrentCallModel();
     auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
     if (conversation != currentConversationModel->allFilteredConversations().end() &&
         callid != conversation->callId) {

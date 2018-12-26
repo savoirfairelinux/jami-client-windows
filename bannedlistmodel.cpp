@@ -36,5 +36,8 @@ BannedListModel::rowCount(const QModelIndex &index) const
 bool
 BannedListModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    Q_UNUSED(index);
+    Q_UNUSED(value);
+    Q_UNUSED(role);
     return 1;
 }

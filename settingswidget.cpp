@@ -137,6 +137,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
         accountAddedConnection_ = connect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,
             [this, toDisconnect](const std::string& accountId) {
+                Q_UNUSED(accountId);
                 setConnections();
                 QObject::disconnect(*toDisconnect);
             });

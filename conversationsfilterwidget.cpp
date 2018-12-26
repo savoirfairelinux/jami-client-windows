@@ -36,8 +36,10 @@ void ConversationsFilterWidget::updateBadges()
     updateNotifier(Type::PENDING);
 }
 
-void ConversationsFilterWidget::resizeEvent(QResizeEvent * event)
+void
+ConversationsFilterWidget::resizeEvent(QResizeEvent* event)
 {
+    Q_UNUSED(event);
     updateBadges();
 }
 
