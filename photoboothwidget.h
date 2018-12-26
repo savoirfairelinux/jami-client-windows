@@ -36,6 +36,8 @@ public:
     ~PhotoboothWidget();
     void startBooth();
     void stopBooth();
+    const QPixmap& getAvatarPixmap();
+    bool hasAvatar();
 
 private slots:
     void on_importButton_clicked();
@@ -47,6 +49,8 @@ private:
 
     QLabel* flashOverlay_;
     QPropertyAnimation *flashAnimation_;
+    QPixmap avatarPixmap_;
+    bool hasAvatar_;
 
     bool takePhotoState_;
 

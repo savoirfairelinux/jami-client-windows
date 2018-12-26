@@ -33,7 +33,8 @@
 PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     QWidget(parent),
     fileName_(""),
-    ui(new Ui::PhotoboothWidget)
+    ui(new Ui::PhotoboothWidget),
+    hasAvatar_(false)
 {
     ui->setupUi(this);
     ui->videoFeed->setIsFullPreview(true);
@@ -64,6 +65,7 @@ PhotoboothWidget::~PhotoboothWidget()
 
 void PhotoboothWidget::startBooth()
 {
+    hasAvatar_ = false;
     ui->videoFeed->setResetPreview(true);
     Video::PreviewManager::instance().stopPreview();
     Video::PreviewManager::instance().startPreview();
@@ -97,9 +99,9 @@ PhotoboothWidget::on_importButton_clicked()
     Video::PreviewManager::instance().stopPreview();
     auto image = QImage(fileName_);
     auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-    auto avatarPixmap = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
-    LRCInstance::setCurrAccAvatar(avatarPixmap);
-    ui->avatarLabel->setPixmap(avatarPixmap);
+    avatarPixmap_ = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
+    ui->avatarLabel->setPixmap(avatarPixmap_);
+    hasAvatar_ = true;
     stopBooth();
 }
 
@@ -122,14 +124,26 @@ PhotoboothWidget::on_takePhotoButton_clicked()
         flashAnimation_->start(QPropertyAnimation::KeepWhenStopped);
 
         QtConcurrent::run(
-            [=] {
+            [this] {
                 Video::PreviewManager::instance().stopPreview();
                 auto photo = ui->videoFeed->takePhoto();
                 auto avatar = photo.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-                auto avatarPixmap = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
-                LRCInstance::setCurrAccAvatar(avatarPixmap);
-                ui->avatarLabel->setPixmap(avatarPixmap);
+                avatarPixmap_ = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
+                ui->avatarLabel->setPixmap(avatarPixmap_);
+                hasAvatar_ = true;
                 stopBooth();
             });
     }
+}
+
+const QPixmap&
+PhotoboothWidget::getAvatarPixmap()
+{
+    return avatarPixmap_;
+}
+
+bool
+PhotoboothWidget::hasAvatar()
+{
+    return hasAvatar_;
 }

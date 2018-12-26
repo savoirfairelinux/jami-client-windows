@@ -295,6 +295,9 @@ NewWizardWidget::slotRegisteredNameFound(const std::string& accountId,
                                          const std::string& address,
                                          const std::string& name)
 {
+    Q_UNUSED(accountId);
+    Q_UNUSED(address);
+
     using namespace lrc::api::account;
     if (name.length() < 3) {
         registrationStateOk_ = false;
@@ -400,6 +403,9 @@ NewWizardWidget::createRingAccount(const QString &displayName,
                     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
                     emit NavigationRequested(ScreenEnum::CallScreen);
                 });
+            if (ui->setAvatarWidget->hasAvatar()) {
+                LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+            }
             QObject::disconnect(*connection);
             if (connection) {
                 delete connection;
