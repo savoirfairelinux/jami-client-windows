@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/icons/outline-info-24px.svg</file>
     <file>images/icons/baseline-camera_alt-24px.svg</file>
     <file>images/icons/baseline-refresh-24px.svg</file>
     <file>images/jami_rolling_spinner.gif</file>
