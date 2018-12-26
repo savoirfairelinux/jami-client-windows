@@ -21,9 +21,6 @@
 #include <QLabel>
 #include <QtConcurrent/QtConcurrent>
 
-#include "account.h"
-#include "person.h"
-
 #include "lrcinstance.h"
 #include "navwidget.h"
 
@@ -72,7 +69,6 @@ private slots:
                                  const std::string& name);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
     void timeoutNameLookupTimer();
-    void on_photoTaken(QString fileName);
     void on_signUpCheckbox_toggled(bool checked);
 
 private:
