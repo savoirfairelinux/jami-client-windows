@@ -131,6 +131,7 @@ MainWindow::MainWindow(QWidget* parent) :
     auto flags_ = windowFlags();
 
     auto accountList = LRCInstance::accountModel().getAccountList();
+    lastAccountCount_ = accountList.size();
     ScreenEnum startScreen;
     if (accountList.size()) {
         readSettingsFromRegistry();
@@ -169,8 +170,13 @@ MainWindow::slotCurrentChanged(int index)
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
     auto firstUse =
-        (accountList.size() == 1 && lastScr_ == ScreenEnum::WizardScreen) ||
+        (accountList.size() == 1 && lastScr_ == ScreenEnum::WizardScreen &&
+         lastAccountCount_ < accountList.size()) ||
         !accountList.size();
+    if (lastScr_ == ScreenEnum::WizardScreen &&
+        lastAccountCount_ < accountList.size()) {
+        lastAccountCount_ = accountList.size();
+    }
     for (int i = 0; i < ui->navStack->count(); ++i) {
         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
             navWidget->navigated(index == i);

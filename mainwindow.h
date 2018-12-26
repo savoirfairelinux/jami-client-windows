@@ -77,6 +77,7 @@ private:
 
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
+    int lastAccountCount_;
     Qt::WindowFlags flags_;
 
     void readSettingsFromRegistry();

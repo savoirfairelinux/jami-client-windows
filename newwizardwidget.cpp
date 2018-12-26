@@ -34,11 +34,10 @@
 
 const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Jami account", "Default alias for new Jami account");
 
-NewWizardWidget::NewWizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrated, QWidget* parent) :
+NewWizardWidget::NewWizardWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::NewWizardWidget),
-    account_(toBeMigrated),
-    wizardMode_(wizardMode),
+    wizardMode_(WizardMode::WIZARD),
     lookupTimer_(this)
 {
     ui->setupUi(this);
@@ -67,19 +66,27 @@ NewWizardWidget::NewWizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrate
     statusInvalidPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-error_outline-24px.svg", RingTheme::urgentOrange_);
     statusErrorPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-close-24px.svg", RingTheme::red_);
 
-    if (wizardMode_ == MIGRATION) {
-        changePage(ui->createRingAccountPage);
-        ui->usernameEdit->setEnabled(false);
-        ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
-        ui->previousButton->hide();
-        ui->infoWidget->show();
-        ui->infoLabel->setText(tr("Your account needs to be migrated. Enter your password."));
-    } else {
-        ui->infoWidget->hide();
-        setNavBarVisibility(false);
-    }
+    ui->infoWidget->hide();
+    setNavBarVisibility(false, true);
 
     lookupTimer_.setSingleShot(true);
+
+    connect(ui->fileImportBtn, &QPushButton::clicked,
+        [this] {
+            QString filePath;
+            filePath = QFileDialog::getOpenFileName(this,
+                tr("Open File"),
+                QString(),
+                tr("Jami archive files (*.gz); All files (*)"));
+            fileToImport_ = QDir::toNativeSeparators(filePath);
+            if (!fileToImport_.isEmpty()) {
+                QFileInfo fi(filePath);
+                ui->fileImportBtn->setText(fi.fileName());
+            } else {
+                ui->fileImportBtn->setText(tr("(None)"));
+            }
+            validateWizardProgression();
+        });
 
     connect(&lookupTimer_, &QTimer::timeout,
             this, &NewWizardWidget::timeoutNameLookupTimer);
@@ -94,12 +101,29 @@ NewWizardWidget::NewWizardWidget(WizardMode wizardMode, AccountInfo* toBeMigrate
             validateWizardProgression();
         });
 
+    connect(ui->pinEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
     ui->containerWidget->setVisible(false);
 }
 
 NewWizardWidget::~NewWizardWidget()
 {
     delete ui;
+}
+
+void
+NewWizardWidget::setToMigrate(AccountInfo* toBeMigrated)
+{
+    wizardMode_ = MIGRATION;
+    changePage(ui->createRingAccountPage);
+    ui->usernameEdit->setEnabled(false);
+    ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
+    ui->previousButton->hide();
+    ui->infoWidget->show();
+    ui->infoLabel->setText(tr("Your account needs to be migrated. Enter your password."));
 }
 
 void
@@ -151,7 +175,7 @@ NewWizardWidget::processWizardInformations()
         QString archivePin = (ui->pinEdit->text().isEmpty() || ui->pinEdit->text().isNull()) ? QString() : ui->pinEdit->text();
 
         changePage(ui->spinnerPage);
-        createRingAccount(accountAlias, ui->passwordEdit->text(), archivePin);
+        createRingAccount(accountAlias, ui->passwordEdit->text(), archivePin, fileToImport_);
 
         ui->passwordEdit->clear();
         ui->confirmPasswordEdit->clear();
@@ -170,7 +194,6 @@ NewWizardWidget::on_existingPushButton_clicked()
 void
 NewWizardWidget::on_newAccountButton_clicked()
 {
-    wizardMode_ = NEW_ACCOUNT;
     changePage(ui->createRingAccountPage);
 }
 
@@ -199,9 +222,16 @@ void NewWizardWidget::changePage(QWidget* toPage)
         validateWizardProgression();
         ui->setAvatarWidget->startBooth();
     } else if (toPage == ui->linkRingAccountPage) {
+        fileToImport_ = QString("");
+        ui->fileImportBtn->setText(tr("(None)"));
+        ui->pinEdit->clear();
+        ui->importPasswordEdit->clear();
+        ui->pinEdit->setEnabled(true);
+        ui->fileImportBtn->setEnabled(true);
         setNavBarVisibility(true);
         lookupStatusLabel_->hide();
         passwordStatusLabel_->hide();
+        validateWizardProgression();
     } else if (toPage == ui->spinnerPage) {
         lookupStatusLabel_->hide();
         passwordStatusLabel_->hide();
@@ -214,13 +244,15 @@ NewWizardWidget::updateCustomUI()
     QPoint editUsernamePos = ui->usernameEdit->mapTo(this, ui->usernameEdit->rect().topRight());
     lookupStatusLabel_->setGeometry(editUsernamePos.x() + 6, editUsernamePos.y() - 1, 30, 30);
     QPoint editconfpassPos = ui->confirmPasswordEdit->mapTo(this, ui->confirmPasswordEdit->rect().topRight());
-    passwordStatusLabel_->setGeometry(editconfpassPos.x() + 6, editconfpassPos.y() - 1, 30, 30);
+    passwordStatusLabel_->setGeometry(editconfpassPos.x() + 6, editconfpassPos.y() - 1, 24, 24);
 }
 
 void
 NewWizardWidget::setNavBarVisibility(bool nav, bool back)
 {
-    ui->navBarWidget->setVisible(nav);
+    ui->navBarWidget->setVisible(nav || back);
+    ui->nextButton->setVisible(nav);
+    ui->previousButton->setVisible(nav);
     ui->backButton->setVisible(back && LRCInstance::accountModel().getAccountList().size());
 }
 
@@ -232,10 +264,9 @@ NewWizardWidget::on_nextButton_clicked()
         ui->setAvatarWidget->stopBooth();
         disconnect(registeredNameFoundConnection_);
     }
-    if (curWidget == ui->createRingAccountPage) {
+    if (curWidget == ui->createRingAccountPage ||
+        curWidget == ui->linkRingAccountPage) {
         processWizardInformations();
-        // or
-        //validateFileImport();
     }
 }
 
@@ -249,7 +280,6 @@ NewWizardWidget::on_previousButton_clicked()
         lookupStatusLabel_->hide();
         passwordStatusLabel_->hide();
     }
-
     if (curWidget == ui->createRingAccountPage ||
         curWidget == ui->linkRingAccountPage) {
         changePage(ui->welcomePage);
@@ -343,15 +373,18 @@ NewWizardWidget::on_signUpCheckbox_toggled(bool checked)
 }
 
 void
-NewWizardWidget::validateFileImport()
-{
-    validateWizardProgression();
-}
-
-void
 NewWizardWidget::validateWizardProgression()
 {
-    qDebug() << "validating wizard progression...";
+    if (ui->stackedWidget->currentWidget() == ui->linkRingAccountPage) {
+        bool validPin = !ui->pinEdit->text().isEmpty();
+        ui->fileImportBtn->setEnabled(!validPin);
+        ui->fileImportLabel->setEnabled(!validPin);
+        bool validImport = !fileToImport_.isEmpty();
+        ui->pinEdit->setEnabled(!validImport);
+        ui->pinEditLabel->setEnabled(!validImport);
+        ui->nextButton->setEnabled(validPin || validImport);
+        return;
+    }
     bool usernameOk =
         !ui->signUpCheckbox->isChecked() ||
         (ui->signUpCheckbox->isChecked() &&
@@ -394,8 +427,11 @@ NewWizardWidget::createRingAccount(const QString &displayName,
             auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
             confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
             LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-            LRCInstance::editableAccountModel()->registerName(LRCInstance::getCurrAccId(),
-                "", registeredName_.toStdString());
+            LRCInstance::editableAccountModel()->registerName(
+                LRCInstance::getCurrAccId(),
+                "",
+                registeredName_.toStdString()
+            );
             connect(LRCInstance::editableAccountModel(),
                 &lrc::api::NewAccountModel::nameRegistrationEnded,
                 [this] {

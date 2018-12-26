@@ -38,16 +38,16 @@ public:
 
     using AccountInfo = Info;
 
-    enum WizardMode { WIZARD, NEW_ACCOUNT, IMPORT, MIGRATION };
+    enum WizardMode { WIZARD, IMPORT, MIGRATION };
 
 private:
     enum NameRegistrationUIState { BLANK, INVALID, TAKEN, FREE, SEARCHING };
 
 public:
-    explicit NewWizardWidget(WizardMode wizardMode = WIZARD,
-                             AccountInfo* toBeMigrated = nullptr,
-                             QWidget* parent = 0);
+    explicit NewWizardWidget(QWidget* parent = 0);
     ~NewWizardWidget();
+
+    void setToMigrate(AccountInfo* toBeMigrated);
 
     // NavWidget
     virtual void navigated(bool to);
@@ -88,12 +88,12 @@ private:
     QString registeredName_;
     bool registrationStateOk_;
     QMetaObject::Connection registeredNameFoundConnection_;
-
+    QString fileToImport_;
     QLabel* passwordStatusLabel_;
+
     void updateNameRegistrationUi(NameRegistrationUIState state);
     void changePage(QWidget* toPage);
     void setNavBarVisibility(bool visible, bool back=false);
-    void validateFileImport();
     void validateWizardProgression();
     void createRingAccount(const QString &displayName = QString(),
                            const QString &password = QString(),
