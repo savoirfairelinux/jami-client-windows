@@ -204,6 +204,11 @@ CallWidget::CallWidget(QWidget* parent) :
             ui->btnInvites->setChecked(false);
         });
 
+    connect(ui->messageView, &MessageWebView::conversationRemoved,
+        [this] {
+            backToWelcomePage();
+        });
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
@@ -581,20 +586,27 @@ CallWidget::on_ringContactLineEdit_returnPressed()
 
 void CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->makePermanent(convUid.toStdString());
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
+    ui->messageView->setInvitation(false);
 }
 
 void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), true);
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
+        backToWelcomePage();
+    }
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
 }
 
 void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), false);
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
+        backToWelcomePage();
+    }
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
 }
 
 void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
@@ -607,8 +619,20 @@ void CallWidget::slotAccountChanged(int index)
     try {
         auto accountList = LRCInstance::accountModel().getAccountList();
         setSelectedAccount(accountList.at(index));
+        auto& contactModel = LRCInstance::getCurrentAccountInfo().contactModel;
+        disconnect(contactAddedConnection_);
+        contactAddedConnection_ = connect(contactModel.get(), &lrc::api::ContactModel::contactAdded,
+            [this, &contactModel](const std::string & contactId) {
+                auto convModel = LRCInstance::getCurrentConversationModel();
+                auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
+                    *convModel);
+                if (contactId == contactModel.get()->getContact((*currentConversation).participants.at(0)).profileInfo.uri) {
+                    ui->messageView->clear();
+                    ui->messageView->printHistory(*convModel, currentConversation->interactions);
+                }
+            });
     } catch (...) {
-        qWarning() << "exception changing account";
+        qWarning() << "CallWidget::slotAccountChanged exception";
     }
 }
 
@@ -851,7 +875,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
                                                              *convModel);
     ui->messageView->clear();
-    ui->messageView->printHistory(*convModel, currentConversation->interactions);
+    ui->messageView->printHistory(*convModel, currentConversation->interactions, true);
 
     // Contact Avatars
     auto accInfo = &LRCInstance::getCurrentAccountInfo();
@@ -927,6 +951,7 @@ void
 CallWidget::on_sendContactRequestButton_clicked()
 {
     LRCInstance::getCurrentConversationModel()->makePermanent(selectedConvUid());
+    ui->sendContactRequestButton->hide();
 }
 
 void

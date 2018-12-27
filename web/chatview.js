@@ -1479,9 +1479,11 @@ function hideBody()
  * @param messages_array should contain history to be printed
  */
 /* exported printHistory */
-function printHistory(messages_array)
+function printHistory(messages_array, fadein = false)
 {
-    hideBody()
+    if (fadein) {
+        hideBody()
+    }
 
     historyBuffer = messages_array
     historyBufferIndex = 0
@@ -1490,7 +1492,9 @@ function printHistory(messages_array)
     printHistoryPart(messages, 0)
     isInitialLoading = false
 
-    document.body.classList.remove('fade');
+    if (fadein) {
+        document.body.classList.remove('fade');
+    }
 }
 
 /**

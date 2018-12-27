@@ -196,11 +196,12 @@ MessageWebView::removeInteraction(uint64_t interactionId)
 void
 MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
                              const std::map<uint64_t,
-                             lrc::api::interaction::Info> interactions)
+                             lrc::api::interaction::Info> interactions,
+                             bool fadeIn)
 {
     auto interactionsStr = interactionsToJsonArrayObject(conversationModel, interactions).toUtf8();
-    QString s = QString::fromLatin1("printHistory(%1);")
-        .arg(interactionsStr.constData());
+    QString s = QString::fromLatin1("printHistory(%1,%2);")
+        .arg(interactionsStr.constData()).arg(fadeIn);
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
@@ -358,6 +359,7 @@ PrivateBridging::acceptInvitation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
+        qobject_cast<MessageWebView*>(this->parent())->setInvitation(false);
     } catch (...) {
         qDebug() << "JS bridging - exception during acceptInvitation";
     }
@@ -370,6 +372,10 @@ PrivateBridging::refuseInvitation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->setInvitation(false);
+            emit messageView->conversationRemoved();
+        }
     } catch (...) {
         qDebug() << "JS bridging - exception during refuseInvitation";
     }
@@ -382,6 +388,10 @@ PrivateBridging::blockConversation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->setInvitation(false);
+            emit messageView->conversationRemoved();
+        }
     } catch (...) {
         qDebug() << "JS bridging - exception during blockConversation";
     }
