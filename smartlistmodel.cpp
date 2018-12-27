@@ -40,9 +40,7 @@ SmartListModel::SmartListModel(const lrc::api::account::Info &acc, QObject *pare
 int SmartListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        try {
-            return acc_.conversationModel->allFilteredConversations().size();
-        } catch (...) {}
+        return acc_.conversationModel->allFilteredConversations().size();
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
