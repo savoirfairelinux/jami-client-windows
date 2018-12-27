@@ -626,6 +626,9 @@ void CallWidget::slotAccountChanged(int index)
                 auto convModel = LRCInstance::getCurrentConversationModel();
                 auto currentConversation = Utils::getConversationFromUid(selectedConvUid(),
                     *convModel);
+                if (currentConversation == convModel->allFilteredConversations().end()) {
+                    return;
+                }
                 if (contactId == contactModel.get()->getContact((*currentConversation).participants.at(0)).profileInfo.uri) {
                     ui->messageView->clear();
                     ui->messageView->printHistory(*convModel, currentConversation->interactions);
