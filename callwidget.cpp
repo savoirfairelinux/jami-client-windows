@@ -581,20 +581,27 @@ CallWidget::on_ringContactLineEdit_returnPressed()
 
 void CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->makePermanent(convUid.toStdString());
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
+    ui->messageView->setInvitation(false);
 }
 
 void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), true);
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
+        backToWelcomePage();
+    }
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
 }
 
 void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
 {
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
-    LRCInstance::getCurrentConversationModel()->removeConversation(convUid.toStdString(), false);
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
+        backToWelcomePage();
+    }
+    LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
 }
 
 void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)

@@ -70,7 +70,9 @@ public:
                       lrc::api::interaction::Info> interactions);
     void setSenderImage(const std::string& sender,
                         const std::string& senderImage);
-    void setInvitation(bool show, const std::string& contactUri, const std::string& contactId);
+    void setInvitation(bool show,
+                       const std::string& contactUri = "",
+                       const std::string& contactId = "");
     void hideMessages();
 
 private slots:

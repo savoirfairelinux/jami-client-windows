@@ -358,6 +358,7 @@ PrivateBridging::acceptInvitation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
+        qobject_cast<MessageWebView*>(this->parent())->setInvitation(false);
     } catch (...) {
         qDebug() << "JS bridging - exception during acceptInvitation";
     }
@@ -370,6 +371,7 @@ PrivateBridging::refuseInvitation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
+        qobject_cast<MessageWebView*>(this->parent())->setInvitation(false);
     } catch (...) {
         qDebug() << "JS bridging - exception during refuseInvitation";
     }
@@ -382,6 +384,7 @@ PrivateBridging::blockConversation()
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
+        qobject_cast<MessageWebView*>(this->parent())->setInvitation(false);
     } catch (...) {
         qDebug() << "JS bridging - exception during blockConversation";
     }
