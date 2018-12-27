@@ -67,11 +67,17 @@ public:
     void removeInteraction(uint64_t interactionId);
     void printHistory(lrc::api::ConversationModel& conversationModel,
                       const std::map<uint64_t,
-                      lrc::api::interaction::Info> interactions);
+                      lrc::api::interaction::Info> interactions,
+                      bool fadeIn = false);
     void setSenderImage(const std::string& sender,
                         const std::string& senderImage);
-    void setInvitation(bool show, const std::string& contactUri, const std::string& contactId);
+    void setInvitation(bool show,
+                       const std::string& contactUri = "",
+                       const std::string& contactId = "");
     void hideMessages();
+
+signals:
+    void conversationRemoved();
 
 private slots:
     void slotLoadFinished();
