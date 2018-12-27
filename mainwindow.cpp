@@ -105,7 +105,7 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 #endif
 
-    win_sparkle_set_appcast_url("http://dl.jami.net/windows/winsparkle-ring.xml");
+    win_sparkle_set_appcast_url("https://dl.ring.cx/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
     win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
     win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
