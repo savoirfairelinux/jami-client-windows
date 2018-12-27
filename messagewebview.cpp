@@ -56,6 +56,12 @@ MessageWebView::MessageWebView(QWidget *parent)
     settings()->setAttribute(QWebEngineSettings::ScreenCaptureEnabled, false);
     settings()->setAttribute(QWebEngineSettings::LinksIncludedInFocusChain, false);
     settings()->setAttribute(QWebEngineSettings::LocalStorageEnabled, false);
+    settings()->setAttribute(QWebEngineSettings::AllowRunningInsecureContent, true);
+    settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
+    settings()->setAttribute(QWebEngineSettings::XSSAuditingEnabled, false);
+    settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
+
+    settings()->setFontSize(QWebEngineSettings::MinimumFontSize, 2);
 
     setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
 
