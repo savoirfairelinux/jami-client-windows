@@ -88,32 +88,33 @@ void
 VideoOverlay::setTime()
 {
     if (callId.empty()) { return; }
+    try {
+        auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
+        if (callInfo.status == lrc::api::call::Status::IN_PROGRESS) {
 
-    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
-    if(callInfo.status == lrc::api::call::Status::IN_PROGRESS) {
+            int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
+                std::chrono::steady_clock::now() - callInfo.startTime).count();
 
-        int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
-            std::chrono::steady_clock::now() - callInfo.startTime).count();
+            QString labelSec;
+            QString labelMin;
 
-        QString labelSec;
-        QString labelMin;
+            int numMinutes = numSeconds / 60;
+            int remainder = numSeconds - numMinutes * 60;
+            if (remainder < 10) {
+                labelSec = ":0" + QString::number(remainder);
+            } else {
+                labelSec = ":" + QString::number(remainder);
+            }
 
-        int numMinutes = numSeconds / 60;
-        int remainder = numSeconds - numMinutes * 60;
-        if (remainder < 10) {
-            labelSec = ":0" + QString::number(remainder);
-        } else {
-            labelSec = ":" + QString::number(remainder);
+            if (numMinutes < 10) {
+                labelMin = "0" + QString::number(numMinutes);
+            } else {
+                labelMin = QString::number(numMinutes);
+            }
+
+            ui->timerLabel->setText(labelMin + labelSec);
         }
-
-        if (numMinutes < 10) {
-            labelMin = "0" + QString::number(numMinutes);
-        } else {
-            labelMin = QString::number(numMinutes);
-        }
-
-        ui->timerLabel->setText(labelMin + labelSec);
-    }
+    } catch (...) { }
 }
 
 void VideoOverlay::toggleContextButtons(bool visible)
