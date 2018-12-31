@@ -230,5 +230,8 @@ CurrentAccountComboBox::leaveEvent(QEvent* event)
 void
 CurrentAccountComboBox::updateComboBoxDisplay()
 {
-    importLabelPhoto(LRCInstance::getCurrentAccountIndex());
+    auto currAccIndex = LRCInstance::getCurrentAccountIndex();
+    if (currAccIndex != currentIndex())
+        setCurrentIndex(currAccIndex);
+    importLabelPhoto(currAccIndex);
 }
