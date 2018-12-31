@@ -152,6 +152,8 @@ MainWindow::MainWindow(QWidget* parent) :
 
     connect(windowHandle(), &QWindow::activeChanged,
         [this]() {
+            if (!qApp)
+                return;
             auto screenNumber = qApp->desktop()->screenNumber();
             QScreen* screen = qApp->screens().at(screenNumber);
             windowHandle()->setScreen(nullptr);
