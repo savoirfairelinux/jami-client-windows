@@ -31,7 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Клиент Jami для Microsoft Windows.
+Jami – это приложение с распределённой архитектурой для безопасного общения.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Публичное зарегистрированное имя пользователя</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки аккаунта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -146,7 +147,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Настройки основных данных аккаунта</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -206,7 +207,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Номер голосовой почты SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
@@ -581,7 +582,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Экспортировать в сеть</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -622,7 +623,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>Сгенерированный PIN для связывания</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -690,7 +691,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="76"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить аккаунт</translation>
     </message>
 </context>
 <context>
@@ -851,64 +852,64 @@ Copy and share it with your friends!
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Start video call</source>
         <translation>Начать видеовызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="311"/>
+        <location filename="../callwidget.cpp" line="318"/>
         <source>Start audio call</source>
         <translation>Начать голосовой вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Clear conversation</source>
         <translation>Очистить разговор</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Remove contact</source>
         <translation>Удалить контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Block contact</source>
         <translation>Заблокировать контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="359"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation>Сообщение от %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="835"/>
+        <location filename="../callwidget.cpp" line="863"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="840"/>
+        <location filename="../callwidget.cpp" line="868"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="658"/>
+        <location filename="../callwidget.cpp" line="687"/>
         <source>Call incoming from %1</source>
         <translation>Звонок от %1</translation>
     </message>
@@ -989,7 +990,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1013,25 +1014,25 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="71"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="73"/>
-        <source>Files (*)</source>
-        <translation>Файлы (*)</translation>
+        <location filename="../photoboothwidget.cpp" line="94"/>
+        <source>Image Files (*.jpg, *.jpeg, *png)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
     </message>
@@ -1135,17 +1136,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Транслировать весь экран</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Транслировать область экрана</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Поделиться файлом</translation>
     </message>

@@ -851,64 +851,64 @@ Copy and share it with your friends!
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Start video call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="311"/>
+        <location filename="../callwidget.cpp" line="318"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Remove contact</source>
         <translation>Šalinti kontaktą</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Block contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="359"/>
         <source>Copy number</source>
         <translation>Kopijuoti numerį</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation>Gauta žinutė nuo %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="835"/>
+        <location filename="../callwidget.cpp" line="863"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="840"/>
+        <location filename="../callwidget.cpp" line="868"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="658"/>
+        <location filename="../callwidget.cpp" line="687"/>
         <source>Call incoming from %1</source>
         <translation>Gaunamasis skambutis nuo %1</translation>
     </message>
@@ -1013,25 +1013,25 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="71"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Pasirinkti failą</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="73"/>
-        <source>Files (*)</source>
-        <translation>Failai (*)</translation>
+        <location filename="../photoboothwidget.cpp" line="94"/>
+        <source>Image Files (*.jpg, *.jpeg, *png)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Choose File</source>
         <translation>Pasirinkti failą</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Files (*)</source>
         <translation>Failai (*)</translation>
     </message>
@@ -1135,17 +1135,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Bendrinti visą ekraną</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Bendrinti ekrano sritį</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Bendrinti failą</translation>
     </message>

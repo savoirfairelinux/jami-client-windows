@@ -31,7 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Le client Windows de Jami
+Jami est un logiciel libre de communication sécurisé et distribué.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur public enregistré</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres Compte Jami</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -581,7 +582,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Exporter sur le réseau</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -607,7 +608,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Pour ajouter un nouvel appareil à votre compte Jami, vous devez exporter votre compte sur le Jami. Cela générera un code PIN qui devra être saisi sur le nouvel appareil dans les 10 minutes suivant sa génération.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
@@ -690,7 +691,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="76"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un compte</translation>
     </message>
 </context>
 <context>
@@ -851,64 +852,64 @@ Copy and share it with your friends!
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Start video call</source>
         <translation>Démarrer un appel vidéo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="311"/>
+        <location filename="../callwidget.cpp" line="318"/>
         <source>Start audio call</source>
         <translation>Démarrer un appel audio</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Clear conversation</source>
         <translation>Effacer la conversation</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Remove contact</source>
         <translation>Retirer le contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Block contact</source>
         <translation>Bloquer le contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="359"/>
         <source>Copy number</source>
         <translation>Copier le numéro ou identifiant Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation>Message en provenance de %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="835"/>
+        <location filename="../callwidget.cpp" line="863"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="840"/>
+        <location filename="../callwidget.cpp" line="868"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="658"/>
+        <location filename="../callwidget.cpp" line="687"/>
         <source>Call incoming from %1</source>
         <translation>Appel entrant de %1</translation>
     </message>
@@ -989,7 +990,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1013,25 +1014,25 @@ Copy and share it with your friends!
         <translation>Affichage du photomaton</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="71"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Choisir un fichier</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="73"/>
-        <source>Files (*)</source>
-        <translation>Fichiers (*)</translation>
+        <location filename="../photoboothwidget.cpp" line="94"/>
+        <source>Image Files (*.jpg, *.jpeg, *png)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Choose File</source>
         <translation>Choisir un fichier</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Files (*)</source>
         <translation>Fichiers (*)</translation>
     </message>
@@ -1135,17 +1136,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Partager tout l&apos;écran</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Partager une partie de l&apos;écran</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Partager un fichier</translation>
     </message>
@@ -1376,7 +1377,9 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="670"/>
         <source>Register your username on the network. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Enregistre votre nom d&apos;utilisateur Jami.
+Ceci réserve ce nom de façon définitive et uniquement pour votre usage.
+Vos amis pourront vous appeler avec ce nom.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="673"/>
@@ -1448,7 +1451,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizarddialog.ui" line="933"/>
         <location filename="../wizarddialog.cpp" line="101"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Génération de votre compte Jami...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="969"/>
@@ -1729,7 +1732,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../wizardwidget.ui" line="960"/>
         <location filename="../wizardwidget.cpp" line="105"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Génération de votre compte Jami...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="996"/>

@@ -126,7 +126,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de la cuenta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -690,7 +690,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="76"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Añadir cuenta</translation>
     </message>
 </context>
 <context>
@@ -734,7 +734,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="324"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar conversaciones</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="327"/>
@@ -749,7 +749,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="253"/>
         <source>Search contacts or enter ID</source>
-        <translation type="unfinished"/>
+        <translation>Buscar contactos o introducir Id.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="610"/>
@@ -808,12 +808,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="337"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar invitaciones</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="340"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Invitaciones</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1401"/>
@@ -851,64 +851,64 @@ Copy and share it with your friends!
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Iniciar videollamada</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="311"/>
+        <location filename="../callwidget.cpp" line="318"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Remove contact</source>
         <translation>Eliminar contacto</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Block contact</source>
         <translation>Bloquear contacto</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="359"/>
         <source>Copy number</source>
         <translation>Copiar Número</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Contacta conmigo en Jami</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Mi Id. es :</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation>Recibido mensaje de %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="835"/>
+        <location filename="../callwidget.cpp" line="863"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="840"/>
+        <location filename="../callwidget.cpp" line="868"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="658"/>
+        <location filename="../callwidget.cpp" line="687"/>
         <source>Call incoming from %1</source>
         <translation>Llamada entrante de %1</translation>
     </message>
@@ -918,22 +918,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar cuenta</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="55"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>¿Desea eliminar la siguiente cuenta?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="135"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>Esta cuenta se perderá definitivamente si no ha sido exportada o añadida a otro dispositivo.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="212"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar cuenta definitivamente</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="218"/>
@@ -943,7 +943,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="250"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar la eliminación de la cuenta</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="256"/>
@@ -956,17 +956,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="72"/>
         <source>Accept invite</source>
-        <translation type="unfinished"/>
+        <translation>Aceptar invitación</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="104"/>
         <source>Ignore invite</source>
-        <translation type="unfinished"/>
+        <translation>Ignorar invitación</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="136"/>
         <source>Block person</source>
-        <translation type="unfinished"/>
+        <translation>Bloquear a esta persona</translation>
     </message>
 </context>
 <context>
@@ -1013,25 +1013,25 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="71"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Examinar</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="73"/>
-        <source>Files (*)</source>
-        <translation>Ficheros (*)</translation>
+        <location filename="../photoboothwidget.cpp" line="94"/>
+        <source>Image Files (*.jpg, *.jpeg, *png)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Choose File</source>
         <translation>Examinar</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Files (*)</source>
         <translation>Ficheros (*)</translation>
     </message>
@@ -1046,24 +1046,24 @@ Copy and share it with your friends!
     <message>
         <location filename="../settingsitemwidget.cpp" line="68"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Editar nombre del dispositivo</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="74"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Desvincular dispositivo de la cuenta</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="90"/>
         <source>Unblock Contact</source>
-        <translation type="unfinished"/>
+        <translation>Desbloquear contacto</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="37"/>
         <location filename="../wizardwidget.cpp" line="37"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Cuenta de Jami</translation>
     </message>
 </context>
 <context>
@@ -1071,7 +1071,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar carpeta</translation>
     </message>
 </context>
 <context>
@@ -1135,17 +1135,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Compartir toda la pantalla</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Compartir la ventana</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Compartir archivo</translation>
     </message>
@@ -1160,12 +1160,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../wizarddialog.cpp" line="97"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Migrando su cuenta de Jami...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="99"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Importando archivo de cuenta...</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="174"/>
@@ -1277,7 +1277,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../wizarddialog.ui" line="151"/>
         <source>Create Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Crear una cuenta en Jami</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="164"/>
@@ -1326,7 +1326,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Para vincular este dispositivo a otra cuenta, primero &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;debe obtener un código &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt; PIN. Para generar el código PIN:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vaya a la &lt;span style=&quot; font-weight:600;&quot;&gt;al gestor de configuración de la cuenta&lt;/span&gt; de un dispositivo anterior&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seleccione la &lt;span style=&quot; font-weight:600;&quot;&gt;cuenta de Jami&lt;/span&gt; que desea usar&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vaya a la pestaña &lt;span style=&quot; font-weight:600;&quot;&gt;Dispositivos&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seleccione &lt;span style=&quot; font-weight:600;&quot;&gt;Añadir un dispositivo&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Obtendrá el PIN necesario para completar este formulario. El PIN solo es válido durante &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutos&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="357"/>
@@ -1346,7 +1355,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña del archivo:</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="413"/>
@@ -1585,7 +1594,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="433"/>
         <source>Archive password:</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña del archivo:</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="440"/>
@@ -1641,7 +1650,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="178"/>
         <source>Create Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Crear una cuenta en Jami</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="697"/>
@@ -1769,12 +1778,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="101"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Migrando su cuenta de Jami...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="103"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Importando archivo de cuenta...</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="167"/>

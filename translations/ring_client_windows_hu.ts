@@ -157,7 +157,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation>Megjelenített álnév bemenet</translation>
+        <translation>Megjelenített álnév bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
@@ -187,12 +187,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation>Névszolgáltató URL bemenet</translation>
+        <translation>Névszolgáltató URL-bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation>SIP felhasználónév bemenet</translation>
+        <translation>SIP felhasználónév bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
@@ -202,7 +202,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation>SIP proxy URL bemenet</translation>
+        <translation>SIP proxy URL bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
@@ -257,7 +257,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation>Bemeneti megerősítés</translation>
+        <translation>Beviteli megerősítés</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
@@ -448,22 +448,22 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation>TURN kiszolgáló-URL bemenet</translation>
+        <translation>TURN kiszolgáló-URL bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation>TURN kiszolgáló felhasználónév bemenet</translation>
+        <translation>TURN kiszolgáló felhasználónév bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation>TURN kiszolgáló jelszó bemenet</translation>
+        <translation>TURN kiszolgáló jelszó bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation>TURN kiszolgáló tartomány bemenet</translation>
+        <translation>TURN kiszolgáló tartomány bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -537,7 +537,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation>Személyes kulcs jelszava bemenet</translation>
+        <translation>Személyes kulcs jelszava bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
@@ -691,7 +691,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountitemdelegate.cpp" line="76"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Fiók hozzáadása</translation>
     </message>
 </context>
 <context>
@@ -854,64 +854,64 @@ Másolja és ossza meg a barátaival!</translation>
         <translation>Mégse</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="300"/>
+        <location filename="../callwidget.cpp" line="307"/>
         <source>Start video call</source>
         <translation>Videóhívás indítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="311"/>
+        <location filename="../callwidget.cpp" line="318"/>
         <source>Start audio call</source>
         <translation>Hanghívás indítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="327"/>
+        <location filename="../callwidget.cpp" line="334"/>
         <source>Clear conversation</source>
         <translation>Beszélgetés törlése</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="341"/>
         <source>Remove contact</source>
         <translation>Partner eltávolítása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Block contact</source>
         <translation>Partner letiltása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="352"/>
+        <location filename="../callwidget.cpp" line="359"/>
         <source>Copy number</source>
         <translation>Szám másolása</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>Contact me on Jami</source>
         <translation>Lépjen kapcsolatba velem a Jami-n</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="922"/>
+        <location filename="../callwidget.cpp" line="950"/>
         <source>My Id is : </source>
         <translation>Az azonosítóm:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="259"/>
+        <location filename="../callwidget.cpp" line="266"/>
         <source>Message incoming from %1</source>
         <translation>Bejövő üzenet a következőtől: %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="835"/>
+        <location filename="../callwidget.cpp" line="863"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="840"/>
+        <location filename="../callwidget.cpp" line="868"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="658"/>
+        <location filename="../callwidget.cpp" line="687"/>
         <source>Call incoming from %1</source>
         <translation>Bejövő hívás tőle: %1</translation>
     </message>
@@ -1016,25 +1016,25 @@ Másolja és ossza meg a barátaival!</translation>
         <translation>Fénykép automata kijelző</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="71"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Fájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="73"/>
-        <source>Files (*)</source>
-        <translation>Fájlok (*)</translation>
+        <location filename="../photoboothwidget.cpp" line="94"/>
+        <source>Image Files (*.jpg, *.jpeg, *png)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Choose File</source>
         <translation>Fájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="337"/>
+        <location filename="../messagewebview.cpp" line="344"/>
         <source>Files (*)</source>
         <translation>Fájlok (*)</translation>
     </message>
@@ -1138,17 +1138,17 @@ Másolja és ossza meg a barátaival!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="280"/>
         <source>Share entire screen</source>
         <translation>Az egész képernyő megosztása</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="283"/>
         <source>Share screen area</source>
         <translation>Képernyő részének megosztása</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="290"/>
         <source>Share file</source>
         <translation>Fájl megosztása</translation>
     </message>
@@ -1158,7 +1158,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../wizarddialog.cpp" line="71"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Fiókját át kell vinni. Adja meg a jelszavát.</translation>
+        <translation>Fiók átvitel szükséges. Adja meg a jelszavát.</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="97"/>
@@ -1353,7 +1353,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizarddialog.ui" line="389"/>
         <source>Account archive path selector</source>
-        <translation>Fiók archívum útvonal választó </translation>
+        <translation>Fiók archívum útvonal választó</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="406"/>
@@ -1577,7 +1577,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Először az eszköz összekapcsolása egy másik fiókkal &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;&lt;/span&gt;meg kell szereznie a PIN-kódot&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;. A PIN kód létrehozása:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a &lt;span style=&quot; font-weight:600;&quot;&gt;Fiókkezelés beállítása&lt;/span&gt; egy korábbi eszközről&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza a &lt;span style=&quot; font-weight:600;&quot;&gt;Jami fiók&lt;/span&gt; szeretné használni&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Menjen a &lt;span style=&quot; font-weight:600;&quot;&gt;Eszközök&lt;/span&gt; lap&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Válassza &lt;span style=&quot; font-weight:600;&quot;&gt;Eszköz hozzáadása&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Kapja meg a szükséges PIN-kódot az űrlap kitöltéséhez. A PIN-kód csak érvényes &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 percig&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="384"/>
@@ -1592,7 +1601,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.ui" line="416"/>
         <source>Account archive path selector</source>
-        <translation>Fiók archívum útvonal választó </translation>
+        <translation>Fiók archívum útvonal választó</translation>
     </message>
     <message>
         <location filename="../wizardwidget.ui" line="433"/>
@@ -1776,7 +1785,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../wizardwidget.cpp" line="66"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Fiókját át kell vinni. Adja meg a jelszavát.</translation>
+        <translation>Fiók átvitel szükséges. Adja meg a jelszavát.</translation>
     </message>
     <message>
         <location filename="../wizardwidget.cpp" line="101"/>
