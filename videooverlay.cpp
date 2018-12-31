@@ -46,8 +46,28 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->onHoldLabel->setVisible(false);
 
-    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
-        [this](const std::string& tempCallId) { callId = tempCallId; });
+    auto accountList = LRCInstance::accountModel().getAccountList();
+    if (!accountList.size()) {
+        QMetaObject::Connection* const connection = new QMetaObject::Connection;
+        connect(&LRCInstance::accountModel(),
+            &lrc::api::NewAccountModel::accountAdded,
+            [this, connection](const std::string& accountId) {
+                Q_UNUSED(accountId);
+                connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
+                    [this](const std::string& tempCallId) {
+                        callId = tempCallId;
+                    });
+                QObject::disconnect(*connection);
+                if (connection) {
+                    delete connection;
+                }
+            });
+    } else {
+        connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
+            [this](const std::string& tempCallId) {
+                callId = tempCallId;
+            });
+    }
 
     connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
     oneSecondTimer_->start(1000);
