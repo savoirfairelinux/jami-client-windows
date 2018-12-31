@@ -150,10 +150,8 @@ MainWindow::MainWindow(QWidget* parent) :
 
     lastScr_ = startScreen;
 
-    connect(windowHandle(), &QWindow::activeChanged,
+    activeChangedConnection_ = connect(windowHandle(), &QWindow::activeChanged,
         [this]() {
-            if (!qApp)
-                return;
             auto screenNumber = qApp->desktop()->screenNumber();
             QScreen* screen = qApp->screens().at(screenNumber);
             windowHandle()->setScreen(nullptr);
@@ -293,6 +291,7 @@ MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::windowState, saveState());
     }
     this->disconnect(screenChangedConnection_);
+    this->disconnect(activeChangedConnection_);
     LRCInstance::reset();
     QMainWindow::closeEvent(event);
 }
