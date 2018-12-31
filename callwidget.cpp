@@ -235,7 +235,7 @@ CallWidget::navigated(bool to)
     if (to) {
         updateSmartList();
         connectConversationModel();
-        ui->currentAccountComboBox->accountListUpdate();
+        ui->currentAccountComboBox->updateComboBoxDisplay();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
