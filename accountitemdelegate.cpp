@@ -87,15 +87,15 @@ AccountItemDelegate::paint(QPainter* painter,
         QPixmap::fromImage(index.data(AccountListModel::Role::Picture).value<QImage>())
         .scaled(avatarSize_, avatarSize_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
-    // Presence indicator
-    QPainterPath outerCircle, innerCircle;
-    QPointF center(rectAvatar.right() - avatarSize_ / 6, (rectAvatar.bottom() - avatarSize_ / 6) + 1);
-    qreal outerCRadius = avatarSize_ / 6, innerCRadius = outerCRadius * 0.85;
-    outerCircle.addEllipse(center, outerCRadius, outerCRadius);
-    innerCircle.addEllipse(center, innerCRadius, innerCRadius);
     auto status = index.data(static_cast<int>(AccountListModel::Role::Status)).value<int>();
     auto isPresent = Utils::toEnum<lrc::api::account::Status>(status) == lrc::api::account::Status::REGISTERED;
+    // Presence indicator
     if (isPresent) {
+        QPainterPath outerCircle, innerCircle;
+        QPointF center(rectAvatar.right() - avatarSize_ / 6, (rectAvatar.bottom() - avatarSize_ / 6) + 1);
+        qreal outerCRadius = avatarSize_ / 6, innerCRadius = outerCRadius * 0.75;
+        outerCircle.addEllipse(center, outerCRadius, outerCRadius);
+        innerCircle.addEllipse(center, innerCRadius, innerCRadius);
         painter->fillPath(outerCircle, Qt::white);
         painter->fillPath(innerCircle, RingTheme::presenceGreen_);
     }
