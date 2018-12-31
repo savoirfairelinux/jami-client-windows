@@ -108,7 +108,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         QPainterPath outerCircle, innerCircle;
         QPointF presenceCenter(40.0 + p.x(), 40.0);
         qreal outerCircleRadius = cellHeight_/6.5;
-        qreal innerCircleRadius = outerCircleRadius - 1;
+        qreal innerCircleRadius = outerCircleRadius * 0.75;
         outerCircle.addEllipse(presenceCenter, outerCircleRadius, outerCircleRadius);
         innerCircle.addEllipse(presenceCenter, innerCircleRadius, innerCircleRadius);
         painter.fillPath(outerCircle, Qt::white);
