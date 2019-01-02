@@ -42,6 +42,7 @@
 #include "pixbufmanipulator.h"
 
 #include "globalsystemtray.h"
+#include "lrcinstance.h"
 
 bool
 Utils::CreateStartupLink()
@@ -428,4 +429,18 @@ Utils::generateTintedPixmap(const QString& filename, QColor color)
         }
     }
     return QPixmap::fromImage(tmpImage);
+}
+
+std::string
+Utils::getConversationFromCallId(const std::string& callId)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto conversations = convModel->allFilteredConversations();
+    std::string convUid;
+    for (auto conversation : conversations) {
+        if (conversation.callId == callId) {
+            return conversation.uid;
+        }
+    }
+    return "";
 }

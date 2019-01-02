@@ -51,7 +51,7 @@ public:
         ContextMenuOpen
     };
 
-    explicit SmartListModel(const lrc::api::account::Info& acc, QObject *parent = 0);
+    explicit SmartListModel(const std::string& accId, QObject *parent = 0);
 
     // QAbstractItemModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -61,9 +61,11 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    void setAccount(const std::string& accId);
+
     // hack for context menu highlight retention
     bool isContextMenuOpen{ false };
 
 private:
-    const AccountInfo& acc_;
+    std::string accId_;
 };
