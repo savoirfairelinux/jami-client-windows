@@ -57,8 +57,8 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
                     [this](const std::string& tempCallId) {
                         callId = tempCallId;
                     });
-                QObject::disconnect(*connection);
                 if (connection) {
+                    QObject::disconnect(*connection);
                     delete connection;
                 }
             });

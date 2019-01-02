@@ -413,11 +413,6 @@ NewWizardWidget::createRingAccount(const QString &displayName,
             auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
             confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
             LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-            LRCInstance::editableAccountModel()->registerName(
-                LRCInstance::getCurrAccId(),
-                "",
-                registeredName_.toStdString()
-            );
             connect(LRCInstance::editableAccountModel(),
                 &lrc::api::NewAccountModel::nameRegistrationEnded,
                 [this] {
@@ -425,6 +420,11 @@ NewWizardWidget::createRingAccount(const QString &displayName,
                     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
                     emit NavigationRequested(ScreenEnum::CallScreen);
                 });
+            LRCInstance::editableAccountModel()->registerName(
+                LRCInstance::getCurrAccId(),
+                "",
+                registeredName_.toStdString()
+            );
             if (ui->setAvatarWidget->hasAvatar()) {
                 LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
             }
