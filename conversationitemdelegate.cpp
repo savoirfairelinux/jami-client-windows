@@ -62,9 +62,15 @@ ConversationItemDelegate::paint(QPainter* painter
     // menu is open…
     auto rowHighlight = highlightMap_.find(index.row());
     if (selected) {
-        painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+       painter->fillRect(option.rect, RingTheme::smartlistSelection_);
     } else if (rowHighlight != highlightMap_.end() && (*rowHighlight).second) {
-        painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+       painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+    }
+    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+    auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
+    if (LRCInstance::getCurrentCallModel()->hasCall(conversation->callId)) {
+        auto color = QColor(RingTheme::blue_.lighter(180)); color.setAlpha(128);
+        painter->fillRect(option.rect, color);
     }
 
     QRect &rect = opt.rect;

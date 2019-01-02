@@ -133,8 +133,7 @@ private:
     void setConversationFilter(lrc::api::profile::Type filter);
     void updateConversationsFilterWidget();
     void updateComboBox();
-    const std::string& selectedAccountId();
-    const std::string& selectedConvUid();
+    void connectAccount(const std::string& accId);
 
     QMenu* menu_;
 
@@ -166,5 +165,6 @@ private:
     QMetaObject::Connection smartlistSelectionConnection_;
     QMetaObject::Connection interactionRemovedConnection_;
     QMetaObject::Connection contactAddedConnection_;
+    QMetaObject::Connection callStatusChangedConnection_;
 
 };
