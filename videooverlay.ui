@@ -384,26 +384,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="videoCfgBtn">
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Configuration</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_settings_white_48dp_2x.png</normaloff>:/images/icons/ic_settings_white_48dp_2x.png</iconset>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
