@@ -117,15 +117,6 @@ VideoOverlay::setTime()
     } catch (...) { }
 }
 
-void VideoOverlay::toggleContextButtons(bool visible)
-{
-    if (! visible) {
-        ui->videoCfgBtn->hide();
-    } else {
-        ui->videoCfgBtn->show();
-    }
-}
-
 void
 VideoOverlay::setVideoMuteVisibility(bool visible)
 {
