@@ -290,9 +290,8 @@ MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
     }
-    this->disconnect(screenChangedConnection_);
     this->disconnect(activeChangedConnection_);
-    LRCInstance::reset();
+    this->disconnect(screenChangedConnection_);
     QMainWindow::closeEvent(event);
 }
 
