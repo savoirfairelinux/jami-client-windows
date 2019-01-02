@@ -159,7 +159,6 @@ VideoView::callStateChanged(Call* call, Call::State previousState)
         timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
     } else {
         QObject::disconnect(timerConnection_);
-        emit setChatVisibility(false);
         try {
             if (call) {
                 emit closing(call->historyId().toStdString());
