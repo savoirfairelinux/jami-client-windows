@@ -1,8 +1,8 @@
 /***************************************************************************
- * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Anthony Lï¿½onard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
