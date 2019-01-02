@@ -235,6 +235,15 @@ CallWidget::navigated(bool to)
     if (to) {
         updateSmartList();
         connectConversationModel();
+        try {
+            auto accountList = LRCInstance::accountModel().getAccountList();
+            if (accountList.size() == 1) {
+                auto index = Utils::indexInVector(accountList, LRCInstance::getCurrAccId());
+                if (index != -1) {
+                    slotAccountChanged(index);
+                }
+            }
+        } catch (...) {}
         ui->currentAccountComboBox->updateComboBoxDisplay();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
