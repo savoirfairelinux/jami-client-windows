@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *

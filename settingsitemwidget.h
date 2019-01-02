@@ -1,5 +1,5 @@
 /****************************************************************************
- *   Copyright (C) 2018 Savoir-faire Linux                                  *
+ *    Copyright (C) 2018-2019 Savoir-faire Linux Inc.                                  *
  *   Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                     *
  *                                                                          *
  *   This library is free software; you can redistribute it and/or          *

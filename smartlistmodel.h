@@ -1,6 +1,6 @@
 /***************************************************************************
-* Copyright (C) 2017 by Savoir-faire Linux                                *
-* Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+* Copyright (C) 2017-2019 by Savoir-faire Linux                                *
+* Author: Anthony Lï¿½onard <anthony.leonard@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
