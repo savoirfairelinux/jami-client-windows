@@ -410,16 +410,6 @@ NewWizardWidget::createRingAccount(const QString &displayName,
     const QString &pin,
     const QString &archivePath)
 {
-    QtConcurrent::run(
-        [=] {
-            LRCInstance::accountModel().createNewAccount(
-                lrc::api::profile::Type::RING,
-                displayName.toStdString(),
-                archivePath.toStdString(),
-                password.toStdString(),
-                pin.toStdString()
-            );
-        });
     QMetaObject::Connection* const connection = new QMetaObject::Connection;
     *connection = connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
         [this, connection](const std::string& accountId) {
@@ -446,6 +436,16 @@ NewWizardWidget::createRingAccount(const QString &displayName,
             if (connection) {
                 delete connection;
             }
+        });
+    QtConcurrent::run(
+        [=] {
+            LRCInstance::accountModel().createNewAccount(
+                lrc::api::profile::Type::RING,
+                displayName.toStdString(),
+                archivePath.toStdString(),
+                password.toStdString(),
+                pin.toStdString()
+            );
         });
     changePage(ui->spinnerPage);
     repaint();
