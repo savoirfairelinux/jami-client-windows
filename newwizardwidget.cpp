@@ -260,10 +260,8 @@ void
 NewWizardWidget::on_nextButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
-    if (curWidget != ui->createRingAccountPage) {
-        ui->setAvatarWidget->stopBooth();
-        disconnect(registeredNameFoundConnection_);
-    }
+    ui->setAvatarWidget->stopBooth();
+    disconnect(registeredNameFoundConnection_);
     if (curWidget == ui->createRingAccountPage ||
         curWidget == ui->linkRingAccountPage) {
         processWizardInformations();
@@ -274,12 +272,10 @@ void
 NewWizardWidget::on_previousButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
-    if (curWidget != ui->createRingAccountPage) {
-        ui->setAvatarWidget->stopBooth();
-        disconnect(registeredNameFoundConnection_);
-        lookupStatusLabel_->hide();
-        passwordStatusLabel_->hide();
-    }
+    ui->setAvatarWidget->stopBooth();
+    disconnect(registeredNameFoundConnection_);
+    lookupStatusLabel_->hide();
+    passwordStatusLabel_->hide();
     if (curWidget == ui->createRingAccountPage ||
         curWidget == ui->linkRingAccountPage) {
         changePage(ui->welcomePage);
