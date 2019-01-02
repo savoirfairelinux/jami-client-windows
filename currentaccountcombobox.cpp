@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2018 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
