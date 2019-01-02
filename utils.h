@@ -78,6 +78,7 @@ namespace Utils
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
     QByteArray QByteArrayFromFile(const QString& filename);
     QPixmap generateTintedPixmap(const QString& filename, QColor color);
+    std::string getConversationFromCallId(const std::string& callId);
 
     template<typename E>
     constexpr inline typename std::enable_if<   std::is_enum<E>::value,

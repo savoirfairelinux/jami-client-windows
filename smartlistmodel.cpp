@@ -30,17 +30,19 @@
 // Client
 #include "pixbufmanipulator.h"
 #include "utils.h"
+#include "lrcinstance.h"
 
-SmartListModel::SmartListModel(const lrc::api::account::Info &acc, QObject *parent)
+SmartListModel::SmartListModel(const std::string& accId, QObject *parent)
     : QAbstractItemModel(parent),
-    acc_(acc)
+    accId_(accId)
 {
 }
 
 int SmartListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        return acc_.conversationModel->allFilteredConversations().size();
+        auto& accInfo = LRCInstance::accountModel().getAccountInfo(accId_);
+        return accInfo.conversationModel->allFilteredConversations().size();
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
@@ -57,32 +59,33 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    const auto& item = acc_.conversationModel->filteredConversation(index.row());
+    auto& accInfo = LRCInstance::accountModel().getAccountInfo(accId_);
+    const auto& item = accInfo.conversationModel->filteredConversation(index.row());
     if (item.participants.size() > 0) {
         try {
             switch (role) {
             case Role::Picture:
             case Qt::DecorationRole:
-                return GlobalInstances::pixmapManipulator().decorationRole(item, acc_);
+                return GlobalInstances::pixmapManipulator().decorationRole(item, accInfo);
             case Role::DisplayName:
             case Qt::DisplayRole:
             {
-                auto& contact = acc_.contactModel->getContact(item.participants[0]);
+                auto& contact = accInfo.contactModel->getContact(item.participants[0]);
                 return QVariant(QString::fromStdString(Utils::bestNameForContact(contact)));
             }
             case Role::DisplayID:
             {
-                auto& contact = acc_.contactModel->getContact(item.participants[0]);
+                auto& contact = accInfo.contactModel->getContact(item.participants[0]);
                 return QVariant(QString::fromStdString(Utils::bestIdForContact(contact)));
             }
             case Role::Presence:
             {
-                auto& contact = acc_.contactModel->getContact(item.participants[0]);
+                auto& contact = accInfo.contactModel->getContact(item.participants[0]);
                 return QVariant(contact.isPresent);
             }
             case Role::URI:
             {
-                auto& contact = acc_.contactModel->getContact(item.participants[0]);
+                auto& contact = accInfo.contactModel->getContact(item.participants[0]);
                 return QVariant(QString::fromStdString(contact.profileInfo.uri));
             }
             case Role::UnreadMessagesCount:
@@ -98,7 +101,7 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
                 return QVariant(Utils::toUnderlyingValue(item.interactions.at(item.lastMessageUid).type));
             case Role::ContactType:
             {
-                auto& contact = acc_.contactModel->getContact(item.participants[0]);
+                auto& contact = accInfo.contactModel->getContact(item.participants[0]);
                 return QVariant(Utils::toUnderlyingValue(contact.profileInfo.type));
             }
             case Role::UID:
@@ -143,4 +146,10 @@ Qt::ItemFlags SmartListModel::flags(const QModelIndex &index) const
         flags &= ~(Qt::ItemIsSelectable);
     }
     return flags;
+}
+
+void
+SmartListModel::setAccount(const std::string& accId)
+{
+    accId_ = accId;
 }

@@ -381,6 +381,12 @@
                     <attribute name="headerVisible">
                      <bool>false</bool>
                     </attribute>
+                    <attribute name="headerDefaultSectionSize">
+                     <number>0</number>
+                    </attribute>
+                    <attribute name="headerMinimumSectionSize">
+                     <number>0</number>
+                    </attribute>
                    </widget>
                   </item>
                  </layout>
