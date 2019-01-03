@@ -82,13 +82,6 @@ QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QP
     background-color: rgb(212, 212, 212);
 }
 
-QWidget#callInvitePage, QWidget#outboundCallPage{
-    background-color : rgb(77, 77, 77);
-    background-image : url(:/images/background-dark.png);
-    background-repeat : repeat-x;
-    background-position: bottom;
-}
-
 RingContactLineEdit{
     border-color: rgb(242, 242, 242);
     border-radius: 5px;
@@ -119,22 +112,18 @@ SmartListView {
     border: none;
 }
 
-QListView#accountView::item{
-    height: 40px;
-}
-
 QListView#audioCodecView, QListView#videoCodecView, QListView#cipherListView{
     background-color: transparent;
     border: 2px solid rgb(77, 77, 77);
 }
 
-QListView#audioCodecView::item, QListView#videoCodecView::item, QListView#cipherListView::item, QListView#listMessageView::item{
+QListView#audioCodecView::item, QListView#videoCodecView::item, QListView#cipherListView::item {
     height: 30px;
     font: 30px;
 
 }
 
-QListView#audioCodecView::indicator, QListView#videoCodecView::indicator, QListView#accountView::indicator,
+QListView#audioCodecView::indicator, QListView#videoCodecView::indicator,
 QListView#cipherListView::indicator{
     height : 12 px;
     width : 12 px;
@@ -144,7 +133,7 @@ QListView#cipherListView::indicator{
 }
 
 QListView#audioCodecView::indicator:checked,  QListView#videoCodecView::indicator:checked,
-QListView#accountView::indicator:checked, QListView#cipherListView::indicator:checked{
+QListView#cipherListView::indicator:checked{
     border-color: #2b4b7e;
     background: #2b4b7e;
     image: url(":/images/icons/ic_check_white_18dp_2x.png");
@@ -156,7 +145,8 @@ QListView#cipherListView::item:selected{
     border: none;
 }
 
-QListView#audioCodecView::item:hover, QListView#videoCodecView::item:hover, QListView#cipherListView::item:hover{
+QListView#audioCodecView::item:hover, QListView#videoCodecView::item:hover,
+QListView#cipherListView::item:hover{
     background-color: rgba(229, 229, 229, 255);
     border-radius: 18px;
 }
@@ -167,34 +157,31 @@ QListView#cipherListView::item:disabled
 }
 
 SmartListView::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
-QListView#contactRequestList::item:selected, QListView#BannedList::item:selected {
+QListView#BannedList::item:selected {
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
 SmartListView::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
-QListView#contactRequestList::item:hover, QListView#BannedList::item:hover {
+QListView#BannedList::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
-QWidget#messagingHeaderWidget{
-	border-bottom: 2px solid rgb(240, 240, 240);
+QWidget#messagingHeaderWidget {
+    background-color: rgba(255, 255, 255, 255);
+    border-bottom: 2px solid rgb(240, 240, 240);
 }
 
-QLineEdit#numberBar{
-    border-color: rgba(0, 192, 212, 0.6);
-    border-radius: 5px;
-    border-width: 2px;
-    border-style: outset;
-    background-color: rgba(255, 255, 255, 0.8)
+QWidget#messageViewLayoutWidget, QWidget#welcomePage {
+    background-color: rgba(255, 255, 255, 255);
 }
 
 QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton,
 QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
-QPushButton#qualityButton, QPushButton#recButton{
+QPushButton#qualityButton, QPushButton#recButton {
     background-color: rgba(0, 0, 0, 140);
     border-radius: 18px;
-    border:solid 1px;
+    border: solid 1px;
 }
 
 QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover,
@@ -287,11 +274,6 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QDialog#WizardDialog, QWidget#welcomePage, QWidget#sendContactRequestPage,
-QDialog#DeleteAccountDialog, QDialog#DeleteContactDialog{
-    background: rgb(255, 255, 255);
-}
-
 QDialog#CallUtilsDialog, QDialog#QualityDialog{
     background: transparent;
 }
@@ -312,7 +294,8 @@ QListView#contactView{
     background: transparent;
 }
 
-QWidget#messagingPage, QWidget#contactRequestPage{
+QWidget#messagingPage, QWidget#contactRequestPage,
+QDialog#DeleteAccountDialog {
     background: rgb(255, 255, 255);
 }
 
@@ -462,93 +445,7 @@ QPushButton#quickValidCRBtn, QPushButton#quickMuteCRBtn, QPushButton#quickBanCRB
     font: 10pt "FontAwesome";
 }
 
-QPushButton#quickValidCRBtn{
-    background-color: #66cc00;
-}
-QPushButton#quickValidCRBtn:hover{
-    background-color: #80ff00;
-}
-
-QPushButton#quickMuteCRBtn{
-    background-color: #ff9933;
-}
-QPushButton#quickMuteCRBtn:hover{
-    background-color: #ffb366;
-}
-
-QPushButton#quickBanCRBtn{
-    background-color: #ff3333;
-}
-QPushButton#quickBanCRBtn:hover{
-    background-color: #ff6666;
-}
-
-QTabBar::tab{
-    color: rgb(77, 77, 77);
-    border-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #414141;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    font: 12pt "Sans Serif";
-    padding: 2px;
-    width : 130px;
-    height: 20px;
-}
-
-QTabWidget#mainTabMenu QTabBar::tab {
-    height: 24px;
-    width: auto;
-    padding-left: 14px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-QTabWidget#mainTabMenu QTabBar::tab:hover {
-    background-color: rgb(242, 242, 242);
-}
-
-QTabWidget::tab-bar{
-    alignment: center;
-}
-
-QTabBar QToolButton{
-    height: 9;
-    width : 9;
-    background: transparent;
-}
-
-QTabBar QToolButton::left-arrow{
-    height: 9;
-    width : 9;
-    image: url(":/images/icons/ic_arrow_tab_previous_black_9dp_2x.png");
-}
-
-QTabBar QToolButton::right-arrow{
-    height: 9;
-    width : 9;
-    image: url(":/images/icons/ic_arrow_tab_next_black_9dp_2x.png");
-}
-
-QPushButton#generalTabButton:checked, QPushButton#videoTabButton:checked, QPushButton#accountTabButton:checked,
-QTabBar::tab:selected{
-    border-color: #109ede;
-}
-
-QTabWidget::pane{
-    border: 0px;
-}
-
-QPushButton#generalTabButton:hover, QPushButton#videoTabButton:hover, QPushButton#accountTabButton:hover,
-QTabBar::tab:hover{
-    border-color:#2b4b7e;
-}
-
-QSpinBox#historyDaySettingsSpinBox, QSpinBox#lrcfg_tlsNegotiationTimeoutSec, QSpinBox#lrcfg_registrationExpire,
-QSpinBox#lrcfg_localPort, QSpinBox#lrcfg_publishedPort, QSpinBox#lrcfg_audioPortMin, QSpinBox#lrcfg_audioPortMax,
-QSpinBox#lrcfg_videoPortMin, QSpinBox#lrcfg_videoPortMax, QSpinBox#intervalUpdateCheckSpinBox{
+QSpinBox {
     background: transparent;
     border-radius: 0px;
     border-style: solid;
@@ -561,10 +458,7 @@ QSpinBox#lrcfg_videoPortMin, QSpinBox#lrcfg_videoPortMax, QSpinBox#intervalUpdat
     padding: 2px;
 }
 
-QSpinBox#historyDaySettingsSpinBox:focus, QSpinBox#lrcfg_tlsNegotiationTimeoutSec:focus,
-QSpinBox#lrcfg_registrationExpire:focus, QSpinBox#lrcfg_localPort:focus, QSpinBox#lrcfg_publishedPort:focus,
-QSpinBox#lrcfg_audioPortMin:focus, QSpinBox#lrcfg_audioPortMax:focus, QSpinBox#lrcfg_videoPortMin:focus,
-QSpinBox#lrcfg_videoPortMax:focus{
+QSpinBox:focus {
     border-color: #109ede;
 }
 
@@ -592,30 +486,6 @@ QSpinBox::up-button{
     height: 9;
     width : 9;
     image: url(":/images/icons/ic_arrow_drop_up_black_9dp_2x.png");
-}
-
-QLineEdit#lrcfg_alias, QLineEdit#lrcfg_hostname, QLineEdit#lrcfg_password, QLineEdit#lrcfg_proxy,
-QLineEdit#lrcfg_mailbox, QLineEdit#lrcfg_tlsPassword, QLineEdit#lrcfg_tlsServerName,
-QLineEdit#lrcfg_turnServerRealm, QLineEdit#lrcfg_turnServerUsername, QLineEdit#lrcfg_turnServerPassword,
-QLineEdit#lrcfg_turnServer, QLineEdit#lrcfg_publishedAddress, QLineEdit#lrcfg_registeredName,
-QLineEdit#lrcfg_nameServiceURL, QLineEdit#lrcfg_username, QLineEdit#profileNameEdit{
-    background: transparent;
-    border-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #414141;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    font: 11pt "Sans Serif";
-    padding: 2px;
-}
-
-QLabel#typeValueLabel{
-    background: transparent;
-    font: 11pt "Sans Serif";
-    border-radius: 0px;
-    padding: 2px;
 }
 
 QLineEdit#lrcfg_alias:focus, QLineEdit#lrcfg_hostname:focus, QLineEdit#lrcfg_password:focus,
