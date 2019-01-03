@@ -218,6 +218,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // hide the call stack
     ui->callStackWidget->hide();
+    ui->messagingHeaderWidget->show();
 
     ui->containerWidget->setVisible(false);
 }
@@ -245,6 +246,15 @@ CallWidget::navigated(bool to)
             }
         } catch (...) {}
         ui->currentAccountComboBox->updateComboBoxDisplay();
+        auto selectedConvUid = LRCInstance::getSelectedConvUid();
+        auto convModel = LRCInstance::getCurrentConversationModel();
+        auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
+        if (!selectedConvUid.empty() && conversation != convModel->allFilteredConversations().end()) {
+            selectSmartlistItem(selectedConvUid);
+            ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+        } else {
+            backToWelcomePage();
+        }
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
@@ -270,6 +280,9 @@ CallWidget::onIncomingMessage(const std::string& convUid,
     if (!QApplication::focusWidget()) {
         auto convModel = LRCInstance::getCurrentConversationModel();
         auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+        if (conversation == convModel->allFilteredConversations().end()) {
+            return;
+        }
         auto bestName = Utils::bestNameForConversation(*conversation, *convModel);
         Utils::showSystemNotification(this,
             QString(tr("Message incoming from %1"))
@@ -627,7 +640,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
     qDebug() << "slotShowCallView";
-    ui->callStackWidget->show();
+    showCallPanel();
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
@@ -657,10 +670,9 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     if (call.isOutgoing) {
         if (isCallSelected) {
             miniSpinner_->start();
-            ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
             ui->spinnerLabel->show();
             ui->callStackWidget->setCurrentWidget(ui->outgoingCallPage);
-            ui->callStackWidget->show();
+            showCallPanel();
         }
     } else {
         if (!QApplication::focusWidget()) {
@@ -672,12 +684,11 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
         auto selectedAccountId = LRCInstance::getCurrentAccountInfo().id;
         auto accountProperties = LRCInstance::accountModel().getAccountConfig(selectedAccountId);
         if (accountProperties.autoAnswer) {
-            ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
             ui->callStackWidget->setCurrentWidget(ui->videoPage);
+            showCallPanel();
         } else if (isCallSelected) {
-            ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
             ui->callStackWidget->setCurrentWidget(ui->incomingCallPage);
-            ui->callStackWidget->show();
+            showCallPanel();
         }
     }
 
@@ -709,6 +720,7 @@ void CallWidget::slotShowChatView(const std::string& accountId,
     Q_UNUSED(convInfo);
 
     ui->callStackWidget->hide();
+    ui->messagingHeaderWidget->show();
     showConversationView();
 }
 
@@ -873,6 +885,7 @@ CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 void
 CallWidget::backToWelcomePage()
 {
+    qDebug() << "backToWelcomePage";
     deselectConversation();
     ui->messageView->hideMessages();
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
@@ -1065,11 +1078,11 @@ CallWidget::selectConversation(const QModelIndex& index)
         auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
         const auto item = currentConversationModel->filteredConversation(index.row());
         if (callModel->hasCall(conversation->callId) && item.callId == conversation->callId) {
-            ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
-            ui->callStackWidget->show();
+            showCallPanel();
             return;
         }
         ui->callStackWidget->hide();
+        ui->messagingHeaderWidget->show();
     }
 }
 
@@ -1179,6 +1192,7 @@ CallWidget::connectAccount(const std::string& accId)
             case lrc::api::call::Status::TERMINATING:
             {
                 ui->callStackWidget->hide();
+                ui->messagingHeaderWidget->show();
                 showConversationView();
                 break;
             }
@@ -1201,4 +1215,15 @@ CallWidget::connectAccount(const std::string& accId)
                 ui->messageView->printHistory(*convModel, currentConversation->interactions);
             }
         });
+}
+
+void
+CallWidget::showCallPanel()
+{
+    ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
+    ui->callStackWidget->show();
+    ui->imBackButton->hide();
+    ui->imBackButton->hide();
+    ui->btnAudioCall->hide();
+    ui->btnVideoCall->hide();
 }

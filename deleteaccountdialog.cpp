@@ -46,12 +46,12 @@ DeleteAccountDialog::~DeleteAccountDialog()
 void
 DeleteAccountDialog::on_deleteCancelBtn_clicked()
 {
-    done(0);
+    done(DialogCode::Rejected);
 }
 
 void
 DeleteAccountDialog::on_deleteAcceptBtn_clicked()
 {
     LRCInstance::editableAccountModel()->removeAccount(LRCInstance::getCurrAccId());
-    done(0);
+    done(DialogCode::Accepted);
 }

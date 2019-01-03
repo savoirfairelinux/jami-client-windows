@@ -114,7 +114,6 @@ private:
     void setupQRCode(QString ringID);
     void backToWelcomePage();
 
-    // lrc
     void selectConversation(const QModelIndex& index);
     bool selectConversation(const lrc::api::conversation::Info& item,
         lrc::api::ConversationModel& convModel);
@@ -134,6 +133,7 @@ private:
     void updateConversationsFilterWidget();
     void updateComboBox();
     void connectAccount(const std::string& accId);
+    void showCallPanel();
 
     QMenu* menu_;
 
