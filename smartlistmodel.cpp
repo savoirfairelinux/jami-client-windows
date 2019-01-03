@@ -151,5 +151,7 @@ Qt::ItemFlags SmartListModel::flags(const QModelIndex &index) const
 void
 SmartListModel::setAccount(const std::string& accId)
 {
+    beginResetModel();
     accId_ = accId;
+    endResetModel();
 }
