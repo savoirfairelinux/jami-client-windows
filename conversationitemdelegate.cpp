@@ -162,15 +162,18 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
 {
     Q_UNUSED(option);
     QFont font(painter->font());
-    font.setPointSize(fontSize_);
     QPen pen(painter->pen());
     painter->setPen(pen);
 
     int infoTextWidthModifier = 0;
+    int infoText2HeightModifier = 0;
     auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
-        font.setPointSize(fontSize_ - 1);
+        font.setPointSize(fontSize_ - 2);
         infoTextWidthModifier = 12;
+        infoText2HeightModifier = 2;
+    } else {
+        font.setPointSize(fontSize_);
     }
 
     auto leftMargin = dx_ + sizeImage_ + dx_;
@@ -194,9 +197,9 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
                     rect.height() / 2 - 2);
 
     QRect rectInfo2(rectInfo1.left(),
-                    rectInfo1.top() + rectInfo1.height(),
+                    rectInfo1.top() + rectInfo1.height() - infoText2HeightModifier,
                     rectInfo1.width(),
-                    rectInfo1.height() - bottomMargin);
+                    rectInfo1.height() - bottomMargin + infoText2HeightModifier);
 
     QFontMetrics fontMetrics(font);
 
@@ -240,6 +243,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
     QString interactionStr = index.data(static_cast<int>(SmartListModel::Role::LastInteraction)).value<QString>();
     if (!interactionStr.isNull()) {
         painter->save();
+        font.setWeight(QFont::ExtraLight);
         interactionStr = interactionStr.simplified();
         auto type = Utils::toEnum<lrc::api::interaction::Type>(index
             .data(static_cast<int>(SmartListModel::Role::LastInteractionType))
@@ -263,7 +267,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
             QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
             emojiMsgFont.setItalic(false);
             emojiMsgFont.setBold(false);
-            emojiMsgFont.setPointSize(fontSize_);
+            emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
             painter->setOpacity(0.7);
             painter->setFont(emojiMsgFont);
         }

@@ -18,16 +18,16 @@
  **************************************************************************/
 
 #include "currentaccountcombobox.h"
-#include <accountitemdelegate.h>
-#include "pixbufmanipulator.h"
 
+#include <QPixmap>
+#include <QMouseEvent>
+
+#include "accountitemdelegate.h"
+#include "pixbufmanipulator.h"
 #include "utils.h"
 #include "ringthemeutils.h"
 #include "lrcinstance.h"
-#include <QPixmap>
-
-#include "callwidget.h"
-#include "ui_callwidget.h"
+#include "mainwindow.h"
 
 #undef REGISTERED
 
@@ -86,10 +86,15 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     // define and set the two fonts
     QFont fontPrimary = painter.font();
     QFont fontSecondary = painter.font();
-
-    fontPrimary.setPointSize(11);
     fontPrimary.setWeight(QFont::ExtraLight);
-    fontSecondary.setPointSize(10);
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    if (scalingRatio > 1.0) {
+        fontPrimary.setPointSize(10);
+        fontSecondary.setPointSize(9);
+    } else {
+        fontPrimary.setPointSize(11);
+        fontSecondary.setPointSize(10);
+    }
 
     QFontMetrics fontMetricPrimary(fontPrimary);
     QFontMetrics fontMetricSecondary(fontSecondary);

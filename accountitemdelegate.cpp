@@ -26,6 +26,7 @@
 #include "accountlistmodel.h"
 #include "ringthemeutils.h"
 #include "lrcinstance.h"
+#include "mainwindow.h"
 
 #undef REGISTERED
 
@@ -63,8 +64,18 @@ AccountItemDelegate::paint(QPainter* painter,
 
     QRect &rect = opt.rect;
 
-    QFont font(painter->font());
-    font.setPointSize(fontSize_);
+    // define and set the two fonts
+    QFont fontPrimary = painter->font();
+    QFont fontSecondary = painter->font();
+    fontPrimary.setWeight(QFont::ExtraLight);
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    if (scalingRatio > 1.0) {
+        fontPrimary.setPointSize(fontSize_ - 1);
+        fontSecondary.setPointSize(fontSize_ - 2);
+    } else {
+        fontPrimary.setPointSize(fontSize_);
+        fontSecondary.setPointSize(fontSize_ - 1);
+    }
 
     QPen pen(painter->pen());
 
@@ -72,8 +83,8 @@ AccountItemDelegate::paint(QPainter* painter,
     if (index.row() == LRCInstance::accountModel().getAccountList().size()) {
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        painter->setFont(font);
-        QFontMetrics fontMetrics(font);
+        painter->setFont(fontPrimary);
+        QFontMetrics fontMetrics(fontPrimary);
         painter->drawText(rect, Qt::AlignVCenter | Qt::AlignHCenter, tr("Add Account") + "+");
         return;
     }
@@ -117,12 +128,12 @@ AccountItemDelegate::paint(QPainter* painter,
     QVariant name = index.data(static_cast<int>(AccountListModel::Role::Alias));
     if (name.isValid())
     {
-        font.setItalic(false);
-        font.setBold(false);
+        fontPrimary.setItalic(false);
+        fontPrimary.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        painter->setFont(font);
-        QFontMetrics fontMetrics(font);
+        painter->setFont(fontPrimary);
+        QFontMetrics fontMetrics(fontPrimary);
         QString nameStr = fontMetrics.elidedText(name.value<QString>(), Qt::ElideRight,
             rectTexts.width() - avatarSize_ - leftPadding_ - rightPadding_ * 2);
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
@@ -132,12 +143,12 @@ AccountItemDelegate::paint(QPainter* painter,
 
     QString idStr = index.data(static_cast<int>(AccountListModel::Role::Username)).value<QString>();
     if (idStr != name.toString()) {
-        font.setItalic(false);
-        font.setBold(false);
+        fontSecondary.setItalic(false);
+        fontSecondary.setBold(false);
         pen.setColor(RingTheme::grey_);
         painter->setPen(pen);
-        painter->setFont(font);
-        QFontMetrics fontMetrics(font);
+        painter->setFont(fontSecondary);
+        QFontMetrics fontMetrics(fontSecondary);
         if (!idStr.isNull()) {
             idStr = fontMetrics.elidedText(idStr, Qt::ElideRight,
                 rectTexts.width() - avatarSize_ - leftPadding_ - rightPadding_ * 2);

@@ -42,7 +42,7 @@ private:
     constexpr static int cellHeight_ = 60;
     constexpr static int dy_ = 6;
     constexpr static int dx_ = 12;
-    constexpr static int fontSize_ = 10;
+    constexpr static int fontSize_ = 11;
     constexpr static int infoTextWidth_ = 144;
 
     mutable std::map<int, bool> highlightMap_;

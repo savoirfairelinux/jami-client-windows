@@ -31,7 +31,7 @@ protected:
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    constexpr static int fontSize_ = 10;
+    constexpr static int fontSize_ = 11;
     const QFont font_ = QFont("Arial", fontSize_);
     constexpr static int topPadding_ = 6;
     constexpr static int bottomPadding_ = 6;

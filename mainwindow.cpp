@@ -149,15 +149,6 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 
     lastScr_ = startScreen;
-
-    activeChangedConnection_ = connect(windowHandle(), &QWindow::activeChanged,
-        [this]() {
-            auto screenNumber = qApp->desktop()->screenNumber();
-            QScreen* screen = qApp->screens().at(screenNumber);
-            windowHandle()->setScreen(nullptr);
-            windowHandle()->setScreen(screen);
-        });
-
 }
 
 MainWindow::~MainWindow()
@@ -351,12 +342,23 @@ MainWindow::show()
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
                                        this, &MainWindow::slotScreenChanged);
+    disconnect(activeChangedConnection_);
+    activeChangedConnection_ = connect(windowHandle(), &QWindow::activeChanged,
+        [this]() {
+            auto screenNumber = qApp->desktop()->screenNumber();
+            windowHandle()->setScreen(nullptr);
+            QScreen* screen = qApp->screens().at(screenNumber);
+            windowHandle()->setScreen(screen);
+        });
+    auto screenNumber = qApp->desktop()->screenNumber();
+    QScreen* screen = qApp->screens().at(screenNumber);
+    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
+    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }
 
 void
 MainWindow::slotScreenChanged(QScreen* screen)
 {
-    Q_UNUSED(screen);
     adjustSize();
     updateGeometry();
     update();
