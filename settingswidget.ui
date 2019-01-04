@@ -1087,7 +1087,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>696</width>
+                  <width>698</width>
                   <height>647</height>
                  </rect>
                 </property>
@@ -1198,52 +1198,29 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                            </spacer>
                           </item>
                           <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_2">
+                           <layout class="QHBoxLayout" name="avatarLayout">
+                            <property name="spacing">
+                             <number>0</number>
+                            </property>
                             <property name="bottomMargin">
-                             <number>20</number>
+                             <number>6</number>
                             </property>
                             <item>
-                             <widget class="QPushButton" name="currentAccountAvatar">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
+                             <widget class="CreateAvatarWidget" name="createAvatarWidget" native="true">
                               <property name="minimumSize">
                                <size>
                                 <width>150</width>
-                                <height>150</height>
+                                <height>170</height>
                                </size>
                               </property>
                               <property name="maximumSize">
                                <size>
                                 <width>150</width>
-                                <height>150</height>
+                                <height>170</height>
                                </size>
                               </property>
-                              <property name="font">
-                               <font>
-                                <stylestrategy>PreferAntialias</stylestrategy>
-                               </font>
-                              </property>
-                              <property name="cursor">
-                               <cursorShape>PointingHandCursor</cursorShape>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">border: none;</string>
-                              </property>
-                              <property name="text">
+                              <property name="text" stdset="0">
                                <string/>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>160</width>
-                                <height>160</height>
-                               </size>
-                              </property>
-                              <property name="flat">
-                               <bool>false</bool>
                               </property>
                              </widget>
                             </item>
@@ -3090,6 +3067,11 @@ padding-left: 15px;
    <extends>QWidget</extends>
    <header>videowidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SetAvatarWidget</class>
+   <extends>QWidget</extends>
+   <header>setavatarwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

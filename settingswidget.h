@@ -27,7 +27,8 @@
 #include "bannedlistmodel.h"
 
 #include "linkdevwidget.h"
-#include "ui_linkdevwidget.h"
+
+#include "createavatarwidget.h"
 
  // general settings
 #include "api/datatransfermodel.h"
@@ -53,7 +54,6 @@ public:
 
     // NavWidget
     virtual void navigated(bool to);
-    virtual void updateCustomUI();
 
 public slots:
     void updateSettings(int size);
@@ -121,6 +121,9 @@ private slots:
     void showCurrentAccountSlot();
 
     void setButtonIconSlot(int frame);
+
+    void openCameraSlot();
+    void openFileSlot();
 
 
     // *************************  General Settings  *************************

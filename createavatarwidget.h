@@ -17,25 +17,53 @@
 **************************************************************************/
 #pragma once
 
-#include <QGraphicsView>
-#include <QWheelEvent>
-#include <QDragMoveEvent>
+#include <QPixmap>
+#include <QGraphicsScene>
+#include <QtMultimedia\QMediaPlayer>
+#include <QtMultimediaWidgets\QCameraViewfinder>
+#include <QtMultimedia\QCameraImageCapture>
 
-class AvatarGraphicsView : public QGraphicsView
+namespace Ui {
+    class CreateAvatarWidget;
+}
+
+class CreateAvatarWidget : public QWidget
 {
     Q_OBJECT
-    AvatarGraphicsView(const AvatarGraphicsView& cpy);
+    CreateAvatarWidget(const CreateAvatarWidget& cpy);
+
 
 public:
-    AvatarGraphicsView(QWidget* parent = nullptr);
-    inline void setAvatarSize(int size) { circleSize_ = size; };
+    CreateAvatarWidget(QWidget* parent = nullptr);
+    ~CreateAvatarWidget();
+
+
+private slots:
+    void beginDisplayModeSlot();
+    void beginCameraModeSlot();
+    void beginEditModeSlot();
+
+    void openFileManagerSlot();
+    void imageCaptureSlot(int useless, const QString& text);
 
 private:
-    void wheelEvent(QWheelEvent* event);
-    void zoomImage(const QPoint& steps);
+    Ui::CreateAvatarWidget* ui;
 
-    void paintEvent(QPaintEvent* e);
+    void showAvatar(bool state);
+    bool checkCamAvailable();
+    void closeCamera();
+    void saveAvatarAndExit();
+    void configureAvatarScene(const QPixmap& pixMap);
 
-    const qreal zoomIncrement_ = 1.03;
-    int circleSize_;
+    int avatarSize_;
+
+    QMediaPlayer* mediaPlayer_;
+
+    QCameraViewfinder* videoWidget_;
+    QCameraImageCapture* imageCapture_;
+    QCamera* camera_;
+    QGraphicsScene graphicsScene_;
+
+    QPixmap rawPixmap_;
+    QPixmap finalAvatarPixmap_;
 };

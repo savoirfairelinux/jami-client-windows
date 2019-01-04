@@ -34,19 +34,9 @@
 #include "settingswidget.h"
 #include "ui_settingswidget.h"
 
-#include "ui_advancedsettingswidget.h"
-
 #include "passworddialog.h"
-
 #include "regnamedialog.h"
-#include "ui_regnamedialog.h"
-
-#include "setavatardialog.h"
-#include "ui_setavatardialog.h"
-
 #include "deleteaccountdialog.h"
-#include "ui_deleteaccountdialog.h"
-
 
 // general Settings
 #include "winsparkle.h"
@@ -96,14 +86,12 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     ui->currentRingID->setReadOnly(true);
 
-    avatarSize_ = ui->currentAccountAvatar->width();
-
-    ui->currentAccountAvatar->setIconSize(QSize(avatarSize_, avatarSize_));
+    //avatarSize_ = ui->currentAccountAvatar->width();
 
     // create ellipse-selectable avatar image
-    QRegion avatarClickableRegion(-1, -1,
-        ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
-    ui->currentAccountAvatar->setMask(avatarClickableRegion);
+    //QRegion avatarClickableRegion(-1, -1,
+    //    ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
+    //ui->currentAccountAvatar->setMask(avatarClickableRegion);
 
     QString styleS(
         "QPushButton{"
@@ -137,7 +125,6 @@ SettingsWidget::SettingsWidget(QWidget* parent)
         accountAddedConnection_ = connect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,
             [this, toDisconnect](const std::string& accountId) {
-                Q_UNUSED(accountId);
                 setConnections();
                 QObject::disconnect(*toDisconnect);
             });
@@ -152,10 +139,6 @@ void
 SettingsWidget::navigated(bool to)
 {
     ui->containerWidget->setVisible(to);
-}
-
-void SettingsWidget::updateCustomUI()
-{
 }
 
 void
@@ -262,9 +245,6 @@ SettingsWidget::updateAccountInfoDisplayed()
         setRegNameUi(RegName::BLANK);
     }
 
-    ui->currentAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
-        scaledToHeight(avatarSize_, Qt::SmoothTransformation));
-
     ui->accountEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
 
     ui->displayNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
@@ -329,17 +309,15 @@ SettingsWidget::resizeEvent(QResizeEvent* event)
 void
 SettingsWidget::avatarClicked()
 {
-    SetAvatarDialog avatarDialog(this);
-
-    // return new avatar pixmap from setAvatarDialog
-    connect(&avatarDialog, &SetAvatarDialog::pixmapSignal, [&](const std::string& pixString) {
-            if (!pixString.empty()) {
-                LRCInstance::setCurrAccAvatar(pixString);
-                updateAccountInfoDisplayed();
-            }
-        }
-    );
-    avatarDialog.exec();
+    //// return new avatar pixmap from setAvatarDialog
+    //connect(&avatarDialog, &SetAvatarDialog::pixmapSignal, [&](const std::string& pixString) {
+    //        if (!pixString.empty()) {
+    //            LRCInstance::setCurrAccAvatar(pixString);
+    //            updateAccountInfoDisplayed();
+    //        }
+    //    }
+    //);
+    //avatarDialog.exec();
 }
 
 void
@@ -502,11 +480,9 @@ SettingsWidget::delAccountSlot()
     DeleteAccountDialog delDialog(this);
     delDialog.exec();
 
-    LRCInstance::setSelectedAccountId("");
     if (!LRCInstance::accountModel().getAccountList().size()) {
+        LRCInstance::setSelectedAccountId("");
         emit NavigationRequested(ScreenEnum::WizardScreen);
-    } else {
-        emit NavigationRequested(ScreenEnum::CallScreen);
     }
 }
 
@@ -651,6 +627,21 @@ SettingsWidget::showCurrentAccountSlot()
 }
 
 void
+SettingsWidget::openCameraSlot()
+{
+    //ui->currentAccountAvatar->hide();
+
+
+}
+
+void
+SettingsWidget::openFileSlot()
+{
+
+
+}
+
+void
 SettingsWidget::setConnections()
 {
     // exitSettingsButton
@@ -670,10 +661,6 @@ SettingsWidget::setConnections()
 
     connect(ui->passwdPushButton, &QPushButton::clicked, [this]() {
         passwordClicked(); }
-    );
-
-    connect(ui->currentAccountAvatar, &QPushButton::clicked, [this]() {
-        avatarClicked(); }
     );
 
     connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);

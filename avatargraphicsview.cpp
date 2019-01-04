@@ -22,6 +22,7 @@ AvatarGraphicsView::AvatarGraphicsView(QWidget* parent)
     : QGraphicsView(parent)
 {
     setDragMode(QGraphicsView::ScrollHandDrag);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void
