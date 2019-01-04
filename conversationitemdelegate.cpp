@@ -28,6 +28,7 @@
 #include "ringthemeutils.h"
 #include "utils.h"
 #include "lrcinstance.h"
+#include "mainwindow.h"
 
 #include <ciso646>
 
@@ -126,7 +127,7 @@ ConversationItemDelegate::paint(QPainter* painter
 
     using namespace lrc::api;
     auto type = Utils::toEnum<profile::Type>(
-        index.data(static_cast<int>(SmartListModel::Role::ContactType)).value<int>()
+            index.data(static_cast<int>(SmartListModel::Role::ContactType)).value<int>()
         );
     switch (type) {
     case profile::Type::RING:
@@ -165,15 +166,22 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
     QPen pen(painter->pen());
     painter->setPen(pen);
 
-    auto leftMargin = dx_ + sizeImage_ + dx_ / 2;
+    int infoTextWidthModifier = 0;
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    if (scalingRatio > 1.0) {
+        font.setPointSize(fontSize_ - 1);
+        infoTextWidthModifier = 12;
+    }
+
+    auto leftMargin = dx_ + sizeImage_ + dx_;
     auto rightMargin = dx_;
-    auto topMargin = 0;
-    auto bottomMargin = 12;
+    auto topMargin = 4;
+    auto bottomMargin = 8;
 
     QRect rectName1(rect.left() + leftMargin,
                     rect.top() + topMargin,
-                    rect.width() - leftMargin - infoTextWidth_,
-                    rect.height() / 2);
+                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier,
+                    rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
                     rectName1.top() + rectName1.height(),
@@ -182,8 +190,8 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
 
     QRect rectInfo1(rectName1.left() + rectName1.width(),
                     rect.top() + topMargin,
-                    infoTextWidth_ - rightMargin,
-                    rect.height() / 2);
+                    infoTextWidth_ - rightMargin + infoTextWidthModifier,
+                    rect.height() / 2 - 2);
 
     QRect rectInfo2(rectInfo1.left(),
                     rectInfo1.top() + rectInfo1.height(),
@@ -196,7 +204,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
     QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
         font.setItalic(false);
-        font.setBold(true);
+        font.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
         painter->setFont(font);
@@ -276,18 +284,18 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
     QPen pen(painter->pen());
     painter->setPen(pen);
 
-    auto leftMargin = dx_ + sizeImage_ + dx_ / 2;
+    auto leftMargin = dx_ + sizeImage_ + dx_;
     auto rightMargin = dx_;
     if (option.state & QStyle::State_MouseOver) {
         rightMargin = infoTextWidth_ - dx_ * 2;
     }
-    auto topMargin = 0;
-    auto bottomMargin = 12;
+    auto topMargin = 4;
+    auto bottomMargin = 8;
 
     QRect rectName1(rect.left() + leftMargin,
         rect.top() + topMargin,
         rect.width() - leftMargin - rightMargin,
-        rect.height() / 2);
+        rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
         rectName1.top() + rectName1.height(),
@@ -300,7 +308,7 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
     QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
         font.setItalic(false);
-        font.setBold(true);
+        font.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
         painter->setFont(font);

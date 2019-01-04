@@ -33,8 +33,10 @@ protected:
 private:
     constexpr static int fontSize_ = 10;
     const QFont font_ = QFont("Arial", fontSize_);
-    constexpr static int dy_ = 6;
-    constexpr static int dx_ = 12;
+    constexpr static int topPadding_ = 6;
+    constexpr static int bottomPadding_ = 6;
+    constexpr static int leftPadding_ = 12;
+    constexpr static int rightPadding_ = 12;
     constexpr static int avatarSize_ = 36;
     constexpr static int cellHeight_ = 48;
 };

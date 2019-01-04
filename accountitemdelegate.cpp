@@ -65,6 +65,7 @@ AccountItemDelegate::paint(QPainter* painter,
 
     QFont font(painter->font());
     font.setPointSize(fontSize_);
+
     QPen pen(painter->pen());
 
     // is it the add account row?
@@ -82,7 +83,12 @@ AccountItemDelegate::paint(QPainter* painter,
     opt.decorationPosition = QStyleOptionViewItem::Left;
     opt.decorationAlignment = Qt::AlignCenter;
 
-    QRect rectAvatar(dy_ + rect.left(), rect.top() + dy_, avatarSize_, avatarSize_);
+    QRect rectAvatar(
+        leftPadding_ + rect.left(),
+        rect.top() + topPadding_,
+        avatarSize_,
+        avatarSize_
+    );
     drawDecoration(painter, opt, rectAvatar,
         QPixmap::fromImage(index.data(AccountListModel::Role::Picture).value<QImage>())
         .scaled(avatarSize_, avatarSize_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -102,8 +108,8 @@ AccountItemDelegate::paint(QPainter* painter,
 
     painter->setPen(pen);
 
-    QRect rectTexts(dx_ + rect.left() + dx_ + avatarSize_,
-                    rect.top(),
+    QRect rectTexts(leftPadding_ + rect.left() + leftPadding_ + avatarSize_,
+                    rect.top() + topPadding_ / 2,
                     rect.width(),
                     rect.height() / 2);
 
@@ -112,13 +118,13 @@ AccountItemDelegate::paint(QPainter* painter,
     if (name.isValid())
     {
         font.setItalic(false);
-        font.setBold(true);
+        font.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
         painter->setFont(font);
         QFontMetrics fontMetrics(font);
         QString nameStr = fontMetrics.elidedText(name.value<QString>(), Qt::ElideRight,
-            rectTexts.width() - avatarSize_ - dx_);
+            rectTexts.width() - avatarSize_ - leftPadding_ - rightPadding_ * 2);
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
     }
 
@@ -134,9 +140,9 @@ AccountItemDelegate::paint(QPainter* painter,
         QFontMetrics fontMetrics(font);
         if (!idStr.isNull()) {
             idStr = fontMetrics.elidedText(idStr, Qt::ElideRight,
-                                           rectTexts.width() - avatarSize_ - dx_ * 2);
-            painter->drawText(QRect(dx_ + rect.left() + dx_ + avatarSize_,
-                              rect.top() + dy_ * 3,
+                rectTexts.width() - avatarSize_ - leftPadding_ - rightPadding_ * 2);
+            painter->drawText(QRect(leftPadding_ + rect.left() + leftPadding_ + avatarSize_,
+                              rect.top() + topPadding_ * 3,
                               rect.width(),
                               rect.height() / 2),
                               Qt::AlignBottom | Qt::AlignLeft, idStr);

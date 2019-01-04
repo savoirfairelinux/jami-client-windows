@@ -53,8 +53,8 @@ public:
     }
     void createThumbBar();
     bool init();
-
     void show();
+    float getCurrentScalingRatio();
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -70,6 +70,7 @@ private slots:
     void onIncomingCall(Call* call);
     void switchNormalMaximize();
     void notificationClicked();
+    void slotScreenChanged(QScreen* screen);
 
 private:
     explicit MainWindow(QWidget* parent = 0);
@@ -79,6 +80,7 @@ private:
     ScreenEnum lastScr_;
     int lastAccountCount_;
     Qt::WindowFlags flags_;
+    float currentScalingRatio_;
 
     void readSettingsFromRegistry();
 

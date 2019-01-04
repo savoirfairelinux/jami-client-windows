@@ -75,17 +75,13 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    QPoint p(12, 2);
+    QPoint avatarTopLeft(16, 2);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
     QStyleOption opt;
     opt.init(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter);
-
-    // create box in which to draw avatar and presence indicator
-    QRect avatarRect(2, 2, cellHeight_, cellHeight_); // [screen awareness]
-    QRect comboBoxRect(cellHeight_ + p.x() + 2, 4, this->width() - cellHeight_ + p.x(), cellHeight_- 10); // [screen awareness]
 
     // define and set the two fonts
     QFont fontPrimary = painter.font();
@@ -94,19 +90,18 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     fontPrimary.setPointSize(11);
     fontPrimary.setWeight(QFont::ExtraLight);
     fontSecondary.setPointSize(10);
-    painter.setFont(fontPrimary);
 
     QFontMetrics fontMetricPrimary(fontPrimary);
     QFontMetrics fontMetricSecondary(fontSecondary);
 
-    painter.drawPixmap(p, currentAccountAvatarImage_);
+    painter.drawPixmap(avatarTopLeft, currentAccountAvatarImage_);
 
     // fill in presence indicator if account is registered
     auto accountStatus = LRCInstance::getCurrentAccountInfo().status;
     if (accountStatus == lrc::api::account::Status::REGISTERED) {
         // paint the presence indicator circle
         QPainterPath outerCircle, innerCircle;
-        QPointF presenceCenter(40.0 + p.x(), 40.0);
+        QPointF presenceCenter(40.0 + avatarTopLeft.x(), 40.0);
         qreal outerCircleRadius = cellHeight_/6.5;
         qreal innerCircleRadius = outerCircleRadius * 0.75;
         outerCircle.addEllipse(presenceCenter, outerCircleRadius, outerCircleRadius);
@@ -115,9 +110,16 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         painter.fillPath(innerCircle, RingTheme::presenceGreen_);
     }
 
+    QRect comboBoxRect(
+        cellHeight_ + avatarTopLeft.x() + 10 + 2,
+        6,
+        this->width() - cellHeight_,
+        cellHeight_ - 10); // [screen awareness]
+
     // write primary and secondary account identifiers to combobox label
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
-    painter.setPen(Qt::black);
+    painter.setFont(fontPrimary);
+    painter.setPen(RingTheme::lightBlack_);
     primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight,
                                                     comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_));
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);

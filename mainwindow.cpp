@@ -350,16 +350,21 @@ MainWindow::show()
     QMainWindow::show();
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-        [this](QScreen* screen) {
-            Q_UNUSED(screen);
-            adjustSize();
-            updateGeometry();
-            update();
-            // a little delay won't hurt ;)
-            QTimer::singleShot(100, this,
-                [this] {
-                    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
-                });
+                                       this, &MainWindow::slotScreenChanged);
+}
+
+void
+MainWindow::slotScreenChanged(QScreen* screen)
+{
+    Q_UNUSED(screen);
+    adjustSize();
+    updateGeometry();
+    update();
+    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
+    // a little delay won't hurt ;)
+    QTimer::singleShot(100, this,
+        [this] {
+            qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
         });
 }
 
@@ -368,4 +373,10 @@ MainWindow::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+}
+
+float
+MainWindow::getCurrentScalingRatio()
+{
+    return currentScalingRatio_;
 }
