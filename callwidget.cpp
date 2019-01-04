@@ -217,8 +217,7 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->messageView->buildView();
 
     // hide the call stack
-    ui->callStackWidget->hide();
-    ui->messagingHeaderWidget->show();
+    setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
 }
@@ -640,7 +639,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
     qDebug() << "slotShowCallView";
-    showCallPanel();
+    setCallPanelVisibility(true);
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
@@ -672,7 +671,7 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
             miniSpinner_->start();
             ui->spinnerLabel->show();
             ui->callStackWidget->setCurrentWidget(ui->outgoingCallPage);
-            showCallPanel();
+            setCallPanelVisibility(true);
         }
     } else {
         if (!QApplication::focusWidget()) {
@@ -685,10 +684,10 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
         auto accountProperties = LRCInstance::accountModel().getAccountConfig(selectedAccountId);
         if (accountProperties.autoAnswer) {
             ui->callStackWidget->setCurrentWidget(ui->videoPage);
-            showCallPanel();
+            setCallPanelVisibility(true);
         } else if (isCallSelected) {
             ui->callStackWidget->setCurrentWidget(ui->incomingCallPage);
-            showCallPanel();
+            setCallPanelVisibility(true);
         }
     }
 
@@ -719,8 +718,7 @@ void CallWidget::slotShowChatView(const std::string& accountId,
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
 
-    ui->callStackWidget->hide();
-    ui->messagingHeaderWidget->show();
+    setCallPanelVisibility(false);
     showConversationView();
 }
 
@@ -1078,11 +1076,10 @@ CallWidget::selectConversation(const QModelIndex& index)
         auto conversation = Utils::getConversationFromUid(convUid, *currentConversationModel);
         const auto item = currentConversationModel->filteredConversation(index.row());
         if (callModel->hasCall(conversation->callId) && item.callId == conversation->callId) {
-            showCallPanel();
+            setCallPanelVisibility(true);
             return;
         }
-        ui->callStackWidget->hide();
-        ui->messagingHeaderWidget->show();
+        setCallPanelVisibility(false);
     }
 }
 
@@ -1191,8 +1188,7 @@ CallWidget::connectAccount(const std::string& accId)
             case lrc::api::call::Status::TIMEOUT:
             case lrc::api::call::Status::TERMINATING:
             {
-                ui->callStackWidget->hide();
-                ui->messagingHeaderWidget->show();
+                setCallPanelVisibility(false);
                 showConversationView();
                 break;
             }
@@ -1218,12 +1214,11 @@ CallWidget::connectAccount(const std::string& accId)
 }
 
 void
-CallWidget::showCallPanel()
+CallWidget::setCallPanelVisibility(bool visible)
 {
     ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
-    ui->callStackWidget->show();
-    ui->imBackButton->hide();
-    ui->imBackButton->hide();
-    ui->btnAudioCall->hide();
-    ui->btnVideoCall->hide();
+    ui->callStackWidget->setVisible(visible);
+    ui->imBackButton->setVisible(!visible);
+    ui->btnAudioCall->setVisible(!visible);
+    ui->btnVideoCall->setVisible(!visible);
 }
