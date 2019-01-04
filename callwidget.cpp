@@ -54,6 +54,7 @@
 #include "lrcinstance.h"
 #include "animationhelpers.h"
 #include "ringthemeutils.h"
+#include "mainwindow.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -262,6 +263,13 @@ CallWidget::navigated(bool to)
 
 void CallWidget::updateCustomUI()
 {
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    if (scalingRatio > 1.0) {
+        ui->messageView->setZoomFactor(1.15);
+    } else {
+        ui->messageView->setZoomFactor(1.0);
+    }
+
 }
 
 int

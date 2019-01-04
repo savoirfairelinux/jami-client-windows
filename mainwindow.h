@@ -80,7 +80,7 @@ private:
     ScreenEnum lastScr_;
     int lastAccountCount_;
     Qt::WindowFlags flags_;
-    float currentScalingRatio_;
+    float currentScalingRatio_ = 1.0;
 
     void readSettingsFromRegistry();
 
