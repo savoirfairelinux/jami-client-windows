@@ -80,12 +80,11 @@ private:
     ScreenEnum lastScr_;
     int lastAccountCount_;
     Qt::WindowFlags flags_;
-    float currentScalingRatio_ = 1.0;
+    float currentScalingRatio_;
 
     void readSettingsFromRegistry();
 
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
     QMetaObject::Connection screenChangedConnection_;
-    QMetaObject::Connection activeChangedConnection_;
 };

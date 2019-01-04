@@ -281,7 +281,6 @@ MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
     }
-    this->disconnect(activeChangedConnection_);
     this->disconnect(screenChangedConnection_);
     QMainWindow::closeEvent(event);
 }
@@ -342,17 +341,7 @@ MainWindow::show()
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
                                        this, &MainWindow::slotScreenChanged);
-    disconnect(activeChangedConnection_);
-    activeChangedConnection_ = connect(windowHandle(), &QWindow::activeChanged,
-        [this]() {
-            auto screenNumber = qApp->desktop()->screenNumber();
-            windowHandle()->setScreen(nullptr);
-            QScreen* screen = qApp->screens().at(screenNumber);
-            windowHandle()->setScreen(screen);
-        });
-    auto screenNumber = qApp->desktop()->screenNumber();
-    QScreen* screen = qApp->screens().at(screenNumber);
-    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
+    currentScalingRatio_ = 1.0;
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }
 

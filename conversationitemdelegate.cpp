@@ -174,6 +174,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
         infoText2HeightModifier = 2;
     } else {
         font.setPointSize(fontSize_);
+        infoTextWidthModifier = 10;
     }
 
     auto leftMargin = dx_ + sizeImage_ + dx_;

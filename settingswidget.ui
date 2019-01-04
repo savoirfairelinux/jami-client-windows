@@ -117,7 +117,7 @@
             <number>0</number>
            </property>
            <property name="rightMargin">
-            <number>9</number>
+            <number>14</number>
            </property>
            <item>
             <spacer name="horizontalSpacer_8">
@@ -1087,7 +1087,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>696</width>
+                  <width>691</width>
                   <height>647</height>
                  </rect>
                 </property>
