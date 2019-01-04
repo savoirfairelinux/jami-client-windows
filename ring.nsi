@@ -139,6 +139,7 @@ section "install"
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         setOutPath $INSTDIR
         # Files added here should be removed by the uninstaller (see section "uninstall")
+        file "vc_redist.x64.exe"
         file "Jami.exe"
         file "jami.ico"
         file "qtwebengine_resources.pak"
@@ -193,6 +194,16 @@ section "install"
         WriteRegStr HKCR "ring" "URL Protocol" "$\"$\""
         WriteRegStr HKCR "ring\DefaultIcon" "" "$\"$INSTDIR\Jami.exe,1$\""
         WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Jami.exe$\" $\"%1$\""
+        # vcredist install (the check would work if uninstalling would remove the REG key)
+        #{If} ${RunningX64}
+        #    ReadRegStr $1 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Bld"
+        #    StrCmp $1 27012 vcredist_installed
+        #${Else}
+        #    ReadRegStr $1 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x86" "Bld"
+        #    StrCmp $1 27012 vcredist_installed
+        #${EndIf}
+        ExecWait "vc_redist.x64.exe /install /passive /norestart"
+        #vcredist_installed:
 sectionEnd
 
 # Uninstaller
