@@ -153,10 +153,12 @@ void CurrentAccountComboBox::resizeEvent(QResizeEvent* event)
 void
 CurrentAccountComboBox::setupSettingsButton()
 {
-    gearPoint_.setX(this->width() - gearSize_ - 4 * gearBorder_ + 2);
+    gearPoint_.setX(this->width() - gearSize_ - 5 * gearBorder_ - 1);
     gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_ + 4.5);
-    gearLabel_.setGeometry(gearPoint_.x() - 3, gearPoint_.y(),
-        gearSize_ + 2 * gearBorder_, gearSize_ + 2 * gearBorder_);
+    gearLabel_.setGeometry(
+        gearPoint_.x(), gearPoint_.y(),
+        gearSize_ + 2 * gearBorder_,
+        gearSize_ + 2 * gearBorder_);
     gearLabel_.setMargin(gearBorder_);
 }
 

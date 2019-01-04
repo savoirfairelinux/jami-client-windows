@@ -261,7 +261,8 @@ CallWidget::navigated(bool to)
     }
 }
 
-void CallWidget::updateCustomUI()
+void
+CallWidget::updateCustomUI()
 {
     auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
