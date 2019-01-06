@@ -28,8 +28,6 @@
 #include "media/text.h"
 #include "media/file.h"
 #include "globalinstances.h"
-#include "pixbufmanipulator.h"
-#include "lrcinstance.h"
 
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -37,7 +35,10 @@
 
 #include <ciso646>
 
+#include "lrcinstance.h"
 #include "utils.h"
+#include "runguard.h"
+#include "pixbufmanipulator.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -103,6 +104,10 @@ fileDebug(QFile& debugFile)
 int
 main(int argc, char *argv[])
 {
+    RunGuard guard("680b3e5eaf");
+    if (!guard.tryToRun())
+        return 0;
+
 #ifdef Q_OS_WIN
     SetProcessDPIAware();
 #endif // Q_OS_WIN
