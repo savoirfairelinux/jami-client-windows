@@ -341,7 +341,9 @@ MainWindow::show()
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
                                        this, &MainWindow::slotScreenChanged);
-    currentScalingRatio_ = 1.0;
+    auto screenNumber = qApp->desktop()->screenNumber();
+    QScreen* screen = qApp->screens().at(screenNumber);
+    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }
 
