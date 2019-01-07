@@ -158,7 +158,7 @@ AdvancedSettingsWidget::openFileCustomRingtone()
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.Ringtone.ringtonePath = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
-        ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
+        ui->btnRingtone->setText(QFileInfo(fileUrl).fileName());
     } else {
         ui->btnRingtone->setText(tr("Add a custom ringtone"));
     }
