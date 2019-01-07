@@ -485,9 +485,8 @@ CallWidget::showConversationView()
 void
 CallWidget::selectSmartlistItem(const std::string & convUid)
 {
-    if (convUid.empty()) {
+    if (convUid.empty() || !ui->smartList->selectionModel())
         return;
-    }
     ui->smartList->selectionModel()->setCurrentIndex(QModelIndex(), QItemSelectionModel::Deselect);
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto conversation = Utils::getConversationFromUid(convUid, *convModel);
