@@ -76,12 +76,11 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->videoDownPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::decreaseVideoCodecPriority);
     connect(ui->videoUpPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::increaseVideoCodecPriority);
 
-
 ///////////////////////////////////////////////////////////////////////////////
     ui->btnRingtone->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
+    ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
     ui->lineEditProxy->setEnabled(LRCInstance::getCurrAccConfig().proxyEnabled);
     ui->lineEditSTUNAddress->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
-
 
 }
 
@@ -108,9 +107,9 @@ AdvancedSettingsWidget::updateAdvancedSettings()
     ui->lineEditBootstrap->setText(QString::fromStdString(config.hostname));
 
     // Security
-    ui->btnCACert->setText(QString::fromStdString(config.TLS.certificateListFile));
-    ui->btnUserCert->setText(QString::fromStdString(config.TLS.certificateFile));
-    ui->btnPrivateKey->setText(QString::fromStdString(config.TLS.privateKeyFile));
+    ui->btnCACert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile)).fileName());
+    ui->btnUserCert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile)).fileName());
+    ui->btnPrivateKey->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile)).fileName());
 
     // Connectivity
     ui->checkBoxUPnP->setChecked(config.upnpEnabled);
@@ -159,8 +158,7 @@ AdvancedSettingsWidget::openFileCustomRingtone()
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.Ringtone.ringtonePath = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
-        ui->btnRingtone->setText(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath));
-
+        ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
     } else {
         ui->btnRingtone->setText(tr("Add a custom ringtone"));
     }
@@ -267,7 +265,7 @@ AdvancedSettingsWidget::openFileCACert()
         confProps.TLS.certificateListFile = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnCACert->setText(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile));
+    ui->btnCACert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile)).fileName());
 }
 
 void
@@ -281,7 +279,7 @@ AdvancedSettingsWidget::openFileUserCert()
         confProps.TLS.certificateFile = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnUserCert->setText(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile));
+    ui->btnUserCert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile)).fileName());
 }
 
 void
@@ -295,7 +293,7 @@ AdvancedSettingsWidget::openFilePrivateKey()
         confProps.TLS.privateKeyFile = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnPrivateKey->setText(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile));
+    ui->btnPrivateKey->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile)).fileName());
 }
 
 void
