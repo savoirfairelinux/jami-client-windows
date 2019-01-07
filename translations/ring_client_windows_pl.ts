@@ -31,7 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Klient Jami dla Microsoft Windows.
+Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wolność i prywatność swoich użytkowników.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Publicznie zarejestrowana nazwa użytkownika</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ustawienia Konta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -581,7 +582,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Wyeksportuj do sieci</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -688,7 +689,7 @@ Jami is a secured and distributed communication software.</source>
 <context>
     <name>AccountItemDelegate</name>
     <message>
-        <location filename="../accountitemdelegate.cpp" line="76"/>
+        <location filename="../accountitemdelegate.cpp" line="88"/>
         <source>Add Account</source>
         <translation type="unfinished"/>
     </message>
@@ -752,12 +753,12 @@ Jami is a secured and distributed communication software.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="610"/>
+        <location filename="../callwidget.ui" line="616"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wolności i prywatność swoich użytkowników.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="650"/>
+        <location filename="../callwidget.ui" line="656"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -765,43 +766,43 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="769"/>
         <source>Show ring ID QR code</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="814"/>
+        <location filename="../callwidget.ui" line="820"/>
         <source>Share ring ID button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="872"/>
+        <location filename="../callwidget.ui" line="878"/>
         <source>Double-click to copy</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="913"/>
+        <location filename="../callwidget.ui" line="919"/>
         <source>Error while generating QR Code</source>
         <translation>Wystąpił błąd podczas generowania kodu QR.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1141"/>
-        <location filename="../callwidget.ui" line="1391"/>
+        <location filename="../callwidget.ui" line="1147"/>
+        <location filename="../callwidget.ui" line="1397"/>
         <source>best name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1165"/>
+        <location filename="../callwidget.ui" line="1171"/>
         <source>best Id</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1682"/>
+        <location filename="../callwidget.ui" line="1697"/>
         <source>Back to homepage button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1891"/>
+        <location filename="../callwidget.ui" line="1906"/>
         <source>Add to contacts</source>
         <translation>Dodaj do kontaków</translation>
     </message>
@@ -816,99 +817,99 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1401"/>
+        <location filename="../callwidget.ui" line="1407"/>
         <source>Wants to talk to you!</source>
         <translation>Chce z tobą rozmawiać!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1474"/>
+        <location filename="../callwidget.ui" line="1480"/>
         <source>Answer incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1552"/>
         <source>Ignore incoming call button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1496"/>
+        <location filename="../callwidget.ui" line="1502"/>
         <source>Answer</source>
         <translation>Odbierz</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1574"/>
+        <location filename="../callwidget.ui" line="1580"/>
         <source>Ignore</source>
         <translation>Zignoruj</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
+        <location filename="../callwidget.ui" line="1243"/>
         <source>Cancel outgoing call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1262"/>
+        <location filename="../callwidget.ui" line="1268"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="307"/>
+        <location filename="../callwidget.cpp" line="337"/>
         <source>Start video call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="318"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Start audio call</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="364"/>
         <source>Clear conversation</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="371"/>
         <source>Remove contact</source>
         <translation>Usuń kontakt</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="348"/>
+        <location filename="../callwidget.cpp" line="378"/>
         <source>Block contact</source>
         <translation>Blokuj kontakt</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="359"/>
+        <location filename="../callwidget.cpp" line="389"/>
         <source>Copy number</source>
         <translation>Skopiuj numer</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="296"/>
         <source>Message incoming from %1</source>
         <translation>Przychodząca wiadomość od %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="863"/>
+        <location filename="../callwidget.cpp" line="837"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="868"/>
+        <location filename="../callwidget.cpp" line="842"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="687"/>
+        <location filename="../callwidget.cpp" line="689"/>
         <source>Call incoming from %1</source>
         <translation>Połączenie przychodzące od %1</translation>
     </message>
@@ -1039,7 +1040,7 @@ Copy and share it with your friends!
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="194"/>
+        <location filename="../utils.cpp" line="195"/>
         <source>No default mail client found</source>
         <translation>Nie znaleziono domyślnego klienta poczty</translation>
     </message>
@@ -1077,7 +1078,7 @@ Copy and share it with your friends!
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="429"/>
+        <location filename="../videooverlay.ui" line="409"/>
         <source>Call on Hold</source>
         <translation>Rozmowa jest Zawieszona</translation>
     </message>
@@ -1117,11 +1118,6 @@ Copy and share it with your friends!
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="396"/>
-        <source>Configuration</source>
-        <translation>Konfiguracja</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>Odłożyć słuchawkę</translation>
@@ -1135,17 +1131,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="280"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>Podziel się obszarem ekranu</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="283"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>Podziel się obszar ekranu</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="290"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>Podziel się plikiem</translation>
     </message>

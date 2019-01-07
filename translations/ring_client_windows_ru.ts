@@ -689,7 +689,7 @@ Jami – это приложение с распределённой архит�
 <context>
     <name>AccountItemDelegate</name>
     <message>
-        <location filename="../accountitemdelegate.cpp" line="76"/>
+        <location filename="../accountitemdelegate.cpp" line="88"/>
         <source>Add Account</source>
         <translation>Добавить аккаунт</translation>
     </message>
@@ -753,12 +753,12 @@ Jami – это приложение с распределённой архит�
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="610"/>
+        <location filename="../callwidget.ui" line="616"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Jami — свободная программа для связи, уважающая свободу и конфиденциальность пользователей.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="650"/>
+        <location filename="../callwidget.ui" line="656"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -766,43 +766,43 @@ Copy and share it with your friends!
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="769"/>
         <source>Show ring ID QR code</source>
         <translation>Показать Ring ID QR код</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="814"/>
+        <location filename="../callwidget.ui" line="820"/>
         <source>Share ring ID button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="872"/>
+        <location filename="../callwidget.ui" line="878"/>
         <source>Double-click to copy</source>
         <translation>Двойной клик для копирования</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="913"/>
+        <location filename="../callwidget.ui" line="919"/>
         <source>Error while generating QR Code</source>
         <translation>Ошибка при создании QR кода</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1141"/>
-        <location filename="../callwidget.ui" line="1391"/>
+        <location filename="../callwidget.ui" line="1147"/>
+        <location filename="../callwidget.ui" line="1397"/>
         <source>best name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1165"/>
+        <location filename="../callwidget.ui" line="1171"/>
         <source>best Id</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1682"/>
+        <location filename="../callwidget.ui" line="1697"/>
         <source>Back to homepage button</source>
         <translation>Кнопка возврата на главную страницу</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1891"/>
+        <location filename="../callwidget.ui" line="1906"/>
         <source>Add to contacts</source>
         <translation>Добавить в контакты</translation>
     </message>
@@ -817,99 +817,99 @@ Copy and share it with your friends!
         <translation>Приглашения</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1401"/>
+        <location filename="../callwidget.ui" line="1407"/>
         <source>Wants to talk to you!</source>
         <translation>Хочет поговорить с вами!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1474"/>
+        <location filename="../callwidget.ui" line="1480"/>
         <source>Answer incoming call button</source>
         <translation>Кнопка ответа на входящий вызов </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1552"/>
         <source>Ignore incoming call button</source>
         <translation>Кнопка игнорирования входящего вызова</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1496"/>
+        <location filename="../callwidget.ui" line="1502"/>
         <source>Answer</source>
         <translation>Ответить</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1574"/>
+        <location filename="../callwidget.ui" line="1580"/>
         <source>Ignore</source>
         <translation>Игнорировать</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
+        <location filename="../callwidget.ui" line="1243"/>
         <source>Cancel outgoing call</source>
         <translation>Отменить исходящий вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1262"/>
+        <location filename="../callwidget.ui" line="1268"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="307"/>
+        <location filename="../callwidget.cpp" line="337"/>
         <source>Start video call</source>
         <translation>Начать видеовызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="318"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Start audio call</source>
         <translation>Начать голосовой вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="364"/>
         <source>Clear conversation</source>
         <translation>Очистить разговор</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="371"/>
         <source>Remove contact</source>
         <translation>Удалить контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="348"/>
+        <location filename="../callwidget.cpp" line="378"/>
         <source>Block contact</source>
         <translation>Заблокировать контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="359"/>
+        <location filename="../callwidget.cpp" line="389"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>Contact me on Jami</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>My Id is : </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="296"/>
         <source>Message incoming from %1</source>
         <translation>Сообщение от %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="863"/>
+        <location filename="../callwidget.cpp" line="837"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="868"/>
+        <location filename="../callwidget.cpp" line="842"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="687"/>
+        <location filename="../callwidget.cpp" line="689"/>
         <source>Call incoming from %1</source>
         <translation>Звонок от %1</translation>
     </message>
@@ -1040,7 +1040,7 @@ Copy and share it with your friends!
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="194"/>
+        <location filename="../utils.cpp" line="195"/>
         <source>No default mail client found</source>
         <translation>Не найден почтовый клиент по умолчанию</translation>
     </message>
@@ -1078,7 +1078,7 @@ Copy and share it with your friends!
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="429"/>
+        <location filename="../videooverlay.ui" line="409"/>
         <source>Call on Hold</source>
         <translation>Звонок приостановлен</translation>
     </message>
@@ -1118,11 +1118,6 @@ Copy and share it with your friends!
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="396"/>
-        <source>Configuration</source>
-        <translation>Настройка</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>Повесить трубку</translation>
@@ -1136,17 +1131,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="280"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>Транслировать весь экран</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="283"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>Транслировать область экрана</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="290"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>Поделиться файлом</translation>
     </message>
