@@ -689,7 +689,7 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
 <context>
     <name>AccountItemDelegate</name>
     <message>
-        <location filename="../accountitemdelegate.cpp" line="76"/>
+        <location filename="../accountitemdelegate.cpp" line="88"/>
         <source>Add Account</source>
         <translation>Shtoni Llogari</translation>
     </message>
@@ -753,12 +753,12 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
         <translation>Kërkoni te kontaktet ose jepni ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="610"/>
+        <location filename="../callwidget.ui" line="616"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Jami është software i lirë për komunikim universal që respekton privatësinë e përdoruesve të tij.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="650"/>
+        <location filename="../callwidget.ui" line="656"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -768,43 +768,43 @@ Kjo është ID-ja juaj.
 Kopjojeni dhe jepuani shokëve!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="769"/>
         <source>Show ring ID QR code</source>
         <translation>Shfaq kod QR ID-je Ring-u</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="814"/>
+        <location filename="../callwidget.ui" line="820"/>
         <source>Share ring ID button</source>
         <translation>Buton Ndani ID Ringu Me të Tjerët</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="872"/>
+        <location filename="../callwidget.ui" line="878"/>
         <source>Double-click to copy</source>
         <translation>Dyklikojeni që të kopjohet</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="913"/>
+        <location filename="../callwidget.ui" line="919"/>
         <source>Error while generating QR Code</source>
         <translation>Gabim teksa prodhohej kodi QR</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1141"/>
-        <location filename="../callwidget.ui" line="1391"/>
+        <location filename="../callwidget.ui" line="1147"/>
+        <location filename="../callwidget.ui" line="1397"/>
         <source>best name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1165"/>
+        <location filename="../callwidget.ui" line="1171"/>
         <source>best Id</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1682"/>
+        <location filename="../callwidget.ui" line="1697"/>
         <source>Back to homepage button</source>
         <translation>Buton Mbrapsht te faqja hyrëse</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1891"/>
+        <location filename="../callwidget.ui" line="1906"/>
         <source>Add to contacts</source>
         <translation>Shtoje te kontaktet</translation>
     </message>
@@ -819,99 +819,99 @@ Kopjojeni dhe jepuani shokëve!</translation>
         <translation>Ftesa</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1401"/>
+        <location filename="../callwidget.ui" line="1407"/>
         <source>Wants to talk to you!</source>
         <translation>Dëshiron të bisedojë me ju!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1474"/>
+        <location filename="../callwidget.ui" line="1480"/>
         <source>Answer incoming call button</source>
         <translation>Buton Përgjigjuni thirrjes ardhëse</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1552"/>
         <source>Ignore incoming call button</source>
         <translation>Buton Shpërfille thirrjen ardhëse</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1496"/>
+        <location filename="../callwidget.ui" line="1502"/>
         <source>Answer</source>
         <translation>Përgjigjuni</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1574"/>
+        <location filename="../callwidget.ui" line="1580"/>
         <source>Ignore</source>
         <translation>Shpërfille</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
+        <location filename="../callwidget.ui" line="1243"/>
         <source>Cancel outgoing call</source>
         <translation>Anuloje dërgimin e thirrjes</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1262"/>
+        <location filename="../callwidget.ui" line="1268"/>
         <source>Cancel</source>
         <translation>Anuloje</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="307"/>
+        <location filename="../callwidget.cpp" line="337"/>
         <source>Start video call</source>
         <translation>Filloni thirrje video</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="318"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Start audio call</source>
         <translation>Filloni thirrje audio</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="364"/>
         <source>Clear conversation</source>
         <translation>Pastroje bisedën</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="371"/>
         <source>Remove contact</source>
         <translation>Hiqe kontaktin</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="348"/>
+        <location filename="../callwidget.cpp" line="378"/>
         <source>Block contact</source>
         <translation>Bllokojeni kontaktin</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="359"/>
+        <location filename="../callwidget.cpp" line="389"/>
         <source>Copy number</source>
         <translation>Kopjoje numrin</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>Contact me on Jami</source>
         <translation>Lidhuni me mua në Jami</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>My Id is : </source>
         <translation>ID-ja ime është:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="296"/>
         <source>Message incoming from %1</source>
         <translation>Mesazh ardhës nga %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="863"/>
+        <location filename="../callwidget.cpp" line="837"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="868"/>
+        <location filename="../callwidget.cpp" line="842"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="687"/>
+        <location filename="../callwidget.cpp" line="689"/>
         <source>Call incoming from %1</source>
         <translation>Thirrje ardhur nga %1</translation>
     </message>
@@ -1023,7 +1023,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg, *.jpeg, *png)</source>
-        <translation type="unfinished"/>
+        <translation>Kartela Figurash (*.jpg, *.jpeg, *png)</translation>
     </message>
 </context>
 <context>
@@ -1042,7 +1042,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="194"/>
+        <location filename="../utils.cpp" line="195"/>
         <source>No default mail client found</source>
         <translation>S’u gjet klient parazgjedhje poste</translation>
     </message>
@@ -1080,7 +1080,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="429"/>
+        <location filename="../videooverlay.ui" line="409"/>
         <source>Call on Hold</source>
         <translation>Thirrje Pezull</translation>
     </message>
@@ -1120,11 +1120,6 @@ Kopjojeni dhe jepuani shokëve!</translation>
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="396"/>
-        <source>Configuration</source>
-        <translation>Formësim</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>Mbylle</translation>
@@ -1138,17 +1133,17 @@ Kopjojeni dhe jepuani shokëve!</translation>
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="280"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>Nda krejt ekranin</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="283"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>Ndani me të tjerët zonën e ekranit</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="290"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>Ndani kartelë me të tjerë</translation>
     </message>

@@ -689,7 +689,7 @@ Jami 是一個安全且分散式的通訊軟體。</translation>
 <context>
     <name>AccountItemDelegate</name>
     <message>
-        <location filename="../accountitemdelegate.cpp" line="76"/>
+        <location filename="../accountitemdelegate.cpp" line="88"/>
         <source>Add Account</source>
         <translation>新增帳號</translation>
     </message>
@@ -753,12 +753,12 @@ Jami 是一個安全且分散式的通訊軟體。</translation>
         <translation>搜尋聯絡人或輸入 ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="610"/>
+        <location filename="../callwidget.ui" line="616"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Jami 是一套通用通訊的自由軟體，其尊重使用者的自由與隱私。</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="650"/>
+        <location filename="../callwidget.ui" line="656"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -769,43 +769,43 @@ Copy and share it with your friends!
                                       </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="763"/>
+        <location filename="../callwidget.ui" line="769"/>
         <source>Show ring ID QR code</source>
         <translation>顯示 Ring ID 二維條碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="814"/>
+        <location filename="../callwidget.ui" line="820"/>
         <source>Share ring ID button</source>
         <translation>分享 Ring ID 按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="872"/>
+        <location filename="../callwidget.ui" line="878"/>
         <source>Double-click to copy</source>
         <translation>雙擊以複製</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="913"/>
+        <location filename="../callwidget.ui" line="919"/>
         <source>Error while generating QR Code</source>
         <translation>產生 QR Code 時發生錯誤</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1141"/>
-        <location filename="../callwidget.ui" line="1391"/>
+        <location filename="../callwidget.ui" line="1147"/>
+        <location filename="../callwidget.ui" line="1397"/>
         <source>best name</source>
         <translation>最佳名稱</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1165"/>
+        <location filename="../callwidget.ui" line="1171"/>
         <source>best Id</source>
         <translation>最佳 ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1682"/>
+        <location filename="../callwidget.ui" line="1697"/>
         <source>Back to homepage button</source>
         <translation>回到首頁按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1891"/>
+        <location filename="../callwidget.ui" line="1906"/>
         <source>Add to contacts</source>
         <translation>加到聯絡人</translation>
     </message>
@@ -820,99 +820,99 @@ Copy and share it with your friends!
         <translation>邀請</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1401"/>
+        <location filename="../callwidget.ui" line="1407"/>
         <source>Wants to talk to you!</source>
         <translation>想要與您說說話！</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1474"/>
+        <location filename="../callwidget.ui" line="1480"/>
         <source>Answer incoming call button</source>
         <translation>答覆來電按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1546"/>
+        <location filename="../callwidget.ui" line="1552"/>
         <source>Ignore incoming call button</source>
         <translation>忽略來電按鈕</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1496"/>
+        <location filename="../callwidget.ui" line="1502"/>
         <source>Answer</source>
         <translation>回覆</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1574"/>
+        <location filename="../callwidget.ui" line="1580"/>
         <source>Ignore</source>
         <translation>忽略</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1237"/>
+        <location filename="../callwidget.ui" line="1243"/>
         <source>Cancel outgoing call</source>
         <translation>取消去電</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1262"/>
+        <location filename="../callwidget.ui" line="1268"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="307"/>
+        <location filename="../callwidget.cpp" line="337"/>
         <source>Start video call</source>
         <translation>開始視訊通話</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="318"/>
+        <location filename="../callwidget.cpp" line="348"/>
         <source>Start audio call</source>
         <translation>開始音訊通話</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="334"/>
+        <location filename="../callwidget.cpp" line="364"/>
         <source>Clear conversation</source>
         <translation>清除對話</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="341"/>
+        <location filename="../callwidget.cpp" line="371"/>
         <source>Remove contact</source>
         <translation>移除聯絡人</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="348"/>
+        <location filename="../callwidget.cpp" line="378"/>
         <source>Block contact</source>
         <translation>阻擋連絡人</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="359"/>
+        <location filename="../callwidget.cpp" line="389"/>
         <source>Copy number</source>
         <translation>複製號碼</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>Contact me on Jami</source>
         <translation>在 Jami 上聯絡我</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="950"/>
+        <location filename="../callwidget.cpp" line="925"/>
         <source>My Id is : </source>
         <translation>我的 Id 是：</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="266"/>
+        <location filename="../callwidget.cpp" line="296"/>
         <source>Message incoming from %1</source>
         <translation>從 %1 來的訊息</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="863"/>
+        <location filename="../callwidget.cpp" line="837"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="868"/>
+        <location filename="../callwidget.cpp" line="842"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="687"/>
+        <location filename="../callwidget.cpp" line="689"/>
         <source>Call incoming from %1</source>
         <translation>從 %1 的來電</translation>
     </message>
@@ -1024,7 +1024,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg, *.jpeg, *png)</source>
-        <translation type="unfinished"/>
+        <translation>圖片檔 (*.jpg, *.jpeg, *png)</translation>
     </message>
 </context>
 <context>
@@ -1043,7 +1043,7 @@ Copy and share it with your friends!
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="194"/>
+        <location filename="../utils.cpp" line="195"/>
         <source>No default mail client found</source>
         <translation>找不到預設的電子郵件客戶端</translation>
     </message>
@@ -1081,7 +1081,7 @@ Copy and share it with your friends!
 <context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="429"/>
+        <location filename="../videooverlay.ui" line="409"/>
         <source>Call on Hold</source>
         <translation>保留中的通話</translation>
     </message>
@@ -1121,11 +1121,6 @@ Copy and share it with your friends!
         <translation>00:00</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="396"/>
-        <source>Configuration</source>
-        <translation>設定</translation>
-    </message>
-    <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
         <translation>掛斷</translation>
@@ -1139,17 +1134,17 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="280"/>
+        <location filename="../videoview.cpp" line="279"/>
         <source>Share entire screen</source>
         <translation>分享整個螢幕</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="283"/>
+        <location filename="../videoview.cpp" line="282"/>
         <source>Share screen area</source>
         <translation>分享螢幕區域</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="290"/>
+        <location filename="../videoview.cpp" line="289"/>
         <source>Share file</source>
         <translation>分享檔案</translation>
     </message>
