@@ -153,13 +153,15 @@ void
 AdvancedSettingsWidget::openFileCustomRingtone()
 {
     QString fileUrl;
-    fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), QDir::currentPath() + QString("/ringtones/"));
+    auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
+    auto openPath = oldPath.isEmpty() ? QDir::currentPath() + QString("/ringtones/") : QFileInfo(oldPath).absolutePath();
+    fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), openPath, tr("Opus Files (*.opus)"));
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.Ringtone.ringtonePath = fileUrl.toStdString();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtone->setText(QFileInfo(fileUrl).fileName());
-    } else {
+    } else if (oldPath.isEmpty()) {
         ui->btnRingtone->setText(tr("Add a custom ringtone"));
     }
 }
