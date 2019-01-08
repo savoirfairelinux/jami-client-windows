@@ -111,8 +111,6 @@ CallWidget::CallWidget(QWidget* parent) :
 
     ui->mainActivitySplitter->setCollapsible(0, false);
     ui->mainActivitySplitter->setCollapsible(1, false);
-    ui->splitter->setCollapsible(0, false);
-    ui->splitter->setCollapsible(1, false);
 
     //disable dropdown shadow on combobox
     ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
@@ -221,6 +219,8 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    ui->smartListWidget->setStyleSheet("border-right: 2px solid rgb(240, 240, 240);");
 }
 
 CallWidget::~CallWidget()
@@ -850,6 +850,7 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto currentConversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(),
                                                              *convModel);
+
     ui->messageView->clear();
     ui->messageView->printHistory(*convModel, currentConversation->interactions, true);
 
@@ -891,9 +892,7 @@ CallWidget::on_ringContactLineEdit_textChanged(const QString& text)
 void
 CallWidget::backToWelcomePage()
 {
-    qDebug() << "backToWelcomePage";
     deselectConversation();
-    ui->messageView->hideMessages();
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
 }
 
@@ -909,7 +908,17 @@ CallWidget::hideMiniSpinner()
 void
 CallWidget::on_imBackButton_clicked()
 {
-    backToWelcomePage();
+    ui->messageView->clear();
+    QMetaObject::Connection* const connection = new QMetaObject::Connection;
+    *connection = connect(ui->messageView, &MessageWebView::messagesCleared,
+        [this, connection] {
+            qDebug() << "messagesCleared";
+            if (connection) {
+                QObject::disconnect(*connection);
+                delete connection;
+            }
+            backToWelcomePage();
+        });
 }
 
 void
@@ -1225,8 +1234,8 @@ void
 CallWidget::setCallPanelVisibility(bool visible)
 {
     ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
-    ui->callStackWidget->setVisible(visible);
     ui->imBackButton->setVisible(!visible);
     ui->btnAudioCall->setVisible(!visible);
     ui->btnVideoCall->setVisible(!visible);
+    ui->callStackWidget->setVisible(visible);
 }

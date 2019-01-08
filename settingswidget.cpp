@@ -47,7 +47,6 @@
 #include "deleteaccountdialog.h"
 #include "ui_deleteaccountdialog.h"
 
-
 // general Settings
 #include "winsparkle.h"
 #include "media/recordingmodel.h"
@@ -83,11 +82,9 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->exitSettingsButton->setIconSize(QSize(24, 24));
     ui->exitSettingsButton->setIcon(QPixmap(":/images/icons/round-close-24px.svg"));
 
-
     // display name (aka alias)
     ui->displayNameLineEdit->setAlignment(Qt::AlignHCenter);
     ui->displayNameLineEdit->setPlaceholderText(tr("Enter the displayed name"));
-
 
     setSelected(Button::accountSettingsButton);
 
@@ -332,7 +329,8 @@ SettingsWidget::avatarClicked()
     SetAvatarDialog avatarDialog(this);
 
     // return new avatar pixmap from setAvatarDialog
-    connect(&avatarDialog, &SetAvatarDialog::pixmapSignal, [&](const std::string& pixString) {
+    connect(&avatarDialog, &SetAvatarDialog::pixmapSignal,
+        [this](const std::string& pixString) {
             if (!pixString.empty()) {
                 LRCInstance::setCurrAccAvatar(pixString);
                 updateAccountInfoDisplayed();
@@ -734,7 +732,6 @@ SettingsWidget::setConnections()
     connect(ui->recordPathButton, &QPushButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
 }
 
-
 // *************************  General Settings  *************************
 
 void SettingsWidget::populateGeneralSettings()
@@ -843,7 +840,6 @@ SettingsWidget::openRecordFolderSlot()
     }
 }
 
-
 // *************************  Audio/Visual Settings  *************************
 
 void
@@ -886,7 +882,6 @@ SettingsWidget::populateAVSettings()
 
     showPreview();
 }
-
 
 void
 SettingsWidget::saveSizeIndex()

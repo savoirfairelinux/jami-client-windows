@@ -228,10 +228,22 @@ MessageWebView::setInvitation(bool show, const std::string& contactUri, const st
 }
 
 void
-MessageWebView::hideMessages()
+MessageWebView::setMessagesVisibility(bool visible)
 {
-    QString s = QString::fromLatin1("hideBody();");
+    QString s = QString::fromLatin1(visible ? "showMessagesDiv();" : "hideMessagesDiv();");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
+void
+MessageWebView::hideEvent(QHideEvent*)
+{
+    setMessagesVisibility(false);
+}
+
+void
+MessageWebView::showEvent(QShowEvent*)
+{
+    setMessagesVisibility(true);
 }
 
 // JS bridging incoming
@@ -239,6 +251,15 @@ Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
 {
     qDebug() << "JS log: " << arg;
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::messagesCleared()
+{
+    if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+        emit messageView->messagesCleared();
+    }
     return 0;
 }
 

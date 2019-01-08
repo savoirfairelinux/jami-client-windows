@@ -184,13 +184,13 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
 
     QRect rectName1(rect.left() + leftMargin,
                     rect.top() + topMargin,
-                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier,
+                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 2,
                     rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
-                    rectName1.top() + rectName1.height(),
+                    rectName1.top() + rectName1.height() - infoText2HeightModifier,
                     rectName1.width(),
-                    rectName1.height() - bottomMargin);
+                    rectName1.height() - bottomMargin + infoText2HeightModifier);
 
     QRect rectInfo1(rectName1.left() + rectName1.width(),
                     rect.top() + topMargin,
@@ -269,6 +269,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
             emojiMsgFont.setItalic(false);
             emojiMsgFont.setBold(false);
             emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+            rectInfo2.setTop(rectInfo2.top() - 6);
             painter->setOpacity(0.7);
             painter->setFont(emojiMsgFont);
         }

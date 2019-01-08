@@ -42,6 +42,7 @@ public:
     Q_INVOKABLE int acceptInvitation();
     Q_INVOKABLE int refuseInvitation();
     Q_INVOKABLE int blockConversation();
+    Q_INVOKABLE int messagesCleared();
 };
 
 class MessageWebView : public QWebEngineView
@@ -74,10 +75,15 @@ public:
     void setInvitation(bool show,
                        const std::string& contactUri = "",
                        const std::string& contactId = "");
-    void hideMessages();
+    void setMessagesVisibility(bool visible);
+
+protected:
+    void hideEvent(QHideEvent*);
+    void showEvent(QShowEvent*);
 
 signals:
     void conversationRemoved();
+    void messagesCleared();
 
 private slots:
     void slotLoadFinished();

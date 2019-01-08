@@ -55,14 +55,8 @@ body {
     padding-bottom: var(--messagebar-size);
     /* disable selection highlight because it looks very bad */
     -webkit-user-select: none;
-    opacity: 1;
-    transition: 0.5s opacity;
-}
 
-    body.fade {
-        opacity: 0;
-        transition: none;
-    }
+}
 
 ::-webkit-scrollbar-track {
     background-color: var(--bg-color);
@@ -76,7 +70,6 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: #f0f0f0;
 }
-
 
 /** Navbar */
 
@@ -335,7 +328,14 @@ a:hover {
     overflow: hidden;
     height: auto;
     padding-top: 0.5em;
+    opacity: 1;
+    transition: 0.5s opacity;
 }
+
+    #messages.fade {
+        opacity: 0;
+        transition: none;
+    }
 
     #messages:hover {
         overflow-y: overlay;
@@ -486,7 +486,6 @@ a:hover {
 .last_of_sequence.message_out .message_wrapper {
     border-radius: 20px 4px 20px 20px;
 }
-
 
 .first_of_sequence.message_out .message_wrapper {
     border-radius: 20px 20px 4px 20px;
