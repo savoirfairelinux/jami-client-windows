@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>688</width>
-    <height>1197</height>
+    <height>1273</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,6 @@
    <string notr="true">background: white;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
    <item>
     <widget class="QFrame" name="CallSettings">
      <property name="styleSheet">
@@ -63,6 +56,11 @@
           </property>
           <item>
            <widget class="QCheckBox" name="checkBoxUntrusted">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Allow Calls From Untrusted Peers</string>
             </property>
@@ -72,6 +70,11 @@
         </item>
         <item>
          <widget class="QCheckBox" name="checkBoxAutoAnswer">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Auto Answer Calls</string>
           </property>
@@ -87,6 +90,11 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Enable Custom Ringtone</string>
             </property>
@@ -99,6 +107,11 @@
               <width>250</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
             </property>
             <property name="styleSheet">
              <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
@@ -133,19 +146,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line_2">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>1</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
    <item>
@@ -188,6 +188,11 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -223,6 +228,11 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -231,16 +241,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line_3">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
    <item>
@@ -288,6 +288,11 @@
               <height>0</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Enable Proxy</string>
             </property>
@@ -320,6 +325,11 @@
               <height>0</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">border-bottom: 1px solid black;</string>
             </property>
@@ -339,6 +349,11 @@
         </property>
         <item>
          <widget class="QLabel" name="labelBootstrap">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Bootstrap</string>
           </property>
@@ -371,6 +386,11 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -379,16 +399,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line_4">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
    <item>
@@ -425,6 +435,11 @@
         </property>
         <item row="3" column="0">
          <widget class="QLabel" name="label_21">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Private Key Password</string>
           </property>
@@ -432,6 +447,11 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_19">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>User Certificate</string>
           </property>
@@ -451,6 +471,11 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -461,6 +486,11 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_20">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Private Key</string>
           </property>
@@ -468,6 +498,11 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_18">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>CA Certificate</string>
           </property>
@@ -488,6 +523,11 @@
               <width>250</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
@@ -532,6 +572,11 @@
               <height>25</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
@@ -575,6 +620,11 @@
               <height>25</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
@@ -614,16 +664,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Line" name="line_5">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QFrame" name="Connectivity">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -657,6 +697,11 @@
         </property>
         <item row="3" column="2">
          <widget class="QLineEdit" name="lineEditTurnUsername">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -680,6 +725,11 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_13">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>        TURN Address</string>
           </property>
@@ -699,6 +749,11 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
@@ -709,6 +764,11 @@
         </item>
         <item row="5" column="0">
          <widget class="QCheckBox" name="checkBoxSTUNEnable">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Use STUN</string>
           </property>
@@ -716,6 +776,11 @@
         </item>
         <item row="4" column="2">
          <widget class="QLineEdit" name="lineEditTurnPsswd">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -723,6 +788,11 @@
         </item>
         <item row="5" column="2">
          <widget class="QLineEdit" name="lineEditSTUNAddress">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border-bottom: 1px solid black;</string>
           </property>
@@ -733,6 +803,11 @@
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_14">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>        TURN Username</string>
           </property>
@@ -740,6 +815,11 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_12">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>        TURN Password</string>
           </property>
@@ -747,6 +827,11 @@
         </item>
         <item row="0" column="0">
          <widget class="QCheckBox" name="checkBoxUPnP">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Use UPnP</string>
           </property>
@@ -754,6 +839,11 @@
         </item>
         <item row="1" column="0">
          <widget class="QCheckBox" name="checkBoxTurnEnable">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Use TURN</string>
           </property>
@@ -762,16 +852,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line_6">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
    <item>
@@ -809,11 +889,11 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">border-bottom: 1px solid black;</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Audio Codecs</string>
@@ -850,6 +930,11 @@
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -878,6 +963,11 @@
               <width>30</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -944,11 +1034,11 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">border-bottom: 1px solid black;</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Video Codecs</string>
@@ -985,6 +1075,11 @@
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -1013,6 +1108,11 @@
               <width>30</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
             </property>
             <property name="text">
              <string/>

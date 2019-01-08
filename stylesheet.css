@@ -32,7 +32,16 @@ QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
     background-color: #db3c30;
 }
 
-QPushButton#btnConversations, QPushButton#btnInvites {
+QPushButton { 
+    background-color: rgb(242, 242, 242);
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+	color: rgb(32, 32, 32);
+}
+
+QPushButton#btnConversations, QPushButton#btnInvites,
+QPushButton#btnExportAccount, QPushButton#btnDeletAccount {
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
@@ -41,15 +50,18 @@ QPushButton#btnConversations, QPushButton#btnInvites {
 	color: rgb(32, 32, 32);
 }
 
-QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
+QPushButton#btnConversations:hover, QPushButton#btnInvites:hover,
+QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover {
     background-color: rgb(237, 237, 237);
 }
 
-QPushButton#btnConversations:pressed, QPushButton#btnInvites:pressed {
+QPushButton#btnConversations:pressed, QPushButton#btnInvites:pressed,
+QPushButton#btnExportAccount:pressed, QPushButton#btnDeletAccount:pressed {
     background-color: rgb(212, 212, 212);
 }
 
-QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
+QPushButton#btnConversations:checked, QPushButton#btnInvites:checked,
+QPushButton#btnExportAccount:checked, QPushButton#btnDeletAccount:checked {
     background-color: rgb(237, 237, 237);
 }
 
@@ -170,6 +182,10 @@ QListView#BannedList::item:hover {
 QWidget#messagingHeaderWidget {
     background-color: rgba(255, 255, 255, 255);
     border-bottom: 2px solid rgb(240, 240, 240);
+}
+
+QWidget#sidePanelLayoutWidget, QWidget#leftSettingsWidget {
+    border-right: 2px solid rgb(240, 240, 240);
 }
 
 QWidget#messageViewLayoutWidget, QWidget#welcomePage {

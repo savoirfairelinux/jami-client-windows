@@ -140,7 +140,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     if (QWidget* popupWidget = this->findChild<QFrame*>()) {
-        popupWidget->setStyleSheet("QFrame{border: 0px;border-bottom: 1px solid #f0f0f0;}");
+        popupWidget->setStyleSheet("QFrame{border: 0px;border-bottom: 1px solid #f0f0f0;border-right: 1px solid #f0f0f0; }");
     }
 }
 

@@ -71,6 +71,7 @@ namespace Utils
     std::string secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
     lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
     std::string formatTimeString(const std::time_t& timestamp);
+    const lrc::api::conversation::Info * getConversationPtrFromUid(const std::string & uid, const lrc::api::ConversationModel & model);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model);
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);

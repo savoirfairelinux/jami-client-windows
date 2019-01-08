@@ -41,6 +41,7 @@ var isBanned = false
 var isAccountEnabled = true
 var isInitialLoading = false
 var imagesLoadingCounter = 0
+var canLazyLoad = false;
 
 /* Set the default target to _self and handle with QWebEnginePage::acceptNavigationRequest */
 var linkifyOptions = {
@@ -68,6 +69,8 @@ new QWebChannel(qt.webChannelTransport, function(channel) {
 });
 
 function onScrolled_() {
+    if (!canLazyLoad)
+        return;
     if (messages.scrollTop == 0 && historyBufferIndex != historyBuffer.length) {
         /* At the top and there's something to print */
         printHistoryPart(messages, messages.scrollHeight)
@@ -198,7 +201,6 @@ function process_messagebar_keydown(key) {
     return true
 }
 
-
 /**
  * Disable or enable textarea.
  *
@@ -290,6 +292,9 @@ function clearMessages()
     while (messages.firstChild) {
         messages.removeChild(messages.firstChild)
     }
+    canLazyLoad = false
+
+    window.jsbridge.messagesCleared()
 }
 
 /**
@@ -302,7 +307,6 @@ function escapeHtml(html)
     div.appendChild(text)
     return div.innerHTML
 }
-
 
 /**
  * Get the youtube video id from a URL.
@@ -543,7 +547,6 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
     var message_direction = message_object["direction"]
     var message_id = message_object["id"]
     var message_text = message_object["text"]
-
 
     if (isImage(message_text) && message_delivery_status === "finished" && displayLinksEnabled && !forceTypeToFile) {
         // Replace the old wrapper by the downloaded image
@@ -1381,6 +1384,8 @@ function on_image_load_finished() {
  * available in the DOM.
  */
 function check_lazy_loading() {
+    if (!canLazyLoad)
+        return;
     if (messages.scrollHeight < initialScrollBufferFactor * messages.clientHeight
         && historyBufferIndex !== historyBuffer.length) {
         /* Not enough messages loaded, print a new batch. Enable isInitialLoading
@@ -1408,7 +1413,6 @@ function printHistoryPart(messages_div, fixedAt)
     if (historyBufferIndex === historyBuffer.length) {
         return
     }
-
     /* If first element is a spinner, remove it */
     if (messages_div.firstChild && messages_div.firstChild.id === "lazyloading-icon") {
         messages_div.removeChild(messages_div.firstChild)
@@ -1462,10 +1466,17 @@ function printHistoryPart(messages_div, fixedAt)
     }
 }
 
-function hideBody()
+function hideMessagesDiv()
 {
-    if (!document.body.classList.contains('fade')) {
-        document.body.classList.add('fade');
+    if (!messages.classList.contains('fade')) {
+        messages.classList.add('fade');
+    }
+}
+
+function showMessagesDiv()
+{
+    if (messages.classList.contains('fade')) {
+        messages.classList.remove('fade');
     }
 }
 
@@ -1481,9 +1492,8 @@ function hideBody()
 /* exported printHistory */
 function printHistory(messages_array, fadein = false)
 {
-    if (fadein) {
-        hideBody()
-    }
+    if(fadein)
+        hideMessagesDiv()
 
     historyBuffer = messages_array
     historyBufferIndex = 0
@@ -1492,9 +1502,10 @@ function printHistory(messages_array, fadein = false)
     printHistoryPart(messages, 0)
     isInitialLoading = false
 
-    if (fadein) {
-        document.body.classList.remove('fade');
-    }
+    canLazyLoad = true
+
+    if(fadein)
+        showMessagesDiv()
 }
 
 /**
