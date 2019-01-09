@@ -221,8 +221,10 @@ MessageWebView::setSenderImage(const std::string& sender,
 void
 MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
 {
-    QString s = QString::fromLatin1(show ? "showInvitation(\"%1\", \"%2\")" : "showInvitation()")
-        .arg(QString(contactUri.c_str())).arg(QString(contactId.c_str()));
+    QString s = show ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")")
+        .arg(QString(contactUri.c_str()))
+        .arg(QString(contactId.c_str())) : QString::fromLatin1("showInvitation()");
+
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
