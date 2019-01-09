@@ -69,7 +69,7 @@
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -284,16 +284,8 @@
     <ClCompile Include="videowidget.cpp" />
     <ClCompile Include="webchathelpers.cpp" />
     <ClCompile Include="windowscontactbackend.cpp" />
-    <ClCompile Include="wizarddialog.cpp" />
-    <ClCompile Include="wizardwidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="wizardwidget.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
-      <Define Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG</Define>
-    </QtMoc>
     <QtMoc Include="aboutdialog.h">
     </QtMoc>
     <QtMoc Include="bannedcontactswidget.h">
@@ -451,8 +443,6 @@
     <ClInclude Include="version.h" />
     <ClInclude Include="webchathelpers.h" />
     <ClInclude Include="windowscontactbackend.h" />
-    <QtMoc Include="wizarddialog.h">
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -481,7 +471,6 @@
     <ClInclude Include="ui_ringbutton.h" />
     <ClInclude Include="ui_videooverlay.h" />
     <ClInclude Include="ui_videoview.h" />
-    <ClInclude Include="ui_wizarddialog.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\ring_client_windows.ts" />
@@ -587,11 +576,6 @@
     <QtUic Include="videooverlay.ui">
     </QtUic>
     <QtUic Include="videoview.ui">
-    </QtUic>
-    <QtUic Include="wizarddialog.ui">
-    </QtUic>
-    <QtUic Include="wizardwidget.ui">
-      <SubType>Designer</SubType>
     </QtUic>
   </ItemGroup>
   <ItemGroup>

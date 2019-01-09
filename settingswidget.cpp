@@ -16,8 +16,12 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.  *
  **************************************************************************/
+
+#include "settingswidget.h"
+#include "ui_settingswidget.h"
+
 #include <QPixmap>
 #include <QTimer>
 #include <QModelIndex>
@@ -27,42 +31,26 @@
 #include <QMessageBox>
 #include <QSettings>
 
-// account settings
-#include "api/newdevicemodel.h"
+#include "utils.h"
 #include "settingsitemwidget.h"
-
-#include "settingswidget.h"
-#include "ui_settingswidget.h"
-
-#include "ui_advancedsettingswidget.h"
-
 #include "passworddialog.h"
-
 #include "regnamedialog.h"
-#include "ui_regnamedialog.h"
-
 #include "setavatardialog.h"
-#include "ui_setavatardialog.h"
-
 #include "deleteaccountdialog.h"
-#include "ui_deleteaccountdialog.h"
 
-// general Settings
-#include "winsparkle.h"
+#include "api/newdevicemodel.h"
 #include "media/recordingmodel.h"
-
-// av setttings
 #include "audio/settings.h"
 #include "audio/outputdevicemodel.h"
 #include "audio/inputdevicemodel.h"
-
 #include "video/devicemodel.h"
 #include "video/channel.h"
 #include "video/resolution.h"
 #include "video/rate.h"
 #include "video/previewmanager.h"
-
 #include "callmodel.h"
+
+#include "winsparkle.h"
 
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
@@ -130,13 +118,11 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!accountList.size()) {
-        QMetaObject::Connection* toDisconnect = &accountAddedConnection_;
-        accountAddedConnection_ = connect(&LRCInstance::accountModel(),
+        Utils::oneShotConnect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,
-            [this, toDisconnect](const std::string& accountId) {
+            [this](const std::string& accountId) {
                 Q_UNUSED(accountId);
                 setConnections();
-                QObject::disconnect(*toDisconnect);
             });
     } else {
         setConnections();

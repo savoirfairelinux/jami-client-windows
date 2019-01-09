@@ -284,20 +284,6 @@ function sendFile()
 }
 
 /**
- * Clear all messages.
- */
-/* exported clearMessages */
-function clearMessages()
-{
-    while (messages.firstChild) {
-        messages.removeChild(messages.firstChild)
-    }
-    canLazyLoad = false
-
-    window.jsbridge.messagesCleared()
-}
-
-/**
  * Convert text to HTML.
  */
 function escapeHtml(html)
@@ -1481,6 +1467,20 @@ function showMessagesDiv()
 }
 
 /**
+ * Clear all messages.
+ */
+/* exported clearMessages */
+function clearMessages()
+{
+    canLazyLoad = false
+    while (messages.firstChild) {
+        messages.removeChild(messages.firstChild)
+    }
+
+    window.jsbridge.emitMessagesCleared()
+}
+
+/**
  * Set history buffer, initialize messages div and display a first batch
  * of messages.
  *
@@ -1490,11 +1490,8 @@ function showMessagesDiv()
  * @param messages_array should contain history to be printed
  */
 /* exported printHistory */
-function printHistory(messages_array, fadein = false)
+function printHistory(messages_array)
 {
-    if(fadein)
-        hideMessagesDiv()
-
     historyBuffer = messages_array
     historyBufferIndex = 0
 
@@ -1504,8 +1501,7 @@ function printHistory(messages_array, fadein = false)
 
     canLazyLoad = true
 
-    if(fadein)
-        showMessagesDiv()
+    window.jsbridge.emitMessagesLoaded()
 }
 
 /**

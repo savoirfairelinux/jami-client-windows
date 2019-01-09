@@ -48,19 +48,14 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!accountList.size()) {
-        QMetaObject::Connection* const connection = new QMetaObject::Connection;
-        connect(&LRCInstance::accountModel(),
+        Utils::oneShotConnect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,
-            [this, connection](const std::string& accountId) {
+            [this](const std::string& accountId) {
                 Q_UNUSED(accountId);
                 connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
                     [this](const std::string& tempCallId) {
                         callId = tempCallId;
                     });
-                if (connection) {
-                    QObject::disconnect(*connection);
-                    delete connection;
-                }
             });
     } else {
         connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,

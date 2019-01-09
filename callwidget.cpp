@@ -45,7 +45,6 @@
 #include "localprofilecollection.h"
 
 // client
-#include "wizarddialog.h"
 #include "windowscontactbackend.h"
 #include "globalsystemtray.h"
 #include "conversationitemdelegate.h"
@@ -847,39 +846,45 @@ CallWidget::showIMOutOfCall(const QModelIndex& nodeIdx)
     bool shouldShowSendContactRequestBtn = !isContact && isRINGAccount;
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    auto currentConversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(),
-                                                             *convModel);
-
+    ui->messageView->setMessagesVisibility(false);
     ui->messageView->clear();
-    ui->messageView->printHistory(*convModel, currentConversation->interactions, true);
-
-    // Contact Avatars
-    auto accInfo = &LRCInstance::getCurrentAccountInfo();
-    auto contactUri = currentConversation->participants.front();
-    try {
-        auto& contact = accInfo->contactModel->getContact(contactUri);
-        auto bestName = Utils::bestNameForConversation(*currentConversation, *convModel);
-        ui->messageView->setInvitation(
-            (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
-            bestName,
-            accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
-        );
-        if (!contact.profileInfo.avatar.empty()) {
-            ui->messageView->setSenderImage(
-                accInfo->contactModel->getContactProfileId(contactUri),
-                contact.profileInfo.avatar);
-        } else {
-            auto avatar = Utils::conversationPhoto(LRCInstance::getSelectedConvUid(), *accInfo);
-            QByteArray ba;
-            QBuffer bu(&ba);
-            avatar.save(&bu, "PNG");
-            std::string avatarString = ba.toBase64().toStdString();
-            ui->messageView->setSenderImage(
-                accInfo->contactModel->getContactProfileId(contactUri),
-                avatarString);
-        }
-    } catch (...) { }
+    Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
+        [this] {
+            auto convModel = LRCInstance::getCurrentConversationModel();
+            auto currentConversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(),
+                *convModel);
+            ui->messageView->printHistory(*convModel, currentConversation->interactions);
+            Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesLoaded,
+                [this] {
+                    ui->messageView->setMessagesVisibility(true);
+                });
+            // Contact Avatars
+            auto accInfo = &LRCInstance::getCurrentAccountInfo();
+            auto contactUri = currentConversation->participants.front();
+            try {
+                auto& contact = accInfo->contactModel->getContact(contactUri);
+                auto bestName = Utils::bestNameForConversation(*currentConversation, *convModel);
+                ui->messageView->setInvitation(
+                    (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
+                    bestName,
+                    accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
+                );
+                if (!contact.profileInfo.avatar.empty()) {
+                    ui->messageView->setSenderImage(
+                        accInfo->contactModel->getContactProfileId(contactUri),
+                        contact.profileInfo.avatar);
+                } else {
+                    auto avatar = Utils::conversationPhoto(LRCInstance::getSelectedConvUid(), *accInfo);
+                    QByteArray ba;
+                    QBuffer bu(&ba);
+                    avatar.save(&bu, "PNG");
+                    std::string avatarString = ba.toBase64().toStdString();
+                    ui->messageView->setSenderImage(
+                        accInfo->contactModel->getContactProfileId(contactUri),
+                        avatarString);
+                }
+            } catch (...) {}
+        });
 }
 
 void
@@ -909,15 +914,9 @@ void
 CallWidget::on_imBackButton_clicked()
 {
     ui->messageView->clear();
-    QMetaObject::Connection* const connection = new QMetaObject::Connection;
-    *connection = connect(ui->messageView, &MessageWebView::messagesCleared,
-        [this, connection] {
-            qDebug() << "messagesCleared";
-            if (connection) {
-                QObject::disconnect(*connection);
-                delete connection;
-            }
-            backToWelcomePage();
+    Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
+        [this] {
+            QTimer::singleShot(33, this, [this] { backToWelcomePage(); });
         });
 }
 

@@ -36,7 +36,6 @@
 // av settings
 #include "video/devicemodel.h"
 
-
 namespace Ui {
     class SettingsWidget;
 }
@@ -122,11 +121,9 @@ private slots:
 
     void setButtonIconSlot(int frame);
 
-
     // *************************  General Settings  *************************
 private:
     void populateGeneralSettings();
-    QMetaObject::Connection accountAddedConnection_;
 
 private slots:
     void setNotificationsSlot(int state);

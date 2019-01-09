@@ -42,7 +42,8 @@ public:
     Q_INVOKABLE int acceptInvitation();
     Q_INVOKABLE int refuseInvitation();
     Q_INVOKABLE int blockConversation();
-    Q_INVOKABLE int messagesCleared();
+    Q_INVOKABLE int emitMessagesCleared();
+    Q_INVOKABLE int emitMessagesLoaded();
 };
 
 class MessageWebView : public QWebEngineView
@@ -68,8 +69,7 @@ public:
     void removeInteraction(uint64_t interactionId);
     void printHistory(lrc::api::ConversationModel& conversationModel,
                       const std::map<uint64_t,
-                      lrc::api::interaction::Info> interactions,
-                      bool fadeIn = false);
+                      lrc::api::interaction::Info> interactions);
     void setSenderImage(const std::string& sender,
                         const std::string& senderImage);
     void setInvitation(bool show,
@@ -77,13 +77,10 @@ public:
                        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
 
-protected:
-    void hideEvent(QHideEvent*);
-    void showEvent(QShowEvent*);
-
 signals:
     void conversationRemoved();
     void messagesCleared();
+    void messagesLoaded();
 
 private slots:
     void slotLoadFinished();

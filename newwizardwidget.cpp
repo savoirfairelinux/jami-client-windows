@@ -406,9 +406,8 @@ NewWizardWidget::createRingAccount(const QString &displayName,
     const QString &pin,
     const QString &archivePath)
 {
-    QMetaObject::Connection* const connection = new QMetaObject::Connection;
-    *connection = connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-        [this, connection](const std::string& accountId) {
+    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
+        [this](const std::string& accountId) {
             //set default ringtone
             auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
             confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
@@ -427,10 +426,6 @@ NewWizardWidget::createRingAccount(const QString &displayName,
             );
             if (ui->setAvatarWidget->hasAvatar()) {
                 LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
-            }
-            QObject::disconnect(*connection);
-            if (connection) {
-                delete connection;
             }
         });
     QtConcurrent::run(

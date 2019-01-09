@@ -358,16 +358,6 @@ Utils::formatTimeString(const std::time_t& timestamp)
     }
 }
 
-const lrc::api::conversation::Info*
-Utils::getConversationPtrFromUid(const std::string& uid, const lrc::api::ConversationModel& model) {
-    auto currentConversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(), model);
-    auto conversations = model.allFilteredConversations();
-    if (currentConversation == conversations.end()) {
-        return nullptr;
-    }
-    return &(conversations[std::distance(model.allFilteredConversations().begin(), currentConversation)]);
-}
-
 lrc::api::ConversationModel::ConversationQueue::const_iterator
 Utils::getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model) {
     return std::find_if(model.allFilteredConversations().begin(), model.allFilteredConversations().end(),

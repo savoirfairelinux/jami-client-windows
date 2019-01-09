@@ -71,7 +71,6 @@ namespace Utils
     std::string secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
     lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
     std::string formatTimeString(const std::time_t& timestamp);
-    const lrc::api::conversation::Info * getConversationPtrFromUid(const std::string & uid, const lrc::api::ConversationModel & model);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model);
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
@@ -80,6 +79,26 @@ namespace Utils
     QByteArray QByteArrayFromFile(const QString& filename);
     QPixmap generateTintedPixmap(const QString& filename, QColor color);
     std::string getConversationFromCallId(const std::string& callId);
+
+    template <typename Func1, typename Func2>
+    void
+    oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object* sender, Func1 signal, Func2 slot)
+    {
+        QMetaObject::Connection* const connection = new QMetaObject::Connection;
+        *connection = QObject::connect(sender, signal, slot);
+        QMetaObject::Connection* const disconnectConnection = new QMetaObject::Connection;
+        *disconnectConnection = QObject::connect(sender, signal,
+            [connection, disconnectConnection] {
+                if (connection) {
+                    QObject::disconnect(*connection);
+                    delete connection;
+                }
+                if (disconnectConnection) {
+                    QObject::disconnect(*disconnectConnection);
+                    delete disconnectConnection;
+                }
+            });
+    }
 
     template<typename E>
     constexpr inline typename std::enable_if<   std::is_enum<E>::value,

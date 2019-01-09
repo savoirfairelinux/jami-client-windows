@@ -196,12 +196,11 @@ MessageWebView::removeInteraction(uint64_t interactionId)
 void
 MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
                              const std::map<uint64_t,
-                             lrc::api::interaction::Info> interactions,
-                             bool fadeIn)
+                             lrc::api::interaction::Info> interactions)
 {
     auto interactionsStr = interactionsToJsonArrayObject(conversationModel, interactions).toUtf8();
-    QString s = QString::fromLatin1("printHistory(%1,%2);")
-        .arg(interactionsStr.constData()).arg(fadeIn);
+    QString s = QString::fromLatin1("printHistory(%1);")
+        .arg(interactionsStr.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
@@ -234,18 +233,6 @@ MessageWebView::setMessagesVisibility(bool visible)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::hideEvent(QHideEvent*)
-{
-    setMessagesVisibility(false);
-}
-
-void
-MessageWebView::showEvent(QShowEvent*)
-{
-    setMessagesVisibility(true);
-}
-
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -255,10 +242,19 @@ PrivateBridging::log(const QString& arg)
 }
 
 Q_INVOKABLE int
-PrivateBridging::messagesCleared()
+PrivateBridging::emitMessagesCleared()
 {
     if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
         emit messageView->messagesCleared();
+    }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::emitMessagesLoaded()
+{
+    if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+        emit messageView->messagesLoaded();
     }
     return 0;
 }

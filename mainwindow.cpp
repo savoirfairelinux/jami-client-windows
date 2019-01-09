@@ -39,7 +39,6 @@
 #include "callmodel.h"
 #include "callwidget.h"
 #include "utils.h"
-#include "wizarddialog.h"
 #include "version.h"
 
 MainWindow::MainWindow(QWidget* parent) :
