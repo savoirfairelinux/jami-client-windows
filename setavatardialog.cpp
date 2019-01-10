@@ -23,6 +23,7 @@
 #include <QWindow>
 #include <QtMultimedia\QCameraImageCapture>
 #include <QBuffer>
+#include <QStandardPaths>
 
 #include "setavatardialog.h"
 #include "ui_setavatardialog.h"
@@ -137,8 +138,9 @@ SetAvatarDialog::editMode()
 void
 SetAvatarDialog::openFileManager()
 {
+    auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     rawPixmap_.load(QFileDialog::getOpenFileName(this,
-        tr("Open Image"), "", tr("Image Files (*.png *.jpg *.bmp)")));
+        tr("Open Image"), picturesDir, tr("Image Files (*.jpg *.jpeg *.png *.bmp)")));
     editMode();
 }
 
