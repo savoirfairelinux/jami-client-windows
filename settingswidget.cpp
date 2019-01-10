@@ -50,7 +50,9 @@
 #include "video/previewmanager.h"
 #include "callmodel.h"
 
+#ifdef Q_OS_WIN
 #include "winsparkle.h"
+#endif
 
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
@@ -738,8 +740,10 @@ void SettingsWidget::populateGeneralSettings()
     }
     ui->recordPathButton->setText(media::RecordingModel::instance().recordPath());
 
+#ifdef Q_OS_WIN
     ui->autoUpdateCheckBox->setChecked(win_sparkle_get_automatic_check_for_updates());
     ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
+#endif
 }
 
 void
@@ -768,18 +772,23 @@ SettingsWidget::setClosedOrMinSlot(int state)
 void
 SettingsWidget::checkForUpdateSlot()
 {
+#ifdef Q_OS_WIN
     win_sparkle_check_update_with_ui();
+#endif
 }
 
 void
 SettingsWidget::setUpdateIntervalSlot(int value)
 {
+#ifdef Q_OS_WIN
     win_sparkle_set_update_check_interval(value * 86400);
+#endif
 }
 
 void
 SettingsWidget::setUpdateAutomaticSlot(int state)
 {
+#ifdef Q_OS_WIN
     if (state == Qt::CheckState::Unchecked) {
         win_sparkle_set_automatic_check_for_updates(false);
         ui->intervalUpdateCheckSpinBox->setEnabled(false);
@@ -787,6 +796,7 @@ SettingsWidget::setUpdateAutomaticSlot(int state)
         win_sparkle_set_automatic_check_for_updates(true);
         ui->intervalUpdateCheckSpinBox->setEnabled(true);
     }
+#endif
 }
 
 void

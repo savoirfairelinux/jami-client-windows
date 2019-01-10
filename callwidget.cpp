@@ -401,7 +401,7 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
 void
 CallWidget::setupQRCode(QString ringID)
 {
-    auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
+    /*auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
                                      0, //Let the version be decided by libqrencode
                                      QR_ECLEVEL_L, // Lowest level of error correction
                                      QR_MODE_8, // 8-bit data mode
@@ -434,7 +434,7 @@ CallWidget::setupQRCode(QString ringID)
     painter.end();
     QRcode_free(rcode);
     ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_),
-                           Qt::KeepAspectRatio)));
+                           Qt::KeepAspectRatio)));*/
 }
 
 void

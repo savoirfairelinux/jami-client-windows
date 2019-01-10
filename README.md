@@ -1,4 +1,9 @@
-# Windows client for Jami
+# Jami-qt
+
+`jami-qt` is the cross platform client for Jami. For now, it's mainly used for the Windows platform and is not tested on other platforms.
+
+![jami-logo](images/logo-jami-standard-coul.png)
+
 
 For more information about the jami project, see the following:
 
@@ -15,48 +20,28 @@ For more information about the jami project, see the following:
 
 ## Get the source code
 
- - ```git clone https://gerrit-ring.savoirfairelinux.com/ring-client-windows```
+ - `git clone https://gerrit-ring.savoirfairelinux.com/ring-client-windows`
 
 ## Build instructions
 
-*USE THE QMAKE OF Qt BUILT WITH MINGW* (e.g. /usr/bin/[i686 | x86_64]-w64-mingw32-qmake-qt5)
+**NOTE: The build process is currently under a full refactorization. This section will be updated soon**
+
+## Windows
+
+TBD
+
+### Build winsparkle
+In the client directory after having initialized the submodule:
 
 ```
-cd ring-client-windows
+cd winsparkle
 mkdir build && cd build
-export QTDIR=<path to mingw qt> (e.g. /usr/[i686 | x86_64]-w64-mingw32/lib/qt)
-git submodule init && git submodule update
-cd libqrencode
-./autogen.sh && ./configure --host=[i686 | x86_64]-w64-mingw32 --prefix=<Install dir of Jami and LRC>
-make
-make install
-cd ..
-qmake ../RingWinClient.pro -r -spec win32-g++ RING=<Install dir of Jami and LRC> [BUILD=Debug]
+cmake -DCMAKE_TOOLCHAIN_FILE=<LRC Directory>/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=Install dir of Jami and LRC> ../cmake",
 make
 make install
 ```
-You will find all files in ./release directory.
 
-#Auto update
-
-If you want to enable auto-update
-- Build winsparkle
-    In the client directory after having initialized the submodule
-    ```
-    cd winsparkle
-    mkdir build && cd build
-    cmake -DCMAKE_TOOLCHAIN_FILE=<LRC Directory>/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=Install dir of Jami and LRC> ../cmake",
-    make
-    make install
-    ```
-- Compile the client with `ENABLE_AUTOUPDATE=True`
-
-## Debugging
-
-Compile the client with 'BUILD=Debug' and libRingClient with '-DCMAKE_BUILD_TYPE=Debug'
-
-
-## Packaging
+### Packaging
 
 * Nsis : Nullsoft Scriptable Install System :http://nsis.sourceforge.net/Main_Page.
 
@@ -64,3 +49,43 @@ Compile the client with 'BUILD=Debug' and libRingClient with '-DCMAKE_BUILD_TYPE
 cd build/release
 makensis ring.nsi
 ```
+
+
+## Linux
+
+For now, this process is experimental. The best way to do that is:
+
+1. Compile the daemon and LRC as specified in these projects (see the respective repositories or https://git.jami.net/savoirfairelinux/ring-project/wikis/technical/Build-instructions).
+2. Install needed dependencies (TBD):
+    + For Fedora:
+```bash
+sudo dnf install qt5-qtsvg-devel qt5-qtwebengine-devel qt5-multimedia-devel
+```
+3. If you are not using the `ring-project` repository, you have to define the `LRC` environment variable to contains the install directory for `LRC`. Also, you will have to setup `LD_LIBRARY_PATH` if your install directory is a custom one.
+4. Then, build the client:
+
+```bash
+mkdir build
+cd build
+qmake-qt5 ../jami-qt.pro
+make -j 9
+```
+
+5. Then, you are finally ready to launch `jami-qt` in your `build` directory.
+
+### Known issues
+
+1. The build system is not straight forward
+2. Video doesn't work
+3. QrCode doesn't work
+4. Can't maximize/minimize window
+5. Crash if the daemon is not started and installed.
+
+## Mac OS
+
+TBD
+
+
+## Debugging
+
+Compile the client with 'BUILD=Debug' and libRingClient with '-DCMAKE_BUILD_TYPE=Debug'
