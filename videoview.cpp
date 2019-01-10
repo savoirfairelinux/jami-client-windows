@@ -324,21 +324,23 @@ VideoView::showContextMenu(const QPoint& pos)
 }
 
 void
-VideoView::pushRenderer(const std::string& callUid) {
+VideoView::pushRenderer(const std::string& callId) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(videoStartedConnection_);
-    if (!callModel->hasCall(callUid)) {
+    if (!callModel->hasCall(callId)) {
         return;
     }
 
-    auto call = callModel->getCall(callUid);
+    auto call = callModel->getCall(callId);
+
+    this->overlay_->callStarted(callId);
+    this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
     videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
         [this](const std::string& callId, Video::Renderer* renderer) {
             Q_UNUSED(callId);
             slotVideoStarted(renderer);
-            this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
         });
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
 }

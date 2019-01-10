@@ -36,6 +36,7 @@ public:
 
 public:
     void setName(const QString& name);
+    void callStarted(const std::string & callId);
     inline bool isDialogVisible(){ return dialogVisible_; };
     void toggleContextButtons(bool visible);
     void setVideoMuteVisibility(bool visible);
@@ -43,11 +44,9 @@ public:
     void simulateShowChatview(bool checked);
     bool getShowChatView();
 
-public slots:
-    void setTime();
-
 //UI SLOTS
 private slots:
+    void setTime();
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
     void on_holdButton_clicked();
@@ -60,10 +59,9 @@ private:
     Ui::VideoOverlay* ui;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
-    std::string callId;
+    std::string callId_;
 
 signals:
     void setChatVisibility(bool visible);
     void videoCfgBtnClicked();
 };
-
