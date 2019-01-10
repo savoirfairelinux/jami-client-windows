@@ -14,7 +14,7 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <httpwww.gnu.org/licenses/>.      *
  **************************************************************************/
 
 #include "mainwindow.h"
@@ -48,8 +48,12 @@
 #include <gnutls/gnutls.h>
 #endif
 
+#ifdef Q_OS_WIN
 #ifdef URI_PROTOCOL
+#endif
 #include "shmclient.h"
+#ifdef Q_OS_WIN
+#endif
 #endif
 
 REGISTER_MEDIA();
@@ -164,7 +168,9 @@ main(int argc, char *argv[])
         }
     }
 
+#ifdef Q_OS_WIN
 #ifdef URI_PROTOCOL
+#endif
     QSharedMemory* shm = new QSharedMemory("RingShm");
     QSystemSemaphore* sem = new QSystemSemaphore("RingSem", 0);
 
@@ -191,6 +197,8 @@ main(int argc, char *argv[])
     //Client listening to shm event
     memset((char*)shm->data(), 0, shm->size());
     ShmClient* shmClient = new ShmClient(shm, sem);
+#ifdef Q_OS_WIN
+#endif
 #endif
 
     const auto locale_name = QLocale::system().name();
@@ -250,7 +258,9 @@ main(int argc, char *argv[])
         MainWindow::instance().hide();
     }
 
+#ifdef Q_OS_WIN
 #ifdef URI_PROTOCOL
+#endif
     QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&a, &shmClient, &shm, &sem]() {
@@ -259,6 +269,8 @@ main(int argc, char *argv[])
         delete shm;
         delete sem;
     });
+#ifdef Q_OS_WIN
+#endif
 #endif
 
     auto ret = a.exec();
