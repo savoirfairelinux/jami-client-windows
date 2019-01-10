@@ -75,7 +75,9 @@ public slots:
 
 public slots:
     void settingsButtonClicked();
-    void showIMOutOfCall(const QModelIndex& nodeIdx);
+    void showChatView(const QModelIndex& nodeIdx);
+    void showChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void setupChatView(const lrc::api::conversation::Info& convInfo);
     void slotAcceptInviteClicked(const QModelIndex& index);
     void slotBlockInviteClicked(const QModelIndex& index);
     void slotIgnoreInviteClicked(const QModelIndex& index);
@@ -121,7 +123,7 @@ private:
     bool connectConversationModel();
     void updateConversationView(const std::string& convUid);
     void showConversationView();
-    void selectSmartlistItem(const std::string& convUid);
+    bool selectSmartlistItem(const std::string& convUid);
     QImage imageForConv(const std::string & convUid);
     void processContactLineEdit();
     void hideMiniSpinner();

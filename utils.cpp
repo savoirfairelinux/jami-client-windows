@@ -395,14 +395,13 @@ Utils::isContactValid(const std::string& contactUid, const lrc::api::Conversatio
 QImage
 Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::Info& accountInfo)
 {
-    auto& convModel = accountInfo.conversationModel;
-    auto conversation = Utils::getConversationFromUid(convUid, *convModel);
-    if (conversation == (*convModel).allFilteredConversations().end()) {
-        return QImage();
+    auto convInfo = getConversationFromUid(convUid, false);
+    if (!convInfo.uid.empty()) {
+        return GlobalInstances::pixmapManipulator()
+            .decorationRole(convInfo, accountInfo)
+            .value<QImage>();
     }
-
-    QVariant var = GlobalInstances::pixmapManipulator().decorationRole(*conversation, accountInfo);
-    return var.value<QImage>();
+    return QImage();
 }
 
 QByteArray
@@ -443,4 +442,33 @@ Utils::getConversationFromCallId(const std::string& callId)
         }
     }
     return "";
+}
+
+lrc::api::conversation::Info
+Utils::getSelectedConversation()
+{
+    return getConversationFromUid(LRCInstance::getSelectedConvUid(), false);
+}
+
+lrc::api::conversation::Info
+Utils::getConversationFromUid(const std::string & convUid, bool filtered)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    if (filtered) {
+        auto conversation = getConversationFromUid(convUid, *convModel);
+    } else {
+        using namespace lrc::api::profile;
+        for (int i = toUnderlyingValue(Type::RING); i <= toUnderlyingValue(Type::TEMPORARY); ++i) {
+            auto filter = toEnum<lrc::api::profile::Type>(i);
+            auto conversations = convModel->getFilteredConversations(filter);
+            auto conv = std::find_if(conversations.begin(), conversations.end(),
+                [&](const lrc::api::conversation::Info& conv) {
+                    return convUid == conv.uid;
+                });
+            if (conv != conversations.end()) {
+                return *conv;
+            }
+        }
+    }
+    return lrc::api::conversation::Info();
 }
