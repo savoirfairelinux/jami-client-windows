@@ -263,7 +263,9 @@ main(int argc, char *argv[])
 
     auto ret = a.exec();
 
+#ifdef Q_OS_WIN
     FreeConsole();
+#endif
 
     QCoreApplication::exit();
     GlobalSystemTray::instance().deleteLater();
