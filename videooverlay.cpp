@@ -20,6 +20,8 @@
 #include "videooverlay.h"
 #include "ui_videooverlay.h"
 
+#include <QTime>
+
 // LRC
 #include "callmodel.h"
 #include "contactmethod.h"
@@ -45,32 +47,20 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->noMicButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
-
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    if (!accountList.size()) {
-        Utils::oneShotConnect(&LRCInstance::accountModel(),
-            &lrc::api::NewAccountModel::accountAdded,
-            [this](const std::string& accountId) {
-                Q_UNUSED(accountId);
-                connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
-                    [this](const std::string& tempCallId) {
-                        callId = tempCallId;
-                    });
-            });
-    } else {
-        connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::callStarted,
-            [this](const std::string& tempCallId) {
-                callId = tempCallId;
-            });
-    }
-
-    connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
-    oneSecondTimer_->start(1000);
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
+}
+
+void
+VideoOverlay::callStarted(const std::string& callId)
+{
+    ui->timerLabel->setText("00:00");
+    callId_ = callId;
+    connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
+    oneSecondTimer_->start(1000);
 }
 
 void
@@ -82,32 +72,16 @@ VideoOverlay::setName(const QString& name)
 void
 VideoOverlay::setTime()
 {
-    if (callId.empty()) { return; }
+    if (callId_.empty()) {
+        return;
+    }
     try {
-        auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
+        auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
         if (callInfo.status == lrc::api::call::Status::IN_PROGRESS) {
-
             int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
                 std::chrono::steady_clock::now() - callInfo.startTime).count();
-
-            QString labelSec;
-            QString labelMin;
-
-            int numMinutes = numSeconds / 60;
-            int remainder = numSeconds - numMinutes * 60;
-            if (remainder < 10) {
-                labelSec = ":0" + QString::number(remainder);
-            } else {
-                labelSec = ":" + QString::number(remainder);
-            }
-
-            if (numMinutes < 10) {
-                labelMin = "0" + QString::number(numMinutes);
-            } else {
-                labelMin = QString::number(numMinutes);
-            }
-
-            ui->timerLabel->setText(labelMin + labelSec);
+            QTime t(0, 0, numSeconds);
+            ui->timerLabel->setText(t.toString(numSeconds > 3600 ? "hh:mm:ss" : "mm:ss"));
         }
     } catch (...) { }
 }
