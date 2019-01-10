@@ -79,6 +79,8 @@ namespace Utils
     QByteArray QByteArrayFromFile(const QString& filename);
     QPixmap generateTintedPixmap(const QString& filename, QColor color);
     std::string getConversationFromCallId(const std::string& callId);
+    lrc::api::conversation::Info getSelectedConversation();
+    lrc::api::conversation::Info getConversationFromUid(const std::string & convUid, bool filtered = true);
 
     template <typename Func1, typename Func2>
     void
