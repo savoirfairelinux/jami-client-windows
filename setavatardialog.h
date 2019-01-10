@@ -23,12 +23,12 @@
 #include <QAction>
 #include <QDialog>
 #include <QRegion>
-#include <QtMultimedia\QCamera>
+#include <QtMultimedia/QCamera>
 #include <QGraphicsScene>
-#include <QtMultimedia\QMediaPlayer>
-#include <QtMultimedia\QCameraImageCapture>
-#include <QtMultimediaWidgets\QCameraViewfinder>
-#include <QtMultimedia\QCameraImageCapture>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QCameraImageCapture>
+#include <QtMultimediaWidgets/QCameraViewfinder>
+#include <QtMultimedia/QCameraImageCapture>
 
 
 #include "accountlistmodel.h"

@@ -16,12 +16,12 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
 **************************************************************************/
 
-#include <QtMultimedia\QCameraInfo>
+#include <QtMultimedia/QCameraInfo>
 #include <QFileDialog>
 #include <QAbstractScrollArea>
 #include <QScreen>
 #include <QWindow>
-#include <QtMultimedia\QCameraImageCapture>
+#include <QtMultimedia/QCameraImageCapture>
 #include <QBuffer>
 #include <QStandardPaths>
 
