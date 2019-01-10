@@ -704,7 +704,8 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     }
 
     if (!itemInCurrentFilter && !isCallSelected) {
-        ui->smartList->selectionModel()->clear();
+        if (ui->smartList->selectionModel())
+            ui->smartList->selectionModel()->clear();
         LRCInstance::setSelectedConvId(convInfo.uid);
         showChatView(accountId, convInfo);
     } else if (ui->messagesWidget->isHidden()) {
