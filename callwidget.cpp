@@ -32,7 +32,7 @@
 #include <algorithm>
 #include <memory>
 
-#include "qrencode.h"
+#include <qrencode.h>
 
 //ERROR is defined in windows.h
 #include "utils.h"

@@ -12,3 +12,4 @@ qrencode-win32/
 *.dll
 .gitignore
 *.qm
+build/
