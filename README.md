@@ -73,13 +73,6 @@ make -j 9
 
 5. Then, you are finally ready to launch `jami-qt` in your `build` directory.
 
-### Known issues
-
-1. The build system is not straight forward
-2. Video doesn't work
-3. Can't maximize/minimize window
-4. Crash if the daemon is not started and installed.
-
 ## Mac OS
 
 TBD

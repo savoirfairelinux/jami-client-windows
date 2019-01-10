@@ -73,8 +73,8 @@ VideoWidget::frameFromPreview() {
         {
             QMutexLocker lock(&mutex_);
             auto tmp  = previewRenderer_->currentFrame();
-            if (tmp.storage.size())
-                currentPreviewFrame_ = tmp;
+            if (tmp.size > 0)
+               currentPreviewFrame_ = tmp;
         }
         update();
     }
@@ -88,11 +88,10 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
     if (renderer_) {
         {
             QMutexLocker lock(&mutex_);
-            if (currentDistantFrame_.storage.size() != 0
-                && currentDistantFrame_.storage.size() ==
+            if (currentDistantFrame_.size != 0
+                && currentDistantFrame_.size ==
                     (unsigned int)(renderer_->size().height()*renderer_->size().width()*4)) {
-                frameDistant_ = std::move(currentDistantFrame_.storage);
-                distantImage_.reset(new QImage((uchar*)frameDistant_.data(),
+                distantImage_.reset(new QImage(currentDistantFrame_.ptr,
                                                renderer_->size().width(),
                                                renderer_->size().height(),
                                                QImage::Format_ARGB32_Premultiplied));
@@ -108,11 +107,10 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
     if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
         if (previewRenderer_) {
             QMutexLocker lock(&mutex_);
-            if (currentPreviewFrame_.storage.size() != 0
-                 && currentPreviewFrame_.storage.size() ==
+            if (currentPreviewFrame_.size != 0
+                 && currentPreviewFrame_.size ==
                     (unsigned int)(previewRenderer_->size().height()*previewRenderer_->size().width()*4)) {
-                framePreview_ = std::move(currentPreviewFrame_.storage);
-                previewImage_.reset(new QImage((uchar*)framePreview_.data(),
+                previewImage_.reset(new QImage(currentPreviewFrame_.ptr,
                                                previewRenderer_->size().width(),
                                                previewRenderer_->size().height(),
                                                QImage::Format_ARGB32_Premultiplied));
@@ -185,7 +183,7 @@ VideoWidget::frameFromDistant() {
         {
             QMutexLocker lock(&mutex_);
             auto tmp  = renderer_->currentFrame();
-            if (tmp.storage.size())
+            if (tmp.size > 0)
                 currentDistantFrame_ = tmp;
         }
         update();

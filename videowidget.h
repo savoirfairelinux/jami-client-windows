@@ -57,8 +57,6 @@ private:
     QMutex mutex_;
     std::unique_ptr<QImage> distantImage_;
     std::unique_ptr<QImage> previewImage_;
-    std::vector<uint8_t> frameDistant_;
-    std::vector<uint8_t> framePreview_;
     bool isPreviewDisplayed_;
     bool fullPreview_;
     QRect previewGeometry_;

@@ -14,7 +14,7 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.  *
  **************************************************************************/
 
 #include "mainwindow.h"
@@ -48,7 +48,7 @@
 #include <gnutls/gnutls.h>
 #endif
 
-#ifdef URI_PROTOCOL
+#ifdef Q_OS_WIN && URI_PROTOCOL
 #include "shmclient.h"
 #endif
 
@@ -164,7 +164,7 @@ main(int argc, char *argv[])
         }
     }
 
-#ifdef URI_PROTOCOL
+#ifdef Q_OS_WIN && URI_PROTOCOL
     QSharedMemory* shm = new QSharedMemory("RingShm");
     QSystemSemaphore* sem = new QSystemSemaphore("RingSem", 0);
 
@@ -250,7 +250,7 @@ main(int argc, char *argv[])
         MainWindow::instance().hide();
     }
 
-#ifdef URI_PROTOCOL
+#ifdef Q_OS_WIN && URI_PROTOCOL
     QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&a, &shmClient, &shm, &sem]() {
