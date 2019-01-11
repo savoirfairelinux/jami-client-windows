@@ -31,7 +31,6 @@
 #include <windows.h>
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
-#include "winsparkle.h"
 #endif
 
 #include "aboutdialog.h"
@@ -99,20 +98,6 @@ MainWindow::MainWindow(QWidget* parent) :
         QString aboutTitle = tr("About");
         ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
     }
-
-    win_sparkle_set_appcast_url("https://dl.ring.cx/windows/winsparkle-ring.xml");
-    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
-    win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
-    win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
-    win_sparkle_init();
-
-    if (win_sparkle_get_last_check_time() == -1) {
-        win_sparkle_set_update_check_interval(86400);
-    }
-
-    QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
-        win_sparkle_cleanup();
-    });
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
