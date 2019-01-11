@@ -56,10 +56,6 @@
 #include "video/rate.h"
 #include "video/resolution.h"
 
-#ifdef Q_OS_WIN
-#include "winsparkle.h"
-#endif
-
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent)
     , ui(new Ui::SettingsWidget)
@@ -804,8 +800,6 @@ void SettingsWidget::setConnections()
 
     connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
 
-    connect(ui->intervalUpdateCheckSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsWidget::setUpdateIntervalSlot);
-
     connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetUpdateAutomatic);
 
     // audio / visual settings
@@ -842,8 +836,7 @@ void SettingsWidget::populateGeneralSettings()
     Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
 
 #ifdef Q_OS_WIN
-    ui->autoUpdateCheckBox->setChecked(win_sparkle_get_automatic_check_for_updates());
-    ui->intervalUpdateCheckSpinBox->setValue(win_sparkle_get_update_check_interval() / 86400);
+    ui->autoUpdateCheckBox->setChecked(settings.value(SettingsKey::autoUpdate).toBool());
 #endif
 }
 
@@ -861,27 +854,17 @@ void SettingsWidget::slotSetClosedOrMin(bool state)
 
 void SettingsWidget::checkForUpdateSlot()
 {
+#ifdef Q_OS_WIN
     Utils::checkForUpdates(true, this);
-    /*
-#ifdef Q_OS_WIN
-    win_sparkle_check_update_with_ui();
-#endif
-    */
-}
-
-void SettingsWidget::setUpdateIntervalSlot(int value)
-{
-#ifdef Q_OS_WIN
-    win_sparkle_set_update_check_interval(value * 86400);
 #endif
 }
 
 void SettingsWidget::slotSetUpdateAutomatic(bool state)
 {
 #ifdef Q_OS_WIN
-    win_sparkle_set_automatic_check_for_updates(state);
+    QSettings settings("jami.net", "Jami");
+    settings.setValue(SettingsKey::autoUpdate, state);
 #endif
-    ui->intervalUpdateCheckSpinBox->setEnabled(state);
 }
 
 void SettingsWidget::openDownloadFolderSlot()

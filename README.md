@@ -30,17 +30,6 @@ For more information about the jami project, see the following:
 
 TBD
 
-### Build winsparkle
-In the client directory after having initialized the submodule:
-
-```
-cd winsparkle
-mkdir build && cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=<LRC Directory>/cmake/winBuild.cmake -DCMAKE_INSTALL_PREFIX=Install dir of Jami and LRC> ../cmake",
-make
-make install
-```
-
 ### Packaging
 
 * Nsis : Nullsoft Scriptable Install System :http://nsis.sourceforge.net/Main_Page.
