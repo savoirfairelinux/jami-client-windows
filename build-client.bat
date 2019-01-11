@@ -93,11 +93,7 @@ goto Usage
 :buildDeps
 set TOBUILD=qrencode-win32\qrencode-win32\vc8\qrcodelib\qrcodelib.vcxproj
 msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release-Lib %MSBUILD_ARGS%
-set TOBUILD=winsparkle\WinSparkle-2015.sln
 set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=4
-%WGET_CMD% https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-nuget restore %TOBUILD%
-msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release %MSBUILD_ARGS%
 goto cleanup
 
 :compileClient
