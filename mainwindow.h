@@ -60,6 +60,7 @@ protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
     void closeEvent(QCloseEvent* event);
     void resizeEvent(QResizeEvent *event);
+    void keyReleaseEvent(QKeyEvent* ke);
 
 public slots:
     void onRingEvent(const QString& uri);

@@ -372,3 +372,14 @@ MainWindow::getCurrentScalingRatio()
 {
     return currentScalingRatio_;
 }
+
+void MainWindow::keyReleaseEvent(QKeyEvent* ke)
+{
+    if (ke->key() == Qt::Key_Delete) {
+        ui->callwidget->toggleFilterWidget();
+        ke->accept();
+        return;
+    } else {
+        QMainWindow::keyReleaseEvent(ke);
+    }
+}

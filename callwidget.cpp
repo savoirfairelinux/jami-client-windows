@@ -278,6 +278,20 @@ CallWidget::getLeftPanelWidth()
     return ui->currentAccountComboBox->width();
 }
 
+void CallWidget::toggleFilterWidget()
+{
+    /*auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
+    if (invites == 0 && currentTypeFilter_ == lrc::api::profile::Type::PENDING) {
+        currentTypeFilter_ = lrc::api::profile::Type::RING;
+        LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
+    }
+    ui->conversationsFilterWidget->setVisible(invites);
+    ui->conversationsFilterWidget->updateBadges();
+    ui->conversationsFilterWidget->update();
+    */
+    ui->conversationsFilterWidget->setVisible(!ui->conversationsFilterWidget->isVisible());
+}
+
 void
 CallWidget::onIncomingMessage(const std::string& convUid,
                               uint64_t interactionId,
@@ -807,14 +821,15 @@ void CallWidget::setConversationFilter(lrc::api::profile::Type filter)
 
 void CallWidget::updateConversationsFilterWidget()
 {
-    auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
+    /*auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
     if (invites == 0 && currentTypeFilter_ == lrc::api::profile::Type::PENDING) {
         currentTypeFilter_ = lrc::api::profile::Type::RING;
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
-    ui->conversationsFilterWidget->updateBadges();
     ui->conversationsFilterWidget->update();
+    */ui->conversationsFilterWidget->setVisible(true);
+    ui->conversationsFilterWidget->updateBadges();
 }
 
 void CallWidget::setConversationFilter(const QString & filter)

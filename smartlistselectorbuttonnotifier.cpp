@@ -70,6 +70,7 @@ SmartlistSelectorButtonNotifier::paintEvent(QPaintEvent *event)
         break;
     }
 
+    totalUnreadMessages = 10;
     if (totalUnreadMessages) {
         QString messageCountText = (totalUnreadMessages > 9) ? "9+" : QString::number(totalUnreadMessages);
         qreal fontSize = messageCountText.count() > 1 ? 7 : 8;

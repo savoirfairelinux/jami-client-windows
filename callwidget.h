@@ -65,6 +65,7 @@ public:
     ~CallWidget();
 
     int getLeftPanelWidth();
+    void toggleFilterWidget();
 
     // NavWidget
     virtual void navigated(bool to);
