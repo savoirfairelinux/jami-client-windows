@@ -195,6 +195,9 @@
     <ClCompile Include="runguard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bezierconnectorwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -321,6 +324,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="newwizardwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="bezierconnectorwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -75,7 +75,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    QPoint avatarTopLeft(16, 2);
+    QPoint avatarTopLeft(16, 6);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
@@ -154,7 +154,7 @@ void
 CurrentAccountComboBox::setupSettingsButton()
 {
     gearPoint_.setX(this->width() - gearSize_ - 5 * gearBorder_ - 1);
-    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_ + 4.5);
+    gearPoint_.setY(this->height() / 2 - gearLabel_.height() / 2 - 2 * gearBorder_ + 8);
     gearLabel_.setGeometry(
         gearPoint_.x(), gearPoint_.y(),
         gearSize_ + 2 * gearBorder_,

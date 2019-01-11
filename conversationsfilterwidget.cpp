@@ -55,7 +55,7 @@ ConversationsFilterWidget::updateNotifier(lrc::api::profile::Type typeFilter)
 static inline const QRect
 getNotifierRect(const QRect& buttonRect)
 {
-    qreal radius = 8;
+    qreal radius = 9;
     QPointF ellipseCenter(buttonRect.right() - radius * 2, buttonRect.top());
     return QRect(ellipseCenter.x() - radius, ellipseCenter.y() - radius, radius * 2, radius * 2);
 }

@@ -218,8 +218,6 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
-
-    ui->smartListWidget->setStyleSheet("border-right: 2px solid rgb(240, 240, 240);");
 }
 
 CallWidget::~CallWidget()
@@ -568,6 +566,7 @@ CallWidget::conversationsButtonClicked()
 {
     ui->btnConversations->setChecked(true);
     ui->btnInvites->setChecked(false);
+    ui->ringContactLineEdit->setPlaceholderString(tr("Find a new or existing contact"));
     setConversationFilter(lrc::api::profile::Type::RING);
 }
 
@@ -576,6 +575,7 @@ CallWidget::invitationsButtonClicked()
 {
     ui->btnConversations->setChecked(false);
     ui->btnInvites->setChecked(true);
+    ui->ringContactLineEdit->setPlaceholderString(tr("Search your received invitations"));
     setConversationFilter(lrc::api::profile::Type::PENDING);
 }
 
@@ -813,8 +813,10 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
-    ui->conversationsFilterWidget->updateBadges();
+    ui->searchTopLeftWidget->setVisible(invites);
+    ui->searchTopRightWidget->setVisible(invites);
     ui->conversationsFilterWidget->update();
+    ui->conversationsFilterWidget->updateBadges();
 }
 
 void CallWidget::setConversationFilter(const QString & filter)

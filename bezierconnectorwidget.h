@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,28 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include <QDebug>
-#include <QIcon>
-#include <QtWidgets/QApplication>
+#pragma once
 
-#include "ringcontactlineedit.h"
+#include <QWidget>
 
-RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
-    QLineEdit(parent)
+class BezierConnectorWidget : public QWidget
 {
-    QPalette palette;
+    Q_OBJECT
+public:
+    explicit BezierConnectorWidget(QWidget* parent = 0);
+    ~BezierConnectorWidget();
 
-    setFrame(false);
-
-    addAction(QIcon(":images/icons/ic_search_black_18dp_2x.png"), QLineEdit::ActionPosition::LeadingPosition);
-}
-
-RingContactLineEdit::~RingContactLineEdit()
-{
-}
-
-void
-RingContactLineEdit::setPlaceholderString(const QString& str)
-{
-    setPlaceholderText(str);
-}
+protected:
+    void paintEvent(QPaintEvent *event);
+};

@@ -372,3 +372,9 @@ MainWindow::getCurrentScalingRatio()
 {
     return currentScalingRatio_;
 }
+
+void MainWindow::keyReleaseEvent(QKeyEvent* ke)
+{
+    emit keyReleased(ke);
+    QMainWindow::keyReleaseEvent(ke);
+}
