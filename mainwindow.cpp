@@ -31,7 +31,6 @@
 #include "media/textrecording.h"
 
 #ifdef Q_OS_WIN
-#include "winsparkle.h"
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
 #include <windows.h>
@@ -117,19 +116,24 @@ MainWindow::MainWindow(QWidget* parent)
         ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
     }
 
-    win_sparkle_set_appcast_url("https://dl.ring.cx/windows/winsparkle-ring.xml");
-    win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
-    win_sparkle_set_shutdown_request_callback([]() { QCoreApplication::exit(); });
-    win_sparkle_set_did_find_update_callback([]() { MainWindow::instance().showWindow(); });
-    win_sparkle_init();
-
-    if (win_sparkle_get_last_check_time() == -1) {
-        win_sparkle_set_update_check_interval(86400);
+    // check for updates and start automatic update check if needed
+    QSettings settings("jami.net", "Jami");
+    if (!settings.contains(SettingsKey::autoUpdate)) {
+        settings.setValue(SettingsKey::autoUpdate, true);
     }
-
-    QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [=]() {
-        win_sparkle_cleanup();
-    });
+    if (settings.value(SettingsKey::autoUpdate).toBool()) {
+        Utils::checkForUpdates(false, this);
+    }
+    updateTimer_ = new QTimer(this);
+    connect(updateTimer_, &QTimer::timeout,
+        [this]() {
+            QSettings settings("jami.net", "Jami");
+            if (settings.value(SettingsKey::autoUpdate).toBool()) {
+                Utils::checkForUpdates(false, this);
+            }
+        });
+    long updateCheckDelay = 4 * 86400 * 1000;
+    updateTimer_->start(updateCheckDelay);
 #endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
@@ -165,13 +169,6 @@ MainWindow::MainWindow(QWidget* parent)
     }
 
     lastScr_ = startScreen;
-
-    // check for updates and start automatic update check
-    Utils::checkForUpdates(false, this);
-    updateTimer_ = new QTimer(this);
-    connect(updateTimer_, &QTimer::timeout, [this]() { Utils::checkForUpdates(false, this); });
-    long updateCheckDelay = 4 * 24 * 60 * 60 * 1000;
-    updateTimer_->start(updateCheckDelay);
 
 #ifdef DEBUG_STYLESHEET
     QTimer *timer = new QTimer(this);
