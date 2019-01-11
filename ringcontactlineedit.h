@@ -32,4 +32,6 @@ class RingContactLineEdit : public QLineEdit
 public:
     explicit RingContactLineEdit(QWidget* parent = 0);
     ~RingContactLineEdit();
+
+    void setPlaceholderString(const QString&);
 };

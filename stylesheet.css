@@ -40,29 +40,38 @@ QPushButton {
 	color: rgb(32, 32, 32);
 }
 
+QWidget#smartListOuterWidget {
+    background-color: rgb(255, 255, 255);
+}
+
 QPushButton#btnConversations, QPushButton#btnInvites,
 QPushButton#btnExportAccount, QPushButton#btnDeletAccount {
-    background-color: rgb(242, 242, 242);
-    border-style: solid;
-    border-width: 0px;
-    border-radius: 5px;
-    padding: 8px;
-	color: rgb(32, 32, 32);
+    border-radius: 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+	color: rgb(32, 32, 32);   
+    height: 28px;
+    padding: 0px;
+    background-color: rgb(240, 240, 240);
+    border-top: 2px solid rgb(240, 240, 240);
+    border-right: 2px solid rgb(240, 240, 240);
+    border-bottom: 2px solid rgb(240, 240, 240);
+    border-left: 2px solid rgb(240, 240, 240);
 }
 
 QPushButton#btnConversations:hover, QPushButton#btnInvites:hover,
 QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover {
     background-color: rgb(237, 237, 237);
-}
-
-QPushButton#btnConversations:pressed, QPushButton#btnInvites:pressed,
-QPushButton#btnExportAccount:pressed, QPushButton#btnDeletAccount:pressed {
-    background-color: rgb(212, 212, 212);
+    border-top: 2px solid rgb(237, 237, 237);
+    border-right: 2px solid rgb(237, 237, 237);
+    border-bottom: 2px solid rgb(237, 237, 237);
+    border-left: 2px solid rgb(237, 237, 237);
 }
 
 QPushButton#btnConversations:checked, QPushButton#btnInvites:checked,
 QPushButton#btnExportAccount:checked, QPushButton#btnDeletAccount:checked {
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
@@ -94,18 +103,27 @@ QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QP
     background-color: rgb(212, 212, 212);
 }
 
+QWidget#searchBarLayoutWidget, QWidget#smartList,
+QWidget#sidePanelLayoutWidget, QWidget#leftSettingsWidget {
+    border-right: 2px solid rgb(240, 240, 240);
+}
+
 RingContactLineEdit{
-    border-color: rgb(242, 242, 242);
-    border-radius: 5px;
-    border-width: 2px;
-    background-color: rgb(242, 242, 242);
+    border-radius: 15px;
+    border: 2px solid rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240);
+}
+
+RingContactLineEdit:focus{
+    border: 2px solid rgb(240, 240, 240);
+    background-color: rgb(255, 255, 255);
 }
 
 .QLineEdit{
-    border-color: rgb(242, 242, 242);
+    border-color: rgb(240, 240, 240);
     border-radius: 15px;
     border-width: 2px;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(240, 240, 240);
     padding-left: 4px;
     padding-right: 4px;
     height: 30px;
@@ -182,10 +200,6 @@ QListView#BannedList::item:hover {
 QWidget#messagingHeaderWidget {
     background-color: rgba(255, 255, 255, 255);
     border-bottom: 2px solid rgb(240, 240, 240);
-}
-
-QWidget#sidePanelLayoutWidget, QWidget#leftSettingsWidget {
-    border-right: 2px solid rgb(240, 240, 240);
 }
 
 QWidget#messageViewLayoutWidget, QWidget#welcomePage {
