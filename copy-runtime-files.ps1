@@ -31,7 +31,6 @@ $FilesToCopy = @(
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avfilter-7.dll",
     "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\libeay32.dll",
     "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
-    "$ClientDir\winsparkle\x64\Release\WinSparkle.dll",
     "$ClientDir\ring.nsi",
     "$ClientDir\images\jami.ico"
     "$ClientDir\License.rtf"
