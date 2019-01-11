@@ -133,7 +133,6 @@ private slots:
     void openDownloadFolderSlot();
     void slotSetAlwaysRecording(bool state);
     void openRecordFolderSlot();
-    void setUpdateIntervalSlot(int value);
     void slotSetUpdateAutomatic(bool state);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);

@@ -27,4 +27,5 @@ constexpr static char geometry[] = "geometry";
 constexpr static char selectedAccount[] = "selectedAccount";
 constexpr static char mainSplitterState[] = "mainSplitterState";
 constexpr static char windowState[] = "windowState";
+constexpr static char autoUpdate[] = "autoUpdate";
 }
