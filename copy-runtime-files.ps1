@@ -13,11 +13,11 @@ $OutDir = $ClientDir + "\x64\Release"
 New-Item -ItemType directory -Path $OutDir -Force
 
 if (-not ($daemonDir)) {
-    $daemonDir = '$ClientDir\..\daemon'
+    $daemonDir = $ClientDir + '\..\daemon'
 }
 
 if (-not ($lrcDir)) {
-    $lrcDir = '$ClientDir\..\lrc'
+    $lrcDir = $ClientDir + '\..\lrc'
 }
 
 # dependency bin files
