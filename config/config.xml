@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Jami</Name>
+    <Version>1.0.0</Version>
+    <Title>Savoir-Faire Linux - Jami</Title>
+    <Publisher>Savoir-Faire Linux Inc.</Publisher>
+    <ProductUrl>https://jami.net</ProductUrl>
+    <InstallerApplicationIcon>../Images/jami</InstallerApplicationIcon>
+	<InstallerWindowIcon>../images/jami.png</InstallerWindowIcon>
+	<!-- Banner doesn't have a nice aspect ratio and hides stuff in the installer -->
+	<!-- <Banner>../images/logo-jami-standard-coul.png</Banner> -->
+	<!-- Switch to Modern once banner is fixed -->
+	<WizardStyle>Classic</WizardStyle>
+	<RunProgram>@TargetDir@/Jami.exe</RunProgram>
+	<RunProgramDescription>Launch Jami</RunProgramDescription>
+	<StartMenuDir>Jami</StartMenuDir>
+	<TargetDir>@ApplicationsDirX64@/Savoir-Faire Linux/@ProductName@</TargetDir>
+	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
+	<AllowSpaceInPath>true</AllowSpaceInPath>
+	<SupportsModify>false</SupportsModify>
+</Installer>

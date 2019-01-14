@@ -13,3 +13,5 @@ qrencode-win32/
 .gitignore
 *.qm
 build/
+packages/net.jami/data/*
+packages/net.jami/data/
