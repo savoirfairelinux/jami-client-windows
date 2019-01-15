@@ -113,13 +113,13 @@ VideoOverlay::getShowChatView()
 void
 VideoOverlay::on_hangupButton_clicked()
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
-    auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        callModel->hangUp(callId);
+    auto convInfo = Utils::getSelectedConversation();
+    if (!convInfo.uid.empty()) {
+        auto& callId = convInfo.callId;
+        auto callModel = LRCInstance::getCurrentCallModel();
+        if (callModel->hasCall(callId)) {
+            callModel->hangUp(callId);
+        }
     }
     ui->chatButton->setChecked(false);
 }
