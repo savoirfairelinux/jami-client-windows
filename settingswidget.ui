@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: white;</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <property name="spacing">
@@ -165,7 +165,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="exitSettingsButton">
+            <widget class="QPushButton" name="btnExitSettings">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -179,9 +179,7 @@
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton {background: white; border: 0px; border-radius: 8px;}
-QPushButton:hover {background: rgb(237,237, 237);  border: 0px; border-radius: 8px;}
-QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius: 8px;}</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -424,7 +422,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -675,7 +673,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                         </property>
                         <property name="icon">
                          <iconset>
-                          <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
+                          <normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
@@ -797,7 +795,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                           </property>
                           <property name="icon">
                            <iconset>
-                            <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
+                            <normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
                           </property>
                           <property name="iconSize">
                            <size>
@@ -1119,8 +1117,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>617</width>
-                  <height>580</height>
+                  <width>696</width>
+                  <height>682</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -1168,7 +1166,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                        <height>0</height>
                       </size>
                      </property>
-                     <layout class="QVBoxLayout" name="currentAccountSettingsScrollLayout" stretch="3,0,0,1,0,0,0,0,3,0,5">
+                     <layout class="QVBoxLayout" name="currentAccountSettingsScrollLayout" stretch="3,0,0,0,0,0,3,0,5">
                       <property name="spacing">
                        <number>0</number>
                       </property>
@@ -1190,12 +1188,12 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                          <enum>Qt::Vertical</enum>
                         </property>
                         <property name="sizeType">
-                         <enum>QSizePolicy::MinimumExpanding</enum>
+                         <enum>QSizePolicy::Fixed</enum>
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>10</height>
+                          <height>40</height>
                          </size>
                         </property>
                        </spacer>
@@ -1220,6 +1218,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                            <spacer name="verticalSpacer_15">
                             <property name="orientation">
                              <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                             <enum>QSizePolicy::Fixed</enum>
                             </property>
                             <property name="sizeHint" stdset="0">
                              <size>
@@ -1342,6 +1343,9 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                            <spacer name="verticalSpacer_13">
                             <property name="orientation">
                              <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                             <enum>QSizePolicy::Fixed</enum>
                             </property>
                             <property name="sizeHint" stdset="0">
                              <size>
@@ -1845,7 +1849,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                                    <enum>Qt::RightToLeft</enum>
                                   </property>
                                   <property name="styleSheet">
-                                   <string notr="true">border: 0px; padding: 1px;</string>
+                                   <string notr="true"/>
                                   </property>
                                   <property name="text">
                                    <string/>
@@ -2058,19 +2062,6 @@ padding: 5px;
                          <size>
                           <width>20</width>
                           <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <spacer name="verticalSpacer_12">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>30</height>
                          </size>
                         </property>
                        </spacer>
@@ -2295,45 +2286,17 @@ padding-left: 15px;
                        </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="advancedSettingsOffsetLabel">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>4</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>4</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::NoTextInteraction</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
                        <spacer name="verticalSpacer_10">
                         <property name="orientation">
                          <enum>Qt::Vertical</enum>
                         </property>
                         <property name="sizeType">
-                         <enum>QSizePolicy::MinimumExpanding</enum>
+                         <enum>QSizePolicy::Fixed</enum>
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>10</height>
+                          <height>20</height>
                          </size>
                         </property>
                        </spacer>
@@ -2430,7 +2393,7 @@ padding-left: 15px;
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>40</height>
+                          <height>20</height>
                          </size>
                         </property>
                        </spacer>
@@ -2442,13 +2405,13 @@ padding-left: 15px;
                     <widget class="QLabel" name="scrollBarLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>4</width>
+                       <width>10</width>
                        <height>0</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>4</width>
+                       <width>10</width>
                        <height>16777215</height>
                       </size>
                      </property>

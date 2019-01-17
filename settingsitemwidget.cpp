@@ -1,5 +1,5 @@
 /****************************************************************************
- *    Copyright (C) 2018-2019 Savoir-faire Linux Inc.                                  *
+ *    Copyright (C) 2018-2019 Savoir-faire Linux Inc.                       *
  *   Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                     *
  *                                                                          *
  *   This library is free software; you can redistribute it and/or          *
@@ -21,7 +21,6 @@
 #include "lrcinstance.h"
 #include "api/newdevicemodel.h"
 #include "ringthemeutils.h"
-
 
 SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QListWidget* parent)
     : QListWidgetItem(parent),

@@ -29,7 +29,7 @@
    <string>Set Registered Name</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: white;</string>
+   <string notr="true"/>
   </property>
   <property name="modal">
    <bool>true</bool>

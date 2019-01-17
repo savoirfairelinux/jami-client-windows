@@ -32,7 +32,7 @@ QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
     background-color: #db3c30;
 }
 
-QPushButton { 
+QPushButton {
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
@@ -49,7 +49,7 @@ QPushButton#btnExportAccount, QPushButton#btnDeletAccount {
     border-radius: 0px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-	color: rgb(32, 32, 32);   
+    color: rgb(32, 32, 32);
     height: 28px;
     padding: 0px;
     background-color: rgb(240, 240, 240);
@@ -76,13 +76,14 @@ QPushButton#btnExportAccount:checked, QPushButton#btnDeletAccount:checked {
 
 QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
 QPushButton#btnBlockInvite, QPushButton#btnAudioCall, QPushButton#btnVideoCall,
-QPushButton#sendContactRequestButton, QPushButton#sendButton, QPushButton#sendIMButton {
+QPushButton#sendContactRequestButton, QPushButton#sendButton, QPushButton#sendIMButton,
+QPushButton#btnExitSettings {
     background-color: transparent;
     border-style: solid;
     border-width: 0px;
-    border-radius: 9px;
+    border-radius: 15px;
     padding: 8px;
-	color: rgb(32, 32, 32);
+    color: rgb(32, 32, 32);
 }
 
 QPushButton#btnAcceptInvite:hover, QPushButton#btnIgnoreInvite:hover, QPushButton#btnBlockInvite:hover {
@@ -94,13 +95,32 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
 }
 
 QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
-QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover {
+QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
+QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover {
     background-color: rgb(237, 237, 237);
 }
 
 QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
-QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed {
+QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
+QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed {
     background-color: rgb(212, 212, 212);
+}
+
+QPushButton#accountSettingsButton, QPushButton#generalSettingsButton, QPushButton#avSettingsButton {
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+QPushButton#accountSettingsButton:hover,
+QPushButton#generalSettingsButton:hover,
+QPushButton#avSettingsButton:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+QPushButton#accountSettingsButton:checked,
+QPushButton#generalSettingsButton:checked,
+QPushButton#avSettingsButton:checked {
+    background-color: rgb(240, 240, 240);
 }
 
 QWidget#searchBarLayoutWidget, QWidget#smartList,
@@ -186,14 +206,12 @@ QListView#cipherListView::item:disabled
     background-color: transparent;
 }
 
-SmartListView::item:selected, QListView#accountView::item:selected, QListView#contactView::item:selected,
-QListView#BannedList::item:selected {
+SmartListView::item:selected, QListView#BannedList::item:selected {
     background-color: rgba(220, 220, 220, 255);
     border: none;
 }
 
-SmartListView::item:hover, QListView#accountView::item:hover, QListView#contactView::item:hover,
-QListView#BannedList::item:hover {
+SmartListView::item:hover, QListView#BannedList::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
@@ -248,31 +266,11 @@ QPushButton#hangupButton:pressed{
     background-color: rgba(255, 0, 0, 0.8);
 }
 
-QPushButton#exitSettingsButton, QPushButton#settingsButton, QPushButton#addToContactButton,
-QPushButton#sendCRBackButton, QPushButton#copyCMButton, QPushButton#pendingCRBackButton,
-QPushButton#videoCfgBtn{
-    background-color: #414141;
-    border-radius: 15px;
-    border:solid 1px;
-}
-
-QPushButton#exitSettingsButton:hover, QPushButton#settingsButton:hover,
-QPushButton#sendCRBackButton:hover, QPushButton#copyCMButton:hover, QPushButton#pendingCRBackButton:hover,
-QPushButton#videoCfgBtn:hover{
-    background-color: #515151;
-}
-
-QPushButton#exitSettingsButton:pressed, QPushButton#settingsButton:pressed,
-QPushButton#sendCRBackButton:pressed, QPushButton#copyCMButton:pressed, QPushButton#pendingCRBackButton:pressed,
-QPushButton#videoCfgBtn:pressed{
-    background-color: #313131;
-}
-
 QToolButton#qrButton, QToolButton#shareButton{
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 8px;
 	color: rgb(32, 32, 32);
 }
@@ -302,26 +300,6 @@ QScrollBar:vertical{
 
 QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
-}
-
-QDialog#CallUtilsDialog, QDialog#QualityDialog{
-    background: transparent;
-}
-
-QWidget#roundedFrame{
-    background-color: rgba(250, 250, 250, 0.8);
-    border-color: rgba(25, 25, 25, 1.0);
-    border-radius: 8px;
-    border:solid 1px;
-}
-
-QWidget#spike{
-    background-color: rgba(250, 250, 250, 0.8);
-    border-color: rgba(25, 25, 25, 1.0);
-}
-
-QListView#contactView{
-    background: transparent;
 }
 
 QWidget#messagingPage, QWidget#contactRequestPage,
@@ -451,30 +429,6 @@ QWidget#horizontalWidget{
     background: transparent;
 }
 
-
-QPushButton#generalTabButton, QPushButton#videoTabButton, QPushButton#accountTabButton{
-    background: transparent;
-    color: rgb(77, 77, 77);
-    border-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #414141;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    font: 12pt "Sans Serif";
-    padding: 2px;
-}
-
-QPushButton#quickValidCRBtn, QPushButton#quickMuteCRBtn, QPushButton#quickBanCRBtn{
-    border-radius: 2px;
-    height:25px;
-    width:25px;
-    margin: 2px 2px 2px 2px;
-    text-align: center;
-    font: 10pt "FontAwesome";
-}
-
 QSpinBox {
     background: transparent;
     border-radius: 0px;
@@ -602,7 +556,21 @@ QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
 }
 /* } setAvatarDialog */
 
-
 /* SettingsWidget { */
+QWidget#leftSettingsWidget, QWidget#rightSettingsWidget,
+QWidget#DeleteAccountDialog, QWidget#AdvancedSettingsWidget,
+QWidget#RegNameDialog, QWidget#PasswordDialog, QWidget#centralWidget,
+QWidget#scrollAreaWidgetContents {
+    background-color: rgba(255, 255, 255, 255);
+}
 
+QLineEdit#currentRingID {
+    border: 0px;
+    padding: 1px;
+    background-color: transparent;
+}
+
+QPushButton#regNameButton {
+    background-color: transparent;
+}
 /* } SettingsWidget */
