@@ -35,9 +35,9 @@
    <string>Account deletion</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: white;</string>
+   <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="3,1,1,0,0,0,0,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0">
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="labelDeletion">
      <property name="maximumSize">
@@ -48,7 +48,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>8</pointsize>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="text">
@@ -66,7 +66,9 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -87,7 +89,9 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <family>MS Sans Serif</family>
+       <pointsize>7</pointsize>
+       <italic>false</italic>
       </font>
      </property>
      <property name="text">
@@ -127,6 +131,11 @@
        <width>250</width>
        <height>0</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color: red;</string>
@@ -208,11 +217,16 @@
          <height>30</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Permanently delete account</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">border: 0px;; border-radius:3px; background: rgb(245, 245, 245);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Delete</string>
@@ -246,11 +260,16 @@
          <height>30</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Cancel account deletion</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">border: 0px; border-radius:3px; background: rgb(245, 245, 245);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Cancel</string>

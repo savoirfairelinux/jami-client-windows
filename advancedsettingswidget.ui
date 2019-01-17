@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: white;</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -121,7 +121,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
             </property>
            </widget>
           </item>
@@ -540,7 +540,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
             </property>
            </widget>
           </item>
@@ -588,7 +588,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
             </property>
            </widget>
           </item>
@@ -636,7 +636,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
             </property>
            </widget>
           </item>
@@ -855,7 +855,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame_5">
+    <widget class="QFrame" name="Video">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -940,7 +940,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-arrow_drop_down-24px.svg</normaloff>images/icons/round-arrow_drop_down-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-arrow_drop_down-24px.svg</normaloff>../../../.designer/backup/images/icons/round-arrow_drop_down-24px.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -974,7 +974,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-arrow_drop_up-24px.svg</normaloff>images/icons/round-arrow_drop_up-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-arrow_drop_up-24px.svg</normaloff>../../../.designer/backup/images/icons/round-arrow_drop_up-24px.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1085,7 +1085,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-arrow_drop_down-24px.svg</normaloff>images/icons/round-arrow_drop_down-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-arrow_drop_down-24px.svg</normaloff>../../../.designer/backup/images/icons/round-arrow_drop_down-24px.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1119,7 +1119,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>images/icons/round-arrow_drop_up-24px.svg</normaloff>images/icons/round-arrow_drop_up-24px.svg</iconset>
+              <normaloff>../../../.designer/backup/images/icons/round-arrow_drop_up-24px.svg</normaloff>../../../.designer/backup/images/icons/round-arrow_drop_up-24px.svg</iconset>
             </property>
             <property name="iconSize">
              <size>

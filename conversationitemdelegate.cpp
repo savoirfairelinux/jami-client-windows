@@ -61,16 +61,21 @@ ConversationItemDelegate::paint(QPainter* painter
 
     // One does not simply keep the highlighted state drawn when the context
     // menu is open…
+    QColor presenceBorderColor = Qt::white;
     auto rowHighlight = highlightMap_.find(index.row());
     if (selected) {
        painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+       presenceBorderColor = RingTheme::smartlistSelection_;
     } else if (rowHighlight != highlightMap_.end() && (*rowHighlight).second) {
        painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+       presenceBorderColor = RingTheme::smartlistHighlight_;
     }
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
     auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
     if (LRCInstance::getCurrentCallModel()->hasCall(conversation->callId)) {
-        auto color = QColor(RingTheme::blue_.lighter(180)); color.setAlpha(128);
+        auto color = QColor(RingTheme::blue_.lighter(180));
+        presenceBorderColor = color;
+        color.setAlpha(128);
         painter->fillRect(option.rect, color);
     }
 
@@ -98,7 +103,7 @@ ConversationItemDelegate::paint(QPainter* painter
         QPainterPath ellipse;
         qreal ellipseHeight = sizeImage_ / 6;
         qreal ellipseWidth = ellipseHeight;
-        QPointF ellipseCenter(rectAvatar.right() - ellipseWidth, rectAvatar.top() + ellipseHeight + 1);
+        QPointF ellipseCenter(rectAvatar.right() - ellipseWidth + 1, rectAvatar.top() + ellipseHeight + 1);
         QRect ellipseRect(ellipseCenter.x() - ellipseWidth, ellipseCenter.y() - ellipseHeight,
             ellipseWidth * 2, ellipseHeight * 2);
         ellipse.addRoundedRect(ellipseRect, ellipseWidth, ellipseHeight);
@@ -116,12 +121,12 @@ ConversationItemDelegate::paint(QPainter* painter
     if (index.data(static_cast<int>(SmartListModel::Role::Presence)).value<bool>()) {
         qreal radius = sizeImage_ / 6;
         QPainterPath outerCircle, innerCircle;
-        QPointF center(rectAvatar.right() - radius, (rectAvatar.bottom() - radius) + 1);
+        QPointF center(rectAvatar.right() - radius + 2, (rectAvatar.bottom() - radius) + 1 + 2);
         qreal outerCRadius = radius;
         qreal innerCRadius = outerCRadius * 0.75;
         outerCircle.addEllipse(center, outerCRadius, outerCRadius);
         innerCircle.addEllipse(center, innerCRadius, innerCRadius);
-        painter->fillPath(outerCircle, Qt::white);
+        painter->fillPath(outerCircle, presenceBorderColor);
         painter->fillPath(innerCircle, RingTheme::presenceGreen_);
     }
 
@@ -264,6 +269,11 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
                 }
             }
             interactionStr = QString::fromUcs4(&emojiless.at(0), emojiless.size());
+            // remove everythin after 'call'
+            auto indexOfCallStr = interactionStr.lastIndexOf(QString("call"), -1, Qt::CaseInsensitive);
+            if (indexOfCallStr != -1) {
+                interactionStr = interactionStr.left(indexOfCallStr + 4);
+            }
         } else {
             QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
             emojiMsgFont.setItalic(false);

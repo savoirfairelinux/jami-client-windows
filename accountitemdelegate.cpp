@@ -52,14 +52,17 @@ AccountItemDelegate::paint(QPainter* painter,
     QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
     style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
 
+    QColor presenceBorderColor = Qt::white;
     bool selected = false;
     if (option.state & QStyle::State_Selected) {
         selected = true;
         opt.state ^= QStyle::State_Selected;
         painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+        presenceBorderColor = RingTheme::smartlistSelection_;
     }
     else if (option.state & QStyle::State_MouseOver) {
         painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+        presenceBorderColor = RingTheme::smartlistHighlight_;
     }
 
     QRect &rect = opt.rect;
@@ -113,7 +116,7 @@ AccountItemDelegate::paint(QPainter* painter,
         qreal outerCRadius = avatarSize_ / 6, innerCRadius = outerCRadius * 0.75;
         outerCircle.addEllipse(center, outerCRadius, outerCRadius);
         innerCircle.addEllipse(center, innerCRadius, innerCRadius);
-        painter->fillPath(outerCircle, Qt::white);
+        painter->fillPath(outerCircle, presenceBorderColor);
         painter->fillPath(innerCircle, RingTheme::presenceGreen_);
     }
 
