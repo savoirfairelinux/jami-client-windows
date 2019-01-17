@@ -56,8 +56,8 @@ BezierConnectorWidget::paintEvent(QPaintEvent* event)
     } else if (this->objectName().contains("left", Qt::CaseInsensitive)) {
         p0 = rect().bottomLeft();
         p3 = rect().topRight();
-        p1 = QPointF(p0.x(), p0.y() - c * rect().height());
-        p2 = QPointF(p3.x() - c * rect().width(), p3.y());
+        p1 = QPointF(p0.x(), p3.y() + c * rect().height());
+        p2 = QPointF(p0.x() + c * rect().width(), p3.y());
     }
 
     bezierPath.moveTo(p0);

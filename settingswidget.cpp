@@ -30,6 +30,7 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QSettings>
+#include <QScrollBar>
 
 #include "utils.h"
 #include "settingsitemwidget.h"
@@ -63,14 +64,10 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 {
     ui->setupUi(this);
 
-    ui->accountSettingsButton->setAutoFillBackground(true);
-    ui->generalSettingsButton->setAutoFillBackground(true);
-    ui->avSettingsButton->setAutoFillBackground(true);
-
     ui->accountSettingsButton->setChecked(true);
 
-    ui->exitSettingsButton->setIconSize(QSize(24, 24));
-    ui->exitSettingsButton->setIcon(QPixmap(":/images/icons/round-close-24px.svg"));
+    ui->btnExitSettings->setIconSize(QSize(24, 24));
+    ui->btnExitSettings->setIcon(QPixmap(":/images/icons/round-close-24px.svg"));
 
     // display name (aka alias)
     ui->displayNameLineEdit->setAlignment(Qt::AlignHCenter);
@@ -92,31 +89,9 @@ SettingsWidget::SettingsWidget(QWidget* parent)
         ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
     ui->currentAccountAvatar->setMask(avatarClickableRegion);
 
-    QString styleS(
-        "QPushButton {"
-        "     background-color: white;"
-        "     border-right: 1px solid #f0f0f0;"
-        "}"
-        " QPushButton:hover {"
-        "     background-color: rgb(245, 245, 245);"
-        "     border-right: 1px solid #f0f0f0;"
-        " }"
-
-        "QPushButton:checked {"
-        "    background-color: rgb(237, 237, 237);"
-        "    border-right: 1px solid #f0f0f0;"
-        "}"
-    );
-
-    ui->accountSettingsButton->setStyleSheet(styleS);
-    ui->generalSettingsButton->setStyleSheet(styleS);
-    ui->avSettingsButton->setStyleSheet(styleS);
-
     ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
     ui->linkDevPushButton->setIcon(QPixmap(":/images/icons/round-add-24px.svg"));
     ui->blockedContactsBtn->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
-
-    ui->advancedSettingsOffsetLabel->show();
 
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!accountList.size()) {
@@ -129,6 +104,11 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     } else {
         setConnections();
     }
+
+    ui->scrollArea->verticalScrollBar()->setEnabled(true);
+    ui->scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
+
+    ui->advancedSettingsWidget->setVisible(false);
 
     ui->containerWidget->setVisible(false);
 }
@@ -275,18 +255,17 @@ SettingsWidget::toggleAdvancedSettings()
 {
     if (advancedSettingsDropped_) {
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
-        ui->currentAccountSettingsScrollLayout->removeWidget(advancedSettingsWidget_);
         ui->scrollBarLabel->show();
-        ui->advancedSettingsOffsetLabel->hide();
-        delete advancedSettingsWidget_;
-    }
-    else { // will show advanced settings next
+        ui->advancedSettingsWidget->setVisible(false);
+    } else {
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
-        advancedSettingsWidget_ = new AdvancedSettingsWidget(this);
-        advancedSettingsWidget_->setMaximumWidth(ui->scrollAreaWidgetContents->width() - 10);
-        ui->currentAccountSettingsScrollLayout->addWidget(advancedSettingsWidget_);
-        ui->advancedSettingsOffsetLabel->show();
         ui->scrollBarLabel->hide();
+        ui->advancedSettingsWidget->setVisible(true);
+        QTimer::singleShot(50, this,
+            [this] {
+                auto top = ui->advancedAccountSettingsPButton->frameGeometry().top();
+                ui->scrollArea->verticalScrollBar()->setSliderPosition(top);
+            });
     }
     advancedSettingsDropped_ = !advancedSettingsDropped_;
 }
@@ -641,8 +620,8 @@ SettingsWidget::showCurrentAccountSlot()
 void
 SettingsWidget::setConnections()
 {
-    // exitSettingsButton
-    connect(ui->exitSettingsButton, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
+    // btnExitSettings
+    connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
     connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() {
         setSelected(Button::accountSettingsButton); }

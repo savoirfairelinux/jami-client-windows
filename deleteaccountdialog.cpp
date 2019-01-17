@@ -36,6 +36,8 @@ DeleteAccountDialog::DeleteAccountDialog(QWidget *parent) :
     }
     connect(ui->btnDeleteAccept, &QPushButton::clicked, this, &DeleteAccountDialog::on_deleteAcceptBtn_clicked);
     connect(ui->btnDeleteCancel, &QPushButton::clicked, this, &DeleteAccountDialog::on_deleteCancelBtn_clicked);
+
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 DeleteAccountDialog::~DeleteAccountDialog()

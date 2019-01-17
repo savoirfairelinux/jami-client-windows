@@ -58,7 +58,6 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                     this->setCurrentIndex(std::distance(accountList.begin(), it));
                 }
             });
-
     gearLabel_.setPixmap(QPixmap(":/images/icons/round-settings-24px.svg"));
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
@@ -75,7 +74,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
 
-    QPoint avatarTopLeft(16, 6);
+    QPoint avatarTopLeft(16, 8);
     QPainter painter(this);
     painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
@@ -106,8 +105,8 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     if (accountStatus == lrc::api::account::Status::REGISTERED) {
         // paint the presence indicator circle
         QPainterPath outerCircle, innerCircle;
-        QPointF presenceCenter(40.0 + avatarTopLeft.x(), 40.0);
-        qreal outerCircleRadius = cellHeight_/6.5;
+        QPointF presenceCenter(avatarSize_ + avatarTopLeft.x() - 9, avatarSize_ - 3);
+        qreal outerCircleRadius = avatarSize_ / 6;
         qreal innerCircleRadius = outerCircleRadius * 0.75;
         outerCircle.addEllipse(presenceCenter, outerCircleRadius, outerCircleRadius);
         innerCircle.addEllipse(presenceCenter, innerCircleRadius, innerCircleRadius);
@@ -116,10 +115,10 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     }
 
     QRect comboBoxRect(
-        cellHeight_ + avatarTopLeft.x() + 10 + 2,
-        6,
-        this->width() - cellHeight_,
-        cellHeight_ - 10); // [screen awareness]
+        avatarSize_ + avatarTopLeft.x() + 10 + 2,
+        8,
+        this->width() - avatarSize_,
+        avatarSize_ - 10); // [screen awareness]
 
     // write primary and secondary account identifiers to combobox label
     QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
@@ -167,7 +166,7 @@ void
 CurrentAccountComboBox::importLabelPhoto(int index)
 {
     currentAccountAvatarImage_ = accountListModel_->data(accountListModel_->index(index, 0), // [efficiency improvement]
-        AccountListModel::Role::Picture).value<QPixmap>().scaledToHeight(cellHeight_ - 4, Qt::SmoothTransformation);
+        AccountListModel::Role::Picture).value<QPixmap>().scaledToHeight(avatarSize_ - 4, Qt::SmoothTransformation);
 }
 
 void
@@ -206,7 +205,7 @@ CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
 {
     if (gearLabel_.frameGeometry().contains(mouseEvent->x(), mouseEvent->y())) {
         QComboBox::mouseMoveEvent(mouseEvent);
-        gearLabel_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 8px;");
+        gearLabel_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 15px;");
         return;
     }
 

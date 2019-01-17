@@ -49,106 +49,151 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="btnAcceptInvite">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
+     <property name="leftMargin">
+      <number>0</number>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
+     <property name="rightMargin">
+      <number>0</number>
      </property>
-     <property name="toolTip">
-      <string>Accept invite</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="ressources.qrc">
-       <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>18</width>
-       <height>18</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnIgnoreInvite">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Ignore invite</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="ressources.qrc">
-       <normaloff>:/images/icons/ic_clear_24px.svg</normaloff>:/images/icons/ic_clear_24px.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>18</width>
-       <height>18</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnBlockInvite">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Block person</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="ressources.qrc">
-       <normaloff>:/images/icons/ic_block_24px.svg</normaloff>:/images/icons/ic_block_24px.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>18</width>
-       <height>18</height>
-      </size>
-     </property>
-    </widget>
+     <item>
+      <widget class="QPushButton" name="btnAcceptInvite">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Accept</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>18</width>
+         <height>18</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>12</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnIgnoreInvite">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Refuse</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/images/icons/ic_clear_24px.svg</normaloff>:/images/icons/ic_clear_24px.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>18</width>
+         <height>18</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>12</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnBlockInvite">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Block</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/images/icons/ic_block_24px.svg</normaloff>:/images/icons/ic_block_24px.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>18</width>
+         <height>18</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <spacer name="horizontalSpacer_2">
@@ -160,7 +205,7 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>13</width>
+       <width>12</width>
        <height>17</height>
       </size>
      </property>
