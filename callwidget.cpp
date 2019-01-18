@@ -741,7 +741,7 @@ void
 CallWidget::slotVideoViewDestroyed(const std::string& callid)
 {
     auto conversation = Utils::getSelectedConversation();
-    if (callid != conversation.uid) {
+    if (conversation.uid.empty() || callid != conversation.callId) {
         return;
     }
     if (ui->mainActivityWidget->isFullScreen()) {
