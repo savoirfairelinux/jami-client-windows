@@ -546,22 +546,6 @@ CallWidget::smartListSelectionChanged(const QItemSelection  &selected, const QIt
 }
 
 void
-CallWidget::placeCall()
-{
-    if (ui->ringContactLineEdit->text().isEmpty())
-        return;
-    Call* c = CallModel::instance().dialingCall(PhoneDirectoryModel::instance().getNumber(ui->ringContactLineEdit->text()));
-    c->performAction(Call::Action::ACCEPT);
-    ui->ringContactLineEdit->clear();
-    auto photoRect = ui->callingPhoto->frameGeometry();
-    ui->callingPhoto->setPixmap(
-                QPixmap::fromImage(
-                    GlobalInstances::pixmapManipulator()
-                    .callPhoto(c, QSize(photoRect.width(), photoRect.height()))
-                    .value<QImage>()));
-}
-
-void
 CallWidget::conversationsButtonClicked()
 {
     ui->btnConversations->setChecked(true);

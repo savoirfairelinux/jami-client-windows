@@ -430,18 +430,23 @@ Utils::generateTintedPixmap(const QString& filename, QColor color)
     return QPixmap::fromImage(tmpImage);
 }
 
-std::string
-Utils::getConversationFromCallId(const std::string& callId)
+lrc::api::conversation::Info
+Utils::getConversationFromCallId(const std::string & callId)
 {
     auto convModel = LRCInstance::getCurrentConversationModel();
-    auto conversations = convModel->allFilteredConversations();
-    std::string convUid;
-    for (auto conversation : conversations) {
-        if (conversation.callId == callId) {
-            return conversation.uid;
+    using namespace lrc::api::profile;
+    for (int i = toUnderlyingValue(Type::RING); i <= toUnderlyingValue(Type::TEMPORARY); ++i) {
+        auto filter = toEnum<lrc::api::profile::Type>(i);
+        auto conversations = convModel->getFilteredConversations(filter);
+        auto conv = std::find_if(conversations.begin(), conversations.end(),
+            [&](const lrc::api::conversation::Info& conv) {
+                return callId == conv.callId;
+            });
+        if (conv != conversations.end()) {
+            return *conv;
         }
     }
-    return "";
+    return lrc::api::conversation::Info();
 }
 
 lrc::api::conversation::Info

@@ -42,9 +42,6 @@ VideoView::VideoView(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    connect(&CallModel::instance(), SIGNAL(callStateChanged(Call*, Call::State)),
-            this, SLOT(callStateChanged(Call*, Call::State)));
-
     overlay_ = new VideoOverlay(this);
     auto effect = new QGraphicsOpacityEffect(overlay_);
     effect->setOpacity(maxOverlayOpacity_);
@@ -150,23 +147,27 @@ VideoView::fadeOverlayOut()
 }
 
 void
-VideoView::callStateChanged(Call* call, Call::State previousState)
+VideoView::slotCallStatusChanged(const std::string& callId)
 {
-   Q_UNUSED(previousState)
-
-    if (call->state() == Call::State::CURRENT) {
+    using namespace lrc::api::call;
+    auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
+    switch (call.status) {
+    case Status::IN_PROGRESS:
+    {
         ui->videoWidget->show();
-        timerConnection_ = connect(call, SIGNAL(changed()), this, SLOT(updateCall()));
-    } else {
-        QObject::disconnect(timerConnection_);
-        try {
-            if (call) {
-                emit closing(call->historyId().toStdString());
-            }
-        } catch (...) {
-            qWarning() << "VideoView::callStateChanged except";
+        auto convInfo = Utils::getConversationFromCallId(call.id);
+        if (!convInfo.uid.empty()) {
+            auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
+            auto contactName = Utils::bestNameForContact(contactInfo);
+            overlay_->setName(QString::fromStdString(contactName));
         }
+        return;
     }
+    default:
+        emit closing(call.id);
+        break;
+    }
+    QObject::disconnect(timerConnection_);
 }
 
 void
@@ -180,14 +181,6 @@ VideoView::simulateShowChatview(bool checked)
 {
     Q_UNUSED(checked);
     overlay_->simulateShowChatview(true);
-}
-
-void
-VideoView::updateCall()
-{
-    if (auto call = CallModel::instance().selectedCall()) {
-        overlay_->setName(call->formattedName());
-    }
 }
 
 void
@@ -328,6 +321,8 @@ VideoView::pushRenderer(const std::string& callId) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(videoStartedConnection_);
+    QObject::disconnect(callStatusChangedConnection_);
+
     if (!callModel->hasCall(callId)) {
         return;
     }
@@ -336,6 +331,9 @@ VideoView::pushRenderer(const std::string& callId) {
 
     this->overlay_->callStarted(callId);
     this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+
+    callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+        this, &VideoView::slotCallStatusChanged);
 
     videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
         [this](const std::string& callId, Video::Renderer* renderer) {

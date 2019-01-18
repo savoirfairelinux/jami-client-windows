@@ -78,7 +78,7 @@ namespace Utils
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
     QByteArray QByteArrayFromFile(const QString& filename);
     QPixmap generateTintedPixmap(const QString& filename, QColor color);
-    std::string getConversationFromCallId(const std::string& callId);
+    lrc::api::conversation::Info getConversationFromCallId(const std::string& callId);
     lrc::api::conversation::Info getSelectedConversation();
     lrc::api::conversation::Info getConversationFromUid(const std::string & convUid, bool filtered = true);
 

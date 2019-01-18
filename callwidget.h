@@ -33,7 +33,6 @@
 #include "smartlistmodel.h"
 
 // old LRC
-#include "callmodel.h"
 #include "video/renderer.h"
 #include "video/previewmanager.h"
 #include "accountmodel.h"

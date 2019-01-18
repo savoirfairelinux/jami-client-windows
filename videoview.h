@@ -57,8 +57,7 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
 
 private slots:
-    void callStateChanged(Call* call, Call::State previousState);
-    void updateCall();
+    void slotCallStatusChanged(const std::string& callId);
     void showContextMenu(const QPoint& pos);
     void slotVideoStarted(Video::Renderer* renderer);
     void fadeOverlayOut();
@@ -73,6 +72,7 @@ private:
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
     QMetaObject::Connection videoStartedConnection_;
+    QMetaObject::Connection callStatusChangedConnection_;
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
@@ -102,4 +102,3 @@ signals:
     void toggleFullScreenClicked();
     void closing(const std::string& callid);
 };
-
