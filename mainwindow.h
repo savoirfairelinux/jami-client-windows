@@ -27,9 +27,6 @@
 #include "navwidget.h"
 #include "settingswidget.h"
 
-// LRC
-#include "call.h"
-
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
 static constexpr uint32_t QtMaxDimension = 16777215;
@@ -61,6 +58,7 @@ protected:
     void closeEvent(QCloseEvent* event);
     void resizeEvent(QResizeEvent *event);
     void keyReleaseEvent(QKeyEvent* ke);
+    void changeEvent(QEvent* e);
 
 signals:
     void keyReleased(QKeyEvent*ke);
@@ -71,8 +69,6 @@ public slots:
 private slots:
     void slotCurrentChanged(int index);
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
-    void onIncomingCall(Call* call);
-    void switchNormalMaximize();
     void notificationClicked();
     void slotScreenChanged(QScreen* screen);
 
@@ -85,6 +81,7 @@ private:
     int lastAccountCount_;
     Qt::WindowFlags flags_;
     float currentScalingRatio_;
+    Qt::WindowState currentWindowState_{ Qt::WindowState::WindowNoState };
 
     void readSettingsFromRegistry();
 

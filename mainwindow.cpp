@@ -92,9 +92,6 @@ MainWindow::MainWindow(QWidget* parent) :
     connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
-    connect(&CallModel::instance(), SIGNAL(incomingCall(Call*)),
-            this, SLOT(onIncomingCall(Call*)));
-
 #ifdef Q_OS_WIN
     HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
     if (sysMenu != NULL) {
@@ -228,16 +225,13 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 
 void
 MainWindow::notificationClicked() {
-    showNormal();
+    if (currentWindowState_ == Qt::WindowMaximized) {
+        showMaximized();
+    } else {
+        showNormal();
+    }
     activateWindow();
     raise();
-}
-
-void
-MainWindow::onIncomingCall(Call* call)
-{
-    Q_UNUSED(call);
-    QWidget::showNormal();
 }
 
 void
@@ -260,12 +254,17 @@ MainWindow::createThumbBar()
 }
 
 void
-MainWindow::switchNormalMaximize()
+MainWindow::changeEvent(QEvent* e)
 {
-    if(isMaximized())
-        showNormal();
-    else
-        showMaximized();
+    if (e->type() == QEvent::WindowStateChange) {
+        QWindowStateChangeEvent* event = static_cast<QWindowStateChangeEvent*>(e);
+        if (event->oldState() == Qt::WindowNoState && windowState() == Qt::WindowMaximized) {
+            currentWindowState_ = Qt::WindowMaximized;
+        } else if (event->oldState() == Qt::WindowMaximized && windowState() == Qt::WindowNoState) {
+            currentWindowState_ = Qt::WindowNoState;
+        }
+    }
+    QWidget::changeEvent(e);
 }
 
 void
