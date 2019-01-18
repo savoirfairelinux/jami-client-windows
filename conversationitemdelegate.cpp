@@ -189,7 +189,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
 
     QRect rectName1(rect.left() + leftMargin,
                     rect.top() + topMargin,
-                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 2,
+                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 4,
                     rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
@@ -199,7 +199,7 @@ ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
 
     QRect rectInfo1(rectName1.left() + rectName1.width(),
                     rect.top() + topMargin,
-                    infoTextWidth_ - rightMargin + infoTextWidthModifier,
+                    infoTextWidth_ - rightMargin + infoTextWidthModifier + 2,
                     rect.height() / 2 - 2);
 
     QRect rectInfo2(rectInfo1.left(),
@@ -303,7 +303,12 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
     auto leftMargin = dx_ + sizeImage_ + dx_;
     auto rightMargin = dx_;
     if (option.state & QStyle::State_MouseOver) {
-        rightMargin = infoTextWidth_ - dx_ * 2;
+        auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+        if (scalingRatio > 1.0) {
+            rightMargin = infoTextWidth_ + 12 - dx_ * 2;
+        } else {
+            rightMargin = infoTextWidth_ - dx_ * 2;
+        }
     }
     auto topMargin = 4;
     auto bottomMargin = 8;
