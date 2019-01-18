@@ -77,7 +77,8 @@ VideoOverlay::setTime()
     }
     try {
         auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
-        if (callInfo.status == lrc::api::call::Status::IN_PROGRESS) {
+        if (callInfo.status == lrc::api::call::Status::IN_PROGRESS ||
+            callInfo.status == lrc::api::call::Status::PAUSED) {
             int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
                 std::chrono::steady_clock::now() - callInfo.startTime).count();
             QTime t(0, 0, numSeconds);
@@ -95,7 +96,9 @@ VideoOverlay::setVideoMuteVisibility(bool visible)
 bool
 VideoOverlay::shouldShowOverlay()
 {
-    return ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse();
+    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
+    auto callPaused = callInfo.status == lrc::api::call::Status::PAUSED;
+    return ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse() || callPaused;
 }
 
 void
