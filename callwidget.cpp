@@ -839,8 +839,10 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     auto& accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
     bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
     try {
-        accountInfo.contactModel->getContact(contactURI.toStdString());
-        isContact = true;
+        auto contactInfo = accountInfo.contactModel->getContact(contactURI.toStdString());
+        if (contactInfo.isTrusted) {
+            isContact = true;
+        }
     } catch (...) {}
 
     ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
