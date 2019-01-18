@@ -92,9 +92,6 @@ MainWindow::MainWindow(QWidget* parent) :
     connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
-    connect(&CallModel::instance(), SIGNAL(incomingCall(Call*)),
-            this, SLOT(onIncomingCall(Call*)));
-
 #ifdef Q_OS_WIN
     HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
     if (sysMenu != NULL) {
