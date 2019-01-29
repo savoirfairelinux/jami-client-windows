@@ -40,13 +40,13 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->checkBoxCustomRingtone, &QAbstractButton::clicked, [this](int state) { ui->btnRingtone->setEnabled((bool)state); });
 
     // name server
-    connect(ui->lineEditNameServer, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setNameServer);
+    connect(ui->lineEditNameServer, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setNameServer);
 
     // openDHT config
     connect(ui->checkBoxEnableProxy, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setEnableProxy);
 
-    connect(ui->lineEditProxy, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setProxyAddress);
-    connect(ui->lineEditBootstrap, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setBootstrapAddress);
+    connect(ui->lineEditProxy, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setProxyAddress);
+    connect(ui->lineEditBootstrap, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setBootstrapAddress);
 
     // security
     connect(ui->btnCACert, &QPushButton::clicked, this, &AdvancedSettingsWidget::openFileCACert);
@@ -58,10 +58,10 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->checkBoxTurnEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseTURN);
     connect(ui->checkBoxSTUNEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseSTUN);
 
-    connect(ui->lineEditTurnAddress, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setTURNAddress);
-    connect(ui->lineEditTurnUsername, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setTURNUsername);
-    connect(ui->lineEditTurnPsswd, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setTURNPsswd);
-    connect(ui->lineEditSTUNAddress, &QLineEdit::textChanged, this, &AdvancedSettingsWidget::setSTUNAddress);
+    connect(ui->lineEditTurnAddress, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNAddress);
+    connect(ui->lineEditTurnUsername, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNUsername);
+    connect(ui->lineEditTurnPsswd, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNPsswd);
+    connect(ui->lineEditSTUNAddress, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setSTUNAddress);
 
     // codecs
     connect(ui->audioListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::audioCodecsStateChange);
@@ -116,8 +116,12 @@ AdvancedSettingsWidget::updateAdvancedSettings()
 
     // codecs
     ui->videoCheckBox->setChecked(config.Video.videoEnabled);
+    disconnect(ui->audioListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::audioCodecsStateChange);
+    disconnect(ui->videoListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::videoCodecsStateChange);
     updateAudioCodecs();
     updateVideoCodecs();
+    connect(ui->audioListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::audioCodecsStateChange);
+    connect(ui->videoListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::videoCodecsStateChange);
 
     ui->btnRingtone->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
     ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
