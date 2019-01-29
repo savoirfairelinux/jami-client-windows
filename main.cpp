@@ -108,10 +108,6 @@ main(int argc, char *argv[])
     if (!guard.tryToRun())
         return 0;
 
-#ifdef Q_OS_WIN
-    SetProcessDPIAware();
-#endif // Q_OS_WIN
-
     QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
