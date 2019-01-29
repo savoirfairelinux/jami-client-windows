@@ -34,9 +34,10 @@ public:
     AdvancedSettingsWidget(QWidget* parent = nullptr);
     ~AdvancedSettingsWidget();
 
+    void updateAdvancedSettings();
+
 private:
     Ui::AdvancedSettingsWidget* ui;
-    void updateAdvancedSettings();
 
 private slots:
 // call settings
@@ -84,6 +85,5 @@ private slots:
     void increaseVideoCodecPriority();
 
     void setVideoState(int state);
-
 
 };

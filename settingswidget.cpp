@@ -261,6 +261,7 @@ SettingsWidget::toggleAdvancedSettings()
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
         ui->scrollBarLabel->hide();
         ui->advancedSettingsWidget->setVisible(true);
+        ui->advancedSettingsWidget->updateAdvancedSettings();
         QTimer::singleShot(50, this,
             [this] {
                 auto top = ui->advancedAccountSettingsPButton->frameGeometry().top();

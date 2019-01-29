@@ -15,13 +15,15 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-#include <QFileDialog>
-
-#include "lrcinstance.h"
-#include "api/newcodecmodel.h"
-
 #include "advancedsettingswidget.h"
 #include "ui_advancedsettingswidget.h"
+
+#include <QFileDialog>
+
+#include "api/newcodecmodel.h"
+
+#include "lrcinstance.h"
+#include "utils.h"
 
 AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     :QWidget(parent),
@@ -29,7 +31,6 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
 {
     ui->setupUi(this);
 
-    updateAdvancedSettings();
 ///////////////////////////////////////////////////////////////////////////////
     // call settings
     connect(ui->checkBoxUntrusted, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setCallsUntrusted);
@@ -75,12 +76,6 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->videoDownPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::decreaseVideoCodecPriority);
     connect(ui->videoUpPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::increaseVideoCodecPriority);
 
-///////////////////////////////////////////////////////////////////////////////
-    ui->btnRingtone->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
-    ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
-    ui->lineEditProxy->setEnabled(LRCInstance::getCurrAccConfig().proxyEnabled);
-    ui->lineEditSTUNAddress->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
-
 }
 
 AdvancedSettingsWidget::~AdvancedSettingsWidget()
@@ -123,6 +118,11 @@ AdvancedSettingsWidget::updateAdvancedSettings()
     ui->videoCheckBox->setChecked(config.Video.videoEnabled);
     updateAudioCodecs();
     updateVideoCodecs();
+
+    ui->btnRingtone->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
+    ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
+    ui->lineEditProxy->setEnabled(LRCInstance::getCurrAccConfig().proxyEnabled);
+    ui->lineEditSTUNAddress->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
 }
 
 // call settings
