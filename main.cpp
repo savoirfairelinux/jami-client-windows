@@ -108,10 +108,6 @@ main(int argc, char *argv[])
     if (!guard.tryToRun())
         return 0;
 
-#ifdef Q_OS_WIN
-    SetProcessDPIAware();
-#endif // Q_OS_WIN
-
     QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
@@ -121,7 +117,6 @@ main(int argc, char *argv[])
     for (int i = 0; i < argc; i++) {
         newArgv[i] = argv[i];
     }
-
     newArgv[argc] = ARG_DISABLE_WEB_SECURITY;
     newArgv[argc + 1] = nullptr;
 
@@ -249,6 +244,7 @@ main(int argc, char *argv[])
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
     }
+
 
 #ifdef URI_PROTOCOL
     QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
