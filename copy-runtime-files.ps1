@@ -71,6 +71,8 @@ $FilesToCopy = @(
     "$QtDir\bin\libGLESv2.dll",
     "$QtDir\bin\QtWebEngineProcess.exe",
     "$QtDir\resources\qtwebengine_resources.pak",
+    "$QtDir\resources\qtwebengine_resources_100p.pak",
+    "$QtDir\resources\qtwebengine_resources_200p.pak",
     "$QtDir\resources\icudtl.dat"
     )
 foreach ($i in $FilesToCopy) {

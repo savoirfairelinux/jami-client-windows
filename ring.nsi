@@ -143,6 +143,8 @@ section "install"
         file "Jami.exe"
         file "jami.ico"
         file "qtwebengine_resources.pak"
+        file "qtwebengine_resources_100p.pak"
+        file "qtwebengine_resources_200p.pak"
         file "QtWebEngineProcess.exe"
         file "icudtl.dat"
         file *.dll
@@ -246,6 +248,11 @@ section "uninstall"
         delete $INSTDIR\Jami.exe
         delete $INSTDIR\jami.ico
         delete $INSTDIR\*.dll
+        delete $INSTDIR\qtwebengine_resources.pak
+        delete $INSTDIR\qtwebengine_resources_100p.pak
+        delete $INSTDIR\qtwebengine_resources_200p.pak
+        delete $INSTDIR\QtWebEngineProcess.exe
+        delete $INSTDIR\icudtl.dat
         rmDir /r $INSTDIR\platforms
         rmDir /r $INSTDIR\imageformats
         rmDir /r $INSTDIR\ringtones
