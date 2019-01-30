@@ -479,6 +479,11 @@ p, li { white-space: pre-wrap; }
                          <height>16777215</height>
                         </size>
                        </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>9</pointsize>
+                        </font>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -602,6 +607,14 @@ p, li { white-space: pre-wrap; }
                        <width>200</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
                      </property>
                     </widget>
                    </item>
