@@ -189,8 +189,3 @@ VideoOverlay::on_recButton_clicked()
         callModel->toggleAudioRecord(callId);
     }
 }
-
-void VideoOverlay::on_videoCfgBtn_clicked()
-{
-    emit videoCfgBtnClicked();
-}

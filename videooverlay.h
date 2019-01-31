@@ -53,7 +53,6 @@ private slots:
     void on_noMicButton_clicked();
     void on_noVideoButton_clicked();
     void on_recButton_clicked();
-    void on_videoCfgBtn_clicked();
 
 private:
     Ui::VideoOverlay* ui;
@@ -63,5 +62,4 @@ private:
 
 signals:
     void setChatVisibility(bool visible);
-    void videoCfgBtnClicked();
 };
