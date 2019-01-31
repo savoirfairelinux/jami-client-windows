@@ -22,6 +22,7 @@
 #undef ERROR
 #endif
 
+#include <QObject>
 #include <QSettings>
 #include <QRegularExpression>
 #include <QPixmap>
@@ -44,8 +45,15 @@
 
 #include <settingskey.h>
 
-class LRCInstance {
+class LRCInstance : public QObject
+{
+    Q_OBJECT
+
 public:
+    static LRCInstance& instance() {
+        static LRCInstance instance_;
+        return instance_;
+    };
     static void init() {
         instance();
     };
@@ -156,15 +164,13 @@ public:
         return instance().getCurrentAccountInfo().confProperties;
     }
 
+signals:
+    /// emit once at least one valid account is loaded
+    void accountOnBoarded();
 
 private:
     std::unique_ptr<lrc::api::Lrc> lrc_;
     AccountListModel accountListModel_;
-
-    static LRCInstance& instance() {
-        static LRCInstance instance_;
-        return instance_;
-    };
 
     LRCInstance() {
         lrc_ = std::make_unique<lrc::api::Lrc>();

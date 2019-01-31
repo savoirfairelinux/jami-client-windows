@@ -329,6 +329,9 @@
     <QtMoc Include="bezierconnectorwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="lrcinstance.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -750,9 +753,6 @@
     <ResourceCompile Include="ico.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lrcinstance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="settingsitemwidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>

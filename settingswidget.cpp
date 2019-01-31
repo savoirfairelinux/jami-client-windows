@@ -95,10 +95,9 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!accountList.size()) {
-        Utils::oneShotConnect(&LRCInstance::accountModel(),
-            &lrc::api::NewAccountModel::accountAdded,
-            [this](const std::string& accountId) {
-                Q_UNUSED(accountId);
+        Utils::oneShotConnect(&LRCInstance::instance(),
+            &LRCInstance::accountOnBoarded,
+            [this]() {
                 setConnections();
             });
     } else {

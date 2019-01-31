@@ -204,6 +204,7 @@ void NewWizardWidget::changePage(QWidget* toPage)
     }
     Utils::setStackWidget(ui->stackedWidget, toPage);
     if (toPage == ui->welcomePage) {
+        fileToImport_ = QString("");
         setNavBarVisibility(false, true);
         lookupStatusLabel_->hide();
         passwordStatusLabel_->hide();
@@ -410,6 +411,8 @@ NewWizardWidget::createRingAccount(const QString &displayName,
         [this](const std::string& accountId) {
             //set default ringtone
             auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+            if (confProps.username.empty())
+                return;
             confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
             LRCInstance::accountModel().setAccountConfig(accountId, confProps);
             connect(LRCInstance::editableAccountModel(),
@@ -418,6 +421,7 @@ NewWizardWidget::createRingAccount(const QString &displayName,
                     lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
                     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
                     emit NavigationRequested(ScreenEnum::CallScreen);
+                    emit LRCInstance::instance().accountOnBoarded();
                 });
             LRCInstance::editableAccountModel()->registerName(
                 LRCInstance::getCurrAccId(),
@@ -427,6 +431,18 @@ NewWizardWidget::createRingAccount(const QString &displayName,
             if (ui->setAvatarWidget->hasAvatar()) {
                 LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
             }
+        });
+    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
+        [this](const std::string& accountId) {
+            Q_UNUSED(accountId);
+            qWarning() << Q_FUNC_INFO << ": " << "accountRemoved";
+            reportFailure();
+        });
+    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::invalidAccountDetected,
+        [this](const std::string& accountId) {
+            Q_UNUSED(accountId);
+            qWarning() << Q_FUNC_INFO << ": " << "invalidAccountDetected";
+            reportFailure();
         });
     QtConcurrent::run(
         [=] {
@@ -440,4 +456,21 @@ NewWizardWidget::createRingAccount(const QString &displayName,
         });
     changePage(ui->spinnerPage);
     repaint();
+}
+
+void
+NewWizardWidget::reportFailure()
+{
+    auto spinnerGeometry = ui->spinnerLabel->frameGeometry();
+    auto pixmap = Utils::generateTintedPixmap(":/images/icons/baseline-error_outline-24px.svg", RingTheme::urgentOrange_)
+        .scaled(spinnerGeometry.width(), spinnerGeometry.height());
+    ui->spinnerLabel->setPixmap(pixmap);
+    ui->progressLabel->setStyleSheet("color:red;");
+    ui->progressLabel->setText(tr("Error creating account"));
+    QTimer::singleShot(1000, this,
+        [this] {
+            changePage(ui->welcomePage);
+            ui->progressLabel->setStyleSheet("");
+            ui->spinnerLabel->setMovie(creationSpinnerMovie_);
+        });
 }

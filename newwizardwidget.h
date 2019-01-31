@@ -99,5 +99,6 @@ private:
                            const QString &password = QString(),
                            const QString &pin = QString(),
                            const QString &archivePath = QString());
+    void reportFailure();
     void processWizardInformations();
 };
