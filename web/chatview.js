@@ -233,21 +233,21 @@ function formatDate(date) {
         return date.toLocaleDateString()
     }
     if (interval > 1) {
-        return interval + " days ago"
+        return interval + "\u200E days ago"
     }
     if (interval === 1) {
-        return interval + " day ago"
+        return interval + "\u200E day ago"
     }
     interval = Math.floor(seconds / 3600)
     if (interval > 1) {
-        return interval + " hours ago"
+        return interval + "\u200E hours ago"
     }
     if (interval === 1) {
-        return interval + " hour ago"
+        return interval + "\u200E hour ago"
     }
     interval = Math.floor(seconds / 60)
     if (interval > 1) {
-        return interval + " minutes ago"
+        return interval + "\u200E minutes ago"
     }
     return "just now"
 }
@@ -438,7 +438,7 @@ function isErrorStatus(status) {
  * Build a new file interaction
  * @param message_id
  */
-function fileInteraction(message_id) {
+function fileInteraction(message_id, message_direction) {
     var message_wrapper = document.createElement("div")
     message_wrapper.setAttribute("class", "message_wrapper")
 
@@ -491,9 +491,42 @@ function fileInteraction(message_id) {
 
     const internal_mes_wrapper = document.createElement("div")
     internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
-    internal_mes_wrapper.appendChild(message_wrapper)
+
+    var tbl = buildMsgTable(message_direction);
+    var msg_cell = tbl.querySelector(".msg_cell");
+    msg_cell.appendChild(message_wrapper);
+
+    internal_mes_wrapper.appendChild(tbl);
 
     return internal_mes_wrapper
+}
+
+function buildMsgTable(message_direction) {
+    var tbl = document.createElement("table");
+
+    var row0 = document.createElement("tr");
+    var sender_image_cell = document.createElement("td");
+    sender_image_cell.setAttribute("class", "sender_image_cell")
+    var msg_cell = document.createElement("td");
+    msg_cell.setAttribute("class", "msg_cell")
+
+    row0.appendChild((message_direction === "in") ? sender_image_cell : msg_cell);
+    row0.appendChild((message_direction === "in") ? msg_cell : sender_image_cell);
+
+    tbl.appendChild(row0);
+
+    var row1 = document.createElement("tr");
+    var dummy_cell = document.createElement("td");
+    dummy_cell.setAttribute("class", "dummy_cell")
+    var timestamp_cell = document.createElement("td");
+    timestamp_cell.setAttribute("class", "timestamp_cell")
+
+    row1.appendChild((message_direction === "in") ? dummy_cell : timestamp_cell);
+    row1.appendChild((message_direction === "in") ? timestamp_cell : dummy_cell);
+
+    tbl.appendChild(row1);
+
+    return tbl;
 }
 
 /**
@@ -553,13 +586,13 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
                 media_wrapper.parentNode.removeChild(media_wrapper)
             }
 
-            var new_interaction = fileInteraction(message_id)
+            var new_interaction = fileInteraction(message_id, message_direction)
             var new_message_wrapper = new_interaction.querySelector(".message_wrapper")
             wrapper.prepend(new_message_wrapper)
             updateFileInteraction(message_div, message_object, true)
         }
 
-        var new_wrapper = mediaInteraction(message_id, message_text, null, errorHandler)
+        var new_wrapper = mediaInteraction(message_id, message_direction, message_text, null, errorHandler)
         message_div.insertBefore(new_wrapper, message_div.querySelector(".menu_interaction"))
         message_div.querySelector("img").id = message_id
         message_div.querySelector("img").msg_obj = message_object
@@ -658,7 +691,7 @@ function buildVideoContainer(linkElt) {
  * @param ytid if it's a youtube video
  * @param errorHandler the new media's onerror field will be set to this function
  */
-function mediaInteraction(message_id, link, ytid, errorHandler) {
+function mediaInteraction(message_id, message_direction, link, ytid, errorHandler) {
     /* TODO promise?
      Try to display images. */
     const media_wrapper = document.createElement("div")
@@ -722,7 +755,12 @@ function mediaInteraction(message_id, link, ytid, errorHandler) {
 
     const internal_mes_wrapper = document.createElement("div")
     internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
-    internal_mes_wrapper.appendChild(media_wrapper)
+
+    var tbl = buildMsgTable(message_direction);
+    var msg_cell = tbl.querySelector(".msg_cell");
+    msg_cell.appendChild(media_wrapper);
+
+    internal_mes_wrapper.appendChild(tbl)
 
     return internal_mes_wrapper
 }
@@ -732,7 +770,7 @@ function mediaInteraction(message_id, link, ytid, errorHandler) {
  * @param message_id
  * @param htmlText the DOM to show
  */
-function textInteraction(message_id, htmlText) {
+function textInteraction(message_id, message_direction, htmlText) {
     const message_wrapper = document.createElement("div")
     message_wrapper.setAttribute("class", "message_wrapper")
     var message_text = document.createElement("div")
@@ -743,7 +781,12 @@ function textInteraction(message_id, htmlText) {
 
     const internal_mes_wrapper = document.createElement("div")
     internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
-    internal_mes_wrapper.appendChild(message_wrapper)
+
+    var tbl = buildMsgTable(message_direction);
+    var msg_cell = tbl.querySelector(".msg_cell");
+    msg_cell.appendChild(message_wrapper);
+
+    internal_mes_wrapper.appendChild(tbl);
 
     return internal_mes_wrapper
 }
@@ -887,7 +930,7 @@ function removeInteraction(interaction_id) {
         var timestamp = interaction.querySelector(".timestamp")
         var previousTimeStamp = interaction.previousSibling.querySelector(".timestamp")
         if (timestamp && !previousTimeStamp) {
-            interaction.previousSibling.querySelector(".internal_mes_wrapper").appendChild(timestamp)
+            interaction.previousSibling.querySelector(".timestamp_cell").appendChild(timestamp)
         }
     }
 
@@ -966,13 +1009,6 @@ function buildNewMessage(message_object) {
     message_div.setAttribute("class", classes.join(" "))
 
     // Build message for each types.
-    // Add sender images if necessary (like if the interaction doesn't take the whole width)
-    const need_sender = (message_type === "data_transfer" || message_type === "text")
-    if (need_sender) {
-        var message_sender_image = document.createElement("span")
-        message_sender_image.setAttribute("class", `sender_image sender_image_${message_sender_contact_method}`)
-        message_div.appendChild(message_sender_image)
-    }
 
     // Build main content
     if (message_type === "data_transfer") {
@@ -989,16 +1025,16 @@ function buildNewMessage(message_object) {
                     media_wrapper.parentNode.removeChild(media_wrapper)
                 }
 
-                var new_interaction = fileInteraction(message_id)
+                var new_interaction = fileInteraction(message_id, message_direction)
                 var new_message_wrapper = new_interaction.querySelector(".message_wrapper")
                 wrapper.prepend(new_message_wrapper)
                 updateFileInteraction(message_div, message_object, true)
             }
-            message_div.append(mediaInteraction(message_id, message_text, null, errorHandler))
+            message_div.append(mediaInteraction(message_id, message_direction, message_text, null, errorHandler))
             message_div.querySelector("img").id = message_id
             message_div.querySelector("img").msg_obj = message_object
         } else {
-            message_div.append(fileInteraction(message_id))
+            message_div.append(fileInteraction(message_id, message_direction))
         }
     } else if (message_type === "text") {
         // TODO add the possibility to update messages (remove and rebuild)
@@ -1012,13 +1048,13 @@ function buildNewMessage(message_object) {
                 const ytid = (isVideo(message_text))? youtube_id(message_text) : ""
                 if (!isTextToShow && (ytid || isImage(message_text))) {
                     type = "media"
-                    message_div.append(mediaInteraction(message_id, message_text, ytid))
+                    message_div.append(mediaInteraction(message_id, message_direction, message_text, ytid))
                 }
             }
         }
         if (type !== "media") {
             type = "text"
-            message_div.append(textInteraction(message_id, htmlText))
+            message_div.append(textInteraction(message_id, message_direction, htmlText))
         }
     } else if (message_type === "call" || message_type === "contact") {
         message_div.append(actionInteraction())
@@ -1034,6 +1070,19 @@ function buildNewMessage(message_object) {
     } else {
         var wrapper = message_div.querySelector(".message_wrapper")
         wrapper.insertBefore(message_dropdown, wrapper.firstChild)
+    }
+
+    // Add sender images if necessary (like if the interaction doesn't take the whole width)
+    const need_sender = (message_type === "data_transfer" || message_type === "text")
+    if (need_sender) {
+        var sender_image_cell = message_div.querySelector(".sender_image_cell")
+        if (sender_image_cell) {
+            var message_sender_image = document.createElement("span")
+            message_sender_image.setAttribute("class", `sender_image sender_image_${message_sender_contact_method}`)
+            sender_image_cell.appendChild(message_sender_image)
+        } else {
+            console.warn("can't find sender_image_cell");
+        }
     }
 
     return message_div
@@ -1089,7 +1138,9 @@ function addOrUpdateMessage(message_object, new_message, insert_after = true, me
             message_div.querySelector(".message_wrapper").appendChild(date_elt)
         } else if (insert_after || !timestamp || timestamp.className !== date_elt.className
                                 || timestamp.innerHTML !== date_elt.innerHTML) {
-            message_div.querySelector(".internal_mes_wrapper").appendChild(date_elt)
+            message_div.querySelector(".timestamp_cell").appendChild(date_elt)
+            if (message_direction === "out")
+                message_div.querySelector(".timestamp_cell").setAttribute("class", "timestamp_cell_out")
         }
 
         var isGenerated = message_type === "call" || message_type === "contact"
@@ -1531,7 +1582,7 @@ function setSenderImage(set_sender_image_object)
 
     style.type = "text/css"
     style.id = sender_image_id
-    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 32px;width: 32px;}"
+    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 2.25em;width: 2.25em;}"
     document.head.appendChild(style)
 
     invite_style = document.createElement("style")
