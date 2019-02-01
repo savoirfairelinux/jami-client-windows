@@ -491,7 +491,30 @@ function fileInteraction(message_id) {
 
     const internal_mes_wrapper = document.createElement("div")
     internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
-    internal_mes_wrapper.appendChild(message_wrapper)
+
+    //internal_mes_wrapper.appendChild(message_wrapper)
+
+    var tbl = document.createElement("table");
+
+    var row0 = document.createElement("tr");
+    var sender_image_cell = document.createElement("td");
+    sender_image_cell.setAttribute("class", "sender_image_cell")
+    row0.appendChild(sender_image_cell);
+    var msg_cell = document.createElement("td");
+    msg_cell.appendChild(message_wrapper);
+    row0.appendChild(msg_cell);
+
+    tbl.appendChild(row0);
+
+    var row1 = document.createElement("tr");
+    var dummy_cell = document.createElement("td");
+    row1.appendChild(dummy_cell);
+    var timestamp_cell = document.createElement("td");
+    timestamp_cell.setAttribute("class", "timestamp_cell")
+    row1.appendChild(timestamp_cell);
+    tbl.appendChild(row1);
+
+    internal_mes_wrapper.appendChild(tbl);
 
     return internal_mes_wrapper
 }
@@ -743,7 +766,30 @@ function textInteraction(message_id, htmlText) {
 
     const internal_mes_wrapper = document.createElement("div")
     internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
-    internal_mes_wrapper.appendChild(message_wrapper)
+
+    //internal_mes_wrapper.appendChild(message_wrapper)
+
+    var tbl = document.createElement("table");
+
+    var row0 = document.createElement("tr");
+    var sender_image_cell = document.createElement("td");
+    sender_image_cell.setAttribute("class", "sender_image_cell")
+    row0.appendChild(sender_image_cell);
+    var msg_cell = document.createElement("td");
+    msg_cell.appendChild(message_wrapper);
+    row0.appendChild(msg_cell);
+
+    tbl.appendChild(row0);
+
+    var row1 = document.createElement("tr");
+    var dummy_cell = document.createElement("td");
+    row1.appendChild(dummy_cell);
+    var timestamp_cell = document.createElement("td");
+    timestamp_cell.setAttribute("class", "timestamp_cell")
+    row1.appendChild(timestamp_cell);
+    tbl.appendChild(row1);
+
+    internal_mes_wrapper.appendChild(tbl);
 
     return internal_mes_wrapper
 }
@@ -887,7 +933,7 @@ function removeInteraction(interaction_id) {
         var timestamp = interaction.querySelector(".timestamp")
         var previousTimeStamp = interaction.previousSibling.querySelector(".timestamp")
         if (timestamp && !previousTimeStamp) {
-            interaction.previousSibling.querySelector(".internal_mes_wrapper").appendChild(timestamp)
+            interaction.previousSibling.querySelector(".timestamp_cell").appendChild(timestamp)
         }
     }
 
@@ -966,13 +1012,6 @@ function buildNewMessage(message_object) {
     message_div.setAttribute("class", classes.join(" "))
 
     // Build message for each types.
-    // Add sender images if necessary (like if the interaction doesn't take the whole width)
-    const need_sender = (message_type === "data_transfer" || message_type === "text")
-    if (need_sender) {
-        var message_sender_image = document.createElement("span")
-        message_sender_image.setAttribute("class", `sender_image sender_image_${message_sender_contact_method}`)
-        message_div.appendChild(message_sender_image)
-    }
 
     // Build main content
     if (message_type === "data_transfer") {
@@ -1036,6 +1075,18 @@ function buildNewMessage(message_object) {
         wrapper.insertBefore(message_dropdown, wrapper.firstChild)
     }
 
+    // Add sender images if necessary (like if the interaction doesn't take the whole width)
+    const need_sender = (message_type === "data_transfer" || message_type === "text")
+    if (need_sender) {
+        var sender_image_cell = message_div.querySelector(".sender_image_cell")
+        if (sender_image_cell) {
+            var message_sender_image = document.createElement("span")
+            message_sender_image.setAttribute("class", `sender_image sender_image_${message_sender_contact_method}`)
+            sender_image_cell.appendChild(message_sender_image)
+        }
+        console.warn("can't find sender_image_cell");
+    }
+
     return message_div
 }
 
@@ -1089,7 +1140,9 @@ function addOrUpdateMessage(message_object, new_message, insert_after = true, me
             message_div.querySelector(".message_wrapper").appendChild(date_elt)
         } else if (insert_after || !timestamp || timestamp.className !== date_elt.className
                                 || timestamp.innerHTML !== date_elt.innerHTML) {
-            message_div.querySelector(".internal_mes_wrapper").appendChild(date_elt)
+            message_div.querySelector(".timestamp_cell").appendChild(date_elt)
+            if (message_direction === "out")
+                message_div.querySelector(".timestamp_cell").setAttribute("class", "timestamp_cell_out")
         }
 
         var isGenerated = message_type === "call" || message_type === "contact"
@@ -1531,7 +1584,7 @@ function setSenderImage(set_sender_image_object)
 
     style.type = "text/css"
     style.id = sender_image_id
-    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 32px;width: 32px;}"
+    style.innerHTML = "." + sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 2.25em;width: 2.25em;}"
     document.head.appendChild(style)
 
     invite_style = document.createElement("style")

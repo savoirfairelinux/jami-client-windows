@@ -345,13 +345,14 @@ a:hover {
     /* The last message gets a bigger bottom padding so that it is not
      "glued" to the message bar. */
     padding-bottom: 1.5em !important;
+    margin-top: 4px;
 }
 
 /* General messages */
 
 .internal_mes_wrapper {
     max-width: 70%;
-    margin: 8px 0 0 0;
+    margin: 0px 0 0 0;
     display: flex;
     flex-direction: column;
     /* If a message is smaller (in width) than the timestamp, do not fill
@@ -421,7 +422,11 @@ a:hover {
 
 .sender_image, .invite_sender_image {
     border-radius: 50%;
-    margin: 8px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+}
+
+div.last_message > span {
+    margin: 0px 10px 0px 10px;
 }
 
 .message_out .message_wrapper {
@@ -498,7 +503,7 @@ a:hover {
 .middle_of_sequence .internal_mes_wrapper,
 .last_of_sequence .internal_mes_wrapper,
 .last_message .internal_mes_wrapper {
-    margin: 3px 0 0 0 !important;
+    margin: 0px 0 0 0 !important;
 }
 
 .message_out .sender_image {
@@ -507,7 +512,7 @@ a:hover {
 
 .first_of_sequence.message_out .internal_mes_wrapper,
 .single_message.message_out .internal_mes_wrapper {
-    margin: 4px 0 0 0 !important;
+    margin: 0px 0 0 0 !important;
 }
 
 @-webkit-keyframes fade-in {
@@ -518,6 +523,14 @@ a:hover {
     to {
         opacity: 1;
     }
+}
+
+.sender_image_cell {
+    vertical-align: bottom;
+}
+
+.timestamp_cell_out {
+    text-align: right;
 }
 
 .timestamp {
