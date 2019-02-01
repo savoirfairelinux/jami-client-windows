@@ -69,6 +69,7 @@ $FilesToCopy = @(
     "$QtDir\bin\Qt5OpenGL.dll",
     "$QtDir\bin\libEGL.dll",
     "$QtDir\bin\libGLESv2.dll",
+    "$QtDir\bin\d3dcompiler_47.dll",
     "$QtDir\bin\QtWebEngineProcess.exe",
     "$QtDir\resources\qtwebengine_resources.pak",
     "$QtDir\resources\qtwebengine_resources_100p.pak",
