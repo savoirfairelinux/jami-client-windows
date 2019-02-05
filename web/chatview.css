@@ -3,13 +3,13 @@
 :root {
     /* color definitions */
     --jami-light-blue: rgba(59, 193, 211, 0.3);
+    --jami-dark-blue: #004e86;
     --jami-green: #219d55;
     --jami-green-hover: #1f8b4c;
     --jami-red: #dc2719;
     --jami-red-hover: #b02e2c;
     /* main properties */
-    /* --bg-color: #f2f2f2; same as macOS client */
-    --bg-color: #ffffff; /* same as macOS client */
+    --bg-color: #ffffff;
     /* navbar properties */
     --navbar-height: 40px;
     --navbar-padding-top: 8px;
@@ -320,6 +320,46 @@ a:link {
 a:hover {
     border: 0;
 }
+
+#back_to_bottom_button_container {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 4em;
+}
+
+#back_to_bottom_button {
+    visibility: hidden;
+    margin: auto;
+    font: 0.875em emoji;
+    text-align: center;
+    width: 10em;
+    border-radius: 2em;
+    background-color: var(--jami-dark-blue);
+    color: #fff;
+    padding: 0.5em;
+    box-shadow: 2px 2px 4px black;
+    opacity: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity .5s ease, width .2s ease, color .1s ease .2s;
+}
+
+    #back_to_bottom_button:hover {
+        cursor: pointer;
+    }
+
+    #back_to_bottom_button.fade {
+        opacity: 0;
+        width: 1em;
+        color: transparent;
+        transition: .2s opacity ease .1s, .2s width ease .1s, color .1s ease;
+    }
+        #back_to_bottom_button.fade:hover {
+            cursor: context-menu;
+        }
 
 #messages {
     position: relative;
@@ -878,7 +918,7 @@ pre {
 .media_wrapper img {
     max-width: 800px;
     max-height: 700px;
-    margin: 5px 0 0 0;
+    margin: 2px 0 2px 0;
     border-radius: 10px;
 }
 

@@ -31,6 +31,7 @@ const invitation        = document.getElementById("invitation")
 const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
+var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -71,6 +72,21 @@ new QWebChannel(qt.webChannelTransport, function(channel) {
 function onScrolled_() {
     if (!canLazyLoad)
         return;
+    // back to bottom button
+    if(messages.scrollTop >= messages.scrollHeight - messages.clientHeight - scrollDetectionThresh) {
+        // fade out
+        if (!backToBottomBtn.classList.contains('fade')) {
+            backToBottomBtn.classList.add('fade');
+            backToBottomBtn.removeAttribute("onclick");
+        }
+    } else {
+        // fade in
+        if (backToBottomBtn.classList.contains('fade')) {
+            backToBottomBtn.style.visibility = "visible";
+            backToBottomBtn.classList.remove('fade');
+            backToBottomBtn.onclick = back_to_bottom;
+        }
+    }
     if (messages.scrollTop == 0 && historyBufferIndex != historyBuffer.length) {
         /* At the top and there's something to print */
         printHistoryPart(messages, messages.scrollHeight)
