@@ -118,7 +118,7 @@ body {
     display: flex;
     cursor: pointer;
     align-self: center;
-    border-radius: 9px;
+    border-radius: 16px;
 }
 
     .nav-button.deactivated {
@@ -128,7 +128,7 @@ body {
         padding: 2px;
         align-self: center;
         display: flex;
-        border-radius: 9px;
+        border-radius: 16px;
         cursor: auto;
     }
 
@@ -187,26 +187,25 @@ body {
 /** Invitation bar */
 
 #invitation {
-  visibility: hidden;
-  background: var(--bg-color);
-  position: absolute;
-  width: 100%;
-  padding-bottom: 10px;
+    visibility: hidden;
+    background: var(--bg-color);
+    position: absolute;
+    width: 100%;
+    padding-bottom: 10px;
 
-  /* hairline */
-  border-bottom: var(--hairline-thickness) solid var(--hairline-color);
+    /* hairline */
+    border-bottom: var(--hairline-thickness) solid var(--hairline-color);
 }
 
-#invitation #invite_header {
-  margin: 10px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* enable selection (it is globally disabled in the body) */
-  -webkit-user-select: auto;
-}
+    #invitation #invite_header {
+        margin: 10px;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* enable selection (it is globally disabled in the body) */
+        -webkit-user-select: auto;
+    }
 
 #invitation .sender_image {
   width: 50px;
@@ -233,16 +232,19 @@ body {
     margin-left: 5px;
 }
 
-#invitation #text {
-  text-align: center;
-  font-size: 0.8em;
+    #invitation #text {
+        text-align: center;
+        font: 11pt sans-serif;
 
-  /* enable selection (it is globally disabled in the body) */
-  -webkit-user-select: auto;
+        /* enable selection (it is globally disabled in the body) */
+        -webkit-user-select: auto;
+    }
+
+#invite_contact_name {
+    font-weight: 500;
 }
 
 /** Messaging bar */
-
 #sendMessage {
     background-color: var(--bg-color);
     display: flex;

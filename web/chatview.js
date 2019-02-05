@@ -162,7 +162,7 @@ function showInvitation(contactAlias, contactId) {
             inviteImage.classList.add(`invite_sender_image_${contactId}`);
         }
         hasInvitation = true
-        invitationText.innerHTML = "<b>" + contactAlias + " is not in your contacts</b><br/>"
+        invitationText.innerHTML = "<span id='invite_contact_name'>" + contactAlias + "</span> is not in your contacts<br/>"
             + "Note: you can automatically accept this invitation by sending a message."
         invitation.style.visibility = "visible"
     }

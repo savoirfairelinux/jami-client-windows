@@ -296,20 +296,23 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
                                                           const QModelIndex& index) const
 {
     QFont font(painter->font());
-    font.setPointSize(fontSize_);
     QPen pen(painter->pen());
     painter->setPen(pen);
 
     auto leftMargin = dx_ + sizeImage_ + dx_;
     auto rightMargin = dx_;
+
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    font.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+
     if (option.state & QStyle::State_MouseOver) {
-        auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
         if (scalingRatio > 1.0) {
             rightMargin = infoTextWidth_ + 12 - dx_ * 2;
         } else {
             rightMargin = infoTextWidth_ - dx_ * 2;
         }
     }
+
     auto topMargin = 4;
     auto bottomMargin = 8;
 
