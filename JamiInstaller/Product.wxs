@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Project.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	  <Product Id="*" Name="$(var.Name)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Manufacturer)" UpgradeCode="7c45b52b-0390-4fe8-947a-3f13e82dd346">
+		    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+		    <Feature Id="ProductFeature" Title="Jami" Level="1" Absent="disallow">
+			      <ComponentGroupRef Id="ProductComponents" Primary="yes" />
+		    </Feature>
+	  </Product>
+
+	  <Fragment>
+		    <Directory Id="TARGETDIR" Name="SourceDir">
+			      <Directory Id="ProgramFilesFolder">
+				        <Directory Id="SavoirFaireLinux" Name="Savoir-Faire Linux">
+					          <Directory Id="INSTALLFOLDER" Name="Jami" />
+				        </Directory>
+			      </Directory>
+		    </Directory>
+	  </Fragment>
+</Wix>
