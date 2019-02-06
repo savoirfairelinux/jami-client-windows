@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+    <?define Name="Jami"?>
+    <?define Version.Major="1"?>
+    <?define Version.Minor="0"?>
+    <?define Version.Build="0"?>
+    <?define Version.Revision="0"?>
+    <?define Version="$(var.Version.Major).$(var.Version.Minor).$(var.Version.Build).$(var.Version.Revision)"?>
+    <?define Manufacturer="Savoir-Faire Linux Inc."?>
+    <?define ReleaseDir="..\x64\Release"?>
+</Include>
