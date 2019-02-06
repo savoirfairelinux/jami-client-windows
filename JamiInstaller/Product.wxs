@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="*" Name="$(var.Name)" Language="1033" Version="$(fun.AutoVersion(1.0))" Manufacturer="$(var.Manufacturer)" UpgradeCode="7c45b52b-0390-4fe8-947a-3f13e82dd346">
+        <Package InstallerVersion="301" Compressed="yes" InstallScope="perMachine" />
+
+        <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+        <Icon Id="icon.ico" SourceFile="$(var.ReleaseDir)\jami.ico" />
+        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+        <Feature Id="ProductFeature" Title="Main" Level="1" Absent="disallow">
+            <ComponentGroupRef Id="ProductComponents" Primary="yes" />
+            <ComponentRef Id="ApplicationShortcutDesktop" />
+            <ComponentRef Id="ApplicationShortcutStartMenu" />
+        </Feature>
+        <Feature Id="VCRedist" Title="Visual C++ Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+            <MergeRef Id="VCRedist" />
+        </Feature>
+    </Product>
+
+    <Fragment Id="DirectoryStructure">
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFiles64Folder">
+                <Directory Id="ManufacturerFolder" Name="$(var.Manufacturer)">
+                    <Directory Id="INSTALLFOLDER" Name="$(var.Name)" />
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" Name="Desktop" />
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ApplicationProgramsFolder" />
+            </Directory>
+        </Directory>
+    </Fragment>
+
+    <Fragment Id="Shortcuts">
+        <DirectoryRef Id="DesktopFolder">
+            <Component Id="ApplicationShortcutDesktop" Guid="*" Win64="yes">
+                <Shortcut Id="ApplicationShortcutDesktop" Name="$(var.Name)" Description="Launch $(var.Name)"
+                    Target="[INSTALLFOLDER]$(var.ring-client-windows.TargetFileName)" WorkingDirectory="INSTALLFOLDER" />
+                <RemoveFolder Id="DesktopFolder" On="uninstall" />
+                <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="desktop" Type="integer" Value="1" KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id="ApplicationProgramsFolder">
+            <Component Id="ApplicationShortcutStartMenu" Guid="*" Win64="yes">
+                <Shortcut Id="ApplicationShortcutStartMenu" Name="$(var.Name)" Description="Launch $(var.Name)"
+                    Target="[INSTALLFOLDER]$(var.ring-client-windows.TargetFileName)" WorkingDirectory="INSTALLFOLDER" />
+                <RemoveFolder Id="StartMenuFolder" On="uninstall" />
+                <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+
+    <Fragment Id="VCRedist">
+        <DirectoryRef Id="TARGETDIR">
+            <Merge Id="VCRedist" SourceFile="$(env.VCRedistMergeModule)" DiskId="1" Language="0" />
+        </DirectoryRef>
+    </Fragment>
+</Wix>

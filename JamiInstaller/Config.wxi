@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+    <?define Name="Jami"?>
+    <?define Manufacturer="Savoir-Faire Linux Inc."?>
+    <?define ReleaseDir="..\x64\Release"?>
+</Include>
