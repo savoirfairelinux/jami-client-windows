@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+    <?define Name="Jami"?>
+    <?define Version="1.0.0.0"?>
+    <?define Manufacturer="Savoir-Faire Linux Inc."?>
+    <?define ReleaseDir="..\x64\Release"?>
+    <?define VCRedistPath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Redist\MSVC\14.16.27012\MergeModules\Microsoft_VC141_CRT_x64.msm"?>
+</Include>
