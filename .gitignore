@@ -13,3 +13,4 @@ qrencode-win32/
 .gitignore
 *.qm
 build/
+nuget.exe
