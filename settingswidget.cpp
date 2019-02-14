@@ -130,7 +130,6 @@ SettingsWidget::leaveSettingsSlot()
     }
 
     Video::PreviewManager::instance().stopPreview();
-    saveSizeIndex();
 
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
@@ -159,8 +158,6 @@ SettingsWidget::resize(int size)
 void
 SettingsWidget::setSelected(Button sel)
 {
-    saveSizeIndex();
-
     switch (sel)
     {
     case Button::accountSettingsButton:
@@ -820,13 +817,14 @@ SettingsWidget::openRecordFolderSlot()
 void
 SettingsWidget::populateAVSettings()
 {
-    ui->deviceBox->setModel(deviceModel_);
-    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(deviceIndexChanged(int)));
-
-    // Audio settings
+    // audio
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     auto outputModel = Audio::Settings::instance().outputDeviceModel();
+
+    connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::outputDevIndexChangedSlot);
+    connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::inputdevIndexChangedSlot);
 
     ui->inputComboBox->setModel(inputModel);
     ui->outputComboBox->setModel(outputModel);
@@ -837,91 +835,36 @@ SettingsWidget::populateAVSettings()
     ui->inputComboBox->setCurrentIndex(inputIndex.row());
     ui->outputComboBox->setCurrentIndex(outputIndex.row());
 
-    if (ui->deviceBox->count() > 0) {
-        deviceBoxCurrentIndexChangedSlot(0);
+    // video
+    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(deviceIndexChanged(int)));
+    connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::deviceBoxCurrentIndexChangedSlot);
+    connect(ui->sizeBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::sizeBoxCurrentIndexChangedSlot);
+    connect(ui->rateBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::rateBoxCurrentIndexChangedSlot);
+
+    ui->deviceBox->setModel(deviceModel_);
+    auto activeDevice = deviceModel_->activeDevice();
+    if (activeDevice) {
+        auto activeChannel = activeDevice->activeChannel();
+        auto activeResolution = activeChannel->activeResolution();
+        auto activeRate = activeResolution->activeRate();
+        populateSizeList(activeDevice->activeChannel());
+        populateRateList(activeResolution);
+        ui->sizeBox->blockSignals(true);
+        ui->rateBox->blockSignals(true);
+        ui->sizeBox->setCurrentIndex(activeChannel->validResolutions().indexOf(activeResolution));
+        ui->rateBox->setCurrentIndex(activeResolution->validRates().indexOf(activeRate));
+        ui->sizeBox->blockSignals(false);
+        ui->rateBox->blockSignals(false);
+        qDebug()
+            << "res : " << activeResolution->name()
+            << "rate: " << activeRate->name();
     }
-
-    if (currentResIndex >= 0) {
-        ui->sizeBox->setCurrentIndex(currentResIndex);
-    }
-
-    connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::outputDevIndexChangedSlot);
-    connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::inputdevIndexChangedSlot);
-
-    connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
-        &SettingsWidget::deviceBoxCurrentIndexChangedSlot);
-    connect(ui->sizeBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
-        &SettingsWidget::sizeBoxCurrentIndexChangedSlot);
 
     showPreview();
-}
-
-void
-SettingsWidget::saveSizeIndex()
-{
-    currentResIndex = ui->sizeBox->currentIndex();
-}
-
-void
-SettingsWidget::showPreview()
-{
-    if (!CallModel::instance().getActiveCalls().size()) {
-        ui->previewUnavailableLabel->hide();
-        ui->videoWidget->show();
-        startVideo();
-        ui->videoWidget->setIsFullPreview(true);
-    } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoWidget->hide();
-    }
-}
-
-void
-SettingsWidget::deviceBoxCurrentIndexChangedSlot(int index)
-{
-    if (index < 0) {
-        return;
-    }
-
-    deviceModel_->setActive(index);
-
-    auto device = deviceModel_->activeDevice();
-
-    ui->sizeBox->clear();
-
-    if (device->channelList().size() > 0) {
-        for (auto resolution : device->channelList()[0]->validResolutions()) {
-            ui->sizeBox->addItem(resolution->name());
-        }
-    }
-    ui->sizeBox->setCurrentIndex(
-        device->channelList()[0]->activeResolution()->relativeIndex());
-}
-
-void
-SettingsWidget::sizeBoxCurrentIndexChangedSlot(int index)
-{
-    if (index < 0) {
-        return;
-    }
-
-    auto device = deviceModel_->activeDevice();
-
-    device->channelList()[0]->setActiveResolution(device->channelList()[0]->validResolutions()[index]);
-
-    QTimer::singleShot(200, this, [this]() {
-    deviceModel_->setActive(ui->deviceBox->currentIndex());
-    });
-}
-
-void
-SettingsWidget::deviceIndexChanged(int index)
-{
-    ui->deviceBox->setCurrentIndex(index);
-
-    ui->videoLayout->update();
 }
 
 void
@@ -939,6 +882,87 @@ SettingsWidget::inputdevIndexChangedSlot(int index)
 }
 
 void
+SettingsWidget::deviceIndexChanged(int index)
+{
+    ui->deviceBox->setCurrentIndex(index);
+    if (index != deviceModel_->activeIndex()) {
+        auto activeDevice = deviceModel_->activeDevice();
+        if (!activeDevice)
+            return;
+        populateSizeList(activeDevice->activeChannel());
+    }
+}
+
+void
+SettingsWidget::deviceBoxCurrentIndexChangedSlot(int index)
+{
+    if (index < 0)
+        return;
+
+    deviceModel_->setActive(index);
+    auto activeDevice = deviceModel_->activeDevice();
+    if (!activeDevice)
+        return;
+    populateSizeList(activeDevice->activeChannel());
+
+}
+
+void
+SettingsWidget::sizeBoxCurrentIndexChangedSlot(int index)
+{
+    if (index < 0)
+        return;
+
+    auto activeDevice = deviceModel_->activeDevice();
+    if (!activeDevice)
+        return;
+
+    auto validResolutions = activeDevice->activeChannel()->validResolutions();
+    activeDevice->activeChannel()->setActiveResolution(validResolutions[index]);
+    populateRateList(validResolutions[index]);
+}
+
+void
+SettingsWidget::rateBoxCurrentIndexChangedSlot(int index)
+{
+    if (index < 0)
+        return;
+
+    auto activeDevice = deviceModel_->activeDevice();
+    if (!activeDevice)
+        return;
+
+    auto activeResolution = activeDevice->activeChannel()->activeResolution();
+    if (!activeResolution)
+        return;
+
+    auto validRates = activeResolution->validRates();
+    activeResolution->setActiveRate(validRates[index]);
+}
+
+void
+SettingsWidget::populateSizeList(Video::Channel* channel)
+{
+    if (!channel)
+        return;
+    ui->sizeBox->clear();
+    for (auto resolution : channel->validResolutions()) {
+        ui->sizeBox->addItem(resolution->name());
+    }
+}
+
+void
+SettingsWidget::populateRateList(Video::Resolution* resolution)
+{
+    if (!resolution)
+        return;
+    ui->rateBox->clear();
+    for (auto rate : resolution->validRates()) {
+        ui->rateBox->addItem(QString::number(round(rate->name().toDouble())));
+    }
+}
+
+void
 SettingsWidget::startVideo()
 {
     Video::PreviewManager::instance().stopPreview();
@@ -949,4 +973,18 @@ void
 SettingsWidget::stopVideo()
 {
     Video::PreviewManager::instance().stopPreview();
+}
+
+void
+SettingsWidget::showPreview()
+{
+    if (!CallModel::instance().getActiveCalls().size()) {
+        ui->previewUnavailableLabel->hide();
+        ui->videoWidget->show();
+        startVideo();
+        ui->videoWidget->setIsFullPreview(true);
+    } else {
+        ui->previewUnavailableLabel->show();
+        ui->videoWidget->hide();
+    }
 }

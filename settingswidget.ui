@@ -422,7 +422,7 @@
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -2935,6 +2935,66 @@ padding-left: 15px;
                            </item>
                           </layout>
                          </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_35">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_22">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Frame Rate</string>
+                             </property>
+                             <property name="textInteractionFlags">
+                              <set>Qt::NoTextInteraction</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_23">
+                             <property name="orientation">
+                              <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="rateBox">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>360</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>360</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="toolTip">
+                              <string>Video device rate selector</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
                         </layout>
                        </item>
                       </layout>
@@ -2989,7 +3049,7 @@ padding-left: 15px;
                          <number>0</number>
                         </property>
                         <item>
-                         <spacer name="horizontalSpacer_23">
+                         <spacer name="horizontalSpacer_27">
                           <property name="orientation">
                            <enum>Qt::Horizontal</enum>
                           </property>

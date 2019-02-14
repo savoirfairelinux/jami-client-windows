@@ -138,11 +138,10 @@ private slots:
     // *************************  Audio/Visual Settings  *************************
 private:
     void populateAVSettings();
-    void saveSizeIndex();
     Video::DeviceModel* deviceModel_;
+    void populateSizeList(Video::Channel* channel);
+    void populateRateList(Video::Resolution* resolution);
     void showPreview();
-    bool isLoading_;
-    int currentResIndex = -1;
 
     void startVideo();
     void stopVideo();
@@ -151,6 +150,7 @@ private slots:
     void deviceIndexChanged(int index);
     void deviceBoxCurrentIndexChangedSlot(int index);
     void sizeBoxCurrentIndexChangedSlot(int index);
+    void rateBoxCurrentIndexChangedSlot(int index);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);
 
