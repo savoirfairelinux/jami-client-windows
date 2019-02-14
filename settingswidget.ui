@@ -422,7 +422,7 @@
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -2815,6 +2815,9 @@ padding-left: 15px;
                          <property name="leftMargin">
                           <number>20</number>
                          </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_33">
                            <property name="spacing">
@@ -2876,27 +2879,27 @@ padding-left: 15px;
                           </layout>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_34">
+                          <layout class="QHBoxLayout" name="horizontalLayout_8">
                            <property name="spacing">
                             <number>0</number>
                            </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
                            <item>
-                            <widget class="QLabel" name="label_21">
+                            <widget class="QLabel" name="label_8">
                              <property name="font">
                               <font>
                                <pointsize>11</pointsize>
                               </font>
                              </property>
                              <property name="text">
-                              <string>Resolution</string>
-                             </property>
-                             <property name="textInteractionFlags">
-                              <set>Qt::NoTextInteraction</set>
+                              <string>Format</string>
                              </property>
                             </widget>
                            </item>
                            <item>
-                            <spacer name="horizontalSpacer_22">
+                            <spacer name="horizontalSpacer_27">
                              <property name="orientation">
                               <enum>Qt::Horizontal</enum>
                              </property>
@@ -2909,7 +2912,7 @@ padding-left: 15px;
                             </spacer>
                            </item>
                            <item>
-                            <widget class="QComboBox" name="sizeBox">
+                            <widget class="QComboBox" name="formatBox">
                              <property name="sizePolicy">
                               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                                <horstretch>0</horstretch>
@@ -2929,7 +2932,7 @@ padding-left: 15px;
                               </size>
                              </property>
                              <property name="toolTip">
-                              <string>Video device resolution selector</string>
+                              <string>Video device framerate selector</string>
                              </property>
                             </widget>
                            </item>
