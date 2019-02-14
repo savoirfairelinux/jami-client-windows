@@ -137,21 +137,24 @@ private slots:
 
     // *************************  Audio/Visual Settings  *************************
 private:
-    void populateAVSettings();
-    void saveSizeIndex();
+    QList<QPair<int, int>> formatIndexList_;
     Video::DeviceModel* deviceModel_;
-    void showPreview();
-    bool isLoading_;
-    int currentResIndex = -1;
+    QString currentDeviceName_;
 
+    void populateAVSettings();
+    void setFormatListForDevice(Video::Device* device);
+    void showPreview();
     void startVideo();
     void stopVideo();
+    void toggleVideoSettings(bool enabled);
+    void toggleVideoPreview(bool enabled);
 
 private slots:
-    void deviceIndexChanged(int index);
-    void deviceBoxCurrentIndexChangedSlot(int index);
-    void sizeBoxCurrentIndexChangedSlot(int index);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);
+
+    void deviceModelIndexChanged(int index);
+    void slotDeviceBoxCurrentIndexChanged(int index);
+    void slotFormatBoxCurrentIndexChanged(int index);
 
 };
