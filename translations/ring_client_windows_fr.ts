@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="fr">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -689,9 +691,153 @@ Jami est un logiciel libre de communication sécurisé et distribué.</translati
 <context>
     <name>AccountItemDelegate</name>
     <message>
-        <location filename="../accountitemdelegate.cpp" line="88"/>
+        <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
         <translation>Ajouter un compte</translation>
+    </message>
+</context>
+<context>
+    <name>AdvancedSettingsWidget</name>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulaire</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="40"/>
+        <source>Call Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="65"/>
+        <source>Allow Calls From Untrusted Peers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="79"/>
+        <source>Auto Answer Calls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="99"/>
+        <source>Enable Custom Ringtone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="120"/>
+        <location filename="../advancedsettingswidget.cpp" line="168"/>
+        <source>Add a custom ringtone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="174"/>
+        <source>Name Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="200"/>
+        <source>Address</source>
+        <translation type="unfinished">Adresse</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="269"/>
+        <source>OpenDHT Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="297"/>
+        <source>Enable Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="358"/>
+        <source>Bootstrap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="427"/>
+        <source>Security</source>
+        <translation type="unfinished">Sécurité</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="444"/>
+        <source>Private Key Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="456"/>
+        <source>User Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="483"/>
+        <source>no password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="495"/>
+        <source>Private Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="507"/>
+        <source>CA Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="689"/>
+        <source>Connectivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="734"/>
+        <source>        TURN Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="773"/>
+        <source>Use STUN</source>
+        <translation type="unfinished">Utiliser STUN</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="800"/>
+        <source>STUN Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="812"/>
+        <source>        TURN Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="824"/>
+        <source>        TURN Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="836"/>
+        <source>Use UPnP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="848"/>
+        <source>Use TURN</source>
+        <translation type="unfinished">Utiliser TURN</translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="899"/>
+        <source>Audio Codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="1044"/>
+        <source>Video Codecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.cpp" line="161"/>
+        <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -733,32 +879,27 @@ Jami est un logiciel libre de communication sécurisé et distribué.</translati
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="324"/>
+        <location filename="../callwidget.ui" line="178"/>
         <source>Show conversations</source>
         <translation>Montrer les conversations</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="327"/>
+        <location filename="../callwidget.ui" line="181"/>
         <source>Conversations</source>
         <translation>Conversations</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="244"/>
+        <location filename="../callwidget.ui" line="362"/>
         <source>Search contact text input</source>
         <translation>Rechercher le texte du contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="253"/>
-        <source>Search contacts or enter ID</source>
-        <translation>Rechercher dans les contacts ou entrer un identifiant Jami</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.ui" line="616"/>
+        <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Jami est un logiciel libre de communication universel qui respecte la vie privée et l&apos;intimité de ses utilisateurs.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="656"/>
+        <location filename="../callwidget.ui" line="687"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -766,152 +907,181 @@ Copy and share it with your friends!
         <translation>Ceci est votre identifiant Jami. Conservez et partagez-le avec vos amis !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="769"/>
+        <location filename="../callwidget.ui" line="800"/>
         <source>Show ring ID QR code</source>
         <translation>Montrer le code QR d&apos;identification ring </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="820"/>
+        <location filename="../callwidget.ui" line="851"/>
         <source>Share ring ID button</source>
         <translation>Partager le bouton d&apos;identification ring </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="878"/>
+        <location filename="../callwidget.ui" line="909"/>
         <source>Double-click to copy</source>
         <translation>Double-cliquez pour copier</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="919"/>
+        <location filename="../callwidget.ui" line="950"/>
         <source>Error while generating QR Code</source>
         <translation>Erreur pendant la génération du QR code</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1147"/>
-        <location filename="../callwidget.ui" line="1397"/>
+        <location filename="../callwidget.ui" line="1178"/>
+        <location filename="../callwidget.ui" line="1428"/>
         <source>best name</source>
         <translation>meilleur nom</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1171"/>
+        <location filename="../callwidget.ui" line="1202"/>
         <source>best Id</source>
         <translation>Meilleur ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1697"/>
+        <location filename="../callwidget.ui" line="1728"/>
         <source>Back to homepage button</source>
         <translation>Bouton de retour a la page d&apos;accueil</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1906"/>
+        <location filename="../callwidget.ui" line="1937"/>
         <source>Add to contacts</source>
         <translation>Ajouter aux contacts</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="337"/>
+        <location filename="../callwidget.ui" line="196"/>
         <source>Show invites</source>
         <translation>Montrer les invitations</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="340"/>
+        <location filename="../callwidget.ui" line="199"/>
         <source>Invites</source>
         <translation>Invitations</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1407"/>
+        <location filename="../callwidget.ui" line="371"/>
+        <location filename="../callwidget.cpp" line="553"/>
+        <source>Find a new or existing contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.ui" line="1438"/>
         <source>Wants to talk to you!</source>
         <translation>souhaite entrer en communication !</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1480"/>
+        <location filename="../callwidget.ui" line="1511"/>
         <source>Answer incoming call button</source>
         <translation>Bouton de réponse d&apos;appel </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1552"/>
+        <location filename="../callwidget.ui" line="1583"/>
         <source>Ignore incoming call button</source>
         <translation>Bouton de refus d&apos;appel </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1502"/>
+        <location filename="../callwidget.ui" line="1533"/>
         <source>Answer</source>
         <translation>Répondre</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1580"/>
+        <location filename="../callwidget.ui" line="1611"/>
         <source>Ignore</source>
         <translation>Ignorer</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1243"/>
+        <location filename="../callwidget.ui" line="1274"/>
         <source>Cancel outgoing call</source>
         <translation>Annuler l&apos;appel sortant</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1268"/>
+        <location filename="../callwidget.ui" line="1299"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="337"/>
+        <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
         <translation>Démarrer un appel vidéo</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="348"/>
+        <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
         <translation>Démarrer un appel audio</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="364"/>
+        <location filename="../callwidget.cpp" line="360"/>
         <source>Clear conversation</source>
         <translation>Effacer la conversation</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="371"/>
+        <location filename="../callwidget.cpp" line="367"/>
         <source>Remove contact</source>
         <translation>Retirer le contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="378"/>
+        <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
         <translation>Bloquer le contact</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="389"/>
+        <location filename="../callwidget.cpp" line="385"/>
         <source>Copy number</source>
         <translation>Copier le numéro ou identifiant Ring</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="925"/>
+        <location filename="../callwidget.cpp" line="562"/>
+        <source>Search your received invitations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../callwidget.cpp" line="944"/>
         <source>Contact me on Jami</source>
         <translation>Contactez moi sur Jami</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="925"/>
+        <location filename="../callwidget.cpp" line="944"/>
         <source>My Id is : </source>
         <translation>Mon ID est :</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="296"/>
+        <location filename="../callwidget.cpp" line="293"/>
         <source>Message incoming from %1</source>
         <translation>Message en provenance de %1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="837"/>
+        <location filename="../callwidget.cpp" line="848"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="842"/>
+        <location filename="../callwidget.cpp" line="853"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="689"/>
+        <location filename="../callwidget.cpp" line="676"/>
         <source>Call incoming from %1</source>
         <translation>Appel entrant de %1</translation>
+    </message>
+</context>
+<context>
+    <name>ContactDialog</name>
+    <message>
+        <location filename="../contactdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../contactdialog.ui" line="26"/>
+        <source>New Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../contactdialog.ui" line="33"/>
+        <source>Enter a name...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -927,63 +1097,135 @@ Copy and share it with your friends!
         <translation>Souhaitez-vous vraiment supprimer ce compte ?</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="135"/>
+        <location filename="../deleteaccountdialog.ui" line="144"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
         <translation>Si ce compte n&apos;a pas été exporté, ou ajouté vers un autre appareil, il sera perdu irrémédiablement.</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="212"/>
+        <location filename="../deleteaccountdialog.ui" line="226"/>
         <source>Permanently delete account</source>
         <translation>Supprimer de manière définitive le compte</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="218"/>
+        <location filename="../deleteaccountdialog.ui" line="232"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="250"/>
+        <location filename="../deleteaccountdialog.ui" line="269"/>
         <source>Cancel account deletion</source>
         <translation>Annuler la suppression du compte</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="256"/>
+        <location filename="../deleteaccountdialog.ui" line="275"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
 </context>
 <context>
+    <name>Form</name>
+    <message>
+        <location filename="../deviceeditwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulaire</translation>
+    </message>
+    <message>
+        <location filename="../deviceeditwidget.ui" line="36"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InviteButtonsWidget</name>
     <message>
-        <location filename="../invitebuttonswidget.ui" line="72"/>
-        <source>Accept invite</source>
-        <translation>Accepter</translation>
+        <location filename="../invitebuttonswidget.ui" line="83"/>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../invitebuttonswidget.ui" line="104"/>
-        <source>Ignore invite</source>
-        <translation>Ignorer</translation>
+        <location filename="../invitebuttonswidget.ui" line="131"/>
+        <source>Refuse</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../invitebuttonswidget.ui" line="136"/>
-        <source>Block person</source>
-        <translation>Bloquer le contact</translation>
+        <location filename="../invitebuttonswidget.ui" line="179"/>
+        <source>Block</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LinkDevWidget</name>
+    <message>
+        <location filename="../linkdevwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulaire</translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="93"/>
+        <source>Add A New Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="155"/>
+        <source>To add a new device, enter your account password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="250"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="279"/>
+        <source>Enter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="365"/>
+        <source>Exporting account on the network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="509"/>
+        <source>Your generated pin:</source>
+        <translation type="unfinished">Votre NIP généré :</translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="609"/>
+        <source>This pin and the account password should be entered in your device within 5 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.ui" line="652"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.cpp" line="81"/>
+        <source>Your account password was incorrect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../linkdevwidget.cpp" line="92"/>
+        <source>Something went wrong.
+Please try again later.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="75"/>
+        <location filename="../mainwindow.cpp" line="74"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="83"/>
+        <location filename="../mainwindow.cpp" line="82"/>
         <source>Exit</source>
         <translation>Sortir</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>About</source>
         <translation>À Propos</translation>
     </message>
@@ -991,6 +1233,307 @@ Copy and share it with your friends!
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
         <translation>Jami</translation>
+    </message>
+</context>
+<context>
+    <name>NewWizardWidget</name>
+    <message>
+        <location filename="../newwizardwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulaire</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="141"/>
+        <source>Welcome Label</source>
+        <translation type="unfinished">étiquette de bienvenue</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="147"/>
+        <source> Welcome to</source>
+        <translation type="unfinished">Bienvenue sur</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="179"/>
+        <source>Welcome Logo</source>
+        <translation type="unfinished">Logo d&apos;accueil</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="228"/>
+        <source>Create Jami account button</source>
+        <translation type="unfinished">Bouton de création de compte Jami</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="234"/>
+        <source>Push button for Jami account creation start trigger</source>
+        <translation type="unfinished">Bouton pour déclencher la création d&apos;un compte Ring</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="240"/>
+        <source>Create a Jami account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="266"/>
+        <source>Link device button</source>
+        <translation type="unfinished">Bouton pour lier le compte de l&apos;appareil</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="272"/>
+        <source>Push button for device linkage start trigger</source>
+        <translation type="unfinished">Appuyez sur le bouton pour déclencher la liaison de l&apos;appareil</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="275"/>
+        <source>Link this device to an account</source>
+        <translation type="unfinished">Lier cet appareil à un compte</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="340"/>
+        <source>Link this device to an existing account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="399"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; of a previous device&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Choose the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami account&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; you want to use&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="461"/>
+        <source>Enter your pin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="529"/>
+        <source>Or import a file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="556"/>
+        <source>Link from exported account archive file</source>
+        <translation type="unfinished">Lier depuis une archive du compte exportée</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="559"/>
+        <location filename="../newwizardwidget.cpp" line="86"/>
+        <location filename="../newwizardwidget.cpp" line="227"/>
+        <source>(None)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="635"/>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="729"/>
+        <source>Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="883"/>
+        <source>Profile name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="957"/>
+        <source>Account</source>
+        <translation type="unfinished">Compte</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1143"/>
+        <source>Register your username.
+This will reserve the username so that only you can use it.
+Your friends will be able to call you with your usename
+instead of using your ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1149"/>
+        <source>Public username checkbox</source>
+        <translation type="unfinished">case à cocher nom d&apos;utilisateur public</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1152"/>
+        <source>Checkbox selecting if the user wants a public username</source>
+        <translation type="unfinished">Case à cocher si l&apos;utilisateur veut un identifiant public</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1155"/>
+        <source>Register public username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1234"/>
+        <source>Public username edit</source>
+        <translation type="unfinished">Modification de l&apos;identifiant public</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1240"/>
+        <source>Choose your username</source>
+        <translation type="unfinished">Choisissez un nom d&apos;utilisateur</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1306"/>
+        <source>Password text input</source>
+        <translation type="unfinished">Saisie du mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1312"/>
+        <source>Password text entry</source>
+        <translation type="unfinished">Saisie de mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1318"/>
+        <source>Password</source>
+        <translation type="unfinished">Mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1384"/>
+        <location filename="../newwizardwidget.ui" line="1390"/>
+        <source>Password confirmation text input</source>
+        <translation type="unfinished">Texte de confirmation de l&apos;entrée du mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1396"/>
+        <source>Confirm password</source>
+        <translation type="unfinished">Confirmer le mot de passe</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../newwizardwidget.ui" line="1465"/>
+        <source>Generating your Jami account…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1539"/>
+        <source>Previous page button</source>
+        <translation type="unfinished">Bouton de la page précédente</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1545"/>
+        <source>push button to access previous page of wizard</source>
+        <translation type="unfinished">Appuyez sur le bouton pour accéder à la page précédente</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1548"/>
+        <source>Previous</source>
+        <translation type="unfinished">Précédent</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1579"/>
+        <source>Cancel account create/link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1585"/>
+        <source>push button to cancel account creation or linking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1588"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1625"/>
+        <source>Next page Button</source>
+        <translation type="unfinished">bouton prochaine page</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1631"/>
+        <source>Push button to access next page of wizard</source>
+        <translation type="unfinished">Appuyez sur le bouton pour accéder à la page suivante de l&apos;assistant</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1634"/>
+        <source>Next</source>
+        <translation type="unfinished">Suivant</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="78"/>
+        <source>Open File</source>
+        <translation type="unfinished">Ouvrir un fichier</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="80"/>
+        <source>Jami archive files (*.gz); All files (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="126"/>
+        <source>Your account needs to be migrated. Enter your password.</source>
+        <translation type="unfinished">Votre compte doit être migré. Entrez votre mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="166"/>
+        <source>Migrating your Jami account...</source>
+        <translation type="unfinished">Migration de votre compte Jami...</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="168"/>
+        <source>Importing account archive...</source>
+        <translation type="unfinished">Importation de l&apos;archive du compte</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="170"/>
+        <source>Generating your Jami account...</source>
+        <translation type="unfinished">Génération de votre compte Jami...</translation>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="469"/>
+        <source>Error creating account</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PasswordDialog</name>
+    <message>
+        <location filename="../passworddialog.ui" line="32"/>
+        <source>Change Account Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="58"/>
+        <source>Enter Current Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="90"/>
+        <source>Enter New Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="106"/>
+        <source>Confirm New Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="136"/>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.ui" line="155"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.cpp" line="90"/>
+        <source>Password Changed Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../passworddialog.cpp" line="105"/>
+        <source>Current Password Incorrect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1014,25 +1557,25 @@ Copy and share it with your friends!
         <translation>Affichage du photomaton</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="92"/>
+        <location filename="../photoboothwidget.cpp" line="91"/>
         <source>Choose File</source>
         <translation>Choisir un fichier</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="94"/>
-        <source>Image Files (*.jpg, *.jpeg, *png)</source>
-        <translation>Fichiers de type Image (*.jpg, *.jpeg, *png)</translation>
+        <location filename="../photoboothwidget.cpp" line="93"/>
+        <source>Image Files (*.jpg *.jpeg *.png)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="344"/>
+        <location filename="../messagewebview.cpp" line="363"/>
         <source>Choose File</source>
         <translation>Choisir un fichier</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="344"/>
+        <location filename="../messagewebview.cpp" line="363"/>
         <source>Files (*)</source>
         <translation>Fichiers (*)</translation>
     </message>
@@ -1045,26 +1588,78 @@ Copy and share it with your friends!
         <translation>Aucun client email trouvé</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="68"/>
+        <location filename="../settingsitemwidget.cpp" line="67"/>
         <source>Edit Device Name</source>
         <translation>Modifier le nom de l&apos;appareil</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="74"/>
+        <location filename="../settingsitemwidget.cpp" line="73"/>
         <source>Unlink Device From Account</source>
         <translation>Dissocier cet appareil d&apos;un compte</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="90"/>
+        <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
         <translation>Débloquer un contact</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="37"/>
-        <location filename="../wizardwidget.cpp" line="37"/>
+        <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
         <translation>Compte Jami</translation>
+    </message>
+</context>
+<context>
+    <name>RegNameDialog</name>
+    <message>
+        <location filename="../regnamedialog.ui" line="29"/>
+        <source>Set Registered Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="93"/>
+        <source>Are you sure you would like to register this name?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="130"/>
+        <source>Once associated to this account, it cannot be changed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="167"/>
+        <source>Your new registered name would be:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="283"/>
+        <source>Confirm Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="315"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="453"/>
+        <source>The name has been successfully registered!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="512"/>
+        <source>Something went wrong.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="549"/>
+        <source>Please try again later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../regnamedialog.ui" line="602"/>
+        <source>Your account does not have a registered name</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1076,9 +1671,341 @@ Copy and share it with your friends!
     </message>
 </context>
 <context>
+    <name>SetAvatarDialog</name>
+    <message>
+        <location filename="../setavatardialog.ui" line="32"/>
+        <source>Change Your Avatar Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="134"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="153"/>
+        <source>Take Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="169"/>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="185"/>
+        <source>Select A File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.ui" line="204"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.cpp" line="143"/>
+        <source>Open Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../setavatardialog.cpp" line="143"/>
+        <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsWidget</name>
+    <message>
+        <location filename="../settingswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulaire</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="147"/>
+        <source>Settings</source>
+        <translation type="unfinished">Paramètres</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="254"/>
+        <location filename="../settingswidget.ui" line="1461"/>
+        <source>Account</source>
+        <translation type="unfinished">Compte</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="298"/>
+        <source>General</source>
+        <translation type="unfinished">Général</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="342"/>
+        <source>Audio / Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="524"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="560"/>
+        <source>enable notifications checkbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="566"/>
+        <source>Enable desktop notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="588"/>
+        <source>keep minimized on close checkbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="594"/>
+        <source>Keep minimized on close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="635"/>
+        <source>Download folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="716"/>
+        <source>Recordings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="754"/>
+        <source>Save in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="829"/>
+        <source>Always Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="858"/>
+        <source>Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="897"/>
+        <source>Autamatic update checks checkbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="903"/>
+        <source>Check for updates automatically every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="927"/>
+        <source>Interval between update checks in days selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="930"/>
+        <source> days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="986"/>
+        <source>Check for updates now button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="994"/>
+        <source>Check for updates now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1523"/>
+        <source>Registered Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1583"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1633"/>
+        <source>Password</source>
+        <translation type="unfinished">Mot de passe</translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1709"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1778"/>
+        <source>Type here to register a username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1934"/>
+        <source>Change Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2012"/>
+        <source>Export Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2038"/>
+        <source>Delete Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2125"/>
+        <location filename="../settingswidget.cpp" line="543"/>
+        <location filename="../settingswidget.cpp" line="572"/>
+        <source>Linked Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2185"/>
+        <source>Link Another Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2277"/>
+        <location filename="../settingswidget.cpp" line="544"/>
+        <location filename="../settingswidget.cpp" line="571"/>
+        <source>Blocked Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2371"/>
+        <source>Advanced Account Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2611"/>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2648"/>
+        <source>Microphone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2683"/>
+        <source>Audio input device selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2717"/>
+        <source>Output Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2752"/>
+        <source>Choose the output device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2809"/>
+        <source>Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2831"/>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2872"/>
+        <source>Video device selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2891"/>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2932"/>
+        <source>Video device resolution selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="3074"/>
+        <source>Preview unavailable during call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="74"/>
+        <source>Enter the displayed name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="391"/>
+        <location filename="../settingswidget.cpp" line="393"/>
+        <source>A registered name should not have any spaces and must be at least three letters long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="400"/>
+        <source>This name is already taken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="402"/>
+        <source>This registered name is already taken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="409"/>
+        <source>This name is available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="411"/>
+        <source>Register this name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="493"/>
+        <source>Remove Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="494"/>
+        <source>Enter this account&apos;s password to confirm the removal of this device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="500"/>
+        <source>Please confirm that you wish to remove this device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="530"/>
+        <source>Export Account Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="785"/>
+        <source>Select A Folder For Your Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingswidget.cpp" line="809"/>
+        <source>Select A Folder For Your Recordings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>VideoOverlay</name>
     <message>
-        <location filename="../videooverlay.ui" line="409"/>
+        <location filename="../videooverlay.ui" line="419"/>
         <source>Call on Hold</source>
         <translation>Appel en attente</translation>
     </message>
@@ -1103,17 +2030,17 @@ Copy and share it with your friends!
         <translation>Enregistrer l&apos;appel</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="320"/>
+        <location filename="../videooverlay.ui" line="325"/>
         <source>Name label</source>
         <translation>Étiquette de nom</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="380"/>
+        <location filename="../videooverlay.ui" line="390"/>
         <source>Time elapsed</source>
         <translation>Temps écoulé</translation>
     </message>
     <message>
-        <location filename="../videooverlay.ui" line="383"/>
+        <location filename="../videooverlay.ui" line="393"/>
         <source>00:00</source>
         <translation>00:00</translation>
     </message>
@@ -1131,699 +2058,19 @@ Copy and share it with your friends!
 <context>
     <name>VideoView</name>
     <message>
-        <location filename="../videoview.cpp" line="279"/>
+        <location filename="../videoview.cpp" line="271"/>
         <source>Share entire screen</source>
         <translation>Partager tout l&apos;écran</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="282"/>
+        <location filename="../videoview.cpp" line="274"/>
         <source>Share screen area</source>
         <translation>Partager une partie de l&apos;écran</translation>
     </message>
     <message>
-        <location filename="../videoview.cpp" line="289"/>
+        <location filename="../videoview.cpp" line="281"/>
         <source>Share file</source>
         <translation>Partager un fichier</translation>
-    </message>
-</context>
-<context>
-    <name>WizardDialog</name>
-    <message>
-        <location filename="../wizarddialog.cpp" line="71"/>
-        <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Votre compte doit être migré. Entrez votre mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="97"/>
-        <source>Migrating your Jami account...</source>
-        <translation>Migration de votre compte Jami...</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="99"/>
-        <source>Importing account archive...</source>
-        <translation>Importation de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="174"/>
-        <source>Add a device</source>
-        <translation>Ajouter un appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="292"/>
-        <source>Username not available.</source>
-        <translation>Nom d&apos;utilisateur indisponible</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="295"/>
-        <source>Username is available.</source>
-        <translation>Nom d&apos;utilisateur disponible</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="298"/>
-        <source>Username is invalid.</source>
-        <translation>Nom d&apos;utilisateur invalide</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="301"/>
-        <source>Network error.</source>
-        <translation>Erreur de réseau</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="349"/>
-        <source>Open File</source>
-        <translation>Ouvrir un fichier</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.cpp" line="351"/>
-        <source>Jami archive files (*.gz);; All files (*)</source>
-        <translation>Fichier d&apos;archive Jami (*.gz);;  Tous les fichiers (*)</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="173"/>
-        <source>Link this device to an account</source>
-        <translation>Lier cet appareil à un compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="322"/>
-        <source>How to add a device</source>
-        <translation>Comment ajouter un appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="78"/>
-        <source> Welcome to</source>
-        <translation>Bienvenue sur</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="450"/>
-        <source>Create your profile</source>
-        <translation>Créer votre profil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="564"/>
-        <source>Enter your full name:</source>
-        <translation>Entrer votre nom complet :</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="629"/>
-        <location filename="../wizarddialog.cpp" line="178"/>
-        <source>Create your account</source>
-        <translation>Créer votre compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="730"/>
-        <source>Choose your username</source>
-        <translation>Choisissez un nom d&apos;utilisateur</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="749"/>
-        <location filename="../wizarddialog.cpp" line="264"/>
-        <source>Searching...</source>
-        <translation>Recherche de disponibilité...</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="33"/>
-        <source>Wizard Dialog</source>
-        <translation>Assistant</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="36"/>
-        <source>Account creation wizard dialog</source>
-        <translation>Assistant de création de compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="72"/>
-        <source>Welcome Label</source>
-        <translation>étiquette de bienvenue</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="107"/>
-        <source>Welcome Logo</source>
-        <translation>Logo d&apos;accueil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="139"/>
-        <source>Create Jami account button</source>
-        <translation>Bouton de création de compte Jami</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="145"/>
-        <source>Push button for Jami account creation start trigger</source>
-        <translation>Bouton pour déclencher la création d&apos;un compte Ring</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="151"/>
-        <source>Create Jami account</source>
-        <translation>Créer un compte Jami</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="164"/>
-        <source>Link device button</source>
-        <translation>Bouton pour lier le compte de l&apos;appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="170"/>
-        <source>Push button for device linkage start trigger</source>
-        <translation>Appuyez sur le bouton pour déclencher la liaison de l&apos;appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="205"/>
-        <source>Select link method</source>
-        <translation>Sélectionner la méthode de couplage</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="254"/>
-        <source>Link account to device from the network</source>
-        <translation>Lier le compte à l&apos;appareil depuis le réseau</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="257"/>
-        <source>Link account from DHT</source>
-        <translation>Lier le compte depuis la table de hachage distribuée</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="270"/>
-        <source>Link from exported account archive file</source>
-        <translation>Lier depuis une archive du compte exportée</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="273"/>
-        <source>Link account from file</source>
-        <translation>Lier le compte depuis un fichier</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="329"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Jami account&lt;/span&gt; you want to use&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Pour associer cet appareil à un autre compte, vous devez d&apos;abord obtenir un NIP&lt;/span&gt;Pour cela, allez dans la gestion des comptes de l&apos;appareil contenant le compte voulu et sélectionnez le compte que vous souhaitez utiliser. 
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="357"/>
-        <source>Select file to import</source>
-        <translation>Sélectionner le fichier à importer</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="382"/>
-        <source>Account archive path:</source>
-        <translation>Chemin de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="389"/>
-        <source>Account archive path selector</source>
-        <translation>Sélectionner le chemin de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="406"/>
-        <source>Archive password:</source>
-        <translation>Archiver le mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="413"/>
-        <source>Archive passord input</source>
-        <translation>Entrée du mot de passe d&apos;archive</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="482"/>
-        <source>Photobooth Widget</source>
-        <translation>Widget de photomaton</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="509"/>
-        <source>Avatar display</source>
-        <translation>Affichage de l&apos;avatar</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="588"/>
-        <source>Full name edit</source>
-        <translation>Modification du nom complet</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="594"/>
-        <source>Text entry for full name input</source>
-        <translation>Entrée de texte pour l&apos;ajout du nom complet</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="670"/>
-        <source>Register your username on the network. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your ID.</source>
-        <translation>Enregistre votre nom d&apos;utilisateur Jami.
-Ceci réserve ce nom de façon définitive et uniquement pour votre usage.
-Vos amis pourront vous appeler avec ce nom.</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="673"/>
-        <source>Public username checkbox</source>
-        <translation>case à cocher nom d&apos;utilisateur public</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="676"/>
-        <source>Checkbox selecting if the user wants a public username</source>
-        <translation>Case à cocher si l&apos;utilisateur veut un identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="679"/>
-        <source>Register public username (experimental)</source>
-        <translation>Enregistrer un nom d&apos;utilisateur public</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="724"/>
-        <source>Public username edit</source>
-        <translation>Modification de l&apos;identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="746"/>
-        <source>Public username validation status</source>
-        <translation>Statut de validation de l&apos;identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="778"/>
-        <source>PIN edit</source>
-        <translation>Édition du NIP</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="784"/>
-        <source>Device linking PIN text entry</source>
-        <translation>Champ de saisie du NIP de l&apos;appareil associé</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="787"/>
-        <source>Enter your pin</source>
-        <translation>Entrer votre NIP</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="814"/>
-        <source>Password text input</source>
-        <translation>Saisie du mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="820"/>
-        <source>Password text entry</source>
-        <translation>Saisie de mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="826"/>
-        <source>Password</source>
-        <translation>Mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="853"/>
-        <location filename="../wizarddialog.ui" line="859"/>
-        <source>Password confirmation text input</source>
-        <translation>Texte de confirmation de l&apos;entrée du mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="865"/>
-        <source>Confirm password</source>
-        <translation>Confirmer le mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="933"/>
-        <location filename="../wizarddialog.cpp" line="101"/>
-        <source>Generating your Jami account...</source>
-        <translation>Génération de votre compte Jami...</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="969"/>
-        <source>Previous page button</source>
-        <translation>Bouton de la page précédente</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="975"/>
-        <source>push button to access previous page of wizard</source>
-        <translation>Appuyez sur le bouton pour accéder à la page précédente</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="978"/>
-        <source>Previous</source>
-        <translation>Précédent</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="1010"/>
-        <source>Next page Button</source>
-        <translation>bouton prochaine page</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="1016"/>
-        <source>Push button to access next page of wizard</source>
-        <translation>Appuyez sur le bouton pour accéder à la page suivante de l&apos;assistant</translation>
-    </message>
-    <message>
-        <location filename="../wizarddialog.ui" line="1019"/>
-        <source>Next</source>
-        <translation>Suivant</translation>
-    </message>
-</context>
-<context>
-    <name>WizardWidget</name>
-    <message>
-        <location filename="../wizardwidget.ui" line="33"/>
-        <source>Wizard Dialog</source>
-        <translation>Assistant</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="36"/>
-        <source>Account creation wizard dialog</source>
-        <translation>Assistant de création de compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="99"/>
-        <source>Welcome Label</source>
-        <translation>étiquette de bienvenue</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="105"/>
-        <source> Welcome to</source>
-        <translation>Bienvenue sur</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="134"/>
-        <source>Welcome Logo</source>
-        <translation>Logo d&apos;accueil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="191"/>
-        <source>Link device button</source>
-        <translation>Bouton pour lier le compte de l&apos;appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="197"/>
-        <source>Push button for device linkage start trigger</source>
-        <translation>Appuyez sur le bouton pour déclencher la liaison de l&apos;appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="200"/>
-        <source>Link this device to an account</source>
-        <translation>Lier cet appareil à un compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="232"/>
-        <source>Select link method</source>
-        <translation>Sélectionner la méthode de couplage</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="281"/>
-        <source>Link account to device from the network</source>
-        <translation>Lier le compte à l&apos;appareil depuis le réseau</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="284"/>
-        <source>Link account from DHT</source>
-        <translation>Lier le compte depuis la table de hachage distribuée</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="297"/>
-        <source>Link from exported account archive file</source>
-        <translation>Lier depuis une archive du compte exportée</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="300"/>
-        <source>Link account from file</source>
-        <translation>Lier le compte depuis un fichier</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="349"/>
-        <source>How to add a device</source>
-        <translation>Comment ajouter un appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="356"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt; font-weight:600;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt; of a previous device&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the &lt;span style=&quot; font-weight:600;&quot;&gt;Jami account&lt;/span&gt; you want to use&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Pour associer cet appareil à un autre compte, vous devez d&apos;abord obtenir un NIP&lt;/span&gt;Pour cela, allez dans la gestion des comptes de l&apos;appareil contenant le compte voulu et sélectionnez le compte que vous souhaitez utiliser. 
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Go to the &lt;span style=&quot; font-weight:600;&quot;&gt;Devices&lt;/span&gt; tab&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select &lt;span style=&quot; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="384"/>
-        <source>Select file to import</source>
-        <translation>Sélectionner le fichier à importer</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="409"/>
-        <source>Account archive path:</source>
-        <translation>Chemin de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="416"/>
-        <source>Account archive path selector</source>
-        <translation>Sélectionner le chemin de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="433"/>
-        <source>Archive password:</source>
-        <translation>Archiver le mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="440"/>
-        <source>Archive passord input</source>
-        <translation>Entrée du mot de passe d&apos;archive</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="477"/>
-        <source>Create your profile</source>
-        <translation>Créez votre profil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="509"/>
-        <source>Photobooth Widget</source>
-        <translation>Widget de photomaton</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="536"/>
-        <source>Avatar display</source>
-        <translation>Affichage de l&apos;avatar</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="591"/>
-        <source>Enter your full name:</source>
-        <translation>Entrer votre nom complet :</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="615"/>
-        <source>Full name edit</source>
-        <translation>Modification du nom complet</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="621"/>
-        <source>Text entry for full name input</source>
-        <translation>Entrée de texte pour l&apos;ajout du nom complet</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="656"/>
-        <location filename="../wizardwidget.cpp" line="171"/>
-        <source>Create your account</source>
-        <translation>Créez votre compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="166"/>
-        <source>Create Jami account button</source>
-        <translation>Bouton de création de compte Jami</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="172"/>
-        <source>Push button for Jami account creation start trigger</source>
-        <translation>Bouton pour déclencher la création d&apos;un compte Ring</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="178"/>
-        <source>Create Jami account</source>
-        <translation>Créer un compte Jami</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="697"/>
-        <source>Register your username on the Jami. This will reserve the username so that only you can use it. Your friends will be able to call you with your usename instead of using your ID.</source>
-        <translation>Enregistre votre nom d&apos;utilisateur Jami.
-Ceci réserve ce nom de façon définitive et uniquement pour votre usage.
-Vos amis pourront vous appeler avec ce nom plutôt que votre ID.</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="700"/>
-        <source>Public username checkbox</source>
-        <translation>case à cocher nom d&apos;utilisateur public</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="703"/>
-        <source>Checkbox selecting if the user wants a public username</source>
-        <translation>Case à cocher si l&apos;utilisateur veut un identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="706"/>
-        <source>Register public username (experimental)</source>
-        <translation>Enregistrer un nom d&apos;utilisateur public</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="751"/>
-        <source>Public username edit</source>
-        <translation>Modification de l&apos;identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="757"/>
-        <source>Choose your username</source>
-        <translation>Choisissez un nom d&apos;utilisateur</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="773"/>
-        <source>Public username validation status</source>
-        <translation>Statut de validation de l&apos;identifiant public</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="776"/>
-        <location filename="../wizardwidget.cpp" line="257"/>
-        <source>Searching...</source>
-        <translation>Recherche de disponibilité...</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="805"/>
-        <source>PIN edit</source>
-        <translation>Édition du NIP</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="811"/>
-        <source>Device linking PIN text entry</source>
-        <translation>Champ de saisie du NIP de l&apos;appareil associé</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="814"/>
-        <source>Enter your pin</source>
-        <translation>Entrer votre NIP</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="841"/>
-        <source>Password text input</source>
-        <translation>Saisie du mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="847"/>
-        <source>Password text entry</source>
-        <translation>Saisie de mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="853"/>
-        <source>Password</source>
-        <translation>Mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="880"/>
-        <location filename="../wizardwidget.ui" line="886"/>
-        <source>Password confirmation text input</source>
-        <translation>Texte de confirmation de l&apos;entrée du mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="892"/>
-        <source>Confirm password</source>
-        <translation>Confirmer le mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="960"/>
-        <location filename="../wizardwidget.cpp" line="105"/>
-        <source>Generating your Jami account...</source>
-        <translation>Génération de votre compte Jami...</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="996"/>
-        <source>Previous page button</source>
-        <translation>Bouton de la page précédente</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="1002"/>
-        <source>push button to access previous page of wizard</source>
-        <translation>Appuyez sur le bouton pour accéder à la page précédente</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="1005"/>
-        <source>Previous</source>
-        <translation>Précédent</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="1037"/>
-        <source>Next page Button</source>
-        <translation>bouton prochaine page</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="1043"/>
-        <source>Push button to access next page of wizard</source>
-        <translation>Appuyez sur le bouton pour accéder à la page suivante de l&apos;assistant</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.ui" line="1046"/>
-        <source>Next</source>
-        <translation>Suivant</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="66"/>
-        <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Votre compte doit être migré. Entrez votre mot de passe</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="101"/>
-        <source>Migrating your Jami account...</source>
-        <translation>Migration de votre compte Jami...</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="103"/>
-        <source>Importing account archive...</source>
-        <translation>Importation de l&apos;archive du compte</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="167"/>
-        <source>Add a device</source>
-        <translation>Ajouter un appareil</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="285"/>
-        <source>Username not available.</source>
-        <translation>Nom d&apos;utilisateur indisponible</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="288"/>
-        <source>Username is available.</source>
-        <translation>Nom d&apos;utilisateur disponible</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="291"/>
-        <source>Username is invalid.</source>
-        <translation>Nom d&apos;utilisateur invalide</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="294"/>
-        <source>Network error.</source>
-        <translation>Erreur de réseau</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="341"/>
-        <source>Open File</source>
-        <translation>Ouvrir un fichier</translation>
-    </message>
-    <message>
-        <location filename="../wizardwidget.cpp" line="343"/>
-        <source>Jami archive files (*.gz);; All files (*)</source>
-        <translation>Fichier d&apos;archive Jami (*.gz);;  Tous les fichiers (*)</translation>
     </message>
 </context>
 </TS>
