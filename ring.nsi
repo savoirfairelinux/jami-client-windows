@@ -206,7 +206,7 @@ section "install"
             StrCmp $1 27012 vcredist_installed
         ${EndIf}
         ExecWait "vc_redist.x64.exe /install /norestart"
-        #vcredist_installed:
+        vcredist_installed:
 sectionEnd
 
 # Uninstaller
