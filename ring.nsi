@@ -198,7 +198,7 @@ section "install"
         WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Jami.exe$\" $\"%1$\""
         # vcredist install (this check may not work if the vc_redist is uninstalled by the user as
         # uninstallation does not remove the REG key
-        {If} ${RunningX64}
+        ${If} ${RunningX64}
             ReadRegStr $1 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Bld"
             StrCmp $1 27012 vcredist_installed
         ${Else}
