@@ -188,14 +188,15 @@ main(int argc, char *argv[])
     ShmClient* shmClient = new ShmClient(shm, sem);
 #endif
 
+    auto appDir = qApp->applicationDirPath() + "/";
     const auto locale_name = QLocale::system().name();
     const auto locale_lang = locale_name.split('_')[0];
 
     QTranslator qtTranslator_lang;
     QTranslator qtTranslator_name;
     if (locale_name != locale_lang) {
-        qtTranslator_lang.load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-        a.installTranslator(&qtTranslator_lang);
+        if (qtTranslator_lang.load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+            a.installTranslator(&qtTranslator_lang);
     }
     qtTranslator_name.load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     a.installTranslator(&qtTranslator_name);
@@ -203,20 +204,20 @@ main(int argc, char *argv[])
     QTranslator lrcTranslator_lang;
     QTranslator lrcTranslator_name;
     if (locale_name != locale_lang) {
-        lrcTranslator_lang.load("share/libringclient/translations/lrc_" + locale_lang);
-        a.installTranslator(&lrcTranslator_lang);
+        if (lrcTranslator_lang.load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
+            a.installTranslator(&lrcTranslator_lang);
     }
-    lrcTranslator_name.load("share/libringclient/translations/lrc_" + locale_name);
-    a.installTranslator(&lrcTranslator_name);
+    if (lrcTranslator_name.load(appDir + "share/libringclient/translations/lrc_" + locale_name))
+        a.installTranslator(&lrcTranslator_name);
 
     QTranslator mainTranslator_lang;
     QTranslator mainTranslator_name;
     if (locale_name != locale_lang) {
-        mainTranslator_lang.load("share/ring/translations/ring_client_windows_" + locale_lang);
-        a.installTranslator(&mainTranslator_lang);
+        if (mainTranslator_lang.load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
+            a.installTranslator(&mainTranslator_lang);
     }
-    mainTranslator_name.load("share/ring/translations/ring_client_windows_" + locale_name);
-    a.installTranslator(&mainTranslator_name);
+    if (mainTranslator_name.load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
+        a.installTranslator(&mainTranslator_name);
 
     QFont font;
     font.setFamily("Segoe UI");
@@ -244,7 +245,6 @@ main(int argc, char *argv[])
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
     }
-
 
 #ifdef URI_PROTOCOL
     QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));

@@ -143,7 +143,7 @@ Get-ChildItem -Path $clientTSPath -Include *.ts -Recurse | ForEach-Object {
 $CopyDir = $OutDir + "\share\ring\translations"
 New-Item -ItemType directory -Path $CopyDir -Force
 write-host "copying ringtones..."
-Get-ChildItem -Path $lrcTSPath -Include *.qm -Recurse | ForEach-Object {
+Get-ChildItem -Path $clientTSPath -Include *.qm -Recurse | ForEach-Object {
     write-host "copying translation file: " $_.FullName " => " $CopyDir
     Copy-Item -Path $_.FullName -Destination $CopyDir -Force –Recurse
 }
