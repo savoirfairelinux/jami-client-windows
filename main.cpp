@@ -120,7 +120,14 @@ main(int argc, char *argv[])
     newArgv[argc] = ARG_DISABLE_WEB_SECURITY;
     newArgv[argc + 1] = nullptr;
 
+#ifdef Q_OS_WIN
+    SetProcessDPIAware();
+#endif // Q_OS_WIN
+
     QApplication a(newArgc, newArgv);
+
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QCoreApplication::setOrganizationDomain("jami.net");
     QCoreApplication::setApplicationName("Ring");
