@@ -699,7 +699,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
@@ -735,7 +735,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
@@ -750,22 +750,22 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>Bootstrap</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="427"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Zabezpieczenia</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="444"/>
         <source>Private Key Password</source>
-        <translation type="unfinished"/>
+        <translation>Hasło Klucza Prywatnego</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="456"/>
         <source>User Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Certyfikat Użytkownika</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
@@ -785,7 +785,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Łączność</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -795,7 +795,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Użyj STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
@@ -820,7 +820,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Użyj TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="899"/>
@@ -1125,7 +1125,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceeditwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../deviceeditwidget.ui" line="36"/>
@@ -1138,17 +1138,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Akceptuj</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>Odmów</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Blokuj</translation>
     </message>
 </context>
 <context>
@@ -1156,7 +1156,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
@@ -1171,7 +1171,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
@@ -1186,7 +1186,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Twój wygenerowany PIN:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
@@ -1196,7 +1196,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Zamknij</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
@@ -1238,7 +1238,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
@@ -1283,12 +1283,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Połącz to urządzenie z kontem</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Połącz to urządzenie z istniejącym kontem</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="399"/>
@@ -1307,12 +1307,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Wpisz swój PIN:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Lub zaimportuj plik:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1329,12 +1329,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Hasło:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="729"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
@@ -1344,7 +1344,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Konto</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1143"/>
@@ -1367,7 +1367,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Zarejestruj publiczną nazwę użytkownika</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
@@ -1377,7 +1377,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1240"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz swoją nazwę użytkownika</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1306"/>
@@ -1392,23 +1392,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1318"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Hasło</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1384"/>
         <location filename="../newwizardwidget.ui" line="1390"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Pole potwierdzenia hasła</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1396"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Potwierdź hasło</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Tworzenie konta Jami...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1423,7 +1423,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1548"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Poprzednie</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
@@ -1438,7 +1438,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Wstecz</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
@@ -1453,12 +1453,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1634"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Następne</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="78"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Otwórz plik</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
@@ -1521,7 +1521,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
@@ -1637,7 +1637,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
@@ -1688,7 +1688,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
         <source>Camera</source>
-        <translation type="unfinished"/>
+        <translation>Kamera</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
@@ -1698,7 +1698,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
@@ -1716,23 +1716,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="147"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="254"/>
         <location filename="../settingswidget.ui" line="1461"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Konto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="298"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Generalne</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
@@ -1742,7 +1742,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
         <source>System</source>
-        <translation type="unfinished"/>
+        <translation>System</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="560"/>
@@ -1772,12 +1772,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
         <source>Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Nagrania</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="754"/>
         <source>Save in</source>
-        <translation type="unfinished"/>
+        <translation>Zapisz w</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
@@ -1822,17 +1822,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1523"/>
         <source>Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Zarejestrowana nazwa</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1583"/>
         <source>ID</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Hasło</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
@@ -1886,7 +1886,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Audio</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
@@ -1911,12 +1911,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Wideo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2831"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Urządzenie</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2872"/>
@@ -1926,7 +1926,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2891"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Rozdzielczość</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2932"/>

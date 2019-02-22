@@ -754,7 +754,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="427"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Beveiliging</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="444"/>
@@ -1391,7 +1391,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1318"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1384"/>
@@ -1720,7 +1720,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="147"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="254"/>
@@ -1731,7 +1731,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="298"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
@@ -1831,7 +1831,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
@@ -1885,7 +1885,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Geluid</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
@@ -1910,7 +1910,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Beeld</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2831"/>

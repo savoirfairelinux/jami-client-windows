@@ -754,7 +754,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="427"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>securité</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="444"/>
@@ -1073,7 +1073,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../contactdialog.ui" line="26"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>Nouveau contact</translation>
     </message>
     <message>
         <location filename="../contactdialog.ui" line="33"/>
@@ -1137,12 +1137,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>Refuser</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
@@ -1170,7 +1170,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
@@ -1333,7 +1333,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="729"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
@@ -1343,7 +1343,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>compte</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1143"/>
@@ -1391,7 +1391,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1318"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>mot de passe</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1384"/>
@@ -1437,7 +1437,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Retour</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
@@ -1452,7 +1452,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1634"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Suivant</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="78"/>
@@ -1520,7 +1520,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
@@ -1636,7 +1636,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
@@ -1697,7 +1697,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
@@ -1720,13 +1720,13 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="147"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Réglages</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="254"/>
         <location filename="../settingswidget.ui" line="1461"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>compte</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="298"/>
@@ -1831,7 +1831,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>mot de passe</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
@@ -1885,7 +1885,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Audio</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
@@ -1910,7 +1910,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Vidéo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2831"/>

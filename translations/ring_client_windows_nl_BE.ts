@@ -698,7 +698,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
@@ -734,7 +734,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
@@ -744,27 +744,27 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy inschakelen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>Bootstrap</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="427"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Beveiliging</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="444"/>
         <source>Private Key Password</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord voor persoonlijke sleutel</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="456"/>
         <source>User Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikerscertificaat</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
@@ -794,7 +794,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Gebruik STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
@@ -819,17 +819,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Gebruik TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="899"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Audiocodecs</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1044"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Videocodecs</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
@@ -1068,12 +1068,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../contactdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../contactdialog.ui" line="26"/>
         <source>New Contact</source>
-        <translation type="unfinished"/>
+        <translation>Nieuw contact</translation>
     </message>
     <message>
         <location filename="../contactdialog.ui" line="33"/>
@@ -1124,7 +1124,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceeditwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../deviceeditwidget.ui" line="36"/>
@@ -1137,17 +1137,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Aanvaarden</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>Afwijzen</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Blokkeren</translation>
     </message>
 </context>
 <context>
@@ -1155,7 +1155,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
@@ -1170,7 +1170,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
@@ -1185,7 +1185,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Uw gegenereerde pincode:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
@@ -1195,7 +1195,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
@@ -1237,22 +1237,22 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlabel</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="147"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Welkom bij</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="179"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Welkomstlogo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="228"/>
@@ -1272,22 +1272,22 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Knop apparaat koppelen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="272"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor koppelen van apparaat na druk op knop</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Dit apparaat aan een account koppelen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Dit apparaat aan nen bestaanden account koppelen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="399"/>
@@ -1306,17 +1306,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Voerd uw pincode in:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Of importeerd een bestand:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Koppelen van geëxporteerd accountarchiefbestand</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="559"/>
@@ -1328,12 +1328,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="729"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profiel</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
@@ -1343,7 +1343,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Account</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1143"/>
@@ -1356,53 +1356,53 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakske openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1152"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakske voor te kiezen of da’ de gebruiker nen openbare gebruikersnaam wild</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Registreer uw openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Bewerken openbare gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1240"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>Kiesd uwe gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1306"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1312"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordtekstinvoer</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1318"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1384"/>
         <location filename="../newwizardwidget.ui" line="1390"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Paswoordbevestigingstekstinvoer</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1396"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Bevestigd paswoord</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
@@ -1412,17 +1412,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Knop vorige pagina</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1545"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>drukt op de knop voor naar de vorige pagina van den assistent te gaan</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1548"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Vorige</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
@@ -1437,27 +1437,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Knop volgende pagina</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1631"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Drukt op de knop voor naar de volgende pagina van den assistent te gaan</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1634"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Volgende</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="78"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Bestand openen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
@@ -1467,7 +1467,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Uwen account moe worden gemigreerd. Voerd uw paswoord in.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
@@ -1477,7 +1477,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Accountarchief importeren…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
@@ -1520,7 +1520,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
@@ -1636,7 +1636,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
@@ -1677,7 +1677,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
         <source>Save</source>
-        <translation type="unfinished"/>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
@@ -1687,7 +1687,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
         <source>Camera</source>
-        <translation type="unfinished"/>
+        <translation>Camera</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
@@ -1697,7 +1697,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
@@ -1715,23 +1715,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="147"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="254"/>
         <location filename="../settingswidget.ui" line="1461"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Account</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="298"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
@@ -1741,12 +1741,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
         <source>System</source>
-        <translation type="unfinished"/>
+        <translation>Systeem</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="560"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Meldingen inschakelen selectievak</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
@@ -1756,12 +1756,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
         <source>keep minimized on close checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Minimaliseren bij sluiten selectievak</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="594"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Minimaliseren bij sluiten</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
@@ -1771,12 +1771,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
         <source>Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Opnames</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="754"/>
         <source>Save in</source>
-        <translation type="unfinished"/>
+        <translation>Opslaan in</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
@@ -1791,7 +1791,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
         <source>Autamatic update checks checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Selectievakske automatisch controleren op updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
@@ -1801,7 +1801,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie interval in dagen tussen controles op updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
@@ -1811,27 +1811,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Knop nu controleren op updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="994"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Nu controleren op updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1523"/>
         <source>Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Geregistreerde naam</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1583"/>
         <source>ID</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
@@ -1885,7 +1885,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Geluid</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
@@ -1895,12 +1895,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie audio-invoerapparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2717"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Uitvoerapparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
@@ -1910,32 +1910,32 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2831"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Apparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2872"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie videoapparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2891"/>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Resolutie</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2932"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>Selectie videoapparaatresolutie</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3074"/>
         <source>Preview unavailable during call</source>
-        <translation type="unfinished"/>
+        <translation>Voorbeeldweergave nie beschikbaar gedurende oproep</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
