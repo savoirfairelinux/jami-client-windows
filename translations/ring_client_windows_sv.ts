@@ -1603,7 +1603,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Jami-konto</translation>
     </message>
 </context>
 <context>

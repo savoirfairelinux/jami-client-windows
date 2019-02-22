@@ -90,7 +90,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation>Nyilvános regisztrált felhasználónév</translation>
+        <translation>Nyilvános bejegyzett felhasználónév</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -107,7 +107,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="515"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>Meghatalmazott</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="558"/>
@@ -117,7 +117,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation>Hívások automatikus fogadása</translation>
+        <translation>Hívások önműködő fogadása</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
@@ -172,12 +172,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation>Felhasználónév regisztrálása blokkláncon gomb</translation>
+        <translation>Felhasználónév bejegyeztetése az elosztott adatbázison gomb</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
         <source>Register on blockchain</source>
-        <translation>Regisztráljon a blokkláncon</translation>
+        <translation>Elosztott adatbázis bejegyeztetése</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
@@ -202,7 +202,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation>SIP proxy URL bevitel</translation>
+        <translation>SIP-meghatalmazott URL-bevitel</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
@@ -212,7 +212,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation>Automatikus válasz hívás jelölőnégyzet</translation>
+        <translation>Önműködő válasz hívás jelölőnégyzet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
@@ -352,17 +352,17 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
         <source>Registration</source>
-        <translation>Regisztáció</translation>
+        <translation>Bejegyeztetés</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1356"/>
         <source>Registration expire timeout (seconds):</source>
-        <translation>Regisztráció érvényességének lejárta (másodperc):</translation>
+        <translation>Bejegyeztetés érvényességének lejárta (másodperc):</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation>Regisztrációs időtúllépés választó spinbox</translation>
+        <translation>Bejegyeztetés időtúllépés választó spinbox</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -663,12 +663,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2254"/>
         <source>CA certificate</source>
-        <translation>CA-engedély</translation>
+        <translation>CA tanúsítvány</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2294"/>
         <source>User certificate</source>
-        <translation>Felhasználói engedély</translation>
+        <translation>Felhasználói tanúsítvány</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2331"/>
@@ -678,7 +678,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
-        <translation>Személyes kulcs jelszava</translation>
+        <translation>Személyes kulcs jelszó</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2435"/>
@@ -704,33 +704,33 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Hívás beállítások</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Hívások engedélyezése ismeretlen kapcsolatoktól</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Hívások önműködő fogadása</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Egyéni csengőhang engedélyezése</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Egyéni csengőhang hozzáadása</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Kiszolgálói néve</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -740,12 +740,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT beállítások</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
         <source>Enable Proxy</source>
-        <translation>Proxy engedélyezése</translation>
+        <translation>Meghatalmazott engedélyezése</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
@@ -770,17 +770,17 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>nincs jelszó</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Személyes kulcs</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA tanúsítvány</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
@@ -790,7 +790,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
         <source>        TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN cím</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
@@ -800,22 +800,22 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN cím</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="812"/>
         <source>        TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN felhasználónév</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="824"/>
         <source>        TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN jelszó</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>UPnP használata</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -835,7 +835,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Hangfájlok (*aiff *.mp3 *.ogg *.opus *.wav *wma)</translation>
     </message>
 </context>
 <context>
@@ -950,18 +950,18 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="196"/>
         <source>Show invites</source>
-        <translation>Meghívás megjelenítése</translation>
+        <translation>Meghívók megjelenítése</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="199"/>
         <source>Invites</source>
-        <translation>Meghívás</translation>
+        <translation>Meghívók</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Keressen új vagy meglévő kapcsolatot</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -1031,7 +1031,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.cpp" line="562"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Megérkezett meghívások keresése</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
@@ -1081,7 +1081,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../contactdialog.ui" line="33"/>
         <source>Enter a name...</source>
-        <translation type="unfinished"/>
+        <translation>Név beírása…</translation>
     </message>
 </context>
 <context>
@@ -1132,7 +1132,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../deviceeditwidget.ui" line="36"/>
         <source>PushButton</source>
-        <translation type="unfinished"/>
+        <translation>Nyomógomb</translation>
     </message>
 </context>
 <context>
@@ -1163,12 +1163,12 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Új eszköz hozzáadása</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Új eszköz hozzáadásához adja meg a fiókjának jelszót:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1178,12 +1178,12 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
         <source>Enter</source>
-        <translation type="unfinished"/>
+        <translation>Belép</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="365"/>
         <source>Exporting account on the network</source>
-        <translation type="unfinished"/>
+        <translation>Fiók exportálása a hálózaton…</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
@@ -1193,7 +1193,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
         <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Ezt a PIN-kódot és a fiók jelszót 5 percen belül be kell írni a eszközbe.</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
@@ -1203,13 +1203,14 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Hibás fiók jelszót</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Valami hiba történt.
+Próbálja meg újra később.</translation>
     </message>
 </context>
 <context>
@@ -1285,7 +1286,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation>Ezen eszköz fiókhoz kapcsolása</translation>
+        <translation>Ezen eszköz összekapcsolása egy fiókhoz</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
@@ -1304,7 +1305,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Először az eszköz összekapcsolása egy másik fiókkal &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;meg kell szereznie a PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;-kódot. A PIN kód létrehozása:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Menjen a &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Fiókkezelés beállítása&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; egy korábbi eszközről&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Válassza a &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami fiók&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; szeretné használni&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Menjen a &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Eszközök&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; lap&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Válassza &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Eszköz hozzáadása&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Kapja meg a szükséges PIN-kódot az űrlap kitöltéséhez. A PIN-kód csak érvényes &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 percig&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
@@ -1326,7 +1336,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Nincs)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1341,7 +1351,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profilnév</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1354,7 +1364,9 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Bejegyeztetés a felhasználónevét.
+Ez fenntartja a felhasználónevet, hogy csak Ön tudja használni.
+Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító használata helyett.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
@@ -1369,7 +1381,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation>Nyilvános felhasználónév regisztrálása</translation>
+        <translation>Nyilvános felhasználónév bejegyeztetése</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
@@ -1430,12 +1442,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Fiók létrehozása-/összekapcsolása megszakítása</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1585"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>nyomja meg a gombot a fiók létrehozása-/összekapcsolása megszakításához</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
@@ -1465,7 +1477,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami archív fájlok (*.gz); Minden fájl (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
@@ -1490,7 +1502,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
         <source>Error creating account</source>
-        <translation type="unfinished"/>
+        <translation>Hiba a fiók létrehozása során</translation>
     </message>
 </context>
 <context>
@@ -1498,27 +1510,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Fiók jelszóváltoztatása</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg a  jelenlegi jelszót</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Új jelszó megadása</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Új jelszó megerősítése</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Megerősítés</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1528,12 +1540,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Sikeres jelszóváltoztatás</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Hibás jelenlegi jelszót</translation>
     </message>
 </context>
 <context>
@@ -1564,7 +1576,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Képfájlok (*.jpeg *.jpg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1614,27 +1626,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Bejegyzett név beállítása</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Biztosan meg akarja bejegyeztetni ezt a nevet?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Egyszer összekötött ehhez a fiókhoz, nem módosítható.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Az új bejegyzett neve:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Bejegyeztetés megerősítése</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1644,22 +1656,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Név bejegyeztetése sikeres!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Valami hiba történt.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Próbálja meg újra később</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Nincs bejegyzett név a fiókodnak</translation>
     </message>
 </context>
 <context>
@@ -1675,7 +1687,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Megtestesülés kép megváltoztatása</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1685,7 +1697,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Készítsen egy képet</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1695,7 +1707,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Jelöljön ki egy fájlt</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1705,12 +1717,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Kép megnyitása</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Képfájlok (*.bmp *.jpeg, *.jpg, *.png)</translation>
     </message>
 </context>
 <context>
@@ -1739,7 +1751,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Hang/Videó</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1754,7 +1766,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Az asztali értesítések engedélyezése</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
@@ -1784,12 +1796,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Mindig legyen felvétel</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Frissítések</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1799,7 +1811,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Frissítések keresése minden</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
@@ -1809,7 +1821,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation> nap</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
@@ -1824,7 +1836,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1523"/>
         <source>Registered Name</source>
-        <translation>Regisztrált név</translation>
+        <translation>Bejegyzett név</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1583"/>
@@ -1839,51 +1851,51 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Engedélyezés</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg a felhasználónév bejegyeztetése ide</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Jelszó megváltoztatása</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Fiók exportálása</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Fiók törlése</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Összekapcsolt eszközök</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Csatlakoztasson másik eszközt</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Letiltott kapcsolatok</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Haladó fiókbeállítások</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1893,7 +1905,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
@@ -1908,7 +1920,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Válasszon ki egy kimeneti eszközt</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
@@ -1943,63 +1955,63 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
         <source>Enter the displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg a megjelenítési nevet</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="391"/>
         <location filename="../settingswidget.cpp" line="393"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>A bejegyzett névnek nem szabad szóközt lennie, és legalább három betűnek kell lennie</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>A név már foglalt</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>A bejegyzett név már foglalt</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Ez a név elérhető</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Bejegyeztetés ezt a nevet</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Eszköz eltávolítása</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Adja meg a fiók jelszót ehhez eszköz eltávolításának megerősítéséhez</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Kérjük, erősítse meg, hogy szeretné eltávolítani ezt az eszközt</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Fiók exportálása ide</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Letöltés célmappájának választása</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Felvétel célmappájának választása</translation>
     </message>
 </context>
 <context>
