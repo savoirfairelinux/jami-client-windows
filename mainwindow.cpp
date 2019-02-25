@@ -102,8 +102,8 @@ MainWindow::MainWindow(QWidget* parent) :
 
     win_sparkle_set_appcast_url("https://dl.ring.cx/windows/winsparkle-ring.xml");
     win_sparkle_set_app_details(L"Savoir-faire Linux", L"Jami", QString(VERSION_STRING).toStdWString().c_str());
-    win_sparkle_set_shutdown_request_callback([]() {QCoreApplication::exit();});
-    win_sparkle_set_did_find_update_callback([]() {MainWindow::instance().showNormal();});
+    win_sparkle_set_shutdown_request_callback([]() { QCoreApplication::exit(); });
+    win_sparkle_set_did_find_update_callback([]() { MainWindow::instance().showWindow(); });
     win_sparkle_init();
 
     if (win_sparkle_get_last_check_time() == -1) {
@@ -224,7 +224,7 @@ MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 }
 
 void
-MainWindow::notificationClicked() {
+MainWindow::showWindow() {
     if (currentWindowState_ == Qt::WindowMaximized) {
         showMaximized();
     } else {
@@ -232,6 +232,11 @@ MainWindow::notificationClicked() {
     }
     activateWindow();
     raise();
+}
+
+void
+MainWindow::notificationClicked() {
+    showWindow();
 }
 
 void

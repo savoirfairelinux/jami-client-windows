@@ -76,6 +76,7 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
+    void showWindow();
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
     int lastAccountCount_;
