@@ -353,9 +353,10 @@ PixbufManipulator::accountPhoto(const lrc::api::account::Info& accountInfo)
     else {
         auto bestId = Utils::bestIdForAccount(accountInfo);
         auto bestName = Utils::bestNameForAccount(accountInfo);
+        QString letterStr = bestId == bestName ? QString() : QString::fromStdString(bestName);
         photo = fallbackAvatar( IMAGE_SIZE,
                                 QString::fromStdString("ring:" + bestId),
-                                QString::fromStdString(bestName));
+                                letterStr);
     }
     return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }

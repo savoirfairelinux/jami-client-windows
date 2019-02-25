@@ -56,7 +56,6 @@ namespace Utils
     QString GetRingtonePath();
     QString GenGUID();
     QString GetISODate();
-    QString GetCurrentUserName();
     void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
     QImage getCirclePhoto(const QImage original, int sizePhoto);
     void setStackWidget(QStackedWidget *stack, QWidget *widget);

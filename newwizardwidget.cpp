@@ -32,8 +32,6 @@
 #include "utils.h"
 #include "ringthemeutils.h"
 
-const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Jami account", "Default alias for new Jami account");
-
 NewWizardWidget::NewWizardWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::NewWizardWidget),
@@ -188,7 +186,7 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->confirmPasswordEdit->clear();
         ui->signUpCheckbox->setChecked(true);
         ui->usernameEdit->setEnabled(true);
-        ui->fullNameEdit->setText(Utils::GetCurrentUserName());
+        ui->fullNameEdit->setText(QString());
         setNavBarVisibility(true);
         updateCustomUI();
         registeredNameFoundConnection_ = connect(

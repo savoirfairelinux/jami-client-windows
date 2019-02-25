@@ -143,7 +143,6 @@ AccountItemDelegate::paint(QPainter* painter,
     }
 
     // Display the secondary ID under the name
-
     QString idStr = index.data(static_cast<int>(AccountListModel::Role::Username)).value<QString>();
     if (idStr != name.toString()) {
         fontSecondary.setItalic(false);
