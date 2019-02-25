@@ -37,7 +37,7 @@ const QString DEFAULT_RING_ACCT_ALIAS = QObject::tr("Jami account", "Default ali
 NewWizardWidget::NewWizardWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::NewWizardWidget),
-    wizardMode_(WizardMode::WIZARD),
+    wizardMode_(WizardMode::CREATE),
     lookupTimer_(this)
 {
     ui->setupUi(this);
@@ -117,7 +117,7 @@ NewWizardWidget::~NewWizardWidget()
 void
 NewWizardWidget::setToMigrate(AccountInfo* toBeMigrated)
 {
-    wizardMode_ = MIGRATION;
+    wizardMode_ = WizardMode::MIGRATE;
     changePage(ui->createRingAccountPage);
     ui->usernameEdit->setEnabled(false);
     ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
@@ -157,32 +157,6 @@ NewWizardWidget::navigated(bool to)
     ui->containerWidget->setVisible(to);
     changePage(ui->welcomePage);
     Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
-}
-
-void
-NewWizardWidget::processWizardInformations()
-{
-    if (wizardMode_ == MIGRATION)
-        ui->progressLabel->setText(tr("Migrating your Jami account..."));
-    else if (wizardMode_ == IMPORT)
-        ui->progressLabel->setText(tr("Importing account archive..."));
-    else
-        ui->progressLabel->setText(tr("Generating your Jami account..."));
-
-    if (wizardMode_ != IMPORT) {
-        QString accountAlias = (ui->fullNameEdit->text().isEmpty() ||
-            ui->fullNameEdit->text().isNull()) ? DEFAULT_RING_ACCT_ALIAS : ui->fullNameEdit->text();
-        QString archivePin = (ui->pinEdit->text().isEmpty() || ui->pinEdit->text().isNull()) ? QString() : ui->pinEdit->text();
-
-        changePage(ui->spinnerPage);
-        createRingAccount(accountAlias, ui->passwordEdit->text(), archivePin, fileToImport_);
-
-        ui->passwordEdit->clear();
-        ui->confirmPasswordEdit->clear();
-        ui->pinEdit->clear();
-    }
-
-    Utils::CreateStartupLink();
 }
 
 void
@@ -263,8 +237,11 @@ NewWizardWidget::on_nextButton_clicked()
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
     ui->setAvatarWidget->stopBooth();
     disconnect(registeredNameFoundConnection_);
-    if (curWidget == ui->createRingAccountPage ||
-        curWidget == ui->linkRingAccountPage) {
+    if (curWidget == ui->createRingAccountPage) {
+        wizardMode_ = WizardMode::CREATE;
+        processWizardInformations();
+    } if (curWidget == ui->linkRingAccountPage) {
+        wizardMode_ = WizardMode::IMPORT;
         processWizardInformations();
     }
 }
@@ -399,6 +376,38 @@ NewWizardWidget::validateWizardProgression()
         passwordStatusLabel_->hide();
     }
     ui->nextButton->setEnabled(usernameOk && passwordOk);
+}
+
+void
+NewWizardWidget::processWizardInformations()
+{
+    QString alias, password, archivePin;
+
+    switch (wizardMode_) {
+    case WizardMode::CREATE:
+        ui->progressLabel->setText(tr("Generating your Jami account..."));
+        alias = ui->fullNameEdit->text();
+        password = ui->passwordEdit->text();
+        ui->fullNameEdit->clear();
+        ui->passwordEdit->clear();
+        ui->confirmPasswordEdit->clear();
+        break;
+    case WizardMode::IMPORT:
+        ui->progressLabel->setText(tr("Importing account archive..."));
+        password = ui->importPasswordEdit->text();
+        archivePin = ui->pinEdit->text();
+        ui->pinEdit->clear();
+        ui->importPasswordEdit->clear();
+        break;
+    case WizardMode::MIGRATE:
+        ui->progressLabel->setText(tr("Migrating your Jami account..."));
+        break;
+    }
+
+    changePage(ui->spinnerPage);
+    createRingAccount(alias, password, archivePin, fileToImport_);
+
+    Utils::CreateStartupLink();
 }
 
 void

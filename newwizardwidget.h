@@ -38,7 +38,7 @@ public:
 
     using AccountInfo = Info;
 
-    enum WizardMode { WIZARD, IMPORT, MIGRATION };
+    enum WizardMode { CREATE, IMPORT, MIGRATE };
 
 private:
     enum NameRegistrationUIState { BLANK, INVALID, TAKEN, FREE, SEARCHING };
