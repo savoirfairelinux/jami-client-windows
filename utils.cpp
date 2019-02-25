@@ -166,18 +166,6 @@ Utils::GetISODate() {
 #endif
 }
 
-QString
-Utils::GetCurrentUserName() {
-#ifdef Q_OS_WIN
-    wchar_t username[UNLEN+1];
-    DWORD username_len = UNLEN+1;
-    GetUserName(username, &username_len);
-    return QString::fromWCharArray(username, username_len-1);
-#else
-    return QString();
-#endif
-}
-
 void
 Utils::InvokeMailto(const QString& subject,
                     const QString& body,
