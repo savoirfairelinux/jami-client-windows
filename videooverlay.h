@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -53,6 +53,7 @@ private slots:
     void on_noMicButton_clicked();
     void on_noVideoButton_clicked();
     void on_recButton_clicked();
+    void on_addToConferenceButton_clicked();
 
 private:
     Ui::VideoOverlay* ui;
