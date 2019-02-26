@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
@@ -22,6 +22,8 @@
 
 #include <QTime>
 
+#include "contactpicker.h"
+
 // LRC
 #include "callmodel.h"
 #include "contactmethod.h"
@@ -38,15 +40,15 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 {
     ui->setupUi(this);
 
+    setAttribute(Qt::WA_NoSystemBackground);
+
     ui->bottomButtons->setMouseTracking(true);
 
     ui->chatButton->setCheckable(true);
-
-    setAttribute(Qt::WA_NoSystemBackground);
-
     ui->noMicButton->setCheckable(true);
-
     ui->onHoldLabel->setVisible(false);
+    ui->recButton->setVisible(false);
+
 }
 
 VideoOverlay::~VideoOverlay()
@@ -134,6 +136,52 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 }
 
 void
+VideoOverlay::on_addToConferenceButton_clicked()
+{
+    if (callId_.empty()) {
+        return;
+    }
+    QPoint globalPos_button = mapToGlobal(ui->addToConferenceButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+    ContactPicker conferenceePicker;
+    QObject::connect(&conferenceePicker, &ContactPicker::contactWillJoinConference,
+        [this](const std::string& callId1, const std::string& contactUri) {
+            auto callModel = LRCInstance::getCurrentCallModel();
+            auto thisCallIsAudioOnly = callModel->getCall(callId1).isAudioOnly;
+
+            // generate new call with peer
+            auto conferenceeCallId = callModel->createCall(contactUri, thisCallIsAudioOnly);
+            pendingConferencees_.insert(QString::fromStdString(conferenceeCallId),
+                QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+                    [this, conferenceeCallId, callId1](const std::string& callId) {
+                        if (callId != conferenceeCallId)
+                            return;
+                        using namespace lrc::api::call;
+                        auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
+                        switch (call.status) {
+                        case Status::IN_PROGRESS:
+                        {
+                            qDebug() << "adding to conference callid=" << QString::fromStdString(callId);
+                            auto it = pendingConferencees_.find(QString::fromStdString(conferenceeCallId));
+                            if (it != pendingConferencees_.end()) {
+                                QObject::disconnect(it.value());
+                                pendingConferencees_.erase(it);
+                            }
+                            LRCInstance::getCurrentCallModel()->joinCalls(callId1, conferenceeCallId);
+                            return;
+                        }
+                        default:
+                            qDebug() << "failed to add to conference callid=" << QString::fromStdString(callId);
+                            break;
+                        }
+                    })
+            );
+        });
+    conferenceePicker.move(globalPos_button.x(), globalPos_bottomButtons.y() - conferenceePicker.height());
+    conferenceePicker.exec();
+}
+
+void
 VideoOverlay::on_holdButton_clicked()
 {
     auto selectedConvUid = LRCInstance::getSelectedConvUid();
@@ -142,10 +190,10 @@ VideoOverlay::on_holdButton_clicked()
     auto& callId = conversation->callId;
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId)) {
+        callModel->togglePause(callId);
         auto onHold = callModel->getCall(callId).status == lrc::api::call::Status::PAUSED;
         ui->holdButton->setChecked(!onHold);
         ui->onHoldLabel->setVisible(!onHold);
-        callModel->togglePause(callId);
     }
 }
 
@@ -158,8 +206,8 @@ VideoOverlay::on_noMicButton_clicked()
     auto& callId = conversation->callId;
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId)) {
-        ui->noMicButton->setChecked(callModel->getCall(callId).audioMuted);
         callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::AUDIO);
+        ui->noMicButton->setChecked(callModel->getCall(callId).audioMuted);
     }
 }
 
@@ -172,8 +220,8 @@ VideoOverlay::on_noVideoButton_clicked()
     auto& callId = conversation->callId;
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId)) {
-        ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
         callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
+        ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
     }
 }
 
