@@ -146,30 +146,6 @@ VideoView::fadeOverlayOut()
 }
 
 void
-VideoView::slotCallStatusChanged(const std::string& callId)
-{
-    using namespace lrc::api::call;
-    auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
-    switch (call.status) {
-    case Status::IN_PROGRESS:
-    {
-        ui->videoWidget->show();
-        auto convInfo = Utils::getConversationFromCallId(call.id);
-        if (!convInfo.uid.empty()) {
-            auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
-            auto contactName = Utils::bestNameForContact(contactInfo);
-            overlay_->setName(QString::fromStdString(contactName));
-        }
-        return;
-    }
-    default:
-        emit closing(call.id);
-        break;
-    }
-    QObject::disconnect(timerConnection_);
-}
-
-void
 VideoView::showChatviewIfToggled()
 {
     emit setChatVisibility(overlay_->getShowChatView());
@@ -319,27 +295,79 @@ void
 VideoView::pushRenderer(const std::string& callId) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
-    QObject::disconnect(videoStartedConnection_);
-    QObject::disconnect(callStatusChangedConnection_);
-
     if (!callModel->hasCall(callId)) {
         return;
     }
 
-    auto call = callModel->getCall(callId);
+    currentCallId_ = callId;
+    auto call = callModel->getCall(currentCallId_);
+
+    auto it = rendererMap_.find(callId);
+    if (it == rendererMap_.end()) {
+        QObject::disconnect(videoStartedConnection_);
+        QObject::disconnect(callStatusChangedConnection_);
+        QObject::disconnect(conferenceStartedConnection_);
+
+        callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+                                                        this, &VideoView::slotCallStatusChanged);
+
+        videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
+            [this](const std::string& callId, Video::Renderer* renderer) {
+                rendererMap_.insert(std::make_pair(callId, renderer));
+                slotVideoStarted(renderer);
+            });
+
+        conferenceStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callAddedToConference,
+            [this](const std::string& callId, const std::string& confId) {
+                if (rendererMap_.find(confId) == rendererMap_.end()) {
+                    auto it = rendererMap_.find(callId);
+                    if (it != rendererMap_.end()) {
+                        auto conferenceRenderer = LRCInstance::getCurrentCallModel()->getRenderer(confId);
+                        rendererMap_.erase(callId);
+                        rendererMap_.insert(std::make_pair(confId, conferenceRenderer));
+                        slotVideoStarted(conferenceRenderer);
+                        auto callModel = LRCInstance::getCurrentCallModel();
+                        ui->videoWidget->setPreviewDisplay(callModel->getCall(confId).type != lrc::api::call::Type::CONFERENCE);
+                        qDebug()
+                            << "callAddedToConference: callId=" << QString::fromStdString(callId)
+                            << "==> confId=" << QString::fromStdString(confId);
+                    }
+                }
+            });
+    } else {
+        slotVideoStarted(it->second);
+    }
 
     this->overlay_->callStarted(callId);
     this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
-
-    callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
-        this, &VideoView::slotCallStatusChanged);
-
-    videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
-        [this](const std::string& callId, Video::Renderer* renderer) {
-            Q_UNUSED(callId);
-            slotVideoStarted(renderer);
-        });
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+
+}
+
+void
+VideoView::slotCallStatusChanged(const std::string& callId)
+{
+    using namespace lrc::api::call;
+    auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
+    switch (call.status) {
+    case Status::IN_PROGRESS:
+    {
+        ui->videoWidget->show();
+        auto convInfo = Utils::getConversationFromCallId(call.id);
+        if (!convInfo.uid.empty()) {
+            auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
+            auto contactName = Utils::bestNameForContact(contactInfo);
+            overlay_->setName(QString::fromStdString(contactName));
+        }
+        return;
+    }
+    default:
+        qDebug() << "slotCallStatusChanged: callId=" << QString::fromStdString(callId);
+        rendererMap_.erase(callId);
+        emit closing(callId);
+        break;
+    }
+    QObject::disconnect(timerConnection_);
 }
 
 void
