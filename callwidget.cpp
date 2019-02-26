@@ -638,6 +638,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
+    ui->videoWidget->pushRenderer(convInfo.callId);
 }
 
 void CallWidget::slotShowIncomingCallView(const std::string& accountId,
