@@ -210,6 +210,12 @@
     <ClCompile Include="downloadmanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="contactpicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contactpickeritemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -360,6 +366,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="runguard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="contactpicker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="contactpickeritemdelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -642,6 +654,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="updatedownloaddialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="contactpicker.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
