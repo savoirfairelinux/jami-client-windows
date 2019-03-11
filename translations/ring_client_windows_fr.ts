@@ -959,7 +959,7 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Recherche de contacts nouveaux ou existants</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -1029,7 +1029,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="562"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Rechercher dans les invitations reçues</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
@@ -1079,7 +1079,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../contactdialog.ui" line="33"/>
         <source>Enter a name...</source>
-        <translation type="unfinished"/>
+        <translation>Entrer un nom...</translation>
     </message>
 </context>
 <context>
@@ -1130,7 +1130,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceeditwidget.ui" line="36"/>
         <source>PushButton</source>
-        <translation type="unfinished"/>
+        <translation>PushButton</translation>
     </message>
 </context>
 <context>
@@ -1166,7 +1166,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Pour ajouter un nouvel appareil, entrer le mot de passe de votre compte:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1176,12 +1176,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
         <source>Enter</source>
-        <translation type="unfinished"/>
+        <translation>Entrer</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="365"/>
         <source>Exporting account on the network</source>
-        <translation type="unfinished"/>
+        <translation>Exporter le compte sur le réseau</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
@@ -1191,7 +1191,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
         <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Ce NIP ainsi que le mot de passe du compte doivent être saisis dans votre nouvel appareil dans les 10 prochaines minutes. </translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
@@ -1201,13 +1201,14 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Le mot de passe du compte est incorrect</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Quelque chose s&apos;est mal passée. 
+Veuillez réessayer plus tard.</translation>
     </message>
 </context>
 <context>
@@ -1302,7 +1303,14 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Pour associer cet appareil à un autre compte, vous devez d&apos;abord obtenir un NIP&lt;/span&gt;Pour cela, allez dans la gestion des comptes de l&apos;appareil contenant le compte voulu et sélectionnez le compte que vous souhaitez utiliser. 
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Allez à la tabulation&lt;span style=&quot; font-weight:600;&quot;&gt;Appareils&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choisissez&lt;span style=&quot; font-weight:600;&quot;&gt;Ajouter un appareil&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;Vous obtiendrez alors un NIP qui vous permettra  de terminer l&apos;opération. Ce NIP est seulement valide pour une durée de &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt; font-weight:600;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
@@ -1324,7 +1332,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(None)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1339,7 +1347,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Nom du profile</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1352,7 +1360,9 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Enregistre votre nom d&apos;utilisateur Jami.
+Ceci réserve ce nom de façon définitive et uniquement pour votre usage.
+Vos amis pourront vous appeler avec ce nom.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
@@ -1428,12 +1438,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Annuler la création/lien de compte</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1585"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>Bouton pour déclencher la création d&apos;un compte Jami ou association</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
@@ -1463,7 +1473,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Fichier d&apos;archive de compte Jami (*.gz); Tout fichier (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
@@ -1496,27 +1506,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Changer le mot de passe du compte</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Entrez le mot de passe actuel</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Entrez le nouveau mot de passe</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Confirmer le nouveau mot de passe</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Confirmer</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1526,12 +1536,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Le mot de passe a été modifié</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe actuel incorrect </translation>
     </message>
 </context>
 <context>
@@ -1562,7 +1572,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Fichiers images (JPG, JPEG, PNG)</translation>
     </message>
 </context>
 <context>
@@ -1612,27 +1622,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Enregistrer un nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Êtes-vous certain de vouloir enregistrer ce nom ? </translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Une fois associé à ce compte, cela ne peut être modifié.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Votre nouveau nom enregistré est:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Confirmer l&apos;enregistrement</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1642,22 +1652,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Le nom d&apos;utilisateur a été enregistré avec succès!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Quelque chose s&apos;est mal passée.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Veuillez réessayer plus tard</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Votre compte ne possède pas de nom enregistré d&apos;utilisateur </translation>
     </message>
 </context>
 <context>
@@ -1673,7 +1683,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Changer l&apos;image de l&apos;avatar</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1683,7 +1693,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Prendre une photo</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1693,7 +1703,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Choisir un fichier</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1708,7 +1718,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Fichiers images (JPG, JPEG, PNG, BMP)</translation>
     </message>
 </context>
 <context>

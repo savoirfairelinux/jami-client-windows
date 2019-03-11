@@ -704,33 +704,33 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Rregullime për Thirrjet</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Lejo Thirrje Prej Ortakësh Jo të Besuar</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Vetëpërgjigjiu Thirrjeve</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Aktivizo Zile Vetjake</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Shtoni një zile vetjake</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Shërbyes Emrash</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -740,7 +740,7 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Formësim OpenDHT-je</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
@@ -770,17 +770,17 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>pa fjalëkalim</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Kyç Privat</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Dëshmi AD</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
@@ -790,7 +790,7 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
         <source>        TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>        Adresë TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
@@ -800,22 +800,22 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>Adresë STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="812"/>
         <source>        TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>        Emër përdoruesi TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="824"/>
         <source>        TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>        Fjalëkalim TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Përdor UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -835,7 +835,7 @@ Jami është një software komunikimi të siguruar dhe të shpërndarë.</transl
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Kartela Audio (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -961,7 +961,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Gjeni një kontakt të ri ose ekzistues</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -1031,7 +1031,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../callwidget.cpp" line="562"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Kërkoni te ftesat tuaja të marra</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
@@ -1081,7 +1081,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../contactdialog.ui" line="33"/>
         <source>Enter a name...</source>
-        <translation type="unfinished"/>
+        <translation>Jepni një emër…</translation>
     </message>
 </context>
 <context>
@@ -1163,12 +1163,12 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Shtoni Një Pajisje të Re</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Që të shtoni një pajisje të re, jepni fjalëkalim për në llogarinë tuaj:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1183,7 +1183,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="365"/>
         <source>Exporting account on the network</source>
-        <translation type="unfinished"/>
+        <translation>Eksportim llogarie në rrjet</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
@@ -1193,7 +1193,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
         <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Ky pin dhe fjalëkalimi i llogarisë duhen dhënë te pajisja juaj brenda 5 minutash.</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
@@ -1203,13 +1203,14 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Fjalëkalimi për llogarinë tuaj qe i pasaktë</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Diç shkoi ters.
+Ju lutemi, riprovoni më vonë.</translation>
     </message>
 </context>
 <context>
@@ -1304,7 +1305,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Që të lidhni këtë pajisje me një tjetër llogari, së pari &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;lypset të merrni një kod PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;. Që të prodhoni kodin PIN:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Shkoni te &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;rregullimi Administrim llogarie&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; i një pajisje të mëparshme&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Zgjidhni &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;llogarinë Jami&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; që doni të përdoret&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Shkoni te skeda &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Pajisje&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;përzgjidhni &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Shtoni një pajisje&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Do të merrni PIN-in e nevojshëm për plotësimin e këtij formulari. PIN-i është i vlefshëm vetëm për &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minuta&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
@@ -1326,7 +1336,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Asnjë)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1341,7 +1351,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Emër profili</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1354,7 +1364,10 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Regjistroni emrin tuaj të përdoruesit.
+Kjo do të bëjë rezervimin e emrit të përdoruesit, që kështu vetëm ju mund ta përdorni.
+Shokët tuaj do të jenë në gjendje t’ju bëjnë thirrje me emrin tuaj të përdoruesit
+në vend se të përdorin ID-në tuaj.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
@@ -1430,12 +1443,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Anuloni krijim/lidhje llogarie</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1585"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>shtypni butoni që të anulohet krijimi ose lidhja e llogarisë</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
@@ -1465,7 +1478,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Kartela arkivi Jami (*.gz); Krejt kartelat (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
@@ -1498,27 +1511,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Ndryshoni Fjalëkalim Llogarie</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Jepni Fjalëkalimin e Tanishëm</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Jepni Fjalëkalimin e Ri</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Ripohoni Fjalëkalim të Ri</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Ripohoje</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1528,12 +1541,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Fjalëkalimi u Ndryshua Me Sukses</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Fjalëkalim i Tanishëm i Pasaktë</translation>
     </message>
 </context>
 <context>
@@ -1564,7 +1577,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Kartela Figurash (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1614,27 +1627,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Caktoni Emër të Regjistruar</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Jeni i sigurt se doni të regjistrohet ky emër?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Pasi të përshoqërohet me këtë llogari, s’mund të ndryshohet.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Emri juaj i ri i regjistruar do të jetë:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Ripohoni Regjistrimin</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1644,22 +1657,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Emri u regjistrua me sukses!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Diç shkoi ters.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Ju lutemi, riprovoni më vonë</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Llogaria juaj nuk ka ndonjë emër të regjistruar</translation>
     </message>
 </context>
 <context>
@@ -1675,7 +1688,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Ndryshoni Figurën e Avatarit Tuaj</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1685,7 +1698,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Bëni Foto</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1695,7 +1708,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Përzgjidhni Kartelë</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1705,12 +1718,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Hape Figurën</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Kartela Figurash (*.jpg *.jpeg *.png *.bmp)</translation>
     </message>
 </context>
 <context>
@@ -1739,7 +1752,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Audio / Video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1754,7 +1767,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Aktivizoni njoftime nga desktopi</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
@@ -1784,12 +1797,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Përherë Në Regjistrim</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Përditësime</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1799,7 +1812,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Kontrollo vetvetiu për përditësime çdo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
@@ -1809,7 +1822,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>ditë</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
@@ -1839,51 +1852,51 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Aktivizoje</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Shtypni këtu që të regjistroni një emër përdoruesi</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Ndryshoni Fjalëkalimin</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Eksportoje Llogarinë</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Fshije Llogarinë</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Pajisje të Lidhura</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Lidhni Një Pajisje Tjetër</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Kontakte të Bllokuara</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Rregullime të Mëtejshme Llogarie</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1893,7 +1906,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
@@ -1908,7 +1921,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Zgjidhni pajisje output-i</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
@@ -1943,63 +1956,63 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
         <source>Enter the displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Jepni emrin e shfaqur</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="391"/>
         <location filename="../settingswidget.cpp" line="393"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Emri i regjistruar s’duhet të përmbajë hapësira dhe duhet të jetë të paktën tre shkronja i gjatë</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Ky emër është zënë tashmë</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Ky emër i regjistruar është zënë tashmë</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Ky emër është i lirë</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Regjistro këtë emër</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Hiqe Pajisjen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Që të ripohoni heqjen e kësaj pajisje, jepni fjalëkalimin e kësaj llogarie</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Ju lutemi, ripohoni se doni të hiqet kjo pajisje</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Eksportoje Llogarinë Këtu</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Përzgjidhni Një Dosje Për Shkarkimet Tuaja</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Përzgjidhni Një Dosje Për Regjistrimet Tuaja</translation>
     </message>
 </context>
 <context>

@@ -64,7 +64,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="66"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Général</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="143"/>
@@ -341,7 +341,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1287"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Options avancées</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami est un logiciel libre de communication universel qui respecte la vie privée et l&apos;intimité de ses utilisateurs.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1229,7 +1229,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1267,7 +1267,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Créer un compte Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1282,7 +1282,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Lier cet appareil à un compte</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
@@ -1366,7 +1366,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Enregistrer un nom d&apos;utilisateur public</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
@@ -1731,7 +1731,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="298"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Général</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="342"/>

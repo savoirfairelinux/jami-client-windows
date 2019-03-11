@@ -266,7 +266,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Cambia password</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -581,7 +581,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Esporta sulla rete</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -627,7 +627,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -784,7 +784,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Connettività</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami è un software gratuito per la comunicazione universale che rispetta le libertà e la privacy dei suoi utenti.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1267,7 +1267,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Crea un account Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1311,7 +1311,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>O importa un file:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1407,7 +1407,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Generare il tuo account Jami ...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1603,7 +1603,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Account Jami</translation>
     </message>
 </context>
 <context>
@@ -1766,7 +1766,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Scarica la cartella</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="716"/>

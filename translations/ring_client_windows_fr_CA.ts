@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Vivre librement ou mourir </translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Le client Microsoft Windows pour Jami.
+Jami est un logiciel de communication sécurisé et distribué.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur public </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres du compte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -607,7 +608,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation> Pour associer un nouvel appareil à un compte Jami, vous exportez votre compte sur le réseau Jami. Cela générera un numéro NIP que vous devrez saisir dans votre nouvel appareil dans les 5 minutes. </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
@@ -622,7 +623,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>NIP généré pour le pairage</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -632,12 +633,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Le NIP devrait être saisi dans votre nouvel appareil dans les 5 minutes suivant sa création. Vous pouvez générer un nouveau NIP à tout moment. </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>Acceptez la gérération du NIP et bouton quitter</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -677,7 +678,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2346"/>
         <source>Private key password</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe de la clé privée </translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2435"/>
@@ -690,7 +691,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un compte</translation>
     </message>
 </context>
 <context>
@@ -703,33 +704,33 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres d&apos;appel</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation> Autoriser les appels d&apos;une source inconnue </translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Réponse automatique aux appels</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Activer une sonnerie personnalisée</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une sonnerie personnalisée</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Nom du serveur</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -739,12 +740,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration de l&apos;OpenDHT</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Activer le Proxy</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
@@ -769,22 +770,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>Aucun mot de passe</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Clé privée</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Certificat CA</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Connectivité</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -865,7 +866,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Bouton débannir un contact</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -893,7 +894,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami est un logiciel libre de communication universel qui respecte la vie privée et l&apos;intimité de ses utilisateurs.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1229,7 +1230,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1267,7 +1268,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Créer un compte Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1366,7 +1367,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Enregistrer un nom d&apos;utilisateur public</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
@@ -1687,7 +1688,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
         <source>Camera</source>
-        <translation type="unfinished"/>
+        <translation>Caméra</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>

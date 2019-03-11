@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami è un software gratuito per la comunicazione universale che rispetta le libertà e la privacy dei suoi utenti.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>

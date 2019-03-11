@@ -147,7 +147,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Bendros paskyros informacijos konfigūracija</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -277,7 +277,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Atsisakyti slaptažodžio pakeitimo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
@@ -327,7 +327,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Garso/vaizdo kodekų nuostatų konfigūracija</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -347,7 +347,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Išplėstinė paskyros konfigūracija</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -623,7 +623,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>Susiejimui skirtas sugeneruotas PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -691,7 +691,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti paskyrą</translation>
     </message>
 </context>
 <context>
@@ -704,7 +704,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Skambučio nustatymai</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
@@ -714,23 +714,23 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai atsiliepti į skambučius</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti tinkintą skambučio melodiją</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti tinkintą skambučio melodiją</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Vardų serveris</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -740,7 +740,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT konfigūracija</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
@@ -770,17 +770,17 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>nėra slaptažodžio</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Privatusis raktas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>LĮ liudijimas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
@@ -790,7 +790,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
         <source>        TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>        TURN adresas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
@@ -800,22 +800,22 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN adresas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="812"/>
         <source>        TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>        TURN naudotojo vardas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="824"/>
         <source>        TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>        TURN slaptažodis</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -835,7 +835,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Garso failai (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -889,7 +889,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../callwidget.ui" line="362"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Ieškoti kontakto</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="647"/>
@@ -902,7 +902,10 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+ Tai yra jūsų ID.
+Nukopijuokite jį ir dalinkitės juo su savo draugais!
+                                      </translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="800"/>
@@ -959,7 +962,7 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Rasti naują ar esamą kontaktą</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -999,17 +1002,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Pradėti vaizdo skambutį</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Pradėti garso skambutį</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="360"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Išvalyti pokalbį</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="367"/>
@@ -1019,7 +1022,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuoti kontaktą</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1079,7 +1082,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../contactdialog.ui" line="33"/>
         <source>Enter a name...</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite vardą...</translation>
     </message>
 </context>
 <context>
@@ -1087,22 +1090,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Paskyros ištrynimas</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="55"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Ar tikrai norite ištrinti šią paskyrą?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="144"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>Jeigu ši paskyra nebuvo eksportuota ar pridėta į kitą įrenginį, ji bus negrįžtamai prarasta.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="226"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinti paskyrą visiems laikams</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="232"/>
@@ -1112,7 +1115,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="269"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Atsisakyti paskyros ištrynimo</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="275"/>
@@ -1161,12 +1164,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują įrenginį</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Norėdami pridėti naują įrenginį, įveskite savo paskyros slaptažodį:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1191,7 +1194,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
         <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Šis PIN ir paskyros slaptažodis per 5 minutes turėtų būti įvesti jūsų įrenginyje.</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
@@ -1201,13 +1204,14 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų paskyros slaptažodis buvo neteisingas</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Kažkas nutiko.
+Vėliau bandykite dar kartą.</translation>
     </message>
 </context>
 <context>
@@ -1258,7 +1262,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="228"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Susikurkite Jami paskyrą</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="234"/>
@@ -1273,7 +1277,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Susiekite įrenginį</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="272"/>
@@ -1302,7 +1306,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Norėdami susieti šį įrenginį su kita paskyra, iš pradžių, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;turite gauti PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; kodą. Norėdami generuoti PIN kodą:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Ankstesniajame įrenginyje pereikite į &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;paskyros tvarkymo nustatymus&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Pasirinkite norimą naudoti &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami paskyrą&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Pereikite į &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Įrenginių&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; kortelę&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Pasirinkite &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Pridėti įrenginį&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Taip gausite šiai formai reikalingą PIN kodą. PIN galios tik &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minučių&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
@@ -1317,14 +1330,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Susieti iš eksportuotos paskyros archyvo failo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="559"/>
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Nėra)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1339,7 +1352,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profilio pavadinimas</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1352,7 +1365,10 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Užregistruokite savo naudotojo vardą.
+Tai rezervuos naudotojo vardą ir tokiu būdu tik jūs
+galėsite jį naudoti. Jūsų draugai galės jums skambinti,
+vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
@@ -1413,7 +1429,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Ankstesnis puslapis</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1545"/>
@@ -1443,7 +1459,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Kitas puslapis</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1631"/>
@@ -1463,7 +1479,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami archyvų failai (*.gz); Visi failai (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
@@ -1473,17 +1489,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Perkeliama jūsų Jami paskyra...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Importuojamas paskyros archyvas...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Kuriama jūsų Jami paskyra...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
@@ -1496,27 +1512,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Pakeisti paskyros slaptažodį</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite dabartinį slaptažodį</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite naują slaptažodį</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Pakartokite naują slaptažodį</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Patvirtinti</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1526,12 +1542,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis sėkmingai pakeistas</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Dabartinis slaptažodis neteisingas</translation>
     </message>
 </context>
 <context>
@@ -1552,7 +1568,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="129"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Nuotraukų budelės rodinys</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="91"/>
@@ -1562,7 +1578,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Paveikslų failai (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1588,23 +1604,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingsitemwidget.cpp" line="67"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Taisyti įrenginio pavadinimą</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="73"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Atsieti įrenginį nuo paskyros</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
-        <translation type="unfinished"/>
+        <translation>Atblokuoti kontaktą</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Jami paskyra</translation>
     </message>
 </context>
 <context>
@@ -1612,27 +1628,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Nustatyti registruotą vardą</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Ar tikrai norėtumėte užregistruoti šį vardą?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Susiejus jį su paskyra, jo daugiau nebegalėsite pakeisti.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų naujas registruotas vardas būtų:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Patvirtinti registraciją</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1642,22 +1658,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Vardas buvo sėkmingai užregistruotas!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Kažkas nutiko.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Vėliau bandykite dar kartą</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų paskyra neturi registruoto vardo</translation>
     </message>
 </context>
 <context>
@@ -1665,7 +1681,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti aplanką</translation>
     </message>
 </context>
 <context>
@@ -1673,7 +1689,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Pasikeisti avataro paveikslą</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1683,7 +1699,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Padaryti nuotrauką</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1693,7 +1709,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti failą</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1703,12 +1719,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Atverti paveikslą</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Paveikslų failai (*.jpg *.jpeg *.png *.bmp)</translation>
     </message>
 </context>
 <context>
@@ -1737,7 +1753,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Garsas / Vaizdas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1752,7 +1768,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti darbalaukio pranešimus</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
@@ -1767,7 +1783,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Atsiuntimų aplankas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
@@ -1782,12 +1798,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Visada įrašinėti</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Atnaujinimai</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1797,7 +1813,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai tikrinti ar yra atnaujinimų kas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
@@ -1807,7 +1823,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>d.</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
@@ -1837,51 +1853,51 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Rašykite, norėdami registruoti vardą</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Pakeisti slaptažodį</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Eksportuoti paskyrą</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinti paskyrą</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Susieti įrenginiai</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Susieti kitą įrenginį</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuoti kontaktai</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Išplėstiniai paskyros nustatymai</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1891,7 +1907,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofonas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
@@ -1947,57 +1963,57 @@ instead of using your ID.</source>
         <location filename="../settingswidget.cpp" line="391"/>
         <location filename="../settingswidget.cpp" line="393"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Registruotame varde negali būti tarpų ir jis privalo būti bent 3 raidžių ilgio</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Šis vardas jau yra užimtas</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Registruotas vardas jau užimtas</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Šis vardas yra prieinamas</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Registruoti šį vardą</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti įrenginį</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite šios paskyros slaptažodį, kad patvirtintumėte šio įrenginio šalinimą</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Patvirtinkite, kad norite pašalinti šį įrenginį</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Eksportuoti paskyrą čia</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite atsiuntimų aplanką</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite įrašų aplanką</translation>
     </message>
 </context>
 <context>
@@ -2025,7 +2041,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Įrašyti skambutį</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
