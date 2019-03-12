@@ -1,12 +1,10 @@
-﻿[cmdletbinding()]
-param (
-    [string]$daemonDir,
-    [string]$lrcDir
-);
+﻿write-host "copying runtime files..."
 
-write-host "copying runtime files..."
-
-$QtDir = "C:\Qt\5.9.4\msvc2017_64"
+$daemonDir = $args[1]
+$IrcDir = $args[3]
+$Version = $args[5]
+$QtDir = "C:\Qt\$Version\msvc2017_64"
+write-host $QtDir
 $ClientDir = split-path -parent $MyInvocation.MyCommand.Definition
 
 $OutDir = $ClientDir + "\x64\Release"
