@@ -98,6 +98,11 @@ set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --rea
 %WGET_CMD% https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 nuget restore %TOBUILD%
 msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release %MSBUILD_ARGS%
+SET ThisScriptsDirectory=%~dp0
+SET PowerShellScriptPath=%ThisScriptsDirectory%copy-runtime-files.ps1
+SET daemonDir=C:\Users\mzhang\Desktop\ring-project\daemon\
+SET lrcDir=C:\Users\mzhang\Desktop\ring-project\lrc
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File """"%PowerShellScriptPath%"""" -daemonDir """"%daemonDir%"""" -lrcDir """"%lrcDir%"""" -Version """"%Version%"""" ' -Verb RunAs}";
 goto cleanup
 
 :compileClient
