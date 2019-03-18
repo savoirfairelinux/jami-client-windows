@@ -784,7 +784,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Spojivost</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>

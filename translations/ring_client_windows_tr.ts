@@ -581,7 +581,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Ağda dışa aktar</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -784,7 +784,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Bağlanabilirlik</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami, kullanıcılarının özgürlüklerine ve gizliliğine önem veren, evrensel iletişim için özgür yazılımdır.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1267,7 +1267,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Bir Jami hesabı oluştur</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1407,7 +1407,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Jami hesabınız oluşturuluyor...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1603,7 +1603,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Jami hesabı </translation>
     </message>
 </context>
 <context>

@@ -627,7 +627,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
@@ -1741,7 +1741,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
         <source>System</source>
-        <translation type="unfinished"/>
+        <translation>Système</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="560"/>

@@ -1836,7 +1836,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
@@ -1851,7 +1851,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Exportera konto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>

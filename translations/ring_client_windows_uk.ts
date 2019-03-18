@@ -561,7 +561,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
         <source>Devices</source>
-        <translation type="unfinished"/>
+        <translation>Пристрої</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
@@ -647,7 +647,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Заблоковані контакти</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami - це вільне програмне забезпечення для будь-якого спілкування, яке поважає свободу та конфіденційність своїх користувачів.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
