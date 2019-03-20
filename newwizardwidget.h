@@ -20,6 +20,7 @@
 
 #include <QLabel>
 #include <QtConcurrent/QtConcurrent>
+#include <map>
 
 #include "lrcinstance.h"
 #include "navwidget.h"
@@ -38,7 +39,7 @@ public:
 
     using AccountInfo = Info;
 
-    enum WizardMode { CREATE, IMPORT, MIGRATE };
+    enum WizardMode { CREATE, IMPORT, MIGRATE, CREATESIP };
 
 private:
     enum NameRegistrationUIState { BLANK, INVALID, TAKEN, FREE, SEARCHING };
@@ -55,6 +56,8 @@ public:
 
     //UI Slots
 private slots:
+
+    void on_newSIPAccountButton_clicked();
     void on_existingPushButton_clicked();
     void on_newAccountButton_clicked();
     void on_nextButton_clicked();
@@ -90,15 +93,13 @@ private:
     QMetaObject::Connection registeredNameFoundConnection_;
     QString fileToImport_;
     QLabel* passwordStatusLabel_;
+    std::map<std::string, QString> input_para;
 
     void updateNameRegistrationUi(NameRegistrationUIState state);
     void changePage(QWidget* toPage);
     void setNavBarVisibility(bool visible, bool back=false);
     void validateWizardProgression();
-    void createRingAccount(const QString &displayName = QString(),
-                           const QString &password = QString(),
-                           const QString &pin = QString(),
-                           const QString &archivePath = QString());
+    void createAccount();
     void reportFailure();
     void processWizardInformations();
 };
