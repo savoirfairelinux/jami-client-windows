@@ -169,6 +169,12 @@ NewWizardWidget::on_newAccountButton_clicked()
     changePage(ui->createRingAccountPage);
 }
 
+void
+NewWizardWidget::on_newSIPAccountButton_clicked()
+{
+	changePage(ui->createRingSIPAccountPage);
+}
+
 void NewWizardWidget::changePage(QWidget* toPage)
 {
     if (toPage == ui->spinnerPage) {
@@ -194,7 +200,21 @@ void NewWizardWidget::changePage(QWidget* toPage)
             this, &NewWizardWidget::slotRegisteredNameFound);
         validateWizardProgression();
         ui->setAvatarWidget->startBooth();
-    } else if (toPage == ui->linkRingAccountPage) {
+    } else if (toPage == ui->createRingSIPAccountPage) {
+		ui->SIPusernameEdit->clear();
+		ui->SIPpasswordEdit->clear();
+		ui->SIPservernameEdit->clear();
+		ui->SIPfullNameEdit->setText(QString());
+		ui->SIPusernameEdit->setEnabled(true);
+		setNavBarVisibility(true);
+		//updateCustomUI();
+		registeredNameFoundConnection_ = connect(
+			&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
+			this, &NewWizardWidget::slotRegisteredNameFound);
+		//validateWizardProgression();
+		ui->nextButton->setEnabled(true);
+		ui->setSIPAvatarWidget->startBooth();
+	} else if (toPage == ui->linkRingAccountPage) {
         fileToImport_ = QString("");
         ui->fileImportBtn->setText(tr("(None)"));
         ui->pinEdit->clear();
@@ -238,22 +258,27 @@ NewWizardWidget::on_nextButton_clicked()
     if (curWidget == ui->createRingAccountPage) {
         wizardMode_ = WizardMode::CREATE;
         processWizardInformations();
-    } if (curWidget == ui->linkRingAccountPage) {
+    } else if (curWidget == ui->linkRingAccountPage) {
         wizardMode_ = WizardMode::IMPORT;
         processWizardInformations();
-    }
+	}
+	else if (curWidget == ui->createRingSIPAccountPage) {
+		wizardMode_ = WizardMode::CREATESIP;
+		processWizardInformations();
+	}
 }
 
 void
 NewWizardWidget::on_previousButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
-    ui->setAvatarWidget->stopBooth();
+	if (curWidget == ui->createRingAccountPage) { ui->setAvatarWidget->stopBooth(); }
+	if (curWidget == ui->createRingSIPAccountPage) { ui->setSIPAvatarWidget->stopBooth(); }
     disconnect(registeredNameFoundConnection_);
     lookupStatusLabel_->hide();
     passwordStatusLabel_->hide();
     if (curWidget == ui->createRingAccountPage ||
-        curWidget == ui->linkRingAccountPage) {
+        curWidget == ui->linkRingAccountPage || curWidget == ui->createRingSIPAccountPage) {
         changePage(ui->welcomePage);
     }
 }
@@ -285,6 +310,8 @@ NewWizardWidget::on_usernameEdit_textChanged(const QString &arg1)
 void
 NewWizardWidget::timeoutNameLookupTimer()
 {
+	if (wizardMode_ == WizardMode::CREATESIP) { return;  }
+
     if (ui->signUpCheckbox->isChecked() && !ui->usernameEdit->text().isEmpty()) {
         updateNameRegistrationUi(NameRegistrationUIState::SEARCHING);
         NameDirectory::instance().lookupName(nullptr, QString(), registeredName_);
@@ -379,90 +406,150 @@ NewWizardWidget::validateWizardProgression()
 void
 NewWizardWidget::processWizardInformations()
 {
-    QString alias, password, archivePin;
-
     switch (wizardMode_) {
     case WizardMode::CREATE:
         ui->progressLabel->setText(tr("Generating your Jami account..."));
-        alias = ui->fullNameEdit->text();
-        password = ui->passwordEdit->text();
+		input_para["alias"] = ui->fullNameEdit->text();
+		input_para["password"] = ui->passwordEdit->text();
         ui->fullNameEdit->clear();
         ui->passwordEdit->clear();
         ui->confirmPasswordEdit->clear();
         break;
     case WizardMode::IMPORT:
         ui->progressLabel->setText(tr("Importing account archive..."));
-        password = ui->importPasswordEdit->text();
-        archivePin = ui->pinEdit->text();
+		input_para["password"] = ui->importPasswordEdit->text();
+		input_para["archivePin"] = ui->pinEdit->text();
         ui->pinEdit->clear();
         ui->importPasswordEdit->clear();
         break;
     case WizardMode::MIGRATE:
         ui->progressLabel->setText(tr("Migrating your Jami account..."));
         break;
+	case WizardMode::CREATESIP:
+		ui->progressLabel->setText(tr("Generating your SIP account..."));
+		if (ui->SIPfullNameEdit->text().isEmpty()) { input_para["alias"] = "SIP"; }
+		else { input_para["alias"] = ui->SIPfullNameEdit->text(); }
+		if (ui->SIPservernameEdit->text().isEmpty() || 
+			ui->SIPusernameEdit->text().isEmpty()   ||
+			ui->SIPpasswordEdit->text().isEmpty()) { break; }
+		input_para["hostname"] = ui->SIPservernameEdit->text();
+		input_para["username"] = ui->SIPusernameEdit->text();
+		input_para["password"] = ui->SIPpasswordEdit->text();
+		break;
     }
 
+	input_para["archivePath"] = fileToImport_;
+	if (input_para.find("archivePin") == input_para.end()) { input_para["archivePin"] = "";  }
+
     changePage(ui->spinnerPage);
-    createRingAccount(alias, password, archivePin, fileToImport_);
+    createAccount();
 
     Utils::CreateStartupLink();
 }
 
 void
-NewWizardWidget::createRingAccount(const QString &displayName,
-    const QString &password,
-    const QString &pin,
-    const QString &archivePath)
+NewWizardWidget::createAccount()
 {
-    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-        [this](const std::string& accountId) {
-            //set default ringtone
-            auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-            if (confProps.username.empty())
-                return;
-            confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
-            LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-            connect(LRCInstance::editableAccountModel(),
-                &lrc::api::NewAccountModel::nameRegistrationEnded,
-                [this] {
-                    lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-                    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
-                    emit NavigationRequested(ScreenEnum::CallScreen);
-                    emit LRCInstance::instance().accountOnBoarded();
-                });
-            LRCInstance::editableAccountModel()->registerName(
-                LRCInstance::getCurrAccId(),
-                "",
-                registeredName_.toStdString()
-            );
-            if (ui->setAvatarWidget->hasAvatar()) {
-                LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
-            }
-        });
-    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
-        [this](const std::string& accountId) {
-            Q_UNUSED(accountId);
-            qWarning() << Q_FUNC_INFO << ": " << "accountRemoved";
-            reportFailure();
-        });
-    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::invalidAccountDetected,
-        [this](const std::string& accountId) {
-            Q_UNUSED(accountId);
-            qWarning() << Q_FUNC_INFO << ": " << "invalidAccountDetected";
-            reportFailure();
-        });
-    QtConcurrent::run(
-        [=] {
-            LRCInstance::accountModel().createNewAccount(
-                lrc::api::profile::Type::RING,
-                displayName.toStdString(),
-                archivePath.toStdString(),
-                password.toStdString(),
-                pin.toStdString()
-            );
-        });
-    changePage(ui->spinnerPage);
-    repaint();
+	Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
+		[this](const std::string& accountId) {
+		//set default ringtone
+		auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+		if (confProps.username.empty())
+			return;
+		confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+
+		if (wizardMode_ == WizardMode::CREATESIP) {
+
+			// set SIP details
+			if (input_para.find("hostname") == input_para.end()) {
+			
+				confProps.hostname = "192.168.50.31";
+				confProps.username = "691";
+				confProps.password = "fokwT0Q0zQ7J";
+			
+			}
+			else {
+			
+				confProps.hostname = input_para.find("hostname")->second.toStdString();
+				confProps.username = input_para.find("username")->second.toStdString();
+				confProps.password = input_para.find("password")->second.toStdString();
+			
+			}
+
+		}
+
+		LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+
+		// RING SPECIFIC
+		if (wizardMode_ == WizardMode::CREATE) {
+
+			connect(LRCInstance::editableAccountModel(),
+				&lrc::api::NewAccountModel::nameRegistrationEnded,
+				[this] {
+				lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+				LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
+				emit NavigationRequested(ScreenEnum::CallScreen);
+				emit LRCInstance::instance().accountOnBoarded();
+			});
+			LRCInstance::editableAccountModel()->registerName(
+				LRCInstance::getCurrAccId(),
+				"",
+				registeredName_.toStdString()
+			);
+
+		}
+		// END RING SPECIFIC
+
+		if (ui->setSIPAvatarWidget->hasAvatar() && wizardMode_ == WizardMode::CREATESIP) {
+			LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
+		}
+		else if (ui->setAvatarWidget->hasAvatar() && wizardMode_ == WizardMode::CREATE) {
+			LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+		} 
+	});
+	Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
+		[this](const std::string& accountId) {
+		Q_UNUSED(accountId);
+		qWarning() << Q_FUNC_INFO << ": " << "accountRemoved";
+		reportFailure();
+	});
+	Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::invalidAccountDetected,
+		[this](const std::string& accountId) {
+		Q_UNUSED(accountId);
+		qWarning() << Q_FUNC_INFO << ": " << "invalidAccountDetected";
+		reportFailure();
+	});
+	QtConcurrent::run(
+		[this] {
+
+		if (wizardMode_ == WizardMode::CREATE) {
+
+			LRCInstance::accountModel().createNewAccount(
+				lrc::api::profile::Type::RING,
+				input_para.find("alias")->second.toStdString(),
+				input_para.find("archivePath")->second.toStdString(),
+				input_para.find("password")->second.toStdString(),
+				input_para.find("archivePin")->second.toStdString()
+			);
+
+		}
+		else {
+		
+			LRCInstance::accountModel().createNewAccount(
+				lrc::api::profile::Type::SIP,
+				input_para.find("alias")->second.toStdString(),
+				input_para.find("archivePath")->second.toStdString(),
+				"",
+				"",
+				"http://192.168.50.31/"
+			);
+			QThread::sleep(3);
+			emit NavigationRequested(ScreenEnum::CallScreen);
+		
+		}
+	});
+	changePage(ui->spinnerPage);
+	repaint();
 }
 
 void
