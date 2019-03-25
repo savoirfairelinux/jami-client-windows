@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>Zásluhy</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Žij svobodně nebo umři</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -89,7 +89,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Veřejné registrované uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +126,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení účtu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -151,7 +151,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazené jméno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -226,12 +226,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Zadat staré heslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Staré heslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -266,7 +266,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Změnit heslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -744,7 +744,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Povolit proxy</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
@@ -784,7 +784,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Připojení</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami je svobodný software určený k univerzální komunikaci, který respektuje svobody a práva uživatelů.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -947,7 +947,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="196"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Ukázat pozvání</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="199"/>
@@ -1018,7 +1018,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Blokovat kontakt</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1229,7 +1229,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1267,7 +1267,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit účet Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1311,7 +1311,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Nebo zavést soubor:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1407,7 +1407,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Vytváří se váš účet Jami…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1603,7 +1603,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Účet Jami</translation>
     </message>
 </context>
 <context>
@@ -1766,7 +1766,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Složka pro stahování</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
@@ -1836,7 +1836,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Povolit</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
@@ -1851,7 +1851,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Vyvést účet</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>

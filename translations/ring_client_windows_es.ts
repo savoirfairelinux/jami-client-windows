@@ -1762,7 +1762,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="560"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casilla para habilitar notificaciones</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
@@ -1807,7 +1807,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
         <source>Autamatic update checks checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casilla para chequeos automáticos de actualizaciones</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
@@ -1817,7 +1817,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Selector de intervalo de días entre chequeos de actualizaciones</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="930"/>

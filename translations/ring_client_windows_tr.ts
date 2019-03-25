@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Özgür yaşa yada Öl</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Jami için Microsoft Windows istemcisi.
+Jami güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Kamusal kayıtlı kullanıcı adı</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Hesap Ayarları</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -146,12 +147,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Genel hesap bilgileri yapılandırması</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
         <source>Displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Görüntülenen ad</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
@@ -171,12 +172,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı adını blok zincir düğmesine kaydet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
         <source>Register on blockchain</source>
-        <translation>Kayıt zinciri üzerinde kaydet</translation>
+        <translation>Blok zincire kaydet</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
@@ -191,22 +192,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>SIP kullanıcı adı girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>SIP parola girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>SIP vekil alan adı girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>SIP sesli posta numarası</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
@@ -226,12 +227,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation type="unfinished"/>
+        <translation>Eski parolayı girin</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
         <source>Old Password</source>
-        <translation type="unfinished"/>
+        <translation>Eski Parola</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
@@ -241,7 +242,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Yeni parolayı girin</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -256,17 +257,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Giriş onayı</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Yeni parola doğrulama</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Parolayı değiştir</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -281,7 +282,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Parola değiştirme ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
@@ -316,7 +317,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>Zil sesi dosyası seçici</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -326,7 +327,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Ses/görüntü çözücü tercihlerini yapılandırma</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -346,7 +347,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Gelişmiş hesap yapılandırma</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -421,7 +422,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>STUN onay kutucuğunu kullan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -437,7 +438,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>TURN onay kutucuğunu kullan</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -447,22 +448,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>TURN sunucusu alan adı girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>TURN sunucusu kullanıcı adı girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>TURN sunucusu parola girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>TURN sunucusu Yeki alanı girişi</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -521,7 +522,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Hesap güvenliği yapılandırması</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -571,7 +572,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Aygıt düğmesi ekle</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -622,7 +623,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>Bağlantı için oluşturulan PIN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -690,7 +691,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Hesap Ekle</translation>
     </message>
 </context>
 <context>
@@ -703,33 +704,33 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Arama Ayarları</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Güvenilmeyen Eşlerden Gelen Aramalara İzin Ver</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Aramaları otomatik yanıtla</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Özel zil sesini etkinleştir</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Özel bir zil sesi ekle</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Ad Sunucusu</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -739,12 +740,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT Yapılandırması</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Vekil sunucuyu etkinleştir</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="358"/>
@@ -769,17 +770,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>parola yok</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Özel Anahtar</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA sertifikası</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
@@ -789,7 +790,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
         <source>        TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>        TURN Adresi</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
@@ -799,22 +800,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN Adresi</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="812"/>
         <source>        TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>        TURN Kullanıcı adı</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="824"/>
         <source>        TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>        TURN Parolası</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>UpnP kullan</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -834,7 +835,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Ses Dosyaları (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -855,7 +856,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Yasaklı kişiler listesi</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -878,7 +879,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="178"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Konuşmaları göster</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="181"/>
@@ -901,17 +902,19 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+ Bu sizin kimliğiniz.
+Kopyalayın ve arkadaşlarınızla paylaşın!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="800"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Ring kimliği QR kodunu göster</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="851"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Ring kimliği düğmesini paylaş</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="909"/>
@@ -927,17 +930,17 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="1178"/>
         <location filename="../callwidget.ui" line="1428"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>en iyi ad</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1202"/>
         <source>best Id</source>
-        <translation type="unfinished"/>
+        <translation>en iyi kimlik</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1728"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>Anasayfaya dön düğmesi</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1937"/>
@@ -947,18 +950,18 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="196"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Davetleri göster</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="199"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Davetler</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Yeni veya mevcut bir kişiyi bulun</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -973,7 +976,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1583"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Gelen arama düğmesini yoksay</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1533"/>
@@ -988,7 +991,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1274"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Giden aramayı iptal et</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1299"/>
@@ -998,12 +1001,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Görüntülü arama başlat</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Sesli arama başlat</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="360"/>
@@ -1018,7 +1021,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Kişiyi engelle</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1028,17 +1031,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="562"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Aldığınız davetiyeleri arayın</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami&apos;de bana ulaşın</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Kimliğim :</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="293"/>
@@ -1086,12 +1089,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Hesap silme</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="55"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Aşağıdaki hesabı gerçekten silmek istiyor musunuz?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="144"/>
@@ -1101,7 +1104,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="226"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Hesabı kalıcı olarak sil</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="232"/>
@@ -1111,7 +1114,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="269"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Hesap silmeyi iptal et</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="275"/>
@@ -1160,12 +1163,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Yeni bir Aygıt Ekle</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Yeni bir aygıt eklemek için hesap parolasını girin:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1180,7 +1183,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="365"/>
         <source>Exporting account on the network</source>
-        <translation type="unfinished"/>
+        <translation>Ağda hesabı dışa aktar</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
@@ -1200,13 +1203,14 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Hesabınızın parolası yanlış</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Bir şeyler yanlış gitt.
+Lütfen daha sonra yeniden deneyin.</translation>
     </message>
 </context>
 <context>
@@ -1229,7 +1233,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1242,7 +1246,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Hoşgeldin Etiketi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="147"/>
@@ -1252,12 +1256,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="179"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Hoşgeldin Logosu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="228"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Jami hesabı düğmesi oluştur</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="234"/>
@@ -1311,7 +1315,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>veya bir dosya içe aktar</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1323,7 +1327,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Hiçbiri)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1338,7 +1342,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profil adı</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1371,7 +1375,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Herkese açık kullanıcı adı düzenleme</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1240"/>
@@ -1412,7 +1416,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Önceki sayfa düğmesi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1545"/>
@@ -1442,7 +1446,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Sonraki sayfa düğmesi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1631"/>
@@ -1462,12 +1466,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami arşiv dosyaları (*.gz); Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Hesabınızın taşınması gerekiyor. Parolanızı girin.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
@@ -1477,12 +1481,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Hesap arşivi içe aktarılıyor...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Jami hesabınız oluşturuluyor...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
@@ -1495,27 +1499,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Hesap Parolasını Değiştir</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Şimdiki Parolayı Girin</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Yeni Parolayı Girin</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Yeni Parolayı Doğrulayın</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Onayla</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1525,12 +1529,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Parola Başarıyla Değiştirildi</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Kullanılan Parola Hatalı</translation>
     </message>
 </context>
 <context>
@@ -1551,7 +1555,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="129"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Fotoğraf kabini görüntüsü</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="91"/>
@@ -1561,7 +1565,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Resim Dosyaları (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1587,17 +1591,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingsitemwidget.cpp" line="67"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Aygıt Adını Düzenle</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="73"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Aygıtın Hesaptan Bağlantısını Kaldır</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
-        <translation type="unfinished"/>
+        <translation>Kişinin Engelini Kaldır</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="35"/>
@@ -1611,12 +1615,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Kayıtlı Adı Ayarla</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Bu adı kaydetmek istediğinizden emin misiniz?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
@@ -1626,12 +1630,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Yeni kayıtlı adınız şu olabilir:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Kaydı Onayla</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1641,22 +1645,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Ad başarıyla kaydedildi!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Bazı şeyler yanlış gitti.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Lütfen daha sonra yeniden deneyin</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Hesabınızda kayıtlı bir ad yok</translation>
     </message>
 </context>
 <context>
@@ -1672,7 +1676,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Avatar Resminizi Değiştirin</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1682,7 +1686,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Fotoğraf Çek</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1692,7 +1696,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Bir Dosya Seç</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1702,12 +1706,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Görseli Aç</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Resim Dosyaları (*.jpg *.jpeg *.png *.bmp)</translation>
     </message>
 </context>
 <context>
@@ -1736,7 +1740,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Ses / Görüntü</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1746,12 +1750,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="560"/>
         <source>enable notifications checkbox</source>
-        <translation type="unfinished"/>
+        <translation>bildirimleri etkinleştirme kutucuğu</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Masaüstü bildirimlerini etkinleştir</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
@@ -1766,7 +1770,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>İndirme klasörü</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
@@ -1781,12 +1785,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Devamlı kaydediliyor</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Güncellemeler</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1806,7 +1810,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>gün</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
@@ -1836,51 +1840,51 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Etkin</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Bir kullanıcı adı kaydetmek için buraya yazın</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Parolayı Değiştir</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Hesabı Dışa Aktar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Hesabı Sil</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Bağlı Aygıtlar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Diğer aygıtı bağla</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Engellenmiş kişiler</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Gelişmiş Hesap ayarları</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1890,12 +1894,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Ses giriş aygıtı seçici</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2717"/>
@@ -1905,7 +1909,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Çıkış aygıtını seç</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
@@ -1920,7 +1924,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2872"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Görüntü aygıtı seçici</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2891"/>
@@ -1930,7 +1934,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2932"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>Görüntü aygıtı çözünürlük seçici</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3074"/>
@@ -1946,42 +1950,42 @@ instead of using your ID.</source>
         <location filename="../settingswidget.cpp" line="391"/>
         <location filename="../settingswidget.cpp" line="393"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Kayıtlı bir isim hiç boşluk bırakmamalı ve en az üç harf uzunluğunda olmalıdır.</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Bu ad önceden alınmış</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Bu kayıtlı ad önceden alınmış</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Bu ad kullanılabilir</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Bu adı kaydet</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Aygıtı Kaldır</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Bu aygıtın kaldırılmasını onaylamak için bu hesabın şifresini girin.</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Lütfen bu aygıtı kaldırma isteğinizi onaylayın</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
@@ -1991,12 +1995,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>İndirmeleriniz İçin Bir Klasör Seçin</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Kayıtlarınız İçin Bir Klasör Seçin</translation>
     </message>
 </context>
 <context>
@@ -2024,7 +2028,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Çağrıyı kaydet</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
