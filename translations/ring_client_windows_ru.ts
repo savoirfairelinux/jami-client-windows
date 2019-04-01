@@ -2034,7 +2034,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Название метки</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="390"/>

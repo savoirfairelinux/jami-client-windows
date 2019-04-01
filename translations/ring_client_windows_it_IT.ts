@@ -1013,12 +1013,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="367"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Rimuovi contatto</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Blocca contatto</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>

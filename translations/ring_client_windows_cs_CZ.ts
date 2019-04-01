@@ -31,7 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Klient Microsoft Windows pro Jami.
+Jami je bezpečný a distribuovaný komunikační program.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -146,7 +147,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Obecné nastavení údajů o účtu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -156,12 +157,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="191"/>
         <source>Displayed alias input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání zobrazené přezdívky</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="302"/>
         <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation type="unfinished"/>
+        <translation>Adresa názvu serveru pro DHT bootstrap nebo SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
@@ -186,27 +187,27 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání adresy (URL) jmenné služby</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání uživatelského jména pro SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="491"/>
         <source>SIP password input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání hesla pro SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="537"/>
         <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání adresy (URL) proxy pro SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="580"/>
         <source>SIP voicemail number</source>
-        <translation type="unfinished"/>
+        <translation>Číslo hlasové schránky SIP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
@@ -221,7 +222,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation type="unfinished"/>
+        <translation>Řádek pro zadání starého hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
@@ -236,12 +237,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="669"/>
         <source>New password text input</source>
-        <translation type="unfinished"/>
+        <translation>Textové zadání nového hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Zadejte nové heslo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -251,17 +252,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="705"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Textové zadání potvrzení hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="711"/>
         <source>Input confirmation </source>
-        <translation type="unfinished"/>
+        <translation>Potvrzení zadání</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Potvrzení nového hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -276,12 +277,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="783"/>
         <source>Cancel password change button</source>
-        <translation type="unfinished"/>
+        <translation>Tlačítko pro zrušení změny hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Mění se heslo…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
@@ -306,7 +307,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="955"/>
         <source>Play ringtone button</source>
-        <translation type="unfinished"/>
+        <translation>Tlačítko pro přehrání vyzváněcí melodie</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="958"/>
@@ -316,7 +317,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>Výběr souboru s vyzváněcí melodií</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -326,7 +327,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení voleb pro kodeky zvuku/obrazu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -346,7 +347,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1290"/>
         <source>Account advanced configuration</source>
-        <translation type="unfinished"/>
+        <translation>Pokročilé nastavení účtu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1336"/>
@@ -421,7 +422,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
         <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Použít zaškrtávací okénko STUN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1672"/>
@@ -437,7 +438,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Použít zaškrtávací okénko TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -447,17 +448,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání adresy (URL) serveru TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
         <source>TURN server username input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání uživatelského jména pro server TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání hesla pro server TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
@@ -571,7 +572,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Přidat tlačítko zařízení</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -581,12 +582,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Vyvést na síti</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Textové zadání hesla</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
@@ -729,7 +730,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Název serveru</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -1323,7 +1324,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(žádný)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1338,7 +1339,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Název profilu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1356,12 +1357,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Zaškrtávací okénko pro veřejné uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1152"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Zaškrtnutí okénka, pokud chce uživatel veřejné uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
@@ -1371,7 +1372,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Upravení veřejného uživatelského jména</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1240"/>
@@ -1381,12 +1382,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1306"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Zadání textu hesla</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1312"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Zadání textu hesla</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1318"/>
@@ -1397,7 +1398,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1384"/>
         <location filename="../newwizardwidget.ui" line="1390"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Textové zadání potvrzení hesla</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1396"/>
@@ -1412,12 +1413,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Předchozí strana</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1545"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Tlačítko pro vrácení se v průvodci o stranu zpět</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1548"/>
@@ -1427,12 +1428,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit vytváření/propojování účtu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1585"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>Tlačítko pro zrušení vytváření nebo propojování účtu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
@@ -1442,12 +1443,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1625"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Další strana</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1631"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Tlačítko pro přechod na další stranu průvodce</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1634"/>
@@ -1462,27 +1463,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Archivní soubory Jami (*.gz); Všechny soubory (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Váš účet musí být převeden. Zadejte své heslo.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Převádí se váš účet Jami…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Zavádí se archiv s účtem…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Vytváří se váš účet Jami…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
@@ -1495,27 +1496,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Změnit heslo k účtu</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Zadejte nynější heslo</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Zadejte nové heslo</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Potvrďte nové heslo</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Potvrdit</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1525,12 +1526,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Heslo úspěšně změněno</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Nynější heslo je nesprávné</translation>
     </message>
 </context>
 <context>
@@ -1561,7 +1562,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázkové soubory (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1587,17 +1588,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingsitemwidget.cpp" line="67"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Upravit název zařízení</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="73"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Odpojit zařízení od účtu</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
-        <translation type="unfinished"/>
+        <translation>Odblokovat kontakt</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="35"/>
@@ -1611,27 +1612,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Nastavit registrované jméno</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Jste si jistý, že chcete zaregistrovat toto jméno?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Jakmile už bude jednou přiřazeno k tomuto účtu, nepůjde změnit.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Vaše nově zaregistrované jméno je:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Potvrdit registraci</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1641,22 +1642,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>Jméno bylo úspěšně zaregistrováno!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Něco se určitě podělalo.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Zkuste to, prosím, později znovu.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Váš účet nemá zaregistrované jméno</translation>
     </message>
 </context>
 <context>
@@ -1664,7 +1665,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat složku</translation>
     </message>
 </context>
 <context>
@@ -1672,7 +1673,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Změnit profilový obrázek</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1682,7 +1683,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Udělat obrázek</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1692,7 +1693,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat soubor</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1702,12 +1703,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít obrázek</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázkové soubory (*.jpg *.jpeg *.png *.bmp)</translation>
     </message>
 </context>
 <context>
@@ -1736,7 +1737,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Zvuk/Obraz</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1781,12 +1782,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Vždy nahrávat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Aktualizace</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1846,7 +1847,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Změnit heslo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
@@ -1856,31 +1857,31 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Odstranit účet</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Připojená zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Připojit další zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Blokovat kontakty</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Pokročilá nastavení účtu</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1890,12 +1891,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Výběr vstupního zvukového zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2717"/>
@@ -1905,7 +1906,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat název výstupního zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
@@ -1920,7 +1921,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2872"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Výběr obrazového zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2891"/>
@@ -1930,7 +1931,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2932"/>
         <source>Video device resolution selector</source>
-        <translation type="unfinished"/>
+        <translation>Výběr rozlišení obrazového zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3074"/>
@@ -1940,7 +1941,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
         <source>Enter the displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Zadejte zobrazené jméno</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="391"/>
@@ -1951,27 +1952,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Toto uživatelské jméno je již zabráno</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Toto registrované jméno je již zabráno</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Toto jméno je dostupné</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Zaregistrovat toto jméno</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Odstranit zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
@@ -1981,22 +1982,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Potvrďte, prosím, že chcete odstranit toto zařízení</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Vyvést účet sem</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Vyberte složku pro vaše stahování</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Vyberte složku pro vaše nahrávání</translation>
     </message>
 </context>
 <context>
@@ -2024,12 +2025,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Nahrávat vše</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
         <source>Name label</source>
-        <translation>Jmenný štítek</translation>
+        <translation>Název štítku</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="390"/>

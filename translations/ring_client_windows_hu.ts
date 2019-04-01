@@ -362,7 +362,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1372"/>
         <source>Registration timeout selector spinbox</source>
-        <translation>Bejegyeztetés időtúllépés választó spinbox</translation>
+        <translation>Bejegyeztetés időtúllépés választó pörgésdobozt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1397"/>
@@ -372,12 +372,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1418"/>
         <source>Local Port:</source>
-        <translation>Helyi port:</translation>
+        <translation>Helyi kikötő:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation>helyi port választó spinbox</translation>
+        <translation>helyi kikötő választó pörgésdobozt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
@@ -392,12 +392,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1546"/>
         <source>personalise address and ports radio button</source>
-        <translation>személyre szabott cím és portok rádió gombja</translation>
+        <translation>személyre szabott cím és kikötők rádió gombja</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1552"/>
         <source>Set published address and port:</source>
-        <translation>Nyilvános cím és port megadása:</translation>
+        <translation>Nyilvános cím és kikötő megadása:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1578"/>
@@ -412,12 +412,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1612"/>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Kikötő</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1631"/>
         <source>port selector spinbox</source>
-        <translation>port választó spinbox</translation>
+        <translation>kikötő választó pörgésdobozt</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1666"/>
@@ -483,7 +483,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="1914"/>
         <source>Audio RTP Port Range</source>
-        <translation>Hang RTP port korlát</translation>
+        <translation>Hang RTP-kikötő tartomány</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1944"/>
@@ -495,7 +495,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation>Alsó határok az audió RTP port tartomány választóhoz</translation>
+        <translation>Alsó határok az audió RTP-kikötő tartomány választóhoz</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -507,12 +507,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
         <location filename="../accountdetails.ui" line="1994"/>
         <location filename="../accountdetails.ui" line="2134"/>
         <source>higher boundary for audio RTP port range selector</source>
-        <translation>Felső határok az audió RTP port tartomány választóhoz</translation>
+        <translation>Felső határok az audió RTP-kikötő tartomány választóhoz</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2054"/>
         <source>Video RTP Port Range</source>
-        <translation>Videó RTP port korlát</translation>
+        <translation>Videó RTP-kikötő tartomány</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2186"/>
