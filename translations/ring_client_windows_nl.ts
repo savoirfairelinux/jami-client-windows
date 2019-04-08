@@ -15,23 +15,24 @@
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation>met-dank-aan-knop</translation>
+        <translation>knop met dank aan</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation>Credits</translation>
+        <translation>Met dank aan</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Live Free or Die</source>
-        <translation type="unfinished"/>
+        <translation>Live Free or Die</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>De Microsoft Windows-cliënt voor Jami.
+Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -89,7 +90,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Openbaar geregistreerde gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -126,7 +127,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="832"/>
         <source>Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Accountinstellingen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="862"/>
@@ -221,12 +222,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
         <source>Old password input line</source>
-        <translation>Invoerregel oud wachtwoord</translation>
+        <translation>Invoerregel oude wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="641"/>
         <source>Input old password</source>
-        <translation>Voer je oude wachtwoord in</translation>
+        <translation>Voer uw oude wachtwoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="656"/>
@@ -241,7 +242,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation>Voer je nieuwe wachtwoord in</translation>
+        <translation>Voer uw nieuwe wachtwoord in</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -261,7 +262,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation>Bevestiging nieuw wachtwoord</translation>
+        <translation>Bevestiging nieuwe wachtwoord</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -581,7 +582,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Exporteren op het netwerk</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -607,7 +608,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Om een nieuw apparaat aan uw Jami-account toe te voegen, dient u uw account te exporteren op het netwerk. Dit zal een pincode genereren die u binnen 5 minuten op uw nieuwe apparaat dient in te voeren.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
@@ -617,7 +618,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation>Je gegenereerde pincode:</translation>
+        <translation>Uw gegenereerde pincode:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
@@ -632,12 +633,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation>Je dient deze pincode op je nieuwe apparaat binnen de 5 minuten in te voeren. Je kan op elk moment een nieuwe code genereren.</translation>
+        <translation>U dient deze pincode op uw nieuwe apparaat binnen 5 minuten in te voeren. U kunt op elk moment een nieuwe code genereren.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation>Knop pin genereren aanvaarden en afsluiten</translation>
+        <translation>Knop pin genereren accepteren en afsluiten</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -690,7 +691,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Account toevoegen</translation>
     </message>
 </context>
 <context>
@@ -703,33 +704,33 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Oproepinstellingen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Oproepen van onvertrouwde gebruikers toestaan</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Oproepen automatisch beantwoorden</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste beltoon inschakelen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Voeg een aangepaste beltoon toe</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Naamserver</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -739,7 +740,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT-configuratie</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
@@ -769,27 +770,27 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="483"/>
         <source>no password</source>
-        <translation type="unfinished"/>
+        <translation>geen wachtwoord</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Privésleutel</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA-certificaat</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Connectiviteit</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
         <source>        TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>        TURN-adres</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="773"/>
@@ -799,22 +800,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="800"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN-adres</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="812"/>
         <source>        TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>        TURN-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="824"/>
         <source>        TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>        TURN-wachtwoord</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>UPnP gebruiken</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -834,7 +835,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Audiobestanden (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -860,7 +861,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
         <source>Banned ID</source>
-        <translation>Geblokkeerde ID</translation>
+        <translation>Geblokkeerd ID</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
@@ -878,7 +879,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="178"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Gesprekken tonen</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="181"/>
@@ -893,7 +894,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami is vrije software voor universele communicatie, die de vrijheden en privacy van haar gebruikers eerbiedigt.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -901,7 +902,9 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+ Dit is uw ID. 
+Kopieer en deel het met uw vrienden!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="800"/>
@@ -927,12 +930,12 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="1178"/>
         <location filename="../callwidget.ui" line="1428"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>beste naam</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1202"/>
         <source>best Id</source>
-        <translation type="unfinished"/>
+        <translation>beste ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1728"/>
@@ -942,28 +945,28 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1937"/>
         <source>Add to contacts</source>
-        <translation>Aan contacten toevoegen</translation>
+        <translation>Toevoegen aan contacten</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="196"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Uitnodigingen tonen</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="199"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Uitnodigingen</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Zoek een nieuw of bestaand contact</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
         <source>Wants to talk to you!</source>
-        <translation>Wil met je praten!</translation>
+        <translation>Wil met u praten!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1511"/>
@@ -998,12 +1001,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Video-oproep starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Audio-oproep starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="360"/>
@@ -1028,17 +1031,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="562"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Zoek naar uw ontvangen uitnodigingen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Contacteer me op Jami</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Mijn ID is:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="293"/>
@@ -1086,22 +1089,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Accountverwijdering</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="55"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Weet u zeker dat u het volgende account wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="144"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>Als dit account nog niet geëxporteerd is of nog niet toegevoegd is aan een ander apparaat, zal het onherroepelijk verloren gaan</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="226"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Account voorgoed verwijderen</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="232"/>
@@ -1111,7 +1114,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="269"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Accountverwijdering annuleren</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="275"/>
@@ -1129,7 +1132,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceeditwidget.ui" line="36"/>
         <source>PushButton</source>
-        <translation type="unfinished"/>
+        <translation>PushKnop</translation>
     </message>
 </context>
 <context>
@@ -1137,7 +1140,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation>Aanvaarden</translation>
+        <translation>Accepteren</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
@@ -1160,12 +1163,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Voeg een nieuw apparaat toe</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Voer uw accountwachtwoord in om een nieuw apparaat toe te voegen:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1175,22 +1178,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="279"/>
         <source>Enter</source>
-        <translation type="unfinished"/>
+        <translation>Invoeren</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="365"/>
         <source>Exporting account on the network</source>
-        <translation type="unfinished"/>
+        <translation>Account wordt geëxporteerd op het netwerk</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
         <source>Your generated pin:</source>
-        <translation>Je gegenereerde pincode:</translation>
+        <translation>Uw gegenereerde pincode:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
         <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>U dient deze pincode en het accountwachtwoord binnen 5 minuten op uw nieuwe apparaat in te voeren.</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
@@ -1200,13 +1203,14 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
         <source>Your account password was incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Uw accountwachtwoord is verkeerd</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="92"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Er ging iets mis.
+Probeer het later opnieuw.</translation>
     </message>
 </context>
 <context>
@@ -1229,7 +1233,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -1257,17 +1261,17 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="228"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop Jami-account aanmaken</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="234"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor starten van aanmaken van Jami-account na druk op knop</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Een Jami-account aanmaken</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1287,7 +1291,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Link this device to an existing account</source>
-        <translation>Dit apparaat aan een bestaande account koppelen</translation>
+        <translation>Dit apparaat aan een bestaand account koppelen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="399"/>
@@ -1301,12 +1305,21 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Om dit apparaat aan een ander account te koppelen, dient u eerst &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;een pincode te verkrijgen&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;. Om de pincode te genereren:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Ga naar de &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Accountbeheerinstellingen&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; van een vorig apparaat&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Kies het &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami-account&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; dat u wilt gebruiken&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Ga naar het tabblad &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Apparaten&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Selecteer &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Een apparaat toevoegen&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;U zult de pincode krijgen die u nodig heeft om dit proces te voltooien. De pincode is slechts &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minuten&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt; geldig.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
         <source>Enter your pin:</source>
-        <translation>Voer je pincode in:</translation>
+        <translation>Voer uw pincode in:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
@@ -1323,7 +1336,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="86"/>
         <location filename="../newwizardwidget.cpp" line="227"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(geen)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="635"/>
@@ -1338,7 +1351,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profielnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1351,7 +1364,10 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Registreer uw gebruikersnaam.
+Dit zal de gebruikersnaam registreren, zodat enkel u ze kunt gebruiken.
+Uw vrienden zullen u kunnen bellen met uw gebruikersnaam
+in plaats van uw Ring-ID.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1149"/>
@@ -1376,7 +1392,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1240"/>
         <source>Choose your username</source>
-        <translation>Kies je gebruikersnaam</translation>
+        <translation>Kies uw gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1306"/>
@@ -1407,7 +1423,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Uw Jami-account wordt aangemaakt…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1427,12 +1443,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Aanmaken/koppelen van account annuleren</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1585"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>trekker voor annuleren van aanmaken of verwijderen van account</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1588"/>
@@ -1462,17 +1478,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami-archiefbestanden (*.gz); Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Je account moet gemigreerd worden. Voer je wachtwoord in.</translation>
+        <translation>Uw account moet gemigreerd worden. Voer uw wachtwoord in.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Uw Jami-account wordt gemigreerd…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
@@ -1482,7 +1498,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Uw Jami-account wordt aangemaakt…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
@@ -1495,27 +1511,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Accountwachtwoord wijzigen</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Voer huidig wachtwoord in</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Voer nieuw wachtwoord in</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Bevestig nieuw wachtwoord</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Bevestigen</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="155"/>
@@ -1525,12 +1541,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.cpp" line="90"/>
         <source>Password Changed Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord gewijzigd</translation>
     </message>
     <message>
         <location filename="../passworddialog.cpp" line="105"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Huidige wachtwoord is verkeerd</translation>
     </message>
 </context>
 <context>
@@ -1561,7 +1577,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="93"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Afbeeldingsbestanden (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1587,23 +1603,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingsitemwidget.cpp" line="67"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Apparaatnaam bewerken</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="73"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Apparaat ontkoppelen van account</translation>
     </message>
     <message>
         <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
-        <translation type="unfinished"/>
+        <translation>Contact deblokkeren</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Jami-account</translation>
     </message>
 </context>
 <context>
@@ -1611,27 +1627,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="29"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Stel geregistreerde naam in</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="93"/>
         <source>Are you sure you would like to register this name?</source>
-        <translation type="unfinished"/>
+        <translation>Weet u zeker dat u deze naam wilt registreren?</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="130"/>
         <source>Once associated to this account, it cannot be changed.</source>
-        <translation type="unfinished"/>
+        <translation>Eenmaal geassocieerd met dit account, kan deze niet meer gewijzigd worden</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="167"/>
         <source>Your new registered name would be:</source>
-        <translation type="unfinished"/>
+        <translation>Uw nieuwe geregistreerde naam wordt:</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="283"/>
         <source>Confirm Registration</source>
-        <translation type="unfinished"/>
+        <translation>Registratie bevestigen</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="315"/>
@@ -1641,22 +1657,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../regnamedialog.ui" line="453"/>
         <source>The name has been successfully registered!</source>
-        <translation type="unfinished"/>
+        <translation>De naam is met succes geregistreerd!</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="512"/>
         <source>Something went wrong.</source>
-        <translation type="unfinished"/>
+        <translation>Er ging iets mis.</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="549"/>
         <source>Please try again later</source>
-        <translation type="unfinished"/>
+        <translation>Probeer het later opnieuw</translation>
     </message>
     <message>
         <location filename="../regnamedialog.ui" line="602"/>
         <source>Your account does not have a registered name</source>
-        <translation type="unfinished"/>
+        <translation>Uw account heeft geen geregistreerde naam</translation>
     </message>
 </context>
 <context>
@@ -1672,7 +1688,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="32"/>
         <source>Change Your Avatar Image</source>
-        <translation type="unfinished"/>
+        <translation>Wijzig uw avatar</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="134"/>
@@ -1682,7 +1698,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="153"/>
         <source>Take Picture</source>
-        <translation type="unfinished"/>
+        <translation>Foto maken</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="169"/>
@@ -1692,7 +1708,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer een bestand</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1702,12 +1718,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation>Afbeelding openen</translation>
     </message>
     <message>
         <location filename="../setavatardialog.cpp" line="143"/>
         <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation type="unfinished"/>
+        <translation>Afbeeldingsbestanden (*.jpg *.jpeg *.png *.bmp)</translation>
     </message>
 </context>
 <context>
@@ -1736,7 +1752,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="342"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Audio/video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="524"/>
@@ -1751,7 +1767,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="566"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Bureaubladmeldingen inschakelen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
@@ -1781,12 +1797,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="829"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Altijd opnemen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="858"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="897"/>
@@ -1796,7 +1812,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch controleren op updates elke</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
@@ -1806,7 +1822,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="930"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>dagen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
@@ -1836,51 +1852,51 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Inschakelen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Typ hier om een gebruikersnaam te registreren</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1934"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Wachtwoord wijzigen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Account exporteren</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Account verwijderen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2125"/>
         <location filename="../settingswidget.cpp" line="543"/>
         <location filename="../settingswidget.cpp" line="572"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Gekoppelde apparaten</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2185"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Een ander apparaat koppelen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2277"/>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Geblokkeerde contacten</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Geavanceerde accountinstellingen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2611"/>
@@ -1890,7 +1906,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Microfoon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
@@ -1905,7 +1921,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2752"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Kies het uitvoerapparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2809"/>
@@ -1940,63 +1956,63 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
         <source>Enter the displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Voer de getoonde naam in</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="391"/>
         <location filename="../settingswidget.cpp" line="393"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Een geregistreerde naam mag geen spaties bevatten, en moet minstens drie tekens lang zijn</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="400"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Deze naam is reeds in gebruik</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="402"/>
         <source>This registered name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Deze geregistreerde naam is reeds in gebruik</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="409"/>
         <source>This name is available</source>
-        <translation type="unfinished"/>
+        <translation>Deze naam is beschikbaar</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="411"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Deze naam registreren</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Apparaat verwijderen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Voer het wachtwoord van dit account in om het verwijderen van dit apparaat te bevestigen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="500"/>
         <source>Please confirm that you wish to remove this device</source>
-        <translation type="unfinished"/>
+        <translation>Bevestig dat u dit apparaat wilt verwijderen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Account hier exporteren</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer een map voor uw downloads</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="809"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Kies een map voor uw opnamen</translation>
     </message>
 </context>
 <context>

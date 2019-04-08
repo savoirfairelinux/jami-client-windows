@@ -172,7 +172,7 @@ Jami je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Zaregistrovat uživatelské jméno na blockchainu</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
@@ -212,12 +212,12 @@ Jami je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Zaškrtávací okénko pro automatické přijetí volání</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
         <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Zaškrtávací okénko pro UPnP povoleno</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="632"/>
@@ -287,7 +287,7 @@ Jami je bezpečný a distribuovaný komunikační program.</translation>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Zaškrtávací okénko pro povolení hovoru s neznámým uživatelem</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
