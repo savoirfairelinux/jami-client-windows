@@ -13,6 +13,7 @@
 
 !include "MUI2.nsh"
 
+!define MUI_ICON "jami.ico"
 !define MUI_WELCOMEPAGE
 !define MUI_LICENSEPAGE
 !define MUI_DIRECTORYPAGE
@@ -196,17 +197,10 @@ section "install"
         WriteRegStr HKCR "ring" "URL Protocol" "$\"$\""
         WriteRegStr HKCR "ring\DefaultIcon" "" "$\"$INSTDIR\Jami.exe,1$\""
         WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Jami.exe$\" $\"%1$\""
-        # vcredist install (this check may not work if the vc_redist is uninstalled by the user as
-        # uninstallation does not remove the REG key
-        ${If} ${RunningX64}
-            ReadRegStr $1 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Bld"
-            StrCmp $1 27012 vcredist_installed
-        ${Else}
-            ReadRegStr $1 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x86" "Bld"
-            StrCmp $1 27012 vcredist_installed
-        ${EndIf}
+        
+        # force vc_redist for now
         ExecWait "vc_redist.x64.exe /install /norestart"
-        vcredist_installed:
+        delete "vc_redist.x64.exe"
 sectionEnd
 
 # Uninstaller
@@ -246,6 +240,7 @@ section "uninstall"
         rmDir "$SMPROGRAMS\${COMPANYNAME}"
 
         # Remove files
+        delete $INSTDIR\vc_redist.x64.exe
         delete $INSTDIR\Jami.exe
         delete $INSTDIR\jami.ico
         delete $INSTDIR\*.dll
