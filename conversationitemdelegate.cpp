@@ -136,16 +136,15 @@ ConversationItemDelegate::paint(QPainter* painter
         );
     switch (type) {
     case profile::Type::RING:
+    case profile::Type::SIP:
     case profile::Type::TEMPORARY:
-        paintRingConversationItem(painter, option, rect, index);
+        paintConversationItem(painter, option, rect, index);
         break;
     case profile::Type::PENDING:
         paintRingInviteConversationItem(painter, option, rect, index);
         break;
-    case profile::Type::SIP:
-        break;
     default:
-        paintRingConversationItem(painter, option, rect, index);
+        paintConversationItem(painter, option, rect, index);
         break;
     }
 }
@@ -160,10 +159,10 @@ ConversationItemDelegate::sizeHint(const QStyleOptionViewItem& option,
 }
 
 void
-ConversationItemDelegate::paintRingConversationItem(QPainter* painter,
-                                                    const QStyleOptionViewItem& option,
-                                                    const QRect& rect,
-                                                    const QModelIndex& index) const
+ConversationItemDelegate::paintConversationItem(QPainter* painter,
+                                                const QStyleOptionViewItem& option,
+                                                const QRect& rect,
+                                                const QModelIndex& index) const
 {
     Q_UNUSED(option);
     QFont font(painter->font());
@@ -351,14 +350,4 @@ ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
         idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectName2.width());
         painter->drawText(rectName2, Qt::AlignVCenter | Qt::AlignLeft, idStr);
     }
-}
-
-void
-ConversationItemDelegate::paintSIPConversationItem(QPainter* painter,
-                                                   const QStyleOptionViewItem& option,
-                                                   const QModelIndex& index) const
-{
-    Q_UNUSED(painter);
-    Q_UNUSED(option);
-    Q_UNUSED(index);
 }
