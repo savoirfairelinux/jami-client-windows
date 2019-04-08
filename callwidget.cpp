@@ -351,25 +351,25 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
                 selectConversation(*conversation, *convModel);
             }
         });
+    // clear conversation
+        auto clearConversationAction = new QAction(tr("Clear conversation"), this);
+    menu.addAction(clearConversationAction);
+    connect(clearConversationAction, &QAction::triggered,
+        [convUid]() {
+            LRCInstance::getCurrentConversationModel()->clearHistory(convUid);
+        });
+    // remove contact
+    auto removeContactAction = new QAction(tr("Remove contact"), this);
+    menu.addAction(removeContactAction);
+    connect(removeContactAction, &QAction::triggered,
+        [convUid]() {
+            LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
+        });
 
     if (contact.profileInfo.type == lrc::api::profile::Type::RING) {
         // separator
         menu.addSeparator();
 
-        // clear conversation
-        auto clearConversationAction = new QAction(tr("Clear conversation"), this);
-        menu.addAction(clearConversationAction);
-        connect(clearConversationAction, &QAction::triggered,
-            [convUid]() {
-                LRCInstance::getCurrentConversationModel()->clearHistory(convUid);
-            });
-        // remove contact
-        auto removeContactAction = new QAction(tr("Remove contact"), this);
-        menu.addAction(removeContactAction);
-        connect(removeContactAction, &QAction::triggered,
-            [convUid]() {
-                LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
-            });
         // block contact
         auto blockContactAction = new QAction(tr("Block contact"), this);
         menu.addAction(blockContactAction);
