@@ -73,13 +73,35 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->displayNameLineEdit->setAlignment(Qt::AlignHCenter);
     ui->displayNameLineEdit->setPlaceholderText(tr("Enter the displayed name"));
 
+	//display name SIP
+	ui->displaySIPNameLineEdit->setAlignment(Qt::AlignHCenter);
+
     setSelected(Button::accountSettingsButton);
 
     ui->currentRegisteredID->setReadOnly(true);
     ui->currentRegisteredID->setStyleSheet("border : 0px;");
 
-    ui->currentRingID->setReadOnly(true);
+	//SIP User Name
+	ui->usernameSIP->setReadOnly(true);
+	ui->usernameSIP->setStyleSheet("border : 0px;");
 
+    ui->currentRingID->setReadOnly(true);
+	
+	//SIP hostname
+	ui->hostnameSIP->setReadOnly(true);
+
+	//SIP Avatar
+	avatarSIPSize_ = ui->currentSIPAccountAvatar->width();
+	ui->currentSIPAccountAvatar->setIconSize(QSize(avatarSIPSize_, avatarSIPSize_));
+	QRegion avatarSIPClickableRegion(-1, -1,
+		ui->currentSIPAccountAvatar->width() + 2, ui->currentSIPAccountAvatar->height() + 2, QRegion::Ellipse);
+	ui->currentSIPAccountAvatar->setMask(avatarSIPClickableRegion);
+
+	//SIP Advanced Setting initilization
+	ui->advancedAccountSettingsSIPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
+	ui->blockedContactsSIPBtn->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
+
+	//Ring Avatar
     avatarSize_ = ui->currentAccountAvatar->width();
 
     ui->currentAccountAvatar->setIconSize(QSize(avatarSize_, avatarSize_));
@@ -107,7 +129,12 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->scrollArea->verticalScrollBar()->setEnabled(true);
     ui->scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
 
+	ui->scrollSIPArea->verticalScrollBar()->setEnabled(true);
+	ui->scrollSIPArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
+
     ui->advancedSettingsWidget->setVisible(false);
+
+	ui->advancedSIPSettingsWidget->setVisible(false);
 
     ui->containerWidget->setVisible(false);
 }
@@ -164,7 +191,10 @@ SettingsWidget::setSelected(Button sel)
         Video::PreviewManager::instance().stopPreview();
 
         if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
-        ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
+		if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+			ui->stackedWidget->setCurrentWidget(ui->currentSIPAccountSettingsScrollWidget);
+		}
+		else { ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget); }
         if (pastButton_ == Button::generalSettingsButton) {
             ui->accountSettingsButton->setChecked(true);
             ui->generalSettingsButton->setChecked(false);
@@ -211,7 +241,19 @@ SettingsWidget::setSelected(Button sel)
 void
 SettingsWidget::updateAccountInfoDisplayed()
 {
-    ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
+	ui->usernameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username ));
+	ui->hostnameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).hostname ));
+
+	// if no username name is found for account
+	if ((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username.empty()) {
+		ui->usernameSIP->setReadOnly(false);
+	}
+	else {
+		ui->usernameSIP->setReadOnly(true);
+		//setRegNameUi(RegName::BLANK);pppppppppppppppppppppppppppppppppppppp
+	}
+
+	ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
     ui->currentRingID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
 
 // if no registered name is found for account
@@ -223,19 +265,29 @@ SettingsWidget::updateAccountInfoDisplayed()
         setRegNameUi(RegName::BLANK);
     }
 
+	//Sip Avator set
+	ui->currentSIPAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
+		scaledToHeight(avatarSize_, Qt::SmoothTransformation));
+
+	//Ring Avator set
     ui->currentAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
         scaledToHeight(avatarSize_, Qt::SmoothTransformation));
 
     ui->accountEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
+	ui->accountSIPEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
 
     ui->displayNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
+	ui->displaySIPNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
 
     updateAndShowDevicesSlot();
+	//updateAndShowDevicesSlot(); pppppppppppppppppp
     bannedContactsShown_ = false;
     if (!LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts().size()){
         ui->blockedContactsBtn->hide();
+		ui->blockedContactsSIPBtn->hide();
     } else {
         ui->blockedContactsBtn->show();
+		ui->blockedContactsSIPBtn->show();
     }
 }
 
