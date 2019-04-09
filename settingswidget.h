@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -24,6 +25,7 @@
 #include "lrcinstance.h"
 
 #include "advancedsettingswidget.h"
+#include "advancedsipsettingwidget.h"
 #include "bannedlistmodel.h"
 
 #include "linkdevwidget.h"
@@ -69,7 +71,12 @@ private:
 
     Ui::SettingsWidget* ui;
 
-    // *************************  Account Settings  *************************
+    // *************************  SIP Account/Account Settings  *************************
+
+    lrc::api::account::ConfProperties_t confProps_;
+
+    bool showOrHide_{false};
+    void showhideButtonClicked();
     void passwordClicked();
     void avatarClicked();
 
@@ -84,7 +91,12 @@ private:
     bool advancedSettingsDropped_ = false;
     bool bannedContactsShown_ = false;
 
+    AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
+    QScrollArea* scrollSIPArea_;
+    bool advancedSIPSettingsDropped_ = false;
+
     int avatarSize_;
+    int avatarSIPSize_;
 
     void setRegNameUi(RegName stat);
     bool regNameBtn_ = false;
@@ -109,6 +121,7 @@ private slots:
     void setAccEnableSlot(int state);
     void delAccountSlot();
 
+    void toggleAdvancedSIPSettings();
     void toggleAdvancedSettings();
     void toggleBannedContacts();
     void exportAccountSlot();

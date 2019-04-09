@@ -45,7 +45,8 @@ QWidget#smartListOuterWidget {
 }
 
 QPushButton#btnConversations, QPushButton#btnInvites,
-QPushButton#btnExportAccount, QPushButton#btnDeletAccount {
+QPushButton#btnExportAccount, QPushButton#btnDeletAccount,
+QPushButton#btnSIPDeletAccount {
     border-radius: 0px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -60,12 +61,13 @@ QPushButton#btnExportAccount, QPushButton#btnDeletAccount {
 }
 
 QPushButton#btnConversations:hover, QPushButton#btnInvites:hover,
-QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover {
-    background-color: rgb(237, 237, 237);
-    border-top: 2px solid rgb(237, 237, 237);
-    border-right: 2px solid rgb(237, 237, 237);
-    border-bottom: 2px solid rgb(237, 237, 237);
-    border-left: 2px solid rgb(237, 237, 237);
+QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover,
+QPushButton#btnSIPDeletAccount:hover {
+    background-color: rgb(188, 185, 184);
+    border-top: 2px solid rgb(188, 185, 184);
+    border-right: 2px solid rgb(188, 185, 184);
+    border-bottom: 2px solid rgb(188, 185, 184);
+    border-left: 2px solid rgb(188, 185, 184);
 }
 
 QPushButton#btnConversations:checked, QPushButton#btnInvites:checked,
