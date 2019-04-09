@@ -61,7 +61,8 @@ HEADERS += aboutdialog.h \
             shmclient.h \
             videooverlay.h \
             utils.h \
-            webchathelpers.h
+            webchathelpers.h \
+            advancedsipsettingwidget.h
 FORMS += contactdialog.ui \
             videoview.ui \
             animatedoverlay.ui \
@@ -83,7 +84,8 @@ FORMS += contactdialog.ui \
             advancedsettingswidget.ui \
             callwidget.ui \
             settingswidget.ui \
-            videooverlay.ui
+            videooverlay.ui \
+            advancedsipsettingwidget.ui
 SOURCES += aboutdialog.cpp \
             bannedcontactswidget.cpp \
             idlabel.cpp \
@@ -128,5 +130,6 @@ SOURCES += aboutdialog.cpp \
             videooverlay.cpp \
             utils.cpp \
             videoview.cpp \
-            webchathelpers.cpp
+            webchathelpers.cpp \
+            advancedsipsettingwidget.cpp
 RESOURCES += ressources.qrc

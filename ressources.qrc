@@ -76,5 +76,7 @@
     <file>images/icons/round-error-24px.svg</file>
     <file>images/icons/round-save_alt-24px.svg</file>
     <file>images/jami_eclipse_spinner.gif</file>
+    <file>images/icons/showHide.PNG</file>
+    <file>images/icons/showHideTwo.PNG</file>
   </qresource>
 </RCC>
