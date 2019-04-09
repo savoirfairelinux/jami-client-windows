@@ -1,9 +1,10 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony L�onard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com> 
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -59,6 +60,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent),
     ui(new Ui::SettingsWidget),
     scrollArea_(new QScrollArea(this)),
+	scrollSIPArea_(new QScrollArea(this)),
     deviceModel_(&Video::DeviceModel::instance()),
     gif(new QMovie(":/images/ajax-loader.gif"))
 {
@@ -69,45 +71,80 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->btnExitSettings->setIconSize(QSize(24, 24));
     ui->btnExitSettings->setIcon(QPixmap(":/images/icons/round-close-24px.svg"));
 
-    // display name (aka alias)
-    ui->displayNameLineEdit->setAlignment(Qt::AlignHCenter);
-    ui->displayNameLineEdit->setPlaceholderText(tr("Enter the displayed name"));
+	//Show hide button
+	QPixmap pixmap(":/images/icons/showHide.PNG");
+	ui->showhideButton->setIcon(QIcon(pixmap));
+	ui->showhideButton->setIconSize(pixmap.rect().size());
 
-    setSelected(Button::accountSettingsButton);
+	//Show Password
+	ui->passSIPlineEdit->setEchoMode(QLineEdit::Password);
+	confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+	ui->passSIPlineEdit->setText(QString::fromUtf8(confProps_.password.c_str()));
+	//display name SIP
+	ui->displaySIPNameLineEdit->setAlignment(Qt::AlignHCenter);
 
-    ui->currentRegisteredID->setReadOnly(true);
-    ui->currentRegisteredID->setStyleSheet("border : 0px;");
+	setSelected(Button::accountSettingsButton);
 
-    ui->currentRingID->setReadOnly(true);
+	//SIP User Name
+	ui->usernameSIP->setReadOnly(true);
+	ui->usernameSIP->setStyleSheet("border : 0px;");
 
-    avatarSize_ = ui->currentAccountAvatar->width();
+	//SIP hostname
+	ui->hostnameSIP->setReadOnly(true);
 
-    ui->currentAccountAvatar->setIconSize(QSize(avatarSize_, avatarSize_));
+	//SIP Advanced Setting initilization
+	ui->advancedAccountSettingsSIPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
 
-    // create ellipse-selectable avatar image
-    QRegion avatarClickableRegion(-1, -1,
-        ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
-    ui->currentAccountAvatar->setMask(avatarClickableRegion);
+	//SIP Avatar
+	avatarSIPSize_ = ui->currentSIPAccountAvatar->width();
+	ui->currentSIPAccountAvatar->setIconSize(QSize(avatarSIPSize_, avatarSIPSize_));
+	QRegion avatarSIPClickableRegion(-1, -1,
+		ui->currentSIPAccountAvatar->width() + 2, ui->currentSIPAccountAvatar->height() + 2, QRegion::Ellipse);
+	ui->currentSIPAccountAvatar->setMask(avatarSIPClickableRegion);
 
-    ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
-    ui->linkDevPushButton->setIcon(QPixmap(":/images/icons/round-add-24px.svg"));
-    ui->blockedContactsBtn->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
+	ui->scrollSIPArea->verticalScrollBar()->setEnabled(true);
+	ui->scrollSIPArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
+	ui->advancedSIPSettingsWidget->setVisible(false);
 
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    if (!accountList.size()) {
-        Utils::oneShotConnect(&LRCInstance::instance(),
-            &LRCInstance::accountOnBoarded,
-            [this]() {
-                setConnections();
-            });
-    } else {
-        setConnections();
-    }
+	// display name (aka alias)
+	ui->displayNameLineEdit->setAlignment(Qt::AlignHCenter);
+	ui->displayNameLineEdit->setPlaceholderText(tr("Enter the displayed name"));
 
-    ui->scrollArea->verticalScrollBar()->setEnabled(true);
-    ui->scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
+	ui->currentRegisteredID->setReadOnly(true);
+	ui->currentRegisteredID->setStyleSheet("border : 0px;");
 
-    ui->advancedSettingsWidget->setVisible(false);
+	ui->currentRingID->setReadOnly(true);
+
+	//Ring Avatar
+	avatarSize_ = ui->currentAccountAvatar->width();
+
+	ui->currentAccountAvatar->setIconSize(QSize(avatarSize_, avatarSize_));
+
+	// create ellipse-selectable avatar image
+	QRegion avatarClickableRegion(-1, -1,
+		ui->currentAccountAvatar->width() + 2, ui->currentAccountAvatar->height() + 2, QRegion::Ellipse);
+	ui->currentAccountAvatar->setMask(avatarClickableRegion);
+
+	ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
+	ui->linkDevPushButton->setIcon(QPixmap(":/images/icons/round-add-24px.svg"));
+	ui->blockedContactsBtn->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
+
+	ui->scrollArea->verticalScrollBar()->setEnabled(true);
+	ui->scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 10px; }");
+
+	ui->advancedSettingsWidget->setVisible(false);
+
+	auto accountList = LRCInstance::accountModel().getAccountList();
+	if (!accountList.size()) {
+		Utils::oneShotConnect(&LRCInstance::instance(),
+			&LRCInstance::accountOnBoarded,
+			[this]() {
+			setConnections();
+		});
+	}
+	else {
+		setConnections();
+	}
 
     ui->containerWidget->setVisible(false);
 }
@@ -128,6 +165,10 @@ SettingsWidget::leaveSettingsSlot()
     if (advancedSettingsDropped_) {
         toggleAdvancedSettings();
     }
+
+	if (advancedSIPSettingsDropped_) {
+		toggleAdvancedSIPSettings();
+	}
 
     Video::PreviewManager::instance().stopPreview();
 
@@ -163,14 +204,18 @@ SettingsWidget::setSelected(Button sel)
     case Button::accountSettingsButton:
         Video::PreviewManager::instance().stopPreview();
 
-        if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
-        ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
+		if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+			ui->stackedWidget->setCurrentWidget(ui->currentSIPAccountSettingsScrollWidget);
+			if (advancedSIPSettingsDropped_) { toggleAdvancedSIPSettings(); }
+		}
+		else { ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget); }
         if (pastButton_ == Button::generalSettingsButton) {
             ui->accountSettingsButton->setChecked(true);
             ui->generalSettingsButton->setChecked(false);
             break;
         }
         else {
+			if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
             ui->accountSettingsButton->setChecked(true);
             ui->avSettingsButton->setChecked(false);
             break;
@@ -211,10 +256,21 @@ SettingsWidget::setSelected(Button sel)
 void
 SettingsWidget::updateAccountInfoDisplayed()
 {
-    ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
+	ui->usernameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username ));
+	ui->hostnameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).hostname ));
+
+	// if no SIP username name is found for account
+	if ((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username.empty()) {
+		ui->usernameSIP->setReadOnly(false);
+	}
+	else {
+		ui->usernameSIP->setReadOnly(true);
+	}
+
+	ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
     ui->currentRingID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
 
-// if no registered name is found for account
+	// if no registered name is found for account
     if (LRCInstance::getCurrentAccountInfo().registeredName.empty()) {
         ui->currentRegisteredID->setReadOnly(false);
     }
@@ -223,12 +279,19 @@ SettingsWidget::updateAccountInfoDisplayed()
         setRegNameUi(RegName::BLANK);
     }
 
+	//Sip Avator set
+	ui->currentSIPAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
+		scaledToHeight(avatarSize_, Qt::SmoothTransformation));
+
+	//Ring Avator set
     ui->currentAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
         scaledToHeight(avatarSize_, Qt::SmoothTransformation));
 
     ui->accountEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
+	ui->accountSIPEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
 
     ui->displayNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
+	ui->displaySIPNameLineEdit->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.alias));
 
     updateAndShowDevicesSlot();
     bannedContactsShown_ = false;
@@ -244,6 +307,52 @@ SettingsWidget::passwordClicked()
 {
     PasswordDialog passwdDialog(this);
     passwdDialog.exec();
+}
+
+void 
+SettingsWidget::showhideButtonClicked() {
+
+	if (showOrHide_) {
+	
+		ui->passSIPlineEdit->setEchoMode(QLineEdit::Password);
+		QPixmap pixmaptwo(":/images/icons/showHide.PNG");
+		ui->showhideButton->setIcon(QIcon(pixmaptwo));
+		ui->showhideButton->setIconSize(pixmaptwo.rect().size());
+	
+	} else{
+
+		ui->passSIPlineEdit->setEchoMode(QLineEdit::Normal);
+		QPixmap pixmap(":/images/icons/showHideTwo.PNG");
+		ui->showhideButton->setIcon(QIcon(pixmap));
+		ui->showhideButton->setIconSize(pixmap.rect().size());
+
+	}
+	showOrHide_ = !showOrHide_;
+
+}
+
+
+void
+SettingsWidget::toggleAdvancedSIPSettings() {
+
+	if (advancedSIPSettingsDropped_) {
+		ui->advancedAccountSettingsSIPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
+		ui->scrollBarSIPLabel->show();
+		ui->advancedSIPSettingsWidget->setVisible(false);
+	}
+	else {
+		ui->advancedAccountSettingsSIPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_up-24px.svg"));
+		ui->scrollBarSIPLabel->hide();
+		ui->advancedSIPSettingsWidget->setVisible(true);
+		ui->advancedSIPSettingsWidget->updateAdvancedSIPSettings();
+		QTimer::singleShot(50, this,
+			[this] {
+			auto top = ui->advancedAccountSettingsSIPButton->frameGeometry().top();
+			ui->scrollSIPArea->verticalScrollBar()->setSliderPosition(top);
+		});
+	}
+	advancedSIPSettingsDropped_ = !advancedSIPSettingsDropped_;
+
 }
 
 void
@@ -284,7 +393,16 @@ void
 SettingsWidget::resizeEvent(QResizeEvent* event)
 {
     QWidget::resizeEvent(event);
-    scrollArea_->resize(ui->currentAccountSettingsScrollWidget->width(), this->height());
+	if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+	
+		scrollSIPArea_->resize(ui->currentSIPAccountSettingsScrollWidget->width(), this->height());
+	
+	}
+	else {
+	
+		scrollArea_->resize(ui->currentAccountSettingsScrollWidget->width(), this->height());
+	
+	}
 }
 
 void
@@ -624,56 +742,85 @@ SettingsWidget::setConnections()
         setSelected(Button::accountSettingsButton); }
     );
 
-    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::generalSettingsButton); }
-    );
+	connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
+		setSelected(Button::generalSettingsButton); }
+	);
 
-    connect(ui->avSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::avSettingsButton); }
-    );
+	connect(ui->avSettingsButton, &QPushButton::clicked, [this]() {
+		setSelected(Button::avSettingsButton); }
+	);
 
-    connect(ui->passwdPushButton, &QPushButton::clicked, [this]() {
-        passwordClicked(); }
-    );
 
-    connect(ui->currentAccountAvatar, &QPushButton::clicked, [this]() {
-        avatarClicked(); }
-    );
+	connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
+		avatarClicked(); }
+	);
 
-    connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);
+	connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
+	
+	// connect "delete SIP account" button
+	connect(ui->btnSIPDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
 
-    connect(ui->currentRegisteredID, &QLineEdit::textChanged, this, &SettingsWidget::verifyRegisteredNameSlot);
+	connect(ui->accountSIPEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
 
-    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
-        this, &SettingsWidget::receiveRegNameSlot);
+	connect(ui->displaySIPNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
+		LRCInstance::setCurrAccDisplayName(displayName.toStdString());
+	}
+	);
 
-    //connect "export account" button
-    connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
+	connect(ui->showhideButton, &QPushButton::clicked, [this]() {
+		showhideButtonClicked(); 
+	}
+	);
 
-    // connect "delete account" button
-    connect(ui->btnDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
+	connect(ui->passSIPlineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
+		confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+		confProps_.password = displayName.toStdString();
+		LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+	}
+	);
 
-    // connect "banned contacts" button
-    connect(ui->blockedContactsBtn, &QPushButton::clicked, this, &SettingsWidget::toggleBannedContacts);
+	connect(ui->passwdPushButton, &QPushButton::clicked, [this]() {
+		passwordClicked(); }
+	);
 
-    // connect "link device" button
-    connect(ui->linkDevPushButton, &QPushButton::clicked, this, &SettingsWidget::showLinkDevSlot);
+	connect(ui->currentAccountAvatar, &QPushButton::clicked, [this]() {
+		avatarClicked(); }
+	);
 
-    // update banned accounts automatically
-    connect(LRCInstance::getCurrentAccountInfo().contactModel.get(), &lrc::api::ContactModel::modelUpdated,
-        this, &SettingsWidget::updateAndShowBannedContactsSlot);
+	connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);
 
-    // update linked devices automatically
-    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
-        this, &SettingsWidget::updateAndShowDevicesSlot);
+	connect(ui->currentRegisteredID, &QLineEdit::textChanged, this, &SettingsWidget::verifyRegisteredNameSlot);
 
-    // account settings setters {
-    connect(ui->accountEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
+	connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
+		this, &SettingsWidget::receiveRegNameSlot);
 
-    connect(ui->displayNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
-        LRCInstance::setCurrAccDisplayName(displayName.toStdString());
-    }
-    );
+	//connect "export account" button
+	connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
+
+	// connect "delete account" button
+	connect(ui->btnDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
+
+	// connect "banned contacts" button
+	connect(ui->blockedContactsBtn, &QPushButton::clicked, this, &SettingsWidget::toggleBannedContacts);
+
+	// connect "link device" button
+	connect(ui->linkDevPushButton, &QPushButton::clicked, this, &SettingsWidget::showLinkDevSlot);
+
+	// update banned accounts automatically
+	connect(LRCInstance::getCurrentAccountInfo().contactModel.get(), &lrc::api::ContactModel::modelUpdated,
+		this, &SettingsWidget::updateAndShowBannedContactsSlot);
+
+	// update linked devices automatically
+	QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
+		this, &SettingsWidget::updateAndShowDevicesSlot);
+
+	// account settings setters {
+	connect(ui->accountEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
+
+	connect(ui->displayNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
+		LRCInstance::setCurrAccDisplayName(displayName.toStdString());
+	}
+	);
 
     // general settings
 
