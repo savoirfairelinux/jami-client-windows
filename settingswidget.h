@@ -85,6 +85,7 @@ private:
     bool bannedContactsShown_ = false;
 
     int avatarSize_;
+	int avatarSIPSize_;
 
     void setRegNameUi(RegName stat);
     bool regNameBtn_ = false;
