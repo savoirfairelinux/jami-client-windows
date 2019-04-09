@@ -195,6 +195,9 @@
     <ClCompile Include="bezierconnectorwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="advancedsipsettingwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -324,6 +327,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="lrcinstance.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="advancedsipsettingwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -603,6 +609,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="newwizardwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="advancedsipsettingwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
