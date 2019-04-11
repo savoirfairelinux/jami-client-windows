@@ -69,7 +69,7 @@
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -230,7 +230,6 @@
     <ClCompile Include="aboutdialog.cpp" />
     <ClCompile Include="accountitemdelegate.cpp" />
     <ClCompile Include="accountlistmodel.cpp" />
-    <ClCompile Include="bannedcontactswidget.cpp" />
     <ClCompile Include="callwidget.cpp">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
@@ -297,8 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
-    </QtMoc>
-    <QtMoc Include="bannedcontactswidget.h">
     </QtMoc>
     <QtMoc Include="callwidget.h">
       <SubType>Designer</SubType>

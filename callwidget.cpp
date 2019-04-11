@@ -41,8 +41,6 @@
 
 // lrc
 #include "globalinstances.h"
-#include "profilemodel.h"
-#include "localprofilecollection.h"
 
 // client
 #include "windowscontactbackend.h"
@@ -73,9 +71,6 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->qrLabel->hide();
 
     videoRenderer_ = nullptr;
-
-    // this line is not welcome here, and must be removed
-    ProfileModel::instance().addCollection<LocalProfileCollection>(LoadOptions::FORCE_ENABLED);
 
     QSettings settings;
 
