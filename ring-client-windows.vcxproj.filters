@@ -63,9 +63,6 @@
     <ClCompile Include="aboutdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bannedcontactswidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="deleteaccountdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -201,9 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="bannedcontactswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="callwidget.h">
