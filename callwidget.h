@@ -36,7 +36,6 @@
 #include "video/renderer.h"
 #include "video/previewmanager.h"
 #include "accountmodel.h"
-#include "categorizedhistorymodel.h"
 #include "media/textrecording.h"
 
 // new LRC

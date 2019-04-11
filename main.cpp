@@ -139,7 +139,7 @@ main(int argc, char *argv[])
     gnutls_global_init();
 #endif
 
-    GlobalInstances::setPixmapManipulator(std::unique_ptr<PixbufManipulator>(new PixbufManipulator()));
+    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
     LRCInstance::init();
 
     QFile debugFile("debug.log");
