@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12872356_24dc5d4d",
+        "filename": "newwizardwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-04-11T21:38:07Z",
+      "side": 1,
+      "message": "formatting fixes",
+      "revId": "333ed2cecc5627350f54c8627bba9964e705752a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7c16eb_617474b5",
+        "filename": "newwizardwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-04-11T21:38:07Z",
+      "side": 1,
+      "message": "remove default settings for production",
+      "range": {
+        "startLine": 457,
+        "startChar": 12,
+        "endLine": 470,
+        "endChar": 13
+      },
+      "revId": "333ed2cecc5627350f54c8627bba9964e705752a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33cf5eb6_0ad1debd",
+        "filename": "newwizardwidget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-04-11T21:38:07Z",
+      "side": 1,
+      "message": "should be empty",
+      "range": {
+        "startLine": 537,
+        "startChar": 16,
+        "endLine": 537,
+        "endChar": 38
+      },
+      "revId": "333ed2cecc5627350f54c8627bba9964e705752a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29d7bad_e670a177",
+        "filename": "newwizardwidget.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-04-11T21:38:07Z",
+      "side": 1,
+      "message": "use similar naming style e.g. passwordStatusLabel_\nso inputPara_",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 45
+      },
+      "revId": "333ed2cecc5627350f54c8627bba9964e705752a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
