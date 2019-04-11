@@ -22,7 +22,6 @@
 #include <QPainter>
 
 #include "personmodel.h"
-#include "categorizedcontactmodel.h"
 
 #include "utils.h"
 
@@ -390,4 +389,3 @@ FlagPack<CollectionInterface::SupportedFeatures> WindowsContactBackend::supporte
                 CollectionInterface::SupportedFeatures::REMOVE |
                 CollectionInterface::SupportedFeatures::ADD);
 }
-
