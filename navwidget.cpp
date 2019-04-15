@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,10 +18,15 @@
 
 #include "navwidget.h"
 
+#include "lrcinstance.h"
+#include "utils.h"
+
 NavWidget::NavWidget(QWidget* parent) :
-   QWidget(parent)
-{}
+    QWidget(parent)
+{
+    Utils::oneShotConnect(&LRCInstance::instance(), &LRCInstance::accountOnBoarded,
+                          this, &NavWidget::slotAccountOnBoarded);
+}
 
 NavWidget::~NavWidget()
 {}
-

@@ -296,9 +296,6 @@
     <QtMoc Include="animationhelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="settingswidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="passworddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -330,6 +327,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="advancedsipsettingwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="settingswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

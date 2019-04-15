@@ -159,6 +159,10 @@ NewWizardWidget::navigated(bool to)
 }
 
 void
+NewWizardWidget::slotAccountOnBoarded()
+{}
+
+void
 NewWizardWidget::on_existingPushButton_clicked()
 {
     changePage(ui->linkRingAccountPage);
@@ -448,8 +452,6 @@ NewWizardWidget::createAccount()
         [this, isRing](const std::string& accountId) {
             //set default ringtone
             auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-            if (confProps.username.empty())
-                return;
             confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
             if (!isRing) {
                 // set SIP details
@@ -459,27 +461,29 @@ NewWizardWidget::createAccount()
                 confProps.proxyServer = inputPara_["proxy"].toStdString();
             }
             LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-            // RING SPECIFIC
             if (isRing) {
-                connect(LRCInstance::editableAccountModel(),
-                    &lrc::api::NewAccountModel::nameRegistrationEnded,
-                    [this] {
-                    lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-                    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
+                if (!confProps.username.empty()) {
+                    connect(LRCInstance::editableAccountModel(),
+                        &lrc::api::NewAccountModel::nameRegistrationEnded,
+                        [this] {
+                            lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+                            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
+                            emit NavigationRequested(ScreenEnum::CallScreen);
+                            emit LRCInstance::instance().accountOnBoarded();
+                        });
+                    LRCInstance::editableAccountModel()->registerName(
+                        LRCInstance::getCurrAccId(),
+                        "",
+                        registeredName_.toStdString()
+                    );
+                } else {
                     emit NavigationRequested(ScreenEnum::CallScreen);
                     emit LRCInstance::instance().accountOnBoarded();
-                });
-                LRCInstance::editableAccountModel()->registerName(
-                    LRCInstance::getCurrAccId(),
-                    "",
-                    registeredName_.toStdString()
-                );
-            }
-            // END RING SPECIFIC
-            if (ui->setSIPAvatarWidget->hasAvatar() && wizardMode_ == WizardMode::CREATESIP) {
-                LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
-            } else if (ui->setAvatarWidget->hasAvatar() && wizardMode_ == WizardMode::CREATE) {
+                }
                 LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+            } else {
+                LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
+
             }
     });
     Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
@@ -515,6 +519,7 @@ NewWizardWidget::createAccount()
                 );
                 QThread::sleep(2);
                 emit NavigationRequested(ScreenEnum::CallScreen);
+                emit LRCInstance::instance().accountOnBoarded();
             }
     });
     changePage(ui->spinnerPage);

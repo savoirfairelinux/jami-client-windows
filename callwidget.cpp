@@ -265,6 +265,10 @@ CallWidget::updateCustomUI()
 
 }
 
+void
+CallWidget::slotAccountOnBoarded()
+{}
+
 int
 CallWidget::getLeftPanelWidth()
 {

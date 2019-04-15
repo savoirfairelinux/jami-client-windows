@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -21,7 +22,6 @@
 #include <QWidget>
 
 enum ScreenEnum {
-    //DO not add main widget screen before callScreen
     WizardScreen,
     CallScreen,
     SetttingsScreen,
@@ -41,7 +41,8 @@ public:
 
 signals:
     void NavigationRequested(ScreenEnum screen);
-    void BackRequested();
+
+protected slots:
+    virtual void slotAccountOnBoarded() = 0;
 
 };
-

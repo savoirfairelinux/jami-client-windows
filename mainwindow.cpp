@@ -132,6 +132,7 @@ MainWindow::MainWindow(QWidget* parent) :
     if (accountList.size()) {
         readSettingsFromRegistry();
         startScreen = ScreenEnum::CallScreen;
+        emit LRCInstance::instance().accountOnBoarded();
     } else {
         startScreen = ScreenEnum::WizardScreen;
     }
