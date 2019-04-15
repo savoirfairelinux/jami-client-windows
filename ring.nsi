@@ -199,8 +199,8 @@ section "install"
         WriteRegStr HKCR "ring\shell\open\command" "" "$\"$INSTDIR\Jami.exe$\" $\"%1$\""
         
         # force vc_redist for now
-        ExecWait "vc_redist.x64.exe /install /norestart"
-        delete "vc_redist.x64.exe"
+        ExecWait "vc_redist.x64.exe /install /passive /norestart"
+        delete "$\"$INSTDIR\vc_redist.x64.exe$\""
 sectionEnd
 
 # Uninstaller
