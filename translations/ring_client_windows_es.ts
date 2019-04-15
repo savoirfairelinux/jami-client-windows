@@ -1772,7 +1772,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="588"/>
         <source>keep minimized on close checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Mantener minimizado al cerrar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="594"/>
