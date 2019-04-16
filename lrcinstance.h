@@ -1,5 +1,5 @@
 /**************************************************************************
-| Copyright (C) 2015-2019 by Savoir-faire Linux                           |
+| Copyright (C) 2019 by Savoir-faire Linux                                |
 | Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          |
 | Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      |
 |                                                                         |
@@ -28,10 +28,14 @@
 #include <QPixmap>
 #include <QBuffer>
 
+#include "settingskey.h"
+
 #include "api/lrc.h"
 #include "api/account.h"
 #include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
+#include "api/newdevicemodel.h"
+#include "api/newcodecmodel.h"
 #include "api/behaviorcontroller.h"
 #include "api/conversation.h"
 #include "api/contactmodel.h"
@@ -41,9 +45,8 @@
 #include "accountlistmodel.h"
 
 #include "account.h"
-//#include "instancemanager.cpp"
 
-#include <settingskey.h>
+using namespace lrc::api;
 
 class LRCInstance : public QObject
 {
@@ -57,42 +60,48 @@ public:
     static void init() {
         instance();
     };
-    static lrc::api::Lrc& getAPI() {
+    static Lrc& getAPI() {
         return *(instance().lrc_);
     };
     static void connectivityChanged() {
         instance().lrc_->connectivityChanged();
     };
-    static const lrc::api::NewAccountModel& accountModel() {
+    static const NewAccountModel& accountModel() {
         return instance().lrc_->getAccountModel();
     };
-    static lrc::api::NewAccountModel* editableAccountModel() {
-        return const_cast<lrc::api::NewAccountModel*>(&instance().lrc_->getAccountModel());
+    static NewAccountModel* editableAccountModel() {
+        return const_cast<NewAccountModel*>(&instance().lrc_->getAccountModel());
     };
-    static const lrc::api::BehaviorController& behaviorController() {
+    static const BehaviorController& behaviorController() {
         return instance().lrc_->getBehaviorController();
     };
-    static const lrc::api::DataTransferModel& dataTransferModel() {
+    static const DataTransferModel& dataTransferModel() {
         return instance().lrc_->getDataTransferModel();
     };
-    static lrc::api::DataTransferModel* editableDataTransferModel() {
-        return const_cast<lrc::api::DataTransferModel*>(&instance().lrc_->getDataTransferModel());
+    static DataTransferModel* editableDataTransferModel() {
+        return const_cast<DataTransferModel*>(&instance().lrc_->getDataTransferModel());
     };
     static bool isConnected() {
         return instance().lrc_->isConnected();
     };
 
-    static const lrc::api::account::Info&
+    static const account::Info&
     getCurrentAccountInfo() {
-        return accountModel().getAccountInfo(getCurrAccId());
+        try {
+            return accountModel().getAccountInfo(getCurrAccId());
+        } catch (...) {
+            static account::Info invalid = {};
+            qWarning() << "getAccountInfo exception";
+            return std::reference_wrapper<account::Info>{invalid};
+        }
     };
 
-    static lrc::api::ConversationModel*
+    static ConversationModel*
     getCurrentConversationModel() {
         return getCurrentAccountInfo().conversationModel.get();
     };
 
-    static lrc::api::NewCallModel*
+    static NewCallModel*
     getCurrentCallModel() {
         return getCurrentAccountInfo().callModel.get();
     };
@@ -102,29 +111,29 @@ public:
     };
 
     static const std::string& getCurrAccId() {
-        if (instance().selectedAccountId.empty()) {
-            instance().selectedAccountId = accountModel().getAccountList().at(0);
+        if (instance().selectedAccountId_.empty()) {
+            instance().selectedAccountId_ = accountModel().getAccountList().at(0);
         }
-        return instance().selectedAccountId;
+        return instance().selectedAccountId_;
     };
 
     static void setSelectedAccountId(const std::string& accountId) {
-        instance().selectedAccountId = accountId;
+        instance().selectedAccountId_ = accountId;
         QSettings settings;
         settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
     };
 
     static const std::string& getSelectedConvUid() {
-        return instance().selectedConvUid;
+        return instance().selectedConvUid_;
     };
 
     static void setSelectedConvId(const std::string& convUid) {
-        instance().selectedConvUid = convUid;
+        instance().selectedConvUid_ = convUid;
     };
 
     static void reset(bool newInstance = false) {
         if (newInstance) {
-            instance().lrc_.reset(new lrc::api::Lrc());
+            instance().lrc_.reset(new Lrc());
         } else {
             instance().lrc_.reset();
         }
@@ -160,7 +169,7 @@ public:
         instance().editableAccountModel()->setAlias(getCurrAccId(), alias);
     };
 
-    static const lrc::api::account::ConfProperties_t& getCurrAccConfig() {
+    static const account::ConfProperties_t& getCurrAccConfig() {
         return instance().getCurrentAccountInfo().confProperties;
     }
 
@@ -169,13 +178,13 @@ signals:
     void accountOnBoarded();
 
 private:
-    std::unique_ptr<lrc::api::Lrc> lrc_;
+    std::unique_ptr<Lrc> lrc_;
     AccountListModel accountListModel_;
 
     LRCInstance() {
-        lrc_ = std::make_unique<lrc::api::Lrc>();
+        lrc_ = std::make_unique<Lrc>();
     };
 
-    std::string selectedAccountId;
-    std::string selectedConvUid;
+    std::string selectedAccountId_;
+    std::string selectedConvUid_;
 };

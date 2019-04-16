@@ -34,6 +34,7 @@
 #include <QSettings>
 #include <QScrollBar>
 
+#include "settingskey.h"
 #include "utils.h"
 #include "settingsitemwidget.h"
 #include "passworddialog.h"
