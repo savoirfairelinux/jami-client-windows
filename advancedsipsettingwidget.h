@@ -1,7 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,19 +16,16 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-#include <QWidget>
 #include <QListWidgetItem>
+#include <QWidget>
 
-namespace Ui
-{
+namespace Ui {
 class AdvancedSIPSettingsWidget;
 }
 
-class AdvancedSIPSettingsWidget : public QWidget
-{
+class AdvancedSIPSettingsWidget : public QWidget {
 
     Q_OBJECT
     AdvancedSIPSettingsWidget(const AdvancedSIPSettingsWidget& cpy);
@@ -74,5 +71,4 @@ private slots:
     void increaseVideoCodecPriority();
 
     void setVideoState(int state);
-
 };

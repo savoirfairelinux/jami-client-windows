@@ -1,7 +1,7 @@
 /***************************************************************************
  * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -27,12 +27,11 @@
 #include "utils.h"
 
 AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
-    :QWidget(parent),
-     ui(new Ui::AdvancedSIPSettingsWidget)
+    : QWidget(parent)
+    , ui(new Ui::AdvancedSIPSettingsWidget)
 {
     ui->setupUi(this);
 
-    ///////////////////////////////////////////////////////////////////////////////
     // call settings
     connect(ui->checkBoxCustomRingtoneSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setEnableRingtone);
     connect(ui->checkBoxAutoAnswerSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setAutoAnswerCalls);
@@ -60,10 +59,8 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
     // codec priority setting
     connect(ui->audioDownPushButtonSIP, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::decreaseAudioCodecPriority);
     connect(ui->audioUpPushButtonSIP, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::increaseAudioCodecPriority);
-
     connect(ui->videoDownPushButtonSIP, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::decreaseVideoCodecPriority);
     connect(ui->videoUpPushButtonSIP, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::increaseVideoCodecPriority);
-
 }
 
 AdvancedSIPSettingsWidget::~AdvancedSIPSettingsWidget()
@@ -71,8 +68,7 @@ AdvancedSIPSettingsWidget::~AdvancedSIPSettingsWidget()
     delete ui;
 }
 
-void
-AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
+void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
 {
     auto config = LRCInstance::getCurrAccConfig();
     //Call Settings
@@ -97,29 +93,26 @@ AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->audioListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::audioCodecsStateChange);
     connect(ui->videoListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::videoCodecsStateChange);
 
-    ui->btnRingtoneSIP->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
-    ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
-    ui->lineEditSTUNAddressSIP->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
+    ui->btnRingtoneSIP->setEnabled(config.Ringtone.ringtoneEnabled);
+    ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(config.Ringtone.ringtonePath)).fileName());
+    ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
 }
 
 // call settings
-void
-AdvancedSIPSettingsWidget::setAutoAnswerCalls(bool state)
+void AdvancedSIPSettingsWidget::setAutoAnswerCalls(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.autoAnswer = state;
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setEnableRingtone(bool state)
+void AdvancedSIPSettingsWidget::setEnableRingtone(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Ringtone.ringtoneEnabled = state;
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-void
-AdvancedSIPSettingsWidget::openFileCustomRingtone()
+void AdvancedSIPSettingsWidget::openFileCustomRingtone()
 {
     QString fileUrl;
     auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
@@ -138,22 +131,19 @@ AdvancedSIPSettingsWidget::openFileCustomRingtone()
 }
 
 // connectivity
-void
-AdvancedSIPSettingsWidget::setUseUPnP(bool state)
+void AdvancedSIPSettingsWidget::setUseUPnP(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.upnpEnabled = state;
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setUseTURN(bool state)
+void AdvancedSIPSettingsWidget::setUseTURN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.enable = state;
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setUseSTUN(bool state)
+void AdvancedSIPSettingsWidget::setUseSTUN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.enable = state;
@@ -162,37 +152,32 @@ AdvancedSIPSettingsWidget::setUseSTUN(bool state)
     state ? ui->lineEditSTUNAddressSIP->setEnabled(true) : ui->lineEditSTUNAddressSIP->setEnabled(false);
 }
 
-void
-AdvancedSIPSettingsWidget::setTURNAddress(const QString& name)
+void AdvancedSIPSettingsWidget::setTURNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.server = name.toStdString();
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setTURNUsername(const QString& name)
+void AdvancedSIPSettingsWidget::setTURNUsername(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.username = name.toStdString();
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setTURNPsswd(const QString& name)
+void AdvancedSIPSettingsWidget::setTURNPsswd(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = name.toStdString();
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
-void
-AdvancedSIPSettingsWidget::setSTUNAddress(const QString& name)
+void AdvancedSIPSettingsWidget::setSTUNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.server = name.toStdString();
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-void
-AdvancedSIPSettingsWidget::updateAudioCodecs()
+void AdvancedSIPSettingsWidget::updateAudioCodecs()
 {
     ui->audioListWidgetSIP->clear();
 
@@ -205,15 +190,13 @@ AdvancedSIPSettingsWidget::updateAudioCodecs()
         Qt::CheckState state;
         it->enabled ? state = Qt::Checked : state = Qt::Unchecked;
         audioItem->setCheckState(state);
-        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n" + QString::fromStdString(it->samplerate)
-            + " Hz");
+        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n" + QString::fromStdString(it->samplerate) + " Hz");
 
         ui->audioListWidgetSIP->addItem(audioItem);
     }
 }
 
-void
-AdvancedSIPSettingsWidget::updateVideoCodecs()
+void AdvancedSIPSettingsWidget::updateVideoCodecs()
 {
     ui->videoListWidgetSIP->clear();
 
@@ -234,8 +217,7 @@ AdvancedSIPSettingsWidget::updateVideoCodecs()
     }
 }
 
-void
-AdvancedSIPSettingsWidget::audioCodecsStateChange(QListWidgetItem* item)
+void AdvancedSIPSettingsWidget::audioCodecsStateChange(QListWidgetItem* item)
 {
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
     auto it = audioCodecList.begin();
@@ -245,8 +227,7 @@ AdvancedSIPSettingsWidget::audioCodecsStateChange(QListWidgetItem* item)
     LRCInstance::getCurrentAccountInfo().codecModel->enable(it->id, !(it->enabled));
 }
 
-void
-AdvancedSIPSettingsWidget::videoCodecsStateChange(QListWidgetItem* item)
+void AdvancedSIPSettingsWidget::videoCodecsStateChange(QListWidgetItem* item)
 {
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     auto it = videoCodecList.begin();
@@ -256,8 +237,7 @@ AdvancedSIPSettingsWidget::videoCodecsStateChange(QListWidgetItem* item)
     LRCInstance::getCurrentAccountInfo().codecModel->enable(it->id, !(it->enabled));
 }
 
-void
-AdvancedSIPSettingsWidget::decreaseAudioCodecPriority()
+void AdvancedSIPSettingsWidget::decreaseAudioCodecPriority()
 {
     int selectedRow = ui->audioListWidgetSIP->row(ui->audioListWidgetSIP->selectedItems().at(0));
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
@@ -268,8 +248,7 @@ AdvancedSIPSettingsWidget::decreaseAudioCodecPriority()
     updateAudioCodecs();
 }
 
-void
-AdvancedSIPSettingsWidget::increaseAudioCodecPriority()
+void AdvancedSIPSettingsWidget::increaseAudioCodecPriority()
 {
     int selectedRow = ui->audioListWidgetSIP->row(ui->audioListWidgetSIP->selectedItems().at(0));
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
@@ -280,8 +259,7 @@ AdvancedSIPSettingsWidget::increaseAudioCodecPriority()
     updateAudioCodecs();
 }
 
-void
-AdvancedSIPSettingsWidget::decreaseVideoCodecPriority()
+void AdvancedSIPSettingsWidget::decreaseVideoCodecPriority()
 {
     int selectedRow = ui->videoListWidgetSIP->row(ui->videoListWidgetSIP->selectedItems().at(0));
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
@@ -292,8 +270,7 @@ AdvancedSIPSettingsWidget::decreaseVideoCodecPriority()
     updateVideoCodecs();
 }
 
-void
-AdvancedSIPSettingsWidget::increaseVideoCodecPriority()
+void AdvancedSIPSettingsWidget::increaseVideoCodecPriority()
 {
     int selectedRow = ui->videoListWidgetSIP->row(ui->videoListWidgetSIP->selectedItems().at(0));
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
@@ -304,8 +281,7 @@ AdvancedSIPSettingsWidget::increaseVideoCodecPriority()
     updateVideoCodecs();
 }
 
-void
-AdvancedSIPSettingsWidget::setVideoState(int state)
+void AdvancedSIPSettingsWidget::setVideoState(int state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Video.videoEnabled = (bool)state;

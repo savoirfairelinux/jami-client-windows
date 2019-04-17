@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,50 +18,46 @@
 
 #pragma once
 
-#include <QWidget>
 #include <QListWidgetItem>
+#include <QWidget>
 
 namespace Ui {
-    class AdvancedSettingsWidget;
+class AdvancedSettingsWidget;
 }
 
 class AdvancedSettingsWidget : public QWidget {
-
-    Q_OBJECT
-    AdvancedSettingsWidget(const AdvancedSettingsWidget& cpy);
+    Q_OBJECT;
 
 public:
-    AdvancedSettingsWidget(QWidget* parent = nullptr);
+    AdvancedSettingsWidget(const std::string& accountId,
+        QWidget* parent = nullptr);
     ~AdvancedSettingsWidget();
 
     void updateAdvancedSettings();
 
-private:
-    Ui::AdvancedSettingsWidget* ui;
-
 private slots:
-// call settings
+    // call settings
     void setCallsUntrusted(bool state);
     void setAutoAnswerCalls(bool state);
     void setEnableRingtone(bool state);
 
     void openFileCustomRingtone();
 
-// name server
+    // name server
     void setNameServer(const QString& name);
 
-// openDHT config
+    // openDHT config
     void setEnableProxy(bool state);
 
     void setProxyAddress(const QString& name);
     void setBootstrapAddress(const QString& name);
 
-// security
+    // security
     void openFileCACert();
     void openFileUserCert();
     void openFilePrivateKey();
 
-// connectivity
+    // connectivity
     void setUseUPnP(bool state);
     void setUseTURN(bool state);
     void setUseSTUN(bool state);
@@ -71,7 +67,7 @@ private slots:
     void setTURNPsswd(const QString& name);
     void setSTUNAddress(const QString& name);
 
-// codecs
+    // codecs
     void updateAudioCodecs();
     void updateVideoCodecs();
 
@@ -86,4 +82,8 @@ private slots:
 
     void setVideoState(int state);
 
+private:
+    Ui::AdvancedSettingsWidget* ui;
+
+    std::string accountId_;
 };
