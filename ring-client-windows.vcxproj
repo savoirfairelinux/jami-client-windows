@@ -93,6 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>dring.lib;qtwrapper.lib;ringclient_static.lib;WinSparkle.lib;qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;qtmain.lib;Qt5Svg.lib;Qt5Widgets.lib;Qt5WinExtras.lib;Qt5Gui.lib;Qt5Xml.lib;Qt5Network.lib;Qt5Core.lib;Qt5Sql.lib;Qt5WebEngineWidgets.lib;Qt5WebChannel.lib;Qt5Multimedia.lib;Qt5MultimediaWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
