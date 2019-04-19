@@ -16,18 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include <QDesktopServices>
-
 #include "messagewebpage.h"
 
-MessageWebPage::MessageWebPage(QWidget *parent)
-    : QWebEnginePage(parent)
-{
-}
+#include <QDesktopServices>
+
+MessageWebPage::MessageWebPage(QWebEngineProfile *profile, QWidget *parent)
+    : QWebEnginePage(profile, parent)
+{}
 
 MessageWebPage::~MessageWebPage()
-{
-}
+{}
 
 bool
 MessageWebPage::acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool isMainFrame)

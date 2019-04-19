@@ -24,7 +24,7 @@ class MessageWebPage : public QWebEnginePage
 {
     Q_OBJECT
 public:
-    explicit MessageWebPage(QWidget* parent = nullptr);
+    explicit MessageWebPage(QWebEngineProfile *profile, QWidget* parent = nullptr);
     ~MessageWebPage();
 
 protected:
