@@ -67,7 +67,7 @@
         <item>
          <widget class="QWidget" name="sidePanelLayoutWidget" native="true">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -1992,7 +1992,7 @@ Copy and share it with your friends!
                        </spacer>
                       </item>
                       <item>
-                       <widget class="MessageWebView" name="messageView">
+                       <widget class="MessageWebView" name="messageView" native="true">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                           <horstretch>0</horstretch>
@@ -2004,6 +2004,9 @@ Copy and share it with your friends!
                           <width>1000</width>
                           <height>16777215</height>
                          </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">b</string>
                         </property>
                        </widget>
                       </item>

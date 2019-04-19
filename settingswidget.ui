@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>896</width>
+    <width>1016</width>
     <height>781</height>
    </rect>
   </property>
@@ -60,13 +60,13 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>320</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
+          <width>380</width>
           <height>16777215</height>
          </size>
         </property>
@@ -79,7 +79,7 @@
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <layout class="QVBoxLayout" name="leftVerticalLayout" stretch="0,0,0,1,0,0,0,5">
+        <layout class="QVBoxLayout" name="leftVerticalLayout" stretch="0,0,0,0,0,0,0">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -129,7 +129,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
+               <width>24</width>
                <height>20</height>
               </size>
              </property>
@@ -205,19 +205,6 @@
           </spacer>
          </item>
          <item>
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
           <widget class="QPushButton" name="accountSettingsButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
@@ -248,10 +235,20 @@
             <bool>true</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">Text-align:left; padding-left:24px</string>
            </property>
            <property name="text">
-            <string>Account</string>
+            <string>  Account</string>
+           </property>
+           <property name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/images/icons/baseline-people-24px.svg</normaloff>:/images/icons/baseline-people-24px.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -292,10 +289,14 @@
             <bool>true</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">Text-align:left; padding-left:24px</string>
            </property>
            <property name="text">
-            <string>General</string>
+            <string>  General</string>
+           </property>
+           <property name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/images/icons/round-settings-24px.svg</normaloff>:/images/icons/round-settings-24px.svg</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -336,10 +337,14 @@
             <bool>true</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">Text-align:left; padding-left:24px</string>
            </property>
            <property name="text">
-            <string>Audio / Video</string>
+            <string>  Audio / Video</string>
+           </property>
+           <property name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/images/icons/baseline-desktop_windows-24px.svg</normaloff>:/images/icons/baseline-desktop_windows-24px.svg</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -1120,8 +1125,8 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>625</width>
-                  <height>580</height>
+                  <width>696</width>
+                  <height>781</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2495,7 +2500,7 @@ padding-left: 15px;
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 255)</string>
+             <string notr="true"/>
             </property>
             <layout class="QVBoxLayout" name="verticalLayoutsip_2">
              <property name="spacing">
@@ -3338,7 +3343,7 @@ padding-left: 15px;
                                    </widget>
                                   </item>
                                   <item>
-                                   <widget class="QPushButton" name="showhideButton">
+                                   <widget class="QPushButton" name="showHideButton">
                                     <property name="maximumSize">
                                      <size>
                                       <width>30</width>
@@ -3350,6 +3355,10 @@ padding-left: 15px;
                                     </property>
                                     <property name="text">
                                      <string/>
+                                    </property>
+                                    <property name="icon">
+                                     <iconset resource="ressources.qrc">
+                                      <normaloff>:/images/icons/ic_show_password.png</normaloff>:/images/icons/ic_show_password.png</iconset>
                                     </property>
                                    </widget>
                                   </item>
@@ -4381,6 +4390,8 @@ padding-left: 15px;
    <header location="global">advancedsipsettingwidget.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
