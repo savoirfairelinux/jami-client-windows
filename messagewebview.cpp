@@ -31,6 +31,7 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
+#include <QWebEngineProfile>
 #include <QWebChannel>
 #include <QTimer>
 
@@ -45,7 +46,17 @@
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
 {
-    setPage(new MessageWebPage());
+    QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
+    QDir dataDir(QStandardPaths::writableLocation(
+        QStandardPaths::AppLocalDataLocation));
+    dataDir.cdUp();
+    auto cachePath = dataDir.absolutePath() + "/jami";
+    profile->setCachePath(cachePath);
+    profile->setPersistentStoragePath(cachePath);
+    profile->setPersistentCookiesPolicy(QWebEngineProfile::NoPersistentCookies);
+    profile->setHttpCacheType(QWebEngineProfile::NoCache);
+
+    setPage(new MessageWebPage(profile, this));
 
     settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
     settings()->setAttribute(QWebEngineSettings::JavascriptCanOpenWindows, true);
