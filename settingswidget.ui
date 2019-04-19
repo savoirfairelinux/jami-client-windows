@@ -60,13 +60,13 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>320</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
+          <width>380</width>
           <height>16777215</height>
          </size>
         </property>
@@ -425,7 +425,7 @@
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -1121,7 +1121,7 @@ QPushButton:pressed {background: rgb(230,230, 230);  border: 0px; border-radius:
                   <x>0</x>
                   <y>0</y>
                   <width>625</width>
-                  <height>580</height>
+                  <height>781</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
