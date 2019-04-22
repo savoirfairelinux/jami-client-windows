@@ -7,9 +7,8 @@
         <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
-        <Icon Id="icon.ico" SourceFile="$(var.ReleaseDir)\jami.ico" />
+        <Icon Id="icon.ico" SourceFile="icon.ico" />
         <Property Id="ARPPRODUCTICON" Value="icon.ico" />
-        <Property Id="ARPNOMODIFY" Value="1" />
 
         <Feature Id="ProductFeature" Title="Main" Level="1" Absent="disallow">
             <ComponentGroupRef Id="ProductComponents" Primary="yes" />
@@ -21,15 +20,17 @@
         </Feature>
 
         <UIRef Id="CustomUI" />
+        <WixVariable Id="WixUIInfoIcon" Value="icon.ico"/>
         <WixVariable Id="WixUIBannerBmp" Value="top-banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="main-banner.bmp" />
+        <WixVariable Id="WixUISupportPerUser" Value="0" />
     </Product>
 
     <Fragment Id="DirectoryStructure">
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFiles64Folder">
                 <Directory Id="ManufacturerFolder" Name="$(var.Manufacturer)">
-                    <Directory Id="INSTALLFOLDER" Name="$(var.Name)" />
+                  <Directory Id="APPLICATIONFOLDER" Name="$(var.Name)" />
                 </Directory>
             </Directory>
             <Directory Id="DesktopFolder" Name="Desktop" />
@@ -46,6 +47,7 @@
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
                 <RemoveFolder Id="DesktopFolder" On="uninstall" />
                 <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="desktop" Type="integer" Value="1" KeyPath="yes" />
+                <!--<Condition>ADDDESKTOPSHORTCUT=1</Condition>-->
             </Component>
         </DirectoryRef>
 
@@ -55,46 +57,39 @@
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
                 <RemoveFolder Id="StartMenuFolder" On="uninstall" />
                 <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
+              <!--<Condition>ADDDESKTOPSHORTCUT=1</Condition>-->
             </Component>
         </DirectoryRef>
     </Fragment>
 
     <Fragment Id="UI">
         <UI Id="CustomUI">
-            <UIRef Id="WixUI_Common" />
-            <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
-            <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
-            <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
-            <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
-            <DialogRef Id="ErrorDlg" />
-            <DialogRef Id="FatalError" />
-            <DialogRef Id="FilesInUse" />
-            <DialogRef Id="MsiRMFilesInUse" />
-            <DialogRef Id="PrepareDlg" />
-            <DialogRef Id="ProgressDlg" />
-            <DialogRef Id="ResumeDlg" />
-            <DialogRef Id="UserExit" />
-            <DialogRef Id="WelcomeDlg" />
-            <DialogRef Id="WelcomeLicenseNoCheckDlg" />
-
-            <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
-            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
-            <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
-            <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
-            <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
-            <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
-            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
-            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
-            <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1</Publish>
-
-            <InstallUISequence>
-                <Show Dialog="WelcomeDlg" Before="WelcomeLicenseNoCheckDlg">Installed AND PATCH</Show>
-                <Show Dialog="WelcomeLicenseNoCheckDlg" Before="ProgressDlg">NOT Installed</Show>
-            </InstallUISequence>
+          <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+          <Property Id="ApplicationFolderName" Value="$(var.Name)" />
+          <UIRef Id="WixUI_Advanced" />
+          <!--Remove User Exit Dialog-->
+          <Publish Dialog="AdvancedWelcomeEulaDlg" Control="Cancel" Property="AbortInstall" Value="1">1</Publish>
+          <Publish Dialog="InstallDirDlg" Control="Cancel" Property="AbortInstall" Value="1">1</Publish>
+          <Publish Dialog="FeaturesDlg" Control="Cancel" Property="AbortInstall" Value="1">1</Publish>
+          <Publish Dialog="MaintenanceWelcomeDlg" Control="Cancel" Property="AbortInstall" Value="1">1</Publish>
+          <Publish Dialog="MaintenanceTypeDlg" Control="Cancel" Property="AbortInstall" Value="1">1</Publish>
+          <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+          <InstallUISequence>
+            <Show Dialog="UserExit" OnExit="cancel">NOT AbortInstall = 1</Show>
+          </InstallUISequence>
         </UI>
+        <InstallExecuteSequence>
+          <Custom Action="LaunchApplication_nonUI" After="InstallFinalize">WixBundleUILevel  = INSTALLUILEVEL_REDUCED</Custom>
+        </InstallExecuteSequence>
+        <!--Lisence check box text, Lanch check box text (auto check)-->
+        <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Launch $(var.Name)" />
         <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch $(var.Name)" />
+        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
+        <Property Id="LicenseAccepted" Value="1"/>
         <Property Id="WixShellExecTarget" Value="[#fileMain.exe]" />
         <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+        <CustomAction Id="LaunchApplication_nonUI" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes"/>
+
         <WixVariable Id="WixUILicenseRtf" Value="$(var.ReleaseDir)\License.rtf"/>
     </Fragment>
 
