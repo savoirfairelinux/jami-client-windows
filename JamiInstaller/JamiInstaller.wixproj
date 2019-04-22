@@ -41,8 +41,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="back.bmp" />
+    <Content Include="backblu.bmp" />
     <Content Include="Config.wxi" />
+    <Content Include="icon.ico" />
+    <Content Include="jamites.bmp" />
     <Content Include="main-banner.bmp" />
+    <Content Include="rain.bmp" />
     <Content Include="top-banner.bmp" />
   </ItemGroup>
   <ItemGroup>

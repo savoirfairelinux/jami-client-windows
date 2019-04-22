@@ -11,7 +11,7 @@
 <?include Config.wxi?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
-        <DirectoryRef Id="INSTALLFOLDER">
+        <DirectoryRef Id="APPLICATIONFOLDER">
             <Directory Id="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Name="imageformats" />
             <Directory Id="dir908DFC228501FBE723FC009E659CB04F" Name="platforms" />
             <Directory Id="dir6BEF5EA0D72E144566D3B5034E8EBD40" Name="ringtones" />
@@ -21,128 +21,128 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="ProductComponents">
-            <Component Id="cmp3BE7F5162150D73A8A31AC4EBC5065CE" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp3BE7F5162150D73A8A31AC4EBC5065CE" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil19F5C64500F14D4D7EAC0A4F937B5CF2" KeyPath="yes" Source="$(var.ReleaseDir)\avcodec-58.dll" />
             </Component>
-            <Component Id="cmp2E63CB6C2A579B11BF424D20A491FFB6" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp2E63CB6C2A579B11BF424D20A491FFB6" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil0F0D517344A4EF76FF9E7DA49A50FF37" KeyPath="yes" Source="$(var.ReleaseDir)\avdevice-58.dll" />
             </Component>
-            <Component Id="cmpD52D4D53A1B09E38AAFFC5226D0182B2" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpD52D4D53A1B09E38AAFFC5226D0182B2" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil06F9A4E69D0D1D99C19EB9B347120096" KeyPath="yes" Source="$(var.ReleaseDir)\avfilter-7.dll" />
             </Component>
-            <Component Id="cmpAE2934B4AF40AE6FC21B254ABA434BD9" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpAE2934B4AF40AE6FC21B254ABA434BD9" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil8B4613152A4548D3FD408F542CB13D85" KeyPath="yes" Source="$(var.ReleaseDir)\avformat-58.dll" />
             </Component>
-            <Component Id="cmp8D4CB0CAB9711FD978FE9ACB15CE64CC" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp8D4CB0CAB9711FD978FE9ACB15CE64CC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil6376245C3F7E850D9DC4623A80C4E0C8" KeyPath="yes" Source="$(var.ReleaseDir)\avutil-56.dll" />
             </Component>
-            <Component Id="cmp41DC9741013CA4AD62A4A5FF421F08BC" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp41DC9741013CA4AD62A4A5FF421F08BC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil84B847A9F8DABE6B95AF875695C9E6D1" KeyPath="yes" Source="$(var.ReleaseDir)\d3dcompiler_47.dll" />
             </Component>
-            <Component Id="cmpBDBA16CBEE531189F4ADEB44F36FA9CA" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpBDBA16CBEE531189F4ADEB44F36FA9CA" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil22B9AE685C747A265E9A4BC34E90558B" KeyPath="yes" Source="$(var.ReleaseDir)\icudtl.dat" />
             </Component>
-            <Component Id="cmp7B6BE3D8A094656C2A1CCFFCC05C4508" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp7B6BE3D8A094656C2A1CCFFCC05C4508" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <!-- Renamed to ease referencing -->
                 <File Id="fileMain.exe" KeyPath="yes" Source="$(var.ReleaseDir)\Jami.exe" />
             </Component>
-            <Component Id="cmp475B44C5672AA8866893DEE6BA7D7ED1" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp475B44C5672AA8866893DEE6BA7D7ED1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filA53F42A4214B7C9390E9228816B2C35F" KeyPath="yes" Source="$(var.ReleaseDir)\jami.ico" />
             </Component>
-            <Component Id="cmp5305EA43A743E27D1937F4B78BD4161D" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp5305EA43A743E27D1937F4B78BD4161D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filC095BF8491486ED2C60A86451FC1704A" KeyPath="yes" Source="$(var.ReleaseDir)\libeay32.dll" />
             </Component>
-            <Component Id="cmp363F691415DD37B081CFC985FD89E1ED" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp363F691415DD37B081CFC985FD89E1ED" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filE4A8517FAA43FB8132ED89D5B5EB797C" KeyPath="yes" Source="$(var.ReleaseDir)\libEGL.dll" />
             </Component>
-            <Component Id="cmp8A64E7CE3EE5BD2D11823B3C59FDDE7C" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp8A64E7CE3EE5BD2D11823B3C59FDDE7C" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil65C8C2AF07D3CA4AE7D7A2844A4D914E" KeyPath="yes" Source="$(var.ReleaseDir)\libGLESv2.dll" />
             </Component>
-            <Component Id="cmp1349A3A7B89410051DCA3842795982E1" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp1349A3A7B89410051DCA3842795982E1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil99A7B83ABC540978B1363CAE428AA5EC" KeyPath="yes" Source="$(var.ReleaseDir)\License.rtf" />
             </Component>
-            <Component Id="cmp31149127A8D559E47A8412500CDB93C1" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp31149127A8D559E47A8412500CDB93C1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil388A71944B6369AB5D5428137DFB5520" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Core.dll" />
             </Component>
-            <Component Id="cmpD4E52BD163861D1696633E739938CAB2" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpD4E52BD163861D1696633E739938CAB2" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil9A5E6DFFEBA29C9841B357D815ED5661" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Gui.dll" />
             </Component>
-            <Component Id="cmp3592BD10E2CD4F1F2E37A416F0C7C420" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp3592BD10E2CD4F1F2E37A416F0C7C420" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil43CD6E238903BF44E4468AD398C449C2" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Multimedia.dll" />
             </Component>
-            <Component Id="cmpE847527393045E39F90D9C09DAC67457" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpE847527393045E39F90D9C09DAC67457" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filA28ED7829F4325F0273C10B85B6035B9" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5MultimediaWidgets.dll" />
             </Component>
-            <Component Id="cmpCBE98F9FD89C8F118FBAA62F96FAD058" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpCBE98F9FD89C8F118FBAA62F96FAD058" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filA8DBE181741601EDA88DDD2DF88922FF" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Network.dll" />
             </Component>
-            <Component Id="cmp26C47E7608E156A3B19569AC948A192E" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp26C47E7608E156A3B19569AC948A192E" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil6A61C9520707EF44B49432BD19BC9039" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5OpenGL.dll" />
             </Component>
-            <Component Id="cmp132447CFD89BBA4372D5BEFA5F8AAE23" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp132447CFD89BBA4372D5BEFA5F8AAE23" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil49043AE9069A60CAD0924CB43602366B" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Positioning.dll" />
             </Component>
-            <Component Id="cmp9B336C9C2D11E977F4D90C865B4B6000" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp9B336C9C2D11E977F4D90C865B4B6000" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil56DF0F398893E7C4160149711A709C5D" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5PrintSupport.dll" />
             </Component>
-            <Component Id="cmpD88D50645CEEC7E0EEAAF33C365EE9CC" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpD88D50645CEEC7E0EEAAF33C365EE9CC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filB46539D52C976046A6901918C6C5A5DD" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Qml.dll" />
             </Component>
-            <Component Id="cmpD7C4174900152FDB7067354F762787CB" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpD7C4174900152FDB7067354F762787CB" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil01EFAE549CBFD7F63CE42DAB660ADAC1" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Quick.dll" />
             </Component>
-            <Component Id="cmp5B4D450E74D5685B10B5079A03F711D6" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp5B4D450E74D5685B10B5079A03F711D6" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filF861962A22353A343F8FF154A477D54E" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5QuickWidgets.dll" />
             </Component>
-            <Component Id="cmp1F542BC8D5D7C757D2C8BCE0DD94AD31" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp1F542BC8D5D7C757D2C8BCE0DD94AD31" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil8226117DC6D5CC77A7264993472F5AB0" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Sql.dll" />
             </Component>
-            <Component Id="cmpAE841C8195F43246787C9E4E5D217176" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpAE841C8195F43246787C9E4E5D217176" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil41B3C4D018B27DB945274E6CF9EDA0F7" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Svg.dll" />
             </Component>
-            <Component Id="cmp37D0B1C7D07C4394262EB8AA0E0430BB" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp37D0B1C7D07C4394262EB8AA0E0430BB" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil10A9F38C1B014500B6C14E0D30CF3BB3" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebChannel.dll" />
             </Component>
-            <Component Id="cmpB34A4FC1461F650BE31D9FEB5B5DD53D" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpB34A4FC1461F650BE31D9FEB5B5DD53D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil3A07C115AD5DE25897727388594FA483" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngine.dll" />
             </Component>
-            <Component Id="cmp871EC3FADA053F66605BA9394A415B7D" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp871EC3FADA053F66605BA9394A415B7D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil356AA8C00CC084594E653812965782CD" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineCore.dll" />
             </Component>
-            <Component Id="cmp12478D09CF35C19C8F5478E57CA9879A" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp12478D09CF35C19C8F5478E57CA9879A" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil5CBA4CD14DFC4B789412B05AAB849540" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineWidgets.dll" />
             </Component>
-            <Component Id="cmpFDF139B06EE6566BF84B5869FC85B426" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpFDF139B06EE6566BF84B5869FC85B426" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filB90F43F2D685AA4EB9010FB81C1EF27C" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Widgets.dll" />
             </Component>
-            <Component Id="cmp0F58238051ED942D4D3859698C5D2B47" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp0F58238051ED942D4D3859698C5D2B47" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil5DF0712628327EAAAFA1D1232DF07101" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WinExtras.dll" />
             </Component>
-            <Component Id="cmpEA85DF8E84CD8A6B076858A2C6812805" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpEA85DF8E84CD8A6B076858A2C6812805" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filD2547DDFEB7189D65D01B726ECB939C2" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Xml.dll" />
             </Component>
-            <Component Id="cmp63A52F5A47293F175104D8ECC9694BB7" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp63A52F5A47293F175104D8ECC9694BB7" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil156A2FE6B6FABA1B026CAD632EB08D29" KeyPath="yes" Source="$(var.ReleaseDir)\QtWebEngineProcess.exe" />
             </Component>
-            <Component Id="cmpC62287732736BF56B50AFA5C5999B271" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpC62287732736BF56B50AFA5C5999B271" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filA03BB44276F0A77F02C9C79E0847368D" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources.pak" />
             </Component>
-            <Component Id="cmp9F354DE030A171E73E91E04DB9E5E903" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp9F354DE030A171E73E91E04DB9E5E903" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="filA82DF4B19380200061F5DB4C0C32D6B5" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources_100p.pak" />
             </Component>
-            <Component Id="cmpFEB699F8CA7C2A48B56562583CE7C97B" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpFEB699F8CA7C2A48B56562583CE7C97B" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil1FB5FBEDB11B5A0044B8B29EC0F546BF" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources_200p.pak" />
             </Component>
-            <Component Id="cmpC2C70BB31476FAF8E71FDC8B1E036204" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpC2C70BB31476FAF8E71FDC8B1E036204" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil3FA2FA76E667D1561CD336D35BD3AF24" KeyPath="yes" Source="$(var.ReleaseDir)\ssleay32.dll" />
             </Component>
-            <Component Id="cmp0E71904B3EDBAE24E1A31017CDD6DAF0" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp0E71904B3EDBAE24E1A31017CDD6DAF0" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil86A69C988BBDEBEFF4B83BA75330AAE9" KeyPath="yes" Source="$(var.ReleaseDir)\swresample-3.dll" />
             </Component>
-            <Component Id="cmpF0B5FD817150488EB9ACF9EFDE0EBD56" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmpF0B5FD817150488EB9ACF9EFDE0EBD56" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil40E5A8E132500B03BAD6B19B7B30958B" KeyPath="yes" Source="$(var.ReleaseDir)\swscale-5.dll" />
             </Component>
-            <Component Id="cmp2024CBDCC41D4F4F8036E2047C9D1133" Directory="INSTALLFOLDER" Guid="*" Win64="yes">
+            <Component Id="cmp2024CBDCC41D4F4F8036E2047C9D1133" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil8B057A40D21C41C88C68DD0D28D28C4B" KeyPath="yes" Source="$(var.ReleaseDir)\WinSparkle.dll" />
             </Component>
             <Component Id="cmp5039B4AD5D8C909EA17EA732417A9C05" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
