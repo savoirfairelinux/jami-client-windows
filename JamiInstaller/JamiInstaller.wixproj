@@ -41,8 +41,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="back.bmp" />
+    <Content Include="backblu.bmp" />
     <Content Include="Config.wxi" />
+    <Content Include="icon.ico" />
+    <Content Include="jamites.bmp" />
     <Content Include="main-banner.bmp" />
+    <Content Include="rain.bmp" />
     <Content Include="top-banner.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +59,9 @@
       <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
       <Name>WixUIExtension</Name>
     </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BuildinChang.wxl" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
