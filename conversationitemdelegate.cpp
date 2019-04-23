@@ -188,7 +188,7 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
 
     QRect rectName1(rect.left() + leftMargin,
                     rect.top() + topMargin,
-                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 4,
+                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 8,
                     rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
@@ -204,7 +204,7 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
     QRect rectInfo2(rectInfo1.left(),
                     rectInfo1.top() + rectInfo1.height() - infoText2HeightModifier,
                     rectInfo1.width(),
-                    rectInfo1.height() - bottomMargin + infoText2HeightModifier);
+                    rectInfo1.height() - bottomMargin + infoText2HeightModifier + 4);
 
     QFontMetrics fontMetrics(font);
 

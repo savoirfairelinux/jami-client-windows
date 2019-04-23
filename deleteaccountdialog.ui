@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>240</height>
+    <height>274</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,13 +22,13 @@
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>240</height>
+    <height>274</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>240</height>
+    <height>274</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -48,7 +48,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -61,7 +61,7 @@
      <property name="minimumSize">
       <size>
        <width>30</width>
-       <height>0</height>
+       <height>30</height>
       </size>
      </property>
      <property name="font">
@@ -84,13 +84,13 @@
      <property name="minimumSize">
       <size>
        <width>20</width>
-       <height>0</height>
+       <height>30</height>
       </size>
      </property>
      <property name="font">
       <font>
        <family>MS Sans Serif</family>
-       <pointsize>7</pointsize>
+       <pointsize>10</pointsize>
        <italic>false</italic>
       </font>
      </property>
@@ -128,13 +128,13 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>250</width>
-       <height>0</height>
+       <width>300</width>
+       <height>60</height>
       </size>
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -219,7 +219,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="toolTip">
@@ -262,7 +262,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="toolTip">
