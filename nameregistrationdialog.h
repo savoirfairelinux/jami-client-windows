@@ -1,6 +1,6 @@
 /**************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                           *
-* Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -17,6 +17,7 @@
 **************************************************************************/
 
 #pragma once
+
 #include <QDialog>
 #include <QMovie>
 
@@ -24,27 +25,30 @@
 #include "api/newaccountmodel.h"
 
 namespace Ui {
-    class RegNameDialog;
+    class NameRegistrationDialog;
 }
 
-class RegNameDialog : public QDialog
+using namespace lrc::api::account;
+
+class NameRegistrationDialog : public QDialog
 {
-    Q_OBJECT
-    RegNameDialog(const RegNameDialog& cpy);
+    Q_OBJECT;
 
 public:
-    RegNameDialog(const QString& newRegName = "", QWidget* parent = nullptr);
-    ~RegNameDialog();
+    NameRegistrationDialog(const QString& nameToRegister, QWidget* parent = nullptr);
+    ~NameRegistrationDialog();
 
 private slots:
-    void nameRegistrationResultSlot(const std::string& accountId,
-        lrc::api::account::RegisterNameStatus status, const std::string& registerdName);
-    void startNameRegistration();
+    void slotNameRegistrationResult(const std::string& accountId,
+        RegisterNameStatus status,
+        const std::string& registerdName);
+    void slotStartNameRegistration();
 
 private:
-    Ui::RegNameDialog* ui;
-    QString registeredName_;
-    QMovie* gif;
+    Ui::NameRegistrationDialog* ui;
+
+    QString nameToRegister_;
+    QMovie* spinnerAnimation_;
 
     void startSpinner();
 };

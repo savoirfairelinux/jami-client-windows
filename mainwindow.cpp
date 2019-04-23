@@ -21,28 +21,29 @@
 #include "ui_mainwindow.h"
 
 #include <QDesktopWidget>
-#include <QWindow>
 #include <QScreen>
+#include <QWindow>
 
 #include "media/text.h"
 #include "media/textrecording.h"
 
 #ifdef Q_OS_WIN
-#include <windows.h>
+#include "winsparkle.h"
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
-#include "winsparkle.h"
+#include <windows.h>
 #endif
 
 #include "aboutdialog.h"
-#include "settingskey.h"
 #include "callmodel.h"
 #include "callwidget.h"
+#include "settingskey.h"
 #include "utils.h"
 #include "version.h"
 
-MainWindow::MainWindow(QWidget* parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(QWidget* parent)
+    : QMainWindow(parent)
+    ,
 
     ui(new Ui::MainWindow)
 {
@@ -52,14 +53,19 @@ MainWindow::MainWindow(QWidget* parent) :
         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
             connect(navWidget, &NavWidget::NavigationRequested,
                 [this](ScreenEnum scr) {
+                    for (int i = 0; i < ui->navStack->count(); ++i) {
+                        if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
+                            navWidget->navigated(scr == i);
+                        }
+                    }
                     Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
                 });
         }
     }
 
     connect(ui->navStack, SIGNAL(currentChanged(int)),
-            this, SLOT(slotCurrentChanged(int)),
-            Qt::QueuedConnection);
+        this, SLOT(slotCurrentChanged(int)),
+        Qt::QueuedConnection);
 
     QIcon icon(":images/jami.png");
 
@@ -74,8 +80,11 @@ MainWindow::MainWindow(QWidget* parent) :
     auto configAction = new QAction(tr("Settings"), this);
     connect(configAction, &QAction::triggered,
         [this]() {
-            Utils::setStackWidget(ui->navStack, ui->settingswidget);
-            setWindowState(Qt::WindowActive);
+            if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
+                emit currentWidget->NavigationRequested(ScreenEnum::SetttingsScreen);
+                setWindowState(Qt::WindowActive);
+                showWindow();
+            }
         });
     menu->addAction(configAction);
 
@@ -90,10 +99,10 @@ MainWindow::MainWindow(QWidget* parent) :
     sysIcon.show();
 
     connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-            this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
+        this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
 
 #ifdef Q_OS_WIN
-    HMENU sysMenu = ::GetSystemMenu((HWND) winId(), FALSE);
+    HMENU sysMenu = ::GetSystemMenu((HWND)winId(), FALSE);
     if (sysMenu != NULL) {
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
         QString aboutTitle = tr("About");
@@ -146,6 +155,24 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 
     lastScr_ = startScreen;
+
+#ifdef DEBUG_STYLESHEET
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout,
+        [this]() {
+            QString fileName = "stylesheet.css";
+            QDir filePath = QDir(QCoreApplication::applicationDirPath());
+            filePath.cdUp();
+            filePath.cdUp();
+            QFile file(filePath.filePath(fileName));
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                auto fileContent = file.readAll();
+                setStyleSheet(fileContent);
+                file.close();
+            }
+        });
+    timer->start(1000);
+#endif
 }
 
 MainWindow::~MainWindow()
@@ -153,36 +180,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void
-MainWindow::slotCurrentChanged(int index)
+void MainWindow::slotCurrentChanged(int index)
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
-    auto firstUse =
-        (accountList.size() == 1 && lastScr_ == ScreenEnum::WizardScreen &&
-         lastAccountCount_ < accountList.size()) ||
-        !accountList.size();
-    if (lastScr_ == ScreenEnum::WizardScreen &&
-        lastAccountCount_ < accountList.size()) {
+    auto firstUse = (accountList.size() == 1 && lastScr_ == ScreenEnum::WizardScreen && lastAccountCount_ < accountList.size()) || !accountList.size();
+    if (lastScr_ == ScreenEnum::WizardScreen && lastAccountCount_ < accountList.size()) {
         lastAccountCount_ = accountList.size();
-    }
-    for (int i = 0; i < ui->navStack->count(); ++i) {
-        if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
-            navWidget->navigated(index == i);
-        }
     }
 
     auto scr = Utils::toEnum<ScreenEnum>(index);
-
-    if (scr == ScreenEnum::SetttingsScreen) {
-        ui->settingswidget->updateSettings(ui->callwidget->getLeftPanelWidth());
-    }
 
     setWindowSize(scr, firstUse);
     lastScr_ = scr;
 }
 
-void
-MainWindow::onRingEvent(const QString& uri)
+void MainWindow::onRingEvent(const QString& uri)
 {
     this->showNormal();
     if (not uri.isEmpty()) {
@@ -192,13 +204,12 @@ MainWindow::onRingEvent(const QString& uri)
     }
 }
 
-bool
-MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
+bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
 {
     Q_UNUSED(eventType)
 
 #ifdef Q_OS_WIN
-    MSG* msg = (MSG*) message;
+    MSG* msg = (MSG*)message;
 
     if (msg->message == WM_SYSCOMMAND) {
         if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
@@ -217,15 +228,14 @@ MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result
     return false;
 }
 
-void
-MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
+void MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason != QSystemTrayIcon::ActivationReason::Context)
         this->show();
 }
 
-void
-MainWindow::showWindow() {
+void MainWindow::showWindow()
+{
     if (currentWindowState_ == Qt::WindowMaximized) {
         showMaximized();
     } else {
@@ -235,13 +245,12 @@ MainWindow::showWindow() {
     raise();
 }
 
-void
-MainWindow::notificationClicked() {
+void MainWindow::notificationClicked()
+{
     showWindow();
 }
 
-void
-MainWindow::createThumbBar()
+void MainWindow::createThumbBar()
 {
 #ifdef Q_OS_WIN
     QWinThumbnailToolBar* thumbbar = new QWinThumbnailToolBar(this);
@@ -259,8 +268,7 @@ MainWindow::createThumbBar()
 #endif
 }
 
-void
-MainWindow::changeEvent(QEvent* e)
+void MainWindow::changeEvent(QEvent* e)
 {
     if (e->type() == QEvent::WindowStateChange) {
         QWindowStateChangeEvent* event = static_cast<QWindowStateChangeEvent*>(e);
@@ -273,39 +281,44 @@ MainWindow::changeEvent(QEvent* e)
     QWidget::changeEvent(e);
 }
 
-void
-MainWindow::closeEvent(QCloseEvent* event)
+void MainWindow::closeEvent(QCloseEvent* event)
 {
     Video::PreviewManager::instance().stopPreview();
-    QSettings settings;
+    QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
         this->hide();
         event->ignore();
     } else {
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
+        this->disconnect(screenChangedConnection_);
+        QMainWindow::closeEvent(event);
     }
-    this->disconnect(screenChangedConnection_);
-    QMainWindow::closeEvent(event);
 }
 
-void
-MainWindow::readSettingsFromRegistry()
+void MainWindow::readSettingsFromRegistry()
 {
-    QSettings settings;
+    QSettings settings("jami.net", "Jami");
+
     restoreGeometry(settings.value(SettingsKey::geometry).toByteArray());
     restoreState(settings.value(SettingsKey::windowState).toByteArray());
 
     LRCInstance::editableDataTransferModel()->downloadDirectory = settings.value(SettingsKey::downloadPath,
-        QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString().toStdString() + "/";
+                                                                              QStandardPaths::writableLocation(QStandardPaths::DownloadLocation))
+                                                                      .toString()
+                                                                      .toStdString()
+        + "/";
 
     if (not settings.contains(SettingsKey::enableNotifications)) {
         settings.setValue(SettingsKey::enableNotifications, true);
     }
+
+    if (not settings.contains(SettingsKey::closeOrMinimized)) {
+        settings.setValue(SettingsKey::closeOrMinimized, true);
+    }
 }
 
-void
-MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
+void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 {
     auto screenNumber = qApp->desktop()->screenNumber();
     auto accountList = LRCInstance::accountModel().getAccountList();
@@ -322,9 +335,7 @@ MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
                 Qt::LeftToRight,
                 Qt::AlignCenter,
                 size(),
-                qApp->desktop()->screenGeometry(screenNumber)
-            )
-        );
+                qApp->desktop()->screenGeometry(screenNumber)));
         if (scr == ScreenEnum::WizardScreen) {
             setWindowFlags(Qt::Dialog);
             setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
@@ -338,21 +349,19 @@ MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
     }
 }
 
-void
-MainWindow::show()
+void MainWindow::show()
 {
     QMainWindow::show();
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-                                       this, &MainWindow::slotScreenChanged);
+        this, &MainWindow::slotScreenChanged);
     auto screenNumber = qApp->desktop()->screenNumber();
     QScreen* screen = qApp->screens().at(screenNumber);
     currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }
 
-void
-MainWindow::slotScreenChanged(QScreen* screen)
+void MainWindow::slotScreenChanged(QScreen* screen)
 {
     adjustSize();
     updateGeometry();
@@ -365,15 +374,13 @@ MainWindow::slotScreenChanged(QScreen* screen)
         });
 }
 
-void
-MainWindow::resizeEvent(QResizeEvent* event)
+void MainWindow::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
 }
 
-float
-MainWindow::getCurrentScalingRatio()
+float MainWindow::getCurrentScalingRatio()
 {
     return currentScalingRatio_;
 }
