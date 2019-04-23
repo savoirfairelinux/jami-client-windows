@@ -1,6 +1,7 @@
 /**************************************************************************
 * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
 * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -15,10 +16,11 @@
 * You should have received a copy of the GNU General Public License       *
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
 **************************************************************************/
-#include <QTimer>
-
 #include "passworddialog.h"
 #include "ui_passworddialog.h"
+
+#include <QTimer>
+#include <QtConcurrent/QtConcurrent>
 
 #include "lrcinstance.h"
 
@@ -28,28 +30,24 @@ PasswordDialog::PasswordDialog(QWidget* parent)
 {
     ui->setupUi(this);
 
-    ui->currentPsswdEdit->setEchoMode(QLineEdit::Password);
-    ui->newPsswdEdit->setEchoMode(QLineEdit::Password);
-    ui->confirmNewPsswdEdit->setEchoMode(QLineEdit::Password);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setFixedSize(size());
 
-    if (!LRCInstance::getCurrAccConfig().archiveHasPassword) {
-        ui->currentPsswdEdit->hide();
-    } else {
-        ui->currentPsswdEdit->show();
-    }
+    ui->currentPasswordEdit->setEchoMode(QLineEdit::Password);
+    ui->passwordEdit->setEchoMode(QLineEdit::Password);
+    ui->confirmPasswordEdit->setEchoMode(QLineEdit::Password);
 
-    connect(ui->currentPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
-    connect(ui->newPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
-    connect(ui->confirmNewPsswdEdit, &QLineEdit::textChanged, this, &PasswordDialog::validateNewPsswd);
+    ui->currentPasswordEdit->setEnabled(LRCInstance::getCurrAccConfig().archiveHasPassword);
 
-    connect(ui->confirmButton, &QPushButton::clicked, [=]() {
-        savePassword();
-        }
-    );
+    connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+    connect(ui->passwordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+    connect(ui->confirmPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+    connect(ui->btnChangePasswordConfirm, &QPushButton::clicked, [this] { savePassword(); });
+    connect(ui->btnChangePasswordCancel, &QPushButton::clicked, [this] { reject(); });
 
-    connect(ui->cancelButton, &QPushButton::clicked, this, &PasswordDialog::closeSlot);
+    ui->btnChangePasswordConfirm->setEnabled(false);
 
-    ui->confirmButton->setEnabled(false);
+    ui->wrongPasswordLabel->hide();
 }
 
 PasswordDialog::~PasswordDialog()
@@ -57,52 +55,35 @@ PasswordDialog::~PasswordDialog()
     delete ui;
 }
 
-// only sets new password if both new passwords match
 void
-PasswordDialog::validateNewPsswd()
+PasswordDialog::validatePassword()
 {
-    ui->newPsswdEdit->setStyleSheet("border: 1px solid red;");
-    ui->confirmNewPsswdEdit->setStyleSheet("border: 1px solid red;");
+    bool acceptablePassword = ui->passwordEdit->text() == ui->confirmPasswordEdit->text();
+    ui->btnChangePasswordConfirm->setEnabled(acceptablePassword);
 
-    if (ui->newPsswdEdit->text() == ui->confirmNewPsswdEdit->text()) {
-        ui->newPsswdEdit->setStyleSheet("border: 1px solid green;");
-        ui->confirmNewPsswdEdit->setStyleSheet("border: 1px solid green;");
+    if (acceptablePassword) {
+        ui->passwordEdit->setStyleSheet("border: 2px solid green;");
+        ui->confirmPasswordEdit->setStyleSheet("border: 2px solid green;");
+        return;
     }
-    freeConfirmButton();
-}
 
-void
-PasswordDialog::freeConfirmButton()
-{
-    if (ui->newPsswdEdit->text() == ui->confirmNewPsswdEdit->text()) {
-        ui->confirmButton->setEnabled(true);
-    }
-    else {
-        ui->confirmButton->setEnabled(false);
-    }
+    ui->passwordEdit->setStyleSheet("border: 2px solid red;");
+    ui->confirmPasswordEdit->setStyleSheet("border: 2px solid red;");
 }
 
 void
 PasswordDialog::savePassword()
 {
     if (LRCInstance::editableAccountModel()->changeAccountPassword(LRCInstance::getCurrAccId(),
-        ui->currentPsswdEdit->text().toStdString(), ui->newPsswdEdit->text().toStdString())) {
-        ui->userMessageLabel->setText(tr("Password Changed Successfully"));
+        ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString())) {
 
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        ui->newPsswdEdit->text().isEmpty() ? confProps.archiveHasPassword = false : confProps.archiveHasPassword = true;
+        confProps.archiveHasPassword = !ui->passwordEdit->text().isEmpty();
         LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
-        ui->cancelButton->hide();
-        ui->confirmButton->hide();
-        ui->currentPsswdEdit->hide();
-        ui->newPsswdEdit->hide();
-        ui->confirmNewPsswdEdit->hide();
-
-        QTimer::singleShot(900, this, SLOT(closeSlot()));
-    }
-    else {
-        ui->userMessageLabel->setText(tr("Current Password Incorrect"));
-        ui->currentPsswdEdit->setText("");
+        accept();
+    } else {
+        ui->wrongPasswordLabel->show();
+        ui->currentPasswordEdit->setText("");
     }
 }

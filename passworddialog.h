@@ -15,8 +15,8 @@
 * You should have received a copy of the GNU General Public License       *
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
 **************************************************************************/
-
 #pragma once
+
 #include <QDialog>
 
 namespace Ui {
@@ -26,19 +26,15 @@ namespace Ui {
 class PasswordDialog : public QDialog
 {
     Q_OBJECT
-    PasswordDialog(const PasswordDialog& cpy);
-
 public:
     PasswordDialog(QWidget* parent = nullptr);
     ~PasswordDialog();
 
 private slots:
-    void validateNewPsswd();
-    inline void closeSlot() { done(0); };
+    void validatePassword();
 
 private:
     Ui::PasswordDialog* ui;
 
-    void freeConfirmButton();
     void savePassword();
 };

@@ -3,8 +3,8 @@
 * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
-* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
-* Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+* Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QBitmap>
+#include <QtConcurrent/QtConcurrent>
 
 #include "namedirectory.h"
 
@@ -53,13 +54,10 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
     lookupSpinnerMovie_ = new QMovie(":/images/jami_rolling_spinner.gif");
     lookupSpinnerMovie_->setScaledSize(QSize(30, 30));
 
-    lookupStatusLabel_ = new QLabel(this);
-    lookupStatusLabel_->setMovie(lookupSpinnerMovie_);
-    lookupStatusLabel_->hide();
+    ui->lookupStatusLabel->setMovie(lookupSpinnerMovie_);
+    ui->lookupStatusLabel->hide();
 
     registrationStateOk_ = false;
-
-    passwordStatusLabel_ = new QLabel(this);
 
     statusSuccessPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-done-24px.svg", RingTheme::presenceGreen_);
     statusInvalidPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-error_outline-24px.svg", RingTheme::urgentOrange_);
@@ -130,22 +128,22 @@ NewWizardWidget::updateNameRegistrationUi(NameRegistrationUIState state)
 {
     switch (state) {
     case NameRegistrationUIState::BLANK:
-        lookupStatusLabel_->hide();
+        ui->lookupStatusLabel->hide();
         break;
     case NameRegistrationUIState::INVALID:
-        lookupStatusLabel_->setPixmap(statusInvalidPixmap_);
+        ui->lookupStatusLabel->setPixmap(statusInvalidPixmap_);
         break;
     case NameRegistrationUIState::TAKEN:
-        lookupStatusLabel_->setPixmap(statusErrorPixmap_);
+        ui->lookupStatusLabel->setPixmap(statusErrorPixmap_);
         break;
     case NameRegistrationUIState::FREE:
-        lookupStatusLabel_->setPixmap(statusSuccessPixmap_);
+        ui->lookupStatusLabel->setPixmap(statusSuccessPixmap_);
         break;
     case NameRegistrationUIState::SEARCHING:
-        lookupStatusLabel_->setMovie(lookupSpinnerMovie_);
+        ui->lookupStatusLabel->setMovie(lookupSpinnerMovie_);
         lookupSpinnerMovie_->stop();
         lookupSpinnerMovie_->start();
-        lookupStatusLabel_->show();
+        ui->lookupStatusLabel->show();
         break;
     }
 }
@@ -189,8 +187,8 @@ void NewWizardWidget::changePage(QWidget* toPage)
     if (toPage == ui->welcomePage) {
         fileToImport_ = QString("");
         setNavBarVisibility(false, true);
-        lookupStatusLabel_->hide();
-        passwordStatusLabel_->hide();
+        ui->lookupStatusLabel->hide();
+        ui->passwordStatusLabel->hide();
     } else if (toPage == ui->createRingAccountPage) {
         ui->usernameEdit->clear();
         ui->passwordEdit->clear();
@@ -223,22 +221,18 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->pinEdit->setEnabled(true);
         ui->fileImportBtn->setEnabled(true);
         setNavBarVisibility(true);
-        lookupStatusLabel_->hide();
-        passwordStatusLabel_->hide();
+        ui->lookupStatusLabel->hide();
+        ui->passwordStatusLabel->hide();
         validateWizardProgression();
     } else if (toPage == ui->spinnerPage) {
-        lookupStatusLabel_->hide();
-        passwordStatusLabel_->hide();
+        ui->lookupStatusLabel->hide();
+        ui->passwordStatusLabel->hide();
     }
 }
 
 void
 NewWizardWidget::updateCustomUI()
 {
-    QPoint editUsernamePos = ui->usernameEdit->mapTo(this, ui->usernameEdit->rect().topRight());
-    lookupStatusLabel_->setGeometry(editUsernamePos.x() + 6, editUsernamePos.y() - 1, 30, 30);
-    QPoint editconfpassPos = ui->confirmPasswordEdit->mapTo(this, ui->confirmPasswordEdit->rect().topRight());
-    passwordStatusLabel_->setGeometry(editconfpassPos.x() + 6, editconfpassPos.y() - 1, 24, 24);
 }
 
 void
@@ -275,8 +269,8 @@ NewWizardWidget::on_previousButton_clicked()
     if (curWidget == ui->createRingAccountPage) { ui->setAvatarWidget->stopBooth(); }
     if (curWidget == ui->createRingSIPAccountPage) { ui->setSIPAvatarWidget->stopBooth(); }
     disconnect(registeredNameFoundConnection_);
-    lookupStatusLabel_->hide();
-    passwordStatusLabel_->hide();
+    ui->lookupStatusLabel->hide();
+    ui->passwordStatusLabel->hide();
     if (curWidget == ui->createRingAccountPage ||
         curWidget == ui->linkRingAccountPage || curWidget == ui->createRingSIPAccountPage) {
         changePage(ui->welcomePage);
@@ -390,13 +384,13 @@ NewWizardWidget::validateWizardProgression()
          registrationStateOk_ == true);
     bool passwordOk = ui->passwordEdit->text() == ui->confirmPasswordEdit->text();
     if (passwordOk && !ui->passwordEdit->text().isEmpty()) {
-        passwordStatusLabel_->show();
-        passwordStatusLabel_->setPixmap(statusSuccessPixmap_);
+        ui->passwordStatusLabel->show();
+        ui->passwordStatusLabel->setPixmap(statusSuccessPixmap_);
     } else if (!passwordOk) {
-        passwordStatusLabel_->show();
-        passwordStatusLabel_->setPixmap(statusErrorPixmap_);
+        ui->passwordStatusLabel->show();
+        ui->passwordStatusLabel->setPixmap(statusErrorPixmap_);
     } else {
-        passwordStatusLabel_->hide();
+        ui->passwordStatusLabel->hide();
     }
     ui->nextButton->setEnabled(usernameOk && passwordOk);
 }
@@ -436,7 +430,9 @@ NewWizardWidget::processWizardInformations()
     }
 
     inputPara_["archivePath"] = fileToImport_;
-    if (inputPara_.find("archivePin") == inputPara_.end()) { inputPara_["archivePin"] = "";  }
+    if (inputPara_.find("archivePin") == inputPara_.end()) {
+        inputPara_["archivePin"] = "";
+    }
 
     changePage(ui->spinnerPage);
     createAccount();

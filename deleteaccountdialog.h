@@ -16,9 +16,7 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
-#ifndef DELETEACCOUNTDIALOG_H
-#define DELETEACCOUNTDIALOG_H
+#pragma once
 
 #include <QDialog>
 
@@ -43,5 +41,3 @@ signals:
 private:
     Ui::DeleteAccountDialog *ui;
 };
-
-#endif // DELETEACCOUNTDIALOG_H
