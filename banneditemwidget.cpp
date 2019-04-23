@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,24 +16,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "ui_banneditemwidget.h"
 
-#include <QDialog>
+#include "banneditemwidget.h"
 
-namespace Ui {
-class PhotoBoothDialog;
+#include "lrcinstance.h"
+#include "utils.h"
+
+BannedItemWidget::BannedItemWidget(const QString& name,
+                                   const QString& id,
+                                   QWidget* parent)
+    : QWidget(parent),
+    ui(new Ui::BannedItemWidget)
+{
+    ui->setupUi(this);
+    ui->labelContactName->setText(name);
+    ui->labelContactId->setText(id);
+
+    auto avatarImage = Utils::fallbackAvatar(QSize(48, 48), id, name);
+    ui->labelContactAvatar->setPixmap(QPixmap::fromImage(avatarImage));
+
+    ui->btnReAddContact->setToolTip(QObject::tr("Add as contact"));
+
+    connect(ui->btnReAddContact, &QPushButton::clicked, this,
+        [this]() {
+            emit btnReAddContactClicked();
+        });
 }
 
-class PhotoBoothDialog : public QDialog
+BannedItemWidget::~BannedItemWidget()
 {
-    Q_OBJECT
+    disconnect(this);
+    delete ui;
+}
 
-public:
-    explicit PhotoBoothDialog(QWidget* parent = 0);
-    ~PhotoBoothDialog();
-    QString& getOutputFileName() { return fileName_;}
-
-private:
-    Ui::PhotoBoothDialog* ui;
-    QString fileName_;
-};
+QSize
+BannedItemWidget::sizeHint() const
+{
+    return QSize();
+}

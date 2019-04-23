@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,28 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "photoboothdialog.h"
-#include "ui_photoboothdialog.h"
+#pragma once
 
-#include <QFileDialog>
-#include <QStandardPaths>
+#include <QWidget>
 
-#include "video/previewmanager.h"
-
-PhotoBoothDialog::PhotoBoothDialog(QWidget* parent) :
-    QDialog(parent),
-    ui(new Ui::PhotoBoothDialog)
-{
-    ui->setupUi(this);
-    setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
-    connect(ui->Photobooth, &PhotoboothWidget::photoTaken, [this](QString fileName){
-        fileName_ = fileName;
-        accept();
-        }
-    );
+namespace Ui {
+class BannedItemWidget;
 }
 
-PhotoBoothDialog::~PhotoBoothDialog()
+class BannedItemWidget : public QWidget
 {
-    delete ui;
-}
+    Q_OBJECT
+public:
+    explicit BannedItemWidget(const QString& name,
+                              const QString& id,
+                              QWidget* parent = 0);
+    ~BannedItemWidget();
+
+    QSize sizeHint() const override;
+
+private:
+    Ui::BannedItemWidget* ui;
+
+signals:
+    void btnReAddContactClicked() const;
+
+};

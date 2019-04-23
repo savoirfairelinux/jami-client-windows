@@ -1,3 +1,17 @@
+QToolTip {
+    color: white;
+    background-color: #109ede;
+    border: 1px solid white;
+}
+
+QPushButton {
+    background-color: rgb(242, 242, 242);
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+    color: rgb(32, 32, 32);
+}
+
 QPushButton#takePhotoButton, QPushButton#importButton {
     background-color: rgb(242, 242, 242);
     border-radius: 5px;
@@ -32,20 +46,11 @@ QPushButton#refuseButton:pressed, QPushButton#cancelButton:pressed{
     background-color: #db3c30;
 }
 
-QPushButton {
-    background-color: rgb(242, 242, 242);
-    border-style: solid;
-    border-width: 0px;
-    border-radius: 15px;
-	color: rgb(32, 32, 32);
-}
-
 QWidget#smartListOuterWidget {
     background-color: rgb(255, 255, 255);
 }
 
 QPushButton#btnConversations, QPushButton#btnInvites,
-QPushButton#btnExportAccount, QPushButton#btnDeletAccount,
 QPushButton#btnSIPDeletAccount {
     border-radius: 0px;
     border-top-left-radius: 15px;
@@ -61,7 +66,6 @@ QPushButton#btnSIPDeletAccount {
 }
 
 QPushButton#btnConversations:hover, QPushButton#btnInvites:hover,
-QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover,
 QPushButton#btnSIPDeletAccount:hover {
     background-color: rgb(188, 185, 184);
     border-top: 2px solid rgb(188, 185, 184);
@@ -70,8 +74,7 @@ QPushButton#btnSIPDeletAccount:hover {
     border-left: 2px solid rgb(188, 185, 184);
 }
 
-QPushButton#btnConversations:checked, QPushButton#btnInvites:checked,
-QPushButton#btnExportAccount:checked, QPushButton#btnDeletAccount:checked {
+QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
     background-color: rgb(255, 255, 255);
     border-bottom: 2px solid rgb(255, 255, 255);
 }
@@ -106,23 +109,6 @@ QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#
 QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
 QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed {
     background-color: rgb(212, 212, 212);
-}
-
-QPushButton#accountSettingsButton, QPushButton#generalSettingsButton, QPushButton#avSettingsButton {
-    border-radius: 0px;
-    background-color: transparent;
-}
-
-QPushButton#accountSettingsButton:hover,
-QPushButton#generalSettingsButton:hover,
-QPushButton#avSettingsButton:hover {
-    background-color: rgb(245, 245, 245);
-}
-
-QPushButton#accountSettingsButton:checked,
-QPushButton#generalSettingsButton:checked,
-QPushButton#avSettingsButton:checked {
-    background-color: rgb(240, 240, 240);
 }
 
 QWidget#searchBarLayoutWidget, QWidget#smartList,
@@ -162,50 +148,6 @@ QScrollBar::handle:vertical, QScrollBar::handle:horizontal{
 SmartListView {
     background-color: white;
     border: none;
-}
-
-QListView#audioCodecView, QListView#videoCodecView, QListView#cipherListView{
-    background-color: transparent;
-    border: 2px solid rgb(77, 77, 77);
-}
-
-QListView#audioCodecView::item, QListView#videoCodecView::item, QListView#cipherListView::item {
-    height: 30px;
-    font: 30px;
-
-}
-
-QListView#audioCodecView::indicator, QListView#videoCodecView::indicator,
-QListView#cipherListView::indicator{
-    height : 12 px;
-    width : 12 px;
-    border: 2px solid rgb(77, 77, 77);
-    border-radius: 4px;
-    background: none;
-}
-
-QListView#audioCodecView::indicator:checked,  QListView#videoCodecView::indicator:checked,
-QListView#cipherListView::indicator:checked{
-    border-color: #2b4b7e;
-    background: #2b4b7e;
-    image: url(":/images/icons/ic_check_white_18dp_2x.png");
-}
-
-QListView#audioCodecView::item:selected, QListView#videoCodecView::item:selected,
-QListView#cipherListView::item:selected{
-    background-color: rgba(220, 220, 220, 255);
-    border: none;
-}
-
-QListView#audioCodecView::item:hover, QListView#videoCodecView::item:hover,
-QListView#cipherListView::item:hover{
-    background-color: rgba(229, 229, 229, 255);
-    border-radius: 18px;
-}
-
-QListView#cipherListView::item:disabled
-{
-    background-color: transparent;
 }
 
 SmartListView::item:selected, QListView#BannedList::item:selected {
@@ -320,7 +262,6 @@ QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, 
     border-radius: 15px;
     height: 30px;
     color: white;
-    font: 14px;
 }
 
     QPushButton#nextButton:disabled, QPushButton#playButton:disabled, QPushButton#clearHistoryButton:disabled,
@@ -340,7 +281,6 @@ QPushButton#cancelChangeBtn {
     background-color: rgb(251, 72, 71);
     border: 0px;
     color: white;
-    font: 14px;
 }
 
 QPushButton#nextButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
@@ -387,7 +327,7 @@ QComboBox{
     border-top: transparent;
     border-left: transparent;
     border-right: transparent;
-    font: 11pt "Sans Serif";
+    font-family: "Sans Serif";
     padding: 2px;
 }
 
@@ -426,23 +366,6 @@ QRadioButton::indicator:checked{
 
 QWidget#horizontalWidget{
     background: transparent;
-}
-
-QSpinBox {
-    background: transparent;
-    border-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #414141;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    font: 11pt "Sans Serif";
-    padding: 2px;
-}
-
-QSpinBox:focus {
-    border-color: #109ede;
 }
 
 QCheckBox::indicator{
@@ -525,7 +448,6 @@ QToolButton::menu-arrow {image:none;}
 QLabel#accountIdLabel, QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2,
 QLabel#warningLabel{
     background: transparent;
-    font: 11pt "Sans Serif";
 }
 
 QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2{
@@ -555,21 +477,181 @@ QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
 }
 /* } setAvatarDialog */
 
+QSpinBox {
+    background-color: rgb(240, 240, 240);
+    border-radius: 14px;
+    height: 28px;
+    padding: 2px;
+    margin-bottom: 4px;
+}
+
+    QSpinBox::up-button {
+        subcontrol-origin: border;
+        subcontrol-position: top right;
+        width: 16px;
+        height: 18px;
+        padding-right: 4px;
+        margin-top: 3px;
+    }
+
+    QSpinBox::down-button {
+        subcontrol-origin: border;
+        subcontrol-position: bottom right;
+        width: 16px;
+        height: 18px;
+        padding-right: 4px;
+        margin-bottom: 3px;
+    }
+
 /* SettingsWidget { */
-QWidget#leftSettingsWidget, QWidget#rightSettingsWidget,
-QWidget#DeleteAccountDialog, QWidget#AdvancedSettingsWidget,
-QWidget#RegNameDialog, QWidget#PasswordDialog, QWidget#centralWidget,
-QWidget#scrollAreaWidgetContents {
+SettingsWidget QPushButton {
+    padding-right: 16px;
+    padding-left: 16px;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+    color: rgb(32, 32, 32);
+    background-color: rgb(242, 242, 242);
+}
+
+    SettingsWidget QPushButton:hover {
+        background-color: rgb(237, 237, 237);
+    }
+
+    SettingsWidget QPushButton:pressed {
+        background-color: rgb(212, 212, 212);
+    }
+
+SettingsWidget QWidget#leftSettingsWidget,
+SettingsWidget QWidget#rightSettingsWidget,
+SettingsWidget QWidget#DeleteAccountDialog,
+SettingsWidget QWidget#AdvancedSettingsWidget,
+SettingsWidget QWidget#NameRegistrationDialog,
+SettingsWidget QWidget#PasswordDialog,
+SettingsWidget QWidget#centralWidget,
+SettingsWidget QWidget#scrollAreaWidgetContents {
     background-color: rgba(255, 255, 255, 255);
 }
 
-QLineEdit#currentRingID {
+SettingsWidget .QLineEdit {
+    border-radius: 15px;
+    background-color: rgb(240, 240, 240);
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 30px;
+}
+
+SettingsWidget QLineEdit#currentRingID {
     border: 0px;
+    border-radius: 0px;
+    padding: 0px;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+SettingsWidget QLineEdit#currentRegisteredID {
+    border: 2px;
+    border-radius: 15px;
     padding: 1px;
+    padding-left: 8px;
+    border-style: solid;
+    background-color: rgb(240, 240, 240);
+}
+
+SettingsWidget QPushButton#regNameButton {
     background-color: transparent;
 }
 
-QPushButton#regNameButton {
+SettingsWidget QWidget#videoLayoutWidget {
+    background-color: black;
+}
+
+SettingsWidget QPushButton#btnDeletAccount {
+    background-color: rgb(252, 91, 90);
+    color: white;
+}
+
+    SettingsWidget QPushButton#btnDeletAccount:hover {
+        background-color: red;
+        color: white;
+    }
+
+    SettingsWidget QPushButton#btnDeletAccount:pressed {
+        background-color: darkred;
+        color: white;
+    }
+
+QListView .QLabel#labelDeviceId {
+    padding-left: 4px;
+    font-weight: 300;
+}
+
+QListView .QLabel#labelThisDevice {
+    margin-right: 16px;
+    font-style: italic;
+    color: green;
+}
+
+QListWidget .QLabel {
     background-color: transparent;
 }
+
+QListWidget .QLineEdit {
+    background-color: transparent;
+}
+
+QListWidget .QPushButton {
+    background-color: transparent;
+}
+    QListWidget .QPushButton:hover {
+        background-color: transparent;
+    }
+    QListWidget .QPushButton:pressed {
+        background-color: transparent;
+    }
+
+QListView::item:selected {
+    background-color: rgb(220, 220, 220);
+}
+
+SettingsWidget QListView {
+    background-color: whitesmoke;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 16px;
+}
+
+    SettingsWidget QListView::item {
+        height: 30px;
+        font: 30px;
+        padding: 8px;
+    }
+
+    SettingsWidget QListView::indicator {
+        height: 12 px;
+        width: 12 px;
+        border: 2px solid rgb(77, 77, 77);
+        border-radius: 4px;
+        background: none;
+    }
+
+    SettingsWidget QListView::indicator:checked {
+        border-color: #2b4b7e;
+        background: #2b4b7e;
+        image: url(":/images/icons/ic_check_white_18dp_2x.png");
+    }
+
+    SettingsWidget QListView::item:selected {
+        background-color: rgba(220, 220, 220, 255);
+        border: none;
+        color: black;
+    }
+
+    SettingsWidget QListView::item:hover {
+        background-color: rgba(229, 229, 229, 255);
+    }
+
+    SettingsWidget QListView::item:disabled {
+        background-color: transparent;
+    }
+
 /* } SettingsWidget */
