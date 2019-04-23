@@ -171,9 +171,6 @@
     <ClCompile Include="avatargraphicsview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="regnamedialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="accountlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -196,6 +193,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="advancedsipsettingwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nameregistrationdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="toggleswitch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -308,9 +311,6 @@
     <QtMoc Include="avatargraphicsview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="regnamedialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="bannedlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -330,6 +330,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="settingswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nameregistrationdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="toggleswitch.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="iconbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -599,9 +608,6 @@
     <QtUic Include="animatedoverlay.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="regnamedialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="deviceeditwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -612,6 +618,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="advancedsipsettingwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nameregistrationdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

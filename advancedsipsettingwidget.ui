@@ -13,15 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QFrame" name="SIPCallSettings">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="topMargin">
        <number>20</number>
@@ -94,9 +88,6 @@
               <pointsize>9</pointsize>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
-            </property>
             <property name="text">
              <string>Add a custom ringtone</string>
             </property>
@@ -168,9 +159,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="0" column="1">
@@ -223,9 +211,6 @@
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="5" column="0">
@@ -247,9 +232,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="5" column="2">
@@ -258,9 +240,6 @@
            <font>
             <pointsize>9</pointsize>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
           </property>
           <property name="placeholderText">
            <string>STUN Address</string>
@@ -357,9 +336,6 @@
              <font>
               <pointsize>9</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
             </property>
             <property name="text">
              <string>Audio Codecs</string>
@@ -502,9 +478,6 @@
              <font>
               <pointsize>9</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
             </property>
             <property name="text">
              <string>Video Codecs</string>

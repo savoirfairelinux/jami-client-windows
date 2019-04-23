@@ -1,5 +1,5 @@
 /**************************************************************************
-* Copyright (C) 2018-2019 by Savoir-faire Linux                                *
+* Copyright (C) 2018-2019 by Savoir-faire Linux                           *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
@@ -19,7 +19,7 @@
 #pragma once
 
 #include <QLabel>
-#include <QtConcurrent/QtConcurrent>
+#include <QTimer>
 #include <map>
 
 #include "lrcinstance.h"
