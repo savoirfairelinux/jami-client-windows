@@ -38,9 +38,9 @@
 #include <QApplication>
 #include <QFile>
 
-#include "globalinstances.h"
-#include "pixbufmanipulator.h"
+#include <globalinstances.h>
 
+#include "pixbufmanipulator.h"
 #include "globalsystemtray.h"
 #include "lrcinstance.h"
 
@@ -217,7 +217,18 @@ Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 
 void Utils::showSystemNotification(QWidget* widget, const QString & message, long delay)
 {
-    GlobalSystemTray::instance().showMessage("Jami", message);
+    GlobalSystemTray::instance().showMessage(message, "", QIcon(":images/jami.png"));
+    QApplication::alert(widget, delay);
+}
+
+void Utils::showSystemNotification(QWidget* widget,
+    const QString & sender,
+    const QString & message,
+    long delay)
+{
+    QIcon();
+    GlobalSystemTray::instance()
+        .showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
 }
 
@@ -390,6 +401,97 @@ Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::I
             .value<QImage>();
     }
     return QImage();
+}
+
+QColor
+Utils::getAvatarColor(const QString& canonicalUri) {
+    if (canonicalUri.isEmpty()) {
+        return RingTheme::defaultAvatarColor_;
+    }
+    auto h = QString(QCryptographicHash::hash(canonicalUri.toLocal8Bit(), QCryptographicHash::Md5).toHex());
+    if (h.isEmpty() || h.isNull()) {
+        return RingTheme::defaultAvatarColor_;
+    }
+    auto colorIndex = std::string("0123456789abcdef").find(h.at(0).toLatin1());
+    return RingTheme::avatarColors_[colorIndex];
+}
+
+// Generate a QImage representing a dummy user avatar, when user doesn't provide it.
+// Current rendering is a flat colored circle with a centered letter.
+// The color of the letter is computed from the circle color to be visible whaterver be the circle color.
+QImage
+Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr)
+{
+    // We start with a transparent avatar
+    QImage avatar(size, QImage::Format_ARGB32);
+    avatar.fill(Qt::transparent);
+
+    // We pick a color based on the passed character
+    QColor avColor = getAvatarColor(canonicalUriStr);
+
+    // We draw a circle with this color
+    QPainter painter(&avatar);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setPen(Qt::transparent);
+    painter.setBrush(avColor.lighter(110));
+    painter.drawEllipse(avatar.rect());
+
+    // If a letter was passed, then we paint a letter in the circle,
+    // otherwise we draw the default avatar icon
+    QString letterStrCleaned(letterStr);
+    letterStrCleaned.remove(QRegExp("[\\n\\t\\r]"));
+    if (!letterStr.isEmpty()) {
+        auto letter = letterStr.at(0).toUpper().toLatin1();
+        QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
+        painter.setFont(font);
+        painter.setPen(Qt::white);
+        painter.drawText(avatar.rect(), QString(letter), QTextOption(Qt::AlignCenter));
+    } else {
+        QRect overlayRect = avatar.rect();
+        qreal margin = (0.05 * overlayRect.width());
+        overlayRect.moveLeft(overlayRect.left() + margin * 0.5);
+        overlayRect.moveTop(overlayRect.top() + margin * 0.5);
+        overlayRect.setWidth(overlayRect.width() - margin);
+        overlayRect.setHeight(overlayRect.height() - margin);
+        painter.drawPixmap(overlayRect, QPixmap(":/images/default_avatar_overlay.svg"));
+    }
+
+    return avatar;
+}
+
+QImage
+Utils::fallbackAvatar(const QSize size, const ContactMethod* cm)
+{
+    if (cm == nullptr) {
+        return QImage();
+    }
+    QImage image;
+    auto letterStr = QString();
+    if (cm->uri().userinfo() != cm->bestName()) {
+        letterStr = cm->bestName();
+    }
+    image = fallbackAvatar(size,
+        cm->uri().full(),
+        letterStr);
+    return image;
+}
+
+QImage
+Utils::fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri)
+{
+    return fallbackAvatar(size,
+        QString::fromStdString(uri),
+        QString::fromStdString(alias));
+}
+
+QByteArray
+Utils::QImageToByteArray(QImage image)
+{
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    image.save(&buffer, "PNG");
+    return ba;
 }
 
 QByteArray

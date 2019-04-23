@@ -17,11 +17,19 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
 
-//Needed for OS detection
+#include "ringthemeutils.h"
+
+#include <string>
+
+#include <QString>
+#include <QImage>
+#include <QStackedWidget>
+#include <QTextDocument>
+#include <QItemDelegate>
 #include <QtGlobal>
+#include <QCryptographicHash>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -33,22 +41,15 @@
 #define LPCWSTR char*
 #endif
 
-#include <string>
-#include <QString>
-#include <QImage>
-#include <QStackedWidget>
-#include <QTextDocument>
-#include <QItemDelegate>
-
-#include "api/conversationmodel.h"
-#include "api/account.h"
-#include "api/contactmodel.h"
-#include "api/contact.h"
+#include <api/conversationmodel.h>
+#include <api/account.h>
+#include <api/contactmodel.h>
+#include <api/contact.h>
+#include <contactmethod.h>
 
 namespace Utils
 {
-    constexpr int animDuration_ = 200; // animation duration for sliding page in ms
-
+    // system
     bool CreateStartupLink();
     void DeleteStartupLink();
     bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
@@ -57,10 +58,11 @@ namespace Utils
     QString GenGUID();
     QString GetISODate();
     void InvokeMailto(const QString& subject, const QString& body, const QString& attachement = QString());
-    QImage getCirclePhoto(const QImage original, int sizePhoto);
     void setStackWidget(QStackedWidget *stack, QWidget *widget);
     void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
+    void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 
+    // names
     std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
     std::string bestIdForAccount(const lrc::api::account::Info & account);
     std::string bestNameForAccount(const lrc::api::account::Info & account);
@@ -69,18 +71,31 @@ namespace Utils
     std::string bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
     std::string secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
     lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+
+    // interactions
     std::string formatTimeString(const std::time_t& timestamp);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);
     lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model);
     bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
+
+    // image
+    QImage getCirclePhoto(const QImage original, int sizePhoto);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
+    QColor getAvatarColor(const QString& canonicalUri);
+    QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
+    QImage fallbackAvatar(const QSize size, const ContactMethod* cm);
+    QImage fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri);
+    QByteArray QImageToByteArray(QImage image);
     QByteArray QByteArrayFromFile(const QString& filename);
     QPixmap generateTintedPixmap(const QString& filename, QColor color);
+
+    // convo
     lrc::api::conversation::Info getConversationFromCallId(const std::string& callId);
     lrc::api::conversation::Info getSelectedConversation();
     lrc::api::conversation::Info getConversationFromUid(const std::string & convUid, bool filtered = true);
 
+    // misc helpers
     template <typename Func1, typename Func2>
     void
     oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object* sender, Func1 signal, Func2 slot)
@@ -120,6 +135,14 @@ namespace Utils
                     delete disconnectConnection;
                 }
             });
+    }
+
+    template<typename T>
+    void
+    setElidedText(T* object, const QString &text, Qt::TextElideMode mode = Qt::ElideMiddle, int padding = 32) {
+        QFontMetrics metrics(object->font());
+        QString clippedText = metrics.elidedText(text, mode, object->width() - padding);
+        object->setText(clippedText);
     }
 
     template<typename E>

@@ -53,7 +53,7 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
 
     takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 PhotoboothWidget::~PhotoboothWidget()
@@ -71,7 +71,7 @@ void PhotoboothWidget::startBooth()
     ui->videoFeed->show();
     ui->avatarLabel->hide();
     takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 void PhotoboothWidget::stopBooth()
@@ -80,7 +80,7 @@ void PhotoboothWidget::stopBooth()
     ui->videoFeed->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-refresh-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
 }
 
 void

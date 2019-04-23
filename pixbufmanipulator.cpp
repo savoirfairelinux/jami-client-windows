@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
@@ -28,7 +28,6 @@
 #include <QByteArray>
 #include <QBuffer>
 #include <QPainter>
-#include <QCryptographicHash>
 
 #include "person.h"
 #include "call.h"
@@ -49,97 +48,6 @@
 
 static const QSize IMAGE_SIZE {128, 128};
 
-QColor
-getAvatarColor(const QString& canonicalUri) {
-    if (canonicalUri.isEmpty()) {
-        return RingTheme::defaultAvatarColor_;
-    }
-    auto h = QString(QCryptographicHash::hash(canonicalUri.toLocal8Bit(), QCryptographicHash::Md5).toHex());
-    if (h.isEmpty() || h.isNull()) {
-        return RingTheme::defaultAvatarColor_;
-    }
-    auto colorIndex = std::string("0123456789abcdef").find(h.at(0).toLatin1());
-    return RingTheme::avatarColors_[colorIndex];
-}
-
-// Generate a QImage representing a dummy user avatar, when user doesn't provide it.
-// Current rendering is a flat colored circle with a centered letter.
-// The color of the letter is computed from the circle color to be visible whaterver be the circle color.
-static QImage
-fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString())
-{
-    // We start with a transparent avatar
-    QImage avatar(size, QImage::Format_ARGB32);
-    avatar.fill(Qt::transparent);
-
-    // We pick a color based on the passed character
-    QColor avColor = getAvatarColor(canonicalUriStr);
-
-    // We draw a circle with this color
-    QPainter painter(&avatar);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    painter.setPen(Qt::transparent);
-    painter.setBrush(avColor.lighter(110));
-    painter.drawEllipse(avatar.rect());
-
-    // If a letter was passed, then we paint a letter in the circle,
-    // otherwise we draw the default avatar icon
-    QString letterStrCleaned(letterStr);
-    letterStrCleaned.remove(QRegExp("[\\n\\t\\r]"));
-    if (!letterStr.isEmpty()) {
-        auto letter = letterStr.at(0).toUpper().toLatin1();
-        QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
-        painter.setFont(font);
-        painter.setPen(Qt::white);
-        painter.drawText(avatar.rect(), QString(letter), QTextOption(Qt::AlignCenter));
-    } else {
-        QRect overlayRect = avatar.rect();
-        qreal margin = (0.05 * overlayRect.width());
-        overlayRect.moveLeft(overlayRect.left() + margin * 0.5);
-        overlayRect.moveTop(overlayRect.top() + margin * 0.5);
-        overlayRect.setWidth(overlayRect.width() - margin);
-        overlayRect.setHeight(overlayRect.height() - margin);
-        painter.drawPixmap(overlayRect, QPixmap(":/images/default_avatar_overlay.svg"));
-    }
-
-    return avatar;
-}
-
-QImage
-fallbackAvatar(const QSize size, const ContactMethod* cm)
-{
-    if (cm == nullptr) {
-        return QImage();
-    }
-    QImage image;
-    auto letterStr = QString();
-    if (cm->uri().userinfo() != cm->bestName()) {
-        letterStr = cm->bestName();
-    }
-    image = fallbackAvatar( size,
-                            cm->uri().full(),
-                            letterStr);
-    return image;
-}
-
-QImage
-fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri)
-{
-    return fallbackAvatar(size,
-                          QString::fromStdString(uri),
-                          QString::fromStdString(alias));
-}
-
-/*Namespace Interfaces collide with QBuffer*/
-QByteArray QImageToByteArray(QImage image)
-{
-    QByteArray ba;
-    QBuffer buffer(&ba);
-    buffer.open(QIODevice::WriteOnly);
-    image.save(&buffer, "PNG");
-    return ba;
-}
-
 QImage
 PixbufManipulator::scaleAndFrame(const QImage photo, const QSize& size)
 {
@@ -150,9 +58,9 @@ QVariant
 PixbufManipulator::callPhoto(Call* c, const QSize& size, bool displayPresence)
 {
     if (!c || c->type() == Call::Type::CONFERENCE){
-        return QVariant::fromValue(fallbackAvatar(size,
-                                                  c->peerContactMethod()->uri().full(),
-                                                  c->peerContactMethod()->bestName()));
+        return QVariant::fromValue(Utils::fallbackAvatar(size,
+                                                         c->peerContactMethod()->uri().full(),
+                                                         c->peerContactMethod()->bestName()));
     }
     return callPhoto(c->peerContactMethod(), size, displayPresence);
 }
@@ -163,7 +71,7 @@ PixbufManipulator::callPhoto(const ContactMethod* cm, const QSize& size, bool di
     if (cm && cm->contact()) {
         return contactPhoto(cm->contact(), size, displayPresence);
     } else {
-        return QVariant::fromValue(fallbackAvatar(size, cm));
+        return QVariant::fromValue(Utils::fallbackAvatar(size, cm));
     }
 }
 
@@ -175,7 +83,7 @@ PixbufManipulator::contactPhoto(Person* p, const QSize& size, bool displayPresen
     if (p->photo().isValid()) {
         photo = p->photo().value<QImage>();
     } else {
-        photo = fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
+        photo = Utils::fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
     }
     return QVariant::fromValue(scaleAndFrame(photo, size));
 }
@@ -212,7 +120,7 @@ QByteArray
 PixbufManipulator::toByteArray(const QVariant& pxm)
 {
     auto image = pxm.value<QImage>();
-    QByteArray ba = QImageToByteArray(image);
+    QByteArray ba = Utils::QImageToByteArray(image);
     return ba;
 }
 
@@ -262,7 +170,7 @@ QVariant PixbufManipulator::decorationRole(const Call* c)
             && c->peerContactMethod()->contact()->photo().isValid()) {
         photo =  c->peerContactMethod()->contact()->photo().value<QImage>();
     } else {
-        fallbackAvatar(IMAGE_SIZE, c->peerContactMethod());
+        Utils::fallbackAvatar(IMAGE_SIZE, c->peerContactMethod());
     }
     return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
@@ -274,7 +182,7 @@ QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
             && cm->contact()->photo().isValid()) {
         photo = cm->contact()->photo().value<QImage>();
     } else {
-        photo = fallbackAvatar(IMAGE_SIZE, cm);
+        photo = Utils::fallbackAvatar(IMAGE_SIZE, cm);
     }
     return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
@@ -285,7 +193,7 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
     if (p && p->photo().isValid()) {
         photo = p->photo().value<QImage>();
     } else {
-        photo = fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
+        photo = Utils::fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
     }
     return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }
@@ -314,15 +222,15 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
             auto bestId = Utils::bestIdForContact(contactInfo);
             if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
                 contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
-                photo = fallbackAvatar(IMAGE_SIZE, QString(), QString());
+                photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
             }
             else if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP) {
-                photo = fallbackAvatar(IMAGE_SIZE,
-                                       QString::fromStdString("sip:" + bestId),
-                                       QString());
+                photo = Utils::fallbackAvatar(IMAGE_SIZE,
+                                              QString::fromStdString("sip:" + bestId),
+                                              QString());
             }
             else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.empty()) {
-                photo = fallbackAvatar(IMAGE_SIZE, QString(), QString());
+                photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
             }
             else if (!contactPhoto.empty()) {
                 QByteArray byteArray(contactPhoto.c_str(), contactPhoto.length());
@@ -332,9 +240,9 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
                 auto avatarName = contactInfo.profileInfo.uri == bestName ?
                                   QString() :
                                   QString::fromStdString(bestName);
-                photo = fallbackAvatar(IMAGE_SIZE,
-                                       QString::fromStdString("ring:" + bestId),
-                                       avatarName);
+                photo = Utils::fallbackAvatar(IMAGE_SIZE,
+                                              QString::fromStdString("ring:" + bestId),
+                                              avatarName);
             }
         }
         catch (...) {}
@@ -354,9 +262,9 @@ PixbufManipulator::accountPhoto(const lrc::api::account::Info& accountInfo)
         auto bestId = Utils::bestIdForAccount(accountInfo);
         auto bestName = Utils::bestNameForAccount(accountInfo);
         QString letterStr = bestId == bestName ? QString() : QString::fromStdString(bestName);
-        photo = fallbackAvatar( IMAGE_SIZE,
-                                QString::fromStdString("ring:" + bestId),
-                                letterStr);
+        photo = Utils::fallbackAvatar(IMAGE_SIZE,
+                                      QString::fromStdString("ring:" + bestId),
+                                      letterStr);
     }
     return QVariant::fromValue(scaleAndFrame(photo, IMAGE_SIZE));
 }

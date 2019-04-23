@@ -3,8 +3,8 @@
 * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
-* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
-* Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+* Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QBitmap>
+#include <QtConcurrent/QtConcurrent>
 
 #include "namedirectory.h"
 

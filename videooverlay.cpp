@@ -24,7 +24,6 @@
 
 // LRC
 #include "callmodel.h"
-#include "contactmethod.h"
 #include "person.h"
 #include "account.h"
 
