@@ -66,13 +66,13 @@
           <property name="minimumSize">
            <size>
             <width>512</width>
-            <height>512</height>
+            <height>638</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>512</width>
-            <height>512</height>
+            <height>638</height>
            </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -108,7 +108,7 @@
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="welcomePage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -220,15 +220,20 @@
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Create Jami account button</string>
@@ -258,15 +263,20 @@
                     <widget class="QPushButton" name="existingPushButton">
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Link device button</string>
@@ -299,15 +309,20 @@
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Create Jami SIP account button</string>
@@ -442,6 +457,11 @@
                         <height>195</height>
                        </size>
                       </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">padding:8px;background-color:#efefef;border:1px solid #e0e0e0; border-radius:16px;</string>
                       </property>
@@ -504,7 +524,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="text">
@@ -531,7 +551,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                       </widget>
@@ -572,7 +592,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="text">
@@ -599,7 +619,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="toolTip">
@@ -660,7 +680,7 @@ p, li { white-space: pre-wrap; }
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
                       </font>
                      </property>
                      <property name="echoMode">
@@ -678,7 +698,7 @@ p, li { white-space: pre-wrap; }
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
                       </font>
                      </property>
                      <property name="text">
@@ -769,7 +789,7 @@ p, li { white-space: pre-wrap; }
                       </property>
                       <property name="font">
                        <font>
-                        <pointsize>15</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -837,8 +857,8 @@ p, li { white-space: pre-wrap; }
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>140</width>
-                                <height>140</height>
+                                <width>261</width>
+                                <height>261</height>
                                </size>
                               </property>
                               <property name="styleSheet">
@@ -859,7 +879,7 @@ p, li { white-space: pre-wrap; }
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
-                              <height>3</height>
+                              <height>6</height>
                              </size>
                             </property>
                            </spacer>
@@ -911,7 +931,7 @@ p, li { white-space: pre-wrap; }
                               <widget class="QLineEdit" name="fullNameEdit">
                                <property name="minimumSize">
                                 <size>
-                                 <width>200</width>
+                                 <width>261</width>
                                  <height>30</height>
                                 </size>
                                </property>
@@ -923,7 +943,7 @@ p, li { white-space: pre-wrap; }
                                </property>
                                <property name="font">
                                 <font>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="toolTip">
@@ -997,7 +1017,7 @@ p, li { white-space: pre-wrap; }
                      <widget class="QLabel" name="accountSectionLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1025,7 +1045,7 @@ p, li { white-space: pre-wrap; }
                          <property name="topMargin">
                           <number>0</number>
                          </property>
-                         <item row="0" column="0">
+                         <item row="1" column="0">
                           <widget class="QWidget" name="verticalWidget1" native="true">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
@@ -1050,407 +1070,434 @@ p, li { white-space: pre-wrap; }
                              <number>0</number>
                             </property>
                             <item>
-                             <widget class="QWidget" name="infoWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
+                             <layout class="QGridLayout" name="gridLayout_9">
+                              <property name="topMargin">
+                               <number>10</number>
                               </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>30</height>
-                               </size>
+                              <property name="rightMargin">
+                               <number>0</number>
                               </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
+                              <property name="horizontalSpacing">
+                               <number>0</number>
                               </property>
-                              <layout class="QHBoxLayout" name="horizontalLayout_8">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <spacer name="horizontalSpacer_9">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>40</width>
-                                   <height>20</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                               <item>
-                                <widget class="QLabel" name="infoLabel">
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>12</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="text">
-                                  <string/>
-                                 </property>
-                                 <property name="alignment">
-                                  <set>Qt::AlignCenter</set>
-                                 </property>
-                                 <property name="wordWrap">
-                                  <bool>true</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <spacer name="horizontalSpacer_10">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>40</width>
-                                   <height>20</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="signUpWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="horizontalLayout_7">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <spacer name="horizontalSpacer_2">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>40</width>
-                                   <height>20</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                               <item>
-                                <widget class="QCheckBox" name="signUpCheckbox">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>0</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>Register your username.
+                              <item row="1" column="0">
+                               <spacer name="horizontalSpacer_6">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>40</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item row="3" column="0">
+                               <spacer name="horizontalSpacer_8">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>40</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item row="2" column="0">
+                               <spacer name="horizontalSpacer_7">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>40</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item row="0" column="1">
+                               <widget class="QCheckBox" name="signUpCheckbox">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <pointsize>10</pointsize>
+                                 </font>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Register your username.
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</string>
+                                </property>
+                                <property name="accessibleName">
+                                 <string>Public username checkbox</string>
+                                </property>
+                                <property name="accessibleDescription">
+                                 <string>Checkbox selecting if the user wants a public username</string>
+                                </property>
+                                <property name="text">
+                                 <string>Register public username</string>
+                                </property>
+                                <property name="checked">
+                                 <bool>true</bool>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="3" column="1">
+                               <widget class="QWidget" name="confPassWidget" native="true">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>16777215</height>
+                                 </size>
+                                </property>
+                                <layout class="QHBoxLayout" name="confirmPassLabel">
+                                 <property name="spacing">
+                                  <number>0</number>
                                  </property>
-                                 <property name="accessibleName">
-                                  <string>Public username checkbox</string>
+                                 <property name="leftMargin">
+                                  <number>0</number>
                                  </property>
-                                 <property name="accessibleDescription">
-                                  <string>Checkbox selecting if the user wants a public username</string>
+                                 <property name="topMargin">
+                                  <number>0</number>
                                  </property>
-                                 <property name="text">
-                                  <string>Register public username</string>
+                                 <property name="rightMargin">
+                                  <number>0</number>
                                  </property>
-                                 <property name="checked">
-                                  <bool>true</bool>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
                                  </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <spacer name="horizontalSpacer_4">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
+                                 <item>
+                                  <widget class="QLineEdit" name="confirmPasswordEdit">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>261</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>200</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Password confirmation text input</string>
+                                   </property>
+                                   <property name="accessibleName">
+                                    <string/>
+                                   </property>
+                                   <property name="accessibleDescription">
+                                    <string>Password confirmation text input</string>
+                                   </property>
+                                   <property name="echoMode">
+                                    <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Confirm password</string>
+                                   </property>
+                                   <property name="clearButtonEnabled">
+                                    <bool>false</bool>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item row="2" column="1">
+                               <widget class="QWidget" name="passWidget" native="true">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>16777215</height>
+                                 </size>
+                                </property>
+                                <layout class="QHBoxLayout" name="passLayout">
+                                 <property name="spacing">
+                                  <number>0</number>
                                  </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>40</width>
-                                   <height>20</height>
-                                  </size>
+                                 <property name="leftMargin">
+                                  <number>0</number>
                                  </property>
-                                </spacer>
-                               </item>
-                              </layout>
-                             </widget>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLineEdit" name="passwordEdit">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>261</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>200</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Password text input</string>
+                                   </property>
+                                   <property name="accessibleName">
+                                    <string/>
+                                   </property>
+                                   <property name="accessibleDescription">
+                                    <string>Password text entry</string>
+                                   </property>
+                                   <property name="echoMode">
+                                    <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Password</string>
+                                   </property>
+                                   <property name="clearButtonEnabled">
+                                    <bool>false</bool>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item row="1" column="1">
+                               <widget class="QWidget" name="usernameWidget" native="true">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>16777215</height>
+                                 </size>
+                                </property>
+                                <layout class="QHBoxLayout" name="usernameLayout">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLineEdit" name="usernameEdit">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>261</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>200</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Public username edit</string>
+                                   </property>
+                                   <property name="accessibleName">
+                                    <string/>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Choose your username</string>
+                                   </property>
+                                   <property name="clearButtonEnabled">
+                                    <bool>true</bool>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item row="1" column="2">
+                               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                                <item>
+                                 <spacer name="horizontalSpacer_2">
+                                  <property name="orientation">
+                                   <enum>Qt::Horizontal</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Fixed</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>7</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
+                                 <widget class="QLabel" name="lookupStatusLabel">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>30</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                              <item row="3" column="2">
+                               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                <item>
+                                 <spacer name="horizontalSpacer_4">
+                                  <property name="orientation">
+                                   <enum>Qt::Horizontal</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Fixed</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>7</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
+                                 <widget class="QLabel" name="passwordStatusLabel">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>30</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                              <item row="0" column="2">
+                               <spacer name="horizontalSpacer_9">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Fixed</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>37</width>
+                                  <height>0</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                             </layout>
                             </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="0" column="0">
+                          <widget class="QWidget" name="infoWidget" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_7">
+                            <property name="topMargin">
+                             <number>1</number>
+                            </property>
                             <item>
-                             <widget class="QWidget" name="usernameWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
+                             <widget class="QLabel" name="infoLabel">
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
                                 <height>30</height>
                                </size>
                               </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="usernameLayout">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="usernameEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>9</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>Public username edit</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Choose your username</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>true</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="passWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
+                              <property name="baseSize">
                                <size>
                                 <width>0</width>
-                                <height>30</height>
+                                <height>0</height>
                                </size>
                               </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
+                              <property name="font">
+                               <font>
+                                <pointsize>10</pointsize>
+                               </font>
                               </property>
-                              <layout class="QHBoxLayout" name="passLayout">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="passwordEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>9</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>Password text input</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="accessibleDescription">
-                                  <string>Password text entry</string>
-                                 </property>
-                                 <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Password</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>false</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="confPassWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
+                              <property name="text">
+                               <string/>
                               </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>30</height>
-                               </size>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
                               </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="confirmPassLabel">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="confirmPasswordEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>9</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>Password confirmation text input</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="accessibleDescription">
-                                  <string>Password confirmation text input</string>
-                                 </property>
-                                 <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Confirm password</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>false</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
                              </widget>
                             </item>
                            </layout>
@@ -1529,7 +1576,7 @@ instead of using your ID.</string>
                       </property>
                       <property name="font">
                        <font>
-                        <pointsize>15</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1597,8 +1644,8 @@ instead of using your ID.</string>
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>150</width>
-                                <height>150</height>
+                                <width>261</width>
+                                <height>261</height>
                                </size>
                               </property>
                               <property name="styleSheet">
@@ -1619,7 +1666,7 @@ instead of using your ID.</string>
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
-                              <height>3</height>
+                              <height>6</height>
                              </size>
                             </property>
                            </spacer>
@@ -1698,7 +1745,7 @@ instead of using your ID.</string>
                         <widget class="QLineEdit" name="SIPfullNameEdit">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
+                           <width>261</width>
                            <height>30</height>
                           </size>
                          </property>
@@ -1710,7 +1757,7 @@ instead of using your ID.</string>
                          </property>
                          <property name="font">
                           <font>
-                           <pointsize>9</pointsize>
+                           <pointsize>10</pointsize>
                           </font>
                          </property>
                          <property name="toolTip">
@@ -1757,7 +1804,7 @@ instead of using your ID.</string>
                      <widget class="QLabel" name="SIPaccountSectionLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1907,7 +1954,7 @@ instead of using your ID.</string>
                                 <widget class="QLineEdit" name="SIPservernameEdit">
                                  <property name="minimumSize">
                                   <size>
-                                   <width>200</width>
+                                   <width>261</width>
                                    <height>30</height>
                                   </size>
                                  </property>
@@ -1919,7 +1966,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -1979,7 +2026,7 @@ instead of using your ID.</string>
                                 <widget class="QLineEdit" name="SIPproxyEdit">
                                  <property name="minimumSize">
                                   <size>
-                                   <width>200</width>
+                                   <width>261</width>
                                    <height>30</height>
                                   </size>
                                  </property>
@@ -1991,7 +2038,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2057,7 +2104,7 @@ instead of using your ID.</string>
                                 <widget class="QLineEdit" name="SIPusernameEdit">
                                  <property name="minimumSize">
                                   <size>
-                                   <width>200</width>
+                                   <width>261</width>
                                    <height>30</height>
                                   </size>
                                  </property>
@@ -2069,7 +2116,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2135,7 +2182,7 @@ instead of using your ID.</string>
                                 <widget class="QLineEdit" name="SIPpasswordEdit">
                                  <property name="minimumSize">
                                   <size>
-                                   <width>200</width>
+                                   <width>261</width>
                                    <height>30</height>
                                   </size>
                                  </property>
@@ -2147,7 +2194,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2160,7 +2207,7 @@ instead of using your ID.</string>
                                   <string>SIP Password text input</string>
                                  </property>
                                  <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
+                                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
                                  </property>
                                  <property name="placeholderText">
                                   <string>Password</string>
@@ -2302,7 +2349,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">
@@ -2342,7 +2389,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">
@@ -2388,7 +2435,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">
