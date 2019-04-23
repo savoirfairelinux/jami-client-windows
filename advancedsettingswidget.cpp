@@ -20,10 +20,10 @@
 
 #include <QFileDialog>
 
-#include "api/newcodecmodel.h"
-
 #include "lrcinstance.h"
 #include "utils.h"
+
+#include "api/newcodecmodel.h"
 
 AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     :QWidget(parent),
@@ -336,7 +336,7 @@ AdvancedSettingsWidget::updateVideoCodecs()
             Qt::CheckState state;
             it->enabled ? state = Qt::Checked : state = Qt::Unchecked;
             videoItem->setCheckState(state);
-            videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n");
+            videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name));
 
             ui->audioListWidget->addItem(videoItem);
         }
