@@ -1,6 +1,6 @@
 /**************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                           *
-* Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -17,34 +17,49 @@
 **************************************************************************/
 
 #pragma once
-#include <QDialog>
-#include <QMovie>
 
-#include "lrcinstance.h"
-#include "api/newaccountmodel.h"
+#include <QtWidgets>
 
-namespace Ui {
-    class RegNameDialog;
-}
-
-class RegNameDialog : public QDialog
-{
+class ToggleSwitch : public QAbstractButton {
     Q_OBJECT
-    RegNameDialog(const RegNameDialog& cpy);
+        Q_PROPERTY(int offset READ offset WRITE setOffset)
+        Q_PROPERTY(QBrush brush READ brush WRITE setBrush)
 
 public:
-    RegNameDialog(const QString& newRegName = "", QWidget* parent = nullptr);
-    ~RegNameDialog();
+    ToggleSwitch(QWidget* parent = nullptr);
+    ToggleSwitch(const QBrush& brush, QWidget* parent = nullptr);
 
-private slots:
-    void nameRegistrationResultSlot(const std::string& accountId,
-        lrc::api::account::RegisterNameStatus status, const std::string& registerdName);
-    void startNameRegistration();
+    QSize sizeHint() const override;
+
+    QBrush brush() const {
+        return brush_;
+    }
+    void setBrush(const QBrush &brush) {
+        brush_ = brush;
+    }
+
+    int offset() const {
+        return x_;
+    }
+    void setOffset(int o) {
+        x_ = o;
+        update();
+    }
+
+protected:
+    void paintEvent(QPaintEvent*) override;
+    void mouseReleaseEvent(QMouseEvent*) override;
+    void enterEvent(QEvent*) override;
 
 private:
-    Ui::RegNameDialog* ui;
-    QString registeredName_;
-    QMovie* gif;
-
-    void startSpinner();
+    bool switch_;
+    qreal opacity_;
+    int x_;
+    int y_;
+    int height_;
+    int margin_;
+    QBrush thumb_;
+    QBrush track_;
+    QBrush brush_;
+    QPropertyAnimation *anim_ = nullptr;
 };
