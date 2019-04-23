@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,22 +18,27 @@
 
 #pragma once
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
-class PhotoBoothDialog;
+class BannedItemWidget;
 }
 
-class PhotoBoothDialog : public QDialog
+class BannedItemWidget : public QWidget
 {
     Q_OBJECT
-
 public:
-    explicit PhotoBoothDialog(QWidget* parent = 0);
-    ~PhotoBoothDialog();
-    QString& getOutputFileName() { return fileName_;}
+    explicit BannedItemWidget(const QString& name,
+                              const QString& id,
+                              QWidget* parent = 0);
+    ~BannedItemWidget();
+
+    QSize sizeHint() const override;
 
 private:
-    Ui::PhotoBoothDialog* ui;
-    QString fileName_;
+    Ui::BannedItemWidget* ui;
+
+signals:
+    void btnReAddContactClicked() const;
+
 };

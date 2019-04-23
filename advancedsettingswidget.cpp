@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,10 +21,10 @@
 
 #include <QFileDialog>
 
-#include "api/newcodecmodel.h"
-
 #include "lrcinstance.h"
 #include "utils.h"
+
+#include "api/newcodecmodel.h"
 
 AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     :QWidget(parent),
@@ -73,9 +74,28 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->audioDownPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::decreaseAudioCodecPriority);
     connect(ui->audioUpPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::increaseAudioCodecPriority);
 
+    ui->audioDownPushButton->setEnabled(false);
+    ui->audioUpPushButton->setEnabled(false);
+
+    connect(ui->audioListWidget, &QListWidget::itemSelectionChanged,
+        [this] {
+            bool enabled = ui->audioListWidget->selectedItems().size();
+            ui->audioDownPushButton->setEnabled(enabled);
+            ui->audioUpPushButton->setEnabled(enabled);
+        });
+
     connect(ui->videoDownPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::decreaseVideoCodecPriority);
     connect(ui->videoUpPushButton, &QPushButton::clicked, this, &AdvancedSettingsWidget::increaseVideoCodecPriority);
 
+    ui->videoDownPushButton->setEnabled(false);
+    ui->videoUpPushButton->setEnabled(false);
+
+    connect(ui->videoListWidget, &QListWidget::itemSelectionChanged,
+        [this] {
+            bool enabled = ui->videoListWidget->selectedItems().size();
+            ui->videoDownPushButton->setEnabled(enabled);
+            ui->videoUpPushButton->setEnabled(enabled);
+        });
 }
 
 AdvancedSettingsWidget::~AdvancedSettingsWidget()
@@ -311,11 +331,8 @@ AdvancedSettingsWidget::updateAudioCodecs()
     for (auto it = audioCodecList.begin(); it != audioCodecList.end(); ++it, ++i) {
         QListWidgetItem* audioItem = new QListWidgetItem(ui->audioListWidget);
         audioItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        Qt::CheckState state;
-        it->enabled ? state = Qt::Checked : state = Qt::Unchecked;
-        audioItem->setCheckState(state);
-        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n" + QString::fromStdString(it->samplerate)
-            + " Hz");
+        audioItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
+        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + " " + QString::fromStdString(it->samplerate) + " Hz");
 
         ui->audioListWidget->addItem(audioItem);
     }
@@ -325,21 +342,15 @@ void
 AdvancedSettingsWidget::updateVideoCodecs()
 {
     ui->videoListWidget->clear();
-
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     int i = 0;
-
     for (auto it = videoCodecList.begin(); it != videoCodecList.end(); ++it, ++i) {
-        if (it->name.length()) { // [temporary fix]
-            QListWidgetItem* videoItem = new QListWidgetItem(ui->videoListWidget);
-            videoItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-            Qt::CheckState state;
-            it->enabled ? state = Qt::Checked : state = Qt::Unchecked;
-            videoItem->setCheckState(state);
-            videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n");
-
-            ui->audioListWidget->addItem(videoItem);
-        }
+        if (!it->name.length()) { continue; } // temporary fix for empty codec entries
+        QListWidgetItem* videoItem = new QListWidgetItem(ui->videoListWidget);
+        videoItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        videoItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
+        videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name));
+        ui->audioListWidget->addItem(videoItem);
     }
 }
 
@@ -374,7 +385,9 @@ AdvancedSettingsWidget::decreaseAudioCodecPriority()
 
     advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, false);
-    updateAudioCodecs();
+
+    // swap current item down
+    Utils::swapQListWidgetItems(ui->audioListWidget, true);
 }
 
 void
@@ -386,7 +399,9 @@ AdvancedSettingsWidget::increaseAudioCodecPriority()
 
     advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, false);
-    updateAudioCodecs();
+
+    // swap current item up
+    Utils::swapQListWidgetItems(ui->audioListWidget, false);
 }
 
 void
@@ -398,7 +413,9 @@ AdvancedSettingsWidget::decreaseVideoCodecPriority()
 
     advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, true);
-    updateVideoCodecs();
+
+    // swap current item down
+    Utils::swapQListWidgetItems(ui->videoListWidget, true);
 }
 
 void
@@ -410,7 +427,9 @@ AdvancedSettingsWidget::increaseVideoCodecPriority()
 
     advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, true);
-    updateVideoCodecs();
+
+    // swap current item up
+    Utils::swapQListWidgetItems(ui->videoListWidget, false);
 }
 
 void

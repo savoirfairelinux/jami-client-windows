@@ -1,6 +1,6 @@
 /**************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                           *
-* Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -16,71 +16,76 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
 **************************************************************************/
 
-#include "regnamedialog.h"
-#include "ui_regnamedialog.h"
+#include "nameregistrationdialog.h"
+#include "ui_nameregistrationdialog.h"
+
+#include "utils.h"
+#include "ringthemeutils.h"
 
 #include <QTimer>
 
-RegNameDialog::RegNameDialog(const QString& newRegName, QWidget* parent)
-    :QDialog(parent),
-    ui(new Ui::RegNameDialog),
-    registeredName_(newRegName),
-    gif(new QMovie(":/images/ajax-loader.gif"))
+NameRegistrationDialog::NameRegistrationDialog(const QString& nameToRegister, QWidget* parent)
+    : QDialog(parent),
+    ui(new Ui::NameRegistrationDialog),
+    nameToRegister_(nameToRegister)
 {
     ui->setupUi(this);
 
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     ui->stackedWidget->setCurrentWidget(ui->startPage);
-    ui->registeredName->setText(newRegName);
 
-    connect(ui->startPageConfirmBtn, &QPushButton::clicked, this, &RegNameDialog::startNameRegistration);
+    ui->registerBtn->setEnabled(false);
 
-    connect(ui->startPageCancelBtn, &QPushButton::clicked, [this]() {
-        reject();
-        }
-    );
+    connect(ui->registerBtn, &QPushButton::clicked, this, &NameRegistrationDialog::slotStartNameRegistration);
 
-    // get name registration result
+    connect(ui->cancelBtn, &QPushButton::clicked,
+        [this]() {
+            reject();
+        });
+
     connect(LRCInstance::editableAccountModel(), &lrc::api::NewAccountModel::nameRegistrationEnded,
-        this, &RegNameDialog::nameRegistrationResultSlot);
+        this, &NameRegistrationDialog::slotNameRegistrationResult);
+
+    spinnerAnimation_ = new QMovie(":/images/jami_rolling_spinner.gif");
 }
 
-RegNameDialog::~RegNameDialog()
+NameRegistrationDialog::~NameRegistrationDialog()
 {
-    disconnect(this);
     delete ui;
 }
 
 void
-RegNameDialog::startNameRegistration()
+NameRegistrationDialog::slotStartNameRegistration()
 {
+    auto password = ui->passwordEdit->text().toStdString();
     LRCInstance::editableAccountModel()->registerName(LRCInstance::getCurrAccId(),
-        "", registeredName_.toStdString());
+        password, nameToRegister_.toStdString());
     startSpinner();
 }
 
 void
-RegNameDialog::nameRegistrationResultSlot(const std::string& accountId,
+NameRegistrationDialog::slotNameRegistrationResult(const std::string& accountId,
     lrc::api::account::RegisterNameStatus status, const std::string& registerdName)
 {
     Q_UNUSED(accountId);
     Q_UNUSED(registerdName);
 
-    gif->stop();
+    spinnerAnimation_->stop();
 
     if(status == lrc::api::account::RegisterNameStatus::SUCCESS) {
-        ui->stackedWidget->setCurrentWidget(ui->nameRegisteredPage);
-        QTimer::singleShot(1000, this, &RegNameDialog::accept);
+        accept();
     } else {
         ui->stackedWidget->setCurrentWidget(ui->nameNotRegisteredPage);
-        QTimer::singleShot(1000, this, &RegNameDialog::reject);
+        QTimer::singleShot(1000, this, &NameRegistrationDialog::reject);
     }
 }
 
 void
-RegNameDialog::startSpinner()
+NameRegistrationDialog::startSpinner()
 {
     ui->stackedWidget->setCurrentWidget(ui->loadingPage);
 
-    ui->spinnerLabel->setMovie(gif);
-    gif->start();
+    ui->spinnerLabel->setMovie(spinnerAnimation_);
+    spinnerAnimation_->start();
 }

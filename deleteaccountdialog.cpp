@@ -38,6 +38,7 @@ DeleteAccountDialog::DeleteAccountDialog(QWidget *parent) :
     connect(ui->btnDeleteCancel, &QPushButton::clicked, this, &DeleteAccountDialog::on_deleteCancelBtn_clicked);
 
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setFixedSize(size());
 }
 
 DeleteAccountDialog::~DeleteAccountDialog()
