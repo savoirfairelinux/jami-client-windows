@@ -230,12 +230,14 @@ main(int argc, char *argv[])
     font.setFamily("Segoe UI");
     a.setFont(font);
 
+#ifndef DEBUG_STYLESHEET
     QFile file(":/stylesheet.css");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         a.setStyleSheet(file.readAll());
         file.close();
     }
+#endif
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 

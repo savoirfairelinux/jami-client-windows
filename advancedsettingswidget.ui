@@ -13,15 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QFrame" name="CallSettings">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="topMargin">
        <number>20</number>
@@ -112,9 +106,6 @@
              <font>
               <pointsize>9</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
             </property>
             <property name="text">
              <string>Add a custom ringtone</string>
@@ -233,9 +224,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
        </layout>
@@ -330,9 +318,6 @@
               <pointsize>9</pointsize>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true">border-bottom: 1px solid black;</string>
-            </property>
             <property name="frame">
              <bool>true</bool>
             </property>
@@ -390,9 +375,6 @@
            <font>
             <pointsize>9</pointsize>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
           </property>
          </widget>
         </item>
@@ -476,9 +458,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
           <property name="placeholderText">
            <string>no password</string>
           </property>
@@ -532,9 +511,6 @@
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
-            <property name="styleSheet">
-             <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
-            </property>
             <property name="text">
              <string/>
             </property>
@@ -580,9 +556,6 @@
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
-            <property name="styleSheet">
-             <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
-            </property>
             <property name="text">
              <string/>
             </property>
@@ -627,9 +600,6 @@
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: rgb(248, 248, 248); border-radius: 3px;</string>
             </property>
             <property name="text">
              <string/>
@@ -702,9 +672,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="0" column="1">
@@ -757,9 +724,6 @@
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="5" column="0">
@@ -781,9 +745,6 @@
             <pointsize>9</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
-          </property>
          </widget>
         </item>
         <item row="5" column="2">
@@ -792,9 +753,6 @@
            <font>
             <pointsize>9</pointsize>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-bottom: 1px solid black;</string>
           </property>
           <property name="placeholderText">
            <string>STUN Address</string>
@@ -891,9 +849,6 @@
              <font>
               <pointsize>9</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
             </property>
             <property name="text">
              <string>Audio Codecs</string>
@@ -1036,9 +991,6 @@
              <font>
               <pointsize>9</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
             </property>
             <property name="text">
              <string>Video Codecs</string>
