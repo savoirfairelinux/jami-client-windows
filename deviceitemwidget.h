@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -20,43 +19,31 @@
 #pragma once
 
 #include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
 
 namespace Ui {
-class PhotoboothWidget;
+class DeviceItemWidget;
 }
 
-class PhotoboothWidget : public QWidget
+class DeviceItemWidget : public QWidget
 {
     Q_OBJECT
-
 public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
+    explicit DeviceItemWidget(const QString& name,
+        const QString& id,
+        bool isCurrent,
+        QWidget* parent = 0);
+    ~DeviceItemWidget();
 
-    void startBooth();
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
+    QSize sizeHint() const override;
 
 private:
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
+    Ui::DeviceItemWidget* ui;
 
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
+    bool editable_ = false;
 
-    bool takePhotoState_;
+    void toggleEditable();
 
 signals:
-    void photoTaken();
-    void clearedPhoto();
+    void btnRemoveDeviceClicked() const;
+
 };

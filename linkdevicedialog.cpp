@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,14 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.  *
  **************************************************************************/
 
-#include "linkdevwidget.h"
+#include "linkdevicedialog.h"
+#include "ui_linkdevicedialog.h"
 
 #include <QMovie>
 #include <QTimer>
 
-LinkDevWidget::LinkDevWidget(QWidget* parent)
-    : QWidget(parent),
-    ui(new Ui::LinkDevWidget)
+LinkDeviceDialog::LinkDeviceDialog(QDialog* parent)
+    : QDialog(parent),
+    ui(new Ui::LinkDeviceDialog)
 {
     ui->setupUi(this);
 
@@ -34,18 +35,18 @@ LinkDevWidget::LinkDevWidget(QWidget* parent)
     }
 
     connect(ui->enterBtn, &QPushButton::clicked,
-            this, &LinkDevWidget::setGeneratingPage);
+            this, &LinkDeviceDialog::setGeneratingPage);
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::exportOnRingEnded,
-            this, &LinkDevWidget::setExportPage);
+            this, &LinkDeviceDialog::setExportPage);
 }
 
-LinkDevWidget::~LinkDevWidget()
+LinkDeviceDialog::~LinkDeviceDialog()
 {
     delete ui;
 }
 
 void
-LinkDevWidget::setGeneratingPage()
+LinkDeviceDialog::setGeneratingPage()
 {
     ui->stackedWidget->setCurrentWidget(ui->middle);
 
@@ -69,7 +70,7 @@ LinkDevWidget::setGeneratingPage()
 }
 
 void
-LinkDevWidget::setExportPage(const std::string& accountId, lrc::api::account::ExportOnRingStatus status, const std::string& pin)
+LinkDeviceDialog::setExportPage(const std::string& accountId, lrc::api::account::ExportOnRingStatus status, const std::string& pin)
 {
     Q_UNUSED(accountId);
     timeout_->stop();
@@ -81,10 +82,12 @@ LinkDevWidget::setExportPage(const std::string& accountId, lrc::api::account::Ex
         ui->label_4->setText(tr("Your account password was incorrect"));
         ui->label_5->hide();
         ui->label_6->hide();
+        accept();
         break;
 
     case lrc::api::account::ExportOnRingStatus::SUCCESS:
         ui->label_5->setText(QString::fromStdString(pin));
+        accept();
         break;
 
     default:
@@ -92,5 +95,6 @@ LinkDevWidget::setExportPage(const std::string& accountId, lrc::api::account::Ex
         ui->label_4->setText(tr("Something went wrong.\nPlease try again later."));
         ui->label_5->hide();
         ui->label_6->hide();
+        accept();
     }
 }
