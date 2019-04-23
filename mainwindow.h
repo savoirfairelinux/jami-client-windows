@@ -31,9 +31,9 @@ static constexpr char IDM_ABOUTBOX = 0x0010;
 
 static constexpr uint32_t QtMaxDimension = 16777215;
 static constexpr uint32_t mainWindowMinWidth = 1088;
-static constexpr uint32_t mainWindowMinHeight = 600;
+static constexpr uint32_t mainWindowMinHeight = 638;
 static constexpr uint32_t wizardDialogWidth = 512;
-static constexpr uint32_t wizardDialogHeight = 512;
+static constexpr uint32_t wizardDialogHeight = 638;
 
 namespace Ui {
 class MainWindow;
@@ -52,6 +52,7 @@ public:
     bool init();
     void show();
     float getCurrentScalingRatio();
+    void showWindow();
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -76,7 +77,6 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
-    void showWindow();
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
     int lastAccountCount_;
