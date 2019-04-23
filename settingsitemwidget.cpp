@@ -19,8 +19,9 @@
 #include "settingsitemwidget.h"
 
 #include "lrcinstance.h"
-#include "api/newdevicemodel.h"
 #include "ringthemeutils.h"
+
+#include "api/newdevicemodel.h"
 
 SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QListWidget* parent)
     : QListWidgetItem(parent),
@@ -33,16 +34,16 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
 {
     setFlags(Qt::NoItemFlags);
     // for all items:
-    button_->setGeometry(parent->width() - 50, verMargin_ + height_ * index_, 30, 36);
-    nameEdit_->setStyleSheet("border: 0px; border-radius: 3px; background: transparent;");
-    idlabel_->setStyleSheet("border: 0px; border-radius: 3px; background: transparent;");
-    button_->setStyleSheet("border: 0px; border-radius: 3px; background: transparent;");
+    nameEdit_->setStyleSheet("background: transparent;");
+    idlabel_->setStyleSheet("background: transparent;");
+    button_->setStyleSheet("background: transparent;");
     button_->setIconSize(QSize(22, 22));
+    button_->setGeometry(parent->width() - 50, verMargin_ + height_ * index_, 36, 36);
 
-    nameEdit_->setGeometry(horMargin_, verMargin_ + height_ * index_, 300, 22);
+    nameEdit_->setGeometry(horMargin_, verMargin_ + height_ * index_, 400, 30);
     nameEdit_->setReadOnly(true);
 
-    idlabel_->setGeometry(horMargin_, verMargin_ + 20 + height_ * index_, 400, 22);
+    idlabel_->setGeometry(horMargin_, verMargin_ + 20 + height_ * index_, 400, 30);
     idlabel_->setTextInteractionFlags(Qt::NoTextInteraction);
 
     // end all items
@@ -63,13 +64,12 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
         idlabel_->setText(QString::fromStdString(it->id));
 
         if (!index_) {
-            button_->setIcon(QPixmap(":/images/icons/round-edit-24px.svg"));
+            button_->setIcon(QIcon(":/images/icons/round-edit-24px.svg"));
             button_->setToolTip(QObject::tr("Edit Device Name"));
 
             QObject::connect(button_, &QPushButton::pressed, [this]() { toggleEditable(); });
-        }
-        else {
-            button_->setIcon(QPixmap(":/images/icons/round-remove_circle-24px.svg"));
+        } else {
+            button_->setIcon(QIcon(":/images/icons/round-remove_circle-24px.svg"));
             button_->setToolTip(QObject::tr("Unlink Device From Account"));
         }
         nameEdit_->show();
@@ -85,7 +85,7 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
 
         nameEdit_->setText(QString::fromStdString(contactInfo.registeredName));
         idlabel_->setText(QString::fromStdString(contactInfo.profileInfo.uri));
-        button_->setIcon(QPixmap(":/images/icons/round-undo-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-undo-24px.svg"));
         button_->setToolTip(QObject::tr("Unblock Contact"));
 
         nameEdit_->show();
@@ -110,7 +110,7 @@ SettingsItemWidget::toggleEditable()
         nameEdit_->setReadOnly(false);
         nameEdit_->setStyleSheet("border: 0px; border-radius: 3px; background: white;");
         nameEdit_->setFocus();
-        button_->setIcon(QPixmap(":/images/icons/round-save_alt-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-save_alt-24px.svg"));
     }
     else {
         finishEdit();
@@ -124,7 +124,7 @@ SettingsItemWidget::finishEdit()
     if (!index_) {
         nameEdit_->setReadOnly(true);
         nameEdit_->setStyleSheet("border: 0px; border-radius: 3px; background: transparent;");
-        button_->setIcon(QPixmap(":/images/icons/round-edit-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-edit-24px.svg"));
 
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.deviceName = nameEdit_->text().toStdString();

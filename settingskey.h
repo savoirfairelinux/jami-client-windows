@@ -21,15 +21,10 @@
 namespace SettingsKey {
 
 constexpr static char closeOrMinimized[] = "closeOrMin";
-constexpr static char autoAnswer[] = "autoAnswer";
-constexpr static char geometry[] = "geometry";
-constexpr static char windowState[] = "windowState";
+constexpr static char downloadPath[] = "downloadPath";
 constexpr static char enableNotifications[] = "enableNotifications";
+constexpr static char geometry[] = "geometry";
 constexpr static char selectedAccount[] = "selectedAccount";
 constexpr static char mainSplitterState[] = "mainSplitterState";
-constexpr static char downloadPath[] = "downloadPath";
+constexpr static char windowState[] = "windowState";
 }
-
-#define accountAutoAnswer(A) (A+SettingsKey::autoAnswer)
-
-
