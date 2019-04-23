@@ -171,16 +171,10 @@
     <ClCompile Include="avatargraphicsview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="regnamedialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="accountlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bannedlistmodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="settingsitemwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="linkdevwidget.cpp">
@@ -196,6 +190,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="advancedsipsettingwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nameregistrationdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="toggleswitch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iconbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="deviceitemwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="banneditemwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -308,9 +317,6 @@
     <QtMoc Include="avatargraphicsview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="regnamedialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="bannedlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -332,6 +338,21 @@
     <QtMoc Include="settingswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="nameregistrationdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="toggleswitch.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="iconbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="deviceitemwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="banneditemwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -341,9 +362,6 @@
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <ClInclude Include="ui_aboutdialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_bannedcontactswidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_callwidget.h">
@@ -554,9 +572,6 @@
     <QtUic Include="aboutdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="bannedcontactswidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="callwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -599,12 +614,6 @@
     <QtUic Include="animatedoverlay.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="regnamedialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="deviceeditwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="linkdevwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -612,6 +621,15 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="advancedsipsettingwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nameregistrationdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="deviceitemwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="banneditemwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -756,9 +774,6 @@
     <ResourceCompile Include="ico.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="settingsitemwidget.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="webchathelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>

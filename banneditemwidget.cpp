@@ -16,31 +16,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "ui_invitebuttonswidget.h"
+#include "ui_banneditemwidget.h"
 
-#include "invitebuttonswidget.h"
+#include "banneditemwidget.h"
 
-InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::InviteButtonsWidget)
+#include "lrcinstance.h"
+#include "utils.h"
+
+BannedItemWidget::BannedItemWidget(const QString& name,
+                                   const QString& id,
+                                   QWidget* parent)
+    : QWidget(parent),
+    ui(new Ui::BannedItemWidget)
 {
     ui->setupUi(this);
-    connect(ui->btnAcceptInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnAcceptInviteClicked();
-        });
-    connect(ui->btnIgnoreInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnIgnoreInviteClicked();
-        });
-    connect(ui->btnBlockInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnBlockInviteClicked();
+    ui->labelContactName->setText(name);
+    ui->labelContactId->setText(id);
+
+    auto avatarImage = Utils::fallbackAvatar(QSize(48, 48), id, name);
+    ui->labelContactAvatar->setPixmap(QPixmap::fromImage(avatarImage));
+
+    ui->btnReAddContact->setToolTip(QObject::tr("Add as contact"));
+
+    connect(ui->btnReAddContact, &QPushButton::clicked, this,
+        [this]() {
+            emit btnReAddContactClicked();
         });
 }
 
-InviteButtonsWidget::~InviteButtonsWidget()
+BannedItemWidget::~BannedItemWidget()
 {
     disconnect(this);
     delete ui;
+}
+
+QSize
+BannedItemWidget::sizeHint() const
+{
+    return QSize();
 }

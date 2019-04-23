@@ -16,31 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "ui_invitebuttonswidget.h"
+#pragma once
 
-#include "invitebuttonswidget.h"
+#include <QWidget>
 
-InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::InviteButtonsWidget)
-{
-    ui->setupUi(this);
-    connect(ui->btnAcceptInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnAcceptInviteClicked();
-        });
-    connect(ui->btnIgnoreInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnIgnoreInviteClicked();
-        });
-    connect(ui->btnBlockInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnBlockInviteClicked();
-        });
+namespace Ui {
+class DeviceItemWidget;
 }
 
-InviteButtonsWidget::~InviteButtonsWidget()
+class DeviceItemWidget : public QWidget
 {
-    disconnect(this);
-    delete ui;
-}
+    Q_OBJECT
+public:
+    explicit DeviceItemWidget(const QString& name,
+        const QString& id,
+        bool isCurrent,
+        QWidget* parent = 0);
+    ~DeviceItemWidget();
+
+    QSize sizeHint() const override;
+
+private:
+    Ui::DeviceItemWidget* ui;
+
+    bool editable_ = false;
+
+    void toggleEditable();
+
+signals:
+    void btnRemoveDeviceClicked() const;
+
+};

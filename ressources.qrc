@@ -76,7 +76,9 @@
     <file>images/icons/round-error-24px.svg</file>
     <file>images/icons/round-save_alt-24px.svg</file>
     <file>images/jami_eclipse_spinner.gif</file>
-    <file>images/icons/showHide.PNG</file>
-    <file>images/icons/showHideTwo.PNG</file>
+    <file>images/icons/ic_hide_password.png</file>
+    <file>images/icons/ic_show_password.png</file>
+    <file>images/icons/baseline-desktop_windows-24px.svg</file>
+    <file>images/icons/baseline-people-24px.svg</file>
   </qresource>
 </RCC>

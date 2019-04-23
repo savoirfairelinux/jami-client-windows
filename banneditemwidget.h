@@ -16,31 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "ui_invitebuttonswidget.h"
+#pragma once
 
-#include "invitebuttonswidget.h"
+#include <QWidget>
 
-InviteButtonsWidget::InviteButtonsWidget(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::InviteButtonsWidget)
-{
-    ui->setupUi(this);
-    connect(ui->btnAcceptInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnAcceptInviteClicked();
-        });
-    connect(ui->btnIgnoreInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnIgnoreInviteClicked();
-        });
-    connect(ui->btnBlockInvite, &QPushButton::clicked, this,
-        [=]() {
-            emit btnBlockInviteClicked();
-        });
+namespace Ui {
+class BannedItemWidget;
 }
 
-InviteButtonsWidget::~InviteButtonsWidget()
+class BannedItemWidget : public QWidget
 {
-    disconnect(this);
-    delete ui;
-}
+    Q_OBJECT
+public:
+    explicit BannedItemWidget(const QString& name,
+                              const QString& id,
+                              QWidget* parent = 0);
+    ~BannedItemWidget();
+
+    QSize sizeHint() const override;
+
+private:
+    Ui::BannedItemWidget* ui;
+
+signals:
+    void btnReAddContactClicked() const;
+
+};

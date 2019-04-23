@@ -69,7 +69,7 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
         return QVariant(Utils::toUnderlyingValue<lrc::api::account::Status>(accountInfo.status));
     case Role::Picture:
     case Qt::DecorationRole:
-        return PixbufManipulator::accountPhoto(accountInfo);
+        return Utils::accountPhoto(accountInfo);
     case Role::ID:
         return QVariant(QString::fromStdString(accountInfo.id));
     }
