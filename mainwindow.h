@@ -52,6 +52,7 @@ public:
     bool init();
     void show();
     float getCurrentScalingRatio();
+    void showWindow();
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -76,7 +77,6 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
-    void showWindow();
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
     int lastAccountCount_;

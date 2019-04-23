@@ -119,7 +119,7 @@ public:
 
     static void setSelectedAccountId(const std::string& accountId) {
         instance().selectedAccountId_ = accountId;
-        QSettings settings;
+        QSettings settings("jami.net", "Jami");
         settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
     };
 

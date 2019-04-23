@@ -122,6 +122,14 @@ namespace Utils
             });
     }
 
+    template<typename T>
+    void
+    setElidedText(T* object, const QString &text, Qt::TextElideMode mode = Qt::ElideMiddle, int padding = 32) {
+        QFontMetrics metrics(object->font());
+        QString clippedText = metrics.elidedText(text, mode, object->width() - padding);
+        object->setText(clippedText);
+    }
+
     template<typename E>
     constexpr inline typename std::enable_if<   std::is_enum<E>::value,
         typename std::underlying_type<E>::type
