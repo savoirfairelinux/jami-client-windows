@@ -67,8 +67,7 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
             button_->setToolTip(QObject::tr("Edit Device Name"));
 
             QObject::connect(button_, &QPushButton::pressed, [this]() { toggleEditable(); });
-        }
-        else {
+        } else {
             button_->setIcon(QPixmap(":/images/icons/round-remove_circle-24px.svg"));
             button_->setToolTip(QObject::tr("Unlink Device From Account"));
         }
