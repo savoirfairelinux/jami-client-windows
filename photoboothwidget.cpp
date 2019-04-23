@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -53,7 +54,7 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
 
     takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 PhotoboothWidget::~PhotoboothWidget()
@@ -71,7 +72,7 @@ void PhotoboothWidget::startBooth()
     ui->videoFeed->show();
     ui->avatarLabel->hide();
     takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-camera_alt-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 void PhotoboothWidget::stopBooth()
@@ -80,7 +81,7 @@ void PhotoboothWidget::stopBooth()
     ui->videoFeed->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
-    ui->takePhotoButton->setIcon(QPixmap(":/images/icons/baseline-refresh-24px.svg"));
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
 }
 
 void
@@ -98,16 +99,18 @@ PhotoboothWidget::on_importButton_clicked()
     Video::PreviewManager::instance().stopPreview();
     auto image = QImage(fileName_);
     auto avatar = image.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-    avatarPixmap_ = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
-    ui->avatarLabel->setPixmap(avatarPixmap_);
+    avatarPixmap_ = QPixmap::fromImage(avatar);
+    ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
     hasAvatar_ = true;
+    emit photoTaken();
     stopBooth();
 }
 
 void
 PhotoboothWidget::on_takePhotoButton_clicked()
 {
-    if (!takePhotoState_) {
+    if (!takePhotoState_) { // restart
+        emit clearedPhoto();
         startBooth();
         return;
     } else {
@@ -127,11 +130,22 @@ PhotoboothWidget::on_takePhotoButton_clicked()
                 Video::PreviewManager::instance().stopPreview();
                 auto photo = ui->videoFeed->takePhoto();
                 auto avatar = photo.scaled(100, 100, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-                avatarPixmap_ = QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width()));
-                ui->avatarLabel->setPixmap(avatarPixmap_);
+                avatarPixmap_ = QPixmap::fromImage(avatar);
+                ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
                 hasAvatar_ = true;
+                emit photoTaken();
                 stopBooth();
             });
+    }
+}
+
+void
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+{
+    ui->avatarLabel->setPixmap(avatarPixmap);
+    stopBooth();
+    if (default) {
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
     }
 }
 
