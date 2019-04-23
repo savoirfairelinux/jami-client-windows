@@ -38,7 +38,7 @@
 #include "utils.h"
 #include "settingsitemwidget.h"
 #include "passworddialog.h"
-#include "regnamedialog.h"
+#include "nameregistrationdialog.h"
 #include "setavatardialog.h"
 #include "deleteaccountdialog.h"
 
@@ -500,7 +500,7 @@ void
 SettingsWidget::setRegNameUi(RegName stat)
 {
     disconnect(gif, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
-    disconnect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
+    disconnect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::slotRegisterName);
 
     switch (stat) {
     case RegName::BLANK:
@@ -537,7 +537,7 @@ SettingsWidget::setRegNameUi(RegName stat)
         ui->regNameButton->setToolTip(tr("Register this name"));
         ui->regNameButton->setEnabled(true);
 
-        connect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
+        connect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::slotRegisterName);
         break;
 
     case RegName::SEARCHING:
@@ -560,15 +560,15 @@ SettingsWidget::setButtonIconSlot(int frame)
 }
 
 void
-SettingsWidget::regNameRegisteredSlot()
+SettingsWidget::slotRegisterName()
 {
     if (!regNameBtn_) {
         return;
     }
 
-    RegNameDialog regNameDialog(registeredName_, this);
+    NameRegistrationDialog nameRegistrationDialog(registeredName_, this);
 
-    if (regNameDialog.exec() == QDialog::Accepted) {
+    if (nameRegistrationDialog.exec() == QDialog::Accepted) {
         ui->currentRegisteredID->setReadOnly(true);
         ui->currentRegisteredID->setText(registeredName_);
 

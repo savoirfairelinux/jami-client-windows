@@ -45,7 +45,6 @@ QWidget#smartListOuterWidget {
 }
 
 QPushButton#btnConversations, QPushButton#btnInvites,
-QPushButton#btnExportAccount, QPushButton#btnDeletAccount,
 QPushButton#btnSIPDeletAccount {
     border-radius: 0px;
     border-top-left-radius: 15px;
@@ -61,7 +60,6 @@ QPushButton#btnSIPDeletAccount {
 }
 
 QPushButton#btnConversations:hover, QPushButton#btnInvites:hover,
-QPushButton#btnExportAccount:hover, QPushButton#btnDeletAccount:hover,
 QPushButton#btnSIPDeletAccount:hover {
     background-color: rgb(188, 185, 184);
     border-top: 2px solid rgb(188, 185, 184);
@@ -70,8 +68,7 @@ QPushButton#btnSIPDeletAccount:hover {
     border-left: 2px solid rgb(188, 185, 184);
 }
 
-QPushButton#btnConversations:checked, QPushButton#btnInvites:checked,
-QPushButton#btnExportAccount:checked, QPushButton#btnDeletAccount:checked {
+QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
     background-color: rgb(255, 255, 255);
     border-bottom: 2px solid rgb(255, 255, 255);
 }
@@ -556,20 +553,66 @@ QPushButton#pictureButton:checked, QPushButton#fileButton:checked {
 /* } setAvatarDialog */
 
 /* SettingsWidget { */
-QWidget#leftSettingsWidget, QWidget#rightSettingsWidget,
-QWidget#DeleteAccountDialog, QWidget#AdvancedSettingsWidget,
-QWidget#RegNameDialog, QWidget#PasswordDialog, QWidget#centralWidget,
-QWidget#scrollAreaWidgetContents {
+
+SettingsWidget QPushButton {
+    padding-right: 16px;
+    padding-left: 16px;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+    color: rgb(32, 32, 32);
+    background-color: rgb(255, 255, 0);
+}
+
+    SettingsWidget QPushButton:hover {
+        background-color: rgb(255, 0, 255);
+    }
+
+    SettingsWidget QPushButton:pressed {
+        background-color: rgb(0, 255, 255);
+    }
+
+SettingsWidget QWidget#leftSettingsWidget,
+SettingsWidget QWidget#rightSettingsWidget,
+SettingsWidget QWidget#DeleteAccountDialog,
+SettingsWidget QWidget#AdvancedSettingsWidget,
+SettingsWidget QWidget#NameRegistrationDialog,
+SettingsWidget QWidget#PasswordDialog,
+SettingsWidget QWidget#centralWidget,
+SettingsWidget QWidget#scrollAreaWidgetContents {
     background-color: rgba(255, 255, 255, 255);
 }
 
-QLineEdit#currentRingID {
+SettingsWidget QLineEdit#currentRingID {
     border: 0px;
     padding: 1px;
     background-color: transparent;
+    font-size: 12px;
 }
 
-QPushButton#regNameButton {
+SettingsWidget .QLineEdit {
+    border-radius: 0px;
+    border: 5px solid green;
+    background-color: rgb(240, 240, 240);
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 30px;
+}
+
+AdvancedSettingsWidget .QLineEdit {
+    border-radius: 15px;
+    border: 0px;
+    background-color: rgb(240, 240, 240);
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 30px;
+}
+
+SettingsWidget QPushButton#regNameButton {
     background-color: transparent;
+}
+
+SettingsWidget QWidget#videoLayoutWidget {
+    background-color: black;
 }
 /* } SettingsWidget */

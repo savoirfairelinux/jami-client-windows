@@ -22,8 +22,7 @@
 #include <QWidget>
 #include <QListWidgetItem>
 
-namespace Ui
-{
+namespace Ui {
 class AdvancedSIPSettingsWidget;
 }
 

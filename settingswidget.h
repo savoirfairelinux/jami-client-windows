@@ -120,7 +120,7 @@ private slots:
     void beforeNameLookup();
     void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
         const std::string& address, const std::string& name);
-    void regNameRegisteredSlot();
+    void slotRegisterName();
     void setAccEnableSlot(int state);
     void delAccountSlot();
 

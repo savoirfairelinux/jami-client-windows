@@ -146,6 +146,24 @@ MainWindow::MainWindow(QWidget* parent) :
     }
 
     lastScr_ = startScreen;
+
+#ifdef DEBUG_STYLESHEET
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout,
+        [this]() {
+            QString fileName = "stylesheet.css";
+            QDir filePath = QDir(QCoreApplication::applicationDirPath());
+            filePath.cdUp();
+            filePath.cdUp();
+            QFile file(filePath.filePath(fileName));
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                auto fileContent = file.readAll();
+                setStyleSheet(fileContent);
+                file.close();
+            }
+        });
+    timer->start(1000);
+#endif
 }
 
 MainWindow::~MainWindow()
