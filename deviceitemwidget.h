@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -13,42 +13,37 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
 #pragma once
-#include <QPushButton>
 
-#include "lrcinstance.h"
-#include "ui_linkdevwidget.h"
-
+#include <QWidget>
 
 namespace Ui {
-    class LinkDevWidget;
+class DeviceItemWidget;
 }
 
-class LinkDevWidget : public QWidget
+class DeviceItemWidget : public QWidget
 {
     Q_OBJECT
-    LinkDevWidget(const LinkDevWidget& cpy);
-
 public:
-    explicit LinkDevWidget(QWidget* parent = nullptr);
-    ~LinkDevWidget();
-    inline const QPushButton* cancelBtn() const { return ui->cancelBtn; };
-    inline const QPushButton* enterBtn() const { return ui->enterBtn; };
-    inline const QPushButton* endCancelBtn() const { return ui->closePushButton; };
+    explicit DeviceItemWidget(const QString& name,
+        const QString& id,
+        bool isCurrent,
+        QWidget* parent = 0);
+    ~DeviceItemWidget();
 
+    QSize sizeHint() const override;
 
 private:
-    Ui::LinkDevWidget* ui;
-    const int exportTimeout_ = 10000;
+    Ui::DeviceItemWidget* ui;
 
-    QTimer* timeout_;
+    bool editable_ = false;
 
-private slots:
-    void setGeneratingPage();
-    void setExportPage(const std::string& accountId,
-                       lrc::api::account::ExportOnRingStatus status,
-                       const std::string& pin);
+    void toggleEditable();
+
+signals:
+    void btnRemoveDeviceClicked() const;
+
 };

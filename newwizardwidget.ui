@@ -66,13 +66,13 @@
           <property name="minimumSize">
            <size>
             <width>512</width>
-            <height>512</height>
+            <height>638</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>512</width>
-            <height>512</height>
+            <height>638</height>
            </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -108,7 +108,7 @@
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="welcomePage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -220,15 +220,20 @@
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Create Jami account button</string>
@@ -258,15 +263,20 @@
                     <widget class="QPushButton" name="existingPushButton">
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Link device button</string>
@@ -299,15 +309,20 @@
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>220</width>
+                       <width>256</width>
                        <height>16777215</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="toolTip">
                       <string>Create Jami SIP account button</string>
@@ -442,6 +457,11 @@
                         <height>195</height>
                        </size>
                       </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">padding:8px;background-color:#efefef;border:1px solid #e0e0e0; border-radius:16px;</string>
                       </property>
@@ -504,7 +524,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="text">
@@ -531,7 +551,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                       </widget>
@@ -572,7 +592,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="text">
@@ -599,7 +619,7 @@ p, li { white-space: pre-wrap; }
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>9</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="toolTip">
@@ -660,7 +680,7 @@ p, li { white-space: pre-wrap; }
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
                       </font>
                      </property>
                      <property name="echoMode">
@@ -678,7 +698,7 @@ p, li { white-space: pre-wrap; }
                      </property>
                      <property name="font">
                       <font>
-                       <pointsize>9</pointsize>
+                       <pointsize>10</pointsize>
                       </font>
                      </property>
                      <property name="text">
@@ -769,7 +789,7 @@ p, li { white-space: pre-wrap; }
                       </property>
                       <property name="font">
                        <font>
-                        <pointsize>15</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -837,8 +857,8 @@ p, li { white-space: pre-wrap; }
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>140</width>
-                                <height>140</height>
+                                <width>261</width>
+                                <height>261</height>
                                </size>
                               </property>
                               <property name="styleSheet">
@@ -859,7 +879,7 @@ p, li { white-space: pre-wrap; }
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
-                              <height>3</height>
+                              <height>6</height>
                              </size>
                             </property>
                            </spacer>
@@ -923,7 +943,7 @@ p, li { white-space: pre-wrap; }
                                </property>
                                <property name="font">
                                 <font>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="toolTip">
@@ -997,7 +1017,7 @@ p, li { white-space: pre-wrap; }
                      <widget class="QLabel" name="accountSectionLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1102,7 +1122,7 @@ p, li { white-space: pre-wrap; }
                                 <widget class="QLabel" name="infoLabel">
                                  <property name="font">
                                   <font>
-                                   <pointsize>12</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="text">
@@ -1188,6 +1208,11 @@ p, li { white-space: pre-wrap; }
                                    <width>0</width>
                                    <height>30</height>
                                   </size>
+                                 </property>
+                                 <property name="font">
+                                  <font>
+                                   <pointsize>10</pointsize>
+                                  </font>
                                  </property>
                                  <property name="toolTip">
                                   <string>Register your username.
@@ -1277,7 +1302,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -1349,7 +1374,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -1362,7 +1387,7 @@ instead of using your ID.</string>
                                   <string>Password text entry</string>
                                  </property>
                                  <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
+                                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
                                  </property>
                                  <property name="placeholderText">
                                   <string>Password</string>
@@ -1427,7 +1452,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -1440,7 +1465,7 @@ instead of using your ID.</string>
                                   <string>Password confirmation text input</string>
                                  </property>
                                  <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
+                                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
                                  </property>
                                  <property name="placeholderText">
                                   <string>Confirm password</string>
@@ -1529,7 +1554,7 @@ instead of using your ID.</string>
                       </property>
                       <property name="font">
                        <font>
-                        <pointsize>15</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1597,8 +1622,8 @@ instead of using your ID.</string>
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>150</width>
-                                <height>150</height>
+                                <width>261</width>
+                                <height>261</height>
                                </size>
                               </property>
                               <property name="styleSheet">
@@ -1619,7 +1644,7 @@ instead of using your ID.</string>
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
-                              <height>3</height>
+                              <height>6</height>
                              </size>
                             </property>
                            </spacer>
@@ -1710,7 +1735,7 @@ instead of using your ID.</string>
                          </property>
                          <property name="font">
                           <font>
-                           <pointsize>9</pointsize>
+                           <pointsize>10</pointsize>
                           </font>
                          </property>
                          <property name="toolTip">
@@ -1757,7 +1782,7 @@ instead of using your ID.</string>
                      <widget class="QLabel" name="SIPaccountSectionLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>13</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1919,7 +1944,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -1991,7 +2016,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2069,7 +2094,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2147,7 +2172,7 @@ instead of using your ID.</string>
                                  </property>
                                  <property name="font">
                                   <font>
-                                   <pointsize>9</pointsize>
+                                   <pointsize>10</pointsize>
                                   </font>
                                  </property>
                                  <property name="toolTip">
@@ -2160,7 +2185,7 @@ instead of using your ID.</string>
                                   <string>SIP Password text input</string>
                                  </property>
                                  <property name="echoMode">
-                                  <enum>QLineEdit::Password</enum>
+                                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
                                  </property>
                                  <property name="placeholderText">
                                   <string>Password</string>
@@ -2302,7 +2327,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">
@@ -2342,7 +2367,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">
@@ -2388,7 +2413,7 @@ instead of using your ID.</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>9</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                 <property name="toolTip">

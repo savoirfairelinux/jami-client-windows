@@ -54,7 +54,4 @@ public:
     QVariant   decorationRole(const Account* acc) override;
     QVariant   decorationRole(const lrc::api::conversation::Info& conversation,
                               const lrc::api::account::Info& accountInfo) override;
-    static QImage scaleAndFrame(const QImage photo, const QSize& size);
-    static QVariant accountPhoto(const lrc::api::account::Info& accountInfo);
 };
-

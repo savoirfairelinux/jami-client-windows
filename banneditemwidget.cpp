@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -17,46 +16,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "ui_banneditemwidget.h"
 
-#include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
+#include "banneditemwidget.h"
 
-namespace Ui {
-class PhotoboothWidget;
+#include "lrcinstance.h"
+#include "utils.h"
+
+BannedItemWidget::BannedItemWidget(const QString& name,
+                                   const QString& id,
+                                   QWidget* parent)
+    : QWidget(parent),
+    ui(new Ui::BannedItemWidget)
+{
+    ui->setupUi(this);
+    ui->labelContactName->setText(name);
+    ui->labelContactId->setText(id);
+
+    auto avatarImage = Utils::fallbackAvatar(QSize(48, 48), id, name);
+    ui->labelContactAvatar->setPixmap(QPixmap::fromImage(avatarImage));
+
+    ui->btnReAddContact->setToolTip(QObject::tr("Add as contact"));
+
+    connect(ui->btnReAddContact, &QPushButton::clicked, this,
+        [this]() {
+            emit btnReAddContactClicked();
+        });
 }
 
-class PhotoboothWidget : public QWidget
+BannedItemWidget::~BannedItemWidget()
 {
-    Q_OBJECT
+    disconnect(this);
+    delete ui;
+}
 
-public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
-
-    void startBooth();
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
-
-private:
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
-
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
-
-    bool takePhotoState_;
-
-signals:
-    void photoTaken();
-    void clearedPhoto();
-};
+QSize
+BannedItemWidget::sizeHint() const
+{
+    return QSize();
+}

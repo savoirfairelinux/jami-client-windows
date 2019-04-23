@@ -119,7 +119,7 @@ public:
 
     static void setSelectedAccountId(const std::string& accountId) {
         instance().selectedAccountId_ = accountId;
-        QSettings settings;
+        QSettings settings("jami.net", "Jami");
         settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
     };
 
@@ -158,7 +158,8 @@ public:
         QBuffer bu(&ba);
         bu.open(QIODevice::WriteOnly);
         avatarPixmap.save(&bu, "PNG");
-        instance().editableAccountModel()->setAvatar(getCurrAccId(), ba.toBase64().toStdString());
+        auto str = ba.toBase64().toStdString();
+        instance().editableAccountModel()->setAvatar(getCurrAccId(), str);
     };
 
     static void setCurrAccAvatar(const std::string& avatar) {
