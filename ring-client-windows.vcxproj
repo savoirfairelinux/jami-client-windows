@@ -82,7 +82,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG_STYLESHEET;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -121,7 +121,7 @@
     <QtMoc>
       <QTDIR>$(QTDIR)</QTDIR>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <Define>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
+      <Define>DEBUG_STYLESHEET;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
       <CompilerFlavor>msvc</CompilerFlavor>
       <Include>$(Configuration)/moc_predefs.h</Include>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -267,7 +267,7 @@
     <ClCompile Include="photoboothdialog.cpp" />
     <ClCompile Include="photoboothwidget.cpp" />
     <ClCompile Include="pixbufmanipulator.cpp" />
-    <ClCompile Include="regnamedialog.cpp" />
+    <ClCompile Include="nameregistrationdialog.cpp" />
     <ClCompile Include="ringbutton.cpp" />
     <ClCompile Include="ringcontactlineedit.cpp" />
     <ClCompile Include="runguard.cpp" />
@@ -405,9 +405,10 @@
     </QtMoc>
     <QtMoc Include="ringcontactlineedit.h">
     </QtMoc>
-    <QtMoc Include="regnamedialog.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\lrc\src;$(ProjectDir)..\client-windows\winsparkle\include;$(ProjectDir)..\client-windows\qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+    <QtMoc Include="nameregistrationdialog.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_MULTIMEDIA_LIB;QT_MULTIMEDIAWIDGETS_LIB</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
     </QtMoc>
     <ClInclude Include="ringthemeutils.h" />
     <QtMoc Include="selectareadialog.h">
@@ -564,7 +565,9 @@
     <QtUic Include="advancedsettingswidget.ui">
       <SubType>Designer</SubType>
     </QtUic>
-    <QtUic Include="advancedsipsettingwidget.ui" />
+    <QtUic Include="advancedsipsettingwidget.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
     <QtUic Include="animatedoverlay.ui">
       <SubType>Designer</SubType>
     </QtUic>
@@ -582,6 +585,7 @@
     <QtUic Include="mainwindow.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="nameregistrationdialog.ui" />
     <QtUic Include="newwizardwidget.ui" />
     <QtUic Include="passworddialog.ui">
       <SubType>Designer</SubType>
@@ -590,7 +594,6 @@
     </QtUic>
     <QtUic Include="photoboothwidget.ui">
     </QtUic>
-    <QtUic Include="regnamedialog.ui" />
     <QtUic Include="ringbutton.ui">
     </QtUic>
     <QtUic Include="setavatardialog.ui">
