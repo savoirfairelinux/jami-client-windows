@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -13,35 +13,28 @@
  * GNU General Public License for more details.                            *
  *                                                                         *
  * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.   *
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.  *
  **************************************************************************/
 
 #pragma once
 #include <QPushButton>
+#include <QDialog>
 
 #include "lrcinstance.h"
-#include "ui_linkdevwidget.h"
-
 
 namespace Ui {
-    class LinkDevWidget;
+    class LinkDeviceDialog;
 }
 
-class LinkDevWidget : public QWidget
+class LinkDeviceDialog : public QDialog
 {
     Q_OBJECT
-    LinkDevWidget(const LinkDevWidget& cpy);
-
 public:
-    explicit LinkDevWidget(QWidget* parent = nullptr);
-    ~LinkDevWidget();
-    inline const QPushButton* cancelBtn() const { return ui->cancelBtn; };
-    inline const QPushButton* enterBtn() const { return ui->enterBtn; };
-    inline const QPushButton* endCancelBtn() const { return ui->closePushButton; };
-
+    explicit LinkDeviceDialog(QDialog* parent = nullptr);
+    ~LinkDeviceDialog();
 
 private:
-    Ui::LinkDevWidget* ui;
+    Ui::LinkDeviceDialog* ui;
     const int exportTimeout_ = 10000;
 
     QTimer* timeout_;

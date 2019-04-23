@@ -72,7 +72,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
     videoRenderer_ = nullptr;
 
-    QSettings settings;
+    QSettings settings("jami.net", "Jami");
 
     // select last used account if stored in registry
     auto accountList = LRCInstance::accountModel().getAccountList();
@@ -139,7 +139,7 @@ CallWidget::CallWidget(QWidget* parent) :
         [this](int pos, int index) {
             Q_UNUSED(index);
             Q_UNUSED(pos);
-            QSettings settings;
+            QSettings settings("jami.net", "Jami");
             settings.setValue(SettingsKey::mainSplitterState, ui->mainActivitySplitter->saveState());
         });
 
@@ -289,8 +289,8 @@ CallWidget::onIncomingMessage(const std::string& convUid,
         }
         auto bestName = Utils::bestNameForConversation(*conversation, *convModel);
         Utils::showSystemNotification(this,
-            QString(tr("Message incoming from %1"))
-            .arg(QString::fromStdString(bestName)));
+            QString::fromStdString(bestName),
+            QString::fromStdString(interaction.body));
     }
     updateConversationsFilterWidget();
     if (convUid != LRCInstance::getSelectedConvUid()) {
