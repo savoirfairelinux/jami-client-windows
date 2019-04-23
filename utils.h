@@ -60,6 +60,7 @@ namespace Utils
     QImage getCirclePhoto(const QImage original, int sizePhoto);
     void setStackWidget(QStackedWidget *stack, QWidget *widget);
     void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
+    void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 
     std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
     std::string bestIdForAccount(const lrc::api::account::Info & account);
@@ -120,6 +121,14 @@ namespace Utils
                     delete disconnectConnection;
                 }
             });
+    }
+
+    template<typename T>
+    void
+    setElidedText(T* object, const QString &text, Qt::TextElideMode mode = Qt::ElideMiddle, int padding = 32) {
+        QFontMetrics metrics(object->font());
+        QString clippedText = metrics.elidedText(text, mode, object->width() - padding);
+        object->setText(clippedText);
     }
 
     template<typename E>

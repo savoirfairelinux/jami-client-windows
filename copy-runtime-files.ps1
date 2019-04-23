@@ -114,7 +114,7 @@ $CopyDir = $OutDir + "\ringtones"
 New-Item -ItemType directory -Path $CopyDir -Force
 $RingtonePath = "$ClientDir\..\daemon\ringtones"
 write-host "copying ringtones..."
-Get-ChildItem -Path $RingtonePath -Include *.ul, *.wav, *.ogg -Recurse | ForEach-Object {
+Get-ChildItem -Path $RingtonePath -Include *.ul, *.ogg, *.wav, *.opus -Recurse | ForEach-Object {
     write-host "copying ringtone: " $_.FullName " => " $CopyDir
     Copy-Item -Path $_.FullName -Destination $CopyDir -Force –Recurse
 }
