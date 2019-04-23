@@ -63,13 +63,12 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
         idlabel_->setText(QString::fromStdString(it->id));
 
         if (!index_) {
-            button_->setIcon(QPixmap(":/images/icons/round-edit-24px.svg"));
+            button_->setIcon(QIcon(":/images/icons/round-edit-24px.svg"));
             button_->setToolTip(QObject::tr("Edit Device Name"));
 
             QObject::connect(button_, &QPushButton::pressed, [this]() { toggleEditable(); });
-        }
-        else {
-            button_->setIcon(QPixmap(":/images/icons/round-remove_circle-24px.svg"));
+        } else {
+            button_->setIcon(QIcon(":/images/icons/round-remove_circle-24px.svg"));
             button_->setToolTip(QObject::tr("Unlink Device From Account"));
         }
         nameEdit_->show();
@@ -85,7 +84,7 @@ SettingsItemWidget::SettingsItemWidget(int height, int index, bool banned, QList
 
         nameEdit_->setText(QString::fromStdString(contactInfo.registeredName));
         idlabel_->setText(QString::fromStdString(contactInfo.profileInfo.uri));
-        button_->setIcon(QPixmap(":/images/icons/round-undo-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-undo-24px.svg"));
         button_->setToolTip(QObject::tr("Unblock Contact"));
 
         nameEdit_->show();
@@ -110,7 +109,7 @@ SettingsItemWidget::toggleEditable()
         nameEdit_->setReadOnly(false);
         nameEdit_->setStyleSheet("border: 0px; border-radius: 3px; background: white;");
         nameEdit_->setFocus();
-        button_->setIcon(QPixmap(":/images/icons/round-save_alt-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-save_alt-24px.svg"));
     }
     else {
         finishEdit();
@@ -124,7 +123,7 @@ SettingsItemWidget::finishEdit()
     if (!index_) {
         nameEdit_->setReadOnly(true);
         nameEdit_->setStyleSheet("border: 0px; border-radius: 3px; background: transparent;");
-        button_->setIcon(QPixmap(":/images/icons/round-edit-24px.svg"));
+        button_->setIcon(QIcon(":/images/icons/round-edit-24px.svg"));
 
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.deviceName = nameEdit_->text().toStdString();
