@@ -282,7 +282,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation>Jelszó megváltoztatása…</translation>
+        <translation>Fiók jelszó megváltoztatása, kis türelmet…</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>

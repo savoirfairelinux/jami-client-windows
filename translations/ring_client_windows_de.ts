@@ -90,7 +90,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="350"/>
         <source>Public registered username</source>
-        <translation type="unfinished"/>
+        <translation>Öffentlich registrierter Benutzername</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="426"/>
@@ -147,7 +147,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="69"/>
         <source>General account info configuration</source>
-        <translation type="unfinished"/>
+        <translation>Konfiguration der allgemeinen Kontoinformationen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="169"/>
@@ -242,7 +242,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="675"/>
         <source>Input new password</source>
-        <translation type="unfinished"/>
+        <translation>Neues Passwort eingeben</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="692"/>
@@ -262,7 +262,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="727"/>
         <source>New pass confirmation</source>
-        <translation type="unfinished"/>
+        <translation>Neues Passwort bestätigen</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
@@ -282,7 +282,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="798"/>
         <source>Changing password ...</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ändern ...</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
@@ -522,7 +522,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Konfiguration der Kontosicherheit</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -567,7 +567,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
         <source>Account devices management</source>
-        <translation type="unfinished"/>
+        <translation>Verwaltung der Kontogeräte</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
@@ -704,7 +704,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Anrufeinstellungen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
@@ -714,7 +714,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Anrufe automatisch beantworten</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
@@ -740,7 +740,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT-Einstellungen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
@@ -815,7 +815,7 @@ Jami ist eine sichere und verteilte Kommunikationsanwendung.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation> UPnP benutzen</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -999,17 +999,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Videoanruf starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Audioanruf starten</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="360"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Gesprächsverlauf löschen</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="367"/>
@@ -1039,7 +1039,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Meine ID ist:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="293"/>
@@ -1339,7 +1339,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="883"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profilname</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="957"/>
@@ -1496,22 +1496,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Kontopasswort ändern</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="58"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Aktuelles Passwort eingeben</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="90"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Neues Passwort eingeben</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="106"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Neues Passwort bestätigen</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="136"/>
@@ -1693,7 +1693,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../setavatardialog.ui" line="185"/>
         <source>Select A File</source>
-        <translation type="unfinished"/>
+        <translation>Datei auswählen</translation>
     </message>
     <message>
         <location filename="../setavatardialog.ui" line="204"/>
@@ -1891,7 +1891,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2648"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofon</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2683"/>
@@ -1972,7 +1972,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="493"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Gerät entfernen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="494"/>

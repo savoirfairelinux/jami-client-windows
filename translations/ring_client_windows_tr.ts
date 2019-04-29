@@ -866,7 +866,7 @@ Jami güvenli ve dağıtık bir iletişim yazılımıdır.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
         <source>Deban contact button</source>
-        <translation type="unfinished"/>
+        <translation>Kişiyi engellemeyi kaldıma düğmesi</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
@@ -971,7 +971,7 @@ Kopyalayın ve arkadaşlarınızla paylaşın!</translation>
     <message>
         <location filename="../callwidget.ui" line="1511"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Gelen aramayı yanıtla düğmesi</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1583"/>
@@ -1276,7 +1276,7 @@ Lütfen daha sonra yeniden deneyin.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Aygıt bağla düğmesi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="272"/>
@@ -1476,7 +1476,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Jami hesabınız göç ettiriliyor...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
@@ -1668,7 +1668,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Klasör seç</translation>
     </message>
 </context>
 <context>
@@ -1800,7 +1800,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="903"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Güncellemeleri kendiliğinden denetle</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="927"/>
@@ -1815,7 +1815,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="986"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Şimdi güncellemeleri denetle düğmesi</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="994"/>
@@ -1944,7 +1944,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="74"/>
         <source>Enter the displayed name</source>
-        <translation type="unfinished"/>
+        <translation>Görünecek adı girin</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="391"/>
@@ -1990,7 +1990,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="530"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Hesabı Buraya Dışa Aktar</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="785"/>
