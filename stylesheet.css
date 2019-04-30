@@ -305,7 +305,7 @@ QScrollBar::handle:vertical{
 }
 
 QWidget#messagingPage, QWidget#contactRequestPage,
-QDialog#DeleteAccountDialog {
+QDialog#DeleteAccountDialog, QDialog#updateDownloadDialog{
     background: rgb(255, 255, 255);
 }
 
