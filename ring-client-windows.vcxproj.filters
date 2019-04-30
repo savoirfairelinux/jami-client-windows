@@ -198,6 +198,15 @@
     <ClCompile Include="advancedsipsettingwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="downloadbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="updateconfimdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="downloadmanger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -330,6 +339,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="settingswidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadbar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="updateconfimdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadmanger.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -614,6 +632,12 @@
     <QtUic Include="advancedsipsettingwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="downloadbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="updateconfirm.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="images\FontAwesome.otf">
@@ -768,5 +792,10 @@
     <ClInclude Include="runguard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Version.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

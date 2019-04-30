@@ -24,47 +24,49 @@
 #include "settingswidget.h"
 #include "ui_settingswidget.h"
 
-#include <QPixmap>
-#include <QTimer>
-#include <QModelIndex>
 #include <QFileDialog>
 #include <QInputDialog>
-#include <QStandardPaths>
 #include <QMessageBox>
-#include <QSettings>
+#include <QModelIndex>
+#include <QPixmap>
 #include <QScrollBar>
+#include <QSettings>
+#include <QStandardPaths>
+#include <QTimer>
 
-#include "settingskey.h"
-#include "utils.h"
-#include "settingsitemwidget.h"
+#include "deleteaccountdialog.h"
+#include "downloadmanger.h"
 #include "passworddialog.h"
 #include "regnamedialog.h"
 #include "setavatardialog.h"
-#include "deleteaccountdialog.h"
+#include "settingsitemwidget.h"
+#include "settingskey.h"
+#include "updateconfimdialog.h"
+#include "utils.h"
 
 #include "api/newdevicemodel.h"
-#include "media/recordingmodel.h"
-#include "audio/settings.h"
-#include "audio/outputdevicemodel.h"
 #include "audio/inputdevicemodel.h"
-#include "video/devicemodel.h"
-#include "video/channel.h"
-#include "video/resolution.h"
-#include "video/rate.h"
-#include "video/previewmanager.h"
+#include "audio/outputdevicemodel.h"
+#include "audio/settings.h"
 #include "callmodel.h"
+#include "media/recordingmodel.h"
+#include "video/channel.h"
+#include "video/devicemodel.h"
+#include "video/previewmanager.h"
+#include "video/rate.h"
+#include "video/resolution.h"
 
 #ifdef Q_OS_WIN
 #include "winsparkle.h"
 #endif
 
 SettingsWidget::SettingsWidget(QWidget* parent)
-    : NavWidget(parent),
-      ui(new Ui::SettingsWidget),
-      scrollArea_(new QScrollArea(this)),
-      scrollSIPArea_(new QScrollArea(this)),
-      deviceModel_(&Video::DeviceModel::instance()),
-      gif(new QMovie(":/images/ajax-loader.gif"))
+    : NavWidget(parent)
+    , ui(new Ui::SettingsWidget)
+    , scrollArea_(new QScrollArea(this))
+    , scrollSIPArea_(new QScrollArea(this))
+    , deviceModel_(&Video::DeviceModel::instance())
+    , gif(new QMovie(":/images/ajax-loader.gif"))
 {
     ui->setupUi(this);
 
@@ -134,15 +136,13 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->containerWidget->setVisible(false);
 }
 
-void
-SettingsWidget::slotAccountOnBoarded()
+void SettingsWidget::slotAccountOnBoarded()
 {
     setSelected(Button::accountSettingsButton);
     setConnections();
 }
 
-void
-SettingsWidget::navigated(bool to)
+void SettingsWidget::navigated(bool to)
 {
     ui->containerWidget->setVisible(to);
 }
@@ -151,8 +151,7 @@ void SettingsWidget::updateCustomUI()
 {
 }
 
-void
-SettingsWidget::leaveSettingsSlot()
+void SettingsWidget::leaveSettingsSlot()
 {
     if (advancedSettingsDropped_) {
         toggleAdvancedSettings();
@@ -173,23 +172,20 @@ SettingsWidget::~SettingsWidget()
 }
 
 // called at every callwidget -> settingsWidget navigation
-void
-SettingsWidget::updateSettings(int size)
+void SettingsWidget::updateSettings(int size)
 {
     setSelected(Button::accountSettingsButton);
     resize(size);
     updateAccountInfoDisplayed();
 }
 
-void
-SettingsWidget::resize(int size)
+void SettingsWidget::resize(int size)
 {
     ui->rightSettingsWidget->setGeometry(size, 0, this->width() - size, this->height());
     ui->accountSettingsButton->setFixedWidth(size);
 }
 
-void
-SettingsWidget::setSelected(Button sel)
+void SettingsWidget::setSelected(Button sel)
 {
     switch (sel) {
     case Button::accountSettingsButton:
@@ -258,12 +254,11 @@ SettingsWidget::setSelected(Button sel)
 }
 
 // called to update current settings information when navigating to settingsWidget
-void
-SettingsWidget::updateAccountInfoDisplayed()
+void SettingsWidget::updateAccountInfoDisplayed()
 {
-    ui->usernameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username ));
-    ui->hostnameSIP->setText(QString::fromStdString( (LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).hostname ));
-    ui->passSIPlineEdit->setText(QString::fromStdString((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).password ));
+    ui->usernameSIP->setText(QString::fromStdString((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).username));
+    ui->hostnameSIP->setText(QString::fromStdString((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).hostname));
+    ui->passSIPlineEdit->setText(QString::fromStdString((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).password));
     ui->ProxySIP->setText(QString::fromStdString((LRCInstance::getCurrentAccountInfo().accountModel->getAccountConfig(LRCInstance::getCurrentAccountInfo().id)).proxyServer));
 
     ui->currentRegisteredID->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().registeredName));
@@ -279,12 +274,10 @@ SettingsWidget::updateAccountInfoDisplayed()
     }
 
     //Sip Avator set
-    ui->currentSIPAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
-        scaledToHeight(avatarSize_, Qt::SmoothTransformation));
+    ui->currentSIPAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().scaledToHeight(avatarSize_, Qt::SmoothTransformation));
 
     //Ring Avator set
-    ui->currentAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().
-        scaledToHeight(avatarSize_, Qt::SmoothTransformation));
+    ui->currentAccountAvatar->setIcon(LRCInstance::getCurrAccPixmap().scaledToHeight(avatarSize_, Qt::SmoothTransformation));
 
     ui->accountEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
     ui->accountSIPEnableCheckBox->setChecked(LRCInstance::getCurrentAccountInfo().enabled);
@@ -303,15 +296,13 @@ SettingsWidget::updateAccountInfoDisplayed()
     }
 }
 
-void
-SettingsWidget::passwordClicked()
+void SettingsWidget::passwordClicked()
 {
     PasswordDialog passwdDialog(this);
     passwdDialog.exec();
 }
 
-void
-SettingsWidget::showhideButtonClicked()
+void SettingsWidget::showhideButtonClicked()
 {
     if (showOrHide_) {
 
@@ -326,15 +317,12 @@ SettingsWidget::showhideButtonClicked()
         QPixmap pixmap(":/images/icons/showHideTwo.PNG");
         ui->showhideButton->setIcon(QIcon(pixmap));
         ui->showhideButton->setIconSize(pixmap.rect().size());
-
     }
 
     showOrHide_ = !showOrHide_;
-
 }
 
-void
-SettingsWidget::toggleAdvancedSIPSettings()
+void SettingsWidget::toggleAdvancedSIPSettings()
 {
 
     if (advancedSIPSettingsDropped_) {
@@ -348,18 +336,16 @@ SettingsWidget::toggleAdvancedSIPSettings()
         ui->advancedSIPSettingsWidget->setVisible(true);
         ui->advancedSIPSettingsWidget->updateAdvancedSIPSettings();
         QTimer::singleShot(50, this,
-        [this] {
-            auto top = ui->advancedAccountSettingsSIPButton->frameGeometry().top();
-            ui->scrollSIPArea->verticalScrollBar()->setSliderPosition(top);
-        });
+            [this] {
+                auto top = ui->advancedAccountSettingsSIPButton->frameGeometry().top();
+                ui->scrollSIPArea->verticalScrollBar()->setSliderPosition(top);
+            });
     }
 
     advancedSIPSettingsDropped_ = !advancedSIPSettingsDropped_;
-
 }
 
-void
-SettingsWidget::toggleAdvancedSettings()
+void SettingsWidget::toggleAdvancedSettings()
 {
     if (advancedSettingsDropped_) {
         ui->advancedAccountSettingsPButton->setIcon(QPixmap(":/images/icons/round-arrow_drop_down-24px.svg"));
@@ -372,17 +358,16 @@ SettingsWidget::toggleAdvancedSettings()
         ui->advancedSettingsWidget->setVisible(true);
         ui->advancedSettingsWidget->updateAdvancedSettings();
         QTimer::singleShot(50, this,
-        [this] {
-            auto top = ui->advancedAccountSettingsPButton->frameGeometry().top();
-            ui->scrollArea->verticalScrollBar()->setSliderPosition(top);
-        });
+            [this] {
+                auto top = ui->advancedAccountSettingsPButton->frameGeometry().top();
+                ui->scrollArea->verticalScrollBar()->setSliderPosition(top);
+            });
     }
 
     advancedSettingsDropped_ = !advancedSettingsDropped_;
 }
 
-void
-SettingsWidget::toggleBannedContacts()
+void SettingsWidget::toggleBannedContacts()
 {
     if (bannedContactsShown_) { // will show linked devices next
         bannedContactsShown_ = false;
@@ -394,8 +379,7 @@ SettingsWidget::toggleBannedContacts()
     }
 }
 
-void
-SettingsWidget::resizeEvent(QResizeEvent* event)
+void SettingsWidget::resizeEvent(QResizeEvent* event)
 {
     QWidget::resizeEvent(event);
 
@@ -406,29 +390,25 @@ SettingsWidget::resizeEvent(QResizeEvent* event)
     } else {
 
         scrollArea_->resize(ui->currentAccountSettingsScrollWidget->width(), this->height());
-
     }
 }
 
-void
-SettingsWidget::avatarClicked()
+void SettingsWidget::avatarClicked()
 {
     SetAvatarDialog avatarDialog(this);
 
     // return new avatar pixmap from setAvatarDialog
     connect(&avatarDialog, &SetAvatarDialog::pixmapSignal,
-    [this](const std::string& pixString) {
-        if (!pixString.empty()) {
-            LRCInstance::setCurrAccAvatar(pixString);
-            updateAccountInfoDisplayed();
-        }
-    }
-    );
+        [this](const std::string& pixString) {
+            if (!pixString.empty()) {
+                LRCInstance::setCurrAccAvatar(pixString);
+                updateAccountInfoDisplayed();
+            }
+        });
     avatarDialog.exec();
 }
 
-void
-SettingsWidget::verifyRegisteredNameSlot()
+void SettingsWidget::verifyRegisteredNameSlot()
 {
     if (!LRCInstance::getCurrentAccountInfo().registeredName.empty()) {
         setRegNameUi(RegName::BLANK);
@@ -452,8 +432,7 @@ SettingsWidget::verifyRegisteredNameSlot()
 }
 
 // returns true if name is valid registered name
-bool
-SettingsWidget::validateRegNameForm(const QString& regName)
+bool SettingsWidget::validateRegNameForm(const QString& regName)
 {
     QRegularExpression regExp(" ");
 
@@ -465,8 +444,7 @@ SettingsWidget::validateRegNameForm(const QString& regName)
     }
 }
 
-void
-SettingsWidget::receiveRegNameSlot(const std::string& accountID,
+void SettingsWidget::receiveRegNameSlot(const std::string& accountID,
     lrc::api::account::LookupStatus status, const std::string& address, const std::string& name)
 {
     Q_UNUSED(accountID);
@@ -474,14 +452,12 @@ SettingsWidget::receiveRegNameSlot(const std::string& accountID,
     afterNameLookup(status, name);
 }
 
-void
-SettingsWidget::beforeNameLookup()
+void SettingsWidget::beforeNameLookup()
 {
     NameDirectory::instance().lookupName(nullptr, QString(), registeredName_);
 }
 
-void
-SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
+void SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
 {
     if (registeredName_.toStdString() == regName && regName.length() > 2) {
         if (status == lrc::api::account::LookupStatus::NOT_FOUND) {
@@ -496,8 +472,7 @@ SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const st
     }
 }
 
-void
-SettingsWidget::setRegNameUi(RegName stat)
+void SettingsWidget::setRegNameUi(RegName stat)
 {
     disconnect(gif, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
     disconnect(ui->regNameButton, &QPushButton::clicked, this, &SettingsWidget::regNameRegisteredSlot);
@@ -552,15 +527,13 @@ SettingsWidget::setRegNameUi(RegName stat)
     }
 }
 
-void
-SettingsWidget::setButtonIconSlot(int frame)
+void SettingsWidget::setButtonIconSlot(int frame)
 {
     Q_UNUSED(frame);
     ui->regNameButton->setIcon(QIcon(gif->currentPixmap()));
 }
 
-void
-SettingsWidget::regNameRegisteredSlot()
+void SettingsWidget::regNameRegisteredSlot()
 {
     if (!regNameBtn_) {
         return;
@@ -583,8 +556,7 @@ SettingsWidget::regNameRegisteredSlot()
     setRegNameUi(RegName::BLANK);
 }
 
-void
-SettingsWidget::setAccEnableSlot(int state)
+void SettingsWidget::setAccEnableSlot(int state)
 {
     LRCInstance::editableAccountModel()->enableAccount(LRCInstance::getCurrAccId(), (bool)state);
 
@@ -592,10 +564,38 @@ SettingsWidget::setAccEnableSlot(int state)
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-void
-SettingsWidget::delAccountSlot()
+void SettingsWidget::delAccountSlot()
 {
-    DeleteAccountDialog delDialog(this);
+    DownloadManager manager;
+    UpdateConfimDialog updatedia;
+
+    QFile file("Version.txt");
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::information(0, "Version File Error", file.errorString());
+    }
+    QTextStream in(&file);
+    QString localVersion = in.readLine();
+    file.close();
+
+    QString onlineVersion = manager.versionOnline();
+    if (onlineVersion != localVersion) {
+        auto ret = updatedia.exec();
+        QThread::sleep(1);
+        if (ret == QDialog::Accepted) {
+            QString urlstr = "https://dl.jami.net/windows/test.exe";
+            QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
+            manager.doDownload(url);
+        }
+        /*auto args = QString(" /passive /norestart /qr");
+        auto cmd = "powershell " + tempDir + "\\Jami_2.msi"
+            + " /L*V " + tempDir + "\\jami_install.log" + args;
+        auto ret = QProcess::startDetached(cmd);
+        if (ret) {
+            QApplication::quit();
+        }*/
+    }
+
+    /*DeleteAccountDialog delDialog(this);
     auto ret = delDialog.exec();
 
     if (ret == QDialog::Accepted) {
@@ -608,11 +608,10 @@ SettingsWidget::delAccountSlot()
             LRCInstance::setSelectedConvId("");
             emit NavigationRequested(ScreenEnum::CallScreen);
         }
-    }
+    }*/
 }
 
-void
-SettingsWidget::removeDeviceSlot(int index)
+void SettingsWidget::removeDeviceSlot(int index)
 {
     if (!index) {
         return;
@@ -628,8 +627,8 @@ SettingsWidget::removeDeviceSlot(int index)
 
     if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
         psswd = QInputDialog::getText(this, tr("Remove Device"),
-                tr("Enter this account's password to confirm the removal of this device"), QLineEdit::Password,
-                QDir::home().dirName(), &ok);
+            tr("Enter this account's password to confirm the removal of this device"), QLineEdit::Password,
+            QDir::home().dirName(), &ok);
 
     } else {
         psswd = "";
@@ -644,14 +643,13 @@ SettingsWidget::removeDeviceSlot(int index)
     }
 
     if (ok) {
-delete_:
+    delete_:
         LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, psswd.toStdString());
         updateAndShowDevicesSlot();
     }
 }
 
-void
-SettingsWidget::unban(int index)
+void SettingsWidget::unban(int index)
 {
     auto bannedContactList = LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts();
     auto it = bannedContactList.begin();
@@ -663,20 +661,18 @@ SettingsWidget::unban(int index)
     updateAndShowBannedContactsSlot();
 }
 
-void
-SettingsWidget::exportAccountSlot()
+void SettingsWidget::exportAccountSlot()
 {
     QFileDialog dialog(this);
     QString dir = QFileDialog::getExistingDirectory(this, tr("Export Account Here"),
-            QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+        QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
         LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), (dir + "/export.gz").toStdString());
     }
 }
 
-void
-SettingsWidget::updateAndShowDevicesSlot()
+void SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
@@ -696,14 +692,12 @@ SettingsWidget::updateAndShowDevicesSlot()
         if (i) {
             connect(item->button_, &QPushButton::clicked, [this, i]() {
                 removeDeviceSlot(i);
-            }
-            );
+            });
         }
     }
 }
 
-void
-SettingsWidget::updateAndShowBannedContactsSlot()
+void SettingsWidget::updateAndShowBannedContactsSlot()
 {
     if (bannedContactsShown_) {
         ui->settingsListWidget->clear();
@@ -723,8 +717,7 @@ SettingsWidget::updateAndShowBannedContactsSlot()
 
             connect(item->button_, &QPushButton::clicked, [this, i]() {
                 unban(i);
-            }
-            );
+            });
         }
 
         if (!bannedContactList.size()) {
@@ -734,8 +727,7 @@ SettingsWidget::updateAndShowBannedContactsSlot()
     }
 }
 
-void
-SettingsWidget::showLinkDevSlot()
+void SettingsWidget::showLinkDevSlot()
 {
     if (!advancedSettingsWidget_) {
         delete advancedSettingsWidget_;
@@ -753,8 +745,7 @@ SettingsWidget::showLinkDevSlot()
     connect(linkDevWidget->endCancelBtn(), &QPushButton::clicked, this, &SettingsWidget::showCurrentAccountSlot);
 }
 
-void
-SettingsWidget::showCurrentAccountSlot()
+void SettingsWidget::showCurrentAccountSlot()
 {
     disconnect(linkDevWidget);
     delete linkDevWidget;
@@ -763,31 +754,26 @@ SettingsWidget::showCurrentAccountSlot()
     updateAndShowDevicesSlot();
 }
 
-void
-SettingsWidget::setConnections()
+void SettingsWidget::setConnections()
 {
     // btnExitSettings
     connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
     connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() {
         setSelected(Button::accountSettingsButton);
-    }
-    );
+    });
 
     connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
         setSelected(Button::generalSettingsButton);
-    }
-    );
+    });
 
     connect(ui->avSettingsButton, &QPushButton::clicked, [this]() {
         setSelected(Button::avSettingsButton);
-    }
-    );
+    });
 
     connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
         avatarClicked();
-    }
-    );
+    });
 
     connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
 
@@ -798,37 +784,31 @@ SettingsWidget::setConnections()
 
     connect(ui->displaySIPNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
         LRCInstance::setCurrAccDisplayName(displayName.toStdString());
-    }
-    );
+    });
 
     connect(ui->showhideButton, &QPushButton::clicked, [this]() {
         showhideButtonClicked();
-    }
-    );
+    });
 
     connect(ui->passSIPlineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
         confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps_.password = displayName.toStdString();
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-    }
-    );
+    });
 
     connect(ui->ProxySIP, &QLineEdit::textChanged, [this](const QString& displayName) {
         confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps_.proxyServer = displayName.toStdString();
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-    }
-    );
+    });
 
     connect(ui->passwdPushButton, &QPushButton::clicked, [this]() {
         passwordClicked();
-    }
-    );
+    });
 
     connect(ui->currentAccountAvatar, &QPushButton::clicked, [this]() {
         avatarClicked();
-    }
-    );
+    });
 
     connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);
 
@@ -862,22 +842,20 @@ SettingsWidget::setConnections()
 
     connect(ui->displayNameLineEdit, &QLineEdit::textChanged, [this](const QString& displayName) {
         LRCInstance::setCurrAccDisplayName(displayName.toStdString());
-    }
-    );
+    });
 
     connect(ui->usernameSIP, &QLineEdit::textChanged,
-    [this](const QString& displayName) {
-        confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps_.username = displayName.toStdString();
-        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-    });
+        [this](const QString& displayName) {
+            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+            confProps_.username = displayName.toStdString();
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+        });
 
     connect(ui->hostnameSIP, &QLineEdit::textChanged, [this](const QString& displayName) {
         confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps_.hostname = displayName.toStdString();
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-    }
-    );
+    });
 
     // general settings
 
@@ -927,8 +905,7 @@ void SettingsWidget::populateGeneralSettings()
 #endif
 }
 
-void
-SettingsWidget::setNotificationsSlot(int state)
+void SettingsWidget::setNotificationsSlot(int state)
 {
     QSettings settings;
 
@@ -940,8 +917,7 @@ SettingsWidget::setNotificationsSlot(int state)
     }
 }
 
-void
-SettingsWidget::setClosedOrMinSlot(int state)
+void SettingsWidget::setClosedOrMinSlot(int state)
 {
     QSettings settings;
 
@@ -953,24 +929,21 @@ SettingsWidget::setClosedOrMinSlot(int state)
     }
 }
 
-void
-SettingsWidget::checkForUpdateSlot()
+void SettingsWidget::checkForUpdateSlot()
 {
 #ifdef Q_OS_WIN
     win_sparkle_check_update_with_ui();
 #endif
 }
 
-void
-SettingsWidget::setUpdateIntervalSlot(int value)
+void SettingsWidget::setUpdateIntervalSlot(int value)
 {
 #ifdef Q_OS_WIN
     win_sparkle_set_update_check_interval(value * 86400);
 #endif
 }
 
-void
-SettingsWidget::setUpdateAutomaticSlot(int state)
+void SettingsWidget::setUpdateAutomaticSlot(int state)
 {
 #ifdef Q_OS_WIN
 
@@ -986,13 +959,11 @@ SettingsWidget::setUpdateAutomaticSlot(int state)
 #endif
 }
 
-void
-SettingsWidget::openDownloadFolderSlot()
+void SettingsWidget::openDownloadFolderSlot()
 {
     QSettings settings;
     QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Downloads"),
-            QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), QFileDialog::ShowDirsOnly
-            | QFileDialog::DontResolveSymlinks);
+        QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
         ui->downloadButton->setText(dir);
@@ -1001,8 +972,7 @@ SettingsWidget::openDownloadFolderSlot()
     }
 }
 
-void
-SettingsWidget::setAlwaysRecordingSlot(int state)
+void SettingsWidget::setAlwaysRecordingSlot(int state)
 {
     if (state == Qt::CheckState::Unchecked) {
         media::RecordingModel::instance().setAlwaysRecording(false);
@@ -1012,11 +982,10 @@ SettingsWidget::setAlwaysRecordingSlot(int state)
     }
 }
 
-void
-SettingsWidget::openRecordFolderSlot()
+void SettingsWidget::openRecordFolderSlot()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Recordings"),
-            media::RecordingModel::instance().recordPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+        media::RecordingModel::instance().recordPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
         media::RecordingModel::instance().setRecordPath(dir);
@@ -1026,8 +995,7 @@ SettingsWidget::openRecordFolderSlot()
 
 // *************************  Audio/Visual Settings  *************************
 
-void
-SettingsWidget::populateAVSettings()
+void SettingsWidget::populateAVSettings()
 {
     // audio
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
@@ -1072,22 +1040,19 @@ SettingsWidget::populateAVSettings()
     showPreview();
 }
 
-void
-SettingsWidget::outputDevIndexChangedSlot(int index)
+void SettingsWidget::outputDevIndexChangedSlot(int index)
 {
     auto outputModel = Audio::Settings::instance().outputDeviceModel();
     outputModel->selectionModel()->setCurrentIndex(outputModel->index(index), QItemSelectionModel::ClearAndSelect);
 }
 
-void
-SettingsWidget::inputdevIndexChangedSlot(int index)
+void SettingsWidget::inputdevIndexChangedSlot(int index)
 {
     auto inputModel = Audio::Settings::instance().inputDeviceModel();
     inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
 }
 
-void
-SettingsWidget::deviceModelIndexChanged(int index)
+void SettingsWidget::deviceModelIndexChanged(int index)
 {
     if (index < 0) {
         currentDeviceName_ = "";
@@ -1103,8 +1068,7 @@ SettingsWidget::deviceModelIndexChanged(int index)
     currentDeviceName_ = deviceModel_->activeDevice()->name();
 }
 
-void
-SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
+void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
     if (index < 0) {
         return;
@@ -1132,21 +1096,18 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     }
 }
 
-void
-SettingsWidget::startVideo()
+void SettingsWidget::startVideo()
 {
     Video::PreviewManager::instance().stopPreview();
     Video::PreviewManager::instance().startPreview();
 }
 
-void
-SettingsWidget::stopVideo()
+void SettingsWidget::stopVideo()
 {
     Video::PreviewManager::instance().stopPreview();
 }
 
-void
-SettingsWidget::toggleVideoSettings(bool enabled)
+void SettingsWidget::toggleVideoSettings(bool enabled)
 {
     ui->formatBox->clear();
     ui->deviceBox->clear();
@@ -1154,15 +1115,13 @@ SettingsWidget::toggleVideoSettings(bool enabled)
     ui->deviceBox->setEnabled(enabled);
 }
 
-void
-SettingsWidget::toggleVideoPreview(bool enabled)
+void SettingsWidget::toggleVideoPreview(bool enabled)
 {
     ui->previewUnavailableLabel->setVisible(!enabled);
     ui->videoLayoutWidget->setVisible(enabled);
 }
 
-void
-SettingsWidget::showPreview()
+void SettingsWidget::showPreview()
 {
     if (!CallModel::instance().getActiveCalls().size()) {
         ui->previewUnavailableLabel->hide();
@@ -1176,8 +1135,7 @@ SettingsWidget::showPreview()
     }
 }
 
-void
-SettingsWidget::setFormatListForDevice(Video::Device* device)
+void SettingsWidget::setFormatListForDevice(Video::Device* device)
 {
     auto activeChannel = device->activeChannel();
 
