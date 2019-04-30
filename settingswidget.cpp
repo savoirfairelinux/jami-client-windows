@@ -35,6 +35,7 @@
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
+#include "downloadmanger.h"
 #include "deleteaccountdialog.h"
 #include "passworddialog.h"
 #include "nameregistrationdialog.h"
@@ -42,6 +43,7 @@
 #include "utils.h"
 #include "deviceitemwidget.h"
 #include "banneditemwidget.h"
+#include "updateconfimdialog.h"
 
 #include "api/newdevicemodel.h"
 #include "audio/inputdevicemodel.h"
@@ -516,7 +518,39 @@ void SettingsWidget::setAccEnableSlot(int state)
 
 void SettingsWidget::delAccountSlot()
 {
-    DeleteAccountDialog delDialog(this);
+    DownloadManager manager;
+    UpdateConfimDialog updatedia;
+
+    QFile file("Version.txt");
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::critical(this, "Version File Error", file.errorString());
+    }
+    QTextStream in(&file);
+    QString localVersion = in.readLine();
+    file.close();
+
+    QString onlineVersion = manager.versionOnline();
+    if (onlineVersion != localVersion) {
+        auto ret = updatedia.exec();
+        QThread::sleep(1);
+        if (ret == QDialog::Accepted) {
+            QString urlstr = "https://dl.jami.net/windows/test.exe";
+            QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
+            manager.doDownload(url);
+            auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
+            auto dir = QString("C:\\Users\\mzhang\\Desktop");
+            auto cmd = "powershell " + dir + "\\Jami.msi"
+                + " /L*V " + dir + "\\jami_install.log" + args;
+            auto retq = QProcess::startDetached(cmd);
+            if (retq) {
+                QApplication::quit();
+            }
+        }
+    } else {
+        QMessageBox::information(this, "Update Status", "No New Version Detected");
+    }
+
+    /*DeleteAccountDialog delDialog(this);
     auto ret = delDialog.exec();
 
     if (ret == QDialog::Accepted) {
@@ -529,7 +563,7 @@ void SettingsWidget::delAccountSlot()
             LRCInstance::setSelectedConvId("");
             emit NavigationRequested(ScreenEnum::CallScreen);
         }
-    }
+    }*/
 }
 
 void SettingsWidget::removeDeviceSlot(int index)

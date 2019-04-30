@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = jami-qt
 
-QT += widgets xml multimedia multimediawidgets network webenginewidgets
+QT += widgets xml multimedia testlib multimediawidgets network webenginewidgets
 
 isEmpty(LRC) {
     LRC=../../install/lrc/
@@ -62,7 +62,10 @@ HEADERS += aboutdialog.h \
             videooverlay.h \
             utils.h \
             webchathelpers.h \
-            advancedsipsettingwidget.h
+            advancedsipsettingwidget.h \
+            downloadbar.h \
+            updateconfimdialog.h \
+            downloadmanger.h
 FORMS += contactdialog.ui \
             videoview.ui \
             animatedoverlay.ui \
@@ -85,7 +88,9 @@ FORMS += contactdialog.ui \
             callwidget.ui \
             settingswidget.ui \
             videooverlay.ui \
-            advancedsipsettingwidget.ui
+            advancedsipsettingwidget.ui \
+            downloadbar.ui \
+            updateconfirm.ui
 SOURCES += aboutdialog.cpp \
             bannedcontactswidget.cpp \
             idlabel.cpp \
@@ -131,5 +136,8 @@ SOURCES += aboutdialog.cpp \
             utils.cpp \
             videoview.cpp \
             webchathelpers.cpp \
-            advancedsipsettingwidget.cpp
+            advancedsipsettingwidget.cpp \
+            downloadbar.cpp \
+            updateconfimdialog.cpp \
+            downloadmanger.cpp
 RESOURCES += ressources.qrc

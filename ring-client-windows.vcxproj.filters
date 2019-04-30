@@ -150,6 +150,15 @@
     <ClCompile Include="webchathelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="downloadbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="updateconfimdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="downloadmanger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="animationhelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -294,6 +303,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="animationhelpers.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadbar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="updateconfimdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadmanger.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="passworddialog.h">
@@ -605,6 +623,12 @@
     <QtUic Include="advancedsipsettingwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="downloadbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="updateconfirm.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="nameregistrationdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -768,5 +792,10 @@
     <ClInclude Include="runguard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Version.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
