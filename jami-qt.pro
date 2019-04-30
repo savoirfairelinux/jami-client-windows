@@ -62,7 +62,10 @@ HEADERS += ./pixbufmanipulator.h \
     ./toggleswitch.h \
     ./videooverlay.h \
     ./videoview.h \
-    ./videowidget.h
+    ./videowidget.h \
+    ./downloadbar.h \
+    ./updateconfirmdialog.h \
+    ./downloadmanger.h
 SOURCES += ./advancedsettingswidget.cpp \
     ./advancedsipsettingwidget.cpp \
     ./avatargraphicsview.cpp \
@@ -108,7 +111,10 @@ SOURCES += ./advancedsettingswidget.cpp \
     ./videoview.cpp \
     ./videowidget.cpp \
     ./webchathelpers.cpp \
-    ./windowscontactbackend.cpp
+    ./windowscontactbackend.cpp \
+    ./downloadbar.cpp \
+    ./updateconfirmdialog.cpp \
+    ./downloadmanger.cpp
 FORMS += ./aboutdialog.ui \
     ./advancedsettingswidget.ui \
     ./advancedsipsettingwidget.ui \
@@ -128,5 +134,7 @@ FORMS += ./aboutdialog.ui \
     ./ringbutton.ui \
     ./settingswidget.ui \
     ./videooverlay.ui \
-    ./videoview.ui
+    ./videoview.ui \
+    ./downloadbar.ui \
+    ./updateconfirmdialog.ui
 RESOURCES += ressources.qrc

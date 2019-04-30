@@ -150,6 +150,12 @@
     <ClCompile Include="webchathelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="downloadbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="downloadmanger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="animationhelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -199,6 +205,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="linkdevicedialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="updateconfirmdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -296,6 +305,12 @@
     <QtMoc Include="animationhelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="downloadbar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadmanger.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="passworddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -339,6 +354,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="linkdevicedialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="updateconfirmdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -605,6 +623,9 @@
     <QtUic Include="advancedsipsettingwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="downloadbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="nameregistrationdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -615,6 +636,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="linkdevicedialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="updateconfirmdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -768,5 +792,10 @@
     <ClInclude Include="runguard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Version.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
