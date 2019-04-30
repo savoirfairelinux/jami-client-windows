@@ -99,13 +99,15 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
 
 QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
 QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
-QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover {
+QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover,
+QPushButton#btnUpdateAccept:hover, QPushButton#btnUpdateCancel:hover {
     background-color: rgb(237, 237, 237);
 }
 
 QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
 QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
-QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed {
+QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed,
+QPushButton#btnUpdateAccept:pressed, QPushButton#btnUpdateCancel:pressed {
     background-color: rgb(212, 212, 212);
 }
 
@@ -244,13 +246,9 @@ QScrollBar::handle:vertical{
     background: rgb(77, 77, 77);
 }
 
-QWidget#messagingPage {
-    background: rgb(255, 255, 255);
-}
-
-QDialog#PasswordDialog,
-QDialog#LinkDeviceDialog,
-QDialog#DeleteAccountDialog {
+QWidget#messagingPage, QWidget#contactRequestPage,
+QDialog#DeleteAccountDialog, QDialog#updateDownloadDialog,
+QDialog#UpdateConfimDialog {
     background: rgb(255, 255, 255);
 }
 
@@ -267,17 +265,17 @@ QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, 
     color: white;
 }
 
-    QPushButton#nextButton:disabled, QPushButton#playButton:disabled, QPushButton#clearHistoryButton:disabled,
-    QPushButton#doTransferButton:disabled, QPushButton#photoButton:disabled,
-    QPushButton#existingPushButton:disabled, QPushButton#newAccountButton:disabled, QPushButton#previousButton:disabled, QPushButton#newSIPAccountButton:disabled,
-    QPushButton#exportButton:disabled, QPushButton#cancelAddButton:disabled, QPushButton#exportOnRingButton:disabled,
-    QPushButton#addDeviceButton:disabled, QPushButton#exportEndedOkButton:disabled, QPushButton#errorPushButton:disabled,
-    QPushButton#registerButton:disabled, QPushButton#acceptCRButton:disabled, QPushButton#discardCRButton:disabled,
-    QPushButton#deleteCancelBtn:disabled, QPushButton#dhtImportBtn:disabled, QPushButton#fileImportBtn:disabled,
-    QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled {
-        background: rgba(242, 242, 242, 0.8);
-        color: grey;
-    }
+QPushButton#nextButton:disabled, QPushButton#playButton:disabled, QPushButton#clearHistoryButton:disabled,
+QPushButton#doTransferButton:disabled, QPushButton#photoButton:disabled,
+QPushButton#existingPushButton:disabled, QPushButton#newAccountButton:disabled, QPushButton#previousButton:disabled, QPushButton#newSIPAccountButton:disabled,
+QPushButton#exportButton:disabled, QPushButton#cancelAddButton:disabled, QPushButton#exportOnRingButton:disabled,
+QPushButton#addDeviceButton:disabled, QPushButton#exportEndedOkButton:disabled, QPushButton#errorPushButton:disabled,
+QPushButton#registerButton:disabled, QPushButton#acceptCRButton:disabled, QPushButton#discardCRButton:disabled,
+QPushButton#deleteCancelBtn:disabled, QPushButton#dhtImportBtn:disabled, QPushButton#fileImportBtn:disabled,
+QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled {
+    background: rgba(242, 242, 242, 0.8);
+    color: grey;
+}
 
 QPushButton#blockCRButton, QPushButton#debanButton, QPushButton#deleteBanBtn,
 QPushButton#cancelChangeBtn {
