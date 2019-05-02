@@ -23,22 +23,23 @@
 #include <QFile>
 
 #include "callmodel.h"
-#include "media/audio.h"
-#include "media/video.h"
-#include "media/text.h"
-#include "media/file.h"
 #include "globalinstances.h"
+#include "media/audio.h"
+#include "media/file.h"
+#include "media/text.h"
+#include "media/video.h"
 
-#include <QTranslator>
-#include <QLibraryInfo>
 #include <QFontDatabase>
+#include <QLibraryInfo>
+#include <QTranslator>
 
 #include <ciso646>
 
+#include "downloadmanger.h"
 #include "lrcinstance.h"
-#include "utils.h"
-#include "runguard.h"
 #include "pixbufmanipulator.h"
+#include "runguard.h"
+#include "utils.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -102,7 +103,7 @@ fileDebug(QFile& debugFile)
 }
 
 int
-main(int argc, char *argv[])
+main(int argc, char* argv[])
 {
     RunGuard guard("680b3e5eaf");
     if (!guard.tryToRun())
@@ -176,8 +177,7 @@ main(int argc, char *argv[])
             shm->lock();
             char *to = (char*) shm->data();
             QChar *data = uri.data();
-            while (!data->isNull())
-            {
+            while (!data->isNull()) {
                 memset(to, data->toLatin1(), 1);
                 ++data;
                 ++to;
@@ -232,8 +232,7 @@ main(int argc, char *argv[])
 
 #ifndef DEBUG_STYLESHEET
     QFile file(":/stylesheet.css");
-    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         a.setStyleSheet(file.readAll());
         file.close();
     }
@@ -266,6 +265,20 @@ main(int argc, char *argv[])
     });
 #endif
 
+    //Delet all logs and msi in the %TEMP% directory before launching
+    QString dir = QString(DownloadManager::WinGetEnv("TEMP"));
+    QDir log_dir(dir, {"jami*.log"});
+    for (const QString& filename : log_dir.entryList()) {
+        log_dir.remove(filename);
+    }
+    QDir msi_dir(dir, {"jami*.msi"});
+    for (const QString& filename : msi_dir.entryList()) {
+        msi_dir.remove(filename);
+    }
+    QDir version_dir(dir, {"version"});
+    for (const QString& filename : version_dir.entryList()) {
+        version_dir.remove(filename);
+    }
     auto ret = a.exec();
 
 #ifdef Q_OS_WIN
