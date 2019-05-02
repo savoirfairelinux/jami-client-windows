@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.wxi" />
-    <Content Include="icon.ico" />
     <Content Include="JamiInstaller.wax" />
     <Content Include="jamites.bmp" />
     <Content Include="main-banner.bmp" />
