@@ -29,6 +29,7 @@ class QSslError;
 
 class DownloadManager : public QObject {
     Q_OBJECT
+
     QNetworkAccessManager manager_;
     QNetworkReply* currentDownload_;
     updateDownloadDialog probar_;
@@ -38,12 +39,11 @@ class DownloadManager : public QObject {
     qint64 previousDownloadBytes_ = 0;
     QString downloadpath_;
 
-    const char* WinGetEnv(const char* name);
-
 public:
     explicit DownloadManager(QObject* parent = nullptr);
     void doDownload(const QUrl& url);
     QString versionOnline();
+    static const char* WinGetEnv(const char* name);
 
 public slots:
     void sslErrors(const QList<QSslError>& sslErrors);

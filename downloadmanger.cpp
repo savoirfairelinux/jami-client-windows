@@ -76,6 +76,7 @@ void DownloadManager::downloadFinished()
     int statusCode = currentDownload_->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
     if (statusCode == 404) {
         QMessageBox::information(0, "Error!", "DownLoaded Installer Invalid!");
+        return;
     }
     probar_.setMaximum(0);
     probar_.setValue(0);
@@ -127,13 +128,14 @@ void DownloadManager::httpReadyRead()
 
 QString DownloadManager::versionOnline()
 {
-    QString urlstr = "https://dl.jami.net/windows/testver";
+    QString urlstr = "https://dl.jami.net/windows/Test/Version.txt";
     QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
     doDownload(url);
 
-    QFile file(downloadpath_ + "/" + "testver");
+    QFile file(downloadpath_ + "/" + "Version.txt");
     if (!file.open(QIODevice::ReadOnly)) {
         QMessageBox::information(0, "Downloaded Version File Error", file.errorString());
+        return "Null";
     }
     QTextStream in(&file);
     QString onlineVersion = in.readLine();
@@ -147,6 +149,7 @@ void DownloadManager::sslErrors(const QList<QSslError>& sslErrors)
 #if QT_CONFIG(ssl)
     for (const QSslError& error : sslErrors)
         QMessageBox::information(0, "SSL Error ", error.errorString());
+    return;
 #else
     Q_UNUSED(sslErrors);
 #endif

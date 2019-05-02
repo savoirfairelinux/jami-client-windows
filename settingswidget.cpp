@@ -35,17 +35,18 @@
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
-#include "downloadmanger.h"
+#include "banneditemwidget.h"
 #include "deleteaccountdialog.h"
-#include "passworddialog.h"
+#include "deviceitemwidget.h"
+#include "downloadmanger.h"
 #include "nameregistrationdialog.h"
+#include "passworddialog.h"
 #include "setavatardialog.h"
-#include "updateconfimdialog.h"
 #include "settingsitemwidget.h"
 #include "settingskey.h"
+#include "updateconfimdialog.h"
 #include "utils.h"
-#include "deviceitemwidget.h"
-#include "banneditemwidget.h"
+#include "version.h"
 
 #include "api/newdevicemodel.h"
 #include "audio/inputdevicemodel.h"
@@ -508,8 +509,7 @@ void SettingsWidget::setButtonIconSlot(int frame)
     ui->regNameButton->setIcon(QIcon(gif->currentPixmap()));
 }
 
-void
-SettingsWidget::slotRegisterName()
+void SettingsWidget::slotRegisterName()
 {
     if (!regNameBtn_) {
         return;
@@ -543,35 +543,27 @@ void SettingsWidget::setAccEnableSlot(int state)
 void SettingsWidget::delAccountSlot()
 {
     DownloadManager manager;
-    UpdateConfimDialog updatedia;
-
-    QFile file("Version.txt");
-    if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(this, "Version File Error", file.errorString());
-    }
-    QTextStream in(&file);
-    QString localVersion = in.readLine();
-    file.close();
+    UpdateConfimDialog updatedia(this);
 
     QString onlineVersion = manager.versionOnline();
-    if (onlineVersion != localVersion) {
+    if (onlineVersion != QString(VERSION_STRING) && onlineVersion != "Null") {
         auto ret = updatedia.exec();
         QThread::sleep(1);
         if (ret == QDialog::Accepted) {
-            QString urlstr = "https://dl.jami.net/windows/test.exe";
+            QString urlstr = "https://dl.jami.net/windows/Test/Jami.msi";
             QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
             manager.doDownload(url);
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
-            auto dir = QString("C:\\Users\\mzhang\\Desktop");
-            auto cmd = "powershell " + dir + "\\Jami.msi"
-                + " /L*V " + dir + "\\jami_install.log" + args;
+            auto dir = DownloadManager::WinGetEnv("TEMP");
+            auto cmd = "powershell " + QString(dir) + "\\Jami.msi"
+                + " /L*V " + QString(dir) + "\\jami_install.log" + args;
             auto retq = QProcess::startDetached(cmd);
             if (retq) {
                 QApplication::quit();
             }
         }
     } else {
-        QMessageBox::information(this, "Update Status", "No New Version Detected");
+        QMessageBox::information(0, "Update Status", "No New Version Detected");
     }
 
     /*DeleteAccountDialog delDialog(this);
@@ -665,11 +657,11 @@ void SettingsWidget::updateAndShowDevicesSlot()
         auto item = new QListWidgetItem(ui->settingsListWidget);
         ui->settingsListWidget->addItem(item);
         auto row = new DeviceItemWidget(QString::fromStdString(it->name),
-                                        QString::fromStdString(it->id),
-                                        it->isCurrent,
-                                        this);
+            QString::fromStdString(it->id),
+            it->isCurrent,
+            this);
         item->setSizeHint(QSize(ui->settingsListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->settingsListWidget->setItemWidget(item, row);
         connect(row, &DeviceItemWidget::btnRemoveDeviceClicked,
             [this, i, isCurrent = it->isCurrent]() {
@@ -704,10 +696,10 @@ void SettingsWidget::updateAndShowBannedContactsSlot()
         auto item = new QListWidgetItem(ui->bannedListWidget);
         ui->bannedListWidget->addItem(item);
         auto row = new BannedItemWidget(contactName,
-                                        contactId,
-                                        this);
+            contactId,
+            this);
         item->setSizeHint(QSize(ui->bannedListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->bannedListWidget->setItemWidget(item, row);
         connect(row, &BannedItemWidget::btnReAddContactClicked,
             [this, i]() {
