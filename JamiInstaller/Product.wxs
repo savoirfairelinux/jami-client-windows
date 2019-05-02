@@ -7,8 +7,10 @@
         <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
-        <Icon Id="icon.ico" SourceFile="icon.ico" />
+        <!--Icon File should be in release folder(not wix project), otherwise cannot be read-->
+        <Icon Id="icon.ico" SourceFile="$(var.ReleaseDir)\jami.ico" />
         <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+        <Property Id="ARPNOMODIFY" Value="1" />
 
         <Feature Id="ProductFeature" Title="Main" Level="1" Absent="disallow">
             <ComponentGroupRef Id="ProductComponents" Primary="yes" />
