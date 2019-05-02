@@ -24,6 +24,7 @@ updateDownloadDialog::updateDownloadDialog(QWidget* parent)
     , ui(new Ui::updateDownloadDialog)
 {
     ui->setupUi(this);
+    setStyleSheet("background: rgb(255, 255, 255)");
     ui->progressBar->setValue(0);
     ui->progressBar->setVisible(true);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);

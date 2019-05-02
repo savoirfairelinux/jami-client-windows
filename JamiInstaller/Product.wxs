@@ -8,7 +8,6 @@
         <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
         <Icon Id="icon.ico" SourceFile="icon.ico" />
-        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 
         <Feature Id="ProductFeature" Title="Main" Level="1" Absent="disallow">
             <ComponentGroupRef Id="ProductComponents" Primary="yes" />
