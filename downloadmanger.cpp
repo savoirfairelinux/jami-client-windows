@@ -39,7 +39,7 @@ void DownloadManager::doDownload(const QUrl& url)
 
     file_.reset(new QFile(downloadpath_ + "/" + fileName));
     if (!file_->open(QIODevice::WriteOnly)) {
-        QMessageBox::information(0, "Error!", "Unable to Open File Path");
+        QMessageBox::critical(0, "Error!", "Unable to Open File Path");
         file_.reset(nullptr);
         return;
     }
@@ -73,9 +73,9 @@ void DownloadManager::doDownload(const QUrl& url)
 void DownloadManager::downloadFinished()
 {
     // donload finished normally
-    int statusCode = currentDownload_->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    if (statusCode == 404) {
-        QMessageBox::information(0, "Error!", "DownLoaded Installer Invalid!");
+    statusCode_ = currentDownload_->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+    if (statusCode_ == 404) {
+        QMessageBox::critical(0, "Error!", "DownLoad Failed!");
     }
     probar_.setMaximum(0);
     probar_.setValue(0);
@@ -127,13 +127,18 @@ void DownloadManager::httpReadyRead()
 
 QString DownloadManager::versionOnline()
 {
-    QString urlstr = "https://dl.jami.net/windows/testver";
+    QString urlstr = "https://dl.jami.net/windows/Test/Version.txt";
     QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
     doDownload(url);
+    if (statusCode_ == 404) {
+        QMessageBox::critical(0, "Version Check Error", "Version Cannot Be Verified");
+        return "Null";
+    }
 
-    QFile file(downloadpath_ + "/" + "testver");
+    QFile file(downloadpath_ + "/" + "Version.txt");
     if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::information(0, "Downloaded Version File Error", file.errorString());
+        QMessageBox::critical(0, "Version Check Error", "File cannnot be openned");
+        return "Null";
     }
     QTextStream in(&file);
     QString onlineVersion = in.readLine();
@@ -146,10 +151,16 @@ void DownloadManager::sslErrors(const QList<QSslError>& sslErrors)
 {
 #if QT_CONFIG(ssl)
     for (const QSslError& error : sslErrors)
-        QMessageBox::information(0, "SSL Error ", error.errorString());
+        QMessageBox::critical(0, "SSL Error ", error.errorString());
+    return;
 #else
     Q_UNUSED(sslErrors);
 #endif
+}
+
+int DownloadManager::getDownloadStatus()
+{
+    return statusCode_;
 }
 
 const char* DownloadManager::WinGetEnv(const char* name)
