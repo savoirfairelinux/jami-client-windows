@@ -376,7 +376,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -3533,7 +3533,7 @@
                              <property name="minimumSize">
                               <size>
                                <width>360</width>
-                               <height>0</height>
+                               <height>30</height>
                               </size>
                              </property>
                              <property name="maximumSize">
@@ -3541,6 +3541,11 @@
                                <width>360</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
                              </property>
                              <property name="toolTip">
                               <string>Audio input device selector</string>
@@ -3602,7 +3607,7 @@
                              <property name="minimumSize">
                               <size>
                                <width>360</width>
-                               <height>0</height>
+                               <height>30</height>
                               </size>
                              </property>
                              <property name="maximumSize">
@@ -3610,6 +3615,11 @@
                                <width>360</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
                              </property>
                              <property name="toolTip">
                               <string>Choose the output device</string>
@@ -3738,7 +3748,7 @@
                              <property name="minimumSize">
                               <size>
                                <width>360</width>
-                               <height>0</height>
+                               <height>30</height>
                               </size>
                              </property>
                              <property name="maximumSize">
@@ -3746,6 +3756,11 @@
                                <width>360</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
                              </property>
                              <property name="toolTip">
                               <string>Video device selector</string>
@@ -3798,7 +3813,7 @@
                              <property name="minimumSize">
                               <size>
                                <width>360</width>
-                               <height>0</height>
+                               <height>30</height>
                               </size>
                              </property>
                              <property name="maximumSize">
@@ -3806,6 +3821,11 @@
                                <width>360</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
                              </property>
                              <property name="toolTip">
                               <string>Video device framerate selector</string>

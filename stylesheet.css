@@ -64,18 +64,25 @@ QPushButton#btnConversations, QPushButton#btnInvites {
     border-left: 2px solid rgb(240, 240, 240);
 }
 
-QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
-    background-color: rgb(188, 185, 184);
-    border-top: 2px solid rgb(188, 185, 184);
-    border-right: 2px solid rgb(188, 185, 184);
-    border-bottom: 2px solid rgb(188, 185, 184);
-    border-left: 2px solid rgb(188, 185, 184);
-}
+    QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
+        background-color: rgb(188, 185, 184);
+        border-top: 2px solid rgb(188, 185, 184);
+        border-right: 2px solid rgb(188, 185, 184);
+        border-bottom: 2px solid rgb(188, 185, 184);
+        border-left: 2px solid rgb(188, 185, 184);
+    }
 
-QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
-    background-color: rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(255, 255, 255);
-}
+    QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
+        background-color: rgb(255, 255, 255);
+        border-bottom: 2px solid rgb(255, 255, 255);
+    }
+
+    QPushButton#btnConversations:hover:checked, QPushButton#btnInvites:hover:checked {
+        border-top: 2px solid rgb(240, 240, 240);
+        border-right: 2px solid rgb(240, 240, 240);
+        border-bottom: 2px solid rgb(255, 255, 255);
+        border-left: 2px solid rgb(240, 240, 240);
+    }
 
 QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
 QPushButton#btnBlockInvite, QPushButton#btnAudioCall, QPushButton#btnVideoCall,
