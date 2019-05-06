@@ -561,7 +561,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
         <source>Devices</source>
-        <translation type="unfinished"/>
+        <translation>Uređaji</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2491"/>
@@ -1018,7 +1018,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Blokiraj kontakt</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>

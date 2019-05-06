@@ -1836,7 +1836,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Aktivèr</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
