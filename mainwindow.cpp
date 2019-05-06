@@ -21,11 +21,11 @@
 #include "ui_mainwindow.h"
 
 #include <QDesktopWidget>
-#include <QScreen>
-#include <QWindow>
-#include <QTimer>
 #include <QDir>
+#include <QScreen>
 #include <QStandardPaths>
+#include <QTimer>
+#include <QWindow>
 
 #include "media/text.h"
 #include "media/textrecording.h"
@@ -60,6 +60,13 @@ MainWindow::MainWindow(QWidget* parent)
                         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
                             navWidget->navigated(scr == i);
                         }
+                        if (scr == ScreenEnum::WizardScreen) {
+                            setWindowTitle(QStringLiteral("Log In"));
+                        } else if (scr == ScreenEnum::SetttingsScreen) {
+                            setWindowTitle(QStringLiteral("Settings"));
+                        } else {
+                            setWindowTitle(QStringLiteral("Jami"));
+                        }
                     }
                     Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
                 });
@@ -71,9 +78,7 @@ MainWindow::MainWindow(QWidget* parent)
         Qt::QueuedConnection);
 
     QIcon icon(":images/jami.png");
-
     this->setWindowIcon(icon);
-    setWindowTitle(" ");
 
     GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
     sysIcon.setIcon(icon);
@@ -145,8 +150,10 @@ MainWindow::MainWindow(QWidget* parent)
         readSettingsFromRegistry();
         startScreen = ScreenEnum::CallScreen;
         emit LRCInstance::instance().accountOnBoarded();
+        setWindowTitle(QStringLiteral("Jami"));
     } else {
         startScreen = ScreenEnum::WizardScreen;
+        setWindowTitle(QStringLiteral("Log In"));
     }
 
     Utils::setStackWidget(ui->navStack, ui->navStack->widget(startScreen));
