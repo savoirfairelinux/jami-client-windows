@@ -572,7 +572,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi il pulsante del dispositivo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
@@ -592,7 +592,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Password (richiesta)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
@@ -608,12 +608,12 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Per aggiungere un nuovo dispositivo al tuo account Jami, esporta il tuo account sulla rete. Questo genererà un pin che deve essere inserito sul nuovo dispositivo entro 5 minuti dalla sua generazione.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
+        <translation>Convalida l&apos;esportazione su DHT per il pulsante di collegamento del dispositivo</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
@@ -623,7 +623,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>PIN generato per il collegamento</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
@@ -633,7 +633,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Questo pin deve essere inserito sul nuovo dispositivo entro 5 minuti. Puoi generarne uno nuovo in qualsiasi momento.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
@@ -648,12 +648,12 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation> Contatti vietati</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation type="unfinished"/>
+        <translation>Scheda di gestione dei contatti vietati dall&apos;account</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
@@ -691,7 +691,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi account</translation>
     </message>
 </context>
 <context>
@@ -704,33 +704,33 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Impostazioni di chiamata</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Consenti chiamate da peer non attendibili</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Risposta automatica alle chiamate</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Abilita suoneria personalizzata</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="120"/>
         <location filename="../advancedsettingswidget.cpp" line="168"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi una suoneria personalizzata</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="174"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Nome Server</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="200"/>
@@ -740,7 +740,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="269"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configurazione OpenDHT</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="297"/>
@@ -815,7 +815,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Usa UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -835,7 +835,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>File audio (* .wav * .ogg * .opus * .mp3 * aiff * wma)</translation>
     </message>
 </context>
 <context>
@@ -856,12 +856,12 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Elenco dei contatti vietati</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>ID vietato</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
@@ -879,7 +879,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../callwidget.ui" line="178"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Mostra conversazioni</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="181"/>
@@ -907,7 +907,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="800"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Mostra codice ID ring e QR code</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="851"/>
@@ -999,17 +999,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="333"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Inizia la video chiamata</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="344"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Avvia chiamata audio</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="360"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Pulisci conversazione</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="367"/>
@@ -1161,12 +1161,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi un nuovo dispositivo</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Per aggiungere un nuovo dispositivo, inserisci la password del tuo account:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
