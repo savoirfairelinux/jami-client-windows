@@ -22,30 +22,31 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QVector>
-#include <QString>
-#include <QMenu>
+#include <QClipboard>
 #include <QItemSelection>
+#include <QMenu>
 #include <QMovie>
+#include <QString>
+#include <QVector>
+#include <QWidget>
 
 #include "navwidget.h"
 #include "smartlistmodel.h"
 
 // old LRC
-#include "video/renderer.h"
-#include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "media/textrecording.h"
+#include "video/previewmanager.h"
+#include "video/renderer.h"
 
 // new LRC
-#include "globalinstances.h"
-#include "api/newaccountmodel.h"
-#include "api/conversationmodel.h"
 #include "api/account.h"
 #include "api/contact.h"
 #include "api/contactmodel.h"
+#include "api/conversationmodel.h"
+#include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
+#include "globalinstances.h"
 
 class ConversationItemDelegate;
 class QPropertyAnimation;
@@ -76,19 +77,22 @@ public slots:
 public slots:
     void settingsButtonClicked();
     void showChatView(const QModelIndex& nodeIdx);
-    void showChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void showChatView(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
     void setupChatView(const lrc::api::conversation::Info& convInfo);
     void slotAcceptInviteClicked(const QModelIndex& index);
     void slotBlockInviteClicked(const QModelIndex& index);
     void slotIgnoreInviteClicked(const QModelIndex& index);
-    void slotCustomContextMenuRequested(const QPoint & pos);
+    void slotCustomContextMenuRequested(const QPoint& pos);
     void slotAccountChanged(int index);
-    void slotShowCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
-    void slotShowIncomingCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
-    void slotShowChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void slotShowCallView(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+    void slotShowIncomingCallView(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+    void slotShowChatView(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
     void slotToggleFullScreenClicked();
     void slotVideoViewDestroyed(const std::string& callid);
     void update();
+    void ShowContextMenu(const QPoint& pos);
+    void Paste();
+    void Copy();
 
 private slots:
     void on_acceptButton_clicked();
@@ -98,21 +102,21 @@ private slots:
     void on_ringContactLineEdit_textChanged(const QString& text);
     void on_imBackButton_clicked();
     void on_sendContactRequestButton_clicked();
-    void on_smartList_clicked(const QModelIndex &index);
+    void on_smartList_clicked(const QModelIndex& index);
     void on_qrButton_toggled(bool checked);
     void on_shareButton_clicked();
     void on_btnAudioCall_clicked();
     void on_btnVideoCall_clicked();
 
 private slots:
-    void smartListSelectionChanged(const QItemSelection  &selected, const QItemSelection  &deselected);
-    void onIncomingMessage(const std::string & convUid, uint64_t interactionId, const lrc::api::interaction::Info & interaction);
+    void smartListSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    void onIncomingMessage(const std::string& convUid, uint64_t interactionId, const lrc::api::interaction::Info& interaction);
 
 private:
     void placeCall();
     void conversationsButtonClicked();
     void invitationsButtonClicked();
-    void setupSmartListContextMenu(const QPoint &pos);
+    void setupSmartListContextMenu(const QPoint& pos);
     void setupQRCode(QString ringID);
     void backToWelcomePage();
 
@@ -124,12 +128,12 @@ private:
     void updateConversationView(const std::string& convUid);
     void showConversationView();
     bool selectSmartlistItem(const std::string& convUid);
-    QImage imageForConv(const std::string & convUid);
+    QImage imageForConv(const std::string& convUid);
     void processContactLineEdit();
     void hideMiniSpinner();
     void updateConversationForNewContact(const std::string& convUid);
     void updateSmartList();
-    void setSelectedAccount(const std::string & accountId);
+    void setSelectedAccount(const std::string& accountId);
     void setConversationFilter(const QString& filter);
     void setConversationFilter(lrc::api::profile::Type filter);
     void updateConversationsFilterWidget();
@@ -138,6 +142,7 @@ private:
     void setCallPanelVisibility(bool visible);
 
     QMenu* menu_;
+    QClipboard* clipboard_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;
