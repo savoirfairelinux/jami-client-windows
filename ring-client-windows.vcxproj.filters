@@ -555,6 +555,9 @@
     <None Include="web\qwebchannel.js">
       <Filter>Resource Files\web</Filter>
     </None>
+    <None Include="web\copytext.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
