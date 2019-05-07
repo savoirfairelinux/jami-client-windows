@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include <QClipboard>
 #include <QDebug>
 #include <QWebEngineView>
 
@@ -28,7 +29,7 @@ class PrivateBridging : public QObject
     Q_OBJECT
 public:
     explicit PrivateBridging(QObject* parent = nullptr) : QObject(parent) {};
-    ~PrivateBridging() {};
+    ~PrivateBridging(){};
 
     // exposed to JS through QWebChannel
     Q_INVOKABLE int deleteInteraction(const QString& arg);
@@ -36,7 +37,7 @@ public:
     Q_INVOKABLE int openFile(const QString& arg);
     Q_INVOKABLE int acceptFile(const QString& arg);
     Q_INVOKABLE int refuseFile(const QString& arg);
-    Q_INVOKABLE int sendMessage(const QString & arg);
+    Q_INVOKABLE int sendMessage(const QString& arg);
     Q_INVOKABLE int sendFile();
     Q_INVOKABLE int log(const QString& arg);
     Q_INVOKABLE int acceptInvitation();
@@ -55,8 +56,8 @@ public:
 
     void buildView();
 
-    void insertStyleSheet(const QString &name, const QString &source);
-    void removeStyleSheet(const QString &name);
+    void insertStyleSheet(const QString& name, const QString& source);
+    void removeStyleSheet(const QString& name);
 
     void clear();
     void setDisplayLinks(bool display);
@@ -76,6 +77,8 @@ public:
                        const std::string& contactUri = "",
                        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
+    void setMessagesContent(QString text);
+    void copySelectedText(QClipboard* clipboard);
 
 signals:
     void conversationRemoved();
