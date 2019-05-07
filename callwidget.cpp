@@ -23,10 +23,9 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
-#include <QScrollBar>
-#include <QClipboard>
-#include <QDesktopServices>
 #include <QComboBox>
+#include <QDesktopServices>
+#include <QScrollBar>
 #include <QWebEngineScript>
 
 #include <algorithm>
@@ -43,15 +42,15 @@
 #include "globalinstances.h"
 
 // client
-#include "windowscontactbackend.h"
-#include "globalsystemtray.h"
-#include "conversationitemdelegate.h"
-#include "pixbufmanipulator.h"
-#include "settingskey.h"
-#include "lrcinstance.h"
 #include "animationhelpers.h"
-#include "ringthemeutils.h"
+#include "conversationitemdelegate.h"
+#include "globalsystemtray.h"
+#include "lrcinstance.h"
 #include "mainwindow.h"
+#include "pixbufmanipulator.h"
+#include "ringthemeutils.h"
+#include "settingskey.h"
+#include "windowscontactbackend.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -63,6 +62,7 @@ CallWidget::CallWidget(QWidget* parent) :
     using namespace lrc::api;
 
     QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
+    clipboard_ = QApplication::clipboard();
 
     QPixmap logo(":/images/logo-jami-standard-coul.png");
     ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
@@ -202,12 +202,16 @@ CallWidget::CallWidget(QWidget* parent) :
             backToWelcomePage();
         });
 
+    connect(ui->messageView, SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(ShowContextMenu(const QPoint&)));
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
 
     // chat view
     ui->messageView->buildView();
+    ui->messageView->setContextMenuPolicy(Qt::CustomContextMenu);
 
     // hide the call stack
     setCallPanelVisibility(false);
@@ -351,7 +355,7 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
             }
         });
     // clear conversation
-        auto clearConversationAction = new QAction(tr("Clear conversation"), this);
+    auto clearConversationAction = new QAction(tr("Clear conversation"), this);
     menu.addAction(clearConversationAction);
     connect(clearConversationAction, &QAction::triggered,
         [convUid]() {
@@ -1255,4 +1259,43 @@ CallWidget::setCallPanelVisibility(bool visible)
     ui->btnAudioCall->setVisible(!visible);
     ui->btnVideoCall->setVisible(!visible);
     ui->callStackWidget->setVisible(visible);
+}
+
+void
+CallWidget::ShowContextMenu(const QPoint& pos)
+{
+    QPoint globalMousePos = QCursor::pos();
+    const QMimeData* mimeData = clipboard_->mimeData();
+
+    QMenu contextMenu;
+    QAction action1("Copy", this);
+    QAction action2("Paste", this);
+
+    contextMenu.addAction(&action1);
+    connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
+    if (mimeData->hasText()) {
+        contextMenu.addAction(&action2);
+        connect(&action2, SIGNAL(triggered()), this, SLOT(Paste()));
+    }
+
+    contextMenu.exec(globalMousePos);
+}
+
+void
+CallWidget::Paste()
+{
+    const QMimeData* mimeData = clipboard_->mimeData();
+    if (mimeData->hasHtml()) {
+        ui->messageView->setMessagesContent(mimeData->text());
+    } else if (mimeData->hasText()) {
+        ui->messageView->setMessagesContent(mimeData->text());
+    } else {
+        ui->messageView->setMessagesContent(tr("Cannot display data"));
+    }
+}
+
+void
+CallWidget::Copy()
+{
+    ui->messageView->copySelectedText(clipboard_);
 }

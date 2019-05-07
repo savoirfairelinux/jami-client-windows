@@ -1608,3 +1608,12 @@ function setSenderImage(set_sender_image_object)
     invite_style.innerHTML = "." + invite_sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 48px;width: 48px;}"
     document.head.appendChild(invite_style)
 }
+
+/**
+ * Copy Mouse Selected Text and return it
+ */
+function copy_text_selected() {
+    var selObj = document.getSelection();
+    var selectedText = selObj.toString();
+    return selectedText;
+}
