@@ -18,17 +18,18 @@
 
 #pragma once
 
+#include <QClipboard>
 #include <QDebug>
 #include <QWebEngineView>
 
 #include "api/conversationmodel.h"
 
-class PrivateBridging : public QObject
-{
+class PrivateBridging : public QObject {
     Q_OBJECT
 public:
-    explicit PrivateBridging(QObject* parent = nullptr) : QObject(parent) {};
-    ~PrivateBridging() {};
+    explicit PrivateBridging(QObject* parent = nullptr)
+        : QObject(parent){};
+    ~PrivateBridging(){};
 
     // exposed to JS through QWebChannel
     Q_INVOKABLE int deleteInteraction(const QString& arg);
@@ -36,7 +37,7 @@ public:
     Q_INVOKABLE int openFile(const QString& arg);
     Q_INVOKABLE int acceptFile(const QString& arg);
     Q_INVOKABLE int refuseFile(const QString& arg);
-    Q_INVOKABLE int sendMessage(const QString & arg);
+    Q_INVOKABLE int sendMessage(const QString& arg);
     Q_INVOKABLE int sendFile();
     Q_INVOKABLE int log(const QString& arg);
     Q_INVOKABLE int acceptInvitation();
@@ -46,8 +47,7 @@ public:
     Q_INVOKABLE int emitMessagesLoaded();
 };
 
-class MessageWebView : public QWebEngineView
-{
+class MessageWebView : public QWebEngineView {
     Q_OBJECT
 public:
     explicit MessageWebView(QWidget* parent = nullptr);
@@ -55,27 +55,30 @@ public:
 
     void buildView();
 
-    void insertStyleSheet(const QString &name, const QString &source);
-    void removeStyleSheet(const QString &name);
+    void insertStyleSheet(const QString& name, const QString& source);
+    void removeStyleSheet(const QString& name);
 
     void clear();
     void setDisplayLinks(bool display);
     void printNewInteraction(lrc::api::ConversationModel& conversationModel,
-                             uint64_t msgId,
-                             const lrc::api::interaction::Info& interaction);
+        uint64_t msgId,
+        const lrc::api::interaction::Info& interaction);
     void updateInteraction(lrc::api::ConversationModel& conversationModel,
-                           uint64_t msgId,
-                           const lrc::api::interaction::Info& interaction);
+        uint64_t msgId,
+        const lrc::api::interaction::Info& interaction);
     void removeInteraction(uint64_t interactionId);
     void printHistory(lrc::api::ConversationModel& conversationModel,
-                      const std::map<uint64_t,
-                      lrc::api::interaction::Info> interactions);
+        const std::map<uint64_t,
+            lrc::api::interaction::Info>
+            interactions);
     void setSenderImage(const std::string& sender,
-                        const std::string& senderImage);
+        const std::string& senderImage);
     void setInvitation(bool show,
-                       const std::string& contactUri = "",
-                       const std::string& contactId = "");
+        const std::string& contactUri = "",
+        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
+    void setMessagesContent(QString text);
+    void copySelectedText(QClipboard* clipboard);
 
 signals:
     void conversationRemoved();
@@ -88,5 +91,4 @@ private slots:
 private:
     QWebChannel* webChannel_;
     PrivateBridging* jsBridge_;
-
 };
