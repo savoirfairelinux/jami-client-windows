@@ -568,6 +568,7 @@
     <None Include="web\chatview.css" />
     <None Include="web\chatview.html" />
     <None Include="web\chatview.js" />
+    <None Include="web\copytext.js" />
     <None Include="web\linkify-html.js" />
     <None Include="web\linkify-string.js" />
     <None Include="web\linkify.js" />
