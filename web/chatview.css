@@ -54,7 +54,7 @@ body {
     background-color: var(--bg-color);
     padding-bottom: var(--messagebar-size);
     /* disable selection highlight because it looks very bad */
-    -webkit-user-select: none;
+    -webkit-user-select: text;
 
 }
 

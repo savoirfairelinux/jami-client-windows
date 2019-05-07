@@ -21,27 +21,27 @@
 
 #include "messagewebview.h"
 
-#include <QScrollBar>
-#include <QMouseEvent>
 #include <QDebug>
-#include <QMenu>
 #include <QDesktopServices>
 #include <QFileDialog>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QScrollBar>
+#include <QTimer>
+#include <QWebChannel>
 #include <QWebEnginePage>
+#include <QWebEngineProfile>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
-#include <QWebEngineProfile>
-#include <QWebChannel>
-#include <QTimer>
 
 #include <ciso646>
 #include <fstream>
 
+#include "lrcinstance.h"
+#include "messagewebpage.h"
 #include "utils.h"
 #include "webchathelpers.h"
-#include "messagewebpage.h"
-#include "lrcinstance.h"
 
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
@@ -104,6 +104,18 @@ MessageWebView::MessageWebView(QWidget *parent)
 
 MessageWebView::~MessageWebView()
 {
+}
+
+void MessageWebView::setMessagesContent(QString text)
+{
+    page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+}
+
+void MessageWebView::copySelectedText(QClipboard* clipboard)
+{
+    page()->runJavaScript(QStringLiteral("copy_text_selected();"), [clipboard, this](const QVariant& v) {
+        clipboard->setText(v.toString());
+    });
 }
 
 void MessageWebView::buildView()

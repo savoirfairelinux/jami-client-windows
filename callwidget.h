@@ -22,30 +22,31 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QVector>
-#include <QString>
-#include <QMenu>
+#include <QClipboard>
 #include <QItemSelection>
+#include <QMenu>
 #include <QMovie>
+#include <QString>
+#include <QVector>
+#include <QWidget>
 
 #include "navwidget.h"
 #include "smartlistmodel.h"
 
 // old LRC
-#include "video/renderer.h"
-#include "video/previewmanager.h"
 #include "accountmodel.h"
 #include "media/textrecording.h"
+#include "video/previewmanager.h"
+#include "video/renderer.h"
 
 // new LRC
-#include "globalinstances.h"
-#include "api/newaccountmodel.h"
-#include "api/conversationmodel.h"
 #include "api/account.h"
 #include "api/contact.h"
 #include "api/contactmodel.h"
+#include "api/conversationmodel.h"
+#include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
+#include "globalinstances.h"
 
 class ConversationItemDelegate;
 class QPropertyAnimation;
@@ -89,6 +90,9 @@ public slots:
     void slotToggleFullScreenClicked();
     void slotVideoViewDestroyed(const std::string& callid);
     void update();
+    void ShowContextMenu(const QPoint& pos);
+    void Paste();
+    void Copy();
 
 private slots:
     void on_acceptButton_clicked();
@@ -138,6 +142,7 @@ private:
     void setCallPanelVisibility(bool visible);
 
     QMenu* menu_;
+    QClipboard* clipboard_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;
