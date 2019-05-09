@@ -21,6 +21,129 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="ProductComponents">
+            <Component Id="RunTimeWin100" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin100" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-runtime-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin101" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin101" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-console-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin102" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin102" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-datetime-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin103" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin103" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-debug-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin104" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin104" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-errorhandling-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin105" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin105" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-file-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin106" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin106" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-file-l1-2-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin107" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin107" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-file-l2-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin108" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin108" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-handle-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin109" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin109" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-heap-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1010" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1010" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-interlocked-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1011" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1011" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-libraryloader-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1012" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1012" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-localization-l1-2-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1013" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1013" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-memory-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1014" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1014" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-namedpipe-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1040" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1040" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-processenvironment-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1015" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1015" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-processthreads-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1016" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1016" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-processthreads-l1-1-1.dll" />
+            </Component>
+            <Component Id="RunTimeWin1017" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1017" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-profile-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1018" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1018" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-rtlsupport-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1019" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1019" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-string-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1020" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1020" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-synch-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1021" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1021" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-synch-l1-2-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1022" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1022" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-sysinfo-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1023" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1023" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-timezone-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1024" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1024" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-core-util-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1025" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1025" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-conio-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1026" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1026" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-convert-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1027" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1027" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-environment-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1028" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1028" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-filesystem-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1029" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1029" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-heap-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1030" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1030" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-locale-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1031" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1031" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-math-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1032" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1032" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-multibyte-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1033" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1033" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-private-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1034" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1034" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-process-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1035" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1035" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-stdio-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1036" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1036" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-string-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1037" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1037" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-time-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1038" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1038" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\api-ms-win-crt-utility-l1-1-0.dll" />
+            </Component>
+            <Component Id="RunTimeWin1039" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="F_RunTimeWin1039" KeyPath="yes" Source="$(var.UniversalCRT_LibraryPath_x64)\ucrtbase.dll" />
+            </Component>
             <Component Id="cmp3BE7F5162150D73A8A31AC4EBC5065CE" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil19F5C64500F14D4D7EAC0A4F937B5CF2" KeyPath="yes" Source="$(var.ReleaseDir)\avcodec-58.dll" />
             </Component>

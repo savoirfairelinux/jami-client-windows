@@ -3,4 +3,5 @@
     <?define Name="Jami"?>
     <?define Manufacturer="Savoir-Faire Linux Inc."?>
     <?define ReleaseDir="..\x64\Release"?>
+    <?define UniversalCRT_LibraryPath_x64="..\Runtime"?>
 </Include>
