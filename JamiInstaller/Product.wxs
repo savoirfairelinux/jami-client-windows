@@ -17,9 +17,17 @@
             <ComponentRef Id="ApplicationShortcutDesktop" />
             <ComponentRef Id="ApplicationShortcutStartMenu" />
         </Feature>
-        <Feature Id="VCRedist" Title="Visual C++ Runtime" AllowAdvertise="no" Display="hidden" Level="1">
-            <MergeRef Id="VCRedist" />
-        </Feature>
+      <!--Visual C++-->
+      <DirectoryRef Id="TARGETDIR">
+        <Merge Id="VCRedist" SourceFile="$(env.VCRedistMergeModule)" DiskId="1" Language="0" />
+      </DirectoryRef>
+      <Feature Id="VCRedist"
+         Title="Visual C++ Runtime"
+         AllowAdvertise="no"
+         Display="hidden"
+         Level="1">
+        <MergeRef Id="VCRedist"/>
+      </Feature>
 
       <!--Find User Defined Installition Registry If User changes the Default Registry-->
       <Property Id="APPLICATIONFOLDER" Secure="yes">
@@ -63,7 +71,6 @@
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
                 <RemoveFolder Id="DesktopFolder" On="uninstall" />
                 <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="desktop" Type="integer" Value="1" KeyPath="yes" />
-                <!--<Condition>ADDDESKTOPSHORTCUT=1</Condition>-->
             </Component>
         </DirectoryRef>
 
@@ -73,7 +80,6 @@
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
                 <RemoveFolder Id="StartMenuFolder" On="uninstall" />
                 <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
-              <!--<Condition>ADDDESKTOPSHORTCUT=1</Condition>-->
             </Component>
         </DirectoryRef>
     </Fragment>
@@ -121,9 +127,4 @@
         <WixVariable Id="WixUILicenseRtf" Value="$(var.ReleaseDir)\License.rtf"/>
     </Fragment>
 
-    <Fragment Id="VCRedist">
-        <DirectoryRef Id="TARGETDIR">
-            <Merge Id="VCRedist" SourceFile="$(env.VCRedistMergeModule)" DiskId="1" Language="0" />
-        </DirectoryRef>
-    </Fragment>
 </Wix>
