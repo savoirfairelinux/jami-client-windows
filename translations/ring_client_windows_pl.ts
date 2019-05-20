@@ -522,7 +522,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Konfiguracja bezpieczeństwa konta</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
@@ -592,7 +592,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Hasło (wymagane)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
@@ -691,7 +691,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj Konto</translation>
     </message>
 </context>
 <context>
@@ -704,7 +704,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="40"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ustawienia Połączeń</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="65"/>
@@ -775,12 +775,12 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="495"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Klucz Prywatny</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="507"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Certyfikat CA</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
@@ -815,7 +815,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="836"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Użyj UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="848"/>
@@ -825,17 +825,17 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="899"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Kodeki Audio</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1044"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Kodeki Wideo</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="161"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Pliki Audio (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -879,7 +879,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../callwidget.ui" line="178"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż rozmowy</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="181"/>
@@ -928,7 +928,7 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="1178"/>
         <location filename="../callwidget.ui" line="1428"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>najlepsza nazwa</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1202"/>
@@ -953,7 +953,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="199"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Zaprasza</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="371"/>
@@ -989,7 +989,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1274"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj połączenie wychodzące</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1299"/>
@@ -1009,7 +1009,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="360"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Wyczyść rozmowę</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="367"/>
@@ -1034,12 +1034,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Skontaktuj się ze mną na Jami</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Mój identyfikator to:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="293"/>
@@ -1079,7 +1079,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../contactdialog.ui" line="33"/>
         <source>Enter a name...</source>
-        <translation type="unfinished"/>
+        <translation>Wpisz nazwę...</translation>
     </message>
 </context>
 <context>
@@ -1087,12 +1087,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Kasowanie konta</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="55"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Czy na pewno chcesz usunąć następujące konto?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="144"/>
@@ -1102,7 +1102,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="226"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Usuń konto na zawsze</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="232"/>
@@ -1112,7 +1112,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="269"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj usuwanie konta</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="275"/>
@@ -1161,12 +1161,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="93"/>
         <source>Add A New Device</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj nowe urządzenie</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="155"/>
         <source>To add a new device, enter your account password:</source>
-        <translation type="unfinished"/>
+        <translation>Aby dodać nowe urządzenie, wprowadź hasło do swojego konta:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="250"/>
@@ -1230,7 +1230,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>

@@ -116,7 +116,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="598"/>
         <source>Auto-answer calls</source>
-        <translation>Автоматично відповідати на дзвінки</translation>
+        <translation>Приймати дзвінки автоматично</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="619"/>
@@ -211,7 +211,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="592"/>
         <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Прапорець автоматичного прийняття дзвінків</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="613"/>
@@ -713,7 +713,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="79"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Приймати дзвінки автоматично</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="99"/>

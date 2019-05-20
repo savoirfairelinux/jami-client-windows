@@ -266,7 +266,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Промяна на парола</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Ring е безплатен софтуер за универсална комуникация, който уважава свободата и личните данни на потребителите си.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1018,7 +1018,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Блокиране на контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1267,7 +1267,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Създаване на профил в Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1603,7 +1603,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Jami профил</translation>
     </message>
 </context>
 <context>
