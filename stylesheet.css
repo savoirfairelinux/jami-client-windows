@@ -217,6 +217,25 @@ QPushButton#hangupButton:pressed{
     background-color: rgba(255, 0, 0, 0.8);
 }
 
+QMessageBox QPushButton {
+    padding: 4px;
+    background: #369;
+    color: white;
+    font-size: 12px;
+    border: 0;
+    border-radius: 3px;
+    outline: 0px;
+    width: 50px;
+}
+
+QMessageBox QPushButton:hover {
+    background: #47a;
+}
+
+QMessageBox QPushButton:pressed {
+    background: #58b;
+}
+
 QToolButton#qrButton, QToolButton#shareButton{
     background-color: rgb(242, 242, 242);
     border-style: solid;
