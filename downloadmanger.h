@@ -48,7 +48,7 @@ public:
     int getDownloadStatus();
 
 public slots:
-    void sslErrors(const QList<QSslError>& sslErrors);
+    void getsslErrors(const QList<QSslError>& sslErrors);
     void downloadFinished();
     void downloadProgress(qint64 bytesRead, qint64 totalBytes);
     void httpReadyRead();
