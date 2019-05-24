@@ -55,7 +55,7 @@ void DownloadManager::doDownload(const QUrl& url)
     downloadTime_.start();
 
 #if QT_CONFIG(ssl)
-    connect(currentDownload_, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(sslErrors(QList<QSslError>)));
+    connect(currentDownload_, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError>&)), this, SLOT(getsslErrors(QList<QSslError>)));
 #endif
     //downloadProgress() signal is emitted when data is received
     connect(currentDownload_, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
@@ -74,7 +74,7 @@ void DownloadManager::downloadFinished()
 {
     // donload finished normally
     statusCode_ = currentDownload_->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    if (statusCode_ == 404) {
+    if (statusCode_ != 200) {
         QMessageBox::critical(0, "Error!", "DownLoad Failed!");
     }
     probar_.setMaximum(0);
@@ -132,7 +132,7 @@ QString DownloadManager::versionOnline()
     QString urlstr = "https://dl.jami.net/windows/version";
     QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
     doDownload(url);
-    if (statusCode_ == 404) {
+    if (statusCode_ != 200) {
         QMessageBox::critical(0, "Version Check Error", "Version Cannot Be Verified");
         return "Null";
     }
@@ -149,7 +149,7 @@ QString DownloadManager::versionOnline()
     return onlineVersion;
 }
 
-void DownloadManager::sslErrors(const QList<QSslError>& sslErrors)
+void DownloadManager::getsslErrors(const QList<QSslError>& sslErrors)
 {
 #if QT_CONFIG(ssl)
     for (const QSslError& error : sslErrors)
