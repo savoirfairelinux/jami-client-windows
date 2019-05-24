@@ -35,10 +35,10 @@
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
-#include "downloadmanger.h"
 #include "deleteaccountdialog.h"
-#include "passworddialog.h"
+#include "downloadmanger.h"
 #include "nameregistrationdialog.h"
+#include "passworddialog.h"
 #include "settingskey.h"
 #include "utils.h"
 #include "deviceitemwidget.h"
@@ -874,7 +874,7 @@ void SettingsWidget::checkForUpdateSlot()
             QString urlstr = "https://dl.jami.net/windows/jami-x64.msi";
             QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
             manager.doDownload(url);
-            if (manager.getDownloadStatus() == 404) {
+            if (manager.getDownloadStatus() != 200) {
                 QMessageBox::critical(0, "Download Status", "Installer Download Failed, Please Contact Support");
                 return;
             }
