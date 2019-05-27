@@ -3,4 +3,5 @@
     <?define Name="Jami"?>
     <?define Manufacturer="Savoir-Faire Linux Inc."?>
     <?define ReleaseDir="..\x64\Release"?>
+    <?define UcrtDir="C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64"?>
 </Include>

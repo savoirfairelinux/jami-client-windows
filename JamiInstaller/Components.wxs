@@ -18,133 +18,75 @@
             <Directory Id="dir6BEF5EA0D72E144566D3B5034E8EBD40" Name="ringtones" />
             <Directory Id="dir2B882A2C0828718F11D164F0487238A7" Name="share" />
             <Directory Id="dir4AD0B3BC5E5530AF4A888ED31F98A3AB" Name="sqldrivers" />
-            <Directory Id="dir4F5F83E0389A812227380377C68B5898" Name="x64" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
-        <ComponentGroup Id="ProductComponents">
-            <Component Id="cmp14BC98A92A49BC20FEFA636DE08E69AA" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil24CDACFC3908DCA12B27F1A125F70653" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-console-l1-1-0.dll" />
+          <ComponentGroup Id="ProductComponents">
+            <Component Id="cmp9C61F84AF9761955FBF397AFAE21C11B" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil2089BEC9A7AB899CED5A5EE501789299" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l1-2-0.dll" />
             </Component>
-            <Component Id="cmp7EEA9D762DEF8386F2971BE61A3875EB" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil3E9E79AAE3AF18F62123BB721C2D21BC" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-datetime-l1-1-0.dll" />
+            <Component Id="cmp03BB2697EE10869C4A329E3EA987EFAA" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil44C27F2C97596734BB3BEB7C21F7B71C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l2-1-0.dll" />
             </Component>
-            <Component Id="cmp714E642C3BCDC395E49B07A758FC62BD" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filD542E236866CF4113EBD2AAC9C95194F" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-debug-l1-1-0.dll" />
+            <Component Id="cmp6B6AA7AEA5A4D324A4EE7DAE1B1193E0" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil1D16BE23D323A1E37FC1FC7354A9305F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-localization-l1-2-0.dll" />
             </Component>
-            <Component Id="cmpCCF446CCDF2BD40AA06978B1BAD7A9E0" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filAF432814206D0CB46EF0B01766A0EC9F" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-errorhandling-l1-1-0.dll" />
+            <Component Id="cmpB5454FB66442C9BFD2145AE30B32D7A9" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil031B78DF53F7A3AC109410907624FC3E" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-processthreads-l1-1-1.dll" />
             </Component>
-            <Component Id="cmp3207DA8935B6A40FBC38CD2E81DD5866" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil80263932F5CDD532CE3F15C1263E1A93" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-file-l1-1-0.dll" />
+            <Component Id="cmp9F6D22CD9B1739E4F75F92F3A07E4CA1" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filE9A3672FA504AA8E518DD72A02CD3E77" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-synch-l1-2-0.dll" />
             </Component>
-            <Component Id="cmp9BB0ECF2BBA71B647A8218DF5952DD48" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil2C53141017FA8ED5DD42B4AB3C7EF0FA" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-file-l1-2-0.dll" />
+            <Component Id="cmp9451422B7074D46F019614C3DE73BD17" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil3C902CA2889BB8855D285C3FBABB334F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-timezone-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp68E62B70552F47ACDD020C76324AAB64" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil98F1282100D6303457F07201E425FB07" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-file-l2-1-0.dll" />
+            <Component Id="cmp349250459EC2D8C328EED5138B073E7A" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil2466F3D9FBA095A007D0909040D4D688" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-conio-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpEB291E7993F17B2A0E894EFDECDC7ACF" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filFD2137391439A87A0AEC5345A4FFF522" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-handle-l1-1-0.dll" />
+            <Component Id="cmpCC880F2B054A87EF5FC68232652231BF" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil605A691486569535A1C3548F7DCE753C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-convert-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp03A989CFC886E127C8578BA7D76BF648" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil1B39E1E93ABF3A9EB87A3E9CF1DEBB1C" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-heap-l1-1-0.dll" />
+            <Component Id="cmpD6CB40D5A5AFF2161B7B4B4F06F03301" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil09AE032A32E2E542A232F7941AC77320" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-environment-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpFB68F67E2EE4CE37BF27A2C14B3B5E89" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil959EAFA7CDAE3DAA7D016FEF3B32666D" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-interlocked-l1-1-0.dll" />
+            <Component Id="cmpC02538029646A27A9F786AD690EB3C8E" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil7DE9C3CADCA188356922B0CBD8E313E7" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-filesystem-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp656CFD130D25C561CC77D338B7166DB8" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil35AFCE303DC3583F0A639E208720B757" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-libraryloader-l1-1-0.dll" />
+            <Component Id="cmp8E50197B377636123F0F1F94FFB004E7" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil584F158D11B8A380C73F1EFE8BBA92B4" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-heap-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpBCD9E364D9257D4E72F27A9F8B99A32C" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil271F9EAC229FA6C5A935B310791742BC" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-localization-l1-2-0.dll" />
+            <Component Id="cmp7F729C94A363C73DC4D91B6F48E4F859" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil4BE19B924B98D56F3155B66496D574E5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-locale-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpBDDD469D40474DF4483350745AE598AF" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filE95AA66F62A7BF4FCB161E1BFF4C4169" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-memory-l1-1-0.dll" />
+            <Component Id="cmp7C573E66B0904BA73880788F7057AF88" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filE8495C446FA1237E92562498D20261AA" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-math-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp0BD58952D558DB62B557C4EF89C666D1" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filE93B8B5F7259FA18ECF9B56158F11163" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-namedpipe-l1-1-0.dll" />
+            <Component Id="cmp7A91CED53D8F6E5F20F2049B3B5CD143" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil06951EB208628753677745AF15CC12A5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-multibyte-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp9B33C28EEC149A102FDF1291A032714C" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filA98AD1737FE6921F9B6FCF79CE287F8A" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-processenvironment-l1-1-0.dll" />
+            <Component Id="cmp1CE713C705A95306A1D246AC3AB9DE25" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil8D102BB81768F998470C34797459E306" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-private-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp45D113A4EE51EA334782F0BAA66DB58D" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil48E98FC5BE45C78DEBD03A8103C2C99D" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-processthreads-l1-1-0.dll" />
+            <Component Id="cmp35840DFBF4D6AE827AFC4EF2A17BB3EB" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filC6C457BD901F940DCB673D271728F9FE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-process-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp957993151AAE431BD7B4E2E8ECFBBB3C" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filE32792C646BA32C9347DF9CFD3A0B449" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-processthreads-l1-1-1.dll" />
+            <Component Id="cmpEBB86BDA48FE3B9E2043C1A80D26ACD5" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filE1B2095225B01DEFA5DA9895B432FBCB" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-runtime-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp88ED27FF42ABC2E1E7BC0B5475699618" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filFEA8530A59D3D479DEBBBE0C3583A348" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-profile-l1-1-0.dll" />
+            <Component Id="cmp80C8534B553078EA8B86F100FF542776" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filDAFE58019AD70832B8304DCEA534B5EE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-stdio-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpCD24E184931675BC56F99AF72ACC2313" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filAB1E82A27E9BFCC9FEB4AB6C783E5AFD" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-rtlsupport-l1-1-0.dll" />
+            <Component Id="cmpCFC348111B5343749A2273A62421C07C" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil1F1B38DB330CA413655F715578D4BE1A" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-string-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp2EC74EF7F13F5B88418D4F4D71395B2F" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil80DCD0035C08961875CC666A1D79E6B3" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-string-l1-1-0.dll" />
+            <Component Id="cmp7D5450E04EC419244107942A00DF7DDF" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="filEB03BCF3155C5BAE2C2EDBF036EB659D" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-time-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp6CE2FDA087FA0C78C65C3A0FF377D382" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filC6E321288D68C38834F8AF51CE5A8A2F" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-synch-l1-1-0.dll" />
+            <Component Id="cmp5456679BDCC818B2E9476B416F71AAA5" Directory="APPLICATIONFOLDER" Guid="*">
+              <File Id="fil5B120DD384CABED37DFC2652C6462666" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-utility-l1-1-0.dll" />
             </Component>
-            <Component Id="cmp21F872824B165EC1037096958528786B" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil70C9ED6B550717D6BFB5DCA823E5C430" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-synch-l1-2-0.dll" />
-            </Component>
-            <Component Id="cmp48283104FECC3D4FBAEBAAB02F6ADFCE" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil0C2ACB3C8A6E91DA503BBF4850F97C04" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-sysinfo-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp324687DB1AE3C1881BE90C93A0FACE08" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil95F5C96CA2BE9434077164FCC6E0589D" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-timezone-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpFC6159921688343843FE1F84BCBE81BB" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filFC94C55A6473413AE4E02E974EC3189F" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-core-util-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpA73FC9B194A4FE4FBE354E67F48BEAC3" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil33F5CFE15552324C7A4A7A45253F7F7E" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-conio-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpA53399B7CD61A1A73ECDDE4D31AED96E" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil9E8457B4A362431C027170E5F16D5676" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-convert-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpDD6C447E212F7C0E2BE18311CEEB6B32" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filBE0E0A664156DD15D43B614246D3E9AE" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-environment-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp0E492C27F83DA35766B3C002C69DB54E" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filBE8F833A502930E83402EBF88E53B01E" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-filesystem-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpF215660519259091C3DE5FD003D2CA55" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil230975301FFD9F3A35760A6E0258A45D" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-heap-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp6B225D4AB63BCA245B18EF4F3815D61B" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filFE466CA33EB0ABAF81195235D45BB4FA" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-locale-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpE465497B9EBE4AE48FF755CE99DA0491" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil909D5FC6CD7D96B8F4ADEC113538303F" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-math-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp6D2B35B49B0C878D2C9BD3628F9589D3" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filEDFFF8EAF438D908D2F5CFCEBDEF49C9" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-multibyte-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp6ABA9D807F67AB8BF713B8BDC6051BDD" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filA7565BE314DF7B0BD2993DAE3405B68E" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-private-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp225B0703BB802DF4F0F0384E254D3875" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil0C0BDF25FEB12376E62742BB893E9756" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-process-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpA742929C7A19733CBDA5F1198B225059" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil9E1D56D0ADFF5C2C82DFA7FF84CC3BC6" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-runtime-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp8AD693E706D80316330958C44B9607E1" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil4FBD380BF3B632A30515F13533A2637B" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-stdio-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpD9AECBA71B3A3B5BD1C2D6A25D7F2A01" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filB0645EBF6434B5DE093A7654A8B29026" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-string-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp5EFB87BC12AF5D1F6242EC065AE44276" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil002073A8976885233BAA61B489604685" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-time-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmp891C31B98CB4B707ACC55BAFA290DFEC" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="fil35323802A529977C8D5085504411CD6E" KeyPath="yes" Source="$(var.ReleaseDir)\x64\api-ms-win-crt-utility-l1-1-0.dll" />
-            </Component>
-            <Component Id="cmpF23755F862A15FFCBD109C85599B7F20" Directory="dir4F5F83E0389A812227380377C68B5898" Guid="*" Win64="yes">
-              <File Id="filD6887AD9110E4A8D49143C9A8F0B5843" KeyPath="yes" Source="$(var.ReleaseDir)\x64\ucrtbase.dll" />
+            <Component Id="cmpF23755F862A15FFCBD109C85599B7F20" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
+              <File Id="filD6887AD9110E4A8D49143C9A8F0B5843" KeyPath="yes" Source="$(var.UcrtDir)\ucrtbase.dll" />
             </Component>
             <Component Id="cmp3BE7F5162150D73A8A31AC4EBC5065CE" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil19F5C64500F14D4D7EAC0A4F937B5CF2" KeyPath="yes" Source="$(var.ReleaseDir)\avcodec-58.dll" />
