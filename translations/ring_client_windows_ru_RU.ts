@@ -266,7 +266,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Изменить пароль</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -331,12 +331,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
         <source>Audio codecs</source>
-        <translation type="unfinished"/>
+        <translation>Аудиоодеки</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1270"/>
         <source>Video codecs</source>
-        <translation type="unfinished"/>
+        <translation>Видеокодеки</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1287"/>
@@ -472,7 +472,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1844"/>
         <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation type="unfinished"/>
+        <translation>Согласование сесcии SDP (ICE недоступен)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1872"/>
@@ -576,12 +576,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
         <source>Add device</source>
-        <translation type="unfinished"/>
+        <translation>Добавить устройство</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
         <source>Export on the network</source>
-        <translation type="unfinished"/>
+        <translation>Экспортировать в сеть</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2578"/>
@@ -617,7 +617,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Ваш сгенерированный PIN:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
@@ -642,7 +642,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
@@ -784,7 +784,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Связь</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -893,7 +893,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami — свободная программа для связи, уважающая свободу и конфиденциальность пользователей.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -1142,7 +1142,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>Отказать</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
@@ -1185,7 +1185,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Ваш сгенерированный PIN:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
@@ -1282,12 +1282,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Привязать это устройство к аккаунту</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Привязать это устройство к существующему аккаунту</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="399"/>
@@ -1306,12 +1306,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Введите ваш PIN:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Или импортируйте из файла:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1407,7 +1407,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Идёт создание вашего аккаунта Jami…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1422,7 +1422,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1548"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
@@ -1766,7 +1766,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="635"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Папка для загрузок</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="716"/>
@@ -1826,7 +1826,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1583"/>
         <source>ID</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>

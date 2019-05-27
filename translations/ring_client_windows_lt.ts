@@ -137,7 +137,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="895"/>
         <source>Allow Call From Contact</source>
-        <translation>Leisti skambučius nuo kontaktų</translation>
+        <translation>Leisti skambučius nuo adresatų</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="880"/>
@@ -648,7 +648,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../accountdetails.ui" line="2769"/>
         <source>Banned Contacts</source>
-        <translation>Užblokuoti kontaktai</translation>
+        <translation>Užblokuoti adresatai</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
@@ -856,7 +856,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation>Užblokuotų kontaktų sąrašas</translation>
+        <translation>Užblokuotų adresatų sąrašas</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
@@ -871,7 +871,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
         <source>Deban contact, and add to contact list</source>
-        <translation>Atblokuoti kontaktą ir pridėti į kontaktų sąrašą</translation>
+        <translation>Atblokuoti adresatą ir pridėti į adresatų sąrašą</translation>
     </message>
 </context>
 <context>
@@ -889,7 +889,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../callwidget.ui" line="362"/>
         <source>Search contact text input</source>
-        <translation>Ieškoti kontakto</translation>
+        <translation>Ieškoti adresato</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="647"/>
@@ -946,7 +946,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../callwidget.ui" line="1937"/>
         <source>Add to contacts</source>
-        <translation>Pridėti prie kontaktų</translation>
+        <translation>Pridėti prie adresatų</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="196"/>
@@ -962,7 +962,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
         <location filename="../callwidget.ui" line="371"/>
         <location filename="../callwidget.cpp" line="553"/>
         <source>Find a new or existing contact</source>
-        <translation>Rasti naują ar esamą kontaktą</translation>
+        <translation>Rasti naują ar esamą adresatą</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1438"/>
@@ -1017,12 +1017,12 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../callwidget.cpp" line="367"/>
         <source>Remove contact</source>
-        <translation>Šalinti kontaktą</translation>
+        <translation>Šalinti adresatą</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation>Užblokuoti kontaktą</translation>
+        <translation>Užblokuoti adresatą</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1077,7 +1077,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../contactdialog.ui" line="26"/>
         <source>New Contact</source>
-        <translation>Naujas Kontaktas</translation>
+        <translation>Naujas adresatas</translation>
     </message>
     <message>
         <location filename="../contactdialog.ui" line="33"/>
@@ -1614,7 +1614,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../settingsitemwidget.cpp" line="89"/>
         <source>Unblock Contact</source>
-        <translation>Atblokuoti kontaktą</translation>
+        <translation>Atblokuoti adresatą</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="35"/>
@@ -1892,7 +1892,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
         <location filename="../settingswidget.cpp" line="544"/>
         <location filename="../settingswidget.cpp" line="571"/>
         <source>Blocked Contacts</source>
-        <translation>Užblokuoti kontaktai</translation>
+        <translation>Užblokuoti adresatai</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2371"/>

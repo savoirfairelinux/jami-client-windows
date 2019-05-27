@@ -10,7 +10,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>кнопка про програму</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
@@ -31,7 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Клієнт Джамі для Microsoft Windows.
+Джамі — це безпечне розподілене програмне забезпечення для зв&apos;язку.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -166,27 +167,27 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="323"/>
         <source>Public username</source>
-        <translation type="unfinished"/>
+        <translation>Публічне ім&apos;я користувача</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="369"/>
         <source>Register username on blockchain button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка реєстрації імені користувача в блокчейні</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="372"/>
         <source>Register on blockchain</source>
-        <translation type="unfinished"/>
+        <translation>Зареєструватися в блокчейні</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="389"/>
         <source>Name service URL</source>
-        <translation type="unfinished"/>
+        <translation>URL сервісу імен</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="411"/>
         <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
+        <translation>Введення URL сервісу імен</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="448"/>
@@ -266,7 +267,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="751"/>
         <source>Change password</source>
-        <translation type="unfinished"/>
+        <translation>Змінити пароль</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="770"/>
@@ -286,7 +287,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="856"/>
         <source>Allow call from unknown checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Поле для встановлення прапорця дозволу дзвінків від незнайомців</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="874"/>
@@ -316,7 +317,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="971"/>
         <source>ringtone file selector</source>
-        <translation type="unfinished"/>
+        <translation>вибір файлу звукового сигналу дзвіка</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1021"/>
@@ -326,7 +327,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1024"/>
         <source>Audio/video codecs preferences configuration</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування аудіо та відео кодеків</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1240"/>
@@ -376,7 +377,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1436"/>
         <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
+        <translation>прокручуване колесо вибору локального порту</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1522"/>
@@ -437,7 +438,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1710"/>
         <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
+        <translation>поле для встанолвлення прапорця використання TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1716"/>
@@ -447,7 +448,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1732"/>
         <source>TURN server URL input</source>
-        <translation type="unfinished"/>
+        <translation>Введення URL серверу TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1751"/>
@@ -457,12 +458,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="1770"/>
         <source>TURN server password input</source>
-        <translation type="unfinished"/>
+        <translation>Введення паролю сервера TURN</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1792"/>
         <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
+        <translation>Введення простору TURN серверу</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1795"/>
@@ -494,7 +495,7 @@ Jami is a secured and distributed communication software.</source>
         <location filename="../accountdetails.ui" line="1960"/>
         <location filename="../accountdetails.ui" line="2100"/>
         <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
+        <translation>Нижня межа проміжку можливих номерів порту для передачі аудіо по протоколу RTP</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1978"/>
@@ -521,12 +522,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2189"/>
         <source>Account security configuration</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування безпеки облікового запису</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2276"/>
         <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
+        <translation>Вибір сертифіката центру сертифікації</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2313"/>
@@ -536,12 +537,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2371"/>
         <source>private key password input</source>
-        <translation type="unfinished"/>
+        <translation>введення приватного ключа</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2393"/>
         <source>User private key selector</source>
-        <translation type="unfinished"/>
+        <translation>Введення приватного ключа користувача</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2417"/>
@@ -556,7 +557,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2432"/>
         <source>use default ciphers checkbox</source>
-        <translation type="unfinished"/>
+        <translation>поле для встановлення прапорця використання шифрів за замовчуванням</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2488"/>
@@ -571,12 +572,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2535"/>
         <source>Add device button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка додавання пристрою</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2538"/>
         <source>Add device</source>
-        <translation type="unfinished"/>
+        <translation>Додати пристрій</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2644"/>
@@ -591,12 +592,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2584"/>
         <source>Password (required)</source>
-        <translation type="unfinished"/>
+        <translation>Пароль (вимагається)</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2612"/>
         <source>Cancel account export for linking button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка скасування вивантаження облікового запису</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="786"/>
@@ -607,37 +608,37 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2565"/>
         <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation type="unfinished"/>
+        <translation>Щоб додати новий пристрій до вашого облікового запису Джамі, вам потрібно вивантажити ваш обліковий запис у мережу. При цьому буде створено PIN-код, який вам потрібно ввести на вашому іншому пристрої протягом 5 хвилин після створення.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2641"/>
         <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка перевірки вивантаження в DHT для прив&apos;язування пристрою</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2696"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Ваш новий PIN-код:</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2709"/>
         <source>Generated PIN for linking</source>
-        <translation type="unfinished"/>
+        <translation>PIN-код, створений для прив&apos;язування</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2712"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN-код</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2722"/>
         <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation type="unfinished"/>
+        <translation>Цей PIN-код слід ввести на вашому пристрої протягом 5 хвилин. Ви можете згенерувати новий будь-якої миті.</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2741"/>
         <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка прийняття створення PIN-коду та виходу</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="2744"/>
@@ -652,7 +653,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountdetails.ui" line="2772"/>
         <source>Account banned contacts management tab</source>
-        <translation type="unfinished"/>
+        <translation>Вкладка управління забороненими контактами облікового запису</translation>
     </message>
     <message>
         <location filename="../accountdetails.ui" line="1495"/>
@@ -784,7 +785,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="689"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>З&apos;єднання</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="734"/>
@@ -855,12 +856,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="41"/>
         <source>Banned contacts list</source>
-        <translation type="unfinished"/>
+        <translation>Список заборонених контактів</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="69"/>
         <source>Banned ID</source>
-        <translation type="unfinished"/>
+        <translation>Заблоковані ідентифікатори</translation>
     </message>
     <message>
         <location filename="../bannedcontactswidget.ui" line="101"/>
@@ -870,7 +871,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../bannedcontactswidget.ui" line="104"/>
         <source>Deban contact, and add to contact list</source>
-        <translation type="unfinished"/>
+        <translation>Розблокувати контакт і додати до списку контактів</translation>
     </message>
 </context>
 <context>
@@ -893,7 +894,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="647"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Jami - це вільне програмне забезпечення для будь-якого спілкування, яке поважає свободу та конфіденційність своїх користувачів.</translation>
+        <translation>Джамі — це вільне програмне забезпечення для будь-якого зв&apos;язку з повагою до свобод і приватності користувачів.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="687"/>
@@ -916,7 +917,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="909"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Клацніть двічі, щоб скопіювати</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="950"/>
@@ -973,7 +974,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1583"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка ігнорування вхідного дзвінка</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1533"/>
@@ -1013,12 +1014,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="367"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Видалити контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="374"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Заблокувати контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="385"/>
@@ -1033,7 +1034,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="944"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Зв&apos;яжіться зі мною в Джамі</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="944"/>
@@ -1185,7 +1186,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="509"/>
         <source>Your generated pin:</source>
-        <translation type="unfinished"/>
+        <translation>Ваш новий PIN-код:</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.ui" line="609"/>
@@ -1195,7 +1196,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevwidget.ui" line="652"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Закрити</translation>
     </message>
     <message>
         <location filename="../linkdevwidget.cpp" line="81"/>
@@ -1229,7 +1230,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Джамі</translation>
     </message>
 </context>
 <context>
@@ -1257,17 +1258,17 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="228"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка створення облікового запису Джамі</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="234"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Натисніть кнопку, щоб розпочати створення облікового запису Джамі</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="240"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Створити обліковий запис Джамі</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="266"/>
@@ -1282,12 +1283,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="275"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Прив&apos;язати цей пристрій до облікового запису</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Зв&apos;язати цей пристрій з наявним обліковим записом</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="399"/>
@@ -1301,17 +1302,26 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Щоб прив&apos;язати цей пристрій до іншого облікового запису, вам, спершу, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;потрібно отримати PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;-код. Щоб отримати PIN-код:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Перейдіть до &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Налаштування управління обліковим записом&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; на попередньому пристрої&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Виберіть &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;обліковий запис Джамі&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; який ви бажаєте&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Перейдіть до &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Пристрої&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; вкладки&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Виберіть &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Додатки пристрій&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Ви отримаєте PIN-код, який потрібно ввести тут. PIN-код дійсний лише протягом &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 хвилин&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="461"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Введіть ваш PIN-код:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="529"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Або завантажте з файлу:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="556"/>
@@ -1366,7 +1376,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1155"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Зареєструвати публічне ум&apos;я користувача</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1234"/>
@@ -1407,7 +1417,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="1465"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Створення вашого облікового запису Джамі…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1539"/>
@@ -1422,7 +1432,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1548"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Попереднє</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1579"/>
@@ -1462,7 +1472,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="80"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Файли архівів Джамі (*.gz); Усі файли (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="126"/>
@@ -1472,7 +1482,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="166"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Переведення вашого облікового запису Джамі…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="168"/>
@@ -1482,7 +1492,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="170"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Створення вашого облікового запису Джамі…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="469"/>
@@ -1551,7 +1561,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="129"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Показ віконця світлини</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="91"/>
@@ -1603,7 +1613,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.cpp" line="35"/>
         <source>Jami account</source>
         <comment>Default alias for new Jami account</comment>
-        <translation type="unfinished"/>
+        <translation>Обліковий запис Джамі</translation>
     </message>
 </context>
 <context>
@@ -1821,12 +1831,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1523"/>
         <source>Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Зареєстроване ім&apos;я</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1583"/>
         <source>ID</source>
-        <translation type="unfinished"/>
+        <translation>Ідентифікатор</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1633"/>
@@ -1836,7 +1846,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1709"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Увімкнути</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1778"/>
@@ -1851,7 +1861,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2012"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Вивантажити обліковий запис</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2038"/>
@@ -2024,7 +2034,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Запис дзвінка</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
