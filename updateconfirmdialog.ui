@@ -177,7 +177,7 @@
         </font>
        </property>
        <property name="toolTip">
-        <string>Permanently delete account</string>
+        <string>Update Client</string>
        </property>
        <property name="styleSheet">
         <string notr="true"/>
@@ -220,7 +220,7 @@
         </font>
        </property>
        <property name="toolTip">
-        <string>Cancel account deletion</string>
+        <string>Cancel Update</string>
        </property>
        <property name="styleSheet">
         <string notr="true"/>
