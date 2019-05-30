@@ -22,6 +22,30 @@
       "revId": "5a9c29355548f67f9da89171a9bc4d0ecbba932e",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad2149e_3eaa6b39",
+        "filename": "mainwindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-05-30T20:13:35Z",
+      "side": 1,
+      "message": "yes, it is redundant.. \nshould be removed",
+      "parentUuid": "5ca3290e_bffa7ae6",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "5a9c29355548f67f9da89171a9bc4d0ecbba932e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
