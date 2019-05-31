@@ -10,7 +10,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>о кнопке </translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
@@ -56,642 +56,104 @@ Jami – это приложение с распределённой архит�
     </message>
 </context>
 <context>
-    <name>AccountDetails</name>
-    <message>
-        <location filename="../accountdetails.ui" line="23"/>
-        <source>Settings</source>
-        <translation>Настройки</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="66"/>
-        <source>General</source>
-        <translation>Общий</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="143"/>
-        <source>Account</source>
-        <translation>Аккаунт</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="206"/>
-        <source>Type</source>
-        <translation>Тип</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="250"/>
-        <source>Parameters</source>
-        <translation>Параметры</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="280"/>
-        <source>Hostname</source>
-        <translation>Имя компьютера</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="350"/>
-        <source>Public registered username</source>
-        <translation>Публичное зарегистрированное имя пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="426"/>
-        <location filename="../accountdetails.ui" line="1754"/>
-        <source>Username</source>
-        <translation>Имя пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="469"/>
-        <location filename="../accountdetails.ui" line="1776"/>
-        <source>Password</source>
-        <translation>Пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="515"/>
-        <source>Proxy</source>
-        <translation>Прокси</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="558"/>
-        <source>Voicemail number</source>
-        <translation>Номер голосовой почты</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="598"/>
-        <source>Auto-answer calls</source>
-        <translation>Автоответ звонков</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="619"/>
-        <source>UPnP enabled</source>
-        <translation>UPnP разрешен</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="832"/>
-        <source>Account Settings</source>
-        <translation>Настройки аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="862"/>
-        <source>Allow Call From Unknown</source>
-        <translation>Разрешать звонки от незнакомых лиц</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="895"/>
-        <source>Allow Call From Contact</source>
-        <translation>Разрешать звонки от лиц из списка контактов</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="880"/>
-        <source>Allow Call From History</source>
-        <translation>Разрешать звонки от лиц из истории</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="69"/>
-        <source>General account info configuration</source>
-        <translation>Настройки основных данных аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="169"/>
-        <source>Displayed name</source>
-        <translation>Отображаемое имя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="191"/>
-        <source>Displayed alias input</source>
-        <translation>Ввод отображаемого имени</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="302"/>
-        <source>Hostname URL for DHT bootstrap or SIP</source>
-        <translation>URL для SIP или инициализации DHT</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="323"/>
-        <source>Public username</source>
-        <translation>Публичное имя пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="369"/>
-        <source>Register username on blockchain button</source>
-        <translation>Кнопка Зарегистрировать имя пользователя блокчейн</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="372"/>
-        <source>Register on blockchain</source>
-        <translation>Зарегистрировать в блокчейн</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="389"/>
-        <source>Name service URL</source>
-        <translation>URL-адрес службы имен</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="411"/>
-        <source>Nameservice URL input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="448"/>
-        <source>SIP username input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="491"/>
-        <source>SIP password input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="537"/>
-        <source>SIP proxy URL input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="580"/>
-        <source>SIP voicemail number</source>
-        <translation>Номер голосовой почты SIP</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="592"/>
-        <source>Autoanswer call checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="613"/>
-        <source>UPnP enabled checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="632"/>
-        <source>Old password input line</source>
-        <translation>Строка ввода старого пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="641"/>
-        <source>Input old password</source>
-        <translation>Введите старый пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="656"/>
-        <source>Old Password</source>
-        <translation>Старый пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="669"/>
-        <source>New password text input</source>
-        <translation>Ввод текста нового пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="675"/>
-        <source>Input new password</source>
-        <translation>Введите новый пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="692"/>
-        <source>New password</source>
-        <translation>Новый пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="705"/>
-        <source>Password confirmation text input</source>
-        <translation>Ввод текста подтверждения пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="711"/>
-        <source>Input confirmation </source>
-        <translation>Подтверждение ввода</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="727"/>
-        <source>New pass confirmation</source>
-        <translation>Подтверждение нового пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="751"/>
-        <source>Change password</source>
-        <translation>Изменить пароль</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="770"/>
-        <source>Ok</source>
-        <translation>Ok</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="783"/>
-        <source>Cancel password change button</source>
-        <translation>Кнопка отмены смены пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="798"/>
-        <source>Changing password ...</source>
-        <translation>Изменение пароля…</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="856"/>
-        <source>Allow call from unknown checkbox</source>
-        <translation>Флажок Разрешить вызов из неизвестного</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="874"/>
-        <source>Allow Call From History checkbox</source>
-        <translation>Флажок Разрешить вызов из истории</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="892"/>
-        <source>Allow Call From Contact checkbox</source>
-        <translation>Флажок Разрешить вызов из контакта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="931"/>
-        <source>Ringtone Selection</source>
-        <translation>Выбор мелодии звонка</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="955"/>
-        <source>Play ringtone button</source>
-        <translation>Кнопка воспроизведения мелодии звонка</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="958"/>
-        <source>Play</source>
-        <translation>Проиграть</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="971"/>
-        <source>ringtone file selector</source>
-        <translation>селектор файлов мелодий звонка</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1021"/>
-        <source>Audio/Video</source>
-        <translation>Аудио/Видео</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1024"/>
-        <source>Audio/video codecs preferences configuration</source>
-        <translation>Настройки параметров аудио/видео кодеков</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1240"/>
-        <source>Audio codecs</source>
-        <translation>Аудио кодеки</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1270"/>
-        <source>Video codecs</source>
-        <translation>Видео кодеки</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1287"/>
-        <source>Advanced</source>
-        <translation>Дополнительно</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1290"/>
-        <source>Account advanced configuration</source>
-        <translation>Дополнительные настройки аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1336"/>
-        <source>Registration</source>
-        <translation>Регистрация</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1356"/>
-        <source>Registration expire timeout (seconds):</source>
-        <translation>Регистрация истекает через (секунды):</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1372"/>
-        <source>Registration timeout selector spinbox</source>
-        <translation>Поле счётчика таймаута регистрации</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1397"/>
-        <source>Network Interface</source>
-        <translation>Сетевой интерфейс</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1418"/>
-        <source>Local Port:</source>
-        <translation>Локальный порт:</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1436"/>
-        <source>local port selector spinbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1522"/>
-        <source>same as local radio button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1528"/>
-        <source>Same as local parameters</source>
-        <translation>Аналогично локальным параметрам</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1546"/>
-        <source>personalise address and ports radio button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1552"/>
-        <source>Set published address and port:</source>
-        <translation>Установить публикуемый адрес и порт:</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1578"/>
-        <source>Address</source>
-        <translation>Адрес</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1597"/>
-        <source>ip address text input</source>
-        <translation>ввод текста ip-адреса</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1612"/>
-        <source>Port</source>
-        <translation>Порт</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1631"/>
-        <source>port selector spinbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1666"/>
-        <source>use STUN checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1672"/>
-        <source>Use STUN</source>
-        <translation>Использовать STUN</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1688"/>
-        <location filename="../accountdetails.ui" line="1735"/>
-        <source>Server URL</source>
-        <translation>URL сервера</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1710"/>
-        <source>use TURN checkbox</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1716"/>
-        <source>Use TURN</source>
-        <translation>Использовать TURN</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1732"/>
-        <source>TURN server URL input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1751"/>
-        <source>TURN server username input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1770"/>
-        <source>TURN server password input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1792"/>
-        <source>TURN server Realm input</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1795"/>
-        <source>Realm</source>
-        <translation>Область </translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1844"/>
-        <source>SDP Session Negotiation (ICE Fallback)</source>
-        <translation>Согласование сесcии SDP (резерв ICE)</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1872"/>
-        <source>These settings are only used during SDP session negotiation in case ICE is not supported by the server or peer.</source>
-        <translation>Данные параметры используются только во время согласования сессии SDP в случае, если ICE не поддерживается сервером или пиром.</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1914"/>
-        <source>Audio RTP Port Range</source>
-        <translation>Диапазон портов RTP для звука</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1944"/>
-        <location filename="../accountdetails.ui" line="2084"/>
-        <source>Min</source>
-        <translation>Минимум</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1960"/>
-        <location filename="../accountdetails.ui" line="2100"/>
-        <source>Lower boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1978"/>
-        <location filename="../accountdetails.ui" line="2118"/>
-        <source>Max</source>
-        <translation>Максимум</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1994"/>
-        <location filename="../accountdetails.ui" line="2134"/>
-        <source>higher boundary for audio RTP port range selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2054"/>
-        <source>Video RTP Port Range</source>
-        <translation>Диапазон портов RTP для видео</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2186"/>
-        <source>Security</source>
-        <translation>Безопасность</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2189"/>
-        <source>Account security configuration</source>
-        <translation>Настройки безопасности аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2276"/>
-        <source>Certificate authaurity certificate selector</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2313"/>
-        <source>User certificate selector</source>
-        <translation>Выбор сертификата пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2371"/>
-        <source>private key password input</source>
-        <translation>ввод пароля закрытого ключа</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2393"/>
-        <source>User private key selector</source>
-        <translation>Селектор закрытого ключа пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2417"/>
-        <source>Encrypt media stream (SRTP) checkbox</source>
-        <translation>Флажок шифровать поток мультимедиа (SRTP) </translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2420"/>
-        <source>Media Stream Encryption (SRTP)</source>
-        <translation>Шифрование медиапотока (SRTP)</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2432"/>
-        <source>use default ciphers checkbox</source>
-        <translation>флажок Использовать шифры по умолчанию</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2488"/>
-        <source>Devices</source>
-        <translation>Устройства</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2491"/>
-        <source>Account devices management</source>
-        <translation>Управление устройствами аккаунта</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2535"/>
-        <source>Add device button</source>
-        <translation>Кнопка Добавить устройство</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2538"/>
-        <source>Add device</source>
-        <translation>Добавить устройство</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2644"/>
-        <source>Export on the network</source>
-        <translation>Экспортировать в сеть</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2578"/>
-        <source>Password text input</source>
-        <translation>Ввод текста пароля</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2584"/>
-        <source>Password (required)</source>
-        <translation>Пароль (обязательно)</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2612"/>
-        <source>Cancel account export for linking button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="786"/>
-        <location filename="../accountdetails.ui" line="2615"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2565"/>
-        <source>To add a new device to your Jami account, you export your account on the network. This will generate a pin that must be entered on your new device within 5 minutes of its generation.</source>
-        <translation>Для добавления нового устройства к вашему аккаунту Jami, необходимо экспортировать аккаунт в сеть Jami. Для этого будет создан PIN код, который необходимо ввести на вашем новом устройстве в течение 5 минут после его генерации.</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2641"/>
-        <source>Validate export on DHT for device linking button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2696"/>
-        <source>Your generated pin:</source>
-        <translation>Ваш сгенерированный PIN:</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2709"/>
-        <source>Generated PIN for linking</source>
-        <translation>Сгенерированный PIN для связывания</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2712"/>
-        <source>PIN</source>
-        <translation>PIN</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2722"/>
-        <source>This pin should be entered on your new device within 5 minutes. You may generate a new one at any moment.</source>
-        <translation>Этот PIN должен быть введен на новом устройстве в течение 5 минут. Вы можете сгенерировать новый в любой момент.</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2741"/>
-        <source>Accept PIN generation and quit button</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2744"/>
-        <source>OK</source>
-        <translation>ОК</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2769"/>
-        <source>Banned Contacts</source>
-        <translation>Заблокированные контакты</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2772"/>
-        <source>Account banned contacts management tab</source>
-        <translation>вкладка Управление заблокированными контактами</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="1495"/>
-        <source>Published Address</source>
-        <translation>Публикуемый адрес</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2254"/>
-        <source>CA certificate</source>
-        <translation>Сертификат удостоверяющего центра</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2294"/>
-        <source>User certificate</source>
-        <translation>Сертификат пользователя</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2331"/>
-        <source>Private key</source>
-        <translation>Закрытый ключ</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2346"/>
-        <source>Private key password</source>
-        <translation>Пароль закрытого ключа</translation>
-    </message>
-    <message>
-        <location filename="../accountdetails.ui" line="2435"/>
-        <source>Use default ciphers</source>
-        <translation>Использовать стандартные шифры</translation>
-    </message>
-</context>
-<context>
     <name>AccountItemDelegate</name>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
         <translation>Добавить аккаунт</translation>
+    </message>
+</context>
+<context>
+    <name>AdvancedSIPSettingsWidget</name>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="55"/>
+        <source>Call Settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="102"/>
+        <source>Auto Answer Calls</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="130"/>
+        <source>Enable Custom Ringtone</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="191"/>
+        <source>Connectivity</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="281"/>
+        <source>STUN Address</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="293"/>
+        <source>Use STUN</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="317"/>
+        <source>Use UPnP</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="329"/>
+        <source>Use TURN</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="359"/>
+        <source>TURN Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="391"/>
+        <source>TURN Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="423"/>
+        <source>TURN Address</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="464"/>
+        <source>Media</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="515"/>
+        <source>Enable Video</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="539"/>
+        <source>Video Codecs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.ui" line="692"/>
+        <source>Audio Codecs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.cpp" line="142"/>
+        <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsipsettingwidget.cpp" line="151"/>
+        <source>Add a custom ringtone</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -702,138 +164,142 @@ Jami – это приложение с распределённой архит�
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="40"/>
+        <location filename="../advancedsettingswidget.ui" line="61"/>
         <source>Call Settings</source>
         <translation>Настройки вызовов</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="65"/>
+        <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
         <translation>Разрешить вызовы от недоверенных участников</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="79"/>
+        <location filename="../advancedsettingswidget.ui" line="133"/>
         <source>Auto Answer Calls</source>
         <translation>Автоматически принимать входящие вызовы</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="99"/>
+        <location filename="../advancedsettingswidget.ui" line="161"/>
         <source>Enable Custom Ringtone</source>
         <translation>Использовать свою мелодию звонка</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="120"/>
-        <location filename="../advancedsettingswidget.cpp" line="168"/>
+        <location filename="../advancedsettingswidget.cpp" line="188"/>
         <source>Add a custom ringtone</source>
         <translation>Добавить свою мелодию звонка</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="174"/>
+        <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
         <translation>Сервер имён</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="200"/>
+        <location filename="../advancedsettingswidget.ui" line="275"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="269"/>
+        <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
         <translation>Конфигурация OpenDHT</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="297"/>
+        <location filename="../advancedsettingswidget.ui" line="398"/>
         <source>Enable Proxy</source>
         <translation>Включить прокси</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="358"/>
+        <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
         <translation>Инициализация</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="427"/>
+        <location filename="../advancedsettingswidget.ui" line="530"/>
         <source>Security</source>
         <translation>Безопасность</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="444"/>
+        <location filename="../advancedsettingswidget.ui" line="571"/>
         <source>Private Key Password</source>
         <translation>Пароль закрытого ключа</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="456"/>
+        <location filename="../advancedsettingswidget.ui" line="583"/>
         <source>User Certificate</source>
         <translation>Пользовательский Cертификат</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="483"/>
-        <source>no password</source>
-        <translation>нет пароля</translation>
-    </message>
-    <message>
-        <location filename="../advancedsettingswidget.ui" line="495"/>
+        <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
         <translation>Закрытый ключ</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="507"/>
+        <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
         <translation>Сертификат удостоверяющего центра</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="689"/>
+        <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
         <translation>Связь</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="734"/>
-        <source>        TURN Address</source>
-        <translation>Адрес TURN</translation>
-    </message>
-    <message>
-        <location filename="../advancedsettingswidget.ui" line="773"/>
+        <location filename="../advancedsettingswidget.ui" line="868"/>
         <source>Use STUN</source>
         <translation>Использовать STUN</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="800"/>
+        <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
         <translation>Адрес STUN</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="812"/>
-        <source>        TURN Username</source>
-        <translation>Имя пользователя TURN</translation>
-    </message>
-    <message>
-        <location filename="../advancedsettingswidget.ui" line="824"/>
-        <source>        TURN Password</source>
-        <translation>Пароль TURN</translation>
-    </message>
-    <message>
-        <location filename="../advancedsettingswidget.ui" line="836"/>
+        <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
         <translation>Использовать UPnP</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="848"/>
+        <location filename="../advancedsettingswidget.ui" line="904"/>
         <source>Use TURN</source>
         <translation>Использовать TURN </translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="899"/>
+        <location filename="../advancedsettingswidget.ui" line="934"/>
+        <source>TURN Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="966"/>
+        <source>TURN Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="998"/>
+        <source>TURN Address</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="1039"/>
+        <source>Media</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="1090"/>
+        <source>Enable Video</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../advancedsettingswidget.ui" line="1267"/>
         <source>Audio Codecs</source>
         <translation>Аудио кодеки</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.ui" line="1044"/>
+        <location filename="../advancedsettingswidget.ui" line="1114"/>
         <source>Video Codecs</source>
         <translation>Видео кодеки</translation>
     </message>
     <message>
-        <location filename="../advancedsettingswidget.cpp" line="161"/>
+        <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
         <translation>Аудиофайлы (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
@@ -847,57 +313,47 @@ Jami – это приложение с распределённой архит�
     </message>
 </context>
 <context>
-    <name>BannedContactsWidget</name>
+    <name>BannedItemWidget</name>
     <message>
-        <location filename="../bannedcontactswidget.ui" line="20"/>
+        <location filename="../banneditemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
-        <location filename="../bannedcontactswidget.ui" line="41"/>
-        <source>Banned contacts list</source>
-        <translation>Список запрещенных контактов</translation>
-    </message>
-    <message>
-        <location filename="../bannedcontactswidget.ui" line="69"/>
-        <source>Banned ID</source>
-        <translation>Заблокированный ID</translation>
-    </message>
-    <message>
-        <location filename="../bannedcontactswidget.ui" line="101"/>
-        <source>Deban contact button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bannedcontactswidget.ui" line="104"/>
-        <source>Deban contact, and add to contact list</source>
-        <translation>Разблокировать контакт и добавить в список контактов</translation>
+        <location filename="../banneditemwidget.ui" line="80"/>
+        <source>name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../banneditemwidget.ui" line="104"/>
+        <source>id</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>CallWidget</name>
     <message>
-        <location filename="../callwidget.ui" line="178"/>
+        <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
         <translation>Показать беседы</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="181"/>
+        <location filename="../callwidget.ui" line="187"/>
         <source>Conversations</source>
         <translation>Разговоры</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="362"/>
+        <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="647"/>
+        <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
         <translation>Jami — свободная программа для связи, уважающая свободу и конфиденциальность пользователей.</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="687"/>
+        <location filename="../callwidget.ui" line="693"/>
         <source>
  This is your ID.
 Copy and share it with your friends!
@@ -908,181 +364,158 @@ Copy and share it with your friends!
 </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="800"/>
+        <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
         <translation>Показать Ring ID QR код</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="851"/>
+        <location filename="../callwidget.ui" line="857"/>
         <source>Share ring ID button</source>
         <translation>кнопка Поделиться ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="909"/>
+        <location filename="../callwidget.ui" line="915"/>
         <source>Double-click to copy</source>
         <translation>Двойной клик для копирования</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="950"/>
+        <location filename="../callwidget.ui" line="956"/>
         <source>Error while generating QR Code</source>
         <translation>Ошибка при создании QR кода</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1178"/>
-        <location filename="../callwidget.ui" line="1428"/>
+        <location filename="../callwidget.ui" line="1184"/>
+        <location filename="../callwidget.ui" line="1434"/>
         <source>best name</source>
         <translation>наилучшее имя</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1202"/>
+        <location filename="../callwidget.ui" line="1208"/>
         <source>best Id</source>
         <translation>наилучший ID</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1728"/>
+        <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
         <translation>Кнопка возврата на главную страницу</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1937"/>
+        <location filename="../callwidget.ui" line="1943"/>
         <source>Add to contacts</source>
         <translation>Добавить в контакты</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="196"/>
+        <location filename="../callwidget.ui" line="202"/>
         <source>Show invites</source>
         <translation>Показать приглашения</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="199"/>
+        <location filename="../callwidget.ui" line="205"/>
         <source>Invites</source>
         <translation>Приглашения</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="371"/>
-        <location filename="../callwidget.cpp" line="553"/>
+        <location filename="../callwidget.ui" line="377"/>
+        <location filename="../callwidget.cpp" line="552"/>
         <source>Find a new or existing contact</source>
         <translation>Поиск нового или существующего контакта</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1438"/>
+        <location filename="../callwidget.ui" line="1444"/>
         <source>Wants to talk to you!</source>
         <translation>Хочет поговорить с вами!</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1511"/>
+        <location filename="../callwidget.ui" line="1517"/>
         <source>Answer incoming call button</source>
         <translation>Кнопка ответа на входящий вызов </translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1583"/>
+        <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
         <translation>Кнопка игнорирования входящего вызова</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1533"/>
+        <location filename="../callwidget.ui" line="1539"/>
         <source>Answer</source>
         <translation>Ответить</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1611"/>
+        <location filename="../callwidget.ui" line="1617"/>
         <source>Ignore</source>
         <translation>Игнорировать</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1274"/>
+        <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
         <translation>Отменить исходящий вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.ui" line="1299"/>
+        <location filename="../callwidget.ui" line="1305"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="333"/>
+        <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
         <translation>Начать видеовызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="344"/>
+        <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
         <translation>Начать голосовой вызов</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="360"/>
+        <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
         <translation>Очистить разговор</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="367"/>
+        <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
         <translation>Удалить контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="374"/>
+        <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
         <translation>Заблокировать контакт</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="385"/>
+        <location filename="../callwidget.cpp" line="384"/>
         <source>Copy number</source>
         <translation>Копировать номер</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="562"/>
+        <location filename="../callwidget.cpp" line="561"/>
         <source>Search your received invitations</source>
         <translation>Поиск по полученным приглашениям</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="944"/>
+        <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
         <translation>Свяжитесь со мной в Jami</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="944"/>
+        <location filename="../callwidget.cpp" line="943"/>
         <source>My Id is : </source>
         <translation>Мой ID:</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="293"/>
-        <source>Message incoming from %1</source>
-        <translation>Сообщение от %1</translation>
-    </message>
-    <message>
-        <location filename="../callwidget.cpp" line="848"/>
+        <location filename="../callwidget.cpp" line="847"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="853"/>
+        <location filename="../callwidget.cpp" line="852"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../callwidget.cpp" line="676"/>
+        <location filename="../callwidget.cpp" line="675"/>
         <source>Call incoming from %1</source>
         <translation>Звонок от %1</translation>
-    </message>
-</context>
-<context>
-    <name>ContactDialog</name>
-    <message>
-        <location filename="../contactdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Диалог</translation>
-    </message>
-    <message>
-        <location filename="../contactdialog.ui" line="26"/>
-        <source>New Contact</source>
-        <translation>Новый Контакт</translation>
-    </message>
-    <message>
-        <location filename="../contactdialog.ui" line="33"/>
-        <source>Enter a name...</source>
-        <translation>Введите имя…</translation>
     </message>
 </context>
 <context>
@@ -1093,46 +526,51 @@ Copy and share it with your friends!
         <translation>Удаление аккаунта</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="55"/>
+        <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
         <translation>Вы действительно хотите удалить указанный аккаунт?</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="144"/>
+        <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
         <translation>Если этот аккаунт не был экспортирован или привязан к другому устройству, он будет безвозвратно потерян</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="226"/>
+        <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
         <translation>Удалить аккаунт безвозвратно</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="232"/>
+        <location filename="../deleteaccountdialog.ui" line="241"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="269"/>
+        <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
         <translation>Отменить удаление аккаунта</translation>
     </message>
     <message>
-        <location filename="../deleteaccountdialog.ui" line="275"/>
+        <location filename="../deleteaccountdialog.ui" line="284"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
 </context>
 <context>
-    <name>Form</name>
+    <name>DeviceItemWidget</name>
     <message>
-        <location filename="../deviceeditwidget.ui" line="14"/>
+        <location filename="../deviceitemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../deviceeditwidget.ui" line="36"/>
-        <source>PushButton</source>
+        <location filename="../deviceitemwidget.ui" line="105"/>
+        <source>Device Id</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../deviceitemwidget.ui" line="143"/>
+        <source>this device</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1155,78 +593,88 @@ Copy and share it with your friends!
     </message>
 </context>
 <context>
-    <name>LinkDevWidget</name>
+    <name>LinkDeviceDialog</name>
     <message>
-        <location filename="../linkdevwidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
-        <location filename="../linkdevwidget.ui" line="93"/>
-        <source>Add A New Device</source>
-        <translation>Добавить новое устройство</translation>
-    </message>
-    <message>
-        <location filename="../linkdevwidget.ui" line="155"/>
-        <source>To add a new device, enter your account password:</source>
-        <translation>Чтобы добавить новое устройство, введите пароль от вашего аккаунта:</translation>
-    </message>
-    <message>
-        <location filename="../linkdevwidget.ui" line="250"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../linkdevwidget.ui" line="279"/>
-        <source>Enter</source>
+        <location filename="../linkdevicedialog.ui" line="14"/>
+        <source>Dialog</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.ui" line="365"/>
-        <source>Exporting account on the network</source>
-        <translation>Экспорт аккаунта в сеть</translation>
+        <location filename="../linkdevicedialog.ui" line="62"/>
+        <source>Enter your account password</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.ui" line="509"/>
-        <source>Your generated pin:</source>
-        <translation>Ваш сгенерированный PIN:</translation>
+        <location filename="../linkdevicedialog.ui" line="117"/>
+        <source>Password</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.ui" line="609"/>
-        <source>This pin and the account password should be entered in your device within 5 minutes.</source>
-        <translation>Этот PIN с паролем аккаунта должны быть введены на новом устройстве в течение 5 минут. </translation>
+        <location filename="../linkdevicedialog.ui" line="184"/>
+        <source>Ok</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.ui" line="652"/>
+        <location filename="../linkdevicedialog.ui" line="218"/>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.ui" line="279"/>
+        <source>Exporting account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.ui" line="402"/>
+        <source>Your PIN is</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.ui" line="432"/>
+        <source>PIN</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.ui" line="477"/>
+        <source>This pin and the account password should be entered in your device within 10 minutes.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.cpp" line="81"/>
-        <source>Your account password was incorrect</source>
-        <translation>Пароль аккаунта неверен</translation>
+        <location filename="../linkdevicedialog.cpp" line="34"/>
+        <source>Link Another Device</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../linkdevwidget.cpp" line="92"/>
+        <location filename="../linkdevicedialog.cpp" line="96"/>
+        <source>Incorrect password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../linkdevicedialog.cpp" line="110"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation>Что-то пошло не так, повторите попытку позднее.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="74"/>
+        <location filename="../mainwindow.cpp" line="83"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="82"/>
+        <location filename="../mainwindow.cpp" line="94"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="99"/>
+        <location filename="../mainwindow.cpp" line="111"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -1234,6 +682,69 @@ Please try again later.</source>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
         <translation>Jami</translation>
+    </message>
+</context>
+<context>
+    <name>NameRegistrationDialog</name>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="35"/>
+        <source>Set Registered Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="163"/>
+        <source>Enter your account password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="244"/>
+        <source>Password text input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="250"/>
+        <source>Password text entry</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="256"/>
+        <source>Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="323"/>
+        <source>Register</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="357"/>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="424"/>
+        <source>Registering Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="548"/>
+        <source>Something went wrong</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.ui" line="618"/>
+        <source>Close</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.cpp" line="82"/>
+        <source>Incorrect password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../nameregistrationdialog.cpp" line="85"/>
+        <source>Network error</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1254,47 +765,62 @@ Please try again later.</source>
         <translation>Добро пожаловать в</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="179"/>
+        <location filename="../newwizardwidget.ui" line="185"/>
         <source>Welcome Logo</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="228"/>
+        <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="234"/>
+        <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="240"/>
+        <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
         <translation>Создать учётную запись Jami</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="266"/>
+        <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="272"/>
+        <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="275"/>
+        <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
         <translation>Привязать это устройство к аккаунту</translation>
     </message>
     <message>
+        <location filename="../newwizardwidget.ui" line="328"/>
+        <source>Create Jami SIP account button</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="334"/>
+        <source>Push button for Jami SIP account creation start trigger</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../newwizardwidget.ui" line="340"/>
+        <source>Create a SIP account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="405"/>
         <source>Link this device to an existing account</source>
         <translation>Привязать это устройство к существующему аккаунту</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="399"/>
+        <location filename="../newwizardwidget.ui" line="469"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1308,49 +834,51 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="461"/>
+        <location filename="../newwizardwidget.ui" line="531"/>
         <source>Enter your pin:</source>
         <translation>Введите ваш PIN:</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="529"/>
+        <location filename="../newwizardwidget.ui" line="599"/>
         <source>Or import a file:</source>
         <translation>Или импортируйте из файла:</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="556"/>
+        <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
         <translation>Привязать из архивного файла аккаунта</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="559"/>
-        <location filename="../newwizardwidget.cpp" line="86"/>
-        <location filename="../newwizardwidget.cpp" line="227"/>
+        <location filename="../newwizardwidget.ui" line="629"/>
+        <location filename="../newwizardwidget.cpp" line="83"/>
+        <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
         <translation>(нет)</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="635"/>
+        <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="729"/>
+        <location filename="../newwizardwidget.ui" line="799"/>
+        <location filename="../newwizardwidget.ui" line="1586"/>
         <source>Profile</source>
         <translation>Профиль</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="883"/>
+        <location filename="../newwizardwidget.ui" line="953"/>
+        <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
         <translation>Имя профиля</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="957"/>
+        <location filename="../newwizardwidget.ui" line="1027"/>
         <source>Account</source>
         <translation>Аккаунт</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1143"/>
+        <location filename="../newwizardwidget.ui" line="1136"/>
         <source>Register your username.
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
@@ -1359,138 +887,195 @@ instead of using your ID.</source>
 После регистрации только вы сможете его использовать. Ваши друзья смогут связаться с вами по вашему имени вместо ID.</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1149"/>
+        <location filename="../newwizardwidget.ui" line="1142"/>
         <source>Public username checkbox</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1152"/>
+        <location filename="../newwizardwidget.ui" line="1145"/>
         <source>Checkbox selecting if the user wants a public username</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1155"/>
+        <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
         <translation>Зарегистрировать публичное имя</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1234"/>
+        <location filename="../newwizardwidget.ui" line="1367"/>
         <source>Public username edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1240"/>
+        <location filename="../newwizardwidget.ui" line="1373"/>
         <source>Choose your username</source>
         <translation>Выберите ваше имя пользователя</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1306"/>
+        <location filename="../newwizardwidget.ui" line="1289"/>
         <source>Password text input</source>
         <translation>Ввод текста пароля</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1312"/>
+        <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1318"/>
+        <location filename="../newwizardwidget.ui" line="1301"/>
+        <location filename="../newwizardwidget.ui" line="2213"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1384"/>
-        <location filename="../newwizardwidget.ui" line="1390"/>
+        <location filename="../newwizardwidget.ui" line="1211"/>
+        <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
         <translation>Ввод текста подтверждения пароля</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1396"/>
+        <location filename="../newwizardwidget.ui" line="1223"/>
         <source>Confirm password</source>
         <translation>Подтверждение пароля</translation>
     </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1814"/>
+        <source>SIP Account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1973"/>
+        <source>SIP Server edit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="1979"/>
+        <source>Server</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2045"/>
+        <source>SIP proxy input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2051"/>
+        <source>SIP proxy text entry</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2057"/>
+        <source>Proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2123"/>
+        <source>SIP username input</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2129"/>
+        <source>SIP Password text entry</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2135"/>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.ui" line="2201"/>
+        <location filename="../newwizardwidget.ui" line="2207"/>
+        <source>SIP Password text input</source>
+        <translation type="unfinished"/>
+    </message>
     <message utf8="true">
-        <location filename="../newwizardwidget.ui" line="1465"/>
+        <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
         <translation>Идёт создание вашего аккаунта Jami…</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1539"/>
+        <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
         <translation>кнопка Предыдущая страница</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1545"/>
+        <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
         <translation>нажмите кнопку для перехода к предыдущей странице Мастера</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1548"/>
+        <location filename="../newwizardwidget.ui" line="2365"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1579"/>
+        <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1585"/>
+        <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1588"/>
+        <location filename="../newwizardwidget.ui" line="2405"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1625"/>
+        <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
         <translation>Кнопка Следующая страница</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1631"/>
+        <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
         <translation>Нажмите кнопку для перехода к следующей странице Мастера</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.ui" line="1634"/>
+        <location filename="../newwizardwidget.ui" line="2451"/>
         <source>Next</source>
         <translation>Далее</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="78"/>
+        <location filename="../newwizardwidget.cpp" line="75"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="80"/>
+        <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
         <translation>Архивы Jami (*.gz); Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="126"/>
+        <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
         <translation>Ваша учетная запись должна быть перенесена. Введите ваш пароль.</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="166"/>
+        <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
         <translation>Переносим ваш аккаунт Jami…</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="168"/>
+        <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
         <translation>Импорт архива с аккаунтом…</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="170"/>
+        <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
         <translation>Идёт создание вашего аккаунта Jami…</translation>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="469"/>
+        <location filename="../newwizardwidget.cpp" line="422"/>
+        <source>Generating your SIP account...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
         <translation>Ошибка при создании аккаунта</translation>
     </message>
@@ -1503,37 +1088,32 @@ instead of using your ID.</source>
         <translation>Изменить пароль аккаунта</translation>
     </message>
     <message>
-        <location filename="../passworddialog.ui" line="58"/>
+        <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
         <translation>Введите текущий пароль</translation>
     </message>
     <message>
-        <location filename="../passworddialog.ui" line="90"/>
+        <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
         <translation>Введите новый пароль</translation>
     </message>
     <message>
-        <location filename="../passworddialog.ui" line="106"/>
+        <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
         <translation>Подтвердите новый пароль</translation>
     </message>
     <message>
-        <location filename="../passworddialog.ui" line="136"/>
+        <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
         <translation>Подтвердить</translation>
     </message>
     <message>
-        <location filename="../passworddialog.ui" line="155"/>
+        <location filename="../passworddialog.ui" line="290"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../passworddialog.cpp" line="90"/>
-        <source>Password Changed Successfully</source>
-        <translation>Пароль успешно изменён</translation>
-    </message>
-    <message>
-        <location filename="../passworddialog.cpp" line="105"/>
+        <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
         <translation>Текущий пароль неправилен</translation>
     </message>
@@ -1554,17 +1134,17 @@ instead of using your ID.</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.ui" line="129"/>
+        <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="91"/>
+        <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../photoboothwidget.cpp" line="93"/>
+        <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
         <translation>Файлы изображений (*.jpg *.jpeg *.png)</translation>
     </message>
@@ -1572,12 +1152,12 @@ instead of using your ID.</source>
 <context>
     <name>PrivateBridging</name>
     <message>
-        <location filename="../messagewebview.cpp" line="363"/>
+        <location filename="../messagewebview.cpp" line="374"/>
         <source>Choose File</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../messagewebview.cpp" line="363"/>
+        <location filename="../messagewebview.cpp" line="374"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
     </message>
@@ -1585,83 +1165,30 @@ instead of using your ID.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils.cpp" line="195"/>
+        <location filename="../utils.cpp" line="183"/>
         <source>No default mail client found</source>
         <translation>Не найден почтовый клиент по умолчанию</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="67"/>
+        <location filename="../deviceitemwidget.cpp" line="43"/>
+        <location filename="../deviceitemwidget.cpp" line="85"/>
         <source>Edit Device Name</source>
         <translation>Изменить имя устройства</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="73"/>
+        <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
         <translation>Отвязать устройство от аккаунта</translation>
     </message>
     <message>
-        <location filename="../settingsitemwidget.cpp" line="89"/>
-        <source>Unblock Contact</source>
-        <translation>Разблокировать контакт</translation>
+        <location filename="../deviceitemwidget.cpp" line="80"/>
+        <source>Save new device name</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../newwizardwidget.cpp" line="35"/>
-        <source>Jami account</source>
-        <comment>Default alias for new Jami account</comment>
-        <translation>Аккаунт Jami</translation>
-    </message>
-</context>
-<context>
-    <name>RegNameDialog</name>
-    <message>
-        <location filename="../regnamedialog.ui" line="29"/>
-        <source>Set Registered Name</source>
-        <translation>Установить зарегистрированное имя</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="93"/>
-        <source>Are you sure you would like to register this name?</source>
-        <translation>Вы уверены, что хотите зарегистрировать это имя?</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="130"/>
-        <source>Once associated to this account, it cannot be changed.</source>
-        <translation>После связи с аккаунтом изменить будет нельзя</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="167"/>
-        <source>Your new registered name would be:</source>
-        <translation>Ваше зарегистрированное имя будет:</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="283"/>
-        <source>Confirm Registration</source>
-        <translation>Подтвердить регистрацию </translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="315"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="453"/>
-        <source>The name has been successfully registered!</source>
-        <translation>Имя было успешно зарегистрировано.</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="512"/>
-        <source>Something went wrong.</source>
-        <translation>Что-то пошло не так.</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="549"/>
-        <source>Please try again later</source>
-        <translation>Пожалуйста, повторите попытку позднее.</translation>
-    </message>
-    <message>
-        <location filename="../regnamedialog.ui" line="602"/>
-        <source>Your account does not have a registered name</source>
-        <translation>Ваш аккаунт не имеет зарегистрированного имени</translation>
+        <location filename="../banneditemwidget.cpp" line="39"/>
+        <source>Add as contact</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1673,49 +1200,6 @@ instead of using your ID.</source>
     </message>
 </context>
 <context>
-    <name>SetAvatarDialog</name>
-    <message>
-        <location filename="../setavatardialog.ui" line="32"/>
-        <source>Change Your Avatar Image</source>
-        <translation>Изменить изображение аватара</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.ui" line="134"/>
-        <source>Save</source>
-        <translation>Сохранить</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.ui" line="153"/>
-        <source>Take Picture</source>
-        <translation>Сделать фото</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.ui" line="169"/>
-        <source>Camera</source>
-        <translation>Камера</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.ui" line="185"/>
-        <source>Select A File</source>
-        <translation>Выбрать файл</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.ui" line="204"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.cpp" line="143"/>
-        <source>Open Image</source>
-        <translation>Открыть изображение</translation>
-    </message>
-    <message>
-        <location filename="../setavatardialog.cpp" line="143"/>
-        <source>Image Files (*.jpg *.jpeg *.png *.bmp)</source>
-        <translation>Файлы изображений (*.jpg *.jpeg *.png *.bmp)</translation>
-    </message>
-</context>
-<context>
     <name>SettingsWidget</name>
     <message>
         <location filename="../settingswidget.ui" line="14"/>
@@ -1723,283 +1207,315 @@ instead of using your ID.</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="147"/>
+        <location filename="../settingswidget.ui" line="141"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="254"/>
-        <location filename="../settingswidget.ui" line="1461"/>
+        <location filename="../settingswidget.ui" line="229"/>
         <source>Account</source>
         <translation>Аккаунт</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="298"/>
+        <location filename="../settingswidget.ui" line="267"/>
+        <location filename="../settingswidget.ui" line="503"/>
         <source>General</source>
         <translation>Общие</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="342"/>
+        <location filename="../settingswidget.ui" line="305"/>
+        <location filename="../settingswidget.ui" line="3416"/>
         <source>Audio / Video</source>
         <translation>Аудио/Видео</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="524"/>
+        <location filename="../settingswidget.ui" line="542"/>
         <source>System</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="560"/>
-        <source>enable notifications checkbox</source>
-        <translation>флажок Включить уведомления</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="566"/>
+        <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
         <translation>Включить уведомления</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="588"/>
-        <source>keep minimized on close checkbox</source>
-        <translation>флажок Сворачивать вместо закрытия</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="594"/>
+        <location filename="../settingswidget.ui" line="653"/>
         <source>Keep minimized on close</source>
         <translation>Сворачивать вместо закрытия</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="635"/>
+        <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
         <translation>Папка для загрузок</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="716"/>
-        <source>Recordings</source>
-        <translation>Записи</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="754"/>
+        <location filename="../settingswidget.ui" line="811"/>
         <source>Save in</source>
         <translation>Сохранить в</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="829"/>
+        <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
         <translation>Всегда записывать</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="858"/>
+        <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
         <translation>Обновления</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="897"/>
-        <source>Autamatic update checks checkbox</source>
-        <translation>флажок Автоматическая проверка наличия обновлений</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="903"/>
+        <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
         <translation>Проверять обновления автоматически каждые</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="927"/>
+        <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
         <translation>Интервал проверки обновлений (дней)</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="930"/>
+        <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
         <translation>дней</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="986"/>
+        <location filename="../settingswidget.ui" line="1081"/>
         <source>Check for updates now button</source>
         <translation>Кнопка Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="994"/>
+        <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
         <translation>Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="1523"/>
-        <source>Registered Name</source>
-        <translation>Зарегистрированное Имя</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="1583"/>
-        <source>ID</source>
-        <translation>ID</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="1633"/>
+        <location filename="../settingswidget.ui" line="3027"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="1709"/>
+        <location filename="../settingswidget.ui" line="1418"/>
+        <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
         <translation>Задействовать</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="1778"/>
+        <location filename="../settingswidget.ui" line="607"/>
+        <source>toggle enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="650"/>
+        <source>Toggle keep minimized on close</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="764"/>
+        <source>Call Recordings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1005"/>
+        <source>Toggle automatic updates</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1231"/>
+        <source>Jami Account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1453"/>
+        <location filename="../settingswidget.ui" line="2761"/>
+        <source>Profile</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1567"/>
+        <location filename="../settingswidget.ui" line="2875"/>
+        <source>Identity</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1614"/>
+        <source>Id</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1673"/>
+        <source>Registered name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1721"/>
         <source>Type here to register a username</source>
         <translation>Введите имя пользователя для регистрации</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="1934"/>
+        <location filename="../settingswidget.ui" line="1755"/>
+        <source>Register</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
         <translation>Изменить пароль</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2012"/>
+        <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
         <translation>Экспортировать учетную запись</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2038"/>
+        <location filename="../settingswidget.ui" line="1909"/>
+        <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
         <translation>Удалить аккаунт</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2125"/>
-        <location filename="../settingswidget.cpp" line="543"/>
-        <location filename="../settingswidget.cpp" line="572"/>
+        <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
         <translation>Привязанные устройства</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2185"/>
+        <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
         <translation>Привязать другое устройство</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2277"/>
-        <location filename="../settingswidget.cpp" line="544"/>
-        <location filename="../settingswidget.cpp" line="571"/>
-        <source>Blocked Contacts</source>
-        <translation>Заблокированные контакты</translation>
+        <location filename="../settingswidget.ui" line="2142"/>
+        <source>Banned Contacts</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2371"/>
+        <location filename="../settingswidget.ui" line="3788"/>
+        <source>Format</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="3831"/>
+        <source>Video device framerate selector</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="3967"/>
+        <source>Preview unavailable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2359"/>
+        <location filename="../settingswidget.ui" line="3187"/>
         <source>Advanced Account Settings</source>
         <translation>Дополнительные настройки аккаунта</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2611"/>
+        <location filename="../settingswidget.ui" line="2554"/>
+        <source>SIP Account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2925"/>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2958"/>
+        <source>Hostname</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="2991"/>
+        <source>Proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../settingswidget.ui" line="3461"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2648"/>
+        <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
         <translation>Микрофон</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2683"/>
+        <location filename="../settingswidget.ui" line="3551"/>
         <source>Audio input device selector</source>
         <translation>Выбор входного аудиоустройства</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2717"/>
+        <location filename="../settingswidget.ui" line="3585"/>
         <source>Output Device</source>
         <translation>Устройство вывода</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2752"/>
+        <location filename="../settingswidget.ui" line="3625"/>
         <source>Choose the output device</source>
         <translation>Выберите устройство вывода</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2809"/>
+        <location filename="../settingswidget.ui" line="3682"/>
         <source>Video</source>
         <translation>Видео</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2831"/>
+        <location filename="../settingswidget.ui" line="3720"/>
         <source>Device</source>
         <translation>Устройство</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2872"/>
+        <location filename="../settingswidget.ui" line="3766"/>
         <source>Video device selector</source>
         <translation>Селектор видеоустройств</translation>
     </message>
     <message>
-        <location filename="../settingswidget.ui" line="2891"/>
-        <source>Resolution</source>
-        <translation>Разрешение</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="2932"/>
-        <source>Video device resolution selector</source>
-        <translation>Селектор разрешения видеоустройства</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.ui" line="3074"/>
-        <source>Preview unavailable during call</source>
-        <translation>Предпросмотр недоступен во время звонка</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.cpp" line="74"/>
-        <source>Enter the displayed name</source>
-        <translation>Введите отображаемое имя</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.cpp" line="391"/>
-        <location filename="../settingswidget.cpp" line="393"/>
+        <location filename="../settingswidget.cpp" line="459"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
         <translation>Зарегистрированное имя пользователя не должно содержать пробелов и быть как минимум три символа длиной</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="400"/>
+        <location filename="../settingswidget.cpp" line="466"/>
         <source>This name is already taken</source>
         <translation>Это имя пользователя уже занято</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="402"/>
-        <source>This registered name is already taken</source>
-        <translation>Зарегистрированное имя пользователя уже занято</translation>
+        <location filename="../settingswidget.cpp" line="92"/>
+        <location filename="../settingswidget.cpp" line="110"/>
+        <source>Enter an alias</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="409"/>
-        <source>This name is available</source>
-        <translation>Имя пользователя доступно</translation>
-    </message>
-    <message>
-        <location filename="../settingswidget.cpp" line="411"/>
+        <location filename="../settingswidget.cpp" line="473"/>
         <source>Register this name</source>
         <translation>Зарегистрировать новое имя</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="493"/>
+        <location filename="../settingswidget.cpp" line="550"/>
         <source>Remove Device</source>
         <translation>Удалить устройство</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="494"/>
+        <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
         <translation>Введите пароль аккаунта для удаления этого устройства</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="500"/>
-        <source>Please confirm that you wish to remove this device</source>
-        <translation>Пожалуйста, подтвердите удаление этого устройства</translation>
+        <location filename="../settingswidget.cpp" line="558"/>
+        <source>Are you sure you wish to remove this device?</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="530"/>
+        <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
         <translation>Экспортировать аккаунт сюда</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="785"/>
+        <location filename="../settingswidget.cpp" line="887"/>
         <source>Select A Folder For Your Downloads</source>
         <translation>Выберите папку для ваших загрузок</translation>
     </message>
     <message>
-        <location filename="../settingswidget.cpp" line="809"/>
+        <location filename="../settingswidget.cpp" line="904"/>
         <source>Select A Folder For Your Recordings</source>
         <translation>Выберите папку для ваших записей</translation>
     </message>
