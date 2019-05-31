@@ -1264,6 +1264,7 @@ CallWidget::setCallPanelVisibility(bool visible)
 void
 CallWidget::ShowContextMenu(const QPoint& pos)
 {
+    Q_UNUSED(pos);
     QPoint globalMousePos = QCursor::pos();
     const QMimeData* mimeData = clipboard_->mimeData();
 

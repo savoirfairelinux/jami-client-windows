@@ -1,7 +1,7 @@
 /**************************************************************************
 * Copyright (C) 2015-2018 by Savoir-faire Linux                           *
 * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
-* Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+* Author: Anthony LÃ©onard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
