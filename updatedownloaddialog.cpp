@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "downloadbar.h"
-#include "ui_downloadbar.h"
+#include "updatedownloaddialog.h"
+#include "ui_updatedownloaddialog.h"
 
 updateDownloadDialog::updateDownloadDialog(QWidget* parent)
     : QDialog(parent)

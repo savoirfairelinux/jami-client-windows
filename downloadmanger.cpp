@@ -15,12 +15,13 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-#include "downloadbar.h"
 #include "downloadmanger.h"
 
-#include <windows.h>
+#include "updatedownloaddialog.h"
 
 #include <QMessageBox>
+
+#include <windows.h>
 
 DownloadManager::DownloadManager(QObject* parent)
     : QObject(parent)

@@ -23,7 +23,7 @@
 #include <QtCore>
 #include <QtNetwork>
 
-#include "downloadbar.h"
+#include "updatedownloaddialog.h"
 
 class QSslError;
 
