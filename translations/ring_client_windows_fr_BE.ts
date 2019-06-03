@@ -608,12 +608,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
@@ -710,12 +710,12 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
@@ -1349,7 +1349,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>

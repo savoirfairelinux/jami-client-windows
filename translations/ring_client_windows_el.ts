@@ -97,7 +97,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Χρήση STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
@@ -107,7 +107,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Χρήση TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
@@ -127,22 +127,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Μέσα</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="515"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Ενεργοποίση βίνταο</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Κωδικοποιητές βίντεο</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Κωδικοποιητές ήχου</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
@@ -280,12 +280,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Μέσα</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1090"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Ενεργοποίση βίνταο</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
@@ -603,17 +603,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Συνθηματικό</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Εντάξει</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
@@ -705,17 +705,17 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Συνθηματικό</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Εγγραφή</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
@@ -740,7 +740,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Σφάλμα δικτύου</translation>
     </message>
 </context>
 <context>
@@ -961,7 +961,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Διαμεσολαβητής</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
@@ -976,7 +976,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Όνομα χρήστη</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2201"/>
@@ -1323,7 +1323,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Προφίλ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>
@@ -1349,7 +1349,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Εγγραφή</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
@@ -1411,17 +1411,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2925"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Όνομα χρήστη</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2958"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Hostname</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2991"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Διαμεσολαβητής</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3461"/>

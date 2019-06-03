@@ -68,47 +68,47 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="55"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de llamada</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="102"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Auto-responder llamadas</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="130"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Activar configuración de timbre</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Conectividad</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>Dirección STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Utilizar STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Usar UPnP (Universal Plug and Play)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Usar TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
@@ -128,32 +128,32 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Medios</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="515"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar vídeo</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Codecs de vídeo</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Codecs de audio</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Ficheros de audio (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Añadir un timbre a elección</translation>
     </message>
 </context>
 <context>
@@ -281,12 +281,12 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Medios</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1090"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar vídeo</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
@@ -317,7 +317,7 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../banneditemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
@@ -560,7 +560,7 @@ Este es tu ID.
     <message>
         <location filename="../deviceitemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
@@ -570,7 +570,7 @@ Este es tu ID.
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>este dispositivo</translation>
     </message>
 </context>
 <context>
@@ -596,7 +596,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Mensaje</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
@@ -606,22 +606,22 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>Aceptar</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation type="unfinished"/>
+        <translation>Exportando cuenta</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
@@ -631,7 +631,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
@@ -641,23 +641,24 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Conectar otro dispositivo</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña incorrecta</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Algo falló.
+Por favor inténtelo de nuevo más tarde.</translation>
     </message>
 </context>
 <context>
@@ -688,7 +689,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="35"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Configurar nombre registrado</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
@@ -698,27 +699,27 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de constraseña</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de texto para contraseña</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Registrar</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
@@ -733,17 +734,17 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña incorrecta</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Error en la red</translation>
     </message>
 </context>
 <context>
@@ -951,7 +952,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>
         <source>SIP Account</source>
-        <translation type="unfinished"/>
+        <translation>Cuenta SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
@@ -976,12 +977,12 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de nombre de usuario SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
@@ -991,7 +992,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2201"/>
@@ -1338,23 +1339,23 @@ en lugar de usar su ID.</translation>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Perfil</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>Identidad</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Id</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1673"/>
         <source>Registered name</source>
-        <translation type="unfinished"/>
+        <translation>Nombre registrado</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
@@ -1364,7 +1365,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Registrar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
@@ -1395,7 +1396,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Contactos bloqueados</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
@@ -1421,22 +1422,22 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
         <source>SIP Account</source>
-        <translation type="unfinished"/>
+        <translation>Cuenta SIP</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2925"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2958"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Nombre del servidor</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2991"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3461"/>

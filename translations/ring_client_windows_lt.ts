@@ -566,7 +566,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>Įrenginio ID</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -602,7 +602,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite savo paskyros slaptažodį</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -627,7 +627,7 @@ Nukopijuokite jį ir dalinkitės juo su savo draugais!
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų PIN yra</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -695,7 +695,7 @@ Vėliau bandykite dar kartą.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite savo paskyros slaptažodį</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -1334,7 +1334,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami paskyra</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1514,7 +1514,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Ar tikrai norite pašalinti šį įrenginį?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>

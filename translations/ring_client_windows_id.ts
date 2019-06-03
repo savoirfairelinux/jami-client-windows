@@ -1323,7 +1323,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>

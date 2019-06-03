@@ -613,7 +613,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ezeztatu</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
@@ -638,7 +638,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Itxi</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
@@ -715,7 +715,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Ezeztatu</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
@@ -730,7 +730,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Itxi</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
