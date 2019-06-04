@@ -89,4 +89,6 @@ private:
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
     QMetaObject::Connection screenChangedConnection_;
+
+    QTimer *updateTimer_;
 };

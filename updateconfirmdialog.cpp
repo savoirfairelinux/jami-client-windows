@@ -24,8 +24,8 @@ UpdateConfirmDialog::UpdateConfirmDialog(QWidget* parent)
 {
     ui->setupUi(this);
 
-    connect(ui->btnUpdateAccept, &QPushButton::clicked, this, &UpdateConfirmDialog::on_updateAcceptBtn_clicked);
-    connect(ui->btnUpdateCancel, &QPushButton::clicked, this, &UpdateConfirmDialog::on_updateCancelBtn_clicked);
+    connect(ui->btnUpdateAccept, SIGNAL(clicked()), this, SLOT(on_updateAcceptBtn_clicked()));
+    connect(ui->btnUpdateCancel, SIGNAL(clicked()), this, SLOT(on_updateCancelBtn_clicked()));
 
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
