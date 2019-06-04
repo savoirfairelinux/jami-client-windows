@@ -64,6 +64,12 @@ namespace Utils
     void setStackWidget(QStackedWidget *stack, QWidget *widget);
     void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
     void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
+    const char* WinGetEnv(const char* name);
+
+    // updates
+    void cleanTempDir();
+    void checkForUpdates(bool withUI = false, QWidget* parent = nullptr);
+    void applyUpdates(QWidget* parent = nullptr);
 
     // names
     std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);

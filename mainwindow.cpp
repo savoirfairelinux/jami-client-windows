@@ -166,6 +166,13 @@ MainWindow::MainWindow(QWidget* parent)
 
     lastScr_ = startScreen;
 
+    // check for updates and start automatic update check
+    Utils::checkForUpdates(false, this);
+    updateTimer_ = new QTimer(this);
+    connect(updateTimer_, &QTimer::timeout, [this]() { Utils::checkForUpdates(false, this); });
+    long updateCheckDelay = 5000;//3 * 24 * 60 * 60 * 1000;
+    updateTimer_->start(updateCheckDelay);
+
 #ifdef DEBUG_STYLESHEET
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout,
@@ -187,6 +194,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+    updateTimer_->stop();
     delete ui;
 }
 

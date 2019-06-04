@@ -35,7 +35,7 @@
 
 #include <ciso646>
 
-#include "downloadmanger.h"
+#include "downloadmanager.h"
 #include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "runguard.h"
@@ -265,20 +265,6 @@ main(int argc, char* argv[])
     });
 #endif
 
-    //Delet all logs and msi in the %TEMP% directory before launching
-    QString dir = QString(DownloadManager::WinGetEnv("TEMP"));
-    QDir log_dir(dir, {"jami*.log"});
-    for (const QString& filename : log_dir.entryList()) {
-        log_dir.remove(filename);
-    }
-    QDir msi_dir(dir, {"jami*.msi"});
-    for (const QString& filename : msi_dir.entryList()) {
-        msi_dir.remove(filename);
-    }
-    QDir version_dir(dir, {"version"});
-    for (const QString& filename : version_dir.entryList()) {
-        version_dir.remove(filename);
-    }
     auto ret = a.exec();
 
 #ifdef Q_OS_WIN
