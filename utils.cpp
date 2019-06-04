@@ -37,12 +37,16 @@
 #include <QPropertyAnimation>
 #include <QApplication>
 #include <QFile>
+#include <QMessageBox>
 
 #include <globalinstances.h>
 
 #include "pixbufmanipulator.h"
 #include "globalsystemtray.h"
 #include "lrcinstance.h"
+#include "downloadmanager.h"
+#include "updateconfirmdialog.h"
+#include "version.h"
 
 bool
 Utils::CreateStartupLink()
@@ -230,6 +234,118 @@ void Utils::showSystemNotification(QWidget* widget,
     GlobalSystemTray::instance()
         .showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
+}
+
+const char*
+Utils::WinGetEnv(const char* name)
+{
+    const DWORD buffSize = 65535;
+    static char buffer[buffSize];
+    if (GetEnvironmentVariableA(name, buffer, buffSize)) {
+        return buffer;
+    } else {
+        return 0;
+    }
+}
+
+void
+Utils::cleanUpdateFiles()
+{
+    // Delete all logs and msi in the %TEMP% directory before launching
+    QString dir = QString(Utils::WinGetEnv("TEMP"));
+    QDir log_dir(dir, { "jami*.log" });
+    for (const QString& filename : log_dir.entryList()) {
+        log_dir.remove(filename);
+    }
+    QDir msi_dir(dir, { "jami*.msi" });
+    for (const QString& filename : msi_dir.entryList()) {
+        msi_dir.remove(filename);
+    }
+    QDir version_dir(dir, { "version" });
+    for (const QString& filename : version_dir.entryList()) {
+        version_dir.remove(filename);
+    }
+}
+
+void
+Utils::checkForUpdates(bool withUI, QWidget* parent)
+{
+    Utils::cleanUpdateFiles();
+    QUrl url = QUrl("https://dl.jami.net/windows/version");
+    QString downloadpath = WinGetEnv("TEMP");
+    Utils::oneShotConnect(&DownloadManager::instance(),
+                          &DownloadManager::downloadFinished,
+        [parent, withUI, downloadpath](int status) {
+            if (status != 200) {
+                if (withUI)
+                    QMessageBox::critical(0,
+                        QObject::tr("Update"),
+                        QObject::tr("Version cannot be verified"));
+                return;
+            }
+
+            QFile file(downloadpath + "/" + "version");
+            if (!file.open(QIODevice::ReadOnly)) {
+                if (withUI)
+                    QMessageBox::critical(0,
+                        QObject::tr("Update"),
+                        QObject::tr("File cannnot be opened"));
+                return;
+            }
+
+            QTextStream in(&file);
+            QString onlineVersion = in.readLine();
+            file.close();
+            int currentVersion = QString(VERSION_STRING).toInt();
+            if (onlineVersion.isEmpty()) {
+                qWarning() << "No version file found";
+            } else if (onlineVersion.toInt() > currentVersion) {
+                qDebug() << "New version found";
+                Utils::applyUpdates(parent);
+            } else {
+                qDebug() << "No new version found";
+                if (withUI) {
+                    QMessageBox::information(0,
+                        QObject::tr("Update"),
+                        QObject::tr("No new version found"));
+                }
+            }
+        });
+    DownloadManager::instance().downloadFile(url, downloadpath, withUI);
+}
+
+void
+Utils::applyUpdates(QWidget* parent)
+{
+    if (!parent->findChild<UpdateConfirmDialog*>()) {
+        UpdateConfirmDialog updateDialog(parent);
+        auto ret = updateDialog.exec();
+        if (ret != QDialog::Accepted)
+            return;
+    } else {
+        return;
+    }
+
+    QUrl url = QUrl::fromEncoded("https://dl.jami.net/windows/jami-x64.msi");
+    Utils::oneShotConnect(&DownloadManager::instance(),
+                          &DownloadManager::downloadFinished,
+        [parent](int status) {
+            if (status != 200) {
+                QMessageBox::critical(0,
+                    QObject::tr("Update"),
+                    QObject::tr("Installer download failed, Please contact support"));
+                return;
+            }
+            auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
+            auto dir = Utils::WinGetEnv("TEMP");
+            auto cmd = "powershell " + QString(dir) + "\\jami-x64.msi"
+                + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
+            auto retq = QProcess::startDetached(cmd);
+            if (retq) {
+                QApplication::quit();
+            }
+        });
+    DownloadManager::instance().downloadFile(url, WinGetEnv("TEMP"), true);
 }
 
 // new lrc helpers

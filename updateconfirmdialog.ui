@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>240</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,22 +22,38 @@
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>240</height>
+    <height>200</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>240</height>
+    <height>200</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Update Confirm</string>
+   <string>Jami Update</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0">
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="labelDeletion">
      <property name="maximumSize">
@@ -48,11 +64,11 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>New Version Detected, Do you want to update now?</string>
+      <string>New version detected, do you want to update now?</string>
      </property>
     </widget>
    </item>
@@ -62,12 +78,12 @@
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
+      <enum>QSizePolicy::Expanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>10</height>
+       <height>40</height>
       </size>
      </property>
     </spacer>
@@ -88,14 +104,14 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color: red;</string>
      </property>
      <property name="text">
-      <string>This update will close your Jami automatically, please be aware of your unsent messages</string>
+      <string>This update will restart Jami automatically</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -114,12 +130,12 @@
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
+      <enum>QSizePolicy::Expanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>20</height>
+       <height>40</height>
       </size>
      </property>
     </spacer>
@@ -173,7 +189,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="toolTip">
@@ -183,7 +199,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>Yes</string>
+        <string>Install</string>
        </property>
       </widget>
      </item>
@@ -216,7 +232,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="toolTip">
@@ -256,7 +272,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>5</height>
+       <height>20</height>
       </size>
      </property>
     </spacer>

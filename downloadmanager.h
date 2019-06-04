@@ -29,27 +29,36 @@ class QSslError;
 
 class DownloadManager : public QObject {
     Q_OBJECT
+public:
+    static DownloadManager& instance() {
+        static DownloadManager* instance_ = new DownloadManager();
+        return *instance_;
+    }
+
+    void downloadFile(const QUrl& fileUrl, const QString& path, bool withUI);
+    int getDownloadStatus();
+
+public slots:
+    void slotSslErrors(const QList<QSslError>& sslErrors);
+    void slotDownloadFinished();
+    void slotDownloadProgress(qint64 bytesRead, qint64 totalBytes);
+    void slotHttpReadyRead();
+
+signals:
+    void downloadFinished(int statusCode);
+
+private:
+    DownloadManager();
 
     QNetworkAccessManager manager_;
     QNetworkReply* currentDownload_;
-    updateDownloadDialog probar_;
+    updateDownloadDialog progressBar_;
     std::unique_ptr<QFile> file_;
     QTime downloadTime_;
     int previousTime_ = 0;
     qint64 previousDownloadBytes_ = 0;
     QString downloadpath_;
     int statusCode_;
+    bool withUI_;
 
-public:
-    explicit DownloadManager(QObject* parent = nullptr);
-    void doDownload(const QUrl& url);
-    QString versionOnline();
-    static const char* WinGetEnv(const char* name);
-    int getDownloadStatus();
-
-public slots:
-    void getsslErrors(const QList<QSslError>& sslErrors);
-    void downloadFinished();
-    void downloadProgress(qint64 bytesRead, qint64 totalBytes);
-    void httpReadyRead();
 };
