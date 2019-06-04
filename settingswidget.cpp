@@ -36,14 +36,12 @@
 #include <QtConcurrent/QtConcurrent>
 
 #include "deleteaccountdialog.h"
-#include "downloadmanger.h"
 #include "nameregistrationdialog.h"
 #include "passworddialog.h"
 #include "settingskey.h"
 #include "utils.h"
 #include "deviceitemwidget.h"
 #include "banneditemwidget.h"
-#include "updateconfirmdialog.h"
 #include "version.h"
 
 #include "api/newdevicemodel.h"
@@ -863,33 +861,7 @@ void SettingsWidget::slotSetClosedOrMin(bool state)
 
 void SettingsWidget::checkForUpdateSlot()
 {
-    DownloadManager manager;
-    UpdateConfirmDialog updateDialog(this);
-    QString onlineVersion = manager.versionOnline();
-    int currentVersion = QString(VERSION_STRING).toInt();
-    if (onlineVersion != "Null" && onlineVersion.toInt() > currentVersion) {
-        auto ret = updateDialog.exec();
-        QThread::sleep(1);
-        if (ret == QDialog::Accepted) {
-            QString urlstr = "https://dl.jami.net/windows/jami-x64.msi";
-            QUrl url = QUrl::fromEncoded(urlstr.toLocal8Bit());
-            manager.doDownload(url);
-            if (manager.getDownloadStatus() != 200) {
-                QMessageBox::critical(0, "Download Status", "Installer Download Failed, Please Contact Support");
-                return;
-            }
-            auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
-            auto dir = DownloadManager::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\jami-x64.msi"
-                + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
-            auto retq = QProcess::startDetached(cmd);
-            if (retq) {
-                QApplication::quit();
-            }
-        }
-    } else {
-        QMessageBox::information(0, "Update Status", "No New Version Detected");
-    }
+    Utils::checkForUpdates(true, this);
     /*
 #ifdef Q_OS_WIN
     win_sparkle_check_update_with_ui();

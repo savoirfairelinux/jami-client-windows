@@ -150,9 +150,6 @@
     <ClCompile Include="webchathelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="downloadmanger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="animationhelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -208,6 +205,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="updatedownloaddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="downloadmanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,9 +305,6 @@
     <QtMoc Include="animationhelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="downloadmanger.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="passworddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -357,6 +354,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="updatedownloaddialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="downloadmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
