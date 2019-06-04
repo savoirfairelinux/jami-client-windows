@@ -34,8 +34,6 @@ public:
 private slots:
     void on_updateCancelBtn_clicked();
     void on_updateAcceptBtn_clicked();
-signals:
-    void deleteAcceptClicked();
 
 private:
     Ui::UpdateConfirmDialog* ui;
