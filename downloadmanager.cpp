@@ -96,6 +96,14 @@ void DownloadManager::slotDownloadFinished()
 
 void DownloadManager::slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
+    // If the number of bytes to be downloaded is not known, bytesTotal will be -1.
+    if (bytesTotal < 0) {
+        qDebug() << "Download File Size is Unknown";
+        progressBar_.setMaximum(0);
+        progressBar_.setValue(0);
+        progressBar_.update(QString("0, File Size is Unknown"));
+        return;
+    }
     progressBar_.setMaximum(bytesTotal);
     progressBar_.setValue(bytesReceived);
 
