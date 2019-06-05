@@ -42,6 +42,7 @@
 #include "api/contact.h"
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
+#include "api/peerdiscoverymodel.h"
 #include "accountlistmodel.h"
 
 #include "account.h"
@@ -68,6 +69,14 @@ public:
     };
     static const NewAccountModel& accountModel() {
         return instance().lrc_->getAccountModel();
+    };
+    static const PeerDiscoveryModel& peerDiscoveryModel(const QString& accountId)
+    {
+        return instance().lrc_->getPeerDiscoveryModel(accountId);
+    };
+    static PeerDiscoveryModel* editablePeerDiscoveryModel(const QString& accountId)
+    {
+        return const_cast<PeerDiscoveryModel*>(&instance().lrc_->getPeerDiscoveryModel(accountId));
     };
     static NewAccountModel* editableAccountModel() {
         return const_cast<NewAccountModel*>(&instance().lrc_->getAccountModel());

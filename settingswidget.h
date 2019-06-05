@@ -140,4 +140,5 @@ private slots:
     void deviceModelIndexChanged(int index);
     void slotDeviceBoxCurrentIndexChanged(int index);
     void slotFormatBoxCurrentIndexChanged(int index);
+    void peermaptestslot(const std::string& accountID, const std::string& contactUri, int state, const std::string& displayname);
 };

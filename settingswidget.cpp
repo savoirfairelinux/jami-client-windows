@@ -35,13 +35,13 @@
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
+#include "banneditemwidget.h"
 #include "deleteaccountdialog.h"
-#include "passworddialog.h"
+#include "deviceitemwidget.h"
 #include "nameregistrationdialog.h"
+#include "passworddialog.h"
 #include "settingskey.h"
 #include "utils.h"
-#include "deviceitemwidget.h"
-#include "banneditemwidget.h"
 
 #include "api/newdevicemodel.h"
 #include "audio/inputdevicemodel.h"
@@ -304,12 +304,11 @@ void SettingsWidget::updateAccountInfoDisplayed()
     ui->bannedContactsLayoutWidget->setVisible(accInfo.contactModel->getBannedContacts().size());
 }
 
-void
-SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
+void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
 {
     auto& accountInfo = LRCInstance::getCurrentAccountInfo();
     auto defaultAvatar = accountInfo.profileInfo.avatar.empty();
-    auto avatar = Utils::accountPhoto(accountInfo, { avatarSize_ , avatarSize_ });
+    auto avatar = Utils::accountPhoto(accountInfo, {avatarSize_, avatarSize_});
     avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar);
 }
 
@@ -486,8 +485,7 @@ void SettingsWidget::setRegNameUi(RegName stat)
     }
 }
 
-void
-SettingsWidget::slotRegisterName()
+void SettingsWidget::slotRegisterName()
 {
     NameRegistrationDialog nameRegistrationDialog(registeredName_, this);
 
@@ -509,8 +507,12 @@ SettingsWidget::slotRegisterName()
 void SettingsWidget::setAccEnableSlot(int state)
 {
     LRCInstance::editableAccountModel()->enableAccount(LRCInstance::getCurrAccId(), (bool)state);
-
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    if (confProps.accountPublish) {
+        auto peermap = LRCInstance::peerDiscoveryModel(QString::fromStdString(LRCInstance::getCurrAccId())).getNearbyPeers();
+        if (!peermap.empty())
+            QMessageBox::information(0, peermap.begin().key(), peermap.begin().value());
+    }
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -607,11 +609,11 @@ void SettingsWidget::updateAndShowDevicesSlot()
         auto item = new QListWidgetItem(ui->settingsListWidget);
         ui->settingsListWidget->addItem(item);
         auto row = new DeviceItemWidget(QString::fromStdString(it->name),
-                                        QString::fromStdString(it->id),
-                                        it->isCurrent,
-                                        this);
+            QString::fromStdString(it->id),
+            it->isCurrent,
+            this);
         item->setSizeHint(QSize(ui->settingsListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->settingsListWidget->setItemWidget(item, row);
         connect(row, &DeviceItemWidget::btnRemoveDeviceClicked,
             [this, i, isCurrent = it->isCurrent]() {
@@ -647,10 +649,10 @@ void SettingsWidget::updateAndShowBannedContactsSlot()
         auto item = new QListWidgetItem(ui->bannedListWidget);
         ui->bannedListWidget->addItem(item);
         auto row = new BannedItemWidget(contactName,
-                                        contactId,
-                                        this);
+            contactId,
+            this);
         item->setSizeHint(QSize(ui->bannedListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->bannedListWidget->setItemWidget(item, row);
         connect(row, &BannedItemWidget::btnReAddContactClicked,
             [this, i]() {
@@ -669,8 +671,17 @@ void SettingsWidget::showLinkDevSlot()
     linkDeviceDialog->exec();
 }
 
+void SettingsWidget::peermaptestslot(const std::string& accountID, const std::string& contactUri, int state, const std::string& displayname)
+{
+    // jamiaccount emmited signal should be filterd
+    // when connect the peerdiscovery model signal -> all signals from all accounts will be catched
+    if (LRCInstance::getCurrAccId() == accountID)
+        QMessageBox::information(0, QString::fromStdString(accountID), QString::fromStdString(displayname));
+}
+
 void SettingsWidget::setConnections()
 {
+    connect(LRCInstance::editablePeerDiscoveryModel(QString::fromStdString(LRCInstance::getCurrAccId())), &lrc::api::PeerDiscoveryModel::peerMapStatusChanged, this, &SettingsWidget::peermaptestslot);
     // btnExitSettings
     connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
