@@ -96,29 +96,37 @@ void DownloadManager::slotDownloadFinished()
 
 void DownloadManager::slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
-    progressBar_.setMaximum(bytesTotal);
-    progressBar_.setValue(bytesReceived);
+    // If the number of bytes to be downloaded is not known, bytesTotal will be -1.
+    if (bytesTotal >= 0) {
+        progressBar_.setMaximum(bytesTotal);
+        progressBar_.setValue(bytesReceived);
 
-    int presentTime = downloadTime_.elapsed();
-    // calculate the download speed
-    double speed = (bytesReceived - previousDownloadBytes_) * 1000.0 / (presentTime - previousTime_);
-    if (speed < 0)
-        speed = 0;
-    previousTime_ = presentTime;
-    previousDownloadBytes_ = bytesReceived;
+        int presentTime = downloadTime_.elapsed();
+        // calculate the download speed
+        double speed = (bytesReceived - previousDownloadBytes_) * 1000.0 / (presentTime - previousTime_);
+        if (speed < 0)
+            speed = 0;
+        previousTime_ = presentTime;
+        previousDownloadBytes_ = bytesReceived;
 
-    QString unit;
-    if (speed < 1024) {
-        unit = "bytes/sec";
-    } else if (speed < 1024 * 1024) {
-        speed /= 1024;
-        unit = "kB/s";
+        QString unit;
+        if (speed < 1024) {
+            unit = "bytes/sec";
+        } else if (speed < 1024 * 1024) {
+            speed /= 1024;
+            unit = "kB/s";
+        } else {
+            speed /= 1024 * 1024;
+            unit = "MB/s";
+        }
+
+        progressBar_.update(QString::number(speed) + " " + unit);
     } else {
-        speed /= 1024 * 1024;
-        unit = "MB/s";
+        qDebug() << "Download File Size is Unknown";
+        progressBar_.setMaximum(0);
+        progressBar_.setValue(0);
+        progressBar_.update(QString("0, File Size is Unknown"));
     }
-
-    progressBar_.update(QString::number(speed) + " " + unit);
 }
 
 void DownloadManager::slotHttpReadyRead()
