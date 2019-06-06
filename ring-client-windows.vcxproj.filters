@@ -359,6 +359,9 @@
     <QtMoc Include="downloadmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="runguard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -787,9 +790,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="version.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="runguard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
