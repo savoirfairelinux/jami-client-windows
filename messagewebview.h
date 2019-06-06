@@ -21,6 +21,7 @@
 #include <QClipboard>
 #include <QDebug>
 #include <QWebEngineView>
+#include <QLabel>
 
 #include "api/conversationmodel.h"
 
@@ -80,6 +81,14 @@ public:
     void setMessagesContent(QString text);
     void copySelectedText(QClipboard* clipboard);
 
+protected:
+
+    void dragEnterEvent(QDragEnterEvent* event);
+    void dragLeaveEvent(QDragLeaveEvent* event);
+    void dragMoveEvent(QDragMoveEvent* event);
+    void dropEvent(QDropEvent* event);
+
+
 signals:
     void conversationRemoved();
     void messagesCleared();
@@ -91,5 +100,6 @@ private slots:
 private:
     QWebChannel* webChannel_;
     PrivateBridging* jsBridge_;
+    std::unique_ptr<QLabel> label_;
 
 };

@@ -34,6 +34,9 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
+#include <QMessagebox>
+#include <QMimeData>
+#include <QPixmap>
 
 #include <ciso646>
 #include <fstream>
@@ -43,9 +46,10 @@
 #include "utils.h"
 #include "webchathelpers.h"
 
-MessageWebView::MessageWebView(QWidget *parent)
+MessageWebView::MessageWebView(QWidget* parent)
     : QWebEngineView(parent)
 {
+    label_ = std::make_unique<QLabel>(parent);
     QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
     QDir dataDir(QStandardPaths::writableLocation(
         QStandardPaths::AppLocalDataLocation));
@@ -106,6 +110,51 @@ MessageWebView::~MessageWebView()
 {
 }
 
+void MessageWebView::dragEnterEvent(QDragEnterEvent* event)
+{
+    event->accept();
+    //label_->setGeometry(0,0,602,671);
+    //QPixmap map("C:/Users/mzhang/Desktop/Screenshot (4).png");
+    //int w = label_->width();
+    //int h = label_->height();
+    //label_->setPixmap(map.scaled(w,h,Qt::KeepAspectRatio));
+}
+void MessageWebView::dragLeaveEvent(QDragLeaveEvent* event)
+{
+    event->accept();
+    //label_->clear();
+}
+void MessageWebView::dragMoveEvent(QDragMoveEvent* event)
+{
+    event->accept();
+}
+void MessageWebView::dropEvent(QDropEvent* event)
+{
+    const QMimeData* mimeData = event->mimeData();
+
+    // check for our needed mime type, here a file or a list of files
+    if (mimeData->hasUrls()) {
+         QList<QUrl> urlList = mimeData->urls();
+
+         // extract the local paths of the files
+        for (int i = 0; i < urlList.size(); ++i)
+        {
+            QMessageBox::information(0,urlList.at(i).toString().remove(0,8),urlList.at(i).toString());
+            // Trim file:/// from url
+            QString filePath = urlList.at(i).toString().remove(0, 8);
+            QFileInfo fi(filePath);
+            QString fileName = fi.fileName();
+            try {
+                auto convUid = LRCInstance::getSelectedConvUid();
+                LRCInstance::getCurrentConversationModel()->sendFile(convUid, filePath.toStdString(), fileName.toStdString());
+            } catch (...) {
+                qDebug() << "Messagewebview DropEvent - exception during sendFile";
+            }
+        }
+    }
+
+}
+
 void MessageWebView::setMessagesContent(QString text)
 {
     page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
@@ -125,8 +174,7 @@ void MessageWebView::buildView()
     connect(this, &QWebEngineView::loadFinished, this, &MessageWebView::slotLoadFinished);
 }
 
-void
-MessageWebView::slotLoadFinished()
+void MessageWebView::slotLoadFinished()
 {
     insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/web/chatview.css"));
     page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify.js"), QWebEngineScript::MainWorld);
@@ -136,17 +184,18 @@ MessageWebView::slotLoadFinished()
     page()->runJavaScript(Utils::QByteArrayFromFile(":/web/chatview.js"), QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::insertStyleSheet(const QString &name, const QString &source)
+void MessageWebView::insertStyleSheet(const QString& name, const QString& source)
 {
     QWebEngineScript script;
     auto simplifiedCSS = source.simplified().replace("'", "\"");
-    QString s = QString::fromLatin1("(function() {"\
-                                    "    var node = document.createElement('style');"\
-                                    "    node.id = '%1';"\
-                                    "    node.innerHTML = '%2';"\
-                                    "    document.head.appendChild(node);"\
-                                    "})()").arg(name).arg(simplifiedCSS);
+    QString s = QString::fromLatin1("(function() {"
+                                    "    var node = document.createElement('style');"
+                                    "    node.id = '%1';"
+                                    "    node.innerHTML = '%2';"
+                                    "    document.head.appendChild(node);"
+                                    "})()")
+                    .arg(name)
+                    .arg(simplifiedCSS);
     page()->runJavaScript(s);
 
     script.setName(name);
@@ -157,14 +206,14 @@ MessageWebView::insertStyleSheet(const QString &name, const QString &source)
     page()->scripts().insert(script);
 }
 
-void
-MessageWebView::removeStyleSheet(const QString &name)
+void MessageWebView::removeStyleSheet(const QString& name)
 {
-    QString s = QString::fromLatin1("(function() {"\
-                                    "    var element = document.getElementById('%1');"\
-                                    "    element.outerHTML = '';"\
-                                    "    delete element;"\
-                                    "})()").arg(name);
+    QString s = QString::fromLatin1("(function() {"
+                                    "    var element = document.getElementById('%1');"
+                                    "    element.outerHTML = '';"
+                                    "    delete element;"
+                                    "})()")
+                    .arg(name);
 
     page()->runJavaScript(s);
 
@@ -178,58 +227,53 @@ void MessageWebView::clear()
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setDisplayLinks(bool display)
+void MessageWebView::setDisplayLinks(bool display)
 {
     QString s = QString::fromLatin1("setDisplayLinks('%1');")
-        .arg(display ? "true" : "false");
+                    .arg(display ? "true" : "false");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationModel,
-                                    uint64_t msgId,
-                                    const lrc::api::interaction::Info& interaction)
+void MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationModel,
+    uint64_t msgId,
+    const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
     QString s = QString::fromLatin1("addMessage(%1);")
-        .arg(interactionObject.constData());
+                    .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel,
-                                  uint64_t msgId,
-                                  const lrc::api::interaction::Info& interaction)
+void MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel,
+    uint64_t msgId,
+    const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
     QString s = QString::fromLatin1("updateMessage(%1);")
-        .arg(interactionObject.constData());
+                    .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::removeInteraction(uint64_t interactionId)
+void MessageWebView::removeInteraction(uint64_t interactionId)
 {
     QString s = QString::fromLatin1("removeInteraction(%1);")
-        .arg(QString::number(interactionId));
+                    .arg(QString::number(interactionId));
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
-                             const std::map<uint64_t,
-                             lrc::api::interaction::Info> interactions)
+void MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
+    const std::map<uint64_t,
+        lrc::api::interaction::Info>
+        interactions)
 {
     auto interactionsStr = interactionsToJsonArrayObject(conversationModel, interactions).toUtf8();
     QString s = QString::fromLatin1("printHistory(%1);")
-        .arg(interactionsStr.constData());
+                    .arg(interactionsStr.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setSenderImage(const std::string& sender,
-                               const std::string& senderImage)
+void MessageWebView::setSenderImage(const std::string& sender,
+    const std::string& senderImage)
 {
     QJsonObject setSenderImageObject = QJsonObject();
     setSenderImageObject.insert("sender_contact_method", QJsonValue(QString(sender.c_str())));
@@ -237,22 +281,21 @@ MessageWebView::setSenderImage(const std::string& sender,
 
     auto setSenderImageObjectString = QString(QJsonDocument(setSenderImageObject).toJson(QJsonDocument::Compact));
     QString s = QString::fromLatin1("setSenderImage(%1);")
-        .arg(setSenderImageObjectString.toUtf8().constData());
+                    .arg(setSenderImageObjectString.toUtf8().constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
+void MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
 {
     QString s = show ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")")
-        .arg(QString(contactUri.c_str()))
-        .arg(QString(contactId.c_str())) : QString::fromLatin1("showInvitation()");
+                           .arg(QString(contactUri.c_str()))
+                           .arg(QString(contactId.c_str()))
+                     : QString::fromLatin1("showInvitation()");
 
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setMessagesVisibility(bool visible)
+void MessageWebView::setMessagesVisibility(bool visible)
 {
     QString s = QString::fromLatin1(visible ? "showMessagesDiv();" : "hideMessagesDiv();");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -292,8 +335,7 @@ PrivateBridging::deleteInteraction(const QString& arg)
     if (ok) {
         LRCInstance::getCurrentConversationModel()->clearInteractionFromConversation(
             LRCInstance::getSelectedConvUid(),
-            interactionUid
-        );
+            interactionUid);
     } else {
         qDebug() << "deleteInteraction - invalid arg" << arg;
     }
@@ -308,8 +350,7 @@ PrivateBridging::retryInteraction(const QString& arg)
     if (ok) {
         LRCInstance::getCurrentConversationModel()->retryInteraction(
             LRCInstance::getSelectedConvUid(),
-            interactionUid
-        );
+            interactionUid);
     } else {
         qDebug() << "retryInteraction - invalid arg" << arg;
     }
