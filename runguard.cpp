@@ -4,6 +4,8 @@
 
 #include <QCryptographicHash>
 
+#include "mainwindow.h"
+
 namespace
 {
 
@@ -21,59 +23,85 @@ QString generateKeyHash(const QString& key, const QString& salt)
 }
 
 RunGuard::RunGuard(const QString& key)
-    : key(key)
-    , memLockKey(generateKeyHash(key, "_memLockKey"))
-    , sharedmemKey(generateKeyHash(key, "_sharedmemKey"))
-    , sharedMem(sharedmemKey)
-    , memLock(memLockKey, 1)
-{
-    memLock.acquire();
-    {
-        QSharedMemory fix(sharedmemKey);    // Fix for *nix: http://habrahabr.ru/post/173281/
-        fix.attach();
-    }
-    memLock.release();
-}
+    : key_(key)
+    , memLockKey_(generateKeyHash(key, "_memLockKey"))
+    , sharedmemKey_(generateKeyHash(key, "_sharedmemKey"))
+    , sharedMem_(sharedmemKey_)
+    , memLock_(memLockKey_, 1)
+{}
 
 RunGuard::~RunGuard()
 {
     release();
 }
 
+void
+RunGuard::tryRestorePrimaryInstance()
+{
+    MainWindow::instance().showWindow();
+}
+
 bool RunGuard::isAnotherRunning()
 {
-    if (sharedMem.isAttached())
+    if (sharedMem_.isAttached())
         return false;
 
-    memLock.acquire();
-    const bool isRunning = sharedMem.attach();
+    memLock_.acquire();
+    const bool isRunning = sharedMem_.attach();
     if (isRunning)
-        sharedMem.detach();
-    memLock.release();
+        sharedMem_.detach();
+    memLock_.release();
 
     return isRunning;
 }
 
 bool RunGuard::tryToRun()
 {
-    if (isAnotherRunning())   // Extra check
+    if (isAnotherRunning()) {
+        // This is a secondary instance,
+        // connect to the primary instance to trigger a restore
+        // then fail.
+        if (socket_ == nullptr) {
+            socket_ = new QLocalSocket();
+        }
+        if (socket_->state() == QLocalSocket::UnconnectedState ||
+            socket_->state() == QLocalSocket::ClosingState) {
+            socket_->connectToServer(key_);
+        }
+        if (socket_->state() == QLocalSocket::ConnectingState) {
+            socket_->waitForConnected();
+        }
         return false;
+    }
 
-    memLock.acquire();
-    const bool result = sharedMem.create(sizeof(quint64));
-    memLock.release();
+    memLock_.acquire();
+    const bool result = sharedMem_.create(sizeof(quint64));
+    memLock_.release();
     if (!result) {
         release();
         return false;
     }
+
+    // This is the primary instance,
+    // listen for subsequent instances.
+    QLocalServer::removeServer(key_);
+    server_ = new QLocalServer();
+    server_->setSocketOptions(QLocalServer::UserAccessOption);
+    server_->listen(key_);
+    QObject::connect(
+        server_,
+        &QLocalServer::newConnection,
+        this,
+        &RunGuard::tryRestorePrimaryInstance
+    );
 
     return true;
 }
 
 void RunGuard::release()
 {
-    memLock.acquire();
-    if (sharedMem.isAttached())
-        sharedMem.detach();
-    memLock.release();
+    memLock_.acquire();
+    if (sharedMem_.isAttached())
+        sharedMem_.detach();
+    memLock_.release();
 }
