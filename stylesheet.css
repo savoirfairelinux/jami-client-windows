@@ -504,6 +504,14 @@ QLabel#accountAliasLabel{
     font-weight: bold;
 }
 
+QLabel#dragDropLabel {
+    /*rgba 0.95 opacity (transparency)*/
+    font-size: 20px;
+    border: 2px dashed black;
+    border-radius: 10px;
+    background: rgba(216, 234, 252, 0.95);
+}
+
 /* setAvatarDialog { */
 QPushButton#pictureButton:default, QPushButton#fileButton:default {
     background-color: rgb(0, 192, 213,);
