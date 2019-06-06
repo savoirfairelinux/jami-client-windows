@@ -209,9 +209,6 @@
             <Component Id="cmpF0B5FD817150488EB9ACF9EFDE0EBD56" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
                 <File Id="fil40E5A8E132500B03BAD6B19B7B30958B" KeyPath="yes" Source="$(var.ReleaseDir)\swscale-5.dll" />
             </Component>
-            <Component Id="cmp2024CBDCC41D4F4F8036E2047C9D1133" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil8B057A40D21C41C88C68DD0D28D28C4B" KeyPath="yes" Source="$(var.ReleaseDir)\WinSparkle.dll" />
-            </Component>
             <Component Id="cmp5039B4AD5D8C909EA17EA732417A9C05" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
                 <File Id="fil62B8A9B874DF63AF7B042EA31508DB37" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qgif.dll" />
             </Component>
