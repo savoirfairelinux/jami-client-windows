@@ -1,20 +1,15 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set cloneSubmodules=N
-if "%1" == "/c" (
-    set cloneSubmodules=Y
-)
-
 set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=4
 set APPLY_CMD=git apply --reject --ignore-whitespace --whitespace=fix
 
 if exist qrencode-win32 (
     rmdir qrencode-win32 /s /q
 )
-git clone https://github.com/BlueDragon747/qrencode-win32.git
+
+call :getTarballDepToFolder https://github.com/BlueDragon747/qrencode-win32 d6495a2aa74d058d54ae0f1b9e9e545698de66ce qrencode-win32
 cd qrencode-win32
-git checkout d6495a2aa74d058d54ae0f1b9e9e545698de66ce
 %APPLY_CMD% ..\qrencode-win32.patch
 
 :cleanup

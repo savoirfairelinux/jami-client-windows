@@ -93,7 +93,6 @@ goto Usage
 :buildDeps
 set TOBUILD=qrencode-win32\qrencode-win32\vc8\qrcodelib\qrcodelib.vcxproj
 msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release-Lib %MSBUILD_ARGS%
-set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=4
 goto cleanup
 
 :compileClient
