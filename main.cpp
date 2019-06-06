@@ -21,6 +21,7 @@
 
 #include <QApplication>
 #include <QFile>
+#include <QMessageBox>
 
 #include "callmodel.h"
 #include "globalinstances.h"
@@ -105,13 +106,6 @@ fileDebug(QFile& debugFile)
 int
 main(int argc, char* argv[])
 {
-    RunGuard guard("680b3e5eaf");
-    if (!guard.tryToRun())
-        return 0;
-
-    QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
     char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
     int newArgc = argc + 1 + 1;
     char** newArgv = new char*[newArgc];
@@ -127,11 +121,19 @@ main(int argc, char* argv[])
 
     QApplication a(newArgc, newArgv);
 
+    QCoreApplication::setApplicationName("Ring");
+    QCoreApplication::setOrganizationDomain("jami.net");
+
+    QCryptographicHash appData(QCryptographicHash::Sha256);
+    appData.addData(QApplication::applicationName().toUtf8());
+    appData.addData(QApplication::organizationDomain().toUtf8());
+    RunGuard guard(appData.result());
+    if (!guard.tryToRun()) {
+        return 0;
+    }
+
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
-    QCoreApplication::setOrganizationDomain("jami.net");
-    QCoreApplication::setApplicationName("Ring");
 
     auto startMinimized = false;
     QString uri = "";

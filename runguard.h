@@ -5,10 +5,12 @@
 #include <QObject>
 #include <QSharedMemory>
 #include <QSystemSemaphore>
+#include <QtNetwork/QLocalServer>
+#include <QtNetwork/QLocalSocket>
 
-class RunGuard
+class RunGuard : public QObject
 {
-
+    Q_OBJECT;
 public:
     RunGuard(const QString& key);
     ~RunGuard();
@@ -17,13 +19,19 @@ public:
     bool tryToRun();
     void release();
 
-private:
-    const QString key;
-    const QString memLockKey;
-    const QString sharedmemKey;
+private slots:
+    void tryRestorePrimaryInstance();
 
-    QSharedMemory sharedMem;
-    QSystemSemaphore memLock;
+private:
+    const QString key_;
+    const QString memLockKey_;
+    const QString sharedmemKey_;
+
+    QSharedMemory sharedMem_;
+    QSystemSemaphore memLock_;
+
+    QLocalSocket *socket_;
+    QLocalServer *server_;
 
     Q_DISABLE_COPY(RunGuard)
 };
