@@ -25,6 +25,7 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QMenu>
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QScrollBar>
 #include <QTimer>
@@ -46,6 +47,15 @@
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
 {
+    label_ = std::make_unique<QLabel>(parent);
+    label_->hide();
+    label_->setText("Drag Files in Here");
+    label_->setAlignment(Qt::AlignCenter);
+    label_->installEventFilter(this);
+    label_->setAcceptDrops(true);
+    // rgba 0.95 opacity (transparency)
+    label_->setStyleSheet("QLabel { font-size: 20px; border: 2px dashed black; border-radius: 10px; background: rgba(216, 234, 252, 0.95);}");
+
     QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
     QDir dataDir(QStandardPaths::writableLocation(
         QStandardPaths::AppLocalDataLocation));
@@ -104,6 +114,79 @@ MessageWebView::MessageWebView(QWidget *parent)
 
 MessageWebView::~MessageWebView()
 {
+}
+
+void MessageWebView::dragEnterEvent(QDragEnterEvent* event)
+{
+    event->accept();
+    label_->show();
+}
+void MessageWebView::dragLeaveEvent(QDragLeaveEvent* event)
+{
+    event->accept();
+}
+void MessageWebView::dragMoveEvent(QDragMoveEvent* event)
+{
+    event->accept();
+}
+void MessageWebView::dropEvent(QDropEvent* event)
+{
+    event->accept();
+}
+
+void MessageWebView::resizeEvent(QResizeEvent *event)
+{
+    event->accept();
+    // resize label as messagewebview resizes
+    label_->setGeometry(this->x(),this->y(),this->width(),this->height());
+}
+
+bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
+{
+    if (watched == label_.get()) {
+
+        if (event->type() == QEvent::DragEnter) {
+
+            QDragEnterEvent *dee = dynamic_cast<QDragEnterEvent *>(event);
+            dee->acceptProposedAction();
+            //Has to return retrun here, otherwise it will filter out ALL events for label ! including paint events
+            return true;
+        } else if (event->type() == QEvent::Drop) {
+
+            // Drop Event complete, get data
+            QDropEvent *de = dynamic_cast<QDropEvent *>(event);
+
+            const QMimeData* mimeData = de->mimeData();
+            // check for our needed mime type, here a file or a list of files
+            if (mimeData->hasUrls()) {
+                 QList<QUrl> urlList = mimeData->urls();
+
+                 // extract the local paths of the files
+                for (int i = 0; i < urlList.size(); ++i)
+                {
+                   // QMessageBox::information(0,urlList.at(i).toString().remove(0,8),urlList.at(i).toString());
+                    // Trim file:/// from url
+                    QString filePath = urlList.at(i).toString().remove(0, 8);
+                    QFileInfo fi(filePath);
+                    QString fileName = fi.fileName();
+                    try {
+                        auto convUid = LRCInstance::getSelectedConvUid();
+                        LRCInstance::getCurrentConversationModel()->sendFile(convUid, filePath.toStdString(), fileName.toStdString());
+                    } catch (...) {
+                        qDebug() << "Messagewebview DropEvent - exception during sendFile";
+                    }
+                }
+            }
+            label_->hide();
+            return true;
+        } else if (event->type() == QEvent::DragLeave) {
+
+            label_->hide();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 void MessageWebView::setMessagesContent(QString text)
