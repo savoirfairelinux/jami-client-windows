@@ -117,7 +117,7 @@ void DownloadManager::slotDownloadProgress(qint64 bytesReceived, qint64 bytesTot
 
     QString unit;
     if (speed < 1024) {
-        unit = "bytes/sec";
+        unit = "B/s";
     } else if (speed < 1024 * 1024) {
         speed /= 1024;
         unit = "kB/s";
