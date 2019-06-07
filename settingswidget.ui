@@ -959,6 +959,9 @@
                        </item>
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_16">
+                         <property name="spacing">
+                          <number>14</number>
+                         </property>
                          <property name="leftMargin">
                           <number>20</number>
                          </property>
@@ -1005,7 +1008,7 @@
                               <string>Toggle automatic updates</string>
                              </property>
                              <property name="text" stdset="0">
-                              <string>Check for updates automatically every</string>
+                              <string>Check for updates automatically</string>
                              </property>
                              <property name="checked" stdset="0">
                               <bool>true</bool>

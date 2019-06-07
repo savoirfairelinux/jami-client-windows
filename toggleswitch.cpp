@@ -28,7 +28,7 @@ ToggleSwitch::ToggleSwitch(QWidget *parent)
     switch_(false),
     margin_(3),
     thumb_("#d5d5d5"),
-    textMargin_(24),
+    textMargin_(18),
     anim_(new QPropertyAnimation(this, "offset", this)),
     style_(SwitchStyle::UWP)
 {
@@ -55,8 +55,6 @@ void ToggleSwitch::paintEvent(QPaintEvent *e)
 {
     Q_UNUSED(e);
     QPainter p(this);
-    //p.setOpacity(isEnabled() ? (switch_ ? 0.5 : 0.38) : 0.12);
-    //p.setOpacity(isEnabled() ? 1.0 : 0.12);
     p.setOpacity(isEnabled() ? (switch_ ? 1.0 : 0.5) : 0.12);
     p.setRenderHint(QPainter::Antialiasing, true);
 
@@ -98,7 +96,7 @@ void ToggleSwitch::paintEvent(QPaintEvent *e)
     }
     p.setOpacity(1.0);
     p.setPen(isEnabled() ? Qt::black : Qt::gray);
-    p.drawText(width_ + textMargin_, height_ - margin_, text_);
+    p.drawText(width_ + textMargin_, height_ - margin_ - 1, text_);
 }
 
 void ToggleSwitch::mouseReleaseEvent(QMouseEvent *e)
