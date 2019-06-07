@@ -297,10 +297,10 @@ Utils::checkForUpdates(bool withUI, QWidget* parent)
             QTextStream in(&file);
             QString onlineVersion = in.readLine();
             file.close();
-            int currentVersion = QString(VERSION_STRING).toInt();
+            auto currentVersion = QString(VERSION_STRING).toULongLong();
             if (onlineVersion.isEmpty()) {
                 qWarning() << "No version file found";
-            } else if (onlineVersion.toInt() > currentVersion) {
+            } else if (onlineVersion.toULongLong() > currentVersion) {
                 qDebug() << "New version found";
                 Utils::applyUpdates(parent);
             } else {
