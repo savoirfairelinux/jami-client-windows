@@ -132,6 +132,8 @@ main(int argc, char* argv[])
         return 0;
     }
 
+    Utils::removeOldVersions();
+
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
