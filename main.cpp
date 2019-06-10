@@ -267,6 +267,8 @@ main(int argc, char* argv[])
     });
 #endif
 
+    Utils::removeOldVersions();
+
     auto ret = a.exec();
 
 #ifdef Q_OS_WIN
