@@ -17,6 +17,7 @@
             <ComponentRef Id="ApplicationShortcutDesktop" />
             <ComponentRef Id="ApplicationShortcutStartMenu" />
         </Feature>
+
       <!--Visual C++-->
       <DirectoryRef Id="TARGETDIR">
         <Merge Id="VCRedist" SourceFile="$(env.VCRedistMergeModule)" DiskId="1" Language="0" />
@@ -50,6 +51,11 @@
         <WixVariable Id="WixUIBannerBmp" Value="top-banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="main-banner.bmp" />
         <WixVariable Id="WixUISupportPerUser" Value="0" />
+
+      <CustomAction Id="removeOldJamiFiles" Directory="APPLICATIONFOLDER"
+                    ExeCommand="cmd /c &quot;del vc_redist.x64.exe; del uninstall.exe;&quot;"
+                    Execute="deferred" Return="ignore" HideTarget="no" Impersonate="no" />
+
     </Product>
 
     <Fragment Id="DirectoryStructure">
@@ -108,6 +114,7 @@
           </InstallUISequence>
         </UI>
         <InstallExecuteSequence>
+          <Custom Action="removeOldJamiFiles" After="RemoveFiles" />
           <Custom Action="LaunchApplication_nonUI" After="InstallFinalize"> WIXNONUILAUNCH </Custom>
           <Custom Action="Overwrite_WixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder" />
         </InstallExecuteSequence>
