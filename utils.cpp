@@ -49,7 +49,7 @@
 #include "version.h"
 
 bool
-Utils::CreateStartupLink()
+Utils::CreateStartupLink(const std::wstring& wstrAppName)
 {
 #ifdef Q_OS_WIN
     TCHAR szPath[MAX_PATH];
@@ -61,7 +61,7 @@ Utils::CreateStartupLink()
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
 
     return Utils::CreateLink(programPath.c_str(), linkPath.c_str());
 #else
@@ -100,29 +100,82 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
 }
 
 void
-Utils::DeleteStartupLink() {
+Utils::DeleteStartupLink(const std::wstring& wstrAppName) {
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
 
     DeleteFile(linkPath.c_str());
 #endif
 }
 
 bool
-Utils::CheckStartupLink() {
+Utils::CheckStartupLink(const std::wstring& wstrAppName) {
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
     return PathFileExists(linkPath.c_str());
 #else
     return true;
+#endif
+}
+
+const char*
+Utils::WinGetEnv(const char* name)
+{
+#ifdef Q_OS_WIN
+    const DWORD buffSize = 65535;
+    static char buffer[buffSize];
+    if (GetEnvironmentVariableA(name, buffer, buffSize)) {
+        return buffer;
+    } else {
+        return 0;
+    }
+#else
+    return 0;
+#endif
+}
+
+void
+Utils::removeOldVersions()
+{
+    // As per: https://git.ring.cx/savoirfairelinux/ring-client-windows/issues/429
+#ifdef Q_OS_WIN
+    // 1. unset Ring as a startup application
+    if (Utils::CheckStartupLink(TEXT("Ring"))) {
+        qDebug() << "Startup lnk exists";
+        //Utils::DeleteStartupLink();
+    }
+    // 2. remove registry entries for Ring
+    QString node32 = "HKEY_LOCAL_MACHINE\\SOFTWARE";
+    QString node64 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node";
+    QString uninstKey = "\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\";
+    QString company = "Savoir-Faire Linux";
+    QSettings settings(node64 + uninstKey + company + " " + "Ring", QSettings::NativeFormat);
+    QString uninstStr = settings.value("QuietUninstallString").toString();
+    QString instLocationStr = settings.value("InstallLocation").toString();
+    /*qDebug() << "QuietUninstallString : " << uninstStr;
+    if (!uninstStr.isEmpty()) {
+        auto ret = QProcess::startDetached(uninstStr);
+        qDebug() << "uninst success : " << ret;
+    }*/
+    auto cmd = "powershell 'Remove-Item -Recurse -Force' " + instLocationStr;
+    auto ret = QProcess::startDetached(cmd);
+    qDebug() << "uninst success : " << ret;
+    //settings.remove("");
+
+    // 3. remove Ring
+
+    // 4. remove vc_redist and uninstall from Jami install dir
+    qDebug() << "App path : " << qApp->applicationDirPath();
+#else
+    return;
 #endif
 }
 
@@ -234,18 +287,6 @@ void Utils::showSystemNotification(QWidget* widget,
     GlobalSystemTray::instance()
         .showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
-}
-
-const char*
-Utils::WinGetEnv(const char* name)
-{
-    const DWORD buffSize = 65535;
-    static char buffer[buffSize];
-    if (GetEnvironmentVariableA(name, buffer, buffSize)) {
-        return buffer;
-    } else {
-        return 0;
-    }
 }
 
 void

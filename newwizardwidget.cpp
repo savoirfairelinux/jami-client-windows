@@ -437,7 +437,7 @@ NewWizardWidget::processWizardInformations()
     changePage(ui->spinnerPage);
     createAccount();
 
-    Utils::CreateStartupLink();
+    Utils::CreateStartupLink(L"Jami");
 }
 
 void
