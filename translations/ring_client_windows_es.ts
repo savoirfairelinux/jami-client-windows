@@ -322,12 +322,12 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -565,7 +565,7 @@ Este es tu ID.
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>Identificador de dispositivo</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -601,7 +601,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Introduzca el password de su cuenta</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -626,7 +626,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Tu PIN es</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -636,7 +636,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>El pin y la contraseña de la cuenta debe ser introducida en tu dispositivo en menos de 10 minutos</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -694,7 +694,7 @@ Por favor inténtelo de nuevo más tarde.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Introduzca el password de su cuenta</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -724,12 +724,12 @@ Por favor inténtelo de nuevo más tarde.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>Registrando nomre</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Algo fue mal</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -792,7 +792,7 @@ Por favor inténtelo de nuevo más tarde.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Pulse el botón para comenzar a enlazar el dispositivo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
@@ -802,17 +802,17 @@ Por favor inténtelo de nuevo más tarde.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>Botón de crear cuenta Jami SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Pulsa el botón de crear cuenta Jami SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>Crear una cuenta SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -957,12 +957,12 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>Edición de servidor SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Servidor</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
@@ -1083,7 +1083,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Creando tu cuenta SIP...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1194,12 +1194,12 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Guardar nuevo nombre de dispositivo</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Añadir como contacto</translation>
     </message>
 </context>
 <context>
@@ -1313,27 +1313,27 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Cambiar Activar notificaciones</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Cambiar Mantener minimizado al cerrar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Grabación de llamadas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Activar actualizaciones automáticas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Cuenta Jami</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1401,17 +1401,17 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formato</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Selector de velocidad de frames de vídeo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Previsualización no disponible</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1493,7 +1493,7 @@ en lugar de usar su ID.</translation>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Introducir un alias</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
@@ -1513,7 +1513,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>¿Está seguro de querer eliminar este dispositivo?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
