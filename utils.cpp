@@ -49,7 +49,7 @@
 #include "version.h"
 
 bool
-Utils::CreateStartupLink()
+Utils::CreateStartupLink(const std::wstring& wstrAppName)
 {
 #ifdef Q_OS_WIN
     TCHAR szPath[MAX_PATH];
@@ -61,7 +61,7 @@ Utils::CreateStartupLink()
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
 
     return Utils::CreateLink(programPath.c_str(), linkPath.c_str());
 #else
@@ -100,29 +100,78 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
 }
 
 void
-Utils::DeleteStartupLink() {
+Utils::DeleteStartupLink(const std::wstring& wstrAppName) {
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
 
     DeleteFile(linkPath.c_str());
 #endif
 }
 
 bool
-Utils::CheckStartupLink() {
+Utils::CheckStartupLink(const std::wstring& wstrAppName) {
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
 
     std::wstring linkPath(startupPath);
-    linkPath += TEXT("\\Jami.lnk");
+    linkPath += std::wstring(TEXT("\\") + wstrAppName + TEXT(".lnk"));
     return PathFileExists(linkPath.c_str());
 #else
     return true;
+#endif
+}
+
+const char*
+Utils::WinGetEnv(const char* name)
+{
+#ifdef Q_OS_WIN
+    const DWORD buffSize = 65535;
+    static char buffer[buffSize];
+    if (GetEnvironmentVariableA(name, buffer, buffSize)) {
+        return buffer;
+    } else {
+        return 0;
+    }
+#else
+    return 0;
+#endif
+}
+
+void
+Utils::removeOldVersions()
+{
+#ifdef Q_OS_WIN
+    // As per: https://git.jami.net/savoirfairelinux/ring-client-windows/issues/429
+    // NB: As only the 64-bit version of this application is distributed, we will only
+    // remove 1. the configuration reg keys for Ring-x64, 2. the startup links for Ring,
+    // 3. the winsparkle reg keys. The NSIS uninstall reg keys for Jami-x64 are removed
+    // by the MSI installer.
+    // Uninstallation of Ring, either 32 or 64 bit, is left to the user.
+    // The current version of Jami will attempt to kill Ring.exe upon start if a startup
+    // link is found.
+    QString node64 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node";
+    QString hkcuSoftwareKey = "HKEY_CURRENT_USER\\Software\\";
+    QString uninstKey = "\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\";
+    QString company = "Savoir-Faire Linux";
+
+    // 1. configuration reg keys for Ring-x64
+    QSettings(hkcuSoftwareKey + "jami.net\\Ring", QSettings::NativeFormat).remove("");
+    QSettings(hkcuSoftwareKey + "ring.cx", QSettings::NativeFormat).remove("");
+    // 2. unset Ring as a startup application
+    if (Utils::CheckStartupLink(TEXT("Ring"))) {
+        qDebug() << "Found startup link for Ring. Removing it and killing Ring.exe.";
+        Utils::DeleteStartupLink(TEXT("Ring"));
+        QProcess::execute("taskkill /im Ring.exe /f");
+    }
+    // 3. remove registry entries for winsparkle(both Jami-x64 and Ring-x64)
+    QSettings(hkcuSoftwareKey + company, QSettings::NativeFormat).remove("");
+#else
+    return;
 #endif
 }
 
@@ -234,18 +283,6 @@ void Utils::showSystemNotification(QWidget* widget,
     GlobalSystemTray::instance()
         .showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
-}
-
-const char*
-Utils::WinGetEnv(const char* name)
-{
-    const DWORD buffSize = 65535;
-    static char buffer[buffSize];
-    if (GetEnvironmentVariableA(name, buffer, buffSize)) {
-        return buffer;
-    } else {
-        return 0;
-    }
 }
 
 void

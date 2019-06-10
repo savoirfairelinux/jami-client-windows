@@ -17,6 +17,7 @@
             <ComponentRef Id="ApplicationShortcutDesktop" />
             <ComponentRef Id="ApplicationShortcutStartMenu" />
         </Feature>
+
       <!--Visual C++-->
       <DirectoryRef Id="TARGETDIR">
         <Merge Id="VCRedist" SourceFile="$(env.VCRedistMergeModule)" DiskId="1" Language="0" />
@@ -50,6 +51,11 @@
         <WixVariable Id="WixUIBannerBmp" Value="top-banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="main-banner.bmp" />
         <WixVariable Id="WixUISupportPerUser" Value="0" />
+
+      <CustomAction Id="removeOldJamiFiles" Directory="APPLICATIONFOLDER"
+                    ExeCommand="cmd /c &quot;del vc_redist.x64.exe; del uninstall.exe;&quot;"
+                    Execute="deferred" Return="ignore" HideTarget="no" Impersonate="no" />
+
     </Product>
 
     <Fragment Id="DirectoryStructure">
@@ -70,17 +76,19 @@
                 <Shortcut Id="ApplicationShortcutDesktop" Name="$(var.Name)" Description="Launch $(var.Name)"
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
                 <RemoveFolder Id="DesktopFolder" On="uninstall" />
-                <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="desktop" Type="integer" Value="1" KeyPath="yes" />
+                <RegistryValue Root="HKCU" Key="Software\jami.net\$(var.Name)" Name="desktop" Type="integer" Value="1" KeyPath="yes" />
             </Component>
         </DirectoryRef>
 
         <DirectoryRef Id="ApplicationProgramsFolder">
-            <Component Id="ApplicationShortcutStartMenu" Guid="*" Win64="yes">
-                <Shortcut Id="ApplicationShortcutStartMenu" Name="$(var.Name)" Description="Launch $(var.Name)"
+          <Component Id="ApplicationShortcutStartMenu" Guid="*" Win64="yes">
+            <Shortcut Id="ApplicationShortcutStartMenu" Name="$(var.Name)" Description="Launch $(var.Name)"
                     Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
-                <RemoveFolder Id="StartMenuFolder" On="uninstall" />
-                <RegistryValue Root="HKCU" Key="Software/$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
-            </Component>
+            <RemoveFolder Id="StartMenuFolder" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\jami.net\$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
+            <RemoveRegistryKey Id='removeBadShortcutRegKey' Root='HKLM' Key='Software/$(var.Name)' Action='removeOnInstall'/>
+            <RemoveRegistryKey Id='removeOldUninstRegKey' Root='HKLM' Key='SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\$(var.Manufacturer) $(var.Name)' Action='removeOnInstall'/>
+          </Component>
         </DirectoryRef>
     </Fragment>
 
@@ -108,6 +116,7 @@
           </InstallUISequence>
         </UI>
         <InstallExecuteSequence>
+          <Custom Action="removeOldJamiFiles" After="RemoveFiles" />
           <Custom Action="LaunchApplication_nonUI" After="InstallFinalize"> WIXNONUILAUNCH </Custom>
           <Custom Action="Overwrite_WixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder" />
         </InstallExecuteSequence>
