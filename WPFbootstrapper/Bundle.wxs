@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Bundle Name="WPFbootstrapper" Version="$(fun.AutoVersion(1.0))" Manufacturer="Savoir-Faire Linux" UpgradeCode="{51C1EB78-C0D2-4C30-803C-8D7993CB38A5}"    Compressed="yes"    >
+
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense"   />
+
+
+    <WixVariable Id="WixMbaPrereqLicenseUrl" Value=""/>
+    <WixVariable Id="WixMbaPrereqPackageId" Value=""/>
+
+
+    <Chain DisableRollback='yes'>
+      <PackageGroupRef Id="Netfx4Full"  />
+      <MsiPackage Id="Jami" SourceFile="C:\Users\mzhang\Desktop\ring-project\client-windows\JamiInstaller\bin\Release\en-us\Jami.msi" Compressed="yes"  DisplayInternalUI="yes" >
+      </MsiPackage>
+    </Chain>
+  </Bundle>
+
+  <Fragment>
+    <util:RegistrySearchRef Id="NETFRAMEWORK40"/>
+    <PackageGroup Id="Netfx4Full">
+      <ExePackage
+          Id="Netfx4FullExe"
+          Cache="no"
+          Compressed="yes"
+          PerMachine="yes"
+          Permanent="yes"
+          Vital="yes"
+          Name="dotNetFx40_Full_x86_x64.exe"
+          InstallCommand="/q /norestart "
+          DetectCondition="NETFRAMEWORK40"
+          DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193">
+        <RemotePayload Description="dotNet4" ProductName="dotNetInstaller" Size="892928" Version="1.1.1.1" Hash="FA1AFFF978325F8818CE3A559D67A58297D9154674DE7FD8EB03656D93104425"/>
+      </ExePackage>
+    </PackageGroup>
+  </Fragment>
+</Wix>
