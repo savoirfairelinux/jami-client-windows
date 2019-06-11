@@ -1617,3 +1617,48 @@ function copy_text_selected() {
     var selectedText = selObj.toString();
     return selectedText;
 }
+
+/**
+ * Check if text is selected by mouse
+ */
+function isTextSelected() {
+
+    var selObj = document.getSelection();
+    var selectedText = selObj.toString();
+
+    if (selectedText.length != 0)
+        return true;
+    return false;
+}
+
+function test() {
+
+    const menu = document.querySelector(".menu");
+    let menuVisible = false;
+
+    const toggleMenu = command => {
+        menu.style.display = command === "show" ? "block" : "none";
+        menuVisible = !menuVisible;
+    };
+
+    const setPosition = ({ top, left }) => {
+        menu.style.left = `${left}px`;
+        menu.style.top = `${top}px`;
+        toggleMenu("show");
+    };
+
+    window.addEventListener("click", e => {
+        if (menuVisible) toggleMenu("hide");
+    });
+
+    window.addEventListener("contextmenu", e => {
+        e.preventDefault();
+        const origin = {
+            left: e.pageX,
+            top: e.pageY
+        };
+        setPosition(origin);
+        return false;
+    });
+
+}

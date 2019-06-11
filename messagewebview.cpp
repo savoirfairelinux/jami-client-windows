@@ -34,9 +34,14 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
+#include <QMessagebox>
+#include <QtConcurrent/QtConcurrent>
+#include <QFuture>
 
 #include <ciso646>
 #include <fstream>
+#include <thread>
+#include <chrono>
 
 #include "lrcinstance.h"
 #include "messagewebpage.h"
@@ -115,6 +120,23 @@ void MessageWebView::copySelectedText(QClipboard* clipboard)
 {
     page()->runJavaScript(QStringLiteral("copy_text_selected();"), [clipboard, this](const QVariant& v) {
         clipboard->setText(v.toString());
+    });
+}
+
+bool MessageWebView::textSelected()
+{
+    //QSharedPointer<QEventLoop> loop = QSharedPointer<QEventLoop>(new QEventLoop());
+    //QTimer::singleShot(100, loop.data(), &QEventLoop::quit);
+    //loop->exec();
+
+    return textSelected_;
+}
+
+void MessageWebView::runJsText()
+{
+    page()->runJavaScript(QStringLiteral("isTextSelected();"), [&, this](const QVariant &val) {
+        textSelected_ = val.toBool();
+        //QMessageBox::information(0, "dsdsd", QString(val.toString()));
     });
 }
 

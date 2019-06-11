@@ -64,6 +64,7 @@ public:
     ~CallWidget();
 
     int getLeftPanelWidth();
+    void CreateContextMenu(const QPoint& pos);
 
     // NavWidget
     virtual void navigated(bool to);

@@ -22,6 +22,9 @@
 #include <QDebug>
 #include <QWebEngineView>
 
+#include <condition_variable>
+#include <mutex>
+
 #include "api/conversationmodel.h"
 
 class PrivateBridging : public QObject
@@ -79,6 +82,8 @@ public:
     void setMessagesVisibility(bool visible);
     void setMessagesContent(QString text);
     void copySelectedText(QClipboard* clipboard);
+    bool textSelected();
+    void runJsText();
 
 signals:
     void conversationRemoved();
@@ -91,5 +96,5 @@ private slots:
 private:
     QWebChannel* webChannel_;
     PrivateBridging* jsBridge_;
-
+    bool textSelected_;
 };
