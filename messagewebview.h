@@ -79,11 +79,14 @@ public:
     void setMessagesVisibility(bool visible);
     void setMessagesContent(QString text);
     void copySelectedText(QClipboard* clipboard);
+    bool textSelected();
+    void runJsText();
 
 signals:
     void conversationRemoved();
     void messagesCleared();
     void messagesLoaded();
+    void textSelectedReady();
 
 private slots:
     void slotLoadFinished();
@@ -91,5 +94,5 @@ private slots:
 private:
     QWebChannel* webChannel_;
     PrivateBridging* jsBridge_;
-
+    bool textSelected_;
 };
