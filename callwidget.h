@@ -93,6 +93,7 @@ public slots:
     void ShowContextMenu(const QPoint& pos);
     void Paste();
     void Copy();
+    void CreateCopyPasteContextMenu();
 
 private slots:
     void on_acceptButton_clicked();
