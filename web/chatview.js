@@ -1617,3 +1617,16 @@ function copy_text_selected() {
     var selectedText = selObj.toString();
     return selectedText;
 }
+
+/**
+ * Check if text is selected by mouse
+ */
+function isTextSelected() {
+
+    var selObj = document.getSelection();
+    var selectedText = selObj.toString();
+
+    if (selectedText.length != 0)
+        return true;
+    return false;
+}

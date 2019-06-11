@@ -118,6 +118,19 @@ void MessageWebView::copySelectedText(QClipboard* clipboard)
     });
 }
 
+bool MessageWebView::textSelected()
+{
+    return textSelected_;
+}
+
+void MessageWebView::runJsText()
+{
+    page()->runJavaScript(QStringLiteral("isTextSelected();"), [&, this](const QVariant &val) {
+        textSelected_ = val.toBool();
+        emit textSelectedReady();
+    });
+}
+
 void MessageWebView::buildView()
 {
     auto html = Utils::QByteArrayFromFile(":/web/chatview.html");

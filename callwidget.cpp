@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMessagebox>
 
 #include <algorithm>
 #include <memory>
@@ -1265,21 +1266,29 @@ void
 CallWidget::ShowContextMenu(const QPoint& pos)
 {
     Q_UNUSED(pos);
+    ui->messageView->runJsText();
+    connect(ui->messageView, &MessageWebView::textSelectedReady, this, &CallWidget::CreateCopyPasteContextMenu);
+}
+
+void
+CallWidget::CreateCopyPasteContextMenu()
+{
+    disconnect(ui->messageView, &MessageWebView::textSelectedReady, this, &CallWidget::CreateCopyPasteContextMenu);
     QPoint globalMousePos = QCursor::pos();
     const QMimeData* mimeData = clipboard_->mimeData();
 
-    QMenu contextMenu;
     QAction action1("Copy", this);
     QAction action2("Paste", this);
 
-    contextMenu.addAction(&action1);
-    connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
+    if (ui->messageView->textSelected()) {
+        menu_->addAction(&action1);
+        connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
+    }
     if (mimeData->hasText()) {
-        contextMenu.addAction(&action2);
+        menu_->addAction(&action2);
         connect(&action2, SIGNAL(triggered()), this, SLOT(Paste()));
     }
-
-    contextMenu.exec(globalMousePos);
+    menu_->exec(globalMousePos);
 }
 
 void
