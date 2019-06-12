@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMessagebox>
 
 #include <algorithm>
 #include <memory>
@@ -1274,10 +1275,8 @@ CallWidget::ShowContextMenu(const QPoint& pos)
 
     contextMenu.addAction(&action1);
     connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
-    if (mimeData->hasText()) {
         contextMenu.addAction(&action2);
         connect(&action2, SIGNAL(triggered()), this, SLOT(Paste()));
-    }
 
     contextMenu.exec(globalMousePos);
 }
@@ -1286,12 +1285,34 @@ void
 CallWidget::Paste()
 {
     const QMimeData* mimeData = clipboard_->mimeData();
-    if (mimeData->hasHtml()) {
-        ui->messageView->setMessagesContent(mimeData->text());
-    } else if (mimeData->hasText()) {
-        ui->messageView->setMessagesContent(mimeData->text());
+
+    if (mimeData->hasImage()) {
+
+        QPixmap pixmap = qvariant_cast<QPixmap>(mimeData->imageData());
+        QByteArray ba;
+        QBuffer bu(&ba);
+        bu.open(QIODevice::WriteOnly);
+        pixmap.save(&bu, "PNG");
+        auto str = QString::fromStdString(ba.toBase64().toStdString());
+        qDebug() << "dbug:: " << str;
+
+        ui->messageView->setMessagesImageContent(str,0);
+
+    }
+    else if (mimeData->hasUrls()) {
+        QMessageBox::information(0,"url",mimeData->urls().at(0).toString());
+
+        QList<QUrl> urlList = mimeData->urls();
+        // extract the local paths of the files
+        for (int i = 0; i < urlList.size(); ++i) {
+            // Trim file:/// from url
+            QString filePath = urlList.at(i).toString().remove(0, 8);
+            ui->messageView->setMessagesImageContent(filePath,1);
+        }
+    } else if (mimeData->hasHtml() || mimeData->hasText()) {
+         ui->messageView->setMessagesContent(mimeData->text());
     } else {
-        ui->messageView->setMessagesContent(tr("Cannot display data"));
+        qDebug() << "mimedata: " << "Cannot process data";
     }
 }
 

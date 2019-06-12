@@ -51,6 +51,10 @@
                 </svg>
             </div>
             <textarea id="message" autofocus placeholder="Type a message" onkeyup="grow_text_area()" onkeydown="process_messagebar_keydown()" rows="1"></textarea>
+            <div class="editdiv" id="message_test" contentEditable="true" onkeyup="grow_text_area()">
+                Type here. You can insert images too
+                <img src="C:\Users\mzhang\AppData\Local\Temp\test.png" height="80" width="80"/>
+            </div>
             <div class="nav-button action-button" onclick="sendMessage(); grow_text_area()" title="Send">
                 <svg class="svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />

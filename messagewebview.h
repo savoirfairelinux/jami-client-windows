@@ -77,8 +77,9 @@ public:
                        const std::string& contactUri = "",
                        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
-    void setMessagesContent(QString text);
+    void setMessagesContent(const QString &text);
     void copySelectedText(QClipboard* clipboard);
+    void setMessagesImageContent(const QString &text, const short& type);
 
 signals:
     void conversationRemoved();

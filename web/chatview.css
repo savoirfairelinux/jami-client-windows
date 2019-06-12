@@ -260,6 +260,27 @@ body {
     border-top: var(--hairline-thickness) solid var(--hairline-color);
 }
 
+#message_test {
+    font-family: emoji;
+    flex: 1;
+    background-color: var(--bg-color);
+    overflow-y: scroll;
+    color: black;
+    max-height: 150px;
+    margin-right: 10px;
+    resize: none;
+    border: none;
+    width: 300px;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
+
+    #message_test:focus,
+    #message_test.focus {
+        outline: none;
+        border: none;
+    }
+
 #message {
     font-family: emoji;
     flex: 1;
@@ -440,6 +461,10 @@ a:hover {
     overflow: hidden;
     /* enable selection (it is globally disabled in the body) */
     -webkit-user-select: auto;
+}
+
+.message_text {
+    border:hidden;
 }
 
 .message_in {
