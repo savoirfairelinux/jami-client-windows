@@ -38,6 +38,7 @@ public:
     Q_INVOKABLE int acceptFile(const QString& arg);
     Q_INVOKABLE int refuseFile(const QString& arg);
     Q_INVOKABLE int sendMessage(const QString& arg);
+    Q_INVOKABLE int sendImage(const QString& arg);
     Q_INVOKABLE int sendFile();
     Q_INVOKABLE int log(const QString& arg);
     Q_INVOKABLE int acceptInvitation();
@@ -77,8 +78,9 @@ public:
                        const std::string& contactUri = "",
                        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
-    void setMessagesContent(QString text);
+    void setMessagesContent(const QString &text);
     void copySelectedText(QClipboard* clipboard);
+    void setMessagesImageContent(const QString &text, const short& type);
 
 signals:
     void conversationRemoved();

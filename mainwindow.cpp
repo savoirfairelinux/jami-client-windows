@@ -115,7 +115,8 @@ MainWindow::MainWindow(QWidget* parent)
         QString aboutTitle = tr("About");
         ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
     }
-
+    //clear all temp image data
+    Utils::cleanImageData();
     // check for updates and start automatic update check if needed
     QSettings settings("jami.net", "Jami");
     if (!settings.contains(SettingsKey::autoUpdate)) {
