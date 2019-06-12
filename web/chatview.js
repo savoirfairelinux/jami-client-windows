@@ -1630,3 +1630,13 @@ function isTextSelected() {
         return true;
     return false;
 }
+
+/**
+ * add image to message area
+ */
+function addImage() {
+
+    let src = "C:\Users\mzhang\Desktop\1.jpg"
+    var content = document.getElementById('content');
+    content.value = content.value + ' <img src="' + src + '" />'
+}
