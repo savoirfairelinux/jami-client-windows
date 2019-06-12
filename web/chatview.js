@@ -23,10 +23,13 @@ var historyBufferIndex = 0
 // buffer containing the conversation's messages
 var historyBuffer = []
 
+var tempImagePath = ""
+
 /* We retrieve refs to the most used navbar and message bar elements for efficiency purposes */
 /* NOTE: always use getElementById when possible, way more efficient */
 const messageBar        = document.getElementById("sendMessage")
-const messageBarInput   = document.getElementById("message")
+//const messageBarInput   = document.getElementById("message")
+const messageBarInput   = document.getElementById("message_test")
 const invitation        = document.getElementById("invitation")
 const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
@@ -205,7 +208,7 @@ function process_messagebar_keydown(key) {
     var map = {}
     map[key.keyCode] = key.type == "keydown"
     if (key.ctrlKey && map[13]) {
-        messageBarInput.value += "\n"
+        messageBarInput.innerHTML += "\n"
     }
     if (key.ctrlKey || key.shiftKey) {
         return true
@@ -273,11 +276,11 @@ function formatDate(date) {
  */
 function sendMessage()
 {
-    var message = messageBarInput.value
+    /*var message = messageBarInput.value
     if (message.length > 0) {
         messageBarInput.value = ""
         window.jsbridge.sendMessage(message)
-    }
+    }*/
 }
 
 /* exported acceptInvitation */
@@ -1616,4 +1619,25 @@ function copy_text_selected() {
     var selObj = document.getSelection();
     var selectedText = selObj.toString();
     return selectedText;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    alert(base64);
+    var content = document.getElementById("message_test");
+    content.innerHTML += '<img src="data:image/png;base64,' + base64 + '" height="100" width="100" />';
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+    var src = path;
+    alert(path);
+    var content = document.getElementById("message_test");
+    content.innerHTML += '<img src="' + path + '" height="100" width="100" />';
 }
