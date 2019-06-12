@@ -23,6 +23,8 @@ var historyBufferIndex = 0
 // buffer containing the conversation's messages
 var historyBuffer = []
 
+var tempImagePath = ""
+
 /* We retrieve refs to the most used navbar and message bar elements for efficiency purposes */
 /* NOTE: always use getElementById when possible, way more efficient */
 const messageBar        = document.getElementById("sendMessage")
@@ -1616,4 +1618,25 @@ function copy_text_selected() {
     var selObj = document.getSelection();
     var selectedText = selObj.toString();
     return selectedText;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    alert(base64);
+    var content = document.getElementById("message_test");
+    content.innerHTML += '<img src="data:image/png;base64,' + base64 + '" height="100" width="100" />';
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+    var src = path;
+    alert(path);
+    var content = document.getElementById("message_test");
+    content.innerHTML += '<img src="' + path + '" height="100" width="100" />';
 }
