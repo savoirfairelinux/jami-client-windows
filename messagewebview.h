@@ -79,6 +79,7 @@ public:
     void setMessagesVisibility(bool visible);
     void setMessagesContent(QString text);
     void copySelectedText(QClipboard* clipboard);
+    //void setMessagesImageContent();
 
 signals:
     void conversationRemoved();
