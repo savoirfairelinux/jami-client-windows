@@ -34,6 +34,7 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
+#include <QMessagebox>
 
 #include <ciso646>
 #include <fstream>
@@ -108,7 +109,19 @@ MessageWebView::~MessageWebView()
 
 void MessageWebView::setMessagesContent(QString text)
 {
-    page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    //page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    /*auto components = text.split('\\');
+    QString input;
+    for (auto& i : components) {
+        QMessageBox::information(0,"",QString::fromLocal8Bit(i.toLocal8Bit()));
+        QString param = QString("collectPath('%1')").arg(QString::fromLocal8Bit(i.toLocal8Bit()));
+        input = param + "\\";
+        page()->runJavaScript(param);
+    }*/
+    //QMessageBox::information(0,"",text);
+    qDebug() << "dbug:: " << text;
+    QString param = QString("addImage('%1')").arg(text);
+    page()->runJavaScript(param);
 }
 
 void MessageWebView::copySelectedText(QClipboard* clipboard)

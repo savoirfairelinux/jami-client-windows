@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMessagebox>
 
 #include <algorithm>
 #include <memory>
@@ -1274,10 +1275,8 @@ CallWidget::ShowContextMenu(const QPoint& pos)
 
     contextMenu.addAction(&action1);
     connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
-    if (mimeData->hasText()) {
         contextMenu.addAction(&action2);
         connect(&action2, SIGNAL(triggered()), this, SLOT(Paste()));
-    }
 
     contextMenu.exec(globalMousePos);
 }
@@ -1286,10 +1285,33 @@ void
 CallWidget::Paste()
 {
     const QMimeData* mimeData = clipboard_->mimeData();
+    /*if (mimeData->hasUrls()) {
+        QMessageBox::information(0,"url",mimeData->urls().at(0).toString());
+        ui->messageView->setMessagesContent(mimeData->urls().at(0).toString());
+    }
     if (mimeData->hasHtml()) {
+        QMessageBox::information(0,"html",mimeData->text());
+        ui->messageView->setMessagesContent(mimeData->html());
+    }
+    if (mimeData->hasText()) {
+        QMessageBox::information(0,"txt",mimeData->text());
         ui->messageView->setMessagesContent(mimeData->text());
-    } else if (mimeData->hasText()) {
-        ui->messageView->setMessagesContent(mimeData->text());
+    }*/
+    if (mimeData->hasImage()) {
+        QString path = QString(Utils::WinGetEnv("TEMP"));
+        QImage image = qvariant_cast<QImage>(mimeData->imageData());
+
+        QPixmap pixmap = qvariant_cast<QPixmap>(mimeData->imageData());
+        QByteArray ba;
+        QBuffer bu(&ba);
+        bu.open(QIODevice::WriteOnly);
+        pixmap.save(&bu, "PNG");
+        auto str = QString::fromStdString(ba.toBase64().toStdString());
+        qDebug() << "dbug:: " << str;
+
+        //QMessageBox::information(0,"img",str);
+        ui->messageView->setMessagesContent(str);
+
     } else {
         ui->messageView->setMessagesContent(tr("Cannot display data"));
     }
