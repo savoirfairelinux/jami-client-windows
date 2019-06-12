@@ -89,6 +89,7 @@ namespace Utils
     bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
 
     // image
+    void cleanImageData();
     QImage getCirclePhoto(const QImage original, int sizePhoto);
     QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
     QColor getAvatarColor(const QString& canonicalUri);

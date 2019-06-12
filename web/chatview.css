@@ -264,19 +264,25 @@ body {
     font-family: emoji;
     flex: 1;
     background-color: var(--bg-color);
-    border: 0;
     overflow-y: scroll;
     color: black;
     max-height: var(--textarea-max-height);
     margin-right: 10px;
     resize: none;
+    border: none;
     /* enable selection (it is globally disabled in the body) */
     -webkit-user-select: auto;
 }
 
-    #message:focus,
-    #message.focus {
+    #message[contentEditable=true]:empty:not(:focus):before {
+        content: attr(data-text);
+        color: #A0A0A0;
+        font-family: emoji;
+    }
+    #message[contentEditable=true]:focus {
         outline: none;
+        border: none;
+        font-family: emoji;
     }
 
 #container[disabled] {

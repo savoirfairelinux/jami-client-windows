@@ -205,7 +205,7 @@ function process_messagebar_keydown(key) {
     var map = {}
     map[key.keyCode] = key.type == "keydown"
     if (key.ctrlKey && map[13]) {
-        messageBarInput.value += "\n"
+        messageBarInput.innerHTML += "\n"
     }
     if (key.ctrlKey || key.shiftKey) {
         return true
@@ -273,11 +273,29 @@ function formatDate(date) {
  */
 function sendMessage()
 {
-    var message = messageBarInput.value
-    if (message.length > 0) {
-        messageBarInput.value = ""
-        window.jsbridge.sendMessage(message)
+    var message_to_send = messageBarInput.innerHTML;
+
+    var generalSplit = /(<img id="SEND_IMG" src=".*?" height="100" width="100">)/;
+    var srcExtract = new RegExp('<img id="SEND_IMG" src="(.*?)" height="100" width="100">');
+
+    var extractList = message_to_send.split(generalSplit);
+
+    var i, len;
+    for (i = 0, len = extractList.length; i < len; i++) {
+        var element = extractList[i];
+        if (element.length > 0) {
+            var imgTag = element.match(generalSplit);
+            if (imgTag != null) {
+                var src = srcExtract.exec(element);
+                window.jsbridge.sendImage(src[1]);
+            } else {
+                //remove non-breaking spaces
+                element = element.replace(/\&nbsp;/g, '');
+                window.jsbridge.sendMessage(element);
+            }
+        }
     }
+    messageBarInput.innerHTML = "";
 }
 
 /* exported acceptInvitation */
@@ -1616,4 +1634,23 @@ function copy_text_selected() {
     var selObj = document.getSelection();
     var selectedText = selObj.toString();
     return selectedText;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    var content = document.getElementById("message");
+    content.innerHTML += '<img id="SEND_IMG" src="data:image/png;base64,' + base64 + '" height="100" width="100" />';
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+    var src = path;
+    var content = document.getElementById("message");
+    content.innerHTML += '<img id="SEND_IMG" src="' + path + '" height="100" width="100" />';
 }

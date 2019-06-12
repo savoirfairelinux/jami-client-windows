@@ -730,3 +730,14 @@ Utils::swapQListWidgetItems(QListWidget* list, bool down)
     down ? list->insertItem(currIndex, temp) : list->insertItem(otherIndex, current);
     down ? list->insertItem(otherIndex, current) : list->insertItem(currIndex, temp);
 }
+
+void
+Utils::cleanImageData()
+{
+    QString dir = QString(Utils::WinGetEnv("TEMP"));
+    QDir img_dir(dir, { "img_*.png" });
+    for (const QString& filename : img_dir.entryList()) {
+        if (!img_dir.remove(filename))
+            qDebug().noquote() << "Utils: cleanImageData Error";
+    }
+}
