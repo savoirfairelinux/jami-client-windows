@@ -108,7 +108,8 @@ MessageWebView::~MessageWebView()
 
 void MessageWebView::setMessagesContent(QString text)
 {
-    page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    //page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    page()->runJavaScript(QStringLiteral("addImage()"));
 }
 
 void MessageWebView::copySelectedText(QClipboard* clipboard)

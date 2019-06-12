@@ -1617,3 +1617,14 @@ function copy_text_selected() {
     var selectedText = selObj.toString();
     return selectedText;
 }
+
+
+/**
+ * add image to message area
+ */
+function addImage() {
+
+    var src = "C:\\Users\\mzhang\\Desktop\\1.jpg";
+    var content = document.getElementById("message_test");
+    content.innerHTML += '<img src="' + src + '" />';
+}
