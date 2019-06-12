@@ -260,6 +260,31 @@ body {
     border-top: var(--hairline-thickness) solid var(--hairline-color);
 }
 
+#message_test {
+    font-family: emoji;
+    flex: 1;
+    background-color: var(--bg-color);
+    overflow-y: scroll;
+    color: black;
+    max-height: 150px;
+    margin-right: 10px;
+    resize: none;
+    border: none;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
+
+    #message_test[contentEditable=true]:empty:not(:focus):before {
+        content: attr(data-text);
+        color: #A0A0A0;
+        font-family: emoji;
+    }
+    #message_test[contentEditable=true]:focus {
+        outline: none;
+        border: none;
+        font-family: emoji;
+    }
+
 #message {
     font-family: emoji;
     flex: 1;
@@ -432,6 +457,17 @@ a:hover {
 }
 
 .message {
+    font: 0.875em emoji;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: top;
+    overflow: hidden;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
+
+.message_text {
     font: 0.875em emoji;
     margin: 0;
     display: flex;
