@@ -1630,3 +1630,30 @@ function isTextSelected() {
         return true;
     return false;
 }
+
+/**
+ * add image to message area
+ */
+function addImage() {
+
+    var imageAdder = function () {
+        var browser = document.getElementsByClassName('imagebrowser');
+        var images = browser.getElementsByTagName('img');
+
+        //Add click event to all images within image browser
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = update;
+        }
+
+        //function to update the textarea
+        function update() {
+            var content = document.getElementById('content');
+            content.value = content.value + ' <img src="' + this.src + '" />'
+        }
+    }
+
+    window.onload = function () {
+        imageAdder();
+    }
+
+}

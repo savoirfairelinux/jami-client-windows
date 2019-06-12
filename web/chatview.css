@@ -260,6 +260,26 @@ body {
     border-top: var(--hairline-thickness) solid var(--hairline-color);
 }
 
+div.message_test {
+    border: 1px solid #ccc;
+    font-family: emoji;
+    flex: 1;
+    background-color: var(--bg-color);
+    border: 0;
+    overflow-y: scroll;
+    color: black;
+    max-height: var(--textarea-max-height);
+    margin-right: 10px;
+    resize: none;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
+
+    div.message_test:focus,
+    div.message_test.focus {
+        outline: none;
+    }
+
 #message {
     font-family: emoji;
     flex: 1;

@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8">
+    <link rel="stylesheet" href="chatview.css">
     <!--<link rel="stylesheet" href="chatview.css">
     <script type="text/javascript" src="linkify.js"></script>
     <script type="text/javascript" src="linkify-html.js"></script>
@@ -50,7 +51,11 @@
                     <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
             </div>
-            <textarea id="message" autofocus placeholder="Type a message" onkeyup="grow_text_area()" onkeydown="process_messagebar_keydown()" rows="1"></textarea>
+            <!--<textarea id="message" autofocus placeholder="Type a message" onkeyup="grow_text_area()" onkeydown="process_messagebar_keydown()" rows="1"></textarea>-->
+            <div class="message_test" contentEditable="true">
+                Type here. You can insert images too
+                <img src="C:\Users\mzhang\Desktop\1.jpg" />
+            </div>
             <div class="nav-button action-button" onclick="sendMessage(); grow_text_area()" title="Send">
                 <svg class="svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
