@@ -47,7 +47,7 @@
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
 {
-    dragDroplabel_ = std::make_unique<QLabel>(parent);
+    dragDroplabel_ = new QLabel(parent);
     dragDroplabel_->hide();
     dragDroplabel_->setText("Drop files here to send");
     dragDroplabel_->setAlignment(Qt::AlignCenter);
@@ -142,7 +142,7 @@ void MessageWebView::resizeEvent(QResizeEvent *event)
 
 bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched != dragDroplabel_.get()) {
+    if (watched != dragDroplabel_) {
         return false;
     }
     if (event->type() == QEvent::DragEnter) {
