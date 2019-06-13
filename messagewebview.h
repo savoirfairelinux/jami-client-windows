@@ -105,7 +105,7 @@ private slots:
 private:
     QWebChannel* webChannel_;
     PrivateBridging* jsBridge_;
-    std::unique_ptr<QLabel> dragDroplabel_;
+    QLabel* dragDroplabel_;
     bool textSelected_;
 
 };
