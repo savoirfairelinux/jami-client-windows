@@ -209,16 +209,6 @@ void MainWindow::slotCurrentChanged(int index)
     lastScr_ = scr;
 }
 
-void MainWindow::onRingEvent(const QString& uri)
-{
-    this->showNormal();
-    if (not uri.isEmpty()) {
-        auto outCall = CallModel::instance().dialingCall();
-        outCall->setDialNumber(uri);
-        outCall->performAction(Call::Action::ACCEPT);
-    }
-}
-
 bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
 {
     Q_UNUSED(eventType)

@@ -1026,7 +1026,7 @@ void SettingsWidget::toggleVideoPreview(bool enabled)
 
 void SettingsWidget::showPreview()
 {
-    if (!CallModel::instance().getActiveCalls().size()) {
+    if (!LRCInstance::getActiveCalls().size()) {
         ui->previewUnavailableLabel->hide();
         ui->videoLayoutWidget->show();
         startVideo();
