@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -30,6 +31,7 @@
 #include <QMimeData>
 #include <QSplitter>
 #include <QScreen>
+#include <QWindow>
 
 #include <memory>
 
@@ -198,21 +200,16 @@ VideoView::dragEnterEvent(QDragEnterEvent* event)
 void
 VideoView::dropEvent(QDropEvent* event)
 {
-    auto urls = event->mimeData()->urls();
+    // take only the first file
+    QString urlString = event->mimeData()->urls().at(0).toString();
     auto selectedConvUid = LRCInstance::getSelectedConvUid();
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
-    auto callList = CallModel::instance().getActiveCalls();
-    Call* thisCall = nullptr;
-    for (auto call : callList) {
-        if (call->historyId() == QString::fromStdString(conversation->callId)) {
-            thisCall = call;
+    auto callIdList = LRCInstance::getActiveCalls();
+    for (auto callId : callIdList) {
+        if (callId == conversation->callId) {
+            LRCInstance::avModel().setInputFile(urlString.toStdString());
             break;
-        }
-    }
-    if (thisCall) {
-        if (auto outVideo = thisCall->firstMedia<media::Video>(media::Media::Direction::OUT)) {
-            outVideo->sourceModel()->setFile(urls.at(0));
         }
     }
 }
@@ -229,88 +226,97 @@ VideoView::showContextMenu(const QPoint& pos)
     QPoint globalPos = this->mapToGlobal(pos);
 
     QMenu menu;
-    media::Video* outVideo = nullptr;
-    int activeIndex = -1;
 
     auto selectedConvUid = LRCInstance::getSelectedConvUid();
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
-    auto callList = CallModel::instance().getActiveCalls();
-    Call* thisCall = nullptr;
-    for (auto call : callList) {
-        if (call->historyId() == QString::fromStdString(conversation->callId)) {
-            thisCall = call;
+    auto callIdList = LRCInstance::getActiveCalls();
+    std::string thisCallId;
+    for (auto callId : callIdList) {
+        if (callId == conversation->callId) {
+            thisCallId = callId;
             break;
         }
     }
-    if (thisCall) {
-        outVideo = thisCall->firstMedia<media::Video>(media::Media::Direction::OUT);
-        if (outVideo)
-            activeIndex = outVideo->sourceModel()->activeIndex();
+    if (thisCallId.empty()) {
+        return;
     }
 
-    for (auto device : Video::DeviceModel::instance().devices()) {
-        std::unique_ptr<QAction> deviceAction(new QAction(device->name(), this));
+    auto activeDevice = LRCInstance::avModel().getCurrentRenderedDevice(thisCallId);
+
+    // video input devices
+    auto devices = LRCInstance::avModel().getDevices();
+    auto device = LRCInstance::avModel().getDefaultDeviceName();
+    for (auto d : devices) {
+        auto deviceName = QString::fromStdString(d).toUtf8();
+        auto deviceAction = new QAction(deviceName, this);
+        menu.addAction(deviceAction);
         deviceAction->setCheckable(true);
-        if (outVideo)
-            if (outVideo->sourceModel()->getDeviceIndex(device) == activeIndex)
-                deviceAction->setChecked(true);
-        auto ptr = deviceAction.release();
-        menu.addAction(ptr);
-        connect(ptr, &QAction::toggled, [=](bool checked) {
-            if (checked == true) {
-                if (outVideo)
-                    outVideo->sourceModel()->switchTo(device);
-                Video::DeviceModel::instance().setActive(device);
-            }
-        });
+        if (d == activeDevice.name) {
+            deviceAction->setChecked(true);
+        }
+        connect(deviceAction, &QAction::triggered,
+            [this, deviceName, thisCallId]() {
+                LRCInstance::avModel().switchInputTo(deviceName.toStdString());
+            });
     }
 
     menu.addSeparator();
 
+    // entire screen share
     auto shareAction = new QAction(tr("Share entire screen"), this);
     menu.addAction(shareAction);
     shareAction->setCheckable(true);
+    connect(shareAction, &QAction::triggered,
+        [this]() {
+            // screen number is incorrect here
+            auto screenNumber = qApp->desktop()->screenNumber();
+            QScreen* screen = qApp->screens().at(screenNumber);
+            qDebug() << "screen: " << screenNumber << " " << screen->name();
+            auto rect = QApplication::desktop()->geometry();
+            rect.setWidth(static_cast<int>(rect.width() * QApplication::primaryScreen()->devicePixelRatio()));
+            rect.setHeight(static_cast<int>(rect.height() * QApplication::primaryScreen()->devicePixelRatio()));
+            LRCInstance::avModel().setDisplay(0, rect.x(), rect.x(), rect.x(), rect.x());
+        });
+
+    // area of screen share
     auto shareAreaAction = new QAction(tr("Share screen area"), this);
     menu.addAction(shareAreaAction);
     shareAreaAction->setCheckable(true);
-    connect(shareAreaAction, &QAction::triggered, [=]() {
-        SelectAreaDialog selec;
-        selec.exec();
-    });
+    connect(shareAreaAction, &QAction::triggered,
+        [this]() {
+            SelectAreaDialog selectAreaDialog;
+            selectAreaDialog.exec();
+        });
+
+    // share a media file
     auto shareFileAction = new QAction(tr("Share file"), this);
     menu.addAction(shareFileAction);
     shareFileAction->setCheckable(true);
+    connect(shareFileAction, &QAction::triggered,
+        [this]() {
+            QFileDialog fileDialog(this);
+            fileDialog.setFileMode(QFileDialog::AnyFile);
+            QStringList fileNames;
+            if (!fileDialog.exec())
+                return;
+            fileNames = fileDialog.selectedFiles();
+            auto resource = QUrl::fromLocalFile(fileNames.at(0)).toString();
+            LRCInstance::avModel().setInputFile(resource.toStdString());
+        });
 
-    switch(activeIndex) {
-
-    case Video::SourceModel::ExtendedDeviceList::SCREEN:
+    // possibly select the alternative video sharing device
+    switch (activeDevice.type) {
+    case lrc::api::video::DeviceType::DISPLAY:
         shareAction->setChecked(true);
         break;
-    case Video::SourceModel::ExtendedDeviceList::FILE:
+    case lrc::api::video::DeviceType::FILE:
         shareFileAction->setChecked(true);
         break;
-
+    default:
+        // a camera must have already been selected
+        break;
     }
-
-    connect(shareAction, &QAction::triggered, [=]() {
-        if (outVideo) {
-            auto realRect = QApplication::desktop()->geometry();
-            realRect.setWidth(static_cast<int>(realRect.width() * QApplication::primaryScreen()->devicePixelRatio()));
-            realRect.setHeight(static_cast<int>(realRect.height() * QApplication::primaryScreen()->devicePixelRatio()));
-            outVideo->sourceModel()->setDisplay(0, realRect);
-        }
-    });
-    connect(shareFileAction, &QAction::triggered, [=]() {
-        QFileDialog dialog(this);
-        dialog.setFileMode(QFileDialog::AnyFile);
-        QStringList fileNames;
-        if (!dialog.exec())
-            return;
-        fileNames = dialog.selectedFiles();
-        if (outVideo)
-            outVideo->sourceModel()->setFile(QUrl::fromLocalFile(fileNames.at(0)));
-    });
 
     menu.exec(globalPos);
 }
@@ -319,7 +325,7 @@ void
 VideoView::pushRenderer(const std::string& callId) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
-    QObject::disconnect(videoStartedConnection_);
+    QObject::disconnect(ui->videoWidget);
     QObject::disconnect(callStatusChangedConnection_);
 
     if (!callModel->hasCall(callId)) {
@@ -334,18 +340,8 @@ VideoView::pushRenderer(const std::string& callId) {
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
         this, &VideoView::slotCallStatusChanged);
 
-    videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
-        [this](const std::string& callId, Video::Renderer* renderer) {
-            Q_UNUSED(callId);
-            slotVideoStarted(renderer);
-        });
+    ui->videoWidget->connectRendering();
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
-}
-
-void
-VideoView::slotVideoStarted(Video::Renderer* renderer) {
-    ui->videoWidget->show();
-    ui->videoWidget->setDistantRenderer(renderer);
 }
 
 void
