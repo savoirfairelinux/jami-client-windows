@@ -64,9 +64,6 @@ protected:
 signals:
     void keyReleased(QKeyEvent*ke);
 
-public slots:
-    void onRingEvent(const QString& uri);
-
 private slots:
     void slotCurrentChanged(int index);
     void trayActivated(QSystemTrayIcon::ActivationReason reason);

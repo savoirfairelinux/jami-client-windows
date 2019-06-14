@@ -67,6 +67,7 @@ void InvokeMailto(const QString& subject, const QString& body, const QString& at
 void setStackWidget(QStackedWidget *stack, QWidget *widget);
 void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
 void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
+QSize getRealSize(QScreen* screen);
 
 // updates
 void cleanUpdateFiles();
