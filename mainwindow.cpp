@@ -170,6 +170,8 @@ MainWindow::MainWindow(QWidget* parent)
 
     lastScr_ = startScreen;
 
+    this->show();
+
 #ifdef DEBUG_STYLESHEET
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout,
@@ -207,16 +209,6 @@ void MainWindow::slotCurrentChanged(int index)
 
     setWindowSize(scr, firstUse);
     lastScr_ = scr;
-}
-
-void MainWindow::onRingEvent(const QString& uri)
-{
-    this->showNormal();
-    if (not uri.isEmpty()) {
-        auto outCall = CallModel::instance().dialingCall();
-        outCall->setDialNumber(uri);
-        outCall->performAction(Call::Action::ACCEPT);
-    }
 }
 
 bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
@@ -302,7 +294,7 @@ void MainWindow::changeEvent(QEvent* e)
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
     QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::closeOrMinimized).toBool()) {
         this->hide();
@@ -339,7 +331,6 @@ void MainWindow::readSettingsFromRegistry()
 
 void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 {
-    auto screenNumber = qApp->desktop()->screenNumber();
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
         hide();
@@ -349,12 +340,15 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
         setMaximumSize(QtMaxDimension, QtMaxDimension);
     }
     if (firstUse || !accountList.size()) {
+#ifndef PROCESS_DPI_AWARE
+        auto screenNumber = qApp->desktop()->screenNumber();
         setGeometry(
             QStyle::alignedRect(
                 Qt::LeftToRight,
                 Qt::AlignCenter,
                 size(),
                 qApp->desktop()->screenGeometry(screenNumber)));
+#endif
         if (scr == ScreenEnum::WizardScreen) {
             setWindowFlags(Qt::Dialog);
             setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
@@ -370,27 +364,19 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 
 void MainWindow::show()
 {
-    QMainWindow::show();
+#ifndef PROCESS_DPI_AWARE
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-        this, &MainWindow::slotScreenChanged);
-    auto screenNumber = qApp->desktop()->screenNumber();
-    QScreen* screen = qApp->screens().at(screenNumber);
-    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
-    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+                                       this, &MainWindow::slotScreenChanged);
+#endif
 }
 
 void MainWindow::slotScreenChanged(QScreen* screen)
 {
+    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
+    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
     adjustSize();
     updateGeometry();
-    update();
-    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
-    // a little delay won't hurt ;)
-    QTimer::singleShot(100, this,
-        [this] {
-            qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
-        });
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
