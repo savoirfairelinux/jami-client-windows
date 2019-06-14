@@ -23,12 +23,7 @@
 #include <QFile>
 #include <QMessageBox>
 
-#include "callmodel.h"
 #include "globalinstances.h"
-#include "media/audio.h"
-#include "media/file.h"
-#include "media/text.h"
-#include "media/video.h"
 
 #include <QFontDatabase>
 #include <QLibraryInfo>
@@ -50,12 +45,6 @@
 #include <gnutls/gnutls.h>
 #endif
 
-#ifdef URI_PROTOCOL
-#include "shmclient.h"
-#endif
-
-REGISTER_MEDIA();
-
 void
 consoleDebug()
 {
@@ -69,7 +58,7 @@ consoleDebug()
     coordInfo.Y = 9000;
 
     SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coordInfo);
-    SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),ENABLE_QUICK_EDIT_MODE| ENABLE_EXTENDED_FLAGS);
+    SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
 #endif
 }
 
@@ -77,7 +66,6 @@ consoleDebug()
 void
 vsConsoleDebug()
 {
-
     // Print debug to output window if using VS
     QObject::connect(
         &LRCInstance::behaviorController(),
@@ -115,7 +103,7 @@ main(int argc, char* argv[])
     newArgv[argc] = ARG_DISABLE_WEB_SECURITY;
     newArgv[argc + 1] = nullptr;
 
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN) && defined(PROCESS_DPI_AWARE)
     SetProcessDPIAware();
 #endif // Q_OS_WIN
 
@@ -147,57 +135,30 @@ main(int argc, char* argv[])
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
     LRCInstance::init();
 
-    QFile debugFile("debug.log");
+    QFile debugFile("daemon.log");
 
     for (auto string : QCoreApplication::arguments()) {
-        if (string == "-m" || string == "--minimized") {
-            startMinimized = true;
-        }
-        if (string == "-f" || string == "--file") {
-            debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
-            debugFile.close();
-            fileDebug(debugFile);
-        }
-        if (string == "-d" || string == "--debug") {
-            consoleDebug();
-        }
-#ifdef _MSC_VER
-        else if (string == "-c" || string == "--vsconsole") {
-            vsConsoleDebug();
-        }
-#endif
-        if (string.startsWith("ring:")) {
+        if (string.startsWith("jami:")) {
             uri = string;
-        }
-    }
-
-#ifdef URI_PROTOCOL
-    QSharedMemory* shm = new QSharedMemory("RingShm");
-    QSystemSemaphore* sem = new QSystemSemaphore("RingSem", 0);
-
-    if (not shm->create(1024)) {
-        if (not uri.isEmpty()) {
-            shm->attach();
-            shm->lock();
-            char *to = (char*) shm->data();
-            QChar *data = uri.data();
-            while (!data->isNull()) {
-                memset(to, data->toLatin1(), 1);
-                ++data;
-                ++to;
+        } else {
+            if (string == "-m" || string == "--minimized") {
+                startMinimized = true;
             }
-            memset(to, 0, 1); //null terminator
-            shm->unlock();
-        }
-        sem->release();
-
-        delete shm;
-        exit(EXIT_SUCCESS);
-    }
-    //Client listening to shm event
-    memset((char*)shm->data(), 0, shm->size());
-    ShmClient* shmClient = new ShmClient(shm, sem);
+            if (string == "-f" || string == "--file") {
+                debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
+                debugFile.close();
+                fileDebug(debugFile);
+            }
+            if (string == "-d" || string == "--debug") {
+                consoleDebug();
+            }
+#ifdef _MSC_VER
+            if (string == "-c" || string == "--vsconsole") {
+                vsConsoleDebug();
+            }
 #endif
+        }
+    }
 
     auto appDir = qApp->applicationDirPath() + "/";
     const auto locale_name = QLocale::system().name();
@@ -246,11 +207,6 @@ main(int argc, char* argv[])
 
     MainWindow::instance().createThumbBar();
 
-    if (not uri.isEmpty()) {
-        startMinimized = false;
-        MainWindow::instance().onRingEvent(uri);
-    }
-
     if (not startMinimized)
         MainWindow::instance().showWindow();
     else {
@@ -258,16 +214,7 @@ main(int argc, char* argv[])
         MainWindow::instance().hide();
     }
 
-#ifdef URI_PROTOCOL
-    QObject::connect(shmClient, SIGNAL(RingEvent(QString)), &MainWindow::instance(), SLOT(onRingEvent(QString)));
-
-    QObject::connect(&a, &QApplication::aboutToQuit, [&a, &shmClient, &shm, &sem]() {
-        shmClient->terminate();
-        delete shmClient;
-        delete shm;
-        delete sem;
-    });
-#endif
+    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { guard.release(); });
 
     auto ret = a.exec();
 

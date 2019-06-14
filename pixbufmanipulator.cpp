@@ -133,13 +133,13 @@ QVariant
 PixbufManipulator::historySortingCategoryIcon(const CategorizedHistoryModel::SortedProxy::Categories cat) const
 {
     Q_UNUSED(cat)
-    return QVariant();
+        return QVariant();
 }
 QVariant
 PixbufManipulator::contactSortingCategoryIcon(const CategorizedContactModel::SortedProxy::Categories cat) const
 {
     Q_UNUSED(cat)
-    return QVariant();
+        return QVariant();
 }
 QVariant
 PixbufManipulator::userActionIcon(const UserActionElement& state) const
@@ -192,10 +192,8 @@ QVariant PixbufManipulator::decorationRole(const Person* p)
 
 QVariant PixbufManipulator::decorationRole(const Account* acc)
 {
-    Q_UNUSED(acc)
-    return Utils::getCirclePhoto(ProfileModel::instance().
-                                 selectedProfile()->person()->photo().value<QImage>(),
-                                 IMAGE_SIZE.width());
+    Q_UNUSED(acc);
+    return QVariant();
 }
 
 QVariant
