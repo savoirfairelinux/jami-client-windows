@@ -45,16 +45,6 @@
 #include "version.h"
 
 #include "api/newdevicemodel.h"
-#include "audio/inputdevicemodel.h"
-#include "audio/outputdevicemodel.h"
-#include "audio/settings.h"
-#include "callmodel.h"
-#include "media/recordingmodel.h"
-#include "video/channel.h"
-#include "video/devicemodel.h"
-#include "video/previewmanager.h"
-#include "video/rate.h"
-#include "video/resolution.h"
 
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent)
@@ -168,7 +158,7 @@ void SettingsWidget::leaveSettingsSlot()
     QtConcurrent::run(
         [this] {
             ui->currentAccountAvatar->stopBooth();
-            Video::PreviewManager::instance().stopPreview();
+            LRCInstance::avModel().stopPreview();
         });
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -185,7 +175,7 @@ void SettingsWidget::setSelected(Button sel)
     case Button::accountSettingsButton:
         QtConcurrent::run(
             [this] {
-                Video::PreviewManager::instance().stopPreview();
+                LRCInstance::avModel().stopPreview();
             });
 
         if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
@@ -217,7 +207,7 @@ void SettingsWidget::setSelected(Button sel)
     case Button::generalSettingsButton:
         QtConcurrent::run(
             [this] {
-                Video::PreviewManager::instance().stopPreview();
+                LRCInstance::avModel().stopPreview();
             });
 
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
@@ -826,14 +816,14 @@ void SettingsWidget::populateGeneralSettings()
     ui->notificationCheckBox->setChecked(notifs);
 
     //recordings
-    ui->alwaysRecordingCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
+    /*ui->alwaysRecordingCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
 
     if (media::RecordingModel::instance().recordPath().isEmpty()) {
         QString recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
         media::RecordingModel::instance().setRecordPath(recordPath);
-    }
+    }*/
 
-    Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
+    //Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
 
 #ifdef Q_OS_WIN
     ui->autoUpdateCheckBox->setChecked(settings.value(SettingsKey::autoUpdate).toBool());
@@ -882,18 +872,18 @@ void SettingsWidget::openDownloadFolderSlot()
 
 void SettingsWidget::slotSetAlwaysRecording(bool state)
 {
-    media::RecordingModel::instance().setAlwaysRecording(state);
+    //media::RecordingModel::instance().setAlwaysRecording(state);
 }
 
 void SettingsWidget::openRecordFolderSlot()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Recordings"),
+    /*QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Recordings"),
         media::RecordingModel::instance().recordPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
         media::RecordingModel::instance().setRecordPath(dir);
         Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
-    }
+    }*/
 }
 
 // *************************  Audio/Visual Settings  *************************
@@ -901,9 +891,9 @@ void SettingsWidget::openRecordFolderSlot()
 void SettingsWidget::populateAVSettings()
 {
     // audio
-    auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    /*auto inputModel = Audio::Settings::instance().inputDeviceModel();
     auto outputModel = Audio::Settings::instance().outputDeviceModel();
-
+*/
     disconnect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::outputDevIndexChangedSlot);
     disconnect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -913,46 +903,68 @@ void SettingsWidget::populateAVSettings()
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::inputdevIndexChangedSlot);
 
-    ui->inputComboBox->setModel(inputModel);
-    ui->outputComboBox->setModel(outputModel);
+    ui->inputComboBox->clear();
+    auto inputDevices = LRCInstance::avModel().getAudioInputDevices();
+    auto inputDevice = LRCInstance::avModel().getInputDevice();
+    auto inputIndex = Utils::indexInVector(inputDevices, inputDevice);
+    for (auto inputDevice : inputDevices) {
+        ui->inputComboBox->addItem(QString::fromStdString(inputDevice));
+    }
+    ui->inputComboBox->setCurrentIndex(inputIndex);
 
-    auto inputIndex = inputModel->selectionModel()->currentIndex();
-    auto outputIndex = outputModel->selectionModel()->currentIndex();
+    ui->outputComboBox->clear();
+    auto outputDevices = LRCInstance::avModel().getAudioOutputDevices();
+    auto outputDevice = LRCInstance::avModel().getOutputDevice();
+    auto outputIndex = Utils::indexInVector(outputDevices, outputDevice);
+    for (auto outputDevice : outputDevices) {
+        ui->outputComboBox->addItem(QString::fromStdString(outputDevice));
+    }
+    ui->outputComboBox->setCurrentIndex(outputIndex);
 
-    ui->inputComboBox->setCurrentIndex(inputIndex.row());
-    ui->outputComboBox->setCurrentIndex(outputIndex.row());
+    //ui->inputComboBox->setModel(inputModel);
+    //ui->outputComboBox->setModel(outputModel);
 
-    // video
-    disconnect(deviceModel_, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(deviceModelIndexChanged(int)));
-    disconnect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
-    disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
-    connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(deviceModelIndexChanged(int)));
-    connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
-    connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
+    //auto inputIndex = inputModel->selectionModel()->currentIndex();
+    //auto outputIndex = outputModel->selectionModel()->currentIndex();
 
-    ui->deviceBox->setModel(deviceModel_);
-    currentDeviceName_ = deviceModel_->activeDevice()->name();
-    setFormatListForDevice(deviceModel_->activeDevice());
+    //ui->inputComboBox->setCurrentIndex(inputIndex.row());
+    //ui->outputComboBox->setCurrentIndex(outputIndex.row());
+
+    //// video
+    //disconnect(deviceModel_, SIGNAL(currentIndexChanged(int)),
+    //    this, SLOT(deviceModelIndexChanged(int)));
+    //disconnect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    //    this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
+    //disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    //    this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
+    //connect(deviceModel_, SIGNAL(currentIndexChanged(int)),
+    //    this, SLOT(deviceModelIndexChanged(int)));
+    //connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    //    this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
+    //connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    //    this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
+
+    //ui->deviceBox->setModel(deviceModel_);
+    //currentDeviceName_ = deviceModel_->activeDevice()->name();
+    //setFormatListForDevice(deviceModel_->activeDevice());
 
     showPreview();
 }
 
 void SettingsWidget::outputDevIndexChangedSlot(int index)
 {
-    auto outputModel = Audio::Settings::instance().outputDeviceModel();
-    outputModel->selectionModel()->setCurrentIndex(outputModel->index(index), QItemSelectionModel::ClearAndSelect);
+    auto selectedOutputDeviceName = ui->outputComboBox->itemData(index).toString();
+    LRCInstance::avModel().setOutputDevice(selectedOutputDeviceName.toStdString());
+    /*auto outputModel = Audio::Settings::instance().outputDeviceModel();
+    outputModel->selectionModel()->setCurrentIndex(outputModel->index(index), QItemSelectionModel::ClearAndSelect);*/
 }
 
 void SettingsWidget::inputdevIndexChangedSlot(int index)
 {
-    auto inputModel = Audio::Settings::instance().inputDeviceModel();
-    inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);
+    auto selectedInputDeviceName = ui->inputComboBox->itemData(index).toString();
+    LRCInstance::avModel().setInputDevice(selectedInputDeviceName.toStdString());
+    /*auto inputModel = Audio::Settings::instance().inputDeviceModel();
+    inputModel->selectionModel()->setCurrentIndex(inputModel->index(index), QItemSelectionModel::ClearAndSelect);*/
 }
 
 void SettingsWidget::deviceModelIndexChanged(int index)
@@ -995,19 +1007,19 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     if (auto activeChannel = deviceModel_->activeDevice()->activeChannel()) {
         auto resolutionIndex = formatIndexList_.at(index).first;
         auto rateIndex = formatIndexList_.at(index).second;
-        activeChannel->setActiveMode(resolutionIndex, rateIndex);
+        //activeChannel->setActiveMode(resolutionIndex, rateIndex);
     }
 }
 
 void SettingsWidget::startVideo()
 {
-    Video::PreviewManager::instance().stopPreview();
-    Video::PreviewManager::instance().startPreview();
+    LRCInstance::avModel().stopPreview();
+    LRCInstance::avModel().startPreview();
 }
 
 void SettingsWidget::stopVideo()
 {
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
 }
 
 void SettingsWidget::toggleVideoSettings(bool enabled)
@@ -1026,7 +1038,8 @@ void SettingsWidget::toggleVideoPreview(bool enabled)
 
 void SettingsWidget::showPreview()
 {
-    if (!CallModel::instance().getActiveCalls().size()) {
+    ui->videoWidget->connectRendering();
+    if (!LRCInstance::getActiveCalls().size()) {
         ui->previewUnavailableLabel->hide();
         ui->videoLayoutWidget->show();
         startVideo();
@@ -1040,7 +1053,7 @@ void SettingsWidget::showPreview()
 
 void SettingsWidget::setFormatListForDevice(Video::Device* device)
 {
-    auto activeChannel = device->activeChannel();
+    /*auto activeChannel = device->activeChannel();
 
     if (!activeChannel) {
         return;
@@ -1070,5 +1083,5 @@ void SettingsWidget::setFormatListForDevice(Video::Device* device)
         }
     }
 
-    ui->formatBox->blockSignals(false);
+    ui->formatBox->blockSignals(false);*/
 }
