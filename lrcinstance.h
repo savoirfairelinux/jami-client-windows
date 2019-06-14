@@ -42,6 +42,7 @@
 #include "api/contact.h"
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
+#include "api/peerdiscoverymodel.h"
 #include "accountlistmodel.h"
 
 #include "account.h"

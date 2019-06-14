@@ -34,6 +34,7 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
+#include <QMessagebox>
 
 #include "deleteaccountdialog.h"
 #include "nameregistrationdialog.h"
@@ -506,6 +507,8 @@ void SettingsWidget::setAccEnableSlot(int state)
 {
     LRCInstance::editableAccountModel()->enableAccount(LRCInstance::getCurrAccId(), (bool)state);
 
+    auto x = LRCInstance::getCurrentAccountInfo().peerDiscoveryModel->getNearbyPeers();
+    QMessageBox::information(0,QString::fromStdString(x[0].uri),QString::fromStdString(x[0].displayName));
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
