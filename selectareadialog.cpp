@@ -19,23 +19,17 @@
 #include "selectareadialog.h"
 
 #ifdef Q_OS_WIN
-#define WIN32_LEAN_AND_MEAN 1
 #define NOMINMAX
 #include <windows.h>
-#include <winuser.h>
-
-#undef OUT
-#undef IN
-#undef ERROR
 #endif
 
 #include <QApplication>
 #include <QScreen>
 #include <QPainter>
+#include <QDesktopWidget>
 
-#include "video/sourcemodel.h"
-#include "media/video.h"
-#include "callmodel.h"
+#include "lrcinstance.h"
+#include "utils.h"
 
 SelectAreaDialog::SelectAreaDialog() :
     rubberBand_(nullptr)
@@ -50,9 +44,9 @@ SelectAreaDialog::SelectAreaDialog() :
     grabMouse();
     rubberBand_ = new QRubberBand(QRubberBand::Rectangle, this);
     QApplication::setOverrideCursor(Qt::CrossCursor);
-    QScreen* screen = QGuiApplication::primaryScreen();
-    if (screen) {
-        originalPixmap_ = screen->grabWindow(0);
+    auto screenNumber = qApp->desktop()->screenNumber(this);
+    if (auto screen = qApp->screens().at(screenNumber)) {
+        originalPixmap_ = screen->grabWindow(screenNumber);
         originalPixmap_.setDevicePixelRatio(screen->devicePixelRatio());
     }
 }
@@ -83,36 +77,40 @@ void
 SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
-
-    if(rubberBand_) {
-        QApplication::restoreOverrideCursor();
-        releaseMouse();
-        if (auto call = CallModel::instance().selectedCall()) {
-            if (auto outVideo = call->firstMedia<media::Video>(media::Media::Direction::OUT)) {
-                QRect realRect = rubberBand_->geometry();
-#ifdef Q_OS_WIN
-                if (QGuiApplication::primaryScreen()->devicePixelRatio() > 1.0) {
-                    auto scaledSize = QGuiApplication::primaryScreen()->geometry();
-                    auto sourceHdc = GetDC(nullptr);
-                    auto vertres = GetDeviceCaps(sourceHdc, VERTRES);
-                    auto horzres = GetDeviceCaps(sourceHdc, HORZRES);
-                    auto height = realRect.height() * QGuiApplication::primaryScreen()->devicePixelRatio();
-                    auto width = realRect.width() * QGuiApplication::primaryScreen()->devicePixelRatio();
-                    float xRatio = static_cast<float>(horzres) / static_cast<float>(scaledSize.width());
-                    float yRatio = static_cast<float>(vertres) / static_cast<float>(scaledSize.height());
-                    realRect.setX(static_cast<int>(realRect.x() * xRatio));
-                    realRect.setY(static_cast<int>(realRect.y() * yRatio));
-                    realRect.setWidth(static_cast<int>(width));
-                    realRect.setHeight(static_cast<int>(height));
-                }
-#endif
-                outVideo->sourceModel()->setDisplay(0, realRect);
-            }
-        }
-        delete rubberBand_;
-        rubberBand_ = nullptr;
-        reject();
+    if (!rubberBand_) {
+        return;
     }
+
+    auto screenNumber = qApp->desktop()->screenNumber(this);
+    QScreen* screen = qApp->screens().at(screenNumber);
+    if (!screen) {
+        screen = qApp->primaryScreen();
+    }
+
+    QApplication::restoreOverrideCursor();
+    releaseMouse();
+    QRect rect = rubberBand_->geometry();
+#if defined(Q_OS_WIN) && !defined(PROCESS_DPI_AWARE)
+    if (screen && screen->devicePixelRatio() > 1.0) {
+        auto scaledSize = screen->geometry();
+        auto sourceHdc = GetDC(nullptr);
+        auto vertres = GetDeviceCaps(sourceHdc, VERTRES);
+        auto horzres = GetDeviceCaps(sourceHdc, HORZRES);
+        auto height = rect.height() * screen->devicePixelRatio();
+        auto width = rect.width() * screen->devicePixelRatio();
+        float xRatio = static_cast<float>(horzres) / static_cast<float>(scaledSize.width());
+        float yRatio = static_cast<float>(vertres) / static_cast<float>(scaledSize.height());
+        rect.setX(static_cast<int>(rect.x() * xRatio));
+        rect.setY(static_cast<int>(rect.y() * yRatio));
+        rect.setWidth(static_cast<int>(width));
+        rect.setHeight(static_cast<int>(height));
+    }
+# endif
+    LRCInstance::avModel().setDisplay(screenNumber,
+        rect.x(), rect.y(), rect.width(), rect.height()
+    );
+    rubberBand_->deleteLater();
+    reject();
 }
 
 void
@@ -120,6 +118,5 @@ SelectAreaDialog::paintEvent(QPaintEvent* event)
 {
     Q_UNUSED(event)
     QPainter painter(this);
-
     painter.drawPixmap(QPoint(0, 0), originalPixmap_);
 }

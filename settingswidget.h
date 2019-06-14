@@ -32,7 +32,6 @@
 
 #include "api/datatransfermodel.h"
 #include "typedefs.h"
-#include "video/devicemodel.h"
 
 namespace Ui {
 class SettingsWidget;
@@ -82,7 +81,7 @@ private:
     void setConnections();
     void populateGeneralSettings();
     void populateAVSettings();
-    void setFormatListForDevice(Video::Device* device);
+    void setFormatListForDevice(const std::string& device);
     void showPreview();
     void startVideo();
     void stopVideo();
@@ -95,9 +94,8 @@ private:
     QScrollArea* scrollArea_;
     Button pastButton_ = Button::generalSettingsButton;
     bool advancedSettingsDropped_ = false;
-    QList<QPair<int, int>> formatIndexList_;
-    Video::DeviceModel* deviceModel_;
-    QString currentDeviceName_;
+    QList<QPair<std::string, float>> formatIndexList_;
+    std::string currentDisplayedVideoDevice_;
     AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
     QScrollArea* scrollSIPArea_;
     bool advancedSIPSettingsDropped_ = false;
@@ -136,7 +134,6 @@ private slots:
     void slotSetUpdateAutomatic(bool state);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);
-    void deviceModelIndexChanged(int index);
     void slotDeviceBoxCurrentIndexChanged(int index);
     void slotFormatBoxCurrentIndexChanged(int index);
 };

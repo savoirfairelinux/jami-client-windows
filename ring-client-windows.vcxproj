@@ -82,7 +82,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PROCESS_DPI_AWARE;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -121,7 +121,7 @@
     <QtMoc>
       <QTDIR>$(QTDIR)</QTDIR>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <Define>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
+      <Define>PROCESS_DPI_AWARE;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
       <CompilerFlavor>msvc</CompilerFlavor>
       <Include>$(Configuration)/moc_predefs.h</Include>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -169,6 +169,7 @@
       <SDLCheck>true</SDLCheck>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\daemon\MSVC\x64\ReleaseLib_win32\bin\dring.lib;..\lrc\msvc\src\qtwrapper\Release\qtwrapper.lib;..\lrc\msvc\release\ringclient_static.lib;.\winsparkle\x64\release\WinSparkle.lib;.\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib\qrcodelib.lib;shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;$(QTDIR)\lib\qtmain.lib;$(QTDIR)\lib\Qt5Svg.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5WinExtras.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Xml.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Core.lib;$(QTDIR)\lib\Qt5Sql.lib;$(QTDIR)\lib\Qt5WebEngineWidgets.lib;$(QTDIR)\lib\Qt5WebChannel.lib;%(AdditionalDependencies)</AdditionalDependencies>
