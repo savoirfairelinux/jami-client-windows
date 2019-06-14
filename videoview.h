@@ -59,7 +59,6 @@ protected:
 private slots:
     void slotCallStatusChanged(const std::string& callId);
     void showContextMenu(const QPoint& pos);
-    void slotVideoStarted(Video::Renderer* renderer);
     void fadeOverlayOut();
     void showOverlay();
 
@@ -71,12 +70,12 @@ private:
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
-    QMetaObject::Connection videoStartedConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
     bool resizingPreview_ = false;
+    bool sharingEntireScreen_ = false;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;

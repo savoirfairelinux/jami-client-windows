@@ -25,8 +25,6 @@
 #include <QGraphicsOpacityEffect>
 #include <QtConcurrent/QtConcurrent>
 
-#include "video/previewmanager.h"
-
 #include "utils.h"
 #include "lrcinstance.h"
 
@@ -59,7 +57,7 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
 
 PhotoboothWidget::~PhotoboothWidget()
 {
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
     delete ui;
 }
 
@@ -67,8 +65,8 @@ void PhotoboothWidget::startBooth()
 {
     hasAvatar_ = false;
     ui->videoFeed->setResetPreview(true);
-    Video::PreviewManager::instance().stopPreview();
-    Video::PreviewManager::instance().startPreview();
+    LRCInstance::avModel().stopPreview();
+    LRCInstance::avModel().startPreview();
     ui->videoFeed->show();
     ui->avatarLabel->hide();
     takePhotoState_ = true;
@@ -77,7 +75,7 @@ void PhotoboothWidget::startBooth()
 
 void PhotoboothWidget::stopBooth()
 {
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
     ui->videoFeed->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
@@ -87,16 +85,16 @@ void PhotoboothWidget::stopBooth()
 void
 PhotoboothWidget::on_importButton_clicked()
 {
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
     auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
                                              picturesDir,
                                              tr("Image Files (*.jpg *.jpeg *.png)"));
     if (fileName_.isEmpty()) {
-        Video::PreviewManager::instance().startPreview();
+        LRCInstance::avModel().startPreview();
         return;
     }
-    Video::PreviewManager::instance().stopPreview();
+    LRCInstance::avModel().stopPreview();
     auto image = Utils::cropImage(QImage(fileName_));
     auto avatar = image.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
     avatarPixmap_ = QPixmap::fromImage(avatar);
@@ -127,7 +125,7 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 
         QtConcurrent::run(
             [this] {
-                Video::PreviewManager::instance().stopPreview();
+                LRCInstance::avModel().stopPreview();
                 auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
                 auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
                 avatarPixmap_ = QPixmap::fromImage(avatar);

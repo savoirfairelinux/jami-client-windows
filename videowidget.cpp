@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -22,15 +23,9 @@
 
 VideoWidget::VideoWidget(QWidget* parent) :
     QWidget(parent)
-  , previewRenderer_(nullptr)
-  , renderer_(nullptr)
   , isPreviewDisplayed_(true)
   , fullPreview_(false)
 {
-    connect(&Video::PreviewManager::instance(),
-            SIGNAL(previewStarted(Video::Renderer*)),
-            this, SLOT(previewStarted(Video::Renderer*)));
-
     QPalette pal(palette());
     pal.setColor(QPalette::Background, Qt::black);
     this->setAutoFillBackground(true);
@@ -41,84 +36,122 @@ VideoWidget::~VideoWidget()
 {}
 
 void
-VideoWidget::previewStarted(Video::Renderer* renderer) {
-    //Enforce that only one videowidget we'll be used at the same time
+VideoWidget::slotRendererStarted(const std::string& id)
+{
+    Q_UNUSED(id);
+
+    // only one videowidget will be used at the same time
     if (not isVisible())
         return;
 
+    this->show();
+
     resetPreview_ = true;
 
-    if (previewRenderer_ == renderer)
-        return;
-    previewRenderer_ = renderer;
-    connect(previewRenderer_, SIGNAL(frameUpdated()),
-            this, SLOT(frameFromPreview()));
-    connect(previewRenderer_, SIGNAL(stopped()),
-            this, SLOT(previewStopped()));
+    QObject::disconnect(rendererConnections_.started);
+
+    QObject::disconnect(rendererConnections_.updated);
+    rendererConnections_.updated = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::frameUpdated,
+        [this](const std::string& id) {
+            auto avModel = &LRCInstance::avModel();
+            auto renderer = &avModel->getRenderer(id);
+            if (!renderer->isRendering()) {
+                return;
+            }
+            using namespace lrc::api::video;
+            if (id == PREVIEW_RENDERER_ID) {
+                previewRenderer_ = const_cast<Renderer*>(renderer);
+            } else {
+                distantRenderer_ = const_cast<Renderer*>(renderer);
+            }
+            renderFrame(id);
+        });
+
+    QObject::disconnect(rendererConnections_.stopped);
+    rendererConnections_.stopped = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::rendererStopped,
+        [this](const std::string& id) {
+            QObject::disconnect(rendererConnections_.updated);
+            QObject::disconnect(rendererConnections_.stopped);
+            using namespace lrc::api::video;
+            if (id == PREVIEW_RENDERER_ID) {
+                previewRenderer_ = nullptr;
+            } else {
+                distantRenderer_ = nullptr;
+            }
+            repaint();
+        });
 }
 
 void
-VideoWidget::previewStopped() {
-    disconnect(previewRenderer_, SIGNAL(frameUpdated()),
-               this, SLOT(frameFromPreview()));
-    disconnect(previewRenderer_, SIGNAL(stopped()),
-               this, SLOT(previewStopped()));
-    previewRenderer_ = nullptr;
-    repaint();
-}
-
-void
-VideoWidget::frameFromPreview() {
-    if (previewRenderer_ && previewRenderer_->isRendering()) {
+VideoWidget::renderFrame(const std::string& id)
+{
+    auto avModel = &LRCInstance::avModel();
+    using namespace lrc::api::video;
+    auto renderer = &avModel->getRenderer(id);
+    if (renderer && renderer->isRendering()) {
         {
             QMutexLocker lock(&mutex_);
-            auto tmp  = previewRenderer_->currentFrame();
-            if (tmp.storage.size())
-                currentPreviewFrame_ = tmp;
+            auto tmp  = renderer->currentFrame();
+            if (tmp.storage.size()) {
+                using namespace lrc::api::video;
+                if (id == PREVIEW_RENDERER_ID) {
+                    previewFrame_ = tmp;
+                } else {
+                    distantFrame_ = tmp;
+                }
+            }
         }
         update();
     }
 }
 
 void
-VideoWidget::paintEvent(QPaintEvent* evt) {
-    Q_UNUSED(evt)
+VideoWidget::paintEvent(QPaintEvent* e)
+{
+    Q_UNUSED(e);
     QPainter painter(this);
 
-    if (renderer_) {
+    if (distantRenderer_) {
         {
             QMutexLocker lock(&mutex_);
-            if (currentDistantFrame_.storage.size() != 0
-                && currentDistantFrame_.storage.size() ==
-                    (unsigned int)(renderer_->size().height()*renderer_->size().width()*4)) {
-                frameDistant_ = std::move(currentDistantFrame_.storage);
-                distantImage_.reset(new QImage((uchar*)frameDistant_.data(),
-                                               renderer_->size().width(),
-                                               renderer_->size().height(),
-                                               QImage::Format_ARGB32_Premultiplied));
+            if (distantFrame_.storage.size() != 0
+                && distantFrame_.storage.size() ==
+                (unsigned int)(distantRenderer_->size().height() * distantRenderer_->size().width()*4)) {
+                frameDistant_ = std::move(distantFrame_.storage);
+                distantImage_.reset(
+                    new QImage((uchar*)frameDistant_.data(),
+                        distantRenderer_->size().width(),
+                        distantRenderer_->size().height(),
+                        QImage::Format_ARGB32_Premultiplied)
+                );
             }
         }
         if (distantImage_) {
             auto scaledDistant = distantImage_->scaled(size(), Qt::KeepAspectRatio);
             auto xDiff = (width() - scaledDistant.width()) / 2;
             auto yDiff = (height() - scaledDistant.height()) / 2;
-            painter.drawImage(QRect(xDiff,yDiff,scaledDistant.width(),scaledDistant.height()), scaledDistant);
+            painter.drawImage(QRect(
+                xDiff, yDiff, scaledDistant.width(), scaledDistant.height()), scaledDistant
+            );
         }
     }
     if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
-        if (previewRenderer_) {
-            QMutexLocker lock(&mutex_);
-            if (currentPreviewFrame_.storage.size() != 0
-                 && currentPreviewFrame_.storage.size() ==
-                    (unsigned int)(previewRenderer_->size().height()*previewRenderer_->size().width()*4)) {
-                framePreview_ = std::move(currentPreviewFrame_.storage);
-                previewImage_.reset(new QImage((uchar*)framePreview_.data(),
-                                               previewRenderer_->size().width(),
-                                               previewRenderer_->size().height(),
-                                               QImage::Format_ARGB32_Premultiplied));
-                hasFrame_ = true;
-
-            }
+        QMutexLocker lock(&mutex_);
+        if (previewFrame_.storage.size() != 0
+            && previewFrame_.storage.size() ==
+            (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width() * 4)) {
+            framePreview_ = std::move(previewFrame_.storage);
+            previewImage_.reset(
+                new QImage((uchar*)framePreview_.data(),
+                    previewRenderer_->size().width(),
+                    previewRenderer_->size().height(),
+                    QImage::Format_ARGB32_Premultiplied)
+            );
+            hasFrame_ = true;
         }
         if (previewImage_) {
             if(resetPreview_) {
@@ -139,15 +172,15 @@ VideoWidget::paintEvent(QPaintEvent* evt) {
             }
 
             QImage scaledPreview;
-            if (photoMode_)
+            if (photoMode_) {
                 scaledPreview = Utils::getCirclePhoto(*previewImage_, previewGeometry_.height());
-            else
+            } else {
                 scaledPreview = previewImage_->scaled(previewGeometry_.width(),
                                                       previewGeometry_.height(),
                                                       Qt::KeepAspectRatio);
+            }
             previewGeometry_.setWidth(scaledPreview.width());
             previewGeometry_.setHeight(scaledPreview.height());
-
             painter.drawImage(previewGeometry_, scaledPreview);
         }
     } else if (photoMode_) {
@@ -168,59 +201,40 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
 }
 
 void
-VideoWidget::setDistantRenderer(Video::Renderer* renderer) {
-    if (not renderer)
-        return;
-    if (renderer_ != renderer) {
-        renderingStopped();
-        renderer_ = renderer;
-        connect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-        connect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
-    }
+VideoWidget::connectRendering()
+{
+    rendererConnections_.started = connect(
+        &LRCInstance::avModel(),
+        SIGNAL(rendererStarted(const std::string&)),
+        this,
+        SLOT(slotRendererStarted(const std::string&))
+    );
 }
 
 void
-VideoWidget::frameFromDistant() {
-    if (renderer_ && renderer_->isRendering()) {
-        {
-            QMutexLocker lock(&mutex_);
-            auto tmp  = renderer_->currentFrame();
-            if (tmp.storage.size())
-                currentDistantFrame_ = tmp;
-        }
-        update();
-    }
-}
-
-void
-VideoWidget::renderingStopped() {
-    if (not renderer_)
-        return;
-    disconnect(renderer_, SIGNAL(frameUpdated()), this, SLOT(frameFromDistant()));
-    disconnect(renderer_, SIGNAL(stopped()),this, SLOT(renderingStopped()));
-    renderer_ = nullptr;
-    repaint();
-}
-
-void
-VideoWidget::setPreviewDisplay(bool display) {
+VideoWidget::setPreviewDisplay(bool display)
+{
     isPreviewDisplayed_ = display;
 }
 
 void
-VideoWidget::setIsFullPreview(bool full) {
+VideoWidget::setIsFullPreview(bool full)
+{
     fullPreview_ = full;
 }
 
 QImage
-VideoWidget::takePhoto() {
-    if (previewImage_)
+VideoWidget::takePhoto()
+{
+    if (previewImage_) {
         return previewImage_.get()->copy();
+    }
     return QImage();
 }
 
 void
-VideoWidget::setPhotoMode(bool isPhotoMode) {
+VideoWidget::setPhotoMode(bool isPhotoMode)
+{
 
     photoMode_ = isPhotoMode;
     auto color = isPhotoMode ? Qt::transparent : Qt::black;

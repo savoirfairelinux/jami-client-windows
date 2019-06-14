@@ -29,6 +29,7 @@
 #include <QBuffer>
 
 #include "settingskey.h"
+#include "accountlistmodel.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -37,12 +38,12 @@
 #include "api/newdevicemodel.h"
 #include "api/newcodecmodel.h"
 #include "api/behaviorcontroller.h"
+#include "api/avmodel.h"
 #include "api/conversation.h"
 #include "api/contactmodel.h"
 #include "api/contact.h"
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
-#include "accountlistmodel.h"
 
 #include "account.h"
 
@@ -59,6 +60,8 @@ public:
     };
     static void init() {
         instance();
+        // TODO: remove when all platforms migrate to avModel
+        instance().avModel().deactivateOldVideoModels();
     };
     static Lrc& getAPI() {
         return *(instance().lrc_);
@@ -81,8 +84,14 @@ public:
     static DataTransferModel* editableDataTransferModel() {
         return const_cast<DataTransferModel*>(&instance().lrc_->getDataTransferModel());
     };
+    static AVModel& avModel() {
+        return instance().lrc_->getAVModel();
+    };
     static bool isConnected() {
         return instance().lrc_->isConnected();
+    };
+    static std::vector<std::string> getActiveCalls() {
+        return instance().lrc_->activeCalls();
     };
 
     static const account::Info&
@@ -92,7 +101,7 @@ public:
         } catch (...) {
             static account::Info invalid = {};
             qWarning() << "getAccountInfo exception";
-            return std::reference_wrapper<account::Info>{invalid};
+            return invalid;
         }
     };
 
