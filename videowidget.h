@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -23,42 +24,51 @@
 #include <QMutex>
 
 #include <memory>
+#include <array>
 
-#include "video/renderer.h"
-#include "video/previewmanager.h"
+#include "lrcinstance.h"
+
+using namespace lrc::api;
 
 class VideoWidget : public QWidget
 {
-    Q_OBJECT
+    Q_OBJECT;
+
 public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
-    void paintEvent(QPaintEvent* evt);
+    void connectRendering();
     void setPreviewDisplay(bool display);
-    void setDistantRenderer(Video::Renderer* renderer);
     void setIsFullPreview(bool full);
     inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
     void setPhotoMode(bool isPhotoMode);
     QImage takePhoto();
 
+protected:
+    void paintEvent(QPaintEvent* e);
+
 public slots:
-    void previewStarted(Video::Renderer* renderer);
-    void previewStopped();
-    void frameFromPreview();
-    void frameFromDistant();
-    void renderingStopped();
+    void slotRendererStarted(const std::string& id);
+    void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
 
 private:
-    Video::Renderer* previewRenderer_;
-    Video::Renderer* renderer_;
-    Video::Frame currentPreviewFrame_;
-    Video::Frame currentDistantFrame_;
-    QMutex mutex_;
-    std::unique_ptr<QImage> distantImage_;
+    struct rendererConnections {
+        QMetaObject::Connection started, stopped, updated;
+    } rendererConnections_;
+
+    video::Renderer* previewRenderer_;
+    video::Frame previewFrame_;
     std::unique_ptr<QImage> previewImage_;
-    std::vector<uint8_t> frameDistant_;
     std::vector<uint8_t> framePreview_;
+
+    video::Renderer* distantRenderer_;
+    video::Frame distantFrame_;
+    std::unique_ptr<QImage> distantImage_;
+    std::vector<uint8_t> frameDistant_;
+
+    QMutex mutex_;
+
     bool isPreviewDisplayed_;
     bool fullPreview_;
     QRect previewGeometry_;
@@ -71,4 +81,3 @@ private:
 private:
     void paintBackgroundColor(QPainter* painter, QColor color);
 };
-

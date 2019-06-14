@@ -38,6 +38,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QMessageBox>
+#include <QScreen>
 
 #include <globalinstances.h>
 
@@ -283,6 +284,17 @@ void Utils::showSystemNotification(QWidget* widget,
     GlobalSystemTray::instance()
         .showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
+}
+
+QSize
+Utils::getRealSize(QScreen* screen)
+{
+    DEVMODE dmThisScreen;
+    ZeroMemory(&dmThisScreen, sizeof(dmThisScreen));
+    EnumDisplaySettings((const wchar_t *)screen->name().utf16(),
+                        ENUM_CURRENT_SETTINGS,
+                        (DEVMODE*)&dmThisScreen);
+    return QSize(dmThisScreen.dmPelsWidth, dmThisScreen.dmPelsHeight);
 }
 
 void
