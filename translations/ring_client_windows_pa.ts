@@ -20,7 +20,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>ਸ਼ਲਾਘਾਯੋਗ ਵਿਅਕਤੀ</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
@@ -107,7 +107,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>TURN ਵਰਤੋ</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
@@ -127,12 +127,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>ਮੀਡੀਆ</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="515"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>ਵੀਡੀਓ ਚਾਲੂ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
@@ -210,17 +210,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>ਬੂਟਸਟ੍ਰੈਪ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="530"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>ਸੁਰੱਖਿਆ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="571"/>
         <source>Private Key Password</source>
-        <translation type="unfinished"/>
+        <translation>ਨਿੱਜੀ ਕੁੰਜੀ ਪਾਸਵਰਡ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
@@ -260,7 +260,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>TURN ਵਰਤੋ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
@@ -280,12 +280,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>ਮੀਡੀਆ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1090"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>ਵੀਡੀਓ ਚਾਲੂ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
@@ -339,7 +339,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="187"/>
         <source>Conversations</source>
-        <translation type="unfinished"/>
+        <translation>ਗੱਲਾਂਬਾਤਾਂ</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="368"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami ਦੁਨੀਆ ਭਰ ਵਿੱਚ ਸੰਚਾਰ ਕਰਨ ਲਈ ਮੁਫ਼ਤ ਸਾਫ਼ਟਵੇਅਰ ਹੈ ਜੋ ਆਪਣੇ ਵਰਤੋਂਕਾਰਾਂ ਦੀ ਅਜ਼ਾਦੀ ਅਤੇ ਪਰਦੇਦਾਰੀ ਦਾ ਖਿਆਲ ਰੱਖਦਾ ਹੈ।</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -398,7 +398,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1943"/>
         <source>Add to contacts</source>
-        <translation type="unfinished"/>
+        <translation>ਸੰਪਰਕਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="202"/>
@@ -449,7 +449,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1305"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="332"/>
@@ -474,12 +474,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>ਸੰਪਰਕ ਬਲਾਕ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
         <source>Copy number</source>
-        <translation type="unfinished"/>
+        <translation>ਨੰਬਰ ਕਾਪੀ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="561"/>
@@ -549,7 +549,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
 </context>
 <context>
@@ -567,7 +567,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>ਇਹ ਡੀਵਾਈਸ</translation>
     </message>
 </context>
 <context>
@@ -575,17 +575,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>ਸਵੀਕਾਰ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>ਅਸਵੀਕਾਰ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>ਬਲਾਕ ਕਰੋ</translation>
     </message>
 </context>
 <context>
@@ -603,17 +603,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>ਪਾਸਵਰਡ</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>ਠੀਕ ਹੈ</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
@@ -628,7 +628,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>ਪਿੰਨ</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
@@ -705,17 +705,17 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>ਪਾਸਵਰਡ</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>ਪੰਜੀਕਰਨ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
@@ -740,7 +740,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>ਨੈੱਟਵਰਕ ਗੜਬੜ</translation>
     </message>
 </context>
 <context>
@@ -778,7 +778,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Jami ਖਾਤਾ ਬਣਾਓ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -793,7 +793,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>ਇਹ ਡੀਵਾਈਸ ਕਿਸੇ ਖਾਤੇ ਨਾਲ ਲਿੰਕ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
@@ -871,7 +871,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>ਖਾਤਾ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1136"/>
@@ -920,7 +920,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1301"/>
         <location filename="../newwizardwidget.ui" line="2213"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>ਪਾਸਵਰਡ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1211"/>
@@ -961,7 +961,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>ਪ੍ਰੌਕਸੀ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
@@ -976,7 +976,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>ਵਰਤੋਂਕਾਰ ਨਾਂ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2201"/>
@@ -1017,7 +1017,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>ਪਿੱਛੇ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
@@ -1032,7 +1032,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>ਅੱਗੇ</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
@@ -1105,7 +1105,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
@@ -1209,13 +1209,13 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="229"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>ਖਾਤਾ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="267"/>
         <location filename="../settingswidget.ui" line="503"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>ਸਧਾਰਨ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="305"/>
@@ -1226,7 +1226,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="542"/>
         <source>System</source>
-        <translation type="unfinished"/>
+        <translation>ਸਿਸਟਮ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
@@ -1286,7 +1286,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>ਪਾਸਵਰਡ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1418"/>
@@ -1329,7 +1329,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>ਪਛਾਣ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
@@ -1349,7 +1349,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>ਪੰਜੀਕਰਨ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
@@ -1411,22 +1411,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2925"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>ਵਰਤੋਂਕਾਰ ਨਾਂ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2958"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>ਹੋਸਟਨਾਮ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2991"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>ਪ੍ਰੌਕਸੀ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3461"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>ਆਡੀਓ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
@@ -1451,7 +1451,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>ਵੀਡੀਓ</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3720"/>
@@ -1583,7 +1583,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videoview.cpp" line="281"/>
         <source>Share file</source>
-        <translation type="unfinished"/>
+        <translation>ਫ਼ਾਈਲ ਸਾਂਝੀ ਕਰੋ</translation>
     </message>
 </context>
 </TS>

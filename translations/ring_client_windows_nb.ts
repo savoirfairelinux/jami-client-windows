@@ -87,7 +87,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Forbindelsesstatus</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
@@ -240,7 +240,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Forbindelsesstatus</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="868"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami er fri programvare for allsidig kommunikasjon som respekterer brukernes frihet og retten til privatliv.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Blokker kontakt</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -778,7 +778,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Opprett en Jami-konto</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -987,7 +987,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Oppretter Jami-kontoen din</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
