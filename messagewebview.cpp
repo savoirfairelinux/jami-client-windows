@@ -21,10 +21,12 @@
 
 #include "messagewebview.h"
 
+#include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QMenu>
+#include <QMessagebox>
 #include <QMimeData>
 #include <QMouseEvent>
 #include <QScrollBar>
@@ -183,9 +185,53 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
     }
 }
 
-void MessageWebView::setMessagesContent(QString text)
+void MessageWebView::setMessagesContent(const QString& text)
 {
-    page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    page()->runJavaScript(QStringLiteral("document.getElementById('message').value += '%1';").arg(text));
+}
+
+void
+MessageWebView::setMessagesImageContent(const QString &path, const short& type)
+{
+    if (type == 0) {
+        QString param = QString("addImage_base64('%1')").arg(path);
+        page()->runJavaScript(param);
+    } else if (type == 1) {
+        QString param = QString("addImage_path('%1')").arg(path);
+        page()->runJavaScript(param);
+    }
+}
+
+void
+MessageWebView::setMessagesFileContent(const QString &path)
+{
+    // Send file less than 100MB
+    qint64 fileSize = QFileInfo(path).size();
+    if (fileSize <= 104857600) {
+        QString fileName = QFileInfo(path).fileName();
+        //if file name is too large, trim it
+        if (fileName.length() > 15) {
+            fileName = fileName.remove(12, 14) + "...";
+        }
+        float fileSizeF = static_cast<float>(fileSize);
+        QString unit;
+        if (fileSizeF < 1024) {
+            unit = " B";
+        } else if (fileSizeF < 1024 * 1024) {
+            fileSizeF /= 1024;
+            unit = " KB";
+        } else {
+            fileSizeF /= 1024 * 1024;
+            unit = " MB";
+        }
+        //Round up to two decimals
+        fileSizeF = roundf(fileSizeF * 100) / 100;
+        QString param = QString("addFile_path('%1','%2','%3')")
+            .arg(path, fileName, QString::number(fileSizeF,'f',2) + unit);
+        page()->runJavaScript(param);
+        return;
+    }
+    QMessageBox::information(0,"Message","Sorry, file size cannot be larger than 100MB");
 }
 
 void MessageWebView::copySelectedText(QClipboard* clipboard)
@@ -465,24 +511,87 @@ PrivateBridging::sendMessage(const QString& arg)
         LRCInstance::getCurrentConversationModel()->sendMessage(convUid, arg.toStdString());
     } catch (...) {
         qDebug() << "JS bridging - exception during sendMessage:" << arg;
+        return -1;
     }
     return 0;
 }
 
 Q_INVOKABLE int
-PrivateBridging::sendFile()
+PrivateBridging::sendImage(const QString& arg)
+{
+    if (arg.startsWith("data:image/png;base64,")) {
+        //img tag contains base64 data, trim "data:image/png;base64," from data
+        QByteArray data = QByteArray::fromStdString(arg.toStdString().substr(22));
+        auto img_name_hash = QString::fromStdString(QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex().toStdString());
+        QString fileName = "\\img_" + img_name_hash + ".png";
+
+        QPixmap image_to_save;
+        if (!image_to_save.loadFromData(QByteArray::fromBase64(data))) {
+            qDebug().noquote() << "JS bridging - errors during loadFromData" << "\n";
+            return -1;
+        }
+
+        QString path = QString(Utils::WinGetEnv("TEMP"))  + fileName;
+        if (!image_to_save.save(path,"PNG")) {
+            qDebug().noquote() << "JS bridging - errors during QPixmap save" << "\n";
+            return -1;
+        }
+
+       try {
+            auto convUid = LRCInstance::getSelectedConvUid();
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
+        } catch (...) {
+            qDebug().noquote() << "JS bridging - exception during sendFile - base64 img" << "\n";
+            return -1;
+        }
+
+    } else {
+        //img tag contains file paths
+        QFileInfo fi(arg);
+        QString fileName = fi.fileName();
+        try {
+            auto convUid = LRCInstance::getSelectedConvUid();
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg.toStdString(), fileName.toStdString());
+        } catch (...) {
+            qDebug().noquote() << "JS bridging - exception during sendFile - image from path" << "\n";
+            return -1;
+        }
+    }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::sendFile(const QString&path)
 {
     qDebug() << "JS bridging - MessageWebView::sendFile";
-    QString filePath = QFileDialog::getOpenFileName((QWidget*)this->parent(), tr("Choose File"), "", tr("Files") + " (*)");
-    QFileInfo fi(filePath);
+    QFileInfo fi(path);
     QString fileName = fi.fileName();
     try {
         auto convUid = LRCInstance::getSelectedConvUid();
-        LRCInstance::getCurrentConversationModel()->sendFile(convUid, filePath.toStdString(), fileName.toStdString());
+        LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
     } catch (...) {
         qDebug() << "JS bridging - exception during sendFile";
     }
     return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::selectFile()
+{
+    QString filePath = QFileDialog::getOpenFileName((QWidget*)this->parent(), tr("Choose File"), "", tr("Files") + " (*)");
+    if (filePath.length() == 0)
+        return 0;
+    QString fileType = QFileInfo(filePath).suffix();
+
+    if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+        if (fileType == "png" || fileType == "jpg" || fileType == "jepg" || fileType == "gif" || fileType == "bmp") {
+            messageView->setMessagesImageContent(filePath,1);
+            return 0;
+        }
+        messageView->setMessagesFileContent(filePath);
+        return 0;
+    }
+    return -1;
 }
 
 Q_INVOKABLE int
