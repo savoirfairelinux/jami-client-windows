@@ -32,6 +32,8 @@ const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
+var   sendContainer     = document.getElementById("file_image_send_container")
+
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -273,6 +275,18 @@ function formatDate(date) {
  */
 function sendMessage()
 {
+    //send image in sendContainer
+    var image_to_send = sendContainer.innerHTML;
+    var srcExtract = new RegExp('<img src="(.*?)">', 'g');
+
+    var src;
+    while ( (src = srcExtract.exec(image_to_send)) !== null ) {
+        window.jsbridge.sendImage(src[1]);
+    }
+    sendContainer.innerHTML = "";
+    sendContainer.style.visibility = "hidden";
+    reduce_send_container();
+
     var message = messageBarInput.value
     if (message.length > 0) {
         messageBarInput.value = ""
@@ -1629,4 +1643,74 @@ function isTextSelected() {
     if (selectedText.length != 0)
         return true;
     return false;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    var html =  '<div class="img_file_wrapper">' +
+                '<img src="data:image/png;base64,' + base64 + '"/>' +
+                '<button class="btn" onclick="remove(this)">X</button>' +
+                '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+
+    var html = '<div class="img_file_wrapper">' +
+               '<img src="' + path + '"/>' +
+               '<button class="btn" onclick="remove(this)">X</button>' +
+               '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container doesn't
+ * overlap messages when it grows.
+ */
+/* exported grow_send_container */
+function grow_send_container() {
+    exec_keeping_scroll_position(function () {
+        var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
+        document.body.style.paddingBottom = (parseInt(msgbar_size) + 130).toString() + "px";
+        //6em
+    }, [])
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container will hide
+ * and recover padding bottom
+ */
+/* exported grow_send_container */
+function reduce_send_container() {
+    exec_keeping_scroll_position(function () {
+        document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 130).toString() + "px";
+        //6em
+    }, [])
+}
+
+// Remove current cancel button division  and hide the sendContainer
+function remove(e) {
+    e.parentNode.parentNode.removeChild(e.parentNode);
+    if (sendContainer.innerHTML.length == 0) {
+        sendContainer.style.visibility = "hidden";
+    }
 }
