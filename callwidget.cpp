@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMessagebox>
 
 #include <algorithm>
 #include <memory>
@@ -1283,7 +1284,7 @@ CallWidget::CreateCopyPasteContextMenu()
         menu_->addAction(&action1);
         connect(&action1, SIGNAL(triggered()), this, SLOT(Copy()));
     }
-    if (mimeData->hasText()) {
+    if (mimeData->hasImage() || mimeData->hasUrls() || mimeData->hasText()) {
         menu_->addAction(&action2);
         connect(&action2, SIGNAL(triggered()), this, SLOT(Paste()));
     }
@@ -1294,12 +1295,56 @@ void
 CallWidget::Paste()
 {
     const QMimeData* mimeData = clipboard_->mimeData();
-    if (mimeData->hasHtml()) {
-        ui->messageView->setMessagesContent(mimeData->text());
-    } else if (mimeData->hasText()) {
-        ui->messageView->setMessagesContent(mimeData->text());
+
+    if (mimeData->hasImage()) {
+
+        //save temp data into base64 format
+        QPixmap pixmap = qvariant_cast<QPixmap>(mimeData->imageData());
+        QByteArray ba;
+        QBuffer bu(&ba);
+        bu.open(QIODevice::WriteOnly);
+        pixmap.save(&bu, "PNG");
+        auto str = QString::fromStdString(ba.toBase64().toStdString());
+
+        ui->messageView->setMessagesImageContent(str,0);
+    }
+    else if (mimeData->hasUrls()) {
+
+        QList<QUrl> urlList = mimeData->urls();
+        // extract the local paths of the files
+        for (int i = 0; i < urlList.size(); ++i) {
+            // Trim file:/// from url
+            QString filePath = urlList.at(i).toString().remove(0, 8);
+            QString fileType = QFileInfo(filePath).suffix();
+            QMessageBox::information(0,filePath,fileType);
+            if (fileType == "png" || fileType == "jpg" || fileType == "jepg" || fileType == "gif" || fileType == "bmp") {
+                ui->messageView->setMessagesImageContent(filePath,1);
+            } else {
+                // Send file less than 100MB
+                qint64 fileSize = QFileInfo(filePath).size();
+                QString fileName = QFileInfo(filePath).fileName();
+                if (fileSize <= 104857600) {
+                    float fileSizeF = static_cast<float>(fileSize);
+                    QString unit;
+                    if (fileSizeF < 1024) {
+                        unit = " B";
+                    } else if (fileSizeF < 1024 * 1024) {
+                        fileSizeF /= 1024;
+                        unit = " KB";
+                    } else {
+                        fileSizeF /= 1024 * 1024;
+                        unit = " MB";
+                    }
+                    //Round up to two decimals
+                    fileSizeF = roundf(fileSizeF * 100) / 100;
+                    ui->messageView->setMessagesFileContent(filePath, fileName, QString::number(fileSizeF,'f',2) + unit);
+                    return;
+                }
+                QMessageBox::information(0,"Message","Sorry, file size cannot be larger than 100MB");
+            }
+        }
     } else {
-        ui->messageView->setMessagesContent(tr("Cannot display data"));
+        ui->messageView->setMessagesContent(mimeData->text());
     }
 }
 
