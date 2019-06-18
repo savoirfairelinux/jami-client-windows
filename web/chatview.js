@@ -32,6 +32,8 @@ const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
+var   sendContainer     = document.getElementById("file_image_send_container")
+
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -1629,4 +1631,42 @@ function isTextSelected() {
     if (selectedText.length != 0)
         return true;
     return false;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    var html =  '<div class="container">' +
+                '<img src="data:image/png;base64,' + base64 + ' " height="100" width="150" />' +
+                '<button class="btn">Button</button>' +
+                '</div >';
+    grow_send_container();
+    sendContainer.style.visibility = "visible";
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+
+    grow_send_container();
+    sendContainer.style.visibility = "visible";
+    content.innerHTML += '<img id="SEND_IMG" src="' + path + '" height="100" width="100" />';
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container doesn't
+ * overlap messages when it grows.
+ */
+/* exported grow_send_container */
+function grow_send_container() {
+    exec_keeping_scroll_position(function () {
+        var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
+        document.body.style.paddingBottom = (parseInt(msgbar_size) + 100).toString() + "px";
+        //6em
+    }, [])
 }
