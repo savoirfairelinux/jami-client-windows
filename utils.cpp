@@ -779,3 +779,23 @@ Utils::swapQListWidgetItems(QListWidget* list, bool down)
     down ? list->insertItem(currIndex, temp) : list->insertItem(otherIndex, current);
     down ? list->insertItem(otherIndex, current) : list->insertItem(currIndex, temp);
 }
+
+QString
+Utils::humanFileSize(qint64 fileSize)
+{
+    float fileSizeF = static_cast<float>(fileSize);
+    float thresh = 1024;
+
+    if(abs(fileSizeF) < thresh) {
+        return QString::number(fileSizeF) + " B";
+    }
+    QString units[] = { "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+    int unit_position = -1;
+    do {
+        fileSizeF /= thresh;
+        ++unit_position;
+    } while (abs(fileSizeF) >= thresh && unit_position < units->size() - 1);
+    //Round up to two decimal
+    fileSizeF = roundf(fileSizeF * 100) / 100;
+    return QString::number(fileSizeF) + " " + units[unit_position];
+}

@@ -32,6 +32,8 @@ const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
+var   sendContainer     = document.getElementById("file_image_send_container")
+
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -273,11 +275,31 @@ function formatDate(date) {
  */
 function sendMessage()
 {
+    //send image in sendContainer
+    var data_to_send = sendContainer.innerHTML;
+    var imgSrcExtract = new RegExp('<img src="(.*?)">', 'g');
+    var fileSrcExtract = new RegExp('<div class="file_wrapper" data-path="(.*?)">', 'g');
+
+    var img_src;
+    while ((img_src = imgSrcExtract.exec(data_to_send)) !== null ) {
+        window.jsbridge.sendImage(img_src[1]);
+    }
+
+    var file_src;
+    while ((file_src = fileSrcExtract.exec(data_to_send)) !== null) {
+        window.jsbridge.sendFile(file_src[1]);
+    }
+
+    sendContainer.innerHTML = "";
+    sendContainer.style.visibility = "hidden";
+    reduce_send_container();
+
     var message = messageBarInput.value
     if (message.length > 0) {
         messageBarInput.value = ""
         window.jsbridge.sendMessage(message)
     }
+
 }
 
 /* exported acceptInvitation */
@@ -291,12 +313,6 @@ function refuseInvitation() {
 /* exported blockConversation */
 function blockConversation() {
     window.jsbridge.blockConversation()
-}
-
-/* exported sendFile */
-function sendFile()
-{
-    window.jsbridge.sendFile();
 }
 
 /**
@@ -1632,4 +1648,110 @@ function isTextSelected() {
     if (selectedText.length != 0)
         return true;
     return false;
+}
+
+/* exported selectFile - sselect files from Qt */
+function selectFile() {
+
+    window.jsbridge.selectFile();
+    //js or qt
+}
+
+/**
+ * add file (local file) to message area
+ */
+function addFile_path(path, name, size) {
+    var html = '<div class="file_wrapper" data-path=' + path + '>' +
+        '<svg class="svg-icon" viewBox="0 0 20 20">' +
+        '<path fill = "none" d = "M17.222,5.041l-4.443-4.414c-0.152-0.151-0.356-0.235-0.571-0.235h-8.86c-0.444,0-0.807,0.361-0.807,0.808v17.602c0,0.448,0.363,0.808,0.807,0.808h13.303c0.448,0,0.808-0.36,0.808-0.808V5.615C17.459,5.399,17.373,5.192,17.222,5.041zM15.843,17.993H4.157V2.007h7.72l3.966,3.942V17.993z" ></path>' +
+        '<path fill="none" d="M5.112,7.3c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808c0-0.447-0.363-0.808-0.808-0.808H5.92C5.475,6.492,5.112,6.853,5.112,7.3z"></path>' +
+        '<path fill="none" d="M5.92,5.331h4.342c0.445,0,0.808-0.361,0.808-0.808c0-0.446-0.363-0.808-0.808-0.808H5.92c-0.444,0-0.808,0.361-0.808,0.808C5.112,4.97,5.475,5.331,5.92,5.331z"></path>' +
+        '<path fill="none" d="M13.997,9.218H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,9.58,14.442,9.218,13.997,9.218z"></path>' +
+        '<path fill="none" d="M13.997,11.944H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,12.306,14.442,11.944,13.997,11.944z"></path>' +
+        '<path fill="none" d="M13.997,14.67H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.447,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,15.032,14.442,14.67,13.997,14.67z"></path>' +
+        '</svg >' +
+        '<div class="fileinfo">' +
+        '<p>' + name + '</p>' +
+        '<p>' + size + '</p>' +
+        '</div >' +
+        '<button class="btn" onclick="remove(this)">X</button>' +
+        '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    var html =  '<div class="img_wrapper">' +
+                '<img src="data:image/png;base64,' + base64 + '"/>' +
+                '<button class="btn" onclick="remove(this)">X</button>' +
+                '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+
+    var html = '<div class="img_wrapper">' +
+               '<img src="' + path + '"/>' +
+               '<button class="btn" onclick="remove(this)">X</button>' +
+               '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container doesn't
+ * overlap messages when it grows.
+ */
+/* exported grow_send_container */
+function grow_send_container() {
+    exec_keeping_scroll_position(function () {
+        var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
+        document.body.style.paddingBottom = (parseInt(msgbar_size) + 158).toString() + "px";
+        //6em
+    }, [])
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container will hide
+ * and recover padding bottom
+ */
+/* exported grow_send_container */
+function reduce_send_container() {
+    exec_keeping_scroll_position(function () {
+        document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 158).toString() + "px";
+        //6em
+    }, [])
+}
+
+// Remove current cancel button division  and hide the sendContainer
+function remove(e) {
+    e.parentNode.parentNode.removeChild(e.parentNode);
+    if (sendContainer.innerHTML.length == 0) {
+        reduce_send_container();
+        sendContainer.style.visibility = "hidden";
+    }
 }

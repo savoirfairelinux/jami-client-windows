@@ -39,7 +39,9 @@ public:
     Q_INVOKABLE int acceptFile(const QString& arg);
     Q_INVOKABLE int refuseFile(const QString& arg);
     Q_INVOKABLE int sendMessage(const QString& arg);
-    Q_INVOKABLE int sendFile();
+    Q_INVOKABLE int sendImage(const QString& arg);
+    Q_INVOKABLE int sendFile(const QString& arg);
+    Q_INVOKABLE int selectFile();
     Q_INVOKABLE int log(const QString& arg);
     Q_INVOKABLE int acceptInvitation();
     Q_INVOKABLE int refuseInvitation();
@@ -78,8 +80,10 @@ public:
                        const std::string& contactUri = "",
                        const std::string& contactId = "");
     void setMessagesVisibility(bool visible);
-    void setMessagesContent(QString text);
+    void setMessagesContent(const QString& text);
     void copySelectedText(QClipboard* clipboard);
+    void setMessagesImageContent(const QString& path, const short &type);
+    void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
 
@@ -91,7 +95,6 @@ protected:
     void dropEvent(QDropEvent* event);
     void resizeEvent(QResizeEvent *event);
     bool eventFilter(QObject *watched, QEvent *event);
-
 
 signals:
     void conversationRemoved();
