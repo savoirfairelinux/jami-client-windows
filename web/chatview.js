@@ -32,6 +32,8 @@ const inviteImage       = document.getElementById("invite_image")
 const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
+var   sendContainer     = document.getElementById("file_image_send_container")
+
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -1629,4 +1631,54 @@ function isTextSelected() {
     if (selectedText.length != 0)
         return true;
     return false;
+}
+
+/**
+ * add image (base64 array) to message area
+ */
+function addImage_base64(base64) {
+
+    var html =  '<div class="container">' +
+                '<img src="data:image/png;base64,' + base64 + ' " height="100" width="125" />' +
+                '<button class="btn">X</button>' +
+                '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * add image (image path) to message area
+ */
+function addImage_path(path) {
+
+
+    var html = '<div class="container">' +
+               '<img src="' + path + ' " height="100" width="125" />' +
+               '<button class="btn">X</button>' +
+               '</div >';
+    // At first, visiblity can empty
+    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+        grow_send_container();
+        sendContainer.style.visibility = "visible";
+    }
+    //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ * This function adjusts the body paddings so that that the file_image_send_container doesn't
+ * overlap messages when it grows.
+ */
+/* exported grow_send_container */
+function grow_send_container() {
+    exec_keeping_scroll_position(function () {
+        var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
+        document.body.style.paddingBottom = (parseInt(msgbar_size) + 130).toString() + "px";
+        //6em
+    }, [])
 }
