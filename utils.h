@@ -113,6 +113,9 @@ lrc::api::conversation::Info getConversationFromUid(const std::string & convUid,
 // misc helpers
 void swapQListWidgetItems(QListWidget* list, bool down = true);
 
+// Byte tohuman readable size
+QString humanFileSize(qint64 fileSize);
+
 template <typename Func1, typename Func2>
 void
 oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object* sender, Func1 signal, Func2 slot)
