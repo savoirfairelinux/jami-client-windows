@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a098899_dab7d9bc",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-06-18T15:21:38Z",
+      "side": 1,
+      "message": "parent -\u003e this, so that dragDroplabel_ becomes a child of MessageWebView and not MessageWebView\u0027s parent",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "aae54f77bb17998fe99b0bd1a2c124dac55039a8",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
