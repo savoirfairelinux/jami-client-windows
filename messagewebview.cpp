@@ -21,6 +21,7 @@
 
 #include "messagewebview.h"
 
+#include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
@@ -183,9 +184,21 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
     }
 }
 
-void MessageWebView::setMessagesContent(QString text)
+void MessageWebView::setMessagesContent(const QString& text)
 {
-    page()->runJavaScript(QStringLiteral("document.getElementById('message').value = '%1'").arg(text));
+    page()->runJavaScript(QStringLiteral("var ele = document.getElementById('message').value; ele += '%1'; ").arg(text));
+}
+
+void
+MessageWebView::setMessagesImageContent(const QString &text, const short& type)
+{
+    if (type == 0) {
+        QString param = QString("addImage_base64('%1')").arg(text);
+        page()->runJavaScript(param);
+    } else if (type == 1) {
+        QString param = QString("addImage_path('%1')").arg(text);
+        page()->runJavaScript(param);
+    }
 }
 
 void MessageWebView::copySelectedText(QClipboard* clipboard)
@@ -465,6 +478,51 @@ PrivateBridging::sendMessage(const QString& arg)
         LRCInstance::getCurrentConversationModel()->sendMessage(convUid, arg.toStdString());
     } catch (...) {
         qDebug() << "JS bridging - exception during sendMessage:" << arg;
+        return -1;
+    }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::sendImage(const QString& arg)
+{
+    if (arg.startsWith("data:image/png;base64,")) {
+        //img tag contains base64 data, trim "data:image/png;base64," from data
+        QByteArray data = QByteArray::fromStdString(arg.toStdString().substr(22));
+        auto img_name_hash = QString::fromStdString(QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex().toStdString());
+        QString fileName = "\\img_" + img_name_hash + ".png";
+
+        QPixmap image_to_save;
+        if (!image_to_save.loadFromData(QByteArray::fromBase64(data))) {
+            qDebug().noquote() << "JS bridging - errors during loadFromData" << "\n";
+            return -1;
+        }
+
+        QString path = QString(Utils::WinGetEnv("TEMP"))  + fileName;
+        if (!image_to_save.save(path,"PNG")) {
+            qDebug().noquote() << "JS bridging - errors during QPixmap save" << "\n";
+            return -1;
+        }
+
+       try {
+            auto convUid = LRCInstance::getSelectedConvUid();
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
+        } catch (...) {
+            qDebug().noquote() << "JS bridging - exception during sendFile - base64 img" << "\n";
+            return -1;
+        }
+
+    } else {
+        //img tag contains file paths
+        QFileInfo fi(arg);
+        QString fileName = fi.fileName();
+        try {
+            auto convUid = LRCInstance::getSelectedConvUid();
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg.toStdString(), fileName.toStdString());
+        } catch (...) {
+            qDebug().noquote() << "JS bridging - exception during sendFile - image from path" << "\n";
+            return -1;
+        }
     }
     return 0;
 }

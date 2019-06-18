@@ -332,6 +332,56 @@ a:hover {
     height: 4em;
 }
 
+#file_image_send_container {
+    visibility: hidden;
+    position: fixed;
+    bottom: var(--messagebar-size);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    width: 93%;
+    height: 6em;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border: 2px solid lightgray;
+    padding: 20px;
+    border-bottom: none;
+    background-color: lightgray;
+    overflow-x: auto;
+}
+
+.container {
+    position: relative;
+    max-width: 8%;
+    min-width: 8%;
+    margin: 1px;
+    border: 3px solid rgba(255,255,255,0);
+    padding: 30px;
+    border-radius: 20px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Make the image responsive */
+    .container img {
+        border-radius: 20px;
+    }
+
+/* Style the button and place it in the middle of the container/image */
+    .container .btn {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        z-index: 100;
+    }
+
+        .container .btn:hover {
+            background-color: black;
+        }
+
 #back_to_bottom_button {
     visibility: hidden;
     margin: auto;
