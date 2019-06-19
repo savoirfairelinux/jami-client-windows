@@ -227,6 +227,9 @@
             <Component Id="cmp84792556F8AE67E56EDFF3DEB8934D78" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
                 <File Id="fil1520DA6D55EDA40C2449BC9C60B3F477" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.wav" />
             </Component>
+            <Component Id="cmp84792556F8AE67E56EDFF3DEB8934D79" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
+                <File Id="fil1520DA6D55EDA40C2449BC9C60B3F478" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.opus" />
+            </Component>
             <Component Id="cmp5CCC1EB5F82E4ADDD432CC31BFAF1B45" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
                 <File Id="fil6AA759A6B6A1CAFE29AF2BA0270CFE61" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\konga.ul" />
             </Component>
