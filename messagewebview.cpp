@@ -165,13 +165,12 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
             for (int i = 0; i < urlList.size(); ++i) {
                 // Trim file:/// from url
                 QString filePath = urlList.at(i).toString().remove(0, 8);
-                QFileInfo fi(filePath);
-                QString fileName = fi.fileName();
-                try {
-                    auto convUid = LRCInstance::getSelectedConvUid();
-                    LRCInstance::getCurrentConversationModel()->sendFile(convUid, filePath.toStdString(), fileName.toStdString());
-                } catch (...) {
-                    qDebug() << "Messagewebview DropEvent - exception during sendFile";
+                QString fileType = QFileInfo(filePath).suffix();
+
+                if (fileType == "png" || fileType == "jpg" || fileType == "jepg" || fileType == "gif" || fileType == "bmp") {
+                    setMessagesImageContent(filePath,1);
+                } else {
+                    setMessagesFileContent(filePath);
                 }
             }
         }
