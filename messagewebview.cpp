@@ -25,6 +25,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
+#include <QImagereader>
 #include <QMenu>
 #include <QMessagebox>
 #include <QMimeData>
@@ -165,13 +166,13 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
             for (int i = 0; i < urlList.size(); ++i) {
                 // Trim file:/// from url
                 QString filePath = urlList.at(i).toString().remove(0, 8);
-                QFileInfo fi(filePath);
-                QString fileName = fi.fileName();
-                try {
-                    auto convUid = LRCInstance::getSelectedConvUid();
-                    LRCInstance::getCurrentConversationModel()->sendFile(convUid, filePath.toStdString(), fileName.toStdString());
-                } catch (...) {
-                    qDebug() << "Messagewebview DropEvent - exception during sendFile";
+                QByteArray imageFormat = QImageReader::imageFormat(filePath);
+
+                //check if file is qt supported image file type
+                if (!imageFormat.isEmpty()) {
+                    setMessagesImageContent(filePath);
+                } else {
+                    setMessagesFileContent(filePath);
                 }
             }
         }
@@ -191,12 +192,12 @@ void MessageWebView::setMessagesContent(const QString& text)
 }
 
 void
-MessageWebView::setMessagesImageContent(const QString &path, const short& type)
+MessageWebView::setMessagesImageContent(const QString &path, bool isBased64)
 {
-    if (type == 0) {
+    if (isBased64) {
         QString param = QString("addImage_base64('%1')").arg(path);
         page()->runJavaScript(param);
-    } else if (type == 1) {
+    } else {
         QString param = QString("addImage_path('%1')").arg(path);
         page()->runJavaScript(param);
     }
@@ -563,11 +564,11 @@ PrivateBridging::selectFile()
     QString filePath = QFileDialog::getOpenFileName((QWidget*)this->parent(), tr("Choose File"), "", tr("Files") + " (*)");
     if (filePath.length() == 0)
         return 0;
-    QString fileType = QFileInfo(filePath).suffix();
+    QByteArray imageFormat = QImageReader::imageFormat(filePath);
 
     if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
-        if (fileType == "png" || fileType == "jpg" || fileType == "jepg" || fileType == "gif" || fileType == "bmp") {
-            messageView->setMessagesImageContent(filePath,1);
+        if (!imageFormat.isEmpty()) {
+            messageView->setMessagesImageContent(filePath);
             return 0;
         }
         messageView->setMessagesFileContent(filePath);

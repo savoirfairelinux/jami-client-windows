@@ -1305,7 +1305,7 @@ CallWidget::Paste()
         pixmap.save(&bu, "PNG");
         auto str = QString::fromStdString(ba.toBase64().toStdString());
 
-        ui->messageView->setMessagesImageContent(str,0);
+        ui->messageView->setMessagesImageContent(str, true);
     }
     else if (mimeData->hasUrls()) {
 
@@ -1314,10 +1314,11 @@ CallWidget::Paste()
         for (int i = 0; i < urlList.size(); ++i) {
             // Trim file:/// from url
             QString filePath = urlList.at(i).toString().remove(0, 8);
-            QString fileType = QFileInfo(filePath).suffix();
-            if ( fileType == "png" || fileType == "jpg" || fileType == "jpeg" ||
-                 fileType == "gif" || fileType == "bmp") {
-                ui->messageView->setMessagesImageContent(filePath,1);
+            QByteArray imageFormat = QImageReader::imageFormat(filePath);
+
+            //check if file is qt supported image file type
+            if (!imageFormat.isEmpty()) {
+                ui->messageView->setMessagesImageContent(filePath);
             } else {
                 ui->messageView->setMessagesFileContent(filePath);
             }

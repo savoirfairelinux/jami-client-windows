@@ -82,7 +82,7 @@ public:
     void setMessagesVisibility(bool visible);
     void setMessagesContent(const QString& text);
     void copySelectedText(QClipboard* clipboard);
-    void setMessagesImageContent(const QString& path, const short &type);
+    void setMessagesImageContent(const QString& path, bool isBased64 = false);
     void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
