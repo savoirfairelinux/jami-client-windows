@@ -677,7 +677,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
