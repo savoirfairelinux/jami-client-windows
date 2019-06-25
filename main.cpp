@@ -120,6 +120,12 @@ main(int argc, char* argv[])
         return 0;
     }
 
+    for (auto string : QCoreApplication::arguments()) {
+        if (string == "-d" || string == "--debug") {
+            consoleDebug();
+        }
+    }
+
     Utils::removeOldVersions();
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
@@ -148,9 +154,6 @@ main(int argc, char* argv[])
                 debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
                 debugFile.close();
                 fileDebug(debugFile);
-            }
-            if (string == "-d" || string == "--debug") {
-                consoleDebug();
             }
 #ifdef _MSC_VER
             if (string == "-c" || string == "--vsconsole") {
