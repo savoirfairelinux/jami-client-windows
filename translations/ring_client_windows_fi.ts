@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami on vapaa ja universaali viestintäalusta, joka kunnioittaa käyttäjiensä vapauksia ja yksityisyyttä.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Estä yhteystieto</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -585,7 +585,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Estä</translation>
     </message>
 </context>
 <context>
@@ -677,7 +677,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -778,7 +778,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Tee Jami-tili</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -793,7 +793,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation type="unfinished"/>
+        <translation>Yhdistä tämä laite tiliin</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
@@ -894,7 +894,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröi julkinen käyttäjänimi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>

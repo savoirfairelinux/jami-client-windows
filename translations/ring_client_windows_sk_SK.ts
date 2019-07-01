@@ -171,7 +171,7 @@ Jami je zabezpečený a distribuovaný komunikačný softvér.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Povoliť hovory od nedôveryhodných peerov</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="133"/>
@@ -1088,7 +1088,7 @@ namiesto vášho ID.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
-        <translation type="unfinished"/>
+        <translation>Chyba pri vytváraní účtu</translation>
     </message>
 </context>
 <context>
@@ -1116,7 +1116,7 @@ namiesto vášho ID.</translation>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Potvrdiť</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1282,7 +1282,7 @@ namiesto vášho ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation>Volič pre Interval na kontrolu aktualizácií v dňoch</translation>
+        <translation>Prepínač pre Interval na kontrolu aktualizácií v dňoch</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>

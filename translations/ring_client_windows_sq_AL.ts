@@ -1406,7 +1406,7 @@ në vend se të përdorin ID-në tuaj.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Përzgjedhës shpejtësie kuadrosh pajisjeje video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
