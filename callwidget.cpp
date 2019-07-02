@@ -205,6 +205,9 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->messageView, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(ShowContextMenu(const QPoint&)));
 
+    connect(ui->messageView, &MessageWebView::pasteKeyDetected,
+    this, &CallWidget::Paste);
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
