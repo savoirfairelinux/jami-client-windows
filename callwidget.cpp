@@ -1218,7 +1218,7 @@ CallWidget::connectAccount(const std::string& accId)
     auto callModel = LRCInstance::accountModel().getAccountInfo(accId).callModel.get();
     disconnect(callStatusChangedConnection_);
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
-        [this, accId](const std::string& callId) {
+        [this, accId](const std::string& callId, int code) {
             auto callModel = LRCInstance::accountModel().getAccountInfo(accId).callModel.get();
             auto call = callModel->getCall(callId);
             switch (call.status) {
@@ -1231,6 +1231,22 @@ CallWidget::connectAccount(const std::string& accId)
             {
                 setCallPanelVisibility(false);
                 showConversationView();
+                //Failure and hung up in terminatting
+                if (code == 0)
+                    break;
+                if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP && code >= 400) {
+                    Utils::showSystemNotification(this, QString::fromStdString(lrc::api::NewCallModel::getSIPCallStatusString(code)), "code: " + QString::number(code), 10000);
+                    break;
+                } else if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::RING) {
+                    if (code < 180 && code != ECONNABORTED && code != ECONNREFUSED) {
+                        std::error_condition c (code,std::generic_category());
+                        if(c.message() != "")
+                            Utils::showSystemNotification(this, QString::fromStdString(c.message()), "code: " + QString::number(code), 10000);
+                        break;
+                    } else if (code >= 400) {
+                        Utils::showSystemNotification(this, QString::fromStdString(lrc::api::NewCallModel::getSIPCallStatusString(code)), "code: " + QString::number(code), 10000);
+                    }
+                }
                 break;
             }
             default:
