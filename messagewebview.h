@@ -48,6 +48,7 @@ public:
     Q_INVOKABLE int blockConversation();
     Q_INVOKABLE int emitMessagesCleared();
     Q_INVOKABLE int emitMessagesLoaded();
+    Q_INVOKABLE int emitPasteKeyDetected();
 };
 
 class MessageWebView : public QWebEngineView
@@ -101,6 +102,7 @@ signals:
     void messagesCleared();
     void messagesLoaded();
     void textSelectedReady();
+    void pasteKeyDetected();
 
 private slots:
     void slotLoadFinished();
