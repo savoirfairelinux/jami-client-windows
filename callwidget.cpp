@@ -461,7 +461,7 @@ CallWidget::on_refuseButton_clicked()
 {
     auto convInfo = Utils::getSelectedConversation();
     if (!convInfo.uid.empty()) {
-        LRCInstance::getCurrentCallModel()->hangUp(convInfo.callId);
+        LRCInstance::getCurrentCallModel()->refuse(convInfo.callId);
         showConversationView();
     }
 }
@@ -469,7 +469,11 @@ CallWidget::on_refuseButton_clicked()
 void
 CallWidget::on_cancelButton_clicked()
 {
-    on_refuseButton_clicked();
+    auto convInfo = Utils::getSelectedConversation();
+    if (!convInfo.uid.empty()) {
+        LRCInstance::getCurrentCallModel()->hangUp(convInfo.callId);
+        showConversationView();
+    }
 }
 
 void
