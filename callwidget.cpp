@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMessagebox>
 
 #include <algorithm>
 #include <memory>
@@ -1215,7 +1216,7 @@ CallWidget::connectAccount(const std::string& accId)
     auto callModel = LRCInstance::accountModel().getAccountInfo(accId).callModel.get();
     disconnect(callStatusChangedConnection_);
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
-        [this, accId](const std::string& callId) {
+        [this, accId](const std::string& callId, int code) {
             auto callModel = LRCInstance::accountModel().getAccountInfo(accId).callModel.get();
             auto call = callModel->getCall(callId);
             switch (call.status) {
@@ -1232,6 +1233,10 @@ CallWidget::connectAccount(const std::string& accId)
             }
             default:
                 break;
+            }
+
+            if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+                Utils::showSystemNotification(this, QString::number(code), 10000);
             }
         });
     auto& contactModel = LRCInstance::getCurrentAccountInfo().contactModel;
