@@ -1540,6 +1540,9 @@ function showMessagesDiv()
 function clearMessages()
 {
     canLazyLoad = false
+
+    backToBottomBtn.style.visibility="hidden";
+
     while (messages.firstChild) {
         messages.removeChild(messages.firstChild)
     }
