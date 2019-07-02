@@ -636,3 +636,14 @@ PrivateBridging::blockConversation()
     }
     return 0;
 }
+
+Q_INVOKABLE int
+PrivateBridging::emitPasteKeyDetected()
+{
+    if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+        emit messageView->pasteKeyDetected();
+    } else {
+        qDebug() << "JS bridging - exception during emitPasteKeyDetected";
+    }
+    return 0;
+}

@@ -34,6 +34,7 @@ var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 var   sendContainer     = document.getElementById("file_image_send_container")
 
+messageBarInput.onpaste = pasteKeyDetected;
 
 /* States: allows us to avoid re-doing something if it isn't meaningful */
 var displayLinksEnabled = true
@@ -1751,4 +1752,8 @@ function remove(e) {
         reduce_send_container();
         sendContainer.style.visibility = "hidden";
     }
+}
+
+function pasteKeyDetected() {
+    window.jsbridge.emitPasteKeyDetected();
 }
