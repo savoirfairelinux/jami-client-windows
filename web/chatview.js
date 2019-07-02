@@ -1582,6 +1582,7 @@ function printHistory(messages_array)
 /* exported setSenderImage */
 function setSenderImage(set_sender_image_object)
 {
+
     var sender_contact_method = set_sender_image_object["sender_contact_method"],
         sender_image = set_sender_image_object["sender_image"],
         sender_image_id = "sender_image_" + sender_contact_method,
@@ -1607,6 +1608,8 @@ function setSenderImage(set_sender_image_object)
     invite_style.id = invite_sender_image_id
     invite_style.innerHTML = "." + invite_sender_image_id + " {content: url(data:image/png;base64," + sender_image + ");height: 48px;width: 48px;}"
     document.head.appendChild(invite_style)
+
+    backToBottomBtn.style.visibility="hidden";
 }
 
 /**
