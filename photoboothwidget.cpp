@@ -89,7 +89,7 @@ PhotoboothWidget::on_importButton_clicked()
     auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
                                              picturesDir,
-                                             tr("Image Files (*.jpg *.jpeg *.png)"));
+                                             tr("Image Files") + " (*.jpg *.jpeg *.png)");
     if (fileName_.isEmpty()) {
         LRCInstance::avModel().startPreview();
         return;
