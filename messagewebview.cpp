@@ -473,7 +473,7 @@ Q_INVOKABLE int
 PrivateBridging::sendFile()
 {
     qDebug() << "JS bridging - MessageWebView::sendFile";
-    QString filePath = QFileDialog::getOpenFileName((QWidget*)this->parent(), tr("Choose File"), "", tr("Files (*)"));
+    QString filePath = QFileDialog::getOpenFileName((QWidget*)this->parent(), tr("Choose File"), "", tr("Files") + " (*)");
     QFileInfo fi(filePath);
     QString fileName = fi.fileName();
     try {
