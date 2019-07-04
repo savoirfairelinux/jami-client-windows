@@ -139,7 +139,7 @@ void AdvancedSIPSettingsWidget::openFileCustomRingtone()
     QString fileUrl;
     auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
     auto openPath = oldPath.isEmpty() ? QDir::currentPath() + QString("/ringtones/") : QFileInfo(oldPath).absolutePath();
-    fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), openPath, tr("Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)"));
+    fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), openPath, tr("Audio Files") + " (*.wav *.ogg *.opus *.mp3 *aiff *wma)");
 
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
