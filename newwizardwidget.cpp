@@ -74,7 +74,7 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
             filePath = QFileDialog::getOpenFileName(this,
                 tr("Open File"),
                 QString(),
-                tr("Jami archive files (*.gz); All files (*)"));
+                tr("Jami archive files") + " (*.gz);" + tr("All files") + " (*)");
             fileToImport_ = QDir::toNativeSeparators(filePath);
             if (!fileToImport_.isEmpty()) {
                 QFileInfo fi(filePath);
