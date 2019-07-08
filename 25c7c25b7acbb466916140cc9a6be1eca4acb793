@@ -16,6 +16,24 @@
       "revId": "25c7c25b7acbb466916140cc9a6be1eca4acb793",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bed2f39_bba2bf0d",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-07-08T14:08:59Z",
+      "side": 1,
+      "message": "Because most of softwares have a limitation of file size, I just thought that we might need a similiar restriction. Do we?",
+      "parentUuid": "e030ac9c_e99a019b",
+      "revId": "25c7c25b7acbb466916140cc9a6be1eca4acb793",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
     }
   ]
 }
