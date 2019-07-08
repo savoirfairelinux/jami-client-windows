@@ -34,6 +34,24 @@
       "revId": "25c7c25b7acbb466916140cc9a6be1eca4acb793",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d38da1_29c037ad",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-07-08T15:16:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bed2f39_bba2bf0d",
+      "revId": "25c7c25b7acbb466916140cc9a6be1eca4acb793",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
