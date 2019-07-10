@@ -376,7 +376,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -1250,8 +1250,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>749</width>
-                  <height>1416</height>
+                  <width>705</width>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2573,8 +2573,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>749</width>
-                  <height>886</height>
+                  <width>683</width>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3343,7 +3343,7 @@
                       <height>16777215</height>
                      </size>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,2,0,0,0,0,2,1,5">
+                    <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,2,0,0,0,0,2,1,0,5">
                      <property name="spacing">
                       <number>7</number>
                      </property>
@@ -3941,6 +3941,18 @@
                        </property>
                       </widget>
                      </item>
+                      <item row="0" column="0">
+                        <widget class="ToggleSwitch" name="hardwareAccelCheckBox" native="false">
+                          <property name="font">
+                            <font>
+                              <pointsize>11</pointsize>
+                            </font>
+                          </property>
+                          <property name="text" stdset="0">
+                            <string>Enable hardware acceleration</string>
+                          </property>
+                        </widget>
+                      </item>
                      <item>
                       <spacer name="verticalSpacer_24">
                        <property name="orientation">
