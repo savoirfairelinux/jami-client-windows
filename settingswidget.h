@@ -38,102 +38,103 @@ class SettingsWidget;
 }
 
 class SettingsWidget : public NavWidget {
-    Q_OBJECT
-    SettingsWidget(const SettingsWidget& cpy);
+	Q_OBJECT
+	SettingsWidget(const SettingsWidget& cpy);
 
 public:
-    explicit SettingsWidget(QWidget* parent = nullptr);
-    ~SettingsWidget();
+	explicit SettingsWidget(QWidget* parent = nullptr);
+	~SettingsWidget();
 
-    // NavWidget
-    virtual void navigated(bool to);
-    virtual void updateCustomUI();
+	// NavWidget
+	virtual void navigated(bool to);
+	virtual void updateCustomUI();
 public slots:
-    virtual void slotAccountOnBoarded();
+	virtual void slotAccountOnBoarded();
 
 private:
-    Ui::SettingsWidget* ui;
+	Ui::SettingsWidget* ui;
 
-    enum Button {
-        accountSettingsButton,
-        generalSettingsButton,
-        mediaSettingsButton
-    };
-    enum RegName {
-        BLANK,
-        INVALIDFORM,
-        TAKEN,
-        FREE,
-        SEARCHING
-    };
+	enum Button {
+		accountSettingsButton,
+		generalSettingsButton,
+		mediaSettingsButton
+	};
+	enum RegName {
+		BLANK,
+		INVALIDFORM,
+		TAKEN,
+		FREE,
+		SEARCHING
+	};
 
-    void setAvatar(PhotoboothWidget* avatarWidget);
-    void setSelected(Button sel);
-    void updateAccountInfoDisplayed();
-    void resizeEvent(QResizeEvent* event);
-    bool sipPasswordHidden_{false};
-    void passwordClicked();
-    void afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName);
-    bool validateRegNameForm(const QString& regName);
-    void setRegNameUi(RegName stat);
-    void removeDeviceSlot(int index);
-    void unban(int index);
-    void setConnections();
-    void populateGeneralSettings();
-    void populateAVSettings();
-    void setFormatListForDevice(const std::string& device);
-    void showPreview();
-    void startVideo();
-    void stopVideo();
-    void toggleVideoSettings(bool enabled);
-    void toggleVideoPreview(bool enabled);
+	void setAvatar(PhotoboothWidget* avatarWidget);
+	void setSelected(Button sel);
+	void updateAccountInfoDisplayed();
+	void resizeEvent(QResizeEvent* event);
+	bool sipPasswordHidden_{false};
+	void passwordClicked();
+	void afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName);
+	bool validateRegNameForm(const QString& regName);
+	void setRegNameUi(RegName stat);
+	void removeDeviceSlot(int index);
+	void unban(int index);
+	void setConnections();
+	void populateGeneralSettings();
+	void populateAVSettings();
+	void setFormatListForDevice(const std::string& device);
+	void showPreview();
+	void startVideo();
+	void stopVideo();
+	void toggleVideoSettings(bool enabled);
+	void toggleVideoPreview(bool enabled);
 
-    QString registeredName_;
-    lrc::api::account::ConfProperties_t confProps_;
-    AdvancedSettingsWidget* advancedSettingsWidget_;
-    QScrollArea* scrollArea_;
-    Button pastButton_ = Button::generalSettingsButton;
-    bool advancedSettingsDropped_ = false;
-    QList<QPair<std::string, float>> formatIndexList_;
-    std::string currentDisplayedVideoDevice_;
-    AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
-    QScrollArea* scrollSIPArea_;
-    bool advancedSIPSettingsDropped_ = false;
-    int avatarSize_;
-    int avatarSIPSize_;
-    bool regNameBtn_ = false;
-    const int itemHeight_ = 55;
+	QString registeredName_;
+	lrc::api::account::ConfProperties_t confProps_;
+	AdvancedSettingsWidget* advancedSettingsWidget_;
+	QScrollArea* scrollArea_;
+	Button pastButton_ = Button::generalSettingsButton;
+	bool advancedSettingsDropped_ = false;
+	QList<QPair<std::string, float>> formatIndexList_;
+	std::string currentDisplayedVideoDevice_;
+	AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
+	QScrollArea* scrollSIPArea_;
+	bool advancedSIPSettingsDropped_ = false;
+	int avatarSize_;
+	int avatarSIPSize_;
+	bool regNameBtn_ = false;
+	const int itemHeight_ = 55;
 
-    QMovie* lookupSpinnerMovie_;
-    QPixmap statusSuccessPixmap_;
-    QPixmap statusInvalidPixmap_;
-    QPixmap statusErrorPixmap_;
+	QMovie* lookupSpinnerMovie_;
+	QPixmap statusSuccessPixmap_;
+	QPixmap statusInvalidPixmap_;
+	QPixmap statusErrorPixmap_;
 
 private slots:
-    void leaveSettingsSlot();
-    void verifyRegisteredNameSlot();
-    void beforeNameLookup();
-    void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
-        const std::string& address, const std::string& name);
-    void slotRegisterName();
-    void setAccEnableSlot(int state);
-    void delAccountSlot();
-    void toggleAdvancedSIPSettings();
-    void toggleAdvancedSettings();
-    void toggleBannedContacts();
-    void exportAccountSlot();
-    void updateAndShowDevicesSlot();
-    void updateAndShowBannedContactsSlot();
-    void showLinkDevSlot();
-    void slotSetNotifications(bool state);
-    void checkForUpdateSlot();
-    void slotSetClosedOrMin(bool state);
-    void openDownloadFolderSlot();
-    void slotSetAlwaysRecording(bool state);
-    void openRecordFolderSlot();
-    void slotSetUpdateAutomatic(bool state);
-    void outputDevIndexChangedSlot(int index);
-    void inputdevIndexChangedSlot(int index);
-    void slotDeviceBoxCurrentIndexChanged(int index);
-    void slotFormatBoxCurrentIndexChanged(int index);
+	void leaveSettingsSlot();
+	void verifyRegisteredNameSlot();
+	void beforeNameLookup();
+	void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
+		const std::string& address, const std::string& name);
+	void slotRegisterName();
+	void setAccEnableSlot(int state);
+	void delAccountSlot();
+	void toggleAdvancedSIPSettings();
+	void toggleAdvancedSettings();
+	void toggleBannedContacts();
+	void exportAccountSlot();
+	void updateAndShowDevicesSlot();
+	void updateAndShowBannedContactsSlot();
+	void showLinkDevSlot();
+	void slotSetNotifications(bool state);
+	void checkForUpdateSlot();
+	void slotSetClosedOrMin(bool state);
+	void openDownloadFolderSlot();
+	void slotSetAlwaysRecording(bool state);
+	void openRecordFolderSlot();
+	void slotSetUpdateAutomatic(bool state);
+	void outputDevIndexChangedSlot(int index);
+	void inputdevIndexChangedSlot(int index);
+	void slotDeviceBoxCurrentIndexChanged(int index);
+	void slotFormatBoxCurrentIndexChanged(int index);
+	void slotSetHardwareAccel(bool state);
 };

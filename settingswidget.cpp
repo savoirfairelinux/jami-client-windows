@@ -775,6 +775,8 @@ void SettingsWidget::setConnections()
     // audio / visual settings
 
     connect(ui->recordPathButton, &QPushButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
+
+    connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
 }
 
 // *************************  General Settings  *************************
@@ -927,6 +929,9 @@ void SettingsWidget::populateAVSettings()
     if (shouldReinitializePreview) {
         showPreview();
     }
+
+    auto encodeAccel = LRCInstance::avModel().getHardwareAcceleration();
+    ui->hardwareAccelCheckBox->setChecked(encodeAccel);
 }
 
 void SettingsWidget::outputDevIndexChangedSlot(int index)
@@ -1027,4 +1032,9 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
     }
 
     ui->formatBox->blockSignals(false);
+}
+
+void SettingsWidget::slotSetHardwareAccel(bool state)
+{
+    LRCInstance::avModel().setHardwareAcceleration(state);
 }
