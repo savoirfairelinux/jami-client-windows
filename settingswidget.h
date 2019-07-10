@@ -136,4 +136,5 @@ private slots:
     void inputdevIndexChangedSlot(int index);
     void slotDeviceBoxCurrentIndexChanged(int index);
     void slotFormatBoxCurrentIndexChanged(int index);
+    void slotSetHardwareAccel(bool state);
 };
