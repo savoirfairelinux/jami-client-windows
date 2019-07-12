@@ -65,6 +65,7 @@ void PhotoboothWidget::startBooth()
 {
     hasAvatar_ = false;
     ui->videoFeed->setResetPreview(true);
+    ui->videoFeed->connectRendering();
     LRCInstance::avModel().stopPreview();
     LRCInstance::avModel().startPreview();
     ui->videoFeed->show();
@@ -91,6 +92,7 @@ PhotoboothWidget::on_importButton_clicked()
                                              picturesDir,
                                              tr("Image Files") + " (*.jpg *.jpeg *.png)");
     if (fileName_.isEmpty()) {
+        ui->videoFeed->connectRendering();
         LRCInstance::avModel().startPreview();
         return;
     }

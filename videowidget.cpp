@@ -203,6 +203,7 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
 void
 VideoWidget::connectRendering()
 {
+    disconnect(rendererConnections_.started);
     rendererConnections_.started = connect(
         &LRCInstance::avModel(),
         SIGNAL(rendererStarted(const std::string&)),
