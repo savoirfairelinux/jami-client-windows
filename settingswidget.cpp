@@ -908,17 +908,30 @@ void SettingsWidget::populateAVSettings()
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
     disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
-    ui->deviceBox->clear();
     auto devices = LRCInstance::avModel().getDevices();
-    auto device = LRCInstance::avModel().getDefaultDeviceName();
-    bool shouldReinitializePreview = currentDisplayedVideoDevice_ != device;
-    currentDisplayedVideoDevice_ = device;
-    auto deviceIndex = Utils::indexInVector(devices, device);
-    for (auto d : devices) {
-        ui->deviceBox->addItem(QString::fromStdString(d).toUtf8());
+    bool shouldReinitializePreview = true;
+    ui->deviceBox->clear();
+    ui->formatBox->clear();
+    bool hasVideoDevices = devices.size();
+    ui->deviceBox->setEnabled(hasVideoDevices);
+    ui->formatBox->setEnabled(hasVideoDevices);
+    ui->labelVideoDevice->setEnabled(hasVideoDevices);
+    ui->labelVideoFormat->setEnabled(hasVideoDevices);
+    if (hasVideoDevices) {
+        auto device = LRCInstance::avModel().getDefaultDeviceName();
+        shouldReinitializePreview = currentDisplayedVideoDevice_ != device;
+        currentDisplayedVideoDevice_ = device;
+        auto deviceIndex = Utils::indexInVector(devices, device);
+        for (auto d : devices) {
+            ui->deviceBox->addItem(QString::fromStdString(d).toUtf8());
+        }
+        ui->deviceBox->setCurrentIndex(deviceIndex);
+        setFormatListForDevice(device);
+    } else {
+        currentDisplayedVideoDevice_.clear();
+        ui->deviceBox->addItem(QObject::tr("None"));
+        ui->formatBox->addItem(QObject::tr("None"));
     }
-    ui->deviceBox->setCurrentIndex(deviceIndex);
-    setFormatListForDevice(device);
     connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
     connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -1004,6 +1017,9 @@ void SettingsWidget::showPreview()
 void SettingsWidget::setFormatListForDevice(const std::string& device)
 {
     auto deviceCapabilities = LRCInstance::avModel().getDeviceCapabilities(device);
+    if (deviceCapabilities.size() == 0) {
+        return;
+    }
     auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
     auto currentChannel = currentSettings.channel;
     currentChannel = currentChannel.empty() ? "default" : currentChannel;

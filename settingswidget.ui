@@ -376,7 +376,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -1251,7 +1251,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>749</width>
-                  <height>1416</height>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2574,7 +2574,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>749</width>
-                  <height>886</height>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3680,7 +3680,7 @@
                             <number>7</number>
                            </property>
                            <item>
-                            <widget class="QLabel" name="label_20">
+                            <widget class="QLabel" name="labelVideoDevice">
                              <property name="font">
                               <font>
                                <pointsize>11</pointsize>
@@ -3748,7 +3748,7 @@
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QLabel" name="label_8">
+                            <widget class="QLabel" name="labelVideoFormat">
                              <property name="font">
                               <font>
                                <pointsize>11</pointsize>
