@@ -103,7 +103,7 @@ main(int argc, char* argv[])
     newArgv[argc] = ARG_DISABLE_WEB_SECURITY;
     newArgv[argc + 1] = nullptr;
 
-#if defined(Q_OS_WIN) && defined(PROCESS_DPI_AWARE)
+#if defined(Q_OS_WIN) && (PROCESS_DPI_AWARE)
     SetProcessDPIAware();
 #endif // Q_OS_WIN
 

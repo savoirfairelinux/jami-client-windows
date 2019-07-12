@@ -284,7 +284,7 @@ VideoView::showContextMenu(const QPoint& pos)
             auto screenNumber = qApp->desktop()->screenNumber(this);
             QScreen* screen = qApp->screens().at(screenNumber);
             QRect rect = screen ? screen->geometry() : qApp->primaryScreen()->geometry();
-#if defined(Q_OS_WIN) && defined(PROCESS_DPI_AWARE)
+#if defined(Q_OS_WIN) && (PROCESS_DPI_AWARE)
             rect.setSize(Utils::getRealSize(screen));
 #endif
             LRCInstance::avModel().setDisplay(screenNumber,
