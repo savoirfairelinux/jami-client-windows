@@ -170,8 +170,6 @@ MainWindow::MainWindow(QWidget* parent)
 
     lastScr_ = startScreen;
 
-    this->show();
-
 #ifdef DEBUG_STYLESHEET
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout,
@@ -340,7 +338,6 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
         setMaximumSize(QtMaxDimension, QtMaxDimension);
     }
     if (firstUse || !accountList.size()) {
-#if defined(Q_OS_WIN) && !defined(PROCESS_DPI_AWARE)
         auto screenNumber = qApp->desktop()->screenNumber();
         setGeometry(
             QStyle::alignedRect(
@@ -348,7 +345,6 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
                 Qt::AlignCenter,
                 size(),
                 qApp->desktop()->screenGeometry(screenNumber)));
-#endif
         if (scr == ScreenEnum::WizardScreen) {
             setWindowFlags(Qt::Dialog);
             setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
@@ -364,7 +360,8 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 
 void MainWindow::show()
 {
-#if defined(Q_OS_WIN) && !defined(PROCESS_DPI_AWARE)
+    QMainWindow::show();
+#if defined(Q_OS_WIN)
     disconnect(screenChangedConnection_);
     screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
                                        this, &MainWindow::slotScreenChanged);
