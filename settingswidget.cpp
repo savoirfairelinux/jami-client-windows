@@ -155,11 +155,7 @@ void SettingsWidget::leaveSettingsSlot()
         toggleAdvancedSIPSettings();
     }
 
-    QtConcurrent::run(
-        [this] {
-            ui->currentAccountAvatar->stopBooth();
-            LRCInstance::avModel().stopPreview();
-        });
+    QtConcurrent::run([this] { ui->currentAccountAvatar->stopBooth(); });
 
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
@@ -178,7 +174,9 @@ void SettingsWidget::setSelected(Button sel)
         ui->mediaSettingsButton->setChecked(false);
         if (pastButton_ == sel) { return; }
 
-        QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
+        if (!LRCInstance::getActiveCalls().size()) {
+            QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
+        }
 
         if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
             ui->stackedWidget->setCurrentWidget(ui->currentSIPAccountSettingsScrollWidget);
@@ -200,7 +198,9 @@ void SettingsWidget::setSelected(Button sel)
         ui->mediaSettingsButton->setChecked(false);
         if (pastButton_ == sel) { return; }
 
-        QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+        if (!LRCInstance::getActiveCalls().size()) {
+            QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+        }
 
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
         populateGeneralSettings();
@@ -961,7 +961,9 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toString().toStdString();
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
-    showPreview();
+    if (!LRCInstance::getActiveCalls().size()) {
+        showPreview();
+    }
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)

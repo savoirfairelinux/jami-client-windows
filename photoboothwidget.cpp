@@ -76,7 +76,9 @@ void PhotoboothWidget::startBooth()
 
 void PhotoboothWidget::stopBooth()
 {
-    LRCInstance::avModel().stopPreview();
+    if (!LRCInstance::getActiveCalls().size()) {
+        LRCInstance::avModel().stopPreview();
+    }
     ui->videoFeed->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
@@ -86,7 +88,9 @@ void PhotoboothWidget::stopBooth()
 void
 PhotoboothWidget::on_importButton_clicked()
 {
-    LRCInstance::avModel().stopPreview();
+    if (!LRCInstance::getActiveCalls().size()) {
+        LRCInstance::avModel().stopPreview();
+    }
     auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
                                              picturesDir,
@@ -96,7 +100,6 @@ PhotoboothWidget::on_importButton_clicked()
         LRCInstance::avModel().startPreview();
         return;
     }
-    LRCInstance::avModel().stopPreview();
     auto image = Utils::cropImage(QImage(fileName_));
     auto avatar = image.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
     avatarPixmap_ = QPixmap::fromImage(avatar);
