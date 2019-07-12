@@ -40,6 +40,8 @@ VideoWidget::slotRendererStarted(const std::string& id)
 {
     Q_UNUSED(id);
 
+    QObject::disconnect(rendererConnections_.started);
+
     // only one videowidget will be used at the same time
     if (not isVisible())
         return;
@@ -47,8 +49,6 @@ VideoWidget::slotRendererStarted(const std::string& id)
     this->show();
 
     resetPreview_ = true;
-
-    QObject::disconnect(rendererConnections_.started);
 
     QObject::disconnect(rendererConnections_.updated);
     rendererConnections_.updated = connect(
