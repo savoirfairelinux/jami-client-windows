@@ -608,7 +608,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
         <source>Ok</source>
-        <translation type="unfinished"/>
+        <translation>D&apos;acord</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="218"/>
