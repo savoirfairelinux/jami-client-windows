@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "857b07bd_7106a30c",
+        "filename": "callwidget.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-07-16T19:02:31Z",
+      "side": 1,
+      "message": "I think this should be the same as the other notifications, maybe define a constant somewhere so they all change at once",
+      "range": {
+        "startLine": 1239,
+        "startChar": 164,
+        "endLine": 1239,
+        "endChar": 169
+      },
+      "revId": "33c961dd3c2928baf3b624133842983a14adcdef",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
