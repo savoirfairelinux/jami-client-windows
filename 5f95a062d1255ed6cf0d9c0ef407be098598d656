@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c93de39_065c40a8",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-07-16T18:41:05Z",
+      "side": 1,
+      "message": "jpeg\n\nplus I think *.ico, *tiff, and *.tga should be in that list",
+      "range": {
+        "startLine": 170,
+        "startChar": 75,
+        "endLine": 170,
+        "endChar": 79
+      },
+      "revId": "5f95a062d1255ed6cf0d9c0ef407be098598d656",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8392fe3_5b9c3c88",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-07-16T18:41:05Z",
+      "side": 1,
+      "message": "or maybe we should use: QByteArray imageFormat \u003d QImageReader::imageFormat(fileName);\nlike in https://stackoverflow.com/a/7780842/7853175 to see if it\u0027s at least a Qt readable image",
+      "range": {
+        "startLine": 170,
+        "startChar": 16,
+        "endLine": 170,
+        "endChar": 123
+      },
+      "revId": "5f95a062d1255ed6cf0d9c0ef407be098598d656",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d237a2_04218c4d",
+        "filename": "messagewebview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-07-16T18:41:05Z",
+      "side": 1,
+      "message": "can this function be refactored to accept an enum parameter or even just a boolean: isBase64 ?\nalso, it should have a default value which is most commonly used",
+      "range": {
+        "startLine": 171,
+        "startChar": 53,
+        "endLine": 171,
+        "endChar": 54
+      },
+      "revId": "5f95a062d1255ed6cf0d9c0ef407be098598d656",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
