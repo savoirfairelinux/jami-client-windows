@@ -93,6 +93,7 @@ private:
     AdvancedSettingsWidget* advancedSettingsWidget_;
     QScrollArea* scrollArea_;
     Button pastButton_ = Button::generalSettingsButton;
+    lrc::api::profile::Type pastAccount_ = lrc::api::profile::Type::INVALID;
     bool advancedSettingsDropped_ = false;
     QList<QPair<std::string, float>> formatIndexList_;
     std::string currentDisplayedVideoDevice_;
