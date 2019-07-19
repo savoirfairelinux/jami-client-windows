@@ -172,7 +172,9 @@ void SettingsWidget::setSelected(Button sel)
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
-        if (pastButton_ == sel) { return; }
+        if (pastButton_ == sel && pastAccount_ == LRCInstance::getCurrentAccountInfo().profileInfo.type) {
+            return;
+        }
 
         if (!LRCInstance::getActiveCalls().size()) {
             QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
@@ -183,11 +185,13 @@ void SettingsWidget::setSelected(Button sel)
             if (advancedSIPSettingsDropped_) {
                 toggleAdvancedSIPSettings();
             }
+            pastAccount_ = lrc::api::profile::Type::SIP;
         } else {
             ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
             if (advancedSettingsDropped_) {
                 toggleAdvancedSettings();
             }
+            pastAccount_ = lrc::api::profile::Type::RING;
         }
 
         break;
