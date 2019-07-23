@@ -890,7 +890,7 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
             try {
                 auto& contact = accInfo->contactModel->getContact(contactUri);
                 auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
-                ui->messageView->setInvitation(
+                /*ui->messageView->setInvitation(
                     (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
                     bestName,
                     accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
@@ -908,7 +908,7 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
                     ui->messageView->setSenderImage(
                         accInfo->contactModel->getContactProfileId(contactUri),
                         avatarString);
-                }
+                }*/
             } catch (...) {}
         });
 }

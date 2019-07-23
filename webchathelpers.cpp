@@ -50,8 +50,7 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
     case lrc::api::interaction::Type::CONTACT:
         interactionObject.insert("type", QJsonValue("contact"));
         break;
-    case lrc::api::interaction::Type::OUTGOING_DATA_TRANSFER:
-    case lrc::api::interaction::Type::INCOMING_DATA_TRANSFER: {
+    case lrc::api::interaction::Type::DATA_TRANSFER: {
         interactionObject.insert("type", QJsonValue("data_transfer"));
         lrc::api::datatransfer::Info info = {};
         conversationModel.getTransferInfo(msgId, info);
@@ -67,15 +66,16 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
         break;
     }
 
+    if (interaction.isRead) {
+        interactionObject.insert("delivery_status", QJsonValue("read"));
+    }
+
     switch (interaction.status)
     {
-    case lrc::api::interaction::Status::READ:
-        interactionObject.insert("delivery_status", QJsonValue("read"));
-        break;
-    case lrc::api::interaction::Status::SUCCEED:
+    case lrc::api::interaction::Status::SUCCESS:
         interactionObject.insert("delivery_status", QJsonValue("sent"));
         break;
-    case lrc::api::interaction::Status::FAILED:
+    case lrc::api::interaction::Status::FAILURE:
     case lrc::api::interaction::Status::TRANSFER_ERROR:
         interactionObject.insert("delivery_status", QJsonValue("failure"));
         break;
@@ -111,7 +111,6 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
         break;
     case lrc::api::interaction::Status::INVALID:
     case lrc::api::interaction::Status::UNKNOWN:
-    case lrc::api::interaction::Status::UNREAD:
     default:
         interactionObject.insert("delivery_status", QJsonValue("unknown"));
         break;
