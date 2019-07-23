@@ -711,6 +711,10 @@ div.last_message > span {
     min-width: 16px;
 }
 
+.message_in .sender_image_cell {
+    min-width: 56px;
+}
+
 .dummy_cell {
     padding: 0;
 }
