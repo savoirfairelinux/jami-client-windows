@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QPainter>
 #include <QPixmap>
+#include <QSvgRenderer>
 
 // Client
 #include "smartlistmodel.h"
@@ -35,6 +36,11 @@
 ConversationItemDelegate::ConversationItemDelegate(QObject* parent)
     : QItemDelegate(parent)
 {
+    QSvgRenderer svgRenderer(QString(":/images/icons/ic_baseline-search-24px.svg"));
+    searchIcon_ = new QPixmap(QSize(sizeImage_, sizeImage_));
+    searchIcon_->fill(Qt::transparent);
+    QPainter pixPainter(searchIcon_);
+    svgRenderer.render(&pixPainter);
 }
 
 void
@@ -59,92 +65,99 @@ ConversationItemDelegate::paint(QPainter* painter
         highlightMap_[index.row()] = option.state & QStyle::State_MouseOver;
     }
 
-    // One does not simply keep the highlighted state drawn when the context
-    // menu is open…
-    QColor presenceBorderColor = Qt::white;
-    auto rowHighlight = highlightMap_.find(index.row());
-    if (selected) {
-       painter->fillRect(option.rect, RingTheme::smartlistSelection_);
-       presenceBorderColor = RingTheme::smartlistSelection_;
-    } else if (rowHighlight != highlightMap_.end() && (*rowHighlight).second) {
-       painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
-       presenceBorderColor = RingTheme::smartlistHighlight_;
-    }
-    auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-    auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
-    if (LRCInstance::getCurrentCallModel()->hasCall(conversation->callId)) {
-        auto color = QColor(RingTheme::blue_.lighter(180));
-        presenceBorderColor = color;
-        color.setAlpha(128);
-        painter->fillRect(option.rect, color);
-    }
-
-    QRect &rect = opt.rect;
-
-    // Avatar drawing
-    opt.decorationSize = QSize(sizeImage_, sizeImage_);
-    opt.decorationPosition = QStyleOptionViewItem::Left;
-    opt.decorationAlignment = Qt::AlignCenter;
-
-    QRect rectAvatar(dx_ + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
-    drawDecoration(painter, opt, rectAvatar,
-                   QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
-                   .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-
-    QFont font(painter->font());
-
-    // If there's unread messages, a message count is displayed
-    if (auto messageCount = index.data(static_cast<int>(SmartListModel::Role::UnreadMessagesCount)).toInt()) {
-        QString messageCountText = (messageCount > 9) ? "9+" : QString::number(messageCount);
-        qreal fontSize = messageCountText.count() > 1 ? 7 : 8;
-        font.setPointSize(fontSize);
-
-        // ellipse
-        QPainterPath ellipse;
-        qreal ellipseHeight = sizeImage_ / 6;
-        qreal ellipseWidth = ellipseHeight;
-        QPointF ellipseCenter(rectAvatar.right() - ellipseWidth + 1, rectAvatar.top() + ellipseHeight + 1);
-        QRect ellipseRect(ellipseCenter.x() - ellipseWidth, ellipseCenter.y() - ellipseHeight,
-            ellipseWidth * 2, ellipseHeight * 2);
-        ellipse.addRoundedRect(ellipseRect, ellipseWidth, ellipseHeight);
-        painter->fillPath(ellipse, RingTheme::notificationRed_);
-
-        // text
-        painter->setPen(Qt::white);
-        painter->setOpacity(1);
-        painter->setFont(font);
-        ellipseRect.setTop(ellipseRect.top() - 2);
-        painter->drawText(ellipseRect, Qt::AlignCenter, messageCountText);
-    }
-
-    // Presence indicator
-    if (index.data(static_cast<int>(SmartListModel::Role::Presence)).value<bool>()) {
-        qreal radius = sizeImage_ / 6;
-        QPainterPath outerCircle, innerCircle;
-        QPointF center(rectAvatar.right() - radius + 2, (rectAvatar.bottom() - radius) + 1 + 2);
-        qreal outerCRadius = radius;
-        qreal innerCRadius = outerCRadius * 0.75;
-        outerCircle.addEllipse(center, outerCRadius, outerCRadius);
-        innerCircle.addEllipse(center, innerCRadius, innerCRadius);
-        painter->fillPath(outerCircle, presenceBorderColor);
-        painter->fillPath(innerCircle, RingTheme::presenceGreen_);
-    }
-
     using namespace lrc::api;
     auto type = Utils::toEnum<profile::Type>(
             index.data(static_cast<int>(SmartListModel::Role::ContactType)).value<int>()
         );
+
+    // One does not simply keep the highlighted state drawn when the context
+    // menu is open…
+    QString uriStr = index.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>();
+    if (not (type == profile::Type::TEMPORARY and uriStr.isEmpty())) {
+        auto rowHighlight = highlightMap_.find(index.row());
+        if (selected) {
+            painter->fillRect(option.rect, RingTheme::smartlistSelection_);
+        } else if (rowHighlight != highlightMap_.end() && (*rowHighlight).second) {
+            painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
+        }
+        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+        auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
+        if (LRCInstance::getCurrentCallModel()->hasCall(conversation->callId)) {
+            auto color = QColor(RingTheme::blue_.lighter(180));
+            color.setAlpha(128);
+            painter->fillRect(option.rect, color);
+        }
+    }
+
+    QRect &rect = opt.rect;
+
+    opt.decorationSize = QSize(sizeImage_, sizeImage_);
+    opt.decorationPosition = QStyleOptionViewItem::Left;
+    opt.decorationAlignment = Qt::AlignCenter;
+    QRect rectAvatar(dx_ + rect.left(), rect.top() + dy_, sizeImage_, sizeImage_);
+    if (type == profile::Type::TEMPORARY and uriStr.isEmpty()) {
+        // Search icon
+        drawDecoration(painter, opt, rectAvatar, *searchIcon_);
+    } else {
+        // Avatar drawing
+        drawDecoration(painter, opt, rectAvatar,
+            QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
+            .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
+
+    QFont font(painter->font());
+
+    if (type != profile::Type::TEMPORARY) {
+        // If there's unread messages, a message count is displayed
+        if (auto messageCount = index.data(static_cast<int>(SmartListModel::Role::UnreadMessagesCount)).toInt()) {
+            QString messageCountText = (messageCount > 9) ? "9+" : QString::number(messageCount);
+            qreal fontSize = messageCountText.count() > 1 ? 7 : 8;
+            font.setPointSize(fontSize);
+
+            // ellipse
+            QPainterPath ellipse;
+            qreal ellipseHeight = sizeImage_ / 6;
+            qreal ellipseWidth = ellipseHeight;
+            QPointF ellipseCenter(rectAvatar.right() - ellipseWidth + 1, rectAvatar.top() + ellipseHeight + 1);
+            QRect ellipseRect(ellipseCenter.x() - ellipseWidth, ellipseCenter.y() - ellipseHeight,
+                ellipseWidth * 2, ellipseHeight * 2);
+            ellipse.addRoundedRect(ellipseRect, ellipseWidth, ellipseHeight);
+            painter->fillPath(ellipse, RingTheme::notificationRed_);
+
+            // text
+            painter->setPen(Qt::white);
+            painter->setOpacity(1);
+            painter->setFont(font);
+            ellipseRect.setTop(ellipseRect.top() - 2);
+            painter->drawText(ellipseRect, Qt::AlignCenter, messageCountText);
+        }
+
+        // Presence indicator
+        if (index.data(static_cast<int>(SmartListModel::Role::Presence)).value<bool>()) {
+            qreal radius = sizeImage_ / 6;
+            QPainterPath outerCircle, innerCircle;
+            QPointF center(rectAvatar.right() - radius + 2, (rectAvatar.bottom() - radius) + 1 + 2);
+            qreal outerCRadius = radius;
+            qreal innerCRadius = outerCRadius * 0.75;
+            outerCircle.addEllipse(center, outerCRadius, outerCRadius);
+            innerCircle.addEllipse(center, innerCRadius, innerCRadius);
+            painter->fillPath(outerCircle, Qt::white);
+            painter->fillPath(innerCircle, RingTheme::presenceGreen_);
+        }
+    }
+
     switch (type) {
+    case profile::Type::TEMPORARY:
     case profile::Type::RING:
     case profile::Type::SIP:
-    case profile::Type::TEMPORARY:
-        paintConversationItem(painter, option, rect, index);
+        paintConversationItem(painter, option, rect, index,
+                              type == profile::Type::TEMPORARY);
         break;
     case profile::Type::PENDING:
-        paintRingInviteConversationItem(painter, option, rect, index);
+        paintInvitationItem(painter, option, rect, index);
         break;
     default:
-        paintConversationItem(painter, option, rect, index);
+        paintConversationItem(painter, option, rect, index, true);
         break;
     }
 }
@@ -162,7 +175,8 @@ void
 ConversationItemDelegate::paintConversationItem(QPainter* painter,
                                                 const QStyleOptionViewItem& option,
                                                 const QRect& rect,
-                                                const QModelIndex& index) const
+                                                const QModelIndex& index,
+                                                const bool isTemporary) const
 {
     Q_UNUSED(option);
     QFont font(painter->font());
@@ -186,25 +200,22 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
     auto topMargin = 4;
     auto bottomMargin = 8;
 
+    int rect1Width;
+    if (!isTemporary) {
+        rect1Width = rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 8;
+    } else {
+        rect1Width = rect.width() - leftMargin - rightMargin;
+    }
+
     QRect rectName1(rect.left() + leftMargin,
                     rect.top() + topMargin,
-                    rect.width() - leftMargin - infoTextWidth_ - infoTextWidthModifier - 8,
+                    rect1Width,
                     rect.height() / 2 - 2);
 
     QRect rectName2(rectName1.left(),
                     rectName1.top() + rectName1.height() - infoText2HeightModifier,
                     rectName1.width(),
                     rectName1.height() - bottomMargin + infoText2HeightModifier);
-
-    QRect rectInfo1(rectName1.left() + rectName1.width(),
-                    rect.top() + topMargin,
-                    infoTextWidth_ - rightMargin + infoTextWidthModifier + 2,
-                    rect.height() / 2 - 2);
-
-    QRect rectInfo2(rectInfo1.left(),
-                    rectInfo1.top() + rectInfo1.height() - infoText2HeightModifier,
-                    rectInfo1.width(),
-                    rectInfo1.height() - bottomMargin + infoText2HeightModifier + 4);
 
     QFontMetrics fontMetrics(font);
 
@@ -231,6 +242,20 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
         idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectName2.width());
         painter->drawText(rectName2, Qt::AlignVCenter | Qt::AlignLeft, idStr);
     }
+
+    if (isTemporary) {
+        return;
+    }
+
+    QRect rectInfo1(rectName1.left() + rectName1.width(),
+                    rect.top() + topMargin,
+                    infoTextWidth_ - rightMargin + infoTextWidthModifier + 2,
+                    rect.height() / 2 - 2);
+
+    QRect rectInfo2(rectInfo1.left(),
+                    rectInfo1.top() + rectInfo1.height() - infoText2HeightModifier,
+                    rectInfo1.width(),
+                    rectInfo1.height() - bottomMargin + infoText2HeightModifier + 4);
 
     // top-right: last interaction date/time
     QString lastUsedStr = index.data(static_cast<int>(SmartListModel::Role::LastInteractionDate)).value<QString>();
@@ -289,10 +314,10 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
 }
 
 void
-ConversationItemDelegate::paintRingInviteConversationItem(QPainter* painter,
-                                                          const QStyleOptionViewItem& option,
-                                                          const QRect& rect,
-                                                          const QModelIndex& index) const
+ConversationItemDelegate::paintInvitationItem(QPainter* painter,
+                                              const QStyleOptionViewItem& option,
+                                              const QRect& rect,
+                                              const QModelIndex& index) const
 {
     QFont font(painter->font());
     QPen pen(painter->pen());
