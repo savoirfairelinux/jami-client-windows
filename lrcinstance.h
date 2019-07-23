@@ -48,17 +48,21 @@
 
 using namespace lrc::api;
 
+using migrateCallback = std::function<void()>;
+
 class LRCInstance : public QObject
 {
     Q_OBJECT
 
 public:
-    static LRCInstance& instance() {
-        static LRCInstance instance_;
+    static LRCInstance& instance(migrateCallback willMigrate = {},
+                                 migrateCallback didMigrate = {}) {
+        static LRCInstance instance_(willMigrate, didMigrate);
         return instance_;
     };
-    static void init() {
-        instance();
+    static void init(migrateCallback willMigrate = {},
+                     migrateCallback didMigrate = {}) {
+        instance(willMigrate, didMigrate);
     };
     static Lrc& getAPI() {
         return *(instance().lrc_);
@@ -174,6 +178,10 @@ public:
         return instance().getCurrentAccountInfo().confProperties;
     }
 
+    static void subscribeToDebugReceived() {
+        instance().lrc_->subscribeToDebugReceived();
+    }
+
 signals:
     /// emit once at least one valid account is loaded
     void accountOnBoarded();
@@ -182,8 +190,9 @@ private:
     std::unique_ptr<Lrc> lrc_;
     AccountListModel accountListModel_;
 
-    LRCInstance() {
-        lrc_ = std::make_unique<Lrc>();
+    LRCInstance(migrateCallback willMigrateCb = {},
+                migrateCallback didMigrateCb = {}) {
+        lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
     };
 
     std::string selectedAccountId_;

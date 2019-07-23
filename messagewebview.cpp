@@ -311,6 +311,9 @@ MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationMod
                                     const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
+    if (interactionObject.isEmpty()) {
+        return;
+    }
     QString s = QString::fromLatin1("addMessage(%1);")
         .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -322,6 +325,9 @@ MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel
                                   const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
+    if (interactionObject.isEmpty()) {
+        return;
+    }
     QString s = QString::fromLatin1("updateMessage(%1);")
         .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -351,7 +357,7 @@ MessageWebView::setSenderImage(const std::string& sender,
                                const std::string& senderImage)
 {
     QJsonObject setSenderImageObject = QJsonObject();
-    setSenderImageObject.insert("sender_contact_method", QJsonValue(QString(sender.c_str())));
+    setSenderImageObject.insert("sender_contact_method", QJsonValue(QString(sender.c_str()).replace("@", "_").replace(".", "_")));
     setSenderImageObject.insert("sender_image", QJsonValue(QString(senderImage.c_str())));
 
     auto setSenderImageObjectString = QString(QJsonDocument(setSenderImageObject).toJson(QJsonDocument::Compact));
@@ -364,7 +370,7 @@ void
 MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
 {
     QString s = show ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")")
-        .arg(QString(contactUri.c_str()))
+        .arg(QString(contactUri.c_str()).replace("@", "_").replace(".", "_"))
         .arg(QString(contactId.c_str())) : QString::fromLatin1("showInvitation()");
 
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
