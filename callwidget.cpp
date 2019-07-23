@@ -875,8 +875,6 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     ui->messageView->setMessagesVisibility(false);
-    ui->messageView->clear();
-    ui->messageView->setInvitation(false);
     Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
         [this, convInfo] {
             auto convModel = LRCInstance::getCurrentConversationModel();
@@ -894,24 +892,22 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
                 ui->messageView->setInvitation(
                     (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
                     bestName,
-                    accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
+                    contactUri
                 );
                 if (!contact.profileInfo.avatar.empty()) {
-                    ui->messageView->setSenderImage(
-                        accInfo->contactModel->getContactProfileId(contactUri),
-                        contact.profileInfo.avatar);
+                    ui->messageView->setSenderImage(contactUri, contact.profileInfo.avatar);
                 } else {
                     auto avatar = Utils::conversationPhoto(convInfo.uid, *accInfo);
                     QByteArray ba;
                     QBuffer bu(&ba);
                     avatar.save(&bu, "PNG");
                     std::string avatarString = ba.toBase64().toStdString();
-                    ui->messageView->setSenderImage(
-                        accInfo->contactModel->getContactProfileId(contactUri),
-                        avatarString);
+                    ui->messageView->setSenderImage(contactUri, avatarString);
                 }
             } catch (...) {}
         });
+    ui->messageView->setInvitation(false);
+    ui->messageView->clear();
 }
 
 void

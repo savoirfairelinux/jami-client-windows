@@ -19,23 +19,24 @@
 
 #include "mainwindow.h"
 
-#include <QApplication>
-#include <QFile>
-#include <QMessageBox>
-
 #include "globalinstances.h"
-
-#include <QFontDatabase>
-#include <QLibraryInfo>
-#include <QTranslator>
-
-#include <ciso646>
-
 #include "downloadmanager.h"
 #include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "runguard.h"
 #include "utils.h"
+#include "deleteaccountdialog.h"
+#include "splashscreen.h"
+
+#include <QApplication>
+#include <QFile>
+#include <QMessageBox>
+#include <QFontDatabase>
+#include <QLibraryInfo>
+#include <QTranslator>
+#include <QVBoxLayout>
+
+#include <ciso646>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -91,6 +92,7 @@ fileDebug(QFile& debugFile)
         });
 }
 
+#pragma optimize("", off)
 int
 main(int argc, char* argv[])
 {
@@ -133,35 +135,6 @@ main(int argc, char* argv[])
 
     auto startMinimized = false;
     QString uri = "";
-
-#if defined _MSC_VER && !COMPILE_ONLY
-    gnutls_global_init();
-#endif
-
-    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
-    LRCInstance::init();
-
-    QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string.startsWith("jami:")) {
-            uri = string;
-        } else {
-            if (string == "-m" || string == "--minimized") {
-                startMinimized = true;
-            }
-            if (string == "-f" || string == "--file") {
-                debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
-                debugFile.close();
-                fileDebug(debugFile);
-            }
-#ifdef _MSC_VER
-            if (string == "-c" || string == "--vsconsole") {
-                vsConsoleDebug();
-            }
-#endif
-        }
-    }
 
     auto appDir = qApp->applicationDirPath() + "/";
     const auto locale_name = QLocale::system().name();
@@ -206,6 +179,52 @@ main(int argc, char* argv[])
     }
 #endif
 
+#if defined _MSC_VER && !COMPILE_ONLY
+    gnutls_global_init();
+#endif
+
+    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
+
+    SplashScreen* splash = new SplashScreen(QPixmap(":/images/jami.png"));
+    std::atomic_bool isMigrating = false;
+    LRCInstance::init(
+        [&splash, &a, &isMigrating] {
+            splash->showStatusMessage(QObject::tr("Migrating..."), Qt::white);
+            splash->show();
+            isMigrating = true;
+            while (isMigrating) {
+                a.processEvents();
+            }
+        },
+        [&splash, &isMigrating] {
+            while (!isMigrating) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+            isMigrating = false;
+        });
+
+    QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
+
+    for (auto string : QCoreApplication::arguments()) {
+        if (string.startsWith("jami:")) {
+            uri = string;
+        } else {
+            if (string == "-m" || string == "--minimized") {
+                startMinimized = true;
+            }
+            if (string == "-f" || string == "--file") {
+                debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
+                debugFile.close();
+                fileDebug(debugFile);
+            }
+#ifdef _MSC_VER
+            if (string == "-c" || string == "--vsconsole") {
+                vsConsoleDebug();
+            }
+#endif
+        }
+    }
+
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
     MainWindow::instance().createThumbBar();
@@ -218,7 +237,7 @@ main(int argc, char* argv[])
     }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { guard.release(); });
-
+    splash->finish(&MainWindow::instance());
     auto ret = a.exec();
 
 #ifdef Q_OS_WIN
@@ -231,3 +250,4 @@ main(int argc, char* argv[])
 
     return ret;
 }
+#pragma optimize("", on)
