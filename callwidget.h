@@ -72,6 +72,7 @@ public slots:
     void settingsButtonClicked();
     void showChatView(const QModelIndex& nodeIdx);
     void showChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void setConversationProfileData(const lrc::api::conversation::Info & convInfo);
     void setupChatView(const lrc::api::conversation::Info& convInfo);
     void slotAcceptInviteClicked(const QModelIndex& index);
     void slotBlockInviteClicked(const QModelIndex& index);

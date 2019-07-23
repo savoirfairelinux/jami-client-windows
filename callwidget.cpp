@@ -864,6 +864,33 @@ CallWidget::showChatView(const std::string& accountId, const lrc::api::conversat
 }
 
 void
+CallWidget::setConversationProfileData(const lrc::api::conversation::Info& convInfo)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto accInfo = &LRCInstance::getCurrentAccountInfo();
+    auto contactUri = convInfo.participants.front();
+    try {
+        auto& contact = accInfo->contactModel->getContact(contactUri);
+        auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
+        ui->messageView->setInvitation(
+            (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
+            bestName,
+            contactUri
+        );
+        if (!contact.profileInfo.avatar.empty()) {
+            ui->messageView->setSenderImage(contactUri, contact.profileInfo.avatar);
+        } else {
+            auto avatar = Utils::conversationPhoto(convInfo.uid, *accInfo);
+            QByteArray ba;
+            QBuffer bu(&ba);
+            avatar.save(&bu, "PNG");
+            std::string avatarString = ba.toBase64().toStdString();
+            ui->messageView->setSenderImage(contactUri, avatarString);
+        }
+    } catch (...) {}
+}
+
+void
 CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
 {
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
@@ -898,8 +925,6 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     ui->messageView->setMessagesVisibility(false);
-    ui->messageView->clear();
-    ui->messageView->setInvitation(false);
     Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
         [this, convInfo] {
             auto convModel = LRCInstance::getCurrentConversationModel();
@@ -908,33 +933,10 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
                 [this] {
                     ui->messageView->setMessagesVisibility(true);
                 });
-            // Contact Avatars
-            auto accInfo = &LRCInstance::getCurrentAccountInfo();
-            auto contactUri = convInfo.participants.front();
-            try {
-                auto& contact = accInfo->contactModel->getContact(contactUri);
-                auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
-                ui->messageView->setInvitation(
-                    (contact.profileInfo.type == lrc::api::profile::Type::PENDING),
-                    bestName,
-                    accInfo->contactModel->getContactProfileId(contact.profileInfo.uri)
-                );
-                if (!contact.profileInfo.avatar.empty()) {
-                    ui->messageView->setSenderImage(
-                        accInfo->contactModel->getContactProfileId(contactUri),
-                        contact.profileInfo.avatar);
-                } else {
-                    auto avatar = Utils::conversationPhoto(convInfo.uid, *accInfo);
-                    QByteArray ba;
-                    QBuffer bu(&ba);
-                    avatar.save(&bu, "PNG");
-                    std::string avatarString = ba.toBase64().toStdString();
-                    ui->messageView->setSenderImage(
-                        accInfo->contactModel->getContactProfileId(contactUri),
-                        avatarString);
-                }
-            } catch (...) {}
+            setConversationProfileData(convInfo);
         });
+    ui->messageView->setInvitation(false);
+    ui->messageView->clear();
 }
 
 void
@@ -1272,15 +1274,21 @@ CallWidget::connectAccount(const std::string& accId)
     auto& contactModel = LRCInstance::getCurrentAccountInfo().contactModel;
     disconnect(contactAddedConnection_);
     contactAddedConnection_ = connect(contactModel.get(), &lrc::api::ContactModel::contactAdded,
-        [this, &contactModel](const std::string & contactId) {
+        [this, &contactModel](const std::string & contactUri) {
             auto convModel = LRCInstance::getCurrentConversationModel();
             auto currentConversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(),
                 *convModel);
             if (currentConversation == convModel->allFilteredConversations().end()) {
                 return;
             }
-            if (contactId == contactModel.get()->getContact((*currentConversation).participants.at(0)).profileInfo.uri) {
+            if (contactUri == contactModel.get()->getContact((*currentConversation).participants.at(0)).profileInfo.uri) {
+                // update call screen
+                auto avatarImg = QPixmap::fromImage(imageForConv((*currentConversation).uid));
+                ui->callingPhoto->setPixmap(avatarImg);
+                ui->callerPhoto->setPixmap(avatarImg);
+                // update conversation
                 ui->messageView->clear();
+                setConversationProfileData(*currentConversation);
                 ui->messageView->printHistory(*convModel, currentConversation->interactions);
             }
         });

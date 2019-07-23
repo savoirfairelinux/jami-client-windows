@@ -19,6 +19,7 @@
 #include "smartlistselectorbuttonnotifier.h"
 
 #include "lrcinstance.h"
+#include "utils.h"
 #include "ringthemeutils.h"
 
 #include "api/conversationmodel.h"
@@ -56,7 +57,7 @@ SmartlistSelectorButtonNotifier::paintEvent(QPaintEvent *event)
         auto ringConversations = convModel->getFilteredConversations(Type::RING);
         std::for_each(ringConversations.begin(), ringConversations.end(),
             [&totalUnreadMessages, convModel](const auto& conversation) {
-                totalUnreadMessages += convModel->getNumberOfUnreadMessagesFor(conversation.uid);
+                totalUnreadMessages += conversation.unreadMessages;
             });
         break;
     }
