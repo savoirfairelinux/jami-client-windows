@@ -213,6 +213,9 @@
     <ClCompile Include="contactpickeritemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="splashscreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
