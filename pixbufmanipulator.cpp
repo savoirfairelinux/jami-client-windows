@@ -89,40 +89,41 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
 {
     QImage photo;
     auto contacts = conversationInfo.participants;
-    if (!contacts.empty()) {
-        try {
-            // Get first contact photo
-            auto contactUri = contacts.front();
-            auto contactInfo = accountInfo.contactModel->getContact(contactUri);
-            auto contactPhoto = contactInfo.profileInfo.avatar;
-            auto bestName = Utils::bestNameForContact(contactInfo);
-            auto bestId = Utils::bestIdForContact(contactInfo);
-            if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
-                contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
-                photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-            }
-            else if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP) {
-                photo = Utils::fallbackAvatar(IMAGE_SIZE,
-                                              QString::fromStdString("sip:" + bestId),
-                                              QString());
-            }
-            else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.empty()) {
-                photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-            }
-            else if (!contactPhoto.empty()) {
-                QByteArray byteArray(contactPhoto.c_str(), contactPhoto.length());
-                photo = personPhoto(byteArray, nullptr).value<QImage>();
-            }
-            else {
+    if (contacts.empty()) {
+        return QVariant::fromValue(photo);
+    }
+    try {
+        // Get first contact photo
+        auto contactUri = contacts.front();
+        auto contactInfo = accountInfo.contactModel->getContact(contactUri);
+        auto contactPhoto = contactInfo.profileInfo.avatar;
+        auto bestName = Utils::bestNameForContact(contactInfo);
+        auto bestId = Utils::bestIdForContact(contactInfo);
+        if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
+            contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
+            photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
+        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.empty()) {
+            photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
+        } else if (!contactPhoto.empty()) {
+            QByteArray byteArray(contactPhoto.c_str(), contactPhoto.length());
+            photo = personPhoto(byteArray, nullptr).value<QImage>();
+            if (photo.isNull()) {
                 auto avatarName = contactInfo.profileInfo.uri == bestName ?
                                   QString() :
                                   QString::fromStdString(bestName);
                 photo = Utils::fallbackAvatar(IMAGE_SIZE,
-                                              QString::fromStdString("ring:" + bestId),
+                                              QString::fromStdString("ring:" + contactInfo.profileInfo.uri),
                                               avatarName);
             }
+        } else {
+            auto avatarName = contactInfo.profileInfo.uri == bestName ?
+                              QString() :
+                              QString::fromStdString(bestName);
+            photo = Utils::fallbackAvatar(IMAGE_SIZE,
+                                          QString::fromStdString("ring:" + contactInfo.profileInfo.uri),
+                                          avatarName);
         }
-        catch (...) {}
     }
+    catch (...) {}
     return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
 }
