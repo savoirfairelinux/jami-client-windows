@@ -29,7 +29,7 @@ RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
 
     setFrame(false);
 
-    addAction(QIcon(":images/icons/ic_search_black_18dp_2x.png"), QLineEdit::ActionPosition::LeadingPosition);
+    addAction(QIcon(":images/icons/ic_baseline-search-24px.svg"), QLineEdit::ActionPosition::LeadingPosition);
 }
 
 RingContactLineEdit::~RingContactLineEdit()
