@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Jäger Nicolas <nicolas.jager@savoirfairelinux.com>              *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -15,29 +15,39 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#include "splashscreen.h"
 
-#include <QDebug>
-#include <QIcon>
-#include <QtWidgets/QApplication>
-
-#include "ringcontactlineedit.h"
-
-RingContactLineEdit::RingContactLineEdit(QWidget* parent) :
-    QLineEdit(parent)
+SplashScreen::SplashScreen(const QPixmap& pixmap)
 {
-    QPalette palette;
+    QSplashScreen::setPixmap(pixmap);
+    QRect rect = this->geometry();
+    QFont font;
+    font.setFamily("Arial");
+    font.setPixelSize(16);
+    setFont(font);
+    setMessageRect(QRect(0, 0, rect.width(), rect.height()), Qt::AlignCenter);
+    setWindowFlags(Qt::WindowStaysOnTopHint | Qt::SplashScreen);
+};
 
-    setFrame(false);
-
-    addAction(QIcon(":images/icons/ic_baseline-search-24px.svg"), QLineEdit::ActionPosition::LeadingPosition);
-}
-
-RingContactLineEdit::~RingContactLineEdit()
+SplashScreen::~SplashScreen()
 {
-}
+};
 
-void
-RingContactLineEdit::setPlaceholderString(const QString& str)
+void SplashScreen::drawContents(QPainter *painter)
 {
-    setPlaceholderText(str);
-}
+    painter->setPen(this->color);
+    painter->drawText(this->rect, this->alignement, this->message);
+};
+
+void SplashScreen::showStatusMessage(const QString &message, const QColor &color)
+{
+    this->message = message;
+    this->color = color;
+    this->showMessage(this->message, this->alignement, this->color);
+};
+
+void SplashScreen::setMessageRect(QRect rect, int alignement)
+{
+    this->rect = rect;
+    this->alignement = alignement;
+};

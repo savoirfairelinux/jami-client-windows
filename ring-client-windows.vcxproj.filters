@@ -213,6 +213,9 @@
     <ClCompile Include="contactpickeritemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="splashscreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -371,9 +374,8 @@
     <QtMoc Include="contactpickeritemdelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="levelmeter.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
+==== BASE ====
+==== BASE ====
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
