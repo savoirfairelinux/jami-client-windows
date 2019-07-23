@@ -629,6 +629,7 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
         message_div.insertBefore(new_wrapper, message_div.querySelector(".menu_interaction"))
         message_div.querySelector("img").id = message_id
         message_div.querySelector("img").msg_obj = message_object
+        addSenderImage(message_div, message_object["type"], message_object["sender_contact_method"]);
         return
     }
 
@@ -1106,6 +1107,12 @@ function buildNewMessage(message_object) {
     }
 
     // Add sender images if necessary (like if the interaction doesn't take the whole width)
+    addSenderImage(message_div, message_type, message_sender_contact_method)
+
+    return message_div
+}
+
+function addSenderImage(message_div, message_type, message_sender_contact_method) {
     const need_sender = (message_type === "data_transfer" || message_type === "text")
     if (need_sender) {
         var sender_image_cell = message_div.querySelector(".sender_image_cell")
@@ -1117,8 +1124,6 @@ function buildNewMessage(message_object) {
             console.warn("can't find sender_image_cell");
         }
     }
-
-    return message_div
 }
 
 /**
@@ -1708,7 +1713,6 @@ function addImage_base64(base64) {
  * add image (image path) to message area
  */
 function addImage_path(path) {
-
 
     var html = '<div class="img_wrapper">' +
                '<img src="' + path + '"/>' +

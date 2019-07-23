@@ -217,7 +217,7 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
                                   QString() :
                                   QString::fromStdString(bestName);
                 photo = Utils::fallbackAvatar(IMAGE_SIZE,
-                                              QString::fromStdString("ring:" + bestId),
+                                              QString::fromStdString("ring:" + contactInfo.profileInfo.uri),
                                               avatarName);
             }
         }
