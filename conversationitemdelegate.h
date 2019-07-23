@@ -34,8 +34,15 @@ protected:
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-    void paintConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
-    void paintRingInviteConversationItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
+    void paintConversationItem(QPainter* painter,
+                               const QStyleOptionViewItem& option,
+                               const QRect& rect,
+                               const QModelIndex& index,
+                               const bool isTemporary) const;
+    void paintInvitationItem(  QPainter* painter,
+                               const QStyleOptionViewItem& option,
+                               const QRect& rect,
+                               const QModelIndex& index) const;
 
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;
@@ -43,6 +50,8 @@ private:
     constexpr static int dx_ = 12;
     constexpr static int fontSize_ = 11;
     constexpr static int infoTextWidth_ = 176;
+
+    QPixmap* searchIcon_;
 
     mutable std::map<int, bool> highlightMap_;
 };
