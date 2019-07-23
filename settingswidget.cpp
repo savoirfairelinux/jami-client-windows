@@ -409,7 +409,6 @@ void SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, con
 
 void SettingsWidget::setRegNameUi(RegName stat)
 {
-    disconnect(lookupSpinnerMovie_, SIGNAL(frameChanged(int)), this, SLOT(setButtonIconSlot(int)));
     disconnect(ui->btnRegisterName, &QPushButton::clicked, this, &SettingsWidget::slotRegisterName);
 
     switch (stat) {
