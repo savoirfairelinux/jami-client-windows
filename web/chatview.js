@@ -161,8 +161,9 @@ function showInvitation(contactAlias, contactId) {
         if (!inviteImage.classList.contains('invite_sender_image')) {
             inviteImage.classList.add('invite_sender_image');
         }
-        if (!inviteImage.classList.contains(`invite_sender_image_${contactId}`)) {
-            inviteImage.classList.add(`invite_sender_image_${contactId}`);
+        const className = `invite_sender_image_${contactId}`.replace(/@/g, "_").replace(/\./g, "_")
+        if (!inviteImage.classList.contains(className)) {
+            inviteImage.classList.add(className);
         }
         hasInvitation = true
         invitationText.innerHTML = "<span id='invite_contact_name'>" + contactAlias + "</span> is not in your contacts<br/>"
@@ -629,6 +630,7 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
         message_div.insertBefore(new_wrapper, message_div.querySelector(".menu_interaction"))
         message_div.querySelector("img").id = message_id
         message_div.querySelector("img").msg_obj = message_object
+        addSenderImage(message_div, message_object["type"], message_object["sender_contact_method"]);
         return
     }
 
@@ -1106,19 +1108,24 @@ function buildNewMessage(message_object) {
     }
 
     // Add sender images if necessary (like if the interaction doesn't take the whole width)
+    addSenderImage(message_div, message_type, message_sender_contact_method)
+
+    return message_div
+}
+
+function addSenderImage(message_div, message_type, message_sender_contact_method) {
     const need_sender = (message_type === "data_transfer" || message_type === "text")
     if (need_sender) {
         var sender_image_cell = message_div.querySelector(".sender_image_cell")
         if (sender_image_cell) {
             var message_sender_image = document.createElement("span")
-            message_sender_image.setAttribute("class", `sender_image sender_image_${message_sender_contact_method}`)
+            var cssSafeStr = message_sender_contact_method.replace(/@/g, "_").replace(/\./g, "_");
+            message_sender_image.setAttribute("class", `sender_image sender_image_${cssSafeStr}`)
             sender_image_cell.appendChild(message_sender_image)
         } else {
             console.warn("can't find sender_image_cell");
         }
     }
-
-    return message_div
 }
 
 /**
@@ -1602,7 +1609,7 @@ function printHistory(messages_array)
 /* exported setSenderImage */
 function setSenderImage(set_sender_image_object)
 {
-    var sender_contact_method = set_sender_image_object["sender_contact_method"],
+    var sender_contact_method = set_sender_image_object["sender_contact_method"].replace(/@/g, "_").replace(/\./g, "_"),
         sender_image = set_sender_image_object["sender_image"],
         sender_image_id = "sender_image_" + sender_contact_method,
         invite_sender_image_id = "invite_sender_image_" + sender_contact_method,
@@ -1708,7 +1715,6 @@ function addImage_base64(base64) {
  * add image (image path) to message area
  */
 function addImage_path(path) {
-
 
     var html = '<div class="img_wrapper">' +
                '<img src="' + path + '"/>' +
