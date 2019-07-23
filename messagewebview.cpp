@@ -311,6 +311,9 @@ MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationMod
                                     const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
+    if (interactionObject.isEmpty()) {
+        return;
+    }
     QString s = QString::fromLatin1("addMessage(%1);")
         .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -322,6 +325,9 @@ MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel
                                   const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
+    if (interactionObject.isEmpty()) {
+        return;
+    }
     QString s = QString::fromLatin1("updateMessage(%1);")
         .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
