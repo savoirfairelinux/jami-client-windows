@@ -108,9 +108,6 @@
     <ClCompile Include="videowidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windowscontactbackend.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="smartlistview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -266,9 +263,6 @@
     <QtMoc Include="videowidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="windowscontactbackend.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <QtMoc Include="smartlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>

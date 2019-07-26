@@ -33,8 +33,8 @@
 #include "banneditemwidget.h"
 #include "version.h"
 
+#include "namedirectory.h"
 #include "api/newdevicemodel.h"
-#include "media/recordingmodel.h"
 
 #include <QFileDialog>
 #include <QInputDialog>
@@ -389,7 +389,7 @@ void SettingsWidget::receiveRegNameSlot(const std::string& accountID,
 
 void SettingsWidget::beforeNameLookup()
 {
-    NameDirectory::instance().lookupName(nullptr, QString(), registeredName_);
+    NameDirectory::instance().lookupName(QString(), registeredName_);
 }
 
 void SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
@@ -765,8 +765,6 @@ void SettingsWidget::setConnections()
 
     connect(ui->downloadButton, &QAbstractButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
 
-    connect(ui->alwaysRecordingCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetAlwaysRecording);
-
     connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
 
     connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetUpdateAutomatic);
@@ -797,14 +795,14 @@ void SettingsWidget::populateGeneralSettings()
     ui->notificationCheckBox->setChecked(notifs);
 
     //recordings
-    ui->alwaysRecordingCheckBox->setChecked(media::RecordingModel::instance().isAlwaysRecording());
-
-    if (media::RecordingModel::instance().recordPath().isEmpty()) {
-        QString recordPath = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-        media::RecordingModel::instance().setRecordPath(recordPath);
+    if (LRCInstance::avModel().getRecordPath().empty()) {
+        QString recordPath = QDir::toNativeSeparators(
+            QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+        LRCInstance::avModel().setRecordPath(recordPath.toStdString());
     }
 
-    Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
+    Utils::setElidedText(ui->recordPathButton,
+        QString::fromStdString(LRCInstance::avModel().getRecordPath()));
 
 #ifdef Q_OS_WIN
     ui->autoUpdateCheckBox->setChecked(settings.value(SettingsKey::autoUpdate).toBool());
@@ -851,19 +849,20 @@ void SettingsWidget::openDownloadFolderSlot()
     }
 }
 
-void SettingsWidget::slotSetAlwaysRecording(bool state)
-{
-    media::RecordingModel::instance().setAlwaysRecording(state);
-}
-
 void SettingsWidget::openRecordFolderSlot()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Recordings"),
-        media::RecordingModel::instance().recordPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString dir = QFileDialog::getExistingDirectory(
+        this,
+        tr("Select A Folder For Your Recordings"),
+        QString::fromStdString(LRCInstance::avModel().getRecordPath()),
+        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
+    );
 
     if (!dir.isEmpty()) {
-        media::RecordingModel::instance().setRecordPath(dir);
-        Utils::setElidedText(ui->recordPathButton, media::RecordingModel::instance().recordPath());
+        LRCInstance::avModel().setRecordPath(dir.toStdString());
+        Utils::setElidedText(ui->recordPathButton,
+            QString::fromStdString(LRCInstance::avModel().getRecordPath())
+        );
     }
 }
 

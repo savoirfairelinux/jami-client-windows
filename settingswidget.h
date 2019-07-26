@@ -129,7 +129,6 @@ private slots:
     void checkForUpdateSlot();
     void slotSetClosedOrMin(bool state);
     void openDownloadFolderSlot();
-    void slotSetAlwaysRecording(bool state);
     void openRecordFolderSlot();
     void slotSetUpdateAutomatic(bool state);
     void outputDevIndexChangedSlot(int index);

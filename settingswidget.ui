@@ -376,7 +376,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>3</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -867,46 +867,6 @@
                            </item>
                           </layout>
                          </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_30">
-                           <property name="spacing">
-                            <number>12</number>
-                           </property>
-                           <property name="leftMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>0</number>
-                           </property>
-                           <item>
-                            <widget class="ToggleSwitch" name="alwaysRecordingCheckBox" native="true">
-                             <property name="enabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>30</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="text" stdset="0">
-                              <string>Always Recording</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
                         </layout>
                        </item>
                       </layout>
@@ -1250,7 +1210,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>749</width>
+                  <width>705</width>
                   <height>1387</height>
                  </rect>
                 </property>
@@ -2573,7 +2533,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>749</width>
+                  <width>683</width>
                   <height>864</height>
                  </rect>
                 </property>
@@ -3941,18 +3901,18 @@
                        </property>
                       </widget>
                      </item>
-                      <item row="0" column="0">
-                        <widget class="ToggleSwitch" name="hardwareAccelCheckBox" native="false">
-                          <property name="font">
-                            <font>
-                              <pointsize>11</pointsize>
-                            </font>
-                          </property>
-                          <property name="text" stdset="0">
-                            <string>Enable hardware acceleration</string>
-                          </property>
-                        </widget>
-                      </item>
+                     <item>
+                      <widget class="ToggleSwitch" name="hardwareAccelCheckBox" native="true">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text" stdset="0">
+                        <string>Enable hardware acceleration</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <spacer name="verticalSpacer_24">
                        <property name="orientation">

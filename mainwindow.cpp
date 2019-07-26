@@ -27,9 +27,6 @@
 #include <QTimer>
 #include <QWindow>
 
-#include "media/text.h"
-#include "media/textrecording.h"
-
 #ifdef Q_OS_WIN
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
@@ -37,7 +34,6 @@
 #endif
 
 #include "aboutdialog.h"
-#include "callmodel.h"
 #include "callwidget.h"
 #include "settingskey.h"
 #include "utils.h"
@@ -140,10 +136,11 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 
-    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged, [=](bool online) {
-        Q_UNUSED(online)
-        AccountModel::instance().slotConnectivityChanged();
-    });
+    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged,
+        [=](bool online) {
+            Q_UNUSED(online);
+            LRCInstance::connectivityChanged();
+        });
 
     auto flags_ = windowFlags();
 

@@ -42,11 +42,10 @@
 #define LPCWSTR char*
 #endif
 
-#include <api/conversationmodel.h>
-#include <api/account.h>
-#include <api/contactmodel.h>
-#include <api/contact.h>
-#include <contactmethod.h>
+#include "api/conversationmodel.h"
+#include "api/account.h"
+#include "api/contactmodel.h"
+#include "api/contact.h"
 
 static const QSize IMAGE_SIZE{ 128, 128 };
 
@@ -96,7 +95,6 @@ QImage getCirclePhoto(const QImage original, int sizePhoto);
 QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
 QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
-QImage fallbackAvatar(const QSize size, const ContactMethod* cm);
 QImage fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri);
 QByteArray QImageToByteArray(QImage image);
 QByteArray QByteArrayFromFile(const QString& filename);

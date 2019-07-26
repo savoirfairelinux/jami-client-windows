@@ -31,25 +31,13 @@ QByteArray QImageToByteArray(QImage image);
 
 class PixbufManipulator : public Interfaces::PixmapManipulatorI {
 public:
-    QVariant callPhoto(Call* c, const QSize& size, bool displayPresence = true) override;
-    QVariant callPhoto(const ContactMethod* n, const QSize& size, bool displayPresence = true) override;
-    QVariant contactPhoto(Person* c, const QSize& size, bool displayPresence = true) override;
     QVariant personPhoto(const QByteArray& data, const QString& type = "PNG") override;
 
     /* TODO: the following methods return an empty QVariant/QByteArray */
     QVariant   numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence = false, bool isPresent = false) override;
-    QVariant   securityIssueIcon(const QModelIndex& index) override;
     QByteArray toByteArray(const QVariant& pxm) override;
-    QVariant   collectionIcon(const CollectionInterface* colItf,
-                              Interfaces::PixmapManipulatorI::CollectionIconHint hint =
-                                Interfaces::PixmapManipulatorI::CollectionIconHint::NONE) const override;
-    QVariant   securityLevelIcon(const SecurityEvaluationModel::SecurityLevel level) const override;
     QVariant   userActionIcon(const UserActionElement& state) const override;
     QVariant   decorationRole(const QModelIndex& index) override;
-    QVariant   decorationRole(const Call* c) override;
-    QVariant   decorationRole(const ContactMethod* cm) override;
-    QVariant   decorationRole(const Person* p) override;
-    QVariant   decorationRole(const Account* acc) override;
     QVariant   decorationRole(const lrc::api::conversation::Info& conversation,
                               const lrc::api::account::Info& accountInfo) override;
 };

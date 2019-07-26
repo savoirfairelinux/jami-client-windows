@@ -29,9 +29,6 @@
 #include <QBuffer>
 #include <QPainter>
 
-#include "person.h"
-#include "call.h"
-#include "contactmethod.h"
 #include "globalinstances.h"
 
  // new LRC
@@ -43,40 +40,6 @@
 #include "utils.h"
 #include "ringthemeutils.h"
 #undef interface
-
-QVariant
-PixbufManipulator::callPhoto(Call* c, const QSize& size, bool displayPresence)
-{
-    if (!c || c->type() == Call::Type::CONFERENCE){
-        return QVariant::fromValue(Utils::fallbackAvatar(size,
-                                                         c->peerContactMethod()->uri().full(),
-                                                         c->peerContactMethod()->bestName()));
-    }
-    return callPhoto(c->peerContactMethod(), size, displayPresence);
-}
-
-QVariant
-PixbufManipulator::callPhoto(const ContactMethod* cm, const QSize& size, bool displayPresence)
-{
-    if (cm && cm->contact()) {
-        return contactPhoto(cm->contact(), size, displayPresence);
-    } else {
-        return QVariant::fromValue(Utils::fallbackAvatar(size, cm));
-    }
-}
-
-QVariant
-PixbufManipulator::contactPhoto(Person* p, const QSize& size, bool displayPresence)
-{
-    Q_UNUSED(displayPresence);
-    QImage photo;
-    if (p->photo().isValid()) {
-        photo = p->photo().value<QImage>();
-    } else {
-        photo = Utils::fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
-    }
-    return QVariant::fromValue(Utils::scaleAndFrame(photo, size));
-}
 
 QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& type)
 {
@@ -99,13 +62,6 @@ PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool
     return QVariant();
 }
 
-QVariant
-PixbufManipulator::securityIssueIcon(const QModelIndex& index)
-{
-    Q_UNUSED(index)
-    return QVariant();
-}
-
 QByteArray
 PixbufManipulator::toByteArray(const QVariant& pxm)
 {
@@ -114,19 +70,6 @@ PixbufManipulator::toByteArray(const QVariant& pxm)
     return ba;
 }
 
-QVariant
-PixbufManipulator::collectionIcon(const CollectionInterface* colItf, PixmapManipulatorI::CollectionIconHint hint) const
-{
-    Q_UNUSED(colItf)
-    Q_UNUSED(hint)
-    return QVariant();
-}
-QVariant
-PixbufManipulator::securityLevelIcon(const SecurityEvaluationModel::SecurityLevel level) const
-{
-    Q_UNUSED(level)
-    return QVariant();
-}
 QVariant
 PixbufManipulator::userActionIcon(const UserActionElement& state) const
 {
@@ -137,48 +80,6 @@ PixbufManipulator::userActionIcon(const UserActionElement& state) const
 QVariant PixbufManipulator::decorationRole(const QModelIndex& index)
 {
     Q_UNUSED(index)
-    return QVariant();
-}
-
-QVariant PixbufManipulator::decorationRole(const Call* c)
-{
-    QImage photo;
-    if (c   && c->peerContactMethod()
-            && c->peerContactMethod()->contact()
-            && c->peerContactMethod()->contact()->photo().isValid()) {
-        photo =  c->peerContactMethod()->contact()->photo().value<QImage>();
-    } else {
-        Utils::fallbackAvatar(IMAGE_SIZE, c->peerContactMethod());
-    }
-    return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
-}
-
-QVariant PixbufManipulator::decorationRole(const ContactMethod* cm)
-{
-    QImage photo;
-    if (cm  && cm->contact()
-            && cm->contact()->photo().isValid()) {
-        photo = cm->contact()->photo().value<QImage>();
-    } else {
-        photo = Utils::fallbackAvatar(IMAGE_SIZE, cm);
-    }
-    return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
-}
-
-QVariant PixbufManipulator::decorationRole(const Person* p)
-{
-    QImage photo;
-    if (p && p->photo().isValid()) {
-        photo = p->photo().value<QImage>();
-    } else {
-        photo = Utils::fallbackAvatar(IMAGE_SIZE, p->phoneNumbers().at(0));
-    }
-    return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
-}
-
-QVariant PixbufManipulator::decorationRole(const Account* acc)
-{
-    Q_UNUSED(acc);
     return QVariant();
 }
 

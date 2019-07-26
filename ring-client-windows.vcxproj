@@ -306,7 +306,6 @@
     <ClCompile Include="updateconfirmdialog.cpp" />
     <ClCompile Include="videowidget.cpp" />
     <ClCompile Include="webchathelpers.cpp" />
-    <ClCompile Include="windowscontactbackend.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -502,7 +501,6 @@
     </QtMoc>
     <ClInclude Include="version.h" />
     <ClInclude Include="webchathelpers.h" />
-    <ClInclude Include="windowscontactbackend.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">

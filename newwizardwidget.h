@@ -25,6 +25,8 @@
 #include "lrcinstance.h"
 #include "navwidget.h"
 
+#include "namedirectory.h"
+
 namespace Ui {
 class NewWizardWidget;
 }

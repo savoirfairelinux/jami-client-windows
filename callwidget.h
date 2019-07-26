@@ -33,12 +33,6 @@
 #include "navwidget.h"
 #include "smartlistmodel.h"
 
-// old LRC
-#include "accountmodel.h"
-#include "media/textrecording.h"
-#include "video/previewmanager.h"
-#include "video/renderer.h"
-
 // new LRC
 #include "api/account.h"
 #include "api/contact.h"

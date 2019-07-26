@@ -22,11 +22,6 @@
 
 #include <QTime>
 
-// LRC
-#include "callmodel.h"
-#include "person.h"
-#include "account.h"
-
 #include "lrcinstance.h"
 #include "utils.h"
 
@@ -46,6 +41,8 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->noMicButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
+
+    ui->recButton->setVisible(false);
 }
 
 VideoOverlay::~VideoOverlay()

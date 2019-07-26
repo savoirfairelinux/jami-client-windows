@@ -306,7 +306,7 @@ NewWizardWidget::timeoutNameLookupTimer()
 {
     if (ui->signUpCheckbox->isChecked() && !ui->usernameEdit->text().isEmpty()) {
         updateNameRegistrationUi(NameRegistrationUIState::SEARCHING);
-        NameDirectory::instance().lookupName(nullptr, QString(), registeredName_);
+        NameDirectory::instance().lookupName(QString(), registeredName_);
     }
 }
 

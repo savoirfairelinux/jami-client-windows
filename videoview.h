@@ -23,11 +23,6 @@
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 
-#include "callmodel.h"
-#include "video/devicemodel.h"
-#include "video/sourcemodel.h"
-#include "media/video.h"
-
 #include "videooverlay.h"
 
 namespace Ui {

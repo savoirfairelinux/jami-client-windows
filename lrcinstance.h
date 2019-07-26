@@ -46,8 +46,6 @@
 #include "api/conversationmodel.h"
 #include "api/peerdiscoverymodel.h"
 
-#include "account.h"
-
 using namespace lrc::api;
 
 class LRCInstance : public QObject
@@ -61,8 +59,6 @@ public:
     };
     static void init() {
         instance();
-        // TODO: remove when all platforms migrate to avModel
-        instance().avModel().deactivateOldVideoModels();
     };
     static Lrc& getAPI() {
         return *(instance().lrc_);

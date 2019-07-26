@@ -624,23 +624,6 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
 }
 
 QImage
-Utils::fallbackAvatar(const QSize size, const ContactMethod* cm)
-{
-    if (cm == nullptr) {
-        return QImage();
-    }
-    QImage image;
-    auto letterStr = QString();
-    if (cm->uri().userinfo() != cm->bestName()) {
-        letterStr = cm->bestName();
-    }
-    image = fallbackAvatar(size,
-        cm->uri().full(),
-        letterStr);
-    return image;
-}
-
-QImage
 Utils::fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri)
 {
     return fallbackAvatar(size,

@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMimeData>
 
 #include <algorithm>
 #include <memory>
@@ -50,7 +51,6 @@
 #include "pixbufmanipulator.h"
 #include "ringthemeutils.h"
 #include "settingskey.h"
-#include "windowscontactbackend.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
