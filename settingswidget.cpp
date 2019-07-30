@@ -477,10 +477,7 @@ SettingsWidget::slotRegisterName()
 
 void SettingsWidget::setAccEnableSlot(int state)
 {
-    LRCInstance::editableAccountModel()->enableAccount(LRCInstance::getCurrAccId(), (bool)state);
-
-    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::editableAccountModel()->setAccountEnabled(LRCInstance::getCurrAccId(), static_cast<bool>(state));
 }
 
 void SettingsWidget::delAccountSlot()
