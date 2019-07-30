@@ -141,7 +141,7 @@ main(int argc, char* argv[])
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
     LRCInstance::init();
 
-    QFile debugFile("daemon.log");
+    QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
 
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
