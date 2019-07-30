@@ -1757,6 +1757,7 @@ function remove(e) {
     }
 }
 
-function pasteKeyDetected() {
+function pasteKeyDetected(e) {
+    e.preventDefault();
     window.jsbridge.emitPasteKeyDetected();
 }
