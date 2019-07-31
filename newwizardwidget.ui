@@ -2476,6 +2476,27 @@ instead of using your ID.</string>
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>newAccountButton</tabstop>
+  <tabstop>existingPushButton</tabstop>
+  <tabstop>newSIPAccountButton</tabstop>
+  <tabstop>pinEdit</tabstop>
+  <tabstop>fileImportBtn</tabstop>
+  <tabstop>importPasswordEdit</tabstop>
+  <tabstop>fullNameEdit</tabstop>
+  <tabstop>signUpCheckbox</tabstop>
+  <tabstop>usernameEdit</tabstop>
+  <tabstop>passwordEdit</tabstop>
+  <tabstop>confirmPasswordEdit</tabstop>
+  <tabstop>SIPfullNameEdit</tabstop>
+  <tabstop>SIPservernameEdit</tabstop>
+  <tabstop>SIPproxyEdit</tabstop>
+  <tabstop>SIPusernameEdit</tabstop>
+  <tabstop>SIPpasswordEdit</tabstop>
+  <tabstop>previousButton</tabstop>
+  <tabstop>backButton</tabstop>
+  <tabstop>nextButton</tabstop>
+ </tabstops>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
