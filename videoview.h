@@ -39,6 +39,7 @@ public:
     void pushRenderer(const std::string& callUid);
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
+    void reconnectRenderer();
 
 protected:
     void resizeEvent(QResizeEvent* event);

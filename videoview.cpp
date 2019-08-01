@@ -428,3 +428,10 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
             and geometry().contains(event->pos()))
         previewRect.setBottomRight(event->pos());
 }
+
+void
+VideoView::reconnectRenderer()
+{
+    QObject::disconnect(ui->videoWidget);
+    ui->videoWidget->connectRendering();
+}

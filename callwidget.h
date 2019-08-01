@@ -88,6 +88,7 @@ public slots:
     void Paste();
     void Copy();
     void CreateCopyPasteContextMenu();
+    void videoReconnect();
 
 private slots:
     void on_acceptButton_clicked();
@@ -138,6 +139,7 @@ private:
 
     QMenu* menu_;
     QClipboard* clipboard_;
+    lrc::api::conversation::Info currentConvInfo_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;

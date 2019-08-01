@@ -155,6 +155,11 @@ void SettingsWidget::leaveSettingsSlot()
         toggleAdvancedSIPSettings();
     }
 
+    if (previewed_ && LRCInstance::getActiveCalls().size()) {
+        stopVideo();
+        emit videoCallVideoRecovery();
+    }
+
     QtConcurrent::run([this] { ui->currentAccountAvatar->stopBooth(); });
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -982,12 +987,14 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
 
 void SettingsWidget::startVideo()
 {
+    previewed_ = true;
     LRCInstance::avModel().stopPreview();
     LRCInstance::avModel().startPreview();
 }
 
 void SettingsWidget::stopVideo()
 {
+    previewed_ = false;
     LRCInstance::avModel().stopPreview();
 }
 
@@ -1008,16 +1015,10 @@ void SettingsWidget::toggleVideoPreview(bool enabled)
 void SettingsWidget::showPreview()
 {
     ui->videoWidget->connectRendering();
-    if (!LRCInstance::getActiveCalls().size()) {
-        ui->previewUnavailableLabel->hide();
-        ui->videoLayoutWidget->show();
-        startVideo();
-        ui->videoWidget->setIsFullPreview(true);
-
-    } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
-    }
+    ui->previewUnavailableLabel->hide();
+    ui->videoLayoutWidget->show();
+    startVideo();
+    ui->videoWidget->setIsFullPreview(true);
 }
 
 void SettingsWidget::setFormatListForDevice(const std::string& device)

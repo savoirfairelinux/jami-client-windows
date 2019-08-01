@@ -638,7 +638,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
                                   const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
-    Q_UNUSED(convInfo);
+    currentConvInfo_ = convInfo;
     qDebug() << "slotShowCallView";
     setCallPanelVisibility(true);
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
@@ -1343,4 +1343,14 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::videoReconnect()
+{
+    ui->videoWidget->reconnectRenderer();
+    if (!LRCInstance::getCurrentCallModel()->getCall(currentConvInfo_.callId).isAudioOnly) {
+        LRCInstance::avModel().stopPreview();
+        LRCInstance::avModel().startPreview();
+    }
 }

@@ -184,6 +184,7 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
+    connect(ui->settingswidget, &SettingsWidget::videoCallVideoRecovery, ui->callwidget, &CallWidget::videoReconnect);
 }
 
 MainWindow::~MainWindow()
