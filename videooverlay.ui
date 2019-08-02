@@ -166,7 +166,10 @@
         </property>
         <property name="icon">
          <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_mic_off_white_24dp.png</normaloff>:/images/icons/ic_mic_off_white_24dp.png</iconset>
+          <normaloff>:/images/icons/ic_mic_white_24dp.png</normaloff>
+          <normalon>:/images/icons/ic_mic_off_white_24dp.png</normalon>
+          <disabledoff>:/images/icons/ic_mic_off_white_24dp.png</disabledoff>
+          <disabledon>:/images/icons/ic_mic_off_white_24dp.png</disabledon>:/images/icons/ic_mic_white_24dp.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -207,7 +210,10 @@
         </property>
         <property name="icon">
          <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_videocam_off_white_24dp.png</normaloff>:/images/icons/ic_videocam_off_white_24dp.png</iconset>
+          <normaloff>:/images/icons/ic_videocam_white.png</normaloff>
+          <normalon>:/images/icons/ic_videocam_off_white_24dp.png</normalon>
+          <disabledoff>:/images/icons/ic_videocam_off_white_24dp.png</disabledoff>
+          <disabledon>:/images/icons/ic_videocam_off_white_24dp.png</disabledon>:/images/icons/ic_videocam_white.png</iconset>
         </property>
         <property name="iconSize">
          <size>

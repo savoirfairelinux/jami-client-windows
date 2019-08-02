@@ -36,11 +36,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->chatButton->setCheckable(true);
 
-    setAttribute(Qt::WA_NoSystemBackground);
-
-    ui->noMicButton->setCheckable(true);
-
     ui->onHoldLabel->setVisible(false);
+
+    setAttribute(Qt::WA_NoSystemBackground);
 
     ui->recButton->setVisible(false);
 }
@@ -146,30 +144,24 @@ VideoOverlay::on_holdButton_clicked()
 }
 
 void
-VideoOverlay::on_noMicButton_clicked()
+VideoOverlay::on_noMicButton_toggled(bool checked)
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
+    bool btn_status = false;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        ui->noMicButton->setChecked(callModel->getCall(callId).audioMuted);
-        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::AUDIO);
+    if (callModel->hasCall(callId_)) {
+        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::AUDIO);
+        btn_status = callModel->getCall(callId_).audioMuted;
     }
 }
 
 void
-VideoOverlay::on_noVideoButton_clicked()
+VideoOverlay::on_noVideoButton_toggled(bool checked)
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
+    bool btn_status = false;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
-        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
+    if (callModel->hasCall(callId_)) {
+        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::VIDEO);
+        btn_status = callModel->getCall(callId_).videoMuted;
     }
 }
 
