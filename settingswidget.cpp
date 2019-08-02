@@ -1261,9 +1261,9 @@ void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
     bool hasVideoDevices = deviceSize;
 
     // decide whether the decive is plugged or unplugged or nothing changed
-    Utils::devicePluggingType plugStatus = previousDeviceSize_ < deviceSize
-                                           ? Utils::devicePluggingType::Plugged
-                                           : (previousDeviceSize_ == deviceSize ? Utils::devicePluggingType::unChanged : Utils::devicePluggingType::Unplugged);
+    Utils::DevicePlugStatus plugStatus = previousDeviceSize_ < deviceSize
+                                           ? Utils::DevicePlugStatus::Plugged
+                                           : (previousDeviceSize_ == deviceSize ? Utils::DevicePlugStatus::Unchanged : Utils::DevicePlugStatus::Unplugged);
     previousDeviceSize_ = deviceSize;
     ui->deviceBox->setEnabled(hasVideoDevices);
     ui->formatBox->setEnabled(hasVideoDevices);
@@ -1277,13 +1277,13 @@ void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
         if (LRCInstance::avModel().getCurrentVideoCaptureDevice().empty()) {
             LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
         }
-        if (plugStatus == Utils::devicePluggingType::Plugged && LRCInstance::avModel().getCurrentVideoCaptureDevice() == device && !deviceWasEmpty_) {
+        if (plugStatus == Utils::DevicePlugStatus::Plugged && LRCInstance::avModel().getCurrentVideoCaptureDevice() == device && !deviceWasEmpty_) {
             // if a device is plugged and current using device does not change and device was not empty
             // we do not need to re-startPreview
             shouldReinitializePreview = false;
             shouldRestart = false;
         }
-        else if (plugStatus == Utils::devicePluggingType::Unplugged) {
+        else if (plugStatus == Utils::DevicePlugStatus::Unplugged) {
             if(LRCInstance::avModel().getCurrentVideoCaptureDevice() != device){
                 // unplugged decive equals to currentCapture device, reset it
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
@@ -1295,7 +1295,7 @@ void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
             // if nothing changed and device was empty
             if(LRCInstance::avModel().getCurrentVideoCaptureDevice() != device){
                 if (LRCInstance::getActiveCalls().size()) {
-                    // if unchanged, but context menu change the video device
+                    // if Unchanged, but context menu change the video device
                     shouldReinitializePreview = false;
                 } else {
                     LRCInstance::avModel().setCurrentVideoCaptureDevice(device);

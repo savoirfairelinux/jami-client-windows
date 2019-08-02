@@ -37,9 +37,9 @@ class VideoWidget : public QWidget
 public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
-    void connectRendering();
+    void connectRendering(const std::string & distantRendererId = {});
     void connectPreviewOnlyRendering();
-    void setPreviewDisplay(bool display);
+    void setDisplay(const lrc::api::call::Info& callInfo);
     void setIsFullPreview(bool full);
     inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
     void setPhotoMode(bool isPhotoMode);
@@ -68,6 +68,8 @@ private:
 
     void paintBackgroundColor(QPainter* painter, QColor color);
 
+    std::string distantRendererId_;
+
     video::Renderer* previewRenderer_;
     video::Frame previewFrame_;
     std::unique_ptr<QImage> previewImage_;
@@ -80,7 +82,8 @@ private:
 
     QMutex mutex_;
 
-    bool isPreviewDisplayed_;
+    bool showDistant_;
+    bool showPreview_;
     bool fullPreview_;
     QRect previewGeometry_;
     bool resetPreview_ = false;

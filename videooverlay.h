@@ -38,16 +38,12 @@ public:
 
 public:
     void setName(const QString& name);
-    void callStarted(const std::string & callId);
+    void setupUI(const std::string & callId);
     inline bool isDialogVisible(){ return dialogVisible_; };
-    void toggleContextButtons(bool visible);
-    void setVideoMuteVisibility(bool visible);
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
-    void setTransferCallAvailability(bool visible);
     void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
-    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
 
 //UI SLOTS
 private slots:
@@ -60,13 +56,17 @@ private slots:
     void on_recButton_clicked();
     void on_transferCallButton_toggled(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void slotWillJoinConference(const std::string & callId, const std::string & contactUri);
+    void on_addToConferenceButton_toggled(bool checked);
 
 private:
     Ui::VideoOverlay* ui;
     ContactPicker* contactPicker_;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
+    QMetaObject::Connection timerConnection_;
     std::string callId_;
+    QHash<QString, QMetaObject::Connection> pendingConferencees_;
 
 signals:
     void setChatVisibility(bool visible);
