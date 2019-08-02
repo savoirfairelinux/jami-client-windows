@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -21,6 +21,8 @@
 #include <QWidget>
 #include <QMenu>
 #include <QTimer>
+
+class ContactPicker;
 
 namespace Ui {
 class VideoOverlay;
@@ -56,6 +58,7 @@ private slots:
 
 private:
     Ui::VideoOverlay* ui;
+    ContactPicker* contactPicker_;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;

@@ -186,14 +186,14 @@ QPushButton#qualityButton, QPushButton#recButton {
 QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover,
 QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
 QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
-QPushButton#recButton:hover{
+QPushButton#recButton:hover {
     background-color: rgba(0, 192, 213, 0.6);
 }
 
 QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed,
 QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
 QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
-QPushButton#recButton:pressed{
+QPushButton#recButton:pressed {
     background-color: rgba(0, 192, 213, 0.8);
 }
 
@@ -723,3 +723,9 @@ SettingsWidget QListView {
     }
 
 /* } SettingsWidget */
+
+QWidget#contactPickerWidget {
+    border-radius: 10px;
+    border:solid 1px transparent;
+    background-color: white;
+}
