@@ -60,6 +60,7 @@ private slots:
     void on_recButton_clicked();
     void on_transferCallButton_toggled(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void on_addToConferenceButton_toggled(bool checked);
 
 private:
     Ui::VideoOverlay* ui;
@@ -67,6 +68,7 @@ private:
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    QHash<QString, QMetaObject::Connection> pendingConferencees_;
 
 signals:
     void setChatVisibility(bool visible);

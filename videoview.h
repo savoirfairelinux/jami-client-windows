@@ -15,19 +15,22 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
-
 #pragma once
+
+#include "videooverlay.h"
+
+#include "api/newvideo.h"
 
 #include <QWidget>
 #include <QTimer>
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 
-#include "videooverlay.h"
-
 namespace Ui {
 class VideoView;
 }
+
+using namespace lrc::api;
 
 class VideoView : public QWidget
 {
@@ -69,12 +72,15 @@ private:
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
+    QMetaObject::Connection conferenceStartedConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
     bool resizingPreview_ = false;
     bool sharingEntireScreen_ = false;
+    std::string currentCallId_;
+    std::map<std::string, video::Renderer*> rendererMap_;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;
