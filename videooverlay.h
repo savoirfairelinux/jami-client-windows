@@ -60,6 +60,15 @@ private:
     QTimer* oneSecondTimer_;
     std::string callId_;
 
+private:
+    QIcon* noMicOffIcon;
+    QIcon* noMicOnIcon;
+    QIcon* noVideoOffIcon;
+    QIcon* noVideoOnIcon;
+
+    std::map<bool, QIcon> isMicDisabled;
+    std::map<bool, QIcon> isVideoDisabled;
+
 signals:
     void setChatVisibility(bool visible);
 };

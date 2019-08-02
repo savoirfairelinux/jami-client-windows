@@ -38,7 +38,23 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     setAttribute(Qt::WA_NoSystemBackground);
 
-    ui->noMicButton->setCheckable(true);
+    noMicOffIcon = new QIcon(":/images/icons/ic_mic_white_24dp.png");
+    noMicOnIcon = new QIcon(":/images/icons/ic_mic_off_white_24dp.png");
+    noVideoOffIcon = new QIcon(":/images/icons/ic_videocam_white.png");
+    noVideoOnIcon = new QIcon(":/images/icons/ic_videocam_off_white_24dp.png");
+
+    isMicDisabled[false] = *noMicOffIcon;
+    isMicDisabled[true] = *noMicOnIcon;
+    isVideoDisabled[false] = *noVideoOffIcon;
+    isVideoDisabled[true] = *noVideoOnIcon;
+
+
+
+    ui->noMicButton->setCheckable(false);
+    ui->noMicButton->setIcon(isMicDisabled[false]);
+
+    ui->noVideoButton->setCheckable(false);
+    ui->noVideoButton->setIcon(isVideoDisabled[false]);
 
     ui->onHoldLabel->setVisible(false);
 
@@ -148,28 +164,36 @@ VideoOverlay::on_holdButton_clicked()
 void
 VideoOverlay::on_noMicButton_clicked()
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
+    bool btn_status = false;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        ui->noMicButton->setChecked(callModel->getCall(callId).audioMuted);
-        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::AUDIO);
+    if (callModel->hasCall(callId_)) {
+        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::AUDIO);
+        btn_status = callModel->getCall(callId_).audioMuted;
+        ui->noMicButton->setIcon(isMicDisabled[btn_status]);
+    }
+    if (!btn_status) {
+        ui->noMicButton->setStyleSheet("QPushButton {background-color: rgba(0, 0, 0, 140);    border-radius: 18px;    border: solid 1px;}"
+                                       "QPushButton:hover{background-color: rgba(0, 192, 213, 0.6);    }    ");
+    } else {
+        ui->noMicButton->setStyleSheet("QPushButton{    background-color: rgba(0, 192, 213, 0.6);}");
     }
 }
 
 void
 VideoOverlay::on_noVideoButton_clicked()
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
+    bool btn_status = false;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        ui->noVideoButton->setChecked(callModel->getCall(callId).videoMuted);
-        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
+    if (callModel->hasCall(callId_)) {
+        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::VIDEO);
+        btn_status = callModel->getCall(callId_).videoMuted;
+        ui->noVideoButton->setIcon(isVideoDisabled[btn_status]);
+    }
+    if (!btn_status) {
+        ui->noVideoButton->setStyleSheet("QPushButton {background-color: rgba(0, 0, 0, 140);    border-radius: 18px;    border: solid 1px;}"
+                                         "QPushButton:hover{background-color: rgba(0, 192, 213, 0.6);    }    ");
+    } else {
+        ui->noVideoButton->setStyleSheet("QPushButton{    background-color: rgba(0, 192, 213, 0.6);}");
     }
 }
 
