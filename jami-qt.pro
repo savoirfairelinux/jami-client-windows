@@ -136,5 +136,6 @@ FORMS += ./aboutdialog.ui \
     ./videooverlay.ui \
     ./videoview.ui \
     ./downloadbar.ui \
-    ./updateconfirmdialog.ui
+    ./updateconfirmdialog.ui \
+    ./contactpicker.ui
 RESOURCES += ressources.qrc
