@@ -76,7 +76,7 @@ VideoWidget::renderFrame(const std::string& id)
                 using namespace lrc::api::video;
                 if (id == PREVIEW_RENDERER_ID) {
                     previewFrame_ = tmp;
-                } else {
+                } else if (id == currentRendererId_) {
                     distantFrame_ = tmp;
                 }
             }
@@ -282,7 +282,7 @@ VideoWidget::rendererConnectionsUpdateFullViewCallback(const std::string& id)
     using namespace lrc::api::video;
     if (id == PREVIEW_RENDERER_ID) {
         previewRenderer_ = const_cast<Renderer*>(renderer);
-    } else {
+    } else if (id == currentRendererId_) {
         distantRenderer_ = const_cast<Renderer*>(renderer);
     }
     renderFrame(id);
@@ -296,7 +296,7 @@ VideoWidget::rendererConnectionsStopFullViewCallback(const std::string& id)
     using namespace lrc::api::video;
     if (id == PREVIEW_RENDERER_ID) {
         previewRenderer_ = nullptr;
-    } else {
+    } else if (id == currentRendererId_) {
         distantRenderer_ = nullptr;
     }
     repaint();
