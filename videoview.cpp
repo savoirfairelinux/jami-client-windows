@@ -363,6 +363,50 @@ VideoView::pushRenderer(const std::string& callId) {
 
     ui->videoWidget->connectRendering();
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+
+    // TODO: refactor to work with avmodel
+    // the following code worked with old lrc media
+
+    /*auto it = rendererMap_.find(callId);
+    if (it == rendererMap_.end()) {
+        QObject::disconnect(videoStartedConnection_);
+        QObject::disconnect(callStatusChangedConnection_);
+        QObject::disconnect(conferenceStartedConnection_);
+
+        callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+            this, &VideoView::slotCallStatusChanged);
+
+        videoStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::remotePreviewStarted,
+            [this](const std::string& callId, Video::Renderer* renderer) {
+                rendererMap_.insert(std::make_pair(callId, renderer));
+                slotVideoStarted(renderer);
+            });
+
+        conferenceStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callAddedToConference,
+            [this](const std::string& callId, const std::string& confId) {
+                if (rendererMap_.find(confId) == rendererMap_.end()) {
+                    auto it = rendererMap_.find(callId);
+                    if (it != rendererMap_.end()) {
+                        auto conferenceRenderer = LRCInstance::getCurrentCallModel()->getRenderer(confId);
+                        rendererMap_.erase(callId);
+                        rendererMap_.insert(std::make_pair(confId, conferenceRenderer));
+                        slotVideoStarted(conferenceRenderer);
+                        auto callModel = LRCInstance::getCurrentCallModel();
+                        ui->videoWidget->setPreviewDisplay(callModel->getCall(confId).type != lrc::api::call::Type::CONFERENCE);
+                        qDebug()
+                            << "callAddedToConference: callId=" << QString::fromStdString(callId)
+                            << "==> confId=" << QString::fromStdString(confId);
+                    }
+                }
+            });
+    } else {
+        slotVideoStarted(it->second);
+    }
+
+    this->overlay_->callStarted(callId);
+    this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);*/
+
 }
 
 void
