@@ -107,6 +107,32 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="transferCallButton">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Transfer the call</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>images/icons/ic_call_transfer_white_24px.png</normaloff>images/icons/ic_call_transfer_white_24px.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="chatButton">
         <property name="minimumSize">
          <size>
