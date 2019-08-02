@@ -27,19 +27,6 @@
     <widget class="QWidget" name="bottomButtons" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QPushButton" name="hangupButton">
         <property name="minimumSize">
          <size>
@@ -107,30 +94,31 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="transferCallButton">
-        <property name="minimumSize">
-         <size>
-          <width>36</width>
-          <height>36</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>36</width>
-          <height>36</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Transfer the call</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>images/icons/ic_call_transfer_white_24px.png</normaloff>images/icons/ic_call_transfer_white_24px.png</iconset>
-        </property>
-       </widget>
+        <widget class="QPushButton" name="transferCallButton">
+          <property name="minimumSize">
+            <size>
+              <width>36</width>
+              <height>36</height>
+            </size>
+          </property>
+          <property name="maximumSize">
+            <size>
+              <width>36</width>
+              <height>36</height>
+            </size>
+          </property>
+          <property name="toolTip">
+            <string>Transfer the call</string>
+          </property>
+          <property name="text">
+            <string/>
+          </property>
+          <property name="icon">
+            <iconset>
+              <normaloff>images/icons/ic_call_transfer_white_24px.png</normaloff>images/icons/ic_call_transfer_white_24px.png
+            </iconset>
+          </property>
+        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="chatButton">
@@ -281,6 +269,44 @@
         <property name="icon">
          <iconset resource="ressources.qrc">
           <normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addToConferenceButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Add to conference</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="ressources.qrc">
+          <normaloff>:/images/icons/ic_group_add_white_24dp.png</normaloff>:/images/icons/ic_group_add_white_24dp.png</iconset>
         </property>
         <property name="iconSize">
          <size>

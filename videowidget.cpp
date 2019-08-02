@@ -63,7 +63,7 @@ VideoWidget::slotRendererStarted(const std::string& id)
             using namespace lrc::api::video;
             if (id == PREVIEW_RENDERER_ID) {
                 previewRenderer_ = const_cast<Renderer*>(renderer);
-            } else {
+            } else if (id == currentRendererId_) {
                 distantRenderer_ = const_cast<Renderer*>(renderer);
             }
             renderFrame(id);
@@ -79,7 +79,7 @@ VideoWidget::slotRendererStarted(const std::string& id)
             using namespace lrc::api::video;
             if (id == PREVIEW_RENDERER_ID) {
                 previewRenderer_ = nullptr;
-            } else {
+            } else if(id == currentRendererId_) {
                 distantRenderer_ = nullptr;
             }
             repaint();
@@ -100,7 +100,7 @@ VideoWidget::renderFrame(const std::string& id)
                 using namespace lrc::api::video;
                 if (id == PREVIEW_RENDERER_ID) {
                     previewFrame_ = tmp;
-                } else {
+                } else if (id == currentRendererId_) {
                     distantFrame_ = tmp;
                 }
             }
@@ -211,9 +211,9 @@ VideoWidget::connectRendering()
 {
     rendererConnections_.started = connect(
         &LRCInstance::avModel(),
-        SIGNAL(rendererStarted(const std::string&)),
+        &lrc::api::AVModel::rendererStarted,
         this,
-        SLOT(slotRendererStarted(const std::string&))
+        &VideoWidget::slotRendererStarted
     );
 }
 

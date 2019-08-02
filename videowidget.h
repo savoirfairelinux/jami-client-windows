@@ -62,6 +62,8 @@ private:
 
     void paintBackgroundColor(QPainter* painter, QColor color);
 
+    std::string currentRendererId_;
+
     video::Renderer* previewRenderer_;
     video::Frame previewFrame_;
     std::unique_ptr<QImage> previewImage_;
