@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
@@ -21,24 +21,27 @@
 #include "ui_videooverlay.h"
 
 #include <QTime>
+#include <QMouseEvent>
 
 #include "lrcinstance.h"
+#include "contactpicker.h"
 #include "utils.h"
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::VideoOverlay),
-    oneSecondTimer_(new QTimer(this))
+    oneSecondTimer_(new QTimer(this)),
+    contactPicker_(new ContactPicker(this))
 {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_NoSystemBackground);
 
     ui->bottomButtons->setMouseTracking(true);
 
     ui->chatButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
-
-    setAttribute(Qt::WA_NoSystemBackground);
 
     ui->recButton->setVisible(false);
 }
@@ -90,9 +93,14 @@ VideoOverlay::setVideoMuteVisibility(bool visible)
 bool
 VideoOverlay::shouldShowOverlay()
 {
+    if (!LRCInstance::getCurrentCallModel()->hasCall(callId_)) {
+        return false;
+    }
     auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
-    auto callPaused = callInfo.status == lrc::api::call::Status::PAUSED;
-    return ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse() || callPaused;
+    return  ui->bottomButtons->underMouse() ||
+            ui->topInfoBar->underMouse() ||
+            (callInfo.status == lrc::api::call::Status::PAUSED) ||
+            contactPicker_->isActiveWindow();
 }
 
 void
@@ -130,50 +138,40 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 void
 VideoOverlay::on_holdButton_clicked()
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        auto onHold = callModel->getCall(callId).status == lrc::api::call::Status::PAUSED;
+    if (callModel->hasCall(callId_)) {
+        callModel->togglePause(callId_);
+        auto onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
         ui->holdButton->setChecked(!onHold);
         ui->onHoldLabel->setVisible(!onHold);
-        callModel->togglePause(callId);
     }
 }
 
 void
 VideoOverlay::on_noMicButton_toggled(bool checked)
 {
-    bool btn_status = false;
+    Q_UNUSED(checked);
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::AUDIO);
-        btn_status = callModel->getCall(callId_).audioMuted;
     }
 }
 
 void
 VideoOverlay::on_noVideoButton_toggled(bool checked)
 {
-    bool btn_status = false;
+    Q_UNUSED(checked);
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::VIDEO);
-        btn_status = callModel->getCall(callId_).videoMuted;
     }
 }
 
 void
 VideoOverlay::on_recButton_clicked()
 {
-    auto selectedConvUid = LRCInstance::getSelectedConvUid();
-    auto conversation = Utils::getConversationFromUid(selectedConvUid,
-        *LRCInstance::getCurrentConversationModel());
-    auto& callId = conversation->callId;
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId)) {
-        callModel->toggleAudioRecord(callId);
+    if (callModel->hasCall(callId_)) {
+        callModel->toggleAudioRecord(callId_);
     }
 }

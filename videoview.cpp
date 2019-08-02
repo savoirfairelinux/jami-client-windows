@@ -351,6 +351,10 @@ VideoView::pushRenderer(const std::string& callId) {
 
     auto call = callModel->getCall(callId);
 
+    if (call.isAudioOnly) {
+        return;
+    }
+
     this->overlay_->callStarted(callId);
     this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
