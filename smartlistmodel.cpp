@@ -32,9 +32,10 @@
 #include "utils.h"
 #include "lrcinstance.h"
 
-SmartListModel::SmartListModel(const std::string& accId, QObject *parent)
+SmartListModel::SmartListModel(const std::string& accId, QObject *parent, bool contactList)
     : QAbstractItemModel(parent),
-    accId_(accId)
+    accId_(accId),
+    contactList_(contactList)
 {
 }
 
@@ -42,6 +43,10 @@ int SmartListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
         auto& accInfo = LRCInstance::accountModel().getAccountInfo(accId_);
+        if (contactList_) {
+            auto filterType = accInfo.profileInfo.type;
+            return accInfo.conversationModel->getFilteredConversations(filterType).size();
+        }
         return accInfo.conversationModel->allFilteredConversations().size();
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
@@ -60,7 +65,15 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
     }
 
     auto& accInfo = LRCInstance::accountModel().getAccountInfo(accId_);
-    const auto& item = accInfo.conversationModel->filteredConversation(index.row());
+
+    lrc::api::conversation::Info item;
+    if (contactList_) {
+        auto filterType = accInfo.profileInfo.type;
+        item = accInfo.conversationModel->getFilteredConversations(filterType).at(index.row());
+    } else {
+        item = accInfo.conversationModel->filteredConversation(index.row());
+    }
+
     if (item.participants.size() > 0) {
         try {
             switch (role) {
