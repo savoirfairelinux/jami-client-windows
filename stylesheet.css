@@ -723,3 +723,9 @@ SettingsWidget QListView {
     }
 
 /* } SettingsWidget */
+
+QWidget#contactPickerWidget {
+    border-radius: 10px;
+    border:solid 1px transparent;
+    background-color: white;
+}
