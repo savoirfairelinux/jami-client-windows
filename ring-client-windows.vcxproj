@@ -688,6 +688,9 @@
   <ItemGroup>
     <ResourceCompile Include="ico.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\icons\ic_mic_white_24dp.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
