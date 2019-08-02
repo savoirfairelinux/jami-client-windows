@@ -35,7 +35,6 @@ public:
     using ConversationInfo = lrc::api::conversation::Info;
     using ContactInfo = lrc::api::contact::Info;
 
-
     enum Role {
         DisplayName = Qt::UserRole + 1,
         DisplayID,
@@ -51,7 +50,7 @@ public:
         ContextMenuOpen
     };
 
-    explicit SmartListModel(const std::string& accId, QObject *parent = 0);
+    explicit SmartListModel(const std::string& accId, QObject *parent = 0, bool contactList = false);
 
     // QAbstractItemModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -68,4 +67,5 @@ public:
 
 private:
     std::string accId_;
+    bool contactList_;
 };
