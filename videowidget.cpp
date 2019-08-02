@@ -24,7 +24,8 @@
 
 VideoWidget::VideoWidget(QWidget* parent) :
     QWidget(parent)
-  , isPreviewDisplayed_(true)
+  , showDistant_(true)
+  , showPreview_(true)
   , fullPreview_(false)
 {
     QPalette pal(palette());
@@ -76,7 +77,7 @@ VideoWidget::renderFrame(const std::string& id)
                 using namespace lrc::api::video;
                 if (id == PREVIEW_RENDERER_ID) {
                     previewFrame_ = tmp;
-                } else {
+                } else if (id == distantRendererId_) {
                     distantFrame_ = tmp;
                 }
             }
@@ -97,7 +98,7 @@ VideoWidget::paintEvent(QPaintEvent* e)
     Q_UNUSED(e);
     QPainter painter(this);
 
-    if (distantRenderer_) {
+    if (distantRenderer_ && showDistant_) {
         {
             QMutexLocker lock(&mutex_);
             if (distantFrame_.storage.size() != 0
@@ -121,7 +122,7 @@ VideoWidget::paintEvent(QPaintEvent* e)
             );
         }
     }
-    if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
+    if ((previewRenderer_ && showPreview_) || (photoMode_ && hasFrame_)) {
         QMutexLocker lock(&mutex_);
         if (previewFrame_.storage.size() != 0
             && previewFrame_.storage.size() ==
@@ -183,8 +184,9 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
 }
 
 void
-VideoWidget::connectRendering()
+VideoWidget::connectRendering(const std::string& distantRendererId)
 {
+    distantRendererId_ = distantRendererId;
     rendererConnections_.started = connect(
         &LRCInstance::avModel(),
         SIGNAL(rendererStarted(const std::string&)),
@@ -200,14 +202,19 @@ VideoWidget::connectPreviewOnlyRendering()
         &LRCInstance::avModel(),
         &lrc::api::AVModel::rendererStarted,
         [this]() {
-        this->rendererStartedWithoutDistantRender();
-    });
+            this->rendererStartedWithoutDistantRender();
+        }
+    );
 }
 
 void
-VideoWidget::setPreviewDisplay(bool display)
+VideoWidget::setDisplay(const lrc::api::call::Info& callInfo)
 {
-    isPreviewDisplayed_ = display;
+    showDistant_ = callInfo.status != lrc::api::call::Status::PAUSED;
+    showPreview_ =
+        callInfo.type != lrc::api::call::Type::CONFERENCE &&
+        !callInfo.isAudioOnly &&
+        callInfo.status != lrc::api::call::Status::PAUSED;
 }
 
 void
@@ -241,6 +248,7 @@ VideoWidget::setPhotoMode(bool isPhotoMode)
 void
 VideoWidget::disconnectRendering()
 {
+    distantRendererId_.clear();
     QObject::disconnect(rendererConnections_.started);
     QObject::disconnect(rendererConnections_.stopped);
     QObject::disconnect(rendererConnections_.updated);
@@ -282,7 +290,7 @@ VideoWidget::rendererConnectionsUpdateFullViewCallback(const std::string& id)
     using namespace lrc::api::video;
     if (id == PREVIEW_RENDERER_ID) {
         previewRenderer_ = const_cast<Renderer*>(renderer);
-    } else {
+    } else if (id == distantRendererId_) {
         distantRenderer_ = const_cast<Renderer*>(renderer);
     }
     renderFrame(id);
@@ -296,7 +304,7 @@ VideoWidget::rendererConnectionsStopFullViewCallback(const std::string& id)
     using namespace lrc::api::video;
     if (id == PREVIEW_RENDERER_ID) {
         previewRenderer_ = nullptr;
-    } else {
+    } else if (id == distantRendererId_) {
         distantRenderer_ = nullptr;
     }
     repaint();

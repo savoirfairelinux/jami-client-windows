@@ -173,17 +173,14 @@ VideoView::slotCallStatusChanged(const std::string& callId)
     case Status::ENDED:
         emit closing(call.id);
     default:
-        //emit closing(call.id);
         break;
     }
-    QObject::disconnect(timerConnection_);
 }
 
 void
 VideoView::simulateShowChatview(bool checked)
 {
-    Q_UNUSED(checked);
-    overlay_->simulateShowChatview(true);
+    overlay_->simulateShowChatview(checked);
 }
 
 void
@@ -274,7 +271,7 @@ VideoView::showContextMenu(const QPoint& pos)
                 auto decive = deviceName.toStdString();
                 LRCInstance::avModel().switchInputTo(decive);
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(decive);
-                ui->videoWidget->connectRendering();
+                ui->videoWidget->connectRendering(thisCallId);
             });
     }
 
@@ -343,8 +340,11 @@ VideoView::showContextMenu(const QPoint& pos)
     menu.exec(globalPos);
 }
 
+#pragma optimize("", off)
 void
-VideoView::pushRenderer(const std::string& callId, bool isSIP) {
+VideoView::pushRenderer(const std::string& callId)
+{
+    qDebug() << "VideoView::pushRenderer callid: " << QString::fromStdString(callId);
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(ui->videoWidget);
@@ -354,19 +354,61 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
         return;
     }
 
-    auto call = callModel->getCall(callId);
+    currentCallId_ = callId;
 
-    // transfer call will only happen in SIP calls
-    this->overlay_->setTransferCallAvailability(isSIP);
-    this->overlay_->callStarted(callId);
-    this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+    auto call = callModel->getCall(currentCallId_);
+
+    if (call.isAudioOnly) {
+        showOverlay();
+        return;
+    }
+
+    if (call.status == lrc::api::call::Status::PAUSED) {
+        showOverlay();
+    } else {
+        fadeOverlayOut();
+    }
 
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
-        this, &VideoView::slotCallStatusChanged);
+                                                    this, &VideoView::slotCallStatusChanged);
 
-    ui->videoWidget->connectRendering();
-    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+    this->overlay_->setupUI(currentCallId_);
+    ui->videoWidget->connectRendering(currentCallId_);
+    ui->videoWidget->setDisplay(call);
+
+    //auto it = rendererMap_.find(currentCallId_);
+    //if (it == rendererMap_.end()) {
+    //    auto renderer = &LRCInstance::avModel().getRenderer(currentCallId_);
+    //    rendererMap_.insert(std::make_pair(currentCallId_, renderer));
+    //    QObject::disconnect(callStatusChangedConnection_);
+
+    //    callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+    //                                                    this, &VideoView::slotCallStatusChanged);
+
+    //    /*QObject::disconnect(conferenceStartedConnection_);
+    //    conferenceStartedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callAddedToConference,
+    //        [this](const std::string& callId, const std::string& confId) {
+    //            if (rendererMap_.find(confId) == rendererMap_.end()) {
+    //                auto it = rendererMap_.find(callId);
+    //                if (it != rendererMap_.end()) {
+    //                    auto conferenceRenderer = &LRCInstance::avModel().getRenderer(confId);
+    //                    rendererMap_.erase(callId);
+    //                    rendererMap_.insert(std::make_pair(confId, conferenceRenderer));
+    //                    auto callModel = LRCInstance::getCurrentCallModel();
+    //                    auto call = callModel->getCall(confId);
+    //                    ui->videoWidget->setPreviewDisplay(false);
+    //                    qDebug()
+    //                        << "callAddedToConference: callId=" << QString::fromStdString(callId)
+    //                        << "==> confId=" << QString::fromStdString(confId);
+    //                }
+    //            }
+    //        });*/
+    //} else {
+    //    /*auto renderer = &LRCInstance::avModel().getRenderer(callId);
+    //    rendererMap_.insert(std::make_pair(callId, renderer));*/
+    //}
 }
+#pragma optimize("", on)
 
 void
 VideoView::mousePressEvent(QMouseEvent* event)
@@ -443,10 +485,10 @@ VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
 }
 
 void
-VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+VideoView::setOverlayForCall(const std::string& callId)
 {
     emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+    overlay_->setupUI(callId);
 }
 
 void
@@ -458,7 +500,7 @@ VideoView::disconnectRendering()
 void
 VideoView::connectStartedRendering()
 {
-    ui->videoWidget->slotRendererStarted("");
+    ui->videoWidget->slotRendererStarted();
 }
 
 void
