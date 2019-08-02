@@ -27,7 +27,7 @@
 ContactPicker::ContactPicker(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactPicker),
-    type_(Type::CONFERENCE)
+    type_(lrc::api::profile::Type::RING)
 {
     ui->setupUi(this);
 
@@ -70,10 +70,10 @@ ContactPicker::accept()
 
         // let parent deal with this as this dialog will be destroyed
         switch (type_) {
-        case Type::CONFERENCE:
+        case lrc::api::profile::Type::RING:
             emit contactWillJoinConference(thisCallId, contactUri);
             break;
-        case Type::TRANSFER:
+        case lrc::api::profile::Type::SIP:
             emit contactWillDoTransfer(thisCallId, contactUri);
             break;
         default:
@@ -100,23 +100,19 @@ ContactPicker::mousePressEvent(QMouseEvent *event)
 }
 
 void
-ContactPicker::setTitle(const QString& title)
-{
-    ui->title->setText(title);
-}
-
-void
-ContactPicker::setType(const Type& type)
+ContactPicker::setType(const lrc::api::profile::Type& type)
 {
     type_ = type;
     smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this, true));
     selectableProxyModel_->setSourceModel(smartListModel_.get());
     // adjust filter
     switch (type_) {
-    case Type::CONFERENCE:
+    case lrc::api::profile::Type::RING:
+        ui->title->setText(QObject::tr("Select peer to add to conference"));
         selectableProxyModel_->setPredicate(
             [this](const QModelIndex& index, const QRegExp& regexp) {
-                bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                return true;
+                /*bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
                 auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
                 auto convModel = LRCInstance::getCurrentConversationModel();
                 auto conversation = Utils::getConversationFromUid(convUid, *convModel);
@@ -126,10 +122,11 @@ ContactPicker::setType(const Type& type)
                 auto callModel = LRCInstance::getCurrentCallModel();
                 return  match &&
                         !(callModel->hasCall(conversation->callId) || callModel->hasCall(conversation->confId)) &&
-                        !index.parent().isValid();
+                        !index.parent().isValid();*/
             });
         break;
-    case Type::TRANSFER:
+    case lrc::api::profile::Type::SIP:
+        ui->title->setText(QObject::tr("Select peer to transfer to"));
         selectableProxyModel_->setPredicate(
             [this](const QModelIndex& index, const QRegExp& regexp) {
                 // Regex to remove current callee

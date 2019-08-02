@@ -653,16 +653,11 @@ void CallWidget::slotShowCallView(const std::string& accountId,
 
     if (callModel->hasCall(convInfo.callId)) {
         auto call = callModel->getCall(convInfo.callId);
-        ui->videoWidget->resetVideoOverlay(call.audioMuted && (call.status != lrc::api::call::Status::PAUSED),
-                                           call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly),
-                                           callModel->isRecording(convInfo.callId),
-                                           call.status == lrc::api::call::Status::PAUSED);
-    } else {
-        ui->videoWidget->resetVideoOverlay(false, false, false, false);
+        ui->videoWidget->setOverlayForCall(convInfo.callId);
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
-    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
+    ui->videoWidget->pushRenderer(convInfo.callId);
 }
 
 void CallWidget::slotShowIncomingCallView(const std::string& accountId,

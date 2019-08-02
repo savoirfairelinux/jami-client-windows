@@ -1294,7 +1294,7 @@ void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
             // if nothing changed and device was empty
             if(LRCInstance::avModel().getCurrentVideoCaptureDevice() != device){
                 if (LRCInstance::getActiveCalls().size()) {
-                    // if unchanged, but context menu change the video device
+                    // if Unchanged, but context menu change the video device
                     shouldReinitializePreview = false;
                 } else {
                     LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
@@ -1344,7 +1344,7 @@ void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
                     LRCInstance::avModel().startPreview();
                 });
             return;
-		}
+        }
         startPreviewing(true);
     }
 }
