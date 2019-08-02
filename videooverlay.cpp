@@ -44,6 +44,9 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->onHoldLabel->setVisible(false);
 
     ui->recButton->setVisible(false);
+
+    ui->addToConferenceButton->setCheckable(true);
+
 }
 
 VideoOverlay::~VideoOverlay()
@@ -134,6 +137,72 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 {
     emit setChatVisibility(checked);
 }
+
+#pragma optimize("", off)
+void
+VideoOverlay::on_addToConferenceButton_toggled(bool checked)
+{
+    if (callId_.empty() || !checked) {
+        return;
+    }
+    QPoint globalPos_button = mapToGlobal(ui->addToConferenceButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    contactPicker_->setType(ContactPicker::Type::CONFERENCE);
+
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::contactWillJoinConference,
+        [this](const std::string& callId1, const std::string& contactUri) {
+            auto callModel = LRCInstance::getCurrentCallModel();
+            if (!callModel->hasCall(callId1)) {
+
+            }
+            auto thisCallIsAudioOnly = callModel->getCall(callId1).isAudioOnly;
+
+            // generate new call with peer
+            auto conferenceeCallId = callModel->createCall(contactUri, thisCallIsAudioOnly);
+            pendingConferencees_.insert(QString::fromStdString(conferenceeCallId),
+                QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+                    [this, conferenceeCallId, callId1](const std::string& callId) {
+                        if (callId != conferenceeCallId)
+                            return;
+                        using namespace lrc::api::call;
+                        auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
+                        switch (call.status) {
+                        case Status::IN_PROGRESS:
+                        {
+                            qDebug() << "adding to conference callid=" << QString::fromStdString(callId);
+                            auto it = pendingConferencees_.find(QString::fromStdString(conferenceeCallId));
+                            if (it != pendingConferencees_.end()) {
+                                QObject::disconnect(it.value());
+                                pendingConferencees_.erase(it);
+                            }
+                            LRCInstance::getCurrentCallModel()->joinCalls(callId1, conferenceeCallId);
+                            return;
+                        }
+                        default:
+                            qDebug() << "failed to add to conference callid=" << QString::fromStdString(callId);
+                            break;
+                        }
+                    })
+            );
+        });
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose,
+        [this] {
+            contactPicker_->hide();
+            auto relativeCursorPos = ui->addToConferenceButton->mapFromGlobal(QCursor::pos());
+            if (!ui->addToConferenceButton->rect().contains(relativeCursorPos)) {
+                ui->addToConferenceButton->setChecked(false);
+            }
+        });
+    Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
+        [this] {
+            ui->addToConferenceButton->setChecked(false);
+        });
+    contactPicker_->move(globalPos_button.x(),
+                         globalPos_bottomButtons.y() - contactPicker_->height());
+    contactPicker_->show();
+}
+#pragma optimize("", on)
 
 void
 VideoOverlay::on_holdButton_clicked()

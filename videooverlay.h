@@ -55,6 +55,7 @@ private slots:
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
+    void on_addToConferenceButton_toggled(bool checked);
 
 private:
     Ui::VideoOverlay* ui;
@@ -62,6 +63,7 @@ private:
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    QHash<QString, QMetaObject::Connection> pendingConferencees_;
 
 signals:
     void setChatVisibility(bool visible);
