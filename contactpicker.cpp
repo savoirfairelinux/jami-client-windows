@@ -24,10 +24,10 @@
 
 #include "contactpickeritemdelegate.h"
 
-ContactPicker::ContactPicker(QWidget *parent, bool isConference) :
+ContactPicker::ContactPicker(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactPicker),
-    isConference_ (isConference)
+    type_(Type::CONFERENCE)
 {
     ui->setupUi(this);
 
@@ -36,13 +36,11 @@ ContactPicker::ContactPicker(QWidget *parent, bool isConference) :
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
 
-    smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this, true));
-    ui->smartList->setModel(smartListModel_.get());
     ui->smartList->setItemDelegate(new ContactPickerItemDelegate());
 
-    conferenceeProxyModel_ = new ConferenceableProxyModel(smartListModel_.get());
+    selectableProxyModel_ = new SelectableProxyModel(smartListModel_.get());
+    ui->smartList->setModel(selectableProxyModel_);
 
-    ui->smartList->setModel(conferenceeProxyModel_);
 }
 
 ContactPicker::~ContactPicker()
@@ -71,10 +69,16 @@ ContactPicker::accept()
         auto contactUri = idx.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>().toStdString();
 
         // let parent deal with this as this dialog will be destroyed
-        if (isConference_) {
+        switch (type_) {
+        case Type::CONFERENCE:
             emit contactWillJoinConference(thisCallId, contactUri);
-        } else {
+            break;
+        case Type::BLIND_TRANSFER:
+        case Type::ATTENDED_TRANSFER:
             emit contactWillDoBlindTransfer(thisCallId, contactUri);
+            break;
+        default:
+            break;
         }
     }
 
@@ -84,7 +88,7 @@ ContactPicker::accept()
 void
 ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
 {
-    conferenceeProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
+    selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
 void
@@ -92,7 +96,8 @@ ContactPicker::mousePressEvent(QMouseEvent *event)
 {
     auto contactPickerWidgetRect = ui->contactPickerWidget->rect();
     if (!contactPickerWidgetRect.contains(event->pos())) {
-        QDialog::reject();
+        //close();
+        emit willClose();
     }
 }
 
@@ -100,4 +105,41 @@ void
 ContactPicker::setTitle(const std::string& title)
 {
     ui->title->setText(QString::fromStdString(title));
+}
+
+void
+ContactPicker::setType(const Type& type)
+{
+    type_ = type;
+    smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this, true));
+    selectableProxyModel_->setSourceModel(smartListModel_.get());
+    // adjust filter
+    switch (type_) {
+    case Type::CONFERENCE:
+        selectableProxyModel_->setPredicate(
+            [this](const QModelIndex& index, const QRegExp& regexp) {
+                bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+                auto convModel = LRCInstance::getCurrentConversationModel();
+                auto conversation = Utils::getConversationFromUid(convUid, *convModel);
+                if (conversation == convModel->allFilteredConversations().end()) {
+                    return false;
+                }
+                auto callModel = LRCInstance::getCurrentCallModel();
+                return  match &&
+                        !(callModel->hasCall(conversation->callId) || callModel->hasCall(conversation->confId)) &&
+                        !index.parent().isValid();
+            });
+        break;
+    case Type::BLIND_TRANSFER:
+    case Type::ATTENDED_TRANSFER:
+        selectableProxyModel_->setPredicate(
+            [this](const QModelIndex& index, const QRegExp& regexp) {
+                return true;
+            });
+        break;
+    default:
+        break;
+    }
+    selectableProxyModel_->invalidate();
 }

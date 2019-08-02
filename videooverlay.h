@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -22,6 +22,8 @@
 #include <QMenu>
 #include <QTimer>
 
+class ContactPicker;
+
 namespace Ui {
 class VideoOverlay;
 }
@@ -43,6 +45,7 @@ public:
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
+    void cancelPicker();
 
 //UI SLOTS
 private slots:
@@ -53,12 +56,15 @@ private slots:
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
+    void on_addToConferenceButton_toggled(bool checked);
 
 private:
     Ui::VideoOverlay* ui;
+    ContactPicker* contactPicker_;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    QHash<QString, QMetaObject::Connection> pendingConferencees_;
 
 signals:
     void setChatVisibility(bool visible);

@@ -30,34 +30,48 @@ namespace Ui {
 class ContactPicker;
 }
 
-class ConferenceableProxyModel : public QSortFilterProxyModel
+class SelectableProxyModel : public QSortFilterProxyModel
 {
 public:
-    explicit ConferenceableProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent) {
+    using FilterPredicate = std::function<bool(const QModelIndex&, const QRegExp&)>;
+
+    explicit SelectableProxyModel(QAbstractItemModel* parent) : QSortFilterProxyModel(parent) {
         setSourceModel(parent);
+    }
+
+    void setPredicate(FilterPredicate filterPredicate) {
+        filterPredicate_ = filterPredicate;
     }
 
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
         // Accept all contacts in conversation list filtered with account type, except those in a call
         auto index = sourceModel()->index(source_row, 0, source_parent);
-        bool match = filterRegExp().indexIn(index.data(Qt::DisplayRole).toString()) != -1;
-        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-        auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
-        auto callModel = LRCInstance::getCurrentCallModel();
-        return  match &&
-                !(callModel->hasCall(conversation->callId) || callModel->hasCall(conversation->confId)) &&
-                !index.parent().isValid();
+        if (filterPredicate_) {
+            return filterPredicate_(index, filterRegExp());
+        }
     }
+
+private:
+    std::function<bool(const QModelIndex&, const QRegExp&)> filterPredicate_;
+
 };
 
 class ContactPicker : public QDialog
 {
-    Q_OBJECT
+    Q_OBJECT;
 
 public:
-    explicit ContactPicker(QWidget *parent = 0, bool isConference = false);
+    enum class Type {
+        CONFERENCE,
+        BLIND_TRANSFER,
+        ATTENDED_TRANSFER,
+        COUNT__
+    };
+
+    explicit ContactPicker(QWidget *parent = 0);
     ~ContactPicker();
     void setTitle(const std::string& title);
+    void setType(const Type& type);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -65,6 +79,7 @@ protected:
 signals:
     void contactWillJoinConference(const std::string& callId, const std::string& contactUri);
     void contactWillDoBlindTransfer(const std::string& callId, const std::string& contactUri);
+    void willClose();
 
 protected slots:
     void accept();
@@ -77,8 +92,7 @@ private:
     Ui::ContactPicker *ui;
 
     std::unique_ptr<SmartListModel> smartListModel_;
-    ConferenceableProxyModel* conferenceeProxyModel_;
-    //if it is not conference, then it serves blind/attended call transfer
-    bool isConference_;
+    SelectableProxyModel* selectableProxyModel_;
+    Type type_;
 
 };
