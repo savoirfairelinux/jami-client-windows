@@ -211,9 +211,9 @@ VideoWidget::connectRendering()
 {
     rendererConnections_.started = connect(
         &LRCInstance::avModel(),
-        SIGNAL(rendererStarted(const std::string&)),
+        &lrc::api::AVModel::rendererStarted,
         this,
-        SLOT(slotRendererStarted(const std::string&))
+        &VideoWidget::slotRendererStarted
     );
 }
 

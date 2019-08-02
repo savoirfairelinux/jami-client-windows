@@ -61,16 +61,9 @@ class ContactPicker : public QDialog
     Q_OBJECT;
 
 public:
-    enum class Type {
-        CONFERENCE,
-        TRANSFER,
-        COUNT__
-    };
-
     explicit ContactPicker(QWidget *parent = 0);
     ~ContactPicker();
-    void setTitle(const QString& title);
-    void setType(const Type& type);
+    void setType(const lrc::api::profile::Type& type);
     void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 
 protected:
@@ -93,7 +86,7 @@ private:
 
     std::unique_ptr<SmartListModel> smartListModel_;
     SelectableProxyModel* selectableProxyModel_;
-    Type type_;
+    lrc::api::profile::Type type_;
     QString CalleeDisplayName_;
 
 };
