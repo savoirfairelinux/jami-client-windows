@@ -67,12 +67,15 @@ private:
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
+    QMetaObject::Connection conferenceStartedConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
     bool resizingPreview_ = false;
     bool sharingEntireScreen_ = false;
+    std::string currentCallId_;
+    std::map<std::string, Video::Renderer*> rendererMap_;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;
