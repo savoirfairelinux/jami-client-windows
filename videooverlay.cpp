@@ -41,8 +41,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->noMicButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
-
-    ui->recButton->setVisible(false);
 }
 
 VideoOverlay::~VideoOverlay()

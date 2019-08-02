@@ -753,7 +753,7 @@
                        <item>
                         <widget class="QLabel" name="label_2">
                          <property name="enabled">
-                          <bool>false</bool>
+                          <bool>true</bool>
                          </property>
                          <property name="font">
                           <font>
@@ -800,7 +800,7 @@
                            <item>
                             <widget class="QLabel" name="label_5">
                              <property name="enabled">
-                              <bool>false</bool>
+                              <bool>true</bool>
                              </property>
                              <property name="font">
                               <font>
@@ -831,7 +831,7 @@
                            <item>
                             <widget class="QPushButton" name="recordPathButton">
                              <property name="enabled">
-                              <bool>false</bool>
+                              <bool>true</bool>
                              </property>
                              <property name="minimumSize">
                               <size>
@@ -1210,7 +1210,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>705</width>
+                  <width>749</width>
                   <height>1387</height>
                  </rect>
                 </property>
