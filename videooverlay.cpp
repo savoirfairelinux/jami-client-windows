@@ -42,8 +42,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->chatButton->setCheckable(true);
 
     ui->onHoldLabel->setVisible(false);
-
-    ui->recButton->setVisible(false);
 }
 
 VideoOverlay::~VideoOverlay()
