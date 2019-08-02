@@ -115,7 +115,7 @@ private slots:
     void verifyRegisteredNameSlot();
     void beforeNameLookup();
     void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
-        const std::string& address, const std::string& name);
+                            const std::string& address, const std::string& name);
     void slotRegisterName();
     void setAccEnableSlot(int state);
     void delAccountSlot();
@@ -131,6 +131,9 @@ private slots:
     void slotSetClosedOrMin(bool state);
     void openDownloadFolderSlot();
     void openRecordFolderSlot();
+    void slotAlwaysRecordingClicked(bool state);
+    void slotRecordPreviewClicked(bool state);
+    void slotRecordQualityChanged(int value);
     void slotSetUpdateAutomatic(bool state);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);

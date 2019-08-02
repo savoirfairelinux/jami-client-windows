@@ -43,8 +43,6 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->onHoldLabel->setVisible(false);
 
-    ui->recButton->setVisible(false);
-
     ui->transferCallButton->setVisible(false);
     ui->transferCallButton->setCheckable(true);
 

@@ -772,7 +772,13 @@ void SettingsWidget::setConnections()
 
     // audio / visual settings
 
-    connect(ui->recordPathButton, &QPushButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
+    connect(ui->alwaysRecordingCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotAlwaysRecordingClicked);
+
+    connect(ui->recordPreviewCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotRecordPreviewClicked);
+
+    connect(ui->recordPathButton, &QAbstractButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
+
+    connect(ui->recordQualitySlider, &QAbstractSlider::valueChanged, this, &SettingsWidget::slotRecordQualityChanged);
 
     connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
 }
@@ -795,7 +801,17 @@ void SettingsWidget::populateGeneralSettings()
     auto notifs = settings.value(SettingsKey::enableNotifications).toBool();
     ui->notificationCheckBox->setChecked(notifs);
 
-    //recordings
+    // recording
+    auto alwaysRecord = LRCInstance::avModel().getAlwaysRecord();
+    ui->alwaysRecordingCheckBox->setChecked(alwaysRecord);
+
+    auto recordPreview = LRCInstance::avModel().getRecordPreview();
+    ui->recordPreviewCheckBox->setChecked(recordPreview);
+
+    auto recordQuality = LRCInstance::avModel().getRecordQuality();
+    ui->recordQualityValueLabel->setText(QString::number(recordQuality / 1000) + " MB/s");
+    ui->recordQualitySlider->setValue(recordQuality);
+
     if (LRCInstance::avModel().getRecordPath().empty()) {
         QString recordPath = QDir::toNativeSeparators(
             QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
@@ -805,6 +821,7 @@ void SettingsWidget::populateGeneralSettings()
     Utils::setElidedText(ui->recordPathButton,
         QString::fromStdString(LRCInstance::avModel().getRecordPath()));
 
+    // updates
 #ifdef Q_OS_WIN
     ui->autoUpdateCheckBox->setChecked(settings.value(SettingsKey::autoUpdate).toBool());
 #endif
@@ -867,7 +884,23 @@ void SettingsWidget::openRecordFolderSlot()
     }
 }
 
-// *************************  Audio/Visual Settings  *************************
+void SettingsWidget::slotAlwaysRecordingClicked(bool state)
+{
+    LRCInstance::avModel().setAlwaysRecord(state);
+}
+
+void SettingsWidget::slotRecordPreviewClicked(bool state)
+{
+    LRCInstance::avModel().setRecordPreview(state);
+}
+
+void SettingsWidget::slotRecordQualityChanged(int value)
+{
+    ui->recordQualityValueLabel->setText(QString::number(value / 1000) + " MB/s");
+    LRCInstance::avModel().setRecordQuality(value);
+}
+
+// *************************  Audio/Visual Settings  ************recordQuality*************
 
 void SettingsWidget::populateAVSettings()
 {
