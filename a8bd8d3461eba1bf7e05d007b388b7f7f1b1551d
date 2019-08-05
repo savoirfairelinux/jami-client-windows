@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ded0584_f6872ff8",
+        "filename": "ressources.qrc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-05T14:52:47Z",
+      "side": 1,
+      "message": "Avoid reformatting the file with your IDE settings when modifying it, unless that is an objective of the patch. In most cases, reformatting makes it difficult to see the actual changes.",
+      "revId": "a8bd8d3461eba1bf7e05d007b388b7f7f1b1551d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3407da_4734c580",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-05T14:52:47Z",
+      "side": 1,
+      "message": "remove tabs",
+      "revId": "a8bd8d3461eba1bf7e05d007b388b7f7f1b1551d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239df044_5d967bb6",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-05T14:52:47Z",
+      "side": 1,
+      "message": "Please stick to a naming convention, unless for some particular exception. Specifically adhere to the camel case we use throughout the Qt client.\n\nno_Mic_on_ICON --\u003e noMicOnIcon",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "a8bd8d3461eba1bf7e05d007b388b7f7f1b1551d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1726ff_93e51b4b",
+        "filename": "videooverlay.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-05T14:52:47Z",
+      "side": 1,
+      "message": "remove tabs",
+      "revId": "a8bd8d3461eba1bf7e05d007b388b7f7f1b1551d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25100035_16c36bf0",
+        "filename": "videooverlay.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-05T14:52:47Z",
+      "side": 1,
+      "message": "I think this is what is done by using the checked state available in QPushButton. Tracking the button\u0027s state is essentially re-implementing \"checkability\".",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "a8bd8d3461eba1bf7e05d007b388b7f7f1b1551d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
