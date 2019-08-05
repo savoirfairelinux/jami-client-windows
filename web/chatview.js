@@ -1761,3 +1761,29 @@ function pasteKeyDetected(e) {
     e.preventDefault();
     window.jsbridge.emitPasteKeyDetected();
 }
+
+// Set the curser to a target position
+function setCaretPosition(elem, caretPos) {
+    var range;
+
+    if (elem.createTextRange) {
+        range = elem.createTextRange();
+        range.move('character', caretPos);
+        range.select();
+    } else {
+        elem.focus();
+        if (elem.selectionStart !== undefined) {
+            elem.setSelectionRange(caretPos, caretPos);
+        }
+    }
+}
+function replaceText(text) {
+
+    var input = messageBarInput;
+    var currentContent = input.value;
+    var start = input.selectionStart;
+    var end = input.selectionEnd;
+    var output = [currentContent.slice(0, start), text, currentContent.slice(end)].join('');
+    input.value = output;
+    setCaretPosition(input, start + text.length);
+}

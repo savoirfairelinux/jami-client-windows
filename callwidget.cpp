@@ -1335,6 +1335,8 @@ CallWidget::Paste()
             }
         }
     } else {
+
+
         ui->messageView->setMessagesContent(mimeData->text());
     }
 }
