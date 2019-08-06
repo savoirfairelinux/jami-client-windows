@@ -445,11 +445,11 @@
                    <attribute name="headerVisible">
                     <bool>false</bool>
                    </attribute>
-                   <attribute name="headerDefaultSectionSize">
-                    <number>42</number>
-                   </attribute>
                    <attribute name="headerMinimumSectionSize">
                     <number>0</number>
+                   </attribute>
+                   <attribute name="headerDefaultSectionSize">
+                    <number>42</number>
                    </attribute>
                   </widget>
                  </item>
@@ -2067,10 +2067,10 @@ Copy and share it with your friends!
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
-                        <property name="maximumSize">
+                        <property name="minimumSize">
                          <size>
-                          <width>1000</width>
-                          <height>16777215</height>
+                          <width>0</width>
+                          <height>0</height>
                          </size>
                         </property>
                         <property name="styleSheet">
