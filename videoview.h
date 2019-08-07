@@ -36,9 +36,10 @@ class VideoView : public QWidget
 public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
-    void pushRenderer(const std::string& callUid);
+    void pushRenderer(const std::string& callUid, bool isSIP);
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
+    void setCurrentCalleeName(const QString& CalleeDisplayName);
 
 protected:
     void resizeEvent(QResizeEvent* event);

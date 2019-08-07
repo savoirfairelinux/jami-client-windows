@@ -22,6 +22,8 @@
 #include <QMenu>
 #include <QTimer>
 
+#include "contactpicker.h"
+
 namespace Ui {
 class VideoOverlay;
 }
@@ -43,6 +45,12 @@ public:
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
+    void setTransferCallAvailability(bool visible);
+    const QRect getListOfContactRect();
+    void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
+
+public slots:
+    void resetTransButtonClicked();
 
 //UI SLOTS
 private slots:
@@ -53,12 +61,15 @@ private slots:
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
+    void on_transferButton_toggled(bool checked);
+    void on_transferCall_requested(const std::string& callId, const std::string& contactUri);
 
 private:
     Ui::VideoOverlay* ui;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    ContactPicker* listOfContactForTrans_;
 
 signals:
     void setChatVisibility(bool visible);

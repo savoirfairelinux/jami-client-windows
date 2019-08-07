@@ -41,12 +41,7 @@ public:
         // Accept all contacts in conversation list filtered with account type, except those in a call
         auto index = sourceModel()->index(source_row, 0, source_parent);
         bool match = filterRegExp().indexIn(index.data(Qt::DisplayRole).toString()) != -1;
-        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-        auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
-        auto callModel = LRCInstance::getCurrentCallModel();
-        return  match &&
-                !(callModel->hasCall(conversation->callId) || callModel->hasCall(conversation->confId)) &&
-                !index.parent().isValid();
+        return  match && !index.parent().isValid();
     }
 };
 
@@ -58,6 +53,8 @@ public:
     explicit ContactPicker(QWidget *parent = 0, bool isConference = false);
     ~ContactPicker();
     void setTitle(const std::string& title);
+    void setRegexMatchExcept();
+    void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -80,5 +77,5 @@ private:
     ConferenceableProxyModel* conferenceeProxyModel_;
     //if it is not conference, then it serves blind/attended call transfer
     bool isConference_;
-
+    QString CalleeDisplayName_;
 };
