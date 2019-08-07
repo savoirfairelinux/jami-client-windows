@@ -21,6 +21,7 @@
 #include "ui_videooverlay.h"
 
 #include <QTime>
+#include <QMessagebox>
 
 #include "lrcinstance.h"
 #include "utils.h"
@@ -28,7 +29,8 @@
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::VideoOverlay),
-    oneSecondTimer_(new QTimer(this))
+    oneSecondTimer_(new QTimer(this)),
+    listOfContactForTrans_ (new ContactPicker(this))
 {
     ui->setupUi(this);
 
@@ -41,6 +43,17 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     setAttribute(Qt::WA_NoSystemBackground);
 
     ui->recButton->setVisible(false);
+
+    ui->transferCallButton->setVisible(false);
+    ui->transferCallButton->setCheckable(true);
+
+    listOfContactForTrans_->setVisible(false);
+    listOfContactForTrans_->setTitle("Select Peer to Tranfer");
+    //listOfContactForTrans_->setModal(true);
+    //listOfContactForTrans_->setWindowModality(Qt::ApplicationModal);
+
+    connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
+    connect(listOfContactForTrans_, &ContactPicker::contactWillDoBlindTransfer, this, &VideoOverlay::on_transferCall_requested);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -176,4 +189,81 @@ VideoOverlay::on_recButton_clicked()
     if (callModel->hasCall(callId)) {
         callModel->toggleAudioRecord(callId);
     }
+}
+
+void
+VideoOverlay::setTransferCallAvailability(bool visible)
+{
+    ui->transferCallButton->setVisible(visible);
+}
+
+void
+VideoOverlay::on_transferButton_toggled(bool checked)
+{
+    if (callId_.empty() || !checked) {
+        return;
+    }
+    listOfContactForTrans_->setRegexMatchExcept();
+
+    QPoint globalPos_button = mapToGlobal(ui->transferCallButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    listOfContactForTrans_->move(globalPos_button.x(), globalPos_bottomButtons.y() - listOfContactForTrans_->height());
+    listOfContactForTrans_->exec();
+}
+
+void
+VideoOverlay::on_transferCall_requested(const std::string& callId, const std::string& contactUri)
+{
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto thisCallIsAudioOnly = callModel->getCall(callId).isAudioOnly;
+    //auto thisCallIsAudioOnly = callModel->getCall(callId).isAudioOnly;
+    //QMessageBox::information(0,QString::fromStdString(contactUri), QString::fromStdString(contactUri));
+    //callModel->transfer(callId, contactUri);
+    listOfContactForTrans_->done(0);
+    ui->transferCallButton->setChecked(false);
+
+    auto attendedCallId = callModel->createCall(contactUri, thisCallIsAudioOnly);
+    QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
+                    [this, attendedCallId, callId](const std::string& callId_coming) {
+                        if (callId_coming != attendedCallId)
+                            return;
+                        using namespace lrc::api::call;
+                        auto call = LRCInstance::getCurrentCallModel()->getCall(callId_coming);
+                        switch (call.status) {
+                        case Status::IN_PROGRESS:
+                        {
+                            qDebug() << "attending to transfer the call" << QString::fromStdString(callId_coming);
+                            LRCInstance::getCurrentCallModel()->transferToCall(callId, attendedCallId);
+                            LRCInstance::getCurrentCallModel()->hangUp(callId);
+                            return;
+                        }
+                        default:
+                            qDebug() << "failed to add to transfer the call" << QString::fromStdString(callId_coming);
+                            break;
+                        }
+                    });
+    //if(callModel->hasCall(callId))
+
+    //callModel->transfer(callId, "sip:" + contactUri);
+    //callModel->hangUp(callId);
+}
+
+inline const QRect
+VideoOverlay::getListOfContactRect()
+{
+    return listOfContactForTrans_->rect();
+}
+
+void
+VideoOverlay::resetTransButtonClicked()
+{
+    listOfContactForTrans_->done(0);
+    ui->transferCallButton->setChecked(false);
+}
+
+void
+VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    listOfContactForTrans_->setCurrentCalleeDisplayName(CalleeDisplayName);
 }

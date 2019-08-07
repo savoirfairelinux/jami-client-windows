@@ -21,6 +21,7 @@
 #include "ui_contactpicker.h"
 
 #include <QMouseEvent>
+#include <QMessagebox>
 
 #include "contactpickeritemdelegate.h"
 
@@ -84,7 +85,10 @@ ContactPicker::accept()
 void
 ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
 {
-    conferenceeProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
+    if (arg1.isEmpty())
+        setRegexMatchExcept();
+    else
+        conferenceeProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
 void
@@ -100,4 +104,17 @@ void
 ContactPicker::setTitle(const std::string& title)
 {
     ui->title->setText(QString::fromStdString(title));
+}
+
+void
+ContactPicker::setRegexMatchExcept()
+{
+    QString reg_excep("\\b(?!" + CalleeDisplayName_ + "\\b)\\w+");
+    conferenceeProxyModel_->setFilterRegExp(QRegExp(reg_excep));
+}
+
+void
+ContactPicker::setCurrentCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    CalleeDisplayName_ = CalleeDisplayName;
 }
