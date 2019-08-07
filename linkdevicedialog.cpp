@@ -92,7 +92,7 @@ LinkDeviceDialog::setExportPage(const std::string& accountId, lrc::api::account:
 
     switch (status) {
     case lrc::api::account::ExportOnRingStatus::WRONG_PASSWORD:
-        ui->infoLabel->setStyleSheet("color: red;");
+        ui->infoLabel->setStyleSheet("color: black;");
         ui->infoLabel->setText(tr("Incorrect password"));
         ui->yourPinLabel->hide();
         ui->exportedPIN->hide();
@@ -104,12 +104,18 @@ LinkDeviceDialog::setExportPage(const std::string& accountId, lrc::api::account:
         break;
 
     case lrc::api::account::ExportOnRingStatus::NETWORK_ERROR:
-    case lrc::api::account::ExportOnRingStatus::INVALID:
         disconnect();
-        ui->infoLabel->setStyleSheet("color: red;");
-        ui->infoLabel->setText(tr("Something went wrong.\nPlease try again later."));
+        ui->infoLabel->setStyleSheet("color: black;");
+        ui->infoLabel->setText(tr("Error connecting to the network.\nPlease try again later."));
         ui->yourPinLabel->hide();
         ui->exportedPIN->hide();
+    case lrc::api::account::ExportOnRingStatus::INVALID:
+        disconnect();
+        ui->infoLabel->setStyleSheet("color: black;");
+        ui->infoLabel->setText(tr("Something went wrong.\n"));
+        ui->yourPinLabel->hide();
+        ui->exportedPIN->hide();
+        break;
     }
 
     ui->stackedWidget->setCurrentWidget(ui->exportedPage);
