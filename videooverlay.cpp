@@ -175,3 +175,25 @@ VideoOverlay::on_recButton_clicked()
         callModel->toggleAudioRecord(callId_);
     }
 }
+
+void
+VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+{
+    ui->noMicButton->blockSignals(true);
+    ui->noVideoButton->blockSignals(true);
+    ui->recButton->blockSignals(true);
+    ui->holdButton->blockSignals(true);
+    ui->onHoldLabel->blockSignals(true);
+
+    ui->noMicButton->setChecked(isAudioMuted);
+    ui->noVideoButton->setChecked(isVideoMuted);
+    ui->recButton->setChecked(isRecording);
+    ui->holdButton->setChecked(isHolding);
+    ui->onHoldLabel->setVisible(isHolding);
+
+    ui->noMicButton->blockSignals(false);
+    ui->noVideoButton->blockSignals(false);
+    ui->recButton->blockSignals(false);
+    ui->holdButton->blockSignals(false);
+    ui->onHoldLabel->blockSignals(false);
+}

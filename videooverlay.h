@@ -45,6 +45,7 @@ public:
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
+    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
 
 //UI SLOTS
 private slots:

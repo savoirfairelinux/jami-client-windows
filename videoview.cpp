@@ -172,12 +172,6 @@ VideoView::slotCallStatusChanged(const std::string& callId)
 }
 
 void
-VideoView::showChatviewIfToggled()
-{
-    emit setChatVisibility(overlay_->getShowChatView());
-}
-
-void
 VideoView::simulateShowChatview(bool checked)
 {
     Q_UNUSED(checked);
@@ -431,4 +425,10 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
             and distance.dy() > minimalSize_
             and geometry().contains(event->pos()))
         previewRect.setBottomRight(event->pos());
+}
+void
+VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+{
+    emit overlay_->setChatVisibility(false);
+    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
 }
