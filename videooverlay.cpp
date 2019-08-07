@@ -44,6 +44,15 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->onHoldLabel->setVisible(false);
 
     ui->recButton->setVisible(false);
+
+    ui->transferCallButton->setVisible(false);
+    ui->transferCallButton->setCheckable(true);
+
+    contactPicker_->setVisible(false);
+    contactPicker_->setTitle("Select Peer to Tranfer");
+
+    connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
+    connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -174,4 +183,75 @@ VideoOverlay::on_recButton_clicked()
     if (callModel->hasCall(callId_)) {
         callModel->toggleAudioRecord(callId_);
     }
+}
+
+void
+VideoOverlay::setTransferCallAvailability(bool visible)
+{
+    ui->transferCallButton->setVisible(visible);
+}
+
+void
+VideoOverlay::on_transferButton_toggled(bool checked)
+{
+    if (callId_.empty() || !checked) {
+        return;
+    }
+    contactPicker_->setType(ContactPicker::Type::TRANSFER);
+
+    QPoint globalPos_button = mapToGlobal(ui->transferCallButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    contactPicker_->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
+
+    // receive the signal that ensure the button checked status is correct and contactpicker
+    // is properly hidden
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose, [this](QMouseEvent *event) {
+        contactPicker_->hide();
+        // check if current mouse position is on button
+        auto relativeCursorPos = ui->transferCallButton->mapFromGlobal(event->pos());
+        if (!ui->transferCallButton->rect().contains(relativeCursorPos)) {
+            ui->transferCallButton->setChecked(false);
+        }
+    });
+
+    // for esc key, receive reject signal
+    Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
+    [this] {
+        ui->transferCallButton->setChecked(false);
+    });
+
+    contactPicker_->show();
+}
+
+void
+VideoOverlay::on_transferCall_requested(const std::string& callId, const std::string& contactUri)
+{
+    auto callModel = LRCInstance::getCurrentCallModel();
+    contactPicker_->hide();
+    std::string destCallId;
+
+    try {
+        //check if the call exist
+        auto callInfo = callModel->getCallFromURI(contactUri);
+        destCallId = callInfo.id;
+    } catch(std::exception& e) {
+        qDebug().noquote() << e.what();
+        destCallId = "";
+    }
+    // if no second call -> blind transfer
+    // if there is a second call -> attended transfer
+    if (destCallId.size() == 0) {
+        callModel->transfer(callId, "sip:" + contactUri);
+        callModel->hangUp(callId);
+    }else{
+        callModel->transferToCall(callId, destCallId);
+        callModel->hangUp(callId);
+    }
+}
+
+void
+VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    contactPicker_->setCurrentCalleeDisplayName(CalleeDisplayName);
 }
