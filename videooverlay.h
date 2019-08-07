@@ -45,6 +45,8 @@ public:
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
+    void setTransferCallAvailability(bool visible);
+    void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
     void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
 
 //UI SLOTS
@@ -56,6 +58,8 @@ private slots:
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
+    void on_transferButton_toggled(bool checked);
+    void on_transferCall_requested(const std::string& callId, const std::string& contactUri);
 
 private:
     Ui::VideoOverlay* ui;
