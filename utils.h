@@ -155,6 +155,23 @@ oneShotConnect( const typename QtPrivate::FunctionPointer<Func1>::Object* sender
         });
 }
 
+template<class T>
+class Blocker {
+    T *blocked;
+    bool previous;
+public:
+    Blocker(T *blocked)
+        : blocked(blocked),
+          previous(blocked->blockSignals(true)) {}
+    ~Blocker() { blocked->blockSignals(previous); }
+    T *operator->() { return blocked; }
+};
+
+template<class T>
+inline Blocker<T> whileBlocking(T *blocked) {
+    return Blocker<T>(blocked);
+}
+
 template<typename T>
 void
 setElidedText(T* object, const QString &text, Qt::TextElideMode mode = Qt::ElideMiddle, int padding = 32) {

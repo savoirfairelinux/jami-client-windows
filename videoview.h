@@ -37,8 +37,8 @@ public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
     void pushRenderer(const std::string& callUid);
-    void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
+    void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
 
 protected:
     void resizeEvent(QResizeEvent* event);

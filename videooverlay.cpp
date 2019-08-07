@@ -175,3 +175,14 @@ VideoOverlay::on_recButton_clicked()
         callModel->toggleAudioRecord(callId_);
     }
 }
+
+void
+VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+{
+    // Block the signals of buttons
+    Utils::whileBlocking(ui->noMicButton)->setChecked(isAudioMuted);
+    Utils::whileBlocking(ui->noVideoButton)->setChecked(isVideoMuted);
+    Utils::whileBlocking(ui->recButton)->setChecked(isRecording);
+    Utils::whileBlocking(ui->holdButton)->setChecked(isHolding);
+    Utils::whileBlocking(ui->onHoldLabel)->setVisible(isHolding);
+}
