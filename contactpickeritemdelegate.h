@@ -35,7 +35,7 @@ protected:
 
 private:
     void paintRingContactItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
-    void paintSIPContactItem(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paintSIPContactItem(QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, const QModelIndex& index) const;
 
     constexpr static int sizeImage_ = 48;
     constexpr static int cellHeight_ = 60;

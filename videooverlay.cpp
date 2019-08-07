@@ -44,6 +44,17 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->onHoldLabel->setVisible(false);
 
     ui->recButton->setVisible(false);
+
+    ui->transferCallButton->setVisible(false);
+    ui->transferCallButton->setCheckable(true);
+
+    contactPicker_->setVisible(false);
+    contactPicker_->setTitle("Select Peer to Tranfer");
+    //listOfContactForTrans_->setModal(true);
+    //listOfContactForTrans_->setWindowModality(Qt::ApplicationModal);
+
+    connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
+    connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -174,4 +185,69 @@ VideoOverlay::on_recButton_clicked()
     if (callModel->hasCall(callId_)) {
         callModel->toggleAudioRecord(callId_);
     }
+}
+
+void
+VideoOverlay::setTransferCallAvailability(bool visible)
+{
+    ui->transferCallButton->setVisible(visible);
+}
+
+void
+VideoOverlay::on_transferButton_toggled(bool checked)
+{
+    if (callId_.empty() || !checked) {
+        return;
+    }
+    contactPicker_->setRegexMatchExcept();
+    contactPicker_->setType(ContactPicker::Type::TRANSFER);
+
+    QPoint globalPos_button = mapToGlobal(ui->transferCallButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    contactPicker_->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
+
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose, [this]() {
+        contactPicker_->done(0);
+        qDebug().noquote() << QCursor::pos();
+        auto relativeCursorPos = ui->transferCallButton->mapFromGlobal(QCursor::pos());
+        if (!ui->transferCallButton->rect().contains(relativeCursorPos)) {
+            ui->transferCallButton->setChecked(false);
+        }
+    });
+
+    contactPicker_->exec();
+}
+
+void
+VideoOverlay::on_transferCall_requested(const std::string& callId, const std::string& contactUri)
+{
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto thisCallIsAudioOnly = callModel->getCall(callId).isAudioOnly;
+    //auto thisCallIsAudioOnly = callModel->getCall(callId).isAudioOnly;
+    //QMessageBox::information(0,QString::fromStdString(contactUri), QString::fromStdString(contactUri));
+    //callModel->transfer(callId, contactUri);
+    contactPicker_->done(0);
+    std::string destCallId;
+    //ui->transferCallButton->setChecked(false);
+
+    try {
+        auto callInfo = callModel->getCallFromURI(contactUri);
+        destCallId = callInfo.id;
+    } catch(std::exception& e) {
+        destCallId = "";
+    }
+    if (destCallId.size() == 0) {
+        callModel->transfer(callId, "sip:" + contactUri);
+        callModel->hangUp(callId);
+    }else{
+        callModel->transferToCall(callId, destCallId);
+        callModel->hangUp(callId);
+    }
+}
+
+void
+VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    contactPicker_->setCurrentCalleeDisplayName(CalleeDisplayName);
 }

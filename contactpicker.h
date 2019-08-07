@@ -63,8 +63,7 @@ class ContactPicker : public QDialog
 public:
     enum class Type {
         CONFERENCE,
-        BLIND_TRANSFER,
-        ATTENDED_TRANSFER,
+        TRANSFER,
         COUNT__
     };
 
@@ -72,13 +71,15 @@ public:
     ~ContactPicker();
     void setTitle(const std::string& title);
     void setType(const Type& type);
+    void setRegexMatchExcept();
+    void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
 
 signals:
     void contactWillJoinConference(const std::string& callId, const std::string& contactUri);
-    void contactWillDoBlindTransfer(const std::string& callId, const std::string& contactUri);
+    void contactWillDoTransfer(const std::string& callId, const std::string& contactUri);
     void willClose();
 
 protected slots:
@@ -94,5 +95,6 @@ private:
     std::unique_ptr<SmartListModel> smartListModel_;
     SelectableProxyModel* selectableProxyModel_;
     Type type_;
+    QString CalleeDisplayName_;
 
 };
