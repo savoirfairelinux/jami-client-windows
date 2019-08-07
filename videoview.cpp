@@ -339,7 +339,7 @@ VideoView::showContextMenu(const QPoint& pos)
 }
 
 void
-VideoView::pushRenderer(const std::string& callId) {
+VideoView::pushRenderer(const std::string& callId, bool isSIP) {
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(ui->videoWidget);
@@ -355,6 +355,8 @@ VideoView::pushRenderer(const std::string& callId) {
         return;
     }
 
+    // transfer call will only happen in SIP calls
+    this->overlay_->setTransferCallAvailability(isSIP);
     this->overlay_->callStarted(callId);
     this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
@@ -431,4 +433,10 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
             and distance.dy() > minimalSize_
             and geometry().contains(event->pos()))
         previewRect.setBottomRight(event->pos());
+}
+
+void
+VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
+{
+    overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
 }
