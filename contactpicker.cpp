@@ -73,9 +73,8 @@ ContactPicker::accept()
         case Type::CONFERENCE:
             emit contactWillJoinConference(thisCallId, contactUri);
             break;
-        case Type::BLIND_TRANSFER:
-        case Type::ATTENDED_TRANSFER:
-            emit contactWillDoBlindTransfer(thisCallId, contactUri);
+        case Type::TRANSFER:
+            emit contactWillDoTransfer(thisCallId, contactUri);
             break;
         default:
             break;
@@ -96,7 +95,6 @@ ContactPicker::mousePressEvent(QMouseEvent *event)
 {
     auto contactPickerWidgetRect = ui->contactPickerWidget->rect();
     if (!contactPickerWidgetRect.contains(event->pos())) {
-        //close();
         emit willClose(event);
     }
 }
@@ -131,15 +129,27 @@ ContactPicker::setType(const Type& type)
                         !index.parent().isValid();
             });
         break;
-    case Type::BLIND_TRANSFER:
-    case Type::ATTENDED_TRANSFER:
+    case Type::TRANSFER:
         selectableProxyModel_->setPredicate(
             [this](const QModelIndex& index, const QRegExp& regexp) {
-                return true;
+                // Regex to remove current callee
+                QRegExp matchExcept= QRegExp(QString("\\b(?!" + CalleeDisplayName_ + "\\b)\\w+"));
+                bool match = false;
+                bool match_non_self = matchExcept.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                if (match_non_self) {
+                    match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                }
+                return  match && !index.parent().isValid();
             });
         break;
     default:
         break;
     }
     selectableProxyModel_->invalidate();
+}
+
+void
+ContactPicker::setCurrentCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    CalleeDisplayName_ = CalleeDisplayName;
 }
