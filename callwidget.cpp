@@ -645,8 +645,19 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     Q_UNUSED(convInfo);
     qDebug() << "slotShowCallView";
     setCallPanelVisibility(true);
+
+    auto callModel = LRCInstance::getCurrentCallModel();
+
+    if (callModel->hasCall(convInfo.callId)) {
+        auto call = callModel->getCall(convInfo.callId);
+        ui->videoWidget->resetVideoOverlay(call.audioMuted && (call.status != lrc::api::call::Status::PAUSED),
+                                           call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly),
+                                           callModel->isRecording(convInfo.callId),
+                                           call.status == lrc::api::call::Status::PAUSED);
+    } else {
+        ui->videoWidget->resetVideoOverlay(false, false, false, false);
+    }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
-    ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
     ui->videoWidget->pushRenderer(convInfo.callId);
 }
