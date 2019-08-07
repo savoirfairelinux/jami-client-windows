@@ -73,9 +73,8 @@ ContactPicker::accept()
         case Type::CONFERENCE:
             emit contactWillJoinConference(thisCallId, contactUri);
             break;
-        case Type::BLIND_TRANSFER:
-        case Type::ATTENDED_TRANSFER:
-            emit contactWillDoBlindTransfer(thisCallId, contactUri);
+        case Type::TRANSFER:
+            emit contactWillDoTransfer(thisCallId, contactUri);
             break;
         default:
             break;
@@ -88,7 +87,10 @@ ContactPicker::accept()
 void
 ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
 {
-    selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
+    if (arg1.isEmpty())
+        setRegexMatchExcept();
+    else
+        selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
 void
@@ -96,7 +98,6 @@ ContactPicker::mousePressEvent(QMouseEvent *event)
 {
     auto contactPickerWidgetRect = ui->contactPickerWidget->rect();
     if (!contactPickerWidgetRect.contains(event->pos())) {
-        //close();
         emit willClose(event);
     }
 }
@@ -131,15 +132,28 @@ ContactPicker::setType(const Type& type)
                         !index.parent().isValid();
             });
         break;
-    case Type::BLIND_TRANSFER:
-    case Type::ATTENDED_TRANSFER:
+    case Type::TRANSFER:
         selectableProxyModel_->setPredicate(
             [this](const QModelIndex& index, const QRegExp& regexp) {
-                return true;
+                bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                return  match && !index.parent().isValid();
             });
         break;
     default:
         break;
     }
     selectableProxyModel_->invalidate();
+}
+
+void
+ContactPicker::setRegexMatchExcept()
+{
+    QString reg_excep("\\b(?!" + CalleeDisplayName_ + "\\b)\\w+");
+    selectableProxyModel_->setFilterRegExp(QRegExp(reg_excep));
+}
+
+void
+ContactPicker::setCurrentCalleeDisplayName(const QString& CalleeDisplayName)
+{
+    CalleeDisplayName_ = CalleeDisplayName;
 }
