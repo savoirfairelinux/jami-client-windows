@@ -638,13 +638,16 @@ void CallWidget::slotShowCallView(const std::string& accountId,
                                   const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
-    Q_UNUSED(convInfo);
     qDebug() << "slotShowCallView";
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
+    ui->videoWidget->setCurrentCalleeName(bestName);
+
     setCallPanelVisibility(true);
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     ui->videoWidget->showChatviewIfToggled();
     hideMiniSpinner();
-    ui->videoWidget->pushRenderer(convInfo.callId);
+    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
 }
 
 void CallWidget::slotShowIncomingCallView(const std::string& accountId,
@@ -668,6 +671,7 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     auto call = callModel->getCall(convInfo.callId);
     auto isCallSelected = LRCInstance::getSelectedConvUid() == convInfo.uid;
     ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
+    ui->videoWidget->setCurrentCalleeName(bestName);
 
     connect(callModel, &lrc::api::NewCallModel::callStatusChanged, ui->incomingCallPage,
         [this, accountId](const std::string& callId) {
@@ -711,7 +715,7 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
         ui->messagesWidget->show();
     }
 
-    ui->videoWidget->pushRenderer(convInfo.callId);
+    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
 
     QFontMetrics primaryCallLabelFontMetrics(ui->callingBestNameLabel->font());
     QFontMetrics sencondaryCallLabelFontMetrics(ui->callingBestIdLabel->font());
