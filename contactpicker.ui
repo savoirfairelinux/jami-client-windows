@@ -190,7 +190,7 @@
                <cursorShape>IBeamCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>Search contact text input</string>
+               <string>Search contact</string>
               </property>
               <property name="maxLength">
                <number>100</number>
@@ -251,10 +251,10 @@
            <attribute name="headerVisible">
             <bool>false</bool>
            </attribute>
-           <attribute name="headerDefaultSectionSize">
+           <attribute name="headerMinimumSectionSize">
             <number>0</number>
            </attribute>
-           <attribute name="headerMinimumSectionSize">
+           <attribute name="headerDefaultSectionSize">
             <number>0</number>
            </attribute>
           </widget>
@@ -294,7 +294,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ressources.qrc">:/images/spike.png</pixmap>
+      <pixmap>:/images/spike.png</pixmap>
      </property>
     </widget>
    </item>
@@ -312,8 +312,6 @@
    <header>smartlistview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -104,6 +104,7 @@ ContactPickerItemDelegate::paint(QPainter* painter
         paintRingContactItem(painter, option, rect, index);
         break;
     case profile::Type::SIP:
+        paintSIPContactItem(painter, option, rect, index);
         break;
     default:
         paintRingContactItem(painter, option, rect, index);
@@ -183,9 +184,68 @@ ContactPickerItemDelegate::paintRingContactItem(QPainter* painter,
 void
 ContactPickerItemDelegate::paintSIPContactItem(QPainter* painter,
     const QStyleOptionViewItem& option,
+    const QRect& rect,
     const QModelIndex& index) const
 {
-    Q_UNUSED(painter);
     Q_UNUSED(option);
-    Q_UNUSED(index);
+    QRect rectName1;
+    QRect rectName2;
+    QFont font(painter->font());
+    QPen pen(painter->pen());
+    painter->setPen(pen);
+
+    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    if (scalingRatio > 1.0) {
+        font.setPointSize(fontSize_ - 2);
+    } else {
+        font.setPointSize(fontSize_);
+    }
+
+    auto leftMargin = dx_ + sizeImage_ + dx_;
+    auto rightMargin = dx_;
+    auto topMargin = 4;
+    auto bottomMargin = 8;
+
+    if (!rect.isEmpty()) {
+
+        rectName1 = QRect(rect.left() + leftMargin,
+        rect.top() + topMargin,
+        rect.width() - leftMargin * 2,
+        rect.height() / 2 - 2);
+
+        rectName2 =  QRect(rectName1.left(),
+            rectName1.top() + rectName1.height(),
+            rectName1.width(),
+            rectName1.height() - bottomMargin);
+    }
+
+    QFontMetrics fontMetrics(font);
+
+    // The name is displayed at the avatar's right
+    QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
+    if (!nameStr.isNull()) {
+        font.setItalic(false);
+        font.setBold(false);
+        pen.setColor(RingTheme::lightBlack_);
+        painter->setPen(pen);
+        painter->setFont(font);
+        if (!rectName1.isEmpty()) {
+            QString elidedNameStr = fontMetrics.elidedText(nameStr, Qt::ElideRight, rectName1.width());
+            painter->drawText(rectName1, Qt::AlignVCenter | Qt::AlignLeft, elidedNameStr);
+        }
+    }
+
+    // Display the ID under the name
+    QString idStr = index.data(static_cast<int>(SmartListModel::Role::DisplayID)).value<QString>();
+    if (idStr != nameStr && !idStr.isNull()) {
+        font.setItalic(false);
+        font.setBold(false);
+        pen.setColor(RingTheme::grey_);
+        painter->setPen(pen);
+        painter->setFont(font);
+        if (!rectName2.isEmpty()) {
+            idStr = fontMetrics.elidedText(idStr, Qt::ElideRight, rectName2.width());
+            painter->drawText(rectName2, Qt::AlignVCenter | Qt::AlignLeft, idStr);
+        }
+    }
 }
