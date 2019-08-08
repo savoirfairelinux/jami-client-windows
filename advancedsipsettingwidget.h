@@ -21,6 +21,7 @@
 
 #include <QListWidgetItem>
 #include <QWidget>
+#include <QPushButton>
 
 namespace Ui {
 class AdvancedSIPSettingsWidget;
@@ -36,6 +37,11 @@ public:
     ~AdvancedSIPSettingsWidget();
 
     void updateAdvancedSIPSettings();
+    std::string openButtonFilePath(const std::string& accConfigFilePath,
+                                   const char* windowTitle,
+                                   const char* fileTypeDesp,
+                                   const QString& fileTypeFilter,
+                                   QPushButton* button);
 
 private:
     Ui::AdvancedSIPSettingsWidget* ui;
@@ -48,15 +54,33 @@ private slots:
 
     void openFileCustomRingtone();
 
+    // security
+    void setUseSRTP(bool state);
+    void setUseSDES(bool state);
+    void setUseRTPFallback(bool state);
+    void setUseTLS(bool state);
+    void setVerifyCertificatesServer(bool state);
+    void setVerifyCertificatesClient(bool state);
+    void setRequireCertificatesIncomingTLS(bool state);
+
+    void btnSIPCAClicked();
+    void btnSIPUserCertClicked();
+    void btnSIPPrivateKeyClicked();
+
+    void lineEditSIPCertPasswordLineEditTextChanged();
+    void tlsProtocolComboBoxIndexChanged(const int& index);
+    void outgoingTLSServerNameLineEditTextChanged();
+    void negotiationTimeoutSpinBoxValueChanged(const int& value);
+
     // connectivity
     void setUseUPnP(bool state);
     void setUseTURN(bool state);
     void setUseSTUN(bool state);
 
-    void setTURNAddress(const QString& name);
-    void setTURNUsername(const QString& name);
-    void setTURNPsswd(const QString& name);
-    void setSTUNAddress(const QString& name);
+    void setTURNAddress();
+    void setTURNUsername();
+    void setTURNPsswd();
+    void setSTUNAddress();
 
     // codecs
     void updateAudioCodecs();
