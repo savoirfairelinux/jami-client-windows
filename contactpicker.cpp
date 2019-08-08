@@ -100,9 +100,9 @@ ContactPicker::mousePressEvent(QMouseEvent *event)
 }
 
 void
-ContactPicker::setTitle(const std::string& title)
+ContactPicker::setTitle(const QString& title)
 {
-    ui->title->setText(QString::fromStdString(title));
+    ui->title->setText(title);
 }
 
 void

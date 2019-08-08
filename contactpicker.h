@@ -69,7 +69,7 @@ public:
 
     explicit ContactPicker(QWidget *parent = 0);
     ~ContactPicker();
-    void setTitle(const std::string& title);
+    void setTitle(const QString& title);
     void setType(const Type& type);
     void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 

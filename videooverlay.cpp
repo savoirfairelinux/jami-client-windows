@@ -47,7 +47,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->transferCallButton->setCheckable(true);
 
     contactPicker_->setVisible(false);
-    contactPicker_->setTitle("Select Peer to Tranfer");
+    contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
     connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
     connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
