@@ -745,9 +745,13 @@ CallWidget::slotToggleFullScreenClicked()
         ui->stackedWidget->addWidget(ui->mainActivityWidget);
         ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
         ui->mainActivityWidget->showNormal();
+        MainWindow::instance().show();
     } else {
+        auto geo = ui->stackedWidget->window()->geometry();
         ui->stackedWidget->removeWidget(ui->mainActivityWidget);
         ui->mainActivityWidget->setParent(0);
+        ui->mainActivityWidget->window()->setGeometry(geo);
+        MainWindow::instance().hide();
         ui->mainActivityWidget->showFullScreen();
     }
 }
