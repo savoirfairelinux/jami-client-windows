@@ -85,7 +85,6 @@ MainWindow::MainWindow(QWidget* parent)
         [this]() {
             if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
                 emit currentWidget->NavigationRequested(ScreenEnum::SetttingsScreen);
-                setWindowState(Qt::WindowActive);
                 showWindow();
             }
         });
@@ -233,7 +232,7 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
 void MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason != QSystemTrayIcon::ActivationReason::Context)
-        this->show();
+        showWindow();
 }
 
 void MainWindow::showWindow()
