@@ -41,15 +41,48 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
         ui->btnRingtoneSIP->setEnabled((bool)state);
     });
 
+    // security
+    connect(ui->encryptMediaStreamsToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseSRTP);
+    connect(ui->enableSDESToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseSDES);
+    connect(ui->fallbackRTPToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseRTPFallback);
+    connect(ui->encryptMediaStreamsToggle, &QAbstractButton::clicked, [this](int state) {
+        ui->enableSDESToggle->setEnabled((bool)state);
+        ui->fallbackRTPToggle->setEnabled((bool)state);
+    });
+
+    connect(ui->encryptNegotitationToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseTLS);
+    connect(ui->encryptNegotitationToggle, &QAbstractButton::clicked, [this](int state) {
+        ui->btnSIPCACert->setEnabled((bool)state);
+        ui->btnSIPUserCert->setEnabled((bool)state);
+        ui->btnSIPPrivateKey->setEnabled((bool)state);
+        ui->lineEditSIPCertPassword->setEnabled((bool)state);
+    });
+
+    connect(ui->btnSIPCACert, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::btnSIPCAClicked);
+    connect(ui->btnSIPUserCert, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::btnSIPUserCertClicked);
+    connect(ui->btnSIPPrivateKey, &QPushButton::clicked, this, &AdvancedSIPSettingsWidget::btnSIPPrivateKeyClicked);
+
+    connect(ui->verifyIncomingCertificatesServerToogle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setVerifyCertificatesServer);
+    connect(ui->verifyIncomingCertificatesClientToogle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setVerifyCertificatesClient);
+    connect(ui->requireCeritificateForTLSIncomingToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setRequireCertificatesIncomingTLS);
+
+    connect(ui->lineEditSIPCertPassword, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::lineEditSIPCertPasswordLineEditTextChanged);
+    connect(ui->outgoingTLSServerNameLineEdit, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEditTextChanged);
+
+    ui->tlsProtocolComboBox->insertItem(0, "Default");
+    ui->tlsProtocolComboBox->insertItem(1, "TLSv1");
+    ui->tlsProtocolComboBox->insertItem(2, "TLSv1.1");
+    ui->tlsProtocolComboBox->insertItem(3, "TLSv1.2");
+
     // connectivity
     connect(ui->checkBoxUPnPSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseUPnP);
     connect(ui->checkBoxTurnEnableSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseTURN);
     connect(ui->checkBoxSTUNEnableSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseSTUN);
 
-    connect(ui->lineEditTurnAddressSIP, &QLineEdit::textEdited, this, &AdvancedSIPSettingsWidget::setTURNAddress);
-    connect(ui->lineEditTurnUsernameSIP, &QLineEdit::textEdited, this, &AdvancedSIPSettingsWidget::setTURNUsername);
-    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::textEdited, this, &AdvancedSIPSettingsWidget::setTURNPsswd);
-    connect(ui->lineEditSTUNAddressSIP, &QLineEdit::textEdited, this, &AdvancedSIPSettingsWidget::setSTUNAddress);
+    connect(ui->lineEditTurnAddressSIP, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::setTURNAddress);
+    connect(ui->lineEditTurnUsernameSIP, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::setTURNUsername);
+    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::setTURNPsswd);
+    connect(ui->lineEditSTUNAddressSIP, &QLineEdit::textChanged, this, &AdvancedSIPSettingsWidget::setSTUNAddress);
 
     // codecs
     connect(ui->audioListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::audioCodecsStateChange);
@@ -93,9 +126,40 @@ AdvancedSIPSettingsWidget::~AdvancedSIPSettingsWidget()
 void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
 {
     auto config = LRCInstance::getCurrAccConfig();
-    //Call Settings
+
+    // Call Settings
     ui->checkBoxAutoAnswerSIP->setChecked(config.autoAnswer);
     ui->checkBoxCustomRingtoneSIP->setChecked(config.Ringtone.ringtoneEnabled);
+
+    // security
+    ui->btnSIPCACert->setEnabled(config.TLS.enable);
+    ui->btnSIPUserCert->setEnabled(config.TLS.enable);
+    ui->btnSIPPrivateKey->setEnabled(config.TLS.enable);
+    ui->lineEditSIPCertPassword->setEnabled(config.TLS.enable);
+    ui->enableSDESToggle->setEnabled(config.SRTP.enable);
+    ui->fallbackRTPToggle->setEnabled(config.SRTP.enable);
+
+    ui->btnSIPCACert->setText(QFileInfo(QString::fromStdString(config.TLS.certificateListFile)).fileName());
+    ui->btnSIPUserCert->setText(QFileInfo(QString::fromStdString(config.TLS.certificateFile)).fileName());
+    ui->btnSIPPrivateKey->setText(QFileInfo(QString::fromStdString(config.TLS.privateKeyFile)).fileName());
+    ui->lineEditSIPCertPassword->setText(QString::fromStdString(config.TLS.password));
+
+    ui->encryptMediaStreamsToggle->setChecked(config.SRTP.enable);
+    ui->enableSDESToggle->setChecked(config.SRTP.keyExchange == lrc::api::account::KeyExchangeProtocol::SDES);
+    ui->fallbackRTPToggle->setChecked(config.SRTP.rtpFallback);
+    ui->encryptNegotitationToggle->setChecked(config.TLS.enable);
+    ui->verifyIncomingCertificatesServerToogle->setChecked(config.TLS.verifyServer);
+    ui->verifyIncomingCertificatesClientToogle->setChecked(config.TLS.verifyClient);
+    ui->requireCeritificateForTLSIncomingToggle->setChecked(config.TLS.requireClientCertificate);
+
+    auto method = config.TLS.method;
+    ui->tlsProtocolComboBox->setCurrentIndex(static_cast<int>(method));
+    connect(ui->tlsProtocolComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AdvancedSIPSettingsWidget::tlsProtocolComboBoxIndexChanged);
+
+    ui->outgoingTLSServerNameLineEdit->setText(QString::fromStdString(config.TLS.serverName));
+
+    ui->negotiationTimeoutSpinBox->setValue(config.TLS.negotiationTimeoutSec);
+    connect(ui->negotiationTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
 
     // Connectivity
     ui->checkBoxUPnPSIP->setChecked(config.upnpEnabled);
@@ -115,9 +179,9 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->audioListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::audioCodecsStateChange);
     connect(ui->videoListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::videoCodecsStateChange);
 
-    ui->btnRingtoneSIP->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
-    ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
-    ui->lineEditSTUNAddressSIP->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
+    ui->btnRingtoneSIP->setEnabled(config.Ringtone.ringtoneEnabled);
+    ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(config.Ringtone.ringtonePath)).fileName());
+    ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
 }
 
 // call settings
@@ -139,7 +203,7 @@ void AdvancedSIPSettingsWidget::openFileCustomRingtone()
     QString fileUrl;
     auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
     auto openPath = oldPath.isEmpty() ? QDir::currentPath() + QString("/ringtones/") : QFileInfo(oldPath).absolutePath();
-    fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), openPath, tr("Audio Files") + " (*.wav *.ogg *.opus *.mp3 *.aiff *.wma)");
+    fileUrl = QFileDialog::getOpenFileName(this, tr("Select a new ringtone"), openPath, tr("Audio Files") + " (*.wav *.ogg *.opus *.mp3 *.aiff *.wma)");
 
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -311,4 +375,155 @@ void AdvancedSIPSettingsWidget::setVideoState(int state)
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Video.videoEnabled = (bool)state;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setUseSRTP(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.SRTP.enable = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+void
+AdvancedSIPSettingsWidget::setUseTLS(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.enable = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setVerifyCertificatesServer(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.verifyServer = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+void
+AdvancedSIPSettingsWidget::setVerifyCertificatesClient(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.verifyClient = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+void
+AdvancedSIPSettingsWidget::setRequireCertificatesIncomingTLS(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.requireClientCertificate = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::tlsProtocolComboBoxIndexChanged(const int& index)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+
+    if (static_cast<int>(confProps.TLS.method) != index) {
+        if (index == 0) {
+            confProps.TLS.method = lrc::api::account::TlsMethod::DEFAULT;
+        } else if (index == 1) {
+            confProps.TLS.method = lrc::api::account::TlsMethod::TLSv1;
+        } else if (index == 2) {
+            confProps.TLS.method = lrc::api::account::TlsMethod::TLSv1_1;
+        } else {
+            confProps.TLS.method = lrc::api::account::TlsMethod::TLSv1_2;
+        }
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    }
+}
+
+void
+AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEditTextChanged(const QString& text)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.serverName = text.toStdString();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged(const int& value)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.negotiationTimeoutSec = value;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setUseSDES(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.SRTP.keyExchange = state ? lrc::api::account::KeyExchangeProtocol::SDES : lrc::api::account::KeyExchangeProtocol::NONE;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setUseRTPFallback(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.SRTP.rtpFallback = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::btnSIPCAClicked()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.certificateListFile = openButtonFilePath(LRCInstance::getCurrAccConfig().TLS.certificateListFile,
+                                        "Select a CA Certificate File",
+                                        "Certificate File",
+                                        " (*.crt)",
+                                        ui->btnSIPCACert);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::btnSIPUserCertClicked()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.certificateFile = openButtonFilePath(LRCInstance::getCurrAccConfig().TLS.certificateFile,
+                                        "Select a User Certificate File",
+                                        "Certificate File",
+                                        " (*.crt)",
+                                        ui->btnSIPUserCert);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::btnSIPPrivateKeyClicked()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.privateKeyFile = openButtonFilePath(LRCInstance::getCurrAccConfig().TLS.privateKeyFile,
+                                        "Select a Private Key File",
+                                        "Key File",
+                                        " (*.key)",
+                                        ui->btnSIPPrivateKey);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::lineEditSIPCertPasswordLineEditTextChanged(const QString& text)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TLS.password = text.toStdString();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+std::string
+AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePath,
+                                              const char* windowTitle,
+                                              const char* fileTypeDesp,
+                                              const QString& fileTypeFilter,
+                                              QPushButton* button)
+{
+    QString fileUrl;
+    auto oldPath = QString::fromStdString(accConfigFilePath);
+    auto openPath = oldPath.isEmpty() ? QDir::currentPath() : QFileInfo(oldPath).absolutePath();
+    fileUrl = QFileDialog::getOpenFileName(this, tr(windowTitle), openPath, tr(fileTypeDesp) + fileTypeFilter);
+    if (!fileUrl.isEmpty()) {
+        button->setText(QFileInfo(fileUrl).fileName());
+    } else {
+        button->setText("");
+    }
+    return fileUrl.toStdString();
 }
