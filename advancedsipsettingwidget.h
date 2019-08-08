@@ -21,6 +21,7 @@
 
 #include <QListWidgetItem>
 #include <QWidget>
+#include <QPushButton>
 
 namespace Ui {
 class AdvancedSIPSettingsWidget;
@@ -36,6 +37,11 @@ public:
     ~AdvancedSIPSettingsWidget();
 
     void updateAdvancedSIPSettings();
+    std::string openButtonFilePath(const std::string& accConfigFilePath,
+                                   const char* windowTitle,
+                                   const char* fileTypeDesp,
+                                   const QString& fileTypeFilter,
+                                   QPushButton* button);
 
 private:
     Ui::AdvancedSIPSettingsWidget* ui;
@@ -47,6 +53,24 @@ private slots:
     void setEnableRingtone(bool state);
 
     void openFileCustomRingtone();
+
+    // security
+    void setUseSRTP(bool state);
+    void setUseSDES(bool state);
+    void setUseRTPFallback(bool state);
+    void setUseTLS(bool state);
+    void setVerifyCertificatesServer(bool state);
+    void setVerifyCertificatesClient(bool state);
+    void setRequireCertificatesIncomingTLS(bool state);
+
+    void btnSIPCAClicked();
+    void btnSIPUserCertClicked();
+    void btnSIPPrivateKeyClicked();
+
+    void lineEditSIPCertPasswordLineEdit(const QString& text);
+    void tlsProtocolComboBoxIndexChanged(const int& index);
+    void outgoingTLSServerNameLineEdit(const QString& text);
+    void negotiationTimeoutSpinBoxValuechanged(const int& value);
 
     // connectivity
     void setUseUPnP(bool state);
