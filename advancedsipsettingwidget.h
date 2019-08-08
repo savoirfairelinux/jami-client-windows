@@ -48,6 +48,17 @@ private slots:
 
     void openFileCustomRingtone();
 
+    // security
+    void setUseSRTP(bool state);
+    void setUseTLS(bool state);
+    void setVerifyCertificatesServer(bool state);
+    void setVerifyCertificatesClient(bool state);
+    void setRequireCertificatesIncomingTLS(bool state);
+
+    void tlsProtocolComboBoxIndexChanged(const int& index);
+    void outgoingTLSServerNameLineEdit(const QString& text);
+    void negotiationTimeoutSpinBoxValuechanged(const int& value);
+
     // connectivity
     void setUseUPnP(bool state);
     void setUseTURN(bool state);

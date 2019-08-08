@@ -41,6 +41,19 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
         ui->btnRingtoneSIP->setEnabled((bool)state);
     });
 
+    // security
+
+    connect(ui->encryptMediaStreamsToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseSRTP);
+    connect(ui->encryptNegotitationToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseTLS);
+    connect(ui->verifyIncomingCertificatesServerToogle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setVerifyCertificatesServer);
+    connect(ui->verifyIncomingCertificatesClientToogle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setVerifyCertificatesClient);
+    connect(ui->requireCeritificateForTLSIncomingToggle, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setRequireCertificatesIncomingTLS);
+
+    connect(ui->tlsProtocolComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AdvancedSIPSettingsWidget::tlsProtocolComboBoxIndexChanged);
+    connect(ui->outgoingTLSServerNameLineEdit, &QLineEdit::textEdited, this, &AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEdit);
+    connect(ui->negotiationTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValuechanged);
+
+
     // connectivity
     connect(ui->checkBoxUPnPSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseUPnP);
     connect(ui->checkBoxTurnEnableSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseTURN);
@@ -311,4 +324,44 @@ void AdvancedSIPSettingsWidget::setVideoState(int state)
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Video.videoEnabled = (bool)state;
     LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setUseSRTP(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.SRTP.enable = state;
+    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+void
+AdvancedSIPSettingsWidget::setUseTLS(bool state)
+{
+}
+
+void
+AdvancedSIPSettingsWidget::setVerifyCertificatesServer(bool state)
+{
+}
+void
+AdvancedSIPSettingsWidget::setVerifyCertificatesClient(bool state)
+{
+}
+void
+AdvancedSIPSettingsWidget::setRequireCertificatesIncomingTLS(bool state)
+{
+}
+
+void
+AdvancedSIPSettingsWidget::tlsProtocolComboBoxIndexChanged(const int& index)
+{
+}
+
+void
+AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEdit(const QString& text)
+{
+}
+
+void
+AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValuechanged(const int& value)
+{
 }
