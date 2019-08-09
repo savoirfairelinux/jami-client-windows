@@ -82,11 +82,12 @@ private:
     void populateGeneralSettings();
     void populateAVSettings();
     void setFormatListForDevice(const std::string& device);
-    void showPreview();
-    void startVideo();
-    void stopVideo();
+    void startPreviewing();
+    void stopPreviewing();
     void toggleVideoSettings(bool enabled);
     void toggleVideoPreview(bool enabled);
+    void startAudioMeter();
+    void stopAudioMeter();
 
     QString registeredName_;
     lrc::api::account::ConfProperties_t confProps_;
