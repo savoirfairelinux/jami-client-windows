@@ -477,7 +477,7 @@ SettingsWidget::slotRegisterName()
 
 void SettingsWidget::setAccEnableSlot(int state)
 {
-    LRCInstance::editableAccountModel()->setAccountEnabled(LRCInstance::getCurrAccId(), static_cast<bool>(state));
+    LRCInstance::accountModel().setAccountEnabled(LRCInstance::getCurrAccId(), static_cast<bool>(state));
 }
 
 void SettingsWidget::delAccountSlot()
@@ -863,7 +863,7 @@ void SettingsWidget::openDownloadFolderSlot()
     if (!dir.isEmpty()) {
         Utils::setElidedText(ui->downloadButton, dir);
         settings.setValue(SettingsKey::downloadPath, dir);
-        LRCInstance::editableDataTransferModel()->downloadDirectory = dir.toStdString() + "/";
+        LRCInstance::dataTransferModel().downloadDirectory = dir.toStdString() + "/";
     }
 }
 

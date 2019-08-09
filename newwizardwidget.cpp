@@ -459,7 +459,7 @@ NewWizardWidget::createAccount()
             LRCInstance::accountModel().setAccountConfig(accountId, confProps);
             if (isRing) {
                 if (!confProps.username.empty()) {
-                    connect(LRCInstance::editableAccountModel(),
+                    connect(&LRCInstance::accountModel(),
                         &lrc::api::NewAccountModel::nameRegistrationEnded,
                         [this] {
                             lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -467,7 +467,7 @@ NewWizardWidget::createAccount()
                             emit NavigationRequested(ScreenEnum::CallScreen);
                             emit LRCInstance::instance().accountOnBoarded();
                         });
-                    LRCInstance::editableAccountModel()->registerName(
+                    LRCInstance::accountModel().registerName(
                         LRCInstance::getCurrAccId(),
                         "",
                         registeredName_.toStdString()

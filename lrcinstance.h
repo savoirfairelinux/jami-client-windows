@@ -66,20 +66,14 @@ public:
     static void connectivityChanged() {
         instance().lrc_->connectivityChanged();
     };
-    static const NewAccountModel& accountModel() {
+    static NewAccountModel& accountModel() {
         return instance().lrc_->getAccountModel();
     };
-    static NewAccountModel* editableAccountModel() {
-        return const_cast<NewAccountModel*>(&instance().lrc_->getAccountModel());
-    };
-    static const BehaviorController& behaviorController() {
+    static BehaviorController& behaviorController() {
         return instance().lrc_->getBehaviorController();
     };
-    static const DataTransferModel& dataTransferModel() {
+    static DataTransferModel& dataTransferModel() {
         return instance().lrc_->getDataTransferModel();
-    };
-    static DataTransferModel* editableDataTransferModel() {
-        return const_cast<DataTransferModel*>(&instance().lrc_->getDataTransferModel());
     };
     static AVModel& avModel() {
         return instance().lrc_->getAVModel();
@@ -165,15 +159,15 @@ public:
         bu.open(QIODevice::WriteOnly);
         avatarPixmap.save(&bu, "PNG");
         auto str = ba.toBase64().toStdString();
-        instance().editableAccountModel()->setAvatar(getCurrAccId(), str);
+        accountModel().setAvatar(getCurrAccId(), str);
     };
 
     static void setCurrAccAvatar(const std::string& avatar) {
-        instance().editableAccountModel()->setAvatar(getCurrAccId(), avatar);
+        accountModel().setAvatar(getCurrAccId(), avatar);
     };
 
     static void setCurrAccDisplayName(const std::string& alias) {
-        instance().editableAccountModel()->setAlias(getCurrAccId(), alias);
+        accountModel().setAlias(getCurrAccId(), alias);
     };
 
     static const account::ConfProperties_t& getCurrAccConfig() {

@@ -38,7 +38,7 @@ NameRegistrationDialog::NameRegistrationDialog(const QString& nameToRegister, QW
     connect(ui->btnCancel, &QPushButton::clicked, [this]() { reject(); });
     connect(ui->btnCloseRegisterDialog, &QPushButton::clicked, [this]() { reject(); });
 
-    connect(LRCInstance::editableAccountModel(), &lrc::api::NewAccountModel::nameRegistrationEnded,
+    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::nameRegistrationEnded,
             this, &NameRegistrationDialog::slotNameRegistrationResult);
 
     spinnerAnimation_ = new QMovie(":/images/jami_eclipse_spinner.gif");
@@ -60,7 +60,7 @@ void
 NameRegistrationDialog::slotStartNameRegistration()
 {
     auto password = ui->passwordEdit->text().toStdString();
-    LRCInstance::editableAccountModel()->registerName(LRCInstance::getCurrAccId(),
+    LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(),
         password, nameToRegister_.toStdString());
     startSpinner();
 }
