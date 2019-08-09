@@ -84,7 +84,6 @@ private:
     void setFormatListForDevice(const std::string& device);
     void showPreview();
     void startVideo();
-    void stopVideo();
     void toggleVideoSettings(bool enabled);
     void toggleVideoPreview(bool enabled);
 
