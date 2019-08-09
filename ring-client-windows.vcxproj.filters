@@ -213,6 +213,9 @@
     <ClCompile Include="contactpickeritemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="levelmeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -366,6 +369,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="contactpickeritemdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="levelmeter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
