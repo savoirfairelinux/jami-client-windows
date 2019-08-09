@@ -729,3 +729,13 @@ QWidget#contactPickerWidget {
     border:solid 1px transparent;
     background-color: white;
 }
+
+QProgressBar#audioInputMeter {
+    border: 0px solid #606060;
+    background: lightgrey;
+}
+
+    QProgressBar#audioInputMeter::chunk {
+        background-color: #0c79aa;
+        margin: 2px;
+    }

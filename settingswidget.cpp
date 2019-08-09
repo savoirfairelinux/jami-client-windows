@@ -155,7 +155,11 @@ void SettingsWidget::leaveSettingsSlot()
         toggleAdvancedSIPSettings();
     }
 
-    QtConcurrent::run([this] { ui->currentAccountAvatar->stopBooth(); });
+    stopAudioMeter();
+
+    if (!LRCInstance::getActiveCalls().size()) {
+        QtConcurrent::run( [this] { ui->currentAccountAvatar->stopBooth(); });
+    }
 
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
@@ -169,6 +173,7 @@ void SettingsWidget::setSelected(Button sel)
 {
     switch (sel) {
     case Button::accountSettingsButton:
+
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
@@ -176,9 +181,8 @@ void SettingsWidget::setSelected(Button sel)
             return;
         }
 
-        if (!LRCInstance::getActiveCalls().size()) {
-            QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
-        }
+        stopAudioMeter();
+        stopPreviewing();
 
         if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
             ui->stackedWidget->setCurrentWidget(ui->currentSIPAccountSettingsScrollWidget);
@@ -197,14 +201,14 @@ void SettingsWidget::setSelected(Button sel)
         break;
 
     case Button::generalSettingsButton:
+
         ui->generalSettingsButton->setChecked(true);
         ui->accountSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
         if (pastButton_ == sel) { return; }
 
-        if (!LRCInstance::getActiveCalls().size()) {
-            QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
-        }
+        stopAudioMeter();
+        stopPreviewing();
 
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
         populateGeneralSettings();
@@ -220,6 +224,8 @@ void SettingsWidget::setSelected(Button sel)
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
         currentDisplayedVideoDevice_.clear();
         populateAVSettings();
+
+        startAudioMeter();
 
         break;
     }
@@ -940,6 +946,13 @@ void SettingsWidget::populateAVSettings()
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::inputdevIndexChangedSlot);
 
+    connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
+        [this](const std::string& id, float level) {
+            if (id == "audiolayer_id") {
+                ui->audioInputMeter->setLevel(level);
+            }
+        });
+
     // audio output devices
     disconnect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::outputDevIndexChangedSlot);
@@ -989,7 +1002,7 @@ void SettingsWidget::populateAVSettings()
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
 
     if (shouldReinitializePreview) {
-        showPreview();
+        startPreviewing();
     }
 
     auto encodeAccel = LRCInstance::avModel().getHardwareAcceleration();
@@ -998,15 +1011,20 @@ void SettingsWidget::populateAVSettings()
 
 void SettingsWidget::outputDevIndexChangedSlot(int index)
 {
-    auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole).toString();
-    LRCInstance::avModel().setOutputDevice(selectedOutputDeviceName.toStdString());
+    stopAudioMeter(true);
+    auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole)
+        .toString().toStdString();
+    LRCInstance::avModel().setOutputDevice(selectedOutputDeviceName);
+    startAudioMeter(true);
 }
 
 void SettingsWidget::inputdevIndexChangedSlot(int index)
 {
+    stopAudioMeter(true);
     auto selectedInputDeviceName = ui->inputComboBox->itemData(index, Qt::DisplayRole)
         .toString().toStdString();
     LRCInstance::avModel().setInputDevice(selectedInputDeviceName);
+    startAudioMeter(true);
 }
 
 void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
@@ -1016,7 +1034,7 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
     if (!LRCInstance::getActiveCalls().size()) {
-        showPreview();
+        startPreviewing();
     }
 }
 
@@ -1030,15 +1048,29 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     LRCInstance::avModel().setDeviceSettings(settings);
 }
 
-void SettingsWidget::startVideo()
+void SettingsWidget::startPreviewing()
 {
-    LRCInstance::avModel().stopPreview();
-    LRCInstance::avModel().startPreview();
+    if (!LRCInstance::getActiveCalls().size()) {
+        ui->videoWidget->connectRendering();
+        ui->previewUnavailableLabel->hide();
+        ui->videoLayoutWidget->show();
+        QtConcurrent::run(
+            [this] {
+                LRCInstance::avModel().stopPreview();
+                LRCInstance::avModel().startPreview();
+            });
+        ui->videoWidget->setIsFullPreview(true);
+    } else {
+        ui->previewUnavailableLabel->show();
+        ui->videoLayoutWidget->hide();
+    }
 }
 
-void SettingsWidget::stopVideo()
+void SettingsWidget::stopPreviewing()
 {
-    LRCInstance::avModel().stopPreview();
+    if (!LRCInstance::getActiveCalls().size()) {
+        QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
+    }
 }
 
 void SettingsWidget::toggleVideoSettings(bool enabled)
@@ -1053,21 +1085,6 @@ void SettingsWidget::toggleVideoPreview(bool enabled)
 {
     ui->previewUnavailableLabel->setVisible(!enabled);
     ui->videoLayoutWidget->setVisible(enabled);
-}
-
-void SettingsWidget::showPreview()
-{
-    ui->videoWidget->connectRendering();
-    if (!LRCInstance::getActiveCalls().size()) {
-        ui->previewUnavailableLabel->hide();
-        ui->videoLayoutWidget->show();
-        startVideo();
-        ui->videoWidget->setIsFullPreview(true);
-
-    } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
-    }
 }
 
 void SettingsWidget::setFormatListForDevice(const std::string& device)
@@ -1104,4 +1121,28 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
 void SettingsWidget::slotSetHardwareAccel(bool state)
 {
     LRCInstance::avModel().setHardwareAcceleration(state);
+}
+
+void SettingsWidget::startAudioMeter(bool blocking)
+{
+    if (LRCInstance::getActiveCalls().size()) {
+        return;
+    }
+    ui->audioInputMeter->start();
+    auto f = [this] {
+        LRCInstance::avModel().startAudioDevice();
+        LRCInstance::avModel().setAudioMeterState(true);
+    };
+    blocking ? f() : QtConcurrent::run(f);
+}
+
+void SettingsWidget::stopAudioMeter(bool blocking)
+{
+    if (LRCInstance::getActiveCalls().size()) {
+        return;
+    }
+    LRCInstance::avModel().setAudioMeterState(false);
+    ui->audioInputMeter->stop();
+    auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
+    blocking ? f() : QtConcurrent::run(f);
 }
