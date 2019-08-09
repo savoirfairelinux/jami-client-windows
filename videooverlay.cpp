@@ -204,14 +204,19 @@ VideoOverlay::on_transferButton_toggled(bool checked)
 
     // receive the signal that ensure the button checked status is correct and contactpicker
     // is properly hidden
-    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose, [this](QMouseEvent *event) {
-        contactPicker_->hide();
-        // check if current mouse position is on button
-        auto relativeCursorPos = ui->transferCallButton->mapFromGlobal(event->pos());
-        if (!ui->transferCallButton->rect().contains(relativeCursorPos)) {
-            ui->transferCallButton->setChecked(false);
-        }
-    });
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose,
+        [this](QMouseEvent *event) {
+            contactPicker_->hide();
+            // check if current mouse position is on button
+            auto relativeClickPos = ui->transferCallButton->mapFromGlobal(event->globalPos());
+            if (!ui->transferCallButton->rect().contains(relativeClickPos)) {
+                ui->transferCallButton->setChecked(false);
+            } else {
+                ui->transferCallButton->blockSignals(true);
+                ui->transferCallButton->setChecked(false);
+                ui->transferCallButton->blockSignals(false);
+            }
+        });
 
     // for esc key, receive reject signal
     Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
