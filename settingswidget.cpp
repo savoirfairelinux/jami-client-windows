@@ -155,6 +155,9 @@ void SettingsWidget::leaveSettingsSlot()
         toggleAdvancedSIPSettings();
     }
 
+    LRCInstance::avModel().setAudioMeterState(false);
+    LRCInstance::avModel().stopAudioDevice();
+
     QtConcurrent::run([this] { ui->currentAccountAvatar->stopBooth(); });
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -169,6 +172,10 @@ void SettingsWidget::setSelected(Button sel)
 {
     switch (sel) {
     case Button::accountSettingsButton:
+
+        LRCInstance::avModel().setAudioMeterState(false);
+        LRCInstance::avModel().stopAudioDevice();
+
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
@@ -197,6 +204,10 @@ void SettingsWidget::setSelected(Button sel)
         break;
 
     case Button::generalSettingsButton:
+
+        LRCInstance::avModel().setAudioMeterState(false);
+        LRCInstance::avModel().stopAudioDevice();
+
         ui->generalSettingsButton->setChecked(true);
         ui->accountSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
@@ -220,6 +231,9 @@ void SettingsWidget::setSelected(Button sel)
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
         currentDisplayedVideoDevice_.clear();
         populateAVSettings();
+
+        LRCInstance::avModel().setAudioMeterState(true);
+        LRCInstance::avModel().startAudioDevice();
 
         break;
     }
@@ -922,6 +936,14 @@ void SettingsWidget::populateAVSettings()
     ui->inputComboBox->setCurrentIndex(inputIndex != -1 ? inputIndex : 0);
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::inputdevIndexChangedSlot);
+
+    connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
+        [this](const std::string& id, float level) {
+            qDebug() << "audioMeter" << level;
+            if (id == "audiolayer_id") {
+                ui->audioInputMeter->setValue(level * 100);
+            }
+        });
 
     // audio output devices
     disconnect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
