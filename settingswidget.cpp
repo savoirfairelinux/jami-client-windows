@@ -778,12 +778,18 @@ void SettingsWidget::setConnections()
 
     connect(ui->recordPathButton, &QAbstractButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
 
-    connect(ui->recordQualitySlider, &QAbstractSlider::valueChanged, this, &SettingsWidget::slotRecordQualityChanged);
+    connect(ui->recordQualitySlider, &QAbstractSlider::valueChanged, this, &SettingsWidget::slotRecordQualitySliderValueChanged);
+    connect(ui->recordQualitySlider, &QAbstractSlider::sliderReleased, this, &SettingsWidget::slotRecordQualitySliderSliderReleased);
 
     connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
 }
 
 // *************************  General Settings  *************************
+
+QString getRecordQualityString(int value)
+{
+    return value ? QString::number(static_cast<float>(value) / 100, 'f', 1) + " Mbps" : "Default";
+}
 
 void SettingsWidget::populateGeneralSettings()
 {
@@ -809,7 +815,7 @@ void SettingsWidget::populateGeneralSettings()
     ui->recordPreviewCheckBox->setChecked(recordPreview);
 
     auto recordQuality = LRCInstance::avModel().getRecordQuality();
-    ui->recordQualityValueLabel->setText(QString::number(recordQuality / 1000) + " MB/s");
+    ui->recordQualityValueLabel->setText(getRecordQualityString(recordQuality));
     ui->recordQualitySlider->setValue(recordQuality);
 
     if (LRCInstance::avModel().getRecordPath().empty()) {
@@ -894,10 +900,16 @@ void SettingsWidget::slotRecordPreviewClicked(bool state)
     LRCInstance::avModel().setRecordPreview(state);
 }
 
-void SettingsWidget::slotRecordQualityChanged(int value)
+void SettingsWidget::slotRecordQualitySliderValueChanged(int value)
 {
-    ui->recordQualityValueLabel->setText(QString::number(value / 1000) + " MB/s");
-    LRCInstance::avModel().setRecordQuality(value);
+    ui->recordQualityValueLabel->setText(getRecordQualityString(value));
+}
+
+void SettingsWidget::slotRecordQualitySliderSliderReleased()
+{
+    auto value = ui->recordQualitySlider->value();
+    // 0 - 500 -> 0 - 50000
+    LRCInstance::avModel().setRecordQuality(value * 100);
 }
 
 // *************************  Audio/Visual Settings  ************recordQuality*************
