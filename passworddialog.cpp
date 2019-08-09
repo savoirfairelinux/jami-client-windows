@@ -74,12 +74,12 @@ PasswordDialog::validatePassword()
 void
 PasswordDialog::savePassword()
 {
-    if (LRCInstance::editableAccountModel()->changeAccountPassword(LRCInstance::getCurrAccId(),
+    if (LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
         ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString())) {
 
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.archiveHasPassword = !ui->passwordEdit->text().isEmpty();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
         accept();
     } else {

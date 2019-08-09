@@ -309,7 +309,7 @@ void MainWindow::readSettingsFromRegistry()
     restoreGeometry(settings.value(SettingsKey::geometry).toByteArray());
     restoreState(settings.value(SettingsKey::windowState).toByteArray());
 
-    LRCInstance::editableDataTransferModel()->downloadDirectory = settings.value(SettingsKey::downloadPath,
+    LRCInstance::dataTransferModel().downloadDirectory = settings.value(SettingsKey::downloadPath,
                                                                               QStandardPaths::writableLocation(QStandardPaths::DownloadLocation))
                                                                       .toString()
                                                                       .toStdString()

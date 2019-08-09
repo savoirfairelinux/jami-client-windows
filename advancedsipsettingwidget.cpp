@@ -125,13 +125,13 @@ void AdvancedSIPSettingsWidget::setAutoAnswerCalls(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.autoAnswer = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setEnableRingtone(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Ringtone.ringtoneEnabled = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void AdvancedSIPSettingsWidget::openFileCustomRingtone()
@@ -144,7 +144,7 @@ void AdvancedSIPSettingsWidget::openFileCustomRingtone()
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.Ringtone.ringtonePath = fileUrl.toStdString();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtoneSIP->setText(QFileInfo(fileUrl).fileName());
 
     } else if (oldPath.isEmpty()) {
@@ -157,19 +157,19 @@ void AdvancedSIPSettingsWidget::setUseUPnP(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.upnpEnabled = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setUseTURN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.enable = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setUseSTUN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.enable = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
     state ? ui->lineEditSTUNAddressSIP->setEnabled(true) : ui->lineEditSTUNAddressSIP->setEnabled(false);
 }
@@ -178,25 +178,25 @@ void AdvancedSIPSettingsWidget::setTURNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.server = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setTURNUsername(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.username = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setTURNPsswd(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void AdvancedSIPSettingsWidget::setSTUNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.server = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void AdvancedSIPSettingsWidget::updateAudioCodecs()
@@ -310,5 +310,5 @@ void AdvancedSIPSettingsWidget::setVideoState(int state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Video.videoEnabled = (bool)state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }

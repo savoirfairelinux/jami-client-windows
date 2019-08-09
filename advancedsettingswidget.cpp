@@ -155,21 +155,21 @@ AdvancedSettingsWidget::setCallsUntrusted(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.allowIncoming = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setAutoAnswerCalls(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.autoAnswer = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setEnableRingtone(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Ringtone.ringtoneEnabled = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void
@@ -182,7 +182,7 @@ AdvancedSettingsWidget::openFileCustomRingtone()
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.Ringtone.ringtonePath = fileUrl.toStdString();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtone->setText(QFileInfo(fileUrl).fileName());
     } else if (oldPath.isEmpty()) {
         ui->btnRingtone->setText(tr("Add a custom ringtone"));
@@ -195,7 +195,7 @@ AdvancedSettingsWidget::setNameServer(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.RingNS.uri = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 // openDHT config
@@ -204,7 +204,7 @@ AdvancedSettingsWidget::setEnableProxy(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.proxyEnabled = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
     state ? ui->lineEditProxy->setEnabled(true) : ui->lineEditProxy->setEnabled(false);
 }
@@ -213,14 +213,14 @@ AdvancedSettingsWidget::setProxyAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.proxyServer = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setBootstrapAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.hostname = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 // security
@@ -231,21 +231,21 @@ AdvancedSettingsWidget::setUseUPnP(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.upnpEnabled = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setUseTURN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.enable = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setUseSTUN(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.enable = state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
     state ? ui->lineEditSTUNAddress->setEnabled(true) : ui->lineEditSTUNAddress->setEnabled(false);
 }
@@ -255,28 +255,28 @@ AdvancedSettingsWidget::setTURNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.server = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setTURNUsername(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.username = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setTURNPsswd(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
 AdvancedSettingsWidget::setSTUNAddress(const QString& name)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.STUN.server = name.toStdString();
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void
@@ -288,7 +288,7 @@ AdvancedSettingsWidget::openFileCACert()
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.TLS.certificateListFile = fileUrl.toStdString();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
     ui->btnCACert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile)).fileName());
 }
@@ -302,7 +302,7 @@ AdvancedSettingsWidget::openFileUserCert()
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.TLS.certificateFile = fileUrl.toStdString();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
     ui->btnUserCert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile)).fileName());
 }
@@ -316,7 +316,7 @@ AdvancedSettingsWidget::openFilePrivateKey()
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.TLS.privateKeyFile = fileUrl.toStdString();
-        LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+        LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
     ui->btnPrivateKey->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile)).fileName());
 }
@@ -437,5 +437,5 @@ AdvancedSettingsWidget::setVideoState(int state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.Video.videoEnabled = (bool)state;
-    LRCInstance::editableAccountModel()->setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
