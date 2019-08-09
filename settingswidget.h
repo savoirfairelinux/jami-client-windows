@@ -133,7 +133,8 @@ private slots:
     void openRecordFolderSlot();
     void slotAlwaysRecordingClicked(bool state);
     void slotRecordPreviewClicked(bool state);
-    void slotRecordQualityChanged(int value);
+    void slotRecordQualitySliderValueChanged(int value);
+    void slotRecordQualitySliderSliderReleased();
     void slotSetUpdateAutomatic(bool state);
     void outputDevIndexChangedSlot(int index);
     void inputdevIndexChangedSlot(int index);
