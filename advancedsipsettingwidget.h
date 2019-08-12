@@ -85,6 +85,12 @@ private slots:
     void setTURNRealm(const QString& name);
     void setSTUNAddress(const QString& name);
 
+    // published address
+    void setUseCustomAddressAndPort(bool state);
+
+    void lineEditSIPCustomAddressLineEditTextChanged(const QString& text);
+    void customPortSIPSpinBoxValueChanged(const int& value);
+
     // codecs
     void updateAudioCodecs();
     void updateVideoCodecs();
