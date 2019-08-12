@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami és un programari lliure de comunicació universal, que respecta les llibertats i la privacitat dels seus usuaris.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
