@@ -82,7 +82,19 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
     connect(ui->lineEditTurnAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNAddress);
     connect(ui->lineEditTurnUsernameSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNUsername);
     connect(ui->lineEditTurnPsswdSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNPsswd);
+    connect(ui->lineEditTurnRealmSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNRealm);
     connect(ui->lineEditSTUNAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setSTUNAddress);
+
+    connect(ui->checkBoxTurnEnableSIP, &QAbstractButton::clicked, [this](int state) {
+        ui->lineEditTurnAddressSIP->setEnabled((bool)state);
+        ui->lineEditTurnUsernameSIP->setEnabled((bool)state);
+        ui->lineEditTurnPsswdSIP->setEnabled((bool)state);
+        ui->lineEditTurnRealmSIP->setEnabled((bool)state);
+    });
+
+    connect(ui->checkBoxSTUNEnableSIP, &QAbstractButton::clicked, [this](int state) {
+        ui->lineEditSTUNAddressSIP->setEnabled((bool)state);
+    });
 
     // codecs
     connect(ui->audioListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::audioCodecsStateChange);
@@ -167,8 +179,20 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->lineEditTurnAddressSIP->setText(QString::fromStdString(config.TURN.server));
     ui->lineEditTurnUsernameSIP->setText(QString::fromStdString(config.TURN.username));
     ui->lineEditTurnPsswdSIP->setText(QString::fromStdString(config.TURN.password));
+    ui->lineEditTurnRealmSIP->setText(QString::fromStdString(config.TURN.realm));
+    ui->lineEditTurnAddressSIP->setEnabled(config.TURN.enable);
+    ui->lineEditTurnUsernameSIP->setEnabled(config.TURN.enable);
+    ui->lineEditTurnPsswdSIP->setEnabled(config.TURN.enable);
+    ui->lineEditTurnRealmSIP->setEnabled(config.TURN.enable);
+
     ui->checkBoxSTUNEnableSIP->setChecked(config.STUN.enable);
     ui->lineEditSTUNAddressSIP->setText(QString::fromStdString(config.STUN.server));
+    ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
+
+    ui->registrationExpireTimeoutSpinBox->setValue(config.Registration.expire);
+    connect(ui->registrationExpireTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged);
+    ui->networkInterfaceSpinBox->setValue(config.localPort);
+    connect(ui->networkInterfaceSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged);
 
     // codecs
     ui->videoCheckBoxSIP->setChecked(config.Video.videoEnabled);
@@ -244,18 +268,29 @@ void AdvancedSIPSettingsWidget::setTURNAddress()
     confProps.TURN.server = ui->lineEditTurnAddressSIP->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
+
 void AdvancedSIPSettingsWidget::setTURNUsername()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.username = ui->lineEditTurnUsernameSIP->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
+
 void AdvancedSIPSettingsWidget::setTURNPsswd()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = ui->lineEditTurnPsswdSIP->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
+
+void
+AdvancedSIPSettingsWidget::setTURNRealm()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.TURN.realm = ui->lineEditTurnRealmSIP->text().toStdString();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
 void AdvancedSIPSettingsWidget::setSTUNAddress()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -526,4 +561,20 @@ AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePa
         button->setText("");
     }
     return fileUrl.toStdString();
+}
+
+void
+AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged(const int& value)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.Registration.expire = value;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged(const int& value)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.localPort = value;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
