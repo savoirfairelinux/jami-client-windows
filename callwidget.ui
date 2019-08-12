@@ -445,11 +445,11 @@
                    <attribute name="headerVisible">
                     <bool>false</bool>
                    </attribute>
-                   <attribute name="headerDefaultSectionSize">
-                    <number>42</number>
-                   </attribute>
                    <attribute name="headerMinimumSectionSize">
                     <number>0</number>
+                   </attribute>
+                   <attribute name="headerDefaultSectionSize">
+                    <number>42</number>
                    </attribute>
                   </widget>
                  </item>
@@ -1026,7 +1026,7 @@ Copy and share it with your friends!
                    </sizepolicy>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="videoPage">
                    <property name="sizePolicy">
