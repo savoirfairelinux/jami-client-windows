@@ -110,6 +110,12 @@ VideoWidget::renderFrame(const std::string& id)
 }
 
 void
+VideoWidget::slotToggleFullScreenClicked()
+{
+    this->update();
+}
+
+void
 VideoWidget::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
@@ -154,9 +160,9 @@ VideoWidget::paintEvent(QPaintEvent* e)
             hasFrame_ = true;
         }
         if (previewImage_) {
-            if(resetPreview_) {
-                auto previewHeight = fullPreview_ ? height() : height() / 4;
-                auto previewWidth = fullPreview_  ? width() : width() / 4;
+            if (resetPreview_) {
+                auto previewHeight = fullPreview_ ? height() : height() / 6;
+                auto previewWidth = fullPreview_ ? width() : width() / 6;
                 QImage scaledPreview;
                 if (photoMode_)
                     scaledPreview = Utils::getCirclePhoto(*previewImage_, previewHeight);
@@ -164,8 +170,8 @@ VideoWidget::paintEvent(QPaintEvent* e)
                     scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
                 auto xDiff = (previewWidth - scaledPreview.width()) / 2;
                 auto yDiff = (previewHeight - scaledPreview.height()) / 2;
-                auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
                 auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+                auto yPos = fullPreview_ ? yDiff : height() - scaledPreview.height() - previewMargin_;
                 previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
                 painter.drawImage(previewGeometry_, scaledPreview);
                 resetPreview_ = false;

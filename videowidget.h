@@ -43,11 +43,14 @@ public:
     inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
     void setPhotoMode(bool isPhotoMode);
     QImage takePhoto();
+    int getPreviewMargin(){ return previewMargin_; }
+    void resetPreview() { resetPreview_ = true; }
 
 protected:
     void paintEvent(QPaintEvent* e);
 
 public slots:
+    void slotToggleFullScreenClicked();
     void slotRendererStarted(const std::string& id);
     void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
@@ -56,6 +59,8 @@ private:
     struct rendererConnections {
         QMetaObject::Connection started, stopped, updated;
     } rendererConnections_;
+
+    void paintBackgroundColor(QPainter* painter, QColor color);
 
     video::Renderer* previewRenderer_;
     video::Frame previewFrame_;
@@ -77,7 +82,4 @@ private:
     bool hasFrame_ = false;
 
     constexpr static int previewMargin_ = 15;
-
-private:
-    void paintBackgroundColor(QPainter* painter, QColor color);
 };
