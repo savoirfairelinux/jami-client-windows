@@ -85,6 +85,12 @@ private slots:
     void setTURNRealm();
     void setSTUNAddress();
 
+    // published address
+    void setUseCustomAddressAndPort(bool state);
+
+    void lineEditSIPCustomAddressLineEditTextChanged();
+    void customPortSIPSpinBoxValueChanged(const int& value);
+
     // codecs
     void updateAudioCodecs();
     void updateVideoCodecs();

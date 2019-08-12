@@ -96,6 +96,14 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
         ui->lineEditSTUNAddressSIP->setEnabled((bool)state);
     });
 
+    // published address
+    connect(ui->checkBoxCustomAddressPort, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseCustomAddressAndPort);
+    connect(ui->checkBoxCustomAddressPort, &QAbstractButton::clicked, [this](int state) {
+        ui->lineEditSIPCustomAddress->setEnabled((bool)state);
+        ui->customPortSIPSpinBox->setEnabled((bool)state);
+    });
+    connect(ui->lineEditSIPCustomAddress, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::lineEditSIPCustomAddressLineEditTextChanged);
+
     // codecs
     connect(ui->audioListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::audioCodecsStateChange);
     connect(ui->videoListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::videoCodecsStateChange);
@@ -193,6 +201,13 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->registrationExpireTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged);
     ui->networkInterfaceSpinBox->setValue(config.localPort);
     connect(ui->networkInterfaceSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged);
+
+    // published address
+    ui->checkBoxCustomAddressPort->setChecked(config.publishedSameAsLocal);
+    ui->lineEditSIPCustomAddress->setText(QString::fromStdString(config.publishedAddress));
+    ui->customPortSIPSpinBox->setValue(config.publishedPort);
+
+    connect(ui->customPortSIPSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged);
 
     // codecs
     ui->videoCheckBoxSIP->setChecked(config.Video.videoEnabled);
@@ -576,5 +591,29 @@ AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged(const int& value)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.localPort = value;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::setUseCustomAddressAndPort(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.publishedSameAsLocal = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::lineEditSIPCustomAddressLineEditTextChanged()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.publishedAddress = ui->lineEditSIPCustomAddress->text().toStdString();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged(const int& value)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.publishedPort = value;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
