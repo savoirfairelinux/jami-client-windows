@@ -771,6 +771,7 @@ CallWidget::slotVideoViewDestroyed(const std::string& callid)
         ui->stackedWidget->addWidget(ui->mainActivityWidget);
         ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
         ui->mainActivityWidget->showNormal();
+        MainWindow::instance().showWindow();
     }
     showConversationView();
 }
