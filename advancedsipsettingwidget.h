@@ -77,9 +77,12 @@ private slots:
     void setUseTURN(bool state);
     void setUseSTUN(bool state);
 
+    void registrationTimeoutSpinBoxValueChanged(const int& value);
+    void networkInterfaceSpinBoxValueChanged(const int& value);
     void setTURNAddress(const QString& name);
     void setTURNUsername(const QString& name);
     void setTURNPsswd(const QString& name);
+    void setTURNRealm(const QString& name);
     void setSTUNAddress(const QString& name);
 
     // codecs
