@@ -77,9 +77,12 @@ private slots:
     void setUseTURN(bool state);
     void setUseSTUN(bool state);
 
+    void registrationTimeoutSpinBoxValueChanged(const int& value);
+    void networkInterfaceSpinBoxValueChanged(const int& value);
     void setTURNAddress();
     void setTURNUsername();
     void setTURNPsswd();
+    void setTURNRealm();
     void setSTUNAddress();
 
     // codecs
