@@ -43,11 +43,14 @@ public:
     inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
     void setPhotoMode(bool isPhotoMode);
     QImage takePhoto();
+    int getPreviewMargin(){ return previewMargin_; }
+    void resetPreview() { resetPreview_ = true; }
 
 protected:
     void paintEvent(QPaintEvent* e);
 
 public slots:
+    void slotToggleFullScreenClicked();
     void slotRendererStarted(const std::string& id);
     void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
@@ -75,6 +78,10 @@ private:
     bool resetPreview_ = false;
     bool photoMode_ = false;
     bool hasFrame_ = false;
+
+private:
+    int previewxDiff_;
+    int previewyDiff_;
 
     constexpr static int previewMargin_ = 15;
 

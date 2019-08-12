@@ -95,7 +95,7 @@ VideoWidget::renderFrame(const std::string& id)
     if (renderer && renderer->isRendering()) {
         {
             QMutexLocker lock(&mutex_);
-            auto tmp  = renderer->currentFrame();
+            auto tmp = renderer->currentFrame();
             if (tmp.storage.size()) {
                 using namespace lrc::api::video;
                 if (id == PREVIEW_RENDERER_ID) {
@@ -107,6 +107,12 @@ VideoWidget::renderFrame(const std::string& id)
         }
         update();
     }
+}
+
+void
+VideoWidget::slotToggleFullScreenClicked()
+{
+    this->update();
 }
 
 void
@@ -134,38 +140,35 @@ VideoWidget::paintEvent(QPaintEvent* e)
             auto scaledDistant = distantImage_->scaled(size(), Qt::KeepAspectRatio);
             auto xDiff = (width() - scaledDistant.width()) / 2;
             auto yDiff = (height() - scaledDistant.height()) / 2;
-            painter.drawImage(QRect(
-                xDiff, yDiff, scaledDistant.width(), scaledDistant.height()), scaledDistant
-            );
+            painter.drawImage(QRect(xDiff, yDiff, scaledDistant.width(), scaledDistant.height()), scaledDistant);
         }
     }
     if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
         QMutexLocker lock(&mutex_);
         if (previewFrame_.storage.size() != 0
             && previewFrame_.storage.size() ==
-            (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width() * 4)) {
+            (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width()*4)) {
             framePreview_ = std::move(previewFrame_.storage);
             previewImage_.reset(
                 new QImage((uchar*)framePreview_.data(),
                     previewRenderer_->size().width(),
                     previewRenderer_->size().height(),
-                    QImage::Format_ARGB32_Premultiplied)
-            );
+                    QImage::Format_ARGB32_Premultiplied));
             hasFrame_ = true;
         }
         if (previewImage_) {
-            if(resetPreview_) {
-                auto previewHeight = fullPreview_ ? height() : height() / 4;
-                auto previewWidth = fullPreview_  ? width() : width() / 4;
+            if (resetPreview_) {
+                auto previewHeight = fullPreview_ ? height() : height() / 6;
+                auto previewWidth = fullPreview_ ? width() : width() / 6;
                 QImage scaledPreview;
                 if (photoMode_)
                     scaledPreview = Utils::getCirclePhoto(*previewImage_, previewHeight);
                 else
                     scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-                auto xDiff = (previewWidth - scaledPreview.width()) / 2;
-                auto yDiff = (previewHeight - scaledPreview.height()) / 2;
-                auto yPos = fullPreview_ ? yDiff : height() - previewHeight - previewMargin_;
-                auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
+                previewxDiff_ = (previewWidth - scaledPreview.width()) / 2;
+                previewyDiff_ = (previewHeight - scaledPreview.height()) / 2;
+                auto yPos = fullPreview_ ? height() - previewHeight - previewyDiff_ - previewMargin_ : height() - previewHeight - previewMargin_;
+                auto xPos = fullPreview_ ? width() - scaledPreview.width() - previewxDiff_ + previewMargin_ : width() - scaledPreview.width() - previewMargin_;
                 previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
                 painter.drawImage(previewGeometry_, scaledPreview);
                 resetPreview_ = false;
@@ -211,14 +214,12 @@ VideoWidget::connectRendering()
     );
 }
 
-void
-VideoWidget::setPreviewDisplay(bool display)
+void VideoWidget::setPreviewDisplay(bool display)
 {
     isPreviewDisplayed_ = display;
 }
 
-void
-VideoWidget::setIsFullPreview(bool full)
+void VideoWidget::setIsFullPreview(bool full)
 {
     fullPreview_ = full;
 }
