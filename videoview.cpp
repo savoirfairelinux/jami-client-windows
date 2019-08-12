@@ -67,6 +67,7 @@ VideoView::VideoView(QWidget* parent) :
         this, SLOT(showContextMenu(const QPoint&)));
     connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
         emit this->setChatVisibility(visible);
+    connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
 
 }
@@ -81,6 +82,7 @@ VideoView::~VideoView()
 void
 VideoView::resizeEvent(QResizeEvent* event)
 {
+    int marginWidth = ui->videoWidget->GetPreviewMargin();
     QRect& previewRect = ui->videoWidget->getPreviewRect();
     int deltaW = event->size().width() - event->oldSize().width();
     int deltaH = event->size().height() - event->oldSize().height();
@@ -102,16 +104,20 @@ VideoView::resizeEvent(QResizeEvent* event)
     }
 
     if (previewRect.left() <= 0)
-        previewRect.moveLeft(1);
+        previewRect.moveLeft(marginWidth);
+    previewRect.moveRight(width() - marginWidth);
 
     if (previewRect.right() >= width())
-        previewRect.moveRight(width() - 1);
+        previewRect.moveRight(width() - marginWidth);
 
     if (previewRect.top() <= 0)
-        previewRect.moveTop(1);
+        previewRect.moveTop(marginWidth);
+    previewRect.moveBottom(height() - marginWidth);
 
     if (previewRect.bottom() >= height())
-        previewRect.moveBottom(height() - 1);
+        previewRect.moveBottom(height() - marginWidth);
+
+    ui->videoWidget->resetPreview();
 
     overlay_->resize(this->size());
     overlay_->show();
@@ -164,8 +170,10 @@ VideoView::slotCallStatusChanged(const std::string& callId)
         }
         return;
     }
-    default:
+    case Status::ENDED:
         emit closing(call.id);
+    default:
+        //emit closing(call.id);
         break;
     }
     QObject::disconnect(timerConnection_);
