@@ -38,6 +38,7 @@ public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
     void connectRendering();
+    void connectPreviewOnlyRendering();
     void setPreviewDisplay(bool display);
     void setIsFullPreview(bool full);
     inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
@@ -45,6 +46,8 @@ public:
     QImage takePhoto();
     int getPreviewMargin(){ return previewMargin_; }
     void resetPreview() { resetPreview_ = true; }
+    void disconnectRendering();
+    void rendererStartedWithoutDistantRender();
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -52,6 +55,9 @@ protected:
 public slots:
     void slotToggleFullScreenClicked();
     void slotRendererStarted(const std::string& id);
+    void rendererConnectionsUpdatePreviewCallback(const std::string& id);
+    void rendererConnectionsUpdateFullViewCallback(const std::string& id);
+    void rendererConnectionsStopFullViewCallback(const std::string& id);
     void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
 

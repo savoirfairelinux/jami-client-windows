@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -42,10 +43,6 @@ VideoWidget::slotRendererStarted(const std::string& id)
 
     QObject::disconnect(rendererConnections_.started);
 
-    // only one videowidget will be used at the same time
-    if (not isVisible())
-        return;
-
     this->show();
 
     resetPreview_ = true;
@@ -54,36 +51,15 @@ VideoWidget::slotRendererStarted(const std::string& id)
     rendererConnections_.updated = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::frameUpdated,
-        [this](const std::string& id) {
-            auto avModel = &LRCInstance::avModel();
-            auto renderer = &avModel->getRenderer(id);
-            if (!renderer->isRendering()) {
-                return;
-            }
-            using namespace lrc::api::video;
-            if (id == PREVIEW_RENDERER_ID) {
-                previewRenderer_ = const_cast<Renderer*>(renderer);
-            } else {
-                distantRenderer_ = const_cast<Renderer*>(renderer);
-            }
-            renderFrame(id);
-        });
+        this,
+        &VideoWidget::rendererConnectionsUpdateFullViewCallback);
 
     QObject::disconnect(rendererConnections_.stopped);
     rendererConnections_.stopped = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::rendererStopped,
-        [this](const std::string& id) {
-            QObject::disconnect(rendererConnections_.updated);
-            QObject::disconnect(rendererConnections_.stopped);
-            using namespace lrc::api::video;
-            if (id == PREVIEW_RENDERER_ID) {
-                previewRenderer_ = nullptr;
-            } else {
-                distantRenderer_ = nullptr;
-            }
-            repaint();
-        });
+        this,
+        &VideoWidget::rendererConnectionsStopFullViewCallback);
 }
 
 void
@@ -218,6 +194,17 @@ VideoWidget::connectRendering()
 }
 
 void
+VideoWidget::connectPreviewOnlyRendering()
+{
+    rendererConnections_.started = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::rendererStarted,
+        [this]() {
+        this->rendererStartedWithoutDistantRender();
+    });
+}
+
+void
 VideoWidget::setPreviewDisplay(bool display)
 {
     isPreviewDisplayed_ = display;
@@ -249,4 +236,83 @@ VideoWidget::setPhotoMode(bool isPhotoMode)
     pal.setColor(QPalette::Background, color);
     setAutoFillBackground(true);
     setPalette(pal);
+}
+
+void
+VideoWidget::disconnectRendering()
+{
+    QObject::disconnect(rendererConnections_.started);
+    QObject::disconnect(rendererConnections_.stopped);
+    QObject::disconnect(rendererConnections_.updated);
+}
+
+void
+VideoWidget::rendererStartedWithoutDistantRender()
+{
+    // connect only local preview rendering
+    QObject::disconnect(rendererConnections_.started);
+
+    this->show();
+
+    resetPreview_ = true;
+
+    QObject::disconnect(rendererConnections_.updated);
+    rendererConnections_.updated = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::frameUpdated,
+        this,
+        &VideoWidget::rendererConnectionsUpdatePreviewCallback);
+
+    QObject::disconnect(rendererConnections_.stopped);
+    rendererConnections_.stopped = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::rendererStopped,
+        this,
+        &VideoWidget::rendererConnectionsStopFullViewCallback);
+}
+
+void
+VideoWidget::rendererConnectionsUpdateFullViewCallback(const std::string& id)
+{
+    auto avModel = &LRCInstance::avModel();
+    auto renderer = &avModel->getRenderer(id);
+    if (!renderer->isRendering()) {
+        return;
+    }
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = const_cast<Renderer*>(renderer);
+    } else {
+        distantRenderer_ = const_cast<Renderer*>(renderer);
+    }
+    renderFrame(id);
+}
+
+void
+VideoWidget::rendererConnectionsStopFullViewCallback(const std::string& id)
+{
+    QObject::disconnect(rendererConnections_.updated);
+    QObject::disconnect(rendererConnections_.stopped);
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = nullptr;
+    } else {
+        distantRenderer_ = nullptr;
+    }
+    repaint();
+}
+
+void
+VideoWidget::rendererConnectionsUpdatePreviewCallback(const std::string& id)
+{
+    auto avModel = &LRCInstance::avModel();
+    auto renderer = &avModel->getRenderer(id);
+    if (!renderer->isRendering()) {
+        return;
+    }
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = const_cast<Renderer*>(renderer);
+        renderFrame(id);
+    }
 }
