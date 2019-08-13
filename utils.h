@@ -114,6 +114,18 @@ void swapQListWidgetItems(QListWidget* list, bool down = true);
 // Byte to human readable size
 QString humanFileSize(qint64 fileSize);
 
+// Video widget change enum
+
+enum class videoWidgetSwapType
+{
+    callingWidgetToSettingWidgetPreview,
+    callingWidgetToSettingWidgetPhotoBooth,
+    callingWidgetToSettingWidgetSIPPhotoBooth,
+    settingWidgetPreviewToCallingWidget,
+    settingWidgetPhotoBoothToCallingWidget,
+    settingWidgetSIPPhotoBoothToCallingWidget
+};
+
 template <typename Func1, typename Func2>
 void
 oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object* sender, Func1 signal, Func2 slot)

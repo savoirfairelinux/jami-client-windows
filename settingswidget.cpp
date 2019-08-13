@@ -159,6 +159,10 @@ void SettingsWidget::leaveSettingsSlot()
 
     if (!LRCInstance::getActiveCalls().size()) {
         QtConcurrent::run( [this] { ui->currentAccountAvatar->stopBooth(); });
+    } else if (previewed_) {
+        //emit videoCallVideoRecovery(previewed_);
+        emit settingWidgetPreviewToCallingWidgetSignal(Utils::videoWidgetSwapType::settingWidgetPreviewToCallingWidget);
+        previewed_ = false;
     }
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -1033,9 +1037,7 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toString().toStdString();
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
-    if (!LRCInstance::getActiveCalls().size()) {
-        startPreviewing();
-    }
+    startPreviewing();
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
@@ -1056,13 +1058,16 @@ void SettingsWidget::startPreviewing()
         ui->videoLayoutWidget->show();
         QtConcurrent::run(
             [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
+            LRCInstance::avModel().stopPreview();
+            LRCInstance::avModel().startPreview();
+        });
         ui->videoWidget->setIsFullPreview(true);
     } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
+        emit callingWidgetToSettingWidgetPreviewSignal(Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPreview);
+        ui->previewUnavailableLabel->hide();
+        ui->videoLayoutWidget->show();
+        ui->videoWidget->setIsFullPreview(true);
+        previewed_ = true;
     }
 }
 
@@ -1145,4 +1150,34 @@ void SettingsWidget::stopAudioMeter(bool blocking)
     ui->audioInputMeter->stop();
     auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
     blocking ? f() : QtConcurrent::run(f);
+}
+
+void SettingsWidget::connectStartedRenderingToPreview()
+{
+    ui->videoWidget->slotRendererStarted("");
+}
+
+void SettingsWidget::connectStartedRenderingToPhotoBooth()
+{
+    ui->currentAccountAvatar->connectStartedRendering();
+}
+
+void SettingsWidget::connectStartedRenderingToSIPPhotoBooth()
+{
+    ui->currentSIPAccountAvatar->connectStartedRendering();
+}
+
+void SettingsWidget::disconnectPreviewRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void SettingsWidget::disconnectPhotoBoothRendering()
+{
+    ui->currentAccountAvatar->disconnectRendering();
+}
+
+void SettingsWidget::disconnectSIPPhotoBoothRendering()
+{
+    ui->currentSIPAccountAvatar->disconnectRendering();
 }

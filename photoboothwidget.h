@@ -40,6 +40,8 @@ public:
     void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
+    void connectStartedRendering();
+    void disconnectRendering();
 
 private slots:
     void on_importButton_clicked();

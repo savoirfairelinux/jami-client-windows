@@ -23,6 +23,7 @@
 
 #include "lrcinstance.h"
 #include "navwidget.h"
+#include "utils.h"
 
 #include "advancedsettingswidget.h"
 #include "advancedsipsettingwidget.h"
@@ -45,11 +46,26 @@ public:
     explicit SettingsWidget(QWidget* parent = nullptr);
     ~SettingsWidget();
 
+    void connectStartedRenderingToPreview();
+    void connectStartedRenderingToPhotoBooth();
+    void connectStartedRenderingToSIPPhotoBooth();
+    void disconnectPreviewRendering();
+    void disconnectPhotoBoothRendering();
+    void disconnectSIPPhotoBoothRendering();
+
     // NavWidget
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountOnBoarded();
+
+signals:
+    void callingWidgetToSettingWidgetPreviewSignal(Utils::videoWidgetSwapType type);
+    void callingWidgetToSettingWidgetPhotoBoothSignal(Utils::videoWidgetSwapType type);
+    void callingWidgetToSettingWidgetSIPPhotoBoothSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPreviewToCallingWidgetSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPhotoBoothToCallingWidgetSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetSIPPhotoBoothToCallingWidgetSignal(Utils::videoWidgetSwapType type);
 
 private:
     Ui::SettingsWidget* ui;
@@ -105,6 +121,7 @@ private:
     int avatarSIPSize_;
     bool regNameBtn_ = false;
     const int itemHeight_ = 55;
+    bool previewed_ {false};
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
