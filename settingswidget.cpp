@@ -156,9 +156,12 @@ void SettingsWidget::leaveSettingsSlot()
     }
 
     stopAudioMeter();
+    ui->currentAccountAvatar->stopBooth();
 
-    if (!LRCInstance::getActiveCalls().size()) {
-        QtConcurrent::run( [this] { ui->currentAccountAvatar->stopBooth(); });
+    if (previewed_) {
+        //emit videoCallVideoRecovery(previewed_);
+        emit settingWidgetPreviewToCallingWidgetSignal(Utils::videoWidgetSwapType::settingWidgetPreviewToCallingWidget);
+        previewed_ = false;
     }
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -703,6 +706,14 @@ void SettingsWidget::setConnections()
             LRCInstance::setCurrAccAvatar(ui->currentAccountAvatar->getAvatarPixmap());
         });
 
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::callingWidgetToSettingWidgetPhotoBoothEnterSignal, this, &SettingsWidget::photoBoothEnterReceived);
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::callingWidgetToSettingWidgetPhotoBoothEnterSignal, this, &SettingsWidget::photoBoothEnterReceived);
+
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::settingWidgetPhotoBoothToCallingWidgetLeaveSignal, this, &SettingsWidget::photoBoothLeaveReceived);
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::settingWidgetPhotoBoothToCallingWidgetLeaveSignal, this, &SettingsWidget::photoBoothLeaveReceived);
+
     connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::clearedPhoto,
         [this] {
             LRCInstance::setCurrAccAvatar(QPixmap());
@@ -1033,9 +1044,7 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toString().toStdString();
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
-    if (!LRCInstance::getActiveCalls().size()) {
-        startPreviewing();
-    }
+    startPreviewing();
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
@@ -1056,13 +1065,17 @@ void SettingsWidget::startPreviewing()
         ui->videoLayoutWidget->show();
         QtConcurrent::run(
             [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
+            LRCInstance::avModel().stopPreview();
+            LRCInstance::avModel().startPreview();
+        });
         ui->videoWidget->setIsFullPreview(true);
     } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
+        ui->videoWidget->connectRendering();
+        emit callingWidgetToSettingWidgetPreviewSignal(Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPreview);
+        ui->previewUnavailableLabel->hide();
+        ui->videoLayoutWidget->show();
+        ui->videoWidget->setIsFullPreview(true);
+        previewed_ = true;
     }
 }
 
@@ -1145,4 +1158,34 @@ void SettingsWidget::stopAudioMeter(bool blocking)
     ui->audioInputMeter->stop();
     auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
     blocking ? f() : QtConcurrent::run(f);
+}
+
+void SettingsWidget::connectStartedRenderingToPreview()
+{
+    ui->videoWidget->slotRendererStarted("");
+}
+
+void SettingsWidget::connectStartedRenderingToPhotoBooth()
+{
+    ui->currentAccountAvatar->connectStartedRendering();
+}
+
+void SettingsWidget::disconnectPreviewRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void SettingsWidget::disconnectPhotoBoothRendering()
+{
+    ui->currentAccountAvatar->disconnectRendering();
+}
+
+void SettingsWidget::photoBoothEnterReceived(Utils::videoWidgetSwapType Type)
+{
+    emit callingWidgetToSettingWidgetPhotoBoothSignal(Type);
+}
+
+void SettingsWidget::photoBoothLeaveReceived(Utils::videoWidgetSwapType Type)
+{
+    emit settingWidgetPhotoBoothToCallingWidgetSignal(Type);
 }
