@@ -294,7 +294,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/images/spike.png</pixmap>
+      <pixmap resource="ressources.qrc">:/images/spike.png</pixmap>
      </property>
     </widget>
    </item>
@@ -312,6 +312,12 @@
    <header>smartlistview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <tabstops>
+  <tabstop>ringContactLineEdit</tabstop>
+  <tabstop>smartList</tabstop>
+ </tabstops>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

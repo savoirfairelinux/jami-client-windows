@@ -2164,6 +2164,21 @@ Copy and share it with your friends!
    <header>bezierconnectorwidget.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnConversations</tabstop>
+  <tabstop>btnInvites</tabstop>
+  <tabstop>ringContactLineEdit</tabstop>
+  <tabstop>smartList</tabstop>
+  <tabstop>acceptButton</tabstop>
+  <tabstop>refuseButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>imBackButton</tabstop>
+  <tabstop>btnAudioCall</tabstop>
+  <tabstop>btnVideoCall</tabstop>
+  <tabstop>sendContactRequestButton</tabstop>
+  <tabstop>qrButton</tabstop>
+  <tabstop>shareButton</tabstop>
+ </tabstops>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
