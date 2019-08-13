@@ -19,6 +19,7 @@
 
 #include "photoboothwidget.h"
 #include "ui_photoboothwidget.h"
+#include "settingswidget.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -51,7 +52,6 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     flashAnimation_->setEndValue(0);
     flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
 
-    takePhotoState_ = true;
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
@@ -63,26 +63,46 @@ PhotoboothWidget::~PhotoboothWidget()
 
 void PhotoboothWidget::startBooth()
 {
-    hasAvatar_ = false;
-    ui->videoFeed->setResetPreview(true);
-    ui->videoFeed->connectRendering();
-    LRCInstance::avModel().stopPreview();
-    LRCInstance::avModel().startPreview();
-    ui->videoFeed->show();
-    ui->avatarLabel->hide();
-    takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    if (!LRCInstance::getActiveCalls().size()) {
+        hasAvatar_ = false;
+        ui->videoFeed->setResetPreview(true);
+        ui->videoFeed->connectRendering();
+        LRCInstance::avModel().stopPreview();
+        LRCInstance::avModel().startPreview();
+        ui->videoFeed->show();
+        ui->avatarLabel->hide();
+        takePhotoState_ = true;
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    } else if (settingPreviewed_) {
+        hasAvatar_ = false;
+        ui->videoFeed->setResetPreview(true);
+        emit settingWidgetPreviewTosettingWidgetPhotoBoothLeaveSignal(Utils::videoWidgetSwapType::settingWidgetPreviewTosettingWidgetPhotoBooth);
+        ui->videoFeed->show();
+        ui->avatarLabel->hide();
+        takePhotoState_ = true;
+        hasConnection_ = true;
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    } else {
+        hasAvatar_ = false;
+        ui->videoFeed->setResetPreview(true);
+        emit callingWidgetToSettingWidgetPhotoBoothEnterSignal(Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPhotoBooth);
+        ui->videoFeed->show();
+        ui->avatarLabel->hide();
+        takePhotoState_ = true;
+        hasConnection_ = true;
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    }
 }
 
 void PhotoboothWidget::stopBooth()
 {
     if (!LRCInstance::getActiveCalls().size()) {
         LRCInstance::avModel().stopPreview();
+    } else if(hasConnection_){
+        emit settingWidgetPhotoBoothToCallingWidgetLeaveSignal(Utils::videoWidgetSwapType::settingWidgetPhotoBoothToCallingWidget);
+        hasConnection_ = false;
     }
-    ui->videoFeed->hide();
-    ui->avatarLabel->show();
-    takePhotoState_ = false;
-    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
+    resetToAvatarLabel();
 }
 
 void
@@ -106,7 +126,11 @@ PhotoboothWidget::on_importButton_clicked()
     ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
     hasAvatar_ = true;
     emit photoTaken();
-    stopBooth();
+    if (!LRCInstance::getActiveCalls().size()) {
+        stopBooth();
+    } else {
+        resetToAvatarLabel();
+    }
 }
 
 void
@@ -130,23 +154,29 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 
         QtConcurrent::run(
             [this] {
-                LRCInstance::avModel().stopPreview();
                 auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
                 auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
                 avatarPixmap_ = QPixmap::fromImage(avatar);
                 ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
                 hasAvatar_ = true;
                 emit photoTaken();
-                stopBooth();
+                if (!LRCInstance::getActiveCalls().size()) {
+                    stopBooth();
+                } else {
+                    resetToAvatarLabel();
+                }
             });
     }
 }
 
 void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default, bool toStopRendering)
 {
     ui->avatarLabel->setPixmap(avatarPixmap);
-    stopBooth();
+    if (!LRCInstance::getActiveCalls().size() && toStopRendering) {
+        LRCInstance::avModel().stopPreview();
+    }
+    resetToAvatarLabel();
     if (default) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
     }
@@ -162,4 +192,25 @@ bool
 PhotoboothWidget::hasAvatar()
 {
     return hasAvatar_;
+}
+
+void
+PhotoboothWidget::connectStartedRendering()
+{
+    ui->videoFeed->rendererStartedWithoutDistantRender();
+}
+
+void
+PhotoboothWidget::disconnectRendering()
+{
+    ui->videoFeed->disconnectRendering();
+}
+
+void
+PhotoboothWidget::resetToAvatarLabel()
+{
+    ui->videoFeed->hide();
+    ui->avatarLabel->show();
+    takePhotoState_ = false;
+    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
 }
