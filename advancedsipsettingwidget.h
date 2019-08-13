@@ -105,4 +105,10 @@ private slots:
     void increaseVideoCodecPriority();
 
     void setVideoState(int state);
+
+    // SDP session negotiation ports
+    void audioRTPMinPortSpinBoxEditFinished();
+    void audioRTPMaxPortSpinBoxEditFinished();
+    void videoRTPMinPortSpinBoxEditFinished();
+    void videoRTPMaxPortSpinBoxEditFinished();
 };
