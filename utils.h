@@ -107,12 +107,33 @@ QImage cropImage(const QImage& img);
 lrc::api::conversation::Info getConversationFromCallId(const std::string& callId);
 lrc::api::conversation::Info getSelectedConversation();
 lrc::api::conversation::Info getConversationFromUid(const std::string & convUid, bool filtered = true);
+const lrc::api::conversation::Info& getCurrentConvInfo();
 
 // misc helpers
 void swapQListWidgetItems(QListWidget* list, bool down = true);
 
 // Byte to human readable size
 QString humanFileSize(qint64 fileSize);
+
+// Video widget change enum
+enum class videoWidgetSwapType
+{
+    callingWidgetToSettingWidgetPreview,
+    callingWidgetToSettingWidgetPhotoBooth,
+    settingWidgetPreviewToCallingWidget,
+    settingWidgetPhotoBoothToCallingWidget,
+    settingWidgetPhotoBoothTosettingWidgetPreview,
+    settingWidgetPreviewTosettingWidgetPhotoBooth,
+    videoInputDeviceLoseConnection
+};
+
+// device plug or unplug enum
+enum class devicePluggingType
+{
+    Plugged,
+    Unplugged,
+    unChanged
+};
 
 template <typename Func1, typename Func2>
 void

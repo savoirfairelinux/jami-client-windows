@@ -751,6 +751,13 @@ Utils::getConversationFromUid(const std::string & convUid, bool filtered)
     return lrc::api::conversation::Info();
 }
 
+const lrc::api::conversation::Info&
+Utils::getCurrentConvInfo()
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    return *Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(), *convModel);
+}
+
 void
 Utils::swapQListWidgetItems(QListWidget* list, bool down)
 {
