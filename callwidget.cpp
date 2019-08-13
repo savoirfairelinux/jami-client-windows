@@ -5,6 +5,7 @@
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -649,6 +650,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
     ui->videoWidget->setCurrentCalleeName(bestName);
     setCallPanelVisibility(true);
+    currentConvInfo_ = convInfo;
 
     if (callModel->hasCall(convInfo.callId)) {
         auto call = callModel->getCall(convInfo.callId);
@@ -1367,4 +1369,16 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::disconnectRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void
+CallWidget::connectStartedRendering()
+{
+    ui->videoWidget->connectStartedRendering();
 }
