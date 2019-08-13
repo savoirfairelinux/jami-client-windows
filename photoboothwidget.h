@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "utils.h"
+
 #include <QWidget>
 #include <QLabel>
 #include <QPropertyAnimation>
@@ -40,12 +42,20 @@ public:
     void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
+    void connectStartedRendering();
+    void disconnectRendering();
+
+signals:
+    void callingWidgetToSettingWidgetPhotoBoothEnterSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPhotoBoothToCallingWidgetLeaveSignal(Utils::videoWidgetSwapType type);
 
 private slots:
     void on_importButton_clicked();
     void on_takePhotoButton_clicked();
 
 private:
+    void resetToAvatarLabel();
+
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
@@ -53,6 +63,7 @@ private:
     QPropertyAnimation *flashAnimation_;
     QPixmap avatarPixmap_;
     bool hasAvatar_;
+    bool isOpened_ { false };
 
     bool takePhotoState_;
 
