@@ -533,7 +533,6 @@ void SettingsWidget::removeDeviceSlot(int index)
     if (ok) {
     delete_:
         LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, password.toStdString());
-        updateAndShowDevicesSlot();
     }
 }
 
@@ -734,6 +733,12 @@ void SettingsWidget::setConnections()
 
     // update linked devices automatically
     QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
+        this, &SettingsWidget::updateAndShowDevicesSlot);
+
+    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceRevoked,
+        this, &SettingsWidget::updateAndShowDevicesSlot);
+
+    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceAdded,
         this, &SettingsWidget::updateAndShowDevicesSlot);
 
     // account settings setters {
