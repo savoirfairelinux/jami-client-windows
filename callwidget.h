@@ -58,6 +58,9 @@ public:
     ~CallWidget();
 
     int getLeftPanelWidth();
+    void disconnectRendering();
+    void connectStartedRendering();
+    lrc::api::conversation::Info getCurrentConvInfo() { return currentConvInfo_; }
 
     // NavWidget
     virtual void navigated(bool to);
@@ -138,6 +141,7 @@ private:
 
     QMenu* menu_;
     QClipboard* clipboard_;
+    //lrc::api::conversation::Info currentConvInfo_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;

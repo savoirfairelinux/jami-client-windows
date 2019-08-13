@@ -163,3 +163,14 @@ PhotoboothWidget::hasAvatar()
 {
     return hasAvatar_;
 }
+
+void
+PhotoboothWidget::connectStartedRendering()
+{
+    ui->videoFeed->slotRendererStarted("");
+}
+
+void
+PhotoboothWidget::disconnectRendering() {
+    ui->videoFeed->disconnectRendering();
+}

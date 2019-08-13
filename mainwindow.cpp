@@ -20,6 +20,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtConcurrent/QtConcurrent>
 #include <QDesktopWidget>
 #include <QDir>
 #include <QScreen>
@@ -183,6 +184,9 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
+    //connect(ui->settingswidget, &SettingsWidget::videoCallVideoRecovery, ui->callwidget, &CallWidget::videoReconnect);
+    connect(ui->settingswidget, &SettingsWidget::callingWidgetToSettingWidgetPreviewSignal, this, &MainWindow::videoWidgetSwitch);
+    connect(ui->settingswidget, &SettingsWidget::settingWidgetPreviewToCallingWidgetSignal, this, &MainWindow::videoWidgetSwitch);
 }
 
 MainWindow::~MainWindow()
@@ -387,4 +391,44 @@ void MainWindow::keyReleaseEvent(QKeyEvent* ke)
 {
     emit keyReleased(ke);
     QMainWindow::keyReleaseEvent(ke);
+}
+
+void MainWindow::videoWidgetSwitch(Utils::videoWidgetSwapType Type)
+{
+    switch (Type)
+    {
+        case Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPreview: {
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPreview();
+            break;
+        }
+        case Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPhotoBooth: {
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPhotoBooth();
+            break;
+        }
+        case Utils::videoWidgetSwapType::callingWidgetToSettingWidgetSIPPhotoBooth: {
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToSIPPhotoBooth();
+            break;
+        }
+        case Utils::videoWidgetSwapType::settingWidgetPreviewToCallingWidget: {
+            ui->settingswidget->disconnectPreviewRendering();
+            ui->callwidget->connectStartedRendering();
+            break;
+        }
+        case Utils::videoWidgetSwapType::settingWidgetPhotoBoothToCallingWidget: {
+            ui->settingswidget->disconnectPhotoBoothRendering();
+            ui->callwidget->connectStartedRendering();
+            break;
+        }
+        case Utils::videoWidgetSwapType::settingWidgetSIPPhotoBoothToCallingWidget: {
+            ui->settingswidget->disconnectSIPPhotoBoothRendering();
+            ui->callwidget->connectStartedRendering();
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }
