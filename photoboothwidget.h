@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "utils.h"
+
 #include <QWidget>
 #include <QLabel>
 #include <QPropertyAnimation>
@@ -35,17 +37,34 @@ public:
     explicit PhotoboothWidget(QWidget *parent = 0);
     ~PhotoboothWidget();
 
-    void startBooth();
+    void startBooth(bool isDeviceChanged = false);
     void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
+    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false, bool stopPhotoboothPreview = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
+    void connectRendering();
+    void disconnectRendering();
+
+    // hasConnection_ decides whether the video rendering connection is still in photobooth
+    // (connection transmitted from other video widget)
+    bool isPhotoBoothOpened() { return takePhotoState_;  }
+    bool isPhotoBoothConnected() { return hasConnection_;  }
+    void resetTakePhotoState(bool state) { takePhotoState_ = state;  }
+    // settingsPreviewed_ changed once the setting's preview is previewed
+    void setIsSettingsPreviewed(bool state) { settingsPreviewed_ = state; }
+
+signals:
+    void enterSettingsWidgetPhotoBoothFromCallWidget(Utils::VideoWidgetSwapType type);
+    void enterCallWidgetFromSettingsWidgetPhotoBooth(Utils::VideoWidgetSwapType type);
+    void leaveSettingsWidgetPreviewToSettingsWidgetPhotoBooth(Utils::VideoWidgetSwapType type);
 
 private slots:
     void on_importButton_clicked();
     void on_takePhotoButton_clicked();
 
 private:
+    void resetToAvatarLabel();
+
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
@@ -54,7 +73,9 @@ private:
     QPixmap avatarPixmap_;
     bool hasAvatar_;
 
-    bool takePhotoState_;
+    bool takePhotoState_ { false };
+    bool hasConnection_ { false };
+    bool settingsPreviewed_ { false };
 
 signals:
     void photoTaken();
