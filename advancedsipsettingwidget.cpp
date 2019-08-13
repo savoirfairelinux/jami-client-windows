@@ -221,6 +221,18 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->btnRingtoneSIP->setEnabled(config.Ringtone.ringtoneEnabled);
     ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(config.Ringtone.ringtonePath)).fileName());
     ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
+
+    // SDP session negotiation ports
+    ui->audioRTPMinPortSpinBox->setValue(config.Audio.audioPortMin);
+    ui->audioRTPMaxPortSpinBox->setValue(config.Audio.audioPortMax);
+    ui->videoRTPMinPortSpinBox->setValue(config.Video.videoPortMin);
+    ui->videoRTPMaxPortSpinBox->setValue(config.Video.videoPortMax);
+
+    connect(ui->audioRTPMinPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::audioRTPMinPortSpinBoxEditFinished);
+    connect(ui->audioRTPMaxPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::audioRTPMaxPortSpinBoxEditFinished);
+    connect(ui->videoRTPMinPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::videoRTPMinPortSpinBoxEditFinished);
+    connect(ui->videoRTPMaxPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::videoRTPMaxPortSpinBoxEditFinished);
+
 }
 
 // call settings
@@ -615,5 +627,53 @@ AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged(const int& value)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.publishedPort = value;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::audioRTPMinPortSpinBoxEditFinished()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    if (confProps.Audio.audioPortMax < ui->audioRTPMinPortSpinBox->value()) {
+        ui->audioRTPMinPortSpinBox->setValue(confProps.Audio.audioPortMin);
+        return;
+    }
+    confProps.Audio.audioPortMin = ui->audioRTPMinPortSpinBox->value();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::audioRTPMaxPortSpinBoxEditFinished()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    if (ui->audioRTPMaxPortSpinBox->value() < confProps.Audio.audioPortMin) {
+        ui->audioRTPMaxPortSpinBox->setValue(confProps.Audio.audioPortMax);
+        return;
+    }
+    confProps.Audio.audioPortMax = ui->audioRTPMaxPortSpinBox->value();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::videoRTPMinPortSpinBoxEditFinished()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    if (confProps.Video.videoPortMax < ui->videoRTPMinPortSpinBox->value()) {
+        ui->videoRTPMinPortSpinBox->setValue(confProps.Video.videoPortMin);
+        return;
+    }
+    confProps.Video.videoPortMin = ui->videoRTPMinPortSpinBox->value();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::videoRTPMaxPortSpinBoxEditFinished()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    if (ui->videoRTPMaxPortSpinBox->value() < confProps.Video.videoPortMin) {
+        ui->videoRTPMaxPortSpinBox->setValue(confProps.Video.videoPortMax);
+        return;
+    }
+    confProps.Video.videoPortMax = ui->videoRTPMaxPortSpinBox->value();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
