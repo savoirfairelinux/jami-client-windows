@@ -23,6 +23,7 @@
 
 #include "lrcinstance.h"
 #include "navwidget.h"
+#include "utils.h"
 
 #include "advancedsettingswidget.h"
 #include "advancedsipsettingwidget.h"
@@ -45,11 +46,27 @@ public:
     explicit SettingsWidget(QWidget* parent = nullptr);
     ~SettingsWidget();
 
+    void connectStartedRenderingToPreview();
+    void connectStartedRenderingToPhotoBooth();
+    void disconnectPreviewRendering();
+    void disconnectPhotoBoothRendering();
+
     // NavWidget
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountOnBoarded();
+
+    void photoBoothEnterReceived(Utils::videoWidgetSwapType Type);
+    void photoBoothLeaveReceived(Utils::videoWidgetSwapType Type);
+
+signals:
+    void callingWidgetToSettingWidgetPreviewSignal(Utils::videoWidgetSwapType type);
+    void callingWidgetToSettingWidgetPhotoBoothSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPreviewToCallingWidgetSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPhotoBoothToCallingWidgetSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPhotoBoothTosettingWidgetPreviewSignal(Utils::videoWidgetSwapType type);
+    void settingWidgetPreviewTosettingWidgetPhotoBoothSignal(Utils::videoWidgetSwapType type);
 
 private:
     Ui::SettingsWidget* ui;
@@ -67,7 +84,7 @@ private:
         SEARCHING
     };
 
-    void setAvatar(PhotoboothWidget* avatarWidget);
+    void setAvatar(PhotoboothWidget* avatarWidget, bool toStopRendering);
     void setSelected(Button sel);
     void updateAccountInfoDisplayed();
     void resizeEvent(QResizeEvent* event);
@@ -82,12 +99,13 @@ private:
     void populateGeneralSettings();
     void populateAVSettings();
     void setFormatListForDevice(const std::string& device);
-    void startPreviewing();
+    void startPreviewing(bool isDeviceChanged = false);
     void stopPreviewing();
     void toggleVideoSettings(bool enabled);
     void toggleVideoPreview(bool enabled);
     void startAudioMeter(bool blocking = false);
     void stopAudioMeter(bool blocking = false);
+    void resetPhotoBoothStateWhenSettingChanged(Button type);
 
     QString registeredName_;
     lrc::api::account::ConfProperties_t confProps_;
@@ -105,6 +123,7 @@ private:
     int avatarSIPSize_;
     bool regNameBtn_ = false;
     const int itemHeight_ = 55;
+    bool previewed_ {false};
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
@@ -142,4 +161,9 @@ private slots:
     void slotDeviceBoxCurrentIndexChanged(int index);
     void slotFormatBoxCurrentIndexChanged(int index);
     void slotSetHardwareAccel(bool state);
+
+public:
+    bool getIsPreviewed() { return previewed_; }
+    Button getPreviousButton() { return pastButton_; }
+
 };
