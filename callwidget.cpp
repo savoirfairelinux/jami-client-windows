@@ -24,6 +24,7 @@
 #include "ui_callwidget.h"
 
 #include <QComboBox>
+#include <QtConcurrent/QtConcurrent>
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
@@ -649,6 +650,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
     ui->videoWidget->setCurrentCalleeName(bestName);
     setCallPanelVisibility(true);
+    currentConvInfo_ = convInfo;
 
     if (callModel->hasCall(convInfo.callId)) {
         auto call = callModel->getCall(convInfo.callId);
@@ -1367,4 +1369,19 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::videoReconnect(bool previewed)
+{
+    ui->videoWidget->reconnectRenderer();
+    if (!LRCInstance::getCurrentCallModel()->getCall(currentConvInfo_.callId).isAudioOnly) {
+            QtConcurrent::run(
+                [this, previewed] {
+                if (previewed) {
+                    LRCInstance::avModel().stopPreview();
+                }
+                LRCInstance::avModel().startPreview();
+            });
+    }
 }

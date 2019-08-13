@@ -51,6 +51,9 @@ public:
 public slots:
     virtual void slotAccountOnBoarded();
 
+signals:
+    void videoCallVideoRecovery(bool previewed);
+
 private:
     Ui::SettingsWidget* ui;
 
@@ -105,6 +108,7 @@ private:
     int avatarSIPSize_;
     bool regNameBtn_ = false;
     const int itemHeight_ = 55;
+    bool previewed_ {false};
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
