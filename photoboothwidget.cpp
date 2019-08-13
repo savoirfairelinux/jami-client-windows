@@ -63,21 +63,35 @@ PhotoboothWidget::~PhotoboothWidget()
 
 void PhotoboothWidget::startBooth()
 {
-    hasAvatar_ = false;
-    ui->videoFeed->setResetPreview(true);
-    ui->videoFeed->connectRendering();
-    LRCInstance::avModel().stopPreview();
-    LRCInstance::avModel().startPreview();
-    ui->videoFeed->show();
-    ui->avatarLabel->hide();
-    takePhotoState_ = true;
-    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    if (!LRCInstance::getActiveCalls().size()) {
+        hasAvatar_ = false;
+        ui->videoFeed->setResetPreview(true);
+        ui->videoFeed->connectRendering();
+        LRCInstance::avModel().stopPreview();
+        LRCInstance::avModel().startPreview();
+        ui->videoFeed->show();
+        ui->avatarLabel->hide();
+        takePhotoState_ = true;
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+    } else {
+        hasAvatar_ = false;
+        ui->videoFeed->setResetPreview(true);
+        emit callingWidgetToSettingWidgetPhotoBoothEnterSignal(Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPhotoBooth);
+        ui->videoFeed->show();
+        ui->avatarLabel->hide();
+        takePhotoState_ = true;
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+        isOpened_ = true;
+    }
 }
 
 void PhotoboothWidget::stopBooth()
 {
     if (!LRCInstance::getActiveCalls().size()) {
         LRCInstance::avModel().stopPreview();
+    } else if(isOpened_){
+        emit settingWidgetPhotoBoothToCallingWidgetLeaveSignal(Utils::videoWidgetSwapType::settingWidgetPhotoBoothToCallingWidget);
+        isOpened_ = false;
     }
     ui->videoFeed->hide();
     ui->avatarLabel->show();
@@ -162,4 +176,15 @@ bool
 PhotoboothWidget::hasAvatar()
 {
     return hasAvatar_;
+}
+
+void
+PhotoboothWidget::connectStartedRendering()
+{
+    ui->videoFeed->slotRendererStarted("");
+}
+
+void
+PhotoboothWidget::disconnectRendering() {
+    ui->videoFeed->disconnectRendering();
 }

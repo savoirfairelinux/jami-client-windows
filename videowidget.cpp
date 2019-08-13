@@ -35,16 +35,13 @@ VideoWidget::VideoWidget(QWidget* parent) :
 VideoWidget::~VideoWidget()
 {}
 
+#pragma optimize( "", off )
 void
 VideoWidget::slotRendererStarted(const std::string& id)
 {
     Q_UNUSED(id);
 
     QObject::disconnect(rendererConnections_.started);
-
-    // only one videowidget will be used at the same time
-    if (not isVisible())
-        return;
 
     this->show();
 
@@ -85,7 +82,7 @@ VideoWidget::slotRendererStarted(const std::string& id)
             repaint();
         });
 }
-
+#pragma optimize( "", off )
 void
 VideoWidget::renderFrame(const std::string& id)
 {
@@ -249,4 +246,12 @@ VideoWidget::setPhotoMode(bool isPhotoMode)
     pal.setColor(QPalette::Background, color);
     setAutoFillBackground(true);
     setPalette(pal);
+}
+
+void
+VideoWidget::disconnectRendering()
+{
+    QObject::disconnect(rendererConnections_.started);
+    QObject::disconnect(rendererConnections_.stopped);
+    QObject::disconnect(rendererConnections_.updated);
 }

@@ -45,6 +45,7 @@ public:
     QImage takePhoto();
     int getPreviewMargin(){ return previewMargin_; }
     void resetPreview() { resetPreview_ = true; }
+    void disconnectRendering();
 
 protected:
     void paintEvent(QPaintEvent* e);
