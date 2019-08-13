@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,6 +21,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtConcurrent/QtConcurrent>
 #include <QDesktopWidget>
 #include <QDir>
 #include <QScreen>
@@ -183,6 +185,11 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
+    connect(ui->settingswidget, &SettingsWidget::callingWidgetToSettingWidgetPreviewSignal, this, &MainWindow::videoWidgetSwitch);
+    connect(ui->settingswidget, &SettingsWidget::settingWidgetPreviewToCallingWidgetSignal, this, &MainWindow::videoWidgetSwitch);
+    connect(ui->settingswidget, &SettingsWidget::callingWidgetToSettingWidgetPhotoBoothSignal, this, &MainWindow::videoWidgetSwitch);
+    connect(ui->settingswidget, &SettingsWidget::settingWidgetPhotoBoothToCallingWidgetSignal, this, &MainWindow::videoWidgetSwitch);
+    connect(ui->settingswidget, &SettingsWidget::videoInputDeviceLoseConnectionSignal, this, &MainWindow::videoWidgetSwitch);
 }
 
 MainWindow::~MainWindow()
@@ -387,4 +394,72 @@ void MainWindow::keyReleaseEvent(QKeyEvent* ke)
 {
     emit keyReleased(ke);
     QMainWindow::keyReleaseEvent(ke);
+}
+
+void MainWindow::videoWidgetSwitch(Utils::videoWidgetSwapType Type)
+{
+    bool isAudioOnly = LRCInstance::getCurrentCallModel()->getCall(ui->callwidget->getCurrentConvInfo().callId).isAudioOnly;
+    switch (Type)
+    {
+        case Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPreview: {
+            // switch local rendering from call to setting preview
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPreview();
+            if (isAudioOnly) {
+                QtConcurrent::run(
+                    [this] {
+                    LRCInstance::avModel().stopPreview();
+                    LRCInstance::avModel().startPreview();
+                });
+                break;
+            }
+            break;
+        }
+        case Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPhotoBooth: {
+            // switch local rendering from call to setting photo booth
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPhotoBooth();
+            if (isAudioOnly) {
+                QtConcurrent::run(
+                    [this] {
+                    LRCInstance::avModel().stopPreview();
+                    LRCInstance::avModel().startPreview();
+                });
+                break;
+            }
+            break;
+        }
+        case Utils::videoWidgetSwapType::settingWidgetPreviewToCallingWidget: {
+            // switch local rendering from setting preview to call
+            ui->settingswidget->disconnectPreviewRendering();
+            if (isAudioOnly) {
+                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+                break;
+            }
+            ui->callwidget->connectStartedRendering();
+            break;
+        }
+        case Utils::videoWidgetSwapType::settingWidgetPhotoBoothToCallingWidget: {
+            // switch local rendering from setting photo booth to call
+            ui->settingswidget->disconnectPhotoBoothRendering();
+            if (isAudioOnly) {
+                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+                break;
+            }
+            ui->callwidget->connectStartedRendering();
+            break;
+        }
+        case Utils::videoWidgetSwapType::videoInputDeviceLoseConnection: {
+            if (isAudioOnly) {
+                break;
+            }
+            ui->settingswidget->disconnectPreviewRendering();
+            ui->callwidget->connectStartedRendering();
+            ui->callwidget->repaintVideoWidget();
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }
