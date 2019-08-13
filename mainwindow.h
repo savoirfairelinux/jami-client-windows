@@ -26,6 +26,7 @@
 
 #include "navwidget.h"
 #include "settingswidget.h"
+#include "utils.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -53,6 +54,9 @@ public:
     void show();
     float getCurrentScalingRatio();
     void showWindow();
+
+public slots:
+    void videoWidgetSwitch(Utils::videoWidgetSwapType Type);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
