@@ -45,6 +45,8 @@ public:
     QImage takePhoto();
     int getPreviewMargin(){ return previewMargin_; }
     void resetPreview() { resetPreview_ = true; }
+    void disconnectRendering();
+    void rendererStartedWithoutDistantRender();
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -52,6 +54,9 @@ protected:
 public slots:
     void slotToggleFullScreenClicked();
     void slotRendererStarted(const std::string& id);
+    void rendererConnectionsUpdatePreviewCallback(const std::string& id);
+    void rendererConnectionsUpdateFullViewCallback(const std::string& id);
+    void rendererConnectionsStopFullViewCallback(const std::string& id);
     void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
 
