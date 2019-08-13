@@ -449,3 +449,12 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
 }
+
+void
+VideoView::connectRenderingStoped()
+{
+    connect(&LRCInstance::avModel(), &lrc::api::AVModel::rendererStopped,
+        [this]() {
+            LRCInstance::avModel().stopPreview();
+    });
+}
