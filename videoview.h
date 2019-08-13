@@ -41,6 +41,8 @@ public:
     void simulateShowChatview(bool checked);
     void setCurrentCalleeName(const QString& CalleeDisplayName);
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void disconnectRendering();
+    void connectStartedRendering();
 
 protected:
     void resizeEvent(QResizeEvent* event);
