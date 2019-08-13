@@ -133,6 +133,7 @@ VideoOverlay::on_hangupButton_clicked()
         }
     }
     ui->chatButton->setChecked(false);
+    LRCInstance::avModel().switchInputTo("");
 }
 
 void
