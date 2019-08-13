@@ -5,6 +5,7 @@
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -729,8 +730,6 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
         ui->messagesWidget->show();
     }
 
-    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
-
     QFontMetrics primaryCallLabelFontMetrics(ui->callingBestNameLabel->font());
     QFontMetrics sencondaryCallLabelFontMetrics(ui->callingBestIdLabel->font());
 
@@ -1379,4 +1378,16 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::disconnectRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void
+CallWidget::connectRendering(bool started)
+{
+    ui->videoWidget->connectRendering(started);
 }

@@ -1,7 +1,8 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,6 +21,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtConcurrent/QtConcurrent>
 #include <QDesktopWidget>
 #include <QDir>
 #include <QScreen>
@@ -187,6 +189,16 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
+    connect(ui->settingswidget, &SettingsWidget::switchCallWidgetToSettingsWidgetPreview,
+            this, &MainWindow::slotSwitchVideoWidget);
+    connect(ui->settingswidget, &SettingsWidget::switchSettingsWidgetPreviewToCallWidget,
+            this, &MainWindow::slotSwitchVideoWidget);
+    connect(ui->settingswidget, &SettingsWidget::switchCallWidgetToSettingsWidgetPhotoBooth,
+            this, &MainWindow::slotSwitchVideoWidget);
+    connect(ui->settingswidget, &SettingsWidget::switchSettingsWidgetPhotoBoothToCallWidget,
+            this, &MainWindow::slotSwitchVideoWidget);
+    connect(ui->settingswidget, &SettingsWidget::videoInputDeviceConnectionLost,
+            this, &MainWindow::slotSwitchVideoWidget);
 }
 
 MainWindow::~MainWindow()
@@ -403,5 +415,72 @@ void MainWindow::slotAccountListChanged()
         systrayMenu->addAction(exitAction_);
     } else {
         systrayMenu->addAction(exitAction_);
+    }
+}
+
+void MainWindow::slotSwitchVideoWidget(Utils::VideoWidgetSwapType type)
+{
+    auto convInfo = Utils::getCurrentConvInfo();
+    bool isAudioOnly = LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly;
+    switch (type)
+    {
+        case Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPreview: {
+            // switch local rendering from call to setting preview
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPreview();
+            if (isAudioOnly) {
+                QtConcurrent::run(
+                    [this] {
+                        LRCInstance::avModel().stopPreview();
+                        LRCInstance::avModel().startPreview();
+                    });
+                break;
+            }
+            break;
+        }
+        case Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPhotoBooth: {
+            // switch local rendering from call to setting photo booth
+            ui->callwidget->disconnectRendering();
+            ui->settingswidget->connectStartedRenderingToPhotoBooth();
+            if (isAudioOnly) {
+                QtConcurrent::run(
+                    [this] {
+                        LRCInstance::avModel().stopPreview();
+                        LRCInstance::avModel().startPreview();
+                    });
+                break;
+            }
+            break;
+        }
+        case Utils::VideoWidgetSwapType::SettingsWidgetPreviewToCallWidget: {
+            // switch local rendering from setting preview to call
+            ui->settingswidget->disconnectPreviewRendering();
+            if (isAudioOnly) {
+                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+                break;
+            }
+            ui->callwidget->connectRendering(true);
+            break;
+        }
+        case Utils::VideoWidgetSwapType::SettingsWidgetPhotoBoothToCallWidget: {
+            // switch local rendering from setting photo booth to call
+            ui->settingswidget->disconnectPhotoBoothRendering();
+            if (isAudioOnly) {
+                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
+                break;
+            }
+            ui->callwidget->connectRendering(true);
+            break;
+        }
+        case Utils::VideoWidgetSwapType::VideoInputDeviceConnectionLost: {
+            if (isAudioOnly) {
+                break;
+            }
+            ui->callwidget->connectRendering(false);
+            break;
+        }
+        default: {
+            break;
+        }
     }
 }

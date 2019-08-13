@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -19,6 +20,7 @@
 
 #include "photoboothwidget.h"
 #include "ui_photoboothwidget.h"
+#include "settingswidget.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -51,7 +53,6 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     flashAnimation_->setEndValue(0);
     flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
 
-    takePhotoState_ = true;
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
@@ -61,28 +62,47 @@ PhotoboothWidget::~PhotoboothWidget()
     delete ui;
 }
 
-void PhotoboothWidget::startBooth()
+void PhotoboothWidget::startBooth(bool isDeviceChanged)
 {
     hasAvatar_ = false;
     ui->videoFeed->setResetPreview(true);
-    ui->videoFeed->connectRendering();
-    LRCInstance::avModel().stopPreview();
-    LRCInstance::avModel().startPreview();
+    if (!LRCInstance::getActiveCalls().size() || isDeviceChanged) {
+        // if no active calls
+        ui->videoFeed->connectPreviewOnlyRendering();
+        QtConcurrent::run(
+            [this] {
+                LRCInstance::avModel().stopPreview();
+                LRCInstance::avModel().startPreview();
+            });
+    } else if (settingsPreviewed_) {
+        // if setting preview is viewed
+        emit leaveSettingsWidgetPreviewToSettingsWidgetPhotoBooth(
+            Utils::VideoWidgetSwapType::SettingsWidgetPreviewToSettingsWidgetPhotoBooth);
+        hasConnection_ = true;
+    } else {
+        // call video rendering direct to photo booth
+        emit enterSettingsWidgetPhotoBoothFromCallWidget(
+            Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPhotoBooth);
+        hasConnection_ = true;
+    }
+    takePhotoState_ = true;
     ui->videoFeed->show();
     ui->avatarLabel->hide();
-    takePhotoState_ = true;
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
 void PhotoboothWidget::stopBooth()
 {
     if (!LRCInstance::getActiveCalls().size()) {
+        // if no active calls
         LRCInstance::avModel().stopPreview();
+    } else if(hasConnection_){
+        // if video connection is still on photo booth (now stopBooth will onlt be called once leaving the setting widget)
+        emit enterCallWidgetFromSettingsWidgetPhotoBooth(
+            Utils::VideoWidgetSwapType::SettingsWidgetPhotoBoothToCallWidget);
+        hasConnection_ = false;
     }
-    ui->videoFeed->hide();
-    ui->avatarLabel->show();
-    takePhotoState_ = false;
-    ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
+    resetToAvatarLabel();
 }
 
 void
@@ -106,7 +126,11 @@ PhotoboothWidget::on_importButton_clicked()
     ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
     hasAvatar_ = true;
     emit photoTaken();
-    stopBooth();
+    if (!LRCInstance::getActiveCalls().size()) {
+        stopBooth();
+    } else {
+        resetToAvatarLabel();
+    }
 }
 
 void
@@ -130,24 +154,39 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 
         QtConcurrent::run(
             [this] {
-                LRCInstance::avModel().stopPreview();
                 auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
                 auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
                 avatarPixmap_ = QPixmap::fromImage(avatar);
                 ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
                 hasAvatar_ = true;
                 emit photoTaken();
-                stopBooth();
+                if (!LRCInstance::getActiveCalls().size()) {
+                    stopBooth();
+                } else {
+                    resetToAvatarLabel();
+                }
             });
     }
 }
 
 void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool _default)
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default, bool stopPhotoboothPreview)
 {
+    // function will be called when entering the setting widget
+    // or when settings change from one to another if previously the photo booth
+    // is opened and not stopped
+
+    // this is to ensure that when we are in a call,
+    // entering the setting, changing from settings to settings,
+    // video rendering will be used efficiently
+    // see resetPhotoBoothStateWhenSettingChanged in settingswidget.cpp
+
     ui->avatarLabel->setPixmap(avatarPixmap);
-    stopBooth();
-    if (_default) {
+    if (!LRCInstance::getActiveCalls().size() && stopPhotoboothPreview) {
+        LRCInstance::avModel().stopPreview();
+    }
+    resetToAvatarLabel();
+    if (default) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
     }
 }
@@ -162,4 +201,30 @@ bool
 PhotoboothWidget::hasAvatar()
 {
     return hasAvatar_;
+}
+
+void
+PhotoboothWidget::connectRendering()
+{
+    // connect only local preview
+    ui->videoFeed->rendererStartedWithoutDistantRender();
+}
+
+void
+PhotoboothWidget::disconnectRendering()
+{
+    ui->videoFeed->disconnectRendering();
+}
+
+void
+PhotoboothWidget::resetToAvatarLabel()
+{
+    ui->videoFeed->hide();
+    ui->avatarLabel->show();
+    takePhotoState_ = false;
+    if (!hasAvatar_) {
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
+    } else {
+        ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-refresh-24px.svg"));
+    }
 }
