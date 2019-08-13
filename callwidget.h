@@ -58,6 +58,10 @@ public:
     ~CallWidget();
 
     int getLeftPanelWidth();
+    void disconnectRendering();
+
+    // if started is true, only update, stop signals are connected
+    void connectRendering(bool started = false);
 
     // NavWidget
     virtual void navigated(bool to);

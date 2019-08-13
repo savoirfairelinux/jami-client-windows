@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -26,6 +26,7 @@
 
 #include "navwidget.h"
 #include "settingswidget.h"
+#include "utils.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -53,6 +54,10 @@ public:
     void show();
     float getCurrentScalingRatio();
     void showWindow();
+
+public slots:
+    // A slot where covers all cases of video rendering switch between widgets
+    void slotSwitchVideoWidget(Utils::VideoWidgetSwapType Type);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
