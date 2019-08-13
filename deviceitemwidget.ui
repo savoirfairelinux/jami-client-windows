@@ -195,6 +195,10 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>editDeviceName</tabstop>
+  <tabstop>btnEditDevice</tabstop>
+ </tabstops>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
