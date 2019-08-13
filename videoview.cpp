@@ -272,6 +272,8 @@ VideoView::showContextMenu(const QPoint& pos)
         connect(deviceAction, &QAction::triggered,
             [this, deviceName, thisCallId]() {
                 LRCInstance::avModel().switchInputTo(deviceName.toStdString());
+                // reseet default device to make sure that context menu is sync with media settings
+                LRCInstance::avModel().setDefaultDevice(deviceName.toStdString());
             });
     }
 
@@ -352,10 +354,6 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
     }
 
     auto call = callModel->getCall(callId);
-
-    if (call.isAudioOnly) {
-        return;
-    }
 
     // transfer call will only happen in SIP calls
     this->overlay_->setTransferCallAvailability(isSIP);
@@ -448,4 +446,16 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
 {
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+}
+
+void
+VideoView::disconnectRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void
+VideoView::connectStartedRendering()
+{
+    ui->videoWidget->slotRendererStarted("");
 }
