@@ -157,8 +157,23 @@ void SettingsWidget::leaveSettingsSlot()
 
     stopAudioMeter();
 
-    if (!LRCInstance::getActiveCalls().size()) {
-        QtConcurrent::run( [this] { ui->currentAccountAvatar->stopBooth(); });
+    bool isPhotoBoothOpened;
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        ui->currentSIPAccountAvatar->stopBooth();
+        isPhotoBoothOpened = ui->currentSIPAccountAvatar->isPhotoBoothOpened();
+        // reset setting preview is not viewed
+        ui->currentSIPAccountAvatar->setIsSettingPreviewed(false);
+    } else {
+        ui->currentAccountAvatar->stopBooth();
+        isPhotoBoothOpened = ui->currentAccountAvatar->isPhotoBoothOpened();
+        // reset setting preview is not viewed
+        ui->currentAccountAvatar->setIsSettingPreviewed(false);
+    }
+
+    // check if is previewed and photo booth does not have video rendering connection
+    if (previewed_ && isPhotoBoothOpened) {
+        emit settingWidgetPreviewToCallingWidgetSignal(Utils::videoWidgetSwapType::settingWidgetPreviewToCallingWidget);
+        previewed_ = false;
     }
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -190,12 +205,20 @@ void SettingsWidget::setSelected(Button sel)
                 toggleAdvancedSIPSettings();
             }
             pastAccount_ = lrc::api::profile::Type::SIP;
+            // notify photo booth that setting preview is previewed
+            if (pastButton_ != Button::accountSettingsButton && previewed_) {
+                ui->currentSIPAccountAvatar->setIsSettingPreviewed(previewed_);
+            }
         } else {
             ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
             if (advancedSettingsDropped_) {
                 toggleAdvancedSettings();
             }
             pastAccount_ = lrc::api::profile::Type::RING;
+            // notify photo booth that setting preview is previewed
+            if (pastButton_ != Button::accountSettingsButton && previewed_) {
+                ui->currentAccountAvatar->setIsSettingPreviewed(previewed_);
+            }
         }
 
         break;
@@ -212,6 +235,8 @@ void SettingsWidget::setSelected(Button sel)
 
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
         populateGeneralSettings();
+        // close photo booth carmera if necessary
+        resetPhotoBoothStateWhenSettingChanged(Button::generalSettingsButton);
 
         break;
 
@@ -226,6 +251,8 @@ void SettingsWidget::setSelected(Button sel)
         populateAVSettings();
 
         startAudioMeter();
+        // close photo booth carmera if necessary
+        resetPhotoBoothStateWhenSettingChanged(Button::mediaSettingsButton);
 
         break;
     }
@@ -263,10 +290,10 @@ void SettingsWidget::updateAccountInfoDisplayed()
     }
 
     // sip avatar set
-    setAvatar(ui->currentSIPAccountAvatar);
+    setAvatar(ui->currentSIPAccountAvatar, true);
 
     // jami avatar set
-    setAvatar(ui->currentAccountAvatar);
+    setAvatar(ui->currentAccountAvatar, true);
 
     ui->accountEnableCheckBox->setChecked(accInfo.enabled);
     ui->accountSIPEnableCheckBox->setChecked(accInfo.enabled);
@@ -281,12 +308,12 @@ void SettingsWidget::updateAccountInfoDisplayed()
     ui->bannedContactsLayoutWidget->setVisible(accInfo.contactModel->getBannedContacts().size());
 }
 
-void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
+void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget, bool toStopRendering)
 {
     auto& accountInfo = LRCInstance::getCurrentAccountInfo();
     auto defaultAvatar = accountInfo.profileInfo.avatar.empty();
     auto avatar = Utils::accountPhoto(accountInfo, {avatarSize_, avatarSize_});
-    avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar);
+    avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar, toStopRendering);
 }
 
 void SettingsWidget::passwordClicked()
@@ -695,7 +722,7 @@ void SettingsWidget::setConnections()
     connect(ui->currentAccountAvatar, &PhotoboothWidget::clearedPhoto,
         [this] {
             LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentAccountAvatar);
+            setAvatar(ui->currentAccountAvatar, true);
         });
 
     connect(ui->currentAccountAvatar, &PhotoboothWidget::photoTaken,
@@ -703,10 +730,18 @@ void SettingsWidget::setConnections()
             LRCInstance::setCurrAccAvatar(ui->currentAccountAvatar->getAvatarPixmap());
         });
 
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::callingWidgetToSettingWidgetPhotoBoothEnterSignal, this, &SettingsWidget::photoBoothEnterReceived);
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::callingWidgetToSettingWidgetPhotoBoothEnterSignal, this, &SettingsWidget::photoBoothEnterReceived);
+
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::settingWidgetPhotoBoothToCallingWidgetLeaveSignal, this, &SettingsWidget::photoBoothLeaveReceived);
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::settingWidgetPhotoBoothToCallingWidgetLeaveSignal, this, &SettingsWidget::photoBoothLeaveReceived);
+
     connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::clearedPhoto,
         [this] {
             LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentSIPAccountAvatar);
+            setAvatar(ui->currentSIPAccountAvatar, true);
         });
 
     connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::photoTaken,
@@ -793,6 +828,15 @@ void SettingsWidget::setConnections()
     connect(ui->recordQualitySlider, &QAbstractSlider::sliderReleased, this, &SettingsWidget::slotRecordQualitySliderSliderReleased);
 
     connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
+
+    connect(this, &SettingsWidget::settingWidgetPhotoBoothTosettingWidgetPreviewSignal, [this]() {
+        this->disconnectPhotoBoothRendering();
+        this->connectStartedRenderingToPreview();
+    });
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::settingWidgetPreviewTosettingWidgetPhotoBoothLeaveSignal, [this]() {
+        this->connectStartedRenderingToPhotoBooth();
+        this->disconnectPreviewRendering();
+    });
 }
 
 // *************************  General Settings  *************************
@@ -1033,9 +1077,7 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toString().toStdString();
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
-    if (!LRCInstance::getActiveCalls().size()) {
-        startPreviewing();
-    }
+    startPreviewing(true);
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
@@ -1048,22 +1090,36 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     LRCInstance::avModel().setDeviceSettings(settings);
 }
 
-void SettingsWidget::startPreviewing()
+void SettingsWidget::startPreviewing(bool isDeviceChanged)
 {
-    if (!LRCInstance::getActiveCalls().size()) {
-        ui->videoWidget->connectRendering();
-        ui->previewUnavailableLabel->hide();
-        ui->videoLayoutWidget->show();
+    ui->videoWidget->connectRendering();
+    ui->videoWidget->setIsFullPreview(true);
+
+    bool isPhotoBoothOpened;
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        isPhotoBoothOpened = ui->currentSIPAccountAvatar->isPhotoBoothOpened();
+    } else {
+        isPhotoBoothOpened = ui->currentAccountAvatar->isPhotoBoothOpened();
+    }
+
+    if (!LRCInstance::getActiveCalls().size() || isDeviceChanged) {
+        // if no active calls, or device is changed -> reactive preview
         QtConcurrent::run(
             [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
-        ui->videoWidget->setIsFullPreview(true);
-    } else {
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
+            LRCInstance::avModel().stopPreview();
+            LRCInstance::avModel().startPreview();
+        });
     }
+    else if (pastButton_ != Button::mediaSettingsButton && isPhotoBoothOpened) {
+        // if photo booth is opened before
+        emit settingWidgetPhotoBoothTosettingWidgetPreviewSignal(Utils::videoWidgetSwapType::settingWidgetPhotoBoothTosettingWidgetPreview);
+        previewed_ = true;
+    } else {
+        emit callingWidgetToSettingWidgetPreviewSignal(Utils::videoWidgetSwapType::callingWidgetToSettingWidgetPreview);
+        previewed_ = true;
+    }
+    ui->previewUnavailableLabel->hide();
+    ui->videoLayoutWidget->show();
 }
 
 void SettingsWidget::stopPreviewing()
@@ -1145,4 +1201,63 @@ void SettingsWidget::stopAudioMeter(bool blocking)
     ui->audioInputMeter->stop();
     auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
     blocking ? f() : QtConcurrent::run(f);
+}
+
+void SettingsWidget::connectStartedRenderingToPreview()
+{
+    ui->videoWidget->slotRendererStarted("");
+}
+
+void SettingsWidget::connectStartedRenderingToPhotoBooth()
+{
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        ui->currentSIPAccountAvatar->connectStartedRendering();
+    } else {
+        ui->currentAccountAvatar->connectStartedRendering();
+    }
+}
+
+void SettingsWidget::disconnectPreviewRendering()
+{
+    ui->videoWidget->disconnectRendering();
+}
+
+void SettingsWidget::disconnectPhotoBoothRendering()
+{
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        ui->currentSIPAccountAvatar->disconnectRendering();
+    } else {
+        ui->currentAccountAvatar->disconnectRendering();
+    }
+}
+
+void SettingsWidget::photoBoothEnterReceived(Utils::videoWidgetSwapType Type)
+{
+    emit callingWidgetToSettingWidgetPhotoBoothSignal(Type);
+}
+
+void SettingsWidget::photoBoothLeaveReceived(Utils::videoWidgetSwapType Type)
+{
+    emit settingWidgetPhotoBoothToCallingWidgetSignal(Type);
+}
+
+void SettingsWidget::resetPhotoBoothStateWhenSettingChanged(Button type)
+{
+    bool toStopRendering = false;
+    // if setting change from account (photo booth open) to general, have to stop video endering
+    // if setting change from account (photo booth open) to media, does not have to stop video rendering
+    if (type == Button::generalSettingsButton) {
+        toStopRendering = true;
+    }
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        if (ui->currentSIPAccountAvatar->isPhotoBoothOpened()) {
+            setAvatar(ui->currentSIPAccountAvatar, toStopRendering);
+            ui->currentSIPAccountAvatar->resetTakePhotoState(false);
+        }
+    } else {
+        if (ui->currentAccountAvatar->isPhotoBoothOpened()) {
+            setAvatar(ui->currentAccountAvatar, toStopRendering);
+            ui->currentAccountAvatar->resetTakePhotoState(false);
+        }
+    }
 }
