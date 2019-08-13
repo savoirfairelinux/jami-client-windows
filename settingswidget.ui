@@ -4221,6 +4221,18 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ToggleSwitch</class>
+   <extends>QWidget</extends>
+   <header>ToggleSwitch.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PhotoboothWidget</class>
+   <extends>QWidget</extends>
+   <header>photoboothwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>VideoWidget</class>
    <extends>QWidget</extends>
    <header>videowidget.h</header>
@@ -4236,12 +4248,6 @@
    <class>AdvancedSIPSettingsWidget</class>
    <extends>QWidget</extends>
    <header location="global">advancedsipsettingwidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ToggleSwitch</class>
-   <extends>QWidget</extends>
-   <header>ToggleSwitch.h</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>IconButton</class>
@@ -4262,6 +4268,38 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnExitSettings</tabstop>
+  <tabstop>downloadButton</tabstop>
+  <tabstop>recordQualitySlider</tabstop>
+  <tabstop>recordPathButton</tabstop>
+  <tabstop>checkUpdateButton</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>displayNameLineEdit</tabstop>
+  <tabstop>currentRingID</tabstop>
+  <tabstop>currentRegisteredID</tabstop>
+  <tabstop>btnRegisterName</tabstop>
+  <tabstop>passwdPushButton</tabstop>
+  <tabstop>btnExportAccount</tabstop>
+  <tabstop>btnDeletAccount</tabstop>
+  <tabstop>settingsListWidget</tabstop>
+  <tabstop>linkDevPushButton</tabstop>
+  <tabstop>bannedContactsBtn</tabstop>
+  <tabstop>bannedListWidget</tabstop>
+  <tabstop>advancedAccountSettingsPButton</tabstop>
+  <tabstop>scrollSIPArea</tabstop>
+  <tabstop>displaySIPNameLineEdit</tabstop>
+  <tabstop>usernameSIP</tabstop>
+  <tabstop>hostnameSIP</tabstop>
+  <tabstop>ProxySIP</tabstop>
+  <tabstop>passSIPlineEdit</tabstop>
+  <tabstop>btnSIPDeletAccount</tabstop>
+  <tabstop>advancedAccountSettingsSIPButton</tabstop>
+  <tabstop>inputComboBox</tabstop>
+  <tabstop>outputComboBox</tabstop>
+  <tabstop>deviceBox</tabstop>
+  <tabstop>formatBox</tabstop>
+ </tabstops>
  <resources>
   <include location="ressources.qrc"/>
  </resources>

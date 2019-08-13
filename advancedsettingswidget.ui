@@ -1425,6 +1425,26 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnRingtone</tabstop>
+  <tabstop>lineEditNameServer</tabstop>
+  <tabstop>lineEditProxy</tabstop>
+  <tabstop>lineEditBootstrap</tabstop>
+  <tabstop>btnCACert</tabstop>
+  <tabstop>btnUserCert</tabstop>
+  <tabstop>btnPrivateKey</tabstop>
+  <tabstop>lineEditCertPassword</tabstop>
+  <tabstop>lineEditTurnAddress</tabstop>
+  <tabstop>lineEditTurnUsername</tabstop>
+  <tabstop>lineEditTurnPsswd</tabstop>
+  <tabstop>lineEditSTUNAddress</tabstop>
+  <tabstop>videoDownPushButton</tabstop>
+  <tabstop>videoUpPushButton</tabstop>
+  <tabstop>audioDownPushButton</tabstop>
+  <tabstop>audioUpPushButton</tabstop>
+  <tabstop>videoListWidget</tabstop>
+  <tabstop>audioListWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

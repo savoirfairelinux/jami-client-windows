@@ -1956,6 +1956,35 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnRingtoneSIP</tabstop>
+  <tabstop>btnSIPCACert</tabstop>
+  <tabstop>btnSIPUserCert</tabstop>
+  <tabstop>btnSIPPrivateKey</tabstop>
+  <tabstop>lineEditSIPCertPassword</tabstop>
+  <tabstop>tlsProtocolComboBox</tabstop>
+  <tabstop>outgoingTLSServerNameLineEdit</tabstop>
+  <tabstop>negotiationTimeoutSpinBox</tabstop>
+  <tabstop>registrationExpireTimeoutSpinBox</tabstop>
+  <tabstop>networkInterfaceSpinBox</tabstop>
+  <tabstop>lineEditTurnAddressSIP</tabstop>
+  <tabstop>lineEditTurnUsernameSIP</tabstop>
+  <tabstop>lineEditTurnPsswdSIP</tabstop>
+  <tabstop>lineEditTurnRealmSIP</tabstop>
+  <tabstop>lineEditSTUNAddressSIP</tabstop>
+  <tabstop>lineEditSIPCustomAddress</tabstop>
+  <tabstop>customPortSIPSpinBox</tabstop>
+  <tabstop>videoDownPushButtonSIP</tabstop>
+  <tabstop>videoUpPushButtonSIP</tabstop>
+  <tabstop>audioDownPushButtonSIP</tabstop>
+  <tabstop>audioUpPushButtonSIP</tabstop>
+  <tabstop>videoListWidgetSIP</tabstop>
+  <tabstop>audioListWidgetSIP</tabstop>
+  <tabstop>audioRTPMinPortSpinBox</tabstop>
+  <tabstop>audioRTPMaxPortSpinBox</tabstop>
+  <tabstop>videoRTPMinPortSpinBox</tabstop>
+  <tabstop>videoRTPMaxPortSpinBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
