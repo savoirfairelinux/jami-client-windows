@@ -35,16 +35,13 @@ VideoWidget::VideoWidget(QWidget* parent) :
 VideoWidget::~VideoWidget()
 {}
 
+#pragma optimize( "", off )
 void
 VideoWidget::slotRendererStarted(const std::string& id)
 {
     Q_UNUSED(id);
 
     QObject::disconnect(rendererConnections_.started);
-
-    // only one videowidget will be used at the same time
-    if (not isVisible())
-        return;
 
     this->show();
 
@@ -54,38 +51,17 @@ VideoWidget::slotRendererStarted(const std::string& id)
     rendererConnections_.updated = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::frameUpdated,
-        [this](const std::string& id) {
-            auto avModel = &LRCInstance::avModel();
-            auto renderer = &avModel->getRenderer(id);
-            if (!renderer->isRendering()) {
-                return;
-            }
-            using namespace lrc::api::video;
-            if (id == PREVIEW_RENDERER_ID) {
-                previewRenderer_ = const_cast<Renderer*>(renderer);
-            } else {
-                distantRenderer_ = const_cast<Renderer*>(renderer);
-            }
-            renderFrame(id);
-        });
+        this,
+        &VideoWidget::rendererConnectionsUpdateFullViewCallback);
 
     QObject::disconnect(rendererConnections_.stopped);
     rendererConnections_.stopped = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::rendererStopped,
-        [this](const std::string& id) {
-            QObject::disconnect(rendererConnections_.updated);
-            QObject::disconnect(rendererConnections_.stopped);
-            using namespace lrc::api::video;
-            if (id == PREVIEW_RENDERER_ID) {
-                previewRenderer_ = nullptr;
-            } else {
-                distantRenderer_ = nullptr;
-            }
-            repaint();
-        });
+        this,
+        &VideoWidget::rendererConnectionsStopFullViewCallback);
 }
-
+#pragma optimize( "", off )
 void
 VideoWidget::renderFrame(const std::string& id)
 {
@@ -249,4 +225,82 @@ VideoWidget::setPhotoMode(bool isPhotoMode)
     pal.setColor(QPalette::Background, color);
     setAutoFillBackground(true);
     setPalette(pal);
+}
+
+void
+VideoWidget::disconnectRendering()
+{
+    QObject::disconnect(rendererConnections_.started);
+    QObject::disconnect(rendererConnections_.stopped);
+    QObject::disconnect(rendererConnections_.updated);
+}
+
+void
+VideoWidget::rendererStartedWithoutDistantRender()
+{
+    QObject::disconnect(rendererConnections_.started);
+
+    this->show();
+
+    resetPreview_ = true;
+
+    QObject::disconnect(rendererConnections_.updated);
+    rendererConnections_.updated = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::frameUpdated,
+        this,
+        &VideoWidget::rendererConnectionsUpdatePreviewCallback);
+
+    QObject::disconnect(rendererConnections_.stopped);
+    rendererConnections_.stopped = connect(
+        &LRCInstance::avModel(),
+        &lrc::api::AVModel::rendererStopped,
+        this,
+        &VideoWidget::rendererConnectionsStopFullViewCallback);
+}
+
+void
+VideoWidget::rendererConnectionsUpdateFullViewCallback(const std::string& id)
+{
+    auto avModel = &LRCInstance::avModel();
+    auto renderer = &avModel->getRenderer(id);
+    if (!renderer->isRendering()) {
+        return;
+    }
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = const_cast<Renderer*>(renderer);
+    } else {
+        distantRenderer_ = const_cast<Renderer*>(renderer);
+    }
+    renderFrame(id);
+}
+
+void
+VideoWidget::rendererConnectionsStopFullViewCallback(const std::string& id)
+{
+    QObject::disconnect(rendererConnections_.updated);
+    QObject::disconnect(rendererConnections_.stopped);
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = nullptr;
+    } else {
+        distantRenderer_ = nullptr;
+    }
+    repaint();
+}
+
+void
+VideoWidget::rendererConnectionsUpdatePreviewCallback(const std::string& id)
+{
+    auto avModel = &LRCInstance::avModel();
+    auto renderer = &avModel->getRenderer(id);
+    if (!renderer->isRendering()) {
+        return;
+    }
+    using namespace lrc::api::video;
+    if (id == PREVIEW_RENDERER_ID) {
+        previewRenderer_ = const_cast<Renderer*>(renderer);
+        renderFrame(id);
+    }
 }
