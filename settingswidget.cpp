@@ -159,6 +159,8 @@ void SettingsWidget::leaveSettingsSlot()
 
     if (!LRCInstance::getActiveCalls().size()) {
         QtConcurrent::run( [this] { ui->currentAccountAvatar->stopBooth(); });
+    } else {
+        emit videoCallVideoRecovery(previewed_);
     }
 
     emit NavigationRequested(ScreenEnum::CallScreen);
@@ -1033,9 +1035,9 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toString().toStdString();
     LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
     setFormatListForDevice(currentDisplayedVideoDevice_);
-    if (!LRCInstance::getActiveCalls().size()) {
+    //if (!LRCInstance::getActiveCalls().size()) {
         startPreviewing();
-    }
+    //}
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
@@ -1050,7 +1052,7 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
 
 void SettingsWidget::startPreviewing()
 {
-    if (!LRCInstance::getActiveCalls().size()) {
+    //if (!LRCInstance::getActiveCalls().size()) {
         ui->videoWidget->connectRendering();
         ui->previewUnavailableLabel->hide();
         ui->videoLayoutWidget->show();
@@ -1060,14 +1062,16 @@ void SettingsWidget::startPreviewing()
                 LRCInstance::avModel().startPreview();
             });
         ui->videoWidget->setIsFullPreview(true);
-    } else {
+        previewed_ = true;
+    /*} else {
         ui->previewUnavailableLabel->show();
         ui->videoLayoutWidget->hide();
-    }
+    }*/
 }
 
 void SettingsWidget::stopPreviewing()
 {
+    previewed_ = false;
     if (!LRCInstance::getActiveCalls().size()) {
         QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
     }

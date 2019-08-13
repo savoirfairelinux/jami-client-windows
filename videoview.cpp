@@ -449,3 +449,10 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
 }
+
+void
+VideoView::reconnectRenderer()
+{
+    QObject::disconnect(ui->videoWidget);
+    ui->videoWidget->connectRendering();
+}
