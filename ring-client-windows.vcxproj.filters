@@ -219,6 +219,9 @@
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="videopreviewwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -379,6 +382,9 @@
     </QtMoc>
     <QtMoc Include="splashscreen.h">
       <Filter>Generated Files</Filter>
+    </QtMoc>
+    <QtMoc Include="videopreviewwidget.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -665,6 +671,9 @@
     <QtUic Include="contactpicker.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="videopreviewwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="images\FontAwesome.otf">
@@ -812,6 +821,9 @@
     </ClInclude>
     <ClInclude Include="version.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_videopreviewwidget.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
