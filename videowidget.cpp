@@ -31,6 +31,8 @@ VideoWidget::VideoWidget(QWidget* parent) :
     pal.setColor(QPalette::Background, Qt::black);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
+
+    previewPlace_ = bottomRight;
 }
 
 VideoWidget::~VideoWidget()
@@ -149,7 +151,7 @@ VideoWidget::paintEvent(QPaintEvent* e)
                 auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
                 auto yPos = fullPreview_ ? yDiff : height() - scaledPreview.height() - previewMargin_;
                 previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
-                painter.drawImage(previewGeometry_, scaledPreview);
+                updatePreviewPos();
                 resetPreview_ = false;
             }
 
@@ -180,6 +182,77 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
     previewGeometry_.setWidth(scaledPreview.width());
     previewGeometry_.setHeight(scaledPreview.height());
     painter->drawImage(previewGeometry_, scaledPreview);
+}
+
+void VideoWidget::updatePreviewPos()
+{
+    if (fullPreview_)
+        return;
+    switch (previewPlace_) {
+    case topRight:
+        previewGeometry_.moveTopRight(QPoint(width() - previewMargin_, previewMargin_));
+        break;
+    case topLeft:
+        previewGeometry_.moveTopLeft(QPoint(previewMargin_, previewMargin_));
+        break;
+    case bottomRight:
+        previewGeometry_.moveBottomRight(QPoint(width() - previewMargin_, height() - previewMargin_));
+        break;
+    case bottomLeft:
+        previewGeometry_.moveBottomLeft(QPoint(previewMargin_, height() - previewMargin_));
+        break;
+    case top:
+        previewGeometry_.moveTop(previewMargin_);
+        break;
+    case right:
+        previewGeometry_.moveRight(previewMargin_);
+        break;
+    case bottom:
+        previewGeometry_.moveBottom(previewMargin_);
+        break;
+    case left:
+        previewGeometry_.moveLeft(previewMargin_);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void VideoWidget::movePreview(TargetPointPreview typeOfMove)
+{
+    resetPreview();
+    switch (typeOfMove)
+    {
+    case topRight:
+        previewPlace_ = topRight;
+        break;
+    case topLeft:
+        previewPlace_ = topLeft;
+        break;
+    case bottomRight:
+        previewPlace_ = bottomRight;
+        break;
+    case bottomLeft:
+        previewPlace_ = bottomLeft;
+        break;
+    case top:
+        previewPlace_ = top;
+        break;
+    case right:
+        previewPlace_ = right;
+        break;
+    case bottom:
+        previewPlace_ = bottom;
+        break;
+    case left:
+        previewPlace_ = left;
+        break;
+
+        default:
+        break;
+
+    }
 }
 
 void
