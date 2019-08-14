@@ -35,16 +35,28 @@ class VideoWidget : public QWidget
     Q_OBJECT;
 
 public:
+    enum TargetPointPreview {
+        topRight,
+        topLeft,
+        bottomRight,
+        bottomLeft,
+        left,
+        right,
+        top,
+        bottom
+    };
+
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
     void connectRendering();
     void setPreviewDisplay(bool display);
     void setIsFullPreview(bool full);
-    inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
+    inline void setResetPreview(bool reset);
     void setPhotoMode(bool isPhotoMode);
     QImage takePhoto();
     int getPreviewMargin(){ return previewMargin_; }
     void resetPreview() { resetPreview_ = true; }
+    void movePreview(TargetPointPreview typeOfMove);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -80,6 +92,10 @@ private:
     bool resetPreview_ = false;
     bool photoMode_ = false;
     bool hasFrame_ = false;
+    TargetPointPreview previewPlace_;
 
     constexpr static int previewMargin_ = 15;
+
+private:
+    void updatePreviewPos();
 };
