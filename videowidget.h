@@ -61,6 +61,19 @@ public slots:
     void renderFrame(const std::string& id);
     inline QRect& getPreviewRect(){ return previewGeometry_; }
 
+public:
+    enum TargetPointPreview {
+        topRight,
+        topLeft,
+        bottomRight,
+        bottomLeft,
+        left,
+        right,
+        top,
+        bottom
+    };
+    void movePreview(TargetPointPreview typeOfMove);
+
 private:
     struct rendererConnections {
         QMetaObject::Connection started, stopped, updated;
@@ -86,6 +99,13 @@ private:
     bool resetPreview_ = false;
     bool photoMode_ = false;
     bool hasFrame_ = false;
+    TargetPointPreview previewPlace_;
 
     constexpr static int previewMargin_ = 15;
+
+
+
+private:
+    void updatePreviewPos();
+
 };
