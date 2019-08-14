@@ -377,14 +377,9 @@ VideoView::mousePressEvent(QMouseEvent* event)
     QPoint clickPosition = event->pos();
     if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
         QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
-        if (distance.dy() < resizeGrip_ and distance.dx() < resizeGrip_) {
-            QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
-            resizingPreview_ = true;
-        } else {
             originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
             QApplication::setOverrideCursor(Qt::SizeAllCursor);
             draggingPreview_ = true;
-        }
     }
 }
 
@@ -392,9 +387,32 @@ void
 VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
+    if (draggingPreview_) {
+        //Check preview's current central position
+        QRect& previewRect = ui->videoWidget->getPreviewRect();
+        auto previewCentral = previewRect.center();
+        auto videoViewRect = ui->videoWidget->rect();
+        auto videoWidgetCentral = videoViewRect.center();
+        if (previewCentral.x() >= videoWidgetCentral.x()) {
+            if (previewCentral.y() >= videoWidgetCentral.y()) {
+                //Move preview to bottom right
+                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
+            } else {
+                //Move preview to top right
+                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+            }
+        } else {
+            if (previewCentral.y() >= videoWidgetCentral.y()) {
+                //Move preview to bottom left
+                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
+            } else {
+                //Move preview to top left
+                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
+            }
+        }
+    }
 
     draggingPreview_ = false;
-    resizingPreview_ = false;
     QApplication::setOverrideCursor(Qt::ArrowCursor);
 }
 
@@ -431,12 +449,6 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
     }
 
     QLine distance = QLine(previewRect.topLeft(), event->pos());
-
-    if (resizingPreview_
-        and distance.dx() > minimalSize_
-        and distance.dy() > minimalSize_
-        and geometry().contains(event->pos()))
-        previewRect.setBottomRight(event->pos());
 }
 
 void

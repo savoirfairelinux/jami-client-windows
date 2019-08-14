@@ -83,7 +83,6 @@ private:
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
-    bool resizingPreview_ = false;
     bool sharingEntireScreen_ = false;
     std::string currentCallId_;
     int keyPressed_;
