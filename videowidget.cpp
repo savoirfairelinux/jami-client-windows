@@ -31,6 +31,8 @@ VideoWidget::VideoWidget(QWidget* parent) :
     pal.setColor(QPalette::Background, Qt::black);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
+
+    previewPlace_ = bottomRight;
 }
 
 VideoWidget::~VideoWidget()
@@ -96,36 +98,32 @@ VideoWidget::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
     QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
 
     if (distantRenderer_) {
         {
             QMutexLocker lock(&mutex_);
             if (distantFrame_.storage.size() != 0
-                && distantFrame_.storage.size() ==
-                (unsigned int)(distantRenderer_->size().height() * distantRenderer_->size().width()*4)) {
+                && distantFrame_.storage.size() == (unsigned int)(distantRenderer_->size().height() * distantRenderer_->size().width() * 4)) {
                 frameDistant_ = std::move(distantFrame_.storage);
                 distantImage_.reset(
                     new QImage((uchar*)frameDistant_.data(),
                         distantRenderer_->size().width(),
                         distantRenderer_->size().height(),
-                        QImage::Format_ARGB32_Premultiplied)
-                );
+                        QImage::Format_ARGB32_Premultiplied));
             }
         }
         if (distantImage_) {
             auto scaledDistant = distantImage_->scaled(size(), Qt::KeepAspectRatio);
             auto xDiff = (width() - scaledDistant.width()) / 2;
             auto yDiff = (height() - scaledDistant.height()) / 2;
-            painter.drawImage(QRect(
-                xDiff, yDiff, scaledDistant.width(), scaledDistant.height()), scaledDistant
-            );
+            painter.drawImage(QRect(xDiff, yDiff, scaledDistant.width(), scaledDistant.height()), scaledDistant);
         }
     }
     if ((previewRenderer_ && isPreviewDisplayed_) || (photoMode_ && hasFrame_)) {
         QMutexLocker lock(&mutex_);
         if (previewFrame_.storage.size() != 0
-            && previewFrame_.storage.size() ==
-            (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width() * 4)) {
+            && previewFrame_.storage.size() == (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width() * 4)) {
             framePreview_ = std::move(previewFrame_.storage);
             previewImage_.reset(
                 new QImage((uchar*)framePreview_.data(),
@@ -149,7 +147,13 @@ VideoWidget::paintEvent(QPaintEvent* e)
                 auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
                 auto yPos = fullPreview_ ? yDiff : height() - scaledPreview.height() - previewMargin_;
                 previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
-                painter.drawImage(previewGeometry_, scaledPreview);
+                updatePreviewPos();
+                QBrush brush(scaledPreview);
+                brush.setTransform(QTransform::fromTranslate(previewGeometry_.x(), previewGeometry_.y()));
+                QPainterPath previewPath;
+                previewPath.addRoundRect(previewGeometry_, 25);
+                painter.fillPath(previewPath, brush);
+
                 resetPreview_ = false;
             }
 
@@ -158,12 +162,17 @@ VideoWidget::paintEvent(QPaintEvent* e)
                 scaledPreview = Utils::getCirclePhoto(*previewImage_, previewGeometry_.height());
             } else {
                 scaledPreview = previewImage_->scaled(previewGeometry_.width(),
-                                                      previewGeometry_.height(),
-                                                      Qt::KeepAspectRatio);
+                    previewGeometry_.height(),
+                    Qt::KeepAspectRatio);
             }
             previewGeometry_.setWidth(scaledPreview.width());
             previewGeometry_.setHeight(scaledPreview.height());
-            painter.drawImage(previewGeometry_, scaledPreview);
+
+            QBrush brush(scaledPreview);
+            brush.setTransform(QTransform::fromTranslate(previewGeometry_.x(), previewGeometry_.y()));
+            QPainterPath previewPath;
+            previewPath.addRoundRect(previewGeometry_, 25);
+            painter.fillPath(previewPath, brush);
         }
     } else if (photoMode_) {
         paintBackgroundColor(&painter, Qt::black);
@@ -180,6 +189,75 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
     previewGeometry_.setWidth(scaledPreview.width());
     previewGeometry_.setHeight(scaledPreview.height());
     painter->drawImage(previewGeometry_, scaledPreview);
+}
+
+void VideoWidget::updatePreviewPos()
+{
+    switch (previewPlace_) {
+    case topRight:
+        previewGeometry_.moveTopRight(QPoint(width() - previewMargin_, previewMargin_));
+        break;
+    case topLeft:
+        previewGeometry_.moveTopLeft(QPoint(previewMargin_, previewMargin_));
+        break;
+    case bottomRight:
+        previewGeometry_.moveBottomRight(QPoint(width() - previewMargin_, height() - previewMargin_));
+        break;
+    case bottomLeft:
+        previewGeometry_.moveBottomLeft(QPoint(previewMargin_, height() - previewMargin_));
+        break;
+    case top:
+        previewGeometry_.moveTop(previewMargin_);
+        break;
+    case right:
+        previewGeometry_.moveRight(previewMargin_);
+        break;
+    case bottom:
+        previewGeometry_.moveBottom(previewMargin_);
+        break;
+    case left:
+        previewGeometry_.moveLeft(previewMargin_);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void VideoWidget::movePreview(TargetPointPreview typeOfMove)
+{
+    resetPreview();
+    switch (typeOfMove)
+    {
+    case topRight:
+        previewPlace_ = topRight;
+        break;
+    case topLeft:
+        previewPlace_ = topLeft;
+        break;
+    case bottomRight:
+        previewPlace_ = bottomRight;
+        break;
+    case bottomLeft:
+        previewPlace_ = bottomLeft;
+        break;
+    case top:
+        previewPlace_ = top;
+        break;
+    case right:
+        previewPlace_ = right;
+        break;
+    case bottom:
+        previewPlace_ = bottom;
+        break;
+    case left:
+        previewPlace_ = left;
+        break;
+
+        default:
+        break;
+
+    }
 }
 
 void
