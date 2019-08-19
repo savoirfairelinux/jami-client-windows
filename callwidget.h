@@ -168,5 +168,4 @@ private:
     QMetaObject::Connection interactionRemovedConnection_;
     QMetaObject::Connection contactAddedConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
-
 };
