@@ -41,6 +41,7 @@
 #include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
 #include "globalinstances.h"
+#include "lrcinstance.h"
 
 class ConversationItemDelegate;
 class QPropertyAnimation;
