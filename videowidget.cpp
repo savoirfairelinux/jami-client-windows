@@ -167,7 +167,7 @@ VideoWidget::paintEvent(QPaintEvent* e)
                 if (photoMode_)
                     scaledPreview = Utils::getCirclePhoto(*previewImage_, previewHeight);
                 else
-                    scaledPreview = previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+                    scaledPreview = Utils::GetRoundedPhoto(previewImage_->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio));
                 auto xDiff = (previewWidth - scaledPreview.width()) / 2;
                 auto yDiff = (previewHeight - scaledPreview.height()) / 2;
                 auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
@@ -181,9 +181,9 @@ VideoWidget::paintEvent(QPaintEvent* e)
             if (photoMode_) {
                 scaledPreview = Utils::getCirclePhoto(*previewImage_, previewGeometry_.height());
             } else {
-                scaledPreview = previewImage_->scaled(previewGeometry_.width(),
+                scaledPreview = Utils::GetRoundedPhoto(previewImage_->scaled(previewGeometry_.width(),
                                                       previewGeometry_.height(),
-                                                      Qt::KeepAspectRatio);
+                                                      Qt::KeepAspectRatio));
             }
             previewGeometry_.setWidth(scaledPreview.width());
             previewGeometry_.setHeight(scaledPreview.height());
@@ -204,6 +204,42 @@ VideoWidget::paintBackgroundColor(QPainter* painter, QColor color)
     previewGeometry_.setWidth(scaledPreview.width());
     previewGeometry_.setHeight(scaledPreview.height());
     painter->drawImage(previewGeometry_, scaledPreview);
+}
+
+void VideoWidget::movePreview(TargetPointPreview typeOfMove)
+{
+    QRect& previewRect = getPreviewRect();
+    switch (typeOfMove)
+    {
+    case topRight:
+        previewRect.moveTopRight(QPoint(width() - previewMargin_, previewMargin_));
+        break;
+    case topLeft:
+        previewRect.moveTopLeft(QPoint(previewMargin_, previewMargin_));
+        break;
+    case bottomRight:
+        previewRect.moveBottomRight(QPoint(width() - previewMargin_, height() - previewMargin_));
+        break;
+    case bottomLeft:
+        previewRect.moveBottomLeft(QPoint(previewMargin_, height() - previewMargin_));
+        break;
+    case top:
+        previewRect.moveTop(previewMargin_);
+        break;
+    case right:
+        previewRect.moveRight(previewMargin_);
+        break;
+    case bottom:
+        previewRect.moveBottom(previewMargin_);
+        break;
+    case left:
+        previewRect.moveLeft(previewMargin_);
+        break;
+
+        default:
+        break;
+
+    }
 }
 
 void

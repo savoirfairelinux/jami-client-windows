@@ -261,6 +261,21 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     return target;
 }
 
+QImage Utils::GetRoundedPhoto(const QImage original)
+{
+    QImage target(original.size(), QImage::Format_ARGB32_Premultiplied);
+    target.fill(Qt::transparent);
+
+    QPainter painter(&target);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setBrush(QBrush(Qt::white));
+
+    painter.drawRoundRect(0, 0, original.size().width(), original.size().height());
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.drawImage(0, 0, original, 0, 0);
+    return target;
+}
+
 void
 Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 {
@@ -677,6 +692,25 @@ Utils::generateTintedPixmap(const QString& filename, QColor color)
         }
     }
     return QPixmap::fromImage(tmpImage);
+}
+
+QPixmap Utils::generateTintedPixmap(const QPixmap& pix, QColor color)
+{
+    QPixmap px = pix;
+    QImage tmpImage = px.toImage();
+    for (int y = 0; y < tmpImage.height(); y++) {
+        for (int x = 0; x < tmpImage.width(); x++) {
+            color.setAlpha(tmpImage.pixelColor(x, y).alpha());
+            tmpImage.setPixelColor(x, y, color);
+        }
+    }
+    return QPixmap::fromImage(tmpImage);
+}
+
+QPixmap Utils::generateReflectededPixmap(const QString& filename, QColor color)
+{
+    //TODO: implement the creation of a reflected image pixmap(it currently delivers the input image)
+    return QPixmap(filename);
 }
 
 QImage
