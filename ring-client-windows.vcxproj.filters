@@ -219,6 +219,9 @@
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="callaudioonlyavataroverlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="sipinputpanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -378,6 +381,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="levelmeter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="callaudioonlyavataroverlay.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="splashscreen.h">
@@ -669,6 +675,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="contactpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="callaudioonlyavataroverlay.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="sipkeypad.ui">
