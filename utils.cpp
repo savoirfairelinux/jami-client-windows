@@ -679,6 +679,18 @@ Utils::generateTintedPixmap(const QString& filename, QColor color)
     return QPixmap::fromImage(tmpImage);
 }
 
+QPixmap Utils::generateTintedPixmap(const QPixmap& iconPix, QColor color)
+{
+    QImage tmpImage = iconPix.toImage();
+    for (int y = 0; y < tmpImage.height(); y++) {
+        for (int x = 0; x < tmpImage.width(); x++) {
+            color.setAlpha(tmpImage.pixelColor(x, y).alpha());
+            tmpImage.setPixelColor(x, y, color);
+        }
+    }
+    return QPixmap::fromImage(tmpImage);
+}
+
 QImage
 Utils::scaleAndFrame(const QImage photo, const QSize& size)
 {

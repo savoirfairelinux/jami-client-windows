@@ -18,19 +18,20 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QTimer>
+#include "api/conversationmodel.h"
+#include "callaudioonlyavataroverlay.h"
+#include "videooverlay.h"
+
 #include <QMouseEvent>
 #include <QPropertyAnimation>
-
-#include "videooverlay.h"
+#include <QTimer>
+#include <QWidget>
 
 namespace Ui {
 class VideoView;
 }
 
-class VideoView : public QWidget
-{
+class VideoView : public QWidget {
     Q_OBJECT
 
 public:
@@ -40,7 +41,7 @@ public:
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
     void setCurrentCalleeName(const QString& CalleeDisplayName);
-    void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -54,22 +55,27 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
+    void resetAvatarOverlay(bool isAudioOnly);
+    void writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
     void showContextMenu(const QPoint& pos);
     void fadeOverlayOut();
     void showOverlay();
+    void slotHoldStatusChanged(bool pauseLabelStatus);
 
 private:
     Ui::VideoView* ui;
     VideoOverlay* overlay_;
+    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
     QPropertyAnimation* fadeAnim_;
     QTimer fadeTimer_;
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
+    QMetaObject::Connection coordinateOverlays_;
     QPoint origin_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
@@ -99,4 +105,5 @@ signals:
     void videoSettingsClicked();
     void toggleFullScreenClicked();
     void closing(const std::string& callid);
+
 };
