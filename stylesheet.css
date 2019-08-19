@@ -210,10 +210,10 @@ QPushButton#sipInputPanelButton:checked {
     background-color: rgba(0, 192, 213, 0.8);
 }
 
-QPushButton#hangupButton{
-    background-color: rgba(200, 0, 0, 0.6);
+QPushButton#hangupButton {
+    background-color: rgba(0, 0, 0, 140);
     border-radius: 18px;
-    border:solid 1px;
+    border: solid 1px;
 }
 
 QPushButton#hangupButton:hover{
@@ -789,3 +789,10 @@ QProgressBar#audioInputMeter {
         background-color: #0c79aa;
         margin: 2px;
     }
+
+QLabel#nameLabel {
+    font-size: 20px;
+    font-style: initial;
+    qproperty-alignment: AlignCenter;
+    color: white;
+}
