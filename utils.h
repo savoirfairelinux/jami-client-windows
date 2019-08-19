@@ -92,6 +92,7 @@ bool isContactValid(const std::string& contactUid, const lrc::api::ConversationM
 
 // image
 QImage getCirclePhoto(const QImage original, int sizePhoto);
+QImage GetRoundedPhoto(const QImage original);
 QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
 QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
@@ -99,6 +100,8 @@ QImage fallbackAvatar(const QSize size, const std::string& alias, const std::str
 QByteArray QImageToByteArray(QImage image);
 QByteArray QByteArrayFromFile(const QString& filename);
 QPixmap generateTintedPixmap(const QString& filename, QColor color);
+QPixmap generateTintedPixmap(const QPixmap& pix, QColor color);
+QPixmap generateReflectededPixmap(const QString& filename, QColor color);
 QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
