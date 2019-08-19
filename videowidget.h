@@ -72,6 +72,8 @@ private:
     std::unique_ptr<QImage> distantImage_;
     std::vector<uint8_t> frameDistant_;
 
+    QImage GetRoundedPhoto(const QImage original);
+
     QMutex mutex_;
 
     bool isPreviewDisplayed_;
@@ -82,4 +84,19 @@ private:
     bool hasFrame_ = false;
 
     constexpr static int previewMargin_ = 15;
+
+public:
+    enum TargetPointPreview
+    {
+        topRight,
+        topLeft,
+        bottomRight,
+        bottomLeft,
+        left,
+        right,
+        top,
+        bottom
+    };
+    void movePreview(TargetPointPreview typeOfMove);
+
 };
