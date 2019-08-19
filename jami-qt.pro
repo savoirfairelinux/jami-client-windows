@@ -71,7 +71,8 @@ HEADERS += ./aboutdialog.h \
         ./pixbufmanipulator.h \
         ./settingswidget.h \
         ./updatedownloaddialog.h \
-	./sipinputpanel.h
+	./sipinputpanel.h \
+	./callaudioonlyavataroverlay.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -124,7 +125,8 @@ SOURCES += ./aboutdialog.cpp \
         ./pixbufmanipulator.cpp \
         ./smartlistselectorbuttonnotifier.cpp \
         ./videooverlay.cpp \
-	./sipinputpanel.cpp
+	./sipinputpanel.cpp \
+	./callaudioonlyavataroverlay.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -148,5 +150,6 @@ FORMS += ./aboutdialog.ui \
         ./photoboothwidget.ui \
         ./updateconfirmdialog.ui \
         ./videoview.ui \
-	./sipkeypad.ui
+	./sipkeypad.ui \
+	./callaudioonlyavataroverlay.ui
 RESOURCES += ressources.qrc

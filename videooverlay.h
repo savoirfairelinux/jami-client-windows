@@ -18,6 +18,8 @@
 
 #pragma once
 
+#include "api/conversationmodel.h"
+
 #include <QWidget>
 #include <QMenu>
 #include <QTimer>
@@ -48,14 +50,14 @@ public:
     bool getShowChatView();
     void setTransferCallAndSIPPanelAvailability(bool visible);
     void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
-    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly);
 
 //UI SLOTS
 private slots:
     void setTime();
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
-    void on_holdButton_clicked();
+    void on_holdButton_toggled(bool checked);
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
@@ -74,4 +76,6 @@ private:
 
 signals:
     void setChatVisibility(bool visible);
+    void HoldStatusChanged(bool pauseLabelStatus);
+
 };
