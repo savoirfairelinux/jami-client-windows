@@ -653,12 +653,19 @@ void CallWidget::slotShowCallView(const std::string& accountId,
 
     if (callModel->hasCall(convInfo.callId)) {
         auto call = callModel->getCall(convInfo.callId);
-        ui->videoWidget->resetVideoOverlay(call.audioMuted && (call.status != lrc::api::call::Status::PAUSED),
-                                           call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly),
-                                           callModel->isRecording(convInfo.callId),
-                                           call.status == lrc::api::call::Status::PAUSED);
+        bool isAudioMuted = call.audioMuted && (call.status != lrc::api::call::Status::PAUSED);
+        bool isVideoMuted = call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly);
+        bool isRecording = callModel->isRecording(convInfo.callId);
+        bool isPaused = call.status == lrc::api::call::Status::PAUSED;
+        ui->videoWidget->resetVideoOverlay(isAudioMuted,
+                                           isVideoMuted,
+                                           isRecording,
+                                           isPaused,
+                                           call.isAudioOnly && call.status != lrc::api::call::Status::PAUSED,
+                                           accountId,
+                                           convInfo);
     } else {
-        ui->videoWidget->resetVideoOverlay(false, false, false, false);
+        ui->videoWidget->resetVideoOverlay(false, false, false, false, false, accountId, convInfo);
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
