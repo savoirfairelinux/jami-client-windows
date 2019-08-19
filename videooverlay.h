@@ -18,12 +18,16 @@
 
 #pragma once
 
+#include "api/conversationmodel.h"
+
 #include <QWidget>
 #include <QMenu>
 #include <QTimer>
+#include <QPushButton>
+#include <QEvent>
 
 class ContactPicker;
-
+class VideoView;
 namespace Ui {
 class VideoOverlay;
 }
@@ -47,18 +51,20 @@ public:
     bool getShowChatView();
     void setTransferCallAvailability(bool visible);
     void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
-    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly);
 
 //UI SLOTS
 private slots:
     void setTime();
-    void on_hangupButton_clicked();
-    void on_chatButton_toggled(bool checked);
-    void on_holdButton_clicked();
-    void on_noMicButton_toggled(bool checked);
-    void on_noVideoButton_toggled(bool checked);
-    void on_recButton_clicked();
-    void on_transferCallButton_toggled(bool checked);
+
+private:
+    bool on_hangupButton_selected(bool isToBeSelected);
+    bool on_chatButton_selected(bool isToBeSelected);
+    bool on_holdButton_selected(bool isToBeSelected);
+    bool on_noMicButton_selected(bool isToBeSelected);
+    bool on_noVideoButton_selected(bool isToBeSelected);
+    bool on_recButton_selected(bool isToBeSelected);
+    bool on_transferCallButton_selected(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
 
 private:
@@ -67,7 +73,22 @@ private:
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    std::map<QPushButton*, QPixmap> originalIconImageMap_;
+    std::map<QPushButton*, QPixmap> originalCheckedIconImageMap_;
+    std::map<QPushButton*, QPixmap> tintIconImageMap_;
+    std::map<QPushButton*, QPixmap> tintCheckedIconImageMap_;
+    std::map<QPushButton*, bool> isBtnSelected_;
+    std::map<QPushButton*, bool> isBtnHovered_;
+    typedef bool(VideoOverlay::* BtnCallback)(bool);
+    std::map<QPushButton*, BtnCallback> btnPressCallbacks_;
+
+private:
+    bool eventFilter(QObject* target, QEvent* event);
+    void initializeBtnEventListener();
+    bool setButtonsIconForEvent(QObject* target, QEvent* event);
+    void initializeBtnWithIconImageContainers();
 
 signals:
     void setChatVisibility(bool visible);
+    void HoldStatusChanged(bool pauseLabelStatus);
 };
