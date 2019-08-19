@@ -20,27 +20,28 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
-#include "utils.h"
 #include "lrcinstance.h"
+#include "utils.h"
 
-#include <QGraphicsOpacityEffect>
-#include <QPropertyAnimation>
 #include <QDesktopWidget>
-#include <QMenu>
 #include <QFileDialog>
+#include <QGraphicsOpacityEffect>
+#include <QMenu>
 #include <QMimeData>
-#include <QSplitter>
+#include <QPropertyAnimation>
 #include <QScreen>
+#include <QSplitter>
 #include <QWindow>
 
 #include <memory>
 
-#include "videooverlay.h"
 #include "selectareadialog.h"
+#include "videooverlay.h"
 
-VideoView::VideoView(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::VideoView)
+VideoView::VideoView(QWidget* parent)
+    : QWidget(parent)
+    , ui(new Ui::VideoView)
+    , audioOnlyAvatar_(new CallAudioOnlyAvatarOverlay(this))
 {
     ui->setupUi(this);
 
@@ -67,9 +68,8 @@ VideoView::VideoView(QWidget* parent) :
         this, SLOT(showContextMenu(const QPoint&)));
     connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
         emit this->setChatVisibility(visible);
-    connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
+        connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
-
 }
 
 VideoView::~VideoView()
@@ -79,8 +79,7 @@ VideoView::~VideoView()
     delete fadeAnim_;
 }
 
-void
-VideoView::resizeEvent(QResizeEvent* event)
+void VideoView::resizeEvent(QResizeEvent* event)
 {
     int marginWidth = ui->videoWidget->getPreviewMargin();
     QRect& previewRect = ui->videoWidget->getPreviewRect();
@@ -119,48 +118,44 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     ui->videoWidget->resetPreview();
 
+    audioOnlyAvatar_->resize(this->size());
+
     overlay_->resize(this->size());
     overlay_->show();
     overlay_->raise();
 }
 
-void
-VideoView::enterEvent(QEvent* event)
+void VideoView::enterEvent(QEvent* event)
 {
     Q_UNUSED(event)
     showOverlay();
 }
 
-void
-VideoView::leaveEvent(QEvent* event)
+void VideoView::leaveEvent(QEvent* event)
 {
     Q_UNUSED(event)
     fadeOverlayOut();
 }
 
-void
-VideoView::showOverlay()
+void VideoView::showOverlay()
 {
     fadeAnim_->stop();
     fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(), fadeAnim_->startValue());
 }
 
-void
-VideoView::fadeOverlayOut()
+void VideoView::fadeOverlayOut()
 {
     if (!overlay_->isDialogVisible() && !overlay_->shouldShowOverlay()) {
         fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
     }
 }
 
-void
-VideoView::slotCallStatusChanged(const std::string& callId)
+void VideoView::slotCallStatusChanged(const std::string& callId)
 {
     using namespace lrc::api::call;
     auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
     switch (call.status) {
-    case Status::IN_PROGRESS:
-    {
+    case Status::IN_PROGRESS: {
         ui->videoWidget->show();
         auto convInfo = Utils::getConversationFromCallId(call.id);
         if (!convInfo.uid.empty()) {
@@ -179,40 +174,35 @@ VideoView::slotCallStatusChanged(const std::string& callId)
     QObject::disconnect(timerConnection_);
 }
 
-void
-VideoView::simulateShowChatview(bool checked)
+void VideoView::simulateShowChatview(bool checked)
 {
     Q_UNUSED(checked);
     overlay_->simulateShowChatview(true);
 }
 
-void
-VideoView::mouseDoubleClickEvent(QMouseEvent* e) {
+void VideoView::mouseDoubleClickEvent(QMouseEvent* e)
+{
     QWidget::mouseDoubleClickEvent(e);
     toggleFullScreen();
 }
 
-void
-VideoView::dragEnterEvent(QDragEnterEvent* event)
+void VideoView::dragEnterEvent(QDragEnterEvent* event)
 {
     if (event->mimeData()->hasUrls())
         event->accept();
 }
 
-void
-VideoView::dragLeaveEvent(QDragLeaveEvent* event)
+void VideoView::dragLeaveEvent(QDragLeaveEvent* event)
 {
     event->accept();
 }
-void
-VideoView::dragMoveEvent(QDragMoveEvent* event)
+void VideoView::dragMoveEvent(QDragMoveEvent* event)
 {
     if (event->mimeData()->hasUrls())
         event->accept();
 }
 
-void
-VideoView::dropEvent(QDropEvent* event)
+void VideoView::dropEvent(QDropEvent* event)
 {
     // take only the first file
     QString urlString = event->mimeData()->urls().at(0).toString();
@@ -228,14 +218,12 @@ VideoView::dropEvent(QDropEvent* event)
     }
 }
 
-void
-VideoView::toggleFullScreen()
+void VideoView::toggleFullScreen()
 {
     emit toggleFullScreenClicked();
 }
 
-void
-VideoView::showContextMenu(const QPoint& pos)
+void VideoView::showContextMenu(const QPoint& pos)
 {
     QPoint globalPos = this->mapToGlobal(pos);
 
@@ -293,8 +281,7 @@ VideoView::showContextMenu(const QPoint& pos)
             rect.setSize(Utils::getRealSize(screen));
 #endif
             LRCInstance::avModel().setDisplay(screenNumber,
-                rect.x(), rect.y(), rect.width(), rect.height()
-            );
+                rect.x(), rect.y(), rect.width(), rect.height());
             sharingEntireScreen_ = true;
         });
 
@@ -328,9 +315,7 @@ VideoView::showContextMenu(const QPoint& pos)
     // possibly select the alternative video sharing device
     switch (activeDevice.type) {
     case lrc::api::video::DeviceType::DISPLAY:
-        sharingEntireScreen_ ?
-            shareAction->setChecked(true) :
-            shareAreaAction->setChecked(true);
+        sharingEntireScreen_ ? shareAction->setChecked(true) : shareAreaAction->setChecked(true);
         break;
     case lrc::api::video::DeviceType::FILE:
         shareFileAction->setChecked(true);
@@ -343,8 +328,8 @@ VideoView::showContextMenu(const QPoint& pos)
     menu.exec(globalPos);
 }
 
-void
-VideoView::pushRenderer(const std::string& callId, bool isSIP) {
+void VideoView::pushRenderer(const std::string& callId, bool isSIP)
+{
     currentCallId_ = callId;
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -369,8 +354,7 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
     ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
 }
 
-void
-VideoView::mousePressEvent(QMouseEvent* event)
+void VideoView::mousePressEvent(QMouseEvent* event)
 {
     QPoint clickPosition = event->pos();
     if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
@@ -386,8 +370,7 @@ VideoView::mousePressEvent(QMouseEvent* event)
     }
 }
 
-void
-VideoView::mouseReleaseEvent(QMouseEvent* event)
+void VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
 
@@ -396,8 +379,7 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
     QApplication::setOverrideCursor(Qt::ArrowCursor);
 }
 
-void
-VideoView::mouseMoveEvent(QMouseEvent* event)
+void VideoView::mouseMoveEvent(QMouseEvent* event)
 {
     // start/restart the timer after which the overlay will fade
     if (fadeTimer_.isActive()) {
@@ -406,12 +388,12 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         fadeTimer_.start(startfadeOverlayTime_);
     }
 
-    QRect& previewRect =  ui->videoWidget->getPreviewRect();
+    QRect& previewRect = ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
         if (previewRect.left() > 0
-                && previewRect.top() > 0
-                && previewRect.right() < width()
-                && previewRect.bottom() < height()) {
+            && previewRect.top() > 0
+            && previewRect.right() < width()
+            && previewRect.bottom() < height()) {
 
             previewRect.moveTo(event->pos() - originMouseDisplacement_);
             if (previewRect.left() <= 0)
@@ -431,33 +413,54 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
     QLine distance = QLine(previewRect.topLeft(), event->pos());
 
     if (resizingPreview_
-            and distance.dx() > minimalSize_
-            and distance.dy() > minimalSize_
-            and geometry().contains(event->pos()))
+        and distance.dx() > minimalSize_
+        and distance.dy() > minimalSize_
+        and geometry().contains(event->pos()))
         previewRect.setBottomRight(event->pos());
 }
 
-void
-VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
+void VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
 {
     overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
 }
 
-void
-VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+void VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo)
 {
+    resetAvatarOverlay(isAudioOnly);
+    if (isAudioOnly) {
+        writeAvatarOverlay(accountId, convInfo);
+    }
     emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
 }
 
-void
-VideoView::disconnectRendering()
+void VideoView::resetAvatarOverlay(bool isAudioOnly)
+{
+    audioOnlyAvatar_->setAvatarVisible(isAudioOnly);
+    if (isAudioOnly) {
+        disconnect(coordinateOverlays_);
+        coordinateOverlays_ = connect(overlay_, SIGNAL(HoldStatusChanged(bool)), this, SLOT(slotHoldStatusChanged(bool)));
+    } else {
+        disconnect(coordinateOverlays_);
+    }
+}
+
+void VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+{
+    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
+}
+
+void VideoView::slotHoldStatusChanged(bool pauseLabelStatus)
+{
+    audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
+}
+
+void VideoView::disconnectRendering()
 {
     ui->videoWidget->disconnectRendering();
 }
 
-void
-VideoView::connectRendering(bool started)
+void VideoView::connectRendering(bool started)
 {
     if (started) {
         ui->videoWidget->slotRendererStarted();
@@ -466,8 +469,7 @@ VideoView::connectRendering(bool started)
     }
 }
 
-void
-VideoView::keyPressEvent(QKeyEvent *event)
+void VideoView::keyPressEvent(QKeyEvent* event)
 {
     // used to manage DTMF
     // For "#" and "*", qt will automatically read the shift + 3 or 8
@@ -475,14 +477,13 @@ VideoView::keyPressEvent(QKeyEvent *event)
     QWidget::keyPressEvent(event);
 }
 
-void
-VideoView::keyReleaseEvent(QKeyEvent *event)
+void VideoView::keyReleaseEvent(QKeyEvent* event)
 {
     if (keyPressed_ == static_cast<int>(Qt::Key_NumberSign)) {
         LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "#");
     } else if (keyPressed_ == static_cast<int>(Qt::Key_Asterisk)) {
         LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "*");
-    } else if (keyPressed_ >= 48 && keyPressed_ <= 57){
+    } else if (keyPressed_ >= 48 && keyPressed_ <= 57) {
         //enum Qt::Key_0 = 48, QT::Key_9 = 57
         LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, std::to_string(keyPressed_ - 48));
     }
