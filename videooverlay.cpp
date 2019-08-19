@@ -20,13 +20,14 @@
 #include "videooverlay.h"
 #include "ui_videooverlay.h"
 
-#include <QTime>
-#include <QMouseEvent>
-
+#include "videoview.h"
 #include "lrcinstance.h"
 #include "contactpicker.h"
 #include "sipinputpanel.h"
 #include "utils.h"
+
+#include <QTime>
+#include <QMouseEvent>
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
@@ -149,15 +150,17 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::on_holdButton_clicked()
+VideoOverlay::on_holdButton_toggled(bool checked)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        auto onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
-        ui->holdButton->setChecked(!onHold);
-        ui->onHoldLabel->setVisible(!onHold);
+        bool onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
     }
+    //emit that the hold button status changed
+    emit HoldStatusChanged(checked);
+    ui->onHoldLabel->setVisible(checked);
+
 }
 
 void
@@ -265,8 +268,10 @@ VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayNa
 }
 
 void
-VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly)
 {
+    //Set irrelevant buttons invisible
+    ui->noVideoButton->setVisible(!isAudioOnly);
     // Block the signals of buttons
     Utils::whileBlocking(ui->noMicButton)->setChecked(isAudioMuted);
     Utils::whileBlocking(ui->noVideoButton)->setChecked(isVideoMuted);
