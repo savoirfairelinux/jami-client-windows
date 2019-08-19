@@ -729,3 +729,9 @@ QWidget#contactPickerWidget {
     border:solid 1px transparent;
     background-color: white;
 }
+QLabel#nameLabel {
+    font-size: 30px;
+    font-style: initial;
+    qproperty-alignment: AlignCenter;
+    color: white;
+}

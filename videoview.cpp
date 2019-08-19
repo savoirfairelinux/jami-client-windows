@@ -17,8 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "videoview.h"
 #include "ui_videoview.h"
+#include "videoview.h"
+
 
 #include "utils.h"
 #include "lrcinstance.h"
@@ -70,12 +71,17 @@ VideoView::VideoView(QWidget* parent) :
     connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
 
+    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
+    resetAvatarOverlay(false);
+
+
 }
 
 VideoView::~VideoView()
 {
     delete ui;
     delete overlay_;
+    delete audioOnlyAvatar_;
     delete fadeAnim_;
 }
 
@@ -119,9 +125,15 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     ui->videoWidget->resetPreview();
 
+    audioOnlyAvatar_->resize(this->size());
+
+
+
     overlay_->resize(this->size());
     overlay_->show();
     overlay_->raise();
+
+
 }
 
 void
@@ -434,9 +446,6 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         fadeTimer_.start(startfadeOverlayTime_);
     }
 
-    int videoWidgetHeight = ui->videoWidget->height();
-    int videoWidgetWidth = ui->videoWidget->width();
-
     QRect& previewRect =  ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
         if (previewRect.left() > 0
@@ -479,4 +488,19 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
 {
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+}
+
+void VideoView::resetAvatarOverlay(bool enable)
+{
+    audioOnlyAvatar_->setAvatarVisible(enable);
+}
+
+void VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+{
+    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
+}
+
+void VideoView::HoldStatusChanged(bool pauseLabelStatus)
+{
+    audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
 }

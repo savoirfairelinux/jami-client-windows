@@ -17,8 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "videooverlay.h"
 #include "ui_videooverlay.h"
+#include "videoview.h"
+#include "videooverlay.h"
+
+
 
 #include <QTime>
 #include <QMouseEvent>
@@ -51,6 +54,8 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
     connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
+
+    theparent = (VideoView*)parent;
 }
 
 VideoOverlay::~VideoOverlay()
@@ -148,10 +153,14 @@ VideoOverlay::on_holdButton_clicked()
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        auto onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
-        ui->holdButton->setChecked(!onHold);
-        ui->onHoldLabel->setVisible(!onHold);
+        bool onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
+        //emit that the hold button status changed
+        HoldStatusChanged(onHold);
+        ui->holdButton->setChecked(onHold);
+        ui->onHoldLabel->setVisible(onHold);
+
     }
+
 }
 
 void
@@ -248,6 +257,14 @@ VideoOverlay::on_transferCall_requested(const std::string& callId, const std::st
         callModel->transferToCall(callId, destCallId);
         callModel->hangUp(callId);
         callModel->hangUp(destCallId);
+    }
+}
+
+void VideoOverlay::HoldStatusChanged(bool pauseLabelStatus)
+{
+    if (theparent)
+    {
+        theparent->HoldStatusChanged(pauseLabelStatus);
     }
 }
 

@@ -23,7 +23,7 @@
 #include <QTimer>
 
 class ContactPicker;
-
+class VideoView;
 namespace Ui {
 class VideoOverlay;
 }
@@ -67,7 +67,12 @@ private:
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    VideoView* theparent;
 
 signals:
     void setChatVisibility(bool visible);
+
+private:
+    void HoldStatusChanged(bool pauseLabelStatus);
+
 };

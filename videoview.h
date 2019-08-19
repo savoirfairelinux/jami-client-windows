@@ -18,19 +18,19 @@
 
 #pragma once
 
-#include <QWidget>
-#include <QTimer>
 #include <QMouseEvent>
 #include <QPropertyAnimation>
+#include <QTimer>
+#include <QWidget>
 
 #include "videooverlay.h"
+#include "callaudioonlyavataroverlay.h"
 
 namespace Ui {
 class VideoView;
 }
 
-class VideoView : public QWidget
-{
+class VideoView : public QWidget {
     Q_OBJECT
 
 public:
@@ -41,6 +41,9 @@ public:
     void simulateShowChatview(bool checked);
     void setCurrentCalleeName(const QString& CalleeDisplayName);
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void resetAvatarOverlay(bool enable);
+    void writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+    void HoldStatusChanged(bool pauseLabelStatus);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -64,6 +67,7 @@ private slots:
 private:
     Ui::VideoView* ui;
     VideoOverlay* overlay_;
+    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
     QPropertyAnimation* fadeAnim_;
     QTimer fadeTimer_;
     QWidget* oldParent_;
@@ -99,4 +103,5 @@ signals:
     void videoSettingsClicked();
     void toggleFullScreenClicked();
     void closing(const std::string& callid);
+
 };
