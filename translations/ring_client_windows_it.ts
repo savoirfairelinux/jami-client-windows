@@ -849,7 +849,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Nessuno)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
