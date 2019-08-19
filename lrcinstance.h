@@ -153,11 +153,11 @@ public:
             .index(getCurrentAccountIndex()), AccountListModel::Role::Picture).value<QPixmap>();
     };
 
-    static void setCurrAccAvatar(const QPixmap& avatarPixmap) {
+    static void setCurrAccAvatar(const QPixmap& avatarImgmap) {
         QByteArray ba;
         QBuffer bu(&ba);
         bu.open(QIODevice::WriteOnly);
-        avatarPixmap.save(&bu, "PNG");
+        avatarImgmap.save(&bu, "PNG");
         auto str = ba.toBase64().toStdString();
         accountModel().setAvatar(getCurrAccId(), str);
     };
