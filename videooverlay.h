@@ -22,8 +22,10 @@
 #include <QMenu>
 #include <QTimer>
 
-class ContactPicker;
+#include "lrcinstance.h"
 
+class ContactPicker;
+class VideoView;
 namespace Ui {
 class VideoOverlay;
 }
@@ -48,13 +50,14 @@ public:
     void setTransferCallAvailability(bool visible);
     void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
     void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding);
+    void setOverlayDisplayMode(const lrc::api::conversation::Info& convInfo);
 
 //UI SLOTS
 private slots:
     void setTime();
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
-    void on_holdButton_clicked();
+    void on_holdButton_toggled(bool checked);
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
@@ -67,7 +70,12 @@ private:
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+    VideoView* theparent;
 
 signals:
     void setChatVisibility(bool visible);
+
+private:
+    void HoldStatusChanged(bool pauseLabelStatus);
+
 };
