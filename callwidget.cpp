@@ -659,6 +659,18 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     } else {
         ui->videoWidget->resetVideoOverlay(false, false, false, false);
     }
+    ui->videoWidget->setOverlayDisplayMode(convInfo);
+
+    //TODO: add the code for audio only call display
+    if (callModel->hasCall(convInfo.callId)) {
+        if (callModel->getCall(convInfo.callId).isAudioOnly)
+        {
+            ui->videoWidget->resetAvatarOverlay(true);
+            ui->videoWidget->writeAvatarOverlay(accountId, convInfo);
+        } else {
+            ui->videoWidget->resetAvatarOverlay(false);
+        }
+    }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
