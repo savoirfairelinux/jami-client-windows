@@ -20,6 +20,7 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
+
 #include "utils.h"
 #include "lrcinstance.h"
 
@@ -70,12 +71,14 @@ VideoView::VideoView(QWidget* parent) :
     connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
 
+    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
 }
 
 VideoView::~VideoView()
 {
     delete ui;
     delete overlay_;
+    delete audioOnlyAvatar_;
     delete fadeAnim_;
 }
 
@@ -118,6 +121,8 @@ VideoView::resizeEvent(QResizeEvent* event)
         previewRect.moveBottom(height() - marginWidth);
 
     ui->videoWidget->resetPreview();
+
+    audioOnlyAvatar_->resize(this->size());
 
     overlay_->resize(this->size());
     overlay_->show();
@@ -443,9 +448,44 @@ VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
     overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
 }
 
+#pragma optimize("", off)
 void
-VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly,const std::string& accountId,const lrc::api::conversation::Info& convInfo)
 {
+    resetAvatarOverlay(isAudioOnly);
+    if (isAudioOnly) {
+        writeAvatarOverlay(accountId, convInfo);
+    }
     emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
+
 }
+
+#pragma optimize("", off)
+void
+VideoView::resetAvatarOverlay(bool isAudioOnly)
+{
+    audioOnlyAvatar_->setAvatarVisible(isAudioOnly);
+    if (isAudioOnly)
+    {
+        disconnect(coordinateOverlays_);
+        coordinateOverlays_ = connect(overlay_, SIGNAL(HoldStatusChanged(bool)), this, SLOT(slotHoldStatusChanged(bool)));
+    }else{
+        disconnect(coordinateOverlays_);
+    }
+}
+
+#pragma optimize("", off)
+void
+VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+{
+    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
+}
+
+#pragma optimize("", off)
+void
+VideoView::slotHoldStatusChanged(bool pauseLabelStatus)
+{
+    audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
+}
+#pragma optimize("", off)
