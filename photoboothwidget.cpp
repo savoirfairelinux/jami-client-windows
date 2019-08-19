@@ -102,7 +102,7 @@ PhotoboothWidget::on_importButton_clicked()
     }
     auto image = Utils::cropImage(QImage(fileName_));
     auto avatar = image.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-    avatarPixmap_ = QPixmap::fromImage(avatar);
+    avatarImgmap_ = QPixmap::fromImage(avatar);
     ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
     hasAvatar_ = true;
     emit photoTaken();
@@ -133,7 +133,7 @@ PhotoboothWidget::on_takePhotoButton_clicked()
                 LRCInstance::avModel().stopPreview();
                 auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
                 auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-                avatarPixmap_ = QPixmap::fromImage(avatar);
+                avatarImgmap_ = QPixmap::fromImage(avatar);
                 ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
                 hasAvatar_ = true;
                 emit photoTaken();
@@ -143,9 +143,9 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 }
 
 void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarImgmap, bool default)
 {
-    ui->avatarLabel->setPixmap(avatarPixmap);
+    ui->avatarLabel->setPixmap(avatarImgmap);
     stopBooth();
     if (default) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
@@ -155,7 +155,7 @@ PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
 const QPixmap&
 PhotoboothWidget::getAvatarPixmap()
 {
-    return avatarPixmap_;
+    return avatarImgmap_;
 }
 
 bool
