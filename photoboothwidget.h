@@ -37,7 +37,7 @@ public:
 
     void startBooth();
     void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
+    void setAvatarPixmap(const QPixmap& avatarImgmap, bool default = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
 
@@ -51,7 +51,7 @@ private:
 
     QLabel* flashOverlay_;
     QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
+    QPixmap avatarImgmap_;
     bool hasAvatar_;
 
     bool takePhotoState_;
