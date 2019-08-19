@@ -17,8 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "videooverlay.h"
 #include "ui_videooverlay.h"
+#include "videoview.h"
+#include "videooverlay.h"
+
+
 
 #include <QTime>
 #include <QMouseEvent>
@@ -51,6 +54,8 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
     connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
+
+    theparent = (VideoView*)parent;
 }
 
 VideoOverlay::~VideoOverlay()
@@ -142,16 +147,18 @@ VideoOverlay::on_chatButton_toggled(bool checked)
     emit setChatVisibility(checked);
 }
 
-void
-VideoOverlay::on_holdButton_clicked()
+void VideoOverlay::on_holdButton_toggled(bool checked)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        auto onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
-        ui->holdButton->setChecked(!onHold);
-        ui->onHoldLabel->setVisible(!onHold);
+        bool onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
+        //emit that the hold button status changed
     }
+    HoldStatusChanged(checked);
+    //ui->holdButton->setChecked(checked);
+    ui->onHoldLabel->setVisible(checked);
+
 }
 
 void
@@ -251,6 +258,14 @@ VideoOverlay::on_transferCall_requested(const std::string& callId, const std::st
     }
 }
 
+void VideoOverlay::HoldStatusChanged(bool pauseLabelStatus)
+{
+    if (theparent)
+    {
+        theparent->HoldStatusChanged(pauseLabelStatus);
+    }
+}
+
 void
 VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
 {
@@ -266,4 +281,15 @@ VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecordin
     Utils::whileBlocking(ui->recButton)->setChecked(isRecording);
     Utils::whileBlocking(ui->holdButton)->setChecked(isHolding);
     Utils::whileBlocking(ui->onHoldLabel)->setVisible(isHolding);
+}
+
+void VideoOverlay::setOverlayDisplayMode(const lrc::api::conversation::Info& convInfo)
+{
+    auto callModel = LRCInstance::getCurrentCallModel();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    if (callModel->hasCall(convInfo.callId)) {
+        auto call = callModel->getCall(convInfo.callId);
+        ui->noVideoButton->setVisible(!call.isAudioOnly);
+    }
+
 }
