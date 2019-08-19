@@ -66,7 +66,9 @@ HEADERS += ./pixbufmanipulator.h \
     ./downloadbar.h \
     ./updateconfirmdialog.h \
     ./downloadmanger.h \
+    ./callaudioonlyavataroverlay.h \
     ./sipinputpanel.h
+
 SOURCES += ./advancedsettingswidget.cpp \
     ./advancedsipsettingwidget.cpp \
     ./avatargraphicsview.cpp \
@@ -116,7 +118,9 @@ SOURCES += ./advancedsettingswidget.cpp \
     ./downloadbar.cpp \
     ./updateconfirmdialog.cpp \
     ./downloadmanger.cpp \
+    ./callaudioonlyavataroverlay.cpp \
     ./sipinputpanel.cpp
+
 FORMS += ./aboutdialog.ui \
     ./advancedsettingswidget.ui \
     ./advancedsipsettingwidget.ui \
@@ -140,5 +144,7 @@ FORMS += ./aboutdialog.ui \
     ./downloadbar.ui \
     ./updateconfirmdialog.ui \
     ./contactpicker.ui \
+    ./callaudioonlyavataroverlay.ui \
     ./sipkeypad.ui
+
 RESOURCES += ressources.qrc
