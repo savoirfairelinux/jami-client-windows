@@ -15,5 +15,7 @@ qrencode-win32/
 build/
 nuget.exe
 
+*.autosave
+
 JamiInstaller/bin/
 JamiInstaller/obj/

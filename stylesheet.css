@@ -187,26 +187,26 @@ QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicBut
 QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
 QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
 QPushButton#recButton:hover, QPushButton#transferCallButton:hover {
-    background-color: rgba(0, 192, 213, 0.6);
+    /*background-color: rgba(0, 192, 213, 0.6);*/
 }
 
 QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed,
 QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
 QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
 QPushButton#recButton:pressed {
-    background-color: rgba(0, 192, 213, 0.8);
+    /*background-color: rgba(0, 192, 213, 0.8);*/
 }
 
 QPushButton#holdButton:checked, QPushButton#noMicButton:checked,
 QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
 QPushButton#chatButton:checked, QPushButton#transferCallButton:checked {
-    background-color: rgba(0, 192, 213, 0.8);
+    /*background-color: rgba(0, 192, 213, 0.8);*/
 }
 
-QPushButton#hangupButton{
-    background-color: rgba(200, 0, 0, 0.6);
+QPushButton#hangupButton {
+    background-color: rgba(0, 0, 0, 140);
     border-radius: 18px;
-    border:solid 1px;
+    border: solid 1px;
 }
 
 QPushButton#hangupButton:hover{
@@ -739,3 +739,10 @@ QProgressBar#audioInputMeter {
         background-color: #0c79aa;
         margin: 2px;
     }
+
+QLabel#nameLabel {
+    font-size: 30px;
+    font-style: initial;
+    qproperty-alignment: AlignCenter;
+    color: white;
+}
