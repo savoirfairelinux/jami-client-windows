@@ -142,8 +142,7 @@ PhotoboothWidget::on_takePhotoButton_clicked()
     }
 }
 
-void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+void PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
 {
     ui->avatarLabel->setPixmap(avatarPixmap);
     stopBooth();

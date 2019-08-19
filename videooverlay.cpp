@@ -39,17 +39,26 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
 
     ui->bottomButtons->setMouseTracking(true);
 
-    ui->chatButton->setCheckable(true);
+    ui->chatButton->setCheckable(false);
+    ui->hangupButton->setCheckable(false);
+    ui->noMicButton->setCheckable(false);
+    ui->noVideoButton->setCheckable(false);
+    ui->recButton->setCheckable(false);
+    ui->holdButton->setCheckable(false);
+    ui->transferCallButton->setVisible(false);
 
     ui->onHoldLabel->setVisible(false);
 
-    ui->transferCallButton->setVisible(false);
+
     ui->transferCallButton->setCheckable(true);
 
     contactPicker_->setVisible(false);
     contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
     connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::slotWillDoTransfer);
+
+    initializeBtnWithIconImageContainers();
+    initializeBtnEventListener();
 }
 
 VideoOverlay::~VideoOverlay()
@@ -121,8 +130,7 @@ VideoOverlay::getShowChatView()
     return ui->chatButton->isChecked();
 }
 
-void
-VideoOverlay::on_hangupButton_clicked()
+bool VideoOverlay::on_hangupButton_selected(bool isToBeSelected)
 {
     auto convInfo = Utils::getSelectedConversation();
     if (!convInfo.uid.empty()) {
@@ -132,54 +140,56 @@ VideoOverlay::on_hangupButton_clicked()
             callModel->hangUp(callId);
         }
     }
-    ui->chatButton->setChecked(false);
+    return isToBeSelected;
 }
 
-void
-VideoOverlay::on_chatButton_toggled(bool checked)
+bool VideoOverlay::on_chatButton_selected(bool isToBeSelected)
 {
-    emit setChatVisibility(checked);
+    emit setChatVisibility(isToBeSelected);
+
+    return isToBeSelected;
 }
 
-void
-VideoOverlay::on_holdButton_clicked()
+bool VideoOverlay::on_holdButton_selected(bool isToBeSelected)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        auto onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
-        ui->holdButton->setChecked(!onHold);
-        ui->onHoldLabel->setVisible(!onHold);
     }
+    //emit that the hold button status changed
+    emit HoldStatusChanged(isToBeSelected);
+    ui->onHoldLabel->setVisible(isToBeSelected);
+
+    return isToBeSelected;
 }
 
-void
-VideoOverlay::on_noMicButton_toggled(bool checked)
+bool VideoOverlay::on_noMicButton_selected(bool isToBeSelected)
 {
-    Q_UNUSED(checked);
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::AUDIO);
     }
+    return isToBeSelected;
 }
 
-void
-VideoOverlay::on_noVideoButton_toggled(bool checked)
+bool VideoOverlay::on_noVideoButton_selected(bool isToBeSelected)
 {
-    Q_UNUSED(checked);
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::VIDEO);
     }
+
+    return isToBeSelected;
 }
 
-void
-VideoOverlay::on_recButton_clicked()
+bool VideoOverlay::on_recButton_selected(bool isToBeSelected)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId_)) {
         callModel->toggleAudioRecord(callId_);
     }
+
+    return isToBeSelected;
 }
 
 void
@@ -188,11 +198,10 @@ VideoOverlay::setTransferCallAvailability(bool visible)
     ui->transferCallButton->setVisible(visible);
 }
 
-void
-VideoOverlay::on_transferCallButton_toggled(bool checked)
+bool VideoOverlay::on_transferCallButton_selected(bool isToBeSelected)
 {
-    if (callId_.empty() || !checked) {
-        return;
+    if (callId_.empty() || !isToBeSelected) {
+        return false;
     }
     contactPicker_->setType(ContactPicker::Type::TRANSFER);
 
@@ -220,6 +229,8 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
     });
 
     contactPicker_->show();
+
+    return isToBeSelected;
 }
 
 void
@@ -250,15 +261,158 @@ VideoOverlay::slotWillDoTransfer(const std::string& callId, const std::string& c
     }
 }
 
+void VideoOverlay::initializeBtnEventListener()
+{
+    ui->noMicButton->installEventFilter(this);
+    ui->noVideoButton->installEventFilter(this);
+    ui->holdButton->installEventFilter(this);
+    ui->recButton->installEventFilter(this);
+    ui->hangupButton->installEventFilter(this);
+    ui->chatButton->installEventFilter(this);
+    ui->transferCallButton->installEventFilter(this);
+}
+
+bool VideoOverlay::setButtonsIconForEvent(QObject* target, QEvent* event)
+{
+    QPushButton* btn = (QPushButton*)target;
+    if (!btn)
+        return false;
+    std::map<QPushButton*, QPixmap>::iterator iter = originalIconImageMap_.find(btn);
+    if (iter == originalIconImageMap_.end())
+        return false;
+    switch (event->type()) {
+    case QMouseEvent::HoverEnter:
+        isBtnHovered_[btn] = true;
+        if (!isBtnSelected_[btn]) {
+            //set to normal tint
+            btn->setIcon(QIcon(tintIconImageMap_[btn]));
+        } else {
+            //set to checked tint
+            btn->setIcon(QIcon(tintCheckedIconImageMap_[btn]));
+        }
+        break;
+
+    case QMouseEvent::HoverLeave:
+        isBtnHovered_[btn] = false;
+        if (!isBtnSelected_[btn]) {
+            //set to or normal original
+            btn->setIcon(QIcon(originalIconImageMap_[btn]));
+        } else {
+            //set to checked original
+            btn->setIcon(QIcon(originalCheckedIconImageMap_[btn]));
+        }
+        break;
+    case QMouseEvent::MouseButtonPress:
+        //see if it's selected now
+        // call the press function according to toggle of select status
+        //set the final select status according to the fact
+        isBtnSelected_[btn] = (this->*btnPressCallbacks_[btn])(!isBtnSelected_[btn]);
+        //set the button icon according to whether it's supposed to be check and if it's hovered
+        if (isBtnHovered_[btn]) {
+            if (!isBtnSelected_[btn]) {
+                //set to normal tint
+                btn->setIcon(QIcon(tintIconImageMap_[btn]));
+            } else {
+                //set to checked tint
+                btn->setIcon(QIcon(tintCheckedIconImageMap_[btn]));
+            }
+        } else {
+            if (!isBtnSelected_[btn]) {
+                //set to or normal original
+                btn->setIcon(QIcon(originalIconImageMap_[btn]));
+            } else {
+                //set to checked original
+                btn->setIcon(QIcon(originalCheckedIconImageMap_[btn]));
+            }
+        }
+        break;
+    default:
+        return false;
+        break;
+    }
+    return true;
+}
+
+bool VideoOverlay::eventFilter(QObject* target, QEvent* event)
+{
+    bool isGot = setButtonsIconForEvent(target, event);
+    if (isGot)
+    {
+        return true;
+    }
+    else
+    {
+        return QWidget::eventFilter(target, event);
+    }
+
+}
+
+void VideoOverlay::initializeBtnWithIconImageContainers()
+{
+    std::map<QPushButton*, QString> originalIconImagePathMap;
+    std::map<QPushButton*, QString> originalCheckedIconImagePathMap;
+
+    originalIconImagePathMap[ui->noMicButton] = QString(":/images/icons/ic_mic_white_24dp.png");
+    originalIconImagePathMap[ui->noVideoButton] = QString(":/images/icons/ic_videocam_white.png");
+    originalIconImagePathMap[ui->holdButton] = QString(":/images/icons/ic_pause_white_24dp.png");
+    originalIconImagePathMap[ui->recButton] = QString(":/images/icons/ic_voicemail_white_24dp_2x.png");
+    originalIconImagePathMap[ui->hangupButton] = QString(":/images/icons/ic_close_white_24dp.png");
+    originalIconImagePathMap[ui->chatButton] = QString(":/images/icons/ic_chat_white_24dp.png");
+    originalIconImagePathMap[ui->transferCallButton] = QString(":/images/icons/ic_call_transfer_white_24px.png");
+
+    originalCheckedIconImagePathMap[ui->noMicButton] = QString(":/images/icons/ic_mic_off_white_24dp.png");
+    originalCheckedIconImagePathMap[ui->noVideoButton] = QString(":/images/icons/ic_videocam_off_white_24dp.png");
+    originalCheckedIconImagePathMap[ui->holdButton] = QString(":/images/icons/ic_pause_white_24dp.png");
+    originalCheckedIconImagePathMap[ui->recButton] = QString(":/images/icons/ic_voicemail_white_24dp_2x.png");
+    originalCheckedIconImagePathMap[ui->hangupButton] = QString(":/images/icons/ic_close_white_24dp.png");
+    originalCheckedIconImagePathMap[ui->chatButton] = QString(":/images/icons/ic_chat_white_24dp.png");
+    originalCheckedIconImagePathMap[ui->transferCallButton] = QString(":/images/icons/ic_call_transfer_white_24px.png");
+
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->noMicButton, &VideoOverlay::on_noMicButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->noVideoButton, &VideoOverlay::on_noVideoButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->holdButton, &VideoOverlay::on_holdButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->recButton, &VideoOverlay::on_recButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->hangupButton, &VideoOverlay::on_hangupButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->chatButton, &VideoOverlay::on_chatButton_selected));
+    btnPressCallbacks_.insert(std::pair<QPushButton*, BtnCallback>(ui->transferCallButton, &VideoOverlay::on_transferCallButton_selected));
+
+    //clear containers
+    originalIconImageMap_.clear();
+    originalCheckedIconImageMap_.clear();
+    tintIconImageMap_.clear();
+    tintCheckedIconImageMap_.clear();
+    isBtnSelected_.clear();
+    isBtnHovered_.clear();
+
+    for (auto go : originalIconImagePathMap) {
+        //initialize select and hover state to false in setup map container
+        isBtnSelected_[go.first] = false;
+        isBtnHovered_[go.first] = false;
+        //store original image icon
+        originalIconImageMap_[go.first] = QPixmap(go.second);
+        //Generate tint images for original state
+        tintIconImageMap_[go.first] = Utils::generateTintedPixmap(go.second, QColor(0, 255, 0));
+    }
+
+    for (auto go : originalCheckedIconImagePathMap) {
+        QPixmap temp = Utils::generateReflectededPixmap(go.second, QColor(0, 255, 0));
+        //store checked original image
+        originalCheckedIconImageMap_[go.first] = temp;
+        //Generate tint images for original checked state
+        tintCheckedIconImageMap_[go.first] = Utils::generateTintedPixmap(temp, QColor(0, 255, 0));
+    }
+}
+
 void
 VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
 {
     contactPicker_->setCurrentCalleeDisplayName(CalleeDisplayName);
 }
 
-void
-VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+void VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly)
 {
+    //Set irrelevant buttons invisible
+    ui->noVideoButton->setVisible(!isAudioOnly);
     // Block the signals of buttons
     Utils::whileBlocking(ui->noMicButton)->setChecked(isAudioMuted);
     Utils::whileBlocking(ui->noVideoButton)->setChecked(isVideoMuted);
