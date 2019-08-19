@@ -17,8 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "videoview.h"
 #include "ui_videoview.h"
+#include "videoview.h"
+
 
 #include "utils.h"
 #include "lrcinstance.h"
@@ -70,12 +71,17 @@ VideoView::VideoView(QWidget* parent) :
     connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
 
+    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
+    resetAvatarOverlay(false);
+
+
 }
 
 VideoView::~VideoView()
 {
     delete ui;
     delete overlay_;
+    delete audioOnlyAvatar_;
     delete fadeAnim_;
 }
 
@@ -119,9 +125,15 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     ui->videoWidget->resetPreview();
 
+    audioOnlyAvatar_->resize(this->size());
+
+
+
     overlay_->resize(this->size());
     overlay_->show();
     overlay_->raise();
+
+
 }
 
 void
@@ -376,8 +388,9 @@ VideoView::mousePressEvent(QMouseEvent* event)
     if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
         QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
         if (distance.dy() < resizeGrip_ and distance.dx() < resizeGrip_) {
-            QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
-            resizingPreview_ = true;
+            //Preview's resize function is disablied here
+            //QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
+            //resizingPreview_ = true;
         } else {
             originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
             QApplication::setOverrideCursor(Qt::SizeAllCursor);
@@ -390,6 +403,33 @@ void
 VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
+    if (draggingPreview_) {
+    //Check preview's current central position
+    QRect& previewRect = ui->videoWidget->getPreviewRect();
+    auto previewCentral = previewRect.center();
+    auto videoViewRect = ui->videoWidget->rect();
+    auto videoWidgetCentral = videoViewRect.center();
+    if (previewCentral.x() >= videoWidgetCentral.x())
+    {
+        if (previewCentral.y() >= videoWidgetCentral.y())
+        {
+            //Move preview to bottom right
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
+        } else {
+            //Move preview to top right
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+
+        }
+    } else {
+        if (previewCentral.y() >= videoWidgetCentral.y()) {
+            //Move preview to bottom left
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
+        } else {
+            //Move preview to top left
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
+        }
+    }
+    }
 
     draggingPreview_ = false;
     resizingPreview_ = false;
@@ -405,6 +445,9 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
     } else {
         fadeTimer_.start(startfadeOverlayTime_);
     }
+
+    int videoWidgetHeight = ui->videoWidget->height();
+    int videoWidgetWidth = ui->videoWidget->width();
 
     QRect& previewRect =  ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
@@ -448,4 +491,24 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
 {
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+}
+
+void VideoView::resetAvatarOverlay(bool enable)
+{
+    audioOnlyAvatar_->setAvatarVisible(enable);
+}
+
+void VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+{
+    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
+}
+
+void VideoView::HoldStatusChanged(bool pauseLabelStatus)
+{
+    audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
+}
+
+void VideoView::setOverlayDisplayMode(const lrc::api::conversation::Info& convInfo)
+{
+    overlay_->setOverlayDisplayMode(convInfo);
 }
