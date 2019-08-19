@@ -20,6 +20,7 @@
 #include "videoview.h"
 #include "ui_videoview.h"
 
+
 #include "utils.h"
 #include "lrcinstance.h"
 
@@ -70,12 +71,14 @@ VideoView::VideoView(QWidget* parent) :
     connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
 
+    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
 }
 
 VideoView::~VideoView()
 {
     delete ui;
     delete overlay_;
+    delete audioOnlyAvatar_;
     delete fadeAnim_;
 }
 
@@ -118,6 +121,8 @@ VideoView::resizeEvent(QResizeEvent* event)
         previewRect.moveBottom(height() - marginWidth);
 
     ui->videoWidget->resetPreview();
+
+    audioOnlyAvatar_->resize(this->size());
 
     overlay_->resize(this->size());
     overlay_->show();
@@ -170,10 +175,8 @@ VideoView::slotCallStatusChanged(const std::string& callId)
         }
         return;
     }
-    case Status::ENDED:
-        emit closing(call.id);
     default:
-        //emit closing(call.id);
+        emit closing(call.id);
         break;
     }
     QObject::disconnect(timerConnection_);
@@ -375,14 +378,9 @@ VideoView::mousePressEvent(QMouseEvent* event)
     QPoint clickPosition = event->pos();
     if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
         QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
-        if (distance.dy() < resizeGrip_ and distance.dx() < resizeGrip_) {
-            QApplication::setOverrideCursor(Qt::SizeFDiagCursor);
-            resizingPreview_ = true;
-        } else {
-            originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
-            QApplication::setOverrideCursor(Qt::SizeAllCursor);
-            draggingPreview_ = true;
-        }
+        originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
+        QApplication::setOverrideCursor(Qt::SizeAllCursor);
+        draggingPreview_ = true;
     }
 }
 
@@ -390,9 +388,35 @@ void
 VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
+    if (draggingPreview_) {
+    //Check preview's current central position
+    QRect& previewRect = ui->videoWidget->getPreviewRect();
+    auto previewCentral = previewRect.center();
+    auto videoViewRect = ui->videoWidget->rect();
+    auto videoWidgetCentral = videoViewRect.center();
+    if (previewCentral.x() >= videoWidgetCentral.x())
+    {
+        if (previewCentral.y() >= videoWidgetCentral.y())
+        {
+            //Move preview to bottom right
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
+        } else {
+            //Move preview to top right
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+
+        }
+    } else {
+        if (previewCentral.y() >= videoWidgetCentral.y()) {
+            //Move preview to bottom left
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
+        } else {
+            //Move preview to top left
+            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
+        }
+    }
+    }
 
     draggingPreview_ = false;
-    resizingPreview_ = false;
     QApplication::setOverrideCursor(Qt::ArrowCursor);
 }
 
@@ -427,14 +451,6 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
                 previewRect.moveBottom(height() - 1);
         }
     }
-
-    QLine distance = QLine(previewRect.topLeft(), event->pos());
-
-    if (resizingPreview_
-            and distance.dx() > minimalSize_
-            and distance.dy() > minimalSize_
-            and geometry().contains(event->pos()))
-        previewRect.setBottomRight(event->pos());
 }
 
 void
@@ -444,8 +460,38 @@ VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
 }
 
 void
-VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
+VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly,const std::string& accountId,const lrc::api::conversation::Info& convInfo)
 {
+    resetAvatarOverlay(isAudioOnly);
+    if (isAudioOnly) {
+        writeAvatarOverlay(accountId, convInfo);
+    }
     emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
+    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
+
+}
+
+void
+VideoView::resetAvatarOverlay(bool isAudioOnly)
+{
+    audioOnlyAvatar_->setAvatarVisible(isAudioOnly);
+    if (isAudioOnly)
+    {
+        disconnect(coordinateOverlays_);
+        coordinateOverlays_ = connect(overlay_, SIGNAL(HoldStatusChanged(bool)), this, SLOT(slotHoldStatusChanged(bool)));
+    }else{
+        disconnect(coordinateOverlays_);
+    }
+}
+
+void
+VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+{
+    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
+}
+
+void
+VideoView::slotHoldStatusChanged(bool pauseLabelStatus)
+{
+    audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
 }

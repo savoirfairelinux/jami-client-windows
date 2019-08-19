@@ -82,4 +82,18 @@ private:
     bool hasFrame_ = false;
 
     constexpr static int previewMargin_ = 15;
+
+public:
+    enum TargetPointPreview
+    {
+        topRight,
+        topLeft,
+        bottomRight,
+        bottomLeft,
+        left,
+        right,
+        top,
+        bottom
+    };
+    void movePreview(TargetPointPreview typeOfMove);
 };
