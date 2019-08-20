@@ -825,8 +825,9 @@ void SettingsWidget::populateGeneralSettings()
     auto recordPreview = LRCInstance::avModel().getRecordPreview();
     ui->recordPreviewCheckBox->setChecked(recordPreview);
 
-    auto recordQuality = LRCInstance::avModel().getRecordQuality();
-    ui->recordQualityValueLabel->setText(getRecordQualityString(recordQuality));
+    auto recordQuality = LRCInstance::avModel().getRecordQuality() / 100;
+    auto recordQualityStr = getRecordQualityString(recordQuality);
+    ui->recordQualityValueLabel->setText(recordQualityStr);
     ui->recordQualitySlider->setValue(recordQuality);
 
     if (LRCInstance::avModel().getRecordPath().empty()) {
