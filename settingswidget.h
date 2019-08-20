@@ -115,7 +115,6 @@ private:
     lrc::api::profile::Type pastAccount_ = lrc::api::profile::Type::INVALID;
     bool advancedSettingsDropped_ = false;
     QList<QPair<std::string, float>> formatIndexList_;
-    std::string currentDisplayedVideoDevice_;
     AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
     QScrollArea* scrollSIPArea_;
     bool advancedSIPSettingsDropped_ = false;

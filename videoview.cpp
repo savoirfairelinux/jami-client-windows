@@ -271,7 +271,10 @@ VideoView::showContextMenu(const QPoint& pos)
         }
         connect(deviceAction, &QAction::triggered,
             [this, deviceName, thisCallId]() {
-                LRCInstance::avModel().switchInputTo(deviceName.toStdString());
+                auto decive = deviceName.toStdString();
+                LRCInstance::avModel().switchInputTo(decive);
+                LRCInstance::avModel().setCurrentUsingDevice(decive);
+                ui->videoWidget->connectRendering();
             });
     }
 

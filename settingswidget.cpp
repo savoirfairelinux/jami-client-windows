@@ -257,7 +257,9 @@ void SettingsWidget::setSelected(Button sel)
         if (pastButton_ == sel) { return; }
 
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
-        currentDisplayedVideoDevice_.clear();
+        if (!LRCInstance::getActiveCalls().size()) {
+            LRCInstance::avModel().clearCurrentUsingDevice();
+        }
         populateAVSettings();
 
         startAudioMeter();
@@ -1028,7 +1030,6 @@ void SettingsWidget::populateAVSettings()
     disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
     auto devices = LRCInstance::avModel().getDevices();
-    bool shouldReinitializePreview = true;
     ui->deviceBox->clear();
     ui->formatBox->clear();
     bool hasVideoDevices = devices.size();
@@ -1038,16 +1039,17 @@ void SettingsWidget::populateAVSettings()
     ui->labelVideoFormat->setEnabled(hasVideoDevices);
     if (hasVideoDevices) {
         auto device = LRCInstance::avModel().getDefaultDeviceName();
-        shouldReinitializePreview = currentDisplayedVideoDevice_ != device;
-        currentDisplayedVideoDevice_ = device;
-        auto deviceIndex = Utils::indexInVector(devices, device);
+        if (LRCInstance::avModel().getCurrentUsingDevice().empty()) {
+            LRCInstance::avModel().setCurrentUsingDevice(device);
+        }
+        auto deviceIndex = Utils::indexInVector(devices, LRCInstance::avModel().getCurrentUsingDevice());
         for (auto d : devices) {
             ui->deviceBox->addItem(QString::fromStdString(d).toUtf8());
         }
         ui->deviceBox->setCurrentIndex(deviceIndex);
-        setFormatListForDevice(device);
+        setFormatListForDevice(LRCInstance::avModel().getCurrentUsingDevice());
     } else {
-        currentDisplayedVideoDevice_.clear();
+        LRCInstance::avModel().clearCurrentUsingDevice();
         ui->deviceBox->addItem(QObject::tr("None"));
         ui->formatBox->addItem(QObject::tr("None"));
     }
@@ -1056,9 +1058,7 @@ void SettingsWidget::populateAVSettings()
     connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
 
-    if (shouldReinitializePreview) {
-        startPreviewing();
-    }
+    startPreviewing();
 
     auto encodeAccel = LRCInstance::avModel().getHardwareAcceleration();
     ui->hardwareAccelCheckBox->setChecked(encodeAccel);
@@ -1084,10 +1084,10 @@ void SettingsWidget::inputdevIndexChangedSlot(int index)
 
 void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
-    currentDisplayedVideoDevice_ = ui->deviceBox->itemData(index, Qt::DisplayRole)
-        .toString().toStdString();
-    LRCInstance::avModel().setDefaultDevice(currentDisplayedVideoDevice_);
-    setFormatListForDevice(currentDisplayedVideoDevice_);
+    std::string device = ui->deviceBox->itemData(index, Qt::DisplayRole).toString().toStdString();
+    LRCInstance::avModel().setCurrentUsingDevice(device);
+    LRCInstance::avModel().setDefaultDevice(device);
+    setFormatListForDevice(device);
     startPreviewing(true);
 }
 
@@ -1095,8 +1095,9 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
 {
     auto resolution = formatIndexList_.at(index).first;
     auto rate = formatIndexList_.at(index).second;
-    auto currentSettings = LRCInstance::avModel().getDeviceSettings(currentDisplayedVideoDevice_);
-    lrc::api::video::Settings settings{ "", currentDisplayedVideoDevice_, rate, resolution };
+    auto decive = LRCInstance::avModel().getCurrentUsingDevice();
+    auto currentSettings = LRCInstance::avModel().getDeviceSettings(decive);
+    lrc::api::video::Settings settings{ "", decive, rate, resolution };
     ui->videoWidget->connectRendering();
     LRCInstance::avModel().setDeviceSettings(settings);
 }
