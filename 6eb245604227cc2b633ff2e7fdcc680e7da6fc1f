@@ -1,0 +1,784 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5db28bdf_9e301546",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "does this patch really do this?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e3f9fa_ea369629",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "\u0027add view for audio-only calls\u0027 would be a better commit message in my opinion for the following reasons:\n- commit messages for this project should be present-tense imperative\n- it better describes the desired effect of the patch",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a29157_e016e662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "videoview",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d41b08_27c0ae2d",
+        "filename": "callaudioonlyavataroverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "please include copyright license header",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df303169_29c24399",
+        "filename": "callaudioonlyavataroverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "no need to make a copy here",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8397d7f8_d0143a8e",
+        "filename": "callaudioonlyavataroverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "contact.profileInfo.avatar.c_str()",
+      "range": {
+        "startLine": 30,
+        "startChar": 50,
+        "endLine": 30,
+        "endChar": 91
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74ba270_fb97b111",
+        "filename": "callaudioonlyavataroverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "int size \u003d std::min(avatarImg.width(), avatarImg.height()); ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ced5414_428898c3",
+        "filename": "callaudioonlyavataroverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "Best to check this for guidelines: https://git.jami.net/savoirfairelinux/ring-project/wikis/guidelines/Identifiers\n\nThere are helper functions available in the Utils namespace also.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b68318e_bc107be5",
+        "filename": "callaudioonlyavataroverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "please include a copyright license header",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34dd5faf_8c1b06c1",
+        "filename": "callaudioonlyavataroverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "use \u0027#pragma once\u0027 instead",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7b790d_9af0b777",
+        "filename": "callaudioonlyavataroverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "Ideally, separate include sections in a local to global, then each section optionally in alphabetical order. For instance, in a file called \u0027widget.cpp\u0027 you could use the order:\n\n// directly related to this file\n#include \"widget.h\"\n#include \"ui_widget.h\"\n\n// project\n#include \"lrcinstance.h\"\n#include \"utils.h\"\n\n// qt\n#include \u003cQLabel\u003e\n#include \u003cQWidget\u003e\n\n// stl\n#include \u003ciostream\u003e\n#include \u003cthread\u003e",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7a7972_5c0c8836",
+        "filename": "callaudioonlyavataroverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "The preferred signal slot naming convention is:\nsignal -\u003e {nameOfTheEvent}\nslot   -\u003e slot{NameOfTheEvent}\n\nWhat event does this slot respond to?",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ad943e_d6ddb696",
+        "filename": "callaudioonlyavataroverlay.ui.autosave",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "this extension should be in the project .gitignore file",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551093f3_87f7483b",
+        "filename": "callwidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "is this TODO done?",
+      "range": {
+        "startLine": 664,
+        "startChar": 4,
+        "endLine": 664,
+        "endChar": 52
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4097e84f_533289e0",
+        "filename": "callwidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "This condition is addressed at line 653. Could the overlay logic be in that block?",
+      "range": {
+        "startLine": 665,
+        "startChar": 4,
+        "endLine": 665,
+        "endChar": 46
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757f3b75_049928de",
+        "filename": "callwidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "style:\nif (condition) {\n    // code\n} else {\n    // code\n}",
+      "range": {
+        "startLine": 666,
+        "startChar": 8,
+        "endLine": 672,
+        "endChar": 9
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6af4d0c_f15c7173",
+        "filename": "callwidget.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "this change is not required",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec4ec5a_eb6c271b",
+        "filename": "jami-qt.pro",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "./callaudioonlyavataroverlay.h",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb67c9d_35fae71f",
+        "filename": "jami-qt.pro",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "./callaudioonlyavataroverlay.cpp",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec1be5b_646572c1",
+        "filename": "jami-qt.pro",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "./callaudioonlyavataroverlay.ui",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 33
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2cecfff_40fb0a37",
+        "filename": "lrcinstance.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "non-relevant changes in this file",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31943ff3_f10040b0",
+        "filename": "photoboothwidget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "non-relevant changes in this file",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb97a99_7e3648f9",
+        "filename": "photoboothwidget.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "non-relevant changes in this file",
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3413e686_70cd966b",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "#include \"videooverlay.h\"\n#include \"ui_videooverlay.h\"\n\n#include \"videoview.h\"\n#include \"lrcinstance.h\"\n#include \"contactpicker.h\"\n#include \"utils.h\"\n\n#include \u003cQTime\u003e\n#include \u003cQMouseEvent\u003e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dbcd30_42381ee9",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "if this is a signal, precede it with the emit macro",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86e9002_dcf75ee8",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df486b9a_dfacb56a",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "style",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 5
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5066e410_1d314ac9",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "not used",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 64
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db7aa1e_c9c8ca98",
+        "filename": "videooverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "#include \"api/conversationmodel.h\"\n\n#include \u003cQWidget\u003e\n#include \u003cQMenu\u003e\n#include \u003cQTimer\u003e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e72ac3c_596cc4fb",
+        "filename": "videooverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "is there no other way?\nif not, theparent -\u003e parent_",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ade856_3d15f452",
+        "filename": "videooverlay.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "holdStatusChanged\n\nis this a slot?",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4b3001_903eb6a1",
+        "filename": "videoview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "#include \"videoview.h\"\n#include \"ui_videoview.h\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29358a9_720b7bc7",
+        "filename": "videoview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "extra lines",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063ea1ff_7e23c589",
+        "filename": "videoview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "extra lines",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada53049_d91a1245",
+        "filename": "videoview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "extra lines",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8891db4_fd63ac41",
+        "filename": "videoview.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-08-20T15:23:16Z",
+      "side": 1,
+      "message": "#include \"videooverlay.h\"\n#include \"callaudioonlyavataroverlay.h\"\n#include \"api/conversationmodel.h\"\n\n#include \u003cQMouseEvent\u003e\n#include \u003cQPropertyAnimation\u003e\n#include \u003cQTimer\u003e\n#include \u003cQWidget\u003e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "6eb245604227cc2b633ff2e7fdcc680e7da6fc1f",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
