@@ -140,7 +140,6 @@ ContactPickerItemDelegate::paintRingContactItem(QPainter* painter,
     }
 
     auto leftMargin = dx_ + sizeImage_ + dx_;
-    auto rightMargin = dx_;
     auto topMargin = 4;
     auto bottomMargin = 8;
 
@@ -202,7 +201,6 @@ ContactPickerItemDelegate::paintSIPContactItem(QPainter* painter,
     }
 
     auto leftMargin = dx_ + sizeImage_ + dx_;
-    auto rightMargin = dx_;
     auto topMargin = 4;
     auto bottomMargin = 8;
 

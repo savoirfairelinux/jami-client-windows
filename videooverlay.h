@@ -58,8 +58,8 @@ private slots:
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
-    void on_transferButton_toggled(bool checked);
-    void on_transferCall_requested(const std::string& callId, const std::string& contactUri);
+    void on_transferCallButton_toggled(bool checked);
+    void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
 
 private:
     Ui::VideoOverlay* ui;
