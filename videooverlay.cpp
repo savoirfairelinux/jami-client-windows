@@ -49,8 +49,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     contactPicker_->setVisible(false);
     contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
-    connect(ui->transferCallButton, &QPushButton::toggled, this, &VideoOverlay::on_transferButton_toggled);
-    connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::on_transferCall_requested);
+    connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::slotWillDoTransfer);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -190,7 +189,7 @@ VideoOverlay::setTransferCallAvailability(bool visible)
 }
 
 void
-VideoOverlay::on_transferButton_toggled(bool checked)
+VideoOverlay::on_transferCallButton_toggled(bool checked)
 {
     if (callId_.empty() || !checked) {
         return;
@@ -224,7 +223,7 @@ VideoOverlay::on_transferButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::on_transferCall_requested(const std::string& callId, const std::string& contactUri)
+VideoOverlay::slotWillDoTransfer(const std::string& callId, const std::string& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     contactPicker_->hide();

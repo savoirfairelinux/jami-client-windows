@@ -716,7 +716,7 @@
                              </property>
                              <property name="icon">
                               <iconset>
-                               <normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
+                               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -1061,7 +1061,7 @@
                              </property>
                              <property name="icon">
                               <iconset>
-                               <normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</normaloff>../../../../.designer/backup/images/icons/round-folder-24px.svg</iconset>
+                               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
