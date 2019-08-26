@@ -261,6 +261,21 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     return target;
 }
 
+QImage Utils::GetRoundedPhoto(const QImage original)
+{
+    QImage target(original.size(), QImage::Format_ARGB32_Premultiplied);
+    target.fill(Qt::transparent);
+
+    QPainter painter(&target);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setBrush(QBrush(Qt::white));
+
+    painter.drawRoundRect(0, 0, original.size().width(), original.size().height(), 25, (25 * 2 * (original.size().width() / original.size().height())));
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.drawImage(0, 0, original, 0, 0);
+    return target;
+}
+
 void
 Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 {
