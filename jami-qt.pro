@@ -67,7 +67,8 @@ HEADERS += ./pixbufmanipulator.h \
     ./updateconfirmdialog.h \
     ./downloadmanger.h \
     ./callaudioonlyavataroverlay.h \
-    ./sipinputpanel.h
+    ./sipinputpanel.h \
+    ./overlayButton.h
 
 SOURCES += ./advancedsettingswidget.cpp \
     ./advancedsipsettingwidget.cpp \
@@ -119,7 +120,8 @@ SOURCES += ./advancedsettingswidget.cpp \
     ./updateconfirmdialog.cpp \
     ./downloadmanger.cpp \
     ./callaudioonlyavataroverlay.cpp \
-    ./sipinputpanel.cpp
+    ./sipinputpanel.cpp \
+    ./overlayButton.cpp
 
 FORMS += ./aboutdialog.ui \
     ./advancedsettingswidget.ui \

@@ -175,7 +175,7 @@ QWidget#messageViewLayoutWidget, QWidget#welcomePage {
     background-color: rgba(255, 255, 255, 255);
 }
 
-QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton,
+QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton, QPushButton#hangupButton,
 QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
 QPushButton#qualityButton, QPushButton#recButton, QPushButton#transferCallButton,
 QPushButton#sipInputPanelButton {
@@ -184,40 +184,32 @@ QPushButton#sipInputPanelButton {
     border: solid 1px;
 }
 
-QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover,
+QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#hangupButton:hover,
 QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
 QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
 QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
 QPushButton#sipInputPanelButton:hover {
-    background-color: rgba(0, 192, 213, 0.6);
-}
-
-QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed,
-QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
-QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
-QPushButton#recButton:pressed {
-    background-color: rgba(0, 192, 213, 0.8);
-}
-
-QPushButton#holdButton:checked, QPushButton#noMicButton:checked,
-QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
-QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
-QPushButton#sipInputPanelButton:checked {
-    background-color: rgba(0, 192, 213, 0.8);
-}
-
-QPushButton#hangupButton {
     background-color: rgba(0, 0, 0, 140);
     border-radius: 18px;
     border: solid 1px;
 }
 
-QPushButton#hangupButton:hover{
-    background-color: rgba(255, 0, 0, 0.6);
+QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
+QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
+QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
+QPushButton#recButton:pressed {
+    background-color: rgba(0, 0, 0, 140);
+    border-radius: 18px;
+    border: solid 1px;
 }
 
-QPushButton#hangupButton:pressed{
-    background-color: rgba(255, 0, 0, 0.8);
+QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
+QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
+QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
+QPushButton#sipInputPanelButton:checked {
+    background-color: rgba(0, 0, 0, 140);
+    border-radius: 18px;
+    border: solid 1px;
 }
 
 QMessageBox QPushButton {
