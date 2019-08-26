@@ -59,10 +59,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -90,10 +86,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_pause_white_24dp.png</normaloff>:/images/icons/ic_pause_white_24dp.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -126,10 +118,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>images/icons/ic_call_transfer_white_24px.png</normaloff>images/icons/ic_call_transfer_white_24px.png</iconset>
-        </property>
        </widget>
       </item>
       <item>
@@ -151,10 +139,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_chat_white_24dp.png</normaloff>:/images/icons/ic_chat_white_24dp.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -189,13 +173,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_mic_white_24dp.png</normaloff>
-          <normalon>:/images/icons/ic_mic_off_white_24dp.png</normalon>
-          <disabledoff>:/images/icons/ic_mic_off_white_24dp.png</disabledoff>
-          <disabledon>:/images/icons/ic_mic_off_white_24dp.png</disabledon>:/images/icons/ic_mic_white_24dp.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -234,13 +211,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_videocam_white.png</normaloff>
-          <normalon>:/images/icons/ic_videocam_off_white_24dp.png</normalon>
-          <disabledoff>:/images/icons/ic_videocam_off_white_24dp.png</disabledoff>
-          <disabledon>:/images/icons/ic_videocam_off_white_24dp.png</disabledon>:/images/icons/ic_videocam_white.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -277,10 +247,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</iconset>
         </property>
         <property name="iconSize">
          <size>
