@@ -1191,7 +1191,10 @@ CallWidget::deselectConversation()
     currentConversationModel->selectConversation("");
     LRCInstance::setSelectedConvId();
 
-    ui->smartList->selectionModel()->clear();
+    if (auto smartListSelectionModel = ui->smartList->selectionModel()) {
+        smartListSelectionModel->clear();
+    }
+
     disconnect(imConnection_);
 }
 
