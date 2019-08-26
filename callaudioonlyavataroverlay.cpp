@@ -53,7 +53,7 @@ CallAudioOnlyAvatarOverlay::writeAvatarOverlay(const std::string& accountId, con
     } else {
         std::string name = contact.profileInfo.alias;
         std::string id = contact.registeredName;
-        ui->nameLabel->setText(QString::fromStdString(name + ":\n" + id));
+        ui->nameLabel->setText(QString::fromStdString(name + "\n" + id));
     }
 }
 
