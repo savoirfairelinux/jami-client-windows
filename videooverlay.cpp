@@ -153,9 +153,10 @@ void
 VideoOverlay::on_holdButton_toggled(bool checked)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
+    bool onHold { false };
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        bool onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
+        onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
     }
     //emit that the hold button status changed
     emit HoldStatusChanged(checked);
@@ -221,6 +222,7 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
             auto relativeClickPos = ui->transferCallButton->mapFromGlobal(event->globalPos());
             if (!ui->transferCallButton->rect().contains(relativeClickPos)) {
                 ui->transferCallButton->setChecked(false);
+                ui->transferCallButton->resetToOriginal();
             }
         });
 
@@ -228,6 +230,7 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
     Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
     [this] {
         ui->transferCallButton->setChecked(false);
+        ui->transferCallButton->resetToOriginal();
     });
 
     contactPicker_->show();
@@ -301,6 +304,7 @@ VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
             auto relativeClickPos = ui->sipInputPanelButton->mapFromGlobal(event->globalPos());
             if (!ui->sipInputPanelButton->rect().contains(relativeClickPos)) {
                 ui->sipInputPanelButton->setChecked(false);
+                ui->sipInputPanelButton->resetToOriginal();
             }
         });
 
@@ -308,6 +312,7 @@ VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
     Utils::oneShotConnect(sipInputPanel_, &QDialog::rejected,
     [this] {
         ui->sipInputPanelButton->setChecked(false);
+        ui->sipInputPanelButton->resetToOriginal();
     });
 
     sipInputPanel_->show();
