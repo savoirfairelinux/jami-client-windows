@@ -99,6 +99,7 @@ QImage fallbackAvatar(const QSize size, const std::string& alias, const std::str
 QByteArray QImageToByteArray(QImage image);
 QByteArray QByteArrayFromFile(const QString& filename);
 QPixmap generateTintedPixmap(const QString& filename, QColor color);
+QPixmap generateTintedPixmap(const QPixmap& pix, QColor color);
 QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
