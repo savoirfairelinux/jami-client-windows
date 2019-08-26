@@ -88,6 +88,15 @@ public:
     static std::vector<std::string> getActiveCalls() {
         return instance().lrc_->activeCalls();
     };
+    static bool needsMigration() {
+        return instance().lrc_->needsMigration();
+    };
+    static void performMigration() {
+        return instance().lrc_->performMigration();
+    };
+    static void loadAccounts() {
+        instance().lrc_->loadAccounts();
+    };
 
     static const account::Info&
     getCurrentAccountInfo() {
@@ -110,8 +119,8 @@ public:
         return getCurrentAccountInfo().callModel.get();
     };
 
-    static const int getAccountNumList() {
-        return accountModel().getAccountList().size();
+    static std::vector<std::string> getAccountList() {
+        return accountModel().getAccountList();
     };
 
     static const std::string& getCurrAccId() {

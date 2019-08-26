@@ -181,31 +181,33 @@ main(int argc, char* argv[])
 #endif
 
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
-
     SplashScreen* splash = new SplashScreen();
     std::atomic_bool isMigrating = false;
-    LRCInstance::init(
-        [&splash, &a, &isMigrating] {
-            splash->setupUI(
-                QPixmap(":/images/logo-jami-standard-coul.png"),
-                QString("Jami - ") + QObject::tr("Migration needed"),
-                QObject::tr("Migration in progress... This may take a while."),
-                QColor(232, 232, 232)
-            );
-            splash->show();
-            isMigrating = true;
-            while (isMigrating) {
-                a.processEvents();
-            }
-        },
-        [&splash, &isMigrating] {
-            while (!isMigrating) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            }
-            isMigrating = false;
-        });
-    splash->hide();
+    LRCInstance::init();
     LRCInstance::subscribeToDebugReceived();
+    if (LRCInstance::needsMigration()) {
+        splash->setupUI(
+            QPixmap(":/images/logo-jami-standard-coul.png"),
+            QString("Jami - ") + QObject::tr("Migration needed"),
+            QObject::tr("Migration in progress... This may take a while."),
+            QColor(232, 232, 232)
+        );
+        splash->show();
+        isMigrating = true;
+        std::thread(
+            [&isMigrating] {
+                LRCInstance::performMigration();
+                while (!isMigrating) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                }
+                isMigrating = false;
+            }).detach();
+        while (isMigrating) {
+            a.processEvents();
+        }
+        splash->hide();
+    }
+    LRCInstance::loadAccounts();
 
     QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
 
