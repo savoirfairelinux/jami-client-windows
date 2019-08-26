@@ -85,5 +85,7 @@
     <file>images/icons/round-add_a_photo-24px.svg</file>
     <file>images/icons/ic_mic_white_24dp.png</file>
     <file>images/icons/icon-keypad-24.png</file>
+    <file>images/icons/ic_play_white_24dp.png</file>
+    <file>images/icons/icon-keypad-24-2x.png</file>
   </qresource>
 </RCC>
