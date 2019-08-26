@@ -153,9 +153,10 @@ void
 VideoOverlay::on_holdButton_toggled(bool checked)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
+    bool onHold { false };
     if (callModel->hasCall(callId_)) {
         callModel->togglePause(callId_);
-        bool onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
+        onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
     }
     //emit that the hold button status changed
     emit HoldStatusChanged(checked);
