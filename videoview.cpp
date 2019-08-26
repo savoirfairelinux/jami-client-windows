@@ -357,7 +357,7 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
     auto call = callModel->getCall(callId);
 
     // transfer call will only happen in SIP calls
-    this->overlay_->setTransferCallAvailability(isSIP);
+    this->overlay_->setTransferCallAndSIPPanelAvailability(isSIP);
     this->overlay_->callStarted(callId);
     this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
