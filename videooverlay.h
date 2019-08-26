@@ -23,6 +23,7 @@
 #include <QTimer>
 
 class ContactPicker;
+class sipInputPanel;
 
 namespace Ui {
 class VideoOverlay;
@@ -59,11 +60,14 @@ private slots:
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
     void on_transferCallButton_toggled(bool checked);
+    void on_SIPInputPanelButton_toggled(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void slotSIPInputPanelClicked(const int& id);
 
 private:
     Ui::VideoOverlay* ui;
     ContactPicker* contactPicker_;
+    sipInputPanel* sipInputPanel_;
     bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
