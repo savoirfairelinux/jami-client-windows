@@ -72,7 +72,8 @@ HEADERS += ./aboutdialog.h \
         ./settingswidget.h \
         ./updatedownloaddialog.h \
 	./sipinputpanel.h \
-	./callaudioonlyavataroverlay.h
+	./callaudioonlyavataroverlay.h \
+	./overlaybutton.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -126,7 +127,8 @@ SOURCES += ./aboutdialog.cpp \
         ./smartlistselectorbuttonnotifier.cpp \
         ./videooverlay.cpp \
 	./sipinputpanel.cpp \
-	./callaudioonlyavataroverlay.cpp
+	./callaudioonlyavataroverlay.cpp \
+	./overlaybutton.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
