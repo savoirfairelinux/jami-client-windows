@@ -219,6 +219,9 @@
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sipinputpanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -379,6 +382,9 @@
     </QtMoc>
     <QtMoc Include="splashscreen.h">
       <Filter>Generated Files</Filter>
+    </QtMoc>
+    <QtMoc Include="sipinputpanel.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -663,6 +669,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="contactpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="sipkeypad.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
