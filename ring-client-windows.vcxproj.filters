@@ -225,6 +225,9 @@
     <ClCompile Include="sipinputpanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="overlaybutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -390,6 +393,9 @@
       <Filter>Generated Files</Filter>
     </QtMoc>
     <QtMoc Include="sipinputpanel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="overlaybutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -834,6 +840,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\icons\ic_mic_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\icons\ic_play_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\icons\icon-keypad-24-2x.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
