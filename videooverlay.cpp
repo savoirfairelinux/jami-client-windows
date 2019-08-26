@@ -25,13 +25,15 @@
 
 #include "lrcinstance.h"
 #include "contactpicker.h"
+#include "sipinputpanel.h"
 #include "utils.h"
 
 VideoOverlay::VideoOverlay(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::VideoOverlay),
     oneSecondTimer_(new QTimer(this)),
-    contactPicker_(new ContactPicker(this))
+    contactPicker_(new ContactPicker(this)),
+    sipInputPanel_(new sipInputPanel(this))
 {
     ui->setupUi(this);
 
@@ -49,7 +51,10 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     contactPicker_->setVisible(false);
     contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
+    sipInputPanel_->setVisible(false);
+
     connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::slotWillDoTransfer);
+    connect(sipInputPanel_, &sipInputPanel::sipInputPanelClicked, this, &VideoOverlay::slotSIPInputPanelClicked);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -106,7 +111,8 @@ VideoOverlay::shouldShowOverlay()
     return  ui->bottomButtons->underMouse() ||
             ui->topInfoBar->underMouse() ||
             (callInfo.status == lrc::api::call::Status::PAUSED) ||
-            contactPicker_->isActiveWindow();
+            contactPicker_->isActiveWindow() ||
+            sipInputPanel_->isActiveWindow();
 }
 
 void
@@ -184,9 +190,10 @@ VideoOverlay::on_recButton_clicked()
 }
 
 void
-VideoOverlay::setTransferCallAvailability(bool visible)
+VideoOverlay::setTransferCallAndSIPPanelAvailability(bool visible)
 {
     ui->transferCallButton->setVisible(visible);
+    ui->sipInputPanelButton->setVisible(visible);
 }
 
 void
@@ -266,4 +273,54 @@ VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecordin
     Utils::whileBlocking(ui->recButton)->setChecked(isRecording);
     Utils::whileBlocking(ui->holdButton)->setChecked(isHolding);
     Utils::whileBlocking(ui->onHoldLabel)->setVisible(isHolding);
+}
+
+void
+VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
+{
+    if (callId_.empty() || !checked) {
+        return;
+    }
+
+    QPoint globalPos_button = mapToGlobal(ui->sipInputPanelButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    sipInputPanel_->move(globalPos_button.x(), globalPos_bottomButtons.y() - sipInputPanel_->height());
+
+    // receive the signal that ensure the button checked status is correct and contactpicker
+    // is properly hidden
+    Utils::oneShotConnect(sipInputPanel_, &sipInputPanel::willClose,
+        [this](QMouseEvent *event) {
+            sipInputPanel_->hide();
+            // check if current mouse position is on button
+            auto relativeClickPos = ui->sipInputPanelButton->mapFromGlobal(event->globalPos());
+            if (!ui->sipInputPanelButton->rect().contains(relativeClickPos)) {
+                ui->sipInputPanelButton->setChecked(false);
+            }
+        });
+
+    // for esc key, receive reject signal
+    Utils::oneShotConnect(sipInputPanel_, &QDialog::rejected,
+    [this] {
+        ui->sipInputPanelButton->setChecked(false);
+    });
+
+    sipInputPanel_->show();
+}
+
+void
+VideoOverlay::slotSIPInputPanelClicked(const int& id)
+{
+    switch (id)
+    {
+    case 10:
+        LRCInstance::getCurrentCallModel()->playDTMF(callId_, "#");
+        break;
+    case 11:
+        LRCInstance::getCurrentCallModel()->playDTMF(callId_, "*");
+        break;
+    default:
+        LRCInstance::getCurrentCallModel()->playDTMF(callId_, std::to_string(id));
+        break;
+    }
 }
