@@ -40,7 +40,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="hangupButton">
+       <widget class="OverlayButton" name="hangupButton">
         <property name="minimumSize">
          <size>
           <width>36</width>
@@ -59,20 +59,29 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
           <height>24</height>
          </size>
         </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_close_white_24dp.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_close_white_24dp.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>186</red>
+          <green>17</green>
+          <blue>5</blue>
+         </color>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="holdButton">
+       <widget class="OverlayButton" name="holdButton">
         <property name="minimumSize">
          <size>
           <width>36</width>
@@ -91,10 +100,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_pause_white_24dp.png</normaloff>:/images/icons/ic_pause_white_24dp.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -104,10 +109,23 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_pause_white_24dp.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_play_white_24dp.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>50</red>
+          <green>127</green>
+          <blue>17</blue>
+         </color>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="transferCallButton">
+       <widget class="OverlayButton" name="transferCallButton">
         <property name="minimumSize">
          <size>
           <width>36</width>
@@ -126,14 +144,23 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>images/icons/ic_call_transfer_white_24px.png</normaloff>images/icons/ic_call_transfer_white_24px.png</iconset>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_call_transfer_white_24px.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_call_transfer_white_24px.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>103</red>
+          <green>177</green>
+          <blue>64</blue>
+         </color>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="chatButton">
+       <widget class="OverlayButton" name="chatButton">
         <property name="minimumSize">
          <size>
           <width>36</width>
@@ -152,20 +179,29 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_chat_white_24dp.png</normaloff>:/images/icons/ic_chat_white_24dp.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
           <height>24</height>
          </size>
         </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_chat_white_24dp.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_chat_white_24dp.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>48</red>
+          <green>182</green>
+          <blue>25</blue>
+         </color>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="noMicButton">
+       <widget class="OverlayButton" name="noMicButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -190,13 +226,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_mic_white_24dp.png</normaloff>
-          <normalon>:/images/icons/ic_mic_off_white_24dp.png</normalon>
-          <disabledoff>:/images/icons/ic_mic_off_white_24dp.png</disabledoff>
-          <disabledon>:/images/icons/ic_mic_off_white_24dp.png</disabledon>:/images/icons/ic_mic_white_24dp.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -206,10 +235,23 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_mic_white_24dp.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_mic_off_white_24dp.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>56</red>
+          <green>195</green>
+          <blue>49</blue>
+         </color>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="noVideoButton">
+       <widget class="OverlayButton" name="noVideoButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -234,13 +276,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_videocam_white.png</normaloff>
-          <normalon>:/images/icons/ic_videocam_off_white_24dp.png</normalon>
-          <disabledoff>:/images/icons/ic_videocam_off_white_24dp.png</disabledoff>
-          <disabledon>:/images/icons/ic_videocam_off_white_24dp.png</disabledon>:/images/icons/ic_videocam_white.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -250,10 +285,23 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_videocam_white.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_videocam_off_white_24dp.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>69</red>
+          <green>125</green>
+          <blue>16</blue>
+         </color>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="recButton">
+       <widget class="OverlayButton" name="recButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -278,15 +326,24 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset resource="ressources.qrc">
-          <normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</normaloff>:/images/icons/ic_voicemail_white_24dp_2x.png</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
           <height>24</height>
          </size>
+        </property>
+        <property name="originPixPath" stdset="0">
+         <pixmap>images/icons/ic_voicemail_white_24dp_2x.png</pixmap>
+        </property>
+        <property name="checkedPixPath" stdset="0">
+         <pixmap>images/icons/ic_voicemail_white_24dp_2x.png</pixmap>
+        </property>
+        <property name="tint_color" stdset="0">
+         <color>
+          <red>77</red>
+          <green>143</green>
+          <blue>47</blue>
+         </color>
         </property>
        </widget>
       </item>
@@ -465,6 +522,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OverlayButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">overlaybutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>

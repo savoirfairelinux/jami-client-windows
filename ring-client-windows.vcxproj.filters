@@ -219,6 +219,9 @@
     <ClCompile Include="levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OverlayButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -379,6 +382,9 @@
     </QtMoc>
     <QtMoc Include="splashscreen.h">
       <Filter>Generated Files</Filter>
+    </QtMoc>
+    <QtMoc Include="OverlayButton.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -816,6 +822,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\icons\ic_mic_white_24dp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\icons\ic_play_white_24dp.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
