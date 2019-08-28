@@ -663,6 +663,7 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
+    ui->videoWidget->setFocus();
 }
 
 void CallWidget::slotShowIncomingCallView(const std::string& accountId,
