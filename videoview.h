@@ -21,6 +21,7 @@
 #include <QWidget>
 #include <QTimer>
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <QPropertyAnimation>
 
 #include "videooverlay.h"
@@ -56,6 +57,8 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
@@ -77,6 +80,8 @@ private:
     bool draggingPreview_ = false;
     bool resizingPreview_ = false;
     bool sharingEntireScreen_ = false;
+    std::string currentCallId_;
+    int keyPressed_;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;
