@@ -345,6 +345,7 @@ VideoView::showContextMenu(const QPoint& pos)
 
 void
 VideoView::pushRenderer(const std::string& callId, bool isSIP) {
+    currentCallId_ = callId;
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(ui->videoWidget);
@@ -465,4 +466,27 @@ void
 VideoView::connectStartingRendering()
 {
     ui->videoWidget->connectRendering();
+}
+
+void
+VideoView::keyPressEvent(QKeyEvent *event)
+{
+    // used to manage DTMF
+    // For "#" and "*", qt will automatically read the shift + 3 or 8
+    keyPressed_ = event->key();
+    QWidget::keyPressEvent(event);
+}
+
+void
+VideoView::keyReleaseEvent(QKeyEvent *event)
+{
+    if (keyPressed_ == static_cast<int>(Qt::Key_NumberSign)) {
+        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "#");
+    } else if (keyPressed_ == static_cast<int>(Qt::Key_Asterisk)) {
+        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "*");
+    } else if (keyPressed_ >= 48 && keyPressed_ <= 57){
+        //enum Qt::Key_0 = 48, QT::Key_9 = 57
+        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, std::to_string(keyPressed_ - 48));
+    }
+    QWidget::keyReleaseEvent(event);
 }
