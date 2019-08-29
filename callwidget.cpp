@@ -55,7 +55,8 @@
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::CallWidget),
-    menu_(new QMenu())
+    menu_(new QMenu()),
+	testPic_(new DiscoveredPeerPicker(this))
 {
     ui->setupUi(this);
 
@@ -258,6 +259,7 @@ CallWidget::navigated(bool to)
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
     }
+    //testPic_->show();
 }
 
 void

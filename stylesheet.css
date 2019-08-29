@@ -50,6 +50,10 @@ QWidget#smartListOuterWidget {
     background-color: rgb(255, 255, 255);
 }
 
+QWidget#discoveredPeerListOuterWidget {
+    background-color: rgb(255, 255, 255);
+}
+
 QPushButton#btnConversations, QPushButton#btnInvites {
     border-radius: 0px;
     border-top-left-radius: 15px;
@@ -163,6 +167,20 @@ SmartListView::item:selected, QListView#BannedList::item:selected {
 }
 
 SmartListView::item:hover, QListView#BannedList::item:hover {
+    background-color: rgba(242, 242, 242, 255);
+}
+
+DiscoveredPeerListView {
+    background-color: white;
+    border: none;
+}
+
+DiscoveredPeerListView::item:selected {
+    background-color: rgba(220, 220, 220, 255);
+    border: none;
+}
+
+DiscoveredPeerListView::item:hover {
     background-color: rgba(242, 242, 242, 255);
 }
 
@@ -727,6 +745,12 @@ SettingsWidget QListView {
 QWidget#contactPickerWidget {
     border-radius: 10px;
     border:solid 1px transparent;
+    background-color: white;
+}
+
+QWidget#discoveredPeerPickerWidget {
+    border-radius: 10px;
+    border: solid 1px transparent;
     background-color: white;
 }
 

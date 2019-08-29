@@ -32,6 +32,7 @@
 
 #include "navwidget.h"
 #include "smartlistmodel.h"
+#include "discoveredpeerpicker.h"
 
 // new LRC
 #include "api/account.h"
@@ -150,6 +151,7 @@ private:
     std::string lastConvUid_ {};
     lrc::api::profile::Type currentTypeFilter_{};
     std::unique_ptr<SmartListModel> smartListModel_;
+    DiscoveredPeerPicker *testPic_;
 
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
