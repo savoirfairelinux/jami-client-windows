@@ -82,42 +82,42 @@ VideoView::~VideoView()
 void
 VideoView::resizeEvent(QResizeEvent* event)
 {
-    int marginWidth = ui->videoWidget->getPreviewMargin();
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
-    int deltaW = event->size().width() - event->oldSize().width();
-    int deltaH = event->size().height() - event->oldSize().height();
+    //int marginWidth = ui->videoWidget->getPreviewMargin();
+    //QRect& previewRect = ui->videoWidget->getPreviewRect();
+    //int deltaW = event->size().width() - event->oldSize().width();
+    //int deltaH = event->size().height() - event->oldSize().height();
 
-    QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
-    int cx = (event->oldSize().width()) / 2;
-    int cy = (event->oldSize().height()) / 2;
-    QPoint center = QPoint(cx, cy);
+    //QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
+    //int cx = (event->oldSize().width()) / 2;
+    //int cy = (event->oldSize().height()) / 2;
+    //QPoint center = QPoint(cx, cy);
 
-    // first we check if we want to displace the preview
-    if (previewRect.x() + deltaW > 0 && previewRect.y() + deltaH > 0) {
-        // then we check which way
-        if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, deltaH);
-        else if (center.x() - previewCenter.x() > 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(0, deltaH);
-        else if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() > 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, 0);
-    }
+    //// first we check if we want to displace the preview
+    //if (previewRect.x() + deltaW > 0 && previewRect.y() + deltaH > 0) {
+    //    // then we check which way
+    //    if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() < 0)
+    //        ui->videoWidget->getPreviewRect().translate(deltaW, deltaH);
+    //    else if (center.x() - previewCenter.x() > 0 && center.y() - previewCenter.y() < 0)
+    //        ui->videoWidget->getPreviewRect().translate(0, deltaH);
+    //    else if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() > 0)
+    //        ui->videoWidget->getPreviewRect().translate(deltaW, 0);
+    //}
 
-    if (previewRect.left() <= 0)
-        previewRect.moveLeft(marginWidth);
-    previewRect.moveRight(width() - marginWidth);
+    //if (previewRect.left() <= 0)
+    //    previewRect.moveLeft(marginWidth);
+    //previewRect.moveRight(width() - marginWidth);
 
-    if (previewRect.right() >= width())
-        previewRect.moveRight(width() - marginWidth);
+    //if (previewRect.right() >= width())
+    //    previewRect.moveRight(width() - marginWidth);
 
-    if (previewRect.top() <= 0)
-        previewRect.moveTop(marginWidth);
-    previewRect.moveBottom(height() - marginWidth);
+    //if (previewRect.top() <= 0)
+    //    previewRect.moveTop(marginWidth);
+    //previewRect.moveBottom(height() - marginWidth);
 
-    if (previewRect.bottom() >= height())
-        previewRect.moveBottom(height() - marginWidth);
+    //if (previewRect.bottom() >= height())
+    //    previewRect.moveBottom(height() - marginWidth);
 
-    ui->videoWidget->resetPreview();
+    //ui->videoWidget->resetPreview();
 
     overlay_->resize(this->size());
     overlay_->show();
@@ -357,6 +357,8 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
         return;
     }
 
+    if (!overlay_)
+        return;
     // transfer call will only happen in SIP calls
     this->overlay_->setTransferCallAvailability(isSIP);
     this->overlay_->callStarted(callId);
@@ -366,55 +368,55 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP) {
         this, &VideoView::slotCallStatusChanged);
 
     ui->videoWidget->connectRendering();
-    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+    /*ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);*/
 }
 
 void
 VideoView::mousePressEvent(QMouseEvent* event)
 {
     QPoint clickPosition = event->pos();
-    if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
+    /*if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
         QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
             originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
             QApplication::setOverrideCursor(Qt::SizeAllCursor);
             draggingPreview_ = true;
-    }
+    }*/
 }
 
 void
 VideoView::mouseReleaseEvent(QMouseEvent* event)
 {
     Q_UNUSED(event)
-    if (draggingPreview_) {
-    //Check preview's current central position
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
-    auto previewCentral = previewRect.center();
-    auto videoViewRect = ui->videoWidget->rect();
-    auto videoWidgetCentral = videoViewRect.center();
-    if (previewCentral.x() >= videoWidgetCentral.x())
-    {
-        if (previewCentral.y() >= videoWidgetCentral.y())
-        {
-            //Move preview to bottom right
-            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
-        } else {
-            //Move preview to top right
-            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+    //if (draggingPreview_) {
+    ////Check preview's current central position
+    //QRect& previewRect = ui->videoWidget->getPreviewRect();
+    //auto previewCentral = previewRect.center();
+    //auto videoViewRect = ui->videoWidget->rect();
+    //auto videoWidgetCentral = videoViewRect.center();
+    //if (previewCentral.x() >= videoWidgetCentral.x())
+    //{
+    //    if (previewCentral.y() >= videoWidgetCentral.y())
+    //    {
+    //        //Move preview to bottom right
+    //        ui->videoWidget->movePreview(VideoPreviewWidget::TargetPointPreview::bottomRight);
+    //    } else {
+    //        //Move preview to top right
+    //        ui->videoWidget->movePreview(VideoPreviewWidget::TargetPointPreview::topRight);
 
-        }
-    } else {
-        if (previewCentral.y() >= videoWidgetCentral.y()) {
-            //Move preview to bottom left
-            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
-        } else {
-            //Move preview to top left
-            ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
-        }
-    }
-    }
+    //    }
+    //} else {
+    //    if (previewCentral.y() >= videoWidgetCentral.y()) {
+    //        //Move preview to bottom left
+    //        ui->videoWidget->movePreview(VideoPreviewWidget::TargetPointPreview::bottomLeft);
+    //    } else {
+    //        //Move preview to top left
+    //        ui->videoWidget->movePreview(VideoPreviewWidget::TargetPointPreview::topLeft);
+    //    }
+    //}
+    //}
 
-    draggingPreview_ = false;
-    QApplication::setOverrideCursor(Qt::ArrowCursor);
+    //draggingPreview_ = false;
+    //QApplication::setOverrideCursor(Qt::ArrowCursor);
 }
 
 void
@@ -427,7 +429,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         fadeTimer_.start(startfadeOverlayTime_);
     }
 
-    QRect& previewRect =  ui->videoWidget->getPreviewRect();
+    /*QRect& previewRect =  ui->videoWidget->getPreviewRect();
     if (draggingPreview_) {
         if (previewRect.left() > 0
                 && previewRect.top() > 0
@@ -447,18 +449,22 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
             if (previewRect.bottom() >= height())
                 previewRect.moveBottom(height() - 1);
         }
-    }
+    }*/
 }
 
 void
 VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
 {
+    if (!overlay_)
+        return;
     overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
 }
 
 void
 VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding)
 {
+    if (!overlay_)
+        return;
     emit overlay_->setChatVisibility(false);
     overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding);
 }

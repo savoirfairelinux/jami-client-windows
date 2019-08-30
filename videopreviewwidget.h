@@ -19,19 +19,90 @@
 #pragma once
 
 #include <QWidget>
+#include <QMutex>
+
+#include "lrcinstance.h"
 
 namespace Ui {
 class VideoPreviewWidget;
 }
 
-class VideoPreviewWidget : public QWidget
-{
+class VideoPreviewWidget : public QWidget {
     Q_OBJECT
 
 public:
-    explicit VideoPreviewWidget(QWidget *parent = nullptr);
+    explicit VideoPreviewWidget(QWidget* parent = nullptr);
     ~VideoPreviewWidget();
 
+    void connectRendering();
+
+    // Geters and Setters
+    video::Frame getPreviewFrame() const { return previewFrame_; }
+    void setPreviewFrame(video::Frame previewFrame) { previewFrame_ = previewFrame; }
+
+    bool isPreviewDisplayed() { return isPreviewDisplayed_; }
+
+    void setPreviewDisplay(bool display) { isPreviewDisplayed_ = display; }
+    void setIsFullPreview(bool full) { fullPreview_ = full; }
+    inline void setResetPreview(bool reset)
+    {
+        resetPreview_ = reset;
+        hasFrame_ = false;
+    }
+    void setPhotoMode(bool isPhotoMode);
+    QImage takePhoto();
+    int getPreviewMargin() { return previewMargin_; }
+    void resetPreview() { resetPreview_ = true; }
+
+public:
+    enum TargetPointPreview {
+        topRight,
+        topLeft,
+        bottomRight,
+        bottomLeft,
+        left,
+        right,
+        top,
+        bottom
+    };
+    void movePreview(TargetPointPreview typeOfMove);
+    void drawPreview();
+
 private:
-    Ui::VideoPreviewWidget *ui;
+    void updatePreview();
+    void paintBackgroundColor(QPainter* painter, QColor color);
+
+
+public slots:
+    void slotToggleFullScreenClicked();
+    void slotRendererStarted(const std::string& id);
+    void renderFrame(const std::string& id);
+    inline QRect& getPreviewRect() { return previewGeometry_; }
+
+protected:
+    void paintEvent(QPaintEvent* e);
+
+
+private:
+    Ui::VideoPreviewWidget* ui;
+
+    struct rendererConnections {
+        QMetaObject::Connection started, stopped, updated;
+    } rendererConnections_;
+
+    video::Renderer* previewRenderer_;
+    video::Frame previewFrame_;
+    std::unique_ptr<QImage> previewImage_;
+    std::vector<uint8_t> framePreview_;
+
+    QMutex mutex_;
+
+    bool isPreviewDisplayed_;
+    bool fullPreview_;
+    QRect previewGeometry_;
+    bool resetPreview_ = false;
+    bool photoMode_ = false;
+    bool hasFrame_ = false;
+
+    constexpr static int previewMargin_ = 15;
 };
