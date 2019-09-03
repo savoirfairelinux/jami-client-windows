@@ -37,7 +37,7 @@ public:
 
     void startBooth();
     void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
+    void setAvatarPixmap(const QPixmap& avatarPixmap, bool _default = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
 

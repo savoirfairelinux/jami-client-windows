@@ -21,6 +21,7 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <algorithm>
 #include <cmath>
 #include <limits>
 
