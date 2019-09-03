@@ -50,14 +50,6 @@
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
 {
-    dragDroplabel_ = new QLabel(parent);
-    dragDroplabel_->hide();
-    dragDroplabel_->setText("Drop files here to send");
-    dragDroplabel_->setAlignment(Qt::AlignCenter);
-    dragDroplabel_->installEventFilter(this);
-    dragDroplabel_->setAcceptDrops(true);
-    dragDroplabel_->setObjectName("dragDropLabel");
-
     QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
     QDir dataDir(QStandardPaths::writableLocation(
         QStandardPaths::AppLocalDataLocation));
@@ -112,6 +104,14 @@ MessageWebView::MessageWebView(QWidget *parent)
                 break;
             }
         });
+
+    dragDroplabel_ = new QLabel(this);
+    dragDroplabel_->hide();
+    dragDroplabel_->setText("Drop files here to send");
+    dragDroplabel_->setAlignment(Qt::AlignCenter);
+    dragDroplabel_->installEventFilter(this);
+    dragDroplabel_->setAcceptDrops(true);
+    dragDroplabel_->setObjectName("dragDropLabel");
 }
 
 MessageWebView::~MessageWebView()
