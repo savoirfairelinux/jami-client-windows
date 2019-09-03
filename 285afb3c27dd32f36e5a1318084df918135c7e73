@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c05ec6a_561935f9",
+        "filename": "videoview.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-09-03T18:20:37Z",
+      "side": 1,
+      "message": "to be changed",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 4
+      },
+      "revId": "285afb3c27dd32f36e5a1318084df918135c7e73",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3632947_8e74e780",
+        "filename": "videowidget.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-09-03T18:20:37Z",
+      "side": 1,
+      "message": "to be changed",
+      "revId": "285afb3c27dd32f36e5a1318084df918135c7e73",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
