@@ -183,7 +183,7 @@ main(int argc, char* argv[])
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
 
     SplashScreen* splash = new SplashScreen();
-    std::atomic_bool isMigrating = false;
+    std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [&splash, &a, &isMigrating] {
             splash->setupUI(
