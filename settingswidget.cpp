@@ -1134,7 +1134,11 @@ void SettingsWidget::startAudioMeter(bool blocking)
         LRCInstance::avModel().startAudioDevice();
         LRCInstance::avModel().setAudioMeterState(true);
     };
-    blocking ? f() : QtConcurrent::run(f);
+    if (blocking) {
+        f();
+    } else {
+        QtConcurrent::run(f);
+    }
 }
 
 void SettingsWidget::stopAudioMeter(bool blocking)
@@ -1145,5 +1149,9 @@ void SettingsWidget::stopAudioMeter(bool blocking)
     LRCInstance::avModel().setAudioMeterState(false);
     ui->audioInputMeter->stop();
     auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
-    blocking ? f() : QtConcurrent::run(f);
+    if (blocking) {
+        f();
+    } else {
+        QtConcurrent::run(f);
+    }
 }

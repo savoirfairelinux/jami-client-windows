@@ -22,7 +22,9 @@
 
 #include <QMessageBox>
 
+#ifdef Q_OS_WIN
 #include <windows.h>
+#endif // !Q_OS_WIN
 
 DownloadManager::DownloadManager()
 {}

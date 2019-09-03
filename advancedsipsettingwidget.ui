@@ -1952,7 +1952,7 @@
   <customwidget>
    <class>ToggleSwitch</class>
    <extends>QWidget</extends>
-   <header>ToggleSwitch.h</header>
+   <header>toggleswitch.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
