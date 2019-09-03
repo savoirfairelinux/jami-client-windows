@@ -49,6 +49,8 @@ consoleDebug()
 {
 #ifdef Q_OS_WIN
     AllocConsole();
+    SetConsoleCP(CP_UTF8);
+
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
 
