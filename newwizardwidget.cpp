@@ -80,7 +80,7 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
                 QFileInfo fi(filePath);
                 ui->fileImportBtn->setText(fi.fileName());
             } else {
-                ui->fileImportBtn->setText(tr("(None)"));
+                ui->fileImportBtn->setText(tr("Archive (None)"));
             }
             validateWizardProgression();
         });
@@ -98,7 +98,22 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
             validateWizardProgression();
         });
 
-    connect(ui->pinEdit, &QLineEdit::textChanged,
+    connect(ui->pinFromDevice, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
+    connect(ui->usernameManagerEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
+    connect(ui->accountManagerEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
+    connect(ui->passwordManagerEdit, &QLineEdit::textChanged,
         [this] {
             validateWizardProgression();
         });
@@ -115,7 +130,7 @@ void
 NewWizardWidget::setToMigrate(AccountInfo* toBeMigrated)
 {
     wizardMode_ = WizardMode::MIGRATE;
-    changePage(ui->createRingAccountPage);
+    changePage(ui->createAccountPage);
     ui->usernameEdit->setEnabled(false);
     ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
     ui->previousButton->hide();
@@ -161,21 +176,40 @@ NewWizardWidget::slotAccountOnBoarded()
 {}
 
 void
-NewWizardWidget::on_existingPushButton_clicked()
+NewWizardWidget::on_fromDeviceButton_clicked()
 {
-    changePage(ui->linkRingAccountPage);
+    changePage(ui->importFromDevicePage);
 }
 
 void
 NewWizardWidget::on_newAccountButton_clicked()
 {
-    changePage(ui->createRingAccountPage);
+    changePage(ui->createAccountPage);
+}
+
+void
+NewWizardWidget::on_showAdvancedButton_clicked()
+{
+    ui->newSIPAccountButton->setVisible(!ui->newSIPAccountButton->isVisible());
+    ui->connectAccountManagerButton->setVisible(!ui->connectAccountManagerButton->isVisible());
+}
+
+void
+NewWizardWidget::on_connectAccountManagerButton_clicked()
+{
+    changePage(ui->connectToAccountManagerPage);
+}
+
+void
+NewWizardWidget::on_fromBackupButton_clicked()
+{
+    changePage(ui->importFromBackupPage);
 }
 
 void
 NewWizardWidget::on_newSIPAccountButton_clicked()
 {
-    changePage(ui->createRingSIPAccountPage);
+    changePage(ui->createSIPAccountPage);
 }
 
 void NewWizardWidget::changePage(QWidget* toPage)
@@ -189,7 +223,9 @@ void NewWizardWidget::changePage(QWidget* toPage)
         setNavBarVisibility(false, true);
         ui->lookupStatusLabel->hide();
         ui->passwordStatusLabel->hide();
-    } else if (toPage == ui->createRingAccountPage) {
+        ui->newSIPAccountButton->hide();
+        ui->connectAccountManagerButton->hide();
+    } else if (toPage == ui->createAccountPage) {
         ui->usernameEdit->clear();
         ui->passwordEdit->clear();
         ui->confirmPasswordEdit->clear();
@@ -203,7 +239,7 @@ void NewWizardWidget::changePage(QWidget* toPage)
             this, &NewWizardWidget::slotRegisteredNameFound);
         validateWizardProgression();
         ui->setAvatarWidget->startBooth();
-    } else if (toPage == ui->createRingSIPAccountPage) {
+    } else if (toPage == ui->createSIPAccountPage) {
         ui->SIPusernameEdit->clear();
         ui->SIPpasswordEdit->clear();
         ui->SIPservernameEdit->clear();
@@ -213,20 +249,25 @@ void NewWizardWidget::changePage(QWidget* toPage)
         setNavBarVisibility(true);
         ui->nextButton->setEnabled(true);
         ui->setSIPAvatarWidget->startBooth();
-    } else if (toPage == ui->linkRingAccountPage) {
-        fileToImport_ = QString("");
-        ui->fileImportBtn->setText(tr("(None)"));
-        ui->pinEdit->clear();
-        ui->importPasswordEdit->clear();
-        ui->pinEdit->setEnabled(true);
-        ui->fileImportBtn->setEnabled(true);
+    } else if (toPage == ui->importFromDevicePage) {
+        ui->pinFromDevice->clear();
+        ui->passwordFromDevice->clear();
         setNavBarVisibility(true);
-        ui->lookupStatusLabel->hide();
-        ui->passwordStatusLabel->hide();
-        validateWizardProgression();
     } else if (toPage == ui->spinnerPage) {
         ui->lookupStatusLabel->hide();
         ui->passwordStatusLabel->hide();
+    } else if (toPage == ui->connectToAccountManagerPage) {
+        setNavBarVisibility(true);
+        ui->usernameManagerEdit->clear();
+        ui->passwordManagerEdit->clear();
+        ui->accountManagerEdit->clear();
+        ui->nextButton->setEnabled(false);
+    } else if (toPage == ui->importFromBackupPage) {
+        setNavBarVisibility(true);
+        ui->passwordFromBackupEdit->clear();
+        fileToImport_ = QString("");
+        ui->fileImportBtn->setText(tr("Archive (None)"));
+        ui->nextButton->setEnabled(false);
     }
 }
 
@@ -250,14 +291,20 @@ NewWizardWidget::on_nextButton_clicked()
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
     ui->setAvatarWidget->stopBooth();
     disconnect(registeredNameFoundConnection_);
-    if (curWidget == ui->createRingAccountPage) {
+    if (curWidget == ui->createAccountPage) {
         wizardMode_ = WizardMode::CREATE;
         processWizardInformations();
-    } else if (curWidget == ui->linkRingAccountPage) {
+    } else if (curWidget == ui->importFromDevicePage) {
         wizardMode_ = WizardMode::IMPORT;
         processWizardInformations();
-    } else if (curWidget == ui->createRingSIPAccountPage) {
+    } else if (curWidget == ui->createSIPAccountPage) {
         wizardMode_ = WizardMode::CREATESIP;
+        processWizardInformations();
+    } else if (curWidget == ui->connectToAccountManagerPage) {
+        wizardMode_ = WizardMode::CONNECTMANAGER;
+        processWizardInformations();
+    } else if (curWidget == ui->importFromBackupPage) {
+        wizardMode_ = WizardMode::IMPORT;
         processWizardInformations();
     }
 }
@@ -266,13 +313,16 @@ void
 NewWizardWidget::on_previousButton_clicked()
 {
     const QWidget* curWidget = ui->stackedWidget->currentWidget();
-    if (curWidget == ui->createRingAccountPage) { ui->setAvatarWidget->stopBooth(); }
-    if (curWidget == ui->createRingSIPAccountPage) { ui->setSIPAvatarWidget->stopBooth(); }
+    if (curWidget == ui->createAccountPage) { ui->setAvatarWidget->stopBooth(); }
+    if (curWidget == ui->createSIPAccountPage) { ui->setSIPAvatarWidget->stopBooth(); }
     disconnect(registeredNameFoundConnection_);
     ui->lookupStatusLabel->hide();
     ui->passwordStatusLabel->hide();
-    if (curWidget == ui->createRingAccountPage ||
-        curWidget == ui->linkRingAccountPage || curWidget == ui->createRingSIPAccountPage) {
+    if (curWidget == ui->createAccountPage ||
+        curWidget == ui->importFromDevicePage ||
+        curWidget == ui->createSIPAccountPage ||
+        curWidget == ui->connectToAccountManagerPage ||
+        curWidget == ui->importFromBackupPage) {
         changePage(ui->welcomePage);
     }
 }
@@ -366,14 +416,19 @@ NewWizardWidget::on_signUpCheckbox_toggled(bool checked)
 void
 NewWizardWidget::validateWizardProgression()
 {
-    if (ui->stackedWidget->currentWidget() == ui->linkRingAccountPage) {
-        bool validPin = !ui->pinEdit->text().isEmpty();
-        ui->fileImportBtn->setEnabled(!validPin);
-        ui->fileImportLabel->setEnabled(!validPin);
+    if (ui->stackedWidget->currentWidget() == ui->importFromDevicePage) {
+        bool validPin = !ui->pinFromDevice->text().isEmpty();
+        ui->nextButton->setEnabled(validPin);
+        return;
+    } else if (ui->stackedWidget->currentWidget() == ui->connectToAccountManagerPage) {
+        bool validUsername = !ui->usernameManagerEdit->text().isEmpty();
+        bool validPassword = !ui->passwordManagerEdit->text().isEmpty();
+        bool validManager = !ui->accountManagerEdit->text().isEmpty();
+        ui->nextButton->setEnabled(validUsername && validPassword && validManager);
+        return;
+    } else if (ui->stackedWidget->currentWidget() == ui->importFromBackupPage) {
         bool validImport = !fileToImport_.isEmpty();
-        ui->pinEdit->setEnabled(!validImport);
-        ui->pinEditLabel->setEnabled(!validImport);
-        ui->nextButton->setEnabled(validPin || validImport);
+        ui->nextButton->setEnabled(validImport);
         return;
     }
     bool usernameOk =
@@ -410,10 +465,13 @@ NewWizardWidget::processWizardInformations()
         break;
     case WizardMode::IMPORT:
         ui->progressLabel->setText(tr("Importing account archive..."));
-        inputPara_["password"] = ui->importPasswordEdit->text();
-        inputPara_["archivePin"] = ui->pinEdit->text();
-        ui->pinEdit->clear();
-        ui->importPasswordEdit->clear();
+        if (ui->stackedWidget->currentWidget() == ui->importFromBackupPage) {
+            inputPara_["password"] = ui->passwordFromBackupEdit->text();
+            ui->passwordFromBackupEdit->clear();
+        } else if (ui->stackedWidget->currentWidget() == ui->importFromDevicePage) {
+            inputPara_["archivePin"] = ui->pinFromDevice->text();
+            inputPara_["password"] = ui->passwordFromDevice->text();
+        }
         break;
     case WizardMode::MIGRATE:
         ui->progressLabel->setText(tr("Migrating your Jami account..."));
@@ -426,6 +484,12 @@ NewWizardWidget::processWizardInformations()
         inputPara_["username"] = ui->SIPusernameEdit->text();
         inputPara_["password"] = ui->SIPpasswordEdit->text();
         inputPara_["proxy"] = ui->SIPproxyEdit->text();
+        break;
+    case WizardMode::CONNECTMANAGER:
+        ui->progressLabel->setText(tr("Connecting to Account Manager..."));
+        inputPara_["username"] = ui->usernameManagerEdit->text();
+        inputPara_["password"] = ui->passwordManagerEdit->text();
+        inputPara_["manager"] = ui->accountManagerEdit->text();
         break;
     }
 
@@ -443,45 +507,58 @@ NewWizardWidget::processWizardInformations()
 void
 NewWizardWidget::createAccount()
 {
+    bool isConnectingToManager = wizardMode_ == WizardMode::CONNECTMANAGER;
     bool isRing = wizardMode_ == WizardMode::CREATE || wizardMode_ == WizardMode::IMPORT;
-    Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-        [this, isRing](const std::string& accountId) {
-            //set default ringtone
-            auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-            confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
-            if (!isRing) {
-                // set SIP details
-                confProps.hostname = inputPara_["hostname"].toStdString();
-                confProps.username = inputPara_["username"].toStdString();
-                confProps.password = inputPara_["password"].toStdString();
-                confProps.proxyServer = inputPara_["proxy"].toStdString();
-            }
-            LRCInstance::accountModel().setAccountConfig(accountId, confProps);
-            if (isRing) {
-                if (!confProps.username.empty()) {
-                    connect(&LRCInstance::accountModel(),
-                        &lrc::api::NewAccountModel::nameRegistrationEnded,
-                        [this] {
-                            lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-                            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
-                            emit NavigationRequested(ScreenEnum::CallScreen);
-                            emit LRCInstance::instance().accountOnBoarded();
-                        });
-                    LRCInstance::accountModel().registerName(
-                        LRCInstance::getCurrAccId(),
-                        "",
-                        registeredName_.toStdString()
-                    );
-                } else {
-                    emit NavigationRequested(ScreenEnum::CallScreen);
-                    emit LRCInstance::instance().accountOnBoarded();
+    if (isConnectingToManager) {
+        Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
+            [this](const std::string& accountId) {
+                //set default ringtone
+                auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+                LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+                emit NavigationRequested(ScreenEnum::CallScreen);
+                emit LRCInstance::instance().accountOnBoarded();
+        });
+    } else {
+        Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
+            [this, isRing](const std::string& accountId) {
+                //set default ringtone
+                auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+                if (!isRing) {
+                    // set SIP details
+                    confProps.hostname = inputPara_["hostname"].toStdString();
+                    confProps.username = inputPara_["username"].toStdString();
+                    confProps.password = inputPara_["password"].toStdString();
+                    confProps.proxyServer = inputPara_["proxy"].toStdString();
                 }
-                LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
-            } else {
-                LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
+                LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+                if (isRing) {
+                    if (!confProps.username.empty()) {
+                        connect(&LRCInstance::accountModel(),
+                            &lrc::api::NewAccountModel::nameRegistrationEnded,
+                            [this] {
+                                lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+                                LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
+                                emit NavigationRequested(ScreenEnum::CallScreen);
+                                emit LRCInstance::instance().accountOnBoarded();
+                            });
+                        LRCInstance::accountModel().registerName(
+                            LRCInstance::getCurrAccId(),
+                            "",
+                            registeredName_.toStdString()
+                        );
+                    } else {
+                        emit NavigationRequested(ScreenEnum::CallScreen);
+                        emit LRCInstance::instance().accountOnBoarded();
+                    }
+                    LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+                } else {
+                    LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
 
-            }
-    });
+                }
+        });
+    }
     Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
         [this](const std::string& accountId) {
             Q_UNUSED(accountId);
@@ -495,8 +572,14 @@ NewWizardWidget::createAccount()
             reportFailure();
         });
     QtConcurrent::run(
-        [this, isRing] {
-            if (isRing) {
+        [this, isRing, isConnectingToManager] {
+            if (isConnectingToManager) {
+                LRCInstance::accountModel().connectToAccountManager(
+                    inputPara_["username"].toStdString(),
+                    inputPara_["password"].toStdString(),
+                    inputPara_["manager"].toStdString()
+                );
+            } if (isRing) {
                 LRCInstance::accountModel().createNewAccount(
                     lrc::api::profile::Type::RING,
                     inputPara_["alias"].toStdString(),
