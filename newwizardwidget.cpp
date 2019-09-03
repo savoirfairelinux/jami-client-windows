@@ -103,6 +103,21 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
             validateWizardProgression();
         });
 
+    connect(ui->usernameManagerEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
+    connect(ui->accountManagerEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
+    connect(ui->passwordManagerEdit, &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
     ui->containerWidget->setVisible(false);
 }
 
@@ -173,6 +188,19 @@ NewWizardWidget::on_newAccountButton_clicked()
 }
 
 void
+NewWizardWidget::on_showAdvancedButton_clicked()
+{
+    ui->newSIPAccountButton->setVisible(!ui->newSIPAccountButton->isVisible());
+    ui->connectAccountManagerButton->setVisible(!ui->connectAccountManagerButton->isVisible());
+}
+
+void
+NewWizardWidget::on_connectAccountManagerButton_clicked()
+{
+    changePage(ui->connectToAccountManagerPage);
+}
+
+void
 NewWizardWidget::on_newSIPAccountButton_clicked()
 {
     changePage(ui->createRingSIPAccountPage);
@@ -189,6 +217,8 @@ void NewWizardWidget::changePage(QWidget* toPage)
         setNavBarVisibility(false, true);
         ui->lookupStatusLabel->hide();
         ui->passwordStatusLabel->hide();
+        ui->newSIPAccountButton->hide();
+        ui->connectAccountManagerButton->hide();
     } else if (toPage == ui->createRingAccountPage) {
         ui->usernameEdit->clear();
         ui->passwordEdit->clear();
@@ -227,6 +257,9 @@ void NewWizardWidget::changePage(QWidget* toPage)
     } else if (toPage == ui->spinnerPage) {
         ui->lookupStatusLabel->hide();
         ui->passwordStatusLabel->hide();
+    } else if (toPage == ui->connectToAccountManagerPage) {
+        setNavBarVisibility(true);
+        ui->nextButton->setEnabled(false);
     }
 }
 
@@ -259,6 +292,9 @@ NewWizardWidget::on_nextButton_clicked()
     } else if (curWidget == ui->createRingSIPAccountPage) {
         wizardMode_ = WizardMode::CREATESIP;
         processWizardInformations();
+    } else if (curWidget == ui->connectToAccountManagerPage) {
+        wizardMode_ = WizardMode::CONNECTMANAGER;
+        processWizardInformations();
     }
 }
 
@@ -272,7 +308,9 @@ NewWizardWidget::on_previousButton_clicked()
     ui->lookupStatusLabel->hide();
     ui->passwordStatusLabel->hide();
     if (curWidget == ui->createRingAccountPage ||
-        curWidget == ui->linkRingAccountPage || curWidget == ui->createRingSIPAccountPage) {
+        curWidget == ui->linkRingAccountPage ||
+        curWidget == ui->createRingSIPAccountPage ||
+        curWidget == ui->connectToAccountManagerPage) {
         changePage(ui->welcomePage);
     }
 }
@@ -375,6 +413,12 @@ NewWizardWidget::validateWizardProgression()
         ui->pinEditLabel->setEnabled(!validImport);
         ui->nextButton->setEnabled(validPin || validImport);
         return;
+    } else if (ui->stackedWidget->currentWidget() == ui->connectToAccountManagerPage) {
+        bool validUsername = !ui->usernameManagerEdit->text().isEmpty();
+        bool validPassword = !ui->passwordManagerEdit->text().isEmpty();
+        bool validManager = !ui->accountManagerEdit->text().isEmpty();
+        ui->nextButton->setEnabled(validUsername && validPassword && validManager);
+        return;
     }
     bool usernameOk =
         !ui->signUpCheckbox->isChecked() ||
@@ -426,6 +470,8 @@ NewWizardWidget::processWizardInformations()
         inputPara_["username"] = ui->SIPusernameEdit->text();
         inputPara_["password"] = ui->SIPpasswordEdit->text();
         inputPara_["proxy"] = ui->SIPproxyEdit->text();
+        break;
+    case WizardMode::CONNECTMANAGER:
         break;
     }
 

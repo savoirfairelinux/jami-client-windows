@@ -108,7 +108,7 @@
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>2</number>
+                <number>4</number>
                </property>
                <widget class="QWidget" name="welcomePage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -248,7 +248,7 @@
                       <enum>Qt::LeftToRight</enum>
                      </property>
                      <property name="text">
-                      <string>Create a Jami account</string>
+                      <string>Create Jami account</string>
                      </property>
                     </widget>
                    </item>
@@ -288,7 +288,115 @@
                       <string>Push button for device linkage start trigger</string>
                      </property>
                      <property name="text">
-                      <string>Link this device to an account</string>
+                      <string>Import from device</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <widget class="QPushButton" name="fromBackupButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Import from account's archive</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to import an account from a backup</string>
+                     </property>
+                     <property name="text">
+                      <string>Import from backup</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <widget class="QPushButton" name="showAdvancedButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Show advancecd options</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to show advanced options</string>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: transparent;</string>
+                     </property>
+                     <property name="text">
+                      <string>Advanced …</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <widget class="QPushButton" name="connectAccountManagerButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Connect to JAMS</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to connect to Account Manager</string>
+                     </property>
+                     <property name="text">
+                      <string>Connect to Account Manager</string>
                      </property>
                     </widget>
                    </item>
@@ -337,7 +445,7 @@
                       <enum>Qt::LeftToRight</enum>
                      </property>
                      <property name="text">
-                      <string>Create a SIP account</string>
+                      <string>Add a new SIP account</string>
                      </property>
                     </widget>
                    </item>
@@ -2233,6 +2341,154 @@ instead of using your ID.</string>
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="connectToAccountManagerPage">
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="verticalSpacer_18">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                   <property name="spacing">
+                    <number>12</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="SignInLabel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>13</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(63, 63, 63)</string>
+                     </property>
+                     <property name="text">
+                      <string>Sign in</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="usernameManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Username</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="passwordManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="accountManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Account Manager</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_19">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
                <widget class="QWidget" name="spinnerPage">
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
@@ -2488,11 +2744,6 @@ instead of using your ID.</string>
   <tabstop>usernameEdit</tabstop>
   <tabstop>passwordEdit</tabstop>
   <tabstop>confirmPasswordEdit</tabstop>
-  <tabstop>SIPfullNameEdit</tabstop>
-  <tabstop>SIPservernameEdit</tabstop>
-  <tabstop>SIPproxyEdit</tabstop>
-  <tabstop>SIPusernameEdit</tabstop>
-  <tabstop>SIPpasswordEdit</tabstop>
   <tabstop>previousButton</tabstop>
   <tabstop>backButton</tabstop>
   <tabstop>nextButton</tabstop>
