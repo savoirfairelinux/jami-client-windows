@@ -74,6 +74,7 @@ bool RunGuard::isAnotherRunning()
 
 bool RunGuard::tryToRun()
 {
+#ifdef Q_OS_WIN
     if (isAnotherRunning()) {
         // This is a secondary instance,
         // connect to the primary instance to trigger a restore
@@ -111,6 +112,7 @@ bool RunGuard::tryToRun()
         this,
         &RunGuard::tryRestorePrimaryInstance
     );
+#endif
 
     return true;
 }

@@ -25,9 +25,9 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
-#include <QImagereader>
+#include <QImageReader>
 #include <QMenu>
-#include <QMessagebox>
+#include <QMessageBox>
 #include <QMimeData>
 #include <QMouseEvent>
 #include <QScrollBar>

@@ -289,12 +289,16 @@ void Utils::showSystemNotification(QWidget* widget,
 QSize
 Utils::getRealSize(QScreen* screen)
 {
+#ifdef Q_OS_WIN
     DEVMODE dmThisScreen;
     ZeroMemory(&dmThisScreen, sizeof(dmThisScreen));
     EnumDisplaySettings((const wchar_t *)screen->name().utf16(),
                         ENUM_CURRENT_SETTINGS,
                         (DEVMODE*)&dmThisScreen);
     return QSize(dmThisScreen.dmPelsWidth, dmThisScreen.dmPelsHeight);
+#else
+    return {};
+#endif
 }
 
 void

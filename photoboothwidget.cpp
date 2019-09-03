@@ -143,11 +143,11 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 }
 
 void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool _default)
 {
     ui->avatarLabel->setPixmap(avatarPixmap);
     stopBooth();
-    if (default) {
+    if (_default) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
     }
 }
