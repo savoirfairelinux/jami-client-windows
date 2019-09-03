@@ -35,6 +35,7 @@
 #include <QTranslator>
 
 #include <ciso646>
+#include <locale.h>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -49,6 +50,8 @@ consoleDebug()
 {
 #ifdef Q_OS_WIN
     AllocConsole();
+    SetConsoleCP(CP_UTF8);
+
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
 
@@ -93,6 +96,8 @@ fileDebug(QFile& debugFile)
 int
 main(int argc, char* argv[])
 {
+    setlocale(LC_ALL, "en_US.utf8");
+
     char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
     int newArgc = argc + 1 + 1;
     char** newArgv = new char*[newArgc];
