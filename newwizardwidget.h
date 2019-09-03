@@ -41,7 +41,7 @@ public:
 
     using AccountInfo = Info;
 
-    enum WizardMode { CREATE, IMPORT, MIGRATE, CREATESIP };
+    enum WizardMode { CREATE, IMPORT, MIGRATE, CREATESIP, CONNECTMANAGER };
 
 private:
     enum NameRegistrationUIState { BLANK, INVALID, TAKEN, FREE, SEARCHING };
@@ -62,8 +62,10 @@ public slots:
 private slots:
 
     void on_newSIPAccountButton_clicked();
+    void on_showAdvancedButton_clicked();
     void on_existingPushButton_clicked();
     void on_newAccountButton_clicked();
+    void on_connectAccountManagerButton_clicked();
     void on_nextButton_clicked();
     void on_previousButton_clicked();
     void on_passwordEdit_textChanged(const QString& arg1);
@@ -102,6 +104,7 @@ private:
     void setNavBarVisibility(bool visible, bool back=false);
     void validateWizardProgression();
     void createAccount();
+    void connectToAccountManager();
     void reportFailure();
     void processWizardInformations();
 };
