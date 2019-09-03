@@ -146,6 +146,7 @@ void VideoWidget::paintEvent(QPaintEvent* e)
                 auto xPos = fullPreview_ ? xDiff : width() - scaledPreview.width() - previewMargin_;
                 auto yPos = fullPreview_ ? yDiff : height() - scaledPreview.height() - previewMargin_;
                 previewGeometry_.setRect(xPos, yPos, scaledPreview.width(), scaledPreview.height());
+                painter.drawImage(previewGeometry_, scaledPreview);
                 updatePreviewPos();
                 resetPreview_ = false;
             }
