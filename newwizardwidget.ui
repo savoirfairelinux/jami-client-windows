@@ -108,7 +108,7 @@
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>2</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="welcomePage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -236,7 +236,7 @@
                       </font>
                      </property>
                      <property name="toolTip">
-                      <string>Create Jami account button</string>
+                      <string>Create Jami account</string>
                      </property>
                      <property name="accessibleName">
                       <string/>
@@ -248,7 +248,7 @@
                       <enum>Qt::LeftToRight</enum>
                      </property>
                      <property name="text">
-                      <string>Create a Jami account</string>
+                      <string>Create local account</string>
                      </property>
                     </widget>
                    </item>
@@ -260,7 +260,7 @@
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="existingPushButton">
+                    <widget class="QPushButton" name="fromDeviceButton">
                      <property name="minimumSize">
                       <size>
                        <width>256</width>
@@ -279,7 +279,7 @@
                       </font>
                      </property>
                      <property name="toolTip">
-                      <string>Link device button</string>
+                      <string>Import an account with your PIN generated on another device</string>
                      </property>
                      <property name="accessibleName">
                       <string/>
@@ -288,7 +288,115 @@
                       <string>Push button for device linkage start trigger</string>
                      </property>
                      <property name="text">
-                      <string>Link this device to an account</string>
+                      <string>Import from device</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <widget class="QPushButton" name="fromBackupButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Import from account's archive</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to import an account from a backup</string>
+                     </property>
+                     <property name="text">
+                      <string>Import from backup</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_16">
+                   <item>
+                    <widget class="QPushButton" name="showAdvancedButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Show advancecd options</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to show advanced options</string>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: transparent;</string>
+                     </property>
+                     <property name="text">
+                      <string>Advanced …</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <widget class="QPushButton" name="connectAccountManagerButton">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Get your account via your credentials.</string>
+                     </property>
+                     <property name="accessibleDescription">
+                      <string>Push button to connect to account manager</string>
+                     </property>
+                     <property name="text">
+                      <string>Connect to account manager</string>
                      </property>
                     </widget>
                    </item>
@@ -337,7 +445,7 @@
                       <enum>Qt::LeftToRight</enum>
                      </property>
                      <property name="text">
-                      <string>Create a SIP account</string>
+                      <string>Add a new SIP account</string>
                      </property>
                     </widget>
                    </item>
@@ -358,375 +466,7 @@
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="linkRingAccountPage">
-                <layout class="QVBoxLayout" name="verticalLayout_7">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <spacer name="verticalSpacer">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_2">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>15</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Link this device to an existing account</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="wordWrap">
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_15">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="horizontalWidget" native="true">
-                   <layout class="QGridLayout" name="gridLayout_7">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="linkInfoLabel">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>195</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">padding:8px;background-color:#efefef;border:1px solid #e0e0e0; border-radius:16px;</string>
-                      </property>
-                      <property name="text">
-                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot;&gt;To link this device to another account, you first &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14px; font-weight:600; color:#555555;&quot;&gt;need to obtain a PIN&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot;&gt; code. To generate the PIN code:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Account management setting&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; of a previous device&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Choose the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami account&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; you want to use&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                      <property name="wordWrap">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_14">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <layout class="QGridLayout" name="gridLayout_3">
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="pinEditLabel">
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>Enter your pin:</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLineEdit" name="pinEdit">
-                       <property name="minimumSize">
-                        <size>
-                         <width>180</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>180</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_3">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <layout class="QGridLayout" name="gridLayout_4">
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="fileImportLabel">
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>Or import a file:</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QPushButton" name="fileImportBtn">
-                       <property name="minimumSize">
-                        <size>
-                         <width>180</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>180</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="toolTip">
-                        <string>Link from exported account archive file</string>
-                       </property>
-                       <property name="text">
-                        <string>(None)</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_2">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Fixed</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>2</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <layout class="QGridLayout" name="gridLayout_2">
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <item row="1" column="0">
-                    <widget class="QLineEdit" name="importPasswordEdit">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>200</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="echoMode">
-                      <enum>QLineEdit::Password</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_5">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Password:</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_13">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="createRingAccountPage">
+               <widget class="QWidget" name="createAccountPage">
                 <layout class="QVBoxLayout" name="verticalLayout_5">
                  <property name="spacing">
                   <number>0</number>
@@ -1469,7 +1209,7 @@ instead of using your ID.</string>
                          </item>
                          <item row="0" column="0">
                           <widget class="QWidget" name="infoWidget" native="true">
-                           <layout class="QHBoxLayout" name="horizontalLayout_7">
+                           <layout class="QHBoxLayout" name="horizontalLayout_17">
                             <property name="topMargin">
                              <number>1</number>
                             </property>
@@ -1513,7 +1253,7 @@ instead of using your ID.</string>
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="createRingSIPAccountPage">
+               <widget class="QWidget" name="createSIPAccountPage">
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <property name="spacing">
                   <number>0</number>
@@ -2233,6 +1973,596 @@ instead of using your ID.</string>
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="importFromBackupPage">
+                <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="verticalSpacer_18">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                   <property name="spacing">
+                    <number>12</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                     <item>
+                      <spacer name="horizontalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="importFromBackupLabel">
+                       <property name="minimumSize">
+                        <size>
+                         <width>232</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>232</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(63, 63, 63)</string>
+                       </property>
+                       <property name="text">
+                        <string>Import from backup</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="backupInfoBtn">
+                       <property name="minimumSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="ressources.qrc">
+                         <normaloff>:/images/icons/info-24px.svg</normaloff>:/images/icons/info-24px.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_12">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QPushButton" name="fileImportBtn">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Archive (none)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="passwordFromBackupEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="backupInfoLabel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>You can obtain an archive by clicking on &quot;Export account&quot; in the account settings. This will create a .gz file on your device.</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_24">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="importFromDevicePage">
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="verticalSpacer_21">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                   <property name="spacing">
+                    <number>12</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <spacer name="horizontalSpacer_3">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="importFromDeviceLabel">
+                       <property name="minimumSize">
+                        <size>
+                         <width>234</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>234</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(63, 63, 63)</string>
+                       </property>
+                       <property name="text">
+                        <string>Import from device</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pinInfoBtn">
+                       <property name="minimumSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normalon>:/images/icons/info-24px.svg</normalon>
+                        </iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_10">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="pinFromDevice">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="placeholderText">
+                      <string>PIN</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="passwordFromDevice">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pinInfoLabel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>To obtain a PIN (valid for 10 minutes), you need to open the account settings on the other device and click on &quot;Link to another device&quot;.</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_25">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="connectToAccountManagerPage">
+                <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="verticalSpacer_22">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_17">
+                   <property name="spacing">
+                    <number>12</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="SignInLabel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>13</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(63, 63, 63)</string>
+                     </property>
+                     <property name="text">
+                      <string>Sign in</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="usernameManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Username</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="passwordManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLineEdit" name="accountManagerEdit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>256</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Account manager</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_19">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
                <widget class="QWidget" name="spinnerPage">
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
@@ -2478,21 +2808,12 @@ instead of using your ID.</string>
  </customwidgets>
  <tabstops>
   <tabstop>newAccountButton</tabstop>
-  <tabstop>existingPushButton</tabstop>
   <tabstop>newSIPAccountButton</tabstop>
-  <tabstop>pinEdit</tabstop>
-  <tabstop>fileImportBtn</tabstop>
-  <tabstop>importPasswordEdit</tabstop>
   <tabstop>fullNameEdit</tabstop>
   <tabstop>signUpCheckbox</tabstop>
   <tabstop>usernameEdit</tabstop>
   <tabstop>passwordEdit</tabstop>
   <tabstop>confirmPasswordEdit</tabstop>
-  <tabstop>SIPfullNameEdit</tabstop>
-  <tabstop>SIPservernameEdit</tabstop>
-  <tabstop>SIPproxyEdit</tabstop>
-  <tabstop>SIPusernameEdit</tabstop>
-  <tabstop>SIPpasswordEdit</tabstop>
   <tabstop>previousButton</tabstop>
   <tabstop>backButton</tabstop>
   <tabstop>nextButton</tabstop>
