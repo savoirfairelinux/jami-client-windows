@@ -2,6 +2,7 @@
 | Copyright (C) 2019 by Savoir-faire Linux                                |
 | Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          |
 | Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      |
+| Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              |
 |                                                                         |
 | This program is free software; you can redistribute it and/or modify    |
 | it under the terms of the GNU General Public License as published by    |
@@ -23,6 +24,7 @@
 #endif
 
 #include <QObject>
+#include <QMutex>
 #include <QSettings>
 #include <QRegularExpression>
 #include <QPixmap>
@@ -30,6 +32,8 @@
 
 #include "settingskey.h"
 #include "accountlistmodel.h"
+#include "utils.h"
+#include "rendermanager.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -45,6 +49,8 @@
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
 #include "api/peerdiscoverymodel.h"
+
+#include <memory>
 
 using namespace lrc::api;
 
@@ -67,6 +73,9 @@ public:
     static Lrc& getAPI() {
         return *(instance().lrc_);
     };
+    static RenderManager* renderer() {
+        return instance().renderer_.get();
+    }
     static void connectivityChanged() {
         instance().lrc_->connectivityChanged();
     };
@@ -87,6 +96,20 @@ public:
     };
     static std::vector<std::string> getActiveCalls() {
         return instance().lrc_->activeCalls();
+    };
+    static bool hasVideoCall() {
+        auto activeCalls = instance().lrc_->activeCalls();
+        auto accountList = accountModel().getAccountList();
+        bool result = false;
+        for (const auto& callId : activeCalls) {
+            for (const auto& accountId : accountList) {
+                auto& accountInfo = accountModel().getAccountInfo(accountId);
+                if (accountInfo.callModel->hasCall(callId)) {
+                    result |= accountInfo.callModel->getCall(callId).isAudioOnly;
+                }
+            }
+        }
+        return result;
     };
 
     static const account::Info&
@@ -134,8 +157,10 @@ public:
 
     static void reset(bool newInstance = false) {
         if (newInstance) {
+            instance().renderer_.reset(new RenderManager(avModel()));
             instance().lrc_.reset(new Lrc());
         } else {
+            instance().renderer_.reset();
             instance().lrc_.reset();
         }
     };
@@ -189,8 +214,11 @@ private:
     LRCInstance(migrateCallback willMigrateCb = {},
                 migrateCallback didMigrateCb = {}) {
         lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
+        renderer_ = std::make_unique<RenderManager>(lrc_->getAVModel());
     };
 
     std::string selectedAccountId_;
     std::string selectedConvUid_;
+
+    std::unique_ptr<RenderManager> renderer_;
 };
