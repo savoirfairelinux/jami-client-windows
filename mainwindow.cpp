@@ -21,7 +21,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QtConcurrent/QtConcurrent>
 #include <QDesktopWidget>
 #include <QDir>
 #include <QScreen>
@@ -43,9 +42,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    ,
-
-    ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -189,16 +186,6 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
-    connect(ui->settingswidget, &SettingsWidget::switchCallWidgetToSettingsWidgetPreview,
-            this, &MainWindow::slotSwitchVideoWidget);
-    connect(ui->settingswidget, &SettingsWidget::switchSettingsWidgetPreviewToCallWidget,
-            this, &MainWindow::slotSwitchVideoWidget);
-    connect(ui->settingswidget, &SettingsWidget::switchCallWidgetToSettingsWidgetPhotoBooth,
-            this, &MainWindow::slotSwitchVideoWidget);
-    connect(ui->settingswidget, &SettingsWidget::switchSettingsWidgetPhotoBoothToCallWidget,
-            this, &MainWindow::slotSwitchVideoWidget);
-    connect(ui->settingswidget, &SettingsWidget::videoInputDeviceConnectionLost,
-            this, &MainWindow::slotSwitchVideoWidget);
 
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
         [this](const std::string& accountId) {
@@ -316,6 +303,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
+        LRCInstance::avModel().stopPreview();
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
@@ -424,73 +412,6 @@ void MainWindow::slotAccountListChanged()
     if (!LRCInstance::accountModel().getAccountList().size()) {
         if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
             emit currentWidget->NavigationRequested(ScreenEnum::WizardScreen);
-        }
-    }
-}
-
-void MainWindow::slotSwitchVideoWidget(Utils::VideoWidgetSwapType type)
-{
-    auto convInfo = Utils::getCurrentConvInfo();
-    bool isAudioOnly = LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly;
-    switch (type)
-    {
-        case Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPreview: {
-            // switch local rendering from call to setting preview
-            ui->callwidget->disconnectRendering();
-            ui->settingswidget->connectStartedRenderingToPreview();
-            if (isAudioOnly) {
-                QtConcurrent::run(
-                    [this] {
-                        LRCInstance::avModel().stopPreview();
-                        LRCInstance::avModel().startPreview();
-                    });
-                break;
-            }
-            break;
-        }
-        case Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPhotoBooth: {
-            // switch local rendering from call to setting photo booth
-            ui->callwidget->disconnectRendering();
-            ui->settingswidget->connectStartedRenderingToPhotoBooth();
-            if (isAudioOnly) {
-                QtConcurrent::run(
-                    [this] {
-                        LRCInstance::avModel().stopPreview();
-                        LRCInstance::avModel().startPreview();
-                    });
-                break;
-            }
-            break;
-        }
-        case Utils::VideoWidgetSwapType::SettingsWidgetPreviewToCallWidget: {
-            // switch local rendering from setting preview to call
-            ui->settingswidget->disconnectPreviewRendering();
-            if (isAudioOnly) {
-                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
-                break;
-            }
-            ui->callwidget->connectRendering(true);
-            break;
-        }
-        case Utils::VideoWidgetSwapType::SettingsWidgetPhotoBoothToCallWidget: {
-            // switch local rendering from setting photo booth to call
-            ui->settingswidget->disconnectPhotoBoothRendering();
-            if (isAudioOnly) {
-                QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
-                break;
-            }
-            ui->callwidget->connectRendering(true);
-            break;
-        }
-        case Utils::VideoWidgetSwapType::VideoInputDeviceConnectionLost: {
-            if (isAudioOnly) {
-                break;
-            }
-            ui->callwidget->connectRendering(false);
-            break;
-        }
-        default: {
-            break;
         }
     }
 }
