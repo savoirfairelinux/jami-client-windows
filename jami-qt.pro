@@ -68,7 +68,8 @@ HEADERS += ./pixbufmanipulator.h \
     ./downloadmanger.h \
     ./callaudioonlyavataroverlay.h \
     ./sipinputpanel.h \
-    ./overlaybutton.h
+    ./overlaybutton.h \
+    ./previewrender.h
 
 SOURCES += ./advancedsettingswidget.cpp \
     ./advancedsipsettingwidget.cpp \
@@ -121,7 +122,8 @@ SOURCES += ./advancedsettingswidget.cpp \
     ./downloadmanger.cpp \
     ./callaudioonlyavataroverlay.cpp \
     ./sipinputpanel.cpp \
-    ./overlaybutton.cpp
+    ./overlaybutton.cpp \
+    ./previewrender.cpp
 
 FORMS += ./aboutdialog.ui \
     ./advancedsettingswidget.ui \
@@ -147,6 +149,7 @@ FORMS += ./aboutdialog.ui \
     ./updateconfirmdialog.ui \
     ./contactpicker.ui \
     ./callaudioonlyavataroverlay.ui \
-    ./sipkeypad.ui
+    ./sipkeypad.ui \
+    ./previewrender.ui
 
 RESOURCES += ressources.qrc
