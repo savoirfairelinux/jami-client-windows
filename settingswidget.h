@@ -30,6 +30,7 @@
 #include "bannedlistmodel.h"
 #include "linkdevicedialog.h"
 #include "photoboothwidget.h"
+#include "previewrender.h"
 
 #include "api/datatransfermodel.h"
 #include "typedefs.h"
@@ -46,28 +47,14 @@ public:
     explicit SettingsWidget(QWidget* parent = nullptr);
     ~SettingsWidget();
 
-    void connectStartedRenderingToPreview();
-    void connectStartedRenderingToPhotoBooth();
-    void disconnectPreviewRendering();
-    void disconnectPhotoBoothRendering();
-
     // NavWidget
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountListChanged();
 
-    void photoBoothEnterReceived(Utils::VideoWidgetSwapType Type);
-    void photoBoothLeaveReceived(Utils::VideoWidgetSwapType Type);
-
 signals:
-    void switchCallWidgetToSettingsWidgetPreview(Utils::VideoWidgetSwapType type);
-    void switchCallWidgetToSettingsWidgetPhotoBooth(Utils::VideoWidgetSwapType type);
-    void switchSettingsWidgetPreviewToCallWidget(Utils::VideoWidgetSwapType type);
-    void switchSettingsWidgetPhotoBoothToCallWidget(Utils::VideoWidgetSwapType type);
-    void settingWidgetPhotoBoothTosettingWidgetPreviewSignal(Utils::VideoWidgetSwapType type);
-    void settingWidgetPreviewTosettingWidgetPhotoBoothSignal(Utils::VideoWidgetSwapType type);
-    void videoInputDeviceConnectionLost(Utils::VideoWidgetSwapType type);
+    void videoDeviceChangedFromComboBox(const std::string&);
 
 private:
     Ui::SettingsWidget* ui;
@@ -125,9 +112,9 @@ private:
     int avatarSIPSize_;
     bool regNameBtn_ = false;
     const int itemHeight_ = 55;
-    bool previewed_ {false};
     int previousDeviceSize_ { static_cast<int>(LRCInstance::avModel().getDevices().size()) };
     bool deviceWasEmpty_ { false };
+    PreviewRenderWidget* previewRenderer_;
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
@@ -168,7 +155,6 @@ private slots:
     void videoDeviceEventHandlerAndMediaSettingSetUp();
 
 public:
-    bool getIsPreviewed() { return previewed_; }
     Button getPreviousButton() { return pastButton_; }
 
 };
