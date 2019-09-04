@@ -228,6 +228,9 @@
     <ClCompile Include="overlaybutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="previewrender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -396,6 +399,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="overlaybutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="previewrender.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -687,6 +693,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="sipkeypad.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="previewrender.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

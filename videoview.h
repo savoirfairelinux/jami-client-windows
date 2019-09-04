@@ -20,11 +20,12 @@
 
 #include "callaudioonlyavataroverlay.h"
 #include "videooverlay.h"
+#include "previewrender.h"
 
 #include "api/conversationmodel.h"
 
-#include <QMouseEvent>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QWidget>
@@ -44,8 +45,7 @@ public:
     void simulateShowChatview(bool checked);
     void setCurrentCalleeName(const QString& CalleeDisplayName);
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
-    void disconnectRendering();
-    void connectRendering(bool started = false);
+    void reconnectRenderingVideoDeviceChanged();
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -59,8 +59,8 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
@@ -71,9 +71,11 @@ private slots:
 
 private:
     Ui::VideoView* ui;
+    PreviewRenderWidget* previewRenderer_;
     VideoOverlay* overlay_;
     CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
     QPropertyAnimation* fadeAnim_;
+    QPropertyAnimation* moveAnim_;
     QTimer fadeTimer_;
     QWidget* oldParent_;
     QSize oldSize_;
@@ -84,6 +86,7 @@ private:
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
     bool sharingEntireScreen_ = false;
+    bool isDoubleClicked_ = false;
     std::string currentCallId_;
     int keyPressed_;
 
@@ -102,6 +105,7 @@ private:
     // https://bugreports.qt.io/browse/QTBUG-65981
     // https://bugreports.qt.io/browse/QTBUG-66803
     constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
+    constexpr static int previewMargin_ = 15;
 
 private:
     void toggleFullScreen();
@@ -112,5 +116,4 @@ signals:
     void videoSettingsClicked();
     void toggleFullScreenClicked();
     void closing(const std::string& callid);
-
 };
