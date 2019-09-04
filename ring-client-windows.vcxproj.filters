@@ -234,6 +234,12 @@
     <ClCompile Include="connectivitymonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rendermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="previewwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -410,6 +416,12 @@
     <QtMoc Include="connectivitymonitor.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="rendermanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="previewwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -428,9 +440,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_photoboothdialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_photoboothwidget.h">
@@ -636,9 +645,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="photoboothdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="photoboothwidget.ui">

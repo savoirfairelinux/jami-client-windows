@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,11 +21,12 @@
 
 #include "callaudioonlyavataroverlay.h"
 #include "videooverlay.h"
+#include "previewwidget.h"
 
 #include "api/conversationmodel.h"
 
-#include <QMouseEvent>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QWidget>
@@ -33,24 +35,21 @@ namespace Ui {
 class VideoView;
 }
 
+using namespace lrc::api;
+
 class VideoView : public QWidget {
     Q_OBJECT
 
 public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
-    void pushRenderer(const std::string& callUid, bool isSIP);
+
+    void setupForConversation(const conversation::Info& convInfo);
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
-    void setCurrentCalleeName(const QString& CalleeDisplayName);
-    void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
-    void disconnectRendering();
-    void connectRendering(bool started = false);
 
 protected:
     void resizeEvent(QResizeEvent* event);
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
     void mouseDoubleClickEvent(QMouseEvent* e);
     void dragEnterEvent(QDragEnterEvent* event);
     void dropEvent(QDropEvent* event);
@@ -59,58 +58,54 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
+    void paintEvent(QPaintEvent* e) override;
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
     void showContextMenu(const QPoint& pos);
-    void fadeOverlayOut();
-    void showOverlay();
     void slotHoldStatusChanged(bool pauseLabelStatus);
 
 private:
     Ui::VideoView* ui;
+
+    const conversation::Info* pConvInfo_;
+
+    // TODO(atraczyk): distant
+
+    // preview
+    VideoCallPreviewWidget* previewWidget_;
+    constexpr static int previewMargin_ = 15;
+
+    // video overlay
     VideoOverlay* overlay_;
-    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
-    QPropertyAnimation* fadeAnim_;
-    QTimer fadeTimer_;
-    QWidget* oldParent_;
-    QSize oldSize_;
+
+    // timer label
     QMetaObject::Connection timerConnection_;
-    QMetaObject::Connection callStatusChangedConnection_;
+
+    // audio only overlay
+    // TODO: put this into the VideoOverlay class
+    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
     QMetaObject::Connection coordinateOverlays_;
-    QPoint origin_;
+
+    QMetaObject::Connection callStatusChangedConnection_;
+
+    // dragging the preview
+    QPropertyAnimation* moveAnim_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
     bool sharingEntireScreen_ = false;
-    std::string currentCallId_;
+
+    // dtmf
     int keyPressed_;
-
-    constexpr static int fadeOverlayTime_ = 1000; //msec
-    constexpr static int resizeGrip_ = 40;
-    constexpr static int minimalSize_ = 100;
-
-    // Time before the overlay starts fading out after the mouse stops
-    // moving within the videoview.
-    constexpr static int startfadeOverlayTime_ = 2000; //msec
-
-    // TODO: fix when changing Qt version
-    // Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
-    // causing the render to take a buggy code path which can be avoided
-    // by using opacity values other than precisely 1.0.
-    // https://bugreports.qt.io/browse/QTBUG-65981
-    // https://bugreports.qt.io/browse/QTBUG-66803
-    constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
 
 private:
     void toggleFullScreen();
     void resetAvatarOverlay(bool isAudioOnly);
-    void writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+
 signals:
     void setChatVisibility(bool visible);
-    void videoSettingsClicked();
     void toggleFullScreenClicked();
-    void closing(const std::string& callid);
-
+    void closing(const std::string& id);
 };
