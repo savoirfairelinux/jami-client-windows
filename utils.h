@@ -25,6 +25,7 @@
 
 #include <QString>
 #include <QImage>
+#include <QLabel>
 #include <QStackedWidget>
 #include <QTextDocument>
 #include <QItemDelegate>
@@ -35,10 +36,8 @@
 #ifdef Q_OS_WIN
 #include <windows.h>
 #include <ciso646>
-#undef OUT
-#undef IN
 #undef ERROR
-#else //LINUX
+#else
 #define LPCWSTR char*
 #endif
 
@@ -67,6 +66,7 @@ void setStackWidget(QStackedWidget *stack, QWidget *widget);
 void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
 void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 QSize getRealSize(QScreen* screen);
+void drawBlackCircularImageOntoLabel(QLabel* containerWidget);
 
 // updates
 void cleanUpdateFiles();
@@ -92,6 +92,7 @@ bool isContactValid(const std::string& contactUid, const lrc::api::ConversationM
 
 // image
 QImage getCirclePhoto(const QImage original, int sizePhoto);
+QImage getRoundedEdgePhoto(const QImage original, int widthPhoto, int heightPhoto, int roundness);
 QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
 QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
@@ -115,18 +116,6 @@ void swapQListWidgetItems(QListWidget* list, bool down = true);
 
 // Byte to human readable size
 QString humanFileSize(qint64 fileSize);
-
-// Video widget change enum
-enum class VideoWidgetSwapType
-{
-    CallWidgetToSettingsWidgetPreview,
-    CallWidgetToSettingsWidgetPhotoBooth,
-    SettingsWidgetPreviewToCallWidget,
-    SettingsWidgetPhotoBoothToCallWidget,
-    SettingsWidgetPhotoBoothToSettingsWidgetPreview,
-    SettingsWidgetPreviewToSettingsWidgetPhotoBooth,
-    VideoInputDeviceConnectionLost
-};
 
 // device plug or unplug enum
 enum class DevicePlugStatus

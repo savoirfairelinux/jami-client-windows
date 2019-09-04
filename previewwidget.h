@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -21,44 +21,58 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QMutex>
-
-#include <memory>
-#include <array>
+#include <QPaintEvent>
+#include <QPainterPath>
 
 #include "lrcinstance.h"
 
-using namespace lrc::api;
-
-class VideoWidget : public QWidget
-{
+// The base for preview widgets, serves as the settings preview
+class PreviewWidget : public QWidget {
     Q_OBJECT;
 
 public:
-    explicit VideoWidget(QWidget* parent = 0);
-    ~VideoWidget();
+    explicit PreviewWidget(QWidget* parent = 0);
+    ~PreviewWidget();
 
-    void connectDistantRendering();
+    void paintBackgroundColor(QPainter* painter, QColor color, bool rounded = false);
+
+    QRect getPreviewRect() { return previewGeometry_; }
 
 protected:
-    void paintEvent(QPaintEvent* e);
+    QRect previewGeometry_;
 
-public slots:
-    void slotToggleFullScreenClicked();
-    void slotDistantRendererStarted(const std::string& id = {});
-    void slotUpdateDistantView(const std::string& id = {});
-    void slotStopDistantView(const std::string& id = {});
-    void renderFrame(const std::string& id);
+protected:
+    void paintEvent(QPaintEvent* e) override;
+};
+
+// A rounded image for photobooths
+class PhotoboothPreviewWidget final : public PreviewWidget {
+    Q_OBJECT;
+
+public:
+    explicit PhotoboothPreviewWidget(QWidget* parent = 0);
+    ~PhotoboothPreviewWidget();
+
+    QImage takePhoto();
+
+protected:
+    void paintEvent(QPaintEvent* e) override;
+};
+
+// rounded corners for video calls
+class VideoCallPreviewWidget final : public PreviewWidget {
+    Q_OBJECT;
+
+public:
+    explicit VideoCallPreviewWidget(QWidget* parent = 0);
+    ~VideoCallPreviewWidget();
+
+    void setContainerSize(const QSize& size);
+
+protected:
+    void paintEvent(QPaintEvent* e) override;
 
 private:
-    struct rendererDistantConnections {
-        QMetaObject::Connection started, stopped, updated;
-    } rendererDistantConnections_;
-
-    video::Renderer* distantRenderer_;
-    video::Frame distantFrame_;
-    std::unique_ptr<QImage> distantImage_;
-    std::vector<uint8_t> frameDistant_;
-
-    QMutex mutex_;
+    constexpr static qreal previewContainerRatio = 0.2f;
+    QSize containerSize_ {0, 0};
 };
