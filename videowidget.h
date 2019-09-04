@@ -37,54 +37,23 @@ class VideoWidget : public QWidget
 public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
-    void connectRendering();
-    void connectPreviewOnlyRendering();
-    void setPreviewDisplay(bool display);
-    void setIsFullPreview(bool full);
-    inline void setResetPreview(bool reset) { resetPreview_ = reset; hasFrame_=false; }
-    void setPhotoMode(bool isPhotoMode);
-    QImage takePhoto();
-    int getPreviewMargin(){ return previewMargin_; }
-    void resetPreview() { resetPreview_ = true; }
-    void disconnectRendering();
-    void rendererStartedWithoutDistantRender();
+
+    void connectDistantRendering();
 
 protected:
     void paintEvent(QPaintEvent* e);
 
 public slots:
     void slotToggleFullScreenClicked();
-    void slotRendererStarted(const std::string& id = {});
-    void slotUpdatePreview(const std::string& id = {});
-    void slotUpdateFullView(const std::string& id = {});
-    void slotStopFullView(const std::string& id = {});
+    void slotDistantRendererStarted(const std::string& id = {});
+    void slotUpdateDistantView(const std::string& id = {});
+    void slotStopDistantView(const std::string& id = {});
     void renderFrame(const std::string& id);
-    inline QRect& getPreviewRect(){ return previewGeometry_; }
-
-public:
-    enum TargetPointPreview {
-        topRight,
-        topLeft,
-        bottomRight,
-        bottomLeft,
-        left,
-        right,
-        top,
-        bottom
-    };
-    void movePreview(TargetPointPreview typeOfMove);
 
 private:
-    struct rendererConnections {
+    struct rendererDistantConnections {
         QMetaObject::Connection started, stopped, updated;
-    } rendererConnections_;
-
-    void paintBackgroundColor(QPainter* painter, QColor color);
-
-    video::Renderer* previewRenderer_;
-    video::Frame previewFrame_;
-    std::unique_ptr<QImage> previewImage_;
-    std::vector<uint8_t> framePreview_;
+    } rendererDistantConnections_;
 
     video::Renderer* distantRenderer_;
     video::Frame distantFrame_;
@@ -92,20 +61,4 @@ private:
     std::vector<uint8_t> frameDistant_;
 
     QMutex mutex_;
-
-    bool isPreviewDisplayed_;
-    bool fullPreview_;
-    QRect previewGeometry_;
-    bool resetPreview_ = false;
-    bool photoMode_ = false;
-    bool hasFrame_ = false;
-    TargetPointPreview previewPlace_;
-
-    constexpr static int previewMargin_ = 15;
-
-
-
-private:
-    void updatePreviewPos();
-
 };
