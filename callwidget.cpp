@@ -221,6 +221,8 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 CallWidget::~CallWidget()
@@ -258,6 +260,18 @@ CallWidget::navigated(bool to)
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
+    }
+    if (LRCInstance::getActiveCalls().size()) {
+        previewRenderer_->setParent(ui->videoWidget);
+        previewRenderer_->setGeometry(
+            ui->videoWidget->width() - PreviewRenderWidget::previewMargin_ - previewCallWidgetWidth_,
+            ui->videoWidget->height() - PreviewRenderWidget::previewMargin_ - previewCallWidgetHeight_,
+            previewCallWidgetWidth_,
+            previewCallWidgetHeight_
+        );
+        previewRenderer_->changeToRoundedBoarder();
+        previewRenderer_->setPhotoMode(false);
+        previewRenderer_->show();
     }
 }
 
@@ -669,6 +683,17 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
+
+    previewRenderer_->setParent(ui->videoWidget);
+    previewRenderer_->setGeometry(
+        ui->videoWidget->width() - PreviewRenderWidget::previewMargin_ - previewCallWidgetWidth_,
+        ui->videoWidget->height() - PreviewRenderWidget::previewMargin_ - previewCallWidgetHeight_,
+        previewCallWidgetWidth_,
+        previewCallWidgetHeight_
+    );
+    previewRenderer_->changeToRoundedBoarder();
+    previewRenderer_->setPhotoMode(false);
+    previewRenderer_->show();
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
     ui->videoWidget->setFocus();
 }
@@ -1386,16 +1411,4 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
-}
-
-void
-CallWidget::disconnectRendering()
-{
-    ui->videoWidget->disconnectRendering();
-}
-
-void
-CallWidget::connectRendering(bool started)
-{
-    ui->videoWidget->connectRendering(started);
 }
