@@ -27,6 +27,7 @@
 #include "navwidget.h"
 #include "settingswidget.h"
 #include "utils.h"
+#include "previewrender.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -56,8 +57,7 @@ public:
     void showWindow();
 
 public slots:
-    // A slot where covers all cases of video rendering switch between widgets
-    void slotSwitchVideoWidget(Utils::VideoWidgetSwapType Type);
+    void slotVideoDeviceChanged(const std::string&);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -95,6 +95,7 @@ private:
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
     QMetaObject::Connection screenChangedConnection_;
+    PreviewRenderWidget* previewRenderer_;
 
     QTimer *updateTimer_;
 };
