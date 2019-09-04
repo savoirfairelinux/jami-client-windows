@@ -54,10 +54,6 @@ public:
     float getCurrentScalingRatio();
     void showWindow();
 
-public slots:
-    // A slot where covers all cases of video rendering switch between widgets
-    void slotSwitchVideoWidget(Utils::VideoWidgetSwapType Type);
-
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
     void closeEvent(QCloseEvent* event);
