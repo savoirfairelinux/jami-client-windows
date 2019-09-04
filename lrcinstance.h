@@ -30,6 +30,7 @@
 
 #include "settingskey.h"
 #include "accountlistmodel.h"
+#include "utils.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -130,6 +131,11 @@ public:
 
     static void setSelectedConvId(const std::string& convUid = {}) {
         instance().selectedConvUid_ = convUid;
+    };
+
+    static bool getIfCurrentSelectedCallIsAudioOnly() {
+        auto conversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(), *LRCInstance::getCurrentConversationModel());
+        return LRCInstance::getCurrentCallModel()->getCall(conversation->callId).isAudioOnly;
     };
 
     static void reset(bool newInstance = false) {
