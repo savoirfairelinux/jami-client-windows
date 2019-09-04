@@ -20,7 +20,6 @@
 
 #include "photoboothwidget.h"
 #include "ui_photoboothwidget.h"
-#include "settingswidget.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -37,8 +36,6 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     hasAvatar_(false)
 {
     ui->setupUi(this);
-    ui->videoFeed->setIsFullPreview(true);
-    ui->videoFeed->setPhotoMode(true);
 
     flashOverlay_ = new QLabel(this);
     flashOverlay_->setStyleSheet("background-color:#fff");
@@ -53,12 +50,18 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     flashAnimation_->setEndValue(0);
     flashAnimation_->setEasingCurve(QEasingCurve::OutCubic);
 
+    ui->previewWidget->hide();
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
+
+    connect(ui->previewWidget, &PreviewWidget::visibilityChanged,
+        [this](bool visible) {
+            if (!visible) resetToAvatarLabel();
+        });
 }
 
 PhotoboothWidget::~PhotoboothWidget()
 {
-    LRCInstance::avModel().stopPreview();
+    LRCInstance::renderer()->stopPreviewing(true);
     delete ui;
 }
 
@@ -66,28 +69,9 @@ void
 PhotoboothWidget::startBooth(bool isDeviceChanged)
 {
     hasAvatar_ = false;
-    ui->videoFeed->setResetPreview(true);
-    if (!LRCInstance::getActiveCalls().size() || isDeviceChanged) {
-        // if no active calls
-        ui->videoFeed->connectPreviewOnlyRendering();
-        QtConcurrent::run(
-            [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
-    } else if (settingsPreviewed_) {
-        // if setting preview is viewed
-        emit leaveSettingsWidgetPreviewToSettingsWidgetPhotoBooth(
-            Utils::VideoWidgetSwapType::SettingsWidgetPreviewToSettingsWidgetPhotoBooth);
-        hasConnection_ = true;
-    } else {
-        // call video rendering direct to photo booth
-        emit enterSettingsWidgetPhotoBoothFromCallWidget(
-            Utils::VideoWidgetSwapType::CallWidgetToSettingsWidgetPhotoBooth);
-        hasConnection_ = true;
-    }
+    LRCInstance::renderer()->startPreviewing(isDeviceChanged);
     takePhotoState_ = true;
-    ui->videoFeed->show();
+    ui->previewWidget->show();
     ui->avatarLabel->hide();
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
@@ -95,31 +79,21 @@ PhotoboothWidget::startBooth(bool isDeviceChanged)
 void
 PhotoboothWidget::stopBooth()
 {
-    if (!LRCInstance::getActiveCalls().size() && takePhotoState_) {
-        // if no active calls
-        QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
-    } else if(hasConnection_){
-        // if video connection is still on photo booth (now stopBooth will onlt be called once leaving the setting widget)
-        emit enterCallWidgetFromSettingsWidgetPhotoBooth(
-            Utils::VideoWidgetSwapType::SettingsWidgetPhotoBoothToCallWidget);
-        hasConnection_ = false;
-    }
+    auto condition = LRCInstance::getActiveCalls().size() == 0 || takePhotoState_;
+    LRCInstance::renderer()->stopPreviewing(condition);
     resetToAvatarLabel();
 }
 
 void
 PhotoboothWidget::on_importButton_clicked()
 {
-    if (!LRCInstance::getActiveCalls().size()) {
-        LRCInstance::avModel().stopPreview();
-    }
+    auto condition = LRCInstance::getActiveCalls().size() == 0;
+    LRCInstance::renderer()->stopPreviewing(condition);
     auto picturesDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first();
     fileName_ = QFileDialog::getOpenFileName(this, tr("Choose File"),
                                              picturesDir,
                                              tr("Image Files") + " (*.jpg *.jpeg *.png)");
     if (fileName_.isEmpty()) {
-        ui->videoFeed->connectRendering();
-        LRCInstance::avModel().startPreview();
         return;
     }
     auto image = Utils::cropImage(QImage(fileName_));
@@ -143,8 +117,8 @@ PhotoboothWidget::on_takePhotoButton_clicked()
         startBooth();
         return;
     } else {
-        auto videoRect = ui->videoFeed->rect();
-        QPoint avatarLabelPos = ui->videoFeed->mapTo(this, videoRect.topLeft());
+        auto videoRect = ui->previewWidget->rect();
+        QPoint avatarLabelPos = ui->previewWidget->mapTo(this, videoRect.topLeft());
         flashOverlay_->setGeometry(
             avatarLabelPos.x(),
             avatarLabelPos.y(),
@@ -156,7 +130,7 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 
         QtConcurrent::run(
             [this] {
-                auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
+                auto photo = Utils::cropImage(ui->previewWidget->takePhoto());
                 auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
                 avatarPixmap_ = QPixmap::fromImage(avatar);
                 ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
@@ -184,9 +158,8 @@ PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default, boo
     // see resetPhotoBoothStateWhenSettingChanged in settingswidget.cpp
 
     ui->avatarLabel->setPixmap(avatarPixmap);
-    if (!LRCInstance::getActiveCalls().size() && stopPhotoboothPreview) {
-        LRCInstance::avModel().stopPreview();
-    }
+    auto condition = LRCInstance::getActiveCalls().size() == 0 || stopPhotoboothPreview;
+    LRCInstance::renderer()->stopPreviewing(condition);
     resetToAvatarLabel();
     if (default) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
@@ -206,22 +179,9 @@ PhotoboothWidget::hasAvatar()
 }
 
 void
-PhotoboothWidget::connectRendering()
-{
-    // connect only local preview
-    ui->videoFeed->rendererStartedWithoutDistantRender();
-}
-
-void
-PhotoboothWidget::disconnectRendering()
-{
-    ui->videoFeed->disconnectRendering();
-}
-
-void
 PhotoboothWidget::resetToAvatarLabel()
 {
-    ui->videoFeed->hide();
+    ui->previewWidget->hide();
     ui->avatarLabel->show();
     takePhotoState_ = false;
     if (!hasAvatar_) {

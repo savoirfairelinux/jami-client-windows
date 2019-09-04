@@ -21,6 +21,8 @@
 #include <QWidget>
 #include <QMenu>
 #include <QTimer>
+#include <QPropertyAnimation>
+#include <QTimer>
 
 class ContactPicker;
 class SipInputPanel;
@@ -40,8 +42,6 @@ public:
 public:
     void setName(const QString& name);
     void callStarted(const std::string & callId);
-    inline bool isDialogVisible(){ return dialogVisible_; };
-    void toggleContextButtons(bool visible);
     void setVideoMuteVisibility(bool visible);
     bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
@@ -63,14 +63,38 @@ private slots:
     void on_sipInputPanelButton_toggled(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
     void slotSIPInputPanelClicked(const int& id);
+    void fadeOverlayOut();
+
+protected:
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+
+private:
+    void showOverlay();
 
 private:
     Ui::VideoOverlay* ui;
+
     ContactPicker* contactPicker_;
     SipInputPanel* sipInputPanel_;
-    bool dialogVisible_ = false;
     QTimer* oneSecondTimer_;
     std::string callId_;
+
+    QTimer fadeTimer_;
+    QPropertyAnimation* fadeAnim_;
+    constexpr static int fadeOverlayTime_ = 1000; //msec
+    // Time before the overlay starts fading out after the mouse stops
+    // moving within the videoview.
+    constexpr static int startfadeOverlayTime_ = 2000; //msec
+
+    // TODO: fix when changing Qt version
+    // Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
+    // causing the render to take a buggy code path which can be avoided
+    // by using opacity values other than precisely 1.0.
+    // https://bugreports.qt.io/browse/QTBUG-65981
+    // https://bugreports.qt.io/browse/QTBUG-66803
+    constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
 
 signals:
     void setChatVisibility(bool visible);
