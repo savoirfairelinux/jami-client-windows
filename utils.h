@@ -67,6 +67,7 @@ void setStackWidget(QStackedWidget *stack, QWidget *widget);
 void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
 void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 QSize getRealSize(QScreen* screen);
+void drawBlackCircularWidget(QWidget* widget);
 
 // updates
 void cleanUpdateFiles();
@@ -115,18 +116,6 @@ void swapQListWidgetItems(QListWidget* list, bool down = true);
 
 // Byte to human readable size
 QString humanFileSize(qint64 fileSize);
-
-// Video widget change enum
-enum class VideoWidgetSwapType
-{
-    CallWidgetToSettingsWidgetPreview,
-    CallWidgetToSettingsWidgetPhotoBooth,
-    SettingsWidgetPreviewToCallWidget,
-    SettingsWidgetPhotoBoothToCallWidget,
-    SettingsWidgetPhotoBoothToSettingsWidgetPreview,
-    SettingsWidgetPreviewToSettingsWidgetPhotoBooth,
-    VideoInputDeviceConnectionLost
-};
 
 // device plug or unplug enum
 enum class DevicePlugStatus
