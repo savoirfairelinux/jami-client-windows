@@ -30,6 +30,7 @@
 #endif
 
 //Qt
+#include <QBitmap>
 #include <QObject>
 #include <QErrorMessage>
 #include <QPainter>
@@ -259,6 +260,21 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
     painter.drawImage(0, 0, scaledPhoto, margin, 0);
     return target;
+}
+
+void
+Utils::drawBlackCircularWidget(QWidget* widget)
+{
+    // Widget is black, fill image with white
+    // draw a black cycle onto it
+    QImage target(widget->width(), widget->height(), QImage::Format_ARGB32_Premultiplied);
+    target.fill(Qt::white);
+
+    QPainter painter(&target);
+    painter.setBrush(QBrush(Qt::black));
+    painter.drawEllipse(widget->x(), widget->y(), widget->width() -5, widget->height() - 5);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    widget->setMask(QBitmap::fromImage(target, Qt::ColorOnly));
 }
 
 void
