@@ -297,6 +297,7 @@ QPushButton#photoButton,
 QPushButton#fromDeviceButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton, QPushButton#newSIPAccountButton, QPushButton#fromBackupButton, QPushButton#connectAccountManagerButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
+QPushButton#skipBtn, QPushButton#exportBtn,
 QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, QPushButton#confirmChangeBtn, QPushButton#backButton {
     background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #109ede, stop: 1.0 #2b5084);
     border: 0px;
