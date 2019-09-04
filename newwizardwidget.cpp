@@ -270,6 +270,8 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->fileImportBtn->setText(tr("Archive (None)"));
         ui->nextButton->setEnabled(false);
         ui->backupInfoLabel->hide();
+    } else if (toPage == ui->backupKeysPage) {
+        setNavBarVisibility(false);
     }
 }
 
@@ -339,6 +341,34 @@ void
 NewWizardWidget::on_backupInfoBtn_clicked()
 {
     ui->backupInfoLabel->setVisible(!ui->backupInfoLabel->isVisible());
+}
+
+void
+NewWizardWidget::on_neverShowAgainBox_clicked()
+{
+    QSettings settings("jami.net", "Jami");
+    settings.setValue(SettingsKey::neverShowMeAgain, ui->neverShowAgainBox->isChecked());
+}
+
+void
+NewWizardWidget::on_skipBtn_clicked()
+{
+    emit NavigationRequested(ScreenEnum::CallScreen);
+    emit LRCInstance::instance().accountListChanged();
+}
+
+void
+NewWizardWidget::on_exportBtn_clicked()
+{
+    QFileDialog dialog(this);
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Export Account Here"),
+        QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    if (!dir.isEmpty()) {
+        LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), (dir + "/export.gz").toStdString());
+    }
+    emit NavigationRequested(ScreenEnum::CallScreen);
+    emit LRCInstance::instance().accountListChanged();
 }
 
 void
@@ -523,6 +553,7 @@ NewWizardWidget::createAccount()
 {
     bool isConnectingToManager = wizardMode_ == WizardMode::CONNECTMANAGER;
     bool isRing = wizardMode_ == WizardMode::CREATE || wizardMode_ == WizardMode::IMPORT;
+    bool isCreating = wizardMode_ == WizardMode::CREATE;
     if (isConnectingToManager) {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
             [this](const std::string& accountId) {
@@ -535,7 +566,7 @@ NewWizardWidget::createAccount()
         });
     } else {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-            [this, isRing](const std::string& accountId) {
+            [this, isRing, isCreating](const std::string& accountId) {
                 //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
                 confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
@@ -548,14 +579,25 @@ NewWizardWidget::createAccount()
                 }
                 LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 if (isRing) {
+                    QSettings settings("jami.net", "Jami");
+                    if (not settings.contains(SettingsKey::neverShowMeAgain)) {
+                        settings.setValue(SettingsKey::neverShowMeAgain, false);
+                    }
+                    auto showBackup = isCreating && !settings.value(SettingsKey::neverShowMeAgain).toBool();
+
                     if (!confProps.username.empty()) {
-                        connect(&LRCInstance::accountModel(),
+                        Utils::oneShotConnect(&LRCInstance::accountModel(),
                             &lrc::api::NewAccountModel::nameRegistrationEnded,
-                            [this] {
+                            [this, showBackup] {
                                 lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
                                 LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
-                                emit NavigationRequested(ScreenEnum::CallScreen);
-                                emit LRCInstance::instance().accountListChanged();
+                                QSettings settings("jami.net", "Jami");
+                                if (showBackup) {
+                                    changePage(ui->backupKeysPage);
+                                } else {
+                                    emit NavigationRequested(ScreenEnum::CallScreen);
+                                    emit LRCInstance::instance().accountListChanged();
+                                }
                             });
                         LRCInstance::accountModel().registerName(
                             LRCInstance::getCurrAccId(),
@@ -563,8 +605,12 @@ NewWizardWidget::createAccount()
                             registeredName_.toStdString()
                         );
                     } else {
-                        emit NavigationRequested(ScreenEnum::CallScreen);
-                        emit LRCInstance::instance().accountListChanged();
+                        if (showBackup) {
+                            changePage(ui->backupKeysPage);
+                        } else {
+                            emit NavigationRequested(ScreenEnum::CallScreen);
+                            emit LRCInstance::instance().accountListChanged();
+                        }
                     }
                     LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
                 } else {
@@ -593,7 +639,7 @@ NewWizardWidget::createAccount()
                     inputPara_["password"].toStdString(),
                     inputPara_["manager"].toStdString()
                 );
-            } if (isRing) {
+            } else if (isRing) {
                 LRCInstance::accountModel().createNewAccount(
                     lrc::api::profile::Type::RING,
                     inputPara_["alias"].toStdString(),
