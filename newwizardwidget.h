@@ -71,6 +71,9 @@ private slots:
     void on_previousButton_clicked();
     void on_pinInfoBtn_clicked();
     void on_backupInfoBtn_clicked();
+    void on_neverShowAgainBox_clicked();
+    void on_skipBtn_clicked();
+    void on_exportBtn_clicked();
     void on_passwordEdit_textChanged(const QString& arg1);
 
 private slots:
