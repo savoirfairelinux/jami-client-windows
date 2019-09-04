@@ -121,7 +121,7 @@ public:
         return instance().selectedAccountId_;
     };
 
-    static void setSelectedAccountId(const std::string& accountId) {
+    static void setSelectedAccountId(const std::string& accountId = {}) {
         instance().selectedAccountId_ = accountId;
         QSettings settings("jami.net", "Jami");
         settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
@@ -131,7 +131,7 @@ public:
         return instance().selectedConvUid_;
     };
 
-    static void setSelectedConvId(const std::string& convUid) {
+    static void setSelectedConvId(const std::string& convUid = {}) {
         instance().selectedConvUid_ = convUid;
     };
 

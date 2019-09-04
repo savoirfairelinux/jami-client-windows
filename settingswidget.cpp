@@ -492,13 +492,13 @@ void SettingsWidget::delAccountSlot()
     auto ret = delDialog.exec();
 
     if (ret == QDialog::Accepted) {
-        LRCInstance::setSelectedAccountId("");
+        LRCInstance::setSelectedAccountId();
 
         if (!LRCInstance::accountModel().getAccountList().size()) {
             emit NavigationRequested(ScreenEnum::WizardScreen);
 
         } else {
-            LRCInstance::setSelectedConvId("");
+            LRCInstance::setSelectedConvId();
             emit NavigationRequested(ScreenEnum::CallScreen);
         }
     }

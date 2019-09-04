@@ -798,7 +798,7 @@ CallWidget::setSelectedAccount(const std::string& accountId)
     // First, we get back to the welcome view (except if in call)
     if (ui->stackedWidget->currentWidget() != ui->videoPage &&
         ui->stackedWidget->currentWidget() != ui->welcomePage) {
-        Utils::setStackWidget(ui->stackedWidget, ui->welcomePage);
+        backToWelcomePage();
     }
 
     // We setup the ringIdLabel and the QRCode
@@ -1176,6 +1176,10 @@ CallWidget::selectConversation( const lrc::api::conversation::Info& item,
 void
 CallWidget::deselectConversation()
 {
+    if (LRCInstance::getSelectedConvUid().empty()) {
+        return;
+    }
+
     auto currentConversationModel = LRCInstance::getCurrentConversationModel();
 
     if (currentConversationModel == nullptr) {
@@ -1183,7 +1187,7 @@ CallWidget::deselectConversation()
     }
 
     currentConversationModel->selectConversation("");
-    LRCInstance::setSelectedConvId("");
+    LRCInstance::setSelectedConvId();
 
     ui->smartList->selectionModel()->clear();
     disconnect(imConnection_);
