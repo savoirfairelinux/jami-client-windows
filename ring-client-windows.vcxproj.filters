@@ -234,6 +234,12 @@
     <ClCompile Include="connectivitymonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="previewrender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lrcinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -404,12 +410,8 @@
     <QtMoc Include="overlaybutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="accountmigrationdialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="connectivitymonitor.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
+==== BASE ====
+==== BASE ====
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -702,6 +704,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="accountmigration.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="previewrender.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
