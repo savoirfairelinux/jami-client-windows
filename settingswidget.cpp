@@ -1060,15 +1060,15 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     auto decive = LRCInstance::avModel().getCurrentVideoCaptureDevice();
     auto currentSettings = LRCInstance::avModel().getDeviceSettings(decive);
     lrc::api::video::Settings settings{ {}, decive, rate, resolution };
-    ui->videoWidget->connectRendering();
+    //ui->videoWidget->connectRendering();
     LRCInstance::avModel().setDeviceSettings(settings);
 }
 
 void SettingsWidget::startPreviewing(bool isDeviceChanged)
 {
     ui->videoWidget->disconnectRendering();
-    ui->videoWidget->connectPreviewOnlyRendering();
-    ui->videoWidget->setIsFullPreview(true);
+    //ui->videoWidget->connectPreviewOnlyRendering();
+    //ui->videoWidget->setIsFullPreview(true);
 
     bool isPhotoBoothConnected;
     if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
@@ -1180,7 +1180,7 @@ void SettingsWidget::stopAudioMeter(bool blocking)
 
 void SettingsWidget::connectStartedRenderingToPreview()
 {
-    ui->videoWidget->rendererStartedWithoutDistantRender();
+    //ui->videoWidget->rendererStartedWithoutDistantRender();
 }
 
 void SettingsWidget::connectStartedRenderingToPhotoBooth()

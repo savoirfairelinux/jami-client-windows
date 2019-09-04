@@ -37,8 +37,8 @@ PhotoboothWidget::PhotoboothWidget(QWidget *parent) :
     hasAvatar_(false)
 {
     ui->setupUi(this);
-    ui->videoFeed->setIsFullPreview(true);
-    ui->videoFeed->setPhotoMode(true);
+    //ui->videoFeed->setIsFullPreview(true);
+    //ui->videoFeed->setPhotoMode(true);
 
     flashOverlay_ = new QLabel(this);
     flashOverlay_->setStyleSheet("background-color:#fff");
@@ -65,10 +65,10 @@ PhotoboothWidget::~PhotoboothWidget()
 void PhotoboothWidget::startBooth(bool isDeviceChanged)
 {
     hasAvatar_ = false;
-    ui->videoFeed->setResetPreview(true);
+    //ui->videoFeed->setResetPreview(true);
     if (!LRCInstance::getActiveCalls().size() || isDeviceChanged) {
         // if no active calls
-        ui->videoFeed->connectPreviewOnlyRendering();
+        //ui->videoFeed->connectPreviewOnlyRendering();
         QtConcurrent::run(
             [this] {
                 LRCInstance::avModel().stopPreview();
@@ -116,7 +116,7 @@ PhotoboothWidget::on_importButton_clicked()
                                              picturesDir,
                                              tr("Image Files") + " (*.jpg *.jpeg *.png)");
     if (fileName_.isEmpty()) {
-        ui->videoFeed->connectRendering();
+        //ui->videoFeed->connectRendering();
         LRCInstance::avModel().startPreview();
         return;
     }
@@ -154,10 +154,10 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 
         QtConcurrent::run(
             [this] {
-                auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
-                auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-                avatarPixmap_ = QPixmap::fromImage(avatar);
-                ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
+                //auto photo = Utils::cropImage(ui->videoFeed->takePhoto());
+                //auto avatar = photo.scaled(224, 224, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+                //avatarPixmap_ = QPixmap::fromImage(avatar);
+                //ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::getCirclePhoto(avatar, ui->avatarLabel->width())));
                 hasAvatar_ = true;
                 emit photoTaken();
                 if (!LRCInstance::getActiveCalls().size()) {
@@ -207,7 +207,7 @@ void
 PhotoboothWidget::connectRendering()
 {
     // connect only local preview
-    ui->videoFeed->rendererStartedWithoutDistantRender();
+    //ui->videoFeed->rendererStartedWithoutDistantRender();
 }
 
 void
