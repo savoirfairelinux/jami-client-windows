@@ -445,11 +445,11 @@
                    <attribute name="headerVisible">
                     <bool>false</bool>
                    </attribute>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
                    <attribute name="headerDefaultSectionSize">
                     <number>42</number>
+                   </attribute>
+                   <attribute name="headerMinimumSectionSize">
+                    <number>0</number>
                    </attribute>
                   </widget>
                  </item>
@@ -1052,14 +1052,7 @@ Copy and share it with your friends!
                      <number>0</number>
                     </property>
                     <item row="0" column="0">
-                     <widget class="VideoView" name="videoWidget" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                     </widget>
+                     <widget class="VideoView" name="videoView" native="true"/>
                     </item>
                    </layout>
                   </widget>
