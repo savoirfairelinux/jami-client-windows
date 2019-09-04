@@ -32,6 +32,7 @@
 
 #include "navwidget.h"
 #include "smartlistmodel.h"
+#include "previewrender.h"
 
 // new LRC
 #include "api/account.h"
@@ -58,10 +59,7 @@ public:
     ~CallWidget();
 
     int getLeftPanelWidth();
-    void disconnectRendering();
-
-    // if started is true, only update, stop signals are connected
-    void connectRendering(bool started = false);
+    void reconnectRenderingVideoDeviceChanged();
 
     // NavWidget
     virtual void navigated(bool to);
@@ -143,6 +141,7 @@ private:
 
     QMenu* menu_;
     QClipboard* clipboard_;
+    PreviewRenderWidget* previewRenderer_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;
