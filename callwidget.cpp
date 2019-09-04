@@ -221,6 +221,8 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 CallWidget::~CallWidget()
@@ -258,6 +260,15 @@ CallWidget::navigated(bool to)
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
+    }
+    if (LRCInstance::getActiveCalls().size()) {
+        previewRenderer_->setParent(ui->videoWidget);
+        previewRenderer_->changeToRoundedBoarder();
+        previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+        previewRenderer_->setPhotoMode(false);
+        previewRenderer_->setNeedToCentre(false);
+        previewRenderer_->triggerResetPreviewAfterImageReloaded();
+        previewRenderer_->show();
     }
 }
 
@@ -669,6 +680,15 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
+
+    previewRenderer_->setParent(ui->videoWidget);
+    previewRenderer_->changeToRoundedBoarder();
+    previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+    previewRenderer_->setPhotoMode(false);
+    previewRenderer_->setNeedToCentre(false);
+    previewRenderer_->triggerResetPreviewAfterImageReloaded();
+    previewRenderer_->show();
+
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
     ui->videoWidget->setFocus();
 }
@@ -1403,13 +1423,7 @@ CallWidget::Copy()
 }
 
 void
-CallWidget::disconnectRendering()
+CallWidget::reconnectRenderingVideoDeviceChanged()
 {
-    ui->videoWidget->disconnectRendering();
-}
-
-void
-CallWidget::connectRendering(bool started)
-{
-    ui->videoWidget->connectRendering(started);
+    ui->videoWidget->reconnectRenderingVideoDeviceChanged();
 }
