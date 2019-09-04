@@ -73,7 +73,8 @@ HEADERS += ./aboutdialog.h \
         ./updatedownloaddialog.h \
         ./sipinputpanel.h \
         ./callaudioonlyavataroverlay.h \
-        ./overlaybutton.h
+        ./overlaybutton.h \
+        ./previewrender.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -128,7 +129,9 @@ SOURCES += ./aboutdialog.cpp \
         ./videooverlay.cpp \
         ./sipinputpanel.cpp \
         ./callaudioonlyavataroverlay.cpp \
-        ./overlaybutton.cpp
+        ./overlaybutton.cpp \
+        ./previewrender.cpp \
+        ./lrcinstance.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -153,5 +156,6 @@ FORMS += ./aboutdialog.ui \
         ./updateconfirmdialog.ui \
         ./videoview.ui \
         ./sipkeypad.ui \
-        ./callaudioonlyavataroverlay.ui
+        ./callaudioonlyavataroverlay.ui \
+        ./previewrender.ui
 RESOURCES += ressources.qrc

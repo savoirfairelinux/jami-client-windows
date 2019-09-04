@@ -41,10 +41,8 @@ CallAudioOnlyAvatarOverlay::setAvatarVisible(bool visible)
 }
 
 void
-CallAudioOnlyAvatarOverlay::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
+CallAudioOnlyAvatarOverlay::writeAvatarOverlay(const lrc::api::conversation::Info& convInfo)
 {
-    Q_UNUSED(accountId);
-
     auto contact = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants.at(0));
     ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::conversationPhoto(convInfo.uid, LRCInstance::getCurrentAccountInfo())));
 
