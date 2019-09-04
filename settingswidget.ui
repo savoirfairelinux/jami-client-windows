@@ -1416,8 +1416,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>749</width>
-                  <height>1387</height>
+                  <width>706</width>
+                  <height>1398</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2740,7 +2740,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>683</width>
-                  <height>864</height>
+                  <height>874</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -4077,7 +4077,7 @@
                            <enum>Qt::Horizontal</enum>
                           </property>
                           <property name="sizeType">
-                           <enum>QSizePolicy::MinimumExpanding</enum>
+                           <enum>QSizePolicy::Expanding</enum>
                           </property>
                           <property name="sizeHint" stdset="0">
                            <size>
@@ -4088,7 +4088,7 @@
                          </spacer>
                         </item>
                         <item>
-                         <widget class="VideoWidget" name="videoWidget" native="true">
+                         <widget class="QWidget" name="previewWidgetContainer" native="true">
                           <property name="enabled">
                            <bool>true</bool>
                           </property>
@@ -4100,13 +4100,13 @@
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>510</width>
+                            <width>400</width>
                             <height>224</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>16777215</width>
+                            <width>400</width>
                             <height>16777215</height>
                            </size>
                           </property>
@@ -4124,7 +4124,7 @@
                            <enum>Qt::Horizontal</enum>
                           </property>
                           <property name="sizeType">
-                           <enum>QSizePolicy::MinimumExpanding</enum>
+                           <enum>QSizePolicy::Expanding</enum>
                           </property>
                           <property name="sizeHint" stdset="0">
                            <size>
@@ -4230,12 +4230,6 @@
    <class>PhotoboothWidget</class>
    <extends>QWidget</extends>
    <header>photoboothwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>VideoWidget</class>
-   <extends>QWidget</extends>
-   <header>videowidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

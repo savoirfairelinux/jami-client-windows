@@ -22,6 +22,7 @@
 #include "settingswidget.h"
 #include "utils.h"
 #include "connectivitymonitor.h"
+#include "previewrender.h"
 #include "globalsystemtray.h"
 
 #include <QMainWindow>
@@ -55,8 +56,7 @@ public:
     void showWindow();
 
 public slots:
-    // A slot where covers all cases of video rendering switch between widgets
-    void slotSwitchVideoWidget(Utils::VideoWidgetSwapType Type);
+    void slotVideoDeviceChanged(const std::string&, bool);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -96,6 +96,7 @@ private:
     std::unique_ptr<ConnectivityMonitor> connectivityMonitor_;
 
     QMetaObject::Connection screenChangedConnection_;
+    PreviewRenderWidget* previewRenderer_;
 
     QTimer *updateTimer_;
 };
