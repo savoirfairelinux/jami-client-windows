@@ -38,12 +38,15 @@
 #include "selectareadialog.h"
 #include "videooverlay.h"
 
-VideoView::VideoView(QWidget* parent)
-    : QWidget(parent)
+VideoView::VideoView(const lrc::api::conversation::Info& convInfo,
+                     QWidget* parent)
+    : convInfo_(convInfo)
+    , QWidget(parent)
     , ui(new Ui::VideoView)
 {
     ui->setupUi(this);
 
+    // video overlay
     overlay_ = new VideoOverlay(this);
     auto effect = new QGraphicsOpacityEffect(overlay_);
     effect->setOpacity(maxOverlayOpacity_);
@@ -55,13 +58,13 @@ VideoView::VideoView(QWidget* parent)
     fadeAnim_->setStartValue(effect->opacity());
     fadeAnim_->setEndValue(0);
     fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
-
     // Setup the timer to start the fade when the mouse stops moving
     this->setMouseTracking(true);
     overlay_->setMouseTracking(true);
     fadeTimer_.setSingleShot(true);
     connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(fadeOverlayOut()));
 
+    // context menu
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
@@ -69,11 +72,24 @@ VideoView::VideoView(QWidget* parent)
         emit this->setChatVisibility(visible);
         connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
+
+    // audio only overlay
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
+
+    // preview widget
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
+
+    // preview widget animation
+    moveAnim_ = new QPropertyAnimation(previewRenderer_, "geometry");
+    moveAnim_->setDuration(100);
+    moveAnim_->setEasingCurve(QEasingCurve::InOutQuad);
+
+    setupForConversation();
 }
 
 VideoView::~VideoView()
 {
+    closing(convInfo_.callId);
     delete ui;
     delete overlay_;
     delete fadeAnim_;
@@ -82,42 +98,13 @@ VideoView::~VideoView()
 void
 VideoView::resizeEvent(QResizeEvent* event)
 {
-    int marginWidth = ui->videoWidget->getPreviewMargin();
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
-    int deltaW = event->size().width() - event->oldSize().width();
-    int deltaH = event->size().height() - event->oldSize().height();
+    moveAnim_->stop();
+    previewRenderer_->setCurrentConainerGeo(event->size().width(), event->size().height());
+    previewRenderer_->resetPreview();
 
-    QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
-    int cx = (event->oldSize().width()) / 2;
-    int cy = (event->oldSize().height()) / 2;
-    QPoint center = QPoint(cx, cy);
-
-    // first we check if we want to displace the preview
-    if (previewRect.x() + deltaW > 0 && previewRect.y() + deltaH > 0) {
-        // then we check which way
-        if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, deltaH);
-        else if (center.x() - previewCenter.x() > 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(0, deltaH);
-        else if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() > 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, 0);
-    }
-
-    if (previewRect.left() <= 0)
-        previewRect.moveLeft(marginWidth);
-    previewRect.moveRight(width() - marginWidth);
-
-    if (previewRect.right() >= width())
-        previewRect.moveRight(width() - marginWidth);
-
-    if (previewRect.top() <= 0)
-        previewRect.moveTop(marginWidth);
-    previewRect.moveBottom(height() - marginWidth);
-
-    if (previewRect.bottom() >= height())
-        previewRect.moveBottom(height() - marginWidth);
-
-    ui->videoWidget->resetPreview();
+    // force preview to repaint since the geo may be changed to hide
+    // the preview renderer
+    previewRenderer_->forceRepaint();
 
     audioOnlyAvatar_->resize(this->size());
 
@@ -158,13 +145,18 @@ VideoView::fadeOverlayOut()
 void
 VideoView::slotCallStatusChanged(const std::string& callId)
 {
+    if (callId != convInfo_.callId) {
+        return;
+    }
+
     using namespace lrc::api::call;
-    auto call = LRCInstance::getCurrentCallModel()->getCall(callId);
+    auto call = LRCInstance::getCurrentCallModel()->getCall(convInfo_.callId);
     switch (call.status) {
     case Status::IN_PROGRESS:
     {
+        // TODO videoWidget --> distantRnderer
         ui->videoWidget->show();
-        auto convInfo = Utils::getConversationFromCallId(call.id);
+        auto convInfo = Utils::getConversationFromCallId(convInfo_.callId);
         if (!convInfo.uid.empty()) {
             auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
             auto contactName = Utils::bestNameForContact(contactInfo);
@@ -173,9 +165,10 @@ VideoView::slotCallStatusChanged(const std::string& callId)
         return;
     }
     case Status::ENDED:
-        emit closing(call.id);
+        // this will trigger a removal of the this entry in callwidget's
+        // videoview map
+        emit closing(convInfo_.callId);
     default:
-        //emit closing(call.id);
         break;
     }
     QObject::disconnect(timerConnection_);
@@ -274,10 +267,17 @@ VideoView::showContextMenu(const QPoint& pos)
         }
         connect(deviceAction, &QAction::triggered,
             [this, deviceName, thisCallId]() {
+                previewRenderer_->hide();
+                previewRenderer_->setCurrentConainerGeo(this->width(), this->height());
+                // since there is the possiblity of image not reloaded properly
+                // after rendering reconnect
+                previewRenderer_->triggerResetPreviewAfterImageReloaded();
+                previewRenderer_->connectRendering();
+                ui->videoWidget->connectDistantRendering();
+
                 auto decive = deviceName.toStdString();
                 LRCInstance::avModel().switchInputTo(decive);
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(decive);
-                ui->videoWidget->connectRendering();
             });
     }
 
@@ -345,41 +345,68 @@ VideoView::showContextMenu(const QPoint& pos)
 }
 
 void
-VideoView::pushRenderer(const std::string& callId, bool isSIP)
+VideoView::setupForConversation()
 {
-    currentCallId_ = callId;
     auto callModel = LRCInstance::getCurrentCallModel();
 
     QObject::disconnect(ui->videoWidget);
     QObject::disconnect(callStatusChangedConnection_);
 
-    if (!callModel->hasCall(callId)) {
+    if (!callModel->hasCall(convInfo_.callId)) {
         return;
     }
 
-    auto call = callModel->getCall(callId);
+    auto call = callModel->getCall(convInfo_.callId);
 
     // transfer call will only happen in SIP calls
+    auto& accInfo = LRCInstance::accountModel().getAccountInfo(convInfo_.accountId);
+    bool isSIP = accInfo.profileInfo.type == lrc::api::profile::Type::SIP;
     this->overlay_->setTransferCallAndSIPPanelAvailability(isSIP);
-    this->overlay_->callStarted(callId);
-    this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
-    callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
-        this, &VideoView::slotCallStatusChanged);
+    this->overlay_->callStarted(convInfo_.uid);
+    this->overlay_->setVideoMuteVisibility(!call.isAudioOnly);
 
-    ui->videoWidget->connectRendering();
-    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+    callStatusChangedConnection_ =
+        QObject::connect(callModel,
+                         &NewCallModel::callStatusChanged,
+                         this,
+                         &VideoView::slotCallStatusChanged);
+
+    previewRenderer_->connectRendering();
+    ui->videoWidget->connectDistantRendering();
+
+    resetAvatarOverlay(call.isAudioOnly);
+    if (call.isAudioOnly) {
+        audioOnlyAvatar_->writeAvatarOverlay(convInfo_);
+    }
+
+    // close chat ?
+    emit overlay_->setChatVisibility(false);
+
+    // setup overlay
+    bool isAudioMuted = call.audioMuted && (call.status != lrc::api::call::Status::PAUSED);
+    bool isVideoMuted = call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly);
+    bool isRecording = callModel->isRecording(convInfo_.callId);
+    bool isPaused = call.status == lrc::api::call::Status::PAUSED;
+    bool isAudioOny = call.isAudioOnly && call.status != lrc::api::call::Status::PAUSED;
+    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isPaused, isAudioOny);
+
+    // overlay name
+    auto& convModel = accInfo.conversationModel;
+    auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo_, *convModel));
+    overlay_->setCurrentSelectedCalleeDisplayName(bestName);
 }
 
 void
 VideoView::mousePressEvent(QMouseEvent* event)
 {
     QPoint clickPosition = event->pos();
-    if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
-        QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
-            originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
-            QApplication::setOverrideCursor(Qt::SizeAllCursor);
-            draggingPreview_ = true;
+    if (previewRenderer_->geometry().contains(clickPosition)) {
+        QLine distance = QLine(clickPosition, previewRenderer_->geometry().bottomRight());
+        originMouseDisplacement_ = event->pos() - previewRenderer_->geometry().topLeft();
+        QApplication::setOverrideCursor(Qt::SizeAllCursor);
+        draggingPreview_ = true;
+        moveAnim_->stop();
     }
 }
 
@@ -389,27 +416,35 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
     Q_UNUSED(event)
     if (draggingPreview_) {
         //Check preview's current central position
-        QRect& previewRect = ui->videoWidget->getPreviewRect();
-        auto previewCentral = previewRect.center();
+        auto previewCentral = previewRenderer_->geometry().center();
         auto videoViewRect = ui->videoWidget->rect();
         auto videoWidgetCentral = videoViewRect.center();
+        auto previewInitialWidth = previewRenderer_->width();
+        auto previewInitialHeight = previewRenderer_->height();
+        moveAnim_->setStartValue(previewRenderer_->geometry());
         if (previewCentral.x() >= videoWidgetCentral.x()) {
             if (previewCentral.y() >= videoWidgetCentral.y()) {
                 //Move preview to bottom right
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
+
+                moveAnim_->setEndValue(QRect(this->width() - previewMargin_ - previewInitialWidth, this->height() - previewMargin_ - previewInitialHeight,
+                                             previewInitialWidth, previewInitialHeight));
             } else {
                 //Move preview to top right
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+                moveAnim_->setEndValue(QRect(this->width() - previewMargin_ - previewInitialWidth, previewMargin_,
+                                             previewInitialWidth, previewInitialHeight));
             }
         } else {
             if (previewCentral.y() >= videoWidgetCentral.y()) {
                 //Move preview to bottom left
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
+                moveAnim_->setEndValue(QRect(previewMargin_, this->height() - previewMargin_ - previewInitialHeight,
+                                             previewInitialWidth, previewInitialHeight));
             } else {
                 //Move preview to top left
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
+                moveAnim_->setEndValue(QRect(previewMargin_, previewMargin_,
+                                             previewInitialWidth, previewInitialHeight));
             }
         }
+        moveAnim_->start();
     }
 
     draggingPreview_ = false;
@@ -426,7 +461,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         fadeTimer_.start(startfadeOverlayTime_);
     }
 
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
+    QRect previewRect = previewRenderer_->geometry();
     if (draggingPreview_) {
         if (previewRect.left() > 0
             && previewRect.top() > 0
@@ -448,24 +483,8 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         }
     }
 
-    QLine distance = QLine(previewRect.topLeft(), event->pos());
-}
-
-void
-VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
-{
-    overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
-}
-
-void
-VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo)
-{
-    resetAvatarOverlay(isAudioOnly);
-    if (isAudioOnly) {
-        writeAvatarOverlay(accountId, convInfo);
-    }
-    emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
+    previewRenderer_->setGeometry(previewRect);
+    previewRenderer_->forceRepaint();
 }
 
 void
@@ -481,31 +500,9 @@ VideoView::resetAvatarOverlay(bool isAudioOnly)
 }
 
 void
-VideoView::writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo)
-{
-    audioOnlyAvatar_->writeAvatarOverlay(accountId, convInfo);
-}
-
-void
 VideoView::slotHoldStatusChanged(bool pauseLabelStatus)
 {
     audioOnlyAvatar_->respondToPauseLabel(pauseLabelStatus);
-}
-
-void
-VideoView::disconnectRendering()
-{
-    ui->videoWidget->disconnectRendering();
-}
-
-void
-VideoView::connectRendering(bool started)
-{
-    if (started) {
-        ui->videoWidget->slotRendererStarted();
-    } else {
-        ui->videoWidget->connectRendering();
-    }
 }
 
 void
@@ -521,12 +518,12 @@ void
 VideoView::keyReleaseEvent(QKeyEvent* event)
 {
     if (keyPressed_ == static_cast<int>(Qt::Key_NumberSign)) {
-        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "#");
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo_.callId, "#");
     } else if (keyPressed_ == static_cast<int>(Qt::Key_Asterisk)) {
-        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, "*");
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo_.callId, "*");
     } else if (keyPressed_ >= 48 && keyPressed_ <= 57) {
         //enum Qt::Key_0 = 48, QT::Key_9 = 57
-        LRCInstance::getCurrentCallModel()->playDTMF(currentCallId_, std::to_string(keyPressed_ - 48));
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo_.callId, std::to_string(keyPressed_ - 48));
     }
     QWidget::keyReleaseEvent(event);
 }

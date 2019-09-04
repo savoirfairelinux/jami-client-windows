@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,11 +21,12 @@
 
 #include "callaudioonlyavataroverlay.h"
 #include "videooverlay.h"
+#include "previewrender.h"
 
 #include "api/conversationmodel.h"
 
-#include <QMouseEvent>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QWidget>
@@ -33,19 +35,19 @@ namespace Ui {
 class VideoView;
 }
 
+using namespace lrc::api;
+
 class VideoView : public QWidget {
     Q_OBJECT
 
 public:
-    explicit VideoView(QWidget* parent = 0);
+    explicit VideoView(const conversation::Info& convInfo,
+                       QWidget* parent = 0);
     ~VideoView();
-    void pushRenderer(const std::string& callUid, bool isSIP);
+
+    void setupForConversation();
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
-    void setCurrentCalleeName(const QString& CalleeDisplayName);
-    void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
-    void disconnectRendering();
-    void connectRendering(bool started = false);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -59,8 +61,8 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
@@ -71,26 +73,20 @@ private slots:
 
 private:
     Ui::VideoView* ui;
+
+    // the id of the call/conf
+    const conversation::Info& convInfo_;
+
+    // distant
+    // TODO
+
+    // preview
+    PreviewRenderWidget* previewRenderer_;
+    constexpr static int previewMargin_ = 15;
+
+    // video overlay
     VideoOverlay* overlay_;
-    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
-    QPropertyAnimation* fadeAnim_;
-    QTimer fadeTimer_;
-    QWidget* oldParent_;
-    QSize oldSize_;
-    QMetaObject::Connection timerConnection_;
-    QMetaObject::Connection callStatusChangedConnection_;
-    QMetaObject::Connection coordinateOverlays_;
-    QPoint origin_;
-    QPoint originMouseDisplacement_;
-    bool draggingPreview_ = false;
-    bool sharingEntireScreen_ = false;
-    std::string currentCallId_;
-    int keyPressed_;
-
     constexpr static int fadeOverlayTime_ = 1000; //msec
-    constexpr static int resizeGrip_ = 40;
-    constexpr static int minimalSize_ = 100;
-
     // Time before the overlay starts fading out after the mouse stops
     // moving within the videoview.
     constexpr static int startfadeOverlayTime_ = 2000; //msec
@@ -103,14 +99,34 @@ private:
     // https://bugreports.qt.io/browse/QTBUG-66803
     constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
 
+    // audio only overlay
+    // TODO: put this into the VideoOverlay class
+    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
+    QMetaObject::Connection coordinateOverlays_;
+
+    // overlay
+    // TODO: put this into the VideoOverlay class
+    QPropertyAnimation* fadeAnim_;
+    QPropertyAnimation* moveAnim_;
+    QTimer fadeTimer_;
+    QMetaObject::Connection timerConnection_;
+
+    QMetaObject::Connection callStatusChangedConnection_;
+
+    // dragging the preview
+    QPoint originMouseDisplacement_;
+    bool draggingPreview_ = false;
+    bool sharingEntireScreen_ = false;
+
+    // dtmf
+    int keyPressed_;
+
 private:
     void toggleFullScreen();
     void resetAvatarOverlay(bool isAudioOnly);
-    void writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+
 signals:
     void setChatVisibility(bool visible);
-    void videoSettingsClicked();
     void toggleFullScreenClicked();
-    void closing(const std::string& callid);
-
+    void closing(const std::string& id);
 };

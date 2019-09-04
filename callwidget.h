@@ -22,18 +22,11 @@
 
 #pragma once
 
-#include <QClipboard>
-#include <QItemSelection>
-#include <QMenu>
-#include <QMovie>
-#include <QString>
-#include <QVector>
-#include <QWidget>
-
 #include "navwidget.h"
 #include "smartlistmodel.h"
+#include "previewrender.h"
+#include "videoview.h"
 
-// new LRC
 #include "api/account.h"
 #include "api/contact.h"
 #include "api/contactmodel.h"
@@ -41,6 +34,14 @@
 #include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
 #include "globalinstances.h"
+
+#include <QClipboard>
+#include <QItemSelection>
+#include <QMenu>
+#include <QMovie>
+#include <QString>
+#include <QVector>
+#include <QWidget>
 
 class ConversationItemDelegate;
 class QPropertyAnimation;
@@ -57,11 +58,8 @@ public:
     explicit CallWidget(QWidget* parent = 0);
     ~CallWidget();
 
+    void restartPreviewWhenSwitchDevice();
     int getLeftPanelWidth();
-    void disconnectRendering();
-
-    // if started is true, only update, stop signals are connected
-    void connectRendering(bool started = false);
 
     // NavWidget
     virtual void navigated(bool to);
@@ -143,14 +141,17 @@ private:
 
     QMenu* menu_;
     QClipboard* clipboard_;
+    PreviewRenderWidget* previewRenderer_;
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;
 
     constexpr static int qrSize_ = 200;
 
-    // lrc
-    Video::Renderer* videoRenderer_;
+    // maps call/conf id to videoview
+    std::map<std::string, VideoView*> videoViewMap_;
+    VideoView* currentVideoView_;
+
     std::string lastConvUid_ {};
     lrc::api::profile::Type currentTypeFilter_{};
     std::unique_ptr<SmartListModel> smartListModel_;

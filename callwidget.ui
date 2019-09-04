@@ -445,11 +445,11 @@
                    <attribute name="headerVisible">
                     <bool>false</bool>
                    </attribute>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
                    <attribute name="headerDefaultSectionSize">
                     <number>42</number>
+                   </attribute>
+                   <attribute name="headerMinimumSectionSize">
+                    <number>0</number>
                    </attribute>
                   </widget>
                  </item>
@@ -1051,16 +1051,6 @@ Copy and share it with your friends!
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="0" column="0">
-                     <widget class="VideoView" name="videoWidget" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                     </widget>
-                    </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="outgoingCallPage">
@@ -2120,12 +2110,6 @@ Copy and share it with your friends!
    <class>QWebEngineView</class>
    <extends>QWidget</extends>
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
-  </customwidget>
-  <customwidget>
-   <class>VideoView</class>
-   <extends>QWidget</extends>
-   <header>videoview.h</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>IdLabel</class>
