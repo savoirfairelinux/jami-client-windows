@@ -54,6 +54,10 @@ QWidget#smartListOuterWidget {
     background-color: rgb(255, 255, 255);
 }
 
+QWidget#previewContainer {
+    background-color: black;
+}
+
 QPushButton#btnConversations, QPushButton#btnInvites {
     border-radius: 0px;
     border-top-left-radius: 15px;
