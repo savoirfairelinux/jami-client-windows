@@ -103,7 +103,7 @@
           </widget>
          </item>
          <item>
-          <widget class="VideoWidget" name="videoFeed" native="true">
+          <widget class="QWidget" name="previewContainer" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -241,14 +241,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>VideoWidget</class>
-   <extends>QWidget</extends>
-   <header>videowidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>
