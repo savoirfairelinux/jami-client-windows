@@ -30,6 +30,7 @@
 #endif
 
 //Qt
+#include <QBitmap>
 #include <QObject>
 #include <QErrorMessage>
 #include <QPainter>
