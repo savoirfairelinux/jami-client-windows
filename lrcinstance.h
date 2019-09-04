@@ -2,6 +2,7 @@
 | Copyright (C) 2019 by Savoir-faire Linux                                |
 | Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          |
 | Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      |
+| Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              |
 |                                                                         |
 | This program is free software; you can redistribute it and/or modify    |
 | it under the terms of the GNU General Public License as published by    |
@@ -30,6 +31,7 @@
 
 #include "settingskey.h"
 #include "accountlistmodel.h"
+#include "utils.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -45,6 +47,44 @@
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
 #include "api/peerdiscoverymodel.h"
+
+#include <memory>
+
+class FrameWrapper : public QObject
+{
+
+    Q_OBJECT
+
+public:
+    FrameWrapper(bool isPreview);
+    ~FrameWrapper();
+
+signals:
+    void previewRenderReady();
+
+private slots:
+    void slotPreviewStarted(const std::string& id = {});
+    void slotPreviewUpdated(const std::string& id = {});
+    void slotPreviewStoped(const std::string& id = {});
+};
+
+class Renderer : public QObject
+{
+
+    Q_OBJECT
+
+private:
+    // one preview to rule them all
+    std::unique_ptr<FrameWrapper> previewFrame_;
+    // distant for each call/conf/conversation
+    std::map<std::string, std::unique_ptr<FrameWrapper>> distantFrames_;
+
+public:
+    Renderer() {
+        previewFrame_ = std::make_unique<FrameWrapper>(true);
+    }
+    ~Renderer();
+};
 
 using namespace lrc::api;
 
@@ -130,6 +170,15 @@ public:
 
     static void setSelectedConvId(const std::string& convUid = {}) {
         instance().selectedConvUid_ = convUid;
+    };
+
+    static bool getIfCurrentSelectedCallIsAudioOnly() {
+        auto isAudioOnly = false;
+        auto convInfo = Utils::getSelectedConversation();
+        if (!convInfo.uid.empty()) {
+            isAudioOnly = LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly;
+        }
+        return isAudioOnly;
     };
 
     static void reset(bool newInstance = false) {
