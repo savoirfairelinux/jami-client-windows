@@ -25,6 +25,7 @@
 #include "ui_callwidget.h"
 
 #include <QComboBox>
+#include <QtConcurrent/QtConcurrent>
 #include <QDesktopServices>
 #include <QScrollBar>
 #include <QWebEngineScript>
@@ -221,6 +222,8 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 CallWidget::~CallWidget()
@@ -254,6 +257,16 @@ CallWidget::navigated(bool to)
             ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
         } else {
             backToWelcomePage();
+        }
+        // reset preview renderer
+        if (LRCInstance::getActiveCalls().size() && !LRCInstance::getCurrentCallModel()->getCall(conversation->callId).isAudioOnly) {
+            previewRenderer_->setParent(ui->videoWidget);
+            previewRenderer_->changeToRoundedBoarder();
+            previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+            previewRenderer_->setPhotoMode(false);
+            previewRenderer_->setNeedToCentre(false);
+            previewRenderer_->triggerResetPreviewAfterImageReloaded();
+            previewRenderer_->show();
         }
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
@@ -675,6 +688,16 @@ CallWidget::slotShowCallView(const std::string& accountId,
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
+
+    // reset preview renderer when call is not audio only
+    if (!LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly) {
+        previewRenderer_->setParent(ui->videoWidget);
+        previewRenderer_->changeToRoundedBoarder();
+        previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+        previewRenderer_->setPhotoMode(false);
+        previewRenderer_->setNeedToCentre(false);
+        previewRenderer_->triggerResetPreviewAfterImageReloaded();
+    }
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
     ui->videoWidget->setFocus();
 }
@@ -1411,13 +1434,27 @@ CallWidget::Copy()
 }
 
 void
-CallWidget::disconnectRendering()
+CallWidget::reconnectRenderingVideoDeviceChanged()
 {
-    ui->videoWidget->disconnectRendering();
+    // for distant renderer to reconnect rendering
+    ui->videoWidget->reconnectRenderingVideoDeviceChanged();
 }
 
 void
-CallWidget::connectRendering(bool started)
+CallWidget::restartPreviewWhenSwitchDevice()
 {
-    ui->videoWidget->connectRendering(started);
+    previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+    // since there is the possiblity of image not reloaded properly
+    // after rendering reconnect, so trigger reset after image reloaded
+    previewRenderer_->triggerResetPreviewAfterImageReloaded();
+    if (LRCInstance::getActiveCalls().size() && !LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
+        // if no active calls, or device is changed -> reactive preview
+        previewRenderer_->disconnectRendering();
+        previewRenderer_->connectRendering();
+        QtConcurrent::run(
+            [this] {
+                LRCInstance::avModel().stopPreview();
+                LRCInstance::avModel().startPreview();
+            });
+    }
 }
