@@ -148,6 +148,8 @@ private:
     QMovie* miniSpinner_;
 
     constexpr static int qrSize_ = 200;
+    constexpr static int previewCallWidgetWidth_ = 150;
+    constexpr static int previewCallWidgetHeight_ = 100;
 
     // lrc
     Video::Renderer* videoRenderer_;

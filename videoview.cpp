@@ -69,7 +69,12 @@ VideoView::VideoView(QWidget* parent)
         emit this->setChatVisibility(visible);
         connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
     });
+
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
+
+    moveAnim_ = new QPropertyAnimation(previewRenderer_, "geometry");
+    moveAnim_->setDuration(500);
 }
 
 VideoView::~VideoView()
@@ -82,12 +87,12 @@ VideoView::~VideoView()
 void
 VideoView::resizeEvent(QResizeEvent* event)
 {
-    int marginWidth = ui->videoWidget->getPreviewMargin();
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
+    int marginWidth = previewMargin_;
+    QRect previewRect = previewRenderer_->geometry();
     int deltaW = event->size().width() - event->oldSize().width();
     int deltaH = event->size().height() - event->oldSize().height();
 
-    QPoint previewCenter = ui->videoWidget->getPreviewRect().center();
+    QPoint previewCenter = previewRenderer_->geometry().center();
     int cx = (event->oldSize().width()) / 2;
     int cy = (event->oldSize().height()) / 2;
     QPoint center = QPoint(cx, cy);
@@ -96,11 +101,11 @@ VideoView::resizeEvent(QResizeEvent* event)
     if (previewRect.x() + deltaW > 0 && previewRect.y() + deltaH > 0) {
         // then we check which way
         if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, deltaH);
+            previewRect.translate(deltaW, deltaH);
         else if (center.x() - previewCenter.x() > 0 && center.y() - previewCenter.y() < 0)
-            ui->videoWidget->getPreviewRect().translate(0, deltaH);
+            previewRect.translate(0, deltaH);
         else if (center.x() - previewCenter.x() < 0 && center.y() - previewCenter.y() > 0)
-            ui->videoWidget->getPreviewRect().translate(deltaW, 0);
+            previewRect.translate(deltaW, 0);
     }
 
     if (previewRect.left() <= 0)
@@ -117,7 +122,8 @@ VideoView::resizeEvent(QResizeEvent* event)
     if (previewRect.bottom() >= height())
         previewRect.moveBottom(height() - marginWidth);
 
-    ui->videoWidget->resetPreview();
+    previewRenderer_->setGeometry(previewRect);
+    previewRenderer_->resetPreview();
 
     audioOnlyAvatar_->resize(this->size());
 
@@ -277,7 +283,8 @@ VideoView::showContextMenu(const QPoint& pos)
                 auto decive = deviceName.toStdString();
                 LRCInstance::avModel().switchInputTo(decive);
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(decive);
-                ui->videoWidget->connectRendering();
+                previewRenderer_->connectRendering();
+                ui->videoWidget->connectDistantRendering();
             });
     }
 
@@ -367,19 +374,19 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP)
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
         this, &VideoView::slotCallStatusChanged);
 
-    ui->videoWidget->connectRendering();
-    ui->videoWidget->setPreviewDisplay(call.type != lrc::api::call::Type::CONFERENCE);
+    previewRenderer_->connectRendering();
+    ui->videoWidget->connectDistantRendering();
 }
 
 void
 VideoView::mousePressEvent(QMouseEvent* event)
 {
     QPoint clickPosition = event->pos();
-    if (ui->videoWidget->getPreviewRect().contains(clickPosition)) {
-        QLine distance = QLine(clickPosition, ui->videoWidget->getPreviewRect().bottomRight());
-            originMouseDisplacement_ = event->pos() - ui->videoWidget->getPreviewRect().topLeft();
-            QApplication::setOverrideCursor(Qt::SizeAllCursor);
-            draggingPreview_ = true;
+    if (previewRenderer_->geometry().contains(clickPosition)) {
+        QLine distance = QLine(clickPosition, previewRenderer_->geometry().bottomRight());
+        originMouseDisplacement_ = event->pos() - previewRenderer_->geometry().topLeft();
+        QApplication::setOverrideCursor(Qt::SizeAllCursor);
+        draggingPreview_ = true;
     }
 }
 
@@ -389,25 +396,45 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
     Q_UNUSED(event)
     if (draggingPreview_) {
         //Check preview's current central position
-        QRect& previewRect = ui->videoWidget->getPreviewRect();
+        QRect previewRect = previewRenderer_->geometry();
         auto previewCentral = previewRect.center();
         auto videoViewRect = ui->videoWidget->rect();
         auto videoWidgetCentral = videoViewRect.center();
         if (previewCentral.x() >= videoWidgetCentral.x()) {
             if (previewCentral.y() >= videoWidgetCentral.y()) {
                 //Move preview to bottom right
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomRight);
+                auto previewInitialWidth = previewRenderer_->width();
+                auto previewInitialHeight = previewRenderer_->height();
+                moveAnim_->setStartValue(previewRenderer_->geometry());
+                moveAnim_->setEndValue(QRect(this->width() - previewMargin_ - previewInitialWidth, this->height() - previewMargin_ - previewInitialHeight,
+                                             previewInitialWidth, previewInitialHeight));
+                moveAnim_->start();
             } else {
                 //Move preview to top right
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topRight);
+                auto previewInitialWidth = previewRenderer_->width();
+                auto previewInitialHeight = previewRenderer_->height();
+                moveAnim_->setStartValue(previewRenderer_->geometry());
+                moveAnim_->setEndValue(QRect(this->width() - previewMargin_ - previewInitialWidth, previewMargin_,
+                                             previewInitialWidth, previewInitialHeight));
+                moveAnim_->start();
             }
         } else {
             if (previewCentral.y() >= videoWidgetCentral.y()) {
                 //Move preview to bottom left
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::bottomLeft);
+                auto previewInitialWidth = previewRenderer_->width();
+                auto previewInitialHeight = previewRenderer_->height();
+                moveAnim_->setStartValue(previewRenderer_->geometry());
+                moveAnim_->setEndValue(QRect(previewMargin_, this->height() - previewMargin_ - previewInitialHeight,
+                                             previewInitialWidth, previewInitialHeight));
+                moveAnim_->start();
             } else {
                 //Move preview to top left
-                ui->videoWidget->movePreview(VideoWidget::TargetPointPreview::topLeft);
+                auto previewInitialWidth = previewRenderer_->width();
+                auto previewInitialHeight = previewRenderer_->height();
+                moveAnim_->setStartValue(previewRenderer_->geometry());
+                moveAnim_->setEndValue(QRect(previewMargin_, previewMargin_,
+                                             previewInitialWidth, previewInitialHeight));
+                moveAnim_->start();
             }
         }
     }
@@ -426,7 +453,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
         fadeTimer_.start(startfadeOverlayTime_);
     }
 
-    QRect& previewRect = ui->videoWidget->getPreviewRect();
+    QRect previewRect = previewRenderer_->geometry();
     if (draggingPreview_) {
         if (previewRect.left() > 0
             && previewRect.top() > 0
@@ -447,7 +474,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
                 previewRect.moveBottom(height() - 1);
         }
     }
-
+    previewRenderer_->setGeometry(previewRect);
     QLine distance = QLine(previewRect.topLeft(), event->pos());
 }
 
@@ -496,15 +523,18 @@ void
 VideoView::disconnectRendering()
 {
     ui->videoWidget->disconnectRendering();
+    previewRenderer_->disconnectRendering();
 }
 
 void
 VideoView::connectRendering(bool started)
 {
     if (started) {
-        ui->videoWidget->slotRendererStarted();
+        ui->videoWidget->slotDistantRendererStarted();
+        previewRenderer_->slotPreviewRendererStarted();
     } else {
-        ui->videoWidget->connectRendering();
+        ui->videoWidget->connectDistantRendering();
+        previewRenderer_->connectRendering();
     }
 }
 

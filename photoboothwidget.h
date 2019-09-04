@@ -20,6 +20,7 @@
 #pragma once
 
 #include "utils.h"
+#include "previewrender.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -68,6 +69,7 @@ private:
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
+    PreviewRenderWidget* previewRenderer_;
     QLabel* flashOverlay_;
     QPropertyAnimation *flashAnimation_;
     QPixmap avatarPixmap_;

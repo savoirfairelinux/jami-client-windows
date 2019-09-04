@@ -122,6 +122,8 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->lookupStatusLabel->hide();
 
     ui->containerWidget->setVisible(false);
+
+    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 void SettingsWidget::slotAccountOnBoarded()
@@ -1019,6 +1021,10 @@ void SettingsWidget::populateAVSettings()
     connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::outputDevIndexChangedSlot);
 
+    previewRenderer_->setParent(ui->previewWidgetContainer);
+    previewRenderer_->setGeometry(ui->previewWidgetContainer->rect());
+    previewRenderer_->resetBoarder();
+
     // video
     videoDeviceEventHandlerAndMediaSettingSetUp();
 
@@ -1060,15 +1066,14 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     auto decive = LRCInstance::avModel().getCurrentVideoCaptureDevice();
     auto currentSettings = LRCInstance::avModel().getDeviceSettings(decive);
     lrc::api::video::Settings settings{ {}, decive, rate, resolution };
-    ui->videoWidget->connectRendering();
+    previewRenderer_->connectRendering();
     LRCInstance::avModel().setDeviceSettings(settings);
 }
 
 void SettingsWidget::startPreviewing(bool isDeviceChanged)
 {
-    ui->videoWidget->disconnectRendering();
-    ui->videoWidget->connectPreviewOnlyRendering();
-    ui->videoWidget->setIsFullPreview(true);
+    previewRenderer_->disconnectRendering();
+    previewRenderer_->connectRendering();
 
     bool isPhotoBoothConnected;
     if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
@@ -1180,7 +1185,7 @@ void SettingsWidget::stopAudioMeter(bool blocking)
 
 void SettingsWidget::connectStartedRenderingToPreview()
 {
-    ui->videoWidget->rendererStartedWithoutDistantRender();
+    previewRenderer_->slotPreviewRendererStarted();
 }
 
 void SettingsWidget::connectStartedRenderingToPhotoBooth()
@@ -1194,7 +1199,7 @@ void SettingsWidget::connectStartedRenderingToPhotoBooth()
 
 void SettingsWidget::disconnectPreviewRendering()
 {
-    ui->videoWidget->disconnectRendering();
+    previewRenderer_->disconnectRendering();
 }
 
 void SettingsWidget::disconnectPhotoBoothRendering()

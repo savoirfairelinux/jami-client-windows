@@ -669,6 +669,15 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
+
+    PreviewRenderWidget::attachPreview()->setParent(ui->videoWidget);
+    PreviewRenderWidget::attachPreview()->setGeometry(
+        ui->videoWidget->width() - PreviewRenderWidget::previewMargin_ - previewCallWidgetWidth_,
+        ui->videoWidget->height() - PreviewRenderWidget::previewMargin_ - previewCallWidgetHeight_,
+        previewCallWidgetWidth_,
+        previewCallWidgetHeight_
+    );
+    PreviewRenderWidget::attachPreview()->changeToRoundedBoarder();
     ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
     ui->videoWidget->setFocus();
 }

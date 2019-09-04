@@ -43,9 +43,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    ,
-
-    ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -195,6 +193,7 @@ MainWindow::MainWindow(QWidget* parent)
             this, &MainWindow::slotSwitchVideoWidget);
     connect(ui->settingswidget, &SettingsWidget::videoInputDeviceConnectionLost,
             this, &MainWindow::slotSwitchVideoWidget);
+    previewRenderer_ = PreviewRenderWidget::attachPreview(this);
 }
 
 MainWindow::~MainWindow()

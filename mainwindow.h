@@ -27,6 +27,7 @@
 #include "navwidget.h"
 #include "settingswidget.h"
 #include "utils.h"
+#include "previewrender.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -91,6 +92,7 @@ private:
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
     QMetaObject::Connection screenChangedConnection_;
+    PreviewRenderWidget* previewRenderer_;
 
     QTimer *updateTimer_;
 };
