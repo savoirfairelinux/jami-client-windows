@@ -25,7 +25,7 @@ write-host "using lrcDir:       " $lrcDir -ForegroundColor Magenta
 write-host "using QtDir:        " $QtDir -ForegroundColor Magenta
 write-host "********************************************************************************" -ForegroundColor Magenta
 
-# dependency bin files
+# dependency bin files and misc
 $FilesToCopy = @(
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avcodec-58.dll",
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avutil-56.dll",
@@ -36,7 +36,7 @@ $FilesToCopy = @(
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avfilter-7.dll",
     "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\libeay32.dll",
     "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
-    "$ClientDir\ring.nsi",
+    "$ClientDir\qt.conf",
     "$ClientDir\images\jami.ico"
     "$ClientDir\License.rtf"
     )
@@ -74,15 +74,37 @@ $FilesToCopy = @(
     "$QtDir\bin\libEGL.dll",
     "$QtDir\bin\libGLESv2.dll",
     "$QtDir\bin\d3dcompiler_47.dll",
-    "$QtDir\bin\QtWebEngineProcess.exe",
-    "$QtDir\resources\qtwebengine_resources.pak",
-    "$QtDir\resources\qtwebengine_resources_100p.pak",
-    "$QtDir\resources\qtwebengine_resources_200p.pak",
-    "$QtDir\resources\icudtl.dat"
+    "$QtDir\bin\QtWebEngineProcess.exe"
     )
 foreach ($i in $FilesToCopy) {
     write-host "copying: " $i " => " $OutDir -ForegroundColor Cyan
     Copy-Item -Path $i -Destination $OutDir -Force
+}
+
+# qt resources
+$FilesToCopy = @(
+    "$QtDir\resources\qtwebengine_resources.pak",
+    "$QtDir\resources\qtwebengine_resources_100p.pak",
+    "$QtDir\resources\qtwebengine_resources_200p.pak",
+    "$QtDir\resources\qtwebengine_devtools_resources.pak",
+    "$QtDir\resources\icudtl.dat"
+    )
+$CopyDir = $OutDir + "\resources"
+If(!(test-path $CopyDir)) { New-Item -ItemType directory -Path $CopyDir -Force }
+foreach ($i in $FilesToCopy) {
+    write-host "copying: " $i " => " $CopyDir -ForegroundColor Cyan
+    Copy-Item -Path $i -Destination $CopyDir -Force
+}
+
+# qt qtwebengine_locales
+$FilesToCopy = @(
+    "$QtDir\translations\qtwebengine_locales\en-US.pak"
+    )
+$CopyDir = $OutDir + "\translations\qtwebengine_locales"
+If(!(test-path $CopyDir)) { New-Item -ItemType directory -Path $CopyDir -Force }
+foreach ($i in $FilesToCopy) {
+    write-host "copying: " $i " => " $CopyDir -ForegroundColor Cyan
+    Copy-Item -Path $i -Destination $CopyDir -Force
 }
 
 # qt imageformats
