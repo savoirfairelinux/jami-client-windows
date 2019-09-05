@@ -444,7 +444,11 @@ PrivateBridging::retryInteraction(const QString& arg)
 Q_INVOKABLE int
 PrivateBridging::openFile(const QString& arg)
 {
-    QDesktopServices::openUrl(arg);
+    QUrl fileUrl("file:///" + arg);
+    bool ok = QDesktopServices::openUrl(fileUrl);
+    if (!ok) {
+        qDebug() << "Couldn't open file: " << fileUrl;
+    }
     return 0;
 }
 
