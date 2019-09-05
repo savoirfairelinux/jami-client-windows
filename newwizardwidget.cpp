@@ -157,7 +157,7 @@ NewWizardWidget::navigated(bool to)
 }
 
 void
-NewWizardWidget::slotAccountOnBoarded()
+NewWizardWidget::slotAccountListChanged()
 {}
 
 void
@@ -465,7 +465,7 @@ NewWizardWidget::createAccount()
                             lrc::api::account::ConfProperties_t accountProperties = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
                             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), accountProperties);
                             emit NavigationRequested(ScreenEnum::CallScreen);
-                            emit LRCInstance::instance().accountOnBoarded();
+                            emit LRCInstance::instance().accountListChanged();
                         });
                     LRCInstance::accountModel().registerName(
                         LRCInstance::getCurrAccId(),
@@ -474,7 +474,7 @@ NewWizardWidget::createAccount()
                     );
                 } else {
                     emit NavigationRequested(ScreenEnum::CallScreen);
-                    emit LRCInstance::instance().accountOnBoarded();
+                    emit LRCInstance::instance().accountListChanged();
                 }
                 LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
             } else {
@@ -515,7 +515,7 @@ NewWizardWidget::createAccount()
                 );
                 QThread::sleep(2);
                 emit NavigationRequested(ScreenEnum::CallScreen);
-                emit LRCInstance::instance().accountOnBoarded();
+                emit LRCInstance::instance().accountListChanged();
             }
     });
     changePage(ui->spinnerPage);

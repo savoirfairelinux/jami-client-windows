@@ -273,7 +273,7 @@ CallWidget::updateCustomUI()
 }
 
 void
-CallWidget::slotAccountOnBoarded()
+CallWidget::slotAccountListChanged()
 {}
 
 int
