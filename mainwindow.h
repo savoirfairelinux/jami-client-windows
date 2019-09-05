@@ -69,6 +69,7 @@ private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void notificationClicked();
     void slotScreenChanged(QScreen* screen);
+    void slotAccountOnBoarded();
 
 private:
     explicit MainWindow(QWidget* parent = 0);
