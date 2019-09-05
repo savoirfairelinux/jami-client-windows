@@ -110,13 +110,10 @@ public:
         return getCurrentAccountInfo().callModel.get();
     };
 
-    static const int getAccountNumList() {
-        return accountModel().getAccountList().size();
-    };
-
     static const std::string& getCurrAccId() {
-        if (instance().selectedAccountId_.empty()) {
-            instance().selectedAccountId_ = accountModel().getAccountList().at(0);
+        auto accountList = accountModel().getAccountList();
+        if (instance().selectedAccountId_.empty() && accountList.size()) {
+            instance().selectedAccountId_ = accountList.at(0);
         }
         return instance().selectedAccountId_;
     };
@@ -183,8 +180,7 @@ public:
     }
 
 signals:
-    /// emit once at least one valid account is loaded
-    void accountOnBoarded();
+    void accountListChanged();
 
 private:
     std::unique_ptr<Lrc> lrc_;

@@ -83,6 +83,8 @@ private:
 
     void readSettingsFromRegistry();
 
+    QAction* settingsAction_;
+
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;
     QMetaObject::Connection screenChangedConnection_;
