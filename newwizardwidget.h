@@ -56,7 +56,7 @@ public:
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
-    virtual void slotAccountOnBoarded();
+    virtual void slotAccountListChanged();
 
     //UI Slots
 private slots:

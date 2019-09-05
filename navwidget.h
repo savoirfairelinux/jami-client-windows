@@ -43,6 +43,6 @@ signals:
     void NavigationRequested(ScreenEnum screen);
 
 protected slots:
-    virtual void slotAccountOnBoarded() = 0;
+    virtual void slotAccountListChanged() = 0;
 
 };

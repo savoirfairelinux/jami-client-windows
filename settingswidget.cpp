@@ -121,13 +121,155 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->lookupStatusLabel->setMovie(lookupSpinnerMovie_);
     ui->lookupStatusLabel->hide();
 
+    // btnExitSettings
+    connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
+
+    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() {
+        setSelected(Button::accountSettingsButton);
+        });
+
+    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
+        setSelected(Button::generalSettingsButton);
+        });
+
+    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() {
+        setSelected(Button::mediaSettingsButton);
+        });
+
+    /*connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
+        avatarClicked();
+    });*/
+
+    connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
+
+    // connect "delete SIP account" button
+    connect(ui->btnSIPDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
+
+    connect(ui->accountSIPEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
+
+    connect(ui->displaySIPNameLineEdit, &QLineEdit::editingFinished,
+        [this] {
+            LRCInstance::setCurrAccDisplayName(ui->displaySIPNameLineEdit->text().toStdString());
+        });
+
+    connect(ui->passSIPlineEdit, &QLineEdit::editingFinished,
+        [this] {
+            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+            confProps_.password = ui->passSIPlineEdit->text().toStdString();
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+        });
+
+    connect(ui->ProxySIP, &QLineEdit::editingFinished,
+        [this] {
+            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+            confProps_.proxyServer = ui->ProxySIP->text().toStdString();
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+        });
+
+    connect(ui->passwdPushButton, &QPushButton::clicked,
+        [this]() {
+            passwordClicked();
+        });
+
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::clearedPhoto,
+        [this] {
+            LRCInstance::setCurrAccAvatar(QPixmap());
+            setAvatar(ui->currentAccountAvatar);
+        });
+
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::photoTaken,
+        [this] {
+            LRCInstance::setCurrAccAvatar(ui->currentAccountAvatar->getAvatarPixmap());
+        });
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::clearedPhoto,
+        [this] {
+            LRCInstance::setCurrAccAvatar(QPixmap());
+            setAvatar(ui->currentSIPAccountAvatar);
+        });
+
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::photoTaken,
+        [this] {
+            LRCInstance::setCurrAccAvatar(ui->currentSIPAccountAvatar->getAvatarPixmap());
+        });
+
+    connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);
+
+    connect(ui->currentRegisteredID, &QLineEdit::textEdited, this, &SettingsWidget::verifyRegisteredNameSlot);
+
+    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
+        this, &SettingsWidget::receiveRegNameSlot);
+
+    //connect "export account" button
+    connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
+
+    // connect "delete account" button
+    connect(ui->btnDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
+
+    // connect "banned contacts" button
+    connect(ui->bannedContactsBtn, &QPushButton::clicked, this, &SettingsWidget::toggleBannedContacts);
+
+    // connect "link device" button
+    connect(ui->linkDevPushButton, &QPushButton::clicked, this, &SettingsWidget::showLinkDevSlot);
+
+    // account settings setters {
+    connect(ui->accountEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
+
+    connect(ui->displayNameLineEdit, &QLineEdit::editingFinished,
+        [this] {
+            LRCInstance::setCurrAccDisplayName(ui->displayNameLineEdit->text().toStdString());
+        });
+
+    connect(ui->usernameSIP, &QLineEdit::editingFinished,
+        [this] {
+            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+            confProps_.username = ui->usernameSIP->text().toStdString();
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+        });
+
+    connect(ui->hostnameSIP, &QLineEdit::editingFinished,
+        [this] {
+            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+            confProps_.hostname = ui->hostnameSIP->text().toStdString();
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+        });
+
+    // general settings
+
+    connect(ui->notificationCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetNotifications);
+
+    connect(ui->closeOrMinCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetClosedOrMin);
+
+    connect(ui->downloadButton, &QAbstractButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
+
+    connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
+
+    connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetUpdateAutomatic);
+
+    // audio / visual settings
+
+    connect(ui->alwaysRecordingCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotAlwaysRecordingClicked);
+
+    connect(ui->recordPreviewCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotRecordPreviewClicked);
+
+    connect(ui->recordPathButton, &QAbstractButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
+
+    connect(ui->recordQualitySlider, &QAbstractSlider::valueChanged, this, &SettingsWidget::slotRecordQualitySliderValueChanged);
+
+    connect(ui->recordQualitySlider, &QAbstractSlider::sliderReleased, this, &SettingsWidget::slotRecordQualitySliderSliderReleased);
+
+    connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
+
     ui->containerWidget->setVisible(false);
 }
 
-void SettingsWidget::slotAccountOnBoarded()
+void SettingsWidget::slotAccountListChanged()
 {
-    setSelected(Button::accountSettingsButton);
-    setConnections();
+    if (!LRCInstance::accountModel().getAccountList().size()) {
+        setSelected(Button::accountSettingsButton);
+    } else {
+        disconnectAccountConnections();
+    }
 }
 
 void SettingsWidget::navigated(bool to)
@@ -173,6 +315,8 @@ void SettingsWidget::setSelected(Button sel)
 {
     switch (sel) {
     case Button::accountSettingsButton:
+
+        connectCurrentAccount();
 
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
@@ -493,7 +637,7 @@ void SettingsWidget::delAccountSlot()
 
     if (ret == QDialog::Accepted) {
         LRCInstance::setSelectedAccountId();
-
+        emit LRCInstance::instance().accountListChanged();
         if (!LRCInstance::accountModel().getAccountList().size()) {
             emit NavigationRequested(ScreenEnum::WizardScreen);
 
@@ -640,159 +784,33 @@ void SettingsWidget::showLinkDevSlot()
     linkDeviceDialog->exec();
 }
 
-void SettingsWidget::setConnections()
+void SettingsWidget::connectCurrentAccount()
 {
-    // btnExitSettings
-    connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
+    disconnectAccountConnections();
 
-    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::accountSettingsButton);
-    });
-
-    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::generalSettingsButton);
-    });
-
-    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::mediaSettingsButton);
-    });
-
-    /*connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
-        avatarClicked();
-    });*/
-
-    connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
-
-    // connect "delete SIP account" button
-    connect(ui->btnSIPDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
-
-    connect(ui->accountSIPEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
-
-    connect(ui->displaySIPNameLineEdit, &QLineEdit::editingFinished,
-        [this] {
-            LRCInstance::setCurrAccDisplayName(ui->displaySIPNameLineEdit->text().toStdString());
-        });
-
-    connect(ui->passSIPlineEdit, &QLineEdit::editingFinished,
-        [this] {
-            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.password = ui->passSIPlineEdit->text().toStdString();
-            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-        });
-
-    connect(ui->ProxySIP, &QLineEdit::editingFinished,
-        [this] {
-            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.proxyServer = ui->ProxySIP->text().toStdString();
-            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-        });
-
-    connect(ui->passwdPushButton, &QPushButton::clicked,
-        [this]() {
-            passwordClicked();
-        });
-
-    connect(ui->currentAccountAvatar, &PhotoboothWidget::clearedPhoto,
-        [this] {
-            LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentAccountAvatar);
-        });
-
-    connect(ui->currentAccountAvatar, &PhotoboothWidget::photoTaken,
-        [this] {
-            LRCInstance::setCurrAccAvatar(ui->currentAccountAvatar->getAvatarPixmap());
-        });
-
-    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::clearedPhoto,
-        [this] {
-            LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentSIPAccountAvatar);
-        });
-
-    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::photoTaken,
-        [this] {
-            LRCInstance::setCurrAccAvatar(ui->currentSIPAccountAvatar->getAvatarPixmap());
-        });
-
-    connect(ui->advancedAccountSettingsPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSettings);
-
-    connect(ui->currentRegisteredID, &QLineEdit::textEdited, this, &SettingsWidget::verifyRegisteredNameSlot);
-
-    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
-        this, &SettingsWidget::receiveRegNameSlot);
-
-    //connect "export account" button
-    connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
-
-    // connect "delete account" button
-    connect(ui->btnDeletAccount, &QPushButton::clicked, this, &SettingsWidget::delAccountSlot);
-
-    // connect "banned contacts" button
-    connect(ui->bannedContactsBtn, &QPushButton::clicked, this, &SettingsWidget::toggleBannedContacts);
-
-    // connect "link device" button
-    connect(ui->linkDevPushButton, &QPushButton::clicked, this, &SettingsWidget::showLinkDevSlot);
-
+    auto& currentAccountInfo = LRCInstance::getCurrentAccountInfo();
     // update banned accounts automatically
-    connect(LRCInstance::getCurrentAccountInfo().contactModel.get(), &lrc::api::ContactModel::modelUpdated,
-        this, &SettingsWidget::updateAndShowBannedContactsSlot);
+    accountConnections_.append(
+        QObject::connect(currentAccountInfo.contactModel.get(), &lrc::api::ContactModel::modelUpdated,
+                         this, &SettingsWidget::updateAndShowBannedContactsSlot, Qt::UniqueConnection));
 
     // update linked devices automatically
-    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
-        this, &SettingsWidget::updateAndShowDevicesSlot);
+    accountConnections_.append(
+        QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
+                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 
-    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceRevoked,
-        this, &SettingsWidget::updateAndShowDevicesSlot);
+    accountConnections_.append(
+        QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceRevoked,
+                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 
-    QObject::connect(LRCInstance::getCurrentAccountInfo().deviceModel.get(), &lrc::api::NewDeviceModel::deviceAdded,
-        this, &SettingsWidget::updateAndShowDevicesSlot);
+    accountConnections_.append(
+        QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceAdded,
+                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
+}
 
-    // account settings setters {
-    connect(ui->accountEnableCheckBox, &QCheckBox::clicked, this, &SettingsWidget::setAccEnableSlot);
-
-    connect(ui->displayNameLineEdit, &QLineEdit::editingFinished,
-        [this] {
-            LRCInstance::setCurrAccDisplayName(ui->displayNameLineEdit->text().toStdString());
-        });
-
-    connect(ui->usernameSIP, &QLineEdit::editingFinished,
-        [this] {
-            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.username = ui->usernameSIP->text().toStdString();
-            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-        });
-
-    connect(ui->hostnameSIP, &QLineEdit::editingFinished,
-        [this] {
-            confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.hostname = ui->hostnameSIP->text().toStdString();
-            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
-        });
-
-    // general settings
-
-    connect(ui->notificationCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetNotifications);
-
-    connect(ui->closeOrMinCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetClosedOrMin);
-
-    connect(ui->downloadButton, &QAbstractButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
-
-    connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
-
-    connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetUpdateAutomatic);
-
-    // audio / visual settings
-
-    connect(ui->alwaysRecordingCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotAlwaysRecordingClicked);
-
-    connect(ui->recordPreviewCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotRecordPreviewClicked);
-
-    connect(ui->recordPathButton, &QAbstractButton::clicked, this, &SettingsWidget::openRecordFolderSlot);
-
-    connect(ui->recordQualitySlider, &QAbstractSlider::valueChanged, this, &SettingsWidget::slotRecordQualitySliderValueChanged);
-    connect(ui->recordQualitySlider, &QAbstractSlider::sliderReleased, this, &SettingsWidget::slotRecordQualitySliderSliderReleased);
-
-    connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
+void SettingsWidget::disconnectAccountConnections()
+{
+    for (const auto& c : accountConnections_) { disconnect(c); }
 }
 
 // *************************  General Settings  *************************
