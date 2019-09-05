@@ -4,7 +4,7 @@
     heat.exe dir x64\Release -ag -cg ProductComponents -dr APPLICATIONFOLDER -srd -var var.ReleaseDir -out JamiInstaller\Components.wxs
     the api-ms-win dlls are the missing parts of vc merge module
 
-    Modifications made: remove all irrelevant files (*.tlog, *.obj, etc), add Win64="yes" to every component.
+    Modifications made: add Win64="yes" to every component.
 
     Running heat in the prebuild step would work (with an XSLT file), but is not recommended. It is better to have the build fail
     if a specific file is not found than to try to debug why the installed application doesn't work properly.
@@ -13,570 +13,603 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="APPLICATIONFOLDER">
-            <Directory Id="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Name="imageformats" />
-            <Directory Id="dir908DFC228501FBE723FC009E659CB04F" Name="platforms" />
-            <Directory Id="dir6BEF5EA0D72E144566D3B5034E8EBD40" Name="ringtones" />
-            <Directory Id="dir2B882A2C0828718F11D164F0487238A7" Name="share" />
-            <Directory Id="dir4AD0B3BC5E5530AF4A888ED31F98A3AB" Name="sqldrivers" />
+            <Directory Id="dir620D0D01DB995A0900E22137FB52FEDC" Name="imageformats" />
+            <Directory Id="dir5F2F62AA6F6135041AE87AC93F029148" Name="platforms" />
+            <Directory Id="dirD51FBD42A867274D15CA506A46837A01" Name="resources" />
+            <Directory Id="dirFA5E6F9E18091633C3DB379D639B3B19" Name="ringtones" />
+            <Directory Id="dir5CFEF18C6BC63DC5544975B569015BCA" Name="share" />
+            <Directory Id="dirB0464CDDD7F688E489E6F1D2F96F31F0" Name="sqldrivers" />
+            <Directory Id="dirECC29599FCFE9E458549A895F0628289" Name="translations" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
-          <ComponentGroup Id="ProductComponents">
+        <ComponentGroup Id="ProductComponents">
             <Component Id="cmp9C61F84AF9761955FBF397AFAE21C11B" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil2089BEC9A7AB899CED5A5EE501789299" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l1-2-0.dll" />
+                <File Id="fil2089BEC9A7AB899CED5A5EE501789299" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l1-2-0.dll" />
             </Component>
             <Component Id="cmp03BB2697EE10869C4A329E3EA987EFAA" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil44C27F2C97596734BB3BEB7C21F7B71C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l2-1-0.dll" />
+                <File Id="fil44C27F2C97596734BB3BEB7C21F7B71C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-file-l2-1-0.dll" />
             </Component>
             <Component Id="cmp6B6AA7AEA5A4D324A4EE7DAE1B1193E0" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil1D16BE23D323A1E37FC1FC7354A9305F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-localization-l1-2-0.dll" />
+                <File Id="fil1D16BE23D323A1E37FC1FC7354A9305F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-localization-l1-2-0.dll" />
             </Component>
             <Component Id="cmpB5454FB66442C9BFD2145AE30B32D7A9" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil031B78DF53F7A3AC109410907624FC3E" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-processthreads-l1-1-1.dll" />
+                <File Id="fil031B78DF53F7A3AC109410907624FC3E" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-processthreads-l1-1-1.dll" />
             </Component>
             <Component Id="cmp9F6D22CD9B1739E4F75F92F3A07E4CA1" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filE9A3672FA504AA8E518DD72A02CD3E77" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-synch-l1-2-0.dll" />
+                <File Id="filE9A3672FA504AA8E518DD72A02CD3E77" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-synch-l1-2-0.dll" />
             </Component>
             <Component Id="cmp9451422B7074D46F019614C3DE73BD17" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil3C902CA2889BB8855D285C3FBABB334F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-timezone-l1-1-0.dll" />
+                <File Id="fil3C902CA2889BB8855D285C3FBABB334F" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-core-timezone-l1-1-0.dll" />
             </Component>
             <Component Id="cmp349250459EC2D8C328EED5138B073E7A" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil2466F3D9FBA095A007D0909040D4D688" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-conio-l1-1-0.dll" />
+                <File Id="fil2466F3D9FBA095A007D0909040D4D688" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-conio-l1-1-0.dll" />
             </Component>
             <Component Id="cmpCC880F2B054A87EF5FC68232652231BF" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil605A691486569535A1C3548F7DCE753C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-convert-l1-1-0.dll" />
+                <File Id="fil605A691486569535A1C3548F7DCE753C" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-convert-l1-1-0.dll" />
             </Component>
             <Component Id="cmpD6CB40D5A5AFF2161B7B4B4F06F03301" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil09AE032A32E2E542A232F7941AC77320" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-environment-l1-1-0.dll" />
+                <File Id="fil09AE032A32E2E542A232F7941AC77320" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-environment-l1-1-0.dll" />
             </Component>
             <Component Id="cmpC02538029646A27A9F786AD690EB3C8E" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil7DE9C3CADCA188356922B0CBD8E313E7" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-filesystem-l1-1-0.dll" />
+                <File Id="fil7DE9C3CADCA188356922B0CBD8E313E7" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-filesystem-l1-1-0.dll" />
             </Component>
             <Component Id="cmp8E50197B377636123F0F1F94FFB004E7" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil584F158D11B8A380C73F1EFE8BBA92B4" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-heap-l1-1-0.dll" />
+                <File Id="fil584F158D11B8A380C73F1EFE8BBA92B4" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-heap-l1-1-0.dll" />
             </Component>
             <Component Id="cmp7F729C94A363C73DC4D91B6F48E4F859" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil4BE19B924B98D56F3155B66496D574E5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-locale-l1-1-0.dll" />
+                <File Id="fil4BE19B924B98D56F3155B66496D574E5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-locale-l1-1-0.dll" />
             </Component>
             <Component Id="cmp7C573E66B0904BA73880788F7057AF88" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filE8495C446FA1237E92562498D20261AA" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-math-l1-1-0.dll" />
+                <File Id="filE8495C446FA1237E92562498D20261AA" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-math-l1-1-0.dll" />
             </Component>
             <Component Id="cmp7A91CED53D8F6E5F20F2049B3B5CD143" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil06951EB208628753677745AF15CC12A5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-multibyte-l1-1-0.dll" />
+                <File Id="fil06951EB208628753677745AF15CC12A5" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-multibyte-l1-1-0.dll" />
             </Component>
             <Component Id="cmp1CE713C705A95306A1D246AC3AB9DE25" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil8D102BB81768F998470C34797459E306" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-private-l1-1-0.dll" />
+                <File Id="fil8D102BB81768F998470C34797459E306" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-private-l1-1-0.dll" />
             </Component>
             <Component Id="cmp35840DFBF4D6AE827AFC4EF2A17BB3EB" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filC6C457BD901F940DCB673D271728F9FE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-process-l1-1-0.dll" />
+                <File Id="filC6C457BD901F940DCB673D271728F9FE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-process-l1-1-0.dll" />
             </Component>
             <Component Id="cmpEBB86BDA48FE3B9E2043C1A80D26ACD5" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filE1B2095225B01DEFA5DA9895B432FBCB" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-runtime-l1-1-0.dll" />
+                <File Id="filE1B2095225B01DEFA5DA9895B432FBCB" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-runtime-l1-1-0.dll" />
             </Component>
             <Component Id="cmp80C8534B553078EA8B86F100FF542776" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filDAFE58019AD70832B8304DCEA534B5EE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-stdio-l1-1-0.dll" />
+                <File Id="filDAFE58019AD70832B8304DCEA534B5EE" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-stdio-l1-1-0.dll" />
             </Component>
             <Component Id="cmpCFC348111B5343749A2273A62421C07C" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil1F1B38DB330CA413655F715578D4BE1A" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-string-l1-1-0.dll" />
+                <File Id="fil1F1B38DB330CA413655F715578D4BE1A" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-string-l1-1-0.dll" />
             </Component>
             <Component Id="cmp7D5450E04EC419244107942A00DF7DDF" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="filEB03BCF3155C5BAE2C2EDBF036EB659D" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-time-l1-1-0.dll" />
+                <File Id="filEB03BCF3155C5BAE2C2EDBF036EB659D" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-time-l1-1-0.dll" />
             </Component>
             <Component Id="cmp5456679BDCC818B2E9476B416F71AAA5" Directory="APPLICATIONFOLDER" Guid="*">
-              <File Id="fil5B120DD384CABED37DFC2652C6462666" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-utility-l1-1-0.dll" />
+                <File Id="fil5B120DD384CABED37DFC2652C6462666" KeyPath="yes" Source="$(var.UcrtDir)\api-ms-win-crt-utility-l1-1-0.dll" />
             </Component>
-            <Component Id="cmpF23755F862A15FFCBD109C85599B7F20" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-              <File Id="filD6887AD9110E4A8D49143C9A8F0B5843" KeyPath="yes" Source="$(var.UcrtDir)\ucrtbase.dll" />
+            <Component Id="cmpF23755F862A15FFCBD109C85599B7F20" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filD6887AD9110E4A8D49143C9A8F0B5843" KeyPath="yes" Source="$(var.UcrtDir)\ucrtbase.dll" />
             </Component>
-            <Component Id="cmp3BE7F5162150D73A8A31AC4EBC5065CE" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil19F5C64500F14D4D7EAC0A4F937B5CF2" KeyPath="yes" Source="$(var.ReleaseDir)\avcodec-58.dll" />
+            <Component Id="cmpBA259EE77B6D453D6E4DB740569D182C" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil13A24641F0D9147F9CA8ECBA4CAEDDD9" KeyPath="yes" Source="$(var.ReleaseDir)\avcodec-58.dll" />
             </Component>
-            <Component Id="cmp2E63CB6C2A579B11BF424D20A491FFB6" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil0F0D517344A4EF76FF9E7DA49A50FF37" KeyPath="yes" Source="$(var.ReleaseDir)\avdevice-58.dll" />
+            <Component Id="cmp4C33E97D9FDE050288E75291B5A4DF20" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil425D7815DF4F71DE037CDBF4427D0667" KeyPath="yes" Source="$(var.ReleaseDir)\avdevice-58.dll" />
             </Component>
-            <Component Id="cmpD52D4D53A1B09E38AAFFC5226D0182B2" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil06F9A4E69D0D1D99C19EB9B347120096" KeyPath="yes" Source="$(var.ReleaseDir)\avfilter-7.dll" />
+            <Component Id="cmpE36391A006C8071C3DAB2854BA1D031F" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filB9B1BA326C72D3A154BE48BB38FF9746" KeyPath="yes" Source="$(var.ReleaseDir)\avfilter-7.dll" />
             </Component>
-            <Component Id="cmpAE2934B4AF40AE6FC21B254ABA434BD9" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil8B4613152A4548D3FD408F542CB13D85" KeyPath="yes" Source="$(var.ReleaseDir)\avformat-58.dll" />
+            <Component Id="cmp92EA23EC7D068141FD686E0C0F71E64C" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filCC4BD620D2A6E1E03C0BC69B22BE35DB" KeyPath="yes" Source="$(var.ReleaseDir)\avformat-58.dll" />
             </Component>
-            <Component Id="cmp8D4CB0CAB9711FD978FE9ACB15CE64CC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil6376245C3F7E850D9DC4623A80C4E0C8" KeyPath="yes" Source="$(var.ReleaseDir)\avutil-56.dll" />
+            <Component Id="cmp3789A0B6EA35FEF5921909731B4496BC" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil005E917A53CC2070F2D59FF33C6D7FEF" KeyPath="yes" Source="$(var.ReleaseDir)\avutil-56.dll" />
             </Component>
-            <Component Id="cmp41DC9741013CA4AD62A4A5FF421F08BC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil84B847A9F8DABE6B95AF875695C9E6D1" KeyPath="yes" Source="$(var.ReleaseDir)\d3dcompiler_47.dll" />
+            <Component Id="cmp6E1494326FA64EDB36C1EF5041FF3E72" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil90A840C637C86780E6E7E138AC65E8B5" KeyPath="yes" Source="$(var.ReleaseDir)\d3dcompiler_47.dll" />
             </Component>
-            <Component Id="cmpBDBA16CBEE531189F4ADEB44F36FA9CA" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil22B9AE685C747A265E9A4BC34E90558B" KeyPath="yes" Source="$(var.ReleaseDir)\icudtl.dat" />
+            <Component Id="cmp9CFEE34E3A162AB05264E8B756EC1DEC" Directory="APPLICATIONFOLDER" Guid="*">
+                <File  Id="fileMain.exe" KeyPath="yes" Source="$(var.ReleaseDir)\Jami.exe" />
             </Component>
-            <Component Id="cmp7B6BE3D8A094656C2A1CCFFCC05C4508" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <!-- Renamed to ease referencing -->
-                <File Id="fileMain.exe" KeyPath="yes" Source="$(var.ReleaseDir)\Jami.exe" />
+            <Component Id="cmp0AACD7B49B88FF405D706EB5471D1237" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filB10B4D48B9631B43068A4134FFFD14DB" KeyPath="yes" Source="$(var.ReleaseDir)\jami.ico" />
             </Component>
-            <Component Id="cmp475B44C5672AA8866893DEE6BA7D7ED1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filA53F42A4214B7C9390E9228816B2C35F" KeyPath="yes" Source="$(var.ReleaseDir)\jami.ico" />
+            <Component Id="cmpD174826C0ED93EBF1BF03DA4FC5B66C9" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil6994045B8C530B95FAF1AA21D5764232" KeyPath="yes" Source="$(var.ReleaseDir)\libeay32.dll" />
             </Component>
-            <Component Id="cmp5305EA43A743E27D1937F4B78BD4161D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filC095BF8491486ED2C60A86451FC1704A" KeyPath="yes" Source="$(var.ReleaseDir)\libeay32.dll" />
+            <Component Id="cmpED1C29F8914A4A53211F619E1872ECC1" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil6FEA381F205FBC4A929B8656B60465E6" KeyPath="yes" Source="$(var.ReleaseDir)\libEGL.dll" />
             </Component>
-            <Component Id="cmp363F691415DD37B081CFC985FD89E1ED" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filE4A8517FAA43FB8132ED89D5B5EB797C" KeyPath="yes" Source="$(var.ReleaseDir)\libEGL.dll" />
+            <Component Id="cmp8173820A225E77A4F1F9A1A20860A672" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filC4FD67C1E47EB7B5DD004A098216196B" KeyPath="yes" Source="$(var.ReleaseDir)\libGLESv2.dll" />
             </Component>
-            <Component Id="cmp8A64E7CE3EE5BD2D11823B3C59FDDE7C" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil65C8C2AF07D3CA4AE7D7A2844A4D914E" KeyPath="yes" Source="$(var.ReleaseDir)\libGLESv2.dll" />
+            <Component Id="cmp8C8A3AF5CDB5F97F27E3139ACC3EB0AA" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil1AFBF0FAE158B901AC372EDCCD0876F5" KeyPath="yes" Source="$(var.ReleaseDir)\License.rtf" />
             </Component>
-            <Component Id="cmp1349A3A7B89410051DCA3842795982E1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil99A7B83ABC540978B1363CAE428AA5EC" KeyPath="yes" Source="$(var.ReleaseDir)\License.rtf" />
+            <Component Id="cmpD4AD31229AA37D2E7A3F52788C9A9E65" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filA9A5F4D39FD3F8252EED2634257E8904" KeyPath="yes" Source="$(var.ReleaseDir)\qt.conf" />
             </Component>
-            <Component Id="cmp31149127A8D559E47A8412500CDB93C1" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil388A71944B6369AB5D5428137DFB5520" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Core.dll" />
+            <Component Id="cmpBFE3655736E41D50E712591DC1147FC5" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil18884C01FADD063A745A8C70ABD0BB4D" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Core.dll" />
             </Component>
-            <Component Id="cmpD4E52BD163861D1696633E739938CAB2" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil9A5E6DFFEBA29C9841B357D815ED5661" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Gui.dll" />
+            <Component Id="cmp3372EBEC3E25927C88F92158F815B79E" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil6F543C0CBB7890241C90157805B2A2CB" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Gui.dll" />
             </Component>
-            <Component Id="cmp3592BD10E2CD4F1F2E37A416F0C7C420" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil43CD6E238903BF44E4468AD398C449C2" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Multimedia.dll" />
+            <Component Id="cmp60D2465782ADEC1AF18467CD1CD431D4" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filD2DCC55ADF1C9A379DDF2C74BFA6AAF4" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Multimedia.dll" />
             </Component>
-            <Component Id="cmpE847527393045E39F90D9C09DAC67457" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filA28ED7829F4325F0273C10B85B6035B9" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5MultimediaWidgets.dll" />
+            <Component Id="cmp6E0283E25B762C7FB0267666256F4C73" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil8B1C888B39598441C436C03C93B59450" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5MultimediaWidgets.dll" />
             </Component>
-            <Component Id="cmpCBE98F9FD89C8F118FBAA62F96FAD058" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filA8DBE181741601EDA88DDD2DF88922FF" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Network.dll" />
+            <Component Id="cmpABB9BC54D1E943DFD6E88C3E7AC5BEFF" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil7C26080F33755F4744D7D3C4988E19B1" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Network.dll" />
             </Component>
-            <Component Id="cmp26C47E7608E156A3B19569AC948A192E" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil6A61C9520707EF44B49432BD19BC9039" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5OpenGL.dll" />
+            <Component Id="cmp053FF8F1A3C218E37F93D5231CF976C0" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil968AAD50E9822AFAF0FC1708866B0B15" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5OpenGL.dll" />
             </Component>
-            <Component Id="cmp132447CFD89BBA4372D5BEFA5F8AAE23" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil49043AE9069A60CAD0924CB43602366B" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Positioning.dll" />
+            <Component Id="cmpDAB7BC782DF697C4ED8249DF723B1A45" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filFC025C16F75257858FF6A0EE04DC6256" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Positioning.dll" />
             </Component>
-            <Component Id="cmp9B336C9C2D11E977F4D90C865B4B6000" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil56DF0F398893E7C4160149711A709C5D" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5PrintSupport.dll" />
+            <Component Id="cmp56C822215169F0B6D1522325BA8C4C24" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filC1DDA5EA419E2F2470873287E9BA8DA7" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5PrintSupport.dll" />
             </Component>
-            <Component Id="cmpD88D50645CEEC7E0EEAAF33C365EE9CC" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filB46539D52C976046A6901918C6C5A5DD" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Qml.dll" />
+            <Component Id="cmpB1A9D672E1461549CA6A6F0A20B454AC" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filB54B9F6B9A4D152C731920ED1E5C6E54" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Qml.dll" />
             </Component>
-            <Component Id="cmpD7C4174900152FDB7067354F762787CB" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil01EFAE549CBFD7F63CE42DAB660ADAC1" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Quick.dll" />
+            <Component Id="cmpD46588C094E71CAD15BAEB861E6BC88C" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil9F90DE9E46D8780093119B21A7283F60" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Quick.dll" />
             </Component>
-            <Component Id="cmp5B4D450E74D5685B10B5079A03F711D6" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filF861962A22353A343F8FF154A477D54E" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5QuickWidgets.dll" />
+            <Component Id="cmp9C3E941A1BD80A2EDD2D715065858082" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil7C5D8206A1D80CF4EBDE951D41BD28BC" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5QuickWidgets.dll" />
             </Component>
-            <Component Id="cmp1F542BC8D5D7C757D2C8BCE0DD94AD31" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil8226117DC6D5CC77A7264993472F5AB0" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Sql.dll" />
+            <Component Id="cmpF8B7388C32A8EBC2F119FEBC975A65FB" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filB0E18D458C1F68468CDF79D7DAF7536C" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Sql.dll" />
             </Component>
-            <Component Id="cmpAE841C8195F43246787C9E4E5D217176" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil41B3C4D018B27DB945274E6CF9EDA0F7" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Svg.dll" />
+            <Component Id="cmp2B2C120D18DC2BC4ADC575C3847F733E" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil9AFFF8CD66BEE467233F9C56E0419B50" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Svg.dll" />
             </Component>
-            <Component Id="cmp37D0B1C7D07C4394262EB8AA0E0430BB" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil10A9F38C1B014500B6C14E0D30CF3BB3" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebChannel.dll" />
+            <Component Id="cmpFF84822641B26457C980A534E7460FD8" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil4D8E0E0A679C862C22E101852969EA2E" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebChannel.dll" />
             </Component>
-            <Component Id="cmpB34A4FC1461F650BE31D9FEB5B5DD53D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil3A07C115AD5DE25897727388594FA483" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngine.dll" />
+            <Component Id="cmpB3C0A0E221DBA90DC0BB391152FD7A74" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil5A4931CCABF30B890B3CE30C1381E6A2" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngine.dll" />
             </Component>
-            <Component Id="cmp871EC3FADA053F66605BA9394A415B7D" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil356AA8C00CC084594E653812965782CD" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineCore.dll" />
+            <Component Id="cmpB1753E9F212516EA210DC5D905536869" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filDD3EBB15793FB30CD6ADD3C6331D3CCE" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineCore.dll" />
             </Component>
-            <Component Id="cmp12478D09CF35C19C8F5478E57CA9879A" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil5CBA4CD14DFC4B789412B05AAB849540" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineWidgets.dll" />
+            <Component Id="cmp3E78C23573D3F03CA33A1D3F02559F86" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filBFB9FEDFC5B5B73989EBCB43B820F900" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WebEngineWidgets.dll" />
             </Component>
-            <Component Id="cmpFDF139B06EE6566BF84B5869FC85B426" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filB90F43F2D685AA4EB9010FB81C1EF27C" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Widgets.dll" />
+            <Component Id="cmp5A470D201E319A780FFC3EB59B1AF1AE" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filE122A1022B617669CEE5055AE7E80737" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Widgets.dll" />
             </Component>
-            <Component Id="cmp0F58238051ED942D4D3859698C5D2B47" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil5DF0712628327EAAAFA1D1232DF07101" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WinExtras.dll" />
+            <Component Id="cmpFACC66D02943E1883B1C6F2461C79750" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filE3C3CF9EB642F2DC08A4945E888F5659" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5WinExtras.dll" />
             </Component>
-            <Component Id="cmpEA85DF8E84CD8A6B076858A2C6812805" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filD2547DDFEB7189D65D01B726ECB939C2" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Xml.dll" />
+            <Component Id="cmpDC6A278DA4D2D830E62933FC20BA588A" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil1A6A79664129CD391862874034F31659" KeyPath="yes" Source="$(var.ReleaseDir)\Qt5Xml.dll" />
             </Component>
-            <Component Id="cmp63A52F5A47293F175104D8ECC9694BB7" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil156A2FE6B6FABA1B026CAD632EB08D29" KeyPath="yes" Source="$(var.ReleaseDir)\QtWebEngineProcess.exe" />
+            <Component Id="cmpE30FACB43AD2D14B5FEA346E4210D8FD" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil945055CBDD44038CBF6B25D75733EB7A" KeyPath="yes" Source="$(var.ReleaseDir)\QtWebEngineProcess.exe" />
             </Component>
-            <Component Id="cmpC62287732736BF56B50AFA5C5999B271" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filA03BB44276F0A77F02C9C79E0847368D" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources.pak" />
+            <Component Id="cmpE0C20B0AB9E584CF7364F06BFABCB044" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="filBD9D68D9A39EFEABFA9B6AF71FA03EDF" KeyPath="yes" Source="$(var.ReleaseDir)\ssleay32.dll" />
             </Component>
-            <Component Id="cmp9F354DE030A171E73E91E04DB9E5E903" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="filA82DF4B19380200061F5DB4C0C32D6B5" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources_100p.pak" />
+            <Component Id="cmp51FB5733B3C7726A8051520F3320011E" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil57ED4A697A4382691653BED34AD99126" KeyPath="yes" Source="$(var.ReleaseDir)\swresample-3.dll" />
             </Component>
-            <Component Id="cmpFEB699F8CA7C2A48B56562583CE7C97B" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil1FB5FBEDB11B5A0044B8B29EC0F546BF" KeyPath="yes" Source="$(var.ReleaseDir)\qtwebengine_resources_200p.pak" />
+            <Component Id="cmp727F65AE2152795AE04EBB26A506FA0F" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil5C46BA1F202C3F7EED8EE401E82EB75B" KeyPath="yes" Source="$(var.ReleaseDir)\swscale-5.dll" />
             </Component>
-            <Component Id="cmpC2C70BB31476FAF8E71FDC8B1E036204" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil3FA2FA76E667D1561CD336D35BD3AF24" KeyPath="yes" Source="$(var.ReleaseDir)\ssleay32.dll" />
+            <Component Id="cmp46736DD2209095065A4C6E26D9851CF8" Directory="dir620D0D01DB995A0900E22137FB52FEDC" Guid="*">
+                <File Id="fil0BD4FC9ECDE3AA7604D8FFBD132879F3" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qgif.dll" />
             </Component>
-            <Component Id="cmp0E71904B3EDBAE24E1A31017CDD6DAF0" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil86A69C988BBDEBEFF4B83BA75330AAE9" KeyPath="yes" Source="$(var.ReleaseDir)\swresample-3.dll" />
+            <Component Id="cmp3455928D8A0C69222466E8170A6B1A33" Directory="dir620D0D01DB995A0900E22137FB52FEDC" Guid="*">
+                <File Id="fil0E13420F1832DFD1DE99A36168BEB006" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qico.dll" />
             </Component>
-            <Component Id="cmpF0B5FD817150488EB9ACF9EFDE0EBD56" Directory="APPLICATIONFOLDER" Guid="*" Win64="yes">
-                <File Id="fil40E5A8E132500B03BAD6B19B7B30958B" KeyPath="yes" Source="$(var.ReleaseDir)\swscale-5.dll" />
+            <Component Id="cmpC8EA4BC57BDDA69462DD489A58F0F639" Directory="dir620D0D01DB995A0900E22137FB52FEDC" Guid="*">
+                <File Id="fil0232F5CE36F7BCB540CCA8463780175E" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qjpeg.dll" />
             </Component>
-            <Component Id="cmp5039B4AD5D8C909EA17EA732417A9C05" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
-                <File Id="fil62B8A9B874DF63AF7B042EA31508DB37" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qgif.dll" />
+            <Component Id="cmpD21BF951417C481F0C30EFC37FB90977" Directory="dir620D0D01DB995A0900E22137FB52FEDC" Guid="*">
+                <File Id="filE6E268EFEA267C67A00C81BB91010C86" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qsvg.dll" />
             </Component>
-            <Component Id="cmpA0EF29ADE625F5F0AF74857F24490FAA" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
-                <File Id="fil23BAD857F9821D47B99B0E5A5970605D" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qico.dll" />
+            <Component Id="cmpC320569E537CABD3BF9C70EC951FDBEE" Directory="dir5F2F62AA6F6135041AE87AC93F029148" Guid="*">
+                <File Id="filE75EA04A4CF8BE2EA395ED9B60AD7B42" KeyPath="yes" Source="$(var.ReleaseDir)\platforms\qwindows.dll" />
             </Component>
-            <Component Id="cmpB0C5211DA6E53C209721B2356D26D8DF" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
-                <File Id="fil13CC9E600BAF85CDCC2C53A86DBF115F" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qjpeg.dll" />
+            <Component Id="cmp58CB18ADCC395B8B6C788807F72B5493" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
+                <File Id="filE0395818A2542F0797219BAD3DED7263" KeyPath="yes" Source="$(var.ReleaseDir)\resources\icudtl.dat" />
             </Component>
-            <Component Id="cmpF5B60B50089C330D8DB07C2E94148BCA" Directory="dirCFD5DCDF1CAB22CF8B4B7E1E01E79D36" Guid="*" Win64="yes">
-                <File Id="filE22D27FB377D1334F37D5F798DDA6681" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qsvg.dll" />
+            <Component Id="cmp594498C85C32344E5209B829879F4620" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
+                <File Id="filFF8FF0BEB2C0212B3A7E38CC40C53B53" KeyPath="yes" Source="$(var.ReleaseDir)\resources\qtwebengine_devtools_resources.pak" />
             </Component>
-            <Component Id="cmp3E80143A725EE7380FA78AA9E8BD2283" Directory="dir908DFC228501FBE723FC009E659CB04F" Guid="*" Win64="yes">
-                <File Id="fil702C83C4DEF82CE8980ED1100FE61CE2" KeyPath="yes" Source="$(var.ReleaseDir)\platforms\qwindows.dll" />
+            <Component Id="cmp8B26405D990CCAF31A0D013C7BCFE8AA" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
+                <File Id="filFC5397E6D1965FF744B9DE0E4E943AE9" KeyPath="yes" Source="$(var.ReleaseDir)\resources\qtwebengine_resources.pak" />
             </Component>
-            <Component Id="cmp84792556F8AE67E56EDFF3DEB8934D78" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
-                <File Id="fil1520DA6D55EDA40C2449BC9C60B3F477" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.wav" />
+            <Component Id="cmp7FBA612DE6E6486C90AA901C154BD294" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
+                <File Id="fil28A09C7F7C200082C7074F0835092D30" KeyPath="yes" Source="$(var.ReleaseDir)\resources\qtwebengine_resources_100p.pak" />
             </Component>
-            <Component Id="cmp84792556F8AE67E56EDFF3DEB8934D79" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
-                <File Id="fil1520DA6D55EDA40C2449BC9C60B3F478" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.opus" />
+            <Component Id="cmp21419E99DF87022FDBECFCD84419367D" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
+                <File Id="filC0874EE1D090731F0E6723D59457FAB0" KeyPath="yes" Source="$(var.ReleaseDir)\resources\qtwebengine_resources_200p.pak" />
             </Component>
-            <Component Id="cmp5CCC1EB5F82E4ADDD432CC31BFAF1B45" Directory="dir6BEF5EA0D72E144566D3B5034E8EBD40" Guid="*" Win64="yes">
-                <File Id="fil6AA759A6B6A1CAFE29AF2BA0270CFE61" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\konga.ul" />
+            <Component Id="cmp40487D2F0CF92E30BE770BDD274CECA9" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filD398EC1B9B4C12F6F7868C175EC983B7" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.opus" />
             </Component>
-            <Component Id="cmp282CECBB021AB0A3C417607039EC39E0" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil0EEFA2272BA149C720BA4ED7A79CA075" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ar.qm" />
+            <Component Id="cmpC7E43EAB72E7EE0382587DBA2495481C" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil75FCF1992897B935C2A963E37786E3ED" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.wav" />
             </Component>
-            <Component Id="cmpE4961D1752C81D53AF82360294170ED6" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil6F29EF63C557A8AC1ACFDD75749BBFC8" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_bg.qm" />
+            <Component Id="cmp216BFD0A0243D6D9596F1E61405D6E91" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filD2ABD8C28DA50B31F64AD39E51B59F95" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\konga.ul" />
             </Component>
-            <Component Id="cmp6B2890B291740C40ED16623DAFD7BFC2" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil3268DFF93AF08ABF2BE526F57B934AF2" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ca.qm" />
+            <Component Id="cmpBDA3764E1634B79D3320C86C4B6661E0" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil8995FC63589D0F5A92C75FF3DCDB4019" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ar.qm" />
             </Component>
-            <Component Id="cmp80313146F4A7FDD7BCF43F53DFB30BBE" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filDC66A2B76AB2FA0288C83D0DF0F9822C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_cs_CZ.qm" />
+            <Component Id="cmp35DB643A04BCC6D058D1C57589288884" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil052B14B9F2346B3C0D8ECAE9EB6304EE" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_bg.qm" />
             </Component>
-            <Component Id="cmp504FBEB15A1D78CBBE281B8AAC465E0C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil448FC5CF5BD5B095E780FBF52B280C34" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_da.qm" />
+            <Component Id="cmp30605AE95DADF836738B4520EAF88A1D" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil773A7F649578172373F040ADDEA7C621" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ca.qm" />
             </Component>
-            <Component Id="cmpEDA4D13A33C3B317B0845EFDA0C2B34A" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil4C4952165A5EA9A58F284803BFF6B64D" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_da_DK.qm" />
+            <Component Id="cmp6852E8A72539614B269FA4922C2AC451" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil788353434C06261DA55326FA8374FE45" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_cs_CZ.qm" />
             </Component>
-            <Component Id="cmp8E7DD401DFDAD9887D3A5CCFBDC6B6FD" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil12B4DA68EC3FD41FC9E8D8A930DEC355" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_de.qm" />
+            <Component Id="cmpDDF4D378849F04BE4CCFBD591032B702" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE964FE7301E74B24EC02CE3305F09D55" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_da.qm" />
             </Component>
-            <Component Id="cmp4492CDAC3839B87661AE3BDFD3953A13" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil003FA4AB2F05F2FAEADB38A2137AC80F" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_de_DE.qm" />
+            <Component Id="cmp6FA6FE193E88F90BBAD8C8D5C066C872" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil7E0F39AE2EF77353BFFFBCDEAD40275A" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_da_DK.qm" />
             </Component>
-            <Component Id="cmp19A5A9F87CAEF7B820D26456EFC75F26" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filCE695E071875B77E82064F1EDAD778AF" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_el.qm" />
+            <Component Id="cmp619D7843C711113F45FBB504BE76C1A9" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filA3AB4EBDA5FDBC97D5AB7A8923D61B3C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_de.qm" />
             </Component>
-            <Component Id="cmp8C24BDA76A4B52AB88A5FE8AE229B26D" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filB31C08A36D51ED5B34CD308C18FBD8FE" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_en.qm" />
+            <Component Id="cmpCD1B1A594AE229457C2E1601CCC04D29" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filF03FA4878F9D61A333C1D6BC2451EAA6" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_de_DE.qm" />
             </Component>
-            <Component Id="cmp20A52D60F62C4E15DAAB8B6F29127317" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil2906806FBE015DA26D22F368BBCC8C31" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_en_GB.qm" />
+            <Component Id="cmp792BF6E4B30A83035A405680D2FEF400" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE02A60BC02D9F6235628EDFB05386889" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_el.qm" />
             </Component>
-            <Component Id="cmpC6D4ADD3FDCC6F04B8899837204A245B" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil8000A8111821A57FEC59289608A8C8AC" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_eo.qm" />
+            <Component Id="cmpD35EE78D956EC2F62F798E466ABC8A5A" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil7F7593557775968F108B73E7465AB0C0" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_en.qm" />
             </Component>
-            <Component Id="cmpFDB4379150A56859441BBF64ED81485D" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil74A7014221A5EF882E19958010C0193C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_es.qm" />
+            <Component Id="cmpDADC5F4E1A39F39526227E161F3F52AC" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filDBE1FE2963076907C5558E27E163DE8C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_en_GB.qm" />
             </Component>
-            <Component Id="cmpD07719CF76297931697DF82B76B8D41C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil278ABEAB59182CFB8EFBFCC8C8B091B3" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_es_AR.qm" />
+            <Component Id="cmp36F21CE18C8AEF34CBAEDABD94C45266" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil304F0B80946CA3CA5B6A31F6C44EA3F3" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_eo.qm" />
             </Component>
-            <Component Id="cmp9CCCFE942B4871217C857E50C346B837" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil58D69A783C6AFE55E2C57859CD3C2947" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_et_EE.qm" />
+            <Component Id="cmpDF31DA915C5ED0E420EA145630C1C47B" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil52155C36D8E4FC4035351B500C759AB1" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_es.qm" />
             </Component>
-            <Component Id="cmp79E8AF8C2531A90EC77A213EE3AA4DEB" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil3C29BE6DC265375A7511E80E1652D6AD" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_eu.qm" />
+            <Component Id="cmp4A2F8AF2B7D2606EB0A8746018B6FEA6" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil159DCA712EFF11C4D2C4D3DB33A9EB4B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_es_AR.qm" />
             </Component>
-            <Component Id="cmp928E1007358E959C1DA52E68F60F19E8" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil248FF59DDB131F40BF34771ED124CD6C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fa_IR.qm" />
+            <Component Id="cmpDCC5B83EC02FEBDA99EFDE9F1B1186C5" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filD423D9B28FBFEFFE4F2353843DEBFF3C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_et_EE.qm" />
             </Component>
-            <Component Id="cmpC536B9F14AC797BC541477EA4935566D" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filE3178FC6B88A6FA8201518866B4B4AEA" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fi.qm" />
+            <Component Id="cmp3B6E35D72B71D9233F7A5E8CC1A03DC2" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE0795A0B887F57741D48178534783550" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_eu.qm" />
             </Component>
-            <Component Id="cmp4B0D13292A81BB83519C254107206F19" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil5DE5E27F7D9B4A27FB4384EE7868BE06" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr.qm" />
+            <Component Id="cmp2114360C15FBB81F8563BDA533EB8DAA" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil8C312D302F99BC4B6C716C18EDFB8446" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fa_IR.qm" />
             </Component>
-            <Component Id="cmpD8EF700B56BF30FE0E313290D1814768" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filBF82C4B323015983AF34D2EFBCA08C93" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_CA.qm" />
+            <Component Id="cmpD3EAE6B8403D6F17634171C3C8929B23" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filD61D6EDF28AD00527BA81FF001D9180B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fi.qm" />
             </Component>
-            <Component Id="cmp4630DEFD6D7A5397BD0D5C2DA77D17AC" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil31E9CFCA419DD848D45CD2B75971FC85" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_CH.qm" />
+            <Component Id="cmp32371504BBF11A98DEB92D0102953261" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil79977CA23DA0B239129C20E2CF49FBB8" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr.qm" />
             </Component>
-            <Component Id="cmp33AFAFD04DC97437FA7F844F940BA2B5" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil312024878DB9FF700C7FC80E6C5A9E81" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_FR.qm" />
+            <Component Id="cmp17C94B45C93F443F69166731325E51E2" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil484C09EAAAB16D8C78DA1650E36FB63F" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_BE.qm" />
             </Component>
-            <Component Id="cmp1874892C72F9C219487B2EA6D2FED117" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil059F0E57F1D45D9D38301C1F27A30EB3" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_he.qm" />
+            <Component Id="cmpD1A89ABC22E388B2B148ECC38F73A147" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil9D11DD9763E065311EDA892C8293A79A" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_CA.qm" />
             </Component>
-            <Component Id="cmpD14B687554EECE7DEEADC48420CC3A6C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil0854F851958419F756ECDB203745D14B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hi_IN.qm" />
+            <Component Id="cmpA861AAB391313037D65BD7B3359910DE" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil2D49C7F40E272B88C2142C956558E6EB" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_CH.qm" />
             </Component>
-            <Component Id="cmpD536C0C062C6FCB355ADD1BF9992BD1C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filA0FEFEA427E1EEF8EE7BA289570D244B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hr.qm" />
+            <Component Id="cmp596D8A3EBD6F20758B013FE785830C72" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil5C9BDA3AA1B949A6F13CD16BD3447D9C" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_fr_FR.qm" />
             </Component>
-            <Component Id="cmpCBCF66BEECB323613908BDBE9EE181BC" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil4DEE0FFD9CE234C696F8F7C310071C53" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hu.qm" />
+            <Component Id="cmpC8A04498DDBD5F8C2836E4C2328EC208" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE3EE84040159C8BAFDDBE8824C77299E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_he.qm" />
             </Component>
-            <Component Id="cmp73325164C76B0FABB5A6A7B8F5B9D034" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil66BCC3150960E258271E3E21184197E2" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_id.qm" />
+            <Component Id="cmp3780AC3E497FB63F76DBCB5A52B490FD" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE262204A11C0908A30E06F6C4EA0A25B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hi_IN.qm" />
             </Component>
-            <Component Id="cmpFEB7320148EB0C19850608FE25A01F9C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filAD1A7600BFDAE8CAF7AC450EBC0936B0" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_it.qm" />
+            <Component Id="cmp22BE810E88D6D37D2C8996FA05E59A69" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil7A8D216AA5599821E3844CD87824BC87" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hr.qm" />
             </Component>
-            <Component Id="cmp1A8EFFDB39AA77D81304E301865B9C9A" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filD29B5106518AF7E6BF1EDB70636A954D" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_it_IT.qm" />
+            <Component Id="cmp6B950B5F61CAD51F0D7954849310B858" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil540ACF63B0AE0F55460D29A9230C1830" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_hu.qm" />
             </Component>
-            <Component Id="cmp96E50FFD6F368BE3BDDF437DB2F38529" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil4DDA6539BC03BA7AA1FAAC88D8F16C59" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ja.qm" />
+            <Component Id="cmp880043FBCFE7920A73E8539DA6A0475A" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filFFD421BC2675CF5804D34B492BC81B9E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_id.qm" />
             </Component>
-            <Component Id="cmp6A84212955A50D1CB27E440F848E2483" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil94A9F9B22CB24910967D0A2A6E146EDF" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ko_KR.qm" />
+            <Component Id="cmpD59ADC25714EFA2575755F9DA61788FF" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil80D19229A4BDD992FF8BB20A07FCF542" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_it.qm" />
             </Component>
-            <Component Id="cmp3D01F289F5EBAC8FF429990D9617CA52" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filCBC4FC5B22AFC48F280C3B5D9F1FEC8A" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_lt.qm" />
+            <Component Id="cmp5D794B933C3D55B8763E08A60FBA8155" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filF8B95E7907DF9ACEEC26589720C0DC6D" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_it_IT.qm" />
             </Component>
-            <Component Id="cmpC9D06F5A92B392B12DF32F6AEFC0216E" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil2034211723EA2B8701C6FCD2A237307B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ms.qm" />
+            <Component Id="cmpB68B10455B70A4F510D415950E1E1E32" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE4FF8741929A0CCD6E58C1E1EFE90C62" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ja.qm" />
             </Component>
-            <Component Id="cmp218DF282D70F07985AF2787B0EB074D3" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil79E1F0D54CCEE5425E4F5FCDD1686D35" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nb.qm" />
+            <Component Id="cmp5FE6591136735F0B093237C490F14B98" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil65DF61C6D7B14BADA57B26C9D8F18365" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ko_KR.qm" />
             </Component>
-            <Component Id="cmp282281F51ECBAB33FC9E14519FA2D13A" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filCE87F757A8B00B2C7D76D18F0BE3B9D4" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl.qm" />
+            <Component Id="cmpDEB21637ABE7880B93AB2AEBA2C88BD5" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE8DFD8862C645ACD16894E1CD492851E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_lt.qm" />
             </Component>
-            <Component Id="cmp1A68C3A103ABC6CC89913AE57AD35474" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil0C158D23BCF8F38B408C047C3E40F0DF" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl_BE.qm" />
+            <Component Id="cmp86F1EE873126C04FECE0ED209C01C6AC" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil2EB80D40B171B2837A6B257BB310C72E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ms.qm" />
             </Component>
-            <Component Id="cmpFCFD717F7912487EA8AE4B58C5BFCA0E" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filB5DCD598E0705F48D864C0FE016C4EF0" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl_NL.qm" />
+            <Component Id="cmp9930DBE327E48824BDF22CDDF407DA5A" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil8DB1081A091F9FB069A39BDCC9F1CD83" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nb.qm" />
             </Component>
-            <Component Id="cmp0942D40325FA688E963348C65D86B4E0" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filE34D140B23987B189D37E84429EE3BF7" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pa.qm" />
+            <Component Id="cmp17F3455C5AE1244B9A9FB0B1B62DBF4C" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filEAE600080AFB728A966D2E0869D00612" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl.qm" />
             </Component>
-            <Component Id="cmp64437A1DC4EE73D29850DBCB1058C42A" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil1D852ADE79369037DBB5DAC53F01D8F5" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pl.qm" />
+            <Component Id="cmp49096E3CBE91D8D8ECC81C448BAEF070" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil959096E9C969B1E81FD673EAF7B029F3" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl_BE.qm" />
             </Component>
-            <Component Id="cmp6BBA455BEE546705A30256FB6021C849" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil114B0FA9D485CB2988E7E544C6CEAA56" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt.qm" />
+            <Component Id="cmp8A13CACD629C1A613F052CCFB99F2D36" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil606E5B73484EC6C0D74A6E68B9C8D83F" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_nl_NL.qm" />
             </Component>
-            <Component Id="cmp0F90C34ADB4A52E889AEAB308C3435D7" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil40522E683EA412A80CBC9776B7F5C8DD" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt_BR.qm" />
+            <Component Id="cmpDB8EFFE69F18EBB8E749CB4D0B1ADA0F" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil478594976A21A2E73E3A1FBCF0DB0022" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pa.qm" />
             </Component>
-            <Component Id="cmp44561C3B9250A1D6420A2BE0DF4D4317" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil0799A914DF31738A9FA3DC3A8CB48D24" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt_PT.qm" />
+            <Component Id="cmp638555492CE17542524F2FEAC086F469" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil78884B08C017AD965A2ADCEF593A98E9" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pl.qm" />
             </Component>
-            <Component Id="cmp473BD249BDCA03BC67D52FA5D87229C3" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filF208466317923D94BF006C47548AD4F7" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ro.qm" />
+            <Component Id="cmp4CB15BEEF856DD9BD0263C9FCFFCB3B3" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil2A7707668BACD07988C1A069DBBB052E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pl_PL.qm" />
             </Component>
-            <Component Id="cmp4DDB585E3F0DC1F0F8597091247B0C8C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil668D3BAC81A22D4450E90CC2D793BE6B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ru.qm" />
+            <Component Id="cmp7897E6D39AFC5AF65F9C4F0C766E0073" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filF4121F48E8FFD6F80507B119CD61AA3A" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt.qm" />
             </Component>
-            <Component Id="cmp32AB08891FA4B6928DA108ED7FEA384C" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filD1C3FB5739A9A5501908C185447FCA04" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ru_RU.qm" />
+            <Component Id="cmp8711A48C2F37596B02A54EAB242272A4" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil91B60BD9D5A797530D40D18283653F33" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt_BR.qm" />
             </Component>
-            <Component Id="cmpAF5ADDE54D9AD1C5F4A60950D0127860" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil706F6A1BD8A412A7E7E40FE95DBBC088" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sk_SK.qm" />
+            <Component Id="cmp9C70305094B36207A88829384859477C" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil4BBE6B12396760571B08C949D2C64270" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_pt_PT.qm" />
             </Component>
-            <Component Id="cmpE44A66FA431B77F474077F7C5D28E045" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil39FC3055F8CD57D0D54729E0983B1523" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sl.qm" />
+            <Component Id="cmp959A10CF41CA13F3870D0D12C35433F3" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil43328A0C0D7A73FF9BC983F4C65E004B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ro.qm" />
             </Component>
-            <Component Id="cmpCED94EC537D51CF50F283AF2DB12C8BC" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filD3948F393C841615DF3EFABCF02C49F1" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sq_AL.qm" />
+            <Component Id="cmp7AD1C86E0158D5CB0A75A74105185FC6" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil72DB6081682BAC1B2007BBD38DD54050" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ru.qm" />
             </Component>
-            <Component Id="cmpDD574529111021C8271B717AB5AE4CCF" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil6273E5FC4644168AC330DDCDF1016F90" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sv.qm" />
+            <Component Id="cmpC5D97B0F12C95C0615A28CEA83CCC340" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filB9829B0E1AA834189BF53CF9379691C8" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ru_RU.qm" />
             </Component>
-            <Component Id="cmpEF693CDD30DD18B9AAA437A3AA6EFFF4" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filA015916F147814A2786F10347E758835" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_tr.qm" />
+            <Component Id="cmp52F8CCDE1BC3E2CD539D3790D70C3CB4" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil76587B3197A18F1C376A713F559ACF81" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sk_SK.qm" />
             </Component>
-            <Component Id="cmp5EB8C374F56EA6719B27E6130A2BC225" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil3DB402E759655AA9259A63453B68764B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_uk.qm" />
+            <Component Id="cmp49782A2C0629BF699A08E350842D3DEB" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil238152513AA1595BB97A777AAEA89331" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sl.qm" />
             </Component>
-            <Component Id="cmpC8112C91F73708075A37753970F60746" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="filCC99EDAB6CE337DE1FB7EB1E1DDE28CF" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh.qm" />
+            <Component Id="cmp4675C49770B5FF3A8019BE5784F19749" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil0D4735006E32353A044B1EA6CA4CFAE0" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sq_AL.qm" />
             </Component>
-            <Component Id="cmp74155C8FE940B1A32D42CA2CF8D78D64" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil213D978DC6F3C7A0C9C6F8E8698464C9" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh_CN.qm" />
+            <Component Id="cmp297B7C5BD00FD12C793CD064C608B532" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil4BA499B9FBC5E27F3B1B67226B4D620B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_sv.qm" />
             </Component>
-            <Component Id="cmp628FFEB683796CBA64DC3A7F0E5B4905" Directory="dir6F93A1A3A62B19C02CBF9547434EA16F" Guid="*" Win64="yes">
-                <File Id="fil48AD810830B5FFEB33BFB573D6E4C8D5" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh_TW.qm" />
+            <Component Id="cmp0C58C66E64785FFB7B1C58FDDA40079E" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filE6D26823F131FD8C5CE20A052155261E" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_tr.qm" />
             </Component>
-            <Component Id="cmp503B817423FBDF7DC8A75EC64634D393" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filD7BA00DD8A5C09C1CD3AA4EC08B46F20" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows.qm" />
+            <Component Id="cmpBC4B4FFE67FBF33BC5660FD1CAF11F47" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil4A1884D6D7804A21B095C0A9F418233B" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_uk.qm" />
             </Component>
-            <Component Id="cmp0C7FA57220E8E635E759323C8113EA0C" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil0F73F9D732351F8B9A6C06F065BB89AE" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ar.qm" />
+            <Component Id="cmp800CB6250B37C0297CDC9B5F9975AE16" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil8E2062B884874B0E5A27A64244D2BF98" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh.qm" />
             </Component>
-            <Component Id="cmp9D871A033C213176E730FAD6F7D46BF8" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil467728CB2952FB1083E7F0E8A4EDC572" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_bg.qm" />
+            <Component Id="cmp6C8FCC4DD64BF5408C09142A4DD394A8" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="fil73B6DCBDFE1EED692FBCE7E6863584D2" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh_CN.qm" />
             </Component>
-            <Component Id="cmpD5FAD14AB0A5C9C5CAEA3E0A6B430196" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil47F4BF3EC52C015CE735A0EADC23E463" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ca.qm" />
+            <Component Id="cmpA72308727945B9EBB0EAA526DB929294" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
+                <File Id="filC4AF175360476DD306AE9EF7D49C12B2" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_zh_TW.qm" />
             </Component>
-            <Component Id="cmpCB75F214C7C64A4657F942A5BB1EDE37" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil0B9DD763B289D95DEB32CD1A6DE2B1BD" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_cs_CZ.qm" />
+            <Component Id="cmp41097746DDCC7A0731DE03EE255669D4" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filFDE3A5B4AF6EEA5979719B88D1BFFD9A" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows.qm" />
             </Component>
-            <Component Id="cmp2F8AC52F1F6BD5150FB38ED802EB79D2" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filFBC0A15D183523906C4D1C2BED03D30D" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_da.qm" />
+            <Component Id="cmp4EBF75895BB045FCE0B98981A8C6E070" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil2F032DA4218FD9C4CF9D3C1C7774F5AD" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ar.qm" />
             </Component>
-            <Component Id="cmp3106411034128C49E36555559417638C" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil0801355B6121CAC8A686C785255D1E69" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_da_DK.qm" />
+            <Component Id="cmp74AC466D130EB75D6C029800E47AC9DB" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil47023F3B88BB041061EA5A63ABA75523" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_bg.qm" />
             </Component>
-            <Component Id="cmp36DDC27CE6CC9BA4E9DC0AC4D5C647E2" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil12B3DB85F12959244EB3733C0D9DB528" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_de.qm" />
+            <Component Id="cmpF3D48E1D8C4C0A0AF9AECDD5FA9F8BD5" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil4CD2341229CBA08C2357566F2F44C91B" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ca.qm" />
             </Component>
-            <Component Id="cmpE14CB4D257D0E5E97BCCDC968409C6DB" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil7843BB4A2356054B93088C4328EA813B" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_de_DE.qm" />
+            <Component Id="cmp7AA58B98C67FD72D14FFAF1A1687D32B" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filE7E8E3C92F63808BF540F8AF46CE476A" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_cs_CZ.qm" />
             </Component>
-            <Component Id="cmp92007DD837DE3A9EF6BB65542F379A03" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil96D143A8FEB282BE9BF740E8B42536C3" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_el.qm" />
+            <Component Id="cmpC9E5806FA9ABD38FAB23D5181C3A155B" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil50E156244C5CA3AC5972D4791F6727C1" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_da.qm" />
             </Component>
-            <Component Id="cmp1F0B0FC8F0FB0863A0ACBAB727BEB6A7" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil639AE1BC1FC30FE25F5362D932015BCB" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_en_GB.qm" />
+            <Component Id="cmpF88EA76C675F10FB34A23A8F6C2D8F8C" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filAFBC42078BC7B47533EA5121A9319F6C" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_da_DK.qm" />
             </Component>
-            <Component Id="cmpD62ECFA6E2574CF6E334FAC20B10F207" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filE2109BDB52401E61FE8CD19D260DB3A9" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_eo.qm" />
+            <Component Id="cmpCBEFAF24DF8D193D52BBD230C8FF965B" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil58FD573568A2809CD8D4D116436BC4EB" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_de.qm" />
             </Component>
-            <Component Id="cmpDE3F21A97F986B02F4FC2B2389EAEDE5" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filD17BC65DD9E24C8CB520508B10500DE4" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_es.qm" />
+            <Component Id="cmpDFB8DC6E65740BBB1FB06D1B09863B6B" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil48CE2DA00DF97B8D78C208D2C20EBDBB" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_de_DE.qm" />
             </Component>
-            <Component Id="cmpB61A8826CD325B29D1708912C7E5FF4D" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filE8FC1AB0EA4AF039A70CC612E0BF6A25" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_es_AR.qm" />
+            <Component Id="cmpB478D1EE66F7F9521CA0D8981EC82344" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil7EF4E9EBF13792724E2F9D037F3B8D73" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_el.qm" />
             </Component>
-            <Component Id="cmp6E61BBD66C5D67A43ADCCE8FFCAC0F48" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil299A8D9AC9F94072AA51392EC6FF4EC2" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_et_EE.qm" />
+            <Component Id="cmpED7D4C12FCC37422DEDECC8EF57B2BFB" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil8D9DDCBD06D3E147FF2107DA2F6B330A" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_en_GB.qm" />
             </Component>
-            <Component Id="cmpC83555049B7B22927F767F7C38170B27" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filCB1368B1F0FB618DDBC36077B8813948" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_eu.qm" />
+            <Component Id="cmp46E8D2DE92564C887FBC1140BCBFBDEC" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil3080CF987C344943C4540388B978E057" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_eo.qm" />
             </Component>
-            <Component Id="cmpED08C735E0A18600C77452B5413D6AF3" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil9A98867F4DB785DA349784DF389FD68C" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fa_IR.qm" />
+            <Component Id="cmp8CEE693C69C29B83AE993645A1BFD935" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil3AE815B965DD333A1604FEA63D653D49" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_es.qm" />
             </Component>
-            <Component Id="cmpE6FDB607D50C38C19C99F42F3B5A2376" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filD43367B389830E286401F2AB41574499" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fi.qm" />
+            <Component Id="cmp2B06896B2BF89974A938858E1465ECEF" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil84A2EB6DED4BA292E8A21078BCB72CBA" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_es_AR.qm" />
             </Component>
-            <Component Id="cmp891708AB91FD297ACED67FD520518B39" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filDBE345C2036A12713CA4E6370E778FD0" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr.qm" />
+            <Component Id="cmpE5FD9E435861726C9111E73DCDF1F143" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filF9626340D260E5720B95CC9F60984F26" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_et_EE.qm" />
             </Component>
-            <Component Id="cmpF74EBAAECF5883259196557FB7A40E95" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil2D3ED6B35928C481BB0081C3961582A5" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_CA.qm" />
+            <Component Id="cmp4A2938F29B06193AFEDAE5DA2F5AB539" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filEE753D2F36B2CFD1D2E5D4105D6385F7" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_eu.qm" />
             </Component>
-            <Component Id="cmp0BCAE2FE458A62E0C5BEC2F742D67E6A" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filCF6D22476522F6CD69CC58B8D189CF4E" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_FR.qm" />
+            <Component Id="cmp4D285140B0FB0C433AD199B589005512" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil7BBC43773A1F458BBA8C4322FFE64578" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fa_IR.qm" />
             </Component>
-            <Component Id="cmpFF7F5E35FF21E46C9374A13050AE0A59" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filBB62CE25302A5A8E0F81D5C025B89460" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_he.qm" />
+            <Component Id="cmp16DC3081CC26327DED8F0881FD35091E" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filA9613613545B3067C155245B144D938C" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fi.qm" />
             </Component>
-            <Component Id="cmp19E17A877CBB21E5A8120AD8B8C91744" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil04519BD7F137E4CFE68495206CE0031F" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hi_IN.qm" />
+            <Component Id="cmp59D82EC00E010F52E37B897882915960" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil393294FF9C96DD7B9676D11D35E75E93" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr.qm" />
             </Component>
-            <Component Id="cmp28535EE3F00944B2DFB0C398F38EE429" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil431389DB20F5701DD0CBF56DF1E598A6" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hr.qm" />
+            <Component Id="cmp5F76CC7B322A7B17CF6E9BDAC8D7B5C5" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filEB47962E70C053E3A6888D2132229EA6" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_BE.qm" />
             </Component>
-            <Component Id="cmp54227DB515AB84EEEF6D07CFD26B39E7" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filF011F85FF6BD16DD4B9E3247627CDEC8" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hu.qm" />
+            <Component Id="cmp9EF4ACA1DB50E21A7F19E6067AA8D8B2" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filE96FA54A292CC9F3EAA19106BA86C8EA" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_CA.qm" />
             </Component>
-            <Component Id="cmpF5AC7DE763516743A03E5BF7C263BC5D" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil15CA67D8EA300F3FBDBCE523039007F9" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_id.qm" />
+            <Component Id="cmpE6718D42EF8EC8D8762BCE811A589388" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil06F1A4EF6D877A472C89536D6AE31BB2" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_CH.qm" />
             </Component>
-            <Component Id="cmpBCBC5498E53336151E837E4112283034" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filF3408F456330C908090860C1CC5FDEEC" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_it.qm" />
+            <Component Id="cmpC1C22CDE1D9C71C85213BD063B9C5F89" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filF21C0013D7AC746B42F523396B7E9F64" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_fr_FR.qm" />
             </Component>
-            <Component Id="cmpAD329F9D61F9751C09A59D3853D9BD1B" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filF7812CCA0333AD872E9EBC32CBDA0051" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_it_IT.qm" />
+            <Component Id="cmpFF10F3ABB26E958B8B386939D4F21108" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil6CCC15E82E7D00B4263F197C3E8B2BA7" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_he.qm" />
             </Component>
-            <Component Id="cmp5D4458C25A5D570D58D9AF8CAD885735" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filB36EF74277EC680250D6046F6A38EA7F" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ja.qm" />
+            <Component Id="cmp16CFB30EE857C66775E5CFF1B44CE53E" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil97785D11CF78ED20FB668FAD41C71221" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hi_IN.qm" />
             </Component>
-            <Component Id="cmp4F3B21BC2F1550F5A1E93392148D4147" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil8DD2316A7B1C4D83F1DD631245240787" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ko_KR.qm" />
+            <Component Id="cmpDC76284DC30F4C606F95D596CFEB8BDF" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filE8EEC98FEC669CEFEBA256DC847A0820" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hr.qm" />
             </Component>
-            <Component Id="cmp368EF01998D273384BAA2F9C5D1B59E6" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filB3288F7A9CE0F3FB52BB6ECC42BB9F37" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_lt.qm" />
+            <Component Id="cmp2D9EE7C663300F7C8E70CC1620B4BA0E" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil293A33D86405B6921FB413AED8E888F5" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_hu.qm" />
             </Component>
-            <Component Id="cmpE0FF30F60FE6C079BF585D3CEA0114BD" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil9A1E430F8884B1268FD2CEA0D4212710" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ms.qm" />
+            <Component Id="cmpA65818CD26C22E7E328235E6A2594D3C" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filBAAF58107532095ED711E666ECB6F837" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_id.qm" />
             </Component>
-            <Component Id="cmpBC8C9A3BD688CCA543B92ACDFF2DE498" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filDB3CBA0E8D593176926BDE70CFF30D46" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nb.qm" />
+            <Component Id="cmp91DB4048CE2F6D9B524D96BEA8A39105" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil4E438109165496FE372E947AA735A809" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_it.qm" />
             </Component>
-            <Component Id="cmpCABE04D8734802A65E2819F1BCA6A9FF" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil8CDC341521FE5AE3DB447BDCF551D1FD" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl.qm" />
+            <Component Id="cmp6DCF2DF71957611A44EEFA022EC3C83E" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filEF0FE8F6785B51F623304385ED23F361" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_it_IT.qm" />
             </Component>
-            <Component Id="cmp660973DFAE1BA03643B1D500E9F393DD" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filDB348FF8C3FBB97AEC27477BA0AE0EAF" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl_BE.qm" />
+            <Component Id="cmp27AF06747810E628D055210CCA1BD616" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil2B4497954DFCA828107000CB2BD3B3FA" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ja.qm" />
             </Component>
-            <Component Id="cmp4BF9EC314F2D98D4EC68E1442554BC91" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil21996D26FB334713C76ABA41369B4C7C" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl_NL.qm" />
+            <Component Id="cmpE777D74F134334A80F5323AF4F925643" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filAED9016CE2E982612FA4FBFD61E82290" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ko_KR.qm" />
             </Component>
-            <Component Id="cmpD0A24E2333D679D1B705B2BA2409F823" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filB69A01E8BAD0AB9FA59DE91F459FC839" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pa.qm" />
+            <Component Id="cmp50BF185C72AEC801D83FE9EDFF270455" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filDED16414AB2BB56C08C9A7AA7BB6F0CC" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_lt.qm" />
             </Component>
-            <Component Id="cmpBBEC9CAD969751A2EB24C1C7D2ED96DA" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil752DB00DADF6ED66274217DA3C2CF76C" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pl.qm" />
+            <Component Id="cmpA4EFDAAD789753DD23AF09B2AF53E90A" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil60128A4E03902FB90EB51BCE7A4CCF16" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ms.qm" />
             </Component>
-            <Component Id="cmpE0FEFE56B36D2F9900372DA18AD9734D" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil5BC2AF9E39B32B44948A7A41BAF345E0" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt.qm" />
+            <Component Id="cmpF391B2E93E3AC11E9CA12E81BACFEDF5" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil905DE972972355267874D98B4F204D65" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nb.qm" />
             </Component>
-            <Component Id="cmp19884FE22854C91849E5DC451D31EC11" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filF7E102426B52FF45DA75B5A2C2917931" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt_BR.qm" />
+            <Component Id="cmp3819CC2096AEF977340D6F070D8F0527" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil2D33AFD7FEDCF1EAEA5C9EA98B621B8E" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nb_NO.qm" />
             </Component>
-            <Component Id="cmpEE8326E9B07EAF25A23317BEE54AB95D" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filE5BC5ABCBCEFF811BD9B61013117CED8" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt_PT.qm" />
+            <Component Id="cmp8A1E4C9FE866E93446BD6299449E53F4" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filBC4C99ADEDBBF1EF3E34C66AE4A87993" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl.qm" />
             </Component>
-            <Component Id="cmp27DE7C4FCEBF7BECC56E43188D8F7418" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filFC13EF3FDFB42B8FD2811820A7E1D65D" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ro.qm" />
+            <Component Id="cmpE3275D0C0AB41FFA5A193AF453546BEF" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil39AD7F230B0D63C57151525872B29ED7" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl_BE.qm" />
             </Component>
-            <Component Id="cmpCC6223EEC7E8D51D93968E5FD46CF454" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil2B47576AF8EAFDC73F312BEE86211CC8" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ru.qm" />
+            <Component Id="cmp7BD1C7AB4D68D652CD4EFB21CE19D902" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filD91979250F62981982FC5E86A62EE0E2" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_nl_NL.qm" />
             </Component>
-            <Component Id="cmp51A913000704DF62F053747E0DB047C1" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil9EA89DDC9726C130764D4B05DADE2ED4" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ru_RU.qm" />
+            <Component Id="cmp2F2B2570FA3943A00CA5B7F64150D1A8" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil696A61EF58F98628F9BF8B4A94A9067E" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pa.qm" />
             </Component>
-            <Component Id="cmpB27580941C9EDA75F739AAF55BB3344F" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil7B5605A1E49D6716E4AFB4910EB24B3A" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sk_SK.qm" />
+            <Component Id="cmp9C706A124AF41C2913BCFFEF88273692" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil65C7B49F00311083BF4A050EEF452D24" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pl.qm" />
             </Component>
-            <Component Id="cmp4F59AA560906165698D454F19A1609A4" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil29147E679F942236BF3C86C1240F2089" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sl.qm" />
+            <Component Id="cmp282003BC64AAE7EBFBDFB0295311CB5F" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil1088B0C9C32BEF058363AF162BC42F95" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pl_PL.qm" />
             </Component>
-            <Component Id="cmp8D25CE638EE82CFB10C635AF8F355BED" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil226D0656424C1A8B0BBB517C85F16CB0" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sq_AL.qm" />
+            <Component Id="cmpB9C8CD9D924399BE5D33B8D89DCAE1EB" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil34114D535297F9C1BFDC6DE7C1E91113" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt.qm" />
             </Component>
-            <Component Id="cmpD0A1B53E98F352C1F08149E13053CB89" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil446CB074267AFA5F5426B92325D61280" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sv.qm" />
+            <Component Id="cmpB53666918EB7592C089B135EEE438615" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil6E0FDDAA906C845873C1774A635AEFC1" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt_BR.qm" />
             </Component>
-            <Component Id="cmp213C4EC775EA34D7CD087F0B65A9E7F1" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil8EC7BF6D5A6E98326A86BED76A0CADAB" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_tr.qm" />
+            <Component Id="cmpDCB9F0EFD0388D17CB7066CB6AE2672E" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil761ADA3350C67C8BF5BC174DC5382FCB" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_pt_PT.qm" />
             </Component>
-            <Component Id="cmp430499AE8276A746CEF24EB1E0CC1A23" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filA69BD4B9F3A0AABA05F694231A03E484" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_uk.qm" />
+            <Component Id="cmp7ABD149B1636E776346112B7D0F4D1CE" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil05D382430C23BAA5A8B1E5B7BDE26558" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ro.qm" />
             </Component>
-            <Component Id="cmpEEB6EED8C3BBA3B94DCD7A2CEDB17ABE" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil2DA6C3CCE7784D534A183E34E04B9810" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh.qm" />
+            <Component Id="cmp2EAECB33D18C9BA43AED9A77090273B9" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filA50AA7A1D4BE2BF94633883EF8620568" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ru.qm" />
             </Component>
-            <Component Id="cmpD33DA63F94A0397C6073B7E23F7849E2" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="filE9D8D2C165D4B65F7A822CEC1EBDA136" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh_CN.qm" />
+            <Component Id="cmp1B7D33ADEE12A017FD455A759A74E532" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filF8146BF7196A67EDBBA49FB2813E5C44" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_ru_RU.qm" />
             </Component>
-            <Component Id="cmpC6AC64F49A6A2605822D2E25306EDD4D" Directory="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Guid="*" Win64="yes">
-                <File Id="fil02FC161441CBF1BBB4167B701770C6B0" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh_TW.qm" />
+            <Component Id="cmpA2FE75586A7CCBC341C4FB3DEB0A6CB4" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil31081CE7530AD3153950ED6E0BC1AD4D" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sk_SK.qm" />
             </Component>
-            <Component Id="cmpA1B072A3F5973EDB840EE2C55B536ABC" Directory="dir4AD0B3BC5E5530AF4A888ED31F98A3AB" Guid="*" Win64="yes">
-                <File Id="fil496D906F2E0EED544EF0590DC0C01E38" KeyPath="yes" Source="$(var.ReleaseDir)\sqldrivers\qsqlite.dll" />
+            <Component Id="cmp7833328F2B94039C4B34A64A66ED4408" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil1FB1C078BA6ED07329CF8571AB6B0247" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sl.qm" />
+            </Component>
+            <Component Id="cmpC25445BAB873C893070509DD7A14B73B" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filA0944EFE08BDDB583FE5403867553C09" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sq_AL.qm" />
+            </Component>
+            <Component Id="cmpAA1F78F7EF33E4B20BDBE9415DE4A114" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil646D0F56EDA9A7049F0F740A15AB7C9F" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_sv.qm" />
+            </Component>
+            <Component Id="cmpE432BB9A03B50B81F76CBDB5E20695EC" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil112335B81B7EACE261E36E9276863813" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_tr.qm" />
+            </Component>
+            <Component Id="cmp00D46020362B0A6C6497EB1E3F2B9986" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="fil739C85F84375AAC2ED5F32B57786B4D2" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_uk.qm" />
+            </Component>
+            <Component Id="cmp6889BD1B61EACE0E0630851302EDF845" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filD06A931DBBC4E5E3AE026D0A4CB248AE" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh.qm" />
+            </Component>
+            <Component Id="cmp47F09581EA91AA09DFDAE8121F2B90C8" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filB993E37146B04949E97FAC974EAD2090" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh_CN.qm" />
+            </Component>
+            <Component Id="cmpDFF434C89D4C9A8B8A3414241C3E6246" Directory="dir420CB0A82B30CB94ECE52093C251C838" Guid="*">
+                <File Id="filF91684E2B79BE1E7D999A74D7264BC36" KeyPath="yes" Source="$(var.ReleaseDir)\share\ring\translations\ring_client_windows_zh_TW.qm" />
+            </Component>
+            <Component Id="cmpBC385B906096443F6DC4C3767061BBDE" Directory="dirB0464CDDD7F688E489E6F1D2F96F31F0" Guid="*">
+                <File Id="filC97BC424F11C37467BBFF0336123223C" KeyPath="yes" Source="$(var.ReleaseDir)\sqldrivers\qsqlite.dll" />
+            </Component>
+            <Component Id="cmp95004204E380692907D9B8A8B15F0679" Directory="dir9547552AF1C663D335D0C41A2A64C65D" Guid="*">
+                <File Id="filC676675ED546E4D9F9F7203FBBE3D961" KeyPath="yes" Source="$(var.ReleaseDir)\translations\qtwebengine_locales\en-US.pak" />
             </Component>
         </ComponentGroup>
     </Fragment>
     <Fragment>
-        <DirectoryRef Id="dir2B882A2C0828718F11D164F0487238A7">
-            <Directory Id="dir5AA3A44E12BE285CC8CA0EFB70CEAA2A" Name="ring" />
+        <DirectoryRef Id="dir6D53BEA5EB5D629C07A29BA956493A31">
+            <Directory Id="dir420CB0A82B30CB94ECE52093C251C838" Name="translations" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
-        <DirectoryRef Id="dirF91ED4317D7EB2BB4152FBEC7D7BEC8B">
-            <Directory Id="dir6F93A1A3A62B19C02CBF9547434EA16F" Name="translations" />
+        <DirectoryRef Id="dir5CFEF18C6BC63DC5544975B569015BCA">
+            <Directory Id="dir6D53BEA5EB5D629C07A29BA956493A31" Name="ring" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
-        <DirectoryRef Id="dir5AA3A44E12BE285CC8CA0EFB70CEAA2A">
-            <Directory Id="dir7DFB5C82C3D80E5487E243AD8C4D4DB2" Name="translations" />
+        <DirectoryRef Id="dirECC29599FCFE9E458549A895F0628289">
+            <Directory Id="dir9547552AF1C663D335D0C41A2A64C65D" Name="qtwebengine_locales" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
-        <DirectoryRef Id="dir2B882A2C0828718F11D164F0487238A7">
-            <Directory Id="dirF91ED4317D7EB2BB4152FBEC7D7BEC8B" Name="libringclient" />
+        <DirectoryRef Id="dir5CFEF18C6BC63DC5544975B569015BCA">
+            <Directory Id="dirD809BDCAEDA58745E7815B453DB5A479" Name="libringclient" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dirD809BDCAEDA58745E7815B453DB5A479">
+            <Directory Id="dirF560EF30184CEDA73D1579B245D36652" Name="translations" />
         </DirectoryRef>
     </Fragment>
 </Wix>
