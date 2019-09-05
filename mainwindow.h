@@ -69,6 +69,7 @@ private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void notificationClicked();
     void slotScreenChanged(QScreen* screen);
+    void slotAccountListChanged();
 
 private:
     explicit MainWindow(QWidget* parent = 0);
@@ -82,6 +83,9 @@ private:
     Qt::WindowState currentWindowState_{ Qt::WindowState::WindowNoState };
 
     void readSettingsFromRegistry();
+
+    QAction* settingsAction_;
+    QAction* exitAction_;
 
     Ui::MainWindow* ui;
     QNetworkConfigurationManager netManager_;

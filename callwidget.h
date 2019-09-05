@@ -63,7 +63,7 @@ public:
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
-    virtual void slotAccountOnBoarded();
+    virtual void slotAccountListChanged();
 
 public slots:
     void on_ringContactLineEdit_returnPressed();

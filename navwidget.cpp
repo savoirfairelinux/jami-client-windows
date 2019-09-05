@@ -24,8 +24,8 @@
 NavWidget::NavWidget(QWidget* parent) :
     QWidget(parent)
 {
-    Utils::oneShotConnect(&LRCInstance::instance(), &LRCInstance::accountOnBoarded,
-                          this, &NavWidget::slotAccountOnBoarded);
+    Utils::oneShotConnect(&LRCInstance::instance(), &LRCInstance::accountListChanged,
+                          this, &NavWidget::slotAccountListChanged);
 }
 
 NavWidget::~NavWidget()

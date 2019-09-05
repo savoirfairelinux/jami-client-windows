@@ -49,7 +49,7 @@ public:
     virtual void navigated(bool to);
     virtual void updateCustomUI();
 public slots:
-    virtual void slotAccountOnBoarded();
+    virtual void slotAccountListChanged();
 
 private:
     Ui::SettingsWidget* ui;
@@ -78,7 +78,8 @@ private:
     void setRegNameUi(RegName stat);
     void removeDeviceSlot(int index);
     void unban(int index);
-    void setConnections();
+    void connectCurrentAccount();
+    void disconnectAccountConnections();
     void populateGeneralSettings();
     void populateAVSettings();
     void setFormatListForDevice(const std::string& device);
@@ -89,6 +90,7 @@ private:
     void startAudioMeter(bool blocking = false);
     void stopAudioMeter(bool blocking = false);
 
+    QList<QMetaObject::Connection> accountConnections_;
     QString registeredName_;
     lrc::api::account::ConfProperties_t confProps_;
     AdvancedSettingsWidget* advancedSettingsWidget_;

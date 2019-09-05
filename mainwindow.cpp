@@ -56,9 +56,9 @@ MainWindow::MainWindow(QWidget* parent)
                             navWidget->navigated(scr == i);
                         }
                         if (scr == ScreenEnum::WizardScreen) {
-                            setWindowTitle(QStringLiteral("Log In"));
+                            setWindowTitle(QObject::tr("Setup account"));
                         } else if (scr == ScreenEnum::SetttingsScreen) {
-                            setWindowTitle(QStringLiteral("Settings"));
+                            setWindowTitle(QObject::tr("Settings"));
                         } else {
                             setWindowTitle(QStringLiteral("Jami"));
                         }
@@ -74,62 +74,6 @@ MainWindow::MainWindow(QWidget* parent)
 
     QIcon icon(":images/jami.png");
     this->setWindowIcon(icon);
-
-    GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
-    sysIcon.setIcon(icon);
-
-    QMenu* menu = new QMenu();
-
-    auto configAction = new QAction(tr("Settings"), this);
-    connect(configAction, &QAction::triggered,
-        [this]() {
-            if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
-                emit currentWidget->NavigationRequested(ScreenEnum::SetttingsScreen);
-                showWindow();
-            }
-        });
-    menu->addAction(configAction);
-
-    auto exitAction = new QAction(tr("Exit"), this);
-    connect(exitAction, &QAction::triggered,
-        [this]() {
-            QCoreApplication::exit();
-        });
-    menu->addAction(exitAction);
-
-    sysIcon.setContextMenu(menu);
-    sysIcon.show();
-
-    connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-        this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
-
-#ifdef Q_OS_WIN
-    HMENU sysMenu = ::GetSystemMenu((HWND)winId(), FALSE);
-    if (sysMenu != NULL) {
-        ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
-        QString aboutTitle = tr("About");
-        ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
-    }
-
-    // check for updates and start automatic update check if needed
-    QSettings settings("jami.net", "Jami");
-    if (!settings.contains(SettingsKey::autoUpdate)) {
-        settings.setValue(SettingsKey::autoUpdate, true);
-    }
-    if (settings.value(SettingsKey::autoUpdate).toBool()) {
-        Utils::checkForUpdates(false, this);
-    }
-    updateTimer_ = new QTimer(this);
-    connect(updateTimer_, &QTimer::timeout,
-        [this]() {
-            QSettings settings("jami.net", "Jami");
-            if (settings.value(SettingsKey::autoUpdate).toBool()) {
-                Utils::checkForUpdates(false, this);
-            }
-        });
-    long updateCheckDelay = 4 * 86400 * 1000;
-    updateTimer_->start(updateCheckDelay);
-#endif
 
     setContextMenuPolicy(Qt::NoContextMenu);
 
@@ -149,7 +93,7 @@ MainWindow::MainWindow(QWidget* parent)
     if (accountList.size()) {
         readSettingsFromRegistry();
         startScreen = ScreenEnum::CallScreen;
-        emit LRCInstance::instance().accountOnBoarded();
+        emit LRCInstance::instance().accountListChanged();
         setWindowTitle(QStringLiteral("Jami"));
     } else {
         startScreen = ScreenEnum::WizardScreen;
@@ -165,6 +109,66 @@ MainWindow::MainWindow(QWidget* parent)
     }
 
     lastScr_ = startScreen;
+
+    // systray menu
+    GlobalSystemTray& sysIcon = GlobalSystemTray::instance();
+    sysIcon.setIcon(icon);
+
+    QMenu* menu = new QMenu();
+
+    settingsAction_ = new QAction(tr("Settings"), this);
+    connect(settingsAction_, &QAction::triggered,
+        [this]() {
+            if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
+                emit currentWidget->NavigationRequested(ScreenEnum::SetttingsScreen);
+                showWindow();
+            }
+        });
+
+    exitAction_ = new QAction(tr("Exit"), this);
+    connect(exitAction_, &QAction::triggered,
+            [this]() { QCoreApplication::exit(); });
+
+    sysIcon.setContextMenu(menu);
+    sysIcon.show();
+
+    connect(&sysIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+            this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
+
+    slotAccountListChanged();
+
+    // only add settings action once in the principal interface
+    connect(&LRCInstance::instance(), &LRCInstance::accountListChanged,
+            this, &MainWindow::slotAccountListChanged);
+
+    // about menu
+#ifdef Q_OS_WIN
+    HMENU sysMenu = ::GetSystemMenu((HWND)winId(), FALSE);
+    if (sysMenu != NULL) {
+        ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
+        QString aboutTitle = tr("About");
+        ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
+    }
+
+    // check for updates and start automatic update check if needed
+    QSettings settings("jami.net", "Jami");
+    if (!settings.contains(SettingsKey::autoUpdate)) {
+        settings.setValue(SettingsKey::autoUpdate, true);
+    }
+    if (settings.value(SettingsKey::autoUpdate).toBool()) {
+        Utils::checkForUpdates(false, this);
+    }
+    updateTimer_ = new QTimer(this);
+    connect(updateTimer_, &QTimer::timeout,
+        [this]() {
+        QSettings settings("jami.net", "Jami");
+        if (settings.value(SettingsKey::autoUpdate).toBool()) {
+            Utils::checkForUpdates(false, this);
+        }
+    });
+    long updateCheckDelay = 4 * 86400 * 1000;
+    updateTimer_->start(updateCheckDelay);
+#endif
 
 #ifdef DEBUG_STYLESHEET
     QTimer *timer = new QTimer(this);
@@ -388,4 +392,16 @@ void MainWindow::keyReleaseEvent(QKeyEvent* ke)
 {
     emit keyReleased(ke);
     QMainWindow::keyReleaseEvent(ke);
+}
+
+void MainWindow::slotAccountListChanged()
+{
+    auto systrayMenu = GlobalSystemTray::instance().contextMenu();
+    systrayMenu->clear();
+    if (LRCInstance::accountModel().getAccountList().size()) {
+        systrayMenu->addAction(settingsAction_);
+        systrayMenu->addAction(exitAction_);
+    } else {
+        systrayMenu->addAction(exitAction_);
+    }
 }
