@@ -231,14 +231,38 @@
             <Component Id="cmp21419E99DF87022FDBECFCD84419367D" Directory="dirD51FBD42A867274D15CA506A46837A01" Guid="*">
                 <File Id="filC0874EE1D090731F0E6723D59457FAB0" KeyPath="yes" Source="$(var.ReleaseDir)\resources\qtwebengine_resources_200p.pak" />
             </Component>
+            <Component Id="cmp9D0E744EB5812854A69347B7CF1ABA5E" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filD390C0C4A2CEC940B7D4BD09EE068A29" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\01_AfroNigeria.opus" />
+            </Component>
+            <Component Id="cmp184189344D489A3CFE3BA559FB3685DA" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filE1E51C40CF2532E10DD8F448F6EB4A32" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\02_AfroNigeria.opus" />
+            </Component>
+            <Component Id="cmp8E59578710AF17C3E09ED80EF4081743" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil70DBDA21596E8253C26D6081449C7B70" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\03_AcousticGuitar.opus" />
+            </Component>
+            <Component Id="cmp4C4526FF93566BE394A369E0AACB7CC1" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filB3ADB0BBB50F6A27F164E0EFF6E57DA4" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\04_ElectricGuitar.opus" />
+            </Component>
+            <Component Id="cmpDD149C65BDEAAC373643E2DF78AB9356" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil10CFF4F50FAE3E0EFBD981955C7E236C" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\05_AcousticIndia.opus" />
+            </Component>
+            <Component Id="cmpED250557317CC7C52B89E9C4DEE3CAAE" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil5984589DFCA10C96B00485C6D92DF8EA" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\06_RingSoft.opus" />
+            </Component>
+            <Component Id="cmp39F2FE4C059E73C6C3420866D38CE7FB" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filE33F95F1F157979B2C61ECD9B9082855" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\07_RingTribal.opus" />
+            </Component>
+            <Component Id="cmp926ED761A67F5653EAB91E32FC5CFD78" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="filB564E280A601B2AEFC4FBA6EDB3F4D07" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\08_RingFirefly.opus" />
+            </Component>
+            <Component Id="cmpE1E41F8959B87130AA1F4681ED8B4D0C" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil87624691F4042EB8D89D9C59320CEB7D" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\09_ElectroCloud.opus" />
+            </Component>
+            <Component Id="cmp16743C0C600977B589DBD69AF8FDED3E" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
+                <File Id="fil1CE2DDD69818C70EBE95BA519132F0B6" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\10_UrbanTrap.opus" />
+            </Component>
             <Component Id="cmp40487D2F0CF92E30BE770BDD274CECA9" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
                 <File Id="filD398EC1B9B4C12F6F7868C175EC983B7" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.opus" />
-            </Component>
-            <Component Id="cmpC7E43EAB72E7EE0382587DBA2495481C" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
-                <File Id="fil75FCF1992897B935C2A963E37786E3ED" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\default.wav" />
-            </Component>
-            <Component Id="cmp216BFD0A0243D6D9596F1E61405D6E91" Directory="dirFA5E6F9E18091633C3DB379D639B3B19" Guid="*">
-                <File Id="filD2ABD8C28DA50B31F64AD39E51B59F95" KeyPath="yes" Source="$(var.ReleaseDir)\ringtones\konga.ul" />
             </Component>
             <Component Id="cmpBDA3764E1634B79D3320C86C4B6661E0" Directory="dirF560EF30184CEDA73D1579B245D36652" Guid="*">
                 <File Id="fil8995FC63589D0F5A92C75FF3DCDB4019" KeyPath="yes" Source="$(var.ReleaseDir)\share\libringclient\translations\lrc_ar.qm" />
