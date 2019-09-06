@@ -869,6 +869,9 @@ CallWidget::setConversationProfileData(const lrc::api::conversation::Info& convI
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto accInfo = &LRCInstance::getCurrentAccountInfo();
     auto contactUri = convInfo.participants.front();
+    if (contactUri.empty()) {
+        return;
+    }
     try {
         auto& contact = accInfo->contactModel->getContact(contactUri);
         auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
