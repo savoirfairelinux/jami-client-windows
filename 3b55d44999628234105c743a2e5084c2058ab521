@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7dbfc2_c8daf25c",
+        "filename": "videooverlay.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-09-06T21:33:01Z",
+      "side": 1,
+      "message": "not required",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "3b55d44999628234105c743a2e5084c2058ab521",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1474085c_b5cccb84",
+        "filename": "videoview.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-09-06T21:33:01Z",
+      "side": 1,
+      "message": "#include \"callaudioonlyavataroverlay.h\"\n#include \"videooverlay.h\"\n\n#include \"api/conversationmodel.h\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "3b55d44999628234105c743a2e5084c2058ab521",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
