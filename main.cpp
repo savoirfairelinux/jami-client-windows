@@ -249,9 +249,15 @@ main(int argc, char* argv[])
         MainWindow::instance().hide();
     }
 
-    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { guard.release(); });
+    QObject::connect(&a, &QApplication::aboutToQuit,
+        [&guard] {
+            GlobalSystemTray::instance().hide();
+            guard.release();
+        });
+
     splash->finish(&MainWindow::instance());
     splash->deleteLater();
+
     auto ret = a.exec();
 
     LRCInstance::reset();
@@ -259,10 +265,6 @@ main(int argc, char* argv[])
 #ifdef Q_OS_WIN
     FreeConsole();
 #endif
-
-    QCoreApplication::exit();
-    GlobalSystemTray::instance().deleteLater();
-    GlobalSystemTray::instance().hide();
 
     return ret;
 }
