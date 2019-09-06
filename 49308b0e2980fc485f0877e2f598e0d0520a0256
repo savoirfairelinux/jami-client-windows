@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa96d90c_ede0c273",
+        "filename": "jami-qt.pro",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-09-06T21:55:49Z",
+      "side": 1,
+      "message": "rebase issue here",
+      "revId": "49308b0e2980fc485f0877e2f598e0d0520a0256",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d459387_1febef59",
+        "filename": "videooverlay.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-09-06T21:55:49Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 91
+      },
+      "revId": "49308b0e2980fc485f0877e2f598e0d0520a0256",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
