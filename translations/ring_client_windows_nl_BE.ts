@@ -113,17 +113,17 @@ Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN-paswoord</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN-adres</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -221,7 +221,7 @@ Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="571"/>
         <source>Private Key Password</source>
-        <translation>Wachtwoord persoonlijke sleutel</translation>
+        <translation>Paswoord persoonlijke sleutel</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
@@ -266,17 +266,17 @@ Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN-paswoord</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN-gebruikersnaam</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN-adres</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -322,12 +322,12 @@ Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>naam</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -345,7 +345,7 @@ Jami is software voor beveiligde en gedistribueerde communicatie.</translation>
     <message>
         <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
-        <translation>Tekstinvoer contact zoeken</translation>
+        <translation>Tekstingave contact zoeken</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="653"/>
@@ -396,7 +396,7 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
-        <translation>Knop terug naar startpagina</translation>
+        <translation>Knop terug naar startblad</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1943"/>
@@ -565,7 +565,7 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>Apparaats-ID</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -601,12 +601,12 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Geef uw accountpaswoord in</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
@@ -621,12 +621,12 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation type="unfinished"/>
+        <translation>Account wordt geëxporteerd</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Uw pincode is</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -636,7 +636,7 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>U moet deze pincode en het accountpaswoord binnen de 10 minuten op uw nieuwe apparaat ingeven.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -651,7 +651,7 @@ Kopieer en deel hem met uw vrienden!</translation>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation>Verkeerd wachtwoord</translation>
+        <translation>Verkeerd paswoord</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
@@ -694,22 +694,22 @@ Herprobeer het later.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Geef uw accountpaswoord in</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
         <source>Password text input</source>
-        <translation>Wachtwoordtekstinvoer</translation>
+        <translation>Paswoordtekstingave</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation>Wachtwoordtekstinvoer</translation>
+        <translation>Paswoordtekstingave</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
@@ -724,12 +724,12 @@ Herprobeer het later.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>Naam wordt geregistreerd</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Er is iets misgegaan</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -739,7 +739,7 @@ Herprobeer het later.</translation>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation>Verkeerd wachtwoord</translation>
+        <translation>Verkeerd paswoord</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
@@ -802,17 +802,17 @@ Herprobeer het later.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>Knop Jami-SIP-account aanmaken</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Trekker voor starten van aanmaken van Jami-SIP-account na druk op knop</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>Maak een SIP-account aan</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -867,7 +867,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation>Wachtwoord:</translation>
+        <translation>Paswoord:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
@@ -925,29 +925,29 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1289"/>
         <source>Password text input</source>
-        <translation>Wachtwoordtekstinvoer</translation>
+        <translation>Paswoordtekstingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
-        <translation>Wachtwoordtekstinvoer</translation>
+        <translation>Paswoordtekstingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1301"/>
         <location filename="../newwizardwidget.ui" line="2213"/>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1211"/>
         <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
-        <translation>Wachtwoordbevestigingstekstinvoer</translation>
+        <translation>Paswoordbevestigingstekstingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
         <source>Confirm password</source>
-        <translation>Bevestig wachtwoord</translation>
+        <translation>Bevestig paswoord</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>
@@ -957,22 +957,22 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>SIP-server bewerken</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>SIP-proxy-ingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP-proxy-tekstingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -982,12 +982,12 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
         <source>SIP username input</source>
-        <translation>SIP-gebruikersnaaminvoer</translation>
+        <translation>SIP-gebruikersnaamingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP-paswoord-tekstingave</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -998,7 +998,7 @@ in plaats van uw Ring-ID.</translation>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>SIP-paswoord-tekstingave</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -1008,12 +1008,12 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
-        <translation>Knop vorige pagina</translation>
+        <translation>Knop vorig blad</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation>druk op de knop om naar de vorige pagina van de assistent te gaan</translation>
+        <translation>druk op de knop om naar het vorige blad van de assistent te gaan</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1038,12 +1038,12 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
-        <translation>Knop volgende pagina</translation>
+        <translation>Knop volgend blad</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation>Druk op de knop om naar de volgende pagina van de assistent te gaan</translation>
+        <translation>Druk op de knop om naar het volgende blad van de assistent te gaan</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1063,7 +1063,7 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Uw account moet gemigreerd worden. Geef uw wachtwoord in.</translation>
+        <translation>Uw account moet gemigreerd worden. Geef uw paswoord in.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
@@ -1083,7 +1083,7 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Uw SIP-account wordt gegenereerd…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1096,22 +1096,22 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation>Accountwachtwoord wijzigen</translation>
+        <translation>Accountpaswoord wijzigen</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
-        <translation>Geef huidig wachtwoord in</translation>
+        <translation>Geef huidig paswoord in</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation>Geef nieuw wachtwoord in</translation>
+        <translation>Geef nieuw paswoord in</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation>Bevestig nieuw wachtwoord</translation>
+        <translation>Bevestig nieuw paswoord</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
@@ -1126,7 +1126,7 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
-        <translation>Huidige wachtwoord is verkeerd</translation>
+        <translation>Huidig paswoord is verkeerd</translation>
     </message>
 </context>
 <context>
@@ -1194,12 +1194,12 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe apparaatsnaam opslaan</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Toevoegen aan contacten</translation>
     </message>
 </context>
 <context>
@@ -1302,7 +1302,7 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1418"/>
@@ -1313,27 +1313,27 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>schakelaar meldingen inschakelen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Schakelaar minimaliseren bij sluiten</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Gespreksopnames</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Schakelaar automatische updates</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami-account</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1370,7 +1370,7 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation>Wachtwoord wijzigen</translation>
+        <translation>Paswoord wijzigen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
@@ -1401,17 +1401,17 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Framerateselectie video-apparaat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Voorbeeld onbeschikbaar</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1493,7 +1493,7 @@ in plaats van uw Ring-ID.</translation>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Geef een alias in</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
@@ -1508,12 +1508,12 @@ in plaats van uw Ring-ID.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation>Geef het wachtwoord van deze account in om het verwijderen van dit apparaat te bevestigen</translation>
+        <translation>Geef het paswoord van deze account in om het verwijderen van dit apparaat te bevestigen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Weet u zeker dat u dit apparaat wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
