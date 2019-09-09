@@ -34,8 +34,8 @@ $FilesToCopy = @(
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swresample-3.dll",
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\swscale-5.dll",
     "$daemonDir\contrib\build\ffmpeg\Build\win32\x64\bin\avfilter-7.dll",
-    "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\libeay32.dll",
-    "$daemonDir\contrib\build\restbed\dependency\openssl\out32dll\ssleay32.dll",
+    "$daemonDir\contrib\build\openssl\out32dll\libeay32.dll",
+    "$daemonDir\contrib\build\openssl\out32dll\ssleay32.dll",
     "$ClientDir\qt.conf",
     "$ClientDir\images\jami.ico"
     "$ClientDir\License.rtf"
