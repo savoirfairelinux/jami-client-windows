@@ -1232,20 +1232,26 @@ CallWidget::updateConversationForNewContact(const std::string& convUid)
 void
 CallWidget::updateSmartList()
 {
-    if (!ui->smartList->model()) {
-        smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this));
-        ui->smartList->setModel(smartListModel_.get());
-        ui->smartList->setItemDelegate(new ConversationItemDelegate());
-    } else {
-        smartListModel_->setAccount(LRCInstance::getCurrAccId());
-    }
 
-    // smartlist selection
-    QObject::disconnect(smartlistSelectionConnection_);
-    smartlistSelectionConnection_ = connect(ui->smartList->selectionModel(),
-        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
-        this,
-        SLOT(smartListSelectionChanged(QItemSelection, QItemSelection)));
+    try {
+        if (!ui->smartList->model()) {
+            smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this));
+            ui->smartList->setModel(smartListModel_.get());
+            ui->smartList->setItemDelegate(new ConversationItemDelegate());
+        } else {
+            smartListModel_->setAccount(LRCInstance::getCurrAccId());
+        }
+
+        // smartlist selection
+        QObject::disconnect(smartlistSelectionConnection_);
+        smartlistSelectionConnection_ = connect(ui->smartList->selectionModel(),
+            SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+            this,
+            SLOT(smartListSelectionChanged(QItemSelection, QItemSelection)));
+    } catch (...) {
+        qWarning() << "No account selected!";
+        return;
+    }
 }
 
 void
