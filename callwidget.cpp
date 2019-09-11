@@ -738,6 +738,8 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
         ui->messagesWidget->show();
     }
 
+    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
+
     QFontMetrics primaryCallLabelFontMetrics(ui->callingBestNameLabel->font());
     QFontMetrics sencondaryCallLabelFontMetrics(ui->callingBestIdLabel->font());
 
