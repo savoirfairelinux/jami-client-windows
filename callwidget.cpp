@@ -65,8 +65,12 @@ CallWidget::CallWidget(QWidget* parent) :
     QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
     clipboard_ = QApplication::clipboard();
 
-    QPixmap logo(":/images/logo-jami-standard-coul.png");
-    ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
+    //QPixmap logo(":/images/logo-jami-standard-coul.png");
+    //ui->ringLogo->setPixmap(logo.scaledToHeight(100, Qt::SmoothTransformation));
+
+    QPixmap logo(":/images/commune-jami.png");
+    ui->ringLogo->setPixmap(logo.scaledToHeight(480, Qt::SmoothTransformation));
+
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
     ui->qrLabel->hide();
