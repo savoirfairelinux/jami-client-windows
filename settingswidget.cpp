@@ -464,10 +464,10 @@ void SettingsWidget::updateAccountInfoDisplayed()
     }
 
     // sip avatar set
-    setAvatar(ui->currentSIPAccountAvatar, true);
+    setAvatar(ui->currentSIPAccountAvatar, false);
 
     // jami avatar set
-    setAvatar(ui->currentAccountAvatar, true);
+    setAvatar(ui->currentAccountAvatar, false);
 
     ui->accountEnableCheckBox->setChecked(accInfo.enabled);
     ui->accountSIPEnableCheckBox->setChecked(accInfo.enabled);

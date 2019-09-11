@@ -304,7 +304,6 @@ void MainWindow::changeEvent(QEvent* e)
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    LRCInstance::avModel().stopPreview();
     QSettings settings("jami.net", "Jami");
     if (LRCInstance::accountModel().getAccountList().size() &&
         settings.value(SettingsKey::closeOrMinimized).toBool()) {
