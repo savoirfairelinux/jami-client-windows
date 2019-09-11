@@ -302,13 +302,14 @@ QPushButton#dhtImportBtn, QPushButton#fileImportBtn, QPushButton#changePassBtn, 
 }
 
 QPushButton#nextButton:disabled, QPushButton#playButton:disabled, QPushButton#clearHistoryButton:disabled,
-QPushButton#doTransferButton:disabled, QPushButton#photoButton:disabled,
+QPushButton#doTransferButton:disabled, QPushButton#photoButton:disabled, QPushButton#fromBackupButton:disabled
 QPushButton#existingPushButton:disabled, QPushButton#newAccountButton:disabled, QPushButton#previousButton:disabled, QPushButton#newSIPAccountButton:disabled,
 QPushButton#exportButton:disabled, QPushButton#cancelAddButton:disabled, QPushButton#exportOnRingButton:disabled,
 QPushButton#addDeviceButton:disabled, QPushButton#exportEndedOkButton:disabled, QPushButton#errorPushButton:disabled,
 QPushButton#registerButton:disabled, QPushButton#acceptCRButton:disabled, QPushButton#discardCRButton:disabled,
 QPushButton#deleteCancelBtn:disabled, QPushButton#dhtImportBtn:disabled, QPushButton#fileImportBtn:disabled,
-QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled {
+QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled,
+QPushButton#fromDeviceButton:disabled, QPushButton#connectAccountManagerButton:disabled {
     background: rgba(242, 242, 242, 0.8);
     color: grey;
 }
@@ -321,13 +322,14 @@ QPushButton#cancelChangeBtn {
 }
 
 QPushButton#nextButton:hover, QPushButton#playButton:hover, QPushButton#clearHistoryButton:hover,
-QPushButton#doTransferButton:hover, QPushButton#photoButton:hover,
+QPushButton#doTransferButton:hover, QPushButton#photoButton:hover, QPushButton#fromBackupButton:hover,
 QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushButton#previousButton:hover, QPushButton#newSIPAccountButton:hover,
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
 QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover,
-QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover, QPushButton#backButton:hover {
+QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover, QPushButton#backButton:hover,
+QPushButton#fromDeviceButton:hover, QPushButton#connectAccountManagerButton:hover {
     background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #2b4b7e, stop: 1.0 #001d4d);
     color: white;
 }
