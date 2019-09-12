@@ -199,6 +199,12 @@ MainWindow::MainWindow(QWidget* parent)
             this, &MainWindow::slotSwitchVideoWidget);
     connect(ui->settingswidget, &SettingsWidget::videoInputDeviceConnectionLost,
             this, &MainWindow::slotSwitchVideoWidget);
+
+    connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
+        [this](const std::string& accountId) {
+            Q_UNUSED(accountId);
+            emit LRCInstance::instance().accountListChanged();
+        });
 }
 
 MainWindow::~MainWindow()
@@ -414,6 +420,11 @@ void MainWindow::slotAccountListChanged()
         systrayMenu->addAction(exitAction_);
     } else {
         systrayMenu->addAction(exitAction_);
+    }
+    if (!LRCInstance::accountModel().getAccountList().size()) {
+        if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
+            emit currentWidget->NavigationRequested(ScreenEnum::WizardScreen);
+        }
     }
 }
 
