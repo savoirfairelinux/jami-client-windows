@@ -68,25 +68,25 @@ QPushButton#btnConversations, QPushButton#btnInvites {
     border-left: 2px solid rgb(240, 240, 240);
 }
 
-    QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
-        background-color: rgb(188, 185, 184);
-        border-top: 2px solid rgb(188, 185, 184);
-        border-right: 2px solid rgb(188, 185, 184);
-        border-bottom: 2px solid rgb(188, 185, 184);
-        border-left: 2px solid rgb(188, 185, 184);
-    }
+QPushButton#btnConversations:hover, QPushButton#btnInvites:hover {
+    background-color: rgb(188, 185, 184);
+    border-top: 2px solid rgb(188, 185, 184);
+    border-right: 2px solid rgb(188, 185, 184);
+    border-bottom: 2px solid rgb(188, 185, 184);
+    border-left: 2px solid rgb(188, 185, 184);
+}
 
-    QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
-        background-color: rgb(255, 255, 255);
-        border-bottom: 2px solid rgb(255, 255, 255);
-    }
+QPushButton#btnConversations:checked, QPushButton#btnInvites:checked {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
 
-    QPushButton#btnConversations:hover:checked, QPushButton#btnInvites:hover:checked {
-        border-top: 2px solid rgb(240, 240, 240);
-        border-right: 2px solid rgb(240, 240, 240);
-        border-bottom: 2px solid rgb(255, 255, 255);
-        border-left: 2px solid rgb(240, 240, 240);
-    }
+QPushButton#btnConversations:hover:checked, QPushButton#btnInvites:hover:checked {
+    border-top: 2px solid rgb(240, 240, 240);
+    border-right: 2px solid rgb(240, 240, 240);
+    border-bottom: 2px solid rgb(255, 255, 255);
+    border-left: 2px solid rgb(240, 240, 240);
+}
 
 QPushButton#imBackButton, QPushButton#btnAcceptInvite, QPushButton#btnIgnoreInvite,
 QPushButton#btnBlockInvite, QPushButton#btnAudioCall, QPushButton#btnVideoCall,
@@ -183,7 +183,7 @@ QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushBu
 QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
 QPushButton#qualityButton, QPushButton#recButton, QPushButton#transferCallButton,
 QPushButton#sipInputPanelButton {
-    background-color: rgba(0, 0, 0, 140);
+    background-color: transparent;
     border-radius: 18px;
     border: solid 1px;
 }
@@ -193,7 +193,7 @@ QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#a
 QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
 QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
 QPushButton#sipInputPanelButton:hover {
-    background-color: rgba(0, 0, 0, 140);
+    background-color: transparent;
     border-radius: 18px;
     border: solid 1px;
 }
@@ -202,7 +202,7 @@ QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMi
 QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
 QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
 QPushButton#recButton:pressed {
-    background-color: rgba(0, 0, 0, 140);
+    background-color: transparent;
     border-radius: 18px;
     border: solid 1px;
 }
@@ -211,7 +211,7 @@ QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#han
 QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
 QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
 QPushButton#sipInputPanelButton:checked {
-    background-color: rgba(0, 0, 0, 140);
+    background-color: transparent;
     border-radius: 18px;
     border: solid 1px;
 }
@@ -532,23 +532,23 @@ QSpinBox {
     margin-bottom: 4px;
 }
 
-    QSpinBox::up-button {
-        subcontrol-origin: border;
-        subcontrol-position: top right;
-        width: 16px;
-        height: 18px;
-        padding-right: 4px;
-        margin-top: 3px;
-    }
+QSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    height: 18px;
+    padding-right: 4px;
+    margin-top: 3px;
+}
 
-    QSpinBox::down-button {
-        subcontrol-origin: border;
-        subcontrol-position: bottom right;
-        width: 16px;
-        height: 18px;
-        padding-right: 4px;
-        margin-bottom: 3px;
-    }
+QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    height: 18px;
+    padding-right: 4px;
+    margin-bottom: 3px;
+}
 
 /* SettingsWidget { */
 SettingsWidget QLabel#wrongPasswordLabel {
@@ -570,17 +570,17 @@ SettingsWidget QPushButton {
     background-color: rgb(242, 242, 242);
 }
 
-    SettingsWidget QPushButton:hover {
-        background-color: rgb(237, 237, 237);
-    }
+SettingsWidget QPushButton:hover {
+    background-color: rgb(237, 237, 237);
+}
 
-    SettingsWidget QPushButton:pressed {
-        background-color: rgb(212, 212, 212);
-    }
+SettingsWidget QPushButton:pressed {
+    background-color: rgb(212, 212, 212);
+}
 
-    SettingsWidget QPushButton:disabled {
-       color: gray;
-    }
+SettingsWidget QPushButton:disabled {
+    color: gray;
+}
 
 SettingsWidget QLabel:disabled {
     color: rgb(160, 160, 160);
@@ -639,17 +639,17 @@ SettingsWidget QPushButton#btnSIPDeletAccount {
     color: white;
 }
 
-    SettingsWidget QPushButton#btnDeletAccount:hover,
-    SettingsWidget QPushButton#btnSIPDeletAccount:hover {
-        background-color: red;
-        color: white;
-    }
+SettingsWidget QPushButton#btnDeletAccount:hover,
+SettingsWidget QPushButton#btnSIPDeletAccount:hover {
+    background-color: red;
+    color: white;
+}
 
-    SettingsWidget QPushButton#btnDeletAccount:pressed,
-    SettingsWidget QPushButton#btnSIPDeletAccount:pressed {
-        background-color: darkred;
-        color: white;
-    }
+SettingsWidget QPushButton#btnDeletAccount:pressed,
+SettingsWidget QPushButton#btnSIPDeletAccount:pressed {
+    background-color: darkred;
+    color: white;
+}
 
 QListView .QLabel#labelDeviceId {
     padding-left: 4px;
@@ -690,39 +690,39 @@ SettingsWidget QListView {
     font-size: 16px;
 }
 
-    SettingsWidget QListView::item {
-        height: 30px;
-        font: 30px;
-        padding: 8px;
-    }
+SettingsWidget QListView::item {
+    height: 30px;
+    font: 30px;
+    padding: 8px;
+}
 
-    SettingsWidget QListView::indicator {
-        height: 12 px;
-        width: 12 px;
-        border: 2px solid rgb(77, 77, 77);
-        border-radius: 4px;
-        background: none;
-    }
+SettingsWidget QListView::indicator {
+    height: 12 px;
+    width: 12 px;
+    border: 2px solid rgb(77, 77, 77);
+    border-radius: 4px;
+    background: none;
+}
 
-    SettingsWidget QListView::indicator:checked {
-        border-color: #2b4b7e;
-        background: #2b4b7e;
-        image: url(":/images/icons/ic_check_white_18dp_2x.png");
-    }
+SettingsWidget QListView::indicator:checked {
+    border-color: #2b4b7e;
+    background: #2b4b7e;
+    image: url(":/images/icons/ic_check_white_18dp_2x.png");
+}
 
-    SettingsWidget QListView::item:selected {
-        background-color: rgba(220, 220, 220, 255);
-        border: none;
-        color: black;
-    }
+SettingsWidget QListView::item:selected {
+    background-color: rgba(220, 220, 220, 255);
+    border: none;
+    color: black;
+}
 
-    SettingsWidget QListView::item:hover {
-        background-color: rgba(229, 229, 229, 255);
-    }
+SettingsWidget QListView::item:hover {
+    background-color: rgba(229, 229, 229, 255);
+}
 
-    SettingsWidget QListView::item:disabled {
-        background-color: transparent;
-    }
+SettingsWidget QListView::item:disabled {
+    background-color: transparent;
+}
 
 /* } SettingsWidget */
 

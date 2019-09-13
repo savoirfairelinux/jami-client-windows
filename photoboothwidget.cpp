@@ -62,7 +62,8 @@ PhotoboothWidget::~PhotoboothWidget()
     delete ui;
 }
 
-void PhotoboothWidget::startBooth(bool isDeviceChanged)
+void
+PhotoboothWidget::startBooth(bool isDeviceChanged)
 {
     hasAvatar_ = false;
     ui->videoFeed->setResetPreview(true);
@@ -91,7 +92,8 @@ void PhotoboothWidget::startBooth(bool isDeviceChanged)
     ui->takePhotoButton->setIcon(QIcon(":/images/icons/baseline-camera_alt-24px.svg"));
 }
 
-void PhotoboothWidget::stopBooth()
+void
+PhotoboothWidget::stopBooth()
 {
     if (!LRCInstance::getActiveCalls().size()) {
         // if no active calls
