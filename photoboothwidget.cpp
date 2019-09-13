@@ -93,9 +93,9 @@ void PhotoboothWidget::startBooth(bool isDeviceChanged)
 
 void PhotoboothWidget::stopBooth()
 {
-    if (!LRCInstance::getActiveCalls().size()) {
+    if (!LRCInstance::getActiveCalls().size() && takePhotoState_) {
         // if no active calls
-        LRCInstance::avModel().stopPreview();
+        QtConcurrent::run([this] { LRCInstance::avModel().stopPreview(); });
     } else if(hasConnection_){
         // if video connection is still on photo booth (now stopBooth will onlt be called once leaving the setting widget)
         emit enterCallWidgetFromSettingsWidgetPhotoBooth(
