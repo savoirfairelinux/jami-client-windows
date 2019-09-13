@@ -557,6 +557,8 @@ NewWizardWidget::createAccount()
     if (isConnectingToManager) {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
             [this](const std::string& accountId) {
+                if (!LRCInstance::accountModel().getAccountList().size())
+                    return;
                 //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
                 confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
