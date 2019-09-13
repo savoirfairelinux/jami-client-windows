@@ -599,14 +599,16 @@ CallWidget::on_ringContactLineEdit_returnPressed()
     }
 }
 
-void CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
+void
+CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
 {
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
     LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
     ui->messageView->setInvitation(false);
 }
 
-void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
+void
+CallWidget::slotBlockInviteClicked(const QModelIndex & index)
 {
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
     if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
@@ -615,7 +617,8 @@ void CallWidget::slotBlockInviteClicked(const QModelIndex & index)
     LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
 }
 
-void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
+void
+CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
 {
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
     if (!convUid.empty() && convUid == LRCInstance::getSelectedConvUid()) {
@@ -624,12 +627,14 @@ void CallWidget::slotIgnoreInviteClicked(const QModelIndex & index)
     LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
 }
 
-void CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
+void
+CallWidget::slotCustomContextMenuRequested(const QPoint& pos)
 {
     setupSmartListContextMenu(pos);
 }
 
-void CallWidget::slotAccountChanged(int index)
+void
+CallWidget::slotAccountChanged(int index)
 {
     try {
         auto accountList = LRCInstance::accountModel().getAccountList();
@@ -639,7 +644,8 @@ void CallWidget::slotAccountChanged(int index)
     }
 }
 
-void CallWidget::slotShowCallView(const std::string& accountId,
+void
+CallWidget::slotShowCallView(const std::string& accountId,
                                   const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
@@ -673,7 +679,8 @@ void CallWidget::slotShowCallView(const std::string& accountId,
     ui->videoWidget->setFocus();
 }
 
-void CallWidget::slotShowIncomingCallView(const std::string& accountId,
+void
+CallWidget::slotShowIncomingCallView(const std::string& accountId,
                                           const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
@@ -755,7 +762,8 @@ void CallWidget::slotShowIncomingCallView(const std::string& accountId,
     ui->smartList->update();
 }
 
-void CallWidget::slotShowChatView(const std::string& accountId,
+void
+CallWidget::slotShowChatView(const std::string& accountId,
                       const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
