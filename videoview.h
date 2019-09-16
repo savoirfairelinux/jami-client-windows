@@ -21,6 +21,7 @@
 #include "callaudioonlyavataroverlay.h"
 #include "videooverlay.h"
 #include "previewrender.h"
+#include "distantrendererwidget.h"
 
 #include "api/conversationmodel.h"
 
@@ -46,6 +47,7 @@ public:
     void setCurrentCalleeName(const QString& CalleeDisplayName);
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
     void reconnectRenderingVideoDeviceChanged();
+    void createNewDistantRenderer(const std::string& callId);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -88,6 +90,7 @@ private:
     bool sharingEntireScreen_ = false;
     std::string currentCallId_;
     int keyPressed_;
+    std::map<std::string, DistantRendererWidget*> distantRendererMap_;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;

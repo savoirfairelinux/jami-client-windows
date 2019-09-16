@@ -65,16 +65,17 @@ VideoView::VideoView(QWidget* parent)
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
-    connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
-        emit this->setChatVisibility(visible);
-        connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
-    });
 
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
     previewRenderer_ = PreviewRenderWidget::attachPreview();
 
     moveAnim_ = new QPropertyAnimation(previewRenderer_, "geometry");
     moveAnim_->setDuration(1000);
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, Qt::black);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
 }
 
 VideoView::~VideoView()
@@ -136,7 +137,7 @@ VideoView::slotCallStatusChanged(const std::string& callId)
     switch (call.status) {
     case Status::IN_PROGRESS:
     {
-        ui->videoWidget->show();
+        distantRendererMap_[callId]->show();
         auto convInfo = Utils::getConversationFromCallId(call.id);
         if (!convInfo.uid.empty()) {
             auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
@@ -254,7 +255,7 @@ VideoView::showContextMenu(const QPoint& pos)
                 // after rendering reconnect
                 previewRenderer_->triggerResetPreviewAfterImageReloaded();
                 previewRenderer_->connectRendering();
-                ui->videoWidget->connectDistantRendering();
+                distantRendererMap_[thisCallId]->connectDistantRendering();
 
                 auto decive = deviceName.toStdString();
                 LRCInstance::avModel().switchInputTo(decive);
@@ -331,7 +332,7 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP)
     currentCallId_ = callId;
     auto callModel = LRCInstance::getCurrentCallModel();
 
-    QObject::disconnect(ui->videoWidget);
+    //QObject::disconnect(ui->distantVideoWidget);
     QObject::disconnect(callStatusChangedConnection_);
 
     if (!callModel->hasCall(callId)) {
@@ -348,8 +349,10 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP)
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
         this, &VideoView::slotCallStatusChanged);
 
-    previewRenderer_->connectRendering();
-    ui->videoWidget->connectDistantRendering();
+    if (!LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
+        previewRenderer_->connectRendering();
+        distantRendererMap_[callId]->connectDistantRendering();
+    }
 }
 
 void
@@ -373,10 +376,10 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
         //Check preview's current central position
         QRect previewRect = previewRenderer_->geometry();
         auto previewCentral = previewRect.center();
-        auto videoViewRect = ui->videoWidget->rect();
-        auto videoWidgetCentral = videoViewRect.center();
-        if (previewCentral.x() >= videoWidgetCentral.x()) {
-            if (previewCentral.y() >= videoWidgetCentral.y()) {
+        auto videoViewRect = this->rect();
+        auto distantVideoWidgetCentral = videoViewRect.center();
+        if (previewCentral.x() >= distantVideoWidgetCentral.x()) {
+            if (previewCentral.y() >= distantVideoWidgetCentral.y()) {
                 //Move preview to bottom right
                 auto previewInitialWidth = previewRenderer_->width();
                 auto previewInitialHeight = previewRenderer_->height();
@@ -394,7 +397,7 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
                 moveAnim_->start();
             }
         } else {
-            if (previewCentral.y() >= videoWidgetCentral.y()) {
+            if (previewCentral.y() >= distantVideoWidgetCentral.y()) {
                 //Move preview to bottom left
                 auto previewInitialWidth = previewRenderer_->width();
                 auto previewInitialHeight = previewRenderer_->height();
@@ -520,5 +523,20 @@ VideoView::keyReleaseEvent(QKeyEvent* event)
 void
 VideoView::reconnectRenderingVideoDeviceChanged()
 {
-    ui->videoWidget->connectDistantRendering();
+    distantRendererMap_[LRCInstance::getCurrentSelectedCallId()]->connectDistantRendering();
+}
+
+void
+VideoView::createNewDistantRenderer(const std::string& callId)
+{
+    if (distantRendererMap_.find(callId) == distantRendererMap_.end()) {
+        DistantRendererWidget* widget = new DistantRendererWidget(this);
+        widget->setGeometry(this->rect());
+        ui->gridLayout->addWidget(widget);
+        distantRendererMap_[callId] = widget;
+        connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
+            emit this->setChatVisibility(visible);
+            connect(this, SIGNAL(toggleFullScreenClicked()), widget, SLOT(slotToggleFullScreenClicked()));
+        });
+    }
 }

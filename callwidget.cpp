@@ -708,7 +708,7 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
 {
     Q_UNUSED(accountId);
     qDebug() << "slotShowIncomingCallView";
-
+    ui->videoWidget->createNewDistantRenderer(convInfo.callId);
     auto callModel = LRCInstance::getCurrentCallModel();
 
     if (!callModel->hasCall(convInfo.callId)) {
