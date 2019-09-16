@@ -21,9 +21,11 @@
 #include "callaudioonlyavataroverlay.h"
 #include "videooverlay.h"
 #include "previewrender.h"
+#include "distantrendererwidget.h"
 
 #include "api/conversationmodel.h"
 
+#include <QGraphicsOpacityEffect>
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include <QPropertyAnimation>
@@ -46,6 +48,9 @@ public:
     void setCurrentCalleeName(const QString& CalleeDisplayName);
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
     void reconnectRenderingVideoDeviceChanged();
+    void createNewDistantRenderer(const std::string& callId);
+    void resetCurrentOverLayRendererPair(const std::string& callId);
+    void resetDistantRenderer(const std::string& callId);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -72,11 +77,8 @@ private slots:
 private:
     Ui::VideoView* ui;
     PreviewRenderWidget* previewRenderer_;
-    VideoOverlay* overlay_;
     CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
-    QPropertyAnimation* fadeAnim_;
     QPropertyAnimation* moveAnim_;
-    QTimer fadeTimer_;
     QWidget* oldParent_;
     QSize oldSize_;
     QMetaObject::Connection timerConnection_;
@@ -88,6 +90,8 @@ private:
     bool sharingEntireScreen_ = false;
     std::string currentCallId_;
     int keyPressed_;
+    std::map<std::string, std::pair<VideoOverlay*, DistantRendererWidget*>> distantRendererMap_;
+    std::pair<VideoOverlay*, DistantRendererWidget*> currentOverLayRendererPair_;
 
     constexpr static int fadeOverlayTime_ = 1000; //msec
     constexpr static int resizeGrip_ = 40;

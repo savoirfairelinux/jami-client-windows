@@ -138,6 +138,11 @@ public:
         return LRCInstance::getCurrentCallModel()->getCall(conversation->callId).isAudioOnly;
     };
 
+    static const std::string& getCurrentSelectedCallId() {
+        auto conversation = Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(), *LRCInstance::getCurrentConversationModel());
+        return conversation->callId;
+    };
+
     static void reset(bool newInstance = false) {
         if (newInstance) {
             instance().lrc_.reset(new Lrc());
