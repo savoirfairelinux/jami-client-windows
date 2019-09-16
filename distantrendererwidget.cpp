@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "videowidget.h"
+#include "distantrendererwidget.h"
 
 #include "utils.h"
 
-VideoWidget::VideoWidget(QWidget* parent)
+DistantRendererWidget::DistantRendererWidget(QWidget* parent)
     : QWidget(parent)
 {
     QPalette pal(palette());
@@ -31,11 +31,11 @@ VideoWidget::VideoWidget(QWidget* parent)
     this->setPalette(pal);
 }
 
-VideoWidget::~VideoWidget()
+DistantRendererWidget::~DistantRendererWidget()
 {}
 
 void
-VideoWidget::slotDistantRendererStarted(const std::string& id)
+DistantRendererWidget::slotDistantRendererStarted(const std::string& id)
 {
     Q_UNUSED(id);
 
@@ -48,18 +48,18 @@ VideoWidget::slotDistantRendererStarted(const std::string& id)
         &LRCInstance::avModel(),
         &lrc::api::AVModel::frameUpdated,
         this,
-        &VideoWidget::slotUpdateDistantView);
+        &DistantRendererWidget::slotUpdateDistantView);
 
     QObject::disconnect(rendererDistantConnections_.stopped);
     rendererDistantConnections_.stopped = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::rendererStopped,
         this,
-        &VideoWidget::slotStopDistantView);
+        &DistantRendererWidget::slotStopDistantView);
 }
 
 void
-VideoWidget::renderFrame(const std::string& id)
+DistantRendererWidget::renderFrame(const std::string& id)
 {
     auto avModel = &LRCInstance::avModel();
     using namespace lrc::api::video;
@@ -77,13 +77,13 @@ VideoWidget::renderFrame(const std::string& id)
 }
 
 void
-VideoWidget::slotToggleFullScreenClicked()
+DistantRendererWidget::slotToggleFullScreenClicked()
 {
     this->update();
 }
 
 void
-VideoWidget::paintEvent(QPaintEvent* e)
+DistantRendererWidget::paintEvent(QPaintEvent* e)
 {
     Q_UNUSED(e);
     QPainter painter(this);
@@ -116,7 +116,7 @@ VideoWidget::paintEvent(QPaintEvent* e)
 }
 
 void
-VideoWidget::connectDistantRendering()
+DistantRendererWidget::connectDistantRendering()
 {
     QObject::disconnect(rendererDistantConnections_.started);
     rendererDistantConnections_.started = connect(
@@ -128,7 +128,7 @@ VideoWidget::connectDistantRendering()
 }
 
 void
-VideoWidget::disconnectRendering()
+DistantRendererWidget::disconnectRendering()
 {
     QObject::disconnect(rendererDistantConnections_.started);
     QObject::disconnect(rendererDistantConnections_.stopped);
@@ -136,7 +136,7 @@ VideoWidget::disconnectRendering()
 }
 
 void
-VideoWidget::slotUpdateDistantView(const std::string& id)
+DistantRendererWidget::slotUpdateDistantView(const std::string& id)
 {
     if (id == lrc::api::video::PREVIEW_RENDERER_ID) {
         return;
@@ -151,7 +151,7 @@ VideoWidget::slotUpdateDistantView(const std::string& id)
 }
 
 void
-VideoWidget::slotStopDistantView(const std::string& id)
+DistantRendererWidget::slotStopDistantView(const std::string& id)
 {
     Q_UNUSED(id);
     QObject::disconnect(rendererDistantConnections_.updated);

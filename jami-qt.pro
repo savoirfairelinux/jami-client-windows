@@ -55,7 +55,6 @@ HEADERS += ./aboutdialog.h \
         ./passworddialog.h \
         ./selectareadialog.h \
         ./toggleswitch.h \
-        ./videowidget.h \
         ./animationhelpers.h \
         ./contactpickeritemdelegate.h \
         ./globalsystemtray.h \
@@ -74,7 +73,8 @@ HEADERS += ./aboutdialog.h \
         ./sipinputpanel.h \
         ./callaudioonlyavataroverlay.h \
         ./overlaybutton.h \
-        ./previewrender.h
+        ./previewrender.h \
+        ./distantrendererwidget.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -90,7 +90,6 @@ SOURCES += ./aboutdialog.cpp \
         ./nameregistrationdialog.cpp \
         ./ringcontactlineedit.cpp \
         ./splashscreen.cpp \
-        ./videowidget.cpp \
         ./accountlistmodel.cpp \
         ./bezierconnectorwidget.cpp \
         ./deleteaccountdialog.cpp \
@@ -130,7 +129,8 @@ SOURCES += ./aboutdialog.cpp \
         ./sipinputpanel.cpp \
         ./callaudioonlyavataroverlay.cpp \
         ./overlaybutton.cpp \
-        ./previewrender.cpp
+        ./previewrender.cpp \
+        ./distantrendererwidget.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
