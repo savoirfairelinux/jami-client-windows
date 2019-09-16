@@ -318,6 +318,7 @@ SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
+
 void SettingsWidget::setSelected(Button sel)
 {
     switch (sel) {
@@ -387,6 +388,7 @@ void SettingsWidget::setSelected(Button sel)
 
     pastButton_ = sel;
 }
+
 // called to update current settings information when navigating to settingsWidget
 void SettingsWidget::updateAccountInfoDisplayed()
 {

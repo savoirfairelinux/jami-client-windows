@@ -119,7 +119,8 @@ PreviewRenderWidget::paintEvent(QPaintEvent* e)
 
     if (previewRenderer_ || (photoMode_ && hasFrame_)) {
         QMutexLocker lock(&mutex_);
-        if (previewFrame_.storage.size() != 0
+        if (previewRenderer_
+            && previewFrame_.storage.size() != 0
             && previewFrame_.storage.size() == (unsigned int)(previewRenderer_->size().height() * previewRenderer_->size().width() * 4)) {
             framePreview_ = std::move(previewFrame_.storage);
             previewImage_.reset(
@@ -132,6 +133,8 @@ PreviewRenderWidget::paintEvent(QPaintEvent* e)
                 resetPreview_ = true;
                 triggerResetPreviewAfterImageReloaded_ = false;
             }
+        } else {
+            hasFrame_ = false;
         }
         if (previewImage_) {
             QImage scaledPreview;
