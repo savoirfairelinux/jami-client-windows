@@ -30,13 +30,13 @@
 
 using namespace lrc::api;
 
-class VideoWidget : public QWidget
+class DistantRendererWidget : public QWidget
 {
     Q_OBJECT;
 
 public:
-    explicit VideoWidget(QWidget* parent = 0);
-    ~VideoWidget();
+    explicit DistantRendererWidget(QWidget* parent = 0);
+    ~DistantRendererWidget();
     void connectDistantRendering();
     void disconnectRendering();
 
