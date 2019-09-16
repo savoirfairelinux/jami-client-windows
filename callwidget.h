@@ -30,6 +30,8 @@
 #include <QVector>
 #include <QWidget>
 
+#include <set>
+
 #include "navwidget.h"
 #include "smartlistmodel.h"
 #include "previewrender.h"
@@ -148,6 +150,7 @@ private:
     QMovie* miniSpinner_;
 
     constexpr static int qrSize_ = 200;
+    std::set<std::string> runningCallIdList_;
 
     // lrc
     Video::Renderer* videoRenderer_;

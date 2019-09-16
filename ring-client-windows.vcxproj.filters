@@ -105,9 +105,6 @@
     <ClCompile Include="videoview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="videowidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="smartlistview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -231,6 +228,9 @@
     <ClCompile Include="previewrender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="distantrendererwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -282,9 +282,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="videoview.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="videowidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="smartlistmodel.h">
@@ -402,6 +399,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="previewrender.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="distantrendererwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
