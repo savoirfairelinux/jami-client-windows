@@ -667,6 +667,18 @@ CallWidget::slotShowCallView(const std::string& accountId,
     auto callModel = LRCInstance::getCurrentCallModel();
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
+
+    // reset preview renderer when call is not audio only
+    if (!LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly) {
+        previewRenderer_->setParent(ui->videoWidget);
+        previewRenderer_->changeToRoundedBoarder();
+        previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
+        previewRenderer_->setPhotoMode(false);
+        previewRenderer_->setNeedToCentre(false);
+        previewRenderer_->triggerResetPreviewAfterImageReloaded();
+    }
+    ui->videoWidget->resetDistantRenderer(convInfo.callId);
+
     ui->videoWidget->setCurrentCalleeName(bestName);
     setCallPanelVisibility(true);
 
@@ -686,19 +698,10 @@ CallWidget::slotShowCallView(const std::string& accountId,
     } else {
         ui->videoWidget->resetVideoOverlay(false, false, false, false, false, accountId, convInfo);
     }
+
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
-
-    // reset preview renderer when call is not audio only
-    if (!LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly) {
-        previewRenderer_->setParent(ui->videoWidget);
-        previewRenderer_->changeToRoundedBoarder();
-        previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
-        previewRenderer_->setPhotoMode(false);
-        previewRenderer_->setNeedToCentre(false);
-        previewRenderer_->triggerResetPreviewAfterImageReloaded();
-    }
-    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
+    //ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
     ui->videoWidget->setFocus();
 }
 
@@ -708,6 +711,11 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
 {
     Q_UNUSED(accountId);
     qDebug() << "slotShowIncomingCallView";
+
+    if (runningCallIdList_.find(convInfo.callId) == runningCallIdList_.end()) {
+        ui->videoWidget->createNewDistantRenderer(convInfo.callId);
+        runningCallIdList_.insert(convInfo.callId);
+    }
 
     auto callModel = LRCInstance::getCurrentCallModel();
 

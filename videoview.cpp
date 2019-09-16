@@ -25,7 +25,6 @@
 
 #include <QDesktopWidget>
 #include <QFileDialog>
-#include <QGraphicsOpacityEffect>
 #include <QMenu>
 #include <QMimeData>
 #include <QPropertyAnimation>
@@ -44,43 +43,37 @@ VideoView::VideoView(QWidget* parent)
 {
     ui->setupUi(this);
 
-    overlay_ = new VideoOverlay(this);
-    auto effect = new QGraphicsOpacityEffect(overlay_);
-    effect->setOpacity(maxOverlayOpacity_);
-    overlay_->setGraphicsEffect(effect);
+    opacityEffect_ = new QGraphicsOpacityEffect(nullptr);
+    opacityEffect_->setOpacity(maxOverlayOpacity_);
     fadeAnim_ = new QPropertyAnimation(this);
-    fadeAnim_->setTargetObject(effect);
     fadeAnim_->setPropertyName("opacity");
     fadeAnim_->setDuration(fadeOverlayTime_);
-    fadeAnim_->setStartValue(effect->opacity());
-    fadeAnim_->setEndValue(0);
     fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
 
     // Setup the timer to start the fade when the mouse stops moving
     this->setMouseTracking(true);
-    overlay_->setMouseTracking(true);
     fadeTimer_.setSingleShot(true);
     connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(fadeOverlayOut()));
 
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
-    connect(overlay_, &VideoOverlay::setChatVisibility, [=](bool visible) {
-        emit this->setChatVisibility(visible);
-        connect(this, SIGNAL(toggleFullScreenClicked()), ui->videoWidget, SLOT(slotToggleFullScreenClicked()));
-    });
 
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
     previewRenderer_ = PreviewRenderWidget::attachPreview();
 
     moveAnim_ = new QPropertyAnimation(previewRenderer_, "geometry");
     moveAnim_->setDuration(1000);
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, Qt::black);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
 }
 
 VideoView::~VideoView()
 {
     delete ui;
-    delete overlay_;
     delete fadeAnim_;
 }
 
@@ -96,9 +89,9 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     audioOnlyAvatar_->resize(this->size());
 
-    overlay_->resize(this->size());
-    overlay_->show();
-    overlay_->raise();
+    currentOverLayRendererPair_.first->resize(this->size());
+    currentOverLayRendererPair_.first->show();
+    currentOverLayRendererPair_.first->raise();
 }
 
 void
@@ -125,7 +118,7 @@ VideoView::showOverlay()
 void
 VideoView::fadeOverlayOut()
 {
-    if (!overlay_->isDialogVisible() && !overlay_->shouldShowOverlay()) {
+    if (!currentOverLayRendererPair_.first->isDialogVisible() && !currentOverLayRendererPair_.first->shouldShowOverlay()) {
         fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
     }
 }
@@ -138,16 +131,24 @@ VideoView::slotCallStatusChanged(const std::string& callId)
     switch (call.status) {
     case Status::IN_PROGRESS:
     {
-        ui->videoWidget->show();
         auto convInfo = Utils::getConversationFromCallId(call.id);
         if (!convInfo.uid.empty()) {
             auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants[0]);
             auto contactName = Utils::bestNameForContact(contactInfo);
-            overlay_->setName(QString::fromStdString(contactName));
+            currentOverLayRendererPair_.first->setName(QString::fromStdString(contactName));
         }
         return;
     }
     case Status::ENDED:
+        previewRenderer_->hide();
+        // reset parent incase deletion of distant renderer causes error
+        previewRenderer_->setParent(nullptr);
+        ui->gridLayout->removeWidget(distantRendererMap_[callId].second);
+        distantRendererMap_[callId].first->hide();
+        distantRendererMap_[callId].second->hide();
+        delete distantRendererMap_[callId].second;
+        delete distantRendererMap_[callId].first;
+        distantRendererMap_.erase(callId);
         emit closing(call.id);
     default:
         //emit closing(call.id);
@@ -160,7 +161,7 @@ void
 VideoView::simulateShowChatview(bool checked)
 {
     Q_UNUSED(checked);
-    overlay_->simulateShowChatview(true);
+    currentOverLayRendererPair_.first->simulateShowChatview(true);
 }
 
 void
@@ -256,7 +257,7 @@ VideoView::showContextMenu(const QPoint& pos)
                 // after rendering reconnect
                 previewRenderer_->triggerResetPreviewAfterImageReloaded();
                 previewRenderer_->connectRendering();
-                ui->videoWidget->connectDistantRendering();
+                currentOverLayRendererPair_.second->connectDistantRendering();
 
                 auto decive = deviceName.toStdString();
                 LRCInstance::avModel().switchInputTo(decive);
@@ -333,7 +334,9 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP)
     currentCallId_ = callId;
     auto callModel = LRCInstance::getCurrentCallModel();
 
-    QObject::disconnect(ui->videoWidget);
+    auto pairToConnectRender = distantRendererMap_[callId];
+
+    QObject::disconnect(pairToConnectRender.second);
     QObject::disconnect(callStatusChangedConnection_);
 
     if (!callModel->hasCall(callId)) {
@@ -343,15 +346,17 @@ VideoView::pushRenderer(const std::string& callId, bool isSIP)
     auto call = callModel->getCall(callId);
 
     // transfer call will only happen in SIP calls
-    this->overlay_->setTransferCallAndSIPPanelAvailability(isSIP);
-    this->overlay_->callStarted(callId);
-    this->overlay_->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
+    pairToConnectRender.first->setTransferCallAndSIPPanelAvailability(isSIP);
+    pairToConnectRender.first->callStarted(callId);
+    pairToConnectRender.first->setVideoMuteVisibility(!LRCInstance::getCurrentCallModel()->getCall(callId).isAudioOnly);
 
     callStatusChangedConnection_ = QObject::connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
         this, &VideoView::slotCallStatusChanged);
 
-    previewRenderer_->connectRendering();
-    ui->videoWidget->connectDistantRendering();
+    if (!LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
+        previewRenderer_->connectRendering();
+        pairToConnectRender.second->connectDistantRendering();
+    }
 }
 
 void
@@ -375,10 +380,10 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
         //Check preview's current central position
         QRect previewRect = previewRenderer_->geometry();
         auto previewCentral = previewRect.center();
-        auto videoViewRect = ui->videoWidget->rect();
-        auto videoWidgetCentral = videoViewRect.center();
-        if (previewCentral.x() >= videoWidgetCentral.x()) {
-            if (previewCentral.y() >= videoWidgetCentral.y()) {
+        auto videoViewRect = this->rect();
+        auto distantVideoWidgetCentral = videoViewRect.center();
+        if (previewCentral.x() >= distantVideoWidgetCentral.x()) {
+            if (previewCentral.y() >= distantVideoWidgetCentral.y()) {
                 //Move preview to bottom right
                 auto previewInitialWidth = previewRenderer_->width();
                 auto previewInitialHeight = previewRenderer_->height();
@@ -396,7 +401,7 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
                 moveAnim_->start();
             }
         } else {
-            if (previewCentral.y() >= videoWidgetCentral.y()) {
+            if (previewCentral.y() >= distantVideoWidgetCentral.y()) {
                 //Move preview to bottom left
                 auto previewInitialWidth = previewRenderer_->width();
                 auto previewInitialHeight = previewRenderer_->height();
@@ -458,7 +463,7 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
 void
 VideoView::setCurrentCalleeName(const QString& CalleeDisplayName)
 {
-    overlay_->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
+    currentOverLayRendererPair_.first->setCurrentSelectedCalleeDisplayName(CalleeDisplayName);
 }
 
 void
@@ -468,8 +473,8 @@ VideoView::resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecord
     if (isAudioOnly) {
         writeAvatarOverlay(accountId, convInfo);
     }
-    emit overlay_->setChatVisibility(false);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
+    emit currentOverLayRendererPair_.first->setChatVisibility(false);
+    currentOverLayRendererPair_.first->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isHolding, isAudioOnly);
 }
 
 void
@@ -478,7 +483,7 @@ VideoView::resetAvatarOverlay(bool isAudioOnly)
     audioOnlyAvatar_->setAvatarVisible(isAudioOnly);
     if (isAudioOnly) {
         disconnect(coordinateOverlays_);
-        coordinateOverlays_ = connect(overlay_, SIGNAL(HoldStatusChanged(bool)), this, SLOT(slotHoldStatusChanged(bool)));
+        coordinateOverlays_ = connect(currentOverLayRendererPair_.first, SIGNAL(HoldStatusChanged(bool)), this, SLOT(slotHoldStatusChanged(bool)));
     } else {
         disconnect(coordinateOverlays_);
     }
@@ -522,5 +527,77 @@ VideoView::keyReleaseEvent(QKeyEvent* event)
 void
 VideoView::reconnectRenderingVideoDeviceChanged()
 {
-    ui->videoWidget->connectDistantRendering();
+    currentOverLayRendererPair_.second->connectDistantRendering();
+}
+
+void
+VideoView::createNewDistantRenderer(const std::string& callId)
+{
+    if (distantRendererMap_.find(callId) == distantRendererMap_.end()) {
+        VideoOverlay* overlay = new VideoOverlay(this);
+        DistantRendererWidget* widget = new DistantRendererWidget(nullptr);
+
+        if (currentOverLayRendererPair_.first == nullptr && currentOverLayRendererPair_.second == nullptr) {
+            widget->setParent(this);
+            currentOverLayRendererPair_ = std::pair<VideoOverlay*, DistantRendererWidget*>(overlay, widget);
+            distantRendererMap_[callId] = currentOverLayRendererPair_;
+            widget->setGeometry(this->rect());
+            ui->gridLayout->addWidget(widget);
+        } else {
+            distantRendererMap_[callId] = std::pair<VideoOverlay*, DistantRendererWidget*>(overlay, widget);
+        }
+        connect(overlay, &VideoOverlay::setChatVisibility, [=](bool visible) {
+            emit this->setChatVisibility(visible);
+            connect(this, SIGNAL(toggleFullScreenClicked()), widget, SLOT(slotToggleFullScreenClicked()));
+        });
+    }
+}
+
+void
+VideoView::resetCurrentOverLayRendererPair(const std::string& callId)
+{
+    currentOverLayRendererPair_ = distantRendererMap_[callId];
+}
+
+void
+VideoView::resetDistantRenderer(const std::string & callId)
+{
+    if (distantRendererMap_.size() <= 1) {
+        opacityEffect_->setParent(currentOverLayRendererPair_.first);
+        currentOverLayRendererPair_.first->setGraphicsEffect(opacityEffect_);
+        fadeAnim_->setTargetObject(opacityEffect_);
+        fadeAnim_->setStartValue(opacityEffect_->opacity());
+        fadeAnim_->setEndValue(0);
+        currentOverLayRendererPair_.first->setMouseTracking(true);
+        return;
+    }
+
+    previewRenderer_->hide();
+    // reset parent incase deletion of distant renderer causes error
+    previewRenderer_->setParent(nullptr);
+
+    currentOverLayRendererPair_.first->setVisible(false);
+    currentOverLayRendererPair_.second->setVisible(false);
+    currentOverLayRendererPair_.second->setParent(nullptr);
+    ui->gridLayout->removeWidget(currentOverLayRendererPair_.second);
+    this->update();
+
+    currentOverLayRendererPair_ = distantRendererMap_[callId];
+
+    currentOverLayRendererPair_.first->setVisible(true);
+    opacityEffect_->setParent(currentOverLayRendererPair_.first);
+    currentOverLayRendererPair_.first->setGraphicsEffect(opacityEffect_);
+    fadeAnim_->setTargetObject(opacityEffect_);
+    fadeAnim_->setStartValue(opacityEffect_->opacity());
+    fadeAnim_->setEndValue(0);
+    currentOverLayRendererPair_.first->setMouseTracking(true);
+
+    currentOverLayRendererPair_.second->setParent(this);
+    currentOverLayRendererPair_.second->setVisible(true);
+    currentOverLayRendererPair_.second->setGeometry(this->rect());
+    ui->gridLayout->addWidget(currentOverLayRendererPair_.second);
+    this->update();
+
+    previewRenderer_->setParent(this);
+    previewRenderer_->show();
 }

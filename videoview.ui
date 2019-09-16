@@ -35,32 +35,8 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0">
-    <widget class="VideoWidget" name="videoWidget" native="true">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>VideoWidget</class>
-   <extends>QWidget</extends>
-   <header>videowidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
