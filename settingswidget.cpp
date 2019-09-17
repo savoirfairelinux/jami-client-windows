@@ -363,6 +363,18 @@ void SettingsWidget::setSelected(Button sel)
 
         connectCurrentAccount();
 
+        if (!LRCInstance::getCurrAccConfig().managerUri.empty()) {
+            ui->lblRegisteredName->setVisible(false);
+            ui->passwdPushButton->setVisible(false);
+            ui->btnExportAccount->setVisible(false);
+            ui->btnDeletAccount->setVisible(false);
+            ui->label->setVisible(false);
+            ui->settingsListWidget->setVisible(false);
+            ui->linkDevPushButton->setVisible(false);
+            ui->currentRegisteredID->setVisible(false);
+            ui->btnRegisterName->setVisible(false);
+        }
+
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
@@ -770,7 +782,8 @@ void SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
-    ui->linkDevPushButton->show();
+    if (LRCInstance::getCurrAccConfig().managerUri.empty())
+        ui->linkDevPushButton->show();
 
     auto deviceList = LRCInstance::getCurrentAccountInfo().deviceModel->getAllDevices();
 
