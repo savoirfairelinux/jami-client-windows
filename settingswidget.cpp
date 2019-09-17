@@ -440,6 +440,11 @@ void SettingsWidget::updateAccountInfoDisplayed()
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
     auto accConfig = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
 
+    bool showLocalAccountConfig = accConfig.managerUri.empty();
+    ui->passwdPushButton->setVisible(showLocalAccountConfig);
+    ui->btnExportAccount->setVisible(showLocalAccountConfig);
+    ui->linkDevPushButton->setVisible(showLocalAccountConfig);
+
     ui->usernameSIP->setText(QString::fromStdString(accConfig.username));
     ui->hostnameSIP->setText(QString::fromStdString(accConfig.hostname));
     ui->passSIPlineEdit->setText(QString::fromStdString(accConfig.password));
@@ -766,7 +771,9 @@ void SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
-    ui->linkDevPushButton->show();
+    if (LRCInstance::getCurrAccConfig().managerUri.empty()) {
+        ui->linkDevPushButton->show();
+    }
 
     auto deviceList = LRCInstance::getCurrentAccountInfo().deviceModel->getAllDevices();
 

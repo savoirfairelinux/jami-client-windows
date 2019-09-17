@@ -376,7 +376,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>3</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
@@ -1416,7 +1416,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>705</width>
+                  <width>749</width>
                   <height>1387</height>
                  </rect>
                 </property>
@@ -1913,7 +1913,7 @@
                              </layout>
                             </item>
                             <item>
-                             <spacer name="verticalSpacer_30">
+                             <spacer name="verticalSpacerBetweenlblRegisteredNameAndChangePassButton">
                               <property name="orientation">
                                <enum>Qt::Vertical</enum>
                               </property>
@@ -1975,7 +1975,7 @@
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>40</width>
-                                  <height>20</height>
+                                  <height>0</height>
                                  </size>
                                 </property>
                                </spacer>
@@ -2016,7 +2016,7 @@
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>40</width>
-                                  <height>20</height>
+                                  <height>0</height>
                                  </size>
                                 </property>
                                </spacer>
@@ -2085,7 +2085,7 @@
                          </spacer>
                         </item>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_18">
+                         <layout class="QVBoxLayout" name="linkedDeviceVerticalLayout">
                           <property name="topMargin">
                            <number>0</number>
                           </property>
@@ -4253,12 +4253,6 @@
    <class>IconButton</class>
    <extends>QWidget</extends>
    <header>iconbutton.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>PhotoboothWidget</class>
-   <extends>QWidget</extends>
-   <header>photoboothwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
