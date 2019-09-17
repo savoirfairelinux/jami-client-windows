@@ -261,6 +261,16 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->containerWidget->setVisible(false);
 
     previewRenderer_ = PreviewRenderWidget::attachPreview();
+
+    if (!LRCInstance::getCurrAccConfig().managerUri.empty()) {
+        ui->lblRegisteredName->setVisible(false);
+        ui->passwdPushButton->setVisible(false);
+        ui->btnExportAccount->setVisible(false);
+        ui->btnDeletAccount->setVisible(false);
+        ui->label->setVisible(false);
+        ui->settingsListWidget->setVisible(false);
+        ui->linkDevPushButton->setVisible(false);
+    }
 }
 
 void SettingsWidget::slotAccountListChanged()
