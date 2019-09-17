@@ -1913,7 +1913,7 @@
                              </layout>
                             </item>
                             <item>
-                             <spacer name="verticalSpacer_30">
+                             <spacer name="verticalSpacerBetweenlblRegisteredNameAndChangePassButton">
                               <property name="orientation">
                                <enum>Qt::Vertical</enum>
                               </property>
@@ -2085,7 +2085,7 @@
                          </spacer>
                         </item>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_18">
+                         <layout class="QVBoxLayout" name="linkedDeviceVerticalLayout">
                           <property name="topMargin">
                            <number>0</number>
                           </property>
