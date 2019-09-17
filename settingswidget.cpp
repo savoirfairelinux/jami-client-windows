@@ -366,6 +366,28 @@ void SettingsWidget::setSelected(Button sel)
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
+        if (!LRCInstance::getCurrAccConfig().managerUri.empty()) {
+            ui->passwdPushButton->setVisible(false);
+            ui->btnExportAccount->setVisible(false);
+            ui->linkDevPushButton->setVisible(false);
+            ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->changeSize(
+                ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->sizeHint().width(),
+                0,
+                QSizePolicy::Fixed,
+                QSizePolicy::Fixed
+            );
+        }
+        else {
+            ui->passwdPushButton->setVisible(true);
+            ui->btnExportAccount->setVisible(true);
+            ui->linkDevPushButton->setVisible(true);
+            ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->changeSize(
+                ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->sizeHint().width(),
+                10,
+                QSizePolicy::Fixed,
+                QSizePolicy::Fixed
+            );
+        }
         if (pastButton_ == sel && pastAccount_ == LRCInstance::getCurrentAccountInfo().profileInfo.type) {
             return;
         }
@@ -770,7 +792,9 @@ void SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
-    ui->linkDevPushButton->show();
+    if (LRCInstance::getCurrAccConfig().managerUri.empty()) {
+        ui->linkDevPushButton->show();
+    }
 
     auto deviceList = LRCInstance::getCurrentAccountInfo().deviceModel->getAllDevices();
 
