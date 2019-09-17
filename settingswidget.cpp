@@ -288,6 +288,16 @@ SettingsWidget::SettingsWidget(QWidget* parent)
             this->connectStartedRenderingToPhotoBooth();
         });
     ui->containerWidget->setVisible(false);
+
+    if (!LRCInstance::getCurrAccConfig().managerUri.empty()) {
+        ui->lblRegisteredName->setVisible(false);
+        ui->passwdPushButton->setVisible(false);
+        ui->btnExportAccount->setVisible(false);
+        ui->btnDeletAccount->setVisible(false);
+        ui->label->setVisible(false);
+        ui->settingsListWidget->setVisible(false);
+        ui->linkDevPushButton->setVisible(false);
+    }
 }
 
 void SettingsWidget::slotAccountListChanged()
