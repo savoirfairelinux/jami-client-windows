@@ -561,6 +561,7 @@ NewWizardWidget::createAccount()
                     return;
                 //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+                confProps.managerUri = inputPara_["manager"].toStdString();
                 confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
                 LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 emit NavigationRequested(ScreenEnum::CallScreen);
