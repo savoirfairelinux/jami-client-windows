@@ -440,6 +440,29 @@ void SettingsWidget::updateAccountInfoDisplayed()
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
     auto accConfig = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
 
+    if (!accConfig.managerUri.empty()) {
+        ui->passwdPushButton->setVisible(false);
+        ui->btnExportAccount->setVisible(false);
+        ui->linkDevPushButton->setVisible(false);
+        ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->changeSize(
+            ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->sizeHint().width(),
+            0,
+            QSizePolicy::Fixed,
+            QSizePolicy::Fixed
+        );
+    }
+    else {
+        ui->passwdPushButton->setVisible(true);
+        ui->btnExportAccount->setVisible(true);
+        ui->linkDevPushButton->setVisible(true);
+        ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->changeSize(
+            ui->verticalSpacerBetweenlblRegisteredNameAndChangePassButton->sizeHint().width(),
+            10,
+            QSizePolicy::Fixed,
+            QSizePolicy::Fixed
+        );
+    }
+
     ui->usernameSIP->setText(QString::fromStdString(accConfig.username));
     ui->hostnameSIP->setText(QString::fromStdString(accConfig.hostname));
     ui->passSIPlineEdit->setText(QString::fromStdString(accConfig.password));
@@ -766,7 +789,9 @@ void SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
-    ui->linkDevPushButton->show();
+    if (LRCInstance::getCurrAccConfig().managerUri.empty()) {
+        ui->linkDevPushButton->show();
+    }
 
     auto deviceList = LRCInstance::getCurrentAccountInfo().deviceModel->getAllDevices();
 
