@@ -25,6 +25,7 @@
 #include "navwidget.h"
 #include "utils.h"
 
+#include "accountmigrationdialog.h"
 #include "advancedsettingswidget.h"
 #include "advancedsipsettingwidget.h"
 #include "bannedlistmodel.h"
@@ -133,6 +134,7 @@ private:
     QPixmap statusSuccessPixmap_;
     QPixmap statusInvalidPixmap_;
     QPixmap statusErrorPixmap_;
+    AccountMigrationDialog* xyy;
 
 private slots:
     void leaveSettingsSlot();
