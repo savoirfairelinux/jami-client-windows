@@ -19,6 +19,7 @@
 
 #include "mainwindow.h"
 
+#include "accountmigrationdialog.h"
 #include "globalinstances.h"
 #include "downloadmanager.h"
 #include "lrcinstance.h"
@@ -234,6 +235,30 @@ main(int argc, char* argv[])
                     vsConsoleDebug();
                 }
 #endif
+            }
+        }
+    }
+
+    auto accountList = LRCInstance::accountModel().getAccountList();
+
+    for (const std::string& i : accountList) {
+        LRCInstance::accountModel().getAccountInfo(i).status;
+        if (LRCInstance::accountModel().getAccountInfo(i).status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+            std::unique_ptr<AccountMigrationDialog> accountMigrationDia = std::make_unique<AccountMigrationDialog>(nullptr, i);
+            int status = accountMigrationDia->exec();
+
+            //migration failled
+            if (!status) {
+                splash->deleteLater();
+                LRCInstance::reset();
+#ifdef Q_OS_WIN
+                FreeConsole();
+#endif
+                QCoreApplication::exit();
+                GlobalSystemTray::instance().deleteLater();
+                GlobalSystemTray::instance().hide();
+
+                return status;
             }
         }
     }
