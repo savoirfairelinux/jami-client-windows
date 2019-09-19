@@ -19,6 +19,7 @@
 
 #include "mainwindow.h"
 
+#include "accountmigrationdialog.h"
 #include "globalinstances.h"
 #include "downloadmanager.h"
 #include "lrcinstance.h"
@@ -235,6 +236,16 @@ main(int argc, char* argv[])
                 }
 #endif
             }
+        }
+    }
+
+    auto accountList = LRCInstance::accountModel().getAccountList();
+
+    for (const std::string& i : accountList) {
+        LRCInstance::accountModel().getAccountInfo(i).status;
+        if (LRCInstance::accountModel().getAccountInfo(i).status == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+            std::unique_ptr<AccountMigrationDialog> accountMigrationDia = std::make_unique<AccountMigrationDialog>(nullptr, i);
+            accountMigrationDia->exec();
         }
     }
 
