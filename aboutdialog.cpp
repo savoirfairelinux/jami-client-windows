@@ -27,6 +27,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
     ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), QString(VERSION_STRING)));
