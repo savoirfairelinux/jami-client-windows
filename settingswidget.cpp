@@ -288,6 +288,8 @@ SettingsWidget::SettingsWidget(QWidget* parent)
             this->connectStartedRenderingToPhotoBooth();
         });
     ui->containerWidget->setVisible(false);
+
+    xyy = new AccountMigrationDialog(this);
 }
 
 void SettingsWidget::slotAccountListChanged()
@@ -347,7 +349,7 @@ void SettingsWidget::leaveSettingsSlot()
             photoBooth->stopBooth();
         });
     }
-
+    xyy->exec();
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
 
