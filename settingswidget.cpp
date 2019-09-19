@@ -347,7 +347,6 @@ void SettingsWidget::leaveSettingsSlot()
             photoBooth->stopBooth();
         });
     }
-
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
 
