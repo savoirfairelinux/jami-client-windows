@@ -273,7 +273,7 @@ QScrollBar::handle:vertical{
 
 QWidget#messagingPage, QWidget#contactRequestPage,
 QDialog#DeleteAccountDialog, QDialog#updateDownloadDialog,
-QDialog#UpdateConfirmDialog {
+QDialog#UpdateConfirmDialog, QDialog#AccountMigrationDialog {
     background: rgb(255, 255, 255);
 }
 
@@ -287,8 +287,24 @@ QDialog#DeleteAccountDialog {
     background: rgb(255, 255, 255);
 }
 
+QPushButton#deleteAccountPushButton {
+    background-color: red;
+    border: 0px;
+    border-radius: 15px;
+    height: 30px;
+    color: white;
+}
+
+QPushButton#deleteAccountPushButton:hover {
+    background-color: rgb(230, 0, 0);
+}
+
+QPushButton#deleteAccountPushButton:disabled {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
 QPushButton#nextButton, QPushButton#playButton, QPushButton#clearHistoryButton, QPushButton#doTransferButton,
-QPushButton#photoButton,
+QPushButton#photoButton, QPushButton#migrationPushButton,
 QPushButton#fromDeviceButton, QPushButton#newAccountButton, QPushButton#previousButton, QPushButton#exportButton, QPushButton#newSIPAccountButton, QPushButton#fromBackupButton, QPushButton#connectAccountManagerButton,
 QPushButton#cancelAddButton, QPushButton#exportOnRingButton, QPushButton#addDeviceButton, QPushButton#exportEndedOkButton,
 QPushButton#errorPushButton, QPushButton#registerButton, QPushButton#acceptCRButton, QPushButton#discardCRButton, QPushButton#deleteCancelBtn,
@@ -310,7 +326,7 @@ QPushButton#registerButton:disabled, QPushButton#acceptCRButton:disabled, QPushB
 QPushButton#deleteCancelBtn:disabled, QPushButton#dhtImportBtn:disabled, QPushButton#fileImportBtn:disabled,
 QPushButton#changePassBtn:disabled, QPushButton#confirmChangeBtn:disabled, QPushButton#backButton:disabled,
 QPushButton#fromDeviceButton:disabled, QPushButton#connectAccountManagerButton:disabled, QPushButton#exportBtn:disabled,
-QPushButton#skipBtn:disabled {
+QPushButton#skipBtn:disabled, QPushButton#migrationPushButton:disabled {
     background: rgba(242, 242, 242, 0.8);
     color: grey;
 }
@@ -328,7 +344,7 @@ QPushButton#existingPushButton:hover, QPushButton#newAccountButton:hover, QPushB
 QPushButton#exportButton:hover, QPushButton#cancelAddButton:hover, QPushButton#exportOnRingButton:hover,
 QPushButton#addDeviceButton:hover, QPushButton#exportEndedOkButton:hover, QPushButton#errorPushButton:hover,
 QPushButton#registerButton:hover, QPushButton#acceptCRButton:hover, QPushButton#discardCRButton:hover,
-QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover,
+QPushButton#deleteCancelBtn:hover, QPushButton#dhtImportBtn:hover, QPushButton#fileImportBtn:hover, QPushButton#migrationPushButton:hover,
 QPushButton#changePassBtn:hover, QPushButton#confirmChangeBtn:hover, QPushButton#backButton:hover, QPushButton#skipBtn:hover,
 QPushButton#fromDeviceButton:hover, QPushButton#connectAccountManagerButton:hover, QPushButton#exportBtn:hover {
     background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #2b4b7e, stop: 1.0 #001d4d);
@@ -341,7 +357,7 @@ QPushButton#deleteButton:hover, QPushButton#deleteBanBtn:hover, QPushButton#canc
 }
 
 QPushButton#nextButton:pressed, QPushButton#playButton:pressed, QPushButton#clearHistoryButton:pressed,
-QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed, QPushButton#skipBtn:pressed,
+QPushButton#doTransferButton:pressed, QPushButton#photoButton:pressed, QPushButton#skipBtn:pressed, QPushButton#migrationPushButton:pressed,
 QPushButton#existingPushButton:pressed, QPushButton#newAccountButton:pressed, QPushButton#previousButton:pressed, QPushButton#newSIPAccountButton:pressed,
 QPushButton#exportButton:pressed, QPushButton#cancelAddButton:pressed, QPushButton#exportOnRingButton:pressed,
 QPushButton#addDeviceButton:pressed, QPushButton#exportEndedOkButton:pressed, QPushButton#errorPushButton:pressed,
