@@ -33,6 +33,8 @@ const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 var   sendContainer     = document.getElementById("file_image_send_container")
+var   navBtns           = document.getElementById("navbutton_container")
+var   recordingPage     = document.getElementById("clip_recording_widget")
 
 messageBarInput.onpaste = pasteKeyDetected;
 
@@ -1656,6 +1658,18 @@ function isTextSelected() {
     if (selectedText.length != 0)
         return true;
     return false;
+}
+
+/* open the buttons' container for further operation */
+function openButtonsContainer() {
+    if (navBtns.style.visibility != "visible")
+        navBtns.style.visibility = "visible";
+    if (navBtns.style.visibility != "hidden")
+        navBtns.style.visibility = "hidden";
+}
+
+function recordAudioClip() {
+
 }
 
 /* exported selectFile - sselect files from Qt */
