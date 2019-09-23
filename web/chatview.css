@@ -121,16 +121,16 @@ body {
     border-radius: 16px;
 }
 
-    .nav-button.deactivated {
-        width: 30px;
-        height: 30px;
-        margin: 8px;
-        padding: 2px;
-        align-self: center;
-        display: flex;
-        border-radius: 16px;
-        cursor: auto;
-    }
+.nav-button.deactivated {
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    padding: 2px;
+    align-self: center;
+    display: flex;
+    border-radius: 16px;
+    cursor: auto;
+}
 
 .action-button svg {
     fill: var(--action-icon-color);
@@ -197,15 +197,15 @@ body {
     border-bottom: var(--hairline-thickness) solid var(--hairline-color);
 }
 
-    #invitation #invite_header {
-        margin: 10px;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* enable selection (it is globally disabled in the body) */
-        -webkit-user-select: auto;
-    }
+#invitation #invite_header {
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
 
 #invitation .sender_image {
   width: 50px;
@@ -232,13 +232,13 @@ body {
     margin-left: 5px;
 }
 
-    #invitation #text {
-        text-align: center;
-        font: 11pt sans-serif;
+#invitation #text {
+    text-align: center;
+    font: 11pt sans-serif;
 
-        /* enable selection (it is globally disabled in the body) */
-        -webkit-user-select: auto;
-    }
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
 
 #invite_contact_name {
     font-weight: 500;
@@ -274,10 +274,10 @@ body {
     -webkit-user-select: auto;
 }
 
-    #message:focus,
-    #message.focus {
-        outline: none;
-    }
+#message:focus,
+#message.focus {
+    outline: none;
+}
 
 #container[disabled] {
     background-color: #ccc;
@@ -333,35 +333,56 @@ a:hover {
     pointer-events: none;
 }
 
+#navbutton_container {
+    /*visibility: hidden;*/
+    left: 0;
+    right: 0;
+    position: relative;
+    bottom: 0;
+    display: none;
+    justify-content: flex-start;
+    /*border: 2px solid lightgray;*/
+    /*padding: 20px;*/
+    border-bottom: none;
+    background-color: #216876;
+    /*overflow-x: overlay;*/
+}
+
+#navbutton_container::-webkit-scrollbar {
+    height: 10px;
+}
+
+#clip_recording_widget {
+
+}
+
 #file_image_send_container {
-    visibility: hidden;
-    position: fixed;
-    bottom: var(--messagebar-size);
-    z-index: 1;
-    display: flex;
+    /*visibility: hidden;*/
+    bottom: 0;
+    /*z-index: 1;*/
+    display: none;
     justify-content: flex-start;
     left: 0;
     right: 0;
-    height: 8em;
+    height: 20em;
     /*border-top-left-radius: 25px;
     border-top-right-radius: 25px;*/
     border: 2px solid lightgray;
-    padding: 20px;
+    padding: 5px;
     border-bottom: none;
     background-color: #cfdbdd;
-    overflow-x: overlay;
 }
 
-    #file_image_send_container::-webkit-scrollbar{
-        height: 10px;
-    }
+#file_image_send_container::-webkit-scrollbar{
+    height: 10px;
+}
 
-    #file_image_send_container::after {
-        /*Create the margins with pseudo-elements*/
-        /*to solve overflow:scroll and The Right Padding Problem*/
-        content: ' ';
-        min-width: 20px;
-    }
+#file_image_send_container::after {
+    /*Create the margins with pseudo-elements
+    to solve overflow:scroll and The Right Padding Problem*/
+    content: ' ';
+    min-width: 20px;
+}
 
 .img_wrapper {
     position: relative;
@@ -379,34 +400,34 @@ a:hover {
 }
 
 /* Make the image responsive */
-    .img_wrapper img {
-        height: 118px;
-        min-width: 131px;
-        object-fit: cover;
-        border-radius: 20px;
-    }
+.img_wrapper img {
+    height: 118px;
+    min-width: 131px;
+    object-fit: cover;
+    border-radius: 20px;
+}
 
 /* Style the button and place it at the top right corner of the image */
-    .img_wrapper .btn {
-        position: absolute;
-        color: #fff;
-        border: 1px solid #AEAEAE;
-        border-radius: 40%;
-        background: rgba(96,95,97,0.5);
-        font-size: 10px;
-        font-weight: bold;
-        top: -5%;
-        right: -5%;
-    }
+.img_wrapper .btn {
+    position: absolute;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 40%;
+    background: rgba(96,95,97,0.5);
+    font-size: 10px;
+    font-weight: bold;
+    top: -5%;
+    right: -5%;
+}
 
-        .img_wrapper .btn:hover {
-            background-color: lightgray;
-        }
+.img_wrapper .btn:hover {
+    background-color: lightgray;
+}
 
-        .img_wrapper .btn:focus {
-            outline: none;
-            color: black;
-        }
+.img_wrapper .btn:focus {
+    outline: none;
+    color: black;
+}
 
 .file_wrapper {
     position: relative;
@@ -423,52 +444,52 @@ a:hover {
     margin: 5px;
     font-family: sans-serif;
 }
-    /* Style the button and place it at the top right corner of the image */
-    .file_wrapper .btn {
-        position: absolute;
-        color: #fff;
-        border: 1px solid #AEAEAE;
-        border-radius: 40%;
-        background: rgba(96,95,97,0.5);
-        font-size: 10px;
-        font-weight: bold;
-        top: -5%;
-        right: -5%;
-    }
+/* Style the button and place it at the top right corner of the image */
+.file_wrapper .btn {
+    position: absolute;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 40%;
+    background: rgba(96,95,97,0.5);
+    font-size: 10px;
+    font-weight: bold;
+    top: -5%;
+    right: -5%;
+}
 
-        .file_wrapper .btn:hover {
-            background-color: lightgray;
-        }
+.file_wrapper .btn:hover {
+    background-color: lightgray;
+}
 
-        .file_wrapper .btn:focus {
-            outline: none;
-            color: black;
-        }
+.file_wrapper .btn:focus {
+    outline: none;
+    color: black;
+}
 
-    .file_wrapper .svg-icon {
-        position: absolute;
-        max-width: 2em;
-        max-height: 25px;
-        margin-right: 2em;
-        top: 8%;
-        left: 1px;
-    }
+.file_wrapper .svg-icon {
+    position: absolute;
+    max-width: 2em;
+    max-height: 25px;
+    margin-right: 2em;
+    top: 8%;
+    left: 1px;
+}
 
-        .file_wrapper .svg-icon path,
-        .file_wrapper .svg-icon polygon,
-        .file_wrapper .svg-icon rect {
-            fill: #000000;
-        }
+.file_wrapper .svg-icon path,
+.file_wrapper .svg-icon polygon,
+.file_wrapper .svg-icon rect {
+    fill: #000000;
+}
 
-        .file_wrapper .svg-icon circle {
-            stroke: #4691f6;
-            stroke-width: 1;
-        }
-    .file_wrapper .fileinfo {
-        position: absolute;
-        top: 30%;
-        left: 7%;
-    }
+.file_wrapper .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+.file_wrapper .fileinfo {
+    position: absolute;
+    top: 30%;
+    left: 7%;
+}
 
 #back_to_bottom_button {
     visibility: hidden;
@@ -488,19 +509,19 @@ a:hover {
     pointer-events: all;
 }
 
-    #back_to_bottom_button:hover {
-        cursor: pointer;
-    }
+#back_to_bottom_button:hover {
+    cursor: pointer;
+}
 
-    #back_to_bottom_button.fade {
-        opacity: 0;
-        width: 1em;
-        color: transparent;
-        transition: .2s opacity ease .1s, .2s width ease .1s, color .1s ease;
-    }
-        #back_to_bottom_button.fade:hover {
-            cursor: context-menu;
-        }
+#back_to_bottom_button.fade {
+    opacity: 0;
+    width: 1em;
+    color: transparent;
+    transition: .2s opacity ease .1s, .2s width ease .1s, color .1s ease;
+}
+#back_to_bottom_button.fade:hover {
+    cursor: context-menu;
+}
 
 #messages {
     position: relative;
@@ -513,14 +534,14 @@ a:hover {
     transition: 0.5s opacity;
 }
 
-    #messages.fade {
-        opacity: 0;
-        transition: none;
-    }
+#messages.fade {
+    opacity: 0;
+    transition: none;
+}
 
-    #messages:hover {
-        overflow-y: overlay;
-    }
+#messages:hover {
+    overflow-y: overlay;
+}
 
 .last_message {
     /* The last message gets a bigger bottom padding so that it is not
@@ -794,9 +815,9 @@ input[type=checkbox] {
     vertical-align: center;
 }
 
-    .message_type_call .menu_interaction .dropdown {
-        margin-top: -17px;
-    }
+.message_type_call .menu_interaction .dropdown {
+    margin-top: -17px;
+}
 
 .message:hover:not(.message_type_contact) .menu_interaction {
     display: block;
@@ -812,14 +833,14 @@ input[type=checkbox] {
     padding-bottom: 3px;
 }
 
-    .dropdown div {
-        color: #111;
-        padding: 10px;
-    }
+.dropdown div {
+    color: #111;
+    padding: 10px;
+}
 
-        .dropdown div:hover {
-            background-color: #ddd;
-        }
+.dropdown div:hover {
+    background-color: #ddd;
+}
 
 .showmenu:checked ~ .dropdown {
     display: block;
@@ -900,10 +921,10 @@ input[type=checkbox] {
     padding: 0;
 }
 
-    .message_type_contact .message_wrapper:before,
-    .message_type_call .message_wrapper:before {
-        display: none;
-    }
+.message_type_contact .message_wrapper:before,
+.message_type_call .message_wrapper:before {
+    display: none;
+}
 
 .message_type_contact .text,
 .message_type_call .text {
@@ -997,11 +1018,11 @@ input[type=checkbox] {
     white-space: nowrap;
 }
 
-    .truncate-ellipsis > * {
-        display: table-cell;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.truncate-ellipsis > * {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .message_type_data_transfer .filename {
     cursor: pointer;
@@ -1023,13 +1044,13 @@ input[type=checkbox] {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-    .message_progress_bar > span {
-        display: inline;
-        height: 100%;
-        background-color: #01a2b8;
-        position: absolute;
-        overflow: hidden;
-    }
+.message_progress_bar > span {
+    display: inline;
+    height: 100%;
+    background-color: #01a2b8;
+    position: absolute;
+    overflow: hidden;
+}
 
 /* text interactions */
 
@@ -1043,9 +1064,9 @@ input[type=checkbox] {
     max-width: 100%;
 }
 
-    .message_text pre {
-        display: inline;
-    }
+.message_text pre {
+    display: inline;
+}
 
 pre {
     font: inherit;

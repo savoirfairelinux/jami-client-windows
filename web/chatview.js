@@ -33,6 +33,8 @@ const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 var   sendContainer     = document.getElementById("file_image_send_container")
+var   navBtns           = document.getElementById("navbutton_container")
+var   recordingPage     = document.getElementById("clip_recording_widget")
 
 messageBarInput.onpaste = pasteKeyDetected;
 
@@ -293,8 +295,8 @@ function sendMessage()
     }
 
     sendContainer.innerHTML = "";
-    sendContainer.style.visibility = "hidden";
-    reduce_send_container();
+    sendContainer.style.display = "none";
+    //reduce_send_container();
 
     var message = messageBarInput.value
     if (message.length > 0) {
@@ -1658,6 +1660,20 @@ function isTextSelected() {
     return false;
 }
 
+/* open the buttons' container for further operation */
+function openButtonsContainer() {
+    if (navBtns.style.display.length == 0 || navBtns.style.display == "none") {
+        navBtns.style.display = "flex";
+    } else {
+        navBtns.style.display = "none";
+    }
+
+}
+
+function recordAudioClip() {
+
+}
+
 /* exported selectFile - sselect files from Qt */
 function selectFile() {
 
@@ -1685,9 +1701,9 @@ function addFile_path(path, name, size) {
         '<button class="btn" onclick="remove(this)">X</button>' +
         '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
-        grow_send_container();
-        sendContainer.style.visibility = "visible";
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
+        //grow_send_container();
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1703,9 +1719,9 @@ function addImage_base64(base64) {
                 '<button class="btn" onclick="remove(this)">X</button>' +
                 '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display == "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1721,9 +1737,9 @@ function addImage_path(path) {
                '<button class="btn" onclick="remove(this)">X</button>' +
                '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display == "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1758,8 +1774,8 @@ function reduce_send_container() {
 function remove(e) {
     e.parentNode.parentNode.removeChild(e.parentNode);
     if (sendContainer.innerHTML.length == 0) {
-        reduce_send_container();
-        sendContainer.style.visibility = "hidden";
+        //reduce_send_container();
+        sendContainer.style.display = "none";
     }
 }
 
