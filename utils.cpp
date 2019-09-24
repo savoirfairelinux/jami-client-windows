@@ -713,8 +713,9 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
         auto bestId = bestIdForAccount(accountInfo);
         auto bestName = bestNameForAccount(accountInfo);
         QString letterStr = bestId == bestName ? QString() : QString::fromStdString(bestName);
+        QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:" : "sip:";
         photo = fallbackAvatar(size,
-            QString::fromStdString("ring:" + bestId),
+            prefix + QString::fromStdString(accountInfo.profileInfo.uri),
             letterStr);
     }
     return scaleAndFrame(photo, size);
