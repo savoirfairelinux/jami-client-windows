@@ -124,21 +124,11 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     // btnExitSettings
     connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
-    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::accountSettingsButton);
-        });
+    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::accountSettingsButton); });
 
-    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::generalSettingsButton);
-        });
+    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::generalSettingsButton); });
 
-    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() {
-        setSelected(Button::mediaSettingsButton);
-        });
-
-    /*connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
-        avatarClicked();
-    });*/
+    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::mediaSettingsButton); });
 
     connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
 
@@ -198,7 +188,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     connect(ui->currentRegisteredID, &QLineEdit::textEdited, this, &SettingsWidget::verifyRegisteredNameSlot);
 
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
-        this, &SettingsWidget::receiveRegNameSlot);
+            this, &SettingsWidget::receiveRegNameSlot);
 
     //connect "export account" button
     connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
@@ -271,22 +261,27 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::enterCallWidgetFromSettingsWidgetPhotoBooth,
             this, &SettingsWidget::photoBoothLeaveReceived);
+
     connect(&LRCInstance::avModel(),&lrc::api::AVModel::deviceEvent, [this] { videoDeviceEventHandlerAndMediaSettingSetUp(); });
+
     connect(this, &SettingsWidget::settingWidgetPhotoBoothTosettingWidgetPreviewSignal,
         [this]() {
             this->disconnectPhotoBoothRendering();
             this->connectStartedRenderingToPreview();
         });
+
     connect(ui->currentAccountAvatar, &PhotoboothWidget::leaveSettingsWidgetPreviewToSettingsWidgetPhotoBooth,
         [this]() {
             this->disconnectPreviewRendering();
             this->connectStartedRenderingToPhotoBooth();
         });
+
     connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::leaveSettingsWidgetPreviewToSettingsWidgetPhotoBooth,
         [this]() {
             this->disconnectPreviewRendering();
             this->connectStartedRenderingToPhotoBooth();
         });
+
     ui->containerWidget->setVisible(false);
 }
 
