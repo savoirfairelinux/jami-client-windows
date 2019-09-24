@@ -870,7 +870,7 @@
           </widget>
          </item>
          <item row="4" column="2">
-          <widget class="QLineEdit" name="lineEditTurnPsswd">
+          <widget class="QLineEdit" name="lineEditTurnPassword">
            <property name="font">
             <font>
              <pointsize>10</pointsize>
@@ -1436,7 +1436,7 @@
   <tabstop>lineEditCertPassword</tabstop>
   <tabstop>lineEditTurnAddress</tabstop>
   <tabstop>lineEditTurnUsername</tabstop>
-  <tabstop>lineEditTurnPsswd</tabstop>
+  <tabstop>lineEditTurnPassword</tabstop>
   <tabstop>lineEditSTUNAddress</tabstop>
   <tabstop>videoDownPushButton</tabstop>
   <tabstop>videoUpPushButton</tabstop>
