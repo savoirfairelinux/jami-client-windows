@@ -41,13 +41,13 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->checkBoxCustomRingtone, &QAbstractButton::clicked, [this](int state) { ui->btnRingtone->setEnabled((bool)state); });
 
     // name server
-    connect(ui->lineEditNameServer, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setNameServer);
+    connect(ui->lineEditNameServer, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setNameServer);
 
     // openDHT config
     connect(ui->checkBoxEnableProxy, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setEnableProxy);
 
-    connect(ui->lineEditProxy, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setProxyAddress);
-    connect(ui->lineEditBootstrap, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setBootstrapAddress);
+    connect(ui->lineEditProxy, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setProxyAddress);
+    connect(ui->lineEditBootstrap, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setBootstrapAddress);
 
     // security
     connect(ui->btnCACert, &QPushButton::clicked, this, &AdvancedSettingsWidget::openFileCACert);
@@ -59,10 +59,10 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
     connect(ui->checkBoxTurnEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseTURN);
     connect(ui->checkBoxSTUNEnable, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setUseSTUN);
 
-    connect(ui->lineEditTurnAddress, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNAddress);
-    connect(ui->lineEditTurnUsername, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNUsername);
-    connect(ui->lineEditTurnPsswd, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setTURNPsswd);
-    connect(ui->lineEditSTUNAddress, &QLineEdit::textEdited, this, &AdvancedSettingsWidget::setSTUNAddress);
+    connect(ui->lineEditTurnAddress, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setTURNAddress);
+    connect(ui->lineEditTurnUsername, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setTURNUsername);
+    connect(ui->lineEditTurnPassword, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setTURNPassword);
+    connect(ui->lineEditSTUNAddress, &QLineEdit::editingFinished, this, &AdvancedSettingsWidget::setSTUNAddress);
 
     // codecs
     connect(ui->audioListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::audioCodecsStateChange);
@@ -130,7 +130,7 @@ AdvancedSettingsWidget::updateAdvancedSettings()
     ui->checkBoxTurnEnable->setChecked(config.TURN.enable);
     ui->lineEditTurnAddress->setText(QString::fromStdString(config.TURN.server));
     ui->lineEditTurnUsername->setText(QString::fromStdString(config.TURN.username));
-    ui->lineEditTurnPsswd->setText(QString::fromStdString(config.TURN.password));
+    ui->lineEditTurnPassword->setText(QString::fromStdString(config.TURN.password));
     ui->checkBoxSTUNEnable->setChecked(config.STUN.enable);
     ui->lineEditSTUNAddress->setText(QString::fromStdString(config.STUN.server));
 
@@ -191,10 +191,11 @@ AdvancedSettingsWidget::openFileCustomRingtone()
 
 // name server
 void
-AdvancedSettingsWidget::setNameServer(const QString& name)
+AdvancedSettingsWidget::setNameServer()
 {
+    auto text = ui->lineEditNameServer->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.RingNS.uri = name.toStdString();
+    confProps.RingNS.uri = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -209,17 +210,19 @@ AdvancedSettingsWidget::setEnableProxy(bool state)
     state ? ui->lineEditProxy->setEnabled(true) : ui->lineEditProxy->setEnabled(false);
 }
 void
-AdvancedSettingsWidget::setProxyAddress(const QString& name)
+AdvancedSettingsWidget::setProxyAddress()
 {
+    auto text = ui->lineEditProxy->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.proxyServer = name.toStdString();
+    confProps.proxyServer = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
-AdvancedSettingsWidget::setBootstrapAddress(const QString& name)
+AdvancedSettingsWidget::setBootstrapAddress()
 {
+    auto text = ui->lineEditBootstrap->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.hostname = name.toStdString();
+    confProps.hostname = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -251,31 +254,35 @@ AdvancedSettingsWidget::setUseSTUN(bool state)
 }
 
 void
-AdvancedSettingsWidget::setTURNAddress(const QString& name)
+AdvancedSettingsWidget::setTURNAddress()
 {
+    auto text = ui->lineEditTurnAddress->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.server = name.toStdString();
+    confProps.TURN.server = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
-AdvancedSettingsWidget::setTURNUsername(const QString& name)
+AdvancedSettingsWidget::setTURNUsername()
 {
+    auto text = ui->lineEditTurnUsername->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.username = name.toStdString();
+    confProps.TURN.username = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
-AdvancedSettingsWidget::setTURNPsswd(const QString& name)
+AdvancedSettingsWidget::setTURNPassword()
 {
+    auto text = ui->lineEditTurnPassword->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.password = name.toStdString();
+    confProps.TURN.password = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
-AdvancedSettingsWidget::setSTUNAddress(const QString& name)
+AdvancedSettingsWidget::setSTUNAddress()
 {
+    auto text = ui->lineEditSTUNAddress->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.STUN.server = name.toStdString();
+    confProps.STUN.server = text.toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 

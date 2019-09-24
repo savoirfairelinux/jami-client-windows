@@ -81,7 +81,7 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
 
     connect(ui->lineEditTurnAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNAddress);
     connect(ui->lineEditTurnUsernameSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNUsername);
-    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNPsswd);
+    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNPassword);
     connect(ui->lineEditTurnRealmSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNRealm);
     connect(ui->lineEditSTUNAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setSTUNAddress);
 
@@ -303,7 +303,7 @@ void AdvancedSIPSettingsWidget::setTURNUsername()
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-void AdvancedSIPSettingsWidget::setTURNPsswd()
+void AdvancedSIPSettingsWidget::setTURNPassword()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = ui->lineEditTurnPsswdSIP->text().toStdString();

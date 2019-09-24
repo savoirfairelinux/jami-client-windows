@@ -81,7 +81,7 @@ private slots:
     void networkInterfaceSpinBoxValueChanged(const int& value);
     void setTURNAddress();
     void setTURNUsername();
-    void setTURNPsswd();
+    void setTURNPassword();
     void setTURNRealm();
     void setSTUNAddress();
 
