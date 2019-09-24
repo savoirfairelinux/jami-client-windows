@@ -397,12 +397,14 @@ void
 VideoWidget::slotStopFullView(const std::string& id)
 {
     QObject::disconnect(rendererConnections_.updated);
-    QObject::disconnect(rendererConnections_.stopped);
     using namespace lrc::api::video;
     if (id == PREVIEW_RENDERER_ID) {
         previewRenderer_ = nullptr;
     } else {
         distantRenderer_ = nullptr;
     }
-    repaint();
+    if (!previewRenderer_ && !distantRenderer_) {
+        QObject::disconnect(rendererConnections_.stopped);
+        repaint();
+    }
 }
