@@ -52,7 +52,7 @@ body {
     margin: 0;
     overflow: hidden;
     background-color: var(--bg-color);
-    padding-bottom: var(--messagebar-size);
+    padding-bottom: 0;
     /* disable selection highlight because it looks very bad */
     -webkit-user-select: text;
 
@@ -118,19 +118,19 @@ body {
     display: flex;
     cursor: pointer;
     align-self: center;
-    border-radius: 16px;
+    border-radius: 15px;
 }
 
-    .nav-button.deactivated {
-        width: 30px;
-        height: 30px;
-        margin: 8px;
-        padding: 2px;
-        align-self: center;
-        display: flex;
-        border-radius: 16px;
-        cursor: auto;
-    }
+.nav-button.deactivated {
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    padding: 2px;
+    align-self: center;
+    display: flex;
+    border-radius: 15px;
+    cursor: auto;
+}
 
 .action-button svg {
     fill: var(--action-icon-color);
@@ -197,31 +197,31 @@ body {
     border-bottom: var(--hairline-thickness) solid var(--hairline-color);
 }
 
-    #invitation #invite_header {
-        margin: 10px;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* enable selection (it is globally disabled in the body) */
-        -webkit-user-select: auto;
-    }
+#invitation #invite_header {
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
 
 #invitation .sender_image {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 #invitation #actions {
-  margin-right: auto;
-  margin-left: auto;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  /* enable selection (it is globally disabled in the body) */
-  -webkit-user-select: auto;
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
 }
 
 #invitation #actions div {
@@ -232,13 +232,13 @@ body {
     margin-left: 5px;
 }
 
-    #invitation #text {
-        text-align: center;
-        font: 11pt sans-serif;
+#invitation #text {
+    text-align: center;
+    font: 11pt sans-serif;
 
-        /* enable selection (it is globally disabled in the body) */
-        -webkit-user-select: auto;
-    }
+    /* enable selection (it is globally disabled in the body) */
+    -webkit-user-select: auto;
+}
 
 #invite_contact_name {
     font-weight: 500;
@@ -249,15 +249,18 @@ body {
     background-color: var(--bg-color);
     display: flex;
     overflow: hidden;
-    padding: 4px;
+    padding: 0px;
     align-items: center;
-    position: fixed;
+    position: relative;
     left: 0;
     right: 0;
+    max-height: var(--textarea-max-height);
+    min-height: var(--messagebar-size);
+    height: auto;
     z-index: 500;
     bottom: 0;
     /* hairline */
-    border-top: var(--hairline-thickness) solid var(--hairline-color);
+    border: var(--hairline-thickness) solid var(--hairline-color);
 }
 
 #message {
@@ -274,10 +277,10 @@ body {
     -webkit-user-select: auto;
 }
 
-    #message:focus,
-    #message.focus {
-        outline: none;
-    }
+#message:focus,
+#message.focus {
+    outline: none;
+}
 
 #container[disabled] {
     background-color: #ccc;
@@ -324,25 +327,26 @@ a:hover {
 }
 
 #back_to_bottom_button_container {
-    position: absolute;
+    position: relative;
     z-index: 1;
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 4em;
+    min-height: 3em;
+    max-height: 3em;
     pointer-events: none;
 }
 
 #file_image_send_container {
-    visibility: hidden;
-    position: fixed;
-    bottom: var(--messagebar-size);
+    position: relative;
+    bottom: 0;
     z-index: 1;
-    display: flex;
+    display: none;
     justify-content: flex-start;
     left: 0;
     right: 0;
-    height: 8em;
+    min-height: 8em;
+    max-height: 8em;
     /*border-top-left-radius: 25px;
     border-top-right-radius: 25px;*/
     border: 2px solid lightgray;
@@ -352,16 +356,96 @@ a:hover {
     overflow-x: overlay;
 }
 
-    #file_image_send_container::-webkit-scrollbar{
-        height: 10px;
-    }
+#file_image_send_container::-webkit-scrollbar{
+    height: 10px;
+}
 
-    #file_image_send_container::after {
-        /*Create the margins with pseudo-elements*/
-        /*to solve overflow:scroll and The Right Padding Problem*/
-        content: ' ';
-        min-width: 20px;
-    }
+#file_image_send_container::after {
+    /*Create the margins with pseudo-elements*/
+    /*to solve overflow:scroll and The Right Padding Problem*/
+    content: ' ';
+    min-width: 20px;
+}
+
+#audio_recording_section {
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-content: center;
+    line-height: 6em;
+    max-height: 6em;
+    min-height: 6em;
+    border: 1px solid lightgray;
+    padding: 3em;
+    background-color: bisque;
+}
+
+#audio-recording-button {
+    position: relative;
+    background-color: rgb(225, 74, 111);
+    align-content: center;
+    text-align: center;
+    line-height: 6em;
+    width: 6em;
+    height: 6em;
+    border-radius: 3em;
+    padding: 0;
+    cursor: default;
+}
+
+#audio-recording-button:hover {
+    background-color:rgb(128, 59, 36);
+    cursor:grab;
+}
+
+/* Create audio wrapper to display the audio that is about to be sent */
+.audio_wrapper {
+    position: relative;
+    max-width: 65px;
+    min-width: 65px;
+    max-height: 80px;
+    border: 3px solid rgba(255,255,255,0);
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #cfdbdd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.audio_wrapper audio {
+    height: 118px;
+    min-width: 131px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Style the button and place it at the top right corner of the audio display widget */
+.audio_wrapper .btn {
+    position: absolute;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 40%;
+    background: rgba(96,95,97,0.5);
+    font-size: 10px;
+    font-weight: bold;
+    top: -5%;
+    right: -5%;
+}
+
+.audio_wrapper .btn:hover {
+    background-color: lightgray;
+}
+
+.audio_wrapper .btn:focus {
+    outline: none;
+    color: black;
+}
 
 .img_wrapper {
     position: relative;
@@ -379,40 +463,40 @@ a:hover {
 }
 
 /* Make the image responsive */
-    .img_wrapper img {
-        height: 118px;
-        min-width: 131px;
-        object-fit: cover;
-        border-radius: 20px;
-    }
+.img_wrapper img {
+    height: 118px;
+    min-width: 131px;
+    object-fit: cover;
+    border-radius: 20px;
+}
 
 /* Style the button and place it at the top right corner of the image */
-    .img_wrapper .btn {
-        position: absolute;
-        color: #fff;
-        border: 1px solid #AEAEAE;
-        border-radius: 40%;
-        background: rgba(96,95,97,0.5);
-        font-size: 10px;
-        font-weight: bold;
-        top: -5%;
-        right: -5%;
-    }
+.img_wrapper .btn {
+    position: absolute;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 40%;
+    background: rgba(96,95,97,0.5);
+    font-size: 10px;
+    font-weight: bold;
+    top: -5%;
+    right: -5%;
+}
 
-        .img_wrapper .btn:hover {
-            background-color: lightgray;
-        }
+.img_wrapper .btn:hover {
+    background-color: lightgray;
+}
 
-        .img_wrapper .btn:focus {
-            outline: none;
-            color: black;
-        }
+.img_wrapper .btn:focus {
+    outline: none;
+    color: black;
+}
 
 .file_wrapper {
     position: relative;
-    max-width: 65px;
     min-width: 65px;
     max-height: 80px;
+    display: inline-block;
     border: 3px solid rgba(255,255,255,0);
     padding: 30px;
     border-radius: 20px;
@@ -423,55 +507,62 @@ a:hover {
     margin: 5px;
     font-family: sans-serif;
 }
-    /* Style the button and place it at the top right corner of the image */
-    .file_wrapper .btn {
-        position: absolute;
-        color: #fff;
-        border: 1px solid #AEAEAE;
-        border-radius: 40%;
-        background: rgba(96,95,97,0.5);
-        font-size: 10px;
-        font-weight: bold;
-        top: -5%;
-        right: -5%;
-    }
+/* Style the button and place it at the top right corner of the image */
+.file_wrapper .btn {
+    position: absolute;
+    color: royalblue;
+    border: 1px solid #AEAEAE;
+    border-radius: 40%;
+    background: rgba(96,95,97,0.5);
+    font-size: 10px;
+    font-weight: bold;
+    top: -5%;
+    right: -5%;
+    z-index:10
+}
 
-        .file_wrapper .btn:hover {
-            background-color: lightgray;
-        }
+.file_wrapper .btn:hover {
+    background-color: lightgray;
+}
 
-        .file_wrapper .btn:focus {
-            outline: none;
-            color: black;
-        }
+.file_wrapper .btn:focus {
+    outline: none;
+    color: black;
+}
 
-    .file_wrapper .svg-icon {
-        position: absolute;
-        max-width: 2em;
-        max-height: 25px;
-        margin-right: 2em;
-        top: 8%;
-        left: 1px;
-    }
+.file_wrapper .svg-icon {
+    position: absolute;
+    max-width: 2em;
+    max-height: 25px;
+    margin-right: 2em;
+    top: 8%;
+    left: 1px;
+}
 
-        .file_wrapper .svg-icon path,
-        .file_wrapper .svg-icon polygon,
-        .file_wrapper .svg-icon rect {
-            fill: #000000;
-        }
+.file_wrapper .svg-icon path,
+.file_wrapper .svg-icon polygon,
+.file_wrapper .svg-icon rect {
+    fill: #000000;
+}
 
-        .file_wrapper .svg-icon circle {
-            stroke: #4691f6;
-            stroke-width: 1;
-        }
-    .file_wrapper .fileinfo {
-        position: absolute;
-        top: 30%;
-        left: 7%;
-    }
+.file_wrapper .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+.file_wrapper .fileinfo {
+    position: absolute;
+    top: 30%;
+    left: 7%;
+}
+
+.file_wrapper .audiocontrols {
+    position: center;
+    background-color: aquamarine;
+    z-index: 5;
+}
 
 #back_to_bottom_button {
-    visibility: hidden;
+    display: inline;
     margin: auto;
     font: 0.875em emoji;
     text-align: center;
@@ -488,19 +579,19 @@ a:hover {
     pointer-events: all;
 }
 
-    #back_to_bottom_button:hover {
-        cursor: pointer;
-    }
+#back_to_bottom_button:hover {
+    cursor: pointer;
+}
 
-    #back_to_bottom_button.fade {
-        opacity: 0;
-        width: 1em;
-        color: transparent;
-        transition: .2s opacity ease .1s, .2s width ease .1s, color .1s ease;
-    }
-        #back_to_bottom_button.fade:hover {
-            cursor: context-menu;
-        }
+#back_to_bottom_button.fade {
+    opacity: 0;
+    width: 1em;
+    color: transparent;
+    transition: .2s opacity ease .1s, .2s width ease .1s, color .1s ease;
+}
+#back_to_bottom_button.fade:hover {
+    cursor: context-menu;
+}
 
 #messages {
     position: relative;
@@ -513,14 +604,14 @@ a:hover {
     transition: 0.5s opacity;
 }
 
-    #messages.fade {
-        opacity: 0;
-        transition: none;
-    }
+#messages.fade {
+    opacity: 0;
+    transition: none;
+}
 
-    #messages:hover {
-        overflow-y: overlay;
-    }
+#messages:hover {
+    overflow-y: overlay;
+}
 
 .last_message {
     /* The last message gets a bigger bottom padding so that it is not
@@ -794,9 +885,9 @@ input[type=checkbox] {
     vertical-align: center;
 }
 
-    .message_type_call .menu_interaction .dropdown {
-        margin-top: -17px;
-    }
+.message_type_call .menu_interaction .dropdown {
+    margin-top: -17px;
+}
 
 .message:hover:not(.message_type_contact) .menu_interaction {
     display: block;
@@ -812,14 +903,14 @@ input[type=checkbox] {
     padding-bottom: 3px;
 }
 
-    .dropdown div {
-        color: #111;
-        padding: 10px;
-    }
+.dropdown div {
+    color: #111;
+    padding: 10px;
+}
 
-        .dropdown div:hover {
-            background-color: #ddd;
-        }
+.dropdown div:hover {
+    background-color: #ddd;
+}
 
 .showmenu:checked ~ .dropdown {
     display: block;
@@ -900,10 +991,10 @@ input[type=checkbox] {
     padding: 0;
 }
 
-    .message_type_contact .message_wrapper:before,
-    .message_type_call .message_wrapper:before {
-        display: none;
-    }
+.message_type_contact .message_wrapper:before,
+.message_type_call .message_wrapper:before {
+    display: none;
+}
 
 .message_type_contact .text,
 .message_type_call .text {
@@ -997,11 +1088,11 @@ input[type=checkbox] {
     white-space: nowrap;
 }
 
-    .truncate-ellipsis > * {
-        display: table-cell;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.truncate-ellipsis > * {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .message_type_data_transfer .filename {
     cursor: pointer;
@@ -1023,13 +1114,13 @@ input[type=checkbox] {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-    .message_progress_bar > span {
-        display: inline;
-        height: 100%;
-        background-color: #01a2b8;
-        position: absolute;
-        overflow: hidden;
-    }
+.message_progress_bar > span {
+    display: inline;
+    height: 100%;
+    background-color: #01a2b8;
+    position: absolute;
+    overflow: hidden;
+}
 
 /* text interactions */
 
@@ -1043,9 +1134,9 @@ input[type=checkbox] {
     max-width: 100%;
 }
 
-    .message_text pre {
-        display: inline;
-    }
+.message_text pre {
+    display: inline;
+}
 
 pre {
     font: inherit;
