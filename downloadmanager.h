@@ -40,6 +40,7 @@ public:
                       bool withUI,
                       std::function<void(int)> doneCb = {});
     int getDownloadStatus();
+    void cancelDownload();
 
 public slots:
     void slotSslErrors(const QList<QSslError>& sslErrors);
@@ -52,13 +53,11 @@ private:
 
     QNetworkAccessManager manager_;
     QNetworkReply* currentDownload_;
-    updateDownloadDialog progressBar_;
+    UpdateDownloadDialog progressBar_;
     std::unique_ptr<QFile> file_;
-    QTime downloadTime_;
-    int previousTime_ = 0;
-    qint64 previousDownloadBytes_ = 0;
     int statusCode_;
     bool withUI_;
+    bool httpRequestAborted_ { false };
 
     std::function<void(int)> doneCb_;
 
