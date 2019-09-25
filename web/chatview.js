@@ -33,6 +33,7 @@ const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 var   sendContainer     = document.getElementById("file_image_send_container")
+var   audioRecordPage   = document.getElementById("audio_recording_section")
 
 messageBarInput.onpaste = pasteKeyDetected;
 
@@ -293,7 +294,7 @@ function sendMessage()
     }
 
     sendContainer.innerHTML = "";
-    sendContainer.style.visibility = "hidden";
+    sendContainer.style.display = "none";
     reduce_send_container();
 
     var message = messageBarInput.value
@@ -1665,6 +1666,38 @@ function selectFile() {
     //js or qt
 }
 
+/* Open the audio recording page when microphone button is clicked */
+function open_recording_section() {
+    if (audioRecordPage.style.display.length == 0 || audioRecordPage.style.display == "none") {
+        audioRecordPage.style.display = "flex";
+    } else {
+        audioRecordPage.style.display = "none";
+    }
+}
+
+/* Define what happens when message windows is clicked*/
+function onMessageClick() {
+    if (audioRecordPage.style.display != "none")
+        audioRecordPage.style.display = "none";
+}
+
+
+/* Record audio when the recording button is pressed */
+var isRecordingBtnBeingPressed = false;
+
+function on_RecordButton_pressed() {
+    isRecordingBtnBeingPressed = true;
+    window.jsbridge.startRecordAudio();
+}
+
+function on_RecordButton_released() {
+    if (isRecordingBtnBeingPressed) {
+        window.jsbridge.finishRecordAudio();
+        isRecordingBtnBeingPressed = false;
+    }
+}
+
+
 /**
  * add file (local file) to message area
  */
@@ -1685,9 +1718,9 @@ function addFile_path(path, name, size) {
         '<button class="btn" onclick="remove(this)">X</button>' +
         '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1703,9 +1736,9 @@ function addImage_base64(base64) {
                 '<button class="btn" onclick="remove(this)">X</button>' +
                 '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1721,11 +1754,28 @@ function addImage_path(path) {
                '<button class="btn" onclick="remove(this)">X</button>' +
                '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ *
+ * Add audio display widget into message area according to the path of the audio file
+ */
+function addAudio(path) {
+    var html = '<div class="img_wrapper">' +
+        '<audio src="' + path + '"/></audio>' +
+        '<button class="btn" onclick="remove(this)">X</button>' +
+        '</div >';
+    //display the send container first and add the audio file info html into the sendcontainer
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
+        grow_send_container();
+        sendContainer.style.display = "flex";
+    }
     sendContainer.innerHTML += html;
 }
 
@@ -1737,7 +1787,7 @@ function addImage_path(path) {
 function grow_send_container() {
     exec_keeping_scroll_position(function () {
         var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
-        document.body.style.paddingBottom = (parseInt(msgbar_size) + 158).toString() + "px";
+        //document.body.style.paddingBottom = (parseInt(msgbar_size) + 158).toString() + "px";
         //6em
     }, [])
 }
@@ -1749,7 +1799,7 @@ function grow_send_container() {
 /* exported grow_send_container */
 function reduce_send_container() {
     exec_keeping_scroll_position(function () {
-        document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 158).toString() + "px";
+        //document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 158).toString() + "px";
         //6em
     }, [])
 }
@@ -1759,7 +1809,7 @@ function remove(e) {
     e.parentNode.parentNode.removeChild(e.parentNode);
     if (sendContainer.innerHTML.length == 0) {
         reduce_send_container();
-        sendContainer.style.visibility = "hidden";
+        sendContainer.style.display = "none";
     }
 }
 
