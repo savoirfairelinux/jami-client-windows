@@ -30,16 +30,6 @@
         <MergeRef Id="VCRedist"/>
       </Feature>
 
-      <!--Find User Defined Installition Registry If User changes the Default Registry-->
-      <Property Id="APPLICATIONFOLDER" Secure="yes">
-        <RegistrySearch Id="FindInstallLocation"
-            Root="HKLM"
-            Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[WIX_UPGRADE_DETECTED]"
-            Name="InstallLocation"
-            Type="raw"
-            Win64="yes" />
-      </Property>
-
       <!--SetDirectory of APPLICATIONFOLDER -->
       <SetDirectory
           Id="APPLICATIONFOLDER"
@@ -53,7 +43,7 @@
         <WixVariable Id="WixUISupportPerUser" Value="0" />
 
       <CustomAction Id="removeOldJamiFiles" Directory="APPLICATIONFOLDER"
-                    ExeCommand="cmd /c &quot;del vc_redist.x64.exe; del uninstall.exe;&quot;"
+                    ExeCommand="cmd /c &quot;del vc_redist.x64.exe; del uninstall.exe; del WinSparkle.dll;&quot;"
                     Execute="deferred" Return="ignore" HideTarget="no" Impersonate="no" />
 
     </Product>
