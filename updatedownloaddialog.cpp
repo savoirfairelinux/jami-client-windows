@@ -19,6 +19,9 @@
 #include "updatedownloaddialog.h"
 #include "ui_updatedownloaddialog.h"
 
+#include <QCloseEvent>
+#include <QMessageBox>
+
 updateDownloadDialog::updateDownloadDialog(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::updateDownloadDialog)
@@ -27,6 +30,11 @@ updateDownloadDialog::updateDownloadDialog(QWidget* parent)
     ui->progressBar->setValue(0);
     ui->progressBar->setVisible(true);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
+    connect(ui->updateCancelButton, &QAbstractButton::clicked,
+        [this] {
+            emit isCanceled();
+        });
 }
 
 void updateDownloadDialog::setValue(double var)
@@ -47,6 +55,19 @@ updateDownloadDialog::~updateDownloadDialog()
 void updateDownloadDialog::update(QString displayText)
 {
     int percent = static_cast<int>((1 - ((maximum_ - value_) / maximum_)) * 100);
-    ui->Statusedit->setText("Speed: " + displayText);
+    ui->Statusedit->setText("Progress: " + displayText);
     ui->progressBar->setValue(percent);
+}
+
+void updateDownloadDialog::closeEvent(QCloseEvent *event)
+{
+    QMessageBox::StandardButton resBtn = QMessageBox::question(this, "Update",
+        tr("Quit Update?\n"),
+        QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
+        QMessageBox::Yes);
+    if (resBtn == QMessageBox::Yes) {
+        emit isCanceled();
+    } else {
+        event->ignore();
+    }
 }

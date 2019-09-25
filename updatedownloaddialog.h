@@ -34,8 +34,14 @@ public:
     void setMaximum(double var);
     void update(QString displayText);
 
+signals:
+    void isCanceled();
+
 private:
     Ui::updateDownloadDialog* ui;
     double value_ = 0;
     double maximum_ = -1;
+
+protected:
+    void closeEvent(QCloseEvent *event);
 };
