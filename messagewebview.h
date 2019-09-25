@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2019 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -49,6 +49,8 @@ public:
     Q_INVOKABLE int emitMessagesCleared();
     Q_INVOKABLE int emitMessagesLoaded();
     Q_INVOKABLE int emitPasteKeyDetected();
+    Q_INVOKABLE int startRecordAudio();
+    Q_INVOKABLE int finishRecordAudio();
 };
 
 class MessageWebView : public QWebEngineView
@@ -87,6 +89,8 @@ public:
     void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
+    void setAudioClipPath(std::string path);
+    std::string getAudioclipPath();
 
 protected:
 
@@ -112,5 +116,6 @@ private:
     PrivateBridging* jsBridge_;
     QLabel* dragDroplabel_;
     bool textSelected_;
+    std::string tempAudioclipPath;
 
 };

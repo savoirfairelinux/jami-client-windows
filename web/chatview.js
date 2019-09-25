@@ -33,6 +33,7 @@ const invitationText    = document.getElementById("text")
 var   messages          = document.getElementById("messages")
 var   backToBottomBtn   = document.getElementById("back_to_bottom_button")
 var   sendContainer     = document.getElementById("file_image_send_container")
+var   audioRecordPage   = document.getElementById("audio_recording_section")
 
 messageBarInput.onpaste = pasteKeyDetected;
 
@@ -243,7 +244,6 @@ setInterval(updateView, 60000)
 
 /**
  * Transform a date to a string group like "1 hour ago".
- *
  * @param date
  */
 function formatDate(date) {
@@ -293,7 +293,7 @@ function sendMessage()
     }
 
     sendContainer.innerHTML = "";
-    sendContainer.style.visibility = "hidden";
+    sendContainer.style.display = "none";
     reduce_send_container();
 
     var message = messageBarInput.value
@@ -634,6 +634,55 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
         return
     }
 
+    if (isAudio(message_text) && message_delivery_status === "finished" && displayLinksEnabled && !forceTypeToFile) {
+        // Replace the old wrapper by the downloaded audio
+        var old_wrapper = message_div.querySelector(".internal_mes_wrapper")
+        if (old_wrapper) {
+            old_wrapper.parentNode.removeChild(old_wrapper)
+        }
+
+        var errorHandler = function () {
+            var wrapper = message_div.querySelector(".internal_mes_wrapper")
+            wrapper.parentNode.classList.remove("no-audio-overlay")
+            var message_wrapper = message_div.querySelector(".message_wrapper")
+            if (message_wrapper) {
+                message_wrapper.parentNode.removeChild(message_wrapper)
+            }
+
+            var media_wrapper = message_div.querySelector(".audio")
+            if (media_wrapper) {
+                media_wrapper.parentNode.removeChild(media_wrapper)
+            }
+
+            var new_interaction = fileInteraction(message_id)
+            var new_message_wrapper = new_interaction.querySelector(".message_wrapper")
+            wrapper.prepend(new_message_wrapper)
+            updateFileInteraction(message_div, message_object, true)
+        }
+
+        const new_wrapper = document.createElement("audio")
+        new_wrapper.onerror = errorHandler
+        new_wrapper.setAttribute("src", "file://" + message_text)
+        new_wrapper.setAttribute("controls", "controls")
+        var audio_type = "audio/mpeg"
+        if (message_text.toLowerCase().match(/\.(ogg)$/)) {
+            audio_type = "audio/ogg"
+        } else if (message_text.toLowerCase().match(/\.(flac)$/)) {
+            audio_type = "audio/flac"
+        } else if (message_text.toLowerCase().match(/\.(wav)$/)) {
+            audio_type = "audio/wav"
+        }
+        new_wrapper.setAttribute("type", audio_type)
+        new_wrapper.setAttribute("class", "audio")
+        const internal_mes_wrapper = document.createElement("div")
+        internal_mes_wrapper.setAttribute("class", "internal_mes_wrapper")
+        internal_mes_wrapper.appendChild(new_wrapper)
+        message_div.insertBefore(internal_mes_wrapper, message_div.querySelector(".menu_interaction"))
+        internal_mes_wrapper.parentNode.classList.add("no-audio-overlay")
+
+        return
+    }
+
     // Set informations text
     var informations_div = message_div.querySelector(".informations")
     informations_div.innerText = buildFileInformationText(message_object)
@@ -685,7 +734,7 @@ function updateFileInteraction(message_div, message_object, forceTypeToFile = fa
  * @param file
  */
 function isImage(file) {
-    return file.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) !== null
+    return file.toLowerCase().match(/\.(jpeg|jpg|gif|png|ico)$/) !== null
 }
 
 /**
@@ -698,6 +747,14 @@ function isVideo(file) {
     const urlParser = document.createElement("a")
     urlParser.href = file
     return (availableProtocols.includes(urlParser.protocol) && videoHostname.includes(urlParser.hostname))
+}
+
+/**
+ * return if a file is audio clip
+ * @param file
+ */
+function isAudio(file) {
+    return file.toLowerCase().match(/\.(mp3|mpeg|ogg|flac|wav)$/) !== null
 }
 
 /**
@@ -1665,6 +1722,41 @@ function selectFile() {
     //js or qt
 }
 
+/* Open the audio recording page when microphone button is clicked */
+function open_recording_section() {
+    if (audioRecordPage.style.display.length == 0 || audioRecordPage.style.display == "none") {
+        audioRecordPage.style.display = "flex";
+    } else {
+        audioRecordPage.style.display = "none";
+    }
+}
+
+/* Define what happens when message windows is clicked*/
+function onMessageClick() {
+    clearAudioRecordingSection()
+}
+
+function clearAudioRecordingSection() {
+    if (audioRecordPage.style.display != "none")
+        audioRecordPage.style.display = "none";
+}
+
+/* Record audio when the recording button is pressed */
+var isRecordingBtnBeingPressed = false;
+
+function on_RecordButton_pressed() {
+    isRecordingBtnBeingPressed = true;
+    window.jsbridge.startRecordAudio();
+}
+
+function on_RecordButton_released() {
+    if (isRecordingBtnBeingPressed) {
+        window.jsbridge.finishRecordAudio();
+        isRecordingBtnBeingPressed = false;
+    }
+}
+
+
 /**
  * add file (local file) to message area
  */
@@ -1685,9 +1777,9 @@ function addFile_path(path, name, size) {
         '<button class="btn" onclick="remove(this)">X</button>' +
         '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1703,9 +1795,9 @@ function addImage_base64(base64) {
                 '<button class="btn" onclick="remove(this)">X</button>' +
                 '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
     sendContainer.innerHTML += html;
@@ -1721,11 +1813,31 @@ function addImage_path(path) {
                '<button class="btn" onclick="remove(this)">X</button>' +
                '</div >';
     // At first, visiblity can empty
-    if (sendContainer.style.visibility.length == 0 || sendContainer.style.visibility == "hidden") {
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
         grow_send_container();
-        sendContainer.style.visibility = "visible";
+        sendContainer.style.display = "flex";
     }
     //add html here since display is set to flex, image will change accordingly
+    sendContainer.innerHTML += html;
+}
+
+/**
+ *
+ * Add audio display widget into message area according to the path of the audio file
+ */
+function addAudio(path) {
+    var html = '<div class="file_wrapper" data-path="' + path + '">' +
+        '<audio controls="controls">' +
+        '<source src="' + path + '" type="audio/ogg">' +
+        'Play is not supported'
+        '</audio >' +
+        '<button class="btn" onclick="remove(this)">X</button>' +
+        '</div >';
+    //display the send container first and add the audio file info html into the sendcontainer
+    if (sendContainer.style.display.length == 0 || sendContainer.style.display == "none") {
+        grow_send_container();
+        sendContainer.style.display = "flex";
+    }
     sendContainer.innerHTML += html;
 }
 
@@ -1736,9 +1848,6 @@ function addImage_path(path) {
 /* exported grow_send_container */
 function grow_send_container() {
     exec_keeping_scroll_position(function () {
-        var msgbar_size = window.getComputedStyle(document.body).getPropertyValue("--messagebar-size");
-        document.body.style.paddingBottom = (parseInt(msgbar_size) + 158).toString() + "px";
-        //6em
     }, [])
 }
 
@@ -1749,8 +1858,6 @@ function grow_send_container() {
 /* exported grow_send_container */
 function reduce_send_container() {
     exec_keeping_scroll_position(function () {
-        document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 158).toString() + "px";
-        //6em
     }, [])
 }
 
@@ -1759,7 +1866,7 @@ function remove(e) {
     e.parentNode.parentNode.removeChild(e.parentNode);
     if (sendContainer.innerHTML.length == 0) {
         reduce_send_container();
-        sendContainer.style.visibility = "hidden";
+        sendContainer.style.display = "none";
     }
 }
 

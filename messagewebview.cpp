@@ -47,7 +47,7 @@
 #include "utils.h"
 #include "webchathelpers.h"
 
-MessageWebView::MessageWebView(QWidget *parent)
+MessageWebView::MessageWebView(QWidget* parent)
     : QWebEngineView(parent)
 {
     dragDroplabel_ = new QLabel(parent);
@@ -136,26 +136,26 @@ void MessageWebView::dropEvent(QDropEvent* event)
     event->accept();
 }
 
-void MessageWebView::resizeEvent(QResizeEvent *event)
+void MessageWebView::resizeEvent(QResizeEvent* event)
 {
     event->accept();
     // resize label as messagewebview resizes
-    dragDroplabel_->setGeometry(this->x(),this->y(),this->width(),this->height());
+    dragDroplabel_->setGeometry(this->x(), this->y(), this->width(), this->height());
 }
 
-bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
+bool MessageWebView::eventFilter(QObject* watched, QEvent* event)
 {
     if (watched != dragDroplabel_) {
         return false;
     }
     if (event->type() == QEvent::DragEnter) {
-        QDragEnterEvent *dee = dynamic_cast<QDragEnterEvent *>(event);
+        QDragEnterEvent* dee = dynamic_cast<QDragEnterEvent*>(event);
         dee->acceptProposedAction();
         //Has to return here, otherwise it will filter out ALL events for label ! including paint events
         return true;
     } else if (event->type() == QEvent::Drop) {
         // Drop Event complete, get data
-        QDropEvent *de = dynamic_cast<QDropEvent *>(event);
+        QDropEvent* de = dynamic_cast<QDropEvent*>(event);
 
         const QMimeData* mimeData = de->mimeData();
         // check for our needed mime type, here a file or a list of files
@@ -191,8 +191,7 @@ void MessageWebView::setMessagesContent(const QString& text)
     page()->runJavaScript(QStringLiteral("replaceText('%1');").arg(text));
 }
 
-void
-MessageWebView::setMessagesImageContent(const QString &path, bool isBased64)
+void MessageWebView::setMessagesImageContent(const QString& path, bool isBased64)
 {
     if (isBased64) {
         QString param = QString("addImage_base64('%1')").arg(path);
@@ -203,8 +202,7 @@ MessageWebView::setMessagesImageContent(const QString &path, bool isBased64)
     }
 }
 
-void
-MessageWebView::setMessagesFileContent(const QString &path)
+void MessageWebView::setMessagesFileContent(const QString& path)
 {
     qint64 fileSize = QFileInfo(path).size();
     QString fileName = QFileInfo(path).fileName();
@@ -213,7 +211,7 @@ MessageWebView::setMessagesFileContent(const QString &path)
         fileName = fileName.remove(12, fileName.length() - 12) + "...";
     }
     QString param = QString("addFile_path('%1','%2','%3')")
-        .arg(path, fileName, Utils::humanFileSize(fileSize));
+                        .arg(path, fileName, Utils::humanFileSize(fileSize));
     page()->runJavaScript(param);
 }
 
@@ -231,10 +229,20 @@ bool MessageWebView::textSelected()
 
 void MessageWebView::runJsText()
 {
-    page()->runJavaScript(QStringLiteral("isTextSelected();"), [&, this](const QVariant &val) {
+    page()->runJavaScript(QStringLiteral("isTextSelected();"), [&, this](const QVariant& val) {
         textSelected_ = val.toBool();
         emit textSelectedReady();
     });
+}
+
+void MessageWebView::setAudioClipPath(std::string path)
+{
+    tempAudioclipPath = path;
+}
+
+std::string MessageWebView::getAudioclipPath()
+{
+    return tempAudioclipPath;
 }
 
 void MessageWebView::buildView()
@@ -244,8 +252,7 @@ void MessageWebView::buildView()
     connect(this, &QWebEngineView::loadFinished, this, &MessageWebView::slotLoadFinished);
 }
 
-void
-MessageWebView::slotLoadFinished()
+void MessageWebView::slotLoadFinished()
 {
     insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/web/chatview.css"));
     page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify.js"), QWebEngineScript::MainWorld);
@@ -255,17 +262,18 @@ MessageWebView::slotLoadFinished()
     page()->runJavaScript(Utils::QByteArrayFromFile(":/web/chatview.js"), QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::insertStyleSheet(const QString &name, const QString &source)
+void MessageWebView::insertStyleSheet(const QString& name, const QString& source)
 {
     QWebEngineScript script;
     auto simplifiedCSS = source.simplified().replace("'", "\"");
-    QString s = QString::fromLatin1("(function() {"\
-                                    "    var node = document.createElement('style');"\
-                                    "    node.id = '%1';"\
-                                    "    node.innerHTML = '%2';"\
-                                    "    document.head.appendChild(node);"\
-                                    "})()").arg(name).arg(simplifiedCSS);
+    QString s = QString::fromLatin1("(function() {"
+                                    "    var node = document.createElement('style');"
+                                    "    node.id = '%1';"
+                                    "    node.innerHTML = '%2';"
+                                    "    document.head.appendChild(node);"
+                                    "})()")
+                    .arg(name)
+                    .arg(simplifiedCSS);
     page()->runJavaScript(s);
 
     script.setName(name);
@@ -276,14 +284,14 @@ MessageWebView::insertStyleSheet(const QString &name, const QString &source)
     page()->scripts().insert(script);
 }
 
-void
-MessageWebView::removeStyleSheet(const QString &name)
+void MessageWebView::removeStyleSheet(const QString& name)
 {
-    QString s = QString::fromLatin1("(function() {"\
-                                    "    var element = document.getElementById('%1');"\
-                                    "    element.outerHTML = '';"\
-                                    "    delete element;"\
-                                    "})()").arg(name);
+    QString s = QString::fromLatin1("(function() {"
+                                    "    var element = document.getElementById('%1');"
+                                    "    element.outerHTML = '';"
+                                    "    delete element;"
+                                    "})()")
+                    .arg(name);
 
     page()->runJavaScript(s);
 
@@ -297,64 +305,59 @@ void MessageWebView::clear()
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setDisplayLinks(bool display)
+void MessageWebView::setDisplayLinks(bool display)
 {
     QString s = QString::fromLatin1("setDisplayLinks('%1');")
-        .arg(display ? "true" : "false");
+                    .arg(display ? "true" : "false");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationModel,
-                                    uint64_t msgId,
-                                    const lrc::api::interaction::Info& interaction)
+void MessageWebView::printNewInteraction(lrc::api::ConversationModel& conversationModel,
+    uint64_t msgId,
+    const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
     if (interactionObject.isEmpty()) {
         return;
     }
     QString s = QString::fromLatin1("addMessage(%1);")
-        .arg(interactionObject.constData());
+                    .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel,
-                                  uint64_t msgId,
-                                  const lrc::api::interaction::Info& interaction)
+void MessageWebView::updateInteraction(lrc::api::ConversationModel& conversationModel,
+    uint64_t msgId,
+    const lrc::api::interaction::Info& interaction)
 {
     auto interactionObject = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
     if (interactionObject.isEmpty()) {
         return;
     }
     QString s = QString::fromLatin1("updateMessage(%1);")
-        .arg(interactionObject.constData());
+                    .arg(interactionObject.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::removeInteraction(uint64_t interactionId)
+void MessageWebView::removeInteraction(uint64_t interactionId)
 {
     QString s = QString::fromLatin1("removeInteraction(%1);")
-        .arg(QString::number(interactionId));
+                    .arg(QString::number(interactionId));
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
-                             const std::map<uint64_t,
-                             lrc::api::interaction::Info> interactions)
+void MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
+    const std::map<uint64_t,
+        lrc::api::interaction::Info>
+        interactions)
 {
     auto interactionsStr = interactionsToJsonArrayObject(conversationModel, interactions).toUtf8();
     QString s = QString::fromLatin1("printHistory(%1);")
-        .arg(interactionsStr.constData());
+                    .arg(interactionsStr.constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setSenderImage(const std::string& sender,
-                               const std::string& senderImage)
+void MessageWebView::setSenderImage(const std::string& sender,
+    const std::string& senderImage)
 {
     QJsonObject setSenderImageObject = QJsonObject();
     setSenderImageObject.insert("sender_contact_method", QJsonValue(QString(sender.c_str())));
@@ -362,22 +365,21 @@ MessageWebView::setSenderImage(const std::string& sender,
 
     auto setSenderImageObjectString = QString(QJsonDocument(setSenderImageObject).toJson(QJsonDocument::Compact));
     QString s = QString::fromLatin1("setSenderImage(%1);")
-        .arg(setSenderImageObjectString.toUtf8().constData());
+                    .arg(setSenderImageObjectString.toUtf8().constData());
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
+void MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
 {
     QString s = show ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")")
-        .arg(QString(contactUri.c_str()))
-        .arg(QString(contactId.c_str())) : QString::fromLatin1("showInvitation()");
+                           .arg(QString(contactUri.c_str()))
+                           .arg(QString(contactId.c_str()))
+                     : QString::fromLatin1("showInvitation()");
 
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void
-MessageWebView::setMessagesVisibility(bool visible)
+void MessageWebView::setMessagesVisibility(bool visible)
 {
     QString s = QString::fromLatin1(visible ? "showMessagesDiv();" : "hideMessagesDiv();");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -417,8 +419,7 @@ PrivateBridging::deleteInteraction(const QString& arg)
     if (ok) {
         LRCInstance::getCurrentConversationModel()->clearInteractionFromConversation(
             LRCInstance::getSelectedConvUid(),
-            interactionUid
-        );
+            interactionUid);
     } else {
         qDebug() << "deleteInteraction - invalid arg" << arg;
     }
@@ -433,8 +434,7 @@ PrivateBridging::retryInteraction(const QString& arg)
     if (ok) {
         LRCInstance::getCurrentConversationModel()->retryInteraction(
             LRCInstance::getSelectedConvUid(),
-            interactionUid
-        );
+            interactionUid);
     } else {
         qDebug() << "retryInteraction - invalid arg" << arg;
     }
@@ -520,21 +520,24 @@ PrivateBridging::sendImage(const QString& arg)
 
         QPixmap image_to_save;
         if (!image_to_save.loadFromData(QByteArray::fromBase64(data))) {
-            qDebug().noquote() << "JS bridging - errors during loadFromData" << "\n";
+            qDebug().noquote() << "JS bridging - errors during loadFromData"
+                               << "\n";
             return -1;
         }
 
-        QString path = QString(Utils::WinGetEnv("TEMP"))  + fileName;
-        if (!image_to_save.save(path,"PNG")) {
-            qDebug().noquote() << "JS bridging - errors during QPixmap save" << "\n";
+        QString path = QString(Utils::WinGetEnv("TEMP")) + fileName;
+        if (!image_to_save.save(path, "PNG")) {
+            qDebug().noquote() << "JS bridging - errors during QPixmap save"
+                               << "\n";
             return -1;
         }
 
-       try {
+        try {
             auto convUid = LRCInstance::getSelectedConvUid();
             LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
         } catch (...) {
-            qDebug().noquote() << "JS bridging - exception during sendFile - base64 img" << "\n";
+            qDebug().noquote() << "JS bridging - exception during sendFile - base64 img"
+                               << "\n";
             return -1;
         }
 
@@ -546,7 +549,8 @@ PrivateBridging::sendImage(const QString& arg)
             auto convUid = LRCInstance::getSelectedConvUid();
             LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg.toStdString(), fileName.toStdString());
         } catch (...) {
-            qDebug().noquote() << "JS bridging - exception during sendFile - image from path" << "\n";
+            qDebug().noquote() << "JS bridging - exception during sendFile - image from path"
+                               << "\n";
             return -1;
         }
     }
@@ -554,7 +558,7 @@ PrivateBridging::sendImage(const QString& arg)
 }
 
 Q_INVOKABLE int
-PrivateBridging::sendFile(const QString&path)
+PrivateBridging::sendFile(const QString& path)
 {
     qDebug() << "JS bridging - MessageWebView::sendFile";
     QFileInfo fi(path);
@@ -640,5 +644,33 @@ PrivateBridging::emitPasteKeyDetected()
     } else {
         qDebug() << "JS bridging - exception during emitPasteKeyDetected";
     }
+    return 0;
+}
+
+Q_INVOKABLE int PrivateBridging::startRecordAudio()
+{
+    if (MessageWebView* parent = (MessageWebView*)this->parent()) {
+        std::string path = LRCInstance::avModel().startLocalRecorder(true);
+        parent->setAudioClipPath(path);
+    }
+
+    qDebug() << "The audio recording now start! ";
+    return 0;
+}
+
+Q_INVOKABLE int PrivateBridging::finishRecordAudio()
+{
+    if (MessageWebView* parent = (MessageWebView*)this->parent()) {
+        std::string path = parent->getAudioclipPath();
+        LRCInstance::avModel().stopLocalRecorder(path);
+        qDebug() << "the current audioclip's name and directory is: " + QString::fromStdString(path);
+        QString param = QString("addAudio('%1')")
+                            .arg(QString::fromStdString(path));
+        parent->page()->runJavaScript(param);
+    } else {
+        qDebug() << "The parent of javascript bridge does not exist! ";
+        return -1;
+    }
+
     return 0;
 }
