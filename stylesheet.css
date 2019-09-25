@@ -216,6 +216,25 @@ QPushButton#sipInputPanelButton:checked {
     border: solid 1px;
 }
 
+QPushButton#updateCancelButton {
+    padding: 4px;
+    background: #369;
+    color: white;
+    font-size: 12px;
+    border: 0;
+    border-radius: 3px;
+    outline: 0px;
+    width: 50px;
+}
+
+QPushButton#updateCancelButton:hover {
+    background: #47a;
+}
+
+QPushButton#updateCancelButton:pressed {
+    background: #58b;
+}
+
 QMessageBox QPushButton {
     padding: 4px;
     background: #369;
