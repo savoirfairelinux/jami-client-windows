@@ -46,6 +46,7 @@ public:
     void resetVideoOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly, const std::string& accountId, const lrc::api::conversation::Info& convInfo);
     void disconnectRendering();
     void connectRendering(bool started = false);
+    void hidePossibleUnclosedOverlayDialog() { overlay_->hidePossibleUnclosedOverlayDialog(); }
 
 protected:
     void resizeEvent(QResizeEvent* event);

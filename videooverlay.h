@@ -49,6 +49,7 @@ public:
     void setTransferCallAndSIPPanelAvailability(bool visible);
     void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
     void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly);
+    void hidePossibleUnclosedOverlayDialog();
 
 //UI SLOTS
 private slots:

@@ -284,6 +284,13 @@ VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecordin
 }
 
 void
+VideoOverlay::hidePossibleUnclosedOverlayDialog()
+{
+    contactPicker_->hide();
+    sipInputPanel_->hide();
+}
+
+void
 VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
 {
     if (callId_.empty() || !checked) {

@@ -795,6 +795,7 @@ CallWidget::slotToggleFullScreenClicked()
 void
 CallWidget::slotVideoViewDestroyed(const std::string& callid)
 {
+    ui->videoWidget->hidePossibleUnclosedOverlayDialog();
     auto conversation = Utils::getSelectedConversation();
     if (conversation.uid.empty() || callid != conversation.callId) {
         return;
