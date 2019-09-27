@@ -210,6 +210,16 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->messageView, &MessageWebView::pasteKeyDetected,
             this, &CallWidget::Paste);
 
+    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::voiceMailNotify,
+        [this] (const std::string& accountId, int newVM, int oldVM, int newUrgentVM) {
+            auto accountVoiceMail = std::make_tuple(newVM, oldVM, newUrgentVM);
+            voiceMailMap_[accountId] = accountVoiceMail;
+            if (LRCInstance::getCurrAccId() == accountId) {
+                ui->expandableSection->show();
+                voiceMailNotify_->setCurrentData(newVM, oldVM, newUrgentVM);
+            }
+        });
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
@@ -222,6 +232,12 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    voiceMailNotify_ = new VoicemailNotifyWidget(this);
+    voiceMailNotify_->setParent(ui->expandableSection);
+    ui->expandableSection->setLabelText(expandableSectionName_);
+    ui->expandableSection->addExpandWidget(voiceMailNotify_);
+    ui->expandableSection->hide();
 }
 
 CallWidget::~CallWidget()
@@ -835,6 +851,18 @@ CallWidget::setSelectedAccount(const std::string& accountId)
     updateConversationsFilterWidget();
     connectConversationModel();
     connectAccount(accountId);
+
+    if (isRingAccount) {
+        ui->expandableSection->hide();
+    } else {
+        if (voiceMailMap_.find(accountId) != voiceMailMap_.end()) {
+            ui->expandableSection->show();
+            auto data = voiceMailMap_[accountId];
+            voiceMailNotify_->setCurrentData(std::get<0>(data), std::get<1>(data), std::get<2>(data));
+        } else {
+            ui->expandableSection->hide();
+        }
+    }
 }
 
 void CallWidget::setConversationFilter(lrc::api::profile::Type filter)

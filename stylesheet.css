@@ -122,6 +122,27 @@ QPushButton#btnUpdateAccept:pressed, QPushButton#btnUpdateCancel:pressed {
     background-color: rgb(212, 212, 212);
 }
 
+QPushButton#expandCollapseButton {
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+    color: rgb(32, 32, 32);
+    background-color: rgb(242, 242, 242);
+    text-align: left;
+}
+
+QPushButton#expandCollapseButton:hover {
+    background-color: rgb(237, 237, 237);
+}
+
+QPushButton#expandCollapseButton:pressed {
+    background-color: rgb(212, 212, 212);
+}
+
+QPushButton#expandCollapseButton:disabled {
+    color: gray;
+}
+
 QWidget#searchBarLayoutWidget, QWidget#smartList,
 QWidget#sidePanelLayoutWidget, QWidget#leftSettingsWidget {
     border-right: 2px solid rgb(240, 240, 240);

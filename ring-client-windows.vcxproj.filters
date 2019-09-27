@@ -234,6 +234,12 @@
     <ClCompile Include="connectivitymonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="section.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voicemailnotify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -408,6 +414,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="connectivitymonitor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="section.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="voicemailnotify.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -702,6 +714,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="accountmigration.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="voicemailnotify.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="section.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
