@@ -22,11 +22,11 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
-#include <QNetworkConfigurationManager>
 
 #include "navwidget.h"
 #include "settingswidget.h"
 #include "utils.h"
+#include "connectivitymonitor.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -80,6 +80,8 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
+    Ui::MainWindow* ui;
+
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
     int lastAccountCount_;
@@ -92,8 +94,8 @@ private:
     QAction* settingsAction_;
     QAction* exitAction_;
 
-    Ui::MainWindow* ui;
-    QNetworkConfigurationManager netManager_;
+    ConnectivityMonitor* connectivityMonitor_;
+
     QMetaObject::Connection screenChangedConnection_;
 
     QTimer *updateTimer_;

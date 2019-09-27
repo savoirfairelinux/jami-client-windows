@@ -13,6 +13,8 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="APPLICATIONFOLDER">
+            <Directory Id="dir1097816D193C1CD06487B4CFAE8F27C0" Name="bearer" />
+            <Directory Id="dir1F35EF557267C6E3FDEFF606F60C3F5B" Name="iconengines" />
             <Directory Id="dir620D0D01DB995A0900E22137FB52FEDC" Name="imageformats" />
             <Directory Id="dir5F2F62AA6F6135041AE87AC93F029148" Name="platforms" />
             <Directory Id="dirD51FBD42A867274D15CA506A46837A01" Name="resources" />
@@ -109,7 +111,7 @@
                 <File Id="fil90A840C637C86780E6E7E138AC65E8B5" KeyPath="yes" Source="$(var.ReleaseDir)\d3dcompiler_47.dll" />
             </Component>
             <Component Id="cmp9CFEE34E3A162AB05264E8B756EC1DEC" Directory="APPLICATIONFOLDER" Guid="*">
-                <File  Id="fileMain.exe" KeyPath="yes" Source="$(var.ReleaseDir)\Jami.exe" />
+                <File Id="fileMain.exe" KeyPath="yes" Source="$(var.ReleaseDir)\Jami.exe" />
             </Component>
             <Component Id="cmp0AACD7B49B88FF405D706EB5471D1237" Directory="APPLICATIONFOLDER" Guid="*">
                 <File Id="filB10B4D48B9631B43068A4134FFFD14DB" KeyPath="yes" Source="$(var.ReleaseDir)\jami.ico" />
@@ -125,6 +127,9 @@
             </Component>
             <Component Id="cmp8C8A3AF5CDB5F97F27E3139ACC3EB0AA" Directory="APPLICATIONFOLDER" Guid="*">
                 <File Id="fil1AFBF0FAE158B901AC372EDCCD0876F5" KeyPath="yes" Source="$(var.ReleaseDir)\License.rtf" />
+            </Component>
+            <Component Id="cmp7EC42EDF377FE192A700CC18765A056F" Directory="APPLICATIONFOLDER" Guid="*">
+                <File Id="fil66B5A180B5AA7F0B0DFBA6BE2A0A577D" KeyPath="yes" Source="$(var.ReleaseDir)\opengl32sw.dll" />
             </Component>
             <Component Id="cmpD4AD31229AA37D2E7A3F52788C9A9E65" Directory="APPLICATIONFOLDER" Guid="*">
                 <File Id="filA9A5F4D39FD3F8252EED2634257E8904" KeyPath="yes" Source="$(var.ReleaseDir)\qt.conf" />
@@ -200,6 +205,12 @@
             </Component>
             <Component Id="cmp727F65AE2152795AE04EBB26A506FA0F" Directory="APPLICATIONFOLDER" Guid="*">
                 <File Id="fil5C46BA1F202C3F7EED8EE401E82EB75B" KeyPath="yes" Source="$(var.ReleaseDir)\swscale-5.dll" />
+            </Component>
+            <Component Id="cmpE321A89B163A1DAFB401B257197026DB" Directory="dir1097816D193C1CD06487B4CFAE8F27C0" Guid="*">
+                <File Id="filF4BA0CF9BF04AE5C276F9754AE962E0F" KeyPath="yes" Source="$(var.ReleaseDir)\bearer\qgenericbearer.dll" />
+            </Component>
+            <Component Id="cmpACA7ED5453D1E5AED743FC46C8175378" Directory="dir1F35EF557267C6E3FDEFF606F60C3F5B" Guid="*">
+                <File Id="filD2BE0EBA85657A1F256295384A3DE6B6" KeyPath="yes" Source="$(var.ReleaseDir)\iconengines\qsvgicon.dll" />
             </Component>
             <Component Id="cmp46736DD2209095065A4C6E26D9851CF8" Directory="dir620D0D01DB995A0900E22137FB52FEDC" Guid="*">
                 <File Id="fil0BD4FC9ECDE3AA7604D8FFBD132879F3" KeyPath="yes" Source="$(var.ReleaseDir)\imageformats\qgif.dll" />
