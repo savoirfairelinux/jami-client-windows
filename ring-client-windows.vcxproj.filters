@@ -231,6 +231,9 @@
     <ClCompile Include="accountmigrationdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="connectivitymonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -402,6 +405,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="accountmigrationdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="connectivitymonitor.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

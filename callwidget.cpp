@@ -24,26 +24,13 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
-#include <QComboBox>
-#include <QDesktopServices>
-#include <QScrollBar>
-#include <QWebEngineScript>
-#include <QMimeData>
-
-#include <algorithm>
-#include <memory>
-
-#include <qrencode.h>
-
-//ERROR is defined in windows.h
+// client
 #include "utils.h"
+#ifdef Q_OS_WIN
+//ERROR is defined in windows.h
 #undef ERROR
 #undef interface
-
-// lrc
-#include "globalinstances.h"
-
-// client
+#endif
 #include "animationhelpers.h"
 #include "conversationitemdelegate.h"
 #include "globalsystemtray.h"
@@ -52,6 +39,20 @@
 #include "pixbufmanipulator.h"
 #include "ringthemeutils.h"
 #include "settingskey.h"
+
+// lrc
+#include "globalinstances.h"
+
+#include <qrencode.h>
+
+#include <QComboBox>
+#include <QDesktopServices>
+#include <QScrollBar>
+#include <QWebEngineScript>
+#include <QMimeData>
+
+#include <algorithm>
+#include <memory>
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
