@@ -420,6 +420,32 @@
                   </widget>
                  </item>
                  <item>
+                  <widget class="Section" name="expandableSection" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_11">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>0</width>
+                     <height>15</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
                   <widget class="SmartListView" name="smartList">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
@@ -2162,6 +2188,12 @@ Copy and share it with your friends!
    <class>BezierConnectorWidget</class>
    <extends>QWidget</extends>
    <header>bezierconnectorwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Section</class>
+   <extends>QWidget</extends>
+   <header>section.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
