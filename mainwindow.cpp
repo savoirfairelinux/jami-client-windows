@@ -81,11 +81,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 
-    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged,
-        [=](bool online) {
-            Q_UNUSED(online);
-            LRCInstance::connectivityChanged();
-        });
+    connectivityMonitor_ = new ConnectivityMonitor(this);
+    connect(connectivityMonitor_, &ConnectivityMonitor::configurationChanged,
+            [this] { LRCInstance::connectivityChanged(); });
 
     auto flags_ = windowFlags();
 
