@@ -220,7 +220,10 @@ main(int argc, char* argv[])
     splash->hide();
     LRCInstance::subscribeToDebugReceived();
 
-    QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
+    QDir logPath(QStandardPaths::writableLocation(
+        QStandardPaths::AppLocalDataLocation));
+    QString localDataPath { logPath.absolutePath().replace("/Ring", "/jami/jami.log") };
+    QFile debugFile(localDataPath);
 
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
