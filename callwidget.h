@@ -32,6 +32,7 @@
 
 #include "navwidget.h"
 #include "smartlistmodel.h"
+#include "voicemailnotify.h"
 
 // new LRC
 #include "api/account.h"
@@ -146,7 +147,9 @@ private:
 
     Ui::CallWidget* ui;
     QMovie* miniSpinner_;
+    VoicemailNotifyWidget* voiceMailNotify_;
 
+    const QString expandableSectionName_ { "VoiceMail" };
     constexpr static int qrSize_ = 200;
 
     // lrc

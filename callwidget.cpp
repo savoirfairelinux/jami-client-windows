@@ -222,6 +222,7 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+    voiceMailNotify_ = new VoicemailNotifyWidget(this);
 }
 
 CallWidget::~CallWidget()
@@ -256,6 +257,9 @@ CallWidget::navigated(bool to)
         } else {
             backToWelcomePage();
         }
+        voiceMailNotify_->setParent(ui->expandableSection);
+        ui->expandableSection->setLabelText(expandableSectionName_);
+        ui->expandableSection->addExpandWidget(voiceMailNotify_);
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
