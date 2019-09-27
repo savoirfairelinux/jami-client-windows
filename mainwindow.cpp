@@ -81,11 +81,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 
-    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged,
-        [=](bool online) {
-            Q_UNUSED(online);
-            LRCInstance::connectivityChanged();
-        });
+    connectivityMonitor_ = std::make_unique<ConnectivityMonitor>(this);
+    connect(connectivityMonitor_.get(), &ConnectivityMonitor::connectivityChanged,
+            [this] { LRCInstance::connectivityChanged(); });
 
     auto flags_ = windowFlags();
 
@@ -209,6 +207,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+    connectivityMonitor_.reset();
     updateTimer_->stop();
     delete ui;
 }
@@ -321,6 +320,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
         QMainWindow::closeEvent(event);
+        connectivityMonitor_.reset();
     }
 }
 
