@@ -177,7 +177,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+             <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
            </property>
           </widget>
          </item>
@@ -439,7 +439,7 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+               <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
            </item>
@@ -474,7 +474,7 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+               <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
            </item>
@@ -545,7 +545,7 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+               <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
            </item>
@@ -1706,7 +1706,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>images/icons/round-arrow_drop_down-24px.svg</normaloff>images/icons/round-arrow_drop_down-24px.svg</iconset>
+                 <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1740,7 +1740,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>images/icons/round-arrow_drop_up-24px.svg</normaloff>images/icons/round-arrow_drop_up-24px.svg</iconset>
+                 <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1859,7 +1859,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>images/icons/round-arrow_drop_down-24px.svg</normaloff>images/icons/round-arrow_drop_down-24px.svg</iconset>
+                 <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1893,7 +1893,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>images/icons/round-arrow_drop_up-24px.svg</normaloff>images/icons/round-arrow_drop_up-24px.svg</iconset>
+                 <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
