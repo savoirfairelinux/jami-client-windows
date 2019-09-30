@@ -392,6 +392,21 @@ QPushButton#deleteBanBtn:pressed, QPushButton#cancelChangeBtn:pressed{
     background-color: rgb(219, 55, 54);
 }
 
+QPushButton#btnChangePasswordCancel {
+    background-color: rgb(252, 91, 90);
+    color: white;
+}
+
+QPushButton#btnChangePasswordCancel:hover {
+    background-color: red;
+    color: white;
+}
+
+QPushButton#btnChangePasswordCancel:pressed {
+    background-color: darkred;
+    color: white;
+}
+
 QComboBox{
     background: transparent;
     border-radius: 0px;
