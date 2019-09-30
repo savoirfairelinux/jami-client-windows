@@ -18,23 +18,38 @@
 #pragma once
 
 #include <QDialog>
+#include <QMovie>
 
 namespace Ui {
     class PasswordDialog;
 }
 
+enum class PasswordEnteringPurpose{
+    ChangePassword,
+    ExportAccount
+};
+
 class PasswordDialog : public QDialog
 {
     Q_OBJECT
 public:
-    PasswordDialog(QWidget* parent = nullptr);
+    PasswordDialog(QWidget* parent = nullptr, PasswordEnteringPurpose purpose = PasswordEnteringPurpose::ChangePassword);
     ~PasswordDialog();
+
+    static const int SuccessCode = 200;
+
+    void setExportPath(const std::string& path) { path_ = path; }
 
 private slots:
     void validatePassword();
+    void exportAccount();
 
 private:
     Ui::PasswordDialog* ui;
+
+    PasswordEnteringPurpose purpose_ { PasswordEnteringPurpose::ChangePassword };
+    std::string path_;
+    QMovie* spinnerMovie_;
 
     void savePassword();
 };

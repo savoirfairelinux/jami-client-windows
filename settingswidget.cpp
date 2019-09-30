@@ -492,7 +492,10 @@ void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget, bool stopPhotoboo
 void SettingsWidget::passwordClicked()
 {
     PasswordDialog passwdDialog(this);
-    passwdDialog.exec();
+    int doneCode = passwdDialog.exec();
+    if(doneCode == PasswordDialog::SuccessCode)
+        QMessageBox::information(0, tr("Success"), tr("Password Changed Successfully"));
+
 }
 
 void SettingsWidget::toggleAdvancedSIPSettings()
@@ -753,11 +756,31 @@ void SettingsWidget::unban(int index)
 void SettingsWidget::exportAccountSlot()
 {
     QFileDialog dialog(this);
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Export Account Here"),
-        QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    auto openPath = QDir::homePath() + "/Desktop" + "/export.gz";
+    auto fileUri = QFileDialog::getSaveFileUrl(this, tr("Export Account"), QUrl::fromLocalFile(openPath),
+                                               tr("Gzip File") + " (*.gz)", nullptr, QFileDialog::DontResolveSymlinks);
 
-    if (!dir.isEmpty()) {
-        LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), (dir + "/export.gz").toStdString());
+    if (!fileUri.isEmpty()) {
+        // remove prefix from QUri encoded data
+        std::string filePrefix { "file:///" };
+        auto filePathStd = fileUri.toEncoded().toStdString();
+        filePathStd = filePathStd.substr(filePathStd.find(filePrefix) + static_cast<int>(filePrefix.size()));
+
+        if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
+            PasswordDialog dialog (this, PasswordEnteringPurpose::ExportAccount);
+            dialog.setExportPath(filePathStd);
+            int doneCode = dialog.exec();
+            if (doneCode == PasswordDialog::SuccessCode)
+                QMessageBox::information(0, tr("Success"), tr("Export Successful"));
+        } else {
+            bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), filePathStd);
+            if (success) {
+                QMessageBox::information(0, tr("Success"), tr("Export Successful"));
+            } else {
+                QMessageBox::critical(0, tr("Error"), tr("Export Failed"));
+            }
+
+        }
     }
 }
 

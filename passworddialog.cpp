@@ -21,11 +21,14 @@
 
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
+#include <QMessageBox>
 
 #include "lrcinstance.h"
+#include "utils.h"
 
-PasswordDialog::PasswordDialog(QWidget* parent)
+PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
     :ui(new Ui::PasswordDialog),
+    purpose_(purpose),
     QDialog(parent)
 {
     ui->setupUi(this);
@@ -39,20 +42,73 @@ PasswordDialog::PasswordDialog(QWidget* parent)
 
     ui->currentPasswordEdit->setEnabled(LRCInstance::getCurrAccConfig().archiveHasPassword);
 
-    connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->passwordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->confirmPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->btnChangePasswordConfirm, &QPushButton::clicked, [this] { savePassword(); });
+    if (purpose_ == PasswordEnteringPurpose::ChangePassword) {
+        ui->verticalSpacerCurrentTNew->changeSize(20, 8, QSizePolicy::Fixed, QSizePolicy::Fixed);
+        ui->verticalSpacerNewTConfirm->changeSize(20, 8, QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+        connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->passwordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->confirmPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->btnChangePasswordConfirm, &QPushButton::clicked,
+            [this] {
+                spinnerMovie_->start();
+                ui->spinnerLabel->show();
+                QtConcurrent::run([this] { savePassword(); });
+            });
+    } else if (purpose_ == PasswordEnteringPurpose::ExportAccount) {
+        setWindowTitle(tr("Enter the password of this account"));
+        ui->passwordEdit->hide();
+        ui->confirmPasswordEdit->hide();
+        ui->verticalSpacerCurrentTNew->changeSize(20, 0, QSizePolicy::Fixed, QSizePolicy::Fixed);
+        ui->verticalSpacerNewTConfirm->changeSize(20, 0, QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+        connect(ui->btnChangePasswordConfirm, &QAbstractButton::clicked,
+            [this] {
+                spinnerMovie_->start();
+                ui->spinnerLabel->show();
+                QtConcurrent::run([this] { exportAccount(); });
+            });
+        connect(ui->currentPasswordEdit, &QLineEdit::textChanged,
+            [this] {
+                if (ui->currentPasswordEdit->text().isEmpty()) {
+                    ui->btnChangePasswordConfirm->setEnabled(false);
+                } else {
+                    ui->wrongPasswordLabel->hide();
+                    ui->btnChangePasswordConfirm->setEnabled(true);
+                }
+            });
+    }
+
     connect(ui->btnChangePasswordCancel, &QPushButton::clicked, [this] { reject(); });
-
     ui->btnChangePasswordConfirm->setEnabled(false);
-
     ui->wrongPasswordLabel->hide();
+
+    spinnerMovie_ = new QMovie(":/images/ajax-loader.gif");
+    spinnerMovie_->setScaledSize(QSize(20, 20));
+    ui->spinnerLabel->setMovie(spinnerMovie_);
+    ui->spinnerLabel->hide();
 }
 
 PasswordDialog::~PasswordDialog()
 {
     delete ui;
+}
+
+void
+PasswordDialog::exportAccount()
+{
+    bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(),
+                                                              path_,
+                                                              ui->currentPasswordEdit->text().toStdString());
+    ui->spinnerLabel->hide();
+    spinnerMovie_->stop();
+    if(success) {
+        done(SuccessCode);
+    } else {
+        Utils::whileBlocking<QLineEdit>(ui->currentPasswordEdit)->clear();
+        ui->btnChangePasswordConfirm->setEnabled(false);
+        ui->wrongPasswordLabel->show();
+    }
 }
 
 void
@@ -74,16 +130,21 @@ PasswordDialog::validatePassword()
 void
 PasswordDialog::savePassword()
 {
-    if (LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
-        ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString())) {
+    bool success = LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
+                   ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString());
+
+    ui->spinnerLabel->hide();
+    spinnerMovie_->stop();
+    if (success) {
 
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
         confProps.archiveHasPassword = !ui->passwordEdit->text().isEmpty();
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 
-        accept();
+        done(SuccessCode);
     } else {
+        Utils::whileBlocking<QLineEdit>(ui->currentPasswordEdit)->clear();
+        ui->btnChangePasswordConfirm->setEnabled(false);
         ui->wrongPasswordLabel->show();
-        ui->currentPasswordEdit->setText("");
     }
 }
