@@ -74,6 +74,7 @@ $FilesToCopy = @(
     "$QtDir\bin\libEGL.dll",
     "$QtDir\bin\libGLESv2.dll",
     "$QtDir\bin\d3dcompiler_47.dll",
+    "$QtDir\bin\opengl32sw.dll",    
     "$QtDir\bin\QtWebEngineProcess.exe"
     )
 foreach ($i in $FilesToCopy) {
@@ -132,6 +133,20 @@ Copy-Item -Path $file -Destination $CopyDir -Force
 $CopyDir = $OutDir + "\sqldrivers"
 If(!(test-path $CopyDir)) { New-Item -ItemType directory -Path $CopyDir -Force }
 $file = "$QtDir\plugins\sqldrivers\qsqlite.dll"
+write-host "copying: " $file " => " $CopyDir -ForegroundColor Cyan
+Copy-Item -Path $file -Destination $CopyDir -Force
+
+# qt iconengines
+$CopyDir = $OutDir + "\iconengines"
+If(!(test-path $CopyDir)) { New-Item -ItemType directory -Path $CopyDir -Force }
+$file = "$QtDir\plugins\iconengines\qsvgicon.dll"
+write-host "copying: " $file " => " $CopyDir -ForegroundColor Cyan
+Copy-Item -Path $file -Destination $CopyDir -Force
+
+# qt bearers
+$CopyDir = $OutDir + "\bearer"
+If(!(test-path $CopyDir)) { New-Item -ItemType directory -Path $CopyDir -Force }
+$file = "$QtDir\plugins\bearer\qgenericbearer.dll"
 write-host "copying: " $file " => " $CopyDir -ForegroundColor Cyan
 Copy-Item -Path $file -Destination $CopyDir -Force
 
