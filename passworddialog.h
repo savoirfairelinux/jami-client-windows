@@ -23,18 +23,29 @@ namespace Ui {
     class PasswordDialog;
 }
 
+enum class PasswordEnteringPurpose{
+    ChangePassword,
+    ExportAccount
+};
+
 class PasswordDialog : public QDialog
 {
     Q_OBJECT
 public:
-    PasswordDialog(QWidget* parent = nullptr);
+    PasswordDialog(QWidget* parent = nullptr, PasswordEnteringPurpose purpose = PasswordEnteringPurpose::ChangePassword);
     ~PasswordDialog();
+
+    void setExportPath(const std::string& path) { path_ = path; }
 
 private slots:
     void validatePassword();
+    void exportAccount();
 
 private:
     Ui::PasswordDialog* ui;
+
+    PasswordEnteringPurpose purpose_ { PasswordEnteringPurpose::ChangePassword };
+    std::string path_;
 
     void savePassword();
 };

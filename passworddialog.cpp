@@ -21,11 +21,13 @@
 
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
+#include <QMessageBox>
 
 #include "lrcinstance.h"
 
-PasswordDialog::PasswordDialog(QWidget* parent)
+PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
     :ui(new Ui::PasswordDialog),
+    purpose_(purpose),
     QDialog(parent)
 {
     ui->setupUi(this);
@@ -39,20 +41,48 @@ PasswordDialog::PasswordDialog(QWidget* parent)
 
     ui->currentPasswordEdit->setEnabled(LRCInstance::getCurrAccConfig().archiveHasPassword);
 
-    connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->passwordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->confirmPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
-    connect(ui->btnChangePasswordConfirm, &QPushButton::clicked, [this] { savePassword(); });
+    if (purpose_ == PasswordEnteringPurpose::ChangePassword) {
+        connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->passwordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->confirmPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
+        connect(ui->btnChangePasswordConfirm, &QPushButton::clicked, [this] { savePassword(); });
+    } else if (purpose_ == PasswordEnteringPurpose::ExportAccount) {
+        setWindowTitle(tr("Enter the password of this account"));
+        ui->passwordEdit->hide();
+        ui->confirmPasswordEdit->hide();
+        connect(ui->btnChangePasswordConfirm, &QAbstractButton::clicked, [this] { exportAccount(); });
+        connect(ui->currentPasswordEdit, &QLineEdit::textChanged,
+            [this] {
+                if (ui->currentPasswordEdit->text().isEmpty()) {
+                    ui->btnChangePasswordConfirm->setEnabled(false);
+                } else {
+                    ui->btnChangePasswordConfirm->setEnabled(true);
+                }
+            });
+    }
+
     connect(ui->btnChangePasswordCancel, &QPushButton::clicked, [this] { reject(); });
-
     ui->btnChangePasswordConfirm->setEnabled(false);
-
     ui->wrongPasswordLabel->hide();
 }
 
 PasswordDialog::~PasswordDialog()
 {
     delete ui;
+}
+
+void
+PasswordDialog::exportAccount()
+{
+    bool successed = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(),
+                                                              path_,
+                                                              ui->currentPasswordEdit->text().toStdString());
+    if(successed) {
+        QMessageBox::information(0, tr("Successed!"), tr("Export Successed"));
+        done(0);
+    }
+    ui->wrongPasswordLabel->show();
+    ui->currentPasswordEdit->clear();
 }
 
 void
