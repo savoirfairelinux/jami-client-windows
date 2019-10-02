@@ -19,6 +19,7 @@
 #pragma once
 #include <QComboBox>
 #include <QLabel>
+#include <QPushButton>
 #include "accountlistmodel.h"
 #include "accountitemdelegate.h"
 
@@ -54,6 +55,7 @@ protected:
 private:
     void importLabelPhoto(int index);
     void setupSettingsButton();
+    void setupVoicemailButton();
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
@@ -68,4 +70,9 @@ private:
 
     QPoint gearPoint_;
     QLabel gearLabel_;
+
+    QPoint voicemailPoint_;
+    QPushButton voicemailButton_;
+    const int voicemailBorder_ = 4;
+    const int voicemailSize_ = 24;
 };
