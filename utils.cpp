@@ -326,7 +326,7 @@ Utils::checkForUpdates(bool withUI, QWidget* parent)
     Utils::cleanUpdateFiles();
     QString downloadpath = WinGetEnv("TEMP");
     DownloadManager::instance().downloadFile(
-        QUrl::fromEncoded("https://dl.jami.net/windows/jami-x64.msi"),
+        QUrl::fromEncoded("https://dl.jami.net/windows/version"),
         downloadpath,
         withUI,
         [parent, withUI, downloadpath](int status) {
