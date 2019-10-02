@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <!-- Empty head might be needed for setSenderImage -->
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,8 +39,8 @@
         </div>
     </div>
     <div id="container">
-        <div id="messages" onscroll="onScrolled()"></div>
-        <div id="back_to_bottom_button_container">
+        <div id="messages" onscroll="onScrolled()" onclick="onMessageClick()"></div>
+        <div id="back_to_bottom_button_container" onclick="clearAudioRecordingSection()">
             <div id="back_to_bottom_button" onclick="back_to_bottom()">Jump to latest &#9660;</div>
         </div>
         <div id="file_image_send_container"></div>
@@ -51,6 +51,12 @@
                     <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
             </div>
+            <div class="action-button nav-button" onclick="open_recording_section()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+            </div>
             <textarea id="message" autofocus placeholder="Type a message" onkeyup="grow_text_area()" onkeydown="process_messagebar_keydown()" rows="1"></textarea>
             <div class="nav-button action-button" onclick="sendMessage(); grow_text_area()" title="Send">
                 <svg class="svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -58,6 +64,9 @@
                     <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
             </div>
+        </div>
+        <div id="audio_recording_section">
+            <div id="audio-recording-button" onmousedown="on_RecordButton_pressed()" onmouseup="on_RecordButton_released()">Record</div>
         </div>
     </div>
 </body>
