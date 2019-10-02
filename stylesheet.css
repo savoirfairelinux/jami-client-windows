@@ -709,12 +709,12 @@ QListWidget .QLineEdit {
 QListWidget .QPushButton {
     background-color: transparent;
 }
-    QListWidget .QPushButton:hover {
-        background-color: transparent;
-    }
-    QListWidget .QPushButton:pressed {
-        background-color: transparent;
-    }
+QListWidget .QPushButton:hover {
+    background-color: transparent;
+}
+QListWidget .QPushButton:pressed {
+    background-color: transparent;
+}
 
 QListView::item:selected {
     background-color: rgb(220, 220, 220);
@@ -815,10 +815,10 @@ QProgressBar#audioInputMeter {
     background: lightgrey;
 }
 
-    QProgressBar#audioInputMeter::chunk {
-        background-color: #0c79aa;
-        margin: 2px;
-    }
+QProgressBar#audioInputMeter::chunk {
+    background-color: #0c79aa;
+    margin: 2px;
+}
 
 QLabel#nameLabel {
     font-size: 20px;
