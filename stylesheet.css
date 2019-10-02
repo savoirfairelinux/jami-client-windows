@@ -815,10 +815,10 @@ QProgressBar#audioInputMeter {
     background: lightgrey;
 }
 
-    QProgressBar#audioInputMeter::chunk {
-        background-color: #0c79aa;
-        margin: 2px;
-    }
+QProgressBar#audioInputMeter::chunk {
+    background-color: #0c79aa;
+    margin: 2px;
+}
 
 QLabel#nameLabel {
     font-size: 20px;
