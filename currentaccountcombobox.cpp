@@ -37,6 +37,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 
     setMouseTracking(true);
     gearLabel_.setMouseTracking(true);
+    voicemailButton_.setMouseTracking(true);
 
     accountListUpdate();
     accountItemDelegate_ = new AccountItemDelegate(this);
@@ -63,6 +64,11 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
     setupSettingsButton();
+
+    voicemailButton_.setIcon(QIcon(QPixmap("images/icons/ic_voicemail_black_24dp_2x_.png")));
+    voicemailButton_.setParent(this);
+    voicemailButton_.setStyleSheet("background: transparent;");
+    setupVoicemailButton();
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -148,6 +154,7 @@ void CurrentAccountComboBox::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
     setupSettingsButton();
+    setupVoicemailButton();
 }
 
 void
@@ -160,6 +167,17 @@ CurrentAccountComboBox::setupSettingsButton()
         gearSize_ + 2 * gearBorder_,
         gearSize_ + 2 * gearBorder_);
     gearLabel_.setMargin(gearBorder_);
+}
+
+void
+CurrentAccountComboBox::setupVoicemailButton()
+{
+    voicemailPoint_.setX(this->width() - gearSize_ - voicemailSize_ - 6 * voicemailBorder_ - 5 * gearBorder_ - 1);
+    voicemailPoint_.setY(this->height() / 2 - voicemailButton_.height() / 2 - 2 * voicemailBorder_ + 8);
+    voicemailButton_.setGeometry(
+        voicemailPoint_.x(), voicemailPoint_.y(),
+        voicemailSize_ + 2 * voicemailBorder_,
+        voicemailSize_ + 2 * voicemailBorder_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -196,10 +214,12 @@ CurrentAccountComboBox::accountListUpdate()
 void
 CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
 {
-    if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
-        QComboBox::mousePressEvent(mouseEvent);
-    } else {
+    if (gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
         emit settingsButtonClicked();
+    } else if (voicemailButton_.geometry().contains(mouseEvent->localPos().toPoint())) {
+        //emit settingsButtonClicked();
+    } else {
+        QComboBox::mousePressEvent(mouseEvent);
     }
 }
 
@@ -211,14 +231,20 @@ CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
         QComboBox::mouseMoveEvent(mouseEvent);
         gearLabel_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 15px;");
         return;
+    } else if (voicemailButton_.geometry().contains(mouseEvent->localPos().toPoint())) {
+        QComboBox::mouseMoveEvent(mouseEvent);
+        voicemailButton_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 15px;");
+        return;
     }
 
+    voicemailButton_.setStyleSheet("background: transparent;");
     gearLabel_.setStyleSheet("background: transparent;");
 }
 
 void
 CurrentAccountComboBox::showPopup()
 {
+    voicemailButton_.hide();
     gearLabel_.hide();
     popupPresent = true;
     QComboBox::showPopup();
@@ -227,6 +253,7 @@ CurrentAccountComboBox::showPopup()
 void
 CurrentAccountComboBox::hidePopup()
 {
+    voicemailButton_.show();
     gearLabel_.show();
     popupPresent = false;
     QComboBox::hidePopup();
@@ -235,6 +262,7 @@ CurrentAccountComboBox::hidePopup()
 void
 CurrentAccountComboBox::leaveEvent(QEvent* event)
 {
+    voicemailButton_.setStyleSheet("background: transparent;");
     gearLabel_.setStyleSheet("background: transparent;");
     QComboBox::leaveEvent(event);
 }
