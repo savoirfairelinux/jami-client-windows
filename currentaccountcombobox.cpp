@@ -37,6 +37,8 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
 
     setMouseTracking(true);
     gearLabel_.setMouseTracking(true);
+    voicemailButton_.setMouseTracking(true);
+    voicemailButton_.hide();
 
     accountListUpdate();
     accountItemDelegate_ = new AccountItemDelegate(this);
@@ -59,10 +61,60 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                 }
             });
 
+    // voicemail received
+    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::voiceMailNotify,
+            [this] (const std::string& accountId, int newCount, int oldCount, int urgentCount) {
+                Q_UNUSED(urgentCount);
+                voicemailMap_[accountId] = std::make_pair(newCount, oldCount);
+                if (LRCInstance::accountModel().getAccountList()[currentIndex()] == accountId) {
+                    if (newCount == 0 && oldCount == 0) {
+                        voicemailButton_.setNeedToShowNotify(false);
+                        return;
+                    }
+                    if (newCount == 0) {
+                        voicemailButton_.setNotifyNumber(oldCount);
+                        voicemailButton_.setGreyStyleNotification(true);
+                    } else {
+                        voicemailButton_.setNotifyNumber(newCount);
+                        voicemailButton_.setGreyStyleNotification(false);
+                    }
+                    voicemailButton_.setNeedToShowNotify(true);
+                }
+            });
+
+    connect(&voicemailButton_, &QAbstractButton::clicked,
+            [this] {
+                auto currentAccountId = LRCInstance::accountModel().getAccountList()[currentIndex()];
+                auto &accInfo = LRCInstance::accountModel().getAccountInfo(currentAccountId);
+                auto conversationModel = accInfo.conversationModel.get();
+                auto confProps = LRCInstance::accountModel().getAccountConfig(currentAccountId);
+
+                auto possibleConv = LRCInstance::getConversationFromPeerUri(confProps.mailbox);
+                if (possibleConv.uid.empty()) {
+                    // construct new contact
+                    lrc::api::profile::Type type{ lrc::api::profile::Type::SIP };
+                    lrc::api::contact::Info contactInfo{ {{confProps.mailbox}, {} , {}, type }, {} };
+
+                    Utils::oneShotConnect(this, &CurrentAccountComboBox::placeAudioOnlyCall,
+                        [this, conversationModel] (const std::string& convUid) {
+                            conversationModel->placeAudioOnlyCall(convUid);
+                        });
+                    accInfo.contactModel->addContact(contactInfo);
+                } else {
+                    // contact existed
+                    conversationModel->placeAudioOnlyCall(possibleConv.uid);
+                }
+            });
+
     gearLabel_.setPixmap(QPixmap(":/images/icons/round-settings-24px.svg"));
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
     setupSettingsButton();
+
+    voicemailButton_.setIcon(QIcon(QPixmap("images/icons/ic_voicemail_black_24dp_2x_.png")));
+    voicemailButton_.setParent(this);
+    voicemailButton_.setStyleSheet("background: transparent;");
+    setupVoicemailButton();
 }
 
 CurrentAccountComboBox::~CurrentAccountComboBox()
@@ -126,12 +178,12 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     painter.setFont(fontPrimary);
     painter.setPen(RingTheme::lightBlack_);
     primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight,
-                                                    comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_));
+                                                    comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_));
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
     QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
     secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight,
-                                                        comboBoxRect.width() - elidConst - 2 - (popupPresent ? 0 : 2 * gearSize_)); // [screen awareness]
+                                                        comboBoxRect.width() - elidConst - 2 - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_)); // [screen awareness]
 
     if (secondaryAccountID.length()) { // if secondary accound id exists
         painter.setFont(fontSecondary);
@@ -148,6 +200,7 @@ void CurrentAccountComboBox::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
     setupSettingsButton();
+    setupVoicemailButton();
 }
 
 void
@@ -160,6 +213,17 @@ CurrentAccountComboBox::setupSettingsButton()
         gearSize_ + 2 * gearBorder_,
         gearSize_ + 2 * gearBorder_);
     gearLabel_.setMargin(gearBorder_);
+}
+
+void
+CurrentAccountComboBox::setupVoicemailButton()
+{
+    voicemailPoint_.setX(this->width() - gearSize_ - voicemailSize_ - 6 * voicemailBorder_ - 5 * gearBorder_ - 1);
+    voicemailPoint_.setY(this->height() / 2 - voicemailButton_.height() / 2 - 2 * voicemailBorder_ + 8);
+    voicemailButton_.setGeometry(
+        voicemailPoint_.x(), voicemailPoint_.y(),
+        voicemailSize_ + 2 * voicemailBorder_,
+        voicemailSize_ + 2 * voicemailBorder_);
 }
 
 // import account background account pixmap and scale pixmap to fit in label
@@ -177,11 +241,39 @@ void
 CurrentAccountComboBox::setCurrentIndex(int index)
 {
     auto accountListSize = LRCInstance::accountModel().getAccountList().size();
+
     if (index == accountListSize) {
         emit newAccountClicked();
     } else if (index < accountListSize) {
         importLabelPhoto(index);
         QComboBox::setCurrentIndex(index);
+
+        auto accountId = LRCInstance::accountModel().getAccountList()[index];
+        auto& info = LRCInstance::accountModel().getAccountInfo(accountId);
+        if (!(info.profileInfo.type == lrc::api::profile::Type::SIP)) {
+            voicemailButton_.hide();
+        } else {
+            voicemailButton_.show();
+            if (voicemailMap_.find(accountId) != voicemailMap_.end()) {
+                int newVoiceMail = voicemailMap_[accountId].first;
+                int oldVoiceMail = voicemailMap_[accountId].second;
+
+                if (newVoiceMail == 0 && oldVoiceMail == 0) {
+                    voicemailButton_.setNeedToShowNotify(false);
+                    return;
+                }
+                if (newVoiceMail == 0) {
+                    voicemailButton_.setNotifyNumber(oldVoiceMail);
+                    voicemailButton_.setGreyStyleNotification(true);
+                } else {
+                    voicemailButton_.setNotifyNumber(newVoiceMail);
+                    voicemailButton_.setGreyStyleNotification(false);
+                }
+                voicemailButton_.setNeedToShowNotify(true);
+                return;
+            }
+            voicemailButton_.setNeedToShowNotify(false);
+        }
     }
 }
 
@@ -196,10 +288,12 @@ CurrentAccountComboBox::accountListUpdate()
 void
 CurrentAccountComboBox::mousePressEvent(QMouseEvent* mouseEvent)
 {
-    if (!gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
-        QComboBox::mousePressEvent(mouseEvent);
-    } else {
+    if (gearLabel_.frameGeometry().contains(mouseEvent->localPos().toPoint())) {
         emit settingsButtonClicked();
+    } else if (voicemailButton_.geometry().contains(mouseEvent->localPos().toPoint())) {
+        //emit settingsButtonClicked();
+    } else {
+        QComboBox::mousePressEvent(mouseEvent);
     }
 }
 
@@ -211,14 +305,20 @@ CurrentAccountComboBox::mouseMoveEvent(QMouseEvent* mouseEvent)
         QComboBox::mouseMoveEvent(mouseEvent);
         gearLabel_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 15px;");
         return;
+    } else if (voicemailButton_.geometry().contains(mouseEvent->localPos().toPoint())) {
+        QComboBox::mouseMoveEvent(mouseEvent);
+        voicemailButton_.setStyleSheet("background: rgb(237, 237, 237); border-width: 0px; border-radius: 15px;");
+        return;
     }
 
+    voicemailButton_.setStyleSheet("background: transparent;");
     gearLabel_.setStyleSheet("background: transparent;");
 }
 
 void
 CurrentAccountComboBox::showPopup()
 {
+    voicemailButton_.hide();
     gearLabel_.hide();
     popupPresent = true;
     QComboBox::showPopup();
@@ -227,6 +327,10 @@ CurrentAccountComboBox::showPopup()
 void
 CurrentAccountComboBox::hidePopup()
 {
+    auto& info = LRCInstance::accountModel().getAccountInfo(LRCInstance::getCurrAccId());
+    if (info.profileInfo.type == lrc::api::profile::Type::SIP) {
+        voicemailButton_.show();
+    }
     gearLabel_.show();
     popupPresent = false;
     QComboBox::hidePopup();
@@ -235,6 +339,7 @@ CurrentAccountComboBox::hidePopup()
 void
 CurrentAccountComboBox::leaveEvent(QEvent* event)
 {
+    voicemailButton_.setStyleSheet("background: transparent;");
     gearLabel_.setStyleSheet("background: transparent;");
     QComboBox::leaveEvent(event);
 }
