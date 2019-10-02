@@ -87,5 +87,6 @@
     <file>images/icons/icon-keypad-24.png</file>
     <file>images/icons/ic_play_white_24dp.png</file>
     <file>images/icons/icon-keypad-24-2x.png</file>
+    <file>images/icons/ic_voicemail_black_24dp_2x_.png</file>
   </qresource>
 </RCC>
