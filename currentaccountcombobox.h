@@ -16,11 +16,16 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+
 #pragma once
-#include <QComboBox>
-#include <QLabel>
+
 #include "accountlistmodel.h"
 #include "accountitemdelegate.h"
+#include "notifypushbutton.h"
+
+#include <QComboBox>
+#include <QLabel>
+#include <QPushButton>
 
 namespace Ui {
     class CurrentAccountComboBox;
@@ -37,10 +42,12 @@ public:
     void accountListUpdate();
     void setCurrentIndex(int index);
     void updateComboBoxDisplay();
+    void canPlaceAudioOnlyCall(const std::string& convUid) { emit placeAudioOnlyCall(convUid); }
 
 signals:
     void settingsButtonClicked();
     void newAccountClicked();
+    void placeAudioOnlyCall(const std::string& convUid);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -54,6 +61,7 @@ protected:
 private:
     void importLabelPhoto(int index);
     void setupSettingsButton();
+    void setupVoicemailButton();
 
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
@@ -68,4 +76,11 @@ private:
 
     QPoint gearPoint_;
     QLabel gearLabel_;
+
+    QPoint voicemailPoint_;
+    NotifyPushButton voicemailButton_;
+    const int voicemailBorder_ = 4;
+    const int voicemailSize_ = 24;
+
+    std::map<std::string,std::pair<int,int>> voicemailMap_;
 };
