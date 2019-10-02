@@ -1083,6 +1083,7 @@ CallWidget::connectConversationModel()
             updateSmartList();
             updateConversationForNewContact(convUid);
             ui->conversationsFilterWidget->update();
+            ui->currentAccountComboBox->canPlaceAudioOnlyCall(convUid);
         }
     );
     conversationRemovedConnection_ = QObject::connect(

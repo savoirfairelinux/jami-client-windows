@@ -74,7 +74,8 @@ HEADERS += ./aboutdialog.h \
         ./sipinputpanel.h \
         ./callaudioonlyavataroverlay.h \
         ./overlaybutton.h \
-        ./accountmigrationdialog.h
+        ./accountmigrationdialog.h \
+        ./notifypushbutton.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -130,7 +131,8 @@ SOURCES += ./aboutdialog.cpp \
         ./sipinputpanel.cpp \
         ./callaudioonlyavataroverlay.cpp \
         ./overlaybutton.cpp \
-        ./accountmigrationdialog.cpp
+        ./accountmigrationdialog.cpp \
+        ./notifypushbutton.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
