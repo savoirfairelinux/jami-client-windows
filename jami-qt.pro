@@ -78,7 +78,8 @@ HEADERS += ./aboutdialog.h \
         ./previewwidget.h \
         ./rendermanager.h \
         ./distantwidget.h \
-        ./videowidgetbase.h
+        ./videowidgetbase.h \
+        ./notifypushbutton.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -138,7 +139,8 @@ SOURCES += ./aboutdialog.cpp \
         ./previewwidget.cpp \
         ./rendermanager.cpp \
         ./distantwidget.cpp \
-        ./videowidgetbase.cpp
+        ./videowidgetbase.cpp \
+        ./notifypushbutton.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
