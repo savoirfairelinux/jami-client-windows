@@ -379,7 +379,7 @@ Utils::applyUpdates(QWidget* parent)
         return;
 
     DownloadManager::instance().downloadFile(
-        QUrl::fromEncoded("https://dl.jami.net/windows/jami-x64.msi"),
+        QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi"),
         WinGetEnv("TEMP"),
         true,
         [parent](int status) {
@@ -391,7 +391,7 @@ Utils::applyUpdates(QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\jami-x64.msi"
+            auto cmd = "powershell " + QString(dir) + "\\jami.release.x64.msi"
                 + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
             auto retq = QProcess::startDetached(cmd);
             if (retq) {
