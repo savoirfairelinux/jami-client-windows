@@ -18,16 +18,14 @@
 
 #pragma once
 
+#include "navwidget.h"
+#include "settingswidget.h"
+#include "utils.h"
+#include "connectivitymonitor.h"
 #include "globalsystemtray.h"
 
 #include <QMainWindow>
 #include <QMouseEvent>
-#include <QNetworkConfigurationManager>
-
-#include "navwidget.h"
-#include "settingswidget.h"
-#include "utils.h"
-#include "previewrender.h"
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
 
@@ -56,9 +54,6 @@ public:
     float getCurrentScalingRatio();
     void showWindow();
 
-public slots:
-    void slotVideoDeviceChanged(const std::string&, bool);
-
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
     void closeEvent(QCloseEvent* event);
@@ -80,6 +75,8 @@ private:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
+    Ui::MainWindow* ui;
+
     void setWindowSize(ScreenEnum scr, bool firstUse = false);
     ScreenEnum lastScr_;
     int lastAccountCount_;
@@ -92,10 +89,9 @@ private:
     QAction* settingsAction_;
     QAction* exitAction_;
 
-    Ui::MainWindow* ui;
-    QNetworkConfigurationManager netManager_;
+    std::unique_ptr<ConnectivityMonitor> connectivityMonitor_;
+
     QMetaObject::Connection screenChangedConnection_;
-    PreviewRenderWidget* previewRenderer_;
 
     QTimer *updateTimer_;
 };

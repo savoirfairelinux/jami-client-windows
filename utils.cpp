@@ -262,47 +262,6 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     return target;
 }
 
-QImage
-Utils::getRoundedEdgePhoto(const QImage original, int widthPhoto, int heightPhoto, int roundness)
-{
-    // First, create a transparent image with the same size
-    QImage target(widthPhoto, heightPhoto, QImage::Format_ARGB32_Premultiplied);
-    target.fill(Qt::transparent);
-
-    //Second, create a painter onto that image
-    QPainter painter(&target);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    painter.setBrush(QBrush(original));
-    // set brush to the image that we want to draw
-    // Note that, the Qbrush is in default texture mode
-
-    //Third, scale the original image into the size of the image we created
-    auto scaledPhoto = original
-            .scaled(widthPhoto, heightPhoto, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation)
-            .convertToFormat(QImage::Format_ARGB32_Premultiplied);
-    painter.drawRoundedRect(0, 0, widthPhoto, heightPhoto, roundness, roundness);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    // Source-In mode and Draw the image onto the transperant image
-    painter.drawImage(0, 0, scaledPhoto, 0, 0);
-    return target;
-}
-
-void
-Utils::drawBlackCircularImageOntoLabel(QLabel* containerWidget)
-{
-    // Widget is black, fill image with white
-    // draw a black cycle onto it
-    QImage target(containerWidget->width(), containerWidget->height(), QImage::Format_ARGB32_Premultiplied);
-    target.fill(Qt::white);
-
-    QPainter painter(&target);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    painter.setBrush(QBrush(Qt::black));
-    painter.drawEllipse(containerWidget->x(), containerWidget->y(), containerWidget->width(), containerWidget->height());
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    containerWidget->setPixmap(QPixmap::fromImage(target));
-}
-
 void
 Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 {
@@ -421,7 +380,7 @@ Utils::applyUpdates(QWidget* parent)
         return;
 
     DownloadManager::instance().downloadFile(
-        QUrl::fromEncoded("https://dl.jami.net/windows/jami-x64.msi"),
+        QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi"),
         WinGetEnv("TEMP"),
         true,
         [parent](int status) {
@@ -433,7 +392,7 @@ Utils::applyUpdates(QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\jami-x64.msi"
+            auto cmd = "powershell " + QString(dir) + "\\jami.release.x64.msi"
                 + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
             auto retq = QProcess::startDetached(cmd);
             if (retq) {
@@ -755,8 +714,9 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
         auto bestId = bestIdForAccount(accountInfo);
         auto bestName = bestNameForAccount(accountInfo);
         QString letterStr = bestId == bestName ? QString() : QString::fromStdString(bestName);
+        QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:" : "sip:";
         photo = fallbackAvatar(size,
-            QString::fromStdString("ring:" + bestId),
+            prefix + QString::fromStdString(accountInfo.profileInfo.uri),
             letterStr);
     }
     return scaleAndFrame(photo, size);

@@ -228,10 +228,16 @@
     <ClCompile Include="overlaybutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="previewrender.cpp">
+    <ClCompile Include="accountmigrationdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lrcinstance.cpp">
+    <ClCompile Include="connectivitymonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rendermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="previewwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -404,7 +410,16 @@
     <QtMoc Include="overlaybutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="previewrender.h">
+    <QtMoc Include="accountmigrationdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="connectivitymonitor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="rendermanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="previewwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -425,9 +440,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_photoboothdialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_photoboothwidget.h">
@@ -635,9 +647,6 @@
     <QtUic Include="mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="photoboothdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="photoboothwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -698,7 +707,7 @@
     <QtUic Include="sipkeypad.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="previewrender.ui">
+    <QtUic Include="accountmigration.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

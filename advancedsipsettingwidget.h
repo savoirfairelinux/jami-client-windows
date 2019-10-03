@@ -70,18 +70,18 @@ private slots:
     void lineEditSIPCertPasswordLineEditTextChanged();
     void tlsProtocolComboBoxIndexChanged(const int& index);
     void outgoingTLSServerNameLineEditTextChanged();
-    void negotiationTimeoutSpinBoxValueChanged(const int& value);
+    void negotiationTimeoutSpinBoxValueChanged();
 
     // connectivity
     void setUseUPnP(bool state);
     void setUseTURN(bool state);
     void setUseSTUN(bool state);
 
-    void registrationTimeoutSpinBoxValueChanged(const int& value);
-    void networkInterfaceSpinBoxValueChanged(const int& value);
+    void registrationTimeoutSpinBoxValueChanged();
+    void networkInterfaceSpinBoxValueChanged();
     void setTURNAddress();
     void setTURNUsername();
-    void setTURNPsswd();
+    void setTURNPassword();
     void setTURNRealm();
     void setSTUNAddress();
 
@@ -89,7 +89,7 @@ private slots:
     void setUseCustomAddressAndPort(bool state);
 
     void lineEditSIPCustomAddressLineEditTextChanged();
-    void customPortSIPSpinBoxValueChanged(const int& value);
+    void customPortSIPSpinBoxValueChanged();
 
     // codecs
     void updateAudioCodecs();

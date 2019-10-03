@@ -19,6 +19,7 @@
 
 #include "mainwindow.h"
 
+#include "accountmigrationdialog.h"
 #include "globalinstances.h"
 #include "downloadmanager.h"
 #include "lrcinstance.h"
@@ -91,6 +92,13 @@ fileDebug(QFile& debugFile)
                 debugFile.close();
             }
         });
+}
+
+void
+exitApp(RunGuard& guard)
+{
+    GlobalSystemTray::instance().hide();
+    guard.release();
 }
 
 int
@@ -212,7 +220,11 @@ main(int argc, char* argv[])
     splash->hide();
     LRCInstance::subscribeToDebugReceived();
 
-    QFile debugFile(qApp->applicationDirPath() + "/" + "jami.log");
+    QDir logPath(QStandardPaths::writableLocation(
+        QStandardPaths::AppLocalDataLocation));
+    // since logPath will be .../Ring, we use cdUp to remove it.
+    logPath.cdUp();
+    QFile debugFile(logPath.absolutePath() + "/jami/jami.log");
 
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
@@ -238,6 +250,28 @@ main(int argc, char* argv[])
         }
     }
 
+    auto accountList = LRCInstance::accountModel().getAccountList();
+
+    for (const std::string& i : accountList) {
+        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
+        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
+            int status = dialog->exec();
+
+            //migration failed
+            if (!status) {
+#ifdef Q_OS_WIN
+                FreeConsole();
+#endif
+                exitApp(guard);
+                return status;
+            }
+        }
+    }
+
+    splash->finish(&MainWindow::instance());
+    splash->deleteLater();
+
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
     MainWindow::instance().createThumbBar();
@@ -249,18 +283,9 @@ main(int argc, char* argv[])
         MainWindow::instance().hide();
     }
 
-    QObject::connect(&a, &QApplication::aboutToQuit,
-        [&guard] {
-            GlobalSystemTray::instance().hide();
-            guard.release();
-        });
-
-    splash->finish(&MainWindow::instance());
-    splash->deleteLater();
+    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
     auto ret = a.exec();
-
-    LRCInstance::reset();
 
 #ifdef Q_OS_WIN
     FreeConsole();

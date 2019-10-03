@@ -58,6 +58,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                     this->setCurrentIndex(std::distance(accountList.begin(), it));
                 }
             });
+
     gearLabel_.setPixmap(QPixmap(":/images/icons/round-settings-24px.svg"));
     gearLabel_.setParent(this);
     gearLabel_.setStyleSheet("background: transparent;");
@@ -165,8 +166,11 @@ CurrentAccountComboBox::setupSettingsButton()
 void
 CurrentAccountComboBox::importLabelPhoto(int index)
 {
-    currentAccountAvatarImage_ = accountListModel_->data(accountListModel_->index(index, 0), // [efficiency improvement]
-        AccountListModel::Role::Picture).value<QPixmap>().scaledToHeight(avatarSize_ - 4, Qt::SmoothTransformation);
+    currentAccountAvatarImage_ = accountListModel_->data(
+            accountListModel_->index(index, 0),
+            AccountListModel::Role::Picture)
+        .value<QPixmap>()
+        .scaledToHeight(avatarSize_ - 4, Qt::SmoothTransformation);
 }
 
 void

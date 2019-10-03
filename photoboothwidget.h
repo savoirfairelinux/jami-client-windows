@@ -20,7 +20,7 @@
 #pragma once
 
 #include "utils.h"
-#include "previewrender.h"
+#include "previewwidget.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -45,7 +45,6 @@ public:
     bool hasAvatar();
     bool isPhotoBoothOpened() { return takePhotoState_; }
     void resetTakePhotoState(bool state) { takePhotoState_ = state; }
-    void setUpPreviewRenderer();
 
 private slots:
     void on_importButton_clicked();
@@ -57,7 +56,6 @@ private:
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
-    PreviewRenderWidget* previewRenderer_;
     QLabel* flashOverlay_;
     QPropertyAnimation *flashAnimation_;
     QPixmap avatarPixmap_;

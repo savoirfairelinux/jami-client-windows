@@ -78,11 +78,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
 
-    connect(&netManager_, &QNetworkConfigurationManager::onlineStateChanged,
-        [=](bool online) {
-            Q_UNUSED(online);
-            LRCInstance::connectivityChanged();
-        });
+    connectivityMonitor_ = std::make_unique<ConnectivityMonitor>(this);
+    connect(connectivityMonitor_.get(), &ConnectivityMonitor::connectivityChanged,
+            [this] { LRCInstance::connectivityChanged(); });
 
     auto flags_ = windowFlags();
 
@@ -186,10 +184,7 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
-    // preview renderer is initialized firstly here
-    previewRenderer_ = PreviewRenderWidget::attachPreview(this);
 
-    connect(ui->settingswidget, &SettingsWidget::videoDeviceChanged, this, &MainWindow::slotVideoDeviceChanged);
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
         [this](const std::string& accountId) {
             Q_UNUSED(accountId);
@@ -199,6 +194,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+    connectivityMonitor_.reset();
     updateTimer_->stop();
     delete ui;
 }
@@ -306,11 +302,12 @@ void MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
-        LRCInstance::avModel().stopPreview();
+        LRCInstance::renderer()->stopPreviewing(true, false);
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
         QMainWindow::closeEvent(event);
+        connectivityMonitor_.reset();
     }
 }
 
@@ -417,13 +414,4 @@ void MainWindow::slotAccountListChanged()
             emit currentWidget->NavigationRequested(ScreenEnum::WizardScreen);
         }
     }
-}
-
-void MainWindow::slotVideoDeviceChanged(const std::string& device, bool avSettingOrAccountSettingVisible)
-{
-    Q_UNUSED(device)
-    ui->callwidget->reconnectRenderingVideoDeviceChanged();
-    // if the device is not changed in avSettings, then restart preview manually
-    if(!avSettingOrAccountSettingVisible)
-        ui->callwidget->restartPreviewWhenSwitchDevice();
 }

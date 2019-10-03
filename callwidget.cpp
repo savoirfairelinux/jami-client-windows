@@ -24,6 +24,26 @@
 #include "callwidget.h"
 #include "ui_callwidget.h"
 
+// client
+#include "utils.h"
+#ifdef Q_OS_WIN
+//ERROR is defined in windows.h
+#undef ERROR
+#undef interface
+#endif
+#include "animationhelpers.h"
+#include "conversationitemdelegate.h"
+#include "globalsystemtray.h"
+#include "lrcinstance.h"
+#include "mainwindow.h"
+#include "pixbufmanipulator.h"
+#include "ringthemeutils.h"
+#include "settingskey.h"
+
+#include "globalinstances.h"
+
+#include <qrencode.h>
+
 #include <QComboBox>
 #include <QtConcurrent/QtConcurrent>
 #include <QDesktopServices>
@@ -33,26 +53,6 @@
 
 #include <algorithm>
 #include <memory>
-
-#include <qrencode.h>
-
-//ERROR is defined in windows.h
-#include "utils.h"
-#undef ERROR
-#undef interface
-
-// lrc
-#include "globalinstances.h"
-
-// client
-#include "animationhelpers.h"
-#include "conversationitemdelegate.h"
-#include "globalsystemtray.h"
-#include "lrcinstance.h"
-#include "mainwindow.h"
-#include "pixbufmanipulator.h"
-#include "ringthemeutils.h"
-#include "settingskey.h"
 
 CallWidget::CallWidget(QWidget* parent) :
     NavWidget(parent),
@@ -71,8 +71,6 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->ringLogo->setAlignment(Qt::AlignHCenter);
 
     ui->qrLabel->hide();
-
-    videoRenderer_ = nullptr;
 
     QSettings settings("jami.net", "Jami");
 
@@ -128,15 +126,6 @@ CallWidget::CallWidget(QWidget* parent) :
             emit NavigationRequested(ScreenEnum::WizardScreen);
         });
 
-    connect(ui->videoWidget, &VideoView::setChatVisibility,
-        [this](bool visible) {
-            if (visible) {
-                ui->messagesWidget->show();
-            } else {
-                ui->messagesWidget->hide();
-            }
-        });
-
     connect(ui->mainActivitySplitter, &QSplitter::splitterMoved,
         [this](int pos, int index) {
             Q_UNUSED(index);
@@ -144,15 +133,6 @@ CallWidget::CallWidget(QWidget* parent) :
             QSettings settings("jami.net", "Jami");
             settings.setValue(SettingsKey::mainSplitterState, ui->mainActivitySplitter->saveState());
         });
-
-    connect(ui->videoWidget, &VideoView::videoSettingsClicked,
-            this, &CallWidget::settingsButtonClicked);
-
-    connect(ui->videoWidget, &VideoView::toggleFullScreenClicked,
-        this, &CallWidget::slotToggleFullScreenClicked);
-
-    connect(ui->videoWidget, &VideoView::closing,
-        this, &CallWidget::slotVideoViewDestroyed);
 
     connect(ui->btnConversations, &QPushButton::clicked,
             this, &CallWidget::conversationsButtonClicked);
@@ -210,6 +190,22 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->messageView, &MessageWebView::pasteKeyDetected,
             this, &CallWidget::Paste);
 
+    // video view
+    connect(ui->videoView, &VideoView::setChatVisibility,
+        [this](bool visible) {
+            if (visible) {
+                ui->messagesWidget->show();
+            } else {
+                ui->messagesWidget->hide();
+            }
+        });
+
+    connect(ui->videoView, &VideoView::toggleFullScreenClicked,
+            this, &CallWidget::slotToggleFullScreenClicked);
+
+    connect(ui->videoView, &VideoView::closing,
+            this, &CallWidget::slotVideoViewDestroyed);
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
@@ -222,8 +218,6 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
-
-    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 CallWidget::~CallWidget()
@@ -257,16 +251,6 @@ CallWidget::navigated(bool to)
             ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
         } else {
             backToWelcomePage();
-        }
-        // reset preview renderer
-        if (LRCInstance::getActiveCalls().size() && !LRCInstance::getCurrentCallModel()->getCall(conversation->callId).isAudioOnly) {
-            previewRenderer_->setParent(ui->videoWidget);
-            previewRenderer_->changeToRoundedBoarder();
-            previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
-            previewRenderer_->setPhotoMode(false);
-            previewRenderer_->setNeedToCentre(false);
-            previewRenderer_->triggerResetPreviewAfterImageReloaded();
-            previewRenderer_->show();
         }
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
@@ -659,52 +643,29 @@ CallWidget::slotAccountChanged(int index)
 
 void
 CallWidget::slotShowCallView(const std::string& accountId,
-                                  const lrc::api::conversation::Info& convInfo)
+                             const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
     qDebug() << "slotShowCallView";
-    // find out the best name for current callee, remove the search result from smart list
-    auto callModel = LRCInstance::getCurrentCallModel();
+
     auto convModel = LRCInstance::getCurrentConversationModel();
-    auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
-    ui->videoWidget->setCurrentCalleeName(bestName);
+    auto bestName = QString::fromStdString(
+        Utils::bestNameForConversation(convInfo, *convModel));
+
+    // control visible callwidget buttons
     setCallPanelVisibility(true);
 
-    if (callModel->hasCall(convInfo.callId)) {
-        auto call = callModel->getCall(convInfo.callId);
-        bool isAudioMuted = call.audioMuted && (call.status != lrc::api::call::Status::PAUSED);
-        bool isVideoMuted = call.videoMuted && (call.status != lrc::api::call::Status::PAUSED) && (!call.isAudioOnly);
-        bool isRecording = callModel->isRecording(convInfo.callId);
-        bool isPaused = call.status == lrc::api::call::Status::PAUSED;
-        ui->videoWidget->resetVideoOverlay(isAudioMuted,
-                                           isVideoMuted,
-                                           isRecording,
-                                           isPaused,
-                                           call.isAudioOnly && call.status != lrc::api::call::Status::PAUSED,
-                                           accountId,
-                                           convInfo);
-    } else {
-        ui->videoWidget->resetVideoOverlay(false, false, false, false, false, accountId, convInfo);
-    }
     ui->callStackWidget->setCurrentWidget(ui->videoPage);
     hideMiniSpinner();
 
-    // reset preview renderer when call is not audio only
-    if (!LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly) {
-        previewRenderer_->setParent(ui->videoWidget);
-        previewRenderer_->changeToRoundedBoarder();
-        previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
-        previewRenderer_->setPhotoMode(false);
-        previewRenderer_->setNeedToCentre(false);
-        previewRenderer_->triggerResetPreviewAfterImageReloaded();
-    }
-    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
-    ui->videoWidget->setFocus();
+    ui->videoView->setupForConversation(convInfo);
+    ui->videoView->show();
+    ui->videoView->setFocus();
 }
 
 void
 CallWidget::slotShowIncomingCallView(const std::string& accountId,
-                                          const lrc::api::conversation::Info& convInfo)
+                                     const conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
     qDebug() << "slotShowIncomingCallView";
@@ -724,7 +685,6 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
     auto call = callModel->getCall(convInfo.callId);
     auto isCallSelected = LRCInstance::getSelectedConvUid() == convInfo.uid;
     ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
-    ui->videoWidget->setCurrentCalleeName(bestName);
 
     connect(callModel, &lrc::api::NewCallModel::callStatusChanged, ui->incomingCallPage,
         [this, accountId](const std::string& callId) {
@@ -767,8 +727,6 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
     } else if (ui->messagesWidget->isHidden()) {
         ui->messagesWidget->show();
     }
-
-    ui->videoWidget->pushRenderer(convInfo.callId, LRCInstance::accountModel().getAccountInfo(accountId).profileInfo.type == lrc::api::profile::Type::SIP);
 
     QFontMetrics primaryCallLabelFontMetrics(ui->callingBestNameLabel->font());
     QFontMetrics sencondaryCallLabelFontMetrics(ui->callingBestIdLabel->font());
@@ -815,12 +773,9 @@ CallWidget::slotToggleFullScreenClicked()
 }
 
 void
-CallWidget::slotVideoViewDestroyed(const std::string& callid)
+CallWidget::slotVideoViewDestroyed(const std::string& id)
 {
-    auto conversation = Utils::getSelectedConversation();
-    if (conversation.uid.empty() || callid != conversation.callId) {
-        return;
-    }
+    Q_UNUSED(id);
     if (ui->mainActivityWidget->isFullScreen()) {
         ui->stackedWidget->addWidget(ui->mainActivityWidget);
         ui->stackedWidget->setCurrentWidget(ui->mainActivityWidget);
@@ -1146,7 +1101,7 @@ CallWidget::connectConversationModel()
                 return;
             }
             if (convUid == LRCInstance::getSelectedConvUid()) {
-                ui->videoWidget->simulateShowChatview(true);
+                ui->videoView->simulateShowChatview(true);
             }
         }
     );
@@ -1431,30 +1386,4 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
-}
-
-void
-CallWidget::reconnectRenderingVideoDeviceChanged()
-{
-    // for distant renderer to reconnect rendering
-    ui->videoWidget->reconnectRenderingVideoDeviceChanged();
-}
-
-void
-CallWidget::restartPreviewWhenSwitchDevice()
-{
-    previewRenderer_->setCurrentConainerGeo(ui->videoWidget->width(), ui->videoWidget->height());
-    // since there is the possiblity of image not reloaded properly
-    // after rendering reconnect, so trigger reset after image reloaded
-    previewRenderer_->triggerResetPreviewAfterImageReloaded();
-    if (LRCInstance::getActiveCalls().size() && !LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
-        // if no active calls, or device is changed -> reactive preview
-        previewRenderer_->disconnectRendering();
-        previewRenderer_->connectRendering();
-        QtConcurrent::run(
-            [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
-    }
 }

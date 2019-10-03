@@ -30,7 +30,7 @@
 #include "bannedlistmodel.h"
 #include "linkdevicedialog.h"
 #include "photoboothwidget.h"
-#include "previewrender.h"
+#include "previewwidget.h"
 
 #include "api/datatransfermodel.h"
 #include "typedefs.h"
@@ -114,8 +114,6 @@ private:
     const int itemHeight_ = 55;
     int previousDeviceSize_ { static_cast<int>(LRCInstance::avModel().getDevices().size()) };
     bool deviceWasEmpty_ { false };
-    PreviewRenderWidget* previewRenderer_;
-    bool isPreviewed_ { false };
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
