@@ -1,6 +1,6 @@
 /***************************************************************************
  * Copyright (C) 2019 by Savoir-faire Linux                                *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,47 +18,27 @@
 
 #pragma once
 
-#include <memory>
+#include <QObject>
 
-#include <QtCore>
-#include <QtNetwork>
-
-#include "updatedownloaddialog.h"
-
-class QSslError;
-
-class DownloadManager : public QObject {
+class ConnectivityMonitor : public QObject
+{
     Q_OBJECT
+
 public:
-    static DownloadManager& instance() {
-        static DownloadManager* instance_ = new DownloadManager();
-        return *instance_;
-    }
+    explicit ConnectivityMonitor(QObject* parent = 0);
+    ~ConnectivityMonitor();
 
-    void downloadFile(const QUrl& fileUrl,
-                      const QString& path,
-                      bool withUI,
-                      std::function<void(int)> doneCb = {});
-    int getDownloadStatus();
-    void cancelDownload();
+    bool isOnline();
 
-public slots:
-    void slotSslErrors(const QList<QSslError>& sslErrors);
-    void slotDownloadFinished();
-    void slotDownloadProgress(qint64 bytesRead, qint64 totalBytes);
-    void slotHttpReadyRead();
+signals:
+    void connectivityChanged();
 
 private:
-    DownloadManager();
+    void destroy();
 
-    QNetworkAccessManager manager_;
-    QNetworkReply* currentDownload_;
-    UpdateDownloadDialog progressBar_;
-    std::unique_ptr<QFile> file_;
-    int statusCode_;
-    bool withUI_;
-    bool httpRequestAborted_ { false };
-
-    std::function<void(int)> doneCb_;
-
+    struct INetworkListManager* pNetworkListManager_;
+    struct IConnectionPointContainer* pCPContainer_;
+    struct IConnectionPoint* pConnectPoint_;
+    class NetworkEventHandler* netEventHandler_;
+    unsigned long cookie_;
 };

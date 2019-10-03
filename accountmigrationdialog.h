@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,47 +18,37 @@
 
 #pragma once
 
-#include <memory>
+#include <QDialog>
+#include <QMovie>
 
-#include <QtCore>
-#include <QtNetwork>
+#include "utils.h"
+#include "lrcinstance.h"
 
-#include "updatedownloaddialog.h"
+namespace Ui {
+    class AccountMigrationDialog;
+}
 
-class QSslError;
+class AccountMigrationDialog : public QDialog
+{
+    Q_OBJECT;
 
-class DownloadManager : public QObject {
-    Q_OBJECT
 public:
-    static DownloadManager& instance() {
-        static DownloadManager* instance_ = new DownloadManager();
-        return *instance_;
-    }
 
-    void downloadFile(const QUrl& fileUrl,
-                      const QString& path,
-                      bool withUI,
-                      std::function<void(int)> doneCb = {});
-    int getDownloadStatus();
-    void cancelDownload();
-
-public slots:
-    void slotSslErrors(const QList<QSslError>& sslErrors);
-    void slotDownloadFinished();
-    void slotDownloadProgress(qint64 bytesRead, qint64 totalBytes);
-    void slotHttpReadyRead();
+    explicit AccountMigrationDialog(QWidget *parent = 0, const std::string& accountId = {});
+    ~AccountMigrationDialog();
 
 private:
-    DownloadManager();
+    Ui::AccountMigrationDialog *ui;
 
-    QNetworkAccessManager manager_;
-    QNetworkReply* currentDownload_;
-    UpdateDownloadDialog progressBar_;
-    std::unique_ptr<QFile> file_;
-    int statusCode_;
-    bool withUI_;
-    bool httpRequestAborted_ { false };
+    std::string accountId_;
+    std::string password_;
+    QMovie* migrationSpinnerMovie_;
 
-    std::function<void(int)> doneCb_;
+private slots:
+    void slotPasswordEditingFinished();
+    void slotDeleteButtonClicked();
+    void slotMigrationButtonClicked();
 
+protected:
+    void closeEvent(QCloseEvent *event);
 };

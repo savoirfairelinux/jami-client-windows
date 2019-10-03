@@ -21,21 +21,27 @@
 #include <QDialog>
 
 namespace Ui {
-class updateDownloadDialog;
+class UpdateDownloadDialog;
 }
 
-class updateDownloadDialog : public QDialog {
+class UpdateDownloadDialog : public QDialog {
     Q_OBJECT
 
 public:
-    updateDownloadDialog(QWidget* parent = nullptr);
-    ~updateDownloadDialog();
+    UpdateDownloadDialog(QWidget* parent = nullptr);
+    ~UpdateDownloadDialog();
     void setValue(double var);
     void setMaximum(double var);
     void update(QString displayText);
 
+signals:
+    void isCanceled();
+
 private:
-    Ui::updateDownloadDialog* ui;
+    Ui::UpdateDownloadDialog* ui;
     double value_ = 0;
     double maximum_ = -1;
+
+protected:
+    void closeEvent(QCloseEvent *event);
 };

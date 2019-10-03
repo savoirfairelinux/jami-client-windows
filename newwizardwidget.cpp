@@ -238,7 +238,6 @@ void NewWizardWidget::changePage(QWidget* toPage)
             &LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
             this, &NewWizardWidget::slotRegisteredNameFound);
         validateWizardProgression();
-        ui->setAvatarWidget->setUpPreviewRenderer();
         ui->setAvatarWidget->startBooth();
     } else if (toPage == ui->createSIPAccountPage) {
         ui->SIPusernameEdit->clear();
@@ -249,7 +248,6 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->SIPusernameEdit->setEnabled(true);
         setNavBarVisibility(true);
         ui->nextButton->setEnabled(true);
-        ui->setSIPAvatarWidget->setUpPreviewRenderer();
         ui->setSIPAvatarWidget->startBooth();
     } else if (toPage == ui->importFromDevicePage) {
         ui->pinFromDevice->clear();

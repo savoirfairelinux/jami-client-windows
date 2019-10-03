@@ -81,7 +81,7 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
 
     connect(ui->lineEditTurnAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNAddress);
     connect(ui->lineEditTurnUsernameSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNUsername);
-    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNPsswd);
+    connect(ui->lineEditTurnPsswdSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNPassword);
     connect(ui->lineEditTurnRealmSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setTURNRealm);
     connect(ui->lineEditSTUNAddressSIP, &QLineEdit::editingFinished, this, &AdvancedSIPSettingsWidget::setSTUNAddress);
 
@@ -179,7 +179,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->outgoingTLSServerNameLineEdit->setText(QString::fromStdString(config.TLS.serverName));
 
     ui->negotiationTimeoutSpinBox->setValue(config.TLS.negotiationTimeoutSec);
-    connect(ui->negotiationTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
+    connect(ui->negotiationTimeoutSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
 
     // Connectivity
     ui->checkBoxUPnPSIP->setChecked(config.upnpEnabled);
@@ -198,16 +198,16 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
 
     ui->registrationExpireTimeoutSpinBox->setValue(config.Registration.expire);
-    connect(ui->registrationExpireTimeoutSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged);
+    connect(ui->registrationExpireTimeoutSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged);
     ui->networkInterfaceSpinBox->setValue(config.localPort);
-    connect(ui->networkInterfaceSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged);
+    connect(ui->networkInterfaceSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged);
 
     // published address
     ui->checkBoxCustomAddressPort->setChecked(config.publishedSameAsLocal);
     ui->lineEditSIPCustomAddress->setText(QString::fromStdString(config.publishedAddress));
     ui->customPortSIPSpinBox->setValue(config.publishedPort);
 
-    connect(ui->customPortSIPSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged);
+    connect(ui->customPortSIPSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged);
 
     // codecs
     ui->videoCheckBoxSIP->setChecked(config.Video.videoEnabled);
@@ -303,7 +303,7 @@ void AdvancedSIPSettingsWidget::setTURNUsername()
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-void AdvancedSIPSettingsWidget::setTURNPsswd()
+void AdvancedSIPSettingsWidget::setTURNPassword()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.TURN.password = ui->lineEditTurnPsswdSIP->text().toStdString();
@@ -504,10 +504,10 @@ AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEditTextChanged()
 }
 
 void
-AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged(const int& value)
+AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TLS.negotiationTimeoutSec = value;
+    confProps.TLS.negotiationTimeoutSec = ui->negotiationTimeoutSpinBox->value();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -591,18 +591,18 @@ AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePa
 }
 
 void
-AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged(const int& value)
+AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.Registration.expire = value;
+    confProps.Registration.expire = ui->registrationExpireTimeoutSpinBox->value();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void
-AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged(const int& value)
+AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.localPort = value;
+    confProps.localPort = ui->networkInterfaceSpinBox->value();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -623,10 +623,10 @@ AdvancedSIPSettingsWidget::lineEditSIPCustomAddressLineEditTextChanged()
 }
 
 void
-AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged(const int& value)
+AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.publishedPort = value;
+    confProps.publishedPort = ui->customPortSIPSpinBox->value();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 

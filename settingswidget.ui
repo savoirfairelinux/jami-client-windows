@@ -715,8 +715,8 @@
                               </font>
                              </property>
                              <property name="icon">
-                              <iconset>
-                               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+                              <iconset resource="ressources.qrc">
+                               <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -1060,8 +1060,8 @@
                               <string/>
                              </property>
                              <property name="icon">
-                              <iconset>
-                               <normaloff>images/icons/round-folder-24px.svg</normaloff>images/icons/round-folder-24px.svg</iconset>
+                              <iconset resource="ressources.qrc">
+                               <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -1416,8 +1416,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>706</width>
-                  <height>1398</height>
+                  <width>749</width>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -1913,7 +1913,7 @@
                              </layout>
                             </item>
                             <item>
-                             <spacer name="verticalSpacer_30">
+                             <spacer name="verticalSpacerBetweenlblRegisteredNameAndChangePassButton">
                               <property name="orientation">
                                <enum>Qt::Vertical</enum>
                               </property>
@@ -1975,7 +1975,7 @@
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>40</width>
-                                  <height>20</height>
+                                  <height>0</height>
                                  </size>
                                 </property>
                                </spacer>
@@ -2016,7 +2016,7 @@
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>40</width>
-                                  <height>20</height>
+                                  <height>0</height>
                                  </size>
                                 </property>
                                </spacer>
@@ -2085,7 +2085,7 @@
                          </spacer>
                         </item>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_18">
+                         <layout class="QVBoxLayout" name="linkedDeviceVerticalLayout">
                           <property name="topMargin">
                            <number>0</number>
                           </property>
@@ -2738,9 +2738,9 @@
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>0</y>
-                  <width>683</width>
-                  <height>874</height>
+                  <y>-19</y>
+                  <width>749</width>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3413,8 +3413,8 @@
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>322</width>
-                       <height>13</height>
+                       <width>697</width>
+                       <height>0</height>
                       </size>
                      </property>
                     </spacer>
@@ -4088,7 +4088,7 @@
                          </spacer>
                         </item>
                         <item>
-                         <widget class="QWidget" name="previewWidgetContainer" native="true">
+                         <widget class="PreviewWidget" name="previewWidget" native="true">
                           <property name="enabled">
                            <bool>true</bool>
                           </property>
@@ -4100,7 +4100,7 @@
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>400</width>
+                            <width>224</width>
                             <height>224</height>
                            </size>
                           </property>
@@ -4253,6 +4253,12 @@
    <class>LevelMeter</class>
    <extends>QWidget</extends>
    <header>levelmeter.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PreviewWidget</class>
+   <extends>QWidget</extends>
+   <header>previewwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
