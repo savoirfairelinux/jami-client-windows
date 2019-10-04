@@ -30,6 +30,7 @@
 
 #include "settingskey.h"
 #include "accountlistmodel.h"
+#include "networkmanager.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -179,16 +180,22 @@ public:
         instance().lrc_->subscribeToDebugReceived();
     }
 
+    static NetWorkManager* getNetworkManager() {
+        return instance().netWorkManager_.get();
+    }
+
 signals:
     void accountListChanged();
 
 private:
     std::unique_ptr<Lrc> lrc_;
+    std::unique_ptr<NetWorkManager> netWorkManager_;
     AccountListModel accountListModel_;
 
     LRCInstance(migrateCallback willMigrateCb = {},
                 migrateCallback didMigrateCb = {}) {
         lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
+        netWorkManager_ = std::make_unique<NetWorkManager>();
     };
 
     std::string selectedAccountId_;
