@@ -18,110 +18,119 @@
 
 #include "lrcinstance.h"
 
-FrameWrapper::FrameWrapper(bool isPreview) :
-    isPreview_(isPreview)
-{
-}
+using namespace lrc::api;
+
+FrameWrapper::FrameWrapper(const std::string& id)
+    :id_(id)
+{}
 
 FrameWrapper::~FrameWrapper()
 {
-
-}
-
-void
-FrameWrapper::connectPreviewRendering()
-{
-    QObject::disconnect(frameWrapperConnections_.started);
-    if (isPreview_) {
-        frameWrapperConnections_.started = connect(
-            &LRCInstance::avModel(),
-            &lrc::api::AVModel::rendererStarted,
-            this,
-            &FrameWrapper::slotPreviewStarted);
+    if (id_ == video::PREVIEW_RENDERER_ID) {
+        auto avModel = &LRCInstance::avModel();
+        avModel->stopPreview();
     }
 }
 
 void
-FrameWrapper::slotPreviewStarted(const std::string& id)
+FrameWrapper::connectRendering()
 {
-    if (id != lrc::api::video::PREVIEW_RENDERER_ID)
-        return;
-
     QObject::disconnect(frameWrapperConnections_.started);
-
-    QObject::disconnect(frameWrapperConnections_.updated);
-    frameWrapperConnections_.updated = connect(
+    frameWrapperConnections_.started = connect(
         &LRCInstance::avModel(),
-        &lrc::api::AVModel::frameUpdated,
+        &AVModel::rendererStarted,
         this,
-        &FrameWrapper::slotPreviewUpdated);
-
-    QObject::disconnect(frameWrapperConnections_.stopped);
-    frameWrapperConnections_.stopped = connect(
-        &LRCInstance::avModel(),
-        &lrc::api::AVModel::rendererStopped,
-        this,
-        &FrameWrapper::slotPreviewStoped);
+        &FrameWrapper::slotRenderingStarted);
 }
 
 void
-FrameWrapper::slotPreviewUpdated(const std::string& id)
+FrameWrapper::slotRenderingStarted(const std::string& id)
 {
-    if (id != lrc::api::video::PREVIEW_RENDERER_ID)
+    if (id != id_) {
         return;
+    }
+
+    QObject::disconnect(frameWrapperConnections_.started);
+    QObject::disconnect(frameWrapperConnections_.updated);
+    QObject::disconnect(frameWrapperConnections_.stopped);
+
+    frameWrapperConnections_.updated = connect(
+        &LRCInstance::avModel(),
+        &AVModel::frameUpdated,
+        this,
+        &FrameWrapper::slotFrameUpdated);
+
+    frameWrapperConnections_.stopped = connect(
+        &LRCInstance::avModel(),
+        &AVModel::rendererStopped,
+        this,
+        &FrameWrapper::slotRenderingStopped);
+}
+
+void
+FrameWrapper::slotFrameUpdated(const std::string& id)
+{
+    if (id != id_) {
+        return;
+    }
+
     auto avModel = &LRCInstance::avModel();
     auto renderer = &avModel->getRenderer(id);
     if (!renderer->isRendering()) {
         return;
     }
-    previewRenderer_ = const_cast<lrc::api::video::Renderer*>(renderer);
-    renderFrame(id);
+    renderer_ = const_cast<lrc::api::video::Renderer*>(renderer);
+    renderFrame();
 }
 
 void
-FrameWrapper::renderFrame(const std::string& id)
+FrameWrapper::renderFrame()
 {
     auto avModel = &LRCInstance::avModel();
-    using namespace lrc::api::video;
-    auto renderer = &avModel->getRenderer(id);
+    auto renderer = &avModel->getRenderer(id_);
     if (renderer && renderer->isRendering()) {
         {
             QMutexLocker lock(&mutex_);
             auto tmp = renderer->currentFrame();
             if (tmp.storage.size()) {
-                previewFrame_ = tmp;
+                frame_ = tmp;
             }
         }
-        emit previewRenderReady();
+        emit frameReady();
     }
 }
 
 void
-FrameWrapper::slotPreviewStoped(const std::string& id)
+FrameWrapper::slotRenderingStopped(const std::string& id)
 {
-    if (id != lrc::api::video::PREVIEW_RENDERER_ID)
+    if (id != id_) {
         return;
+    }
+
     QObject::disconnect(frameWrapperConnections_.updated);
     QObject::disconnect(frameWrapperConnections_.stopped);
-    previewRenderer_ = nullptr;
-    emit previewRenderStopped();
+    renderer_ = nullptr;
+    emit renderingStopped();
 }
 
-RenderDistributer::RenderDistributer()
+RenderManager::RenderManager()
 {
-    previewFrameWrapper_ = std::make_unique<FrameWrapper>(true);
+    previewFrameWrapper_ = std::make_unique<FrameWrapper>();
 
-    connect(previewFrameWrapper_.get(), &FrameWrapper::previewRenderReady,
+    connect(previewFrameWrapper_.get(), &FrameWrapper::frameReady,
         [this]() {
-            emit previewRenderReady();
+            emit previewFrameReady();
         });
-    connect(previewFrameWrapper_.get(), &FrameWrapper::previewRenderStopped,
+    connect(previewFrameWrapper_.get(), &FrameWrapper::renderingStopped,
         [this]() {
-            emit previewRenderStopped();
+            emit previewRenderingStopped();
         });
 }
 
-RenderDistributer::~RenderDistributer()
+RenderManager::~RenderManager()
 {
     previewFrameWrapper_.reset();
+    for (auto& dfw : distantFrameWrapper_) {
+        dfw.second.reset();
+    }
 }

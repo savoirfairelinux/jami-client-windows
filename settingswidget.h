@@ -30,7 +30,7 @@
 #include "bannedlistmodel.h"
 #include "linkdevicedialog.h"
 #include "photoboothwidget.h"
-#include "previewrender.h"
+#include "previewwidget.h"
 
 #include "api/datatransfermodel.h"
 #include "typedefs.h"
@@ -41,7 +41,7 @@ class SettingsWidget;
 
 class SettingsWidget : public NavWidget {
     Q_OBJECT
-    SettingsWidget(const SettingsWidget& cpy);
+        SettingsWidget(const SettingsWidget& cpy);
 
 public:
     explicit SettingsWidget(QWidget* parent = nullptr);
@@ -52,9 +52,6 @@ public:
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountListChanged();
-
-signals:
-    void videoDeviceChanged(const std::string&, bool avSettingOrAccountSettingVisible = false);
 
 private:
     Ui::SettingsWidget* ui;
@@ -76,7 +73,7 @@ private:
     void setSelected(Button sel);
     void updateAccountInfoDisplayed();
     void resizeEvent(QResizeEvent* event);
-    bool sipPasswordHidden_{false};
+    bool sipPasswordHidden_ {false};
     void passwordClicked();
     void afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName);
     bool validateRegNameForm(const QString& regName);
@@ -87,14 +84,14 @@ private:
     void disconnectAccountConnections();
     void populateGeneralSettings();
     void populateAVSettings();
+    void populateVideoSettings();
     void setFormatListForDevice(const std::string& device);
-    void startPreviewing(bool isDeviceChanged = false);
+    void startPreviewing(bool force = false);
     void stopPreviewing();
     void toggleVideoSettings(bool enabled);
     void toggleVideoPreview(bool enabled);
-    void startAudioMeter(bool blocking = false);
-    void stopAudioMeter(bool blocking = false);
-    void resetPhotoBoothStateWhenSettingChanged(Button type);
+    void startAudioMeter(bool async = true);
+    void stopAudioMeter(bool async = true);
 
     QList<QMetaObject::Connection> accountConnections_;
     QString registeredName_;
@@ -112,10 +109,8 @@ private:
     int avatarSIPSize_;
     bool regNameBtn_ = false;
     const int itemHeight_ = 55;
-    int previousDeviceSize_ { static_cast<int>(LRCInstance::avModel().getDevices().size()) };
-    bool deviceWasEmpty_ { false };
-    PreviewRenderWidget* previewRenderer_;
-    bool isPreviewed_ { false };
+    int previousDeviceSize_ {static_cast<int>(LRCInstance::avModel().getDevices().size())};
+    bool deviceWasEmpty_ {false};
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
@@ -127,7 +122,7 @@ private slots:
     void verifyRegisteredNameSlot();
     void beforeNameLookup();
     void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
-                            const std::string& address, const std::string& name);
+        const std::string& address, const std::string& name);
     void slotRegisterName();
     void setAccEnableSlot(int state);
     void delAccountSlot();
@@ -148,14 +143,11 @@ private slots:
     void slotRecordQualitySliderValueChanged(int value);
     void slotRecordQualitySliderSliderReleased();
     void slotSetUpdateAutomatic(bool state);
-    void outputDevIndexChangedSlot(int index);
-    void inputdevIndexChangedSlot(int index);
+    void slotAudioOutputIndexChanged(int index);
+    void slotAudioInputIndexChanged(int index);
     void slotDeviceBoxCurrentIndexChanged(int index);
     void slotFormatBoxCurrentIndexChanged(int index);
     void slotSetHardwareAccel(bool state);
-    void videoDeviceEventHandlerAndMediaSettingSetUp();
-
-public:
-    Button getPreviousButton() { return pastButton_; }
+    void slotVideoDeviceListChanged();
 
 };
