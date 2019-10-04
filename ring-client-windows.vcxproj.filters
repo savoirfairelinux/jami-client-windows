@@ -231,13 +231,19 @@
     <ClCompile Include="connectivitymonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="previewrender.cpp">
+    <ClCompile Include="rendermanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lrcinstance.cpp">
+    <ClCompile Include="previewwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="networkmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videowidgetbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="distantwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -416,6 +422,18 @@
     <QtMoc Include="networkmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="rendermanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="previewwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="videowidgetbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="distantwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -434,9 +452,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_photoboothdialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_photoboothwidget.h">
@@ -644,9 +659,6 @@
     <QtUic Include="mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="photoboothdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="photoboothwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -708,9 +720,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="accountmigration.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="previewrender.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -19,46 +19,23 @@
 
 #pragma once
 
-#include <QWidget>
+#include "videowidgetbase.h"
+
 #include <QPainter>
-#include <QMutex>
+#include <QWidget>
 
-#include <memory>
-#include <array>
-
-#include "lrcinstance.h"
-
-using namespace lrc::api;
-
-class VideoWidget : public QWidget
-{
+class VideoWidget : public VideoWidgetBase {
     Q_OBJECT;
 
 public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
-    void connectDistantRendering();
-    void disconnectRendering();
+
+    void setRendererId(const std::string& id);
 
 protected:
     void paintEvent(QPaintEvent* e);
 
-public slots:
-    void slotToggleFullScreenClicked();
-    void slotDistantRendererStarted(const std::string& id = {});
-    void slotUpdateDistantView(const std::string& id = {});
-    void slotStopDistantView(const std::string& id = {});
-    void renderFrame(const std::string& id);
-
 private:
-    struct rendererDistantConnections {
-        QMetaObject::Connection started, stopped, updated;
-    } rendererDistantConnections_;
-
-    video::Renderer* distantRenderer_;
-    video::Frame distantFrame_;
-    std::unique_ptr<QImage> distantImage_;
-    std::vector<uint8_t> frameDistant_;
-
-    QMutex mutex_;
+    std::string id_;
 };

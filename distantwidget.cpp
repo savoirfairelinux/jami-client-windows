@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -17,53 +16,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "distantwidget.h"
 
+#include "lrcinstance.h"
 #include "utils.h"
-#include "previewwidget.h"
 
-#include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
-
-namespace Ui {
-class PhotoboothWidget;
+DistantWidget::DistantWidget(QWidget* parent)
+    : VideoWidgetBase(Qt::black, parent)
+{
 }
 
-class PhotoboothWidget : public QWidget
+DistantWidget::~DistantWidget()
 {
-    Q_OBJECT
+}
 
-public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
+void
+DistantWidget::paintEvent(QPaintEvent* e)
+{
+    Q_UNUSED(e);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    auto distantImage = LRCInstance::renderer()->getFrame(id_);
+    if (distantImage) {
+        auto scaledDistant = distantImage->scaled(size(), Qt::KeepAspectRatio);
+        auto xDiff = (width() - scaledDistant.width()) / 2;
+        auto yDiff = (height() - scaledDistant.height()) / 2;
+        painter.drawImage(QRect(xDiff, yDiff,
+                                scaledDistant.width(), scaledDistant.height()),
+                          scaledDistant);
+    }
+    painter.end();
+}
 
-    void startBooth(bool force = false);
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-    bool isPhotoBoothOpened() { return takePhotoState_; }
-    void resetTakePhotoState(bool state) { takePhotoState_ = state; }
-
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
-
-private:
-    void resetToAvatarLabel();
-
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
-
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
-
-    bool takePhotoState_ { false };
-
-signals:
-    void imageAcquired();
-    void imageCleared();
-};
+void
+DistantWidget::setRendererId(const std::string& id)
+{
+    id_ = id;
+}

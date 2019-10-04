@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -19,51 +18,23 @@
 
 #pragma once
 
-#include "utils.h"
-#include "previewwidget.h"
+#include "videowidgetbase.h"
 
+#include <QPainter>
 #include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
 
-namespace Ui {
-class PhotoboothWidget;
-}
-
-class PhotoboothWidget : public QWidget
-{
-    Q_OBJECT
+class DistantWidget : public VideoWidgetBase {
+    Q_OBJECT;
 
 public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
+    explicit DistantWidget(QWidget* parent = 0);
+    ~DistantWidget();
 
-    void startBooth(bool force = false);
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-    bool isPhotoBoothOpened() { return takePhotoState_; }
-    void resetTakePhotoState(bool state) { takePhotoState_ = state; }
+    void setRendererId(const std::string& id);
 
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
+protected:
+    void paintEvent(QPaintEvent* e);
 
 private:
-    void resetToAvatarLabel();
-
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
-
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
-
-    bool takePhotoState_ { false };
-
-signals:
-    void imageAcquired();
-    void imageCleared();
+    std::string id_;
 };

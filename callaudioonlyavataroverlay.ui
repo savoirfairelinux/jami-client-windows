@@ -23,15 +23,12 @@
          <property name="text">
           <string/>
          </property>
-         <property name="pixmap">
-          <pixmap resource="ressources.qrc">:/images/jami.ico</pixmap>
-         </property>
         </widget>
        </item>
        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
         <widget class="QLabel" name="nameLabel">
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
         </widget>
        </item>
