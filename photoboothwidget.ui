@@ -103,7 +103,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="previewContainer">
+          <widget class="PhotoboothPreviewWidget" name="previewWidget">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -121,9 +121,6 @@
              <width>224</width>
              <height>224</height>
             </size>
-           </property>
-           <property name="text">
-            <string/>
            </property>
           </widget>
          </item>
@@ -244,6 +241,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PhotoboothPreviewWidget</class>
+   <extends>QWidget</extends>
+   <header>previewwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>

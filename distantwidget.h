@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -19,46 +18,24 @@
 
 #pragma once
 
-#include <QWidget>
+#include "videowidgetbase.h"
+
 #include <QPainter>
-#include <QMutex>
+#include <QWidget>
 
-#include <memory>
-#include <array>
-
-#include "lrcinstance.h"
-
-using namespace lrc::api;
-
-class VideoWidget : public QWidget
-{
+class DistantWidget : public VideoWidgetBase {
     Q_OBJECT;
 
 public:
-    explicit VideoWidget(QWidget* parent = 0);
-    ~VideoWidget();
-    void connectDistantRendering();
-    void disconnectRendering();
+    explicit DistantWidget(QWidget* parent = 0);
+    ~DistantWidget();
+
+    void setRendererId(const std::string& id);
 
 protected:
     void paintEvent(QPaintEvent* e);
 
-public slots:
-    void slotToggleFullScreenClicked();
-    void slotDistantRendererStarted(const std::string& id = {});
-    void slotUpdateDistantView(const std::string& id = {});
-    void slotStopDistantView(const std::string& id = {});
-    void renderFrame(const std::string& id);
-
 private:
-    struct rendererDistantConnections {
-        QMetaObject::Connection started, stopped, updated;
-    } rendererDistantConnections_;
+    std::string id_;
 
-    video::Renderer* distantRenderer_;
-    video::Frame distantFrame_;
-    std::unique_ptr<QImage> distantImage_;
-    std::vector<uint8_t> frameDistant_;
-
-    QMutex mutex_;
 };
