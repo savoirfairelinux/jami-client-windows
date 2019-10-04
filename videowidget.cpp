@@ -37,9 +37,9 @@ VideoWidget::~VideoWidget()
 void
 VideoWidget::slotDistantRendererStarted(const std::string& id)
 {
-    Q_UNUSED(id);
-
-    QObject::disconnect(rendererDistantConnections_.started);
+    if (id == lrc::api::video::PREVIEW_RENDERER_ID) {
+        return;
+    }
 
     this->show();
 
@@ -48,14 +48,16 @@ VideoWidget::slotDistantRendererStarted(const std::string& id)
         &LRCInstance::avModel(),
         &lrc::api::AVModel::frameUpdated,
         this,
-        &VideoWidget::slotUpdateDistantView);
+        &VideoWidget::slotUpdateDistantView,
+        Qt::UniqueConnection);
 
     QObject::disconnect(rendererDistantConnections_.stopped);
     rendererDistantConnections_.stopped = connect(
         &LRCInstance::avModel(),
         &lrc::api::AVModel::rendererStopped,
         this,
-        &VideoWidget::slotStopDistantView);
+        &VideoWidget::slotStopDistantView,
+        Qt::UniqueConnection);
 }
 
 void
@@ -69,7 +71,7 @@ VideoWidget::renderFrame(const std::string& id)
             QMutexLocker lock(&mutex_);
             auto tmp  = renderer->currentFrame();
             if (tmp.storage.size()) {
-                distantFrame_ = tmp;
+                distantFrame_ = std::move(tmp);
             }
         }
         update();
@@ -128,14 +130,6 @@ VideoWidget::connectDistantRendering()
 }
 
 void
-VideoWidget::disconnectRendering()
-{
-    QObject::disconnect(rendererDistantConnections_.started);
-    QObject::disconnect(rendererDistantConnections_.stopped);
-    QObject::disconnect(rendererDistantConnections_.updated);
-}
-
-void
 VideoWidget::slotUpdateDistantView(const std::string& id)
 {
     if (id == lrc::api::video::PREVIEW_RENDERER_ID) {
@@ -153,10 +147,11 @@ VideoWidget::slotUpdateDistantView(const std::string& id)
 void
 VideoWidget::slotStopDistantView(const std::string& id)
 {
-    Q_UNUSED(id);
+    if (id == lrc::api::video::PREVIEW_RENDERER_ID) {
+        return;
+    }
     QObject::disconnect(rendererDistantConnections_.updated);
     QObject::disconnect(rendererDistantConnections_.stopped);
-    using namespace lrc::api::video;
     distantRenderer_ = nullptr;
     repaint();
 }
