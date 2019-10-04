@@ -2,3 +2,6 @@
     path = libqrencode
     url = https://github.com/fukuchi/libqrencode.git
     ignore = dirty
+[submodule "jami-chatview"]
+	path = jami-chatview
+	url = https://review.jami.net/jami-chatview
