@@ -2,7 +2,7 @@
  * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony L�onard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
  * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
@@ -134,10 +134,6 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::mediaSettingsButton); });
 
-    /*connect(ui->currentSIPAccountAvatar, &QPushButton::clicked, [this]() {
-        avatarClicked();
-    });*/
-
     connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
 
     // connect "delete SIP account" button
@@ -169,24 +165,24 @@ SettingsWidget::SettingsWidget(QWidget* parent)
             passwordClicked();
         });
 
-    connect(ui->currentAccountAvatar, &PhotoboothWidget::clearedPhoto,
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::imageCleared,
         [this] {
             LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentAccountAvatar, true);
+            setAvatar(ui->currentAccountAvatar);
         });
 
-    connect(ui->currentAccountAvatar, &PhotoboothWidget::photoTaken,
+    connect(ui->currentAccountAvatar, &PhotoboothWidget::imageAcquired,
         [this] {
             LRCInstance::setCurrAccAvatar(ui->currentAccountAvatar->getAvatarPixmap());
         });
 
-    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::clearedPhoto,
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::imageCleared,
         [this] {
             LRCInstance::setCurrAccAvatar(QPixmap());
-            setAvatar(ui->currentSIPAccountAvatar, true);
+            setAvatar(ui->currentSIPAccountAvatar);
         });
 
-    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::photoTaken,
+    connect(ui->currentSIPAccountAvatar, &PhotoboothWidget::imageAcquired,
         [this] {
             LRCInstance::setCurrAccAvatar(ui->currentSIPAccountAvatar->getAvatarPixmap());
         });
@@ -196,7 +192,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     connect(ui->currentRegisteredID, &QLineEdit::textEdited, this, &SettingsWidget::verifyRegisteredNameSlot);
 
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::registeredNameFound,
-            this, &SettingsWidget::receiveRegNameSlot);
+        this, &SettingsWidget::receiveRegNameSlot);
 
     //connect "export account" button
     connect(ui->btnExportAccount, &QPushButton::clicked, this, &SettingsWidget::exportAccountSlot);
@@ -263,11 +259,9 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->hardwareAccelCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetHardwareAccel);
 
-    connect(&LRCInstance::avModel(), &lrc::api::AVModel::deviceEvent, [this] { videoDeviceEventHandlerAndMediaSettingSetUp(); });
+    connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged, this, &SettingsWidget::slotVideoDeviceListChanged);
 
     ui->containerWidget->setVisible(false);
-
-    previewRenderer_ = PreviewRenderWidget::attachPreview();
 }
 
 void SettingsWidget::slotAccountListChanged()
@@ -312,11 +306,7 @@ void SettingsWidget::leaveSettingsSlot()
 
     bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
     auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;
-    QtConcurrent::run([this, &photoBooth] {
-        photoBooth->stopBooth();
-        if (isPreviewed_)
-            stopPreviewing();
-    });
+    photoBooth->stopBooth();
 
     emit NavigationRequested(ScreenEnum::CallScreen);
 }
@@ -342,18 +332,22 @@ void SettingsWidget::setSelected(Button sel)
         stopAudioMeter();
         stopPreviewing();
 
-        if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
+        PhotoboothWidget* avatarWidget;
+        pastAccount_ = LRCInstance::getCurrentAccountInfo().profileInfo.type;
+        if (pastAccount_ == lrc::api::profile::Type::SIP) {
             ui->stackedWidget->setCurrentWidget(ui->currentSIPAccountSettingsScrollWidget);
-            if (advancedSIPSettingsDropped_) {
-                toggleAdvancedSIPSettings();
-            }
-            pastAccount_ = lrc::api::profile::Type::SIP;
+            if (advancedSIPSettingsDropped_) { toggleAdvancedSIPSettings(); }
+            avatarWidget = ui->currentSIPAccountAvatar;
         } else {
             ui->stackedWidget->setCurrentWidget(ui->currentAccountSettingsScrollWidget);
-            if (advancedSettingsDropped_) {
-                toggleAdvancedSettings();
-            }
-            pastAccount_ = lrc::api::profile::Type::RING;
+            if (advancedSettingsDropped_) { toggleAdvancedSettings(); }
+            avatarWidget = ui->currentSIPAccountAvatar;
+        }
+
+        // reset the photobooth ?
+        if (avatarWidget->isPhotoBoothOpened()) {
+            setAvatar(avatarWidget);
+            avatarWidget->resetTakePhotoState(false);
         }
 
         break;
@@ -370,8 +364,6 @@ void SettingsWidget::setSelected(Button sel)
 
         ui->stackedWidget->setCurrentWidget(ui->generalSettings);
         populateGeneralSettings();
-        // close photo booth carmera if necessary
-        resetPhotoBoothStateWhenSettingChanged(Button::generalSettingsButton);
 
         break;
 
@@ -386,8 +378,6 @@ void SettingsWidget::setSelected(Button sel)
         startPreviewing();
         populateAVSettings();
         startAudioMeter();
-        // close photo booth carmera if necessary
-        resetPhotoBoothStateWhenSettingChanged(Button::mediaSettingsButton);
 
         break;
     }
@@ -429,10 +419,10 @@ void SettingsWidget::updateAccountInfoDisplayed()
     }
 
     // sip avatar set
-    setAvatar(ui->currentSIPAccountAvatar, false);
+    setAvatar(ui->currentSIPAccountAvatar);
 
     // jami avatar set
-    setAvatar(ui->currentAccountAvatar, false);
+    setAvatar(ui->currentAccountAvatar);
 
     ui->accountEnableCheckBox->setChecked(accInfo.enabled);
     ui->accountSIPEnableCheckBox->setChecked(accInfo.enabled);
@@ -447,12 +437,12 @@ void SettingsWidget::updateAccountInfoDisplayed()
     ui->bannedContactsLayoutWidget->setVisible(accInfo.contactModel->getBannedContacts().size());
 }
 
-void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget, bool stopPhotoboothPreview)
+void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
 {
     auto& accountInfo = LRCInstance::getCurrentAccountInfo();
     auto defaultAvatar = accountInfo.profileInfo.avatar.empty();
     auto avatar = Utils::accountPhoto(accountInfo, {avatarSize_, avatarSize_});
-    avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar, stopPhotoboothPreview);
+    avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar);
 }
 
 void SettingsWidget::passwordClicked()
@@ -702,7 +692,7 @@ void SettingsWidget::removeDeviceSlot(int index)
     }
 
     if (ok) {
-    delete_:
+delete_:
         LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, password.toStdString());
     }
 }
@@ -765,16 +755,16 @@ void SettingsWidget::updateAndShowDevicesSlot()
         auto item = new QListWidgetItem(ui->settingsListWidget);
         ui->settingsListWidget->addItem(item);
         auto row = new DeviceItemWidget(QString::fromStdString(it->name),
-                                        QString::fromStdString(it->id),
-                                        it->isCurrent,
-                                        this);
+            QString::fromStdString(it->id),
+            it->isCurrent,
+            this);
         item->setSizeHint(QSize(ui->settingsListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->settingsListWidget->setItemWidget(item, row);
         connect(row, &DeviceItemWidget::btnRemoveDeviceClicked,
             [this, i, isCurrent = it->isCurrent]() {
-                removeDeviceSlot(i);
-            });
+            removeDeviceSlot(i);
+        });
     }
 }
 
@@ -805,10 +795,10 @@ void SettingsWidget::updateAndShowBannedContactsSlot()
         auto item = new QListWidgetItem(ui->bannedListWidget);
         ui->bannedListWidget->addItem(item);
         auto row = new BannedItemWidget(contactName,
-                                        contactId,
-                                        this);
+            contactId,
+            this);
         item->setSizeHint(QSize(ui->bannedListWidget->width(),
-                                row->minimumSizeHint().height()));
+            row->minimumSizeHint().height()));
         ui->bannedListWidget->setItemWidget(item, row);
         connect(row, &BannedItemWidget::btnReAddContactClicked,
             [this, i]() {
@@ -835,20 +825,20 @@ void SettingsWidget::connectCurrentAccount()
     // update banned accounts automatically
     accountConnections_.append(
         QObject::connect(currentAccountInfo.contactModel.get(), &lrc::api::ContactModel::modelUpdated,
-                         this, &SettingsWidget::updateAndShowBannedContactsSlot, Qt::UniqueConnection));
+        this, &SettingsWidget::updateAndShowBannedContactsSlot, Qt::UniqueConnection));
 
     // update linked devices automatically
     accountConnections_.append(
         QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceUpdated,
-                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
+        this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 
     accountConnections_.append(
         QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceRevoked,
-                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
+        this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 
     accountConnections_.append(
         QObject::connect(currentAccountInfo.deviceModel.get(), &lrc::api::NewDeviceModel::deviceAdded,
-                         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
+        this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 }
 
 void SettingsWidget::disconnectAccountConnections()
@@ -991,7 +981,7 @@ void SettingsWidget::populateAVSettings()
 {
     // audio input devices
     disconnect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::inputdevIndexChangedSlot);
+        this, &SettingsWidget::slotAudioInputIndexChanged);
     ui->inputComboBox->clear();
     auto inputDevices = LRCInstance::avModel().getAudioInputDevices();
     auto inputDevice = LRCInstance::avModel().getInputDevice();
@@ -1001,7 +991,7 @@ void SettingsWidget::populateAVSettings()
     }
     ui->inputComboBox->setCurrentIndex(inputIndex != -1 ? inputIndex : 0);
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::inputdevIndexChangedSlot);
+        this, &SettingsWidget::slotAudioInputIndexChanged);
 
     connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
         [this](const std::string& id, float level) {
@@ -1012,7 +1002,7 @@ void SettingsWidget::populateAVSettings()
 
     // audio output devices
     disconnect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::outputDevIndexChangedSlot);
+        this, &SettingsWidget::slotAudioOutputIndexChanged);
     ui->outputComboBox->clear();
     auto outputDevices = LRCInstance::avModel().getAudioOutputDevices();
     auto outputDevice = LRCInstance::avModel().getOutputDevice();
@@ -1022,48 +1012,41 @@ void SettingsWidget::populateAVSettings()
     }
     ui->outputComboBox->setCurrentIndex(outputIndex != -1 ? outputIndex : 0);
     connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::outputDevIndexChangedSlot);
-
-    previewRenderer_->setParent(ui->previewWidgetContainer);
-    previewRenderer_->setGeometry(ui->previewWidgetContainer->rect());
-    previewRenderer_->setCurrentConainerGeo(ui->previewWidgetContainer->width(), ui->previewWidgetContainer->height());
-    previewRenderer_->resetBoarder();
-    previewRenderer_->setPhotoMode(false);
-    previewRenderer_->setNeedToCentre(true);
-    previewRenderer_->show();
+        this, &SettingsWidget::slotAudioOutputIndexChanged);
 
     // video
-    videoDeviceEventHandlerAndMediaSettingSetUp();
+    populateVideoSettings();
 
     auto encodeAccel = LRCInstance::avModel().getHardwareAcceleration();
     ui->hardwareAccelCheckBox->setChecked(encodeAccel);
 }
 
-void SettingsWidget::outputDevIndexChangedSlot(int index)
+void SettingsWidget::slotAudioOutputIndexChanged(int index)
 {
-    stopAudioMeter(true);
+    stopAudioMeter(false);
     auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole)
         .toString().toStdString();
     LRCInstance::avModel().setOutputDevice(selectedOutputDeviceName);
-    startAudioMeter(true);
+    startAudioMeter(false);
 }
 
-void SettingsWidget::inputdevIndexChangedSlot(int index)
+void SettingsWidget::slotAudioInputIndexChanged(int index)
 {
-    stopAudioMeter(true);
+    stopAudioMeter(false);
     auto selectedInputDeviceName = ui->inputComboBox->itemData(index, Qt::DisplayRole)
         .toString().toStdString();
     LRCInstance::avModel().setInputDevice(selectedInputDeviceName);
-    startAudioMeter(true);
+    startAudioMeter(false);
 }
 
 void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
-    std::string device = ui->deviceBox->itemData(index, Qt::DisplayRole).toString().toStdString();
+    std::string device = ui->deviceBox->itemData(index, Qt::DisplayRole)
+        .toString()
+        .toStdString();
     LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
     LRCInstance::avModel().setDefaultDevice(device);
     setFormatListForDevice(device);
-    emit videoDeviceChanged(device, true);
     startPreviewing(true);
 }
 
@@ -1071,49 +1054,23 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
 {
     auto resolution = formatIndexList_.at(index).first;
     auto rate = formatIndexList_.at(index).second;
-    auto decive = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-    auto currentSettings = LRCInstance::avModel().getDeviceSettings(decive);
-    lrc::api::video::Settings settings{ {}, decive, rate, resolution };
-    previewRenderer_->connectRendering();
+    auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+    lrc::api::video::Settings settings {{}, device, rate, resolution};
     LRCInstance::avModel().setDeviceSettings(settings);
 }
 
-void SettingsWidget::startPreviewing(bool isDeviceChanged)
+void SettingsWidget::startPreviewing(bool force)
 {
-    if (!LRCInstance::getActiveCalls().size() || isDeviceChanged || LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
-        // if no active calls, or device is changed -> reactive preview
-        previewRenderer_->connectRendering();
-        QtConcurrent::run(
-            [this] {
-                LRCInstance::avModel().stopPreview();
-                LRCInstance::avModel().startPreview();
-            });
-        isPreviewed_ = true;
-    }
+    LRCInstance::renderer()->startPreviewing(force);
     ui->previewUnavailableLabel->hide();
     ui->videoLayoutWidget->show();
 }
 
 void SettingsWidget::stopPreviewing()
 {
-    if (!LRCInstance::getActiveCalls().size() || LRCInstance::getIfCurrentSelectedCallIsAudioOnly()) {
-        QtConcurrent::run( [this] { LRCInstance::avModel().stopPreview(); });
+    if (!LRCInstance::hasVideoCall()) {
+        LRCInstance::renderer()->stopPreviewing();
     }
-    isPreviewed_ = false;
-}
-
-void SettingsWidget::toggleVideoSettings(bool enabled)
-{
-    ui->formatBox->clear();
-    ui->deviceBox->clear();
-    ui->formatBox->setEnabled(enabled);
-    ui->deviceBox->setEnabled(enabled);
-}
-
-void SettingsWidget::toggleVideoPreview(bool enabled)
-{
-    ui->previewUnavailableLabel->setVisible(!enabled);
-    ui->videoLayoutWidget->setVisible(enabled);
 }
 
 void SettingsWidget::setFormatListForDevice(const std::string& device)
@@ -1131,9 +1088,9 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
     ui->formatBox->clear();
     formatIndexList_.clear();
 
-    for (auto [resolution, frameRateList] : channelCaps) {
+    for (auto[resolution, frameRateList] : channelCaps) {
         for (auto rate : frameRateList) {
-            formatIndexList_.append(QPair<std::string , float> (resolution, rate));
+            formatIndexList_.append(QPair<std::string, float>(resolution, rate));
             auto sizeRateString = QString("%1 [%2 fps]")
                 .arg(QString::fromStdString(resolution))
                 .arg(round(rate));
@@ -1152,7 +1109,13 @@ void SettingsWidget::slotSetHardwareAccel(bool state)
     LRCInstance::avModel().setHardwareAcceleration(state);
 }
 
-void SettingsWidget::startAudioMeter(bool blocking)
+void
+SettingsWidget::slotVideoDeviceListChanged()
+{
+    populateVideoSettings();
+}
+
+void SettingsWidget::startAudioMeter(bool async)
 {
     if (LRCInstance::getActiveCalls().size()) {
         return;
@@ -1162,148 +1125,71 @@ void SettingsWidget::startAudioMeter(bool blocking)
         LRCInstance::avModel().startAudioDevice();
         LRCInstance::avModel().setAudioMeterState(true);
     };
-    if (blocking) {
-        f();
-    } else {
+    if (async) {
         QtConcurrent::run(f);
+    } else {
+        f();
     }
 }
 
-void SettingsWidget::stopAudioMeter(bool blocking)
+void SettingsWidget::stopAudioMeter(bool async)
 {
     if (LRCInstance::getActiveCalls().size()) {
         return;
     }
-    LRCInstance::avModel().setAudioMeterState(false);
     ui->audioInputMeter->stop();
-    auto f = [this] { LRCInstance::avModel().stopAudioDevice(); };
-    blocking ? f() : QtConcurrent::run(f);
-}
-
-void SettingsWidget::resetPhotoBoothStateWhenSettingChanged(Button type)
-{
-    bool stopPhotoboothPreview = false;
-    // if setting change from account (photo booth open) to general, have to stop video endering
-    // if setting change from account (photo booth open) to media, does not have to stop video rendering
-
-    // if we are in a call, it will only reset the avator label,buttons
-
-    if (type == Button::generalSettingsButton) {
-        stopPhotoboothPreview = true;
-    }
-    if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP) {
-        if (ui->currentSIPAccountAvatar->isPhotoBoothOpened()) {
-            setAvatar(ui->currentSIPAccountAvatar, stopPhotoboothPreview);
-            ui->currentSIPAccountAvatar->resetTakePhotoState(false);
-        }
+    auto f = [this] {
+        LRCInstance::avModel().stopAudioDevice();
+        LRCInstance::avModel().setAudioMeterState(false);
+    };
+    if (async) {
+        QtConcurrent::run(f);
     } else {
-        if (ui->currentAccountAvatar->isPhotoBoothOpened()) {
-            setAvatar(ui->currentAccountAvatar, stopPhotoboothPreview);
-            ui->currentAccountAvatar->resetTakePhotoState(false);
-        }
+        f();
     }
 }
 
-void SettingsWidget::videoDeviceEventHandlerAndMediaSettingSetUp()
+void
+SettingsWidget::populateVideoSettings()
 {
     disconnect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
     disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
-    auto devices = LRCInstance::avModel().getDevices();
+
     ui->deviceBox->clear();
     ui->formatBox->clear();
 
-    // first is isSIP, second is shouldReinitial
-    // if decive event happen when we are in opening photo booth
-    bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
-    auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;
-    auto scrollWidget = isSIP ? ui->currentSIPAccountSettingsScrollWidget : ui->currentAccountSettingsScrollWidget;
-    bool shouldRestart = scrollWidget->isVisible() && photoBooth->isPhotoBoothOpened();
+    auto devices = LRCInstance::avModel().getDevices();
 
-    bool shouldReinitializePreview { true };
-    int deviceSize { static_cast<int>(devices.size()) };
-    bool hasVideoDevices = deviceSize;
+    ui->deviceBox->setEnabled(devices.size());
+    ui->formatBox->setEnabled(devices.size());
+    ui->labelVideoDevice->setEnabled(devices.size());
+    ui->labelVideoFormat->setEnabled(devices.size());
 
-    // decide whether the decive is plugged or unplugged or nothing changed
-    Utils::DevicePlugStatus plugStatus = previousDeviceSize_ < deviceSize
-                                           ? Utils::DevicePlugStatus::Plugged
-                                           : (previousDeviceSize_ == deviceSize ? Utils::DevicePlugStatus::Unchanged : Utils::DevicePlugStatus::Unplugged);
-    previousDeviceSize_ = deviceSize;
-    ui->deviceBox->setEnabled(hasVideoDevices);
-    ui->formatBox->setEnabled(hasVideoDevices);
-    ui->labelVideoDevice->setEnabled(hasVideoDevices);
-    ui->labelVideoFormat->setEnabled(hasVideoDevices);
+    if (devices.size() == 0) {
+        ui->deviceBox->addItem(QObject::tr("No Device"));
+        ui->deviceBox->setCurrentIndex(0);
 
-    // if has devices, change parameters accordingly
-    if (hasVideoDevices) {
-        auto device = LRCInstance::avModel().getDefaultDeviceName();
-
-        if (LRCInstance::avModel().getCurrentVideoCaptureDevice().empty()) {
-            LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
-        }
-        if (plugStatus == Utils::DevicePlugStatus::Plugged && LRCInstance::avModel().getCurrentVideoCaptureDevice() == device && !deviceWasEmpty_) {
-            // if a device is plugged and current using device does not change and device was not empty
-            // we do not need to re-startPreview
-            shouldReinitializePreview = false;
-            shouldRestart = false;
-        } else if (plugStatus == Utils::DevicePlugStatus::Unplugged) {
-            if(LRCInstance::avModel().getCurrentVideoCaptureDevice() != device){
-                // unplugged decive equals to currentCapture device, reset it
-                LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
-            } else {
-                shouldReinitializePreview = false;
-                shouldRestart = false;
-            }
-        } else if (!deviceWasEmpty_) {
-            // if nothing changed and device was empty
-            if(LRCInstance::avModel().getCurrentVideoCaptureDevice() != device){
-                if (LRCInstance::getActiveCalls().size()) {
-                    // if unchanged, but context menu change the video device
-                    shouldReinitializePreview = false;
-                } else {
-                    LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
-                }
-            } else {
-                shouldReinitializePreview = false;
-            }
-            shouldRestart = false;
-        }
-
-        auto deviceIndex = Utils::indexInVector(devices, LRCInstance::avModel().getCurrentVideoCaptureDevice());
+        ui->formatBox->addItem(QObject::tr("No Device"));
+        ui->formatBox->setCurrentIndex(0);
+    } else {
+        auto currentCaptureDevice = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+        auto deviceIndex = Utils::indexInVector(devices, currentCaptureDevice);
         for (auto d : devices) {
             ui->deviceBox->addItem(QString::fromStdString(d).toUtf8());
         }
         ui->deviceBox->setCurrentIndex(deviceIndex);
         setFormatListForDevice(LRCInstance::avModel().getCurrentVideoCaptureDevice());
-        deviceWasEmpty_ = false;
-    } else {
-        LRCInstance::avModel().clearCurrentVideoCaptureDevice();
-        ui->deviceBox->addItem(QObject::tr("No Device"));
-        ui->formatBox->addItem(QObject::tr("No Device"));
-        ui->deviceBox->setCurrentIndex(0);
-        ui->deviceBox->setCurrentIndex(0);
-        shouldRestart = false;
-        shouldReinitializePreview = false;
-        deviceWasEmpty_ = true;
-        ui->previewUnavailableLabel->show();
-        ui->videoLayoutWidget->hide();
-        LRCInstance::avModel().switchInputTo("");
+
+        startPreviewing(false);
     }
+
     connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
     connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
 
-    if (shouldRestart) {
-        // if we are in photo booth open state and in account setting widget,
-        // reset the photo booth video
-        emit videoDeviceChanged(LRCInstance::avModel().getDefaultDeviceName(), true);
-        photoBooth->startBooth(true);
-    } else if (shouldReinitializePreview && (ui->avSettings->isVisible() || LRCInstance::getActiveCalls().size())) {
-        // if shouldReinitializePreview && has active calls -> videoInputDeviceLoseConnection to refersh video input
-        emit videoDeviceChanged(LRCInstance::avModel().getDefaultDeviceName(), ui->avSettings->isVisible());
-        if(ui->avSettings->isVisible())
-            startPreviewing(true);
-    }
+    ui->previewUnavailableLabel->setVisible(devices.size() == 0);
+    ui->videoLayoutWidget->setVisible(devices.size() != 0);
 }

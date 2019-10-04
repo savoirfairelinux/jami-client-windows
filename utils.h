@@ -91,14 +91,11 @@ lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, c
 
 // interactions
 std::string formatTimeString(const std::time_t& timestamp);
-lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model);
-lrc::api::ConversationModel::ConversationQueue::const_iterator getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model);
 bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
 bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
 
 // image
 QImage getCirclePhoto(const QImage original, int sizePhoto);
-QImage getRoundedEdgePhoto(const QImage original, int widthPhoto, int heightPhoto, int roundness);
 QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
 QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
@@ -110,12 +107,6 @@ QPixmap generateTintedPixmap(const QPixmap& pix, QColor color);
 QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
-
-// convo
-lrc::api::conversation::Info getConversationFromCallId(const std::string& callId);
-lrc::api::conversation::Info getSelectedConversation();
-lrc::api::conversation::Info getConversationFromUid(const std::string & convUid, bool filtered = true);
-const lrc::api::conversation::Info& getCurrentConvInfo();
 
 // misc helpers
 void swapQListWidgetItems(QListWidget* list, bool down = true);
