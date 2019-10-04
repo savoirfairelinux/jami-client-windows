@@ -385,6 +385,18 @@ MessageWebView::setMessagesVisibility(bool visible)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
+void
+MessageWebView::setAudioClipPath(std::string path)
+{
+    tempAudioclipPath = path;
+}
+
+std::string
+MessageWebView::getAudioclipPath()
+{
+    return tempAudioclipPath;
+}
+
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -640,5 +652,62 @@ PrivateBridging::emitPasteKeyDetected()
     } else {
         qDebug() << "JS bridging - exception during emitPasteKeyDetected";
     }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::startRecordAudio()
+{
+    if (MessageWebView* parent = (MessageWebView*)this->parent()) {
+        std::string path = LRCInstance::avModel().startLocalRecorder(true);
+        parent->setAudioClipPath(path);
+        return 0;
+        qDebug() << "The audio recording now start! ";
+    }
+    return -1;
+}
+
+Q_INVOKABLE int
+PrivateBridging::finishRecordAudio()
+{
+    if (MessageWebView* parent = (MessageWebView*)this->parent()) {
+        std::string path = parent->getAudioclipPath();
+        LRCInstance::avModel().stopLocalRecorder(path);
+        qDebug() << "the current audioclip's name and directory is: " + QString::fromStdString(path);
+        QString param = QString("addAudio_Path('%1')")
+                            .arg(QString::fromStdString(path));
+        parent->page()->runJavaScript(param);
+    } else {
+        qDebug() << "The parent of javascript bridge does not exist! ";
+        return -1;
+    }
+
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::stopAndDeleteRecordAudio()
+{
+    if (MessageWebView* parent = (MessageWebView*)this->parent()) {
+        std::string path = parent->getAudioclipPath();
+        LRCInstance::avModel().stopLocalRecorder(path);
+        QFile file(QString::fromStdString(path));
+        file.remove();
+        qDebug() << "the current audioclip is successfully deleted. It's name and directory are: " + QString::fromStdString(path);
+    } else {
+        qDebug() << "The parent of javascript bridge does not exist! ";
+        return -1;
+    }
+
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::deleteSelectedFile(const QString path)
+{
+    QFile file(path);
+    file.remove();
+    qDebug() << "the current audio clip is successfully deleted. It's directory is: " + path;
+
     return 0;
 }
