@@ -20,7 +20,7 @@
 #pragma once
 
 #include "utils.h"
-#include "previewrender.h"
+#include "previewwidget.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -38,14 +38,13 @@ public:
     explicit PhotoboothWidget(QWidget *parent = 0);
     ~PhotoboothWidget();
 
-    void startBooth(bool isDeviceChanged = false);
+    void startBooth(bool force = false);
     void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false, bool stopPhotoboothPreview = false);
+    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
     bool isPhotoBoothOpened() { return takePhotoState_; }
     void resetTakePhotoState(bool state) { takePhotoState_ = state; }
-    void setUpPreviewRenderer();
 
 private slots:
     void on_importButton_clicked();
@@ -57,7 +56,6 @@ private:
     QString fileName_;
     Ui::PhotoboothWidget *ui;
 
-    PreviewRenderWidget* previewRenderer_;
     QLabel* flashOverlay_;
     QPropertyAnimation *flashAnimation_;
     QPixmap avatarPixmap_;
@@ -66,6 +64,6 @@ private:
     bool takePhotoState_ { false };
 
 signals:
-    void photoTaken();
-    void clearedPhoto();
+    void imageAcquired();
+    void imageCleared();
 };
