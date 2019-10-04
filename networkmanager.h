@@ -18,47 +18,64 @@
 
 #pragma once
 
-#include <memory>
+#include "updatedownloaddialog.h"
 
 #include <QtCore>
 #include <QtNetwork>
 
-#include "updatedownloaddialog.h"
+#include <memory>
 
 class QSslError;
 
-class DownloadManager : public QObject {
+class NetWorkManager : public QObject {
     Q_OBJECT
 public:
-    static DownloadManager& instance() {
-        static DownloadManager* instance_ = new DownloadManager();
-        return *instance_;
-    }
+    explicit NetWorkManager(QObject* parent = nullptr);
+    ~NetWorkManager();
 
-    void downloadFile(const QUrl& fileUrl,
-                      const QString& path,
-                      bool withUI,
-                      std::function<void(int)> doneCb = {});
-    int getDownloadStatus();
-    void cancelDownload();
+    /**
+     * using qt get request to store the reply in file
+     * @param fileUrl - network address
+     * @param path - file saving path
+     * @param withUI - with download progress bar
+     * @param doneCbRequestInFile - done callback
+     */
+    void getRequestFile(const QUrl& fileUrl,
+                        const QString& path,
+                        bool withUI,
+                        std::function<void(int)> doneCbRequestInFile = {});
 
-public slots:
+    /**
+     * using qt get request to return the reply in callback
+     * @param fileUrl - network address
+     * @param path - file saving path
+     * @param withUI - with download progress bar
+     * @param doneCbRequest - done callback
+     */
+    void getRequestReply(const QUrl& fileUrl,
+                         std::function<void(int,QString)> doneCbRequest = {});
+
+    /*
+     * abort the current request
+     */
+    void cancelRequest();
+
+private slots:
     void slotSslErrors(const QList<QSslError>& sslErrors);
-    void slotDownloadFinished();
+    void slotGetRequestInFileFinished();
+    void slotGetRequestFinished();
     void slotDownloadProgress(qint64 bytesRead, qint64 totalBytes);
     void slotHttpReadyRead();
 
 private:
-    DownloadManager();
-
     QNetworkAccessManager manager_;
-    QNetworkReply* currentDownload_;
+    QNetworkReply* reply_;
     UpdateDownloadDialog progressBar_;
     std::unique_ptr<QFile> file_;
-    int statusCode_;
-    bool withUI_;
-    bool httpRequestAborted_ { false };
 
-    std::function<void(int)> doneCb_;
+    std::function<void(int)> doneCbRequestInFile_;
+    std::function<void(int,QString)> doneCbRequest_;
+
+    void refresh(bool requestInFile);
 
 };
