@@ -244,9 +244,9 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClCompile Include="currentaccountcombobox.cpp" />
     <ClCompile Include="aboutdialog.cpp" />
     <ClCompile Include="levelmeter.cpp" />
-    <ClCompile Include="lrcinstance.cpp" />
     <ClCompile Include="overlaybutton.cpp" />
-    <ClCompile Include="previewrender.cpp" />
+    <ClCompile Include="previewwidget.cpp" />
+    <ClCompile Include="rendermanager.cpp" />
     <ClCompile Include="sipinputpanel.cpp" />
     <ClCompile Include="splashscreen.cpp" />
     <ClCompile Include="updatedownloaddialog.cpp" />
@@ -485,7 +485,11 @@ del /s /q $(OutDir)\Jami.exp</Command>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;NIGHTLY_VERSION=20180706;ENABLE_AUTOUPDATE;QT_NO_DEBUG;NDEBUG;QT_MULTIMEDIA_LIB;QT_MULTIMEDIAWIDGETS_LIB</Define>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
     </QtMoc>
-    <QtMoc Include="previewrender.h">
+    <QtMoc Include="previewwidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
+    <QtMoc Include="rendermanager.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
     </QtMoc>
@@ -580,7 +584,6 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClInclude Include="ui_callwidget.h" />
     <ClInclude Include="ui_deleteaccountdialog.h" />
     <ClInclude Include="ui_mainwindow.h" />
-    <ClInclude Include="ui_photoboothdialog.h" />
     <ClInclude Include="ui_photoboothwidget.h" />
     <ClInclude Include="ui_ringbutton.h" />
     <ClInclude Include="ui_videooverlay.h" />
@@ -665,7 +668,6 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <QtUic Include="callwidget.ui">
       <SubType>Designer</SubType>
     </QtUic>
-    <QtUic Include="previewrender.ui" />
     <QtUic Include="sipkeypad.ui" />
     <QtUic Include="updatedownloaddialog.ui" />
     <QtUic Include="contactpicker.ui" />
@@ -682,8 +684,6 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <QtUic Include="newwizardwidget.ui" />
     <QtUic Include="passworddialog.ui">
       <SubType>Designer</SubType>
-    </QtUic>
-    <QtUic Include="photoboothdialog.ui">
     </QtUic>
     <QtUic Include="photoboothwidget.ui">
     </QtUic>

@@ -37,8 +37,8 @@ class VideoWidget : public QWidget
 public:
     explicit VideoWidget(QWidget* parent = 0);
     ~VideoWidget();
+
     void connectDistantRendering();
-    void disconnectRendering();
 
 protected:
     void paintEvent(QPaintEvent* e);

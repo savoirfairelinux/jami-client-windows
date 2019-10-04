@@ -262,47 +262,6 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     return target;
 }
 
-QImage
-Utils::getRoundedEdgePhoto(const QImage original, int widthPhoto, int heightPhoto, int roundness)
-{
-    // First, create a transparent image with the same size
-    QImage target(widthPhoto, heightPhoto, QImage::Format_ARGB32_Premultiplied);
-    target.fill(Qt::transparent);
-
-    //Second, create a painter onto that image
-    QPainter painter(&target);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    painter.setBrush(QBrush(original));
-    // set brush to the image that we want to draw
-    // Note that, the Qbrush is in default texture mode
-
-    //Third, scale the original image into the size of the image we created
-    auto scaledPhoto = original
-            .scaled(widthPhoto, heightPhoto, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation)
-            .convertToFormat(QImage::Format_ARGB32_Premultiplied);
-    painter.drawRoundedRect(0, 0, widthPhoto, heightPhoto, roundness, roundness);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    // Source-In mode and Draw the image onto the transperant image
-    painter.drawImage(0, 0, scaledPhoto, 0, 0);
-    return target;
-}
-
-void
-Utils::drawBlackCircularImageOntoLabel(QLabel* containerWidget)
-{
-    // Widget is black, fill image with white
-    // draw a black cycle onto it
-    QImage target(containerWidget->width(), containerWidget->height(), QImage::Format_ARGB32_Premultiplied);
-    target.fill(Qt::white);
-
-    QPainter painter(&target);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    painter.setBrush(QBrush(Qt::black));
-    painter.drawEllipse(containerWidget->x(), containerWidget->y(), containerWidget->width(), containerWidget->height());
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    containerWidget->setPixmap(QPixmap::fromImage(target));
-}
-
 void
 Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 {
@@ -503,12 +462,15 @@ Utils::bestNameForContact(const lrc::api::contact::Info& contact)
 std::string
 Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
 {
-    auto contact = model.owner.contactModel->getContact(conv.participants[0]);
-    auto alias = removeEndlines(contact.profileInfo.alias);
-    if (alias.length() == 0) {
-        return bestIdForConversation(conv, model);
-    }
-    return alias;
+    try {
+        auto contact = model.owner.contactModel->getContact(conv.participants[0]);
+        auto alias = removeEndlines(contact.profileInfo.alias);
+        if (alias.length() == 0) {
+            return bestIdForConversation(conv, model);
+        }
+        return alias;
+    } catch (...) {}
+    return {};
 }
 
 // returns empty string if only infoHash is available, second best identifier otherwise
@@ -567,22 +529,6 @@ Utils::formatTimeString(const std::time_t& timestamp)
     }
 }
 
-lrc::api::ConversationModel::ConversationQueue::const_iterator
-Utils::getConversationFromUid(const std::string& uid, const lrc::api::ConversationModel& model) {
-    return std::find_if(model.allFilteredConversations().begin(), model.allFilteredConversations().end(),
-        [&](const lrc::api::conversation::Info& conv) {
-            return uid == conv.uid;
-        });
-}
-
-lrc::api::ConversationModel::ConversationQueue::const_iterator
-Utils::getConversationFromUri(const std::string& uri, const lrc::api::ConversationModel& model) {
-    return std::find_if(model.allFilteredConversations().begin(), model.allFilteredConversations().end(),
-        [&](const lrc::api::conversation::Info& conv) {
-            return uri == conv.participants[0];
-        });
-}
-
 bool
 Utils::isInteractionGenerated(const lrc::api::interaction::Type& type)
 {
@@ -604,7 +550,7 @@ Utils::isContactValid(const std::string& contactUid, const lrc::api::Conversatio
 QImage
 Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::Info& accountInfo)
 {
-    auto convInfo = getConversationFromUid(convUid, false);
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountInfo.id, false);
     if (!convInfo.uid.empty()) {
         return GlobalInstances::pixmapManipulator()
             .decorationRole(convInfo, accountInfo)
@@ -761,61 +707,6 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
             letterStr);
     }
     return scaleAndFrame(photo, size);
-}
-
-lrc::api::conversation::Info
-Utils::getConversationFromCallId(const std::string & callId)
-{
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    using namespace lrc::api::profile;
-    for (int i = toUnderlyingValue(Type::RING); i <= toUnderlyingValue(Type::TEMPORARY); ++i) {
-        auto filter = toEnum<lrc::api::profile::Type>(i);
-        auto conversations = convModel->getFilteredConversations(filter);
-        auto conv = std::find_if(conversations.begin(), conversations.end(),
-            [&](const lrc::api::conversation::Info& conv) {
-                return callId == conv.callId;
-            });
-        if (conv != conversations.end()) {
-            return *conv;
-        }
-    }
-    return lrc::api::conversation::Info();
-}
-
-lrc::api::conversation::Info
-Utils::getSelectedConversation()
-{
-    return getConversationFromUid(LRCInstance::getSelectedConvUid(), false);
-}
-
-lrc::api::conversation::Info
-Utils::getConversationFromUid(const std::string & convUid, bool filtered)
-{
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    if (filtered) {
-        auto conversation = getConversationFromUid(convUid, *convModel);
-    } else {
-        using namespace lrc::api::profile;
-        for (int i = toUnderlyingValue(Type::RING); i <= toUnderlyingValue(Type::TEMPORARY); ++i) {
-            auto filter = toEnum<lrc::api::profile::Type>(i);
-            auto conversations = convModel->getFilteredConversations(filter);
-            auto conv = std::find_if(conversations.begin(), conversations.end(),
-                [&](const lrc::api::conversation::Info& conv) {
-                    return convUid == conv.uid;
-                });
-            if (conv != conversations.end()) {
-                return *conv;
-            }
-        }
-    }
-    return lrc::api::conversation::Info();
-}
-
-const lrc::api::conversation::Info&
-Utils::getCurrentConvInfo()
-{
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    return *Utils::getConversationFromUid(LRCInstance::getSelectedConvUid(), *convModel);
 }
 
 void
