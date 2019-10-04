@@ -111,4 +111,8 @@ private slots:
     void audioRTPMaxPortSpinBoxEditFinished();
     void videoRTPMinPortSpinBoxEditFinished();
     void videoRTPMaxPortSpinBoxEditFinished();
+
+    // voicemail
+    void lineEditVoiceMailDialCodeEditFinished();
+    void enableVoicemailNotificationToogleClicked(bool state);
 };

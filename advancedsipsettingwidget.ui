@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>549</width>
-    <height>1773</height>
+    <height>1913</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
+  <layout class="QVBoxLayout" name="verticalLayout_9">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -176,7 +176,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="ressources.qrc">
              <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
            </property>
           </widget>
@@ -438,7 +438,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -473,7 +473,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -544,7 +544,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -1705,7 +1705,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -1739,7 +1739,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -1858,7 +1858,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -1892,7 +1892,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -2219,6 +2219,154 @@
     </layout>
    </item>
    <item>
+    <spacer name="verticalSpacer_15">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_14">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Voicemail</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_14">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>13</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_19">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="lineEditVoiceMailDialCode">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Normal</enum>
+           </property>
+           <property name="placeholderText">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="ToggleSwitch" name="enableVoicemailNotificationToogle" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text" stdset="0">
+            <string>Enable VoiceMail Notification</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer_34">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::MinimumExpanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_35">
+           <item>
+            <widget class="QLabel" name="label_33">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Voicemail Dial Code</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
     <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -2273,6 +2421,8 @@
   <tabstop>videoRTPMinPortSpinBox</tabstop>
   <tabstop>videoRTPMaxPortSpinBox</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
