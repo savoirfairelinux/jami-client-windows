@@ -18,7 +18,7 @@
 
 #include "connectivitymonitor.h"
 
-#include "lrcinstance.h"
+#include <QDebug>
 
 #include <atlbase.h>
 #include <netlistmgr.h>

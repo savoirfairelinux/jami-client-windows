@@ -46,7 +46,7 @@
 #include "pixbufmanipulator.h"
 #include "globalsystemtray.h"
 #include "lrcinstance.h"
-#include "downloadmanager.h"
+#include "networkmanager.h"
 #include "updateconfirmdialog.h"
 #include "version.h"
 
@@ -366,32 +366,17 @@ void
 Utils::checkForUpdates(bool withUI, QWidget* parent)
 {
     Utils::cleanUpdateFiles();
-    QString downloadpath = WinGetEnv("TEMP");
-    DownloadManager::instance().downloadFile(
+    LRCInstance::instance().getNetworkManager()->getRequestReply(
         QUrl::fromEncoded("https://dl.jami.net/windows/version"),
-        downloadpath,
-        withUI,
-        [parent, withUI, downloadpath](int status) {
+        [parent, withUI] (int status, const QString& onlineVersion) {
             if (status != 200) {
-                if (withUI)
+                if (withUI) {
                     QMessageBox::critical(0,
                         QObject::tr("Update"),
                         QObject::tr("Version cannot be verified"));
+                }
                 return;
             }
-
-            QFile file(downloadpath + "/" + "version");
-            if (!file.open(QIODevice::ReadOnly)) {
-                if (withUI)
-                    QMessageBox::critical(0,
-                        QObject::tr("Update"),
-                        QObject::tr("File cannnot be opened"));
-                return;
-            }
-
-            QTextStream in(&file);
-            QString onlineVersion = in.readLine();
-            file.close();
             auto currentVersion = QString(VERSION_STRING).toULongLong();
             if (onlineVersion.isEmpty()) {
                 qWarning() << "No version file found";
@@ -420,7 +405,7 @@ Utils::applyUpdates(QWidget* parent)
     } else
         return;
 
-    DownloadManager::instance().downloadFile(
+    LRCInstance::instance().getNetworkManager()->getRequestFile(
         QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi"),
         WinGetEnv("TEMP"),
         true,
