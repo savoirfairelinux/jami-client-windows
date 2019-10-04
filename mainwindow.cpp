@@ -184,10 +184,7 @@ MainWindow::MainWindow(QWidget* parent)
         });
     timer->start(1000);
 #endif
-    // preview renderer is initialized firstly here
-    previewRenderer_ = PreviewRenderWidget::attachPreview(this);
 
-    connect(ui->settingswidget, &SettingsWidget::videoDeviceChanged, this, &MainWindow::slotVideoDeviceChanged);
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
         [this](const std::string& accountId) {
             Q_UNUSED(accountId);
@@ -305,7 +302,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
-        LRCInstance::avModel().stopPreview();
+        LRCInstance::renderer()->stopPreviewing(false);
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
@@ -417,13 +414,4 @@ void MainWindow::slotAccountListChanged()
             emit currentWidget->NavigationRequested(ScreenEnum::WizardScreen);
         }
     }
-}
-
-void MainWindow::slotVideoDeviceChanged(const std::string& device, bool avSettingOrAccountSettingVisible)
-{
-    Q_UNUSED(device)
-    ui->callwidget->reconnectRenderingVideoDeviceChanged();
-    // if the device is not changed in avSettings, then restart preview manually
-    if(!avSettingOrAccountSettingVisible)
-        ui->callwidget->restartPreviewWhenSwitchDevice();
 }

@@ -33,6 +33,7 @@
 #include "settingskey.h"
 #include "accountlistmodel.h"
 #include "utils.h"
+#include "rendermanager.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -51,68 +52,10 @@
 
 #include <memory>
 
-class FrameWrapper : public QObject
-{
-
-    Q_OBJECT
-
-public:
-    FrameWrapper(bool isPreview);
-    ~FrameWrapper();
-
-    void connectPreviewRendering();
-    lrc::api::video::Renderer* getPreviewRenderer() { return previewRenderer_;  }
-    lrc::api::video::Frame getPreviewFrame() { return previewFrame_; }
-
-signals:
-    void previewRenderReady();
-    void previewRenderStopped();
-
-private slots:
-    void slotPreviewStarted(const std::string& id = {});
-    void slotPreviewUpdated(const std::string& id = {});
-    void slotPreviewStoped(const std::string& id = {});
-
-private:
-    bool isPreview_;
-    lrc::api::video::Renderer* previewRenderer_;
-    lrc::api::video::Frame previewFrame_;
-
-    QMutex mutex_;
-
-    struct frameWrapperConnections {
-        QMetaObject::Connection started, stopped, updated;
-    } frameWrapperConnections_;
-
-    void renderFrame(const std::string& id);
-};
-
-class RenderDistributer : public QObject
-{
-
-    Q_OBJECT
-
-public:
-    RenderDistributer();
-    ~RenderDistributer();
-    lrc::api::video::Renderer* getPreviewRenderer() { return previewFrameWrapper_->getPreviewRenderer(); }
-    lrc::api::video::Frame getPreviewFrame() { return previewFrameWrapper_->getPreviewFrame(); }
-    void connectPreviewRendering() { previewFrameWrapper_->connectPreviewRendering(); }
-
-signals:
-    void previewRenderReady();
-    void previewRenderStopped();
-
-private:
-    // one preview to rule them all
-    std::unique_ptr<FrameWrapper> previewFrameWrapper_;
-    // distant for each call/conf/conversation
-    //std::map<std::string, std::unique_ptr<FrameWrapper>> distantFrames_;
-};
-
 using namespace lrc::api;
 
 using migrateCallback = std::function<void()>;
+using getConvPredicate = std::function<bool(const conversation::Info& conv)>;
 
 class LRCInstance : public QObject
 {
@@ -131,7 +74,7 @@ public:
     static Lrc& getAPI() {
         return *(instance().lrc_);
     };
-    static RenderDistributer* getRenderDistributer() {
+    static RenderManager* renderer() {
         return instance().renderer_.get();
     }
     static void connectivityChanged() {
@@ -155,17 +98,109 @@ public:
     static std::vector<std::string> getActiveCalls() {
         return instance().lrc_->activeCalls();
     };
-
+    static const account::Info&
+    getAccountInfo(const std::string& accountId) {
+        return accountModel().getAccountInfo(accountId);
+    };
     static const account::Info&
     getCurrentAccountInfo() {
-        try {
-            return accountModel().getAccountInfo(getCurrAccId());
-        } catch (...) {
-            static account::Info invalid = {};
-            qWarning() << "getAccountInfo exception";
-            return invalid;
-        }
+        return getAccountInfo(getCurrAccId());
     };
+    static bool hasVideoCall() {
+        auto activeCalls = instance().lrc_->activeCalls();
+        auto accountList = accountModel().getAccountList();
+        bool result = false;
+        for (const auto& callId : activeCalls) {
+            for (const auto& accountId : accountList) {
+                auto& accountInfo = accountModel().getAccountInfo(accountId);
+                if (accountInfo.callModel->hasCall(callId)) {
+                    result |= !accountInfo.callModel->getCall(callId).isAudioOnly;
+                }
+            }
+        }
+        return result;
+    };
+    static const call::Info*
+    getCallInfo(const std::string& accountId, const std::string& callId) {
+        auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+        if (!accInfo.callModel->hasCall(callId)) {
+            return nullptr;
+        }
+        return &accInfo.callModel->getCall(callId);
+    }
+    static const call::Info*
+    getCallInfoForConversation(const conversation::Info& convInfo) {
+        try {
+            auto& accInfo = LRCInstance::accountModel().getAccountInfo(convInfo.accountId);
+            if (!accInfo.callModel->hasCall(convInfo.callId)) {
+                return nullptr;
+            }
+            return &accInfo.callModel->getCall(convInfo.callId);
+        } catch(...) {
+            return nullptr;
+        }
+    }
+    static const conversation::Info&
+    getConversation(const std::string& accountId,
+                    getConvPredicate pred = {},
+                    bool filtered=false) {
+        using namespace lrc::api;
+        static conversation::Info invalid = {};
+        try {
+            auto& accInfo = LRCInstance::getAccountInfo(accountId);
+            auto& convModel = accInfo.conversationModel;
+            if (filtered) {
+                auto& convs = convModel->allFilteredConversations();
+                auto conv = std::find_if(convs.begin(), convs.end(), pred);
+                if (conv != convs.end()) {
+                    return *conv;
+                }
+            } else {
+                for (int i = Utils::toUnderlyingValue(profile::Type::RING);
+                     i <= Utils::toUnderlyingValue(profile::Type::TEMPORARY);
+                     ++i) {
+                    auto filter = Utils::toEnum<profile::Type>(i);
+                    auto& convs = convModel->getFilteredConversations(filter);
+                    auto conv = std::find_if(convs.begin(), convs.end(), pred);
+                    if (conv != convs.end()) {
+                        return *conv;
+                    }
+                }
+            }
+        } catch(...) {}
+        return invalid;
+    }
+    static const conversation::Info&
+    getConversationFromCallId(const std::string& callId,
+                              const std::string& accountId = {},
+                              bool filtered = false) {
+        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info& conv) -> bool {
+                return callId == conv.callId;
+            }, filtered);
+    }
+    static const conversation::Info&
+    getConversationFromConvUid(const std::string& convUid,
+                               const std::string& accountId = {},
+                               bool filtered = false) {
+        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info& conv) -> bool {
+                return convUid == conv.uid;
+            }, filtered);
+    }
+    static const conversation::Info&
+    getConversationFromPeerUri(const std::string& peerUri,
+                               const std::string& accountId = {},
+                               bool filtered = false) {
+        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info& conv) -> bool {
+                return peerUri == conv.participants[0];
+            }, filtered);
+    }
+    static const conversation::Info&
+    getCurrentConversation() {
+        return getConversationFromConvUid(getSelectedConvUid());
+    }
 
     static ConversationModel*
     getCurrentConversationModel() {
@@ -199,22 +234,13 @@ public:
         instance().selectedConvUid_ = convUid;
     };
 
-    static bool getIfCurrentSelectedCallIsAudioOnly() {
-        auto isAudioOnly = false;
-        auto convInfo = Utils::getSelectedConversation();
-        if (!convInfo.uid.empty()) {
-            isAudioOnly = LRCInstance::getCurrentCallModel()->getCall(convInfo.callId).isAudioOnly;
-        }
-        return isAudioOnly;
-    };
-
     static void reset(bool newInstance = false) {
         if (newInstance) {
+            instance().renderer_.reset(new RenderManager(avModel()));
             instance().lrc_.reset(new Lrc());
-            instance().renderer_.reset(new RenderDistributer());
         } else {
-            instance().lrc_.reset();
             instance().renderer_.reset();
+            instance().lrc_.reset();
         }
     };
 
@@ -267,11 +293,11 @@ private:
     LRCInstance(migrateCallback willMigrateCb = {},
                 migrateCallback didMigrateCb = {}) {
         lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
-        renderer_ = std::make_unique<RenderDistributer>();
+        renderer_ = std::make_unique<RenderManager>(lrc_->getAVModel());
     };
 
     std::string selectedAccountId_;
     std::string selectedConvUid_;
 
-    std::unique_ptr<RenderDistributer> renderer_;
+    std::unique_ptr<RenderManager> renderer_;
 };
