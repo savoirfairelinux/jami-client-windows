@@ -28,6 +28,8 @@
 
 DownloadManager::DownloadManager()
 {}
+DownloadManager::~DownloadManager()
+{}
 
 void DownloadManager::downloadFile(const QUrl& fileUrl,
                                    const QString& path,
@@ -41,16 +43,19 @@ void DownloadManager::downloadFile(const QUrl& fileUrl,
 
     doneCb_ = doneCb;
     withUI_ = withUI;
-    QFileInfo fileInfo(fileUrl.path());
-    QString fileName = fileInfo.fileName();
 
-    file_.reset(new QFile(path + "/" + fileName));
-    if (!file_->open(QIODevice::WriteOnly)) {
-        QMessageBox::critical(0,
-            tr("Update"),
-            tr("Unable to open file for writing"));
-        file_.reset(nullptr);
-        return;
+    if (!readFile_) {
+        QFileInfo fileInfo(fileUrl.path());
+        QString fileName = fileInfo.fileName();
+
+        file_.reset(new QFile(path + "/" + fileName));
+        if (!file_->open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(0,
+                tr("Update"),
+                tr("Unable to open file for writing"));
+            file_.reset(nullptr);
+            return;
+        }
     }
 
     QNetworkRequest request(fileUrl);
@@ -58,17 +63,24 @@ void DownloadManager::downloadFile(const QUrl& fileUrl,
 
     currentDownload_->disconnect();
 
-    connect(currentDownload_, SIGNAL(finished()), this, SLOT(slotDownloadFinished()));
-    connect(currentDownload_, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(slotDownloadProgress(qint64, qint64)));
-    connect(currentDownload_, SIGNAL(readyRead()), this, SLOT(slotHttpReadyRead()));
+    if (!readFile_) {
+        connect(currentDownload_, SIGNAL(finished()), this, SLOT(slotDownloadFinished()));
+        connect(currentDownload_, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(slotDownloadProgress(qint64, qint64)));
+        connect(currentDownload_, SIGNAL(readyRead()), this, SLOT(slotHttpReadyRead()));
 
 #if QT_CONFIG(ssl)
-    connect(currentDownload_, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(slotSslErrors(QList<QSslError>)));
+        connect(currentDownload_, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(slotSslErrors(QList<QSslError>)));
 #endif
-    connect(&progressBar_, &UpdateDownloadDialog::isCanceled,
-        [this] {
-            cancelDownload();
-        });
+        connect(&progressBar_, &UpdateDownloadDialog::isCanceled,
+            [this] {
+                cancelDownload();
+            });
+    } else {
+        connect(currentDownload_, SIGNAL(finished()), this, SLOT(slotFileReadFinished()));
+#if QT_CONFIG(ssl)
+        connect(currentDownload_, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(slotSslErrors(QList<QSslError>)));
+#endif
+    }
 
     if (withUI_) {
         progressBar_.exec();
@@ -81,6 +93,7 @@ void DownloadManager::slotDownloadFinished()
 
     if (httpRequestAborted_) {
         // request aborted
+        httpRequestAborted_ = false;
         statusCode_ = 0;
     }
 
@@ -101,6 +114,20 @@ void DownloadManager::slotDownloadFinished()
     if (doneCb_)
         doneCb_(statusCode_);
 
+}
+
+void DownloadManager::slotFileReadFinished()
+{
+    readFile_ = false;
+    statusCode_ = currentDownload_->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+
+    QString response = QString(currentDownload_->readAll());
+
+    currentDownload_->deleteLater();
+    currentDownload_ = nullptr;
+
+    if (doneCbReadFile_)
+        doneCbReadFile_(statusCode_, response);
 }
 
 void DownloadManager::slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
@@ -150,4 +177,13 @@ void DownloadManager::cancelDownload()
     httpRequestAborted_ = true;
     if(currentDownload_)
         currentDownload_->abort();
+}
+
+void
+DownloadManager::readOnlineFile(const QUrl & fileUrl,
+                                std::function<void(int, QString)> doneCbReadFile)
+{
+    readFile_ = true;
+    doneCbReadFile_ = doneCbReadFile;
+    downloadFile(fileUrl, "", false);
 }

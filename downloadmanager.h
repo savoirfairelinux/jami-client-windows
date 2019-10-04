@@ -30,15 +30,15 @@ class QSslError;
 class DownloadManager : public QObject {
     Q_OBJECT
 public:
-    static DownloadManager& instance() {
-        static DownloadManager* instance_ = new DownloadManager();
-        return *instance_;
-    }
+    DownloadManager();
+    ~DownloadManager();
 
     void downloadFile(const QUrl& fileUrl,
                       const QString& path,
                       bool withUI,
                       std::function<void(int)> doneCb = {});
+    void readOnlineFile(const QUrl& fileUrl,
+                        std::function<void(int,QString)> doneCbReadFile = {});
     int getDownloadStatus();
     void cancelDownload();
 
@@ -47,18 +47,19 @@ public slots:
     void slotDownloadFinished();
     void slotDownloadProgress(qint64 bytesRead, qint64 totalBytes);
     void slotHttpReadyRead();
+    void slotFileReadFinished();
 
 private:
-    DownloadManager();
-
     QNetworkAccessManager manager_;
     QNetworkReply* currentDownload_;
     UpdateDownloadDialog progressBar_;
     std::unique_ptr<QFile> file_;
     int statusCode_;
+    bool readFile_ { false };
     bool withUI_;
     bool httpRequestAborted_ { false };
 
     std::function<void(int)> doneCb_;
+    std::function<void(int,QString)> doneCbReadFile_;
 
 };

@@ -30,6 +30,7 @@
 
 #include "settingskey.h"
 #include "accountlistmodel.h"
+#include "downloadmanager.h"
 
 #include "api/lrc.h"
 #include "api/account.h"
@@ -179,16 +180,22 @@ public:
         instance().lrc_->subscribeToDebugReceived();
     }
 
+    static DownloadManager* getDownloadManager() {
+        return instance().downloadManager_.get();
+    }
+
 signals:
     void accountListChanged();
 
 private:
     std::unique_ptr<Lrc> lrc_;
+    std::unique_ptr<DownloadManager> downloadManager_;
     AccountListModel accountListModel_;
 
     LRCInstance(migrateCallback willMigrateCb = {},
                 migrateCallback didMigrateCb = {}) {
         lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
+        downloadManager_ = std::make_unique<DownloadManager>();
     };
 
     std::string selectedAccountId_;
