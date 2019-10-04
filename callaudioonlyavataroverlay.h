@@ -37,7 +37,7 @@ public:
     explicit CallAudioOnlyAvatarOverlay(QWidget *parent = nullptr);
     ~CallAudioOnlyAvatarOverlay();
     void setAvatarVisible(bool visible);
-    void writeAvatarOverlay(const std::string& accountId, const lrc::api::conversation::Info& convInfo);
+    void writeAvatarOverlay(const lrc::api::conversation::Info& convInfo);
     void respondToPauseLabel(bool pauseButtonDisplayed);
 
 private:
