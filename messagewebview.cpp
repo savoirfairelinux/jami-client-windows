@@ -92,6 +92,7 @@ MessageWebView::MessageWebView(QWidget *parent)
     webChannel_ = new QWebChannel(page());
     webChannel_->registerObject(QStringLiteral("jsbridge"), jsBridge_);
     page()->setWebChannel(webChannel_);
+    page()->profile()->setHttpUserAgent("jami-windows");
 
     connect(this, &QWebEngineView::renderProcessTerminated,
         [this](QWebEnginePage::RenderProcessTerminationStatus termStatus, int statusCode) {
@@ -239,20 +240,22 @@ void MessageWebView::runJsText()
 
 void MessageWebView::buildView()
 {
-    auto html = Utils::QByteArrayFromFile(":/web/chatview.html");
-    page()->setHtml(html, QUrl(":/web/chatview.html"));
+    auto html = Utils::QByteArrayFromFile(":/jami-chatview/chatview.html");
+    page()->setHtml(html, QUrl(":/jami-chatview/chatview.html"));
     connect(this, &QWebEngineView::loadFinished, this, &MessageWebView::slotLoadFinished);
 }
 
 void
 MessageWebView::slotLoadFinished()
 {
-    insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/web/chatview.css"));
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify-html.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify-string.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/qwebchannel.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/chatview.js"), QWebEngineScript::MainWorld);
+    insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/jami-chatview/chatview.css"));
+    insertStyleSheet("chatwin",Utils::QByteArrayFromFile(":/jami-chatview/chatview-windows.css"));
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/jed.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/linkify.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/linkify-html.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/linkify-string.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/qwebchannel.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jami-chatview/chatview.js"), QWebEngineScript::MainWorld);
 }
 
 void
