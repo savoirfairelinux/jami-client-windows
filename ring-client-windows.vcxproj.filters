@@ -55,8 +55,8 @@
       <Extensions>ts;xlf</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Resource Files\web">
-      <UniqueIdentifier>{faf8f8a4-eb67-49df-a082-2fd64189e62c}</UniqueIdentifier>
+    <Filter Include="Resource Files\jami-chatview">
+      <UniqueIdentifier>{08e16428-af5d-430c-93e9-d725231f07c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -603,26 +603,32 @@
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="web\chatview.css">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\chatview.css">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\chatview.html">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\chatview.html">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\linkify.js">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\chatview.js">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\linkify-html.js">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\jed.js">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\linkify-string.js">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\linkify.js">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\chatview.js">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\linkify-html.js">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
-    <None Include="web\qwebchannel.js">
-      <Filter>Resource Files\web</Filter>
+    <None Include="jami-chatview\linkify-string.js">
+      <Filter>Resource Files\jami-chatview</Filter>
+    </None>
+    <None Include="jami-chatview\qwebchannel.js">
+      <Filter>Resource Files\jami-chatview</Filter>
+    </None>
+    <None Include="jami-chatview\chatviewWIN.css">
+      <Filter>Resource Files\jami-chatview</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -863,5 +869,10 @@
     <Image Include="images\icons\icon-keypad-24-2x.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="jami-chatview\web.gresource.xml">
+      <Filter>Resource Files\jami-chatview</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
