@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -19,51 +18,32 @@
 
 #pragma once
 
-#include "utils.h"
-#include "previewwidget.h"
-
+#include <QPaintEvent>
+#include <QPainter>
+#include <QPainterPath>
 #include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
 
-namespace Ui {
-class PhotoboothWidget;
-}
-
-class PhotoboothWidget : public QWidget
-{
-    Q_OBJECT
+// The base for video widgets
+class VideoWidgetBase : public QWidget {
+    Q_OBJECT;
 
 public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
+    explicit VideoWidgetBase(QColor bgColor = Qt::transparent,
+                             QWidget* parent = 0);
+    virtual ~VideoWidgetBase();
 
-    void startBooth(bool force = false);
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-    bool isPhotoBoothOpened() { return takePhotoState_; }
-    void resetTakePhotoState(bool state) { takePhotoState_ = state; }
-
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
-
-private:
-    void resetToAvatarLabel();
-
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
-
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
-
-    bool takePhotoState_ { false };
+    /**
+     * Repaints the widget while preventing update/repaint to queue
+     * for its parent. This is needed when geometry changes occur,
+     * to disable image tearing.
+     */
+    void forceRepaint();
 
 signals:
-    void imageAcquired();
-    void imageCleared();
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void hideEvent(QHideEvent* e) override;
+    virtual void showEvent(QShowEvent* e) override;
+
 };
