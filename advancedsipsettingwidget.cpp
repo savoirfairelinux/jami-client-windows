@@ -136,6 +136,10 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
             ui->videoDownPushButtonSIP->setEnabled(enabled);
             ui->videoUpPushButtonSIP->setEnabled(enabled);
         });
+
+    // voicemail
+    connect(ui->lineEditVoiceMailDialCode, &QLineEdit::editingFinished, this,
+                                           &AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished);
 }
 
 AdvancedSIPSettingsWidget::~AdvancedSIPSettingsWidget()
@@ -233,6 +237,8 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->videoRTPMinPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::videoRTPMinPortSpinBoxEditFinished);
     connect(ui->videoRTPMaxPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::videoRTPMaxPortSpinBoxEditFinished);
 
+    // voicemail
+    ui->lineEditVoiceMailDialCode->setText(QString::fromStdString(config.mailbox));
 }
 
 // call settings
@@ -675,5 +681,13 @@ AdvancedSIPSettingsWidget::videoRTPMaxPortSpinBoxEditFinished()
         return;
     }
     confProps.Video.videoPortMax = ui->videoRTPMaxPortSpinBox->value();
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.mailbox = ui->lineEditVoiceMailDialCode->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
