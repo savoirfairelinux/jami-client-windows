@@ -21,7 +21,7 @@
 
 #include "accountmigrationdialog.h"
 #include "globalinstances.h"
-#include "downloadmanager.h"
+#include "networkmanager.h"
 #include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "runguard.h"
