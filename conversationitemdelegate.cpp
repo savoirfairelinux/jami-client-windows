@@ -81,8 +81,9 @@ ConversationItemDelegate::paint(QPainter* painter
             painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
         }
         auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-        auto conversation = Utils::getConversationFromUid(convUid, *LRCInstance::getCurrentConversationModel());
-        if (LRCInstance::getCurrentCallModel()->hasCall(conversation->callId)) {
+        auto conversation = LRCInstance::getConversationFromConvUid(convUid);
+        if (conversation.uid.empty()) return;
+        if (LRCInstance::getCurrentCallModel()->hasCall(conversation.callId)) {
             auto color = QColor(RingTheme::blue_.lighter(180));
             color.setAlpha(128);
             painter->fillRect(option.rect, color);

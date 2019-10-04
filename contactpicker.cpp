@@ -62,10 +62,11 @@ ContactPicker::accept()
 
     if (idx.isValid()) {
         // get current call id and peer uri
-        auto selectedConvUid = LRCInstance::getSelectedConvUid();
-        auto convModel = LRCInstance::getCurrentConversationModel();
-        auto conversation = Utils::getConversationFromUid(selectedConvUid, *convModel);
-        auto thisCallId = conversation->callId;
+        auto conversation = LRCInstance::getCurrentConversation();
+        if (conversation.uid.empty()) {
+            return;
+        }
+        auto thisCallId = conversation.callId;
         auto contactUri = idx.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>().toStdString();
 
         // let parent deal with this as this dialog will be destroyed
@@ -118,14 +119,13 @@ ContactPicker::setType(const Type& type)
             [this](const QModelIndex& index, const QRegExp& regexp) {
                 bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
                 auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-                auto convModel = LRCInstance::getCurrentConversationModel();
-                auto conversation = Utils::getConversationFromUid(convUid, *convModel);
-                if (conversation == convModel->allFilteredConversations().end()) {
+                auto conversation = LRCInstance::getConversationFromConvUid(convUid);
+                if (conversation.uid.empty()) {
                     return false;
                 }
                 auto callModel = LRCInstance::getCurrentCallModel();
                 return  match &&
-                        !(callModel->hasCall(conversation->callId) || callModel->hasCall(conversation->confId)) &&
+                        !(callModel->hasCall(conversation.callId) || callModel->hasCall(conversation.confId)) &&
                         !index.parent().isValid();
             });
         break;

@@ -1,6 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -17,53 +16,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#pragma once
+#include "videowidgetbase.h"
 
-#include "utils.h"
-#include "previewwidget.h"
+#include "lrcinstance.h"
 
-#include <QWidget>
-#include <QLabel>
-#include <QPropertyAnimation>
+VideoWidgetBase::VideoWidgetBase(QColor bgColor, QWidget* parent)
+    : QWidget(parent)
+{
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, bgColor);
+    setAutoFillBackground(true);
+    setPalette(pal);
 
-namespace Ui {
-class PhotoboothWidget;
+    connect(LRCInstance::renderer(), &RenderManager::previewFrameUpdated,
+        [this]() {
+            repaint();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            repaint();
+        });
 }
 
-class PhotoboothWidget : public QWidget
+VideoWidgetBase::~VideoWidgetBase()
+{}
+
+void
+VideoWidgetBase::forceRepaint()
 {
-    Q_OBJECT
+    auto parent = qobject_cast<QWidget*>(this->parent());
+    if (parent) parent->setUpdatesEnabled(false);
+    repaint();
+    if (parent) parent->setUpdatesEnabled(true);
+}
 
-public:
-    explicit PhotoboothWidget(QWidget *parent = 0);
-    ~PhotoboothWidget();
+void
+VideoWidgetBase::hideEvent(QHideEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(false);
+}
 
-    void startBooth(bool force = false);
-    void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
-    const QPixmap& getAvatarPixmap();
-    bool hasAvatar();
-    bool isPhotoBoothOpened() { return takePhotoState_; }
-    void resetTakePhotoState(bool state) { takePhotoState_ = state; }
-
-private slots:
-    void on_importButton_clicked();
-    void on_takePhotoButton_clicked();
-
-private:
-    void resetToAvatarLabel();
-
-    QString fileName_;
-    Ui::PhotoboothWidget *ui;
-
-    QLabel* flashOverlay_;
-    QPropertyAnimation *flashAnimation_;
-    QPixmap avatarPixmap_;
-    bool hasAvatar_;
-
-    bool takePhotoState_ { false };
-
-signals:
-    void imageAcquired();
-    void imageCleared();
-};
+void
+VideoWidgetBase::showEvent(QShowEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(true);
+}

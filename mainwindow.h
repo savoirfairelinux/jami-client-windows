@@ -22,7 +22,6 @@
 #include "settingswidget.h"
 #include "utils.h"
 #include "connectivitymonitor.h"
-#include "previewrender.h"
 #include "globalsystemtray.h"
 
 #include <QMainWindow>
@@ -54,9 +53,6 @@ public:
     void show();
     float getCurrentScalingRatio();
     void showWindow();
-
-public slots:
-    void slotVideoDeviceChanged(const std::string&, bool);
 
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result);
@@ -96,7 +92,6 @@ private:
     std::unique_ptr<ConnectivityMonitor> connectivityMonitor_;
 
     QMetaObject::Connection screenChangedConnection_;
-    PreviewRenderWidget* previewRenderer_;
 
     QTimer *updateTimer_;
 };

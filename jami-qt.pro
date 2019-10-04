@@ -75,7 +75,10 @@ HEADERS += ./aboutdialog.h \
         ./callaudioonlyavataroverlay.h \
         ./overlaybutton.h \
         ./accountmigrationdialog.h \
-        ./previewrender.h
+        ./previewwidget.h \
+        ./rendermanager.h \
+        ./distantwidget.h \
+        ./videowidgetbase.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -132,8 +135,10 @@ SOURCES += ./aboutdialog.cpp \
         ./callaudioonlyavataroverlay.cpp \
         ./overlaybutton.cpp \
         ./accountmigrationdialog.cpp \
-        ./previewrender.cpp \
-        ./lrcinstance.cpp
+        ./previewwidget.cpp \
+        ./rendermanager.cpp \
+        ./distantwidget.cpp \
+        ./videowidgetbase.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -146,7 +151,6 @@ FORMS += ./aboutdialog.ui \
         ./contactpicker.ui \
         ./invitebuttonswidget.ui \
         ./nameregistrationdialog.ui \
-        ./photoboothdialog.ui \
         ./settingswidget.ui \
         ./videooverlay.ui \
         ./advancedsettingswidget.ui \
@@ -159,6 +163,5 @@ FORMS += ./aboutdialog.ui \
         ./videoview.ui \
         ./sipkeypad.ui \
         ./callaudioonlyavataroverlay.ui \
-        ./accountmigration.ui \
-        ./previewrender.ui
+        ./accountmigration.ui
 RESOURCES += ressources.qrc
