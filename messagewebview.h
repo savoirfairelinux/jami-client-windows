@@ -49,6 +49,9 @@ public:
     Q_INVOKABLE int emitMessagesCleared();
     Q_INVOKABLE int emitMessagesLoaded();
     Q_INVOKABLE int emitPasteKeyDetected();
+    Q_INVOKABLE std::string startRecordAudio();
+    Q_INVOKABLE int finishRecordAudio();
+    Q_INVOKABLE int stopAndDeleteRecordAudio();
 };
 
 class MessageWebView : public QWebEngineView
@@ -87,6 +90,8 @@ public:
     void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
+    void setAudioClipPath(std::string path);
+    std::string getAudioclipPath();
 
 protected:
 
@@ -112,5 +117,6 @@ private:
     PrivateBridging* jsBridge_;
     QLabel* dragDroplabel_;
     bool textSelected_;
+    std::string tempAudioclipPath;
 
 };
