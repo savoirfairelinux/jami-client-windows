@@ -67,13 +67,6 @@
     <file>images/icons/round-remove_circle-24px.svg</file>
     <file>images/icons/round-settings-24px.svg</file>
     <file>images/icons/round-undo-24px.svg</file>
-    <file>web/chatview.css</file>
-    <file>web/chatview.html</file>
-    <file>web/chatview.js</file>
-    <file>web/linkify.js</file>
-    <file>web/linkify-html.js</file>
-    <file>web/linkify-string.js</file>
-    <file>web/qwebchannel.js</file>
     <file>images/icons/round-check_circle-24px.svg</file>
     <file>images/icons/round-error-24px.svg</file>
     <file>images/icons/round-save_alt-24px.svg</file>
@@ -87,5 +80,15 @@
     <file>images/icons/icon-keypad-24.png</file>
     <file>images/icons/ic_play_white_24dp.png</file>
     <file>images/icons/icon-keypad-24-2x.png</file>
+	<file>jami-chatview/jed.js</file>
+	<file>jami-chatview/chatview.css</file>
+	<file>jami-chatview/chatview.html</file>
+	<file>jami-chatview/chatview.js</file>
+	<file>jami-chatview/linkify-html.js</file>
+	<file>jami-chatview/linkify-string.js</file>
+	<file>jami-chatview/linkify.js</file>
+	<file>jami-chatview/qwebchannel.js</file>
+	<file>jami-chatview/web.gresource.xml</file>
+	<file>jami-chatview/chatview-windows.css</file>
   </qresource>
 </RCC>
