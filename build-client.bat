@@ -9,6 +9,7 @@ if "%~1" == "" goto Usage
 set doDeps=N
 set doCompile=N
 set doBuild=N
+set doBuildBeta=N
 
 set SCRIPTNAME=%~nx0
 
@@ -18,6 +19,8 @@ if "%1"=="compile" (
     set doBuild=Y
 ) else if "%1"=="deps" (
     set doDeps=Y
+) else if "%1"=="beta" (
+    set doBuildBeta=Y
 ) else (
     goto Usage
 )
@@ -85,6 +88,8 @@ if "%arch%" neq "N" (
         goto buildClient
     ) else if "%doDeps%" neq "N" (
         goto buildDeps
+    ) else if "%doBuildBeta%" neq "N" (
+        goto buildBetaClient
     )
     goto :eof
 )
@@ -102,6 +107,10 @@ goto cleanup
 
 :buildClient
 msbuild ring-client-windows.vcxproj /verbosity:normal /p:Configuration=Release %MSBUILD_ARGS%
+goto cleanup
+
+:buildBetaClient
+msbuild ring-client-windows.vcxproj /verbosity:normal /p:Configuration=Beta %MSBUILD_ARGS%
 goto cleanup
 
 @endlocal
