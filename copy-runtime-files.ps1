@@ -1,5 +1,6 @@
 ﻿[cmdletbinding()]
 param (
+    [string]$mode,
     [string]$qtver,
     [string]$daemonDir,
     [string]$lrcDir
@@ -9,11 +10,12 @@ write-host "Copying runtime files..." -ForegroundColor Green
 
 # default values
 $qtver = If ($qtver) {$qtver} Else {"5.9.4"}
+$mode  = If ($mode)  {$mode} Else {"Release"}
 
 $QtDir = "C:\Qt\$qtver\msvc2017_64"
 $ClientDir = split-path -parent $MyInvocation.MyCommand.Definition
 
-$OutDir = $ClientDir + "\x64\Release"
+$OutDir = $ClientDir + "\x64\" + $mode
 If(!(test-path $OutDir)) { New-Item -ItemType directory -Path $OutDir -Force }
 
 if (!$daemonDir) { $daemonDir = $ClientDir + '\..\daemon' }
