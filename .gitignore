@@ -8,6 +8,7 @@ x86/
 .qmake.stash
 debug/
 release/
+beta/
 qrencode-win32/
 *.dll
 *.qm
