@@ -6,7 +6,8 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>dbbfbc55-1c20-4d21-ae3b-6e8b14c4fe48</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Jami</OutputName>
+    <OutputName Condition="'$(Configuration)' == 'Release'">jami.release.$(Platform)</OutputName>
+    <OutputName Condition="'$(Configuration)' == 'Beta'">jami.beta.$(Platform)</OutputName>
     <OutputType>Package</OutputType>
     <Name>JamiInstaller</Name>
     <InstallerPlatform>x64</InstallerPlatform>
@@ -18,6 +19,18 @@
     <SuppressPdbOutput>True</SuppressPdbOutput>
     <CompilerAdditionalOptions>
     </CompilerAdditionalOptions>
+    <WixVariables>
+    </WixVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Beta|x64' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>HarvestPath=..\x64\Beta</DefineConstants>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+    <CompilerAdditionalOptions>
+    </CompilerAdditionalOptions>
+    <WixVariables>
+    </WixVariables>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
@@ -50,7 +63,7 @@
     <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
   </Target>
   <Target Name="BeforeBuild">
-    <HeatDirectory Directory="..\x64\Release" PreprocessorVariable="var.HarvestPath" OutputFile="Components.wxs" ComponentGroupName="HeatGenerated" DirectoryRefId="APPLICATIONFOLDER" AutogenerateGuids="true" ToolPath="$(WixToolPath)" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" Transforms="HarvestFilter.xslt" />
+    <HeatDirectory Directory="..\x64\$(Configuration)" PreprocessorVariable="var.HarvestPath" OutputFile="Components.wxs" ComponentGroupName="HeatGenerated" DirectoryRefId="APPLICATIONFOLDER" AutogenerateGuids="true" ToolPath="$(WixToolPath)" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" Transforms="HarvestFilter.xslt" />
   </Target>
   <Target Name="AfterBuild">
   </Target>
