@@ -1062,12 +1062,12 @@ Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító haszn
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Fiók átvitel szükséges. Adja meg a jelszavát.</translation>
+        <translation>Fiók áttelepítés szükséges. Adja meg a jelszavát.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation>Jami fiók migrációja…</translation>
+        <translation>Jami fiók áttelepítése…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
