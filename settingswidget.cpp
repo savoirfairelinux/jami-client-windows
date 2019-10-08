@@ -121,6 +121,12 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->lookupStatusLabel->setMovie(lookupSpinnerMovie_);
     ui->lookupStatusLabel->hide();
 
+#ifdef BETA
+    ui->autoUpdateCheckBox->setText("Check for updates automatically (Beta)");
+    ui->checkUpdateButton->setText("Check for updates now (Beta)");
+    ui->installBetaButton->setVisible(false);
+#endif
+
     // btnExitSettings
     connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
@@ -235,6 +241,13 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
 
     connect(ui->autoUpdateCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetUpdateAutomatic);
+
+#ifndef BETA
+    connect(ui->installBetaButton, &QAbstractButton::clicked,
+        [this] {
+            Utils::applyUpdates(true, this);
+        });
+#endif
 
     // audio / visual settings
 

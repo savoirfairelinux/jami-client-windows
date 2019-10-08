@@ -18,6 +18,8 @@
 #include "ui_updateconfirmdialog.h"
 #include "updateconfirmdialog.h"
 
+#include <QFontMetrics>
+
 UpdateConfirmDialog::UpdateConfirmDialog(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::UpdateConfirmDialog)
@@ -32,12 +34,39 @@ UpdateConfirmDialog::~UpdateConfirmDialog()
     delete ui;
 }
 
-void UpdateConfirmDialog::on_updateCancelBtn_clicked()
+void
+UpdateConfirmDialog::changeToUpdateToBetaVersionText()
+{
+
+    setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
+    setMaximumHeight(INT_MAX);
+    setMaximumWidth(INT_MAX);
+
+    QString warning { QString("1. This will uninstall your current Jami, and it is not revertable.\n") +
+                      QString("2. Be awared of the potential issues that may exist in Beta Version.\n") +
+                      QString("3. You can always download the newest Release version on our website.\n") };
+    ui->labelWarning->setText(warning);
+    auto rect = ui->labelWarning->fontMetrics().boundingRect(ui->labelWarning->rect(), Qt::AlignCenter, warning);
+    ui->labelWarning->setMinimumHeight(rect.height() + ui->labelWarning->height());
+    ui->labelWarning->setMinimumWidth(rect.width());
+    setWindowTitle("Jami Beta Installation");
+    ui->labelDeletion->setText("Install the newest Beta version?");
+
+    setMaximumHeight(height() + rect.height());
+    setMinimumHeight(height() + rect.height());
+    setMaximumWidth(rect.width() + 50);
+    setMinimumWidth(rect.width() + 50);
+    setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+}
+
+void
+UpdateConfirmDialog::on_updateCancelBtn_clicked()
 {
     done(DialogCode::Rejected);
 }
 
-void UpdateConfirmDialog::on_updateAcceptBtn_clicked()
+void
+UpdateConfirmDialog::on_updateAcceptBtn_clicked()
 {
     done(DialogCode::Accepted);
 }
