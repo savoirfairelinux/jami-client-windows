@@ -324,8 +324,14 @@ void
 Utils::checkForUpdates(bool withUI, QWidget* parent)
 {
     Utils::cleanUpdateFiles();
+#ifdef BETA
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/Beta/version") };
+#else
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/version") };
+#endif
+
     LRCInstance::instance().getNetworkManager()->getRequestReply(
-        QUrl::fromEncoded("https://dl.jami.net/windows/version"),
+        downloadPath,
         [parent, withUI] (int status, const QString& onlineVersion) {
             if (status != 200) {
                 if (withUI) {
@@ -363,8 +369,14 @@ Utils::applyUpdates(QWidget* parent)
     } else
         return;
 
+#ifdef BETA
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/Beta/jami.beta.x64.msi") };
+#else
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi") };
+#endif
+
     LRCInstance::instance().getNetworkManager()->getRequestFile(
-        QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi"),
+        downloadPath,
         WinGetEnv("TEMP"),
         true,
         [parent](int status) {
