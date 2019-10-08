@@ -31,6 +31,8 @@ public:
     UpdateConfirmDialog(QWidget* parent = nullptr);
     ~UpdateConfirmDialog();
 
+    void changeToUpdateToBetaVersionText();
+
 private slots:
     void on_updateCancelBtn_clicked();
     void on_updateAcceptBtn_clicked();
