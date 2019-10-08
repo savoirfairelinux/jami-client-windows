@@ -19,6 +19,7 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 
+#include "utils.h"
 #include "version.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
@@ -30,7 +31,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->setFixedSize(this->width(),this->height());
     ui->creditsWidget->hide();
-    ui->gitVersionLabel->setText(QString("%1: %2").arg(tr("version"), QString(VERSION_STRING)));
+    ui->gitVersionLabel->setText(QString("%1: %2").arg(isBeta ? tr("beta version") : tr("version"), QString(VERSION_STRING)));
 
     ui->creditsBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">"
@@ -47,6 +48,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Anthony Léonard</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Cyrille Béraud</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Dorina Mosku</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Eden Abitbol</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Édric Milaret</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Éloi Bail</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Emmanuel Lepage-Vallée</p>"
@@ -56,12 +58,16 @@ AboutDialog::AboutDialog(QWidget *parent) :
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Julien Grossholtz</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Kateryna Kostiuk</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Loïc Siret</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Mingrui Zhang</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Mohamed Amine Younes Bouacida</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Nicolas Jäger</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Nicolas Reynaud</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Olivier Gregoire</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Olivier Soldano</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Patrick Keroulas</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Philippe Gorley</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Pierre Lespagnol</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rayan Osseiran</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Romain Bertozzi</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Sébastien Blin</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Seva Ivanov</p>"
@@ -70,6 +76,8 @@ AboutDialog::AboutDialog(QWidget *parent) :
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Stepan Salenikovich</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Simon Zeni</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Thibault Wittemberg</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Vsevolod Ivanov</p>"
+                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Yang Wang</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
                                 + tr("Artwork by:") + "</span></p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Marianne Forget</p>"
@@ -85,17 +93,19 @@ AboutDialog::~AboutDialog()
 }
 
 void
-AboutDialog::on_aboutButton_toggled(bool checked)
+AboutDialog::on_aboutButton_clicked()
 {
-    ui->creditsButton->setChecked(!checked);
-    ui->aboutWidget->setVisible(checked);
-    ui->creditsWidget->setVisible(!checked);
+    ui->aboutWidget->setVisible(true);
+    if (ui->creditsWidget->isVisible()) {
+        ui->creditsWidget->setVisible(false);
+    }
 }
 
 void
-AboutDialog::on_creditsButton_clicked(bool checked)
+AboutDialog::on_creditsButton_clicked()
 {
-    ui->aboutButton->setChecked(!checked);
-    ui->creditsWidget->setVisible(checked);
-    ui->aboutWidget->setVisible(!checked);
+    ui->creditsWidget->setVisible(true);
+    if (ui->aboutWidget->isVisible()) {
+        ui->aboutWidget->setVisible(false);
+    }
 }

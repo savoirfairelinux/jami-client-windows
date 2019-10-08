@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
 
+    setWindowTitle(isBeta ? "Jami (Beta)" : "Jami");
+
     for (int i = 0; i < ui->navStack->count(); ++i) {
         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
             connect(navWidget, &NavWidget::NavigationRequested,
@@ -56,13 +58,6 @@ MainWindow::MainWindow(QWidget* parent)
                     for (int i = 0; i < ui->navStack->count(); ++i) {
                         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
                             navWidget->navigated(scr == i);
-                        }
-                        if (scr == ScreenEnum::WizardScreen) {
-                            setWindowTitle(QObject::tr("Setup account"));
-                        } else if (scr == ScreenEnum::SetttingsScreen) {
-                            setWindowTitle(QObject::tr("Settings"));
-                        } else {
-                            setWindowTitle(QStringLiteral("Jami"));
                         }
                     }
                     Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
@@ -94,10 +89,8 @@ MainWindow::MainWindow(QWidget* parent)
         readSettingsFromRegistry();
         startScreen = ScreenEnum::CallScreen;
         emit LRCInstance::instance().accountListChanged();
-        setWindowTitle(QStringLiteral("Jami"));
     } else {
         startScreen = ScreenEnum::WizardScreen;
-        setWindowTitle(QStringLiteral("Log In"));
     }
 
     Utils::setStackWidget(ui->navStack, ui->navStack->widget(startScreen));
