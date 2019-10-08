@@ -18,6 +18,10 @@
 #include "ui_updateconfirmdialog.h"
 #include "updateconfirmdialog.h"
 
+#include <QDesktopServices>
+#include <QFontMetrics>
+#include <QUrl>
+
 UpdateConfirmDialog::UpdateConfirmDialog(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::UpdateConfirmDialog)
@@ -32,12 +36,54 @@ UpdateConfirmDialog::~UpdateConfirmDialog()
     delete ui;
 }
 
-void UpdateConfirmDialog::on_updateCancelBtn_clicked()
+void
+UpdateConfirmDialog::changeToUpdateToBetaVersionText()
+{
+
+    connect(ui->labelWarning, &QLabel::linkActivated,
+        [this] (const QString& link) {
+            QDesktopServices::openUrl(QUrl(link));
+        });
+
+    ui->labelWarning->setWordWrap(true);
+    ui->updateAcceptBtn->setToolTip("Install Beta Version");
+    ui->updateCancelBtn->setToolTip("Cancel Installation");
+
+    setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
+    setMaximumHeight(INT_MAX);
+    setMaximumWidth(INT_MAX);
+
+    // inital constraint of Text
+    ui->labelWarning->setMinimumHeight(350);
+    ui->labelWarning->setMinimumWidth(450);
+
+    QString warning { QString("Please be awared that this will uninstall your current Release version. "
+                              "<a href=\"https://jami.net/\">You can always download the newest Release "
+                              "version on our website.</a><br>") };
+
+    // reset size to be able to contain all text
+    auto rect = ui->labelWarning->fontMetrics().boundingRect(ui->labelWarning->rect(), Qt::AlignCenter | Qt::TextWordWrap, warning);
+    ui->labelWarning->setText(warning);
+    ui->labelWarning->setMinimumHeight(rect.height());
+    ui->labelWarning->setMinimumWidth(rect.width());
+    setWindowTitle("Jami Beta Installation");
+    ui->labelDeletion->setText("Install the newest Beta version?");
+
+    setMaximumHeight(height() + rect.height());
+    setMinimumHeight(height() + rect.height());
+    setMaximumWidth(rect.width() + 40);
+    setMinimumWidth(rect.width() + 40);
+    setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+}
+
+void
+UpdateConfirmDialog::on_updateCancelBtn_clicked()
 {
     done(DialogCode::Rejected);
 }
 
-void UpdateConfirmDialog::on_updateAcceptBtn_clicked()
+void
+UpdateConfirmDialog::on_updateAcceptBtn_clicked()
 {
     done(DialogCode::Accepted);
 }
