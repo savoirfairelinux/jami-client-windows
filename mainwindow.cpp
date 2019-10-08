@@ -62,7 +62,11 @@ MainWindow::MainWindow(QWidget* parent)
                         } else if (scr == ScreenEnum::SetttingsScreen) {
                             setWindowTitle(QObject::tr("Settings"));
                         } else {
+#ifdef BETA
+                            setWindowTitle(QStringLiteral("Jami (BETA)"));
+#else
                             setWindowTitle(QStringLiteral("Jami"));
+#endif // !BETA
                         }
                     }
                     Utils::setStackWidget(ui->navStack, ui->navStack->widget(scr));
@@ -94,7 +98,11 @@ MainWindow::MainWindow(QWidget* parent)
         readSettingsFromRegistry();
         startScreen = ScreenEnum::CallScreen;
         emit LRCInstance::instance().accountListChanged();
+#ifdef BETA
+        setWindowTitle(QStringLiteral("Jami (BETA)"));
+#else
         setWindowTitle(QStringLiteral("Jami"));
+#endif // !BETA
     } else {
         startScreen = ScreenEnum::WizardScreen;
         setWindowTitle(QStringLiteral("Log In"));
