@@ -48,6 +48,12 @@
 
 static const QSize IMAGE_SIZE{ 128, 128 };
 
+#ifdef BETA
+static constexpr bool isBeta = true;
+#else
+static constexpr bool isBeta = false;
+#endif
+
 namespace Utils
 {
 
@@ -71,7 +77,7 @@ void drawBlackCircularImageOntoLabel(QLabel* containerWidget);
 // updates
 void cleanUpdateFiles();
 void checkForUpdates(bool withUI, QWidget* parent = nullptr);
-void applyUpdates(QWidget* parent = nullptr);
+void applyUpdates(bool updateToBeta, QWidget* parent = nullptr);
 
 // names
 std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);

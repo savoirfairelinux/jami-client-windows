@@ -115,14 +115,16 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
 QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
 QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
 QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover,
-QPushButton#btnUpdateAccept:hover, QPushButton#btnUpdateCancel:hover {
+QPushButton#aboutButton:hover, QPushButton#creditsButton:hover, QPushButton#updateCancelBtn:hover,
+QPushButton#updateAcceptBtn:hover, QPushButton#installBetaButton:hover {
     background-color: rgb(237, 237, 237);
 }
 
 QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
 QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
 QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed,
-QPushButton#btnUpdateAccept:pressed, QPushButton#btnUpdateCancel:pressed {
+QPushButton#aboutButton:pressed, QPushButton#creditsButton:pressed, QPushButton#updateCancelBtn:pressed,
+QPushButton#updateAcceptBtn:pressed, QPushButton#installBetaButton:pressed {
     background-color: rgb(212, 212, 212);
 }
 
@@ -549,6 +551,10 @@ QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2{
 }
 
 QLabel#warningLabel{
+    color: red;
+}
+
+QLabel#labelWarning {
     color: red;
 }
 
