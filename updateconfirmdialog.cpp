@@ -32,12 +32,28 @@ UpdateConfirmDialog::~UpdateConfirmDialog()
     delete ui;
 }
 
-void UpdateConfirmDialog::on_updateCancelBtn_clicked()
+void
+UpdateConfirmDialog::changeToUpdateToBetaVersionText()
+{
+    //setSizePolicy();
+    //setMaximumHeight();
+    auto originHeight = ui->labelWarning->height();
+    ui->labelDeletion->setText("Install the newest Beta version?");
+    ui->labelWarning->setText("This will uninstall your current Jami, and it is not revertable.\n\
+                                Be awared of the potential issues that may exist in Beta Version.\n\
+                                You can always download the newest Release version on our website.");
+    //auto currentHeight =
+   //setMaximumHeight(height() + )
+}
+
+void
+UpdateConfirmDialog::on_updateCancelBtn_clicked()
 {
     done(DialogCode::Rejected);
 }
 
-void UpdateConfirmDialog::on_updateAcceptBtn_clicked()
+void
+UpdateConfirmDialog::on_updateAcceptBtn_clicked()
 {
     done(DialogCode::Accepted);
 }
