@@ -407,6 +407,23 @@ QPushButton#btnChangePasswordCancel:pressed {
     color: white;
 }
 
+QPushButton#installBetaButton {
+    background-color: lightyellow;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 15px;
+    color: rgb(32, 32, 32);
+}
+
+QPushButton#installBetaButton:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+QPushButton#installBetaButton:pressed {
+    background-color: yellow;
+}
+
+
 QComboBox{
     background: transparent;
     border-radius: 0px;
@@ -545,6 +562,10 @@ QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2{
 }
 
 QLabel#warningLabel{
+    color: red;
+}
+
+QLabel#labelWarning {
     color: red;
 }
 
