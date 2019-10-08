@@ -18,6 +18,10 @@
 #include "ui_updateconfirmdialog.h"
 #include "updateconfirmdialog.h"
 
+#include <QDesktopServices>
+#include <QFontMetrics>
+#include <QUrl>
+
 UpdateConfirmDialog::UpdateConfirmDialog(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::UpdateConfirmDialog)
@@ -32,12 +36,61 @@ UpdateConfirmDialog::~UpdateConfirmDialog()
     delete ui;
 }
 
-void UpdateConfirmDialog::on_updateCancelBtn_clicked()
+void
+UpdateConfirmDialog::changeToUpdateToBetaVersionText()
+{
+
+    connect(ui->labelWarning, &QLabel::linkActivated,
+        [this] (const QString& link) {
+            QDesktopServices::openUrl(QUrl(link));
+        });
+
+    ui->updateAcceptBtn->setToolTip("Install Beta Version");
+    ui->updateCancelBtn->setToolTip("Cancel Installation");
+
+    setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
+    setMaximumHeight(INT_MAX);
+    setMaximumWidth(INT_MAX);
+
+    // inital constraint of Text
+    ui->labelWarning->setMinimumHeight(350);
+    ui->labelWarning->setMinimumWidth(450);
+
+    QString warning { QString("First, please note that this will install a beta version of Jami which is "
+                              "still undergoing final testing before its official release. We do not "
+                              "give any warranties, whether express or implied, as to the suitability "
+                              "or usability of this software. In addition, this will also uninstall your "
+                              "current Release version.<br><br>") +
+                      QString("Second, should you encounter any bugs, glitches, lack of functionality or other "
+                              "problems on Jami, please let us know immediately so we can rectify these "
+                              "accordingly. Your help in this regard is greatly appreciated! "
+                              "<a href=\"https://git.jami.net/savoirfairelinux/ring-project\">You can write "
+                              "to us at this address</a>.<br><br>") +
+                      QString("You can always download the newest Release version on our website.<br><br>") };
+
+    // reset size to be able to contain all text
+    auto rect = ui->labelWarning->fontMetrics().boundingRect(ui->labelWarning->rect(), Qt::AlignCenter | Qt::TextWordWrap, warning);
+    ui->labelWarning->setText(warning);
+    ui->labelWarning->setMinimumHeight(rect.height());
+    ui->labelWarning->setMinimumWidth(rect.width());
+    setWindowTitle("Jami Beta Installation");
+    ui->labelDeletion->setText("Install the newest Beta version?");
+
+    setMaximumHeight(height() + rect.height());
+    setMinimumHeight(height() + rect.height());
+    setMaximumWidth(rect.width() + 50);
+    setMinimumWidth(rect.width() + 50);
+    setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+}
+
+void
+UpdateConfirmDialog::on_updateCancelBtn_clicked()
 {
     done(DialogCode::Rejected);
 }
 
-void UpdateConfirmDialog::on_updateAcceptBtn_clicked()
+void
+UpdateConfirmDialog::on_updateAcceptBtn_clicked()
 {
     done(DialogCode::Accepted);
 }

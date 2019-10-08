@@ -71,7 +71,7 @@ QSize getRealSize(QScreen* screen);
 // updates
 void cleanUpdateFiles();
 void checkForUpdates(bool withUI, QWidget* parent = nullptr);
-void applyUpdates(QWidget* parent = nullptr);
+void applyUpdates(bool updateToBeta = false, QWidget* parent = nullptr);
 
 // names
 std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
