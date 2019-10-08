@@ -715,7 +715,7 @@
                               </font>
                              </property>
                              <property name="icon">
-                              <iconset>
+                              <iconset resource="ressources.qrc">
                                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
@@ -1060,7 +1060,7 @@
                               <string/>
                              </property>
                              <property name="icon">
-                              <iconset>
+                              <iconset resource="ressources.qrc">
                                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
@@ -1124,10 +1124,7 @@
                         </spacer>
                        </item>
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_16">
-                         <property name="spacing">
-                          <number>14</number>
-                         </property>
+                        <layout class="QGridLayout" name="gridLayout">
                          <property name="leftMargin">
                           <number>20</number>
                          </property>
@@ -1137,7 +1134,7 @@
                          <property name="bottomMargin">
                           <number>0</number>
                          </property>
-                         <item>
+                         <item row="1" column="0">
                           <layout class="QHBoxLayout" name="horizontalLayout_6">
                            <property name="spacing">
                             <number>12</number>
@@ -1183,7 +1180,7 @@
                            </item>
                           </layout>
                          </item>
-                         <item>
+                         <item row="2" column="0">
                           <layout class="QHBoxLayout" name="horizontalLayout_17">
                            <property name="topMargin">
                             <number>0</number>
@@ -1214,7 +1211,7 @@
                               </font>
                              </property>
                              <property name="toolTip">
-                              <string>Check for updates now button</string>
+                              <string>Check for updates now</string>
                              </property>
                              <property name="text">
                               <string>Check for updates now</string>
@@ -1229,7 +1226,57 @@
                              <property name="sizeHint" stdset="0">
                               <size>
                                <width>40</width>
-                               <height>20</height>
+                               <height>0</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </item>
+                         <item row="3" column="0">
+                          <layout class="QHBoxLayout" name="horizontalLayout_27">
+                           <item>
+                            <widget class="QPushButton" name="installBetaButton">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="toolTip">
+                              <string>Install the newest beta version</string>
+                             </property>
+                             <property name="text">
+                              <string>Install the latest beta version</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_32">
+                             <property name="orientation">
+                              <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>0</height>
                               </size>
                              </property>
                             </spacer>
@@ -1416,7 +1463,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>706</width>
+                  <width>745</width>
                   <height>1398</height>
                  </rect>
                 </property>
@@ -2739,7 +2786,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>683</width>
+                  <width>745</width>
                   <height>874</height>
                  </rect>
                 </property>
