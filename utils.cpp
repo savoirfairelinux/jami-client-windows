@@ -324,8 +324,14 @@ void
 Utils::checkForUpdates(bool withUI, QWidget* parent)
 {
     Utils::cleanUpdateFiles();
+#ifdef BETA
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/Beta/version") };
+#else
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/version") };
+#endif
+
     LRCInstance::instance().getNetworkManager()->getRequestReply(
-        QUrl::fromEncoded("https://dl.jami.net/windows/version"),
+        downloadPath,
         [parent, withUI] (int status, const QString& onlineVersion) {
             if (status != 200) {
                 if (withUI) {
@@ -353,21 +359,34 @@ Utils::checkForUpdates(bool withUI, QWidget* parent)
 }
 
 void
-Utils::applyUpdates(QWidget* parent)
+Utils::applyUpdates(bool updateToBeta, QWidget* parent)
 {
     if (!parent->findChild<UpdateConfirmDialog*>()) {
         UpdateConfirmDialog updateDialog(parent);
+        if(updateToBeta)
+            updateDialog.changeToUpdateToBetaVersionText();
         auto ret = updateDialog.exec();
         if (ret != QDialog::Accepted)
             return;
     } else
         return;
 
+#ifdef BETA
+    QUrl downloadPath { QUrl::fromEncoded("https://dl.jami.net/windows/Beta/jami.beta.x64.msi") };
+#else
+    QUrl downloadPath;
+    if (updateToBeta) {
+        downloadPath = QUrl::fromEncoded("https://dl.jami.net/windows/Beta/jami.beta.x64.msi");
+    } else {
+        downloadPath = QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi");
+    }
+#endif
+
     LRCInstance::instance().getNetworkManager()->getRequestFile(
-        QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi"),
+        downloadPath,
         WinGetEnv("TEMP"),
         true,
-        [parent](int status) {
+        [parent, downloadPath](int status) {
             if (status != 200) {
                 QMessageBox::critical(0,
                     QObject::tr("Update"),
@@ -376,7 +395,7 @@ Utils::applyUpdates(QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\jami.release.x64.msi"
+            auto cmd = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
                 + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
             auto retq = QProcess::startDetached(cmd);
             if (retq) {
