@@ -67,13 +67,13 @@
     <file>images/icons/round-remove_circle-24px.svg</file>
     <file>images/icons/round-settings-24px.svg</file>
     <file>images/icons/round-undo-24px.svg</file>
-    <file>web/chatview.css</file>
-    <file>web/chatview.html</file>
-    <file>web/chatview.js</file>
-    <file>web/linkify.js</file>
-    <file>web/linkify-html.js</file>
-    <file>web/linkify-string.js</file>
-    <file>web/qwebchannel.js</file>
+    <file>../lrc/src/web-chatview/chatview.css</file>
+    <file>../lrc/src/web-chatview/chatview.html</file>
+    <file>../lrc/src/web-chatview/chatview.js</file>
+    <file>../lrc/src/web-chatview/linkify.js</file>
+    <file>../lrc/src/web-chatview/linkify-html.js</file>
+    <file>../lrc/src/web-chatview/linkify-string.js</file>
+    <file>../lrc/src/web-chatview/qwebchannel.js</file>
     <file>images/icons/round-check_circle-24px.svg</file>
     <file>images/icons/round-error-24px.svg</file>
     <file>images/icons/round-save_alt-24px.svg</file>
