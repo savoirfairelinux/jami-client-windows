@@ -618,25 +618,28 @@
     <None Include="translations\ring_client_windows_zh_TW.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="web\chatview.css">
+    <None Include="..\lrc\src\web-chatview\chatview.css">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\chatview.html">
+    <None Include="..\lrc\src\web-chatview\chatview.html">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\linkify.js">
+    <None Include="..\lrc\src\web-chatview\chatview.js">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\linkify-html.js">
+    <None Include="..\lrc\src\web-chatview\chatview-windows.css">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\linkify-string.js">
+    <None Include="..\lrc\src\web-chatview\linkify.js">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\chatview.js">
+    <None Include="..\lrc\src\web-chatview\linkify-html.js">
       <Filter>Resource Files\web</Filter>
     </None>
-    <None Include="web\qwebchannel.js">
+    <None Include="..\lrc\src\web-chatview\linkify-string.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
+    <None Include="..\lrc\src\web-chatview\qwebchannel.js">
       <Filter>Resource Files\web</Filter>
     </None>
   </ItemGroup>
