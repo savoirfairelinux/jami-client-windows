@@ -92,6 +92,7 @@ MessageWebView::MessageWebView(QWidget *parent)
     webChannel_ = new QWebChannel(page());
     webChannel_->registerObject(QStringLiteral("jsbridge"), jsBridge_);
     page()->setWebChannel(webChannel_);
+    page()->profile()->setHttpUserAgent("jami-windows");
 
     connect(this, &QWebEngineView::renderProcessTerminated,
         [this](QWebEnginePage::RenderProcessTerminationStatus termStatus, int statusCode) {
@@ -239,20 +240,21 @@ void MessageWebView::runJsText()
 
 void MessageWebView::buildView()
 {
-    auto html = Utils::QByteArrayFromFile(":/web/chatview.html");
-    page()->setHtml(html, QUrl(":/web/chatview.html"));
+    auto html = Utils::QByteArrayFromFile(":/chatview.html");
+    page()->setHtml(html, QUrl(":/chatview.html"));
     connect(this, &QWebEngineView::loadFinished, this, &MessageWebView::slotLoadFinished);
 }
 
 void
 MessageWebView::slotLoadFinished()
 {
-    insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/web/chatview.css"));
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify-html.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/linkify-string.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/qwebchannel.js"), QWebEngineScript::MainWorld);
-    page()->runJavaScript(Utils::QByteArrayFromFile(":/web/chatview.js"), QWebEngineScript::MainWorld);
+    insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/chatview.css"));
+    insertStyleSheet("chatwin",Utils::QByteArrayFromFile(":/chatview-windows.css"));
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify-html.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify-string.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/qwebchannel.js"), QWebEngineScript::MainWorld);
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/chatview.js"), QWebEngineScript::MainWorld);
 }
 
 void

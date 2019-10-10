@@ -786,6 +786,14 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClInclude Include="ui_videoview.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\lrc\src\web-chatview\chatview-windows.css" />
+    <None Include="..\lrc\src\web-chatview\chatview.css" />
+    <None Include="..\lrc\src\web-chatview\chatview.html" />
+    <None Include="..\lrc\src\web-chatview\chatview.js" />
+    <None Include="..\lrc\src\web-chatview\linkify-html.js" />
+    <None Include="..\lrc\src\web-chatview\linkify-string.js" />
+    <None Include="..\lrc\src\web-chatview\linkify.js" />
+    <None Include="..\lrc\src\web-chatview\qwebchannel.js" />
     <None Include="translations\ring_client_windows.ts" />
     <None Include="translations\ring_client_windows_ar.ts" />
     <None Include="translations\ring_client_windows_bg.ts" />
@@ -838,13 +846,6 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <None Include="translations\ring_client_windows_zh.ts" />
     <None Include="translations\ring_client_windows_zh_CN.ts" />
     <None Include="translations\ring_client_windows_zh_TW.ts" />
-    <None Include="web\chatview.css" />
-    <None Include="web\chatview.html" />
-    <None Include="web\chatview.js" />
-    <None Include="web\linkify-html.js" />
-    <None Include="web\linkify-string.js" />
-    <None Include="web\linkify.js" />
-    <None Include="web\qwebchannel.js" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
