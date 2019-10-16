@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/RingWindowsCrashReporter">
+        <file>images/ajax-loader.gif</file>
+        <file>images/default_avatar_overlay.svg</file>
+        <file>images/FontAwesome.otf</file>
+        <file>images/jami.ico</file>
+        <file>images/jami.png</file>
+        <file>images/jami_eclipse_spinner.gif</file>
+        <file>images/jami_rolling_spinner.gif</file>
+        <file>images/logo-jami-standard-coul.png</file>
+        <file>images/qrcode.png</file>
+        <file>images/spike.png</file>
+        <file>images/waiting.gif</file>
+    </qresource>
+</RCC>
