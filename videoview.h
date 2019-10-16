@@ -106,6 +106,7 @@ private:
     void resetPreviewPosition();
     void resetPreviewAsync();
     void connectDistantRenderer();
+    bool shouldShowPreview();
     void toggleFullScreen();
     void resetAvatarOverlay(bool isAudioOnly);
 

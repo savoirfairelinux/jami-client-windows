@@ -47,7 +47,9 @@ public:
         LastInteractionType,
         ContactType,
         UID,
-        ContextMenuOpen
+        ContextMenuOpen,
+        InCall,
+        CallStateStr
     };
 
     explicit SmartListModel(const std::string& accId, QObject *parent = 0, bool contactList = false);

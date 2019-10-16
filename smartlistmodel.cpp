@@ -19,18 +19,15 @@
 
 #include "smartlistmodel.h"
 
-// Qt
-#include <QDateTime>
+#include "pixbufmanipulator.h"
+#include "utils.h"
+#include "lrcinstance.h"
 
-// LRC
 #include "globalinstances.h"
 #include "api/contactmodel.h"
 #include "api/conversationmodel.h"
 
-// Client
-#include "pixbufmanipulator.h"
-#include "utils.h"
-#include "lrcinstance.h"
+#include <QDateTime>
 
 SmartListModel::SmartListModel(const std::string& accId, QObject *parent, bool contactList)
     : QAbstractItemModel(parent),
@@ -66,7 +63,7 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
 
     auto& accInfo = LRCInstance::accountModel().getAccountInfo(accId_);
 
-    lrc::api::conversation::Info item;
+    conversation::Info item;
     if (contactList_) {
         auto filterType = accInfo.profileInfo.type;
         item = accInfo.conversationModel->getFilteredConversations(filterType).at(index.row());
@@ -121,6 +118,27 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
                 return QVariant(QString::fromStdString(item.uid));
             case Role::ContextMenuOpen:
                 return QVariant(isContextMenuOpen);
+            case Role::InCall:
+            {
+                auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+                if (!convInfo.uid.empty()) {
+                    auto callModel = LRCInstance::getCurrentCallModel();
+                    return QVariant(callModel->hasCall(convInfo.callId));
+                }
+                return QVariant(false);
+            }
+            case Role::CallStateStr:
+            {
+                auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+                if (!convInfo.uid.empty()) {
+                    auto call = LRCInstance::getCallInfoForConversation(convInfo);
+                    if (call) {
+                        auto statusString = call::to_string(call->status);
+                        return QVariant(QString::fromStdString(statusString));
+                    }
+                }
+                return QVariant();
+            }
             }
         } catch (...) {}
     }

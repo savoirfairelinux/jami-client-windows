@@ -341,6 +341,9 @@ VideoView::setupForConversation(const std::string& accountId,
     }
 
     // preview
+    if (!shouldShowPreview()) {
+        previewWidget_->setVisible(false);
+    }
     resetPreviewAsync();
 
     // distant
@@ -543,14 +546,14 @@ VideoView::connectDistantRenderer()
     LRCInstance::renderer()->addDistantRenderer(convInfo.callId);
 }
 
-void
-VideoView::resetPreview()
+bool
+VideoView::shouldShowPreview()
 {
+    bool shouldShowPreview{ false };
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
     if (convInfo.uid.empty()) {
-        return;
+        return shouldShowPreview;
     }
-    bool shouldShowPreview = true;
     auto call = LRCInstance::getCallInfoForConversation(convInfo);
     if (call) {
         shouldShowPreview =
@@ -558,11 +561,20 @@ VideoView::resetPreview()
             !(call->status == lrc::api::call::Status::PAUSED) &&
             !call->videoMuted;
     }
-    if (shouldShowPreview) {
+    return shouldShowPreview;
+}
+
+void
+VideoView::resetPreview()
+{
+
+    if (shouldShowPreview()) {
         previewWidget_->setContainerSize(this->size());
         resetPreviewPosition();
+        previewWidget_->setVisible(true);
+    } else {
+        previewWidget_->setVisible(false);
     }
-    previewWidget_->setVisible(shouldShowPreview);
 
 }
 
