@@ -148,7 +148,7 @@ FrameWrapper::slotRenderingStopped(const std::string& id)
 
     emit renderingStopped(id);
 }
-#pragma optimize("", off)
+
 RenderManager::RenderManager(AVModel& avModel)
     :avModel_(avModel)
 {
@@ -179,7 +179,7 @@ RenderManager::RenderManager(AVModel& avModel)
 
     previewFrameWrapper_->connectRendering();
 }
-#pragma optimize("", on)
+
 RenderManager::~RenderManager()
 {
     previewFrameWrapper_.reset();

@@ -295,7 +295,6 @@ void MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
-        LRCInstance::renderer()->stopPreviewing(false);
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
