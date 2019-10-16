@@ -270,42 +270,57 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
         painter->drawText(rectInfo1, Qt::AlignVCenter | Qt::AlignRight, lastUsedStr);
     }
 
-    // bottom-right: last interaction snippet
-    QString interactionStr = index.data(static_cast<int>(SmartListModel::Role::LastInteraction)).value<QString>();
-    if (!interactionStr.isNull()) {
-        painter->save();
-        font.setWeight(QFont::ExtraLight);
-        interactionStr = interactionStr.simplified();
-        auto type = Utils::toEnum<lrc::api::interaction::Type>(index
-            .data(static_cast<int>(SmartListModel::Role::LastInteractionType))
-            .value<int>());
-        if (type == lrc::api::interaction::Type::CALL ||
-            type == lrc::api::interaction::Type::CONTACT) {
-            font.setItalic(false);
-            font.setBold(false);
+    // bottom-right: last interaction snippet or call state (if in call)
+    if (index.data(static_cast<int>(SmartListModel::Role::InCall)).value<bool>()) {
+        QString callStateStr = index.data(static_cast<int>(SmartListModel::Role::CallStateStr)).value<QString>();
+        if (!callStateStr.isNull()) {
+            painter->save();
+            font.setWeight(QFont::DemiBold);
             pen.setColor(RingTheme::grey_.darker(140));
             painter->setPen(pen);
             painter->setFont(font);
-            // strip emojis if it's a call/contact type message
-            VectorUInt emojiless;
-            for (auto unicode : interactionStr.toUcs4()) {
-                if (!(unicode >= 0x1F000 && unicode <= 0x1FFFF)) {
-                    emojiless.push_back(unicode);
-                }
-            }
-            interactionStr = QString::fromUcs4(&emojiless.at(0), emojiless.size());
-        } else {
-            QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
-            emojiMsgFont.setItalic(false);
-            emojiMsgFont.setBold(false);
-            emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
-            rectInfo2.setTop(rectInfo2.top() - 6);
-            painter->setOpacity(0.7);
-            painter->setFont(emojiMsgFont);
+            callStateStr = fontMetrics.elidedText(callStateStr, Qt::ElideRight, rectInfo2.width());
+            painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, callStateStr);
+            painter->restore();
         }
-        interactionStr = fontMetrics.elidedText(interactionStr, Qt::ElideRight, rectInfo2.width());
-        painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, interactionStr);
-        painter->restore();
+    } else {
+        QString interactionStr = index.data(static_cast<int>(SmartListModel::Role::LastInteraction)).value<QString>();
+        if (!interactionStr.isNull()) {
+            painter->save();
+            font.setWeight(QFont::ExtraLight);
+            interactionStr = interactionStr.simplified();
+            auto type = Utils::toEnum<lrc::api::interaction::Type>(index
+                .data(static_cast<int>(SmartListModel::Role::LastInteractionType))
+                .value<int>());
+            if (type == lrc::api::interaction::Type::CALL ||
+                type == lrc::api::interaction::Type::CONTACT) {
+                font.setItalic(false);
+                font.setBold(false);
+                pen.setColor(RingTheme::grey_.darker(140));
+                painter->setPen(pen);
+                painter->setFont(font);
+                // strip emojis if it's a call/contact type message
+                VectorUInt emojiless;
+                for (auto unicode : interactionStr.toUcs4()) {
+                    if (!(unicode >= 0x1F000 && unicode <= 0x1FFFF)) {
+                        emojiless.push_back(unicode);
+                    }
+                }
+                interactionStr = QString::fromUcs4(&emojiless.at(0), emojiless.size());
+            }
+            else {
+                QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+                emojiMsgFont.setItalic(false);
+                emojiMsgFont.setBold(false);
+                emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+                rectInfo2.setTop(rectInfo2.top() - 6);
+                painter->setOpacity(0.7);
+                painter->setFont(emojiMsgFont);
+            }
+            interactionStr = fontMetrics.elidedText(interactionStr, Qt::ElideRight, rectInfo2.width());
+            painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, interactionStr);
+            painter->restore();
+        }
     }
 }
 

@@ -48,7 +48,7 @@ public:
                               const std::string& convUid);
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
-    void resetPreview();
+    void resetPreviewWidget();
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -66,7 +66,6 @@ protected:
 private slots:
     void slotCallStatusChanged(const std::string& callId);
     void showContextMenu(const QPoint& position);
-    void slotHoldStateChanged(bool state);
     void slotVideoMuteStateChanged(bool state);
 
 private:
@@ -74,8 +73,6 @@ private:
 
     std::string accountId_;
     std::string convUid_;
-
-    // TODO(atraczyk): distant
 
     // preview
     enum class PreviewSnap { NW, NE, SE, SW };
@@ -104,10 +101,9 @@ private:
 private:
     QPoint getPreviewPosition(const PreviewSnap snapLocation);
     void resetPreviewPosition();
-    void resetPreviewAsync();
-    void connectDistantRenderer();
+    void resetPreview(bool async = true);
+    bool shouldShowPreview();
     void toggleFullScreen();
-    void resetAvatarOverlay(bool isAudioOnly);
 
 signals:
     void setChatVisibility(bool visible);
