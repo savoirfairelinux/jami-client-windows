@@ -111,7 +111,8 @@ void
 VideoOverlay::showOverlay()
 {
     fadeAnim_->stop();
-    fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(), fadeAnim_->startValue());
+    fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(),
+                                           fadeAnim_->startValue());
 }
 
 void
@@ -125,16 +126,24 @@ VideoOverlay::fadeOverlayOut()
 void
 VideoOverlay::callStarted(const std::string& callId)
 {
-    ui->timerLabel->setText("00:00");
     callId_ = callId;
+    setTime();
     connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
     oneSecondTimer_->start(1000);
+    showOverlay();
+    fadeTimer_.start(startfadeOverlayTime_);
 }
 
 void
 VideoOverlay::setName(const QString& name)
 {
     ui->nameLabel->setText(name);
+}
+
+void
+VideoOverlay::setPauseState(bool state)
+{
+    ui->onHoldLabel->setVisible(state);
 }
 
 void
@@ -218,9 +227,8 @@ VideoOverlay::on_holdButton_toggled(bool checked)
         onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
     }
     // emit that the hold button status changed
-    emit holdStateChanged(onHold);
+    //emit holdStateChanged(onHold);
     ui->onHoldLabel->setVisible(onHold);
-
 }
 
 void

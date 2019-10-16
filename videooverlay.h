@@ -41,9 +41,9 @@ public:
 
 public:
     void setName(const QString& name);
+    void setPauseState(bool state);
     void callStarted(const std::string & callId);
     void setVideoMuteVisibility(bool visible);
-    bool shouldShowOverlay();
     void simulateShowChatview(bool checked);
     bool getShowChatView();
     void setTransferCallAndSIPPanelAvailability(bool visible);
@@ -71,6 +71,7 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
 
 private:
+    bool shouldShowOverlay();
     void showOverlay();
 
 private:

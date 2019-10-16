@@ -24,6 +24,14 @@
 DistantWidget::DistantWidget(QWidget* parent)
     : VideoWidgetBase(Qt::black, parent)
 {
+    connect(LRCInstance::renderer(), &RenderManager::distantFrameUpdated,
+        [this](const std::string& id) {
+            if (id_ == id) repaint();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::distantRenderingStopped,
+        [this](const std::string& id) {
+            if (id_ == id) repaint();
+        });
 }
 
 DistantWidget::~DistantWidget()
@@ -44,12 +52,24 @@ DistantWidget::paintEvent(QPaintEvent* e)
         painter.drawImage(QRect(xDiff, yDiff,
                                 scaledDistant.width(), scaledDistant.height()),
                           scaledDistant);
+    } else {
+        paintBackground(&painter);
     }
     painter.end();
+}
+
+void
+DistantWidget::paintBackground(QPainter* painter)
+{
+    QBrush brush(Qt::black);
+    QPainterPath path;
+    path.addRect(this->rect());
+    painter->fillPath(path, brush);
 }
 
 void
 DistantWidget::setRendererId(const std::string& id)
 {
     id_ = id;
+    update();
 }

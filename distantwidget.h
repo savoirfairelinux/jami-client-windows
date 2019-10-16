@@ -35,6 +35,8 @@ public:
 protected:
     void paintEvent(QPaintEvent* e);
 
+    void paintBackground(QPainter* painter) override;
+
 private:
     std::string id_;
 

@@ -27,15 +27,6 @@ VideoWidgetBase::VideoWidgetBase(QColor bgColor, QWidget* parent)
     pal.setColor(QPalette::Background, bgColor);
     setAutoFillBackground(true);
     setPalette(pal);
-
-    connect(LRCInstance::renderer(), &RenderManager::previewFrameUpdated,
-        [this]() {
-            repaint();
-        });
-    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
-        [this]() {
-            repaint();
-        });
 }
 
 VideoWidgetBase::~VideoWidgetBase()

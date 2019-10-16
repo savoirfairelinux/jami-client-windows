@@ -62,8 +62,14 @@ VideoView::VideoView(QWidget* parent)
     // chat panel
     connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged,
         [this] {
-            resetPreviewAsync();
+            resetPreview();
         });
+
+    connect(overlay_,
+        &VideoOverlay::videoMuteStateChanged,
+        this,
+        &VideoView::slotVideoMuteStateChanged,
+        Qt::UniqueConnection);
 
     // audio only overlay
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
@@ -90,7 +96,7 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     moveAnim_->stop();
 
-    resetPreview();
+    resetPreviewWidget();
 
     audioOnlyAvatar_->resize(this->size());
 
@@ -111,6 +117,12 @@ VideoView::slotCallStatusChanged(const std::string& callId)
         case Status::TERMINATING:
             LRCInstance::renderer()->removeDistantRenderer(callId);
             emit terminating(callId);
+        case Status::PAUSED:
+            resetPreview();
+            overlay_->setPauseState(true);
+        case Status::IN_PROGRESS:
+            resetPreview();
+            overlay_->setPauseState(false);
         default:
             break;
         }
@@ -218,8 +230,7 @@ VideoView::showContextMenu(const QPoint& position)
         connect(deviceAction, &QAction::triggered,
             [this, deviceName]() {
                 auto device = deviceName.toStdString();
-                connectDistantRenderer();
-                resetPreviewAsync();
+                resetPreview();
                 LRCInstance::avModel().switchInputTo(device);
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
             });
@@ -239,8 +250,7 @@ VideoView::showContextMenu(const QPoint& position)
 #if defined(Q_OS_WIN) && (PROCESS_DPI_AWARE)
             rect.setSize(Utils::getRealSize(screen));
 #endif
-            connectDistantRenderer();
-            resetPreviewAsync();
+            resetPreview();
             LRCInstance::avModel().setDisplay(screenNumber,
                 rect.x(), rect.y(), rect.width(), rect.height()
             );
@@ -254,8 +264,7 @@ VideoView::showContextMenu(const QPoint& position)
     shareAreaAction->setCheckable(true);
     connect(shareAreaAction, &QAction::triggered,
         [this]() {
-            connectDistantRenderer();
-            resetPreviewAsync();
+            resetPreview();
             SelectAreaDialog selectAreaDialog;
             selectAreaDialog.exec();
             sharingEntireScreen_ = false;
@@ -274,8 +283,7 @@ VideoView::showContextMenu(const QPoint& position)
                 return;
             fileNames = fileDialog.selectedFiles();
             auto resource = QUrl::fromLocalFile(fileNames.at(0)).toString();
-            connectDistantRenderer();
-            resetPreviewAsync();
+            resetPreview();
             LRCInstance::avModel().setInputFile(resource.toStdString());
         });
 
@@ -335,17 +343,19 @@ VideoView::setupForConversation(const std::string& accountId,
     overlay_->setCurrentSelectedCalleeDisplayName(bestName);
     overlay_->setName(bestName);
     // TODO(atraczyk): this should be part of the overlay
-    resetAvatarOverlay(call->isAudioOnly);
+    audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
         audioOnlyAvatar_->writeAvatarOverlay(convInfo);
     }
 
     // preview
-    resetPreviewAsync();
+    if (!shouldShowPreview()) {
+        previewWidget_->setVisible(false);
+    }
+    resetPreview(false);
 
     // distant
     ui->distantWidget->setRendererId(call->id);
-    connectDistantRenderer();
 
     // listen for the end of a call
     disconnect(callStatusChangedConnection_);
@@ -433,34 +443,10 @@ VideoView::mouseMoveEvent(QMouseEvent* event)
 }
 
 void
-VideoView::resetAvatarOverlay(bool isAudioOnly)
-{
-    audioOnlyAvatar_->setAvatarVisible(isAudioOnly);
-    connect(overlay_,
-            &VideoOverlay::holdStateChanged,
-            this,
-            &VideoView::slotHoldStateChanged,
-            Qt::UniqueConnection);
-    connect(overlay_,
-            &VideoOverlay::videoMuteStateChanged,
-            this,
-            &VideoView::slotVideoMuteStateChanged,
-            Qt::UniqueConnection);
-
-}
-
-void
-VideoView::slotHoldStateChanged(bool state)
-{
-    audioOnlyAvatar_->respondToPauseLabel(state);
-    resetPreviewAsync();
-}
-
-void
 VideoView::slotVideoMuteStateChanged(bool state)
 {
     Q_UNUSED(state);
-    resetPreviewAsync();
+    resetPreview();
 }
 
 QPoint
@@ -512,45 +498,39 @@ VideoView::resetPreviewPosition()
 }
 
 void
-VideoView::resetPreviewAsync()
+VideoView::resetPreview(bool async)
 {
-    Utils::oneShotConnect(LRCInstance::renderer(),
-        &RenderManager::previewRenderingStopped,
-        [this] {
-            // hide preview once stopped
-            previewWidget_->hide();
-            Utils::oneShotConnect(LRCInstance::renderer(),
-                &RenderManager::previewRenderingStarted,
-                [this] {
-                    Utils::oneShotConnect(LRCInstance::renderer(),
-                        &RenderManager::previewFrameUpdated,
-                        [this] {
-                            // repostion and show once at least one
-                            // frame is ready
-                            resetPreview();
-                        });
-                });
-        });
+    if (async) {
+        Utils::oneShotConnect(LRCInstance::renderer(),
+            &RenderManager::previewRenderingStopped,
+            [this] {
+                // hide preview once stopped
+                previewWidget_->hide();
+                Utils::oneShotConnect(LRCInstance::renderer(),
+                    &RenderManager::previewRenderingStarted,
+                    [this] {
+                        Utils::oneShotConnect(LRCInstance::renderer(),
+                            &RenderManager::previewFrameUpdated,
+                            [this] {
+                                // repostion and show once at least one
+                                // frame is ready
+                                resetPreviewWidget();
+                            });
+                    });
+            });
+    } else {
+        resetPreviewWidget();
+    }
 }
 
-void
-VideoView::connectDistantRenderer()
+bool
+VideoView::shouldShowPreview()
 {
+    bool shouldShowPreview{ false };
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
     if (convInfo.uid.empty()) {
-        return;
+        return shouldShowPreview;
     }
-    LRCInstance::renderer()->addDistantRenderer(convInfo.callId);
-}
-
-void
-VideoView::resetPreview()
-{
-    auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
-    if (convInfo.uid.empty()) {
-        return;
-    }
-    bool shouldShowPreview = true;
     auto call = LRCInstance::getCallInfoForConversation(convInfo);
     if (call) {
         shouldShowPreview =
@@ -558,11 +538,20 @@ VideoView::resetPreview()
             !(call->status == lrc::api::call::Status::PAUSED) &&
             !call->videoMuted;
     }
-    if (shouldShowPreview) {
+    return shouldShowPreview;
+}
+
+void
+VideoView::resetPreviewWidget()
+{
+
+    if (shouldShowPreview()) {
         previewWidget_->setContainerSize(this->size());
         resetPreviewPosition();
+        previewWidget_->setVisible(true);
+    } else {
+        previewWidget_->setVisible(false);
     }
-    previewWidget_->setVisible(shouldShowPreview);
 
 }
 

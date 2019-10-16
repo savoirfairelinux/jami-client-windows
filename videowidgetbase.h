@@ -46,4 +46,6 @@ protected:
     virtual void hideEvent(QHideEvent* e) override;
     virtual void showEvent(QShowEvent* e) override;
 
+    virtual void paintBackground(QPainter* painter) = 0;
+
 };
