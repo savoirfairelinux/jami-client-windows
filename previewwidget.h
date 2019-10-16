@@ -36,9 +36,7 @@ public:
 protected:
     virtual void paintEvent(QPaintEvent* e) override;
 
-    void paintBackgroundColor(QPainter* painter,
-                              QColor color,
-                              bool rounded = false);
+    virtual void paintBackground(QPainter* painter) override;
 };
 
 // A rounded image for photobooths
@@ -53,6 +51,8 @@ public:
 
 protected:
     void paintEvent(QPaintEvent* e) override;
+
+    void paintBackground(QPainter* painter) override;
 };
 
 // rounded corners for video calls

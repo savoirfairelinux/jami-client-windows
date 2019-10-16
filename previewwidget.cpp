@@ -23,22 +23,26 @@
 
 PreviewWidget::PreviewWidget(QWidget * parent)
     : VideoWidgetBase(Qt::transparent, parent)
-{}
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewFrameUpdated,
+        [this]() {
+            repaint();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            repaint();
+        });
+}
 
 PreviewWidget::~PreviewWidget()
 {}
 
 void
-PreviewWidget::paintBackgroundColor(QPainter* painter, QColor color, bool rounded)
+PreviewWidget::paintBackground(QPainter* painter)
 {
-    QBrush brush(color);
+    QBrush brush(Qt::black);
     QPainterPath path;
-    auto r = this->rect().width() / 2;
-    if (rounded) {
-        path.addEllipse(QPoint(r, r), r, r);
-    } else {
-        path.addRect(this->rect());
-    }
+    path.addRect(this->rect());
     painter->fillPath(path, brush);
 }
 
@@ -71,8 +75,7 @@ PreviewWidget::paintEvent(QPaintEvent* e)
         scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
         painter.drawImage(this->rect(), scaledPreview);
     } else {
-        // clear to black
-        paintBackgroundColor(&painter, Qt::black, false);
+        paintBackground(&painter);
     }
 }
 
@@ -102,9 +105,18 @@ PhotoboothPreviewWidget::paintEvent(QPaintEvent* e)
         this->setGeometry(0, 0, scaledPreview.width(), scaledPreview.height());
         painter.drawImage(this->rect(), scaledPreview);
     } else {
-        // clear to black
-        paintBackgroundColor(&painter, Qt::black, true);
+        paintBackground(&painter);
     }
+}
+
+void
+PhotoboothPreviewWidget::paintBackground(QPainter* painter)
+{
+    QBrush brush(Qt::black);
+    QPainterPath path;
+    auto r = this->rect().width() / 2;
+    path.addEllipse(QPoint(r, r), r, r);
+    painter->fillPath(path, brush);
 }
 
 QImage
