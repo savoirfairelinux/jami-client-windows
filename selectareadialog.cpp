@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -31,8 +31,13 @@
 #include "lrcinstance.h"
 #include "utils.h"
 
-SelectAreaDialog::SelectAreaDialog() :
-    rubberBand_(nullptr)
+SelectAreaDialog::SelectAreaDialog(int& screenNumberRef,
+                                   QRect& rectArea,
+                                   QWidget* parent) :
+    rubberBand_(nullptr),
+    screenNumber_(screenNumberRef),
+    rectArea_(rectArea),
+    QDialog(parent)
 {
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     setWindowState(Qt::WindowFullScreen);
@@ -41,6 +46,7 @@ SelectAreaDialog::SelectAreaDialog() :
     setAttribute(Qt::WA_NoSystemBackground, false);
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_PaintOnScreen);
+    setWindowModality(Qt::ApplicationModal);
     grabMouse();
     rubberBand_ = new QRubberBand(QRubberBand::Rectangle, this);
     QApplication::setOverrideCursor(Qt::CrossCursor);
@@ -106,11 +112,15 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
         rect.setHeight(static_cast<int>(height));
     }
 # endif
-    LRCInstance::avModel().setDisplay(screenNumber,
-        rect.x(), rect.y(), rect.width(), rect.height()
-    );
+
+    // Minimun size
+    rect.setHeight(rect.height() < 128 ? 128 : rect.height());
+    rect.setWidth(rect.width() < 128 ? 128 : rect.width());
+    rectArea_ = rect;
+    screenNumber_ = screenNumber;
+
     rubberBand_->deleteLater();
-    reject();
+    done(0);
 }
 
 void
