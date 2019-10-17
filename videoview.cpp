@@ -230,6 +230,9 @@ VideoView::showContextMenu(const QPoint& position)
         connect(deviceAction, &QAction::triggered,
             [this, deviceName]() {
                 auto device = deviceName.toStdString();
+                if (LRCInstance::avModel().getCurrentVideoCaptureDevice() == device) {
+                    return;
+                }
                 resetPreview();
                 LRCInstance::avModel().switchInputTo(device);
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
