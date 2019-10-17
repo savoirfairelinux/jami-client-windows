@@ -48,7 +48,7 @@ public:
                               const std::string& convUid);
     void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
-    void resetPreviewWidget();
+    void resetPreview();
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -75,7 +75,6 @@ private:
     std::string convUid_;
 
     // preview
-    enum class PreviewSnap { NW, NE, SE, SW };
     PreviewSnap currentPreviewLocation_ = PreviewSnap::SE;
     VideoCallPreviewWidget* previewWidget_;
     constexpr static int previewMargin_ = 15;
@@ -99,9 +98,6 @@ private:
     int keyPressed_;
 
 private:
-    QPoint getPreviewPosition(const PreviewSnap snapLocation);
-    void resetPreviewPosition();
-    void resetPreview(bool async = true);
     bool shouldShowPreview();
     void toggleFullScreen();
 
