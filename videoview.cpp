@@ -59,8 +59,16 @@ VideoView::VideoView(QWidget* parent)
             emit this->setChatVisibility(visible);
         });
 
-    // chat panel
-    connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged,
+    // plug/unplug
+    connect(LRCInstance::renderer(),
+        &RenderManager::videoDeviceListChanged,
+        [this] {
+            resetPreview();
+        });
+
+    // possible device change
+    connect(LRCInstance::renderer(),
+        &RenderManager::previewRenderingStarted,
         [this] {
             resetPreview();
         });
@@ -96,7 +104,7 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     moveAnim_->stop();
 
-    resetPreviewWidget();
+    resetPreview();
 
     audioOnlyAvatar_->resize(this->size());
 
@@ -112,13 +120,23 @@ VideoView::slotCallStatusChanged(const std::string& callId)
         auto& accInfo = LRCInstance::getAccountInfo(accountId_);
         auto call = accInfo.callModel->getCall(callId);
         using namespace lrc::api::call;
+        // all calls
         switch (call.status) {
         case Status::ENDED:
         case Status::TERMINATING:
             LRCInstance::renderer()->removeDistantRenderer(callId);
             emit terminating(callId);
+        default:
+            break;
+        }
+        // this call
+        auto conversation = LRCInstance::getCurrentConversation();
+        if (conversation.uid.empty() || conversation.callId != callId) {
+            return;
+        }
+        switch (call.status) {
         case Status::PAUSED:
-            resetPreview(false);
+            resetPreview();
             overlay_->setPauseState(true);
         case Status::IN_PROGRESS:
             resetPreview();
@@ -233,8 +251,8 @@ VideoView::showContextMenu(const QPoint& position)
                 if (LRCInstance::avModel().getCurrentVideoCaptureDevice() == device) {
                     return;
                 }
-                resetPreview();
                 LRCInstance::avModel().switchInputTo(device);
+                resetPreview();
                 LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
             });
     }
@@ -253,10 +271,10 @@ VideoView::showContextMenu(const QPoint& position)
 #if defined(Q_OS_WIN) && (PROCESS_DPI_AWARE)
             rect.setSize(Utils::getRealSize(screen));
 #endif
-            resetPreview();
             LRCInstance::avModel().setDisplay(screenNumber,
                 rect.x(), rect.y(), rect.width(), rect.height()
             );
+            resetPreview();
 
             sharingEntireScreen_ = true;
         });
@@ -267,7 +285,6 @@ VideoView::showContextMenu(const QPoint& position)
     shareAreaAction->setCheckable(true);
     connect(shareAreaAction, &QAction::triggered,
         [this]() {
-            resetPreview();
             QRect area;
             int screenNumber = 0;
             SelectAreaDialog selectAreaDialog(screenNumber, area, this);
@@ -277,6 +294,7 @@ VideoView::showContextMenu(const QPoint& position)
                     area.x(), area.y(), area.width(), area.height()
                 );
             }
+            resetPreview();
             sharingEntireScreen_ = false;
         });
 
@@ -293,8 +311,8 @@ VideoView::showContextMenu(const QPoint& position)
                 return;
             fileNames = fileDialog.selectedFiles();
             auto resource = QUrl::fromLocalFile(fileNames.at(0)).toString();
-            resetPreview();
             LRCInstance::avModel().setInputFile(resource.toStdString());
+            resetPreview();
         });
 
     // possibly select the alternative video sharing device
@@ -415,8 +433,8 @@ VideoView::mouseReleaseEvent(QMouseEvent* event)
             newPreviewLocation = PreviewSnap::NW;
         }
     }
-    currentPreviewLocation_ = newPreviewLocation;
-    QPoint endPoint = getPreviewPosition(currentPreviewLocation_);
+    previewWidget_->setLocation(newPreviewLocation);
+    QPoint endPoint = previewWidget_->getTopLeft();
     moveAnim_->setEndValue(QRect(endPoint, previewWidget_->size()));
     moveAnim_->start();
     draggingPreview_ = false;
@@ -456,80 +474,6 @@ VideoView::slotVideoMuteStateChanged(bool state)
     resetPreview();
 }
 
-QPoint
-VideoView::getPreviewPosition(const PreviewSnap snapLocation)
-{
-    switch (snapLocation) {
-    case PreviewSnap::NW:
-        return QPoint(
-            previewMargin_,
-            previewMargin_);
-    case PreviewSnap::NE:
-        return QPoint(
-            this->width() - previewMargin_ - previewWidget_->width(),
-            previewMargin_);
-    case PreviewSnap::SW:
-        return QPoint(
-            previewMargin_,
-            this->height() - previewMargin_ - previewWidget_->height());
-    case PreviewSnap::SE:
-        return QPoint(
-            this->width() - previewMargin_ - previewWidget_->width(),
-            this->height() - previewMargin_ - previewWidget_->height());
-    }
-}
-
-void
-VideoView::resetPreviewPosition()
-{
-    auto previewImage = LRCInstance::renderer()->getPreviewFrame();
-    int width;
-    int height;
-    if (previewImage) {
-        width = previewImage->width();
-        height = previewImage->height();
-    } else {
-        auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-        if (device.empty()) {
-            device = LRCInstance::avModel().getDefaultDeviceName();
-        }
-        auto settings = LRCInstance::avModel().getDeviceSettings(device);
-        width = QString::fromStdString(settings.size).split("x")[0].toInt();
-        height = QString::fromStdString(settings.size).split("x")[1].toInt();
-    }
-    auto newGeometry = previewWidget_->computeGeometry(width, height);
-    previewWidget_->setGeometry(newGeometry);
-    QPoint position = getPreviewPosition(currentPreviewLocation_);
-    newGeometry.moveTopLeft(position);
-    previewWidget_->setGeometry(newGeometry);
-}
-
-void
-VideoView::resetPreview(bool async)
-{
-    if (async) {
-        Utils::oneShotConnect(LRCInstance::renderer(),
-            &RenderManager::previewRenderingStopped,
-            [this] {
-                // hide preview once stopped
-                previewWidget_->hide();
-                Utils::oneShotConnect(LRCInstance::renderer(),
-                    &RenderManager::previewRenderingStarted,
-                    [this] {
-                        Utils::oneShotConnect(LRCInstance::renderer(),
-                            &RenderManager::previewFrameUpdated,
-                            [this] {
-                                // repostion and show once at least one
-                                // frame is ready
-                                resetPreviewWidget();
-                            });
-                    });
-            });
-    } else {
-        resetPreviewWidget();
-    }
-}
-
 bool
 VideoView::shouldShowPreview()
 {
@@ -549,12 +493,28 @@ VideoView::shouldShowPreview()
 }
 
 void
-VideoView::resetPreviewWidget()
+VideoView::resetPreview()
 {
 
     if (shouldShowPreview()) {
         previewWidget_->setContainerSize(this->size());
-        resetPreviewPosition();
+        auto previewImage = LRCInstance::renderer()->getPreviewFrame();
+        int width;
+        int height;
+        if (previewImage) {
+            width = previewImage->width();
+            height = previewImage->height();
+        } else {
+            auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+            if (device.empty()) {
+                device = LRCInstance::avModel().getDefaultDeviceName();
+            }
+            auto settings = LRCInstance::avModel().getDeviceSettings(device);
+            width = QString::fromStdString(settings.size).split("x")[0].toInt();
+            height = QString::fromStdString(settings.size).split("x")[1].toInt();
+        }
+        auto newSize = previewWidget_->getScaledSize(width, height);
+        previewWidget_->setupGeometry(newSize);
         previewWidget_->setVisible(true);
     } else {
         previewWidget_->setVisible(false);

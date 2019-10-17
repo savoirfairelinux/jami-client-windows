@@ -55,6 +55,8 @@ protected:
     void paintBackground(QPainter* painter) override;
 };
 
+enum class PreviewSnap { NW, NE, SE, SW };
+
 // rounded corners for video calls
 class VideoCallPreviewWidget final : public PreviewWidget {
     Q_OBJECT;
@@ -64,19 +66,26 @@ public:
     ~VideoCallPreviewWidget();
 
     void setContainerSize(const QSize& size);
+    void setLocation(const PreviewSnap location);
+
+    QPoint getTopLeft();
+
+    QSize getScaledSize(int w, int h);
 
     /**
-     * Computes new widget size with aspect ratio guarded, and
-     * keeps the original position.
+     * Computes new widget size with aspect ratio guarded
+     * taking into consideration snap location
      */
-    QRect computeGeometry(int w, int h);
+    void setupGeometry(const QSize& newSize);
 
 protected:
     void paintEvent(QPaintEvent* e) override;
 
 private:
-    constexpr static qreal previewContainerRatio_ = 0.2f;
-    constexpr static qreal previewCornerRadius_ = 10.0f;
-
+    constexpr static qreal containerRatio_ = 0.2f;
+    constexpr static qreal cornerRadius_ = 10.0f;
+    constexpr static qreal margin_ = 15.0f;
+    constexpr static QMargins padding_ = QMargins(2, 2, 2, 2);
+    PreviewSnap location_{ PreviewSnap::SE };
     QSize containerSize_{0, 0};
 };

@@ -197,6 +197,10 @@ RenderManager::getPreviewFrame()
 
 void RenderManager::stopPreviewing(bool async)
 {
+    if (!previewFrameWrapper_->isRendering()) {
+        return;
+    }
+
     if (async) {
         QtConcurrent::run([this] { avModel_.stopPreview(); });
     } else {

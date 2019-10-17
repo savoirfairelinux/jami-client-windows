@@ -303,6 +303,7 @@ void SettingsWidget::leaveSettingsSlot()
     }
 
     stopAudioMeter();
+    stopPreviewing();
 
     bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
     auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;

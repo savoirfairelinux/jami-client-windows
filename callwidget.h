@@ -101,6 +101,7 @@ private slots:
     void on_btnAudioCall_clicked();
     void on_btnVideoCall_clicked();
     void smartListSelectionChanged(const QItemSelection  &selected, const QItemSelection  &deselected);
+    void slotSetChatVisibility(bool visible);
 
 private:
     void onIncomingMessage(const std::string& accountId, const std::string& convUid,
