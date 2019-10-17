@@ -154,10 +154,6 @@ VideoCallPreviewWidget::paintEvent(QPaintEvent* e)
         return;
     }
 
-    // adjust geometry based on previewImage
-    auto newGeometry = computeGeometry(previewImage->width(), previewImage->height());
-    setGeometry(newGeometry);
-
     QImage scaledPreview;
     scaledPreview = previewImage->scaled(this->size(), Qt::KeepAspectRatio);
 
@@ -165,15 +161,63 @@ VideoCallPreviewWidget::paintEvent(QPaintEvent* e)
     QBrush brush(scaledPreview);
     brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
     QPainterPath previewPath;
-    previewPath.addRoundRect(this->rect(), previewCornerRadius_);
+    previewPath.addRoundRect(this->rect() - padding_, cornerRadius_);
     painter.fillPath(previewPath, brush);
 }
 
-QRect
+void
 VideoCallPreviewWidget::computeGeometry(int w, int h)
 {
     auto invAspectRatio = static_cast<qreal>(h) / static_cast<qreal>(w);
-    int newPreviewWidth = containerSize_.width() * previewContainerRatio_;
+    int newPreviewWidth = containerSize_.width() * containerRatio_;
     int newPreviewHeight = newPreviewWidth * invAspectRatio;
-    return QRect(this->pos(), QSize(newPreviewWidth, newPreviewHeight));
+    auto currentRect = geometry();
+    currentRect.setSize(QSize(newPreviewWidth, newPreviewHeight));
+    switch (location_) {
+    case PreviewSnap::NW:
+        currentRect.moveTopLeft(QPoint(margin_, margin_));
+        break;
+    case PreviewSnap::NE:
+        currentRect.moveTopRight(QPoint(containerSize_.width() - margin_,
+                                        margin_));
+        break;
+    case PreviewSnap::SW:
+        currentRect.moveBottomLeft(QPoint(margin_,
+                                          containerSize_.height() - margin_));
+        break;
+    case PreviewSnap::SE:
+        currentRect.moveBottomRight(QPoint(containerSize_.width() - margin_,
+                                           containerSize_.height() - margin_));
+        break;
+    }
+    setGeometry(currentRect);
+}
+
+void
+VideoCallPreviewWidget::setLocation(const PreviewSnap location)
+{
+    location_ = location;
+}
+
+QPoint
+VideoCallPreviewWidget::getTopLeft()
+{
+    switch (location_) {
+    case PreviewSnap::NW:
+        return QPoint(
+            margin_,
+            margin_);
+    case PreviewSnap::NE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            margin_);
+    case PreviewSnap::SW:
+        return QPoint(
+            margin_,
+            containerSize_.height() - margin_ - this->height());
+    case PreviewSnap::SE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            containerSize_.height() - margin_ - this->height());
+    }
 }

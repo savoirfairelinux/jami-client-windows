@@ -23,13 +23,6 @@
 #undef ERROR
 #endif
 
-#include <QObject>
-#include <QMutex>
-#include <QSettings>
-#include <QRegularExpression>
-#include <QPixmap>
-#include <QBuffer>
-
 #include "settingskey.h"
 #include "accountlistmodel.h"
 #include "utils.h"
@@ -50,6 +43,13 @@
 #include "api/datatransfermodel.h"
 #include "api/conversationmodel.h"
 #include "api/peerdiscoverymodel.h"
+
+#include <QObject>
+#include <QMutex>
+#include <QSettings>
+#include <QRegularExpression>
+#include <QPixmap>
+#include <QBuffer>
 
 #include <memory>
 
@@ -115,7 +115,8 @@ public:
             for (const auto& accountId : accountList) {
                 auto& accountInfo = accountModel().getAccountInfo(accountId);
                 if (accountInfo.callModel->hasCall(callId)) {
-                    result |= !accountInfo.callModel->getCall(callId).isAudioOnly;
+                    auto call = accountInfo.callModel->getCall(callId);
+                    result |= !(call.isAudioOnly || call.videoMuted);
                 }
             }
         }

@@ -183,9 +183,7 @@ CallWidget::CallWidget(QWidget* parent) :
 
     // video view
     connect(ui->videoView, &VideoView::setChatVisibility,
-        [this](bool visible) {
-            ui->messagesWidget->setVisible(visible);
-        });
+            this, &CallWidget::slotSetChatVisibility, Qt::DirectConnection);
 
     connect(ui->videoView, &VideoView::toggleFullScreenClicked,
             this, &CallWidget::slotToggleFullScreenClicked);
@@ -262,7 +260,7 @@ CallWidget::navigated(bool to)
          * This will resize/position the preview when returning from the settings
          * in case of a resolution change.
          */
-        ui->videoView->resetPreviewWidget();
+        ui->videoView->resetPreview();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
@@ -563,6 +561,11 @@ CallWidget::smartListSelectionChanged(const QItemSelection  &selected, const QIt
     }
 
     selectConversation(selectedIndex);
+}
+
+void CallWidget::slotSetChatVisibility(bool visible)
+{
+    ui->messagesWidget->setVisible(visible);
 }
 
 void
