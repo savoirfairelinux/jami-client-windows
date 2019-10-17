@@ -28,16 +28,21 @@ class SelectAreaDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SelectAreaDialog();
+    explicit SelectAreaDialog(int& screenNumberRef,
+                              QRect& rectArea,
+                              QWidget* parent = nullptr);
 protected:
-     void mousePressEvent(QMouseEvent* event);
-     void mouseMoveEvent(QMouseEvent* event);
-     void mouseReleaseEvent(QMouseEvent* event);
-     void paintEvent(QPaintEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+    void paintEvent(QPaintEvent* event);
 private:
-     QPoint origin_;
-     QDialog transDialog_;
-     QRubberBand* rubberBand_;
-     QPixmap originalPixmap_;
+    QPoint origin_;
+    QDialog transDialog_;
+    QRubberBand* rubberBand_;
+    QPixmap originalPixmap_;
+
+    int& screenNumber_;
+    QRect& rectArea_;
 };
 
