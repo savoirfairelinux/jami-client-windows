@@ -268,8 +268,15 @@ VideoView::showContextMenu(const QPoint& position)
     connect(shareAreaAction, &QAction::triggered,
         [this]() {
             resetPreview();
-            SelectAreaDialog selectAreaDialog;
-            selectAreaDialog.exec();
+            QRect area;
+            int screenNumber = 0;
+            SelectAreaDialog selectAreaDialog(screenNumber, area, this);
+            int code = selectAreaDialog.exec();
+            if (code == 0) {
+                LRCInstance::avModel().setDisplay(screenNumber,
+                    area.x(), area.y(), area.width(), area.height()
+                );
+            }
             sharingEntireScreen_ = false;
         });
 
