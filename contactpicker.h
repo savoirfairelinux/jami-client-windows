@@ -77,8 +77,8 @@ protected:
     void mousePressEvent(QMouseEvent *event);
 
 signals:
-    void contactWillJoinConference(const std::string& callId, const std::string& contactUri);
-    void contactWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void contactWillJoinConference(const std::string& contactUri);
+    void contactWillDoTransfer(const std::string& contactUri);
     void willClose(QMouseEvent *event);
 
 protected slots:

@@ -58,24 +58,20 @@ ContactPicker::on_smartList_clicked(const QModelIndex &index)
 void
 ContactPicker::accept()
 {
-    auto idx = ui->smartList->currentIndex();
+    auto index = ui->smartList->currentIndex();
 
-    if (idx.isValid()) {
-        // get current call id and peer uri
-        auto conversation = LRCInstance::getCurrentConversation();
-        if (conversation.uid.empty()) {
-            return;
-        }
-        auto thisCallId = conversation.callId;
-        auto contactUri = idx.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>().toStdString();
-
+    if (index.isValid()) {
+        auto contactUri = index.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>().toStdString();
         // let parent deal with this as this dialog will be destroyed
         switch (type_) {
         case Type::CONFERENCE:
-            emit contactWillJoinConference(thisCallId, contactUri);
+        {
+            auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+            emit contactWillJoinConference(contactUri);
+        }
             break;
         case Type::TRANSFER:
-            emit contactWillDoTransfer(thisCallId, contactUri);
+            emit contactWillDoTransfer(contactUri);
             break;
         default:
             break;

@@ -18,6 +18,8 @@
 
 #pragma once
 
+#include "api/conversationmodel.h"
+
 #include <QWidget>
 #include <QMenu>
 #include <QTimer>
@@ -31,6 +33,8 @@ namespace Ui {
 class VideoOverlay;
 }
 
+using namespace lrc::api;
+
 class VideoOverlay : public QWidget
 {
     Q_OBJECT
@@ -39,19 +43,16 @@ public:
     explicit VideoOverlay(QWidget* parent = 0);
     ~VideoOverlay();
 
-public:
-    void setName(const QString& name);
-    void setPauseState(bool state);
-    void callStarted(const std::string & callId);
-    void setVideoMuteVisibility(bool visible);
+    void updateCall(const conversation::Info& convInfo);
     void simulateShowChatview(bool checked);
-    bool getShowChatView();
-    void setTransferCallAndSIPPanelAvailability(bool visible);
-    void setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName);
-    void resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly);
 
-//UI SLOTS
+signals:
+    void setChatVisibility(bool visible);
+    void holdStateChanged(bool state);
+    void videoMuteStateChanged(bool state);
+
 private slots:
+    void fadeOverlayOut();
     void setTime();
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
@@ -60,10 +61,11 @@ private slots:
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
     void on_transferCallButton_toggled(bool checked);
+    void on_addToConferenceButton_toggled(bool checked);
     void on_sipInputPanelButton_toggled(bool checked);
-    void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void slotWillDoTransfer(const std::string& contactUri);
+    void slotWillJoinConference(const std::string& contactUri);
     void slotSIPInputPanelClicked(const int& id);
-    void fadeOverlayOut();
 
 protected:
     void enterEvent(QEvent* event);
@@ -71,16 +73,15 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
 
 private:
-    bool shouldShowOverlay();
-    void showOverlay();
-
-private:
     Ui::VideoOverlay* ui;
+
+    // for current conf/call info
+    std::string accountId_;
+    std::string convUid_;
 
     ContactPicker* contactPicker_;
     SipInputPanel* sipInputPanel_;
     QTimer* oneSecondTimer_;
-    std::string callId_;
 
     QTimer fadeTimer_;
     QPropertyAnimation* fadeAnim_;
@@ -97,9 +98,6 @@ private:
     // https://bugreports.qt.io/browse/QTBUG-66803
     constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
 
-signals:
-    void setChatVisibility(bool visible);
-    void holdStateChanged(bool state);
-    void videoMuteStateChanged(bool state);
-
+    bool shouldShowOverlay();
+    void showOverlay();
 };

@@ -50,13 +50,19 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->transferCallButton->setVisible(false);
     ui->transferCallButton->setCheckable(true);
 
+    ui->addToConferenceButton->setVisible(true);
+    ui->addToConferenceButton->setCheckable(true);
+
     contactPicker_->setVisible(false);
-    contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
     sipInputPanel_->setVisible(false);
 
-    connect(contactPicker_, &ContactPicker::contactWillDoTransfer, this, &VideoOverlay::slotWillDoTransfer);
-    connect(sipInputPanel_, &SipInputPanel::sipInputPanelClicked, this, &VideoOverlay::slotSIPInputPanelClicked);
+    connect(contactPicker_, &ContactPicker::contactWillJoinConference,
+            this, &VideoOverlay::slotWillJoinConference);
+    connect(contactPicker_, &ContactPicker::contactWillDoTransfer,
+            this, &VideoOverlay::slotWillDoTransfer);
+    connect(sipInputPanel_, &SipInputPanel::sipInputPanelClicked,
+            this, &VideoOverlay::slotSIPInputPanelClicked);
 
     // fading mechanism
     auto effect = new QGraphicsOpacityEffect(this);
@@ -124,59 +130,81 @@ VideoOverlay::fadeOverlayOut()
 }
 
 void
-VideoOverlay::callStarted(const std::string& callId)
+VideoOverlay::updateCall(const conversation::Info& convInfo)
 {
-    callId_ = callId;
+    accountId_ = convInfo.accountId;
+    convUid_ = convInfo.uid;
+
     setTime();
-    connect(oneSecondTimer_, &QTimer::timeout, this, &VideoOverlay::setTime);
+    QObject::disconnect(oneSecondTimer_);
+    QObject::connect(oneSecondTimer_, &QTimer::timeout,
+                     this, &VideoOverlay::setTime);
     oneSecondTimer_->start(1000);
     showOverlay();
     fadeTimer_.start(startfadeOverlayTime_);
-}
 
-void
-VideoOverlay::setName(const QString& name)
-{
-    ui->nameLabel->setText(name);
-}
+    // close chat panel
+    emit setChatVisibility(false);
 
-void
-VideoOverlay::setPauseState(bool state)
-{
-    ui->onHoldLabel->setVisible(state);
+    auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
+
+    auto& convModel = accInfo.conversationModel;
+
+    auto call = LRCInstance::getCallInfoForConversation(convInfo);
+    if (!call) {
+        return;
+    }
+
+    auto bestName = QString::fromStdString(
+        Utils::bestNameForConversation(convInfo, *convModel));
+    contactPicker_->setCurrentCalleeDisplayName(bestName);
+    ui->nameLabel->setText(bestName);
+
+    bool isPaused = call->status == lrc::api::call::Status::PAUSED;
+    bool isAudioOnly = call->isAudioOnly && !isPaused;
+    bool isAudioMuted = call->audioMuted && (call->status != lrc::api::call::Status::PAUSED);
+    bool isVideoMuted = call->videoMuted && !isPaused && !call->isAudioOnly;
+    bool isRecording = accInfo.callModel->isRecording(convInfo.callId);
+
+    //Set irrelevant buttons invisible
+    ui->noVideoButton->setVisible(!isAudioOnly);
+
+    // Block the signals of buttons
+    Utils::whileBlocking(ui->noMicButton)->setOverlayButtonChecked(isAudioMuted);
+    Utils::whileBlocking(ui->noVideoButton)->setOverlayButtonChecked(isVideoMuted);
+    Utils::whileBlocking(ui->recButton)->setOverlayButtonChecked(isRecording);
+    Utils::whileBlocking(ui->holdButton)->setOverlayButtonChecked(isPaused);
+    Utils::whileBlocking(ui->onHoldLabel)->setVisible(isPaused);
+
+    bool isSIP = accInfo.profileInfo.type == lrc::api::profile::Type::SIP;
+    ui->addToConferenceButton->setVisible(!isSIP);
+    ui->transferCallButton->setVisible(isSIP);
+    ui->sipInputPanelButton->setVisible(isSIP);
 }
 
 void
 VideoOverlay::setTime()
 {
-    if (callId_.empty()) {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
-    try {
-        auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
-        if (callInfo.status == lrc::api::call::Status::IN_PROGRESS ||
-            callInfo.status == lrc::api::call::Status::PAUSED) {
-            int numSeconds = std::chrono::duration_cast<std::chrono::seconds>(
-                std::chrono::steady_clock::now() - callInfo.startTime).count();
-            QTime t(0, 0, numSeconds);
-            ui->timerLabel->setText(t.toString(numSeconds > 3600 ? "hh:mm:ss" : "mm:ss"));
-        }
-    } catch (...) { }
-}
-
-void
-VideoOverlay::setVideoMuteVisibility(bool visible)
-{
-    ui->noVideoButton->setVisible(visible);
+    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
+    if (callInfo.status == lrc::api::call::Status::IN_PROGRESS ||
+        callInfo.status == lrc::api::call::Status::PAUSED) {
+        auto timeString = LRCInstance::getCurrentCallModel()->getFormattedCallDuration(callId);
+        ui->timerLabel->setText(QString::fromStdString(timeString));
+    }
 }
 
 bool
 VideoOverlay::shouldShowOverlay()
 {
-    if (!LRCInstance::getCurrentCallModel()->hasCall(callId_)) {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return false;
     }
-    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId_);
+    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
     bool hoveringOnButtons = ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse();
     return  hoveringOnButtons ||
             (callInfo.status == lrc::api::call::Status::PAUSED) ||
@@ -188,12 +216,6 @@ void
 VideoOverlay::simulateShowChatview(bool checked)
 {
     ui->chatButton->setChecked(checked);
-}
-
-bool
-VideoOverlay::getShowChatView()
-{
-    return ui->chatButton->isChecked();
 }
 
 void
@@ -220,11 +242,15 @@ VideoOverlay::on_holdButton_toggled(bool checked)
 {
     // why is 'checked' unused?
     Q_UNUSED(checked);
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+        return;
+    }
     auto callModel = LRCInstance::getCurrentCallModel();
     bool onHold { false };
-    if (callModel->hasCall(callId_)) {
-        callModel->togglePause(callId_);
-        onHold = callModel->getCall(callId_).status == lrc::api::call::Status::PAUSED;
+    if (callModel->hasCall(callId)) {
+        callModel->togglePause(callId);
+        onHold = callModel->getCall(callId).status == lrc::api::call::Status::PAUSED;
     }
     ui->onHoldLabel->setVisible(onHold);
 }
@@ -233,9 +259,13 @@ void
 VideoOverlay::on_noMicButton_toggled(bool checked)
 {
     Q_UNUSED(checked);
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+        return;
+    }
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId_)) {
-        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::AUDIO);
+    if (callModel->hasCall(callId)) {
+        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::AUDIO);
     }
 }
 
@@ -243,9 +273,13 @@ void
 VideoOverlay::on_noVideoButton_toggled(bool checked)
 {
     Q_UNUSED(checked);
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+        return;
+    }
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId_)) {
-        callModel->toggleMedia(callId_, lrc::api::NewCallModel::Media::VIDEO);
+    if (callModel->hasCall(callId)) {
+        callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
     }
     emit videoMuteStateChanged(checked);
 }
@@ -253,26 +287,67 @@ VideoOverlay::on_noVideoButton_toggled(bool checked)
 void
 VideoOverlay::on_recButton_clicked()
 {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+        return;
+    }
     auto callModel = LRCInstance::getCurrentCallModel();
-    if (callModel->hasCall(callId_)) {
-        callModel->toggleAudioRecord(callId_);
+    if (callModel->hasCall(callId)) {
+        callModel->toggleAudioRecord(callId);
     }
 }
 
 void
-VideoOverlay::setTransferCallAndSIPPanelAvailability(bool visible)
+VideoOverlay::on_addToConferenceButton_toggled(bool checked)
 {
-    ui->transferCallButton->setVisible(visible);
-    ui->sipInputPanelButton->setVisible(visible);
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if ( callId.empty() ||
+         !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
+         !checked) {
+        return;
+    }
+    contactPicker_->setType(ContactPicker::Type::CONFERENCE);
+    contactPicker_->setTitle(QObject::tr("Add to conference"));
+
+    QPoint globalPos_button = mapToGlobal(ui->addToConferenceButton->pos());
+    QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
+
+    contactPicker_->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
+
+    // receive the signal that ensure the button checked status is correct and contactpicker
+    // is properly hidden
+    Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose,
+        [this](QMouseEvent* event) {
+            contactPicker_->hide();
+            // check if current mouse position is on button
+            auto relativeClickPos = ui->addToConferenceButton->mapFromGlobal(event->globalPos());
+            if (!ui->addToConferenceButton->rect().contains(relativeClickPos)) {
+                ui->addToConferenceButton->setChecked(false);
+                ui->addToConferenceButton->resetToOriginal();
+            }
+        });
+
+    // for esc key, receive reject signal
+    Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
+        [this] {
+            ui->addToConferenceButton->setChecked(false);
+            ui->addToConferenceButton->resetToOriginal();
+        });
+
+    contactPicker_->show();
 }
 
 void
 VideoOverlay::on_transferCallButton_toggled(bool checked)
 {
-    if (callId_.empty() || !checked) {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() ||
+        !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
+        !checked) {
         return;
     }
     contactPicker_->setType(ContactPicker::Type::TRANSFER);
+    contactPicker_->setTitle(QObject::tr("Select peer to transfer to"));
 
     QPoint globalPos_button = mapToGlobal(ui->transferCallButton->pos());
     QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
@@ -303,11 +378,19 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::slotWillDoTransfer(const std::string& callId, const std::string& contactUri)
+VideoOverlay::slotWillDoTransfer(const std::string& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
     contactPicker_->hide();
     ui->transferCallButton->setChecked(false);
+    ui->transferCallButton->resetToOriginal();
+
+    auto conversation = LRCInstance::getCurrentConversation();
+    if (conversation.uid.empty()) {
+        return;
+    }
+    auto callId = conversation.callId;
+
     std::string destCallId;
 
     try {
@@ -331,28 +414,29 @@ VideoOverlay::slotWillDoTransfer(const std::string& callId, const std::string& c
 }
 
 void
-VideoOverlay::setCurrentSelectedCalleeDisplayName(const QString& CalleeDisplayName)
+VideoOverlay::slotWillJoinConference(const std::string& contactUri)
 {
-    contactPicker_->setCurrentCalleeDisplayName(CalleeDisplayName);
-}
+    auto callModel = LRCInstance::getCurrentCallModel();
+    contactPicker_->hide();
+    ui->addToConferenceButton->setChecked(false);
+    ui->addToConferenceButton->resetToOriginal();
 
-void
-VideoOverlay::resetOverlay(bool isAudioMuted, bool isVideoMuted, bool isRecording, bool isHolding, bool isAudioOnly)
-{
-    //Set irrelevant buttons invisible
-    ui->noVideoButton->setVisible(!isAudioOnly);
-    // Block the signals of buttons
-    Utils::whileBlocking(ui->noMicButton)->setOverlayButtonChecked(isAudioMuted);
-    Utils::whileBlocking(ui->noVideoButton)->setOverlayButtonChecked(isVideoMuted);
-    Utils::whileBlocking(ui->recButton)->setOverlayButtonChecked(isRecording);
-    Utils::whileBlocking(ui->holdButton)->setOverlayButtonChecked(isHolding);
-    Utils::whileBlocking(ui->onHoldLabel)->setVisible(isHolding);
+    auto conversation = LRCInstance::getCurrentConversation();
+    if (conversation.uid.empty()) {
+        return;
+    }
+    auto callId = conversation.confId.empty() ? conversation.callId : conversation.confId;
+
+    callModel->callAndAddParticipant(contactUri, callId, false);
 }
 
 void
 VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
 {
-    if (callId_.empty() || !checked) {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if (callId.empty() ||
+        !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
+        !checked) {
         return;
     }
 
@@ -387,16 +471,22 @@ VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
 void
 VideoOverlay::slotSIPInputPanelClicked(const int& id)
 {
+    auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
+    if ( callId.empty() ||
+         !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+        return;
+    }
+
     switch (id)
     {
     case 10:
-        LRCInstance::getCurrentCallModel()->playDTMF(callId_, "#");
+        LRCInstance::getCurrentCallModel()->playDTMF(callId, "#");
         break;
     case 11:
-        LRCInstance::getCurrentCallModel()->playDTMF(callId_, "*");
+        LRCInstance::getCurrentCallModel()->playDTMF(callId, "*");
         break;
     default:
-        LRCInstance::getCurrentCallModel()->playDTMF(callId_, std::to_string(id));
+        LRCInstance::getCurrentCallModel()->playDTMF(callId, std::to_string(id));
         break;
     }
 }
