@@ -56,10 +56,10 @@ public slots:
 private:
     Ui::SettingsWidget* ui;
 
-    enum Button {
-        accountSettingsButton,
-        generalSettingsButton,
-        mediaSettingsButton
+    enum SettingsMenu {
+        Account,
+        General,
+        Media
     };
     enum RegName {
         BLANK,
@@ -70,7 +70,7 @@ private:
     };
 
     void setAvatar(PhotoboothWidget* avatarWidget);
-    void setSelected(Button sel);
+    void setSelected(SettingsMenu sel);
     void updateAccountInfoDisplayed();
     void resizeEvent(QResizeEvent* event);
     bool sipPasswordHidden_ {false};
@@ -96,7 +96,7 @@ private:
     lrc::api::account::ConfProperties_t confProps_;
     AdvancedSettingsWidget* advancedSettingsWidget_;
     QScrollArea* scrollArea_;
-    Button pastButton_ = Button::generalSettingsButton;
+    SettingsMenu selectedMenu_ = SettingsMenu::General;
     lrc::api::profile::Type pastAccount_ = lrc::api::profile::Type::INVALID;
     bool advancedSettingsDropped_ = false;
     QList<QPair<std::string, float>> formatIndexList_;

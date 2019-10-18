@@ -196,6 +196,12 @@ RenderManager::~RenderManager()
     }
 }
 
+bool
+RenderManager::isPreviewing()
+{
+    return previewFrameWrapper_->isRendering();
+}
+
 QImage*
 RenderManager::getPreviewFrame()
 {

@@ -219,6 +219,9 @@ CallWidget::CallWidget(QWidget* parent) :
             }
         });
 
+    connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged,
+            this, &CallWidget::slotVideoDeviceListChanged);
+
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     ui->btnConversations->setChecked(true);
@@ -573,6 +576,14 @@ CallWidget::smartListSelectionChanged(const QItemSelection  &selected, const QIt
 void CallWidget::slotSetChatVisibility(bool visible)
 {
     ui->messagesWidget->setVisible(visible);
+}
+
+void
+CallWidget::slotVideoDeviceListChanged()
+{
+    if (LRCInstance::hasVideoCall()) {
+        LRCInstance::renderer()->startPreviewing();
+    }
 }
 
 void

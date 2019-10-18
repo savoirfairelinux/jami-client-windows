@@ -128,11 +128,11 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     // btnExitSettings
     connect(ui->btnExitSettings, &QPushButton::clicked, this, &SettingsWidget::leaveSettingsSlot);
 
-    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::accountSettingsButton); });
+    connect(ui->accountSettingsButton, &QPushButton::clicked, [this]() { setSelected(SettingsMenu::Account); });
 
-    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::generalSettingsButton); });
+    connect(ui->generalSettingsButton, &QPushButton::clicked, [this]() { setSelected(SettingsMenu::General); });
 
-    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() { setSelected(Button::mediaSettingsButton); });
+    connect(ui->mediaSettingsButton, &QPushButton::clicked, [this]() { setSelected(SettingsMenu::Media); });
 
     connect(ui->advancedAccountSettingsSIPButton, &QPushButton::clicked, this, &SettingsWidget::toggleAdvancedSIPSettings);
 
@@ -267,7 +267,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 void SettingsWidget::slotAccountListChanged()
 {
     if (!LRCInstance::accountModel().getAccountList().size()) {
-        setSelected(Button::accountSettingsButton);
+        setSelected(SettingsMenu::Account);
     } else {
         disconnectAccountConnections();
     }
@@ -281,7 +281,7 @@ void SettingsWidget::navigated(bool to)
 {
     ui->containerWidget->setVisible(to);
     if (to) {
-        setSelected(Button::accountSettingsButton);
+        setSelected(SettingsMenu::Account);
         updateAccountInfoDisplayed();
         // hide banned list
         ui->bannedContactsListWidget->setVisible(false);
@@ -316,17 +316,17 @@ SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
-void SettingsWidget::setSelected(Button sel)
+void SettingsWidget::setSelected(SettingsMenu sel)
 {
     switch (sel) {
-    case Button::accountSettingsButton:
+    case SettingsMenu::Account:
 
         connectCurrentAccount();
 
         ui->accountSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
-        if (pastButton_ == sel && pastAccount_ == LRCInstance::getCurrentAccountInfo().profileInfo.type) {
+        if (selectedMenu_ == sel && pastAccount_ == LRCInstance::getCurrentAccountInfo().profileInfo.type) {
             return;
         }
 
@@ -353,12 +353,12 @@ void SettingsWidget::setSelected(Button sel)
 
         break;
 
-    case Button::generalSettingsButton:
+    case SettingsMenu::General:
 
         ui->generalSettingsButton->setChecked(true);
         ui->accountSettingsButton->setChecked(false);
         ui->mediaSettingsButton->setChecked(false);
-        if (pastButton_ == sel) { return; }
+        if (selectedMenu_ == sel) { return; }
 
         stopAudioMeter();
         stopPreviewing();
@@ -368,11 +368,11 @@ void SettingsWidget::setSelected(Button sel)
 
         break;
 
-    case Button::mediaSettingsButton:
+    case SettingsMenu::Media:
         ui->mediaSettingsButton->setChecked(true);
         ui->generalSettingsButton->setChecked(false);
         ui->accountSettingsButton->setChecked(false);
-        if (pastButton_ == sel) { return; }
+        if (selectedMenu_ == sel) { return; }
 
         ui->stackedWidget->setCurrentWidget(ui->avSettings);
 
@@ -383,7 +383,7 @@ void SettingsWidget::setSelected(Button sel)
         break;
     }
 
-    pastButton_ = sel;
+    selectedMenu_ = sel;
 }
 // called to update current settings information when navigating to settingsWidget
 void SettingsWidget::updateAccountInfoDisplayed()
@@ -1183,7 +1183,13 @@ SettingsWidget::populateVideoSettings()
         ui->deviceBox->setCurrentIndex(deviceIndex);
         setFormatListForDevice(LRCInstance::avModel().getCurrentVideoCaptureDevice());
 
-        startPreviewing(false);
+        bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
+        auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;
+
+        if ( (photoBooth->isVisible() && LRCInstance::renderer()->isPreviewing()) ||
+             selectedMenu_ == SettingsMenu::Media) {
+            startPreviewing(false);
+        }
     }
 
     connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
