@@ -114,44 +114,9 @@ VideoView::resizeEvent(QResizeEvent* event)
 }
 
 void
-VideoView::slotCallStatusChanged(const std::string& callId)
-{
-    try {
-        auto& accInfo = LRCInstance::getAccountInfo(accountId_);
-        auto call = accInfo.callModel->getCall(callId);
-        using namespace lrc::api::call;
-        // all calls
-        switch (call.status) {
-        case Status::ENDED:
-        case Status::TERMINATING:
-            LRCInstance::renderer()->removeDistantRenderer(callId);
-            emit terminating(callId);
-        default:
-            break;
-        }
-        // this call
-        auto conversation = LRCInstance::getCurrentConversation();
-        if (conversation.uid.empty() || conversation.callId != callId) {
-            return;
-        }
-        switch (call.status) {
-        case Status::PAUSED:
-            resetPreview();
-            overlay_->setPauseState(true);
-        case Status::IN_PROGRESS:
-            resetPreview();
-            overlay_->setPauseState(false);
-        default:
-            break;
-        }
-    } catch (...) {}
-}
-
-void
 VideoView::simulateShowChatview(bool checked)
 {
-    Q_UNUSED(checked);
-    overlay_->simulateShowChatview(true);
+    overlay_->simulateShowChatview(checked);
 }
 
 void
@@ -212,31 +177,16 @@ VideoView::showContextMenu(const QPoint& position)
     QMenu menu;
 
     auto conversation = LRCInstance::getCurrentConversation();
-    if (conversation.uid.empty()) {
-        return;
-    }
-    if (auto call = LRCInstance::getCallInfoForConversation(conversation)) {
-        if (call->isAudioOnly) {
-            return;
-        }
-    }
-    auto callIdList = LRCInstance::getActiveCalls();
-    std::string thisCallId;
-    for (auto callId : callIdList) {
-        if (callId == conversation.callId) {
-            thisCallId = callId;
-            break;
-        }
-    }
-    if (thisCallId.empty()) {
+    auto call = LRCInstance::getCallInfoForConversation(conversation);
+    if (!call || call->isAudioOnly) {
         return;
     }
 
-    auto activeDevice = LRCInstance::avModel().getCurrentRenderedDevice(thisCallId);
+    auto activeDevice = LRCInstance::avModel().getCurrentRenderedDevice(call->id);
 
     // video input devices
     auto devices = LRCInstance::avModel().getDevices();
-    auto device = LRCInstance::avModel().getDefaultDeviceName();
+    auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
     for (auto d : devices) {
         auto deviceName = QString::fromStdString(d).toUtf8();
         auto deviceAction = new QAction(deviceName, this);
@@ -332,11 +282,11 @@ VideoView::showContextMenu(const QPoint& position)
 }
 
 void
-VideoView::setupForConversation(const std::string& accountId,
-                                const std::string& convUid)
+VideoView::updateCall(const std::string& convUid,
+                      const std::string& accountId)
 {
-    accountId_ = accountId;
-    convUid_ = convUid;
+    accountId_ = accountId.empty() ? accountId_ : accountId;
+    convUid_ = convUid.empty() ? convUid_ : convUid;
 
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
     if (convInfo.uid.empty()) {
@@ -347,48 +297,21 @@ VideoView::setupForConversation(const std::string& accountId,
     if (!call) {
         return;
     }
-    auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
 
-    bool isPaused = call->status == lrc::api::call::Status::PAUSED;
-    bool isAudioOny = call->isAudioOnly && !isPaused;
-    bool isAudioMuted = call->audioMuted && (call->status != lrc::api::call::Status::PAUSED);
-    bool isVideoMuted = call->videoMuted && !isPaused && !call->isAudioOnly;
-
-    // close chat panel
-    emit overlay_->setChatVisibility(false);
-
-    // setup overlay
-    // TODO(atraczyk): all of this could be done with conversation::Info
-    // transfer call will only happen in SIP calls
-    bool isSIP = accInfo.profileInfo.type == lrc::api::profile::Type::SIP;
-    auto& convModel = accInfo.conversationModel;
-    auto bestName = QString::fromStdString(Utils::bestNameForConversation(convInfo, *convModel));
-    bool isRecording = accInfo.callModel->isRecording(convInfo.callId);
-    overlay_->callStarted(convInfo.callId);
-    overlay_->setTransferCallAndSIPPanelAvailability(isSIP);
-    overlay_->setVideoMuteVisibility(!call->isAudioOnly);
-    overlay_->resetOverlay(isAudioMuted, isVideoMuted, isRecording, isPaused, isAudioOny);
-    overlay_->setCurrentSelectedCalleeDisplayName(bestName);
-    overlay_->setName(bestName);
+    overlay_->updateCall(convInfo);
     // TODO(atraczyk): this should be part of the overlay
     audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
         audioOnlyAvatar_->writeAvatarOverlay(convInfo);
     }
 
-    // preview visibility
+    // preview
     previewWidget_->setVisible(shouldShowPreview());
 
     // distant
     ui->distantWidget->setRendererId(call->id);
-
-    // listen for the end of a call
-    disconnect(callStatusChangedConnection_);
-    callStatusChangedConnection_ = connect(
-        accInfo.callModel.get(),
-        &NewCallModel::callStatusChanged,
-        this,
-        &VideoView::slotCallStatusChanged);
+    auto isPaused = call->status == lrc::api::call::Status::PAUSED;
+    ui->distantWidget->setVisible(!isPaused);
 }
 
 void
@@ -487,7 +410,8 @@ VideoView::shouldShowPreview()
         shouldShowPreview =
             !call->isAudioOnly &&
             !(call->status == lrc::api::call::Status::PAUSED) &&
-            !call->videoMuted;
+            !call->videoMuted &&
+            call->type != lrc::api::call::Type::CONFERENCE;
     }
     return shouldShowPreview;
 }
@@ -496,33 +420,35 @@ void
 VideoView::resetPreview()
 {
 
-    if (shouldShowPreview()) {
-        previewWidget_->setContainerSize(this->size());
-        auto previewImage = LRCInstance::renderer()->getPreviewFrame();
-        int width;
-        int height;
-        if (previewImage) {
-            width = previewImage->width();
-            height = previewImage->height();
-        } else {
-            auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-            if (device.empty()) {
-                device = LRCInstance::avModel().getDefaultDeviceName();
-            }
-            if (device.empty()) {
-                previewWidget_->setVisible(false);
-                return;
-            }
-            auto settings = LRCInstance::avModel().getDeviceSettings(device);
-            width = QString::fromStdString(settings.size).split("x")[0].toInt();
-            height = QString::fromStdString(settings.size).split("x")[1].toInt();
-        }
-        auto newSize = previewWidget_->getScaledSize(width, height);
-        previewWidget_->setupGeometry(newSize);
-        previewWidget_->setVisible(true);
-    } else {
+    if (!shouldShowPreview()) {
         previewWidget_->setVisible(false);
+        return;
     }
+
+    previewWidget_->setContainerSize(this->size());
+    auto previewImage = LRCInstance::renderer()->getPreviewFrame();
+    int width;
+    int height;
+    if (previewImage) {
+        width = previewImage->width();
+        height = previewImage->height();
+    } else {
+        auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+        if (device.empty()) {
+            device = LRCInstance::avModel().getDefaultDeviceName();
+        }
+        if (device.empty()) {
+            previewWidget_->setVisible(false);
+            return;
+        }
+        auto settings = LRCInstance::avModel().getDeviceSettings(device);
+        width = QString::fromStdString(settings.size).split("x")[0].toInt();
+        height = QString::fromStdString(settings.size).split("x")[1].toInt();
+    }
+    auto newSize = previewWidget_->getScaledSize(width, height);
+    previewWidget_->setupGeometry(newSize);
+
+    previewWidget_->setVisible(true);
 
 }
 

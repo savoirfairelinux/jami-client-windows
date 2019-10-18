@@ -418,7 +418,7 @@ PrivateBridging::deleteInteraction(const QString& arg)
     uint64_t interactionUid = arg.toULongLong(&ok);
     if (ok) {
         LRCInstance::getCurrentConversationModel()->clearInteractionFromConversation(
-            LRCInstance::getSelectedConvUid(),
+            LRCInstance::getCurrentConvUid(),
             interactionUid
         );
     } else {
@@ -434,7 +434,7 @@ PrivateBridging::retryInteraction(const QString& arg)
     uint64_t interactionUid = arg.toULongLong(&ok);
     if (ok) {
         LRCInstance::getCurrentConversationModel()->retryInteraction(
-            LRCInstance::getSelectedConvUid(),
+            LRCInstance::getCurrentConvUid(),
             interactionUid
         );
     } else {
@@ -461,7 +461,7 @@ PrivateBridging::acceptFile(const QString& arg)
         auto interactionUid = std::stoull(arg.toStdString());
 
         lrc::api::datatransfer::Info info = {};
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->getTransferInfo(interactionUid, info);
 
         // get full path
@@ -490,7 +490,7 @@ PrivateBridging::refuseFile(const QString& arg)
 {
     try {
         auto interactionUid = std::stoull(arg.toStdString());
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->cancelTransfer(convUid, interactionUid);
     } catch (...) {
         qDebug() << "JS bridging - exception during refuseFile:" << arg;
@@ -502,7 +502,7 @@ Q_INVOKABLE int
 PrivateBridging::sendMessage(const QString& arg)
 {
     try {
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->sendMessage(convUid, arg.toStdString());
     } catch (...) {
         qDebug() << "JS bridging - exception during sendMessage:" << arg;
@@ -533,7 +533,7 @@ PrivateBridging::sendImage(const QString& arg)
         }
 
        try {
-            auto convUid = LRCInstance::getSelectedConvUid();
+            auto convUid = LRCInstance::getCurrentConvUid();
             LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
         } catch (...) {
             qDebug().noquote() << "JS bridging - exception during sendFile - base64 img" << "\n";
@@ -545,7 +545,7 @@ PrivateBridging::sendImage(const QString& arg)
         QFileInfo fi(arg);
         QString fileName = fi.fileName();
         try {
-            auto convUid = LRCInstance::getSelectedConvUid();
+            auto convUid = LRCInstance::getCurrentConvUid();
             LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg.toStdString(), fileName.toStdString());
         } catch (...) {
             qDebug().noquote() << "JS bridging - exception during sendFile - image from path" << "\n";
@@ -562,7 +562,7 @@ PrivateBridging::sendFile(const QString&path)
     QFileInfo fi(path);
     QString fileName = fi.fileName();
     try {
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
     } catch (...) {
         qDebug() << "JS bridging - exception during sendFile";
@@ -604,7 +604,7 @@ Q_INVOKABLE int
 PrivateBridging::refuseInvitation()
 {
     try {
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
         if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
             messageView->setInvitation(false);
@@ -620,7 +620,7 @@ Q_INVOKABLE int
 PrivateBridging::blockConversation()
 {
     try {
-        auto convUid = LRCInstance::getSelectedConvUid();
+        auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);
         if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
             messageView->setInvitation(false);

@@ -122,15 +122,37 @@ public:
         }
         return result;
     };
+    static std::string
+    getCallIdForConversationUid(const std::string& convUid, const std::string& accountId)
+    {
+        auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
+        if (convInfo.uid.empty()) {
+            return {};
+        }
+        return convInfo.confId.empty() ? convInfo.callId : convInfo.confId;
+    }
+    static const call::Info*
+    getCallInfo(const std::string& callId, const std::string& accountId) {
+        try {
+            auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            if (!accInfo.callModel->hasCall(callId)) {
+                return nullptr;
+            }
+            return &accInfo.callModel->getCall(callId);
+        } catch (...) {
+            return nullptr;
+        }
+    }
     static const call::Info*
     getCallInfoForConversation(const conversation::Info& convInfo) {
         try {
             auto accountId = convInfo.accountId;
             auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-            if (!accInfo.callModel->hasCall(convInfo.callId)) {
+            auto callId = convInfo.confId.empty() ? convInfo.callId : convInfo.confId;
+            if (!accInfo.callModel->hasCall(callId)) {
                 return nullptr;
             }
-            return &accInfo.callModel->getCall(convInfo.callId);
+            return &accInfo.callModel->getCall(callId);
         } catch(...) {
             return nullptr;
         }
@@ -194,7 +216,7 @@ public:
     }
     static const conversation::Info&
     getCurrentConversation() {
-        return getConversationFromConvUid(getSelectedConvUid());
+        return getConversationFromConvUid(getCurrentConvUid());
     }
 
     static ConversationModel*
@@ -221,7 +243,7 @@ public:
         settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
     };
 
-    static const std::string& getSelectedConvUid() {
+    static const std::string& getCurrentConvUid() {
         return instance().selectedConvUid_;
     };
 

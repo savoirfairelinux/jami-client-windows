@@ -56,8 +56,9 @@ public:
     /**
      * Get a pointer to the renderer and reconnect the update/stopped
      * rendering connections for this object.
+     * @return whether the start succeeded or not
      */
-    void startRendering();
+    bool startRendering();
 
     /**
      * Get the most recently rendered frame as a QImage.
