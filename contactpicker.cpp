@@ -27,7 +27,7 @@
 ContactPicker::ContactPicker(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactPicker),
-    type_(Type::CONFERENCE)
+    listModeltype_(SmartListModel::Type::CONFERENCE)
 {
     ui->setupUi(this);
 
@@ -58,24 +58,34 @@ ContactPicker::on_smartList_clicked(const QModelIndex &index)
 void
 ContactPicker::accept()
 {
-    auto idx = ui->smartList->currentIndex();
+    auto index = ui->smartList->currentIndex();
 
-    if (idx.isValid()) {
-        // get current call id and peer uri
-        auto conversation = LRCInstance::getCurrentConversation();
-        if (conversation.uid.empty()) {
-            return;
-        }
-        auto thisCallId = conversation.callId;
-        auto contactUri = idx.data(static_cast<int>(SmartListModel::Role::URI)).value<QString>().toStdString();
-
+    if (index.isValid()) {
         // let parent deal with this as this dialog will be destroyed
-        switch (type_) {
-        case Type::CONFERENCE:
-            emit contactWillJoinConference(thisCallId, contactUri);
+        switch (listModeltype_) {
+        case SmartListModel::Type::CONFERENCE:
+        {
+            auto sectionName = index.data(SmartListModel::Role::SectionName).value<QString>();
+            if (!sectionName.isEmpty()) {
+                smartListModel_->toggleSection(sectionName);
+                return;
+            }
+            auto convUid = index.data(SmartListModel::Role::UID).value<QString>().toStdString();
+            auto accId = index.data(SmartListModel::Role::AccountId).value<QString>().toStdString();
+            auto callId = LRCInstance::getCallIdForConversationUid(convUid, accId);
+            if (!callId.empty()) {
+                emit callWillJoinConference(callId);
+            } else {
+                auto contactUri = index.data(SmartListModel::Role::URI).value<QString>().toStdString();
+                emit contactWillJoinConference(contactUri);
+            }
+        }
             break;
-        case Type::TRANSFER:
-            emit contactWillDoTransfer(thisCallId, contactUri);
+        case SmartListModel::Type::TRANSFER:
+        {
+            auto contactUri = index.data(SmartListModel::Role::URI).value<QString>().toStdString();
+            emit contactWillDoTransfer(contactUri);
+        }
             break;
         default:
             break;
@@ -88,6 +98,9 @@ ContactPicker::accept()
 void
 ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
 {
+    if (listModeltype_ == SmartListModel::Type::CONFERENCE) {
+        smartListModel_->setConferenceableFilter(arg1.toStdString());
+    }
     selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
@@ -107,29 +120,20 @@ ContactPicker::setTitle(const QString& title)
 }
 
 void
-ContactPicker::setType(const Type& type)
+ContactPicker::setType(const SmartListModel::Type& type)
 {
-    type_ = type;
-    smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this, true));
+    listModeltype_ = type;
+    smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(), this, type, LRCInstance::getCurrentConvUid()));
     selectableProxyModel_->setSourceModel(smartListModel_.get());
     // adjust filter
-    switch (type_) {
-    case Type::CONFERENCE:
+    switch (listModeltype_) {
+    case SmartListModel::Type::CONFERENCE:
         selectableProxyModel_->setPredicate(
-            [this](const QModelIndex& index, const QRegExp& regexp) {
-                bool match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
-                auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
-                auto conversation = LRCInstance::getConversationFromConvUid(convUid);
-                if (conversation.uid.empty()) {
-                    return false;
-                }
-                auto callModel = LRCInstance::getCurrentCallModel();
-                return  match &&
-                        !(callModel->hasCall(conversation.callId) || callModel->hasCall(conversation.confId)) &&
-                        !index.parent().isValid();
+            [this](const QModelIndex&, const QRegExp&) {
+                return true;
             });
         break;
-    case Type::TRANSFER:
+    case SmartListModel::Type::TRANSFER:
         selectableProxyModel_->setPredicate(
             [this](const QModelIndex& index, const QRegExp& regexp) {
                 // Regex to remove current callee
