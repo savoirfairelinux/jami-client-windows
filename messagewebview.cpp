@@ -591,9 +591,7 @@ Q_INVOKABLE int
 PrivateBridging::acceptInvitation()
 {
     try {
-        auto convUid = LRCInstance::getSelectedConvUid();
-        LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
-        qobject_cast<MessageWebView*>(this->parent())->setInvitation(false);
+        emit qobject_cast<MessageWebView*>(this->parent())->invitationAccepted();
     } catch (...) {
         qDebug() << "JS bridging - exception during acceptInvitation";
     }

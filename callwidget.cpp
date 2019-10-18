@@ -181,6 +181,13 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->messageView, &MessageWebView::pasteKeyDetected,
             this, &CallWidget::Paste);
 
+    connect(ui->messageView, &MessageWebView::invitationAccepted,
+            [this] {
+                auto convUid = LRCInstance::getSelectedConvUid();
+                LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
+                ui->sendContactRequestButton->hide();
+            });
+
     // video view
     connect(ui->videoView, &VideoView::setChatVisibility,
             this, &CallWidget::slotSetChatVisibility, Qt::DirectConnection);
@@ -617,6 +624,7 @@ CallWidget::slotAcceptInviteClicked(const QModelIndex & index)
     auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
     LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
     ui->messageView->setInvitation(false);
+    ui->sendContactRequestButton->hide();
 }
 
 void

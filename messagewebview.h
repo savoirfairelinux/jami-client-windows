@@ -103,6 +103,7 @@ signals:
     void messagesLoaded();
     void textSelectedReady();
     void pasteKeyDetected();
+    void invitationAccepted();
 
 private slots:
     void slotLoadFinished();
