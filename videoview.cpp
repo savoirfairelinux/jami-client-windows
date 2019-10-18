@@ -499,6 +499,10 @@ VideoView::resetPreview()
             if (device.empty()) {
                 device = LRCInstance::avModel().getDefaultDeviceName();
             }
+            if (device.empty()) {
+                previewWidget_->setVisible(false);
+                return;
+            }
             auto settings = LRCInstance::avModel().getDeviceSettings(device);
             width = QString::fromStdString(settings.size).split("x")[0].toInt();
             height = QString::fromStdString(settings.size).split("x")[1].toInt();

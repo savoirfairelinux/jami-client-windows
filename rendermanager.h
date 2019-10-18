@@ -149,6 +149,10 @@ public:
     ~RenderManager();
 
     /**
+     * Check if the preview is active
+     */
+    bool isPreviewing();
+    /**
      * Get the most recently rendered preview frame as a QImage.
      * @return the rendered preview image
      */
