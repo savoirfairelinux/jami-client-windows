@@ -188,39 +188,39 @@ QWidget#messageViewLayoutWidget, QWidget#welcomePage {
 QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton, QPushButton#hangupButton,
 QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
 QPushButton#qualityButton, QPushButton#recButton, QPushButton#transferCallButton,
-QPushButton#sipInputPanelButton {
+QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
     background-color: transparent;
     border-radius: 18px;
     border: solid 1px;
 }
 
-QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#hangupButton:hover,
-QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
-QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
-QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
-QPushButton#sipInputPanelButton:hover {
-    background-color: transparent;
-    border-radius: 18px;
-    border: solid 1px;
-}
+    QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#hangupButton:hover,
+    QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
+    QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
+    QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
+    QPushButton#sipInputPanelButton:hover, QPushButton#addToConferenceButton:hover {
+        background-color: transparent;
+        border-radius: 18px;
+        border: solid 1px;
+    }
 
-QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
-QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
-QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
-QPushButton#recButton:pressed {
-    background-color: transparent;
-    border-radius: 18px;
-    border: solid 1px;
-}
+    QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
+    QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
+    QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
+    QPushButton#recButton:pressed, QPushButton#addToConferenceButton:pressed {
+        background-color: transparent;
+        border-radius: 18px;
+        border: solid 1px;
+    }
 
-QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
-QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
-QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
-QPushButton#sipInputPanelButton:checked {
-    background-color: transparent;
-    border-radius: 18px;
-    border: solid 1px;
-}
+    QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
+    QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
+    QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
+    QPushButton#sipInputPanelButton:checked, QPushButton#addToConferenceButton:checked {
+        background-color: transparent;
+        border-radius: 18px;
+        border: solid 1px;
+    }
 
 QPushButton#updateCancelButton {
     padding: 4px;

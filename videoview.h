@@ -46,9 +46,10 @@ public:
 
     void setupForConversation(const std::string& accountId,
                               const std::string& convUid);
-    void showChatviewIfToggled();
     void simulateShowChatview(bool checked);
     void resetPreview();
+
+    void slotAddedToConference(const std::string& callId, const std::string& confId);
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -65,30 +66,31 @@ protected:
 
 private slots:
     void slotCallStatusChanged(const std::string& callId);
+
     void showContextMenu(const QPoint& position);
     void slotVideoMuteStateChanged(bool state);
 
 private:
     Ui::VideoView* ui;
 
+    // a id_ could be a confId here
+    std::string id_;
+    // for current conf/call info
     std::string accountId_;
     std::string convUid_;
+    QMetaObject::Connection callStatusChangedConnection_;
+    QMetaObject::Connection addedToConferenceConnection_;
+
+    // overlay
+    VideoOverlay* overlay_;
+    // audio only overlay
+    // TODO: put this into the VideoOverlay class
+    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
 
     // preview
     PreviewSnap currentPreviewLocation_ = PreviewSnap::SE;
     VideoCallPreviewWidget* previewWidget_;
     constexpr static int previewMargin_ = 15;
-
-    // video overlay
-    VideoOverlay* overlay_;
-
-    // audio only overlay
-    // TODO: put this into the VideoOverlay class
-    CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
-
-    QMetaObject::Connection callStatusChangedConnection_;
-
-    // dragging the preview
     QPropertyAnimation* moveAnim_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;
