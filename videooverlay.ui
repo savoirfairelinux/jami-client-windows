@@ -125,6 +125,47 @@
        </widget>
       </item>
       <item>
+       <widget class="OverlayButton" name="addToConferenceButton">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Add a contact to this call</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="originPix" stdset="0">
+         <pixmap resource="ressources.qrc">:/images/icons/ic_group_add_white_24dp.png</pixmap>
+        </property>
+        <property name="checkedPix" stdset="0">
+         <pixmap resource="ressources.qrc">:/images/icons/ic_group_add_white_24dp.png</pixmap>
+        </property>
+        <property name="tintColor" stdset="0">
+         <color>
+          <red>0</red>
+          <green>170</green>
+          <blue>255</blue>
+         </color>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="OverlayButton" name="transferCallButton">
         <property name="minimumSize">
          <size>
@@ -143,6 +184,12 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
         <property name="originPix" stdset="0">
          <pixmap resource="ressources.qrc">:/images/icons/ic_call_transfer_white_24px.png</pixmap>
@@ -580,6 +627,7 @@
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="ressources.qrc"/>
   <include location="ressources.qrc"/>
  </resources>
  <connections/>
