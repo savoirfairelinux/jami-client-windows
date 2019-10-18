@@ -51,7 +51,14 @@ public:
     /**
      * Reconnect the started rendering connection for this object.
      */
-    void connectRendering();
+    void connectStartRendering();
+
+    /**
+     * Get a pointer to the renderer and reconnect the update/stopped
+     * rendering connections for this object.
+     */
+    void startRendering();
+
     /**
      * Get the most recently rendered frame as a QImage.
      * @return the rendered image of this object's id
