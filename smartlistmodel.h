@@ -1,6 +1,7 @@
-/***************************************************************************
-* Copyright (C) 2017-2019 by Savoir-faire Linux                                *
-* Author: Anthony L�onard <anthony.leonard@savoirfairelinux.com>          *
+/**************************************************************************
+* Copyright (C) 2017-2019 by Savoir-faire Linux                           *
+* Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -17,15 +18,14 @@
 **************************************************************************/
 #pragma once
 
-// Qt include
-#include <QAbstractItemModel>
-
-// LRC
 #include "api/account.h"
 #include "api/conversation.h"
+#include "api/conversationmodel.h"
 #include "api/contact.h"
 
-namespace lrc { namespace api { class ConversationModel; } }
+#include <QAbstractItemModel>
+
+using namespace lrc::api;
 
 class SmartListModel : public QAbstractItemModel
 {
@@ -34,6 +34,13 @@ public:
     using AccountInfo = lrc::api::account::Info;
     using ConversationInfo = lrc::api::conversation::Info;
     using ContactInfo = lrc::api::contact::Info;
+
+    enum class Type {
+        CONVERSATION,
+        CONFERENCE,
+        TRANSFER,
+        COUNT__
+    };
 
     enum Role {
         DisplayName = Qt::UserRole + 1,
@@ -49,10 +56,15 @@ public:
         UID,
         ContextMenuOpen,
         InCall,
-        CallStateStr
+        CallStateStr,
+        SectionName,
+        AccountId
     };
 
-    explicit SmartListModel(const std::string& accId, QObject *parent = 0, bool contactList = false);
+    explicit SmartListModel(const std::string& accId,
+                            QObject *parent = 0,
+                            SmartListModel::Type listModelType = Type::CONVERSATION,
+                            const std::string& convUid = {});
 
     // QAbstractItemModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -63,11 +75,22 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
     void setAccount(const std::string& accId);
+    void setConferenceableFilter(const std::string& filter = {});
+    void toggleSection(const QString& section);
 
     // hack for context menu highlight retention
     bool isContextMenuOpen{ false };
 
 private:
-    std::string accId_;
-    bool contactList_;
+    std::string accountId_;
+
+    QVariant getConversationItemData(const ConversationInfo& item,
+                                     const AccountInfo& accountInfo,
+                                     int role) const;
+    // list sectioning
+    std::string convUid_;
+    Type listModelType_;
+    QMap<QString, bool> sectionState_;
+    std::map<ConferenceableItem, ConferenceableValue> conferenceables_;
+
 };

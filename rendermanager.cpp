@@ -48,10 +48,15 @@ FrameWrapper::connectStartRendering()
         &FrameWrapper::slotRenderingStarted);
 }
 
-void
+bool
 FrameWrapper::startRendering()
 {
-    renderer_ = const_cast<video::Renderer*>(&avModel_.getRenderer(id_));
+    try {
+        renderer_ = const_cast<video::Renderer*>(&avModel_.getRenderer(id_));
+    } catch (std::out_of_range& e) {
+        qWarning() << e.what();
+        return false;
+    }
 
     QObject::disconnect(renderConnections_.updated);
     QObject::disconnect(renderConnections_.stopped);
@@ -67,6 +72,8 @@ FrameWrapper::startRendering()
         &AVModel::rendererStopped,
         this,
         &FrameWrapper::slotRenderingStopped);
+
+    return true;
 }
 
 QImage*
@@ -88,7 +95,10 @@ FrameWrapper::slotRenderingStarted(const std::string& id)
         return;
     }
 
-    startRendering();
+    if (!startRendering()) {
+        qWarning() << "Couldn't start rendering for id: " << id_.c_str();
+        return;
+    }
 
     isRendering_ = true;
 
@@ -256,7 +266,9 @@ RenderManager::addDistantRenderer(const std::string& id)
     // check if a FrameWrapper with this id exists
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if ( dfwIt != distantFrameWrapperMap_.end()) {
-        dfwIt->second->startRendering();
+        if (!dfwIt->second->startRendering()) {
+            qWarning() << "Couldn't start rendering for id: " << id.c_str();
+        }
     } else {
         auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
 
