@@ -38,7 +38,7 @@ FrameWrapper::~FrameWrapper()
 }
 
 void
-FrameWrapper::connectRendering()
+FrameWrapper::connectStartRendering()
 {
     QObject::disconnect(renderConnections_.started);
     renderConnections_.started = QObject::connect(
@@ -46,6 +46,27 @@ FrameWrapper::connectRendering()
         &AVModel::rendererStarted,
         this,
         &FrameWrapper::slotRenderingStarted);
+}
+
+void
+FrameWrapper::startRendering()
+{
+    renderer_ = const_cast<video::Renderer*>(&avModel_.getRenderer(id_));
+
+    QObject::disconnect(renderConnections_.updated);
+    QObject::disconnect(renderConnections_.stopped);
+
+    renderConnections_.updated = QObject::connect(
+        &avModel_,
+        &AVModel::frameUpdated,
+        this,
+        &FrameWrapper::slotFrameUpdated);
+
+    renderConnections_.stopped = QObject::connect(
+        &avModel_,
+        &AVModel::rendererStopped,
+        this,
+        &FrameWrapper::slotRenderingStopped);
 }
 
 QImage*
@@ -67,22 +88,7 @@ FrameWrapper::slotRenderingStarted(const std::string& id)
         return;
     }
 
-    QObject::disconnect(renderConnections_.updated);
-    QObject::disconnect(renderConnections_.stopped);
-
-    renderer_ = const_cast<video::Renderer*>(&avModel_.getRenderer(id_));
-
-    renderConnections_.updated = QObject::connect(
-        &avModel_,
-        &AVModel::frameUpdated,
-        this,
-        &FrameWrapper::slotFrameUpdated);
-
-    renderConnections_.stopped = QObject::connect(
-        &avModel_,
-        &AVModel::rendererStopped,
-        this,
-        &FrameWrapper::slotRenderingStopped);
+    startRendering();
 
     isRendering_ = true;
 
@@ -123,6 +129,7 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
             );
         }
     }
+
     emit frameUpdated(id);
 }
 
@@ -177,7 +184,7 @@ RenderManager::RenderManager(AVModel& avModel)
             emit previewRenderingStopped();
         });
 
-    previewFrameWrapper_->connectRendering();
+    previewFrameWrapper_->connectStartRendering();
 }
 
 RenderManager::~RenderManager()
@@ -243,7 +250,7 @@ RenderManager::addDistantRenderer(const std::string& id)
     // check if a FrameWrapper with this id exists
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if ( dfwIt != distantFrameWrapperMap_.end()) {
-        dfwIt->second->connectRendering();
+        dfwIt->second->startRendering();
     } else {
         auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
 
@@ -265,7 +272,7 @@ RenderManager::addDistantRenderer(const std::string& id)
             });
 
         // connect FrameWrapper to avmodel
-        dfw->connectRendering();
+        dfw->connectStartRendering();
 
         // add to map
         distantFrameWrapperMap_.insert(std::make_pair(id, std::move(dfw)));
