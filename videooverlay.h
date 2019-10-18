@@ -60,8 +60,10 @@ private slots:
     void on_noVideoButton_toggled(bool checked);
     void on_recButton_clicked();
     void on_transferCallButton_toggled(bool checked);
+    void on_addToConferenceButton_toggled(bool checked);
     void on_sipInputPanelButton_toggled(bool checked);
     void slotWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void slotWillJoinConference(const std::string& callId, const std::string& contactUri);
     void slotSIPInputPanelClicked(const int& id);
     void fadeOverlayOut();
 
