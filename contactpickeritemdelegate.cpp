@@ -57,6 +57,29 @@ ContactPickerItemDelegate::paint(QPainter* painter
         highlightMap_[index.row()] = option.state & QStyle::State_MouseOver;
     }
 
+    QRect &rect = opt.rect;
+
+    QString sectionName = index.data(static_cast<int>(SmartListModel::Role::SectionName)).value<QString>();
+    if (!sectionName.isEmpty()) {
+        painter->fillRect(option.rect, RingTheme::lightGrey_);
+        QFont font(painter->font());
+        QPen pen(painter->pen());
+        auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+        if (scalingRatio > 1.0) {
+            font.setPointSize(fontSize_ - 2);
+        } else {
+            font.setPointSize(fontSize_);
+        }
+        font.setItalic(false);
+        font.setBold(false);
+        pen.setColor(RingTheme::lightBlack_);
+        painter->setPen(pen);
+        painter->setFont(font);
+        QMargins padding(4, 0, 0, 0);
+        painter->drawText(rect - padding, Qt::AlignVCenter | Qt::AlignLeft, sectionName);
+        return;
+    }
+
     QColor presenceBorderColor = Qt::white;
     auto rowHighlight = highlightMap_.find(index.row());
     if (selected) {
@@ -66,8 +89,6 @@ ContactPickerItemDelegate::paint(QPainter* painter
         painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
         presenceBorderColor = RingTheme::smartlistHighlight_;
     }
-
-    QRect &rect = opt.rect;
 
     // Avatar drawing
     opt.decorationSize = QSize(sizeImage_, sizeImage_);
@@ -117,7 +138,11 @@ ContactPickerItemDelegate::sizeHint(const QStyleOptionViewItem& option,
     const QModelIndex& index) const
 {
     Q_UNUSED(option);
-    Q_UNUSED(index);
+    if (!index.data(static_cast<int>(SmartListModel::Role::SectionName))
+        .value<QString>()
+        .isEmpty()) {
+        return QSize(0, sectionCellHeight_);
+    }
     return QSize(0, cellHeight_);
 }
 
@@ -130,7 +155,6 @@ ContactPickerItemDelegate::paintRingContactItem(QPainter* painter,
     Q_UNUSED(option);
     QFont font(painter->font());
     QPen pen(painter->pen());
-    painter->setPen(pen);
 
     auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
     if (scalingRatio > 1.0) {

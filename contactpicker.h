@@ -19,12 +19,12 @@
 
 #pragma once
 
-#include <QDialog>
-#include <QSortFilterProxyModel>
-
 #include "smartlistmodel.h"
 #include "utils.h"
 #include "lrcinstance.h"
+
+#include <QDialog>
+#include <QSortFilterProxyModel>
 
 namespace Ui {
 class ContactPicker;
@@ -61,24 +61,19 @@ class ContactPicker : public QDialog
     Q_OBJECT;
 
 public:
-    enum class Type {
-        CONFERENCE,
-        TRANSFER,
-        COUNT__
-    };
-
     explicit ContactPicker(QWidget *parent = 0);
     ~ContactPicker();
     void setTitle(const QString& title);
-    void setType(const Type& type);
+    void setType(const SmartListModel::Type& type);
     void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
 
 signals:
-    void contactWillJoinConference(const std::string& callId, const std::string& contactUri);
-    void contactWillDoTransfer(const std::string& callId, const std::string& contactUri);
+    void contactWillJoinConference(const std::string& contactUri);
+    void callWillJoinConference(const std::string& callId);
+    void contactWillDoTransfer(const std::string& contactUri);
     void willClose(QMouseEvent *event);
 
 protected slots:
@@ -93,7 +88,7 @@ private:
 
     std::unique_ptr<SmartListModel> smartListModel_;
     SelectableProxyModel* selectableProxyModel_;
-    Type type_;
     QString CalleeDisplayName_;
 
+    SmartListModel::Type listModeltype_;
 };
