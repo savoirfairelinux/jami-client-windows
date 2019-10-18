@@ -150,8 +150,7 @@ VideoView::slotCallStatusChanged(const std::string& callId)
 void
 VideoView::simulateShowChatview(bool checked)
 {
-    Q_UNUSED(checked);
-    overlay_->simulateShowChatview(true);
+    overlay_->simulateShowChatview(checked);
 }
 
 void
@@ -202,6 +201,15 @@ void
 VideoView::toggleFullScreen()
 {
     emit toggleFullScreenClicked();
+}
+
+void
+VideoView::slotAddedToConference(const std::string& callId, const std::string& confId)
+{
+    //setupForConversation(accountId_, convUid_);
+    qDebug() << "slotAddedToConference callId " << callId.c_str() << " conf " << confId.c_str();
+    LRCInstance::renderer()->addDistantRenderer(confId);
+    ui->distantWidget->setRendererId(confId);
 }
 
 void
@@ -357,6 +365,9 @@ VideoView::setupForConversation(const std::string& accountId,
     // close chat panel
     emit overlay_->setChatVisibility(false);
 
+    auto rid = convInfo.callId;
+    id_ = convInfo.confId.empty() ? convInfo.callId : convInfo.confId;
+
     // setup overlay
     // TODO(atraczyk): all of this could be done with conversation::Info
     // transfer call will only happen in SIP calls
@@ -380,15 +391,21 @@ VideoView::setupForConversation(const std::string& accountId,
     previewWidget_->setVisible(shouldShowPreview());
 
     // distant
-    ui->distantWidget->setRendererId(call->id);
+    ui->distantWidget->setRendererId(id_);
 
-    // listen for the end of a call
-    disconnect(callStatusChangedConnection_);
-    callStatusChangedConnection_ = connect(
+    QObject::disconnect(callStatusChangedConnection_);
+    callStatusChangedConnection_ = QObject::connect(
         accInfo.callModel.get(),
         &NewCallModel::callStatusChanged,
         this,
         &VideoView::slotCallStatusChanged);
+
+    QObject::disconnect(addedToConferenceConnection_);
+    addedToConferenceConnection_ = QObject::connect(
+        accInfo.callModel.get(),
+        &NewCallModel::callAddedToConference,
+        this,
+        &VideoView::slotAddedToConference);
 }
 
 void

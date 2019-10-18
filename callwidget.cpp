@@ -1311,7 +1311,7 @@ CallWidget::update()
     updateComboBox();
     connectConversationModel();
 }
-
+#pragma optimize("", off)
 void
 CallWidget::connectAccount(const std::string& accId)
 {
@@ -1370,11 +1370,19 @@ CallWidget::connectAccount(const std::string& accId)
                     ui->messageView->printHistory(*convModel, conversation.interactions);
                 }
             });
+        disconnect(addedToConferenceConnection_);
+        addedToConferenceConnection_ = connect(
+            accInfo.callModel.get(),
+            &NewCallModel::callAddedToConference,
+            [this](const std::string& callId, const std::string& confId) {
+                ui->videoView->slotAddedToConference(callId, confId);
+                //LRCInstance::renderer()->addDistantRenderer(confId);
+            });
     } catch (...) {
         qWarning() << "Couldn't get account: " << accId.c_str();
     }
 }
-
+#pragma optimize("", on)
 void
 CallWidget::setCallPanelVisibility(bool visible)
 {
