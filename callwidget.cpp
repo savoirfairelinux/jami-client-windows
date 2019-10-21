@@ -877,6 +877,10 @@ void CallWidget::updateConversationsFilterWidget()
         LRCInstance::getCurrentConversationModel()->setFilter(currentTypeFilter_);
     }
     ui->conversationsFilterWidget->setVisible(invites);
+    if (!invites) {
+        Utils::whileBlocking<QPushButton>(ui->btnConversations)->setChecked(true);
+        Utils::whileBlocking<QPushButton>(ui->btnInvites)->setChecked(false);
+    }
     ui->searchTopLeftWidget->setVisible(invites);
     ui->searchTopRightWidget->setVisible(invites);
     ui->conversationsFilterWidget->update();
