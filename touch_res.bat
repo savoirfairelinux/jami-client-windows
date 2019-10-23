@@ -1,1 +1,1 @@
-copy ressources.qrc /B+ ,,/Y
+copy resources/ressources.qrc /B+ ,,/Y
