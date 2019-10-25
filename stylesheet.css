@@ -835,6 +835,12 @@ QWidget#contactPickerWidget {
     background-color: white;
 }
 
+QWidget#clipRecorderWidget {
+    border-radius: 10px;
+    border: solid 1px transparent;
+    background-color: lightgrey;
+}
+
 QProgressBar#audioInputMeter {
     border: 0px solid #606060;
     background: lightgrey;
@@ -854,4 +860,28 @@ QLabel#nameLabel {
 
 QWidget#videoPage {
     background: black;
+}
+
+QPushButton#playBtn, QPushButton#sendBtn, QPushButton#reRecordBtn, QPushButton#startAndFinishRecordBtn, QPushButton#stopAndDeleteBtn, QPushButton#stopPlayingBtn {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:hover, QPushButton#sendBtn:hover, QPushButton#reRecordBtn:hover, QPushButton#startAndFinishRecordBtn:hover, QPushButton#stopAndDeleteBtn:hover, QPushButton#stopPlayingBtn:hover {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:pressed, QPushButton#sendBtn:pressed, QPushButton#reRecordBtn:pressed, QPushButton#startAndFinishRecordBtn:pressed, QPushButton#stopAndDeleteBtn:pressed, QPushButton#stopPlayingBtn:pressed {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:checked, QPushButton#sendBtn:checked, QPushButton#reRecordBtn:checked, QPushButton#startAndFinishRecordBtn:checked, QPushButton#stopAndDeleteBtn:checked, QPushButton#stopPlayingBtn:checked {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
 }
