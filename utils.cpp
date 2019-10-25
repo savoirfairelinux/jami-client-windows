@@ -644,6 +644,31 @@ Utils::cropImage(const QImage& img)
     return img.copy({ 0, (h - w) / 2, w, w });
 }
 
+QString
+Utils::convertTimeDisplayFromMilisecond(int seconds)
+{
+    int minutes = seconds/ 60;
+    int secondToDisplay = seconds % 60;
+    std::string sec, min, time;
+    if(secondToDisplay / 10 < 1)
+    {
+        sec = "0" + std::to_string(secondToDisplay);
+    }else
+    {
+        sec = std::to_string(secondToDisplay);
+    }
+    if(minutes / 10 < 1)
+    {
+        min = "0" + std::to_string(minutes);
+    }else
+    {
+        min = std::to_string(minutes);
+    }
+    time = min + ":" + sec;
+
+    return QString::fromStdString(time);
+}
+
 QByteArray
 Utils::QByteArrayFromFile(const QString& filename)
 {
