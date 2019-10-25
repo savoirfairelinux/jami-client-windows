@@ -43,6 +43,7 @@
 #include <fstream>
 
 #include "lrcinstance.h"
+#include "cliprecorder.h"
 #include "messagewebpage.h"
 #include "utils.h"
 #include "webchathelpers.h"
@@ -236,6 +237,16 @@ void MessageWebView::runJsText()
         textSelected_ = val.toBool();
         emit textSelectedReady();
     });
+}
+
+void MessageWebView::openAudioRecorder(int spikePosX, int spikePosY)
+{
+    // TODO:Open the audio recorder dialog box
+}
+
+void MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
+{
+    // TODO:Open the video recorder dialog box
 }
 
 void MessageWebView::buildView()
@@ -639,6 +650,34 @@ PrivateBridging::emitPasteKeyDetected()
         emit messageView->pasteKeyDetected();
     } else {
         qDebug() << "JS bridging - exception during emitPasteKeyDetected";
+    }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::openAudioRecorder(int spikePosX, int spikePosY)
+{
+    //call the open audio recorder function in messageweview
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->openAudioRecorder(spikePosX, spikePosY);
+        }
+    } catch (...) {
+        qDebug() << "JS bridging - exception during openAudioRecorder!";
+    }
+    return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::openVideoRecorder(int spikePosX, int spikePosY)
+{
+    //call the open video recorder function in messageweview
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->openVideoRecorder(spikePosX, spikePosY);
+        }
+    } catch (...) {
+        qDebug() << "JS bridging - exception during openVideoRecorder!";
     }
     return 0;
 }
