@@ -78,7 +78,10 @@ HEADERS += ./aboutdialog.h \
         ./previewwidget.h \
         ./rendermanager.h \
         ./distantwidget.h \
-        ./videowidgetbase.h
+        ./videowidgetbase.h \
+        ./audiorecordview.h \
+        ./cliprecorder.h \
+        ./videorecordview.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -138,7 +141,10 @@ SOURCES += ./aboutdialog.cpp \
         ./previewwidget.cpp \
         ./rendermanager.cpp \
         ./distantwidget.cpp \
-        ./videowidgetbase.cpp
+        ./videowidgetbase.cpp \
+        ./audiorecordview.cpp \
+        ./cliprecorder.cpp \
+        ./videorecordview.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -163,5 +169,25 @@ FORMS += ./aboutdialog.ui \
         ./videoview.ui \
         ./sipkeypad.ui \
         ./callaudioonlyavataroverlay.ui \
-        ./accountmigration.ui
+        ./accountmigration.ui \
+        ./audiorecordview.ui \
+        ./cliprecorder.ui \
+        ./videorecordview.ui
 RESOURCES += ressources.qrc
+
+DISTFILES += \
+    images/icons/av clip record view icons/baseline_fiber_manual_record_black_24dp.png \
+    images/icons/av clip record view icons/baseline_fiber_manual_record_black_24dp.png \
+    images/icons/av clip record view icons/baseline_pause_black_24dp.png \
+    images/icons/av clip record view icons/baseline_pause_black_24dp.png \
+    images/icons/av clip record view icons/baseline_play_arrow_black_24dp.png \
+    images/icons/av clip record view icons/baseline_play_arrow_black_24dp.png \
+    images/icons/av clip record view icons/baseline_stop_black_24dp.png \
+    images/icons/av clip record view icons/baseline_stop_black_24dp.png \
+    images/icons/av clip record view icons/re-record.png \
+    images/icons/av clip record view icons/record-end.png \
+    images/icons/av clip record view icons/record-end.png \
+    images/icons/av clip record view icons/record-start.png \
+    images/icons/av clip record view icons/record-start.png \
+    images/icons/av clip record view icons/rubbish-bin.png \
+    images/icons/av clip record view icons/rubbish-bin.png
