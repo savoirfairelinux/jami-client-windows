@@ -49,6 +49,8 @@ public:
     Q_INVOKABLE int emitMessagesCleared();
     Q_INVOKABLE int emitMessagesLoaded();
     Q_INVOKABLE int emitPasteKeyDetected();
+    Q_INVOKABLE int openAudioRecorder(int spikePosX,int spikePosY);
+    Q_INVOKABLE int openVideoRecorder(int spikePosX,int spikePosY);
 };
 
 class MessageWebView : public QWebEngineView
@@ -87,6 +89,8 @@ public:
     void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
+    void openAudioRecorder(int spikePosX,int spikePosY);
+    void openVideoRecorder(int spikePosX,int spikePosY);
 
 protected:
 
