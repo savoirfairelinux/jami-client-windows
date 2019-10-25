@@ -81,7 +81,10 @@ HEADERS += ./aboutdialog.h \
         ./videowidgetbase.h \
         ./section.h \
         ./collapsiblepasswordwidget.h \
-        ./notifypushbutton.h
+        ./notifypushbutton.h \
+        ./audiorecordview.h \
+        ./cliprecorder.h \
+        ./videorecordview.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -144,7 +147,10 @@ SOURCES += ./aboutdialog.cpp \
         ./videowidgetbase.cpp \
         ./section.cpp \
         ./collapsiblepasswordwidget.cpp \
-        ./notifypushbutton.cpp
+        ./notifypushbutton.cpp \
+        ./audiorecordview.cpp \
+        ./cliprecorder.cpp \
+        ./videorecordview.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -171,5 +177,8 @@ FORMS += ./aboutdialog.ui \
         ./callaudioonlyavataroverlay.ui \
         ./accountmigration.ui \
         ./section.ui \
-        ./collapsiblepasswordwidget.ui
+        ./collapsiblepasswordwidget.ui \
+        ./audiorecordview.ui \
+        ./cliprecorder.ui \
+        ./videorecordview.ui
 RESOURCES += ressources.qrc
