@@ -623,11 +623,10 @@
   <customwidget>
    <class>OverlayButton</class>
    <extends>QPushButton</extends>
-   <header location="global">overlaybutton.h</header>
+   <header>overlaybutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
   <include location="ressources.qrc"/>
  </resources>
  <connections/>
