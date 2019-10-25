@@ -1361,14 +1361,14 @@ CallWidget::connectAccount(const std::string& accountId)
         contactAddedConnection_ = QObject::connect(
             accInfo.contactModel.get(),
             &lrc::api::ContactModel::contactAdded,
-            [this, accountId](const std::string& contactUri) {
+            [this, accountId](const lrc::api::profile::Info& profileInfo) {
                 auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
                 auto convModel = LRCInstance::getCurrentConversationModel();
                 auto conversation = LRCInstance::getCurrentConversation();
                 if (conversation.uid.empty()) {
                     return;
                 }
-                if (contactUri == accInfo.contactModel->getContact(conversation.participants.at(0)).profileInfo.uri) {
+                if (profileInfo.uri == accInfo.contactModel->getContact(conversation.participants.at(0)).profileInfo.uri) {
                     // update call screen
                     auto avatarImg = QPixmap::fromImage(imageForConv(conversation.uid));
                     ui->callingPhoto->setPixmap(avatarImg);
