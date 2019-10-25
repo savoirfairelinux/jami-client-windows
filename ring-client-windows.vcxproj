@@ -106,7 +106,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>PROCESS_DPI_AWARE=1;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PROCESS_DPI_AWARE=1;AUDIO_PLAYER_NOT_READY=1;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -146,7 +146,7 @@
     <QtMoc>
       <QTDIR>$(QTDIR)</QTDIR>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <Define>PROCESS_DPI_AWARE=1;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
+      <Define>PROCESS_DPI_AWARE=1;AUDIO_PLAYER_NOT_READY=1;_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</Define>
       <CompilerFlavor>msvc</CompilerFlavor>
       <Include>$(Configuration)/moc_predefs.h</Include>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -339,11 +339,13 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClCompile Include="accountmigrationdialog.cpp" />
     <ClCompile Include="advancedsettingswidget.cpp" />
     <ClCompile Include="advancedsipsettingwidget.cpp" />
+    <ClCompile Include="audiorecordview.cpp" />
     <ClCompile Include="avatargraphicsview.cpp" />
     <ClCompile Include="banneditemwidget.cpp" />
     <ClCompile Include="bannedlistmodel.cpp" />
     <ClCompile Include="animationhelpers.cpp" />
     <ClCompile Include="callaudioonlyavataroverlay.cpp" />
+    <ClCompile Include="cliprecorder.cpp" />
     <ClCompile Include="connectivitymonitor.cpp" />
     <ClCompile Include="contactpicker.cpp" />
     <ClCompile Include="contactpickeritemdelegate.cpp" />
@@ -441,6 +443,7 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClCompile Include="toggleswitch.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="videooverlay.cpp" />
+    <ClCompile Include="videorecordview.cpp" />
     <ClCompile Include="videoview.cpp" />
     <ClCompile Include="updateconfirmdialog.cpp" />
     <ClCompile Include="videowidgetbase.cpp" />
@@ -644,6 +647,19 @@ del /s /q $(OutDir)\Jami.exp</Command>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
     </QtMoc>
+    <QtMoc Include="cliprecorder.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
+    <QtMoc Include="audiorecordview.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_audiorecordview.h" />
+    <ClInclude Include="GeneratedFiles\ui_cliprecorder.h" />
+    <ClInclude Include="GeneratedFiles\ui_videorecordview.h" />
     <ClInclude Include="pixbufmanipulator.h" />
     <QtMoc Include="ringbutton.h">
     </QtMoc>
@@ -748,6 +764,11 @@ del /s /q $(OutDir)\Jami.exp</Command>
     </QtMoc>
     <ClInclude Include="version.h" />
     <QtMoc Include="videowidgetbase.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
+    <QtMoc Include="videorecordview.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
@@ -860,11 +881,13 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <QtUic Include="animatedoverlay.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="audiorecordview.ui" />
     <QtUic Include="banneditemwidget.ui" />
     <QtUic Include="callaudioonlyavataroverlay.ui" />
     <QtUic Include="callwidget.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="cliprecorder.ui" />
     <QtUic Include="sipkeypad.ui" />
     <QtUic Include="updatedownloaddialog.ui" />
     <QtUic Include="contactpicker.ui" />
@@ -892,6 +915,7 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <QtUic Include="updateconfirmdialog.ui" />
     <QtUic Include="videooverlay.ui">
     </QtUic>
+    <QtUic Include="videorecordview.ui" />
     <QtUic Include="videoview.ui">
     </QtUic>
   </ItemGroup>
