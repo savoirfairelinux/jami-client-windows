@@ -318,7 +318,7 @@ RenderManager::removeDistantRenderer(const std::string& id)
 void
 RenderManager::slotDeviceEvent()
 {
-    auto defaultDeviceName = avModel_.getDefaultDeviceName();
+    auto defaultDevice = avModel_.getDefaultDevice();
     auto currentCaptureDevice = avModel_.getCurrentVideoCaptureDevice();
     // decide whether a device has plugged, unplugged, or nothing has changed
     auto deviceList = avModel_.getDevices();
@@ -342,14 +342,14 @@ RenderManager::slotDeviceEvent()
             stopPreviewing();
         } else if (deviceEvent == DeviceEvent::RemovedCurrent &&
                    currentDeviceListSize > 0) {
-            avModel_.setCurrentVideoCaptureDevice(defaultDeviceName);
+            avModel_.setCurrentVideoCaptureDevice(defaultDevice);
             startPreviewing(true);
         } else {
             startPreviewing();
         }
     } else if (deviceEvent == DeviceEvent::Added &&
                currentDeviceListSize == 1) {
-        avModel_.setCurrentVideoCaptureDevice(defaultDeviceName);
+        avModel_.setCurrentVideoCaptureDevice(defaultDevice);
     }
 
     emit videoDeviceListChanged();
