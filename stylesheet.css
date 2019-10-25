@@ -194,33 +194,33 @@ QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
     border: solid 1px;
 }
 
-    QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#hangupButton:hover,
-    QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
-    QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
-    QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
-    QPushButton#sipInputPanelButton:hover, QPushButton#addToConferenceButton:hover {
-        background-color: transparent;
-        border-radius: 18px;
-        border: solid 1px;
-    }
+QPushButton#holdButton:hover, QPushButton#chatButton:hover, QPushButton#noMicButton:hover, QPushButton#hangupButton:hover,
+QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
+QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
+QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
+QPushButton#sipInputPanelButton:hover, QPushButton#addToConferenceButton:hover {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
 
-    QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
-    QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
-    QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
-    QPushButton#recButton:pressed, QPushButton#addToConferenceButton:pressed {
-        background-color: transparent;
-        border-radius: 18px;
-        border: solid 1px;
-    }
+QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
+QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
+QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
+QPushButton#recButton:pressed, QPushButton#addToConferenceButton:pressed {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
 
-    QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
-    QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
-    QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
-    QPushButton#sipInputPanelButton:checked, QPushButton#addToConferenceButton:checked {
-        background-color: transparent;
-        border-radius: 18px;
-        border: solid 1px;
-    }
+QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
+QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
+QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
+QPushButton#sipInputPanelButton:checked, QPushButton#addToConferenceButton:checked {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
 
 QPushButton#updateCancelButton {
     padding: 4px;
@@ -734,12 +734,12 @@ QListWidget .QLineEdit {
 QListWidget .QPushButton {
     background-color: transparent;
 }
-    QListWidget .QPushButton:hover {
-        background-color: transparent;
-    }
-    QListWidget .QPushButton:pressed {
-        background-color: transparent;
-    }
+QListWidget .QPushButton:hover {
+    background-color: transparent;
+}
+QListWidget .QPushButton:pressed {
+    background-color: transparent;
+}
 
 QListView::item:selected {
     background-color: rgb(220, 220, 220);
@@ -835,15 +835,21 @@ QWidget#contactPickerWidget {
     background-color: white;
 }
 
+QWidget#clipRecorderWidget {
+    border-radius: 10px;
+    border: solid 1px transparent;
+    background-color: #aeadac;
+}
+
 QProgressBar#audioInputMeter {
     border: 0px solid #606060;
     background: lightgrey;
 }
 
-    QProgressBar#audioInputMeter::chunk {
-        background-color: #0c79aa;
-        margin: 2px;
-    }
+QProgressBar#audioInputMeter::chunk {
+    background-color: #0c79aa;
+    margin: 2px;
+}
 
 QLabel#nameLabel {
     font-size: 20px;
@@ -854,4 +860,28 @@ QLabel#nameLabel {
 
 QWidget#videoPage {
     background: black;
+}
+
+QPushButton#playBtn, QPushButton#sendBtn, QPushButton#reRecordBtn, QPushButton#startAndFinishRecordBtn, QPushButton#stopAndDeleteBtn, QPushButton#stopPlayingBtn {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:hover, QPushButton#sendBtn:hover, QPushButton#reRecordBtn:hover, QPushButton#startAndFinishRecordBtn:hover, QPushButton#stopAndDeleteBtn:hover, QPushButton#stopPlayingBtn:hover {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:pressed, QPushButton#sendBtn:pressed, QPushButton#reRecordBtn:pressed, QPushButton#startAndFinishRecordBtn:pressed, QPushButton#stopAndDeleteBtn:pressed, QPushButton#stopPlayingBtn:pressed {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#playBtn:checked, QPushButton#sendBtn:checked, QPushButton#reRecordBtn:checked, QPushButton#startAndFinishRecordBtn:checked, QPushButton#stopAndDeleteBtn:checked, QPushButton#stopPlayingBtn:checked {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
 }

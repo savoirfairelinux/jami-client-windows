@@ -243,6 +243,15 @@
     <ClCompile Include="distantwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cliprecorder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videorecordview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="audiorecordview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -426,6 +435,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="distantwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="cliprecorder.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="audiorecordview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="videorecordview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -719,6 +737,15 @@
     <QtUic Include="accountmigration.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="cliprecorder.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="videorecordview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="audiorecordview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="images\FontAwesome.otf">
@@ -866,6 +893,15 @@
     </ClInclude>
     <ClInclude Include="version.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_cliprecorder.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_audiorecordview.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_videorecordview.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
