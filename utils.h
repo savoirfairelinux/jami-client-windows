@@ -108,6 +108,9 @@ QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
 
+// time
+QString convertTimeDisplayFromMilisecond(int second);
+
 // misc helpers
 void swapQListWidgetItems(QListWidget* list, bool down = true);
 
