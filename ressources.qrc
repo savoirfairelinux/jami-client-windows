@@ -16,6 +16,7 @@
     <file>images/jami.ico</file>
     <file>images/jami.png</file>
     <file>images/spike.png</file>
+    <file>images/bluespike.png</file>
     <file>images/waiting.gif</file>
     <file>images/icons/ic_add_black_18dp_2x.png</file>
     <file>images/icons/info-24px.svg</file>
@@ -88,5 +89,13 @@
     <file>images/icons/icon-keypad-24.png</file>
     <file>images/icons/ic_play_white_24dp.png</file>
     <file>images/icons/icon-keypad-24-2x.png</file>
+    <file>images/icons/av clip record view icons/baseline_fiber_manual_record_black_24dp.png</file>
+    <file>images/icons/av clip record view icons/baseline_pause_black_24dp.png</file>
+    <file>images/icons/av clip record view icons/baseline_play_arrow_black_24dp.png</file>
+    <file>images/icons/av clip record view icons/baseline_stop_black_24dp.png</file>
+    <file>images/icons/av clip record view icons/re-record.png</file>
+    <file>images/icons/av clip record view icons/record-end.png</file>
+    <file>images/icons/av clip record view icons/record-start.png</file>
+    <file>images/icons/av clip record view icons/rubbish-bin.png</file>
   </qresource>
 </RCC>
