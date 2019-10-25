@@ -271,7 +271,7 @@ void SettingsWidget::slotAccountListChanged()
     } else {
         disconnectAccountConnections();
     }
-    auto device = LRCInstance::avModel().getDefaultDeviceName();
+    auto device = LRCInstance::avModel().getDefaultDevice();
     if (LRCInstance::avModel().getCurrentVideoCaptureDevice().empty()) {
         LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
     }
@@ -1042,13 +1042,26 @@ void SettingsWidget::slotAudioInputIndexChanged(int index)
 
 void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
-    std::string device = ui->deviceBox->itemData(index, Qt::DisplayRole)
+    std::string deviceName = ui->deviceBox->itemData(index, Qt::DisplayRole)
         .toString()
         .toStdString();
-    LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
-    LRCInstance::avModel().setDefaultDevice(device);
-    setFormatListForDevice(device);
-    startPreviewing(true);
+    auto devices = LRCInstance::avModel().getDevices();
+    try {
+        auto iter = std::find_if(devices.begin(), devices.end(),
+            [deviceName](const std::string& d) {
+                auto settings = LRCInstance::avModel().getDeviceSettings(d);
+                return settings.name == deviceName;
+            });
+        if (iter == devices.end()) {
+            qWarning() << "Couldn't find device: " << deviceName.c_str();
+            return;
+        }
+        auto settings = LRCInstance::avModel().getDeviceSettings(*iter);
+        LRCInstance::avModel().setCurrentVideoCaptureDevice(settings.id);
+        LRCInstance::avModel().setDefaultDevice(settings.id);
+        setFormatListForDevice(settings.id);
+        startPreviewing(true);
+    } catch (...) {}
 }
 
 void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
@@ -1056,8 +1069,12 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     auto resolution = formatIndexList_.at(index).first;
     auto rate = formatIndexList_.at(index).second;
     auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-    lrc::api::video::Settings settings {{}, device, rate, resolution};
-    LRCInstance::avModel().setDeviceSettings(settings);
+    try {
+        auto settings = LRCInstance::avModel().getDeviceSettings(device);
+        settings.rate = rate;
+        settings.size = resolution;
+        LRCInstance::avModel().setDeviceSettings(settings);
+    } catch (...) {}
 }
 
 void SettingsWidget::startPreviewing(bool force)
@@ -1080,29 +1097,33 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
     if (deviceCapabilities.size() == 0) {
         return;
     }
-    auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
-    auto currentChannel = currentSettings.channel;
-    currentChannel = currentChannel.empty() ? "default" : currentChannel;
-    auto channelCaps = deviceCapabilities.at(currentChannel);
+    try {
+        auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
+        auto currentChannel = currentSettings.channel;
+        currentChannel = currentChannel.empty() ? "default" : currentChannel;
+        auto channelCaps = deviceCapabilities.at(currentChannel);
 
-    ui->formatBox->blockSignals(true);
-    ui->formatBox->clear();
-    formatIndexList_.clear();
+        ui->formatBox->blockSignals(true);
+        ui->formatBox->clear();
+        formatIndexList_.clear();
 
-    for (auto[resolution, frameRateList] : channelCaps) {
-        for (auto rate : frameRateList) {
-            formatIndexList_.append(QPair<std::string, float>(resolution, rate));
-            auto sizeRateString = QString("%1 [%2 fps]")
-                .arg(QString::fromStdString(resolution))
-                .arg(round(rate));
-            ui->formatBox->addItem(sizeRateString.toUtf8());
-            if (resolution == currentSettings.size && rate == currentSettings.rate) {
-                ui->formatBox->setCurrentIndex(ui->formatBox->count() - 1);
+        for (auto[resolution, frameRateList] : channelCaps) {
+            for (auto rate : frameRateList) {
+                formatIndexList_.append(QPair<std::string, float>(resolution, rate));
+                auto sizeRateString = QString("%1 [%2 fps]")
+                    .arg(QString::fromStdString(resolution))
+                    .arg(round(rate));
+                ui->formatBox->addItem(sizeRateString.toUtf8());
+                if (resolution == currentSettings.size && rate == currentSettings.rate) {
+                    ui->formatBox->setCurrentIndex(ui->formatBox->count() - 1);
+                }
             }
         }
-    }
 
-    ui->formatBox->blockSignals(false);
+        ui->formatBox->blockSignals(false);
+    } catch(const std::exception& e) {
+        qWarning() << e.what();
+    }
 }
 
 void SettingsWidget::slotSetHardwareAccel(bool state)
@@ -1178,7 +1199,10 @@ SettingsWidget::populateVideoSettings()
         auto currentCaptureDevice = LRCInstance::avModel().getCurrentVideoCaptureDevice();
         auto deviceIndex = Utils::indexInVector(devices, currentCaptureDevice);
         for (auto d : devices) {
-            ui->deviceBox->addItem(QString::fromStdString(d).toUtf8());
+            try {
+                auto settings = LRCInstance::avModel().getDeviceSettings(d);
+                ui->deviceBox->addItem(QString::fromStdString(settings.name).toUtf8());
+            } catch (...) {}
         }
         ui->deviceBox->setCurrentIndex(deviceIndex);
         setFormatListForDevice(LRCInstance::avModel().getCurrentVideoCaptureDevice());
