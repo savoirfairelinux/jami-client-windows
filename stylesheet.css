@@ -185,11 +185,21 @@ QWidget#messageViewLayoutWidget, QWidget#welcomePage {
     background-color: rgba(255, 255, 255, 255);
 }
 
+
+
+
+
+
+
+
+
+
 QPushButton#holdButton, QPushButton#chatButton, QPushButton#noMicButton, QPushButton#noVideoButton, QPushButton#hangupButton,
 QPushButton#transferButton, QPushButton#addPersonButton, QPushButton#joinButton,
 QPushButton#qualityButton, QPushButton#recButton, QPushButton#transferCallButton,
-QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
-    background-color: transparent;
+QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton,
+QPushButton#playBtn, QPushButton#sendBtn, QPushButton#reRecordBtn, QPushButton#startAndFinishRecordBtn, QPushButton#stopAndDeleteBtn, QPushButton#stopPlayingBtn {
+    background-color: red;
     border-radius: 18px;
     border: solid 1px;
 }
@@ -198,7 +208,8 @@ QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
     QPushButton#noVideoButton:hover, QPushButton#transferButton:hover, QPushButton#addPersonButton:hover,
     QPushButton#joinButton:hover, QPushButton#qualityButton:hover, QPushButton#addToContactButton:hover,
     QPushButton#recButton:hover, QPushButton#transferCallButton:hover,
-    QPushButton#sipInputPanelButton:hover, QPushButton#addToConferenceButton:hover {
+    QPushButton#sipInputPanelButton:hover, QPushButton#addToConferenceButton:hover,
+    QPushButton#playBtn:hover, QPushButton#sendBtn:hover, QPushButton#reRecordBtn:hover, QPushButton#startAndFinishRecordBtn:hover, QPushButton#stopAndDeleteBtn:hover, QPushButton#stopPlayingBtn:hover {
         background-color: transparent;
         border-radius: 18px;
         border: solid 1px;
@@ -207,7 +218,8 @@ QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
     QPushButton#holdButton:pressed, QPushButton#chatButton:pressed, QPushButton#noMicButton:pressed, QPushButton#hangupButton:pressed,
     QPushButton#noVideoButton:pressed, QPushButton#transferButton:pressed, QPushButton#addPersonButton:pressed,
     QPushButton#joinButton:pressed, QPushButton#qualityButton:pressed, QPushButton#addToContactButton:pressed,
-    QPushButton#recButton:pressed, QPushButton#addToConferenceButton:pressed {
+    QPushButton#recButton:pressed, QPushButton#addToConferenceButton:pressed,
+    QPushButton#playBtn:pressed, QPushButton#sendBtn:pressed, QPushButton#reRecordBtn:pressed, QPushButton#startAndFinishRecordBtn:pressed, QPushButton#stopAndDeleteBtn:pressed, QPushButton#stopPlayingBtn:pressed {
         background-color: transparent;
         border-radius: 18px;
         border: solid 1px;
@@ -216,7 +228,8 @@ QPushButton#sipInputPanelButton, QPushButton#addToConferenceButton {
     QPushButton#holdButton:checked, QPushButton#noMicButton:checked, QPushButton#hangupButton:checked,
     QPushButton#noVideoButton:checked, QPushButton#recButton:checked,
     QPushButton#chatButton:checked, QPushButton#transferCallButton:checked,
-    QPushButton#sipInputPanelButton:checked, QPushButton#addToConferenceButton:checked {
+    QPushButton#sipInputPanelButton:checked, QPushButton#addToConferenceButton:checked,
+    QPushButton#playBtn:checked, QPushButton#sendBtn:checked, QPushButton#reRecordBtn:checked, QPushButton#startAndFinishRecordBtn:checked, QPushButton#stopAndDeleteBtn:checked, QPushButton#stopPlayingBtn:checked {
         background-color: transparent;
         border-radius: 18px;
         border: solid 1px;
@@ -833,6 +846,12 @@ QWidget#contactPickerWidget {
     border-radius: 10px;
     border: solid 1px transparent;
     background-color: white;
+}
+
+QWidget#clipRecorderWidget {
+    border-radius: 10px;
+    border: solid 1px transparent;
+    background-color: rgb(16,158,222);
 }
 
 QProgressBar#audioInputMeter {
