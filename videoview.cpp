@@ -435,15 +435,17 @@ VideoView::resetPreview()
     } else {
         auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
         if (device.empty()) {
-            device = LRCInstance::avModel().getDefaultDeviceName();
+            device = LRCInstance::avModel().getDefaultDevice();
         }
         if (device.empty()) {
             previewWidget_->setVisible(false);
             return;
         }
-        auto settings = LRCInstance::avModel().getDeviceSettings(device);
-        width = QString::fromStdString(settings.size).split("x")[0].toInt();
-        height = QString::fromStdString(settings.size).split("x")[1].toInt();
+        try {
+            auto settings = LRCInstance::avModel().getDeviceSettings(device);
+            width = QString::fromStdString(settings.size).split("x")[0].toInt();
+            height = QString::fromStdString(settings.size).split("x")[1].toInt();
+        } catch (...) {}
     }
     auto newSize = previewWidget_->getScaledSize(width, height);
     previewWidget_->setupGeometry(newSize);
