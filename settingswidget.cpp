@@ -1080,29 +1080,31 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
     if (deviceCapabilities.size() == 0) {
         return;
     }
-    auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
-    auto currentChannel = currentSettings.channel;
-    currentChannel = currentChannel.empty() ? "default" : currentChannel;
-    auto channelCaps = deviceCapabilities.at(currentChannel);
+    try {
+        auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
+        auto currentChannel = currentSettings.channel;
+        currentChannel = currentChannel.empty() ? "default" : currentChannel;
+        auto channelCaps = deviceCapabilities.at(currentChannel);
 
-    ui->formatBox->blockSignals(true);
-    ui->formatBox->clear();
-    formatIndexList_.clear();
+        ui->formatBox->blockSignals(true);
+        ui->formatBox->clear();
+        formatIndexList_.clear();
 
-    for (auto[resolution, frameRateList] : channelCaps) {
-        for (auto rate : frameRateList) {
-            formatIndexList_.append(QPair<std::string, float>(resolution, rate));
-            auto sizeRateString = QString("%1 [%2 fps]")
-                .arg(QString::fromStdString(resolution))
-                .arg(round(rate));
-            ui->formatBox->addItem(sizeRateString.toUtf8());
-            if (resolution == currentSettings.size && rate == currentSettings.rate) {
-                ui->formatBox->setCurrentIndex(ui->formatBox->count() - 1);
+        for (auto[resolution, frameRateList] : channelCaps) {
+            for (auto rate : frameRateList) {
+                formatIndexList_.append(QPair<std::string, float>(resolution, rate));
+                auto sizeRateString = QString("%1 [%2 fps]")
+                    .arg(QString::fromStdString(resolution))
+                    .arg(round(rate));
+                ui->formatBox->addItem(sizeRateString.toUtf8());
+                if (resolution == currentSettings.size && rate == currentSettings.rate) {
+                    ui->formatBox->setCurrentIndex(ui->formatBox->count() - 1);
+                }
             }
         }
-    }
 
-    ui->formatBox->blockSignals(false);
+        ui->formatBox->blockSignals(false);
+    } catch(...) {}
 }
 
 void SettingsWidget::slotSetHardwareAccel(bool state)
