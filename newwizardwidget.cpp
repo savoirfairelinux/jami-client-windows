@@ -63,10 +63,14 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
     statusInvalidPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-error_outline-24px.svg", RingTheme::urgentOrange_);
     statusErrorPixmap_ = Utils::generateTintedPixmap(":/images/icons/baseline-close-24px.svg", RingTheme::red_);
 
-    ui->infoWidget->hide();
     setNavBarVisibility(false, true);
 
     lookupTimer_.setSingleShot(true);
+
+    collapsiblePasswordWidget_ = new CollapsiblePasswordWidget(this);
+    collapsiblePasswordWidget_->setParent(ui->expandablePasswordWidget);
+    ui->expandablePasswordWidget->setLabelText("Choose a password for enchanced security");
+    ui->expandablePasswordWidget->addExpandWidget(collapsiblePasswordWidget_);
 
     connect(ui->fileImportBtn, &QPushButton::clicked,
         [this] {
@@ -93,7 +97,7 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
             emit NavigationRequested(ScreenEnum::CallScreen);
         });
 
-    connect(ui->confirmPasswordEdit, &QLineEdit::textChanged,
+    connect(collapsiblePasswordWidget_->getConfirmPasswordEdit(), &QLineEdit::textChanged,
         [this] {
             validateWizardProgression();
         });
@@ -124,18 +128,6 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
 NewWizardWidget::~NewWizardWidget()
 {
     delete ui;
-}
-
-void
-NewWizardWidget::setToMigrate(AccountInfo* toBeMigrated)
-{
-    wizardMode_ = WizardMode::MIGRATE;
-    changePage(ui->createAccountPage);
-    ui->usernameEdit->setEnabled(false);
-    ui->usernameEdit->setText(QString::fromStdString(toBeMigrated->profileInfo.alias));
-    ui->previousButton->hide();
-    ui->infoWidget->show();
-    ui->infoLabel->setText(tr("Your account needs to be migrated. Enter your password."));
 }
 
 void
@@ -222,13 +214,13 @@ void NewWizardWidget::changePage(QWidget* toPage)
         fileToImport_ = QString("");
         setNavBarVisibility(false, true);
         ui->lookupStatusLabel->hide();
-        ui->passwordStatusLabel->hide();
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->hide();
         ui->newSIPAccountButton->hide();
         ui->connectAccountManagerButton->hide();
     } else if (toPage == ui->createAccountPage) {
         ui->usernameEdit->clear();
-        ui->passwordEdit->clear();
-        ui->confirmPasswordEdit->clear();
+        collapsiblePasswordWidget_->getPasswordEdit()->clear();
+        collapsiblePasswordWidget_->getConfirmPasswordEdit()->clear();
         ui->signUpCheckbox->setChecked(true);
         ui->usernameEdit->setEnabled(true);
         ui->fullNameEdit->setText(QString());
@@ -256,7 +248,7 @@ void NewWizardWidget::changePage(QWidget* toPage)
         ui->pinInfoLabel->hide();
     } else if (toPage == ui->spinnerPage) {
         ui->lookupStatusLabel->hide();
-        ui->passwordStatusLabel->hide();
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->hide();
     } else if (toPage == ui->connectToAccountManagerPage) {
         setNavBarVisibility(true);
         ui->usernameManagerEdit->clear();
@@ -321,7 +313,7 @@ NewWizardWidget::on_previousButton_clicked()
     if (curWidget == ui->createSIPAccountPage) { ui->setSIPAvatarWidget->stopBooth(); }
     disconnect(registeredNameFoundConnection_);
     ui->lookupStatusLabel->hide();
-    ui->passwordStatusLabel->hide();
+    collapsiblePasswordWidget_->getPasswordStatusLabel()->hide();
     if (curWidget == ui->createAccountPage ||
         curWidget == ui->importFromDevicePage ||
         curWidget == ui->createSIPAccountPage ||
@@ -481,15 +473,16 @@ NewWizardWidget::validateWizardProgression()
          !registeredName_.isEmpty() &&
          (registeredName_ == ui->usernameEdit->text()) &&
          registrationStateOk_ == true);
-    bool passwordOk = ui->passwordEdit->text() == ui->confirmPasswordEdit->text();
-    if (passwordOk && !ui->passwordEdit->text().isEmpty()) {
-        ui->passwordStatusLabel->show();
-        ui->passwordStatusLabel->setPixmap(statusSuccessPixmap_);
+    bool passwordOk = collapsiblePasswordWidget_->getPasswordEdit()->text()
+                      == collapsiblePasswordWidget_->getConfirmPasswordEdit()->text();
+    if (passwordOk && !collapsiblePasswordWidget_->getPasswordEdit()->text().isEmpty()) {
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->show();
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->setPixmap(statusSuccessPixmap_);
     } else if (!passwordOk) {
-        ui->passwordStatusLabel->show();
-        ui->passwordStatusLabel->setPixmap(statusErrorPixmap_);
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->show();
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->setPixmap(statusErrorPixmap_);
     } else {
-        ui->passwordStatusLabel->hide();
+        collapsiblePasswordWidget_->getPasswordStatusLabel()->hide();
     }
     ui->nextButton->setEnabled(usernameOk && passwordOk);
 }
@@ -502,10 +495,10 @@ NewWizardWidget::processWizardInformations()
     case WizardMode::CREATE:
         ui->progressLabel->setText(tr("Generating your Jami account..."));
         inputPara_["alias"] = ui->fullNameEdit->text();
-        inputPara_["password"] = ui->passwordEdit->text();
+        inputPara_["password"] = collapsiblePasswordWidget_->getPasswordEdit()->text();
         ui->fullNameEdit->clear();
-        ui->passwordEdit->clear();
-        ui->confirmPasswordEdit->clear();
+        collapsiblePasswordWidget_->getPasswordEdit()->clear();
+        collapsiblePasswordWidget_->getConfirmPasswordEdit()->clear();
         break;
     case WizardMode::IMPORT:
         ui->progressLabel->setText(tr("Importing account archive..."));

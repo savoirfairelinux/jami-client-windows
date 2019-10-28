@@ -22,6 +22,7 @@
 #include <QTimer>
 #include <map>
 
+#include "collapsiblepasswordwidget.h"
 #include "lrcinstance.h"
 #include "navwidget.h"
 
@@ -49,8 +50,6 @@ private:
 public:
     explicit NewWizardWidget(QWidget* parent = 0);
     ~NewWizardWidget();
-
-    void setToMigrate(AccountInfo* toBeMigrated);
 
     // NavWidget
     virtual void navigated(bool to);
@@ -104,6 +103,8 @@ private:
     QMetaObject::Connection registeredNameFoundConnection_;
     QString fileToImport_;
     std::map<std::string, QString> inputPara_;
+
+    CollapsiblePasswordWidget* collapsiblePasswordWidget_;
 
     void updateNameRegistrationUi(NameRegistrationUIState state);
     void changePage(QWidget* toPage);
