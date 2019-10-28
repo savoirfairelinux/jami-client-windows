@@ -78,7 +78,9 @@ HEADERS += ./aboutdialog.h \
         ./previewwidget.h \
         ./rendermanager.h \
         ./distantwidget.h \
-        ./videowidgetbase.h
+        ./videowidgetbase.h \
+        ./section.h \
+        ./collapsiblepasswordwidget.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -138,7 +140,9 @@ SOURCES += ./aboutdialog.cpp \
         ./previewwidget.cpp \
         ./rendermanager.cpp \
         ./distantwidget.cpp \
-        ./videowidgetbase.cpp
+        ./videowidgetbase.cpp \
+        ./section.cpp \
+        ./collapsiblepasswordwidget.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -163,5 +167,7 @@ FORMS += ./aboutdialog.ui \
         ./videoview.ui \
         ./sipkeypad.ui \
         ./callaudioonlyavataroverlay.ui \
-        ./accountmigration.ui
+        ./accountmigration.ui \
+        ./section.ui \
+        ./collapsiblepasswordwidget.ui
 RESOURCES += ressources.qrc

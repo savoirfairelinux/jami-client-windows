@@ -243,6 +243,12 @@
     <ClCompile Include="distantwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="section.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collapsiblepasswordwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -426,6 +432,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="distantwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="section.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="collapsiblepasswordwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -717,6 +729,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="accountmigration.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="section.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="collapsiblepasswordwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
