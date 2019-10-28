@@ -79,6 +79,8 @@ HEADERS += ./aboutdialog.h \
         ./rendermanager.h \
         ./distantwidget.h \
         ./videowidgetbase.h \
+        ./section.h \
+        ./collapsiblepasswordwidget.h \
         ./notifypushbutton.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
@@ -140,6 +142,8 @@ SOURCES += ./aboutdialog.cpp \
         ./rendermanager.cpp \
         ./distantwidget.cpp \
         ./videowidgetbase.cpp \
+        ./section.cpp \
+        ./collapsiblepasswordwidget.cpp \
         ./notifypushbutton.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
@@ -165,5 +169,7 @@ FORMS += ./aboutdialog.ui \
         ./videoview.ui \
         ./sipkeypad.ui \
         ./callaudioonlyavataroverlay.ui \
-        ./accountmigration.ui
+        ./accountmigration.ui \
+        ./section.ui \
+        ./collapsiblepasswordwidget.ui
 RESOURCES += ressources.qrc
