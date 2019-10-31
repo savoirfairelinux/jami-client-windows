@@ -89,3 +89,28 @@ private:
     PreviewSnap location_{ PreviewSnap::SE };
     QSize containerSize_{0, 0};
 };
+
+// rounded corners for video record view
+class VideoRecordPreviewWidget final : public PreviewWidget {
+    Q_OBJECT;
+
+public:
+    explicit VideoRecordPreviewWidget(QWidget* parent = 0);
+    ~VideoRecordPreviewWidget();
+
+    void toPaintingBackground(bool state) { paintBackground_ = state; }
+    void toDrawLastFrame(bool state) { drawLastFrame_ = state; }
+    QImage getScaledPreviewImage() { return scaledPreviewImage_; }
+
+protected:
+    void paintEvent(QPaintEvent* e) override;
+    void paintBackground(QPainter* painter) override;
+
+private:
+    constexpr static qreal cornerRadius_ = 10.0f;
+
+    QImage scaledPreviewImage_;
+
+    bool paintBackground_ { true };
+    bool drawLastFrame_ { false };
+};
