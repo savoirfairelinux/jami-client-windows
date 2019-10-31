@@ -542,7 +542,7 @@ QToolButton::menu-button {image:none;}
 QToolButton::menu-arrow {image:none;}
 
 QLabel#accountIdLabel, QLabel#accountAliasLabel, QLabel#deletionLabel1, QLabel#deletionLabel2,
-QLabel#warningLabel{
+QLabel#warningLabel, QLabel#redDotLabel {
     background: transparent;
 }
 
@@ -838,7 +838,7 @@ QWidget#contactPickerWidget {
 QWidget#clipRecorderWidget {
     border-radius: 10px;
     border: solid 1px transparent;
-    background-color: #aeadac;
+    background-color: transparent;
 }
 
 QWidget#AudioRecordPage {
@@ -860,6 +860,10 @@ QLabel#nameLabel {
     font-size: 20px;
     font-style: initial;
     qproperty-alignment: AlignCenter;
+    color: white;
+}
+
+QLabel#timerLabel {
     color: white;
 }
 
@@ -891,3 +895,29 @@ QPushButton#playBtn:checked, QPushButton#sendBtn:checked, QPushButton#reRecordBt
     border: solid 1px;
 }
 
+QPushButton#videoRerecordBtn, QPushButton#videoStartOrFinishRecordingBtn, QPushButton#videoDeleteBtn,
+QPushButton#videoPlayBtn, QPushButton#videoSendBtn, QPushButton#videoStopPlayingBtn {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#videoRerecordBtn:hover, QPushButton#videoStartOrFinishRecordingBtn:hover, QPushButton#videoDeleteBtn:hover,
+QPushButton#videoPlayBtn:hover, QPushButton#videoSendBtn:hover, QPushButton#videoStopPlayingBtn:hover {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+QPushButton#videoRerecordBtn:pressed, QPushButton#videoStartOrFinishRecordingBtn:pressed, QPushButton#videoDeleteBtn:pressed,
+QPushButton#videoPlayBtn:pressed, QPushButton#videoSendBtn:pressed, QPushButton#videoStopPlayingBtn:pressed {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#videoRerecordBtn:checked, QPushButton#videoStartOrFinishRecordingBtn:checked, QPushButton#videoDeleteBtn:checked,
+QPushButton#videoPlayBtn:checked, QPushButton#videoSendBtn:checked, QPushButton#videoStopPlayingBtn:checked {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
