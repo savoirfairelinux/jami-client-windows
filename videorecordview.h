@@ -1,6 +1,6 @@
 /**************************************************************************
 * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
-* Author: Yang Wang <yang.wang@savoirfairelinux.com>                      *
+* Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -19,6 +19,8 @@
 #pragma once
 
 #include <QWidget>
+#include <QPropertyAnimation>
+#include <QtMultimedia/QMediaPlayer>
 
 namespace Ui {
 class VideoRecordView;
@@ -32,7 +34,40 @@ public:
     explicit VideoRecordView(QWidget *parent = nullptr);
     ~VideoRecordView();
 
+signals:
+    void recordControllerShouldCloseSignal();
+
+protected:
+    void hideEvent(QHideEvent *event);
+
 private:
     Ui::VideoRecordView *ui;
-};
 
+    // TODO: fix when changing Qt version
+    // Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
+    // causing the render to take a buggy code path which can be avoided
+    // by using opacity values other than precisely 1.0.
+    // https://bugreports.qt.io/browse/QTBUG-65981
+    // https://bugreports.qt.io/browse/QTBUG-66803
+    constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
+    constexpr static int fadeRedDotTime_ = 1000; //msec
+
+    QString recordedVideoFilePath_;
+    QPropertyAnimation* flickerFadeAnimation_;
+    QTimer* recordTimer_;
+    int currentTime_ { 0 };
+    bool forceToStopAnimation_ { false };
+
+    void reRecord();
+    void resetState();
+    void resetTimer();
+
+private slots:
+    void on_videoStartOrFinishRecordingBtn_toggled(bool checked);
+    void on_videoSendBtn_pressed();
+    void on_videoRerecordBtn_pressed();
+    void on_videoDeleteBtn_pressed();
+    void restartOrFinishAnimation();
+    void updateTimer();
+    void videoDeviceListChanged();
+};
