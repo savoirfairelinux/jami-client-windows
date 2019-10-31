@@ -33,6 +33,7 @@ ClipRecorder::ClipRecorder(QWidget *parent) :
     setAttribute(Qt::WA_TranslucentBackground, true);
 
     connect(ui->audioRecordPage, &AudioRecordView::recordControllerShouldCloseSignal, this, &ClipRecorder::on_recordControllerShouldClose);
+    connect(ui->videoRecordPage, &VideoRecordView::recordControllerShouldCloseSignal, this, &ClipRecorder::on_recordControllerShouldClose);
 }
 
 ClipRecorder::~ClipRecorder()
