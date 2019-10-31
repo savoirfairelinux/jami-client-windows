@@ -257,7 +257,17 @@ void MessageWebView::openAudioRecorder(int spikePosX, int spikePosY)
 
 void MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
 {
-    // TODO:Open the video recorder dialog box
+    if (!LRCInstance::hasVideoCall() && LRCInstance::avModel().getDevices().size() > 0) {
+        cliprecorder_->setPage(ClipRecorder::RecordPage::Video);
+        auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
+        auto recorderWidth = cliprecorder_->size().width();
+        auto recorderHeight = cliprecorder_->size().height();
+        cliprecorder_->setGeometry(pointOfVideoButton.x() - recorderWidth / 2,
+            pointOfVideoButton.y() - recorderHeight,
+            recorderWidth, recorderHeight);
+        cliprecorder_->show();
+        LRCInstance::avModel().startPreview();
+    }
 }
 
 void MessageWebView::buildView()
