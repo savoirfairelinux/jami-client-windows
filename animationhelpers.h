@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019 by Savoir-faire Linux                                *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -20,55 +20,33 @@
 
 #include <QWidget>
 #include <QPropertyAnimation>
-#include <QGraphicsOpacityEffect>
-#include <QMovie>
 
-class OpacityAnimation : public QObject
+// TODO: fix when changing Qt version
+// Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
+// causing the render to take a buggy code path which can be avoided
+// by using opacity values other than precisely 1.0.
+// https://bugreports.qt.io/browse/QTBUG-65981
+// https://bugreports.qt.io/browse/QTBUG-66803
+constexpr static qreal MAX_OPACITY { 0.9999999999980000442 };
+
+class OpacityAnimation : public QPropertyAnimation
 {
     Q_OBJECT
 public:
-    explicit OpacityAnimation(QWidget* target, QObject* parent = nullptr);
-    ~OpacityAnimation();
+    explicit OpacityAnimation(QWidget* target);
+    virtual ~OpacityAnimation();
 
-    void setFPS(const int& fps);
-    void setFrameTime(const int& milliseconds);
-    void setDuration(const int& milliseconds);
-    void setStartValue(const double& value);
-    void setEndValue(const double& value);
-
-    void start();
-    void stop();
-
-private slots:
-    void updateAnimation();
-
-private:
-    QGraphicsOpacityEffect* effect_;
-    double value_;
-
-    QWidget* target_;
-    QTimer* timer_;
-    int frameTime_;
-    double t_;
-    int duration_;
-
-    double startValue_;
-    double endValue_;
+    void reset();
 };
 
-namespace Ui {
-class AnimatedOverlay;
-}
-
-class AnimatedOverlay : public QWidget
+class FadeAnimation : public OpacityAnimation
 {
     Q_OBJECT
 public:
-    explicit AnimatedOverlay(QColor color, QWidget* parent = 0);
-    ~AnimatedOverlay();
-
-private:
-    Ui::AnimatedOverlay* ui;
-
-    OpacityAnimation* oa_;
+    explicit FadeAnimation(QWidget* target,
+                           const quint64 duration = 1000,
+                           const qreal minOpacity = 0.0,
+                           const qreal maxOpacity = MAX_OPACITY,
+                           const QEasingCurve curve = QEasingCurve::OutQuad);
+    ~FadeAnimation();
 };
