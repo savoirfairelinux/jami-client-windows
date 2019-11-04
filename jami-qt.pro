@@ -81,7 +81,8 @@ HEADERS += ./aboutdialog.h \
         ./videowidgetbase.h \
         ./section.h \
         ./collapsiblepasswordwidget.h \
-        ./notifypushbutton.h
+        ./notifypushbutton.h \
+        ./widgethelpers.h \
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -98,6 +99,7 @@ SOURCES += ./aboutdialog.cpp \
         ./ringcontactlineedit.cpp \
         ./splashscreen.cpp \
         ./videowidget.cpp \
+        ./animationhelpers.cpp \
         ./accountlistmodel.cpp \
         ./bezierconnectorwidget.cpp \
         ./deleteaccountdialog.cpp \
@@ -144,7 +146,8 @@ SOURCES += ./aboutdialog.cpp \
         ./videowidgetbase.cpp \
         ./section.cpp \
         ./collapsiblepasswordwidget.cpp \
-        ./notifypushbutton.cpp
+        ./notifypushbutton.cpp \
+        ./widgethelpers.cpp \
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \

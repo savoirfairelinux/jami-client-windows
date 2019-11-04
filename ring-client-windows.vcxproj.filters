@@ -252,6 +252,9 @@
     <ClCompile Include="notifypushbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="widgethelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -444,6 +447,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="notifypushbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgethelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

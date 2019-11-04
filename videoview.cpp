@@ -22,6 +22,8 @@
 
 #include "lrcinstance.h"
 #include "utils.h"
+#include "selectareadialog.h"
+#include "videooverlay.h"
 
 #include <QDesktopWidget>
 #include <QFileDialog>
@@ -35,18 +37,33 @@
 
 #include <memory>
 
-#include "selectareadialog.h"
-#include "videooverlay.h"
-
 VideoView::VideoView(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::VideoView)
 {
     ui->setupUi(this);
 
-    // video overlay
+    vignette_ = new VignetteWidget(this);
     overlay_ = new VideoOverlay(this);
+    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
+    previewWidget_ = new VideoCallPreviewWidget(this);
+
+    // setup layer order
+    vignette_->stackUnder(previewWidget_);
+    overlay_->raise();
+
     overlay_->setMouseTracking(true);
+
+    // preview widget animation
+    moveAnim_ = new QPropertyAnimation(previewWidget_, "geometry");
+    moveAnim_->setDuration(250);
+    moveAnim_->setEasingCurve(QEasingCurve::OutExpo);
+
+    // this connects the vignette's opacity to the overlay
+    connect(overlay_, &FadeOutable::willFadeOut,
+            vignette_, &VignetteWidget::slotWillFadeOut);
+    connect(overlay_, &FadeOutable::willReset,
+            vignette_, &VignetteWidget::slotWillResetOpacity);
 
     // context menu
     this->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -78,23 +95,11 @@ VideoView::VideoView(QWidget* parent)
         this,
         &VideoView::slotVideoMuteStateChanged,
         Qt::UniqueConnection);
-
-    // audio only overlay
-    audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
-
-    // preview widget
-    previewWidget_ = new VideoCallPreviewWidget(this);
-
-    // preview widget animation
-    moveAnim_ = new QPropertyAnimation(previewWidget_, "geometry");
-    moveAnim_->setDuration(250);
-    moveAnim_->setEasingCurve(QEasingCurve::OutExpo);
 }
 
 VideoView::~VideoView()
 {
     delete ui;
-    delete overlay_;
 }
 
 void
@@ -106,11 +111,9 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     resetPreview();
 
+    vignette_->resize(this->size());
     audioOnlyAvatar_->resize(this->size());
-
     overlay_->resize(this->size());
-    overlay_->show();
-    overlay_->raise();
 }
 
 void

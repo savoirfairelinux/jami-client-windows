@@ -15,45 +15,67 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
+#pragma once
 
 #include "animationhelpers.h"
 
-#include <QGraphicsOpacityEffect>
+#include <QWidget>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QPainter>
 
-OpacityAnimation::OpacityAnimation(QWidget* target)
-    : QPropertyAnimation(target)
+class FadeOutable : public QWidget
 {
-    auto effect = new QGraphicsOpacityEffect(target);
-    target->setGraphicsEffect(effect);
-    setTargetObject(effect);
-    setPropertyName("opacity");
-}
+    Q_OBJECT
+public:
+    explicit FadeOutable(QWidget* parent = nullptr);
+    ~FadeOutable();
 
-void
-OpacityAnimation::reset()
+    void resetOpacity();
+
+    void setFadeTime(const quint64 ms) { fadeTime_ = ms; }
+    void setFadeDelay(const quint64 ms) { fadeDelay_ = ms; }
+
+    virtual bool shouldFadeOut() { return false; };
+
+signals:
+    void willFadeOut();
+    void willReset();
+
+protected:
+    void enterEvent(QEvent* event) override;
+    void leaveEvent(QEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
+
+private slots:
+    void slotTimeout();
+
+private:
+    FadeAnimation* fadeAnimation_;
+    QTimer fadeTimer_;
+
+    quint64 fadeTime_{ 1000 };
+    quint64 fadeDelay_{ 2000 };
+
+};
+
+class VignetteWidget : public QWidget
 {
-    stop();
-    targetObject()->setProperty(propertyName(), startValue());
-}
+    Q_OBJECT
+public:
+    explicit VignetteWidget(QWidget* parent = nullptr);
+    ~VignetteWidget();
 
-OpacityAnimation::~OpacityAnimation()
-{}
+public slots:
+    void slotWillFadeOut();
+    void slotWillResetOpacity();
 
-FadeAnimation::FadeAnimation(QWidget* target,
-                             const quint64 duration,
-                             const qreal minOpacity,
-                             const qreal maxOpacity,
-                             const QEasingCurve curve)
-    : OpacityAnimation(target)
-{
-    if (auto effect = qobject_cast<QGraphicsOpacityEffect*>(targetObject())) {
-        effect->setOpacity(maxOpacity);
-    }
-    setDuration(duration);
-    setStartValue(maxOpacity);
-    setEndValue(minOpacity);
-    setEasingCurve(curve);
-}
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
-FadeAnimation::~FadeAnimation()
-{}
+private:
+    FadeAnimation* fadeOutAnimation_;
+    quint64 height_{ 128 };
+    quint64 fadeTime_{ 1000 };
+
+};
