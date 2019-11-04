@@ -23,6 +23,7 @@
 #include "videoview.h"
 #include "lrcinstance.h"
 #include "contactpicker.h"
+#include "popupdialog.h"
 #include "sipinputpanel.h"
 #include "utils.h"
 
@@ -53,7 +54,7 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
     ui->addToConferenceButton->setVisible(true);
     ui->addToConferenceButton->setCheckable(true);
 
-    contactPicker_->setVisible(false);
+    contactPicker_->getPopupDialog()->setVisible(false);
 
     sipInputPanel_->setVisible(false);
 
@@ -210,7 +211,7 @@ VideoOverlay::shouldShowOverlay()
     bool hoveringOnButtons = ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse();
     return  hoveringOnButtons ||
             (callInfo.status == lrc::api::call::Status::PAUSED) ||
-            contactPicker_->isActiveWindow() ||
+            contactPicker_->getPopupDialog()->isActiveWindow() ||
             sipInputPanel_->isActiveWindow();
 }
 
@@ -315,13 +316,13 @@ VideoOverlay::on_addToConferenceButton_toggled(bool checked)
     QPoint globalPos_button = mapToGlobal(ui->addToConferenceButton->pos());
     QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
 
-    contactPicker_->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
+    contactPicker_->getPopupDialog()->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
 
     // receive the signal that ensure the button checked status is correct and contactpicker
     // is properly hidden
     Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose,
         [this](QMouseEvent* event) {
-            contactPicker_->hide();
+            contactPicker_->getPopupDialog()->hide();
             // check if current mouse position is on button
             auto relativeClickPos = ui->addToConferenceButton->mapFromGlobal(event->globalPos());
             if (!ui->addToConferenceButton->rect().contains(relativeClickPos)) {
@@ -331,13 +332,13 @@ VideoOverlay::on_addToConferenceButton_toggled(bool checked)
         });
 
     // for esc key, receive reject signal
-    Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
+    Utils::oneShotConnect(contactPicker_->getPopupDialog(), &QDialog::rejected,
         [this] {
             ui->addToConferenceButton->setChecked(false);
             ui->addToConferenceButton->resetToOriginal();
         });
 
-    contactPicker_->show();
+    contactPicker_->getPopupDialog()->show();
 }
 
 void
@@ -355,13 +356,13 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
     QPoint globalPos_button = mapToGlobal(ui->transferCallButton->pos());
     QPoint globalPos_bottomButtons = mapToGlobal(ui->bottomButtons->pos());
 
-    contactPicker_->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
+    contactPicker_->getPopupDialog()->move(globalPos_button.x(), globalPos_bottomButtons.y() - contactPicker_->height());
 
     // receive the signal that ensure the button checked status is correct and contactpicker
     // is properly hidden
     Utils::oneShotConnect(contactPicker_, &ContactPicker::willClose,
         [this](QMouseEvent *event) {
-            contactPicker_->hide();
+            contactPicker_->getPopupDialog()->hide();
             // check if current mouse position is on button
             auto relativeClickPos = ui->transferCallButton->mapFromGlobal(event->globalPos());
             if (!ui->transferCallButton->rect().contains(relativeClickPos)) {
@@ -371,20 +372,20 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
         });
 
     // for esc key, receive reject signal
-    Utils::oneShotConnect(contactPicker_, &QDialog::rejected,
+    Utils::oneShotConnect(contactPicker_->getPopupDialog(), &QDialog::rejected,
     [this] {
         ui->transferCallButton->setChecked(false);
         ui->transferCallButton->resetToOriginal();
     });
 
-    contactPicker_->show();
+    contactPicker_->getPopupDialog()->show();
 }
 
 void
 VideoOverlay::slotWillDoTransfer(const std::string& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
-    contactPicker_->hide();
+    contactPicker_->getPopupDialog()->hide();
     ui->transferCallButton->setChecked(false);
     ui->transferCallButton->resetToOriginal();
 
@@ -420,7 +421,7 @@ void
 VideoOverlay::slotContactWillJoinConference(const std::string& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
-    contactPicker_->hide();
+    contactPicker_->getPopupDialog()->hide();
     ui->addToConferenceButton->setChecked(false);
     ui->addToConferenceButton->resetToOriginal();
 
@@ -436,7 +437,7 @@ void
 VideoOverlay::slotCallWillJoinConference(const std::string& callId)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
-    contactPicker_->hide();
+    contactPicker_->getPopupDialog()->hide();
     ui->addToConferenceButton->setChecked(false);
     ui->addToConferenceButton->resetToOriginal();
 
