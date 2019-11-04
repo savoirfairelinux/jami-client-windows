@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -30,6 +31,8 @@ namespace Ui {
 class ContactPicker;
 }
 
+class PopupDialog;
+
 class SelectableProxyModel : public QSortFilterProxyModel
 {
 public:
@@ -56,7 +59,7 @@ private:
 
 };
 
-class ContactPicker : public QDialog
+class ContactPicker : public QWidget
 {
     Q_OBJECT;
 
@@ -66,6 +69,8 @@ public:
     void setTitle(const QString& title);
     void setType(const SmartListModel::Type& type);
     void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
+
+    PopupDialog* getPopupDialog() { return popContainer_; }
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -91,4 +96,6 @@ private:
     QString CalleeDisplayName_;
 
     SmartListModel::Type listModeltype_;
+
+    PopupDialog *popContainer_;
 };
