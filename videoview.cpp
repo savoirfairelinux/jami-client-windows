@@ -85,6 +85,8 @@ VideoView::VideoView(QWidget* parent)
     // preview widget
     previewWidget_ = new VideoCallPreviewWidget(this);
 
+    overlay_->stackUnder(previewWidget_);
+
     // preview widget animation
     moveAnim_ = new QPropertyAnimation(previewWidget_, "geometry");
     moveAnim_->setDuration(250);

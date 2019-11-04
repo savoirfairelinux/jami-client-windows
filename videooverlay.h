@@ -18,6 +18,8 @@
 
 #pragma once
 
+#include "animationhelpers.h"
+
 #include "api/conversationmodel.h"
 
 #include <QWidget>
@@ -35,7 +37,7 @@ class VideoOverlay;
 
 using namespace lrc::api;
 
-class VideoOverlay : public QWidget
+class VideoOverlay : public FadeOutableOverlay
 {
     Q_OBJECT
 
@@ -52,7 +54,6 @@ signals:
     void videoMuteStateChanged(bool state);
 
 private slots:
-    void fadeOverlayOut();
     void setTime();
     void on_hangupButton_clicked();
     void on_chatButton_toggled(bool checked);
@@ -69,9 +70,7 @@ private slots:
     void slotSIPInputPanelClicked(const int& id);
 
 protected:
-    void enterEvent(QEvent* event);
-    void leaveEvent(QEvent* event);
-    void mouseMoveEvent(QMouseEvent* event);
+    bool shouldFadeOut() override;
 
 private:
     Ui::VideoOverlay* ui;
@@ -83,22 +82,4 @@ private:
     ContactPicker* contactPicker_;
     SipInputPanel* sipInputPanel_;
     QTimer* oneSecondTimer_;
-
-    QTimer fadeTimer_;
-    QPropertyAnimation* fadeAnim_;
-    constexpr static int fadeOverlayTime_ = 1000; //msec
-    // Time before the overlay starts fading out after the mouse stops
-    // moving within the videoview.
-    constexpr static int startfadeOverlayTime_ = 2000; //msec
-
-    // TODO: fix when changing Qt version
-    // Full(1.0) opacity bug affecting many Qt versions (macOS + win10)
-    // causing the render to take a buggy code path which can be avoided
-    // by using opacity values other than precisely 1.0.
-    // https://bugreports.qt.io/browse/QTBUG-65981
-    // https://bugreports.qt.io/browse/QTBUG-66803
-    constexpr static qreal maxOverlayOpacity_ = 0.9999999999980000442;
-
-    bool shouldShowOverlay();
-    void showOverlay();
 };
