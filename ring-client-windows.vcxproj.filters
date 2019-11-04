@@ -255,6 +255,9 @@
     <ClCompile Include="widgethelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="popupdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -450,6 +453,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgethelpers.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="popupdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -747,6 +753,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="collapsiblepasswordwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="popupdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
