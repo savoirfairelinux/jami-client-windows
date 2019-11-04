@@ -73,6 +73,9 @@ private:
     std::string accountId_;
     std::string convUid_;
 
+    // vignette
+    VignetteWidget* vignette_;
+
     // overlay
     VideoOverlay* overlay_;
     // audio only overlay

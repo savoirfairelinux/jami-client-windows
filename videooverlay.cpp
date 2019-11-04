@@ -27,19 +27,15 @@
 #include "utils.h"
 
 #include <QTime>
-#include <QMouseEvent>
-#include <QGraphicsOpacityEffect>
 
-VideoOverlay::VideoOverlay(QWidget* parent) :
-    QWidget(parent),
-    ui(new Ui::VideoOverlay),
-    oneSecondTimer_(new QTimer(this)),
-    contactPicker_(new ContactPicker(this)),
-    sipInputPanel_(new SipInputPanel(this))
+VideoOverlay::VideoOverlay(QWidget* parent)
+    : FadeOutable(parent)
+    , ui(new Ui::VideoOverlay)
+    , oneSecondTimer_(new QTimer(this))
+    , contactPicker_(new ContactPicker(this))
+    , sipInputPanel_(new SipInputPanel(this))
 {
     ui->setupUi(this);
-
-    setAttribute(Qt::WA_NoSystemBackground);
 
     ui->bottomButtons->setMouseTracking(true);
 
@@ -65,70 +61,11 @@ VideoOverlay::VideoOverlay(QWidget* parent) :
             this, &VideoOverlay::slotWillDoTransfer);
     connect(sipInputPanel_, &SipInputPanel::sipInputPanelClicked,
             this, &VideoOverlay::slotSIPInputPanelClicked);
-
-    // fading mechanism
-    auto effect = new QGraphicsOpacityEffect(this);
-    effect->setOpacity(maxOverlayOpacity_);
-    this->setGraphicsEffect(effect);
-    fadeAnim_ = new QPropertyAnimation(this);
-    fadeAnim_->setTargetObject(effect);
-    fadeAnim_->setPropertyName("opacity");
-    fadeAnim_->setDuration(fadeOverlayTime_);
-    fadeAnim_->setStartValue(effect->opacity());
-    fadeAnim_->setEndValue(0);
-    fadeAnim_->setEasingCurve(QEasingCurve::OutQuad);
-    // Setup the timer to start the fade when the mouse stops moving
-    fadeTimer_.setSingleShot(true);
-    connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(fadeOverlayOut()));
 }
 
 VideoOverlay::~VideoOverlay()
 {
     delete ui;
-    delete fadeAnim_;
-}
-
-void
-VideoOverlay::enterEvent(QEvent* event)
-{
-    Q_UNUSED(event);
-    showOverlay();
-}
-
-void
-VideoOverlay::leaveEvent(QEvent* event)
-{
-    Q_UNUSED(event);
-    fadeTimer_.start(startfadeOverlayTime_);
-}
-
-void
-VideoOverlay::mouseMoveEvent(QMouseEvent* event)
-{
-    Q_UNUSED(event);
-    // start/restart the timer after which the overlay will fade
-    if (fadeTimer_.isActive()) {
-        showOverlay();
-    } else {
-        fadeTimer_.start(startfadeOverlayTime_);
-    }
-    event->ignore();
-}
-
-void
-VideoOverlay::showOverlay()
-{
-    fadeAnim_->stop();
-    fadeAnim_->targetObject()->setProperty(fadeAnim_->propertyName(),
-                                           fadeAnim_->startValue());
-}
-
-void
-VideoOverlay::fadeOverlayOut()
-{
-    if (!shouldShowOverlay()) {
-        fadeAnim_->start(QAbstractAnimation::KeepWhenStopped);
-    }
 }
 
 void
@@ -142,8 +79,7 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     QObject::connect(oneSecondTimer_, &QTimer::timeout,
                      this, &VideoOverlay::setTime);
     oneSecondTimer_->start(1000);
-    showOverlay();
-    fadeTimer_.start(startfadeOverlayTime_);
+    resetOpacity();
 
     // close chat panel
     emit setChatVisibility(false);
@@ -200,7 +136,7 @@ VideoOverlay::setTime()
 }
 
 bool
-VideoOverlay::shouldShowOverlay()
+VideoOverlay::shouldFadeOut()
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
     if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
@@ -208,10 +144,10 @@ VideoOverlay::shouldShowOverlay()
     }
     auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
     bool hoveringOnButtons = ui->bottomButtons->underMouse() || ui->topInfoBar->underMouse();
-    return  hoveringOnButtons ||
-            (callInfo.status == lrc::api::call::Status::PAUSED) ||
-            contactPicker_->isActiveWindow() ||
-            sipInputPanel_->isActiveWindow();
+    return not (hoveringOnButtons ||
+               (callInfo.status == lrc::api::call::Status::PAUSED) ||
+               contactPicker_->isActiveWindow() ||
+               sipInputPanel_->isActiveWindow());
 }
 
 void
