@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -23,24 +24,19 @@
 #include <QMouseEvent>
 
 #include "contactpickeritemdelegate.h"
+#include "popupdialog.h"
 
 ContactPicker::ContactPicker(QWidget *parent) :
-    QDialog(parent),
+    PopupWidget(parent),
     ui(new Ui::ContactPicker),
     listModeltype_(SmartListModel::Type::CONFERENCE)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::CustomizeWindowHint);
-    setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
-    setAttribute(Qt::WA_NoSystemBackground, true);
-    setAttribute(Qt::WA_TranslucentBackground, true);
-
     ui->smartList->setItemDelegate(new ContactPickerItemDelegate());
 
     selectableProxyModel_ = new SelectableProxyModel(smartListModel_.get());
     ui->smartList->setModel(selectableProxyModel_);
-
 }
 
 ContactPicker::~ContactPicker()
@@ -92,7 +88,7 @@ ContactPicker::accept()
         }
     }
 
-    QDialog::accept();
+    widgetContainer_->accept();
 }
 
 void
@@ -102,15 +98,6 @@ ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
         smartListModel_->setConferenceableFilter(arg1.toStdString());
     }
     selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
-}
-
-void
-ContactPicker::mousePressEvent(QMouseEvent *event)
-{
-    auto contactPickerWidgetRect = ui->contactPickerWidget->rect();
-    if (!contactPickerWidgetRect.contains(event->pos())) {
-        emit willClose(event);
-    }
 }
 
 void

@@ -18,6 +18,7 @@
 #pragma once
 
 #include "animationhelpers.h"
+#include "popupdialog.h"
 
 #include <QWidget>
 #include <QTimer>
@@ -77,5 +78,26 @@ private:
     FadeAnimation* fadeOutAnimation_;
     quint64 height_{ 128 };
     quint64 fadeTime_{ 1000 };
+
+};
+
+class PopupWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    // insider content of PopupDialog
+    explicit PopupWidget(QWidget* parent = nullptr,
+                         QColor spikeColor = Qt::white,
+                         PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::AlignLeft) {
+        widgetContainer_ = new PopupDialog(parent, spikeColor, spikeAlignment);
+        setParent(widgetContainer_);
+        widgetContainer_->insertWidget(this);
+    }
+    virtual ~PopupWidget() {}
+
+    PopupDialog *getContainer() { return widgetContainer_; }
+
+protected:
+    PopupDialog *widgetContainer_;
 
 };
