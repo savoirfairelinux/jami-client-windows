@@ -81,4 +81,6 @@ private:
     ContactPicker* contactPicker_;
     SipInputPanel* sipInputPanel_;
     QTimer* oneSecondTimer_;
+
+    quint16 popupMargin_{ 16 };
 };
