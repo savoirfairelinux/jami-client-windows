@@ -113,17 +113,17 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN slaptažodis</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN naudotojo vardas</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN adresas</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -266,17 +266,17 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN slaptažodis</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN naudotojo vardas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN adresas</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -730,7 +730,7 @@ Vėliau bandykite dar kartą.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Kažkas nutiko</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -963,7 +963,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Serveris</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
@@ -1402,7 +1402,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formatas</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
@@ -1412,7 +1412,7 @@ vietoj jūsų ID naudodami jūsų naudotojo vardą.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Peržiūra neprieinama</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
