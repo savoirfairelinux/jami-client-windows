@@ -140,6 +140,16 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
     // voicemail
     connect(ui->lineEditVoiceMailDialCode, &QLineEdit::editingFinished, this,
                                            &AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished);
+
+    // prevent wheel event for spinbox
+    ui->negotiationTimeoutSpinBox->installEventFilter(this);
+    ui->registrationExpireTimeoutSpinBox->installEventFilter(this);
+    ui->networkInterfaceSpinBox->installEventFilter(this);
+    ui->customPortSIPSpinBox->installEventFilter(this);
+    ui->audioRTPMinPortSpinBox->installEventFilter(this);
+    ui->audioRTPMaxPortSpinBox->installEventFilter(this);
+    ui->videoRTPMinPortSpinBox->installEventFilter(this);
+    ui->videoRTPMaxPortSpinBox->installEventFilter(this);
 }
 
 AdvancedSIPSettingsWidget::~AdvancedSIPSettingsWidget()
@@ -690,4 +700,13 @@ AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.mailbox = ui->lineEditVoiceMailDialCode->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+bool
+AdvancedSIPSettingsWidget::eventFilter(QObject * object, QEvent * event)
+{
+    if (event->type() == QEvent::Wheel) {
+        return true;
+    }
+    return false;
 }
