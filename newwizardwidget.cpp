@@ -97,6 +97,11 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
             emit NavigationRequested(ScreenEnum::CallScreen);
         });
 
+    connect(collapsiblePasswordWidget_->getPasswordEdit(), &QLineEdit::textChanged,
+        [this] {
+            validateWizardProgression();
+        });
+
     connect(collapsiblePasswordWidget_->getConfirmPasswordEdit(), &QLineEdit::textChanged,
         [this] {
             validateWizardProgression();
@@ -361,13 +366,6 @@ NewWizardWidget::on_exportBtn_clicked()
     }
     emit NavigationRequested(ScreenEnum::CallScreen);
     emit LRCInstance::instance().accountListChanged();
-}
-
-void
-NewWizardWidget::on_passwordEdit_textChanged(const QString& arg1)
-{
-    Q_UNUSED(arg1);
-    validateWizardProgression();
 }
 
 void

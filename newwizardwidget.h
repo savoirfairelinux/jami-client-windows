@@ -73,7 +73,6 @@ private slots:
     void on_neverShowAgainBox_clicked();
     void on_skipBtn_clicked();
     void on_exportBtn_clicked();
-    void on_passwordEdit_textChanged(const QString& arg1);
 
 private slots:
     void on_usernameEdit_textChanged(const QString& arg1);
