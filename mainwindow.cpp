@@ -295,6 +295,12 @@ void MainWindow::closeEvent(QCloseEvent* event)
         this->hide();
         event->ignore();
     } else {
+        /* HACK: temp fix for Chromium embedded framework crash
+           https://www.magpcss.org/ceforum/viewtopic.php?f=6&t=14382#p31786
+           fixed as of Qt 5.12 */
+        if (auto callWidget = ui->navStack->widget(ScreenEnum::CallScreen)) {
+            delete callWidget;
+        }
         settings.setValue(SettingsKey::geometry, saveGeometry());
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
