@@ -43,6 +43,9 @@ public:
                                    const QString& fileTypeFilter,
                                    QPushButton* button);
 
+protected:
+    bool eventFilter(QObject *object, QEvent *event);
+
 private:
     Ui::AdvancedSIPSettingsWidget* ui;
 
