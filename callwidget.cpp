@@ -195,9 +195,6 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->videoView, &VideoView::toggleFullScreenClicked,
             this, &CallWidget::slotToggleFullScreenClicked);
 
-    connect(ui->videoView, &VideoView::terminating,
-            this, &CallWidget::slotVideoViewTerminating);
-
     connect(&LRCInstance::behaviorController(), &BehaviorController::showCallView,
             this, &CallWidget::slotShowCallView);
 
@@ -826,7 +823,7 @@ CallWidget::slotToggleFullScreenClicked()
 }
 
 void
-CallWidget::slotVideoViewTerminating(const std::string& id)
+CallWidget::callTerminating(const std::string& id)
 {
     auto conversation = LRCInstance::getCurrentConversation();
     if ( conversation.uid.empty() &&
@@ -1341,6 +1338,7 @@ CallWidget::connectAccount(const std::string& accountId)
                     ui->videoView->updateCall();
                     setCallPanelVisibility(false);
                     showConversationView();
+                    callTerminating(callId);
                     break;
                 }
                 case lrc::api::call::Status::CONNECTED:

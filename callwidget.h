@@ -82,7 +82,6 @@ private slots:
     void slotShowChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
     void slotNewTrustRequest(const std::string& accountId, const std::string& contactUri);
     void slotToggleFullScreenClicked();
-    void slotVideoViewTerminating(const std::string& callid);
     void update();
     void ShowContextMenu(const QPoint& pos);
     void Paste();
@@ -105,6 +104,7 @@ private slots:
     void slotVideoDeviceListChanged();
 
 private:
+    void callTerminating(const std::string& callid);
     void onIncomingMessage(const std::string& accountId, const std::string& convUid,
                            uint64_t interactionId, const lrc::api::interaction::Info& interaction);
     void conversationsButtonClicked();
