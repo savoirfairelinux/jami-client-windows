@@ -937,6 +937,9 @@
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="maximum">
             <number>3000</number>
            </property>
@@ -1408,6 +1411,9 @@
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="maximum">
             <number>65536</number>
            </property>
@@ -1425,6 +1431,9 @@
             <font>
              <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
            </property>
            <property name="maximum">
             <number>3000</number>
@@ -1593,6 +1602,9 @@
             <font>
              <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
            </property>
            <property name="maximum">
             <number>65535</number>
@@ -2199,6 +2211,9 @@
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="maximum">
             <number>65535</number>
            </property>
@@ -2223,6 +2238,9 @@
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="maximum">
             <number>65535</number>
            </property>
@@ -2240,6 +2258,9 @@
             <font>
              <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
            </property>
            <property name="maximum">
             <number>65535</number>
@@ -2308,6 +2329,9 @@
             <font>
              <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
            </property>
            <property name="maximum">
             <number>65535</number>
