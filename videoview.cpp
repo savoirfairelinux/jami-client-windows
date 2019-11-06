@@ -192,23 +192,30 @@ VideoView::showContextMenu(const QPoint& position)
     auto devices = LRCInstance::avModel().getDevices();
     auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
     for (auto d : devices) {
-        auto deviceName = QString::fromStdString(d).toUtf8();
-        auto deviceAction = new QAction(deviceName, this);
-        menu.addAction(deviceAction);
-        deviceAction->setCheckable(true);
-        if (d == activeDevice.name) {
-            deviceAction->setChecked(true);
-        }
-        connect(deviceAction, &QAction::triggered,
-            [this, deviceName]() {
-                auto device = deviceName.toStdString();
-                if (LRCInstance::avModel().getCurrentVideoCaptureDevice() == device) {
-                    return;
-                }
-                LRCInstance::avModel().switchInputTo(device);
-                resetPreview();
-                LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
-            });
+        try {
+            auto settings = LRCInstance::avModel().getDeviceSettings(d);
+            QString deviceName = QString::fromStdString(settings.name).toUtf8();
+            auto deviceAction = new QAction(deviceName, this);
+            menu.addAction(deviceAction);
+            deviceAction->setCheckable(true);
+            if (d == activeDevice.name) {
+                deviceAction->setChecked(true);
+            }
+            connect(deviceAction, &QAction::triggered,
+                [this, deviceName]() {
+                    auto deviceId = LRCInstance::avModel().getDeviceIdFromName(deviceName.toStdString());
+                    if (deviceId.empty()) {
+                        qWarning() << "Couldn't find device: " << deviceName;
+                        return;
+                    }
+                    if (LRCInstance::avModel().getCurrentVideoCaptureDevice() == deviceId) {
+                        return;
+                    }
+                    LRCInstance::avModel().switchInputTo(deviceId);
+                    resetPreview();
+                    LRCInstance::avModel().setCurrentVideoCaptureDevice(deviceId);
+                });
+        } catch (...) {}
     }
 
     menu.addSeparator();
