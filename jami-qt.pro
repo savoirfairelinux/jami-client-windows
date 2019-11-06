@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = jami-qt
-
+
 CONFIG += c++17
 
 QT += widgets xml multimedia multimediawidgets network webenginewidgets svg
@@ -82,8 +82,10 @@ HEADERS += ./aboutdialog.h \
         ./section.h \
         ./collapsiblepasswordwidget.h \
         ./notifypushbutton.h \
+        ./popupdialog.h \
+        ./recordoverlay.h \
         ./widgethelpers.h \
-        ./popupdialog.h
+        ./recordwidget.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -148,8 +150,10 @@ SOURCES += ./aboutdialog.cpp \
         ./section.cpp \
         ./collapsiblepasswordwidget.cpp \
         ./notifypushbutton.cpp \
+        ./popupdialog.cpp \
+        ./recordoverlay.cpp \
         ./widgethelpers.cpp \
-        ./popupdialog.cpp
+        ./recordwidget.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
