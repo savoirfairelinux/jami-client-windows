@@ -1047,16 +1047,11 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
         .toStdString();
     auto devices = LRCInstance::avModel().getDevices();
     try {
-        auto iter = std::find_if(devices.begin(), devices.end(),
-            [deviceName](const std::string& d) {
-                auto settings = LRCInstance::avModel().getDeviceSettings(d);
-                return settings.name == deviceName;
-            });
-        if (iter == devices.end()) {
+        auto deviceId = LRCInstance::avModel().getDeviceIdFromName(deviceName);
+        if (deviceId.empty()) {
             qWarning() << "Couldn't find device: " << deviceName.c_str();
             return;
         }
-        auto deviceId = *iter;
         LRCInstance::avModel().setCurrentVideoCaptureDevice(deviceId);
         LRCInstance::avModel().setDefaultDevice(deviceId);
         setFormatListForDevice(deviceId);
