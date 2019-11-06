@@ -24,6 +24,7 @@
 #include <QTimer>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QPixmap>
 
 class FadeOutable : public QWidget
 {
@@ -58,6 +59,34 @@ private:
     quint64 fadeTime_{ 1000 };
     quint64 fadeDelay_{ 2000 };
 
+};
+
+class Blinkable : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit Blinkable(QWidget* parent = nullptr);
+    ~Blinkable();
+
+    void startToBlink();
+    void toStopBlink();
+
+    void setBlinkTime(const quint64 ms) { blinkTime_ = ms; }
+    void toBlinkPixmap(const QPixmap& pixmap) { toBlinkPixmap_ = true; pixmap_ = pixmap.copy(); }
+    void stopBlinkingPixmap() { pixmap_ = QPixmap().copy(); toBlinkPixmap_ = false; }
+
+protected:
+    void paintEvent(QPaintEvent *event);
+
+private slots:
+    void slotAnimationFinished();
+
+private:
+    FadeAnimation* fadeAnimation_;
+
+    bool toBlinkPixmap_{ false };
+    quint64 blinkTime_{ 1000 };
+    QPixmap pixmap_{};
 };
 
 class VignetteWidget : public QWidget
