@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -22,6 +23,7 @@
 #include "smartlistmodel.h"
 #include "utils.h"
 #include "lrcinstance.h"
+#include "widgethelpers.h"
 
 #include <QDialog>
 #include <QSortFilterProxyModel>
@@ -56,7 +58,7 @@ private:
 
 };
 
-class ContactPicker : public QDialog
+class ContactPicker : public PopupWidget
 {
     Q_OBJECT;
 
