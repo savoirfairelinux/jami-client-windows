@@ -82,7 +82,8 @@ HEADERS += ./aboutdialog.h \
         ./section.h \
         ./collapsiblepasswordwidget.h \
         ./notifypushbutton.h \
-        ./popupdialog.h
+        ./popupdialog.h \
+        ./recordoverlay.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -146,7 +147,8 @@ SOURCES += ./aboutdialog.cpp \
         ./section.cpp \
         ./collapsiblepasswordwidget.cpp \
         ./notifypushbutton.cpp \
-        ./popupdialog.cpp
+        ./popupdialog.cpp \
+        ./recordoverlay.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -174,5 +176,6 @@ FORMS += ./aboutdialog.ui \
         ./accountmigration.ui \
         ./section.ui \
         ./collapsiblepasswordwidget.ui \
-        ./popupdialog.ui
+        ./popupdialog.ui \
+        ./recordoverlay.ui
 RESOURCES += ressources.qrc
