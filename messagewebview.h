@@ -25,6 +25,8 @@
 
 #include "api/conversationmodel.h"
 
+class RecordWidget;
+
 class PrivateBridging : public QObject
 {
     Q_OBJECT
@@ -49,6 +51,8 @@ public:
     Q_INVOKABLE int emitMessagesCleared();
     Q_INVOKABLE int emitMessagesLoaded();
     Q_INVOKABLE int emitPasteKeyDetected();
+    Q_INVOKABLE int openAudioRecorder(int spikePosX,int spikePosY);
+    Q_INVOKABLE int openVideoRecorder(int spikePosX,int spikePosY);
 };
 
 class MessageWebView : public QWebEngineView
@@ -87,6 +91,8 @@ public:
     void setMessagesFileContent(const QString& path);
     bool textSelected();
     void runJsText();
+    void openAudioRecorder(int spikePosX,int spikePosY);
+    void openVideoRecorder(int spikePosX,int spikePosY);
 
 protected:
 
@@ -113,5 +119,9 @@ private:
     PrivateBridging* jsBridge_;
     QLabel* dragDroplabel_;
     bool textSelected_;
+    RecordWidget* recordWidget_;
+
+    /*TODO: Generatic Popup Dialog setGeometry function corrsponding to spike alignment*/
+    const quint16 recordWidgetMargin_{ 15 };
 
 };
