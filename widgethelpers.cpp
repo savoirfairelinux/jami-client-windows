@@ -75,6 +75,50 @@ FadeOutable::slotTimeout()
     Q_EMIT willFadeOut();
 }
 
+Blinkable::Blinkable(QWidget* parent)
+    : QWidget(parent)
+{
+    setAttribute(Qt::WA_NoSystemBackground);
+    fadeAnimation_ = new FadeAnimation(this, blinkTime_);
+}
+
+Blinkable::~Blinkable()
+{}
+
+void
+Blinkable::slotAnimationFinished()
+{
+    fadeAnimation_->setDirection(fadeAnimation_->direction() == QAbstractAnimation::Forward
+                                 ? QAbstractAnimation::Backward
+                                 : QAbstractAnimation::Forward);
+    fadeAnimation_->start();
+}
+
+void
+Blinkable::startToBlink()
+{
+    connect(fadeAnimation_, &QPropertyAnimation::finished, this, &Blinkable::slotAnimationFinished);
+    fadeAnimation_->setDirection(QAbstractAnimation::Forward);
+    fadeAnimation_->start();
+}
+
+void
+Blinkable::toStopBlink()
+{
+    disconnect(fadeAnimation_);
+    fadeAnimation_->stop();
+}
+
+void
+Blinkable::paintEvent(QPaintEvent *event)
+{
+    QWidget::paintEvent(event);
+    if(!toBlinkPixmap_)
+        return;
+    QPainter painter(this);
+    painter.drawPixmap(rect(), pixmap_);
+}
+
 VignetteWidget::VignetteWidget(QWidget* parent)
     : QWidget(parent)
 {
