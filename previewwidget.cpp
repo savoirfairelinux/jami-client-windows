@@ -21,6 +21,8 @@
 #include "lrcinstance.h"
 #include "utils.h"
 
+#include <QPixmap>
+
 PreviewWidget::PreviewWidget(QWidget * parent)
     : VideoWidgetBase(Qt::transparent, parent)
 {
@@ -234,4 +236,80 @@ VideoCallPreviewWidget::getTopLeft()
             containerSize_.width() - margin_ - this->width(),
             containerSize_.height() - margin_ - this->height());
     }
+}
+
+VideoRecordPreviewWidget::VideoRecordPreviewWidget(QWidget* parent)
+    : PreviewWidget(parent)
+{}
+
+VideoRecordPreviewWidget::~VideoRecordPreviewWidget()
+{}
+
+void
+VideoRecordPreviewWidget::paintEvent(QPaintEvent* e)
+{
+    Q_UNUSED(e);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
+    auto parentRect = qobject_cast<QWidget*>(this->parent());
+    if (!parentRect) {
+        return;
+    }
+
+    auto previewImage = LRCInstance::renderer()->getPreviewFrame();
+    if (previewImage) {
+        QImage scaledPreview;
+        auto parentAspectRatio =
+            static_cast<qreal>(parentRect->width()) /
+            static_cast<qreal>(parentRect->height());
+        auto aspectRatio =
+            static_cast<qreal>(previewImage->width()) /
+            static_cast<qreal>(previewImage->height());
+        int previewHeight;
+        int previewWidth;
+        int xOffset = 0;
+        int yOffset = 0;
+        if (parentAspectRatio < aspectRatio) {
+            previewHeight = parentRect->height();
+            previewWidth = previewHeight * aspectRatio;
+            xOffset = (parentRect->width() - previewWidth) / 2;
+        } else {
+            previewWidth = parentRect->width();
+            previewHeight = previewWidth / aspectRatio;
+            yOffset = (parentRect->height() - previewHeight) / 2;
+        }
+
+        scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        scaledPreviewImage_ = scaledPreview;
+
+        // draw rounded corner image
+        QBrush brush(scaledPreview);
+        brush.setTransform(QTransform::fromTranslate(
+            this->rect().x() + xOffset,
+            this->rect().y() + yOffset));
+        QPainterPath previewPath;
+        previewPath.addRoundRect(this->rect(), cornerRadius_);
+        painter.fillPath(previewPath, brush);
+    } else {
+        if (paintBackground_) {
+            paintBackground(&painter);
+            scaledPreviewImage_ = QImage();
+        } else if (drawLastFrame_) {
+            QBrush brush(scaledPreviewImage_);
+            brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
+            QPainterPath previewPath;
+            previewPath.addRoundRect(this->rect(), cornerRadius_);
+            painter.fillPath(previewPath, brush);
+        }
+    }
+}
+
+void
+VideoRecordPreviewWidget::paintBackground(QPainter * painter)
+{
+    QBrush brush(Qt::black);
+    QPainterPath path;
+    path.addRoundRect(this->rect(), cornerRadius_);
+    painter->fillPath(path, brush);
 }

@@ -855,3 +855,40 @@ QLabel#nameLabel {
 QWidget#videoPage {
     background: black;
 }
+
+QPushButton#recordOverlayStartOrFinishRecordingBtn, QPushButton#recordOverlayDeleteBtn, QPushButton#recordOverlayPlayBtn, QPushButton#recordOverlayRerecordBtn, QPushButton#recordOverlaySendBtn,
+QPushButton#recordOverlayStopPlayingBtn {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#recordOverlayStartOrFinishRecordingBtn:hover, QPushButton#recordOverlayDeleteBtn:hover, QPushButton#recordOverlayPlayBtn:hover, QPushButton#recordOverlayRerecordBtn:hover, QPushButton#recordOverlaySendBtn:hover,
+QPushButton#recordOverlayStopPlayingBtn:hover {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#recordOverlayStartOrFinishRecordingBtn:pressed, QPushButton#recordOverlayDeleteBtn:pressed, QPushButton#recordOverlayPlayBtn:pressed, QPushButton#recordOverlayRerecordBtn:pressed, QPushButton#recordOverlaySendBtn:pressed,
+QPushButton#recordOverlayStopPlayingBtn:pressed {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QPushButton#recordOverlayStartOrFinishRecordingBtn:checked, QPushButton#recordOverlayDeleteBtn:checked, QPushButton#recordOverlayPlayBtn:checked, QPushButton#recordOverlayRerecordBtn:checked, QPushButton#recordOverlaySendBtn:checked,
+QPushButton#recordOverlayStopPlayingBtn:checked {
+    background-color: transparent;
+    border-radius: 18px;
+    border: solid 1px;
+}
+
+QWidget#RecordWidget {
+    background-color: transparent;
+}
+
+QLabel#timerLabel {
+    background-color: transparent;
+    color: white;
+}
