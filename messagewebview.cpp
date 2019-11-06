@@ -20,6 +20,7 @@
  **************************************************************************/
 
 #include "messagewebview.h"
+#include "recordwidget.h"
 
 #include <QCryptographicHash>
 #include <QDebug>
@@ -113,6 +114,8 @@ MessageWebView::MessageWebView(QWidget *parent)
                 break;
             }
         });
+    recordWidget_ = new RecordWidget(this);
+    recordWidget_->getContainer()->hide();
 }
 
 MessageWebView::~MessageWebView()
@@ -236,6 +239,32 @@ void MessageWebView::runJsText()
         textSelected_ = val.toBool();
         emit textSelectedReady();
     });
+}
+
+void
+MessageWebView::openAudioRecorder(int spikePosX, int spikePosY)
+{
+    // spikePosX, spikePosY are positions relative to Document
+    auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
+    auto recorderWidth = recordWidget_->size().width();
+    auto recorderHeight = recordWidget_->size().height();
+    recordWidget_->getContainer()->setGeometry(pointOfVideoButton.x() - recorderWidth/2,
+                                               pointOfVideoButton.y() - recorderHeight - recordWidgetMargin_,
+                                               recorderWidth, recorderHeight);
+    recordWidget_->openRecorder(true);
+}
+
+void
+MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
+{
+    // spikePosX, spikePosY are positions relative to Document
+    auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
+    auto recorderWidth = recordWidget_->size().width();
+    auto recorderHeight = recordWidget_->size().height();
+    recordWidget_->getContainer()->setGeometry(pointOfVideoButton.x() - recorderWidth/2,
+                                               pointOfVideoButton.y() - recorderHeight - recordWidgetMargin_,
+                                               recorderWidth, recorderHeight);
+    recordWidget_->openRecorder(false);
 }
 
 void MessageWebView::buildView()
@@ -639,6 +668,34 @@ PrivateBridging::emitPasteKeyDetected()
         emit messageView->pasteKeyDetected();
     } else {
         qDebug() << "JS bridging - exception during emitPasteKeyDetected";
+    }
+    return 0;
+}
+
+int
+PrivateBridging::openAudioRecorder(int spikePosX, int spikePosY)
+{
+    //call the open audio recorder function in messageweview
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->openAudioRecorder(spikePosX, spikePosY);
+        }
+    } catch (...) {
+        qDebug() << "JS bridging - exception during openAudioRecorder!";
+    }
+    return 0;
+}
+
+int
+PrivateBridging::openVideoRecorder(int spikePosX, int spikePosY)
+{
+    //call the open video recorder function in messageweview
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            messageView->openVideoRecorder(spikePosX, spikePosY);
+        }
+    } catch (...) {
+        qDebug() << "JS bridging - exception during openVideoRecorder!";
     }
     return 0;
 }
