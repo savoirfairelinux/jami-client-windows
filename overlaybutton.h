@@ -17,26 +17,21 @@
 **************************************************************************/
 #pragma once
 
-#include "utils.h"
-
 #include <QColor>
 #include <QImage>
 #include <QPushButton>
 
-#include <functional>
-
 class OverlayButton : public QPushButton {
     Q_OBJECT;
 
-    Q_PROPERTY(QPixmap originPix READ getOriginPix WRITE setOriginPix DESIGNABLE true NOTIFY originPixChanged);
-    Q_PROPERTY(QPixmap checkedPix READ getCheckedPix WRITE setCheckedPix DESIGNABLE true NOTIFY checkedPixChanged);
-    Q_PROPERTY(QColor tintColor READ getTintColor WRITE setTintColor DESIGNABLE true NOTIFY tintColorChanged);
+    Q_PROPERTY(QPixmap originPix READ getOriginPix WRITE setOriginPix DESIGNABLE true);
+    Q_PROPERTY(QPixmap checkedPix READ getCheckedPix WRITE setCheckedPix DESIGNABLE true);
+    Q_PROPERTY(QColor tintColor READ getTintColor WRITE setTintColor DESIGNABLE true);
 
 public:
-    using EventCallback = std::function<bool(QEvent*)>;
+    explicit OverlayButton(QWidget* parent = nullptr);
+    ~OverlayButton();
 
-    OverlayButton(QWidget*);
-    virtual ~OverlayButton();
     void resetToOriginal();
     void setOverlayButtonChecked(bool);
 
@@ -48,32 +43,24 @@ public:
     void setTintColor(QColor);
     QColor getTintColor() const;
 
-signals:
-    void signalBtnEvent(QEvent* event);
-    void originPixChanged(QString);
-    void checkedPixChanged(QString);
-    void tintColorChanged(QColor);
-
 protected:
-    virtual bool event(QEvent* event);
+    void enterEvent(QEvent *event) override;
+    void leaveEvent(QEvent* event) override;
 
 private:
-    void updateIcon(QEvent* event);
-    void setButtonIcon();
+    void updateIcon();
 
 private slots:
-    void slotOnToggle(bool);
+    void slotToggled(bool);
 
 private:
     bool isHovered_ = false;
     bool isSelected_ = false;
-    bool isFirstTime_ = true;
-    QPixmap pathOriginal_;
-    QPixmap pathChecked_;
-    QPixmap originIc_;
-    QPixmap tintOriginIc_;
-    QPixmap checkedIc_;
-    QPixmap tintCheckedIc_;
+
+    QPixmap normalPixmap_;
+    QPixmap checkedPixmap_;
+    QPixmap tintNormalPixmap_;
+    QPixmap tintCheckedPixmap_;
+
     QColor tintColor_;
-    std::vector<EventCallback> btnCallbacks_;
 };
