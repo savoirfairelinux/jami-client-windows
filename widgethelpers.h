@@ -96,6 +96,8 @@ public:
     explicit VignetteWidget(QWidget* parent = nullptr);
     ~VignetteWidget();
 
+    void setDrawRoundedCorner(bool state) { drawRoundedCorner_ = state; }
+
 public slots:
     void slotWillFadeOut();
     void slotWillResetOpacity();
@@ -105,8 +107,10 @@ protected:
 
 private:
     FadeAnimation* fadeOutAnimation_;
+    constexpr static qreal cornerRadius_ = 10.0f;
     quint64 height_{ 128 };
     quint64 fadeTime_{ 1000 };
+    bool drawRoundedCorner_{ false };
 
 };
 

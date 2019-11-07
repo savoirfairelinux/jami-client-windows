@@ -161,7 +161,17 @@ VignetteWidget::paintEvent(QPaintEvent *event)
     gradient.setColorAt(0, QColor(0, 0, 0, 96));
     gradient.setColorAt(0.5, QColor(0, 0, 0, 32));
     gradient.setColorAt(1, Qt::transparent);
-    painter.fillRect(rect(), gradient);
+
+    // draw rounded corner
+    if (drawRoundedCorner_) {
+        QBrush brush(gradient);
+        brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
+        QPainterPath previewPath;
+        previewPath.addRoundRect(this->rect(), cornerRadius_);
+        painter.fillPath(previewPath, brush);
+    } else {
+        painter.fillRect(rect(), gradient);
+    }
 
     // bottom
     gradient.setStart(0, rect().bottom() - height_);
@@ -169,5 +179,16 @@ VignetteWidget::paintEvent(QPaintEvent *event)
     gradient.setColorAt(0, Qt::transparent);
     gradient.setColorAt(0.5, QColor(0, 0, 0, 32));
     gradient.setColorAt(1, QColor(0, 0, 0, 96));
-    painter.fillRect(rect(), gradient);
+
+    // draw rounded corner
+    if (drawRoundedCorner_) {
+        QBrush brush(gradient);
+        brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
+        QPainterPath previewPath;
+        previewPath.addRoundRect(this->rect(), cornerRadius_);
+        painter.fillPath(previewPath, brush);
+    } else {
+        painter.fillRect(rect(), gradient);
+    }
+
 }
