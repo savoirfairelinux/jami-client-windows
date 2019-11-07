@@ -109,11 +109,11 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     ui->noVideoButton->setVisible(!isAudioOnly);
 
     // Block the signals of buttons
-    Utils::whileBlocking(ui->noMicButton)->setOverlayButtonChecked(isAudioMuted);
-    Utils::whileBlocking(ui->noVideoButton)->setOverlayButtonChecked(isVideoMuted);
-    Utils::whileBlocking(ui->recButton)->setOverlayButtonChecked(isRecording);
-    Utils::whileBlocking(ui->holdButton)->setOverlayButtonChecked(isPaused);
-    Utils::whileBlocking(ui->onHoldLabel)->setVisible(isPaused);
+    ui->noMicButton->setCheckedState(isAudioMuted);
+    ui->noVideoButton->setCheckedState(isVideoMuted);
+    ui->recButton->setCheckedState(isRecording);
+    ui->holdButton->setCheckedState(isPaused);
+    ui->onHoldLabel->setVisible(isPaused);
 
     bool isSIP = accInfo.profileInfo.type == lrc::api::profile::Type::SIP;
     ui->addToConferenceButton->setVisible(!isSIP);
