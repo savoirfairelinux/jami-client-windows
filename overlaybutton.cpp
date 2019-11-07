@@ -24,52 +24,44 @@
 OverlayButton::OverlayButton(QWidget *parent)
     : QPushButton(parent)
 {
-    btnCallbacks_.push_back(
-        [this](QEvent* event) {
-            if (event->type() == QEvent::HoverEnter) isHovered_ = true;
-            return true;
-        });
-    btnCallbacks_.push_back(
-        [this](QEvent* event) {
-            if (event->type() == QEvent::HoverLeave) isHovered_ = false;
-            return true;
-        });
-
-    connect(this, SIGNAL(toggled(bool)), this, SLOT(slotOnToggle(bool)));
+    connect(this, SIGNAL(toggled(bool)),
+            this, SLOT(slotToggled(bool)));
 }
 
 OverlayButton::~OverlayButton()
-{
-}
+{}
 
 void
 OverlayButton::setOriginPix(QPixmap originPixPath)
 {
-    pathOriginal_ = originPixPath;
+    normalPixmap_ = originPixPath;
+    setIcon(normalPixmap_);
 }
 
 QPixmap
 OverlayButton::getOriginPix() const
 {
-    return pathOriginal_;
+    return normalPixmap_;
 }
 
 void
 OverlayButton::setCheckedPix(QPixmap checkedPixPath)
 {
-    pathChecked_ = checkedPixPath;
+    checkedPixmap_ = checkedPixPath;
 }
 
 QPixmap
 OverlayButton::getCheckedPix() const
 {
-    return pathChecked_;
+    return checkedPixmap_;
 }
 
 void
 OverlayButton::setTintColor(QColor tint_color)
 {
     tintColor_ = tint_color;
+    tintNormalPixmap_ = Utils::generateTintedPixmap(normalPixmap_, tintColor_);
+    tintCheckedPixmap_ = Utils::generateTintedPixmap(checkedPixmap_, tintColor_);
 }
 
 QColor
@@ -79,72 +71,42 @@ OverlayButton::getTintColor() const
 }
 
 void
-OverlayButton::updateIcon(QEvent* event)
-{
-    if (!event)
-        return;
-    if (event->type() != QEvent::HoverEnter &&
-        event->type() != QEvent::HoverLeave) {
-        return;
-    }
-    setButtonIcon();
-}
-
-void
-OverlayButton::setButtonIcon()
+OverlayButton::updateIcon()
 {
     if (isSelected_) {
-        if (isHovered_) {
-            setIcon(tintCheckedIc_);
-        } else {
-            setIcon(checkedIc_);
-        }
+        setIcon(isHovered_ ? tintCheckedPixmap_ : checkedPixmap_);
     } else {
-        if (isHovered_) {
-            setIcon(tintOriginIc_);
-        } else {
-            setIcon(originIc_);
-        }
+        setIcon(isHovered_ ? tintNormalPixmap_ : normalPixmap_);
     }
-}
-
-bool
-OverlayButton::event(QEvent* event)
-{
-    QPushButton::event(event);
-
-    if (isFirstTime_) {
-        originIc_ = QPixmap(pathOriginal_);
-        checkedIc_ = QPixmap(pathChecked_);
-        tintOriginIc_ = Utils::generateTintedPixmap(originIc_, tintColor_);
-        tintCheckedIc_ = Utils::generateTintedPixmap(checkedIc_, tintColor_);
-        setIcon(originIc_);
-        isFirstTime_ = false;
-    }
-
-    bool isHandled = false;
-    // iterate the handlers of this class
-    for (auto cb : btnCallbacks_) {
-        isHandled = cb(event);
-    }
-    // emit the signal so that other callback can be defined outside of this class
-    updateIcon(event);
-    emit signalBtnEvent(event);
-
-    return isHandled;
 }
 
 void
-OverlayButton::slotOnToggle(bool checked)
+OverlayButton::enterEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+    isHovered_ = true;
+    updateIcon();
+}
+
+void
+OverlayButton::leaveEvent(QEvent* event)
+{
+    Q_UNUSED(event);
+    isHovered_ = false;
+    updateIcon();
+}
+
+void
+OverlayButton::slotToggled(bool checked)
 {
     isSelected_ = checked;
-    setButtonIcon();
+    updateIcon();
 }
 
 void
 OverlayButton::resetToOriginal()
 {
-    setIcon(originIc_);
+    setIcon(normalPixmap_);
 }
 
 void
@@ -152,5 +114,5 @@ OverlayButton::setOverlayButtonChecked(bool checked)
 {
     Utils::whileBlocking(this)->setChecked(checked);
     isSelected_ = checked;
-    setButtonIcon();
+    updateIcon();
 }
