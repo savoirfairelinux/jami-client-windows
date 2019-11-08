@@ -109,6 +109,8 @@ private:
     int scaledPreviewImageXOffset_{ 0 };
     int scaledPreviewImageYOffset_{ 0 };
     constexpr static qreal cornerRadius_ = 10.0f;
+    int scaledPreviewImageXOffset_;
+    int scaledPreviewImageYOffset_;
 
     QImage scaledPreviewImage_;
 
