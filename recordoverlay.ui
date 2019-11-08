@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <property name="pixRedDot" stdset="0">
    <pixmap resource="ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
   </property>

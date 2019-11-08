@@ -1,5 +1,5 @@
 /**************************************************************************
-* Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
 * Author: Yang Wang <yang.wang@savoirfairelinux.com>                      *
 * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
 *                                                                         *
@@ -19,42 +19,34 @@
 
 #pragma once
 
-#include <QWidget>
-
 #include "widgethelpers.h"
 #include "recordoverlay.h"
 #include "previewwidget.h"
+
+#include <QWidget>
 
 namespace Ui {
 class RecordWidget;
 }
 
-class RecordWidget : public PopupWidget
+class RecordWidget final : public PopupWidget
 {
     Q_OBJECT
-
 public:
     explicit RecordWidget(QWidget *parent = nullptr);
     ~RecordWidget();
 
+    bool startRecording();
+    bool finishRecording();
+    bool sendRecording();
+    void recordAgain();
+    void deleteRecording();
 
-    bool actionToStartRecord();
-    bool actionToFinishRecord();
-    bool actionToReRecord();
-    bool actionToDeleteRecord();
-    bool actionToSend();
-
-    bool isAudio();
-
-    void openRecorder(bool isaudio);
+    void openRecorder(bool isAudio);
 
 protected:
-    void resizeEvent(QResizeEvent* event);
-
+    void resizeEvent(QResizeEvent* event) override;
     void hideEvent(QHideEvent* event) override;
-
-private:
-    void deleteRecordedFileDetached(const QString deleteFilePath);
 
 private:
     Ui::RecordWidget* ui;

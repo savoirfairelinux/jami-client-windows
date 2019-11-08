@@ -1,5 +1,5 @@
 /**************************************************************************
-* Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
 * Author: Yang Wang <yang.wang@savoirfairelinux.com>                      *
 * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
 *                                                                         *
@@ -24,7 +24,9 @@
 #include <QtConcurrent/QtConcurrent>
 
 RecordWidget::RecordWidget(QWidget *parent) :
-    PopupWidget(parent, Qt::black, PopupDialog::SpikeLabelAlignment::AlignHCenter),
+    PopupWidget(parent,
+                Qt::black,
+                PopupDialog::SpikeLabelAlignment::AlignHCenter),
     ui(new Ui::RecordWidget)
 {
     ui->setupUi(this);
@@ -34,62 +36,57 @@ RecordWidget::RecordWidget(QWidget *parent) :
 }
 
 RecordWidget::~RecordWidget()
-{
-}
+{}
 
 bool
-RecordWidget::actionToStartRecord()
+RecordWidget::startRecording()
 {
     bool isSuccessful = false;
     if(!isAudio_ && !LRCInstance::renderer()->isPreviewing()){return isSuccessful;}
     try {
         recordedFilePath_ = QString::fromStdString(LRCInstance::avModel().startLocalRecorder(isAudio_));
         isSuccessful = true;
-    }
-    catch (...) {
+    } catch (...) {
         qDebug() << "The start of record fails";
     }
     return isSuccessful;
 }
 
 bool
-RecordWidget::actionToFinishRecord()
+RecordWidget::finishRecording()
 {
     bool isSuccessful = false;
     try {
         LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
         isSuccessful = true;
-    }
-    catch (...) {
+    } catch (...) {
         qDebug() << "The finish of record fails";
     }
     return isSuccessful;
 }
 
-bool
-RecordWidget::actionToReRecord()
+void
+RecordWidget::recordAgain()
 {
     QtConcurrent::run(
         [this] {
             Utils::oneShotConnect(&LRCInstance::avModel(), &lrc::api::AVModel::recordPlaybackStopped,
                 [this] {
-                        deleteRecordedFileDetached(recordedFilePath_);
-                        recordedFilePath_ = QString::fromStdString(LRCInstance::avModel().startLocalRecorder(isAudio_));
-                     });
+                    Utils::forceDeleteAsync(recordedFilePath_);
+                   recordedFilePath_ = QString::fromStdString(LRCInstance::avModel().startLocalRecorder(isAudio_));
+                });
             LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
         });
-    return true;
 }
 
-bool
-RecordWidget::actionToDeleteRecord()
+void
+RecordWidget::deleteRecording()
 {
-    deleteRecordedFileDetached(recordedFilePath_);
-    return true;
+    Utils::forceDeleteAsync(recordedFilePath_);
 }
 
 bool
-RecordWidget::actionToSend()
+RecordWidget::sendRecording()
 {
     bool isSuccessful = false;
     // send out the stored video file
@@ -101,31 +98,25 @@ RecordWidget::actionToSend()
         // reset file path, make sure that the file that is needed to sent will not be deleted
         recordedFilePath_.clear();
         isSuccessful = true;
-    }
-    catch (...) {
+    } catch (...) {
         qDebug().noquote() << "\n" << "Send file failed !" << "\n";
     }
     return isSuccessful;
 }
 
-bool
-RecordWidget::isAudio()
-{
-    return isAudio_;
-}
-
 void
-RecordWidget::openRecorder(bool isaudio)
+RecordWidget::openRecorder(bool isAudio)
 {
-    isAudio_ = isaudio;
-    widgetContainer_->show();
+    isAudio_ = isAudio;
     if(!isAudio_) {
         LRCInstance::avModel().startPreview();
     }
+    widgetContainer_->show();
 }
 
 void RecordWidget::resizeEvent(QResizeEvent* event)
 {
+    Q_UNUSED(event);
     recordOverlay_->resize(this->size());
     previewWidget_->resize(this->size());
 
@@ -135,26 +126,8 @@ void RecordWidget::resizeEvent(QResizeEvent* event)
 void
 RecordWidget::hideEvent(QHideEvent* event)
 {
+    Q_UNUSED(event);
     if(!isAudio_) {
         LRCInstance::avModel().stopPreview();
     }
-}
-
-void
-RecordWidget::deleteRecordedFileDetached(const QString deleteFilePath)
-{
-    // keep deleting file until the process holding it let go
-    // Or the file itself does not exist anymore
-    QtConcurrent::run(
-        [deleteFilePath] {
-            QFile file(deleteFilePath);
-            if (!QFile::exists(deleteFilePath))
-                return;
-            int deletionCount { 0 };
-            while (!file.remove() && deletionCount < 5) {
-                qDebug().noquote() << "\n" << file.errorString() << "\n";
-                QThread::msleep(10);
-                ++ deletionCount;
-            }
-        });
 }

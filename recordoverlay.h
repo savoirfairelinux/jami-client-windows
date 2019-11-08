@@ -1,5 +1,5 @@
 /**************************************************************************
-* Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+* Copyright (C) 2019 by Savoir-faire Linux                                *
 * Author: Yang Wang <yang.wang@savoirfairelinux.com>                      *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
@@ -17,9 +17,6 @@
 **************************************************************************/
 
 #pragma once
-
-#include <QWidget>
-#include <QTimer>
 
 #include "widgethelpers.h"
 
