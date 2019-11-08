@@ -108,6 +108,20 @@ QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
 
+// rounded corner
+template<typename T>
+void
+fillRoundRectPath(QPainter& painter, const T& brushType, const QRect& rectToDraw, qreal cornerRadius, int xTransFormOffset = 0, int yTransFormOffset = 0)
+{
+    QBrush brush(brushType);
+    brush.setTransform(QTransform::fromTranslate(
+                       rectToDraw.x() + xTransFormOffset,
+                       rectToDraw.y() + yTransFormOffset));
+    QPainterPath painterPath;
+    painterPath.addRoundRect(rectToDraw, cornerRadius);
+    painter.fillPath(painterPath, brush);
+}
+
 // time
 QString formattedTime(int seconds);
 

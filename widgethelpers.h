@@ -106,6 +106,8 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
+    void fillRoundRectPath(QPainter& painter, const QLinearGradient& gradient);
+
     FadeAnimation* fadeOutAnimation_;
     constexpr static qreal cornerRadius_ = 10.0f;
     quint64 height_{ 128 };

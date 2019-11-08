@@ -22,12 +22,14 @@
 #include "utils.h"
 
 #include <QMouseEvent>
+#include <QPainter>
 
 PopupDialog::PopupDialog(QWidget *parent,
                          QColor spikeColor,
                          SpikeLabelAlignment spikeAlignment) :
     QDialog(parent),
-    ui(new Ui::PopupDialog)
+    ui(new Ui::PopupDialog),
+    spikeColor_(spikeColor)
 {
     ui->setupUi(this);
 
@@ -78,4 +80,15 @@ PopupDialog::mousePressEvent(QMouseEvent* event)
         emit willClose(event);
     }
     QDialog::mousePressEvent(event);
+}
+
+void
+PopupDialog::paintEvent(QPaintEvent * event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
+    // draw rounded corner
+    Utils::fillRoundRectPath(painter, spikeColor_, ui->containerWidget->rect(), cornerRadius_);
+    QDialog::paintEvent(event);
 }
