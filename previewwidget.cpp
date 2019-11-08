@@ -282,34 +282,17 @@ VideoRecordPreviewWidget::paintEvent(QPaintEvent* e)
 
         scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
         scaledPreviewImage_ = scaledPreview;
+        scaledPreviewImageXOffset_ = xOffset;
+        scaledPreviewImageYOffset_ = yOffset;
 
         // draw rounded corner image
-        QBrush brush(scaledPreview);
-        brush.setTransform(QTransform::fromTranslate(
-            this->rect().x() + xOffset,
-            this->rect().y() + yOffset));
-        QPainterPath previewPath;
-        previewPath.addRoundRect(this->rect(), cornerRadius_);
-        painter.fillPath(previewPath, brush);
+        Utils::fillRoundRectPath(painter, scaledPreview, rect(), cornerRadius_, xOffset, yOffset);
     } else {
         if (paintBackground_) {
-            paintBackground(&painter);
+            Utils::fillRoundRectPath(painter, QColor(Qt::black), rect(), cornerRadius_);
             scaledPreviewImage_ = QImage();
         } else if (drawLastFrame_) {
-            QBrush brush(scaledPreviewImage_);
-            brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
-            QPainterPath previewPath;
-            previewPath.addRoundRect(this->rect(), cornerRadius_);
-            painter.fillPath(previewPath, brush);
+            Utils::fillRoundRectPath(painter, scaledPreviewImage_, rect(), cornerRadius_, scaledPreviewImageXOffset_, scaledPreviewImageYOffset_);
         }
     }
-}
-
-void
-VideoRecordPreviewWidget::paintBackground(QPainter * painter)
-{
-    QBrush brush(Qt::black);
-    QPainterPath path;
-    path.addRoundRect(this->rect(), cornerRadius_);
-    painter->fillPath(path, brush);
 }

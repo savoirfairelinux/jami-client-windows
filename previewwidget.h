@@ -104,7 +104,6 @@ public:
 
 protected:
     void paintEvent(QPaintEvent* e) override;
-    void paintBackground(QPainter* painter) override;
 
 private:
     constexpr static qreal cornerRadius_ = 10.0f;
