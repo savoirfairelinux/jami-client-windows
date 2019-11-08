@@ -20,7 +20,12 @@
  **************************************************************************/
 
 #include "messagewebview.h"
+
 #include "recordwidget.h"
+#include "lrcinstance.h"
+#include "messagewebpage.h"
+#include "utils.h"
+#include "webchathelpers.h"
 
 #include <QCryptographicHash>
 #include <QDebug>
@@ -42,11 +47,6 @@
 
 #include <ciso646>
 #include <fstream>
-
-#include "lrcinstance.h"
-#include "messagewebpage.h"
-#include "utils.h"
-#include "webchathelpers.h"
 
 MessageWebView::MessageWebView(QWidget *parent)
     : QWebEngineView(parent)
@@ -271,6 +271,14 @@ MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
         pointOfVideoButton.x() - recordWidget_->width() / 2,
         pointOfVideoButton.y() - recordWidget_->height() - recordWidgetMargin_);
     recordWidget_->openRecorder(false);
+}
+
+void
+MessageWebView::setRecordButtonsVisibility(bool visible)
+{
+    QString s = QString::fromLatin1("displayRecordControls(%1);")
+        .arg(visible ? "true" : "false");
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
 void MessageWebView::buildView()
