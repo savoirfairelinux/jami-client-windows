@@ -19,6 +19,8 @@
 #include "recordoverlay.h"
 #include "ui_recordoverlay.h"
 
+#include "lrcinstance.h"
+
 #include "recordwidget.h"
 #include "utils.h"
 
@@ -40,6 +42,12 @@ RecordOverlay::RecordOverlay(RecordWidget* recordWidget) :
     ui->recordOverlayPlayBtn->setVisible(false);
     ui->recordOverlayStopPlayingBtn->setVisible(false);
 
+        connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
+            ui->levelMeter,
+            [this](const std::string & id, float level) {
+                ui->levelMeter->setLevel(level);
+            });
+
     setUpRecorderStatus(RecorderStatus::aboutToRecord);
 }
 
@@ -49,30 +57,37 @@ RecordOverlay::~RecordOverlay()
 }
 
 void
-RecordOverlay::setUpRecorderStatus(RecorderStatus status, bool isTimerToBeInvolved, bool isAimationToBeInvolved)
+RecordOverlay::setUpRecorderStatus(RecorderStatus status, bool isRelatedEntitiesToSet)
 {
     status_ = status;
     switch(status) {
     case RecorderStatus::aboutToRecord:
         switchToAboutToRecordPage();
-        if(isTimerToBeInvolved) {reinitializeTimer();}
-        if(isAimationToBeInvolved) {stopRedDotBlink();}
+        if(isRelatedEntitiesToSet) {
+            reinitializeTimer();
+            stopRedDotBlink();
+
+        }
         break;
     case RecorderStatus::recording:
         switchToRecordingPage();
-        if(isTimerToBeInvolved) {
+        if(isRelatedEntitiesToSet) {
             reinitializeTimer();
             recordTimer_.start(1000);
-        }
-        if(isAimationToBeInvolved) {
             stopRedDotBlink();
             startRedDotBlink();
+            if(recordWidget_->isAudio()) {
+
+            }
         }
         break;
     case RecorderStatus::recorded:
         switchToRecordedPage();
-        if(isTimerToBeInvolved) {reinitializeTimer();}
-        if(isAimationToBeInvolved) {stopRedDotBlink();}
+        if(isRelatedEntitiesToSet) {
+            reinitializeTimer();
+            stopRedDotBlink();
+
+        }
         break;
     }
 }
@@ -149,6 +164,10 @@ void
 RecordOverlay::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
+    if(recordWidget_->isAudio()) {
+        ui->levelMeter->start();
+        LRCInstance::startAudioMeter(true);
+    }
     setUpRecorderStatus(RecorderStatus::aboutToRecord);
 }
 
@@ -156,6 +175,10 @@ void
 RecordOverlay::hideEvent(QHideEvent* event)
 {
     QWidget::hideEvent(event);
+    if(recordWidget_->isAudio()) {
+        ui->levelMeter->stop();
+        LRCInstance::stopAudioMeter(true);
+    }
     // set the page to about record page
     setUpRecorderStatus(RecorderStatus::aboutToRecord);
 }
@@ -180,7 +203,8 @@ RecordOverlay::on_recordOverlayStartOrFinishRecordingBtn_toggled(bool checked)
             qDebug() << "The recording does not finish properly";
         }
     } else {
-
+        ui->recordOverlayStartOrFinishRecordingBtn->setOverlayButtonChecked(!checked);
+        qDebug() << "This button should not appear on current page";
     }
 }
 
