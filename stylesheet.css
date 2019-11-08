@@ -886,3 +886,14 @@ QLabel#timerLabel {
     background-color: transparent;
     color: white;
 }
+
+QProgressBar#levelMeter {
+    border: 2px solid white;
+    text-align: center;
+    background: transparent;
+}
+
+    QProgressBar#levelMeter::chunk {
+        background-color: white;
+        margin: 2px;
+    }
