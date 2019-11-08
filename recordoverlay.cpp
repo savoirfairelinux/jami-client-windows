@@ -49,30 +49,37 @@ RecordOverlay::~RecordOverlay()
 }
 
 void
-RecordOverlay::setUpRecorderStatus(RecorderStatus status, bool isTimerToBeInvolved, bool isAimationToBeInvolved)
+RecordOverlay::setUpRecorderStatus(RecorderStatus status, bool isRelatedEntitiesToSet)
 {
     status_ = status;
     switch(status) {
     case RecorderStatus::aboutToRecord:
         switchToAboutToRecordPage();
-        if(isTimerToBeInvolved) {reinitializeTimer();}
-        if(isAimationToBeInvolved) {stopRedDotBlink();}
+        if(isRelatedEntitiesToSet) {
+            reinitializeTimer();
+            stopRedDotBlink();
+            ui->volumeMeter->stopAudioMeter();
+        }
         break;
     case RecorderStatus::recording:
         switchToRecordingPage();
-        if(isTimerToBeInvolved) {
+        if(isRelatedEntitiesToSet) {
             reinitializeTimer();
             recordTimer_.start(1000);
-        }
-        if(isAimationToBeInvolved) {
             stopRedDotBlink();
             startRedDotBlink();
+            if(recordWidget_->isAudio()) {
+                ui->volumeMeter->startAudioMeter();
+            }
         }
         break;
     case RecorderStatus::recorded:
         switchToRecordedPage();
-        if(isTimerToBeInvolved) {reinitializeTimer();}
-        if(isAimationToBeInvolved) {stopRedDotBlink();}
+        if(isRelatedEntitiesToSet) {
+            reinitializeTimer();
+            stopRedDotBlink();
+            ui->volumeMeter->stopAudioMeter();
+        }
         break;
     }
 }
@@ -180,7 +187,8 @@ RecordOverlay::on_recordOverlayStartOrFinishRecordingBtn_toggled(bool checked)
             qDebug() << "The recording does not finish properly";
         }
     } else {
-
+        ui->recordOverlayStartOrFinishRecordingBtn->setOverlayButtonChecked(!checked);
+        qDebug() << "This button should not appear on current page";
     }
 }
 
