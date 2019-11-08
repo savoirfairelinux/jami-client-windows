@@ -29,10 +29,10 @@ class RecordWidget;
 class RecordOverlay : public VignetteWidget
 {
     Q_OBJECT
-    Q_PROPERTY(QPixmap pixRedDot READ getOriginPix WRITE setOriginPix DESIGNABLE true NOTIFY originPixChanged);
+    Q_PROPERTY(QPixmap pixRedDot READ getOriginPix WRITE setOriginPix DESIGNABLE true);
 
 public:
-    enum class RecorderStatus
+    enum class RecorderState
     {
         aboutToRecord,
         recording,
@@ -42,17 +42,11 @@ public:
     QPixmap getOriginPix();
     void setOriginPix(QPixmap);
 
-signals:
-    void originPixChanged(QPixmap);
-
 public:
     explicit RecordOverlay(RecordWidget *recordWidget);
     ~RecordOverlay();
 
-    void setUpRecorderStatus(RecorderStatus status, bool isTimerToBeInvolved = true, bool isAimationToBeInvolved = true);
-
-    void startRedDotBlink();
-    void stopRedDotBlink();
+    void setRecorderState(RecorderState status);
 
 private:
     void switchToAboutToRecordPage();
@@ -77,7 +71,7 @@ private:
     Ui::RecordOverlay* ui;
 
     RecordWidget* recordWidget_;
-    RecorderStatus status_;
+    RecorderState recorderState_;
     int currentTime_ = 0;
     QTimer recordTimer_;
     QPixmap redDotPix_;

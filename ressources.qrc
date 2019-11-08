@@ -97,5 +97,6 @@
         <file>images/icons/av_icons/pause-24px.svg</file>
         <file>images/icons/av_icons/send-24px.svg</file>
         <file>images/icons/av_icons/stop-24px.svg</file>
+        <file>images/icons/av_icons/mic-24px.svg</file>
     </qresource>
 </RCC>
