@@ -72,7 +72,7 @@ void setStackWidget(QStackedWidget *stack, QWidget *widget);
 void showSystemNotification(QWidget* widget, const QString& message, long delay = 5000);
 void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 QSize getRealSize(QScreen* screen);
-void drawBlackCircularImageOntoLabel(QLabel* containerWidget);
+void forceDeleteAsync(const QString& path);
 
 // updates
 void cleanUpdateFiles();
@@ -109,7 +109,7 @@ QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
 QImage cropImage(const QImage& img);
 
 // time
-QString convertTimeDisplayFromMilisecond(int seconds);
+QString formattedTime(int seconds);
 
 // misc helpers
 void swapQListWidgetItems(QListWidget* list, bool down = true);

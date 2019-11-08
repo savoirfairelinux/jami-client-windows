@@ -40,6 +40,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QScreen>
+#include <QtConcurrent/QtConcurrent>
 
 #include <globalinstances.h>
 
@@ -300,6 +301,25 @@ Utils::getRealSize(QScreen* screen)
 #else
     return {};
 #endif
+}
+
+void
+Utils::forceDeleteAsync(const QString& path)
+{
+    // keep deleting file until the process holding it let go
+    // Or the file itself does not exist anymore
+    QtConcurrent::run(
+        [path] {
+            QFile file(path);
+            if (!QFile::exists(path))
+                return;
+            int retries{ 0 };
+            while (!file.remove() && retries < 5) {
+                qDebug().noquote() << "\n" << file.errorString() << "\n";
+                QThread::msleep(10);
+                ++retries;
+            }
+        });
 }
 
 void
@@ -645,24 +665,23 @@ Utils::cropImage(const QImage& img)
 }
 
 QString
-Utils::convertTimeDisplayFromMilisecond(int seconds)
+Utils::formattedTime(int duration)
 {
-    int minutes = seconds/ 60;
-    int secondToDisplay = seconds % 60;
-    std::string sec, min, time;
-    if(secondToDisplay / 10 < 1) {
-        sec = "0" + std::to_string(secondToDisplay);
+    if (duration == 0) return {};
+    std::string formattedString;
+    auto minutes = duration / 60;
+    auto seconds = duration % 60;
+    if (minutes > 0) {
+        formattedString += std::to_string(minutes) + ":";
+        if (formattedString.length() == 2) {
+            formattedString = "0" + formattedString;
+        }
     } else {
-        sec = std::to_string(secondToDisplay);
+        formattedString += "00:";
     }
-    if(minutes / 10 < 1) {
-        min = "0" + std::to_string(minutes);
-    } else {
-        min = std::to_string(minutes);
-    }
-    time = min + ":" + sec;
-
-    return QString::fromStdString(time);
+    if (seconds < 10) formattedString += "0";
+    formattedString += std::to_string(seconds);
+    return QString::fromStdString(formattedString);
 }
 
 QByteArray
