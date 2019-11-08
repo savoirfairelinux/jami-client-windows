@@ -147,5 +147,6 @@ private slots:
     void slotFormatBoxCurrentIndexChanged(int index);
     void slotSetHardwareAccel(bool state);
     void slotVideoDeviceListChanged();
+    void slotAudioMeter(const std::string& id, float level);
 
 };

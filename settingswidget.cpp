@@ -995,11 +995,7 @@ void SettingsWidget::populateAVSettings()
         this, &SettingsWidget::slotAudioInputIndexChanged);
 
     connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
-        [this](const std::string& id, float level) {
-            if (id == "audiolayer_id") {
-                ui->audioInputMeter->setLevel(level);
-            }
-        });
+            this, &SettingsWidget::slotAudioMeter, Qt::UniqueConnection);
 
     // audio output devices
     disconnect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -1137,38 +1133,25 @@ SettingsWidget::slotVideoDeviceListChanged()
     populateVideoSettings();
 }
 
+void
+SettingsWidget::slotAudioMeter(const std::string& id, float level)
+{
+    if (id == "audiolayer_id") {
+        qDebug() << "audioMeter: " << level;
+        ui->audioInputMeter->setLevel(level);
+    }
+}
+
 void SettingsWidget::startAudioMeter(bool async)
 {
-    if (LRCInstance::getActiveCalls().size()) {
-        return;
-    }
     ui->audioInputMeter->start();
-    auto f = [this] {
-        LRCInstance::avModel().startAudioDevice();
-        LRCInstance::avModel().setAudioMeterState(true);
-    };
-    if (async) {
-        QtConcurrent::run(f);
-    } else {
-        f();
-    }
+    LRCInstance::startAudioMeter(async);
 }
 
 void SettingsWidget::stopAudioMeter(bool async)
 {
-    if (LRCInstance::getActiveCalls().size()) {
-        return;
-    }
     ui->audioInputMeter->stop();
-    auto f = [this] {
-        LRCInstance::avModel().stopAudioDevice();
-        LRCInstance::avModel().setAudioMeterState(false);
-    };
-    if (async) {
-        QtConcurrent::run(f);
-    } else {
-        f();
-    }
+    LRCInstance::stopAudioMeter(async);
 }
 
 void
