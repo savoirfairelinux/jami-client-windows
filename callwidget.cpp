@@ -713,7 +713,7 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
     auto isCallSelected = LRCInstance::getCurrentConvUid() == convInfo.uid;
     ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
 
-    connect(callModel, &lrc::api::NewCallModel::callStatusChanged, ui->incomingCallPage,
+    connect(callModel, &lrc::api::NewCallModel::callStatusChanged,
         [this, accountId](const std::string& callId) {
             auto callModel = LRCInstance::accountModel().getAccountInfo(accountId).callModel.get();
             auto call = callModel->getCall(callId);
