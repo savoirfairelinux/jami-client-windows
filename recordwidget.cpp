@@ -121,6 +121,12 @@ RecordWidget::openRecorder(bool isAudio)
     widgetContainer_->show();
 }
 
+bool
+RecordWidget::isAudio()
+{
+    return isAudio_;
+}
+
 void RecordWidget::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
