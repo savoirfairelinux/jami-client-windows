@@ -44,6 +44,8 @@ public:
 
     void openRecorder(bool isAudio);
 
+    bool isAudio();
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
     void hideEvent(QHideEvent* event) override;
