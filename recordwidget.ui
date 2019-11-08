@@ -26,7 +26,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background:transparent;</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
