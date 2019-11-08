@@ -107,6 +107,7 @@ QPixmap generateTintedPixmap(const QPixmap& pix, QColor color);
 QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
 QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
 QImage cropImage(const QImage& img);
+QPixmap pixmapFromSvg(const QString& svg_resource, const QSize& size);
 
 // rounded corner
 template<typename T>

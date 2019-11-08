@@ -29,6 +29,15 @@
 #include <shlwapi.h>
 #endif
 
+#include "pixbufmanipulator.h"
+#include "globalsystemtray.h"
+#include "lrcinstance.h"
+#include "networkmanager.h"
+#include "updateconfirmdialog.h"
+#include "version.h"
+
+#include <globalinstances.h>
+
 //Qt
 #include <QBitmap>
 #include <QObject>
@@ -41,15 +50,7 @@
 #include <QMessageBox>
 #include <QScreen>
 #include <QtConcurrent/QtConcurrent>
-
-#include <globalinstances.h>
-
-#include "pixbufmanipulator.h"
-#include "globalsystemtray.h"
-#include "lrcinstance.h"
-#include "networkmanager.h"
-#include "updateconfirmdialog.h"
-#include "version.h"
+#include <QSvgRenderer>
 
 bool
 Utils::CreateStartupLink(const std::wstring& wstrAppName)
@@ -662,6 +663,17 @@ Utils::cropImage(const QImage& img)
         return img.copy({ (w - h) / 2, 0, h, h });
     }
     return img.copy({ 0, (h - w) / 2, w, w });
+}
+
+QPixmap
+Utils::pixmapFromSvg(const QString& svg_resource, const QSize& size)
+{
+    QSvgRenderer svgRenderer(svg_resource);
+    QPixmap pixmap(size);
+    pixmap.fill(Qt::transparent);
+    QPainter pixPainter(&pixmap);
+    svgRenderer.render(&pixPainter);
+    return pixmap;
 }
 
 QString
