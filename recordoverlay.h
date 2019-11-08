@@ -49,7 +49,7 @@ public:
     explicit RecordOverlay(RecordWidget *recordWidget);
     ~RecordOverlay();
 
-    void setUpRecorderStatus(RecorderStatus status, bool isTimerToBeInvolved = true, bool isAimationToBeInvolved = true);
+    void setUpRecorderStatus(RecorderStatus status, bool isRelatedEntitiesToSet = true);
 
     void startRedDotBlink();
     void stopRedDotBlink();
