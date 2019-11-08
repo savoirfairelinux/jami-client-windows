@@ -78,7 +78,7 @@
       <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
       <!--APPLICATIONFOLDER required by WixUI_Advanced, ApplicationFolderName reset APPLICATIONFOLDER path-->
-      <Property Id="ApplicationFolderName" Value="$(var.Manufacturer)\$(var.Name)" />
+      <Property Id="ApplicationFolderName" Value="$(var.Manufacturer)\$(var.FolderName)" />
       <UIRef Id="WixUI_Advanced" />
 
       <!--Remove User Exit Dialog-->
