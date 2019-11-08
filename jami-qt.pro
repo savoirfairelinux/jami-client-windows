@@ -85,7 +85,8 @@ HEADERS += ./aboutdialog.h \
         ./popupdialog.h \
         ./recordoverlay.h \
         ./widgethelpers.h \
-        ./recordwidget.h
+        ./recordwidget.h \
+        ./audiovolumemeter.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -153,7 +154,8 @@ SOURCES += ./aboutdialog.cpp \
         ./popupdialog.cpp \
         ./recordoverlay.cpp \
         ./widgethelpers.cpp \
-        ./recordwidget.cpp
+        ./recordwidget.cpp \
+        ./audiovolumemeter.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -183,5 +185,6 @@ FORMS += ./aboutdialog.ui \
         ./collapsiblepasswordwidget.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
-        ./recordwidget.ui
+        ./recordwidget.ui \
+        ./audiovolumemeter.ui
 RESOURCES += ressources.qrc
