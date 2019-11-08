@@ -50,6 +50,7 @@
 #include <QRegularExpression>
 #include <QPixmap>
 #include <QBuffer>
+#include <QtConcurrent/QtConcurrent>
 
 #include <memory>
 
@@ -304,6 +305,35 @@ public:
         return instance().netWorkManager_.get();
     }
 
+    static void startAudioMeter(bool async)
+    {
+        auto f = [] {
+            if (!LRCInstance::getActiveCalls().size()) {
+                LRCInstance::avModel().startAudioDevice();
+            }
+            LRCInstance::avModel().setAudioMeterState(true);
+        };
+        if (async) {
+            QtConcurrent::run(f);
+        } else {
+            f();
+        }
+    }
+
+    static void stopAudioMeter(bool async)
+    {
+        auto f = [] {
+            if (!LRCInstance::getActiveCalls().size()) {
+                LRCInstance::avModel().stopAudioDevice();
+            }
+            LRCInstance::avModel().setAudioMeterState(false);
+        };
+        if (async) {
+            QtConcurrent::run(f);
+        } else {
+            f();
+        }
+    }
 signals:
     void accountListChanged();
 

@@ -703,8 +703,9 @@ AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
 }
 
 bool
-AdvancedSIPSettingsWidget::eventFilter(QObject * object, QEvent * event)
+AdvancedSIPSettingsWidget::eventFilter(QObject* object, QEvent* event)
 {
+    Q_UNUSED(object);
     if (event->type() == QEvent::Wheel) {
         return true;
     }
