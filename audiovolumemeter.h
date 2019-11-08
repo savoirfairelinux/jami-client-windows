@@ -1,7 +1,6 @@
 /**************************************************************************
 * Copyright (C) 2019 by Savoir-faire Linux                                *
 * Author: Yang Wang <yang.wang@savoirfairelinux.com>                      *
-* Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -19,43 +18,40 @@
 
 #pragma once
 
-#include "widgethelpers.h"
-#include "recordoverlay.h"
-#include "previewwidget.h"
-
 #include <QWidget>
 
 namespace Ui {
-class RecordWidget;
+class AudioVolumeMeter;
 }
 
-class RecordWidget final : public PopupWidget
+class AudioVolumeMeter : public QWidget
 {
     Q_OBJECT
+
+    Q_PROPERTY(QColor backgroundColor READ getBackgroundColor WRITE setBackgroundColor DESIGNABLE true);
+    Q_PROPERTY(QColor volumeColor READ getvolumeColor WRITE setVolumeColor DESIGNABLE true);
+
 public:
-    explicit RecordWidget(QWidget *parent = nullptr);
-    ~RecordWidget();
+    explicit AudioVolumeMeter(QWidget *parent = nullptr);
+    ~AudioVolumeMeter();
 
-    bool startRecording();
-    bool finishRecording();
-    bool sendRecording();
-    void recordAgain();
-    void deleteRecording();
+    void startAudioMeter(bool async = true);
+    void stopAudioMeter(bool async = true);
 
-    void openRecorder(bool isAudio);
-
-    bool isAudio();
+    QColor getBackgroundColor();
+    QColor getvolumeColor();
+    void setBackgroundColor(QColor);
+    void setVolumeColor(QColor);
 
 protected:
-    void resizeEvent(QResizeEvent* event) override;
-    void hideEvent(QHideEvent* event) override;
+    void paintEvent(QPaintEvent* event) override;
 
 private:
-    Ui::RecordWidget* ui;
+    Ui::AudioVolumeMeter *ui;
 
-    VideoRecordPreviewWidget* previewWidget_;
-    RecordOverlay* recordOverlay_;
-    bool isAudio_ = true;
-    QString recordedFilePath_;
-
+    float audioLevel_ = 0;
+    const float maxLevel_ = 0.08;
+    QColor volumeColor_;
+    QColor backgroundColor_;
 };
+
