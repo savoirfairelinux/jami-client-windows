@@ -18,6 +18,8 @@
 
 #include "widgethelpers.h"
 
+#include "utils.h"
+
 FadeOutable::FadeOutable(QWidget* parent)
     : QWidget(parent)
 {
@@ -162,16 +164,8 @@ VignetteWidget::paintEvent(QPaintEvent *event)
     gradient.setColorAt(0.5, QColor(0, 0, 0, 32));
     gradient.setColorAt(1, Qt::transparent);
 
-    // draw rounded corner
-    if (drawRoundedCorner_) {
-        QBrush brush(gradient);
-        brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
-        QPainterPath previewPath;
-        previewPath.addRoundRect(this->rect(), cornerRadius_);
-        painter.fillPath(previewPath, brush);
-    } else {
-        painter.fillRect(rect(), gradient);
-    }
+    // draw upper rounded corner or just gradient itself
+    fillRoundRectPath(painter, gradient);
 
     // bottom
     gradient.setStart(0, rect().bottom() - height_);
@@ -180,15 +174,17 @@ VignetteWidget::paintEvent(QPaintEvent *event)
     gradient.setColorAt(0.5, QColor(0, 0, 0, 32));
     gradient.setColorAt(1, QColor(0, 0, 0, 96));
 
-    // draw rounded corner
+    // draw bottom rounded corner or just gradient itself
+    fillRoundRectPath(painter, gradient);
+
+}
+
+void
+VignetteWidget::fillRoundRectPath(QPainter& painter, const QLinearGradient & gradient)
+{
     if (drawRoundedCorner_) {
-        QBrush brush(gradient);
-        brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
-        QPainterPath previewPath;
-        previewPath.addRoundRect(this->rect(), cornerRadius_);
-        painter.fillPath(previewPath, brush);
+        Utils::fillRoundRectPath(painter, gradient, rect(), cornerRadius_);
     } else {
         painter.fillRect(rect(), gradient);
     }
-
 }

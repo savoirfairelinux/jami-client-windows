@@ -48,9 +48,12 @@ signals:
 
 protected:
     void mousePressEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event);
 
 private:
     Ui::PopupDialog *ui;
+    QColor spikeColor_;
+    constexpr static qreal cornerRadius_ = 10.0f;
 
     void setSpikeLabelAlignment(SpikeLabelAlignment spikeAlignment);
 };

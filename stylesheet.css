@@ -829,12 +829,6 @@ QPushButton#panelButton_9:pressed, QPushButton#panelButton_hash:pressed, QPushBu
     background: #58b;
 }
 
-QWidget#containerWidget {
-    border-radius: 10px;
-    border: solid 1px transparent;
-    background-color: white;
-}
-
 QProgressBar#audioInputMeter {
     border: 0px solid #606060;
     background: lightgrey;

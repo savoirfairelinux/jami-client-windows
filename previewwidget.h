@@ -104,9 +104,10 @@ public:
 
 protected:
     void paintEvent(QPaintEvent* e) override;
-    void paintBackground(QPainter* painter) override;
 
 private:
+    int scaledPreviewImageXOffset_{ 0 };
+    int scaledPreviewImageYOffset_{ 0 };
     constexpr static qreal cornerRadius_ = 10.0f;
 
     QImage scaledPreviewImage_;
