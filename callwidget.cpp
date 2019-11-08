@@ -713,13 +713,6 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
     auto isCallSelected = LRCInstance::getCurrentConvUid() == convInfo.uid;
     ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
 
-    connect(callModel, &lrc::api::NewCallModel::callStatusChanged, ui->incomingCallPage,
-        [this, accountId](const std::string& callId) {
-            auto callModel = LRCInstance::accountModel().getAccountInfo(accountId).callModel.get();
-            auto call = callModel->getCall(callId);
-            ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
-        });
-
     auto itemInCurrentFilter = false;
     if (call.isOutgoing) {
         if (isCallSelected) {
@@ -1327,6 +1320,10 @@ CallWidget::connectAccount(const std::string& accountId)
                 auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
                 auto& callModel = accInfo.callModel;
                 auto call = callModel->getCall(callId);
+
+                // change status label text
+                ui->callingStatusLabel->setText(QString::fromStdString(lrc::api::call::to_string(call.status)));
+
                 switch (call.status) {
                 case lrc::api::call::Status::INVALID:
                 case lrc::api::call::Status::INACTIVE:
@@ -1404,6 +1401,7 @@ CallWidget::setCallPanelVisibility(bool visible)
     ui->btnAudioCall->setVisible(!visible);
     ui->btnVideoCall->setVisible(!visible);
     ui->callStackWidget->setVisible(visible);
+    ui->messageView->setRecordButtonsVisibility(!visible);
 }
 
 void

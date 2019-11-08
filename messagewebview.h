@@ -93,6 +93,7 @@ public:
     void runJsText();
     void openAudioRecorder(int spikePosX,int spikePosY);
     void openVideoRecorder(int spikePosX,int spikePosY);
+    void setRecordButtonsVisibility(bool visible);
 
 protected:
 
