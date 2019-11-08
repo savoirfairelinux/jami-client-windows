@@ -886,3 +886,7 @@ QLabel#timerLabel {
     background-color: transparent;
     color: white;
 }
+
+QWidget#AudioVolumeWidget {
+    background-color: transparent;
+}
