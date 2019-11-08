@@ -134,6 +134,8 @@ void
 RecordWidget::hideEvent(QHideEvent* event)
 {
     Q_UNUSED(event);
+    LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+    Utils::forceDeleteAsync(recordedFilePath_);
     if(!isAudio_) {
         LRCInstance::avModel().stopPreview();
         previewWidget_->toPaintingBackground(true);
