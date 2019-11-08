@@ -264,6 +264,9 @@
     <ClCompile Include="recordwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="audiovolumemeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -468,6 +471,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="recordwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="audiovolumemeter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -774,6 +780,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="recordwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="audiovolumemeter.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
