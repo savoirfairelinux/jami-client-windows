@@ -244,16 +244,16 @@ void MessageWebView::runJsText()
 void
 MessageWebView::openAudioRecorder(int spikePosX, int spikePosY)
 {
-    if (LRCInstance::hasVideoCall() || LRCInstance::avModel().getDevices().size() == 0) {
+    if (LRCInstance::avModel().getAudioInputDevices().size() == 0) {
+        // TODO: this predicate should be observed and used to show/hide the
+        // send audio message button in the webview
         return;
     }
     // spikePosX, spikePosY are positions relative to Document
-    auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
-    auto recorderWidth = recordWidget_->size().width();
-    auto recorderHeight = recordWidget_->size().height();
-    recordWidget_->getContainer()->setGeometry(pointOfVideoButton.x() - recorderWidth / 2,
-        pointOfVideoButton.y() - recorderHeight - recordWidgetMargin_,
-        recorderWidth, recorderHeight);
+    auto pointOfAudioButton = mapToGlobal(QPoint(spikePosX, spikePosY));
+    recordWidget_->getContainer()->move(
+        pointOfAudioButton.x() - recordWidget_->width() / 2,
+        pointOfAudioButton.y() - recordWidget_->height() - recordWidgetMargin_);
     recordWidget_->openRecorder(true);
 }
 
@@ -261,15 +261,15 @@ void
 MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
 {
     if (LRCInstance::hasVideoCall() || LRCInstance::avModel().getDevices().size() == 0) {
+        // TODO: this predicate should be observed and used to show/hide the
+        // send video message button in the webview
         return;
     }
     // spikePosX, spikePosY are positions relative to Document
     auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
-    auto recorderWidth = recordWidget_->size().width();
-    auto recorderHeight = recordWidget_->size().height();
-    recordWidget_->getContainer()->setGeometry(pointOfVideoButton.x() - recorderWidth / 2,
-        pointOfVideoButton.y() - recorderHeight - recordWidgetMargin_,
-        recorderWidth, recorderHeight);
+    recordWidget_->getContainer()->move(
+        pointOfVideoButton.x() - recordWidget_->width() / 2,
+        pointOfVideoButton.y() - recordWidget_->height() - recordWidgetMargin_);
     recordWidget_->openRecorder(false);
 }
 
