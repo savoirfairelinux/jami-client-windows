@@ -282,6 +282,8 @@ VideoRecordPreviewWidget::paintEvent(QPaintEvent* e)
 
         scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
         scaledPreviewImage_ = scaledPreview;
+        scaledPreviewImageXOffset_ = xOffset;
+        scaledPreviewImageYOffset_ = yOffset;
 
         // draw rounded corner image
         QBrush brush(scaledPreview);
@@ -297,7 +299,9 @@ VideoRecordPreviewWidget::paintEvent(QPaintEvent* e)
             scaledPreviewImage_ = QImage();
         } else if (drawLastFrame_) {
             QBrush brush(scaledPreviewImage_);
-            brush.setTransform(QTransform::fromTranslate(this->rect().x(), this->rect().y()));
+            brush.setTransform(QTransform::fromTranslate(
+                this->rect().x() + scaledPreviewImageXOffset_,
+                this->rect().y() + scaledPreviewImageYOffset_));
             QPainterPath previewPath;
             previewPath.addRoundRect(this->rect(), cornerRadius_);
             painter.fillPath(previewPath, brush);

@@ -58,6 +58,11 @@ RecordWidget::actionToFinishRecord()
     bool isSuccessful = false;
     try {
         LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+        if (!isAudio_) {
+            previewWidget_->toPaintingBackground(false);
+            previewWidget_->toDrawLastFrame(true);
+            LRCInstance::avModel().stopPreview();
+        }
         isSuccessful = true;
     }
     catch (...) {
@@ -85,6 +90,8 @@ bool
 RecordWidget::actionToDeleteRecord()
 {
     deleteRecordedFileDetached(recordedFilePath_);
+    if (!isAudio_)
+        LRCInstance::avModel().startPreview();
     return true;
 }
 
@@ -135,8 +142,11 @@ void RecordWidget::resizeEvent(QResizeEvent* event)
 void
 RecordWidget::hideEvent(QHideEvent* event)
 {
+    QWidget::hideEvent(event);
     if(!isAudio_) {
         LRCInstance::avModel().stopPreview();
+        previewWidget_->toPaintingBackground(true);
+        previewWidget_->toDrawLastFrame(false);
     }
 }
 
