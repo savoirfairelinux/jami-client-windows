@@ -960,16 +960,9 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
         }
     } catch (...) {}
 
-    ui->imNameLabel->setText(QString(tr("%1", "%1 is the contact username"))
-        .arg(displayName));
-
-    if (isRINGAccount && displayName != displayId) {
-        ui->imIdLabel->show();
-        ui->imIdLabel->setText(QString(tr("%1", "%1 is the contact unique identifier"))
-            .arg(displayId));
-    } else {
-        ui->imIdLabel->hide();
-    }
+    ui->imNameLabel->setText(displayName);
+    ui->imIdLabel->setText(displayId);
+    ui->imIdLabel->setVisible(isRINGAccount && displayName != displayId);
 
     bool shouldShowSendContactRequestBtn = !isContact && isRINGAccount;
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
@@ -1355,6 +1348,7 @@ CallWidget::connectAccount(const std::string& accountId)
                 default:
                     break;
                 }
+
                 ui->smartList->update();
             });
         QObject::disconnect(contactAddedConnection_);

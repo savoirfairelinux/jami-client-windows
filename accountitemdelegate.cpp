@@ -131,15 +131,15 @@ AccountItemDelegate::paint(QPainter* painter,
     QVariant name = index.data(static_cast<int>(AccountListModel::Role::Alias));
     if (name.isValid())
     {
-        fontPrimary.setItalic(false);
-        fontPrimary.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        painter->setFont(fontPrimary);
-        QFontMetrics fontMetrics(fontPrimary);
-        QString nameStr = fontMetrics.elidedText(name.value<QString>(), Qt::ElideRight,
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+        painter->setFont(emojiMsgFont);
+        QString nameStr = QFontMetrics(emojiMsgFont).elidedText(name.value<QString>(), Qt::ElideRight,
             rectTexts.width() - avatarSize_ - leftPadding_ - rightPadding_ * 2);
         painter->drawText(rectTexts, Qt::AlignVCenter | Qt::AlignLeft, nameStr);
+        painter->setFont(fontPrimary);
     }
 
     // Display the secondary ID under the name
