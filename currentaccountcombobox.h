@@ -59,6 +59,7 @@ protected:
     void hidePopup();
 
 private:
+    void connectVoiceMail();
     void importLabelPhoto(int index);
     void setupSettingsButton();
     void setupVoicemailButton();
