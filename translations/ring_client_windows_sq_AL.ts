@@ -467,7 +467,7 @@ Kopjojeni dhe jepuani shokëve!</translation>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation>Pastroje bisedën</translation>
+        <translation>Spastroje bisedën</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>

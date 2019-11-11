@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Заблокировать контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -585,7 +585,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Заблокировать</translation>
     </message>
 </context>
 <context>
@@ -778,7 +778,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Создать учётную запись Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -1017,7 +1017,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>

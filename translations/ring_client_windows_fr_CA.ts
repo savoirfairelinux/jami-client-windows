@@ -435,7 +435,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1539"/>
         <source>Answer</source>
-        <translation>Réponse</translation>
+        <translation>Répondre</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1617"/>
