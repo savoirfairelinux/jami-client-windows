@@ -44,9 +44,13 @@ SectionWidget::~SectionWidget()
 }
 
 void
-SectionWidget::setLabelText(const QString& label)
+SectionWidget::setLabelText(const QString& label, const QFont& font)
 {
     ui->expandCollapseCheckBox->setText(label);
+    QFontMetrics fm{ font };
+    // 15 = estimated checkbox width
+    ui->expandCollapseCheckBox->setMinimumWidth(fm.width(label) + 15);
+    ui->expandCollapseCheckBox->setMaximumWidth(fm.width(label) + 15);
 }
 
 void

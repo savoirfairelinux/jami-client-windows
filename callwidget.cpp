@@ -39,6 +39,7 @@
 #include "pixbufmanipulator.h"
 #include "ringthemeutils.h"
 #include "settingskey.h"
+#include "changelogscrollwidget.h"
 
 #include "globalinstances.h"
 
@@ -231,6 +232,11 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+
+    auto changeLogScrollWidget = new ChangeLogScrollWidget(this);
+    changeLogScrollWidget->setParent(ui->changeLogWidget);
+    ui->changeLogWidget->addExpandWidget(changeLogScrollWidget);
+    ui->changeLogWidget->setLabelText("Display Changes", ui->changeLogWidget->font());
 }
 
 CallWidget::~CallWidget()

@@ -37,7 +37,7 @@ public:
     explicit SectionWidget(QWidget *parent = nullptr);
     ~SectionWidget();
 
-    void setLabelText(const QString& label);
+    void setLabelText(const QString& label, const QFont& font);
     void addExpandWidget(QWidget *widget);
 
 private:

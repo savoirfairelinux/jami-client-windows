@@ -886,3 +886,22 @@ QLabel#timerLabel {
     background-color: transparent;
     color: white;
 }
+
+QScrollArea#changeLogScrollArea {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QWidget#changeLogContents {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QTextEdit#logPlainTextEdit {
+    background-color: transparent;
+    color: black;
+    border: none;
+
+}

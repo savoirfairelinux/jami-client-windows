@@ -69,7 +69,7 @@ NewWizardWidget::NewWizardWidget(QWidget* parent) :
 
     collapsiblePasswordWidget_ = new CollapsiblePasswordWidget(this);
     collapsiblePasswordWidget_->setParent(ui->expandablePasswordWidget);
-    ui->expandablePasswordWidget->setLabelText("Choose a password for enchanced security");
+    ui->expandablePasswordWidget->setLabelText("Choose a password for enchanced security", ui->expandablePasswordWidget->font());
     ui->expandablePasswordWidget->addExpandWidget(collapsiblePasswordWidget_);
 
     connect(ui->fileImportBtn, &QPushButton::clicked,
