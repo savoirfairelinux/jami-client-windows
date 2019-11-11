@@ -289,8 +289,12 @@ public:
         accountModel().setAvatar(getCurrAccId(), avatar);
     };
 
-    static void setCurrAccDisplayName(const std::string& alias) {
-        accountModel().setAlias(getCurrAccId(), alias);
+    static void setCurrAccDisplayName(const std::string& displayName) {
+        auto accountId = LRCInstance::getCurrAccId();
+        accountModel().setAlias(accountId, displayName);
+        // force save to .yml
+        auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
+        LRCInstance::accountModel().setAccountConfig(accountId, confProps);
     };
 
     static const account::ConfProperties_t& getCurrAccConfig() {
