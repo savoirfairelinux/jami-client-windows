@@ -616,11 +616,27 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
     QString letterStrCleaned(letterStr);
     letterStrCleaned.remove(QRegExp("[\\n\\t\\r]"));
     if (!letterStr.isEmpty()) {
-        auto letter = letterStr.at(0).toUpper().toLatin1();
-        QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
-        painter.setFont(font);
-        painter.setPen(Qt::white);
-        painter.drawText(avatar.rect(), QString(letter), QTextOption(Qt::AlignCenter));
+        auto unicode = letterStr.toUcs4().at(0);
+        if (unicode >= 0x1F000 && unicode <= 0x1FFFF) { // is Emoticon
+            auto letter = QString::fromUcs4(&unicode, 1);
+            QFont font(QStringLiteral("Segoe UI Emoji"), avatar.height() / 2.66667, QFont::Medium);
+            painter.setFont(font);
+            QRect emojiRect(avatar.rect());
+            emojiRect.moveTop(-6);
+            painter.drawText(emojiRect, letter, QTextOption(Qt::AlignCenter));
+        } else if (unicode >= 0x0000 && unicode <= 0x00FF) { // is Basic Latin
+            auto letter = letterStr.at(0).toUpper();
+            QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
+            painter.setFont(font);
+            painter.setPen(Qt::white);
+            painter.drawText(avatar.rect(), QString(letter), QTextOption(Qt::AlignCenter));
+        } else {
+            auto letter = QString::fromUcs4(&unicode, 1);
+            QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
+            painter.setFont(font);
+            painter.setPen(Qt::white);
+            painter.drawText(avatar.rect(), QString(letter), QTextOption(Qt::AlignCenter));
+        }
     } else {
         QRect overlayRect = avatar.rect();
         qreal margin = (0.05 * overlayRect.width());
