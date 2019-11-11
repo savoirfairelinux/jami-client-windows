@@ -1833,22 +1833,28 @@ Copy and share it with your friends!
                           </property>
                           <property name="font">
                            <font>
+                            <family>Segoe UI Emoji</family>
                             <pointsize>11</pointsize>
                             <weight>50</weight>
+                            <italic>false</italic>
                             <bold>false</bold>
+                            <kerning>true</kerning>
                            </font>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">color: rgb(63,63,63);</string>
                           </property>
                           <property name="text">
-                           <string/>
+                           <string>namelabel</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                           </property>
                           <property name="wordWrap">
                            <bool>false</bool>
+                          </property>
+                          <property name="indent">
+                           <number>-1</number>
                           </property>
                          </widget>
                         </item>
@@ -1875,10 +1881,13 @@ Copy and share it with your friends!
                            <string notr="true">color: rgb(192,192,192);</string>
                           </property>
                           <property name="text">
-                           <string/>
+                           <string>idlabel</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                          </property>
+                          <property name="indent">
+                           <number>2</number>
                           </property>
                          </widget>
                         </item>
@@ -2053,7 +2062,7 @@ Copy and share it with your friends!
                        </spacer>
                       </item>
                       <item>
-                       <widget class="MessageWebView" name="messageView" native="true">
+                       <widget class="MessageWebView" name="messageView">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                           <horstretch>0</horstretch>
@@ -2115,6 +2124,16 @@ Copy and share it with your friends!
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
   <customwidget>
+   <class>RingContactLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>ringcontactlineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SmartListView</class>
+   <extends>QTreeView</extends>
+   <header>smartlistview.h</header>
+  </customwidget>
+  <customwidget>
    <class>VideoView</class>
    <extends>QWidget</extends>
    <header>videoview.h</header>
@@ -2129,16 +2148,6 @@ Copy and share it with your friends!
    <class>MessageWebView</class>
    <extends>QWebEngineView</extends>
    <header>messagewebview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>RingContactLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>ringcontactlineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SmartListView</class>
-   <extends>QTreeView</extends>
-   <header>smartlistview.h</header>
   </customwidget>
   <customwidget>
    <class>ConversationsFilterWidget</class>

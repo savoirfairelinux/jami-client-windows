@@ -143,25 +143,22 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter);
 
     // define and set the two fonts
-    QFont fontPrimary = painter.font();
+    QFont fontPrimary = QFont(QStringLiteral("Segoe UI Emoji"));
     QFont fontSecondary = painter.font();
     fontPrimary.setWeight(QFont::ExtraLight);
     auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
-    if (scalingRatio > 1.0) {
-        fontPrimary.setPointSize(10);
-        fontSecondary.setPointSize(9);
-    } else {
-        fontPrimary.setPointSize(11);
-        fontSecondary.setPointSize(10);
-    }
+    fontPrimary.setPointSize(scalingRatio > 1.0 ? 10 : 11);
+    fontSecondary.setPointSize(scalingRatio > 1.0 ? 9 : 10);
 
     QFontMetrics fontMetricPrimary(fontPrimary);
     QFontMetrics fontMetricSecondary(fontSecondary);
 
     painter.drawPixmap(avatarTopLeft, currentAccountAvatarImage_);
 
+    auto& accInfo = LRCInstance::getCurrentAccountInfo();
+
     // fill in presence indicator if account is registered
-    auto accountStatus = LRCInstance::getCurrentAccountInfo().status;
+    auto accountStatus = accInfo.status;
     if (accountStatus == lrc::api::account::Status::REGISTERED) {
         // paint the presence indicator circle
         QPainterPath outerCircle, innerCircle;
@@ -181,14 +178,14 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         avatarSize_ - 10); // [screen awareness]
 
     // write primary and secondary account identifiers to combobox label
-    QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
+    QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(accInfo));
     painter.setFont(fontPrimary);
     painter.setPen(RingTheme::lightBlack_);
     primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight,
-                                                    comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_));
+        comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_));
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
-    QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(LRCInstance::getCurrentAccountInfo()));
+    QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(accInfo));
     secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight,
                                                         comboBoxRect.width() - elidConst - 2 - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_)); // [screen awareness]
 
