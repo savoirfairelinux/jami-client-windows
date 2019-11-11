@@ -64,27 +64,14 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
             });
 
     // voicemail received
-    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::voiceMailNotify,
-            [this] (const std::string& accountId, int newCount, int oldCount, int urgentCount) {
-                Q_UNUSED(urgentCount);
-                voicemailMap_[accountId] = std::make_pair(newCount, oldCount);
-                if (LRCInstance::accountModel().getAccountList()[currentIndex()] == accountId) {
-                    if (newCount == 0 && oldCount == 0) {
-                        voicemailButton_.setNeedToShowNotify(false);
-                        voicemailButton_.setEnabled(false);
-                        return;
-                    }
-                    if (newCount == 0) {
-                        voicemailButton_.setNotifyNumber(oldCount);
-                        voicemailButton_.setGreyStyleNotification(true);
-                    } else {
-                        voicemailButton_.setNotifyNumber(newCount);
-                        voicemailButton_.setGreyStyleNotification(false);
-                    }
-                    voicemailButton_.setNeedToShowNotify(true);
-                    voicemailButton_.setEnabled(true);
-                }
-            });
+    if (LRCInstance::accountModel().getAccountList().size()) {
+        connectVoiceMail();
+    }
+
+    connect(&LRCInstance::instance(),
+            &LRCInstance::accountListChanged,
+            this, &CurrentAccountComboBox::connectVoiceMail,
+            Qt::UniqueConnection);
 
     connect(&voicemailButton_, &QAbstractButton::clicked,
             [this] {
@@ -231,6 +218,32 @@ CurrentAccountComboBox::setupVoicemailButton()
         voicemailPoint_.x(), voicemailPoint_.y(),
         voicemailSize_ + 2 * voicemailBorder_,
         voicemailSize_ + 2 * voicemailBorder_);
+}
+
+void
+CurrentAccountComboBox::connectVoiceMail()
+{
+    connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::voiceMailNotify,
+        [this](const std::string& accountId, int newCount, int oldCount, int urgentCount) {
+            Q_UNUSED(urgentCount);
+            voicemailMap_[accountId] = std::make_pair(newCount, oldCount);
+            if (LRCInstance::accountModel().getAccountList()[currentIndex()] == accountId) {
+                if (newCount == 0 && oldCount == 0) {
+                    voicemailButton_.setNeedToShowNotify(false);
+                    voicemailButton_.setEnabled(false);
+                    return;
+                }
+                if (newCount == 0) {
+                    voicemailButton_.setNotifyNumber(oldCount);
+                    voicemailButton_.setGreyStyleNotification(true);
+                } else {
+                    voicemailButton_.setNotifyNumber(newCount);
+                    voicemailButton_.setGreyStyleNotification(false);
+                }
+                voicemailButton_.setNeedToShowNotify(true);
+                voicemailButton_.setEnabled(true);
+            }
+        });
 }
 
 // import account background account pixmap and scale pixmap to fit in label
