@@ -223,13 +223,14 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
     // The name is displayed at the avatar's right
     QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
-        font.setItalic(false);
-        font.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        painter->setFont(font);
-        QString elidedNameStr = fontMetrics.elidedText(nameStr, Qt::ElideRight, rectName1.width());
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+        QString elidedNameStr = QFontMetrics(emojiMsgFont).elidedText(nameStr, Qt::ElideRight, rectName1.width());
+        painter->setFont(emojiMsgFont);
         painter->drawText(rectName1, Qt::AlignVCenter | Qt::AlignLeft, elidedNameStr);
+        painter->setFont(font);
     }
 
     // Display the ID under the name
@@ -307,11 +308,8 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
                     }
                 }
                 interactionStr = QString::fromUcs4(&emojiless.at(0), emojiless.size());
-            }
-            else {
+            } else {
                 QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
-                emojiMsgFont.setItalic(false);
-                emojiMsgFont.setBold(false);
                 emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
                 rectInfo2.setTop(rectInfo2.top() - 6);
                 painter->setOpacity(0.7);
@@ -366,12 +364,12 @@ ConversationItemDelegate::paintInvitationItem(QPainter* painter,
     // The name is displayed at the avatar's right
     QString nameStr = index.data(static_cast<int>(SmartListModel::Role::DisplayName)).value<QString>();
     if (!nameStr.isNull()) {
-        font.setItalic(false);
-        font.setBold(false);
         pen.setColor(RingTheme::lightBlack_);
         painter->setPen(pen);
-        painter->setFont(font);
-        QString elidedNameStr = fontMetrics.elidedText(nameStr, Qt::ElideRight, rectName1.width());
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+        QString elidedNameStr = QFontMetrics(emojiMsgFont).elidedText(nameStr, Qt::ElideRight, rectName1.width());
+        painter->setFont(emojiMsgFont);
         painter->drawText(rectName1, Qt::AlignVCenter | Qt::AlignLeft, elidedNameStr);
     }
 
