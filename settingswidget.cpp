@@ -1132,7 +1132,6 @@ void
 SettingsWidget::slotAudioMeter(const std::string& id, float level)
 {
     if (id == "audiolayer_id") {
-        qDebug() << "audioMeter: " << level;
         ui->audioInputMeter->setLevel(level);
     }
 }
