@@ -897,3 +897,22 @@ QProgressBar#levelMeter {
         background-color: white;
         margin: 2px;
     }
+
+QScrollArea#changeLogScrollArea {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QWidget#changeLogContents {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QTextEdit#logPlainTextEdit {
+    background-color: transparent;
+    color: black;
+    border: none;
+
+}
