@@ -27,6 +27,7 @@
 #include "runguard.h"
 #include "utils.h"
 #include "splashscreen.h"
+#include "changelogscrollwidget.h"
 
 #include <QApplication>
 #include <QFile>
@@ -281,6 +282,15 @@ main(int argc, char* argv[])
     else {
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
+    }
+
+    QSettings settings("jami.net", "Jami");
+    if (!settings.contains(SettingsKey::changeLogShownOnce)) {
+        QString logLines;
+        Utils::getChangeLogs(logLines);
+        std::unique_ptr<ChangeLogScrollWidget> changeLogDialog = std::make_unique<ChangeLogScrollWidget>(&MainWindow::instance());
+        changeLogDialog->insertScrollableHTML(logLines);
+        changeLogDialog->getContainer()->exec();
     }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
