@@ -293,11 +293,15 @@ MessageWebView::slotLoadFinished()
 {
     insertStyleSheet("chatcss", Utils::QByteArrayFromFile(":/chatview.css"));
     insertStyleSheet("chatwin",Utils::QByteArrayFromFile(":/chatview-windows.css"));
+    page()->runJavaScript(Utils::QByteArrayFromFile(":/jed.js"), QWebEngineScript::MainWorld);
     page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify.js"), QWebEngineScript::MainWorld);
     page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify-html.js"), QWebEngineScript::MainWorld);
     page()->runJavaScript(Utils::QByteArrayFromFile(":/linkify-string.js"), QWebEngineScript::MainWorld);
     page()->runJavaScript(Utils::QByteArrayFromFile(":/qwebchannel.js"), QWebEngineScript::MainWorld);
     page()->runJavaScript(Utils::QByteArrayFromFile(":/chatview.js"), QWebEngineScript::MainWorld);
+
+    QString s = QString::fromLatin1("init_i18n();");
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
 void

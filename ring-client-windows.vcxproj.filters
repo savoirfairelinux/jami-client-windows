@@ -684,6 +684,9 @@
     <None Include="..\lrc\src\web-chatview\qwebchannel.js">
       <Filter>Resource Files\web</Filter>
     </None>
+    <None Include="..\lrc\src\web-chatview\jed.js">
+      <Filter>Resource Files\web</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">

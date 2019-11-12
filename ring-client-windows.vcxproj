@@ -841,6 +841,7 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <None Include="..\lrc\src\web-chatview\chatview.css" />
     <None Include="..\lrc\src\web-chatview\chatview.html" />
     <None Include="..\lrc\src\web-chatview\chatview.js" />
+    <None Include="..\lrc\src\web-chatview\jed.js" />
     <None Include="..\lrc\src\web-chatview\linkify-html.js" />
     <None Include="..\lrc\src\web-chatview\linkify-string.js" />
     <None Include="..\lrc\src\web-chatview\linkify.js" />
