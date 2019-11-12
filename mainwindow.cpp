@@ -21,24 +21,25 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "aboutdialog.h"
+#include "callwidget.h"
+#include "settingskey.h"
+#include "utils.h"
+#include "version.h"
+
 #include <QDesktopWidget>
 #include <QDir>
 #include <QScreen>
 #include <QStandardPaths>
 #include <QTimer>
 #include <QWindow>
+#include <QGraphicsDropShadowEffect>
 
 #ifdef Q_OS_WIN
 #include <QWinThumbnailToolBar>
 #include <QWinThumbnailToolButton>
 #include <windows.h>
 #endif
-
-#include "aboutdialog.h"
-#include "callwidget.h"
-#include "settingskey.h"
-#include "utils.h"
-#include "version.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -217,8 +218,8 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
         if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
             *result = 0;
 
-            AboutDialog aboutDialog;
-            aboutDialog.exec();
+            AboutDialog aboutDialog(this);
+            aboutDialog.getContainer()->exec();
 
             return true;
         }

@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -23,17 +24,39 @@
 #include "version.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
-    QDialog(parent),
+    PopupWidget(
+        parent,
+        RingTheme::lightGrey_,
+        PopupDialog::SpikeLabelAlignment::None),
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
 
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->setFixedSize(this->width(),this->height());
-    ui->creditsWidget->hide();
-    ui->gitVersionLabel->setText(QString("%1: %2").arg(isBeta ? tr("beta version") : tr("version"), QString(VERSION_STRING)));
+    ui->gitVersionLabel->setText(QString("%1: %2")
+        .arg(isBeta ? tr("(BETA) version") : tr("version"), QString(VERSION_STRING)));
 
-    ui->creditsBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
+    ui->logTextEdit->insertHtml(Utils::getChangeLog());
+
+}
+
+AboutDialog::~AboutDialog()
+{
+    delete ui;
+}
+
+void
+AboutDialog::on_changelogButton_clicked()
+{
+    ui->logTextEdit->clear();
+    ui->logTextEdit->insertHtml(Utils::getChangeLog());
+}
+
+void
+AboutDialog::on_creditsButton_clicked()
+{
+    ui->logTextEdit->clear();
+    ui->logTextEdit->insertHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">"
                                 "p, li { white-space: pre-wrap; }"
                                 "</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;\">"
@@ -84,23 +107,4 @@ AboutDialog::AboutDialog(QWidget *parent) :
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
                                 + tr("Based on the SFLPhone project") + "</p>"
                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>");
-}
-
-AboutDialog::~AboutDialog()
-{
-    delete ui;
-}
-
-void
-AboutDialog::on_aboutButton_clicked()
-{
-    ui->aboutWidget->setVisible(true);
-    ui->creditsWidget->setVisible(false);
-}
-
-void
-AboutDialog::on_creditsButton_clicked()
-{
-    ui->creditsWidget->setVisible(true);
-    ui->aboutWidget->setVisible(false);
 }

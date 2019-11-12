@@ -61,6 +61,9 @@ PopupDialog::setSpikeLabelAlignment(SpikeLabelAlignment spikeAlignment)
     case PopupDialog::SpikeLabelAlignment::AlignRight:
         ui->spikeLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
         break;
+    case PopupDialog::SpikeLabelAlignment::None:
+        ui->spikeLabel->hide();
+        break;
     default:
         break;
     }
