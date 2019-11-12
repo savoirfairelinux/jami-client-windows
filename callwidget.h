@@ -133,6 +133,7 @@ private:
     void updateComboBox();
     void connectAccount(const std::string& accId);
     void setCallPanelVisibility(bool visible);
+    void updateChatviewFrame();
 
     QMenu* menu_;
     QClipboard* clipboard_;

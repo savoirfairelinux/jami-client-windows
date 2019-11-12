@@ -94,6 +94,8 @@ public:
     void openAudioRecorder(int spikePosX,int spikePosY);
     void openVideoRecorder(int spikePosX,int spikePosY);
     void setRecordButtonsVisibility(bool visible);
+    void updateChatviewFrame(bool accountEnabled, bool isBanned, bool isTemporary,
+                             const QString& alias, const QString& bestId);
 
 protected:
 

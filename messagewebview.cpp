@@ -114,6 +114,7 @@ MessageWebView::MessageWebView(QWidget *parent)
                 break;
             }
         });
+
     recordWidget_ = new RecordWidget(this);
     recordWidget_->getContainer()->hide();
 }
@@ -432,6 +433,20 @@ MessageWebView::setMessagesVisibility(bool visible)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
+void
+MessageWebView::updateChatviewFrame(bool accountEnabled, bool isBanned, bool isTemporary,
+                                    const QString& alias, const QString& bestId)
+{
+    QString s = QString::fromLatin1("update_chatview_frame(%1, %2, %3, \"%4\", \"%5\")")
+        .arg(accountEnabled ? "true" : "false")
+        .arg(isBanned ? "true" : "false")
+        .arg(isTemporary ? "true" : "false")
+        .arg(alias)
+        .arg(bestId);
+
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -603,7 +618,7 @@ PrivateBridging::sendImage(const QString& arg)
 }
 
 Q_INVOKABLE int
-PrivateBridging::sendFile(const QString&path)
+PrivateBridging::sendFile(const QString& path)
 {
     qDebug() << "JS bridging - MessageWebView::sendFile";
     QFileInfo fi(path);
