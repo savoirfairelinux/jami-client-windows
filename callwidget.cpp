@@ -503,6 +503,7 @@ CallWidget::showConversationView()
     if (ui->messagesWidget->isHidden()) {
         ui->messagesWidget->show();
     }
+    updateChatviewFrame();
 }
 
 bool
@@ -1396,6 +1397,40 @@ CallWidget::setCallPanelVisibility(bool visible)
     ui->btnVideoCall->setVisible(!visible);
     ui->callStackWidget->setVisible(visible);
     ui->messageView->setRecordButtonsVisibility(!visible);
+}
+
+void
+CallWidget::updateChatviewFrame()
+{
+    // TODO: remove this to start using webview navbar
+    // instead of native qt
+    if (1) {
+        ui->messageView->displayNavbar(false);
+        return;
+    }
+
+    auto& accInfo = LRCInstance::getCurrentAccountInfo();
+    auto& convInfo = LRCInstance::getCurrentConversation();
+    if (convInfo.uid.empty()) {
+        return;
+    }
+    auto contactUri = convInfo.participants.front();
+
+    lrc::api::contact::Info contactInfo;
+    try {
+        contactInfo = accInfo.contactModel->getContact(contactUri);
+    } catch (const std::out_of_range&) {
+        qDebug() << "updateChatviewFrame: failed to retrieve contactInfo";
+        return;
+    }
+
+    bool temp = contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY ||
+                contactInfo.profileInfo.type == lrc::api::profile::Type::PENDING;
+
+    auto bestName = QString::fromStdString(Utils::bestNameForContact(contactInfo));
+    auto bestId = QString::fromStdString(Utils::bestIdForContact(contactInfo));
+
+    ui->messageView->updateChatviewFrame(accInfo.enabled, contactInfo.isBanned, temp, bestName, bestId);
 }
 
 void
