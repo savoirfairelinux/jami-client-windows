@@ -39,6 +39,7 @@
 #include "pixbufmanipulator.h"
 #include "ringthemeutils.h"
 #include "settingskey.h"
+#include "changelogscrollwidget.h"
 
 #include "globalinstances.h"
 
@@ -218,6 +219,15 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged,
             this, &CallWidget::slotVideoDeviceListChanged);
+
+    connect(ui->changeLogShowButton, &QAbstractButton::clicked,
+        [this] {
+            QString logLines;
+            Utils::getChangeLogs(logLines);
+            ChangeLogScrollWidget changeLogDialog (this);
+            changeLogDialog.insertScrollableHTML(logLines);
+            changeLogDialog.getContainer()->exec();
+        });
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);

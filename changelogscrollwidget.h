@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Copyright (C) 2019 by Savoir-faire Linux                           *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,16 +18,28 @@
 
 #pragma once
 
-namespace SettingsKey {
+#include "widgethelpers.h"
 
-constexpr static char closeOrMinimized[] = "closeOrMin";
-constexpr static char downloadPath[] = "downloadPath";
-constexpr static char enableNotifications[] = "enableNotifications";
-constexpr static char geometry[] = "geometry";
-constexpr static char selectedAccount[] = "selectedAccount";
-constexpr static char mainSplitterState[] = "mainSplitterState";
-constexpr static char windowState[] = "windowState";
-constexpr static char autoUpdate[] = "autoUpdate";
-constexpr static char neverShowMeAgain[] = "neverShowMeAgain";
-constexpr static char changeLogShownOnce[] = "changeLogShownOnce";
+#include <QWidget>
+
+namespace Ui {
+class ChangeLogScrollWidget;
 }
+
+class ChangeLogScrollWidget : public PopupWidget
+{
+    Q_OBJECT
+
+public:
+    explicit ChangeLogScrollWidget(QWidget *parent = nullptr);
+    ~ChangeLogScrollWidget();
+
+    void insertScrollableHTML(const QString&);
+    void setToCenter(const QRect&);
+
+protected:
+    void hideEvent(QHideEvent *event);
+
+private:
+    Ui::ChangeLogScrollWidget *ui;
+};

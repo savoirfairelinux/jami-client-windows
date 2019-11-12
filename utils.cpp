@@ -324,6 +324,20 @@ Utils::forceDeleteAsync(const QString& path)
 }
 
 void
+Utils::getChangeLogs(QString& logs)
+{
+    QFile changeLogFile("changelog.html");
+    if (!changeLogFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug().noquote() << " Change log file failed to load";
+        return;
+    }
+    QTextStream in(&changeLogFile);
+    while (!in.atEnd()) {
+        logs += in.readLine();
+    }
+}
+
+void
 Utils::cleanUpdateFiles()
 {
     // Delete all logs and msi in the %TEMP% directory before launching
