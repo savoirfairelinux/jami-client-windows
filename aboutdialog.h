@@ -1,6 +1,7 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -18,13 +19,13 @@
 
 #pragma once
 
-#include <QDialog>
+#include "widgethelpers.h"
 
 namespace Ui {
 class AboutDialog;
 }
 
-class AboutDialog : public QDialog
+class AboutDialog : public PopupWidget
 {
     Q_OBJECT
 
@@ -32,12 +33,10 @@ public:
     explicit AboutDialog(QWidget *parent = 0);
     ~AboutDialog();
 
-//UI SLOTS
 private slots:
-    void on_aboutButton_clicked();
+    void on_changelogButton_clicked();
     void on_creditsButton_clicked();
 
 private:
     Ui::AboutDialog *ui;
 };
-

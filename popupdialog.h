@@ -33,7 +33,8 @@ public:
     {
         AlignLeft,
         AlignHCenter,
-        AlignRight
+        AlignRight,
+        None
     };
 
     explicit PopupDialog(QWidget *parent = nullptr,
