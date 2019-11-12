@@ -207,9 +207,6 @@ VideoView::showContextMenu(const QPoint& position)
                         qWarning() << "Couldn't find device: " << deviceName;
                         return;
                     }
-                    if (LRCInstance::avModel().getCurrentVideoCaptureDevice() == deviceId) {
-                        return;
-                    }
                     LRCInstance::avModel().switchInputTo(deviceId);
                     resetPreview();
                     LRCInstance::avModel().setCurrentVideoCaptureDevice(deviceId);
