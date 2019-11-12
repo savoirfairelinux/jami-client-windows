@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = jami-qt
-
+
 CONFIG += c++17
 
 QT += widgets xml multimedia multimediawidgets network webenginewidgets svg

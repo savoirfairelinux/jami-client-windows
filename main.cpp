@@ -27,6 +27,7 @@
 #include "runguard.h"
 #include "utils.h"
 #include "splashscreen.h"
+#include "aboutdialog.h"
 
 #include <QApplication>
 #include <QFile>
@@ -281,6 +282,12 @@ main(int argc, char* argv[])
     else {
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
+    }
+
+    QSettings settings("jami.net", "Jami");
+    if (!settings.contains(SettingsKey::changeLogShownOnce)) {
+        std::unique_ptr<AboutDialog> aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+        aboutDialog->getContainer()->exec();
     }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });

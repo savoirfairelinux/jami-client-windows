@@ -323,6 +323,22 @@ Utils::forceDeleteAsync(const QString& path)
         });
 }
 
+QString
+Utils::getChangeLog()
+{
+    QString logs;
+    QFile changeLogFile("changelog.html");
+    if (!changeLogFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug().noquote() << " Change log file failed to load";
+        return {};
+    }
+    QTextStream in(&changeLogFile);
+    while (!in.atEnd()) {
+        logs += in.readLine();
+    }
+    return logs;
+}
+
 void
 Utils::cleanUpdateFiles()
 {
