@@ -260,22 +260,22 @@ QMessageBox QPushButton:pressed {
     background: #58b;
 }
 
-QToolButton#qrButton, QToolButton#shareButton{
+QToolButton#qrButton, QToolButton#shareButton, QPushButton#changeLogShowButton {
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
     border-radius: 15px;
     padding: 8px;
-	color: rgb(32, 32, 32);
+    color: rgb(32, 32, 32);
 }
 
-QToolButton#qrButton:hover, QToolButton#shareButton:hover{
-    background-color: rgb(237, 237, 237);
-}
+    QToolButton#qrButton:hover, QToolButton#shareButton:hover, QPushButton#changeLogShowButton:hover {
+        background-color: rgb(237, 237, 237);
+    }
 
-QToolButton#qrButton:pressed, QToolButton#shareButton:pressed{
-    background-color: rgb(212, 212, 212);
-}
+    QToolButton#qrButton:pressed, QToolButton#shareButton:pressed, QPushButton#changeLogShowButton:pressed {
+        background-color: rgb(212, 212, 212);
+    }
 
 QToolButton#qrButton:checked {
     background-color: rgb(237, 237, 237);
@@ -896,4 +896,33 @@ QProgressBar#levelMeter {
     QProgressBar#levelMeter::chunk {
         background-color: white;
         margin: 2px;
+    }
+
+QScrollArea#changeLogScrollArea {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QWidget#changeLogContents {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QTextEdit#logTextEdit {
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
+QPushButton#logCloseButton {
+    background-color: rgb(189, 189, 189);
+}
+
+    QPushButton#logCloseButton:hover {
+        background-color: rgb(170, 170, 170);
+    }
+    QPushButton#logCloseButton:pressed {
+        background-color: rgb(180, 180, 180);
     }

@@ -92,4 +92,9 @@ Get-ChildItem -Path $clientTSPath -Include *.qm -Recurse | ForEach-Object {
     Copy-Item -Path $_.FullName -Destination $CopyDir -Force –Recurse
 }
 
-write-host "copy completed" -NoNewline -ForegroundColor Green
+write-host "copy completed" -ForegroundColor Green
+
+write-host "Generate change log html" -ForegroundColor Green
+$command = 'pandoc -f markdown -t html5 -o changelog.html changelog.md'
+iex "& $command"
+write-host "Conversion completed" -NoNewline -ForegroundColor Green
