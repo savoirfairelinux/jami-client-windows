@@ -73,6 +73,7 @@ void showSystemNotification(QWidget* widget, const QString& message, long delay 
 void showSystemNotification(QWidget* widget, const QString& sender, const QString& message, long delay = 5000);
 QSize getRealSize(QScreen* screen);
 void forceDeleteAsync(const QString& path);
+QString getChangeLog();
 
 // updates
 void cleanUpdateFiles();

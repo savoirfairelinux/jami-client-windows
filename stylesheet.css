@@ -112,21 +112,21 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
     background-color: rgb(187, 187, 187);
 }
 
-QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
-QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
-QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover,
-QPushButton#aboutButton:hover, QPushButton#creditsButton:hover, QPushButton#updateCancelBtn:hover,
-QPushButton#updateAcceptBtn:hover, QPushButton#installBetaButton:hover {
-    background-color: rgb(237, 237, 237);
-}
+    QPushButton#imBackButton:hover, QPushButton#btnAudioCall:hover, QPushButton#btnVideoCall:hover,
+    QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
+    QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover,
+    QPushButton#changelogButton:hover, QPushButton#creditsButton:hover, QPushButton#changelogButton:hover, QPushButton#updateCancelBtn:hover,
+    QPushButton#updateAcceptBtn:hover, QPushButton#installBetaButton:hover {
+        background-color: rgb(237, 237, 237);
+    }
 
-QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
-QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
-QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed,
-QPushButton#aboutButton:pressed, QPushButton#creditsButton:pressed, QPushButton#updateCancelBtn:pressed,
-QPushButton#updateAcceptBtn:pressed, QPushButton#installBetaButton:pressed {
-    background-color: rgb(212, 212, 212);
-}
+    QPushButton#imBackButton:pressed, QPushButton#btnAudioCall:pressed, QPushButton#btnVideoCall:pressed,
+    QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
+    QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed,
+    QPushButton#changelogButton:pressed, QPushButton#creditsButton:pressed, QPushButton#changelogButton:pressed, QPushButton#updateCancelBtn:pressed,
+    QPushButton#updateAcceptBtn:pressed, QPushButton#installBetaButton:pressed {
+        background-color: rgb(212, 212, 212);
+    }
 
 QWidget#searchBarLayoutWidget, QWidget#smartList,
 QWidget#sidePanelLayoutWidget, QWidget#leftSettingsWidget {
@@ -260,22 +260,22 @@ QMessageBox QPushButton:pressed {
     background: #58b;
 }
 
-QToolButton#qrButton, QToolButton#shareButton{
+QToolButton#qrButton, QToolButton#shareButton {
     background-color: rgb(242, 242, 242);
     border-style: solid;
     border-width: 0px;
     border-radius: 15px;
     padding: 8px;
-	color: rgb(32, 32, 32);
+    color: rgb(32, 32, 32);
 }
 
-QToolButton#qrButton:hover, QToolButton#shareButton:hover{
-    background-color: rgb(237, 237, 237);
-}
+    QToolButton#qrButton:hover, QToolButton#shareButton:hover {
+        background-color: rgb(237, 237, 237);
+    }
 
-QToolButton#qrButton:pressed, QToolButton#shareButton:pressed{
-    background-color: rgb(212, 212, 212);
-}
+    QToolButton#qrButton:pressed, QToolButton#shareButton:pressed {
+        background-color: rgb(212, 212, 212);
+    }
 
 QToolButton#qrButton:checked {
     background-color: rgb(237, 237, 237);
@@ -896,4 +896,32 @@ QProgressBar#levelMeter {
     QProgressBar#levelMeter::chunk {
         background-color: white;
         margin: 2px;
+    }
+
+QScrollArea#changeLogScrollArea {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QWidget#changeLogContents {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+QTextEdit#logTextEdit {
+    background-color: white;
+    color: black;
+}
+
+QPushButton#logCloseButton {
+    background-color: rgb(189, 189, 189);
+}
+
+    QPushButton#logCloseButton:hover {
+        background-color: rgb(170, 170, 170);
+    }
+    QPushButton#logCloseButton:pressed {
+        background-color: rgb(180, 180, 180);
     }

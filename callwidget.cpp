@@ -39,6 +39,7 @@
 #include "pixbufmanipulator.h"
 #include "ringthemeutils.h"
 #include "settingskey.h"
+#include "aboutdialog.h"
 
 #include "globalinstances.h"
 
@@ -218,6 +219,12 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged,
             this, &CallWidget::slotVideoDeviceListChanged);
+
+    connect(ui->changelogButton, &QAbstractButton::clicked,
+        [this] {
+            AboutDialog aboutDialog(this);
+            aboutDialog.getContainer()->exec();
+        });
 
     // set first view to welcome view
     ui->stackedWidget->setCurrentWidget(ui->welcomePage);
