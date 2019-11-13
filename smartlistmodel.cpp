@@ -239,6 +239,8 @@ SmartListModel::getConversationItemData(const conversation::Info& item,
     }
     case Role::SectionName:
         return QVariant(QString());
+    case Role::Draft:
+        return LRCInstance::getContentDraft(item.uid.c_str(), accountInfo.id.c_str());
     }
     return QVariant();
 }
