@@ -23,6 +23,7 @@
 #include "utils.h"
 #include "connectivitymonitor.h"
 #include "globalsystemtray.h"
+#include "widgethelpers.h"
 
 #include <QMainWindow>
 #include <QMouseEvent>
@@ -53,13 +54,15 @@ public:
     void show();
     float getCurrentScalingRatio();
     void showWindow();
+    void darken();
+    void lighten();
 
 protected:
-    bool nativeEvent(const QByteArray& eventType, void* message, long* result);
-    void closeEvent(QCloseEvent* event);
-    void resizeEvent(QResizeEvent *event);
-    void keyReleaseEvent(QKeyEvent* ke);
-    void changeEvent(QEvent* e);
+    bool nativeEvent(const QByteArray& eventType, void* message, long* result) override;
+    void closeEvent(QCloseEvent* event) override;
+    void resizeEvent(QResizeEvent *event) override;
+    void keyReleaseEvent(QKeyEvent* ke) override;
+    void changeEvent(QEvent* e) override;
 
 signals:
     void keyReleased(QKeyEvent*ke);
@@ -93,5 +96,7 @@ private:
 
     QMetaObject::Connection screenChangedConnection_;
 
-    QTimer *updateTimer_;
+    QTimer* updateTimer_;
+
+    Darkenable* overlay_;
 };

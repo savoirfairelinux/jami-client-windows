@@ -222,8 +222,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->changelogButton, &QAbstractButton::clicked,
         [this] {
-            AboutDialog aboutDialog(this);
-            aboutDialog.getContainer()->exec();
+            auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+            aboutDialog->getContainer()->exec();
         });
 
     // set first view to welcome view

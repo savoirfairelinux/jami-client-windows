@@ -33,7 +33,19 @@ void
 OpacityAnimation::reset()
 {
     stop();
+    setToStartValue();
+}
+
+void
+OpacityAnimation::setToStartValue()
+{
     targetObject()->setProperty(propertyName(), startValue());
+}
+
+void
+OpacityAnimation::setToEndValue()
+{
+    targetObject()->setProperty(propertyName(), endValue());
 }
 
 OpacityAnimation::~OpacityAnimation()

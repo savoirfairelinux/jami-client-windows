@@ -123,7 +123,8 @@ public:
     // insider content of PopupDialog
     explicit PopupWidget(QWidget* parent = nullptr,
                          QColor spikeColor = Qt::white,
-                         PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::AlignLeft) {
+                         PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::AlignLeft)
+            : QWidget(parent) {
         widgetContainer_ = new PopupDialog(parent, spikeColor, spikeAlignment);
         setParent(widgetContainer_);
         widgetContainer_->insertWidget(this);
@@ -134,5 +135,52 @@ public:
 
 protected:
     PopupDialog *widgetContainer_;
+
+};
+
+class Darkenable : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit Darkenable(QWidget* parent = nullptr)
+        : QWidget(parent)
+    {
+        setAttribute(Qt::WA_NoSystemBackground);
+        animation_ = new FadeAnimation(this, 400, 0, .33);
+        this->hide();
+    };
+    ~Darkenable() {};
+
+    void darken() {
+        disconnect(connection_);
+        this->show();
+        animation_->setDirection(QAbstractAnimation::Backward);
+        animation_->start();
+    }
+    void lighten() {
+        animation_->setDirection(QAbstractAnimation::Forward);
+        disconnect(connection_);
+        connection_ = connect(animation_, &QPropertyAnimation::finished,
+            [this] {
+                this->hide();
+            });
+        animation_->start();
+    }
+
+    void setAnimationTime(const quint64 ms) { animation_->setDuration(ms); }
+
+protected:
+    void paintEvent(QPaintEvent *event) override {
+        Q_UNUSED(event);
+        QPainter painter(this);
+        painter.setBrush(Qt::black);
+        auto rect = qobject_cast<QWidget*>(parent())->rect();
+        setGeometry(rect);
+        painter.drawRect(rect);
+    };
+
+private:
+    FadeAnimation* animation_;
+    QMetaObject::Connection connection_;
 
 };

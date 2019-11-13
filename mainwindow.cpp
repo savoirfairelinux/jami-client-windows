@@ -184,6 +184,8 @@ MainWindow::MainWindow(QWidget* parent)
             Q_UNUSED(accountId);
             emit LRCInstance::instance().accountListChanged();
         });
+
+    overlay_ = new Darkenable(this);
 }
 
 MainWindow::~MainWindow()
@@ -217,10 +219,8 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
     if (msg->message == WM_SYSCOMMAND) {
         if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
             *result = 0;
-
             AboutDialog aboutDialog(this);
             aboutDialog.getContainer()->exec();
-
             return true;
         }
     }
@@ -246,6 +246,18 @@ void MainWindow::showWindow()
     }
     activateWindow();
     raise();
+}
+
+void
+MainWindow::darken()
+{
+    overlay_->darken();
+}
+
+void
+MainWindow::lighten()
+{
+    overlay_->lighten();
 }
 
 void MainWindow::notificationClicked()
@@ -342,15 +354,16 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
         setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
         setMaximumSize(QtMaxDimension, QtMaxDimension);
     }
+
     if (firstUse || !accountList.size()) {
         auto screenNumber = qApp->desktop()->screenNumber();
-        setGeometry(
-            QStyle::alignedRect(
-                Qt::LeftToRight,
-                Qt::AlignCenter,
-                size(),
-                qApp->desktop()->screenGeometry(screenNumber)));
         if (scr == ScreenEnum::WizardScreen) {
+            setGeometry(
+                QStyle::alignedRect(
+                    Qt::LeftToRight,
+                    Qt::AlignCenter,
+                    size(),
+                    qApp->desktop()->screenGeometry(screenNumber)));
             setWindowFlags(Qt::Dialog);
             setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
             adjustSize();

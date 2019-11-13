@@ -17,6 +17,7 @@
       <ComponentGroupRef Id="HeatGenerated" />
       <ComponentRef Id="ApplicationShortcutDesktop" />
       <ComponentRef Id="ApplicationShortcutStartMenu" />
+      <ComponentRef Id="RegistryEntries" />
     </Feature>
 
     <!--Visual C++ Redist merge module-->
@@ -67,8 +68,18 @@
         <Shortcut Id="ApplicationShortcutStartMenu" Name="$(var.Name)" Description="Launch $(var.Name)" Target="[#fileMain.exe]" WorkingDirectory="INSTALLFOLDER" />
         <RemoveFolder Id="StartMenuFolder" On="uninstall" />
         <RegistryValue Root="HKCU" Key="Software\jami.net\$(var.Name)" Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
-        <RemoveRegistryKey Id='removeBadShortcutRegKey' Root='HKLM' Key='Software/$(var.Name)' Action='removeOnInstall'/>
-        <RemoveRegistryKey Id='removeOldUninstRegKey' Root='HKLM' Key='SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\$(var.Manufacturer) $(var.Name)' Action='removeOnInstall'/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment Id="OtherRegistryEntries">
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="*" Win64="yes">
+          <RegistryKey Root="HKCU"
+                     Key="Software\jami.net\$(var.Name)"
+                     Action="createAndRemoveOnUninstall">
+              <RegistryValue Type="integer" Name="hasRun" Value="0" KeyPath="yes" Action='write'/>
+          </RegistryKey>
       </Component>
     </DirectoryRef>
   </Fragment>
