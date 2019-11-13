@@ -286,7 +286,7 @@ main(int argc, char* argv[])
 
     QSettings settings("jami.net", "Jami");
     if (!settings.contains(SettingsKey::changeLogShownOnce)) {
-        std::unique_ptr<AboutDialog> aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+        auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
         aboutDialog->getContainer()->exec();
     }
 
