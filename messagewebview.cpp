@@ -457,6 +457,21 @@ MessageWebView::displayNavbar(bool display)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
+void
+MessageWebView::requestSendMessageContent()
+{
+    QString s = QString::fromLatin1("requestSendMessageContent();");
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
+void
+MessageWebView::setSendMessageContent(const QString& content)
+{
+    QString s = QString::fromLatin1("setSendMessageContent(`%1`);")
+        .arg(content);
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -715,7 +730,7 @@ PrivateBridging::emitPasteKeyDetected()
     return 0;
 }
 
-int
+Q_INVOKABLE int
 PrivateBridging::openAudioRecorder(int spikePosX, int spikePosY)
 {
     //call the open audio recorder function in messageweview
@@ -729,7 +744,7 @@ PrivateBridging::openAudioRecorder(int spikePosX, int spikePosY)
     return 0;
 }
 
-int
+Q_INVOKABLE int
 PrivateBridging::openVideoRecorder(int spikePosX, int spikePosY)
 {
     //call the open video recorder function in messageweview
@@ -741,4 +756,18 @@ PrivateBridging::openVideoRecorder(int spikePosX, int spikePosY)
         qDebug() << "JS bridging - exception during openVideoRecorder!";
     }
     return 0;
+}
+
+Q_INVOKABLE int
+PrivateBridging::saveSendMessageContent(const QString& arg)
+{
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            emit messageView->sendMessageContentSaved(arg);
+        }
+    } catch (...) {
+        qDebug() << "JS bridging - exception during saveSendMessageContent!";
+    }
+    return 0;
+
 }
