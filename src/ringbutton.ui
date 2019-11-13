@@ -150,7 +150,7 @@ border: transparent;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="ressources.qrc">:/images/icons/ic_folder_black_18dp_2x.png</pixmap>
+         <pixmap resource="../ressources.qrc">:/images/icons/ic_folder_black_18dp_2x.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -179,7 +179,7 @@ border: transparent;</string>
   </layout>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
