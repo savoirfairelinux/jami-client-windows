@@ -338,6 +338,22 @@ public:
             f();
         }
     }
+
+    static QString getContentDraft(const QString& convUid,
+                                   const QString& accountId)
+    {
+        auto draftKey = accountId + "_" + convUid;
+        return instance().contentDrafts_[draftKey];
+    }
+
+    static void setContentDraft(const QString& convUid,
+                                const QString& accountId,
+                                const QString& content)
+    {
+        auto draftKey = accountId + "_" + convUid;
+        instance().contentDrafts_[draftKey] = content;
+    }
+
 signals:
     void accountListChanged();
 
@@ -355,4 +371,5 @@ private:
     AccountListModel accountListModel_;
     std::string selectedAccountId_;
     std::string selectedConvUid_;
+    MapStringString contentDrafts_;
 };

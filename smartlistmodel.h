@@ -58,7 +58,8 @@ public:
         InCall,
         CallStateStr,
         SectionName,
-        AccountId
+        AccountId,
+        Draft
     };
 
     explicit SmartListModel(const std::string& accId,
