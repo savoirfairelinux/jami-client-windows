@@ -264,6 +264,9 @@
     <ClCompile Include="messagewebview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testqml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -468,6 +471,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="recordwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="testqml.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -779,6 +785,9 @@
     <QtUic Include="recordwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="testqml.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="images\FontAwesome.otf">
@@ -926,6 +935,99 @@
     </ClInclude>
     <ClInclude Include="version.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_aboutdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_accountmigration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_advancedsettingswidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_advancedsipsettingwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_animatedoverlay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_banneditemwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_callaudioonlyavataroverlay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_callwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_collapsiblepasswordwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_contactpicker.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_deleteaccountdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_deviceitemwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_invitebuttonswidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_linkdevicedialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_mainwindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_nameregistrationdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_newwizardwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_passworddialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_photoboothwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_popupdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_recordoverlay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_recordwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_ringbutton.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_section.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_settingswidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_sipkeypad.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_testqml.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_updateconfirmdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_updatedownloaddialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_videooverlay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="obj\.ui\ui_videoview.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
