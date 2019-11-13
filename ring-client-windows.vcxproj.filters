@@ -60,420 +60,402 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aboutdialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="deleteaccountdialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="globalsystemtray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="idlabel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mainwindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="navwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="photoboothwidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pixbufmanipulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ringbutton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ringcontactlineedit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="selectareadialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="videooverlay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="videoview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="smartlistview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="smartlistmodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="accountlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="accountitemdelegate.cpp">
+    <ClCompile Include="src\widgethelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="callwidget.cpp">
+    <ClCompile Include="src\webchathelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="conversationitemdelegate.cpp">
+    <ClCompile Include="src\videowidgetbase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="conversationsfilterwidget.cpp">
+    <ClCompile Include="src\videoview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="smartlistselectorbuttonnotifier.cpp">
+    <ClCompile Include="src\videooverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="invitebuttonswidget.cpp">
+    <ClCompile Include="src\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="currentaccountcombobox.cpp">
+    <ClCompile Include="src\updatedownloaddialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagewebview.cpp">
+    <ClCompile Include="src\updateconfirmdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagewebpage.cpp">
+    <ClCompile Include="src\toggleswitch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="webchathelpers.cpp">
+    <ClCompile Include="src\smartlistview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animationhelpers.cpp">
+    <ClCompile Include="src\smartlistselectorbuttonnotifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="settingswidget.cpp">
+    <ClCompile Include="src\smartlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="passworddialog.cpp">
+    <ClCompile Include="src\sipinputpanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="advancedsettingswidget.cpp">
+    <ClCompile Include="src\settingswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="avatargraphicsview.cpp">
+    <ClCompile Include="src\selectareadialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="accountlistmodel.cpp">
+    <ClCompile Include="src\section.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bannedlistmodel.cpp">
+    <ClCompile Include="src\runguard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="newwizardwidget.cpp">
+    <ClCompile Include="src\ringcontactlineedit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="runguard.cpp">
+    <ClCompile Include="src\ringbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bezierconnectorwidget.cpp">
+    <ClCompile Include="src\rendermanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="advancedsipsettingwidget.cpp">
+    <ClCompile Include="src\recordwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nameregistrationdialog.cpp">
+    <ClCompile Include="src\recordoverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="toggleswitch.cpp">
+    <ClCompile Include="src\previewwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="iconbutton.cpp">
+    <ClCompile Include="src\popupdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="deviceitemwidget.cpp">
+    <ClCompile Include="src\pixbufmanipulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="banneditemwidget.cpp">
+    <ClCompile Include="src\photoboothwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="linkdevicedialog.cpp">
+    <ClCompile Include="src\passworddialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="updateconfirmdialog.cpp">
+    <ClCompile Include="src\overlaybutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="updatedownloaddialog.cpp">
+    <ClCompile Include="src\notifypushbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="contactpicker.cpp">
+    <ClCompile Include="src\newwizardwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="contactpickeritemdelegate.cpp">
+    <ClCompile Include="src\networkmanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="splashscreen.cpp">
+    <ClCompile Include="src\navwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="levelmeter.cpp">
+    <ClCompile Include="src\nameregistrationdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="callaudioonlyavataroverlay.cpp">
+    <ClCompile Include="src\messagewebview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sipinputpanel.cpp">
+    <ClCompile Include="src\messagewebpage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="overlaybutton.cpp">
+    <ClCompile Include="src\mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="accountmigrationdialog.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="connectivitymonitor.cpp">
+    <ClCompile Include="src\linkdevicedialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rendermanager.cpp">
+    <ClCompile Include="src\levelmeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="previewwidget.cpp">
+    <ClCompile Include="src\invitebuttonswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="networkmanager.cpp">
+    <ClCompile Include="src\idlabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="videowidgetbase.cpp">
+    <ClCompile Include="src\iconbutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="distantwidget.cpp">
+    <ClCompile Include="src\globalsystemtray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="section.cpp">
+    <ClCompile Include="src\distantwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="collapsiblepasswordwidget.cpp">
+    <ClCompile Include="src\deviceitemwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="notifypushbutton.cpp">
+    <ClCompile Include="src\deleteaccountdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="widgethelpers.cpp">
+    <ClCompile Include="src\currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="popupdialog.cpp">
+    <ClCompile Include="src\conversationsfilterwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="recordoverlay.cpp">
+    <ClCompile Include="src\conversationitemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="recordwidget.cpp">
+    <ClCompile Include="src\contactpickeritemdelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="changelogscrollwidget.cpp">
+    <ClCompile Include="src\contactpicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connectivitymonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\collapsiblepasswordwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\changelogscrollwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\callwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\callaudioonlyavataroverlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bezierconnectorwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bannedlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\banneditemwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\animationhelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\advancedsipsettingwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\advancedsettingswidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\accountmigrationdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\accountlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\accountitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\aboutdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\splashscreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="aboutdialog.h">
+    <QtMoc Include="src\widgethelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="callwidget.h">
+    <QtMoc Include="src\videowidgetbase.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="deleteaccountdialog.h">
+    <QtMoc Include="src\videoview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="globalsystemtray.h">
+    <QtMoc Include="src\videooverlay.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="idlabel.h">
+    <QtMoc Include="src\updatedownloaddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="mainwindow.h">
+    <QtMoc Include="src\updateconfirmdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="navwidget.h">
+    <QtMoc Include="src\toggleswitch.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="photoboothwidget.h">
+    <QtMoc Include="src\smartlistview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="pixbufmanipulator.h">
+    <QtMoc Include="src\smartlistselectorbuttonnotifier.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <QtMoc Include="ringbutton.h">
-      <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ringcontactlineedit.h">
+    <QtMoc Include="src\smartlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="ringthemeutils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <QtMoc Include="selectareadialog.h">
+    <QtMoc Include="src\sipinputpanel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="settingskey.h">
+    <QtMoc Include="src\settingswidget.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <QtMoc Include="videooverlay.h">
-      <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="videoview.h">
+    <QtMoc Include="src\selectareadialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="smartlistmodel.h">
+    <QtMoc Include="src\section.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="smartlistview.h">
+    <QtMoc Include="src\runguard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="accountlistmodel.h">
+    <QtMoc Include="src\ringcontactlineedit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="accountitemdelegate.h">
+    <QtMoc Include="src\ringbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="conversationitemdelegate.h">
+    <QtMoc Include="src\rendermanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="conversationsfilterwidget.h">
+    <QtMoc Include="src\recordwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="smartlistselectorbuttonnotifier.h">
+    <QtMoc Include="src\recordoverlay.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="invitebuttonswidget.h">
+    <QtMoc Include="src\previewwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="currentaccountcombobox.h">
+    <QtMoc Include="src\popupdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="messagewebview.h">
+    <QtMoc Include="src\photoboothwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="messagewebpage.h">
+    <QtMoc Include="src\passworddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="animationhelpers.h">
+    <QtMoc Include="src\overlaybutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="passworddialog.h">
+    <QtMoc Include="src\notifypushbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="advancedsettingswidget.h">
+    <QtMoc Include="src\newwizardwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="avatargraphicsview.h">
+    <QtMoc Include="src\networkmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="bannedlistmodel.h">
+    <QtMoc Include="src\navwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="newwizardwidget.h">
+    <QtMoc Include="src\nameregistrationdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="bezierconnectorwidget.h">
+    <QtMoc Include="src\messagewebview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="lrcinstance.h">
+    <QtMoc Include="src\messagewebpage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="advancedsipsettingwidget.h">
+    <QtMoc Include="src\mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="settingswidget.h">
+    <QtMoc Include="src\lrcinstance.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="nameregistrationdialog.h">
+    <QtMoc Include="src\linkdevicedialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="toggleswitch.h">
+    <QtMoc Include="src\levelmeter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="iconbutton.h">
+    <QtMoc Include="src\invitebuttonswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="deviceitemwidget.h">
+    <QtMoc Include="src\idlabel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="banneditemwidget.h">
+    <QtMoc Include="src\iconbutton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="linkdevicedialog.h">
+    <QtMoc Include="src\globalsystemtray.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="updateconfirmdialog.h">
+    <QtMoc Include="src\distantwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="updatedownloaddialog.h">
+    <QtMoc Include="src\deviceitemwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="runguard.h">
+    <QtMoc Include="src\deleteaccountdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="contactpicker.h">
+    <QtMoc Include="src\currentaccountcombobox.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="contactpickeritemdelegate.h">
+    <QtMoc Include="src\conversationsfilterwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="levelmeter.h">
+    <QtMoc Include="src\conversationitemdelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="callaudioonlyavataroverlay.h">
+    <QtMoc Include="src\contactpickeritemdelegate.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="splashscreen.h">
-      <Filter>Generated Files</Filter>
     </QtMoc>
-    <QtMoc Include="sipinputpanel.h">
+    <QtMoc Include="src\contactpicker.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="overlaybutton.h">
+    <QtMoc Include="src\connectivitymonitor.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="accountmigrationdialog.h">
+    <QtMoc Include="src\collapsiblepasswordwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="connectivitymonitor.h">
+    <QtMoc Include="src\changelogscrollwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="networkmanager.h">
+    <QtMoc Include="src\callwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="rendermanager.h">
+    <QtMoc Include="src\callaudioonlyavataroverlay.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="previewwidget.h">
+    <QtMoc Include="src\bezierconnectorwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="videowidgetbase.h">
+    <QtMoc Include="src\bannedlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="distantwidget.h">
+    <QtMoc Include="src\banneditemwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="section.h">
+    <QtMoc Include="src\animationhelpers.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="collapsiblepasswordwidget.h">
+    <QtMoc Include="src\advancedsipsettingwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="notifypushbutton.h">
+    <QtMoc Include="src\advancedsettingswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="widgethelpers.h">
+    <QtMoc Include="src\accountmigrationdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="popupdialog.h">
+    <QtMoc Include="src\accountlistmodel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="recordoverlay.h">
+    <QtMoc Include="src\accountitemdelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="recordwidget.h">
+    <QtMoc Include="src\aboutdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="changelogscrollwidget.h">
+    <QtMoc Include="src\splashscreen.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -484,30 +466,6 @@
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
-    <ClInclude Include="ui_aboutdialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_callwidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_deleteaccountdialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_photoboothwidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_ringbutton.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_videooverlay.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_videoview.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\ring_client_windows.ts">
@@ -695,101 +653,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="aboutdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="callwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="deleteaccountdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="photoboothwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="ringbutton.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="videooverlay.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="videoview.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="invitebuttonswidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="settingswidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="passworddialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="advancedsettingswidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="animatedoverlay.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="newwizardwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="advancedsipsettingwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="nameregistrationdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="deviceitemwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="banneditemwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="linkdevicedialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="updateconfirmdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="updatedownloaddialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="contactpicker.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="callaudioonlyavataroverlay.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="sipkeypad.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="accountmigration.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="section.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="collapsiblepasswordwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="popupdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="recordoverlay.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="recordwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="changelogscrollwidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="images\FontAwesome.otf">
       <Filter>Resource Files</Filter>
     </None>
@@ -930,14 +793,6 @@
     <ResourceCompile Include="ico.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="webchathelpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="version.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="images\icons\ic_mic_white_24dp.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -947,5 +802,120 @@
     <Image Include="images\icons\icon-keypad-24-2x.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\webchathelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\settingskey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ringthemeutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pixbufmanipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="src\sipkeypad.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\ringbutton.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\recordoverlay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\popupdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\photoboothwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\newwizardwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\invitebuttonswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\deviceitemwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\changelogscrollwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\callwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\callaudioonlyavataroverlay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\banneditemwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\advancedsipsettingwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\accountmigration.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\settingswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\aboutdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\videooverlay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\videoview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\updatedownloaddialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\updateconfirmdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\section.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\recordwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\passworddialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\nameregistrationdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\linkdevicedialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\deleteaccountdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\contactpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\collapsiblepasswordwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\animatedoverlay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\advancedsettingswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

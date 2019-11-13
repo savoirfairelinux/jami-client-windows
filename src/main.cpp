@@ -183,7 +183,7 @@ main(int argc, char* argv[])
     a.setFont(font);
 
 #ifndef DEBUG_STYLESHEET
-    QFile file(":/stylesheet.css");
+    QFile file(QDir::currentPath() + "/stylesheet.css");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         a.setStyleSheet(file.readAll());
         file.close();

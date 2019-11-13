@@ -326,7 +326,7 @@ Utils::forceDeleteAsync(const QString& path)
 void
 Utils::getChangeLogs(QString& logs)
 {
-    QFile changeLogFile("changelog.html");
+    QFile changeLogFile(QDir::currentPath() + "/changelog.html");
     if (!changeLogFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug().noquote() << " Change log file failed to load";
         return;

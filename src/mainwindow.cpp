@@ -164,7 +164,7 @@ MainWindow::MainWindow(QWidget* parent)
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout,
         [this]() {
-            QString fileName = "stylesheet.css";
+            QString fileName = QDir::currentPath() + "/stylesheet.css";
             QDir filePath = QDir(QCoreApplication::applicationDirPath());
             filePath.cdUp();
             filePath.cdUp();

@@ -65,7 +65,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ressources.qrc">:/images/logo-jami-standard-coul.png</pixmap>
+      <pixmap resource="../ressources.qrc">:/images/logo-jami-standard-coul.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -440,7 +440,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
