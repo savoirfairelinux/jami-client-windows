@@ -715,7 +715,7 @@
                               </font>
                              </property>
                              <property name="icon">
-                              <iconset resource="ressources.qrc">
+                              <iconset resource="../ressources.qrc">
                                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
@@ -1060,7 +1060,7 @@
                               <string/>
                              </property>
                              <property name="icon">
-                              <iconset resource="ressources.qrc">
+                              <iconset resource="../ressources.qrc">
                                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
                              </property>
                              <property name="iconSize">
@@ -1463,7 +1463,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>745</width>
+                  <width>706</width>
                   <height>1398</height>
                  </rect>
                 </property>
@@ -2374,7 +2374,7 @@
                                 <string/>
                                </property>
                                <property name="icon">
-                                <iconset resource="ressources.qrc">
+                                <iconset resource="../ressources.qrc">
                                  <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                                </property>
                                <property name="iconSize">
@@ -2786,7 +2786,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>745</width>
+                  <width>683</width>
                   <height>874</height>
                  </rect>
                 </property>
@@ -3749,7 +3749,7 @@
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="LevelMeter" name="audioInputMeter" native="true">
+                            <widget class="LevelMeter" name="audioInputMeter">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -4280,26 +4280,26 @@
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>LevelMeter</class>
+   <extends>QProgressBar</extends>
+   <header>levelmeter.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>AdvancedSettingsWidget</class>
    <extends>QWidget</extends>
-   <header location="global">advancedsettingswidget.h</header>
+   <header>advancedsettingswidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>AdvancedSIPSettingsWidget</class>
    <extends>QWidget</extends>
-   <header location="global">advancedsipsettingwidget.h</header>
+   <header>advancedsipsettingwidget.h</header>
   </customwidget>
   <customwidget>
    <class>IconButton</class>
    <extends>QWidget</extends>
    <header>iconbutton.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>LevelMeter</class>
-   <extends>QWidget</extends>
-   <header>levelmeter.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -4342,7 +4342,7 @@
   <tabstop>formatBox</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
