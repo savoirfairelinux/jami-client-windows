@@ -103,7 +103,7 @@
           </widget>
          </item>
          <item>
-          <widget class="PhotoboothPreviewWidget" name="previewWidget">
+          <widget class="PhotoboothPreviewWidget" name="previewWidget" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -179,7 +179,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="../ressources.qrc">
           <normaloff>:/images/icons/baseline-camera_alt-24px.svg</normaloff>:/images/icons/baseline-camera_alt-24px.svg</iconset>
         </property>
        </widget>
@@ -218,7 +218,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="../ressources.qrc">
           <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
         </property>
        </widget>
@@ -250,7 +250,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
