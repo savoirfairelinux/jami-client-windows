@@ -22,11 +22,12 @@
 
 #include "utils.h"
 #include "version.h"
+#include "mainwindow.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
     PopupWidget(
         parent,
-        RingTheme::lightGrey_,
+        Qt::white,
         PopupDialog::SpikeLabelAlignment::None),
     ui(new Ui::AboutDialog)
 {
@@ -46,6 +47,26 @@ AboutDialog::~AboutDialog()
 }
 
 void
+AboutDialog::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->darken();
+    }
+}
+
+void
+AboutDialog::hideEvent(QHideEvent* event)
+{
+    QWidget::hideEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->lighten();
+    }
+}
+
+void
 AboutDialog::on_changelogButton_clicked()
 {
     ui->logTextEdit->clear();
@@ -56,12 +77,8 @@ void
 AboutDialog::on_creditsButton_clicked()
 {
     ui->logTextEdit->clear();
-    ui->logTextEdit->insertHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
-                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">"
-                                "p, li { white-space: pre-wrap; }"
-                                "</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;\">"
-                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
-                                + tr("Created by:") + "</span></p>"
+    ui->logTextEdit->insertHtml("<h3 align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
+                                + tr("Created by:") + "</span></h3>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Adrien Béraud</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alexandr Sergheev</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alexandre Lision</p>"
@@ -100,11 +117,10 @@ AboutDialog::on_creditsButton_clicked()
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Thibault Wittemberg</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Vsevolod Ivanov</p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Yang Wang</p>"
-                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
-                                + tr("Artwork by:") + "</span></p>"
+                                "<h3 align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
+                                + tr("Artwork by:") + "</span></h3>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Marianne Forget</p>"
                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
-                                + tr("Based on the SFLPhone project") + "</p>"
-                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>");
+                                + tr("Based on the SFLPhone project") + "</p>");
 }

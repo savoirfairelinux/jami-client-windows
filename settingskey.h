@@ -29,5 +29,5 @@ constexpr static char mainSplitterState[] = "mainSplitterState";
 constexpr static char windowState[] = "windowState";
 constexpr static char autoUpdate[] = "autoUpdate";
 constexpr static char neverShowMeAgain[] = "neverShowMeAgain";
-constexpr static char changeLogShownOnce[] = "changeLogShownOnce";
+constexpr static char hasRun[] = "hasRun";
 }

@@ -33,6 +33,10 @@ public:
     explicit AboutDialog(QWidget *parent = 0);
     ~AboutDialog();
 
+protected:
+    void showEvent(QShowEvent* event) override;
+    void hideEvent(QHideEvent* event) override;
+
 private slots:
     void on_changelogButton_clicked();
     void on_creditsButton_clicked();

@@ -277,17 +277,23 @@ main(int argc, char* argv[])
 
     MainWindow::instance().createThumbBar();
 
-    if (not startMinimized)
-        MainWindow::instance().showWindow();
-    else {
+    QSettings settings("jami.net", "Jami");
+    if (not startMinimized) {
+        if (settings.value(SettingsKey::hasRun) == 0) {
+            MainWindow::instance().showMaximized();
+            QTimer::singleShot(100,
+                [] {
+                    QSettings settings("jami.net", "Jami");
+                    settings.setValue(SettingsKey::hasRun, 1);
+                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+                    aboutDialog->getContainer()->exec();
+                });
+        } else {
+            MainWindow::instance().showWindow();
+        }
+    } else {
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
-    }
-
-    QSettings settings("jami.net", "Jami");
-    if (!settings.contains(SettingsKey::changeLogShownOnce)) {
-        std::unique_ptr<AboutDialog> aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
-        aboutDialog->getContainer()->exec();
     }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
