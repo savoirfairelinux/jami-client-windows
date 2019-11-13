@@ -36,14 +36,17 @@ PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     setFixedSize(size());
 
-    ui->currentPasswordEdit->setEchoMode(QLineEdit::Password);
+    quickUiRootObj_ = new PasswordDialogQMLControllerObject(this);
+
+
+    /*ui->currentPasswordEdit->setEchoMode(QLineEdit::Password);
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
     ui->confirmPasswordEdit->setEchoMode(QLineEdit::Password);
 
-    ui->currentPasswordEdit->setEnabled(LRCInstance::getCurrAccConfig().archiveHasPassword);
+    ui->currentPasswordEdit->setEnabled(LRCInstance::getCurrAccConfig().archiveHasPassword);*/
 
     if (purpose_ == PasswordEnteringPurpose::ChangePassword) {
-        ui->verticalSpacerCurrentTNew->changeSize(20, 8, QSizePolicy::Fixed, QSizePolicy::Fixed);
+        /*ui->verticalSpacerCurrentTNew->changeSize(20, 8, QSizePolicy::Fixed, QSizePolicy::Fixed);
         ui->verticalSpacerNewTConfirm->changeSize(20, 8, QSizePolicy::Fixed, QSizePolicy::Fixed);
 
         connect(ui->currentPasswordEdit, &QLineEdit::textChanged, this, &PasswordDialog::validatePassword);
@@ -54,9 +57,9 @@ PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
                 spinnerMovie_->start();
                 ui->spinnerLabel->show();
                 QtConcurrent::run([this] { savePassword(); });
-            });
+            });*/
     } else if (purpose_ == PasswordEnteringPurpose::ExportAccount) {
-        setWindowTitle(tr("Enter the password of this account"));
+        /*setWindowTitle(tr("Enter the password of this account"));
         ui->passwordEdit->hide();
         ui->confirmPasswordEdit->hide();
         ui->verticalSpacerCurrentTNew->changeSize(20, 0, QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -67,10 +70,10 @@ PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
                 spinnerMovie_->start();
                 ui->spinnerLabel->show();
                 QtConcurrent::run([this] { exportAccount(); });
-            });
+            });*/
     }
 
-    connect(ui->currentPasswordEdit, &QLineEdit::textChanged,
+    /*connect(ui->currentPasswordEdit, &QLineEdit::textChanged,
         [this] {
             if (ui->currentPasswordEdit->text().isEmpty()) {
                 ui->btnChangePasswordConfirm->setEnabled(false);
@@ -87,7 +90,7 @@ PasswordDialog::PasswordDialog(QWidget* parent, PasswordEnteringPurpose purpose)
     spinnerMovie_ = new QMovie(":/images/ajax-loader.gif");
     spinnerMovie_->setScaledSize(QSize(20, 20));
     ui->spinnerLabel->setMovie(spinnerMovie_);
-    ui->spinnerLabel->hide();
+    ui->spinnerLabel->hide();*/
 }
 
 PasswordDialog::~PasswordDialog()
@@ -98,7 +101,7 @@ PasswordDialog::~PasswordDialog()
 void
 PasswordDialog::exportAccount()
 {
-    bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(),
+    /*bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(),
                                                               path_,
                                                               ui->currentPasswordEdit->text().toStdString());
     ui->spinnerLabel->hide();
@@ -109,13 +112,13 @@ PasswordDialog::exportAccount()
         Utils::whileBlocking<QLineEdit>(ui->currentPasswordEdit)->clear();
         ui->btnChangePasswordConfirm->setEnabled(false);
         ui->wrongPasswordLabel->show();
-    }
+    }*/
 }
 
 void
 PasswordDialog::validatePassword()
 {
-    bool acceptablePassword = ui->passwordEdit->text() == ui->confirmPasswordEdit->text();
+    /*bool acceptablePassword = ui->passwordEdit->text() == ui->confirmPasswordEdit->text();
     ui->btnChangePasswordConfirm->setEnabled(acceptablePassword);
 
     if (acceptablePassword) {
@@ -125,13 +128,13 @@ PasswordDialog::validatePassword()
     }
 
     ui->passwordEdit->setStyleSheet("border: 2px solid red;");
-    ui->confirmPasswordEdit->setStyleSheet("border: 2px solid red;");
+    ui->confirmPasswordEdit->setStyleSheet("border: 2px solid red;");*/
 }
 
 void
-PasswordDialog::savePassword()
+PasswordDialog::savePassword(QString currentPassowrd, QString newPassWord)
 {
-    bool success = LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
+    /*bool success = LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
                    ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString());
 
     ui->spinnerLabel->hide();
@@ -147,5 +150,15 @@ PasswordDialog::savePassword()
         Utils::whileBlocking<QLineEdit>(ui->currentPasswordEdit)->clear();
         ui->btnChangePasswordConfirm->setEnabled(false);
         ui->wrongPasswordLabel->show();
-    }
+    }*/
+}
+
+PasswordDialogQMLControllerObject::PasswordDialogQMLControllerObject(PasswordDialog* parent):
+    QObject(qobject_cast<QObject>(parent))
+{
+    containerParent_ = parent;
+}
+
+PasswordDialogQMLControllerObject::~PasswordDialogQMLControllerObject()
+{
 }

@@ -19,6 +19,7 @@
 
 #include <QDialog>
 #include <QMovie>
+#include <QVariant>
 
 namespace Ui {
     class PasswordDialog;
@@ -29,9 +30,13 @@ enum class PasswordEnteringPurpose{
     ExportAccount
 };
 
+class PasswordDialogQMLControllerObject;
+
 class PasswordDialog : public QDialog
 {
     Q_OBJECT
+    friend class PasswordDialogQMLControllerObject;
+
 public:
     PasswordDialog(QWidget* parent = nullptr, PasswordEnteringPurpose purpose = PasswordEnteringPurpose::ChangePassword);
     ~PasswordDialog();
@@ -40,9 +45,13 @@ public:
 
     void setExportPath(const std::string& path) { path_ = path; }
 
+    void savePassword(QString currentPassowrd, QString newPassWord);
+
+    void exportAccount();
+
+
 private slots:
     void validatePassword();
-    void exportAccount();
 
 private:
     Ui::PasswordDialog* ui;
@@ -50,6 +59,24 @@ private:
     PasswordEnteringPurpose purpose_ { PasswordEnteringPurpose::ChangePassword };
     std::string path_;
     QMovie* spinnerMovie_;
+    PasswordDialogQMLControllerObject* quickUiRootObj_;
 
-    void savePassword();
+
+};
+
+class PasswordDialogQMLControllerObject : public QObject
+{
+    Q_OBJECT
+public:
+    explicit PasswordDialogQMLControllerObject(PasswordDialog* parent = nullptr);
+    ~PasswordDialogQMLControllerObject();
+
+    Q_ENUMS(PasswordEnteringPurpose)
+
+    Q_INVOKABLE bool savePassword(QVariant currentPassowrd, QVariant newPassWord);
+    Q_INVOKABLE bool validatePassword();
+    Q_INVOKABLE bool exportAccount();
+
+private:
+    PasswordDialog* containerParent_;
 };
