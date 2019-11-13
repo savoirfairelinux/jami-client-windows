@@ -2,10 +2,13 @@ win32-msvc {
     TEMPLATE = vcapp
     TARGET = Jami
 
-    QT += winextras quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
+    QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
 
-    CONFIG += suppress_vcproj_warnings
+    CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
 
+    QML2_IMPORT_PATH = C:/Qt/5.9.4/msvc2017_64/qml
+
+    QTQUICK_COMPILER_SKIPPED_RESOURCES += ressources.qrc
     # compiler options
     QMAKE_CXXFLAGS += /wd"4068" /wd"4099" /wd"4189" /wd"4267" /wd"4577" /wd"4467" /wd"4715" /wd"4828"
     QMAKE_CXXFLAGS += /MP /GS /W3 /Gy /Zc:wchar_t /Zi /Gm- /O2 /Zc:inline /fp:precise /errorReport:prompt /WX- /Zc:forScope
@@ -234,6 +237,9 @@ FORMS += ./aboutdialog.ui \
         ./collapsiblepasswordwidget.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
-        ./recordwidget.ui \
-
-RESOURCES += ressources.qrc
+        ./recordwidget.ui
+DISTFILES += \
+    passworddialog.qml \
+    testqml.qml
+RESOURCES += ressources.qrc \
+    qmlressources.qrc

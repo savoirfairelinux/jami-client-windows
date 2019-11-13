@@ -29,12 +29,15 @@
 #include "splashscreen.h"
 #include "aboutdialog.h"
 
+#include "passworddialog.h"
+
 #include <QApplication>
 #include <QFile>
 #include <QMessageBox>
 #include <QFontDatabase>
 #include <QLibraryInfo>
 #include <QTranslator>
+#include <QtQML>
 
 #include <ciso646>
 #include <locale.h>
@@ -296,6 +299,9 @@ main(int argc, char* argv[])
     }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
+
+
+    qmlRegisterType<PasswordDialogQMLControllerObject>("com.widget.passworddialogqml",1,0,"PasswordDialogQMLControllerObject");
 
     auto ret = a.exec();
 
