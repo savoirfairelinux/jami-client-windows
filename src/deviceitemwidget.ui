@@ -44,7 +44,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ressources.qrc">:/images/icons/baseline-desktop_windows-24px.svg</pixmap>
+      <pixmap resource="../ressources.qrc">:/images/icons/baseline-desktop_windows-24px.svg</pixmap>
      </property>
     </widget>
    </item>
@@ -166,7 +166,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="ressources.qrc">
+      <iconset resource="../ressources.qrc">
        <normaloff>:/images/icons/round-save_alt-24px.svg</normaloff>:/images/icons/round-save_alt-24px.svg</iconset>
      </property>
      <property name="iconSize">
@@ -200,7 +200,7 @@
   <tabstop>btnEditDevice</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
