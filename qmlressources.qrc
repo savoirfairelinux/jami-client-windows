@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>testqml.qml</file>
+        <file>passworddialog.qml</file>
+    </qresource>
+</RCC>
