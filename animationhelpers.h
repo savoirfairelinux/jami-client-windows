@@ -37,6 +37,8 @@ public:
     virtual ~OpacityAnimation();
 
     void reset();
+    void setToStartValue();
+    void setToEndValue();
 };
 
 class FadeAnimation : public OpacityAnimation
