@@ -38,8 +38,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
