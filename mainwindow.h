@@ -25,6 +25,8 @@
 #include "globalsystemtray.h"
 #include "widgethelpers.h"
 
+#include "testqml.h"
+
 #include <QMainWindow>
 #include <QMouseEvent>
 
@@ -99,4 +101,6 @@ private:
     QTimer* updateTimer_;
 
     Darkenable* overlay_;
+
+    TestQML* testQML;
 };
