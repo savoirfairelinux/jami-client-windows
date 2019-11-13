@@ -809,7 +809,7 @@ Copy and share it with your friends!
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="ressources.qrc">
+                    <iconset resource="../ressources.qrc">
                      <normaloff>:/images/qrcode.png</normaloff>:/images/qrcode.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -860,7 +860,7 @@ Copy and share it with your friends!
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="ressources.qrc">
+                    <iconset resource="../ressources.qrc">
                      <normaloff>:/images/icons/ic_share_black_48dp_2x.png</normaloff>:/images/icons/ic_share_black_48dp_2x.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1412,7 +1412,7 @@ Copy and share it with your friends!
                               <enum>Qt::LeftToRight</enum>
                              </property>
                              <property name="icon">
-                              <iconset resource="ressources.qrc">
+                              <iconset resource="../ressources.qrc">
                                <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
                              </property>
                              <property name="iconSize">
@@ -1646,7 +1646,7 @@ Copy and share it with your friends!
                                   <string>Answer incoming call button</string>
                                  </property>
                                  <property name="icon">
-                                  <iconset resource="ressources.qrc">
+                                  <iconset resource="../ressources.qrc">
                                    <normaloff>:/images/icons/ic_done_white_24dp.png</normaloff>:/images/icons/ic_done_white_24dp.png</iconset>
                                  </property>
                                  <property name="iconSize">
@@ -1721,7 +1721,7 @@ Copy and share it with your friends!
                                   <enum>Qt::RightToLeft</enum>
                                  </property>
                                  <property name="icon">
-                                  <iconset resource="ressources.qrc">
+                                  <iconset resource="../ressources.qrc">
                                    <normaloff>:/images/icons/ic_close_white_24dp.png</normaloff>:/images/icons/ic_close_white_24dp.png</iconset>
                                  </property>
                                  <property name="iconSize">
@@ -1866,7 +1866,7 @@ Copy and share it with your friends!
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="ressources.qrc">
+                         <iconset resource="../ressources.qrc">
                           <normaloff>:/images/icons/ic_arrow_back_24px.svg</normaloff>:/images/icons/ic_arrow_back_24px.svg</iconset>
                         </property>
                         <property name="iconSize">
@@ -2017,7 +2017,7 @@ Copy and share it with your friends!
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="ressources.qrc">
+                         <iconset resource="../ressources.qrc">
                           <normaloff>:/images/icons/ic_phone_24px.svg</normaloff>:/images/icons/ic_phone_24px.svg</iconset>
                         </property>
                         <property name="iconSize">
@@ -2046,7 +2046,7 @@ Copy and share it with your friends!
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="ressources.qrc">
+                         <iconset resource="../ressources.qrc">
                           <normaloff>:/images/icons/ic_video_call_24px.svg</normaloff>:/images/icons/ic_video_call_24px.svg</iconset>
                         </property>
                         <property name="iconSize">
@@ -2087,7 +2087,7 @@ Copy and share it with your friends!
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="ressources.qrc">
+                         <iconset resource="../ressources.qrc">
                           <normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</normaloff>:/images/icons/ic_person_add_black_24dp_2x.png</iconset>
                         </property>
                         <property name="iconSize">
@@ -2256,7 +2256,7 @@ Copy and share it with your friends!
   <tabstop>shareButton</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
