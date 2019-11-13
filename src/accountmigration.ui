@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>358</width>
-    <height>573</height>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -558,7 +558,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="ressources.qrc">:/images/jami_eclipse_spinner.gif</pixmap>
+            <pixmap resource="../ressources.qrc">:/images/jami_eclipse_spinner.gif</pixmap>
            </property>
           </widget>
          </item>
@@ -628,7 +628,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
