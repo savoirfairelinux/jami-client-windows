@@ -969,18 +969,30 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     ui->messageView->setMessagesVisibility(false);
-    Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
-        [this, convInfo] {
-            auto convModel = LRCInstance::getCurrentConversationModel();
-            ui->messageView->printHistory(*convModel, convInfo.interactions);
-            Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesLoaded,
-                [this] {
-                    ui->messageView->setMessagesVisibility(true);
+    Utils::oneShotConnect(ui->messageView, &MessageWebView::sendMessageContentSaved,
+        [this, &convInfo, &accountInfo, lastConvUid = lastConvUid_](const QString& content) {
+            if (!lastConvUid.empty()) {
+                LRCInstance::setContentDraft(
+                    lastConvUid.c_str(), accountInfo.id.c_str(), content);
+            }
+            Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
+                [this, &convInfo] {
+                    auto convModel = LRCInstance::getCurrentConversationModel();
+                    ui->messageView->printHistory(*convModel, convInfo.interactions);
+                    Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesLoaded,
+                        [this] {
+                            ui->messageView->setMessagesVisibility(true);
+                        });
+                    setConversationProfileData(convInfo);
                 });
-            setConversationProfileData(convInfo);
+            ui->messageView->setInvitation(false);
+            ui->messageView->clear();
+            auto restoredContent = LRCInstance::getContentDraft(
+                convInfo.uid.c_str(), accountInfo.id.c_str());
+            ui->messageView->setSendMessageContent(restoredContent);
+            ui->smartList->update();
         });
-    ui->messageView->setInvitation(false);
-    ui->messageView->clear();
+    ui->messageView->requestSendMessageContent();
 }
 
 void
