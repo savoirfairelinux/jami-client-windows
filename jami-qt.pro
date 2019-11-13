@@ -3,7 +3,7 @@ TARGET = jami-qt
 
 CONFIG += c++17
 
-QT += widgets xml multimedia multimediawidgets network webenginewidgets svg
+QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg
 
 isEmpty(LRC) {
     LRC=../../install/lrc/
@@ -85,7 +85,8 @@ HEADERS += ./aboutdialog.h \
         ./popupdialog.h \
         ./recordoverlay.h \
         ./widgethelpers.h \
-        ./recordwidget.h
+        ./recordwidget.h \
+        ./testqml.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -153,7 +154,8 @@ SOURCES += ./aboutdialog.cpp \
         ./popupdialog.cpp \
         ./recordoverlay.cpp \
         ./widgethelpers.cpp \
-        ./recordwidget.cpp
+        ./recordwidget.cpp \
+        ./testqml.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -183,5 +185,7 @@ FORMS += ./aboutdialog.ui \
         ./collapsiblepasswordwidget.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
-        ./recordwidget.ui
-RESOURCES += ressources.qrc
+        ./recordwidget.ui \
+        ./testqml.ui \
+        ./testqml.ui
+RESOURCES += ressources.qrc \
