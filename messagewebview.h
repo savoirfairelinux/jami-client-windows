@@ -53,6 +53,7 @@ public:
     Q_INVOKABLE int emitPasteKeyDetected();
     Q_INVOKABLE int openAudioRecorder(int spikePosX,int spikePosY);
     Q_INVOKABLE int openVideoRecorder(int spikePosX,int spikePosY);
+    Q_INVOKABLE int saveSendMessageContent(const QString& arg);
 };
 
 class MessageWebView : public QWebEngineView
@@ -97,6 +98,8 @@ public:
     void updateChatviewFrame(bool accountEnabled, bool isBanned, bool isTemporary,
                              const QString& alias, const QString& bestId);
     void displayNavbar(bool display);
+    void requestSendMessageContent();
+    void setSendMessageContent(const QString& content);
 
 protected:
 
@@ -114,6 +117,7 @@ signals:
     void textSelectedReady();
     void pasteKeyDetected();
     void invitationAccepted();
+    void sendMessageContentSaved(const QString& content);
 
 private slots:
     void slotLoadFinished();
