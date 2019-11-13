@@ -1914,7 +1914,7 @@ instead of using your ID.</string>
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="ressources.qrc">
+                        <iconset resource="../ressources.qrc">
                          <normaloff>:/images/icons/info-24px.svg</normaloff>:/images/icons/info-24px.svg</iconset>
                        </property>
                        <property name="iconSize">
@@ -2679,7 +2679,7 @@ instead of using your ID.</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="ressources.qrc">:/images/jami_eclipse_spinner.gif</pixmap>
+                    <pixmap resource="../ressources.qrc">:/images/jami_eclipse_spinner.gif</pixmap>
                    </property>
                   </widget>
                  </item>
@@ -2918,7 +2918,7 @@ instead of using your ID.</string>
   <tabstop>nextButton</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
