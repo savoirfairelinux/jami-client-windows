@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>314</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,7 +23,7 @@
    <string notr="true"/>
   </property>
   <property name="pixRedDot" stdset="0">
-   <pixmap resource="ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
+   <pixmap resource="../ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -197,7 +197,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="ressources.qrc">:/images/icons/av_icons/mic-24px.svg</pixmap>
+            <pixmap resource="../ressources.qrc">:/images/icons/av_icons/mic-24px.svg</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -310,10 +310,10 @@
           <bool>false</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/re-record-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/re-record-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/re-record-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/re-record-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -351,10 +351,10 @@
           <bool>true</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/stop-24px-red.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/stop-24px-red.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -392,10 +392,10 @@
           <bool>false</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/delete-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/delete-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/delete-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/delete-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -433,10 +433,10 @@
           <bool>true</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/play_circle_outline-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/play_circle_outline-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/pause-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/pause-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -474,10 +474,10 @@
           <bool>false</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/send-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/send-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/send-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/send-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -518,10 +518,10 @@
           <bool>false</bool>
          </property>
          <property name="originPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/stop-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/stop-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="ressources.qrc">:/images/icons/av_icons/stop-24px.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/stop-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
@@ -574,7 +574,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
