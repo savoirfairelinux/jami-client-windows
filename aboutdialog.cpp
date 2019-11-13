@@ -22,11 +22,12 @@
 
 #include "utils.h"
 #include "version.h"
+#include "mainwindow.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
     PopupWidget(
         parent,
-        RingTheme::lightGrey_,
+        Qt::white,
         PopupDialog::SpikeLabelAlignment::None),
     ui(new Ui::AboutDialog)
 {
@@ -43,6 +44,26 @@ AboutDialog::AboutDialog(QWidget *parent) :
 AboutDialog::~AboutDialog()
 {
     delete ui;
+}
+
+void
+AboutDialog::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->darken();
+    }
+}
+
+void
+AboutDialog::hideEvent(QHideEvent* event)
+{
+    QWidget::hideEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->lighten();
+    }
 }
 
 void
