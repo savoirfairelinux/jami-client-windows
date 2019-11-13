@@ -435,7 +435,7 @@
    <string>Jami</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ressources.qrc">
+   <iconset resource="../ressources.qrc">
     <normaloff>:/images/jami.png</normaloff>:/images/jami.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -499,7 +499,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
