@@ -47,6 +47,11 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
 
+    testQML = new TestQML(this);
+
+    testQML->exec();
+    delete testQML;
+
     setWindowTitle(isBeta ? "Jami (Beta)" : "Jami");
 
     for (int i = 0; i < ui->navStack->count(); ++i) {
