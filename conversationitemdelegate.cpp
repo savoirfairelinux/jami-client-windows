@@ -272,6 +272,32 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
     }
 
     // bottom-right: last interaction snippet or call state (if in call)
+    auto draft = index.data(static_cast<int>(SmartListModel::Role::Draft)).value<QString>();
+    if (!draft.isEmpty()) {
+        painter->save();
+        uint cp = 0x270F;
+        auto emojiString = QString::fromUcs4(&cp, 1);
+        QFont emojiMsgFont(QStringLiteral("Segoe UI Emoji"));
+        emojiMsgFont.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
+
+        QString text{ tr("Draft") };
+        int widthText{ QFontMetrics(font).width(text) };
+        int widthEmoji{ QFontMetrics(emojiMsgFont).width(emojiString) };
+        int margin { 4 };
+
+        painter->setFont(font);
+        painter->setPen(QColor(207, 83, 0));
+        painter->drawText(rectInfo2, Qt::AlignVCenter | Qt::AlignRight, text);
+
+        rectInfo2.moveTop(rectInfo2.top() - 2);
+        painter->setOpacity(0.7);
+        painter->setFont(emojiMsgFont);
+        painter->drawText(rectInfo2.right() - widthText - widthEmoji - margin, rectInfo2.y(),
+                          widthEmoji, rectInfo2.height(), Qt::AlignVCenter, emojiString);
+        painter->restore();
+        return;
+    }
+
     if (index.data(static_cast<int>(SmartListModel::Role::InCall)).value<bool>()) {
         QString callStateStr = index.data(static_cast<int>(SmartListModel::Role::CallStateStr)).value<QString>();
         if (!callStateStr.isNull()) {
