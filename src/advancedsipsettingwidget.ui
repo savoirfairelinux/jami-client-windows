@@ -164,7 +164,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="ressources.qrc">
+            <iconset resource="../ressources.qrc">
              <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
            </property>
           </widget>
@@ -556,7 +556,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="ressources.qrc">
+              <iconset resource="../ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -591,7 +591,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="ressources.qrc">
+              <iconset resource="../ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -662,7 +662,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="ressources.qrc">
+              <iconset resource="../ressources.qrc">
                <normaloff>:/images/icons/round-folder-24px.svg</normaloff>:/images/icons/round-folder-24px.svg</iconset>
              </property>
             </widget>
@@ -1835,7 +1835,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="ressources.qrc">
+                <iconset resource="../ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -1869,7 +1869,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="ressources.qrc">
+                <iconset resource="../ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -1988,7 +1988,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="ressources.qrc">
+                <iconset resource="../ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_down-24px.svg</normaloff>:/images/icons/round-arrow_drop_down-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -2022,7 +2022,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="ressources.qrc">
+                <iconset resource="../ressources.qrc">
                  <normaloff>:/images/icons/round-arrow_drop_up-24px.svg</normaloff>:/images/icons/round-arrow_drop_up-24px.svg</iconset>
                </property>
                <property name="iconSize">
@@ -2416,7 +2416,7 @@
   <tabstop>videoRTPMaxPortSpinBox</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>
