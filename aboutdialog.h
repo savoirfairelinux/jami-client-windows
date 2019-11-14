@@ -40,6 +40,7 @@ protected:
 private slots:
     void on_changelogButton_clicked();
     void on_creditsButton_clicked();
+    void on_closeAboutDialogButton_clicked();
 
 private:
     Ui::AboutDialog *ui;

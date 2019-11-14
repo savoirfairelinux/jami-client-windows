@@ -116,7 +116,7 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
     QPushButton#sendContactRequestButton:hover, QPushButton#sendButton:hover, QPushButton#sendIMButton:hover,
     QPushButton#btnExitSettings:hover, QPushButton#btnDeleteAccept:hover, QPushButton#btnDeleteCancel:hover,
     QPushButton#changelogButton:hover, QPushButton#creditsButton:hover, QPushButton#changelogButton:hover, QPushButton#updateCancelBtn:hover,
-    QPushButton#updateAcceptBtn:hover, QPushButton#installBetaButton:hover {
+    QPushButton#updateAcceptBtn:hover, QPushButton#installBetaButton:hover, QPushButton#closeAboutDialogButton:hover {
         background-color: rgb(237, 237, 237);
     }
 
@@ -124,7 +124,7 @@ QPushButton#btnAcceptInvite:pressed, QPushButton#btnIgnoreInvite:pressed, QPushB
     QPushButton#sendContactRequestButton:pressed, QPushButton#sendButton:pressed, QPushButton#sendIMButton:pressed,
     QPushButton#btnExitSettings:pressed, QPushButton#btnDeleteAccept:pressed, QPushButton#btnDeleteCancel:pressed,
     QPushButton#changelogButton:pressed, QPushButton#creditsButton:pressed, QPushButton#changelogButton:pressed, QPushButton#updateCancelBtn:pressed,
-    QPushButton#updateAcceptBtn:pressed, QPushButton#installBetaButton:pressed {
+    QPushButton#updateAcceptBtn:pressed, QPushButton#installBetaButton:pressed, QPushButton#closeAboutDialogButton:pressed {
         background-color: rgb(212, 212, 212);
     }
 
