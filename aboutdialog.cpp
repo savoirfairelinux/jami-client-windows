@@ -38,7 +38,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
         .arg(isBeta ? tr("(BETA) version") : tr("version"), QString(VERSION_STRING)));
 
     ui->logTextEdit->insertHtml(Utils::getChangeLog());
-
+    ui->logTextEdit->moveCursor(QTextCursor::Start);
 }
 
 AboutDialog::~AboutDialog()
@@ -71,6 +71,7 @@ AboutDialog::on_changelogButton_clicked()
 {
     ui->logTextEdit->clear();
     ui->logTextEdit->insertHtml(Utils::getChangeLog());
+    ui->logTextEdit->moveCursor(QTextCursor::Start);
 }
 
 void
@@ -78,7 +79,6 @@ AboutDialog::on_closeAboutDialogButton_clicked()
 {
     getContainer()->accept();
 }
-
 
 void
 AboutDialog::on_creditsButton_clicked()
@@ -130,4 +130,5 @@ AboutDialog::on_creditsButton_clicked()
                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
                                 + tr("Based on the SFLPhone project") + "</p>");
+    ui->logTextEdit->moveCursor(QTextCursor::Start);
 }
