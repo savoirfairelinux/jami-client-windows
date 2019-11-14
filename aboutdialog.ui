@@ -650,7 +650,7 @@ Jami is a secured and distributed communication software.</string>
            </font>
           </property>
           <property name="toolTip">
-           <string>About</string>
+           <string>Changelog</string>
           </property>
           <property name="text">
            <string>Changlog</string>
