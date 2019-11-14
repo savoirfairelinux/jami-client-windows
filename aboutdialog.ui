@@ -650,7 +650,7 @@ Jami is a secured and distributed communication software.</string>
            </font>
           </property>
           <property name="toolTip">
-           <string>About</string>
+           <string>Changelog</string>
           </property>
           <property name="text">
            <string>Changlog</string>
@@ -921,6 +921,9 @@ p, li { white-space: pre-wrap; }
          <width>100</width>
          <height>30</height>
         </size>
+       </property>
+       <property name="statusTip">
+        <string>Close</string>
        </property>
        <property name="text">
         <string>Close</string>
