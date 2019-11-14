@@ -501,7 +501,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Live Free or Die</string>
+         <string>Free as in Freedom</string>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
