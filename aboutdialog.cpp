@@ -74,6 +74,13 @@ AboutDialog::on_changelogButton_clicked()
 }
 
 void
+AboutDialog::on_closeAboutDialogButton_clicked()
+{
+    getContainer()->accept();
+}
+
+
+void
 AboutDialog::on_creditsButton_clicked()
 {
     ui->logTextEdit->clear();
