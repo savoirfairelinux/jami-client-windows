@@ -24,7 +24,7 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
-        <source>Live Free or Die</source>
+        <source>Free as in Freedom</source>
         <translation>Vivi libero o muori</translation>
     </message>
     <message>
