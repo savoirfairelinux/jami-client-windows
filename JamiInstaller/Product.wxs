@@ -75,11 +75,7 @@
   <Fragment Id="OtherRegistryEntries">
     <DirectoryRef Id="TARGETDIR">
       <Component Id="RegistryEntries" Guid="*" Win64="yes">
-          <RegistryKey Root="HKCU"
-                     Key="Software\jami.net\$(var.Name)"
-                     Action="createAndRemoveOnUninstall">
-              <RegistryValue Type="integer" Name="hasRun" Value="0" KeyPath="yes" Action='write'/>
-          </RegistryKey>
+          <RegistryValue Root="HKCU" Key="Software\jami.net\$(var.AppName)" Name="hasRun" Type="integer" Value="0" KeyPath="yes" />
       </Component>
     </DirectoryRef>
   </Fragment>
@@ -89,7 +85,7 @@
       <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
       <!--APPLICATIONFOLDER required by WixUI_Advanced, ApplicationFolderName reset APPLICATIONFOLDER path-->
-      <Property Id="ApplicationFolderName" Value="$(var.Manufacturer)\$(var.FolderName)" />
+      <Property Id="ApplicationFolderName" Value="$(var.Manufacturer)\$(var.AppName)" />
       <UIRef Id="WixUI_Advanced" />
 
       <!--Remove User Exit Dialog-->
