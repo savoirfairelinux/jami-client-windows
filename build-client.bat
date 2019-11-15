@@ -99,7 +99,7 @@ goto Usage
 set TOBUILD=qrencode-win32\qrencode-win32\vc8\qrcodelib\qrcodelib.vcxproj
 msbuild %TOBUILD% /verbosity:normal /p:Configuration=Release-Lib %MSBUILD_ARGS%
 set WGET_CMD=wget --no-check-certificate --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=4
-goto cleanup
+goto GenerateChangelog
 
 :compileClient
 msbuild ring-client-windows.vcxproj /verbosity:normal /p:Configuration=ReleaseCompile %MSBUILD_ARGS%
@@ -111,6 +111,10 @@ goto cleanup
 
 :buildBetaClient
 msbuild ring-client-windows.vcxproj /verbosity:normal /p:Configuration=Beta %MSBUILD_ARGS%
+goto cleanup
+
+:GenerateChangelog
+start pandoc -f markdown -t html5 -o changelog.html changelog.md
 goto cleanup
 
 @endlocal
