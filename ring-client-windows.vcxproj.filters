@@ -135,9 +135,6 @@
     <ClCompile Include="currentaccountcombobox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagewebview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="messagewebpage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,6 +259,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="recordwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagewebview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

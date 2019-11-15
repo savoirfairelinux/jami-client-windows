@@ -76,7 +76,7 @@ MessageWebView::MessageWebView(QWidget *parent)
     settings()->setAttribute(QWebEngineSettings::ScrollAnimatorEnabled, false);
     settings()->setAttribute(QWebEngineSettings::ErrorPageEnabled, false);
     settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
-    settings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, false);
+    settings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, true);
     settings()->setAttribute(QWebEngineSettings::ScreenCaptureEnabled, false);
     settings()->setAttribute(QWebEngineSettings::LinksIncludedInFocusChain, false);
     settings()->setAttribute(QWebEngineSettings::LocalStorageEnabled, false);
@@ -112,6 +112,21 @@ MessageWebView::MessageWebView(QWidget *parent)
             case QWebEnginePage::KilledTerminationStatus:
                 qDebug() << "MessageWebView - Render process killed";
                 break;
+            }
+        });
+
+    connect(this->page(), &QWebEnginePage::fullScreenRequested,
+        [this](QWebEngineFullScreenRequest request) {
+            if (request.toggleOn()) {
+                if (fullScreenWebWidget_)
+                    return;
+                request.accept();
+                fullScreenWebWidget_.reset(new FullScreenWebWidget(this));
+            } else {
+                if (!fullScreenWebWidget_)
+                    return;
+                request.accept();
+                fullScreenWebWidget_.reset();
             }
         });
 
@@ -771,3 +786,49 @@ PrivateBridging::saveSendMessageContent(const QString& arg)
     return 0;
 
 }
+
+FullScreenWebWidget::FullScreenWebWidget(QWebEngineView *oldView, QWidget *parent)
+    : QWidget(parent)
+    , view_(new QWebEngineView(this))
+    , notification_(new FullScreenNotification(
+        tr("You are now in full screen mode. Press ESC to quit"),
+        this))
+    , oldView_(oldView)
+    , savedGeometry_(oldView->window()->geometry())
+{
+    view_->stackUnder(notification_);
+
+    auto exitAction = new QAction(this);
+    exitAction->setShortcut(Qt::Key_Escape);
+    connect(exitAction, &QAction::triggered,
+        [this]() {
+            view_->triggerPageAction(QWebEnginePage::ExitFullScreen);
+        });
+    addAction(exitAction);
+
+    view_->setPage(oldView_->page());
+    setGeometry(savedGeometry_);
+    showFullScreen();
+    oldView_->window()->hide();
+}
+
+FullScreenWebWidget::~FullScreenWebWidget()
+{
+    oldView_->setPage(view_->page());
+    oldView_->window()->setGeometry(savedGeometry_);
+    oldView_->window()->show();
+    hide();
+}
+
+void
+FullScreenWebWidget::resizeEvent(QResizeEvent* event)
+{
+    QRect viewGeometry(QPoint(0, 0), size());
+    view_->setGeometry(viewGeometry);
+
+    QRect notificationGeometry(QPoint(0, 0), notification_->sizeHint());
+    notificationGeometry.moveCenter(viewGeometry.center());
+    notification_->setGeometry(notificationGeometry);
+
+    QWidget::resizeEvent(event);
+};

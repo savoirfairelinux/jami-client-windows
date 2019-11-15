@@ -18,14 +18,23 @@
 
 #pragma once
 
+#include "widgethelpers.h"
+
+#include "api/conversationmodel.h"
+
 #include <QClipboard>
 #include <QDebug>
 #include <QLabel>
 #include <QWebEngineView>
-
-#include "api/conversationmodel.h"
+#include <QPropertyAnimation>
+#include <QWebEngineFullScreenRequest>
+#include <QGraphicsOpacityEffect>
+#include <QSequentialAnimationGroup>
+#include <QAction>
+#include <QTimer>
 
 class RecordWidget;
+class FullScreenWebWidget;
 
 class PrivateBridging : public QObject
 {
@@ -132,4 +141,22 @@ private:
     /*TODO: Generatic Popup Dialog setGeometry function corrsponding to spike alignment*/
     const quint16 recordWidgetMargin_{ 15 };
 
+    QScopedPointer<FullScreenWebWidget> fullScreenWebWidget_;
+};
+
+class FullScreenWebWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit FullScreenWebWidget(QWebEngineView *oldView, QWidget *parent = nullptr);
+    ~FullScreenWebWidget();
+
+protected:
+    void resizeEvent(QResizeEvent* event) override;
+
+private:
+    QWebEngineView *view_;
+    FullScreenNotification *notification_;
+    QWebEngineView* oldView_;
+    QRect savedGeometry_;
 };
