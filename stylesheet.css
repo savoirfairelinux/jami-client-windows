@@ -925,3 +925,11 @@ QPushButton#logCloseButton {
     QPushButton#logCloseButton:pressed {
         background-color: rgb(180, 180, 180);
     }
+
+FullScreenNotification {
+    font-size: 24px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    padding: 100px;
+}
