@@ -21,6 +21,7 @@
 #include "popupdialog.h"
 
 #include <QWidget>
+#include <QLabel>
 #include <QTimer>
 #include <QMouseEvent>
 #include <QPainter>
@@ -183,4 +184,34 @@ private:
     FadeAnimation* animation_;
     QMetaObject::Connection connection_;
 
+};
+
+class FullScreenNotification : public QLabel
+{
+    Q_OBJECT
+public:
+    FullScreenNotification(const QString& text, QWidget *parent = nullptr)
+        : QLabel(parent)
+    {
+        setText(text);
+        setAttribute(Qt::WA_TransparentForMouseEvents);
+        fadeAnimation_ = new FadeAnimation(this, 1000, 0, 0.6f);
+        fadeTimer_.setSingleShot(true);
+        connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(slotTimeout()));
+        connect(fadeAnimation_, &QAbstractAnimation::finished,
+            [this]() { this->hide(); });
+    }
+
+protected:
+    void showEvent(QShowEvent* event) override {
+        fadeTimer_.start(2000);
+        QLabel::showEvent(event);
+    };
+
+private slots:
+    void slotTimeout() { fadeAnimation_->start(); };
+
+private:
+    FadeAnimation* fadeAnimation_;
+    QTimer fadeTimer_;
 };
