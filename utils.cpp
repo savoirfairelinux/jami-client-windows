@@ -327,7 +327,7 @@ QString
 Utils::getChangeLog()
 {
     QString logs;
-    QFile changeLogFile("changelog.html");
+    QFile changeLogFile(":/changelog.html");
     if (!changeLogFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug().noquote() << " Change log file failed to load";
         return {};
