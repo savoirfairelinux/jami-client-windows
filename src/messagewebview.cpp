@@ -208,7 +208,7 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
 
 void MessageWebView::setMessagesContent(const QString& text)
 {
-    page()->runJavaScript(QStringLiteral("replaceText('%1');").arg(text));
+    page()->runJavaScript(QStringLiteral("replaceText(`%1`)").arg(text));
 }
 
 void
