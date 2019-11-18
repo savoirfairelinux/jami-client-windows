@@ -787,15 +787,11 @@ SettingsWidget QListView::item:disabled {
 
 /* } SettingsWidget */
 
-QWidget#SIPInputPanelWidget {
-    border-radius: 10px;
-    background-color: rgba(255,255,255, 0.85);
-}
-
 QPushButton#panelButton_0, QPushButton#panelButton_1, QPushButton#panelButton_2,
 QPushButton#panelButton_3, QPushButton#panelButton_4, QPushButton#panelButton_5,
 QPushButton#panelButton_6, QPushButton#panelButton_7, QPushButton#panelButton_8,
-QPushButton#panelButton_9, QPushButton#panelButton_hash {
+QPushButton#panelButton_9, QPushButton#panelButton_hash, QPushButton#panelButton_A,
+QPushButton#panelButton_B, QPushButton#panelButton_C, QPushButton#panelButton_D {
     text-align: center;
     text-decoration: none;
     background: #369;
@@ -818,14 +814,18 @@ QPushButton#panelButton_star {
 QPushButton#panelButton_0:hover, QPushButton#panelButton_1:hover, QPushButton#panelButton_2:hover,
 QPushButton#panelButton_3:hover, QPushButton#panelButton_4:hover, QPushButton#panelButton_5:hover,
 QPushButton#panelButton_6:hover, QPushButton#panelButton_7:hover, QPushButton#panelButton_8:hover,
-QPushButton#panelButton_9:hover, QPushButton#panelButton_hash:hover, QPushButton#panelButton_star:hover {
+QPushButton#panelButton_9:hover, QPushButton#panelButton_hash:hover, QPushButton#panelButton_star:hover,
+QPushButton#panelButton_A:hover, QPushButton#panelButton_B:hover, QPushButton#panelButton_C:hover,
+QPushButton#panelButton_D:hover {
     background: #47a;
 }
 
 QPushButton#panelButton_0:pressed, QPushButton#panelButton_1:pressed, QPushButton#panelButton_2:pressed,
 QPushButton#panelButton_3:pressed, QPushButton#panelButton_4:pressed, QPushButton#panelButton_5:pressed,
 QPushButton#panelButton_6:pressed, QPushButton#panelButton_7:pressed, QPushButton#panelButton_8:pressed,
-QPushButton#panelButton_9:pressed, QPushButton#panelButton_hash:pressed, QPushButton#panelButton_star:pressed {
+QPushButton#panelButton_9:pressed, QPushButton#panelButton_hash:pressed, QPushButton#panelButton_star:pressed,
+QPushButton#panelButton_A:pressed, QPushButton#panelButton_B:pressed, QPushButton#panelButton_C:pressed,
+QPushButton#panelButton_D:pressed {
     background: #58b;
 }
 
