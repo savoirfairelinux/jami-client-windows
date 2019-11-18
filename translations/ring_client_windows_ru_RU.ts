@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>кнопка &quot;О нас&quot;</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка &quot;создатели&quot;</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation>Free as in Freedom</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Клиент Jami для Microsoft Windows.
+Jami это защищённое и распределённое ПО для коммуникации. </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -41,17 +42,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="39"/>
         <source>Created by:</source>
-        <translation type="unfinished"/>
+        <translation>Создано: </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>Artwork by:</source>
-        <translation type="unfinished"/>
+        <translation>Художник: </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="77"/>
         <source>Based on the SFLPhone project</source>
-        <translation type="unfinished"/>
+        <translation>Основано на SFLPhone проекте</translation>
     </message>
 </context>
 <context>
@@ -59,7 +60,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить Аккаунт</translation>
     </message>
 </context>
 <context>
@@ -72,17 +73,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="55"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки вызова</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="102"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Автоматический ответ на вызов</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="130"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Включить свой рингтон</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
@@ -92,7 +93,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN Адрес</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
@@ -102,7 +103,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Использовать UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
@@ -112,17 +113,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN Пароль</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN Имя пользователя</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN Адрес </translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -137,22 +138,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Видеокодеки</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Аудиокодеки</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Аудиофайлы (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Добавить свой рингтон</translation>
     </message>
 </context>
 <context>
@@ -165,32 +166,32 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="61"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки вызова</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Разрешить звонки из ненадёжных пиров</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="133"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Автоматический ответ на вызов</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="161"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Включить свой рингтон</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="188"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Добавить свой рингтон</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Имя Сервера</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
@@ -200,12 +201,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>Конфигурация OpenDHT</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Включить Прокси</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
@@ -230,12 +231,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Приватный Ключ</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Сертификат удостоверяющего центра</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -250,12 +251,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN Адрес</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Использовать UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
@@ -265,17 +266,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN Пароль</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN Имя пользователя</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN адрес </translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -290,17 +291,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Аудиокодеки</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1114"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Видеокодеки</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Аудиофайлы (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -321,12 +322,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>имя</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>идентификатор</translation>
     </message>
 </context>
 <context>
@@ -334,7 +335,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Показать переписку</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -344,7 +345,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода для поиска контактов</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="653"/>
@@ -357,43 +358,46 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+Это ваш ID.
+Скопируйте и поделитесь им со своими друзьями!
+</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Показать ring ID QR код</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка Поделиться ring ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="915"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Double-click to copy</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="956"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка при генерации QR кода</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1184"/>
         <location filename="../callwidget.ui" line="1434"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>лучшее имя</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
         <source>best Id</source>
-        <translation type="unfinished"/>
+        <translation>лучший Id </translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка вернуться на главную</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1943"/>
@@ -403,18 +407,18 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="202"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Показать приглашения</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="205"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Приглашения</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="377"/>
         <location filename="../callwidget.cpp" line="552"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Найти новый или уже существующий контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -424,12 +428,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1517"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка ответа на звонок</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка сброса входящего вызова</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1539"/>
@@ -444,7 +448,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Отменить исходящий вызов</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1305"/>
@@ -454,22 +458,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Начать видеозвонок </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Начать аудиозвонок</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Очистить переписку</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Удалить контакт</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="373"/>
@@ -484,17 +488,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="561"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Поиск полученных приглашений</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Свяжитесь со мной через Jami</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Мой Id :</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="847"/>
@@ -519,22 +523,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Удаление аккаунта</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Вы действительно хотите удалить привязанный аккаунт? </translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>Если этот аккаунт не был экспортирован или добавлен на другом устройстве, он будет безвозвратно потерян.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Удалить аккаунт навсегда</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -544,7 +548,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Отменить удаление аккаунта</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -562,12 +566,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>Id Устройства</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>это устройство</translation>
     </message>
 </context>
 <context>
@@ -598,7 +602,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Введите пароль вашего аккаунта</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -623,38 +627,39 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Ваш PIN </translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
         <source>PIN</source>
-        <translation type="unfinished"/>
+        <translation>PIN</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Этот pin-код и пароль вашего аккаунта должны быть введены в течении 10 минут.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Привязать Другое Устройство</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Неверный пароль</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Что-то пошло не так.
+Пожалуйста, попробуйте позже.</translation>
     </message>
 </context>
 <context>
@@ -677,7 +682,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -685,22 +690,22 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="35"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Задать Зарегистрированное Имя</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Введите пароль вашего аккаунта</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода пароля</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода пароля</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
@@ -720,27 +725,27 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрировать Имя</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Что-то пошло не так</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Неверный пароль</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка сети</translation>
     </message>
 </context>
 <context>
@@ -753,27 +758,27 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок приветствия</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="147"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Добро пожаловать в</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="185"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Приветствующий логотип</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Создать Jami аккаунт кнопка</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка для начала создания аккаунта Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
@@ -783,12 +788,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка привязки устройства</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка для запуска триггера привязки устройства</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
@@ -798,17 +803,17 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка Создать Jami SIP аккаунт</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка для запуска запуска создания аккаунта JAMI SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>Создать SIP аккаунт</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -827,7 +832,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Чтобы привязать это устройство к другому аккаунту, вам нужно&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;получить PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;код. Чтобы сгенерировать PIN код нужно:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Перейдите &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Управление аккаунтом&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; предыдущего устройства&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Выберите &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami аккаунт&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; который вы хотите использовать&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Перейдите во &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;вкладку&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Устройства &lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Выберите &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Добавить устройство&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Вы получите необходимый PIN-код для заполнения этой формы. PIN-код действителен &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 минут&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
@@ -842,19 +856,19 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Ссылка из экспортированного файла архива аккаунта</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Никто)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Пароль:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
@@ -866,7 +880,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Имя профиля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -879,27 +893,30 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрируйте свое имя пользователя.
+Это позволит зарезервировать имя пользователя чтобы в дальнейшем его могли использовать только вы
+Ваши друзьям станет доступна возможность совершать звонки по имени пользователя
+вместо использования вашего ID.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1142"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Чекбокс Публичного Имя пользователя</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1145"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Установите флажок, если пользователь хочет использовать общедоступное имя пользователя</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрировать общедоступное имя пользователя</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Редактирование общедоступного имени пользователя</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1373"/>
@@ -909,12 +926,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1289"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода пароля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода пароля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1301"/>
@@ -926,7 +943,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1211"/>
         <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Поле ввода подтверждения пароля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
@@ -941,22 +958,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>Изменение SIP Сервер</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Сервер</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>SIP прокси ввод</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP ввод текста прокси-сервера</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -966,12 +983,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>SIP ввод имя пользователя</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP ввод пароля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -982,7 +999,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>SIP поле ввода пароля</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -992,12 +1009,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка предыдущая страница</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>нажмите кнопку, чтобы вернуться к предыдущей страницы мастера</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1007,12 +1024,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Отменить создание/ссылки аккаунта</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>нажмите кнопку, чтобы отменить создание аккаунта или привязки</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1022,12 +1039,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка следующая страница</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите кнопку, чтобы перейти к следующей страницы мастера</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1042,7 +1059,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Архивные файлы Jami (*.gz); Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
@@ -1052,27 +1069,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Миграция вашего Jami аккаунта...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Импорт архива аккаунта...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Генерация вашего Jami аккаунта...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Генерация вашего SIP аккаунта...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка создания аккаунта</translation>
     </message>
 </context>
 <context>
@@ -1080,27 +1097,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Поменять Пароль Аккаунта</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Введите Текущий Пароль</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Введите Новый Пароль</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Подтвердите Новый Пароль</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Подтвердить</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1110,7 +1127,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Текущий Пароль Неверный</translation>
     </message>
 </context>
 <context>
@@ -1118,7 +1135,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>Фото</translation>
     </message>
 </context>
 <context>
@@ -1131,7 +1148,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Фото дисплей</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
@@ -1141,7 +1158,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Изображения (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1168,22 +1185,22 @@ instead of using your ID.</source>
         <location filename="../deviceitemwidget.cpp" line="43"/>
         <location filename="../deviceitemwidget.cpp" line="85"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>Изменить Имя Устройства</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Отвязать Устройство От Аккаунта</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Сохранить новое имя устройства</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Добавить как контакт</translation>
     </message>
 </context>
 <context>
@@ -1191,7 +1208,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать папку</translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1238,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="305"/>
         <location filename="../settingswidget.ui" line="3416"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Аудио / Видео</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="542"/>
@@ -1231,7 +1248,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Включить уведомления на рабочем столе</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
@@ -1251,37 +1268,37 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Всегда записывать</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Обновления</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Проверять обновления каждые </translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Селектор Интервал между проверками обновлений в днях</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>дней</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка для проверки обновлений</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Проверить наличие обновлений</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
@@ -1292,32 +1309,32 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Включить</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Переключатель включить уведомлений</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Переключатель свернуть или закрыть</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Записи вызовов </translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Переключение автоматического обновления</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami Аккаунт</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1329,22 +1346,22 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>Идентичность</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1673"/>
         <source>Registered name</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрированное имя</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Напишите здесь чтобы зарегистрировать имя пользователя</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
@@ -1354,54 +1371,54 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Изменить Пароль</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Экспортировать Аккаунт</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Удалить Аккаунт</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Привязанные Устройства</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Привязать Другое Устройство</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Заблокированные Контакты</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Селектор частоты кадров видеоустройства</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Предварительный просмотр недоступен</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
         <location filename="../settingswidget.ui" line="3187"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Дополнительные Настройки Аккаунта</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
@@ -1431,22 +1448,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Микрофон</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Селектор устройства аудиовхода</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Устройства Вывода</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать устройство вывода</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
@@ -1461,58 +1478,58 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3766"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Селектор видеоустройств</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="459"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрированное имя не должно содержать пробелов и должно иметь не менее трех букв</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="466"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Это имя уже занято</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Введите псевдоним</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Зарегистрировать это имя</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="550"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Удалить устройство</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Введите пароль вашего аккаунта чтобы подтвердить его удаление из устройства.</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Вы уверены, что хотите удалить это устройство?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Экспортировать Аккаунт</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="887"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Выберите папку для загрузок</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="904"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Выберите Папку Для Ваших Записей</translation>
     </message>
 </context>
 <context>
@@ -1525,7 +1542,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="89"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>Удерживание / Возврат</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
@@ -1540,12 +1557,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Записывать звонок</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
         <source>Name label</source>
-        <translation type="unfinished"/>
+        <translation>Имя метки</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="390"/>
@@ -1573,7 +1590,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videoview.cpp" line="271"/>
         <source>Share entire screen</source>
-        <translation type="unfinished"/>
+        <translation>Транслировать весь экран</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="274"/>

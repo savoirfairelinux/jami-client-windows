@@ -5,12 +5,12 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="465"/>
         <source>About</source>
-        <translation>Info</translation>
+        <translation>Informazioni su</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>sul pulsante</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation>Vivi libero o muori</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -93,7 +93,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>Indirizzo STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
@@ -113,17 +113,17 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN Password</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN Nome Utente</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>Indirizzo TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -251,7 +251,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>Indirizzo STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
@@ -266,17 +266,17 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN Password</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN Nome Utente</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>Indirizzo TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -322,12 +322,12 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>nome</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>id</translation>
     </message>
 </context>
 <context>
@@ -345,7 +345,7 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
     <message>
         <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Cerca l&apos;inserimento del testo del contatto</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="653"/>
@@ -358,7 +358,10 @@ Jami è un software di comunicazione sicuro e distribuito.</translation>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+Questo è il tuo ID.
+Copia e condividi con i tuoi amici!
+                                      </translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
@@ -425,12 +428,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1517"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Rispondi col pulsante di chiamata in arrivo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Ignora il pulsante di chiamata in arrivo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1539"/>
@@ -445,7 +448,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Annulla chiamata in uscita</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1305"/>
@@ -545,7 +548,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Annulla la cancellazione dell&apos;account</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -563,7 +566,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>ID del dispositivo</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -599,7 +602,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Inserisci la password del tuo account</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -619,12 +622,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation type="unfinished"/>
+        <translation>Esportazione dell&apos;account</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Il tuo PIN è</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -634,7 +637,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Questo pin e la password dell&apos;account devono essere inseriti nel dispositivo entro 10 minuti.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -649,7 +652,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>password errata</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
@@ -692,17 +695,17 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Inserisci la password del tuo account</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Inserimento testo password</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Inserimento testo password</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
@@ -722,12 +725,12 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>Nome di Registrazione</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Qualcosa è andato storto</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -737,7 +740,7 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>password errata</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
@@ -755,7 +758,7 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Etichetta di Benvenuto</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="147"/>
@@ -770,12 +773,12 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante Crea account Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante per l&apos;attivazione della creazione dell&apos;account Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
@@ -785,12 +788,12 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante Collega dispositivo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante per l&apos;attivazione dell&apos;avvio del collegamento del dispositivo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
@@ -800,17 +803,17 @@ Riprova più tardi.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>Crea pulsante account SIP Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante per l&apos;attivazione della creazione dell&apos;account SIP Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>Crea un account SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -829,7 +832,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Per collegare questo dispositivo a un altro account, per prima cosa&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;è necessario ottenere un codice PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;. Per generare il codice PIN:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Vai su &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Impostazioni di gestione dell&apos;account&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; di un dispositivo precedente&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Scegli l&apos; &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;account Jami&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; che vuoi usare&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Vai alla &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;scheda&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;dispositivi&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Seleziona &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Aggiungi dispositivo&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Riceverai il PIN necessario per completare questo modulo. Il PIN è valido solo per &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minuti&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
@@ -844,7 +856,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Collegamento dal file di archivio dell&apos;account esportato</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
@@ -868,7 +880,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Nome del profilo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -881,17 +893,20 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Registra il tuo nome utente.
+Questo riserverà il nome utente in modo che solo tu possa usarlo.
+I tuoi amici potranno chiamarti con il tuo nome utente
+invece di usare il tuo ID.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1142"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Casella di controllo nome utente pubblico</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1145"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Selezionare la casella se l&apos;utente desidera un nome utente pubblico</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
@@ -901,22 +916,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Modifica nome utente pubblico</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1373"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>scegli il tuo nome utente</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1289"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Inserimento testo password</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Inserimento testo password</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1301"/>
@@ -943,22 +958,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>Modifica server SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>Ingresso proxy SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>Immissione di testo proxy SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -973,7 +988,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Immissione di testo password SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -984,7 +999,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Immissione di testo password SIP</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -994,12 +1009,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Precedente pulsante della pagina</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>pulsante per accedere alla pagina precedente della procedura guidata</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1009,12 +1024,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Annulla creazione/collegamento account</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>premere il pulsante per annullare la creazione o il collegamento dell&apos;account</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1024,12 +1039,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Pulsante della pagina successiva</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Premere il pulsante per accedere alla pagina successiva della procedura guidata</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1044,7 +1059,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>File di archivio Jami (* gz); Tutti i files (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
@@ -1069,7 +1084,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Generazione del tuo account SIP...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1175,17 +1190,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Scollega il dispositivo dall&apos;account</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Salva il nuovo nome del dispositivo</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi come contatto</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1248,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Abilita notifiche desktop</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
@@ -1253,37 +1268,37 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Sempre in registrazione</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Aggiornamenti</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Controlla gli aggiornamenti automaticamente ogni</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Intervallo tra i controlli di aggiornamento nel selettore giorni</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>giorni</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Controlla gli aggiornamenti ora col pulsante</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Verifica subito gli aggiornamenti</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
@@ -1299,27 +1314,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>attiva/disattiva le notifiche</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Attiva/disattiva mantenimento minimizzato alla chiusura</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Registrazioni delle chiamate</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Attiva/disattiva gli aggiornamenti automatici</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami account</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1336,7 +1351,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Id</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1673"/>
@@ -1346,7 +1361,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Digita qui per registrare un nome utente</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
@@ -1356,7 +1371,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Cambia password</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
@@ -1367,12 +1382,12 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Elimina account</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivi collegati</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
@@ -1387,17 +1402,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formato</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Selettore framerate dispositivo video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Anteprima non disponibile</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1438,7 +1453,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selettore del dispositivo di ingresso audio</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
@@ -1448,7 +1463,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Scegli il dispositivo di output</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
@@ -1463,7 +1478,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3766"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Selettore dispositivo video</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="459"/>
@@ -1479,7 +1494,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Inserisci un alias</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
@@ -1499,7 +1514,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Sei sicuro di voler rimuovere questo dispositivo?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
