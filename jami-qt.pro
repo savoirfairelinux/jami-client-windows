@@ -1,19 +1,74 @@
-TEMPLATE = app
-TARGET = jami-qt
+win32-msvc {
+    TEMPLATE = vcapp
+    TARGET = Jami
 
-CONFIG += c++17
+    QT += winextras quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
 
-QT += widgets xml multimedia multimediawidgets network webenginewidgets svg
+    CONFIG += suppress_vcproj_warnings
 
-isEmpty(LRC) {
-    LRC=../../install/lrc/
+    #CONFIG += Beta
+
+    # compiler options
+    QMAKE_CXXFLAGS += /wd"4068" /wd"4099" /wd"4189" /wd"4267" /wd"4577" /wd"4467" /wd"4715" /wd"4828"
+    QMAKE_CXXFLAGS += /MP /GS /W3 /Gy /Zc:wchar_t /Zi /Gm- /O2 /Zc:inline /fp:precise /errorReport:prompt /WX- /Zc:forScope
+    QMAKE_CXXFLAGS += /Gd /Oi /MD /std:c++17 /FC /EHsc /nologo /sdl
+
+    # linker options
+    QMAKE_LFLAGS+= /ignore:4006,4049,4078,4098 /FORCE:MULTIPLE /INCREMENTAL:NO /Debug /LTCG /NODEFAULTLIB:LIBCMT
+
+    # preprocessor defines
+    DEFINES += UNICODE PROCESS_DPI_AWARE=1 QT_NO_DEBUG NDEBUG
+
+   # Beta { DEFINES += BETA }
+
+    # dependencies
+    LRC=../lrc
+    DRING=../daemon
+    QRENCODE=../client-windows/qrencode-win32/qrencode-win32
+
+    # client deps
+    INCLUDEPATH += $${QRENCODE}
+    LIBS += $${QRENCODE}/vc8/qrcodelib/x64/Release-Lib/qrcodelib.lib
+
+    # lrc
+    INCLUDEPATH += $${LRC}/src/
+    LIBS += $${LRC}/msvc/release/ringclient_static.lib
+    LIBS += $${LRC}/msvc/src/qtwrapper/Release/qtwrapper.lib
+
+    # daemon
+    INCLUDEPATH += ../daemon/contrib/msvc/include/
+    LIBS += $${DRING}/MSVC/x64/ReleaseLib_win32/bin/dring.lib
+    LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
+
+    # windows system libs
+    LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib
+
+    # output paths
+    DESTDIR = x64/Release
+    OBJECTS_DIR = obj/.obj
+    MOC_DIR = obj/.moc
+    RCC_DIR = obj/.rcc
+    UI_DIR = obj/.ui
 }
 
-INCLUDEPATH += $${LRC}/include/libringclient
-INCLUDEPATH += $${LRC}/include
+unix {
+    TARGET = jami-qt
+    TEMPLATE = app
 
-LIBS += -L$${LRC}/lib -lringclient
-LIBS += -lqrencode
+    QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg
+
+    CONFIG += c++17
+
+    isEmpty(LRC) { LRC=../../install/lrc/ }
+
+    INCLUDEPATH += $${LRC}/include/libringclient
+    INCLUDEPATH += $${LRC}/include
+
+    LIBS += -L$${LRC}/lib -lringclient
+    LIBS += -lqrencode
+}
+
+
 
 # Input
 HEADERS += ./aboutdialog.h \
@@ -50,12 +105,10 @@ HEADERS += ./aboutdialog.h \
         ./videoview.h \
         ./advancedsipsettingwidget.h \
         ./contactpicker.h \
-        ./downloadmanager.h \
         ./lrcinstance.h \
         ./passworddialog.h \
         ./selectareadialog.h \
         ./toggleswitch.h \
-        ./videowidget.h \
         ./animationhelpers.h \
         ./contactpickeritemdelegate.h \
         ./globalsystemtray.h \
@@ -85,7 +138,9 @@ HEADERS += ./aboutdialog.h \
         ./popupdialog.h \
         ./recordoverlay.h \
         ./widgethelpers.h \
-        ./recordwidget.h
+        ./recordwidget.h \
+        ./networkmanager.h \
+        ./connectivitymonitor.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -101,7 +156,6 @@ SOURCES += ./aboutdialog.cpp \
         ./nameregistrationdialog.cpp \
         ./ringcontactlineedit.cpp \
         ./splashscreen.cpp \
-        ./videowidget.cpp \
         ./animationhelpers.cpp \
         ./accountlistmodel.cpp \
         ./bezierconnectorwidget.cpp \
@@ -120,7 +174,6 @@ SOURCES += ./aboutdialog.cpp \
         ./updateconfirmdialog.cpp \
         ./advancedsipsettingwidget.cpp \
         ./contactpicker.cpp \
-        ./downloadmanager.cpp \
         ./main.cpp \
         ./passworddialog.cpp \
         ./settingswidget.cpp \
@@ -153,7 +206,9 @@ SOURCES += ./aboutdialog.cpp \
         ./popupdialog.cpp \
         ./recordoverlay.cpp \
         ./widgethelpers.cpp \
-        ./recordwidget.cpp
+        ./recordwidget.cpp \
+        ./networkmanager.cpp \
+        ./connectivitymonitor.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -183,5 +238,6 @@ FORMS += ./aboutdialog.ui \
         ./collapsiblepasswordwidget.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
-        ./recordwidget.ui
+        ./recordwidget.ui \
+
 RESOURCES += ressources.qrc
