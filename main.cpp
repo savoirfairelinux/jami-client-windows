@@ -220,6 +220,7 @@ main(int argc, char* argv[])
         });
     splash->hide();
     LRCInstance::subscribeToDebugReceived();
+    LRCInstance::getAPI().holdConferences = false;
 
     QDir logPath(QStandardPaths::writableLocation(
         QStandardPaths::AppLocalDataLocation));

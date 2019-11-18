@@ -114,8 +114,7 @@ private:
     void backToWelcomePage();
 
     void selectConversation(const QModelIndex& index);
-    bool selectConversation(const lrc::api::conversation::Info& item,
-        lrc::api::ConversationModel& convModel);
+    bool selectConversation(const lrc::api::conversation::Info& item);
     void deselectConversation();
     bool connectConversationModel();
     void updateConversationView(const std::string& convUid);
