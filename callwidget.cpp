@@ -365,7 +365,7 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
             convModel->placeCall(convUid);
             ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
             if (convUid != LRCInstance::getCurrentConvUid()) {
-                selectConversation(conversation, *convModel);
+                selectConversation(conversation);
             }
         });
     // audio call
@@ -376,7 +376,7 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
             convModel->placeAudioOnlyCall(convUid);
             ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
             if (convUid != LRCInstance::getCurrentConvUid()) {
-                selectConversation(conversation, *convModel);
+                selectConversation(conversation);
             }
         });
     // clear conversation
@@ -1199,7 +1199,7 @@ CallWidget::selectConversation(const QModelIndex& index)
 
     const auto item = convModel->filteredConversation(index.row());
 
-    if (selectConversation(item, *convModel)) {
+    if (selectConversation(item)) {
         showChatView(index);
         auto convUid = LRCInstance::getCurrentConvUid();
         if (!lastConvUid_.compare(convUid)) {
@@ -1220,15 +1220,18 @@ CallWidget::selectConversation(const QModelIndex& index)
 }
 
 bool
-CallWidget::selectConversation( const lrc::api::conversation::Info& item,
-                                lrc::api::ConversationModel& convModel)
+CallWidget::selectConversation(const lrc::api::conversation::Info& item)
 {
     if (LRCInstance::getCurrentConvUid() == item.uid) {
         return false;
     } else if (item.participants.size() > 0) {
+        auto& accInfo = LRCInstance::getAccountInfo(item.accountId);
         LRCInstance::setSelectedConvId(item.uid);
-        convModel.selectConversation(item.uid);
-        convModel.clearUnreadInteractions(item.uid);
+        accInfo.conversationModel->selectConversation(item.uid);
+        accInfo.conversationModel->clearUnreadInteractions(item.uid);
+        if (!item.callId.empty()) {
+            accInfo.callModel->setCurrentCall(item.callId);
+        }
         ui->conversationsFilterWidget->update();
         return true;
     }
@@ -1356,12 +1359,11 @@ CallWidget::connectAccount(const std::string& accountId)
                     auto convInfo = LRCInstance::getConversationFromCallId(callId, accountId);
                     if (!convInfo.uid.empty() && convInfo.uid == LRCInstance::getCurrentConvUid()) {
                         accInfo.conversationModel->selectConversation(convInfo.uid);
-
                     }
                     LRCInstance::renderer()->addDistantRenderer(callId);
                     ui->videoView->updateCall();
                     break;
-                    }
+                }
                 case lrc::api::call::Status::PAUSED:
                     ui->videoView->resetPreview();
                     ui->videoView->updateCall();
