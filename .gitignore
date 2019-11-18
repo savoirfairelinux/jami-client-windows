@@ -16,3 +16,4 @@ build/
 nuget.exe
 *.autosave
 changelog.html
+obj/
