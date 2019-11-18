@@ -481,9 +481,15 @@ VideoView::keyReleaseEvent(QKeyEvent* event)
         LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, "#");
     } else if (keyPressed_ == static_cast<int>(Qt::Key_Asterisk)) {
         LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, "*");
+    } else if (keyPressed_ >= 65 && keyPressed_ <= 68) {
+        //enum Qt::Key_A = 65, QT::Key_D = 68
+        // string::string(size_type count, charT ch)
+        qDebug().noquote() << QString::fromStdString(std::string(1, char(keyPressed_)));
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, std::string(1, char(keyPressed_)));
     } else if (keyPressed_ >= 48 && keyPressed_ <= 57) {
         //enum Qt::Key_0 = 48, QT::Key_9 = 57
         LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, std::to_string(keyPressed_ - 48));
     }
+    keyPressed_ = -1;
     QWidget::keyReleaseEvent(event);
 }
