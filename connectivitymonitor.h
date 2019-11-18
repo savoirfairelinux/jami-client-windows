@@ -20,6 +20,7 @@
 
 #include <QObject>
 
+#ifdef Q_OS_WIN
 class ConnectivityMonitor : public QObject
 {
     Q_OBJECT
@@ -42,3 +43,4 @@ private:
     class NetworkEventHandler* netEventHandler_;
     unsigned long cookie_;
 };
+#endif // Q_OS_WIN
