@@ -20,6 +20,7 @@
 
 #include <QDebug>
 
+#ifdef Q_OS_WIN
 #include <atlbase.h>
 #include <netlistmgr.h>
 
@@ -120,6 +121,20 @@ ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
     pUnknown->Release();
 }
 
+bool
+ConnectivityMonitor::isOnline()
+{
+    if (!pNetworkListManager_) {
+        return false;
+    }
+    VARIANT_BOOL IsConnect = VARIANT_FALSE;
+    HRESULT hr = pNetworkListManager_->get_IsConnectedToInternet(&IsConnect);
+    if (SUCCEEDED(hr)) {
+        return IsConnect == VARIANT_TRUE;
+    }
+    return false;
+}
+
 void
 ConnectivityMonitor::destroy()
 {
@@ -141,17 +156,4 @@ ConnectivityMonitor::~ConnectivityMonitor()
     destroy();
     CoUninitialize();
 }
-
-bool
-ConnectivityMonitor::isOnline()
-{
-    if (!pNetworkListManager_) {
-        return false;
-    }
-    VARIANT_BOOL IsConnect = VARIANT_FALSE;
-    HRESULT hr = pNetworkListManager_->get_IsConnectedToInternet(&IsConnect);
-    if (SUCCEEDED(hr)) {
-        return IsConnect == VARIANT_TRUE;
-    }
-    return false;
-}
+#endif // Q_OS_WIN

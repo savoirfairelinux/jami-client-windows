@@ -90,9 +90,9 @@ private:
 
     QAction* settingsAction_;
     QAction* exitAction_;
-
+#ifdef Q_OS_WIN
     std::unique_ptr<ConnectivityMonitor> connectivityMonitor_;
-
+#endif // Q_OS_WIN
     QMetaObject::Connection screenChangedConnection_;
 
     QTimer* updateTimer_;

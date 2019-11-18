@@ -40,7 +40,7 @@ public:
 
     void startBooth(bool force = false);
     void stopBooth();
-    void setAvatarPixmap(const QPixmap& avatarPixmap, bool default = false);
+    void setAvatarPixmap(const QPixmap& avatarPixmap, bool defaultValue = false);
     const QPixmap& getAvatarPixmap();
     bool hasAvatar();
     bool isPhotoBoothOpened() { return takePhotoState_; }

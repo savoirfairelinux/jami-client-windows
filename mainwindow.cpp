@@ -73,11 +73,11 @@ MainWindow::MainWindow(QWidget* parent)
     setContextMenuPolicy(Qt::NoContextMenu);
 
     connect(&GlobalSystemTray::instance(), SIGNAL(messageClicked()), this, SLOT(notificationClicked()));
-
+#ifdef Q_OS_WIN
     connectivityMonitor_ = std::make_unique<ConnectivityMonitor>(this);
     connect(connectivityMonitor_.get(), &ConnectivityMonitor::connectivityChanged,
             [this] { LRCInstance::connectivityChanged(); });
-
+#endif // Q_OS_WIN
     auto flags_ = windowFlags();
 
     auto accountList = LRCInstance::accountModel().getAccountList();
@@ -190,7 +190,9 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+#ifdef Q_OS_WIN
     connectivityMonitor_.reset();
+#endif // Q_OS_WIN
     updateTimer_->stop();
     delete ui;
 }
@@ -300,7 +302,9 @@ void MainWindow::closeEvent(QCloseEvent* event)
         settings.setValue(SettingsKey::windowState, saveState());
         this->disconnect(screenChangedConnection_);
         QMainWindow::closeEvent(event);
+#ifdef Q_OS_WIN
         connectivityMonitor_.reset();
+#endif // Q_OS_WIN
     }
 }
 

@@ -140,14 +140,14 @@ PhotoboothWidget::on_takePhotoButton_clicked()
 }
 
 void
-PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool default)
+PhotoboothWidget::setAvatarPixmap(const QPixmap& avatarPixmap, bool defaultValue)
 {
     ui->avatarLabel->setPixmap(avatarPixmap);
     if (!LRCInstance::hasVideoCall()) {
         LRCInstance::renderer()->stopPreviewing();
     }
     resetToAvatarLabel();
-    if (default) {
+    if (defaultValue) {
         ui->takePhotoButton->setIcon(QIcon(":/images/icons/round-add_a_photo-24px.svg"));
     }
 }
