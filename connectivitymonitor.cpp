@@ -20,6 +20,7 @@
 
 #include <QDebug>
 
+#ifdef Q_OS_WIN
 #include <atlbase.h>
 #include <netlistmgr.h>
 
@@ -70,10 +71,12 @@ private:
 
     std::function<void()> connectivityChangedCb_;
 };
+#endif // Q_OS_WIN
 
 ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
     : QObject(parent)
 {
+#ifdef Q_OS_WIN
     CoInitialize(NULL);
 
     IUnknown *pUnknown = NULL;
@@ -118,6 +121,23 @@ ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
     }
 
     pUnknown->Release();
+#endif // Q_OS_WIN
+}
+
+bool
+ConnectivityMonitor::isOnline()
+{
+#ifdef Q_OS_WIN
+    if (!pNetworkListManager_) {
+        return false;
+    }
+    VARIANT_BOOL IsConnect = VARIANT_FALSE;
+    HRESULT hr = pNetworkListManager_->get_IsConnectedToInternet(&IsConnect);
+    if (SUCCEEDED(hr)) {
+        return IsConnect == VARIANT_TRUE;
+    }
+    return false;
+#endif // Q_OS_WIN
 }
 
 void
@@ -140,18 +160,4 @@ ConnectivityMonitor::~ConnectivityMonitor()
 {
     destroy();
     CoUninitialize();
-}
-
-bool
-ConnectivityMonitor::isOnline()
-{
-    if (!pNetworkListManager_) {
-        return false;
-    }
-    VARIANT_BOOL IsConnect = VARIANT_FALSE;
-    HRESULT hr = pNetworkListManager_->get_IsConnectedToInternet(&IsConnect);
-    if (SUCCEEDED(hr)) {
-        return IsConnect == VARIANT_TRUE;
-    }
-    return false;
 }

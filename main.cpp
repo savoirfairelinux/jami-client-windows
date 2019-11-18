@@ -36,6 +36,7 @@
 #include <QLibraryInfo>
 #include <QTranslator>
 
+#include <thread>
 #include <ciso646>
 #include <locale.h>
 
