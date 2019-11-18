@@ -22,17 +22,12 @@
 
 #include "lrcinstance.h"
 
-SipInputPanel::SipInputPanel(QWidget* parent)
-    : QDialog(parent)
-    , ui(new Ui::SIPInputPanelDialog)
+SIPInputPanelWidget::SIPInputPanelWidget(QWidget* parent)
+    : PopupWidget(parent, Qt::white, PopupDialog::SpikeLabelAlignment::AlignLeft)
+    , ui(new Ui::SIPInputPanelWidget)
     , signalMapper(new QSignalMapper(this))
 {
     ui->setupUi(this);
-
-    setWindowFlags(Qt::CustomizeWindowHint);
-    setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
-    setAttribute(Qt::WA_NoSystemBackground, true);
-    setAttribute(Qt::WA_TranslucentBackground, true);
 
     //Adds a mapping so that when map() is signalled from the sender, the signal mapped(id) is emitted.
     signalMapper->setMapping(ui->panelButton_0, 0);
@@ -47,6 +42,10 @@ SipInputPanel::SipInputPanel(QWidget* parent)
     signalMapper->setMapping(ui->panelButton_9, 9);
     signalMapper->setMapping(ui->panelButton_hash, 10);
     signalMapper->setMapping(ui->panelButton_star, 11);
+    signalMapper->setMapping(ui->panelButton_A, 12);
+    signalMapper->setMapping(ui->panelButton_B, 13);
+    signalMapper->setMapping(ui->panelButton_C, 14);
+    signalMapper->setMapping(ui->panelButton_D, 15);
 
     connect(ui->panelButton_0, SIGNAL(clicked()), signalMapper, SLOT(map()));
     connect(ui->panelButton_1, SIGNAL(clicked()), signalMapper, SLOT(map()));
@@ -60,26 +59,21 @@ SipInputPanel::SipInputPanel(QWidget* parent)
     connect(ui->panelButton_9, SIGNAL(clicked()), signalMapper, SLOT(map()));
     connect(ui->panelButton_hash, SIGNAL(clicked()), signalMapper, SLOT(map()));
     connect(ui->panelButton_star, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    connect(ui->panelButton_A, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    connect(ui->panelButton_B, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    connect(ui->panelButton_C, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    connect(ui->panelButton_D, SIGNAL(clicked()), signalMapper, SLOT(map()));
 
     connect(signalMapper, SIGNAL(mapped(int)), this, SLOT(panelButtonClicked(int)));
 }
 
-SipInputPanel::~SipInputPanel()
+SIPInputPanelWidget::~SIPInputPanelWidget()
 {
     delete ui;
 }
 
 void
-SipInputPanel::panelButtonClicked(const int& id)
+SIPInputPanelWidget::panelButtonClicked(const int& id)
 {
     emit sipInputPanelClicked(id);
-}
-
-void
-SipInputPanel::mousePressEvent(QMouseEvent *event)
-{
-    auto sipPanelWidgetRect = ui->SIPInputPanelWidget->contentsRect();
-    if (!sipPanelWidgetRect.contains(event->pos())) {
-        emit willClose(event);
-    }
 }

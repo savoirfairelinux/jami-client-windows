@@ -18,31 +18,29 @@
 
 #pragma once
 
+#include "widgethelpers.h"
+
 #include <QDialog>
 #include <QSignalMapper>
 
 namespace Ui {
-class SIPInputPanelDialog;
+class SIPInputPanelWidget;
 }
 
-class SipInputPanel : public QDialog {
+class SIPInputPanelWidget : public PopupWidget {
     Q_OBJECT
 
 public:
-    SipInputPanel(QWidget* parent = nullptr);
-    ~SipInputPanel();
+    SIPInputPanelWidget(QWidget* parent = nullptr);
+    ~SIPInputPanelWidget();
 
 signals:
     void sipInputPanelClicked(int id);
-    void willClose(QMouseEvent *event);
 
 private:
-    Ui::SIPInputPanelDialog* ui;
+    Ui::SIPInputPanelWidget* ui;
     QSignalMapper *signalMapper;
 
 private slots:
     void panelButtonClicked(const int&);
-
-protected:
-    void mousePressEvent(QMouseEvent *event);
 };
