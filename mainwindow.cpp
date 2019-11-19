@@ -269,24 +269,6 @@ void MainWindow::notificationClicked()
     }
 }
 
-void MainWindow::createThumbBar()
-{
-#ifdef Q_OS_WIN
-    QWinThumbnailToolBar* thumbbar = new QWinThumbnailToolBar(this);
-    thumbbar->setWindow(this->windowHandle());
-    QWinThumbnailToolButton* settings = new QWinThumbnailToolButton(thumbbar);
-    settings->setToolTip("Settings");
-    QIcon icon(":/images/settings.png");
-    settings->setIcon(icon);
-    settings->setDismissOnClick(true);
-    connect(settings, &QWinThumbnailToolButton::clicked, [this]() {
-        Utils::setStackWidget(ui->navStack, ui->settingswidget);
-    });
-
-    thumbbar->addButton(settings);
-#endif
-}
-
 void MainWindow::changeEvent(QEvent* e)
 {
     if (e->type() == QEvent::WindowStateChange) {

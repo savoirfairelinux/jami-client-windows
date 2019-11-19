@@ -276,8 +276,6 @@ main(int argc, char* argv[])
 
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 
-    MainWindow::instance().createThumbBar();
-
     QSettings settings("jami.net", "Jami");
     if (not startMinimized) {
         if (settings.value(SettingsKey::hasRun) == 0) {
