@@ -145,11 +145,14 @@ public:
         }
     }
     static const call::Info*
-    getCallInfoForConversation(const conversation::Info& convInfo) {
+    getCallInfoForConversation(const conversation::Info& convInfo,
+                               bool forceCallOnly = {}) {
         try {
             auto accountId = convInfo.accountId;
             auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-            auto callId = convInfo.confId.empty() ? convInfo.callId : convInfo.confId;
+            auto callId = forceCallOnly ?
+                convInfo.callId :
+                (convInfo.confId.empty() ? convInfo.callId : convInfo.confId);
             if (!accInfo.callModel->hasCall(callId)) {
                 return nullptr;
             }
@@ -354,6 +357,23 @@ public:
         instance().contentDrafts_[draftKey] = content;
     }
 
+    static void pushLastConferencee(const std::string& confId,
+                                     const std::string& callId)
+    {
+        instance().lastConferencees_[confId] = callId;
+    }
+
+    static std::string popLastConferencee(const std::string& confId)
+    {
+        std::string callId = {};
+        auto iter = instance().lastConferencees_.find(confId);
+        if (iter != instance().lastConferencees_.end()) {
+            callId = iter->second;
+            instance().lastConferencees_.erase(iter);
+        }
+        return callId;
+    }
+
 signals:
     void accountListChanged();
 
@@ -372,4 +392,5 @@ private:
     std::string selectedAccountId_;
     std::string selectedConvUid_;
     MapStringString contentDrafts_;
+    std::map<std::string, std::string> lastConferencees_;
 };

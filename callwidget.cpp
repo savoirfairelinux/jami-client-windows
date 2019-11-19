@@ -1345,10 +1345,38 @@ CallWidget::connectAccount(const std::string& accountId)
                 case lrc::api::call::Status::TIMEOUT:
                 case lrc::api::call::Status::TERMINATING: {
                     LRCInstance::renderer()->removeDistantRenderer(callId);
-                    ui->videoView->updateCall();
-                    setCallPanelVisibility(false);
-                    showConversationView();
-                    callTerminating(callId);
+                    auto convInfo = LRCInstance::getConversationFromCallId(callId);
+                    if (convInfo.uid.empty()) {
+                        break;
+                    }
+                    // If it's a conference, change the smartlist index
+                    // to the next remaining participant.
+                    bool forceCallOnly{ false };
+                    if (!convInfo.confId.empty()) {
+                        auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
+                        if (callList.empty()) {
+                            auto lastConferencee = LRCInstance::instance().popLastConferencee(convInfo.confId);
+                            callList.emplace_back(lastConferencee);
+                            forceCallOnly = true;
+                        }
+                        for (const auto& callId : callList) {
+                            if (!callModel->hasCall(callId)) {
+                                continue;
+                            }
+                            auto otherConv = LRCInstance::getConversationFromCallId(callId);
+                            if (!otherConv.uid.empty() && otherConv.uid != convInfo.uid) {
+                                LRCInstance::setSelectedConvId(otherConv.uid);
+                                selectSmartlistItem(otherConv.uid);
+                                ui->videoView->updateCall(otherConv.uid, otherConv.accountId, forceCallOnly);
+                            }
+                        }
+                    } else {
+                        ui->videoView->updateCall();
+                        setCallPanelVisibility(false);
+                        showConversationView();
+                        callTerminating(callId);
+                    }
+
                     break;
                 }
                 case lrc::api::call::Status::CONNECTED:

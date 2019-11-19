@@ -290,7 +290,8 @@ VideoView::showContextMenu(const QPoint& position)
 
 void
 VideoView::updateCall(const std::string& convUid,
-                      const std::string& accountId)
+                      const std::string& accountId,
+                      bool forceCallOnly)
 {
     accountId_ = accountId.empty() ? accountId_ : accountId;
     convUid_ = convUid.empty() ? convUid_ : convUid;
@@ -300,7 +301,7 @@ VideoView::updateCall(const std::string& convUid,
         return;
     }
 
-    auto call = LRCInstance::getCallInfoForConversation(convInfo);
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, forceCallOnly);
     if (!call) {
         return;
     }
@@ -313,7 +314,7 @@ VideoView::updateCall(const std::string& convUid,
     }
 
     // preview
-    previewWidget_->setVisible(shouldShowPreview());
+    previewWidget_->setVisible(shouldShowPreview(forceCallOnly));
 
     // distant
     ui->distantWidget->setRendererId(call->id);
@@ -405,14 +406,14 @@ VideoView::slotVideoMuteStateChanged(bool state)
 }
 
 bool
-VideoView::shouldShowPreview()
+VideoView::shouldShowPreview(bool force)
 {
     bool shouldShowPreview{ false };
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
     if (convInfo.uid.empty()) {
         return shouldShowPreview;
     }
-    auto call = LRCInstance::getCallInfoForConversation(convInfo);
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, force);
     if (call) {
         shouldShowPreview =
             !call->isAudioOnly &&
