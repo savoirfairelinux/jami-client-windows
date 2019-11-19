@@ -1231,7 +1231,12 @@ CallWidget::selectConversation(const lrc::api::conversation::Info& item)
         accInfo.conversationModel->selectConversation(item.uid);
         accInfo.conversationModel->clearUnreadInteractions(item.uid);
         if (!item.callId.empty()) {
-            accInfo.callModel->setCurrentCall(item.callId);
+            QtConcurrent::run(
+                [convUid=item.uid, accId=item.accountId] {
+                    auto item = LRCInstance::getConversationFromConvUid(convUid);
+                    auto& accInfo = LRCInstance::getAccountInfo(item.accountId);
+                    accInfo.callModel->setCurrentCall(item.callId);
+                });
         }
         ui->conversationsFilterWidget->update();
         return true;
