@@ -62,6 +62,9 @@ VideoOverlay::VideoOverlay(QWidget* parent)
             this, &VideoOverlay::slotWillDoTransfer);
     connect(sipInputPanel_, &SipInputPanel::sipInputPanelClicked,
             this, &VideoOverlay::slotSIPInputPanelClicked);
+
+    ui->holdButton->setVisible(false);
+
 }
 
 VideoOverlay::~VideoOverlay()
@@ -119,6 +122,9 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     ui->addToConferenceButton->setVisible(!isSIP);
     ui->transferCallButton->setVisible(isSIP);
     ui->sipInputPanelButton->setVisible(isSIP);
+
+    // only show the hold/pause button for SIP calls
+    ui->holdButton->setVisible(isSIP);
 }
 
 void
