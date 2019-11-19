@@ -45,7 +45,8 @@ public:
     ~VideoView();
 
     void updateCall(const std::string& convUid = {},
-                    const std::string& accountId = {});
+                    const std::string& accountId = {},
+                    bool forceCallOnly = false);
     void simulateShowChatview(bool checked);
     void resetPreview();
 
@@ -93,7 +94,7 @@ private:
     int keyPressed_;
 
 private:
-    bool shouldShowPreview();
+    bool shouldShowPreview(bool force = false);
     void toggleFullScreen();
 
 signals:

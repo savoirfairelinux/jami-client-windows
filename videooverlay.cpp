@@ -164,6 +164,18 @@ VideoOverlay::on_hangupButton_clicked()
     if (!convInfo.uid.empty()) {
         auto callModel = LRCInstance::getCurrentCallModel();
         if (callModel->hasCall(convInfo.callId)) {
+            // Store the last remaining participant of the conference
+            // so we can switch the smartlist index after termination.
+            if (!convInfo.confId.empty()) {
+                auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
+                if (callList.size() == 2) {
+                    for (const auto& cId : callList) {
+                        if (cId != convInfo.callId) {
+                            LRCInstance::instance().pushLastConferencee(convInfo.confId, cId);
+                        }
+                    }
+                }
+            }
             callModel->hangUp(convInfo.callId);
         }
     }
