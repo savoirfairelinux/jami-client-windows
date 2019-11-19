@@ -213,7 +213,7 @@ CallWidget::CallWidget(QWidget* parent) :
         [this](const std::string& accountId, const std::string& conversation,
                uint64_t interactionId, const interaction::Info& interaction) {
             if (LRCInstance::getCurrAccId() != accountId) {
-                onIncomingMessage(accountId, conversation, interactionId, interaction);
+                onNewInteraction(accountId, conversation, interactionId, interaction);
             }
         });
 
@@ -304,7 +304,7 @@ CallWidget::getLeftPanelWidth()
 }
 
 void
-CallWidget::onIncomingMessage(const std::string& accountId, const std::string& convUid,
+CallWidget::onNewInteraction(const std::string& accountId, const std::string& convUid,
                               uint64_t interactionId, const interaction::Info& interaction)
 {
     Q_UNUSED(interactionId);
@@ -315,7 +315,8 @@ CallWidget::onIncomingMessage(const std::string& accountId, const std::string& c
         if (conversation.uid.empty()) {
             return;
         }
-        if (!QApplication::focusWidget() || LRCInstance::getCurrAccId() != accountId) {
+        if (!interaction.authorUri.empty() &&
+            (!QApplication::focusWidget() || LRCInstance::getCurrAccId() != accountId)) {
             auto bestName = Utils::bestNameForConversation(conversation, *convModel);
             Utils::showSystemNotification(this,
                 QString::fromStdString(bestName),
@@ -1164,7 +1165,7 @@ CallWidget::connectConversationModel()
         [this](const std::string& convUid, uint64_t interactionId,
                const lrc::api::interaction::Info& interaction) {
             auto accountId = LRCInstance::getCurrAccId();
-            onIncomingMessage(accountId, convUid, interactionId, interaction);
+            onNewInteraction(accountId, convUid, interactionId, interaction);
         }
     );
     interactionRemovedConnection_ = QObject::connect(
