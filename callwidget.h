@@ -105,7 +105,7 @@ private slots:
 
 private:
     void callTerminating(const std::string& callid);
-    void onIncomingMessage(const std::string& accountId, const std::string& convUid,
+    void onNewInteraction(const std::string& accountId, const std::string& convUid,
                            uint64_t interactionId, const lrc::api::interaction::Info& interaction);
     void conversationsButtonClicked();
     void invitationsButtonClicked();
