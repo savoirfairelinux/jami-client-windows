@@ -272,20 +272,18 @@ Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
     }
 }
 
-void Utils::showSystemNotification(QWidget* widget, const QString & message, long delay)
+void Utils::showSystemNotification(QWidget* widget, const QString& message, long delay)
 {
     GlobalSystemTray::instance().showMessage(message, "", QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
 }
 
 void Utils::showSystemNotification(QWidget* widget,
-    const QString & sender,
-    const QString & message,
-    long delay)
+                                   const QString & sender,
+                                   const QString & message,
+                                   long delay)
 {
-    QIcon();
-    GlobalSystemTray::instance()
-        .showMessage(sender, message, QIcon(":images/jami.png"));
+    GlobalSystemTray::instance().showMessage(sender, message, QIcon(":images/jami.png"));
     QApplication::alert(widget, delay);
 }
 
