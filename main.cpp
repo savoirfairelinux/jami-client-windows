@@ -30,6 +30,7 @@
 #include "aboutdialog.h"
 
 #include "passworddialog.h"
+#include "passworddialogqml.h"
 
 #include <QApplication>
 #include <QFile>
@@ -302,6 +303,7 @@ main(int argc, char* argv[])
 
 
     qmlRegisterType<PasswordDialogQMLControllerObject>("com.widget.passworddialogqml",1,0,"PasswordDialogQMLControllerObject");
+    qmlRegisterType<PasswordDialogQml>("com.widget.passworddialogqml",2,0,"PasswordDialog");
 
     auto ret = a.exec();
 

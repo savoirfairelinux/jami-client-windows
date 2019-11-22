@@ -18,7 +18,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <OutputDirectory>x64\Release\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -105,7 +105,6 @@
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>shell32.lib;..\client-windows\qrencode-win32\qrencode-win32\vc8\qrcodelib\x64\Release-Lib\qrcodelib.lib;..\lrc\msvc\release\ringclient_static.lib;..\lrc\msvc\src\qtwrapper\Release\qtwrapper.lib;..\daemon\MSVC\x64\ReleaseLib_win32\bin\dring.lib;..\daemon\contrib\msvc\lib\x64\libgnutls.lib;Shell32.lib;Ole32.lib;Advapi32.lib;Shlwapi.lib;User32.lib;Gdi32.lib;Crypt32.lib;Strmiids.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -264,6 +263,7 @@
     <ClCompile Include="notifypushbutton.cpp" />
     <ClCompile Include="overlaybutton.cpp" />
     <ClCompile Include="passworddialog.cpp" />
+    <ClCompile Include="passworddialogqml.cpp" />
     <ClCompile Include="photoboothwidget.cpp" />
     <ClCompile Include="pixbufmanipulator.cpp" />
     <ClCompile Include="popupdialog.cpp" />
@@ -372,6 +372,8 @@
     <QtMoc Include="overlaybutton.h">
     </QtMoc>
     <QtMoc Include="passworddialog.h">
+    </QtMoc>
+    <QtMoc Include="passworddialogqml.h">
     </QtMoc>
     <QtMoc Include="photoboothwidget.h">
     </QtMoc>
@@ -614,10 +616,6 @@
     <None Include="stylesheet.css" />
     <None Include="testqml.qml" />
     <None Include="images\waiting.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="passworddialog.qml" />
-    <None Include="testqml.qml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
