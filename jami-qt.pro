@@ -139,7 +139,8 @@ HEADERS += ./aboutdialog.h \
         ./widgethelpers.h \
         ./recordwidget.h \
         ./networkmanager.h \
-        ./connectivitymonitor.h
+        ./connectivitymonitor.h \
+        ./passworddialogqml.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -207,7 +208,8 @@ SOURCES += ./aboutdialog.cpp \
         ./widgethelpers.cpp \
         ./recordwidget.cpp \
         ./networkmanager.cpp \
-        ./connectivitymonitor.cpp
+        ./connectivitymonitor.cpp \
+        ./passworddialogqml.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -238,8 +240,5 @@ FORMS += ./aboutdialog.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
         ./recordwidget.ui
-DISTFILES += \
-    passworddialog.qml \
-    testqml.qml
 RESOURCES += ressources.qrc \
     qmlressources.qrc
