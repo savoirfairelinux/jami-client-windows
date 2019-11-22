@@ -46,6 +46,7 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
+#include <QQuickView>
 
 SettingsWidget::SettingsWidget(QWidget* parent)
     : NavWidget(parent)
@@ -448,10 +449,13 @@ void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
 
 void SettingsWidget::passwordClicked()
 {
-    PasswordDialog passwdDialog(this);
+    /*PasswordDialog passwdDialog(this);
     int doneCode = passwdDialog.exec();
     if(doneCode == PasswordDialog::SuccessCode)
-        QMessageBox::information(0, tr("Success"), tr("Password Changed Successfully"));
+        QMessageBox::information(0, tr("Success"), tr("Password Changed Successfully"));*/
+
+    QQuickView* passwordDialog = new QQuickView(QUrl("qrc:/passworddialogquickview.qml"),qobject_cast<QWindow*>(this->window()));
+    passwordDialog->show();
 
 }
 

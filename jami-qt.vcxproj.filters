@@ -45,16 +45,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Distribution Files">
-      <UniqueIdentifier>{B83CAF91-C7BF-462F-B76C-EA11631F866C}</UniqueIdentifier>
-      <Extensions>*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
-    <Filter Include="Distribution Files">
-      <UniqueIdentifier>{B83CAF91-C7BF-462F-B76C-EA11631F866C}</UniqueIdentifier>
-      <Extensions>*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aboutdialog.cpp">
@@ -175,6 +165,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="passworddialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="passworddialogqml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="photoboothwidget.cpp">
@@ -380,6 +373,9 @@
     <QtMoc Include="passworddialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="passworddialogqml.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="photoboothwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -472,9 +468,106 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <CustomBuild Include="obj\.moc\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdialog.ui">
@@ -880,18 +973,6 @@
     </None>
     <None Include="images\waiting.gif">
       <Filter>Resource Files</Filter>
-    </None>
-    <None Include="passworddialog.qml" />
-    <None Include="testqml.qml" />
-    <None Include="passworddialog.qml" />
-    <None Include="testqml.qml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="passworddialog.qml">
-      <Filter>Distribution Files</Filter>
-    </None>
-    <None Include="testqml.qml">
-      <Filter>Distribution Files</Filter>
     </None>
   </ItemGroup>
 </Project>
