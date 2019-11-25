@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>I lirë si në Liri </translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -1318,7 +1318,7 @@ në vend se të përdorin ID-në tuaj.</translation>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Këmbe zgjedhjen për “Mbaje të minimizuar kur dilet”</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>

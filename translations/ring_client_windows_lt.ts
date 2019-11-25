@@ -335,7 +335,7 @@ Jami yra apsaugota ir paskirstytoji bendravimo programinė įranga.</translation
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Rodyti pokalbius</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
