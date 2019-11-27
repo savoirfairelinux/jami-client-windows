@@ -279,7 +279,8 @@ main(int argc, char* argv[])
     QSettings settings("jami.net", "Jami");
     if (not startMinimized) {
         if (settings.value(SettingsKey::hasRun) == 0) {
-            MainWindow::instance().showMaximized();
+            if(LRCInstance::accountModel().getAccountList().size() != 0)
+                MainWindow::instance().showMaximized();
             QTimer::singleShot(100,
                 [] {
                     QSettings settings("jami.net", "Jami");
