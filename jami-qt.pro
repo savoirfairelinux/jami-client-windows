@@ -26,7 +26,11 @@ win32-msvc {
 
     # client deps
     INCLUDEPATH += $${QRENCODE}
+    INCLUDEPATH += ../daemon/contrib/msvc/include/
+    INCLUDEPATH += $${DRING}/contrib/build/ffmpeg/Build/win32/x64/include/
     LIBS += $${QRENCODE}/vc8/qrcodelib/x64/Release-Lib/qrcodelib.lib
+    LIBS += $${DRING}/build-local/x64/ReleaseLib_win32/bin/dring.lib
+    LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
 
     # lrc
     INCLUDEPATH += $${LRC}/src/
@@ -39,7 +43,7 @@ win32-msvc {
     LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
 
     # windows system libs
-    LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib
+    LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib D3d11.lib
 
     # output paths
     OBJECTS_DIR = obj/.obj
