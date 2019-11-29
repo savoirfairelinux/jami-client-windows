@@ -21,6 +21,14 @@
 
 #include <QtConcurrent/QtConcurrent>
 
+extern "C" {
+#include "libavutil/frame.h"
+#include "libavcodec/avcodec.h"
+#include "libavformat/avformat.h"
+#include "libswscale/swscale.h"
+#include "libavdevice/avdevice.h"
+}
+
 using namespace lrc::api;
 
 FrameWrapper::FrameWrapper(AVModel& avModel,
@@ -35,6 +43,9 @@ FrameWrapper::~FrameWrapper()
     if (id_ == video::PREVIEW_RENDERER_ID) {
         avModel_.stopPreview();
     }
+    sws_freeContext(img_convert_ctx);
+    av_free(rgbBuffer);
+    av_frame_free(&pFrameRGB);
 }
 
 void
@@ -119,25 +130,42 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
     {
         QMutexLocker lock(&mutex_);
 
-        frame_ = renderer_->currentFrame();
-
-        unsigned int width = renderer_->size().width();
-        unsigned int height = renderer_->size().height();
-        unsigned int size = frame_.storage.size();
-
-        /**
-         * If the frame is empty or not the expected size,
-         * do nothing and keep the last rendered QImage.
-         */
-        if (size != 0 && size == width * height * 4) {
-            buffer_ = std::move(frame_.storage);
-            image_.reset(
-                new QImage((uchar*) buffer_.data(),
-                width,
-                height,
-                QImage::Format_ARGB32_Premultiplied)
-            );
+        auto avFrame = renderer_->currentAVFrame();
+        frame_ = avFrame.get();
+        if(!frame_ || !frame_->width || !frame_->height) {
+            qDebug() << "AVFrame: this frame does not exist!";
+            return;
         }
+        AVPixelFormat currentFormat = AVPixelFormat(frame_->format);
+        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_RGB32;
+
+        av_frame_free(&pFrameRGB);
+        pFrameRGB = av_frame_alloc();
+        int numBytes = avpicture_get_size(targetFormat, frame_->width,frame_->height);
+        av_free(rgbBuffer);
+        rgbBuffer = (uint8_t*) av_malloc(numBytes * sizeof(uint8_t));
+        avpicture_fill((AVPicture*) pFrameRGB, rgbBuffer,targetFormat,frame_->width, frame_->height);
+
+        // set up SWS context, which is used to convert the video format
+        sws_freeContext(img_convert_ctx);
+        img_convert_ctx = sws_getContext(frame_->width, frame_->height, currentFormat, frame_->width, frame_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
+
+
+        //convert the format from YUV to RGB with sws_scale
+        sws_scale(img_convert_ctx,
+                (uint8_t const * const *) frame_->data,
+                frame_->linesize, 0, frame_->height, pFrameRGB->data,
+                pFrameRGB->linesize);
+        // set up the QImage frame member variable
+        //auto frameBuf = std::move(rgbBuffer);
+
+        image_.reset(
+                new QImage((uchar*) std::move(pFrameRGB->data),
+                frame_->width,
+                frame_->height,
+                QImage::Format_RGB32)
+            );
+        // remember to free the memory applied at the end
     }
 
     emit frameUpdated(id);
@@ -174,6 +202,8 @@ RenderManager::RenderManager(AVModel& avModel)
             this, &RenderManager::slotDeviceEvent);
 
     previewFrameWrapper_ = std::make_unique<FrameWrapper>(avModel_);
+
+    avModel_.useAVFrame(true);
 
     QObject::connect(previewFrameWrapper_.get(),
         &FrameWrapper::renderingStarted,
