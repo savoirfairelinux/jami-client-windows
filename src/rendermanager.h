@@ -26,6 +26,11 @@
 #include <QMutex>
 #include <QImage>
 
+extern "C" {
+struct AVFrame;
+struct SwsContext;
+}
+
 using namespace lrc::api;
 
 /**
@@ -113,7 +118,7 @@ private:
     video::Renderer* renderer_;
 
     /* a local copy of the renderer's current frame */
-    video::Frame frame_;
+    AVFrame* frame_;
 
     /* a the frame's storage data used to set the image */
     std::vector<uint8_t> buffer_;
@@ -132,6 +137,11 @@ private:
 
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
+
+
+    AVFrame *pFrameRGB;
+    uint8_t * rgbBuffer;
+    SwsContext *img_convert_ctx;
 };
 
 /**
