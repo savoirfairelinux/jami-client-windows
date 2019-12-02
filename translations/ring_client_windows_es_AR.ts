@@ -740,7 +740,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Error de red</translation>
     </message>
 </context>
 <context>
@@ -1329,7 +1329,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>Identidad</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>

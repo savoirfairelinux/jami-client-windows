@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>Свобода</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -807,7 +807,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Кнопка для создания начала Jami SIP триггера</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
@@ -961,7 +961,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP прокси текстовый ввод</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -976,7 +976,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Ввод SIP пароля</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -987,7 +987,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>текстовое поле SIP</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -1012,12 +1012,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Отмена создание/ссылки аккаунта</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>нажмите кнопку, чтобы отменить аккаунта или привязки </translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1072,7 +1072,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Сгенерировать свой SIP аккаунт...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1136,7 +1136,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Дисплей фото</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
@@ -1183,7 +1183,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Сохранить новое имя устройства</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
@@ -1302,22 +1302,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>переключатель активации уведомлений</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Пеоекючатель Сворачивать при закрытии</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Записи звонков</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Переключение автоматических обновлений</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
@@ -1390,12 +1390,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Селектор частоты кадров видео</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
@@ -1502,7 +1502,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Вы действительно хотите удалить это устройство?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>

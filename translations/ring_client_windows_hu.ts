@@ -1575,7 +1575,7 @@ Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító haszn
     <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
-        <translation>Lerak</translation>
+        <translation>Hívás befejezése</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="203"/>
