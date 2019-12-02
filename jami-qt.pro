@@ -3,6 +3,8 @@ TARGET = jami-qt
 
 CONFIG += c++17
 
+QMAKE_CXXFLAGS += -std=c++17
+
 QT += widgets xml multimedia multimediawidgets network webenginewidgets svg
 
 isEmpty(LRC) {
