@@ -1,3 +1,14 @@
+# 2019-12-13
+
+## Bug Fixes
+
++ Fixed the bug that caused lag on call overlay
++ Fixed a typo on about dialog
+
+## New Features
+
++ Add various useful shortcuts
+
 # 2019-11-20
 
 ## Bug Fixes
