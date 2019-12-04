@@ -33,11 +33,15 @@ extern "C" {
 using namespace lrc::api;
 
 FrameWrapper::FrameWrapper(AVModel& avModel,
+                           std::shared_ptr<QOpenGLContext> glContext,
+                           std::shared_ptr<QOpenGLShaderProgram> glShaderProgram,
                            const std::string& id)
     : avModel_(avModel)
+    , glContext_(glContext)
+    , glShaderProgram_(glShaderProgram)
     , id_(id)
-    , isRendering_(false)
-{}
+    , isRendering_(false) {
+}
 
 FrameWrapper::~FrameWrapper()
 {
@@ -45,8 +49,8 @@ FrameWrapper::~FrameWrapper()
         avModel_.stopPreview();
     }
     sws_freeContext(img_convert_ctx);
-    av_free(rgbBuffer);
-    av_frame_free(&pFrameRGB);
+    av_free(convertedBuffer);
+    av_frame_free(&convertedAVFrame_);
 }
 
 void
@@ -131,6 +135,12 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
     {
         QMutexLocker lock(&mutex_);
 
+        if(glContext_->isValid()) {
+            qDebug() << "The fufufkjsss";
+        }
+        glContext_->makeCurrent(new QOffscreenSurface());
+
+
         auto avFrame = renderer_->currentAVFrame();
         frame_ = avFrame.get();
         if(!frame_ || !frame_->width || !frame_->height) {
@@ -138,35 +148,53 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
             return;
         }
         AVPixelFormat currentFormat = AVPixelFormat(frame_->format);
-        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_RGBA;
+        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_YUV420P;
 
-        av_frame_free(&pFrameRGB);
-        pFrameRGB = av_frame_alloc();
-        int numBytes = avpicture_get_size(targetFormat, frame_->width,frame_->height);
-        av_free(rgbBuffer);
-        rgbBuffer = (uint8_t*) av_malloc(numBytes * sizeof(uint8_t));
-        avpicture_fill((AVPicture*) pFrameRGB, rgbBuffer,targetFormat,frame_->width, frame_->height);
+        if (currentFormat != targetFormat) {
+            // convert the format the target format and pass the converted AVFrame to generate the texture
+            av_frame_free(&convertedAVFrame_);
+            convertedAVFrame_ = av_frame_alloc();
+            int numBytes = avpicture_get_size(targetFormat, frame_->width, frame_->height);
+            av_free(convertedBuffer);
+            convertedBuffer = (uint8_t*)av_malloc(numBytes * sizeof(uint8_t));
+            avpicture_fill((AVPicture*)convertedAVFrame_, convertedBuffer, targetFormat, frame_->width, frame_->height);
 
-        // set up SWS context, which is used to convert the video format
-        sws_freeContext(img_convert_ctx);
-        img_convert_ctx = sws_getContext(frame_->width, frame_->height, currentFormat, frame_->width, frame_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
+            // set up SWS context, which is used to convert the video format
+            sws_freeContext(img_convert_ctx);
+            img_convert_ctx = sws_getContext(frame_->width, frame_->height, currentFormat, frame_->width, frame_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
 
 
-        //convert the format from YUV to RGB with sws_scale
-        sws_scale(img_convert_ctx,
+            //convert the format from YUV to RGB with sws_scale
+            sws_scale(img_convert_ctx,
                 frame_->data,
-                frame_->linesize, 0, frame_->height, pFrameRGB->data,
-                pFrameRGB->linesize);
-
-        image_.reset(
-                new QImage((uchar*) std::move(rgbBuffer),
+                frame_->linesize, 0, frame_->height, convertedAVFrame_->data,
+                convertedAVFrame_->linesize);
+        } else {
+            // draw the texture from the converted AVFrame
+        }
+        /*image_.reset(
+                new QImage((uchar*) std::move(convertedBuffer),
                 frame_->width,
                 frame_->height,
                 QImage::Format_RGBA8888)
-            );
+            );*/
+
     }
 
     emit frameUpdated(id);
+}
+
+void
+RenderManager::initializeOpenGLResources() {
+    glContext_ = std::make_shared<QOpenGLContext>();
+    glContext_->create();
+    //glShaderProgram_ = std::make_shared<QOpenGLShaderProgram>();
+
+    //// TODO: lode the correct shader files
+    //bool compileSucceed = false;
+    //compileSucceed = glShaderProgram_->addShaderFromSourceCode(QOpenGLShader::Vertex, "");
+    //compileSucceed = glShaderProgram_->addShaderFromSourceCode(QOpenGLShader::Fragment, "");
+    //compileSucceed = glShaderProgram_->link();
 }
 
 void
@@ -199,7 +227,9 @@ RenderManager::RenderManager(AVModel& avModel)
     connect(&avModel_, &lrc::api::AVModel::deviceEvent,
             this, &RenderManager::slotDeviceEvent);
 
-    previewFrameWrapper_ = std::make_unique<FrameWrapper>(avModel_);
+    initializeOpenGLResources();
+
+    previewFrameWrapper_ = std::make_unique<FrameWrapper>(avModel_, glContext_, glShaderProgram_);
 
     avModel_.useAVFrame(true);
 
@@ -298,7 +328,7 @@ RenderManager::addDistantRenderer(const std::string& id)
             qWarning() << "Couldn't start rendering for id: " << id.c_str();
         }
     } else {
-        auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
+        auto dfw = std::make_unique<FrameWrapper>(avModel_, glContext_, glShaderProgram_, id);
 
         // connect this to the FrameWrapper
         distantConnectionMap_[id].started = QObject::connect(

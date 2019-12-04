@@ -54,3 +54,26 @@ VideoWidgetBase::showEvent(QShowEvent* e)
     Q_UNUSED(e);
     emit visibilityChanged(true);
 }
+
+GlVideoWidgetBase::GlVideoWidgetBase(QColor bgColor, QWidget* parent) {
+}
+
+GlVideoWidgetBase::~GlVideoWidgetBase() {
+    makeCurrent();
+    doneCurrent();
+}
+
+void
+GlVideoWidgetBase::resizeGL(int w, int h) {
+}
+
+void
+GlVideoWidgetBase::paintGL() {
+}
+
+void
+GlVideoWidgetBase::initializeGL() {
+    initializeOpenGLFunctions();
+
+
+}

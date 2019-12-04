@@ -22,6 +22,12 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QWidget>
+#include <QtOpenGL/QtOpenGL>
+#include <QOpenGLContext>
+#include <QOpenGLTexture>
+#include <QOpenGLShaderProgram>
+#include <QOpenGLFunctions>
+#include <QOpenGLShader>
 
 // The base for video widgets
 class VideoWidgetBase : public QWidget {
@@ -48,4 +54,22 @@ protected:
 
     virtual void paintBackground(QPainter* painter) = 0;
 
+};
+
+class GlVideoWidgetBase : public QOpenGLWidget, protected QOpenGLFunctions
+{
+    Q_OBJECT;
+
+public:
+    explicit GlVideoWidgetBase(QColor bgColor = Qt::transparent,
+        QWidget* parent = 0);
+    virtual ~GlVideoWidgetBase();
+
+signals:
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void resizeGL(int w, int h) Q_DECL_OVERRIDE;
+    virtual void paintGL() Q_DECL_OVERRIDE;
+    virtual void initializeGL() Q_DECL_OVERRIDE;
 };
