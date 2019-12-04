@@ -25,6 +25,16 @@
 #include <QObject>
 #include <QMutex>
 #include <QImage>
+#include <QtOpenGL/QtOpenGL>
+#include <QOpenGLContext>
+#include <QOpenGLTexture>
+#include <QOpenGLShaderProgram>
+#include <QOpenGLFunctions>
+#include <QOpenGLShader>
+#include <QOffscreenSurface>
+
+
+
 
 extern "C" {
 struct AVFrame;
@@ -45,12 +55,22 @@ struct RenderConnections {
     QMetaObject::Connection started, stopped, updated;
 };
 
-class FrameWrapper final : public QObject
+class FrameWrapper : public QObject, protected QOpenGLFunctions
 {
     Q_OBJECT;
 public:
+    struct FrameTextures
+    {
+        QOpenGLTexture* texY;
+        QOpenGLTexture* texU;
+        QOpenGLTexture* texV;
+    };
+
     FrameWrapper(AVModel& avModel,
-                 const std::string& id = video::PREVIEW_RENDERER_ID);
+                 std::shared_ptr<QOpenGLContext> glContext,
+                 std::shared_ptr<QOpenGLShaderProgram> glShaderProgram,
+                 const std::string& id = video::PREVIEW_RENDERER_ID
+                 );
     ~FrameWrapper();
 
     /**
@@ -138,9 +158,13 @@ private:
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
 
+    std::shared_ptr<QOpenGLContext> glContext_;
+    std::shared_ptr<QOpenGLShaderProgram> glShaderProgram_;
+    FrameTextures frameTexture_;
 
-    AVFrame *pFrameRGB;
-    uint8_t * rgbBuffer;
+
+    AVFrame *convertedAVFrame_;
+    uint8_t * convertedBuffer;
     SwsContext *img_convert_ctx;
 };
 
@@ -228,6 +252,9 @@ private slots:
     void slotDeviceEvent();
 
 private:
+    void initializeOpenGLResources();
+
+private:
     /* used to classify capture device events */
     enum class DeviceEvent { Added, RemovedCurrent, None };
 
@@ -243,4 +270,7 @@ private:
 
     /* convenience ref to avmodel */
     AVModel& avModel_;
+
+    std::shared_ptr<QOpenGLContext> glContext_;
+    std::shared_ptr<QOpenGLShaderProgram> glShaderProgram_;
 };
