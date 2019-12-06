@@ -147,7 +147,9 @@ HEADERS += ./aboutdialog.h \
         ./widgethelpers.h \
         ./recordwidget.h \
         ./networkmanager.h \
-        ./connectivitymonitor.h
+        ./connectivitymonitor.h \
+        ./testopengldialog.h \
+        ./testopenglform.h
 SOURCES += ./aboutdialog.cpp \
         ./banneditemwidget.cpp \
         ./conversationsfilterwidget.cpp \
@@ -214,7 +216,9 @@ SOURCES += ./aboutdialog.cpp \
         ./widgethelpers.cpp \
         ./recordwidget.cpp \
         ./networkmanager.cpp \
-        ./connectivitymonitor.cpp
+        ./connectivitymonitor.cpp \
+        ./testopengldialog.cpp \
+        ./testopenglform.cpp
 FORMS += ./aboutdialog.ui \
         ./advancedsipsettingwidget.ui \
         ./callwidget.ui \
@@ -244,6 +248,8 @@ FORMS += ./aboutdialog.ui \
         ./collapsiblepasswordwidget.ui \
         ./popupdialog.ui \
         ./recordoverlay.ui \
-        ./recordwidget.ui \
+        ./recordwidget.ui \ \
+        ./testopengldialog.ui \
+        ./testopenglform.ui
 
 RESOURCES += ressources.qrc

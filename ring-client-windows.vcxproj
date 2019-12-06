@@ -362,6 +362,8 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <ClCompile Include="section.cpp" />
     <ClCompile Include="sipinputpanel.cpp" />
     <ClCompile Include="splashscreen.cpp" />
+    <ClCompile Include="testopengldialog.cpp" />
+    <ClCompile Include="testopenglform.cpp" />
     <ClCompile Include="updatedownloaddialog.cpp" />
     <ClCompile Include="networkmanager.cpp" />
     <ClCompile Include="accountitemdelegate.cpp" />
@@ -802,6 +804,16 @@ del /s /q $(OutDir)\Jami.exp</Command>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
     </QtMoc>
+    <QtMoc Include="testopenglform.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)..\daemon\contrib\build\ffmpeg\Build\win32\x64\include;$(ProjectDir)..\daemon\contrib\build\ffmpeg;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
+    <QtMoc Include="testopengldialog.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)..\daemon\contrib\build\ffmpeg\Build\win32\x64\include;$(ProjectDir)..\daemon\contrib\build\ffmpeg;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseCompile|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)winsparkle\include;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Beta|x64'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(ProjectDir)..\ring-daemon\contrib\msvc\include;$(ProjectDir)..\daemon\contrib\msvc\include;$(ProjectDir)..\ring-lrc\src;$(ProjectDir)..\lrc\src;$(ProjectDir)qrencode-win32\qrencode-win32;$(QTDIR)\include;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebEngineWidgets;$(QTDIR)\include\QtWebChannel;$(QTDIR)\include\QtCore;$(QTDIR)\mkspecs\win32-msvc;.\release</IncludePath>
+    </QtMoc>
     <ClInclude Include="utils.h" />
     <QtMoc Include="videooverlay.h">
     </QtMoc>
@@ -933,6 +945,8 @@ del /s /q $(OutDir)\Jami.exp</Command>
     <QtUic Include="recordwidget.ui" />
     <QtUic Include="section.ui" />
     <QtUic Include="sipkeypad.ui" />
+    <QtUic Include="testopengldialog.ui" />
+    <QtUic Include="testopenglform.ui" />
     <QtUic Include="updatedownloaddialog.ui" />
     <QtUic Include="contactpicker.ui" />
     <QtUic Include="deleteaccountdialog.ui">
