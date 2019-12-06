@@ -264,6 +264,12 @@
     <ClCompile Include="messagewebview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testopenglform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testopengldialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="aboutdialog.h">
@@ -468,6 +474,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="recordwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="testopenglform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="testopengldialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -777,6 +789,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="recordwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="testopengldialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="testopenglform.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
