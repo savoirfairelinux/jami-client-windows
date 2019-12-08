@@ -253,7 +253,10 @@ void MainWindow::showWindow()
     } else {
         showNormal();
     }
-    activateWindow();
+
+    if (QGuiApplication::platformName() != "wayland") {
+        activateWindow();
+    }
     raise();
 }
 
