@@ -121,6 +121,11 @@ main(int argc, char* argv[])
     SetProcessDPIAware();
 #endif // Q_OS_WIN
 
+#ifdef Q_OS_LINUX
+    if (!getenv("QT_QPA_PLATFORMTHEME"))
+        setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
+#endif
+
     QApplication a(newArgc, newArgv);
 
     QCoreApplication::setApplicationName("Ring");
