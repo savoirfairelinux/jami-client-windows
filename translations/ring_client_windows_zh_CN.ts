@@ -677,7 +677,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>（无）</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
@@ -987,7 +987,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>正在生成您的Jami帐户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1241,7 +1241,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>下载文件夹</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="811"/>
@@ -1292,7 +1292,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1359,7 +1359,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>导出帐户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
