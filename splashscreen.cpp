@@ -32,7 +32,6 @@ SplashScreen::~SplashScreen()
 {
     if (spinner_) {
         disconnect(spinner_);
-        delete spinner_;
     }
 }
 
