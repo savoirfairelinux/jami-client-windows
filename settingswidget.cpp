@@ -262,6 +262,13 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     connect(LRCInstance::renderer(), &RenderManager::videoDeviceListChanged, this, &SettingsWidget::slotVideoDeviceListChanged);
 
     ui->containerWidget->setVisible(false);
+
+#ifdef Q_OS_LINUX
+    ui->updateLabel->setVisible(false);
+    ui->autoUpdateCheckBox->setVisible(false);
+    ui->checkUpdateButton->setVisible(false);
+    ui->installBetaButton->setVisible(false);
+#endif
 }
 
 void SettingsWidget::slotAccountListChanged()
