@@ -19,6 +19,7 @@
 
 #include <QSplashScreen>
 #include <QPainter>
+#include <QPointer>
 
 class SplashScreen : public QSplashScreen
 {
@@ -44,5 +45,5 @@ private:
     QString footerText_;
     QColor bgColor_;
     QColor textColor_;
-    QMovie* spinner_;
+    QPointer<QMovie> spinner_;
 };
