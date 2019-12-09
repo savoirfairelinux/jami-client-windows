@@ -653,7 +653,7 @@ Jami is a secured and distributed communication software.</string>
            <string>Changelog</string>
           </property>
           <property name="text">
-           <string>Changlog</string>
+           <string>Changelog</string>
           </property>
           <property name="checkable">
            <bool>false</bool>
