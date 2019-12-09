@@ -189,7 +189,11 @@ main(int argc, char* argv[])
     a.setFont(font);
 
 #ifndef DEBUG_STYLESHEET
+#ifdef Q_OS_LINUX
+    QFile file(":/stylesheet.linux.css");
+#else
     QFile file(":/stylesheet.css");
+#endif
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         a.setStyleSheet(file.readAll());
         file.close();
