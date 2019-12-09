@@ -475,9 +475,10 @@ void
 VideoView::keyReleaseEvent(QKeyEvent* event)
 {
     auto convInfo = LRCInstance::getCurrentConversation();
-    if (convInfo.uid.empty()) {
+    if (convInfo.uid.empty()
+        || LRCInstance::getCurrentAccountInfo().profileInfo.type != lrc::api::profile::Type::SIP)
         return;
-    }
+
     if (keyPressed_ == static_cast<int>(Qt::Key_NumberSign)) {
         LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, "#");
     } else if (keyPressed_ == static_cast<int>(Qt::Key_Asterisk)) {
