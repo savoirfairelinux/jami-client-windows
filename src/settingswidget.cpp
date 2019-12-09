@@ -265,6 +265,13 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     registerShortcuts();
 
     ui->containerWidget->setVisible(false);
+
+#ifdef Q_OS_LINUX
+    ui->updateLabel->setVisible(false);
+    ui->autoUpdateCheckBox->setVisible(false);
+    ui->checkUpdateButton->setVisible(false);
+    ui->installBetaButton->setVisible(false);
+#endif
 }
 
 void
