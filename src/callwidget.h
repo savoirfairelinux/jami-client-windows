@@ -42,6 +42,8 @@
 #include <QVector>
 #include <QWidget>
 
+#include <QSet>
+
 class ConversationItemDelegate;
 class QPropertyAnimation;
 
@@ -64,6 +66,10 @@ public:
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountListChanged();
+
+protected:
+    void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
 
 private slots:
     void on_ringContactLineEdit_returnPressed();
@@ -145,6 +151,7 @@ private:
     std::string lastConvUid_ {};
     lrc::api::profile::Type currentTypeFilter_{};
     std::unique_ptr<SmartListModel> smartListModel_;
+    QSet<int> keyPressed_;
 
     QMetaObject::Connection imConnection_;
     QMetaObject::Connection imVisibleConnection_;
