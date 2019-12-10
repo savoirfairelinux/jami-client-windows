@@ -48,8 +48,10 @@
 #include <QComboBox>
 #include <QtConcurrent/QtConcurrent>
 #include <QDesktopServices>
+#include <QKeyEvent>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMenuBar>
 #include <QMimeData>
 
 #include <algorithm>
@@ -275,6 +277,7 @@ CallWidget::navigated(bool to)
          * in case of a resolution change.
          */
         ui->videoView->resetPreview();
+        setFocus();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
@@ -1559,4 +1562,103 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::keyPressEvent(QKeyEvent* event)
+{
+    // remove the focus from textarea when control is pressed
+    if(event->key() == Qt::Key_Control)
+        ui->messageView->setMessageBarInputAutoFocus(false);
+    // Record pressed key into key press set
+    keyPressed_.insert(event->key());
+    QWidget::keyPressEvent(event);
+}
+
+void
+CallWidget::keyReleaseEvent(QKeyEvent* event)
+{
+    auto& convInfo = LRCInstance::getCurrentConversation();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto convUid = LRCInstance::getCurrentConvUid();
+    // Shift + Control Series
+    if (keyPressed_.contains(Qt::Key_Shift) && keyPressed_.contains(Qt::Key_Control)) {
+        if (keyPressed_.contains(Qt::Key_C)) {
+            // Shift + Control + C start an audio call
+            if (convModel && !convUid.empty())
+                convModel->placeAudioOnlyCall(convUid);
+        } else if (keyPressed_.contains(Qt::Key_X)) {
+            // Shift + Control + X start an video call
+            if (convModel && !convUid.empty())
+                convModel->placeCall(convUid);
+        } else if (keyPressed_.contains(Qt::Key_L)) {
+            // Shift + Control + L clear history
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Clear Conversation History"),
+                    QString("Do you really want to clear the conversation history with this contact ?"));
+                if(reply)
+                    convModel->clearHistory(convUid);
+            }
+        } else if (keyPressed_.contains(Qt::Key_B)) {
+            // Shift + Control + B block contact
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Block Contact"),
+                    QString("Do you really want to block this contact ?"));
+                if (reply)
+                    convModel->removeConversation(convUid, true);
+            }
+        } else if (keyPressed_.contains(Qt::Key_J)) {
+            // Shift + Control + J copy contact name
+            QClipboard* clipboard = QApplication::clipboard();
+            clipboard->setText(QString::fromStdString(
+                Utils::bestIdForContact(LRCInstance::getCurrentAccountInfo().contactModel->getContact(LRCInstance::getCurrentConversation().participants.front()))
+            ));
+        }
+    // Control Series
+    } else if (keyPressed_.contains(Qt::Key_Control)) {
+        if (keyPressed_.contains(Qt::Key_J)) {
+            // Control + J open account list
+            ui->currentAccountComboBox->activateComboBox();
+        } else if (keyPressed_.contains(Qt::Key_L)) {
+            // Control + L focus on smart list
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(0, 0));
+        } else if (keyPressed_.contains(Qt::Key_Down)) {
+            // Control + Down focus on the next element on smart list 
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() + 1, 0));
+        } else if (keyPressed_.contains(Qt::Key_Up)) {
+            // Control + Up focus on the previous element on smart list
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+        } else if (keyPressed_.contains(Qt::Key_F)) {
+            // Control + F focus on the contact search bar
+            ui->ringContactLineEdit->setFocus();
+        } else if (keyPressed_.contains(Qt::Key_Y)) {
+            // Control + Y accepct the call
+            if(!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->accept(convInfo.callId);
+        } else if (keyPressed_.contains(Qt::Key_D)) {
+            // Control + D decline the call
+            if (!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->refuse(convInfo.callId);
+        } else if (keyPressed_.contains(Qt::Key_Comma)) {
+            // Control + , go to settings page
+            emit NavigationRequested(ScreenEnum::SetttingsScreen);
+        } else if (keyPressed_.contains(Qt::Key_M)) {
+            // Control + M maximize the window
+            if (MainWindow::instance().windowState().testFlag(Qt::WindowMaximized) == true) {
+                MainWindow::instance().showNormal();
+            }
+            else {
+                MainWindow::instance().showMaximized();
+            }
+        }
+    } 
+
+    keyPressed_.remove(event->key());
+    // recover the focus for textarea when key press is cleared
+    if (keyPressed_.isEmpty()) {
+        ui->messageView->setMessageBarInputAutoFocus(true);
+    }
+    QWidget::keyReleaseEvent(event);
 }
