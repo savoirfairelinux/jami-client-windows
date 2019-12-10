@@ -109,6 +109,7 @@ public:
     void displayNavbar(bool display);
     void requestSendMessageContent();
     void setSendMessageContent(const QString& content);
+    void setMessageBarInputAutoFocus(bool setAutoFocus);
 
 protected:
 
