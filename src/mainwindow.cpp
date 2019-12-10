@@ -63,6 +63,13 @@ MainWindow::MainWindow(QWidget* parent)
         }
     }
 
+    connect(ui->callwidget, &NavWidget::NavigationSettingsPageRequested,
+        [this](SettingsMenu settingsPage) {
+            ui->settingswidget->navigated(true);
+            Utils::setStackWidget(ui->navStack, ui->navStack->widget(ScreenEnum::SetttingsScreen));
+            ui->settingswidget->setSelected(settingsPage);
+        });
+
     connect(ui->navStack, SIGNAL(currentChanged(int)),
         this, SLOT(slotCurrentChanged(int)),
         Qt::QueuedConnection);
