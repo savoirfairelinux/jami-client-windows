@@ -53,6 +53,10 @@ public:
 public slots:
     virtual void slotAccountListChanged();
 
+protected:
+    void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
+
 private:
     Ui::SettingsWidget* ui;
 
@@ -109,6 +113,7 @@ private:
     const int itemHeight_ = 55;
     int previousDeviceSize_ {static_cast<int>(LRCInstance::avModel().getDevices().size())};
     bool deviceWasEmpty_ {false};
+    QSet<int> keyPressed_;
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;

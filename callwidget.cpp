@@ -48,8 +48,10 @@
 #include <QComboBox>
 #include <QtConcurrent/QtConcurrent>
 #include <QDesktopServices>
+#include <QKeyEvent>
 #include <QScrollBar>
 #include <QWebEngineScript>
+#include <QMenuBar>
 #include <QMimeData>
 
 #include <algorithm>
@@ -275,6 +277,7 @@ CallWidget::navigated(bool to)
          * in case of a resolution change.
          */
         ui->videoView->resetPreview();
+        setFocus();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
@@ -1559,4 +1562,89 @@ void
 CallWidget::Copy()
 {
     ui->messageView->copySelectedText(clipboard_);
+}
+
+void
+CallWidget::keyPressEvent(QKeyEvent* event)
+{
+    // Record pressed key into key press set 
+    keyPressed_.insert(event->key());
+    QWidget::keyPressEvent(event);
+}
+
+void
+CallWidget::keyReleaseEvent(QKeyEvent* event)
+{
+    auto& convInfo = LRCInstance::getCurrentConversation();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    auto convUid = LRCInstance::getCurrentConvUid();
+    // Enter
+    if (keyPressed_.contains(Qt::Key_Enter)) {
+        if (convModel && !convUid.empty())
+            convModel->placeCall(convUid);
+    // Shift + Control Series
+    } else if (keyPressed_.contains(Qt::Key_Shift) && keyPressed_.contains(Qt::Key_Control)) {
+        if (keyPressed_.contains(Qt::Key_C)) {
+            if (convModel && !convUid.empty())
+                convModel->placeAudioOnlyCall(convUid);
+        } else if (keyPressed_.contains(Qt::Key_L)) {
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Clear Conversation History"),
+                    QString("Do you really want to clear the conversation history with this contact ?"));
+                if(reply)
+                    convModel->clearHistory(convUid);
+            }
+        } else if (keyPressed_.contains(Qt::Key_B)) {
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Block Contact"),
+                    QString("Do you really want to block this contact ?"));
+                if (reply)
+                    convModel->removeConversation(convUid, true);
+            }
+        } else if (keyPressed_.contains(Qt::Key_J)) {
+            QClipboard* clipboard = QApplication::clipboard();
+            clipboard->setText(QString::fromStdString(
+                Utils::bestIdForContact(LRCInstance::getCurrentAccountInfo().contactModel->getContact(LRCInstance::getCurrentConversation().participants.front()))
+            ));
+        }/* else if (keyPressed_.contains(Qt::Key_U)) {
+            if (convModel && !convUid.empty()) {
+                auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(LRCInstance::getCurrentConversation().participants[0]);
+                if (contactInfo.isBanned) {
+                    LRCInstance::getCurrentAccountInfo().contactModel->addContact(contactInfo);
+                }
+            }
+        }*/
+    // Control Series
+    } else if (keyPressed_.contains(Qt::Key_Control)) {
+        if (keyPressed_.contains(Qt::Key_J)) {
+            ui->currentAccountComboBox->activateComboBox();
+        } else if (keyPressed_.contains(Qt::Key_L)) {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(0, 0));
+        } else if (keyPressed_.contains(Qt::Key_Down)) {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() + 1, 0));
+        } else if (keyPressed_.contains(Qt::Key_Up)) {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+        } else if (keyPressed_.contains(Qt::Key_F)) {
+            ui->ringContactLineEdit->setFocus();
+        } else if (keyPressed_.contains(Qt::Key_Y)) {
+            if(!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->accept(convInfo.callId);
+        } else if (keyPressed_.contains(Qt::Key_D)) {
+            if (!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->refuse(convInfo.callId);
+        } else if (keyPressed_.contains(Qt::Key_Comma)) {
+            emit NavigationRequested(ScreenEnum::SetttingsScreen);
+        }
+    // Maximize Window
+    } else if (keyPressed_.contains(Qt::Key_M)) {
+        if (MainWindow::instance().windowState().testFlag(Qt::WindowMaximized) == true) {
+            MainWindow::instance().showNormal();
+        } else {
+            MainWindow::instance().showMaximized();
+        }
+    }
+    keyPressed_.remove(event->key());
+    QWidget::keyReleaseEvent(event);
 }
