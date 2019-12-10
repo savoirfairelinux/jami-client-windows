@@ -29,6 +29,7 @@
 #include <QStackedWidget>
 #include <QTextDocument>
 #include <QItemDelegate>
+#include <QMessageBox>
 #include <QtGlobal>
 #include <QCryptographicHash>
 #include <QListWidget>
@@ -94,6 +95,7 @@ lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, c
 std::string formatTimeString(const std::time_t& timestamp);
 bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
 bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
+bool getReplyMessageBox(QWidget* widget, const QString& title, const QString& text);
 
 // image
 QImage getCirclePhoto(const QImage original, int sizePhoto);
