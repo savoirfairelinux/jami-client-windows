@@ -43,6 +43,7 @@ public:
     void setCurrentIndex(int index);
     void updateComboBoxDisplay();
     void canPlaceAudioOnlyCall(const std::string& convUid) { emit placeAudioOnlyCall(convUid); }
+    void activateComboBox() { showPopup(); }
 
 signals:
     void settingsButtonClicked();
