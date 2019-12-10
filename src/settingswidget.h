@@ -47,6 +47,8 @@ public:
     explicit SettingsWidget(QWidget* parent = nullptr);
     ~SettingsWidget();
 
+    void setSelected(SettingsMenu sel);
+
     // NavWidget
     virtual void navigated(bool to);
     virtual void updateCustomUI();
@@ -56,11 +58,6 @@ public slots:
 private:
     Ui::SettingsWidget* ui;
 
-    enum SettingsMenu {
-        Account,
-        General,
-        Media
-    };
     enum RegName {
         BLANK,
         INVALIDFORM,
@@ -70,7 +67,6 @@ private:
     };
 
     void setAvatar(PhotoboothWidget* avatarWidget);
-    void setSelected(SettingsMenu sel);
     void updateAccountInfoDisplayed();
     void resizeEvent(QResizeEvent* event);
     bool sipPasswordHidden_ {false};
@@ -90,6 +86,7 @@ private:
     void stopPreviewing();
     void startAudioMeter(bool async = true);
     void stopAudioMeter(bool async = true);
+    void registerShortcuts();
 
     QList<QMetaObject::Connection> accountConnections_;
     QString registeredName_;
@@ -109,6 +106,7 @@ private:
     const int itemHeight_ = 55;
     int previousDeviceSize_ {static_cast<int>(LRCInstance::avModel().getDevices().size())};
     bool deviceWasEmpty_ {false};
+    QSet<int> keyPressed_;
 
     QMovie* lookupSpinnerMovie_;
     QPixmap statusSuccessPixmap_;
