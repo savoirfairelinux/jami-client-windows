@@ -54,7 +54,7 @@ def findVSLatestDir():
         '-property installationPath'
     ]
     cmd = [vs_where_path] + args
-    output = subprocess.check_output(' '.join(cmd)).decode('utf-8')
+    output = subprocess.check_output(' '.join(cmd)).decode('utf-8', errors='ignore')
     if output:
         return output.splitlines()[0]
     else:
@@ -75,7 +75,7 @@ def getVSEnv(arch='x64', platform='', version=''):
                          shell=True,
                          stdout=subprocess.PIPE)
     stdout, _ = p.communicate()
-    out = stdout.decode('utf-8').split("\r\n")[5:-1]
+    out = stdout.decode('utf-8', errors='ignore').split("\r\n")[5:-1]
     return dict(s.split('=', 1) for s in out)
 
 
