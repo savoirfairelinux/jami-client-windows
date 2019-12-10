@@ -51,6 +51,7 @@
 #include <QScrollBar>
 #include <QWebEngineScript>
 #include <QMimeData>
+#include <QShortcut>
 
 #include <algorithm>
 #include <memory>
@@ -117,6 +118,9 @@ CallWidget::CallWidget(QWidget* parent) :
     miniSpinner_ = new QMovie(":/images/waiting.gif");
     ui->spinnerLabel->setMovie(miniSpinner_);
     ui->spinnerLabel->hide();
+
+    // shortcuts
+    registerShortCuts();
 
     // connections
     connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
@@ -275,6 +279,7 @@ CallWidget::navigated(bool to)
          * in case of a resolution change.
          */
         ui->videoView->resetPreview();
+        setFocus();
     } else {
         QObject::disconnect(smartlistSelectionConnection_);
         smartListModel_.reset(nullptr);
@@ -1486,6 +1491,156 @@ CallWidget::updateChatviewFrame()
     auto bestId = QString::fromStdString(Utils::bestIdForContact(contactInfo));
 
     ui->messageView->updateChatviewFrame(accInfo.enabled, contactInfo.isBanned, temp, bestName, bestId);
+}
+
+void
+CallWidget::registerShortCuts()
+{
+    //shortcuts
+    auto startAudioCallSC = new QShortcut(QKeySequence(tr("Shift+Ctrl+C", "Start an audio call")), this);
+    auto startVideoCallSC = new QShortcut(QKeySequence(tr("Shift+Ctrl+X", "Start an video call")), this);
+    auto clearConvHistorySC = new QShortcut(QKeySequence(tr("Shift+Ctrl+L", "Clear history")), this);
+    auto blockContactSC = new QShortcut(QKeySequence(tr("Shift+Ctrl+B", "Block contact")), this);
+    auto copyContactNameSC = new QShortcut(QKeySequence(tr("Shift+Ctrl+J", "Copy contact name")), this);
+    auto openAccountListSC = new QShortcut(QKeySequence(tr("Ctrl+J", "Open account list")), this);
+    auto focusOnSmartListSC = new QShortcut(QKeySequence(tr("Ctrl+L", "Focus on smart list")), this);
+    auto focusOnSmartListNextElementSC = new QShortcut(QKeySequence(tr("Ctrl+Down", "Focus on the next element on smart list")), this);
+    auto focusOnSmartListPrevElementSC = new QShortcut(QKeySequence(tr("Ctrl+Up", "Focus on the previous element on smart list")), this);
+    auto focusOnContactSearchBarSC = new QShortcut(QKeySequence(tr("Ctrl+F", "Focus on contact search bar")), this);
+    auto answerCallSC = new QShortcut(QKeySequence(tr("Ctrl+Y", "Answer an incoming call")), this);
+    auto declineCallSC = new QShortcut(QKeySequence(tr("Ctrl+D", "Decline an incoming call")), this);
+    auto hangUpCallSC = new QShortcut(QKeySequence(tr("Ctrl+H", "Hang up a call")), this);
+    auto maximizeScreenSC = new QShortcut(QKeySequence(tr("F11", "Maximize Screen")), this);
+
+    auto navigateToMediaSettingsSC = new QShortcut(QKeySequence(tr("Ctrl+M", "Navigate to media setting")), this);
+    auto navigateToGeneralSettingsSC = new QShortcut(QKeySequence(tr("Ctrl+G", "Navigate to general setting")), this);
+    auto navigateToAccountSettingsSC = new QShortcut(QKeySequence(tr("Ctrl+I", "Navigate to account setting")), this);
+
+    // connections
+    connect(startAudioCallSC, &QShortcut::activated,
+        [this] {
+            auto convModel = LRCInstance::getCurrentConversationModel();
+            auto convUid = LRCInstance::getCurrentConvUid();
+
+            if (convModel && !convUid.empty())
+                convModel->placeAudioOnlyCall(convUid);
+        });
+
+    connect(startVideoCallSC, &QShortcut::activated,
+        [this] {
+            auto convModel = LRCInstance::getCurrentConversationModel();
+            auto convUid = LRCInstance::getCurrentConvUid();
+
+            if (convModel && !convUid.empty())
+                convModel->placeCall(convUid);
+        });
+
+    connect(clearConvHistorySC, &QShortcut::activated,
+        [this] {
+            auto convModel = LRCInstance::getCurrentConversationModel();
+            auto convUid = LRCInstance::getCurrentConvUid();
+
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Clear Conversation History"),
+                    QString("Do you really want to clear the conversation history with this contact ?"));
+                if (reply)
+                    convModel->clearHistory(convUid);
+            }
+        });
+
+    connect(blockContactSC, &QShortcut::activated,
+        [this] {
+            auto convModel = LRCInstance::getCurrentConversationModel();
+            auto convUid = LRCInstance::getCurrentConvUid();
+
+            if (convModel && !convUid.empty()) {
+                auto reply = Utils::getReplyMessageBox(this,
+                    QString("Block Contact"),
+                    QString("Do you really want to block this contact ?"));
+                if (reply)
+                    convModel->removeConversation(convUid, true);
+            }
+        });
+
+    connect(copyContactNameSC, &QShortcut::activated,
+        [this] {
+            QClipboard* clipboard = QApplication::clipboard();
+            clipboard->setText(QString::fromStdString(
+                Utils::bestIdForContact(LRCInstance::getCurrentAccountInfo().contactModel->getContact(LRCInstance::getCurrentConversation().participants.front()))
+            ));
+        });
+
+    connect(openAccountListSC, &QShortcut::activated,
+        [this] {
+            ui->currentAccountComboBox->activateComboBox();
+        });
+
+    connect(focusOnSmartListSC, &QShortcut::activated,
+        [this] {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(0, 0));
+        });
+
+    connect(focusOnSmartListNextElementSC, &QShortcut::activated,
+        [this] {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() + 1, 0));
+        });
+
+    connect(focusOnSmartListPrevElementSC, &QShortcut::activated,
+        [this] {
+            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+        });
+
+    connect(focusOnContactSearchBarSC, &QShortcut::activated,
+        [this] {
+            ui->ringContactLineEdit->setFocus();
+        });
+
+    connect(answerCallSC, &QShortcut::activated,
+        [this] {
+            auto& convInfo = LRCInstance::getCurrentConversation();
+            if (!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->accept(convInfo.callId);
+        });
+
+    connect(declineCallSC, &QShortcut::activated,
+        [this] {
+            auto& convInfo = LRCInstance::getCurrentConversation();
+            if (!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->refuse(convInfo.callId);
+        });
+
+    connect(hangUpCallSC, &QShortcut::activated,
+        [this] {
+            auto& convInfo = LRCInstance::getCurrentConversation();
+            if (!convInfo.callId.empty())
+                LRCInstance::getCurrentCallModel()->hangUp(convInfo.callId);
+        });
+
+    connect(maximizeScreenSC, &QShortcut::activated,
+        [this] {
+            if (MainWindow::instance().windowState().testFlag(Qt::WindowMaximized) == true) {
+                MainWindow::instance().showNormal();
+            }
+            else {
+                MainWindow::instance().showMaximized();
+            }
+        });
+
+    connect(navigateToMediaSettingsSC, &QShortcut::activated,
+        [this] {
+            emit NavigationSettingsPageRequested(SettingsMenu::Media);
+        });
+
+    connect(navigateToGeneralSettingsSC, &QShortcut::activated,
+        [this] {
+            emit NavigationSettingsPageRequested(SettingsMenu::General);
+        });
+
+    connect(navigateToAccountSettingsSC, &QShortcut::activated,
+        [this] {
+            emit NavigationSettingsPageRequested(SettingsMenu::Account);
+        });
 }
 
 void
