@@ -264,7 +264,8 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     ui->containerWidget->setVisible(false);
 }
 
-void SettingsWidget::slotAccountListChanged()
+void
+SettingsWidget::slotAccountListChanged()
 {
     if (!LRCInstance::accountModel().getAccountList().size()) {
         setSelected(SettingsMenu::Account);
@@ -277,7 +278,8 @@ void SettingsWidget::slotAccountListChanged()
     }
 }
 
-void SettingsWidget::navigated(bool to)
+void
+SettingsWidget::navigated(bool to)
 {
     ui->containerWidget->setVisible(to);
     if (to) {
@@ -285,14 +287,42 @@ void SettingsWidget::navigated(bool to)
         updateAccountInfoDisplayed();
         // hide banned list
         ui->bannedContactsListWidget->setVisible(false);
+        setFocus();
     }
 }
 
-void SettingsWidget::updateCustomUI()
+void
+SettingsWidget::updateCustomUI()
 {
 }
 
-void SettingsWidget::leaveSettingsSlot()
+void
+SettingsWidget::keyPressEvent(QKeyEvent* event)
+{
+    // Record pressed key into key press set
+    keyPressed_.insert(event->key());
+    QWidget::keyPressEvent(event);
+}
+
+void
+SettingsWidget::keyReleaseEvent(QKeyEvent* event)
+{
+    if (keyPressed_.contains(Qt::Key_Control)) {
+        if (keyPressed_.contains(Qt::Key_Comma)) {
+            emit NavigationRequested(ScreenEnum::CallScreen);
+        } else if (keyPressed_.contains(Qt::Key_G)) {
+            setSelected(SettingsMenu::General);
+        } else if (keyPressed_.contains(Qt::Key_M)) {
+            setSelected(SettingsMenu::Media);
+        } else if (keyPressed_.contains(Qt::Key_I)) {
+            setSelected(SettingsMenu::Account);
+        }
+    }
+    keyPressed_.remove(event->key());
+}
+
+void
+SettingsWidget::leaveSettingsSlot()
 {
     if (advancedSettingsDropped_) {
         toggleAdvancedSettings();
@@ -316,7 +346,9 @@ SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
-void SettingsWidget::setSelected(SettingsMenu sel)
+
+void
+SettingsWidget::setSelected(SettingsMenu sel)
 {
     switch (sel) {
     case SettingsMenu::Account:
@@ -386,7 +418,8 @@ void SettingsWidget::setSelected(SettingsMenu sel)
     selectedMenu_ = sel;
 }
 // called to update current settings information when navigating to settingsWidget
-void SettingsWidget::updateAccountInfoDisplayed()
+void
+SettingsWidget::updateAccountInfoDisplayed()
 {
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
     auto accConfig = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -438,7 +471,8 @@ void SettingsWidget::updateAccountInfoDisplayed()
     ui->bannedContactsLayoutWidget->setVisible(accInfo.contactModel->getBannedContacts().size());
 }
 
-void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
+void
+SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
 {
     auto& accountInfo = LRCInstance::getCurrentAccountInfo();
     auto defaultAvatar = accountInfo.profileInfo.avatar.empty();
@@ -446,7 +480,8 @@ void SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
     avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar);
 }
 
-void SettingsWidget::passwordClicked()
+void
+SettingsWidget::passwordClicked()
 {
     PasswordDialog passwdDialog(this);
     int doneCode = passwdDialog.exec();
@@ -455,7 +490,8 @@ void SettingsWidget::passwordClicked()
 
 }
 
-void SettingsWidget::toggleAdvancedSIPSettings()
+void
+SettingsWidget::toggleAdvancedSIPSettings()
 {
 
     if (advancedSIPSettingsDropped_) {
@@ -478,7 +514,8 @@ void SettingsWidget::toggleAdvancedSIPSettings()
     advancedSIPSettingsDropped_ = !advancedSIPSettingsDropped_;
 }
 
-void SettingsWidget::toggleAdvancedSettings()
+void
+SettingsWidget::toggleAdvancedSettings()
 {
     if (advancedSettingsDropped_) {
         ui->advancedAccountSettingsPButton->setIcon(QIcon(":/images/icons/round-arrow_drop_down-24px.svg"));
@@ -499,21 +536,24 @@ void SettingsWidget::toggleAdvancedSettings()
     advancedSettingsDropped_ = !advancedSettingsDropped_;
 }
 
-void SettingsWidget::toggleBannedContacts()
+void
+SettingsWidget::toggleBannedContacts()
 {
     auto bannedContactsVisible = ui->bannedContactsListWidget->isVisible();
     ui->bannedContactsListWidget->setVisible(!bannedContactsVisible);
     updateAndShowBannedContactsSlot();
 }
 
-void SettingsWidget::resizeEvent(QResizeEvent* event)
+void
+SettingsWidget::resizeEvent(QResizeEvent* event)
 {
     QWidget::resizeEvent(event);
     scrollSIPArea_->resize(ui->currentSIPAccountSettingsScrollWidget->width(), this->height());
     scrollArea_->resize(ui->currentAccountSettingsScrollWidget->width(), this->height());
 }
 
-void SettingsWidget::verifyRegisteredNameSlot()
+void
+SettingsWidget::verifyRegisteredNameSlot()
 {
     if (!LRCInstance::getCurrentAccountInfo().registeredName.empty()) {
         setRegNameUi(RegName::BLANK);
@@ -537,7 +577,8 @@ void SettingsWidget::verifyRegisteredNameSlot()
 }
 
 // returns true if name is valid registered name
-bool SettingsWidget::validateRegNameForm(const QString& regName)
+bool
+SettingsWidget::validateRegNameForm(const QString& regName)
 {
     QRegularExpression regExp(" ");
 
@@ -549,7 +590,8 @@ bool SettingsWidget::validateRegNameForm(const QString& regName)
     }
 }
 
-void SettingsWidget::receiveRegNameSlot(const std::string& accountID,
+void
+SettingsWidget::receiveRegNameSlot(const std::string& accountID,
     lrc::api::account::LookupStatus status, const std::string& address, const std::string& name)
 {
     Q_UNUSED(accountID);
@@ -557,12 +599,14 @@ void SettingsWidget::receiveRegNameSlot(const std::string& accountID,
     afterNameLookup(status, name);
 }
 
-void SettingsWidget::beforeNameLookup()
+void
+SettingsWidget::beforeNameLookup()
 {
     NameDirectory::instance().lookupName(QString(), registeredName_);
 }
 
-void SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
+void
+SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
 {
     if (registeredName_.toStdString() == regName && regName.length() > 2) {
         if (status == lrc::api::account::LookupStatus::NOT_FOUND) {
@@ -577,7 +621,8 @@ void SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, con
     }
 }
 
-void SettingsWidget::setRegNameUi(RegName stat)
+void
+SettingsWidget::setRegNameUi(RegName stat)
 {
     disconnect(ui->btnRegisterName, &QPushButton::clicked, this, &SettingsWidget::slotRegisterName);
 
@@ -641,12 +686,14 @@ SettingsWidget::slotRegisterName()
     }
 }
 
-void SettingsWidget::setAccEnableSlot(int state)
+void
+SettingsWidget::setAccEnableSlot(int state)
 {
     LRCInstance::accountModel().setAccountEnabled(LRCInstance::getCurrAccId(), static_cast<bool>(state));
 }
 
-void SettingsWidget::delAccountSlot()
+void
+SettingsWidget::delAccountSlot()
 {
     DeleteAccountDialog delDialog(this);
     auto ret = delDialog.exec();
@@ -660,7 +707,8 @@ void SettingsWidget::delAccountSlot()
     }
 }
 
-void SettingsWidget::removeDeviceSlot(int index)
+void
+SettingsWidget::removeDeviceSlot(int index)
 {
     if (!index) {
         return;
@@ -698,7 +746,8 @@ delete_:
     }
 }
 
-void SettingsWidget::unban(int index)
+void
+SettingsWidget::unban(int index)
 {
     auto bannedContactList = LRCInstance::getCurrentAccountInfo().contactModel->getBannedContacts();
     auto it = bannedContactList.begin();
@@ -710,7 +759,8 @@ void SettingsWidget::unban(int index)
     updateAndShowBannedContactsSlot();
 }
 
-void SettingsWidget::exportAccountSlot()
+void
+SettingsWidget::exportAccountSlot()
 {
     QFileDialog dialog(this);
     auto openPath = QDir::homePath() + "/Desktop" + "/export.gz";
@@ -741,7 +791,8 @@ void SettingsWidget::exportAccountSlot()
     }
 }
 
-void SettingsWidget::updateAndShowDevicesSlot()
+void
+SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
@@ -769,7 +820,8 @@ void SettingsWidget::updateAndShowDevicesSlot()
     }
 }
 
-void SettingsWidget::updateAndShowBannedContactsSlot()
+void
+SettingsWidget::updateAndShowBannedContactsSlot()
 {
     if (!ui->bannedContactsListWidget->isVisible()) {
         ui->bannedContactsBtn->setIcon(QIcon(":/images/icons/round-arrow_drop_down-24px.svg"));
@@ -808,7 +860,8 @@ void SettingsWidget::updateAndShowBannedContactsSlot()
     }
 }
 
-void SettingsWidget::showLinkDevSlot()
+void
+SettingsWidget::showLinkDevSlot()
 {
     if (!advancedSettingsWidget_) {
         delete advancedSettingsWidget_;
@@ -818,7 +871,8 @@ void SettingsWidget::showLinkDevSlot()
     linkDeviceDialog->exec();
 }
 
-void SettingsWidget::connectCurrentAccount()
+void
+SettingsWidget::connectCurrentAccount()
 {
     disconnectAccountConnections();
 
@@ -842,19 +896,22 @@ void SettingsWidget::connectCurrentAccount()
         this, &SettingsWidget::updateAndShowDevicesSlot, Qt::UniqueConnection));
 }
 
-void SettingsWidget::disconnectAccountConnections()
+void
+SettingsWidget::disconnectAccountConnections()
 {
     for (const auto& c : accountConnections_) { disconnect(c); }
 }
 
 // *************************  General Settings  *************************
 
-QString getRecordQualityString(int value)
+QString
+getRecordQualityString(int value)
 {
     return value ? QString::number(static_cast<float>(value) / 100, 'f', 1) + " Mbps" : "Default";
 }
 
-void SettingsWidget::populateGeneralSettings()
+void
+SettingsWidget::populateGeneralSettings()
 {
     QSettings settings("jami.net", "Jami");
 
@@ -897,26 +954,30 @@ void SettingsWidget::populateGeneralSettings()
 #endif
 }
 
-void SettingsWidget::slotSetNotifications(bool state)
+void
+SettingsWidget::slotSetNotifications(bool state)
 {
     QSettings settings("jami.net", "Jami");
     settings.setValue(SettingsKey::enableNotifications, state);
 }
 
-void SettingsWidget::slotSetClosedOrMin(bool state)
+void
+SettingsWidget::slotSetClosedOrMin(bool state)
 {
     QSettings settings("jami.net", "Jami");
     settings.setValue(SettingsKey::closeOrMinimized, state);
 }
 
-void SettingsWidget::checkForUpdateSlot()
+void
+SettingsWidget::checkForUpdateSlot()
 {
 #ifdef Q_OS_WIN
     Utils::checkForUpdates(true, this);
 #endif
 }
 
-void SettingsWidget::slotSetUpdateAutomatic(bool state)
+void
+SettingsWidget::slotSetUpdateAutomatic(bool state)
 {
 #ifdef Q_OS_WIN
     QSettings settings("jami.net", "Jami");
@@ -924,7 +985,8 @@ void SettingsWidget::slotSetUpdateAutomatic(bool state)
 #endif
 }
 
-void SettingsWidget::openDownloadFolderSlot()
+void
+SettingsWidget::openDownloadFolderSlot()
 {
     QSettings settings("jami.net", "Jami");
     QString dir = QFileDialog::getExistingDirectory(this, tr("Select A Folder For Your Downloads"),
@@ -937,7 +999,8 @@ void SettingsWidget::openDownloadFolderSlot()
     }
 }
 
-void SettingsWidget::openRecordFolderSlot()
+void
+SettingsWidget::openRecordFolderSlot()
 {
     QString dir = QFileDialog::getExistingDirectory(
         this,
@@ -954,22 +1017,26 @@ void SettingsWidget::openRecordFolderSlot()
     }
 }
 
-void SettingsWidget::slotAlwaysRecordingClicked(bool state)
+void
+SettingsWidget::slotAlwaysRecordingClicked(bool state)
 {
     LRCInstance::avModel().setAlwaysRecord(state);
 }
 
-void SettingsWidget::slotRecordPreviewClicked(bool state)
+void
+SettingsWidget::slotRecordPreviewClicked(bool state)
 {
     LRCInstance::avModel().setRecordPreview(state);
 }
 
-void SettingsWidget::slotRecordQualitySliderValueChanged(int value)
+void
+SettingsWidget::slotRecordQualitySliderValueChanged(int value)
 {
     ui->recordQualityValueLabel->setText(getRecordQualityString(value));
 }
 
-void SettingsWidget::slotRecordQualitySliderSliderReleased()
+void
+SettingsWidget::slotRecordQualitySliderSliderReleased()
 {
     auto value = ui->recordQualitySlider->value();
     // 0 - 500 -> 0 - 50000
@@ -978,7 +1045,8 @@ void SettingsWidget::slotRecordQualitySliderSliderReleased()
 
 // *************************  Audio/Visual Settings  ************recordQuality*************
 
-void SettingsWidget::populateAVSettings()
+void
+SettingsWidget::populateAVSettings()
 {
     // audio input devices
     disconnect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -1018,7 +1086,8 @@ void SettingsWidget::populateAVSettings()
     ui->hardwareAccelCheckBox->setChecked(encodeAccel);
 }
 
-void SettingsWidget::slotAudioOutputIndexChanged(int index)
+void
+SettingsWidget::slotAudioOutputIndexChanged(int index)
 {
     stopAudioMeter(false);
     auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole)
@@ -1027,7 +1096,8 @@ void SettingsWidget::slotAudioOutputIndexChanged(int index)
     startAudioMeter(false);
 }
 
-void SettingsWidget::slotAudioInputIndexChanged(int index)
+void
+SettingsWidget::slotAudioInputIndexChanged(int index)
 {
     stopAudioMeter(false);
     auto selectedInputDeviceName = ui->inputComboBox->itemData(index, Qt::DisplayRole)
@@ -1036,7 +1106,8 @@ void SettingsWidget::slotAudioInputIndexChanged(int index)
     startAudioMeter(false);
 }
 
-void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
+void
+SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
     std::string deviceName = ui->deviceBox->itemData(index, Qt::DisplayRole)
         .toString()
@@ -1055,7 +1126,8 @@ void SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
     } catch (...) {}
 }
 
-void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
+void
+SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
 {
     auto resolution = formatIndexList_.at(index).first;
     auto rate = formatIndexList_.at(index).second;
@@ -1068,21 +1140,24 @@ void SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
     } catch (...) {}
 }
 
-void SettingsWidget::startPreviewing(bool force)
+void
+SettingsWidget::startPreviewing(bool force)
 {
     LRCInstance::renderer()->startPreviewing(force);
     ui->previewUnavailableLabel->hide();
     ui->videoLayoutWidget->show();
 }
 
-void SettingsWidget::stopPreviewing()
+void
+SettingsWidget::stopPreviewing()
 {
     if (!LRCInstance::hasVideoCall()) {
         LRCInstance::renderer()->stopPreviewing();
     }
 }
 
-void SettingsWidget::setFormatListForDevice(const std::string& device)
+void
+SettingsWidget::setFormatListForDevice(const std::string& device)
 {
     auto deviceCapabilities = LRCInstance::avModel().getDeviceCapabilities(device);
     if (deviceCapabilities.size() == 0) {
@@ -1117,7 +1192,8 @@ void SettingsWidget::setFormatListForDevice(const std::string& device)
     }
 }
 
-void SettingsWidget::slotSetHardwareAccel(bool state)
+void
+SettingsWidget::slotSetHardwareAccel(bool state)
 {
     LRCInstance::avModel().setHardwareAcceleration(state);
 }
@@ -1136,13 +1212,15 @@ SettingsWidget::slotAudioMeter(const std::string& id, float level)
     }
 }
 
-void SettingsWidget::startAudioMeter(bool async)
+void
+SettingsWidget::startAudioMeter(bool async)
 {
     ui->audioInputMeter->start();
     LRCInstance::startAudioMeter(async);
 }
 
-void SettingsWidget::stopAudioMeter(bool async)
+void
+SettingsWidget::stopAudioMeter(bool async)
 {
     ui->audioInputMeter->stop();
     LRCInstance::stopAudioMeter(async);
