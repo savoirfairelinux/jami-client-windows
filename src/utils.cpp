@@ -581,6 +581,13 @@ Utils::isContactValid(const std::string& contactUid, const lrc::api::Conversatio
             !contact.profileInfo.uri.empty();
 }
 
+bool Utils::getReplyMessageBox(QWidget* widget, const QString& title, const QString& text)
+{
+    if (QMessageBox::question(widget, title, text, QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+        return true;
+    return false;
+}
+
 QImage
 Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::Info& accountInfo)
 {
