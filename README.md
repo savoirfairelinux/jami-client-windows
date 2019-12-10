@@ -42,32 +42,33 @@ makensis ring.nsi
 
 ## Linux
 
-For now, this process is experimental. The best way to do that is:
+Note: LRC should be compiled or installed on your system.
 
-1. Compile the daemon and LRC as specified in these projects (see the respective repositories or https://git.jami.net/savoirfairelinux/ring-project/wikis/technical/Build-instructions).
-2. Install needed dependencies (TBD):
-    + For Fedora:
+- For Debian based:
 ```bash
-sudo dnf install qt5-qtsvg-devel qt5-qtwebengine-devel qt5-multimedia-devel
+    sudo apt install qtmultimedia5-dev libqt5svg5* qtwebengine5-dev qtdeclarative5-dev pandoc
 ```
-3. If you are not using the `ring-project` repository, you have to define the `LRC` environment variable to contains the install directory for `LRC`. Also, you will have to setup `LD_LIBRARY_PATH` if your install directory is a custom one.
-4. Then, build the client:
-
+- For Fedora:
 ```bash
-mkdir build
-cd build
-qmake-qt5 ../jami-qt.pro
-make -j 9
+    sudo dnf install qt5-qtsvg-devel qt5-qtwebengine-devel qt5-multimedia-devel qt5-qtdeclarative-devel pandoc
 ```
 
-5. Then, you are finally ready to launch `jami-qt` in your `build` directory.
+**Build Windows Client**
 
-### Known issues
+```bash
+    cd ring-client-windows
+    pandoc -f markdown -t html5 -o changelog.html changelog.md
+    mkdir build
+    cd build
+    qmake -qt=qt5 ../jami-qt.pro
+    make -j9
+```
+- Then, you are finally ready to launch jami-qt in your build directory.
 
-1. The build system is not straight forward
-2. Video doesn't work
-3. Can't maximize/minimize window
-4. Crash if the daemon is not started and installed.
+#### Debugging
+
+Compile the client with `BUILD=Debug` and compile LibRingClient with
+`-DCMAKE_BUILD_TYPE=Debug`
 
 ## Mac OS
 
