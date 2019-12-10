@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4958b528_e24485d8",
+        "filename": "make-client.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2019-12-10T16:59:43Z",
+      "side": 1,
+      "message": "shouldn\u0027t ever need this here I think",
+      "range": {
+        "startLine": 42,
+        "startChar": 66,
+        "endLine": 42,
+        "endChar": 83
+      },
+      "revId": "48e5e3914af44f88051da742f098b04ad0d0d47a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
