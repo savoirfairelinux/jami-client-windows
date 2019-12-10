@@ -138,32 +138,41 @@ MessageWebView::~MessageWebView()
 {
 }
 
-void MessageWebView::dragEnterEvent(QDragEnterEvent* event)
+void
+MessageWebView::dragEnterEvent(QDragEnterEvent* event)
 {
     event->accept();
     dragDroplabel_->show();
 }
-void MessageWebView::dragLeaveEvent(QDragLeaveEvent* event)
-{
-    event->accept();
-}
-void MessageWebView::dragMoveEvent(QDragMoveEvent* event)
-{
-    event->accept();
-}
-void MessageWebView::dropEvent(QDropEvent* event)
+
+void
+MessageWebView::dragLeaveEvent(QDragLeaveEvent* event)
 {
     event->accept();
 }
 
-void MessageWebView::resizeEvent(QResizeEvent *event)
+void
+MessageWebView::dragMoveEvent(QDragMoveEvent* event)
+{
+    event->accept();
+}
+
+void
+MessageWebView::dropEvent(QDropEvent* event)
+{
+    event->accept();
+}
+
+void
+MessageWebView::resizeEvent(QResizeEvent *event)
 {
     event->accept();
     // resize label as messagewebview resizes
     dragDroplabel_->setGeometry(this->x(),this->y(),this->width(),this->height());
 }
 
-bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
+bool
+MessageWebView::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched != dragDroplabel_) {
         return false;
@@ -206,7 +215,8 @@ bool MessageWebView::eventFilter(QObject *watched, QEvent *event)
     }
 }
 
-void MessageWebView::setMessagesContent(const QString& text)
+void
+MessageWebView::setMessagesContent(const QString& text)
 {
     page()->runJavaScript(QStringLiteral("replaceText(`%1`)").arg(text));
 }
@@ -237,19 +247,22 @@ MessageWebView::setMessagesFileContent(const QString &path)
     page()->runJavaScript(param);
 }
 
-void MessageWebView::copySelectedText(QClipboard* clipboard)
+void
+MessageWebView::copySelectedText(QClipboard* clipboard)
 {
     page()->runJavaScript(QStringLiteral("copy_text_selected();"), [clipboard, this](const QVariant& v) {
         clipboard->setText(v.toString());
     });
 }
 
-bool MessageWebView::textSelected()
+bool
+MessageWebView::textSelected()
 {
     return textSelected_;
 }
 
-void MessageWebView::runJsText()
+void
+MessageWebView::runJsText()
 {
     page()->runJavaScript(QStringLiteral("isTextSelected();"), [&, this](const QVariant &val) {
         textSelected_ = val.toBool();
@@ -297,7 +310,8 @@ MessageWebView::setRecordButtonsVisibility(bool visible)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
-void MessageWebView::buildView()
+void
+MessageWebView::buildView()
 {
     auto html = Utils::QByteArrayFromFile(":/chatview.html");
     page()->setHtml(html, QUrl(":/chatview.html"));
@@ -358,7 +372,8 @@ MessageWebView::removeStyleSheet(const QString &name)
     page()->scripts().remove(script);
 }
 
-void MessageWebView::clear()
+void
+MessageWebView::clear()
 {
     QString s = QString::fromLatin1("clearMessages();");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
@@ -484,6 +499,14 @@ MessageWebView::setSendMessageContent(const QString& content)
 {
     QString s = QString::fromLatin1("setSendMessageContent(`%1`);")
         .arg(content);
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
+void
+MessageWebView::setMessageBarInputAutoFocus(bool setAutoFocus)
+{
+    QString s = QString::fromLatin1("setMessageBarInputAutoFocus(%1);")
+        .arg(setAutoFocus ? "true" : "false");
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
