@@ -28,6 +28,12 @@ enum ScreenEnum {
     END
 };
 
+enum SettingsMenu {
+    Account,
+    General,
+    Media
+};
+
 class NavWidget : public QWidget
 {
     Q_OBJECT
@@ -41,6 +47,7 @@ public:
 
 signals:
     void NavigationRequested(ScreenEnum screen);
+    void NavigationSettingsPageRequested(SettingsMenu settingsPage);
 
 protected slots:
     virtual void slotAccountListChanged() = 0;
