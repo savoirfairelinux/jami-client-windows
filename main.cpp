@@ -19,6 +19,8 @@
 
 #include "mainwindow.h"
 
+#include "testopengldialog.h"
+
 #include "accountmigrationdialog.h"
 #include "globalinstances.h"
 #include "networkmanager.h"
@@ -123,181 +125,184 @@ main(int argc, char* argv[])
 
     QApplication a(newArgc, newArgv);
 
-    QCoreApplication::setApplicationName("Ring");
-    QCoreApplication::setOrganizationDomain("jami.net");
+//    QCoreApplication::setApplicationName("Ring");
+//    QCoreApplication::setOrganizationDomain("jami.net");
+//
+//    QCryptographicHash appData(QCryptographicHash::Sha256);
+//    appData.addData(QApplication::applicationName().toUtf8());
+//    appData.addData(QApplication::organizationDomain().toUtf8());
+//    RunGuard guard(appData.result());
+//    if (!guard.tryToRun()) {
+//        return 0;
+//    }
+//
+//    for (auto string : QCoreApplication::arguments()) {
+//        if (string == "-d" || string == "--debug") {
+//            consoleDebug();
+//        }
+//    }
+//
+//    Utils::removeOldVersions();
+//
+//    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
+//    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+//
+//    auto startMinimized = false;
+//    QString uri = "";
+//
+//    auto appDir = qApp->applicationDirPath() + "/";
+//    const auto locale_name = QLocale::system().name();
+//    const auto locale_lang = locale_name.split('_')[0];
+//
+//    QTranslator qtTranslator_lang;
+//    QTranslator qtTranslator_name;
+//    if (locale_name != locale_lang) {
+//        if (qtTranslator_lang.load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+//            a.installTranslator(&qtTranslator_lang);
+//    }
+//    qtTranslator_name.load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+//    a.installTranslator(&qtTranslator_name);
+//
+//    QTranslator lrcTranslator_lang;
+//    QTranslator lrcTranslator_name;
+//    if (locale_name != locale_lang) {
+//        if (lrcTranslator_lang.load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
+//            a.installTranslator(&lrcTranslator_lang);
+//    }
+//    if (lrcTranslator_name.load(appDir + "share/libringclient/translations/lrc_" + locale_name))
+//        a.installTranslator(&lrcTranslator_name);
+//
+//    QTranslator mainTranslator_lang;
+//    QTranslator mainTranslator_name;
+//    if (locale_name != locale_lang) {
+//        if (mainTranslator_lang.load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
+//            a.installTranslator(&mainTranslator_lang);
+//    }
+//    if (mainTranslator_name.load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
+//        a.installTranslator(&mainTranslator_name);
+//
+//    QFont font;
+//    font.setFamily("Segoe UI");
+//    a.setFont(font);
+//
+//#ifndef DEBUG_STYLESHEET
+//    QFile file(":/stylesheet.css");
+//    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+//        a.setStyleSheet(file.readAll());
+//        file.close();
+//    }
+//#endif
+//
+//#if defined _MSC_VER && !COMPILE_ONLY
+//    gnutls_global_init();
+//#endif
+//
+//    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
+//
+//    SplashScreen* splash = new SplashScreen();
+//    std::atomic_bool isMigrating(false);
+//    LRCInstance::init(
+//        [&splash, &a, &isMigrating] {
+//            splash->setupUI(
+//                QPixmap(":/images/logo-jami-standard-coul.png"),
+//                QString("Jami - ") + QObject::tr("Migration needed"),
+//                QObject::tr("Migration in progress... This may take a while."),
+//                QColor(232, 232, 232)
+//            );
+//            splash->show();
+//            isMigrating = true;
+//            while (isMigrating) {
+//                a.processEvents();
+//            }
+//        },
+//        [&splash, &isMigrating] {
+//            while (!isMigrating) {
+//                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+//            }
+//            isMigrating = false;
+//        });
+//    splash->hide();
+//    LRCInstance::subscribeToDebugReceived();
+//    LRCInstance::getAPI().holdConferences = false;
+//
+//    QDir logPath(QStandardPaths::writableLocation(
+//        QStandardPaths::AppLocalDataLocation));
+//    // since logPath will be .../Ring, we use cdUp to remove it.
+//    logPath.cdUp();
+//    QFile debugFile(logPath.absolutePath() + "/jami/jami.log");
+//
+//    for (auto string : QCoreApplication::arguments()) {
+//        if (string.startsWith("jami:")) {
+//            uri = string;
+//        } else {
+//            if (string == "-m" || string == "--minimized") {
+//                startMinimized = true;
+//            }
+//            auto dbgFile = string == "-f" || string == "--file";
+//            auto dbgConsole = string == "-c" || string == "--vsconsole";
+//            if (dbgFile || dbgConsole) {
+//                if (dbgFile) {
+//                    debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
+//                    debugFile.close();
+//                    fileDebug(debugFile);
+//                }
+//#ifdef _MSC_VER
+//                if (dbgConsole) {
+//                    vsConsoleDebug();
+//                }
+//#endif
+//            }
+//        }
+//    }
+//
+//    auto accountList = LRCInstance::accountModel().getAccountList();
+//
+//    for (const std::string& i : accountList) {
+//        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
+//        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+//            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
+//            int status = dialog->exec();
+//
+//            //migration failed
+//            if (!status) {
+//#ifdef Q_OS_WIN
+//                FreeConsole();
+//#endif
+//                exitApp(guard);
+//                return status;
+//            }
+//        }
+//    }
+//
+//    splash->finish(&MainWindow::instance());
+//    splash->deleteLater();
+//
+//    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+//
+//    QSettings settings("jami.net", "Jami");
+//    if (not startMinimized) {
+//        if (settings.value(SettingsKey::hasRun) == 0) {
+//            if(LRCInstance::accountModel().getAccountList().size() != 0)
+//                MainWindow::instance().showMaximized();
+//            QTimer::singleShot(100,
+//                [] {
+//                    QSettings settings("jami.net", "Jami");
+//                    settings.setValue(SettingsKey::hasRun, 1);
+//                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+//                    aboutDialog->getContainer()->exec();
+//                });
+//        } else {
+//            MainWindow::instance().showWindow();
+//        }
+//    } else {
+//        MainWindow::instance().showMinimized();
+//        MainWindow::instance().hide();
+//    }
+//
+//    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
-    QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QApplication::applicationName().toUtf8());
-    appData.addData(QApplication::organizationDomain().toUtf8());
-    RunGuard guard(appData.result());
-    if (!guard.tryToRun()) {
-        return 0;
-    }
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string == "-d" || string == "--debug") {
-            consoleDebug();
-        }
-    }
-
-    Utils::removeOldVersions();
-
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
-    auto startMinimized = false;
-    QString uri = "";
-
-    auto appDir = qApp->applicationDirPath() + "/";
-    const auto locale_name = QLocale::system().name();
-    const auto locale_lang = locale_name.split('_')[0];
-
-    QTranslator qtTranslator_lang;
-    QTranslator qtTranslator_name;
-    if (locale_name != locale_lang) {
-        if (qtTranslator_lang.load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-            a.installTranslator(&qtTranslator_lang);
-    }
-    qtTranslator_name.load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    a.installTranslator(&qtTranslator_name);
-
-    QTranslator lrcTranslator_lang;
-    QTranslator lrcTranslator_name;
-    if (locale_name != locale_lang) {
-        if (lrcTranslator_lang.load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
-            a.installTranslator(&lrcTranslator_lang);
-    }
-    if (lrcTranslator_name.load(appDir + "share/libringclient/translations/lrc_" + locale_name))
-        a.installTranslator(&lrcTranslator_name);
-
-    QTranslator mainTranslator_lang;
-    QTranslator mainTranslator_name;
-    if (locale_name != locale_lang) {
-        if (mainTranslator_lang.load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
-            a.installTranslator(&mainTranslator_lang);
-    }
-    if (mainTranslator_name.load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
-        a.installTranslator(&mainTranslator_name);
-
-    QFont font;
-    font.setFamily("Segoe UI");
-    a.setFont(font);
-
-#ifndef DEBUG_STYLESHEET
-    QFile file(":/stylesheet.css");
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        a.setStyleSheet(file.readAll());
-        file.close();
-    }
-#endif
-
-#if defined _MSC_VER && !COMPILE_ONLY
-    gnutls_global_init();
-#endif
-
-    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
-
-    SplashScreen* splash = new SplashScreen();
-    std::atomic_bool isMigrating(false);
-    LRCInstance::init(
-        [&splash, &a, &isMigrating] {
-            splash->setupUI(
-                QPixmap(":/images/logo-jami-standard-coul.png"),
-                QString("Jami - ") + QObject::tr("Migration needed"),
-                QObject::tr("Migration in progress... This may take a while."),
-                QColor(232, 232, 232)
-            );
-            splash->show();
-            isMigrating = true;
-            while (isMigrating) {
-                a.processEvents();
-            }
-        },
-        [&splash, &isMigrating] {
-            while (!isMigrating) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            }
-            isMigrating = false;
-        });
-    splash->hide();
-    LRCInstance::subscribeToDebugReceived();
-    LRCInstance::getAPI().holdConferences = false;
-
-    QDir logPath(QStandardPaths::writableLocation(
-        QStandardPaths::AppLocalDataLocation));
-    // since logPath will be .../Ring, we use cdUp to remove it.
-    logPath.cdUp();
-    QFile debugFile(logPath.absolutePath() + "/jami/jami.log");
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string.startsWith("jami:")) {
-            uri = string;
-        } else {
-            if (string == "-m" || string == "--minimized") {
-                startMinimized = true;
-            }
-            auto dbgFile = string == "-f" || string == "--file";
-            auto dbgConsole = string == "-c" || string == "--vsconsole";
-            if (dbgFile || dbgConsole) {
-                if (dbgFile) {
-                    debugFile.open(QIODevice::WriteOnly | QIODevice::Truncate);
-                    debugFile.close();
-                    fileDebug(debugFile);
-                }
-#ifdef _MSC_VER
-                if (dbgConsole) {
-                    vsConsoleDebug();
-                }
-#endif
-            }
-        }
-    }
-
-    auto accountList = LRCInstance::accountModel().getAccountList();
-
-    for (const std::string& i : accountList) {
-        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-            int status = dialog->exec();
-
-            //migration failed
-            if (!status) {
-#ifdef Q_OS_WIN
-                FreeConsole();
-#endif
-                exitApp(guard);
-                return status;
-            }
-        }
-    }
-
-    splash->finish(&MainWindow::instance());
-    splash->deleteLater();
-
-    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
-
-    QSettings settings("jami.net", "Jami");
-    if (not startMinimized) {
-        if (settings.value(SettingsKey::hasRun) == 0) {
-            if(LRCInstance::accountModel().getAccountList().size() != 0)
-                MainWindow::instance().showMaximized();
-            QTimer::singleShot(100,
-                [] {
-                    QSettings settings("jami.net", "Jami");
-                    settings.setValue(SettingsKey::hasRun, 1);
-                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
-                    aboutDialog->getContainer()->exec();
-                });
-        } else {
-            MainWindow::instance().showWindow();
-        }
-    } else {
-        MainWindow::instance().showMinimized();
-        MainWindow::instance().hide();
-    }
-
-    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
+    TestOpenGLDialog diaGL;
+    diaGL.show();
 
     auto ret = a.exec();
 
