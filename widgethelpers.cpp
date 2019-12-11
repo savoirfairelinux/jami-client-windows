@@ -125,7 +125,8 @@ VignetteWidget::VignetteWidget(QWidget* parent)
     : QWidget(parent)
 {
     setAttribute(Qt::WA_NoSystemBackground);
-    fadeOutAnimation_ = new FadeAnimation(this, fadeTime_);
+    geometryAnimation_ = new QPropertyAnimation(this, "geometry");
+    geometryAnimation_->setDuration(1000);
 }
 
 VignetteWidget::~VignetteWidget()
@@ -134,18 +135,29 @@ VignetteWidget::~VignetteWidget()
 void
 VignetteWidget::slotWillFadeOut()
 {
-    fadeOutAnimation_->setDirection(QAbstractAnimation::Direction::Forward);
-    fadeOutAnimation_->start();
+    geometryAnimation_->setDirection(QAbstractAnimation::Direction::Forward);
+    geometryAnimation_->start();
 }
 
 void
 VignetteWidget::slotWillResetOpacity()
 {
-    if (fadeOutAnimation_->direction() != QAbstractAnimation::Direction::Forward) {
+    if (geometryAnimation_->direction() != QAbstractAnimation::Direction::Forward) {
         return;
     }
-    fadeOutAnimation_->setDirection(QAbstractAnimation::Direction::Backward);
-    fadeOutAnimation_->start();
+    geometryAnimation_->setDirection(QAbstractAnimation::Direction::Backward);
+    geometryAnimation_->start();
+}
+
+void
+VignetteWidget::updateGeometry(QSize size)
+{
+    resize(size);
+    QRect endRect = rect();
+    Utils::whileBlocking(geometryAnimation_)->setStartValue(endRect);
+    endRect.setHeight(endRect.height() + height_);
+    endRect.setY(endRect.y() - height_);
+    Utils::whileBlocking(geometryAnimation_)->setEndValue(endRect);
 }
 
 void
