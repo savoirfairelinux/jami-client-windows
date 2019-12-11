@@ -102,6 +102,7 @@ public:
 public slots:
     void slotWillFadeOut();
     void slotWillResetOpacity();
+    void updateGeometry(QSize size);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -109,7 +110,7 @@ protected:
 private:
     void fillRoundRectPath(QPainter& painter, const QLinearGradient& gradient);
 
-    FadeAnimation* fadeOutAnimation_;
+    QPropertyAnimation* geometryAnimation_;
     constexpr static qreal cornerRadius_ = 10.0f;
     quint64 height_{ 128 };
     quint64 fadeTime_{ 1000 };
