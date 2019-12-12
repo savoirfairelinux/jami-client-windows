@@ -57,7 +57,7 @@ PreviewWidget::paintEvent(QPaintEvent* e)
 
     auto previewImage = LRCInstance::renderer()->getPreviewFrame();
     if (previewImage) {
-        QImage scaledPreview;
+        //QImage scaledPreview;
         auto aspectRatio =
             static_cast<qreal>(previewImage->width()) /
             static_cast<qreal>(previewImage->height());
@@ -74,10 +74,10 @@ PreviewWidget::paintEvent(QPaintEvent* e)
         setFixedWidth(previewWidth);
         setFixedHeight(previewHeight);
 
-        scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-        painter.drawImage(this->rect(), scaledPreview);
+        // OpenGL (shader) scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        // OpenGL (draw) painter.drawImage(this->rect(), scaledPreview);
     } else {
-        paintBackground(&painter);
+        // OpenGL (shouldn't be needed after glClear) paintBackground(&painter);
     }
 }
 

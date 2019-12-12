@@ -46,7 +46,7 @@ FrameWrapper::~FrameWrapper()
     }
     sws_freeContext(img_convert_ctx);
     av_free(rgbBuffer);
-    av_frame_free(&pFrameRGB);
+    av_frame_free(&pFrameCorrectFormat);
 }
 
 void
@@ -94,6 +94,12 @@ FrameWrapper::getFrame()
     return image_.get();
 }
 
+AVFrame*
+FrameWrapper::getAVFrame()
+{
+    return frame_.get();
+}
+
 bool
 FrameWrapper::isRendering()
 {
@@ -132,38 +138,37 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
         QMutexLocker lock(&mutex_);
 
         auto avFrame = renderer_->currentAVFrame();
-        frame_ = avFrame.get();
-        if(!frame_ || !frame_->width || !frame_->height) {
+        AVFrame* frameTem_ = avFrame.get();
+        if(!frameTem_ || !frameTem_->width || !frameTem_->height) {
             qDebug() << "AVFrame: this frame does not exist!";
             return;
         }
-        AVPixelFormat currentFormat = AVPixelFormat(frame_->format);
-        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_RGBA;
+        AVPixelFormat currentFormat = AVPixelFormat(frameTem_->format);
+        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_YUV420P;
 
-        av_frame_free(&pFrameRGB);
-        pFrameRGB = av_frame_alloc();
-        int numBytes = avpicture_get_size(targetFormat, frame_->width,frame_->height);
-        av_free(rgbBuffer);
-        rgbBuffer = (uint8_t*) av_malloc(numBytes * sizeof(uint8_t));
-        avpicture_fill((AVPicture*) pFrameRGB, rgbBuffer,targetFormat,frame_->width, frame_->height);
+        if(currentFormat == targetFormat) {
+            frame_.reset(frameTem_);
+        } else {
+            qWarning() << "The Video format is not YUV 420 and it's being converted!";
+            av_frame_free(&pFrameCorrectFormat);
+            pFrameCorrectFormat = av_frame_alloc();
+            int numBytes = avpicture_get_size(targetFormat, frameTem_->width, frameTem_->height);
+            av_free(rgbBuffer);
+            rgbBuffer = (uint8_t*)av_malloc(numBytes * sizeof(uint8_t));
+            avpicture_fill((AVPicture*)pFrameCorrectFormat, rgbBuffer, targetFormat, frameTem_->width, frameTem_->height);
 
-        // set up SWS context, which is used to convert the video format
-        sws_freeContext(img_convert_ctx);
-        img_convert_ctx = sws_getContext(frame_->width, frame_->height, currentFormat, frame_->width, frame_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
+            // set up SWS context, which is used to convert the video format
+            sws_freeContext(img_convert_ctx);
+            img_convert_ctx = sws_getContext(frameTem_->width, frameTem_->height, currentFormat, frameTem_->width, frameTem_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
 
 
-        //convert the format from YUV to RGB with sws_scale
-        sws_scale(img_convert_ctx,
-                frame_->data,
-                frame_->linesize, 0, frame_->height, pFrameRGB->data,
-                pFrameRGB->linesize);
-
-        image_.reset(
-                new QImage((uchar*) std::move(rgbBuffer),
-                frame_->width,
-                frame_->height,
-                QImage::Format_RGBA8888)
-            );
+            //convert the format from YUV to RGB with sws_scale
+            sws_scale(img_convert_ctx,
+                frameTem_->data,
+                frameTem_->linesize, 0, frameTem_->height, pFrameCorrectFormat->data,
+                pFrameCorrectFormat->linesize);
+            frame_.reset(pFrameCorrectFormat);
+        }
     }
 
     emit frameUpdated(id);
@@ -244,6 +249,12 @@ QImage*
 RenderManager::getPreviewFrame()
 {
     return previewFrameWrapper_->getFrame();
+}
+
+AVFrame*
+RenderManager::getPreviewAVFrame()
+{
+    return previewFrameWrapper_->getAVFrame();
 }
 
 void RenderManager::stopPreviewing(bool async)

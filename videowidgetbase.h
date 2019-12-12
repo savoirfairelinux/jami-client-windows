@@ -22,6 +22,12 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QWidget>
+#include <QOpenGLFunctions>
+#include <QOpenGLWidget>
+#include <QOpenGLTexture>
+#include <QOpenGLShaderProgram>
+#include <QOpenGLBuffer>
+
 
 // The base for video widgets
 class VideoWidgetBase : public QWidget {
@@ -47,5 +53,54 @@ protected:
     virtual void showEvent(QShowEvent* e) override;
 
     virtual void paintBackground(QPainter* painter) = 0;
+
+};
+
+struct YUVFrameTexture
+{
+    QOpenGLTexture* Ytex;
+    QOpenGLTexture* Utex;
+    QOpenGLTexture* Vtex;
+};
+
+class GLVideoWidgetBase : public QOpenGLWidget, protected QOpenGLFunctions {
+    Q_OBJECT;
+
+public:
+    explicit GLVideoWidgetBase(QColor bgColor = Qt::transparent,
+        QWidget* parent = 0);
+    virtual ~GLVideoWidgetBase();
+
+    /**
+     * Repaints the widget while preventing update/repaint to queue
+     * for its parent. This is needed when geometry changes occur,
+     * to disable image tearing.
+     */
+    void forceRepaint();
+
+signals:
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void initializeGL() override;
+    virtual void paintGL() override;
+    virtual void resizeGL(int w, int h) override;
+
+    void initializeTexture();
+    void initializeShaderProgram();
+    void setUpBuffers();
+
+
+    virtual void hideEvent(QHideEvent* e) override;
+    virtual void showEvent(QShowEvent* e) override;
+
+    virtual void paintBackground(QPainter* painter) = 0;
+
+protected:
+    QOpenGLShaderProgram* shaderProgram_;
+    QOpenGLBuffer* vbo_;
+    QOpenGLBuffer* ibo_;
+    YUVFrameTexture frameTex_;
+    bool frameToBeUpdated = false;
 
 };
