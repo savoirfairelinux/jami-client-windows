@@ -51,6 +51,25 @@ PreviewWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+GLPreviewWidget::GLPreviewWidget(QWidget* parent)
+    : GLVideoWidgetBase(Qt::transparent, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewD3DFrameUpdated,
+        [this]() {
+            prepareFrameToDisplay(LRCInstance::renderer()->getPreviewAVFrame());
+            update();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            prepareFrameToDisplay(LRCInstance::renderer()->getPreviewAVFrame());
+            update();
+        });
+}
+
+GLPreviewWidget::~GLPreviewWidget()
+{
+}
+
 void
 PreviewWidget::paintEvent(QPaintEvent* e)
 {
@@ -60,7 +79,7 @@ PreviewWidget::paintEvent(QPaintEvent* e)
 
     auto previewImage = LRCInstance::renderer()->getPreviewFrame();
     if (previewImage) {
-        QImage scaledPreview;
+        //QImage scaledPreview;
         auto aspectRatio =
             static_cast<qreal>(previewImage->width()) /
             static_cast<qreal>(previewImage->height());
@@ -77,10 +96,10 @@ PreviewWidget::paintEvent(QPaintEvent* e)
         setFixedWidth(previewWidth);
         setFixedHeight(previewHeight);
 
-        scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-        painter.drawImage(this->rect(), scaledPreview);
+        // OpenGL (shader) scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        // OpenGL (draw) painter.drawImage(this->rect(), scaledPreview);
     } else {
-        paintBackground(&painter);
+        // OpenGL (shouldn't be needed after glClear) paintBackground(&painter);
     }
 }
 
@@ -239,6 +258,86 @@ VideoCallPreviewWidget::getTopLeft()
             containerSize_.width() - margin_ - this->width(),
             containerSize_.height() - margin_ - this->height());
     }
+}
+
+GLVideoCallPreviewWidget::GLVideoCallPreviewWidget(QWidget* parent)
+    : GLPreviewWidget(parent)
+{
+}
+
+GLVideoCallPreviewWidget::~GLVideoCallPreviewWidget()
+{
+}
+
+void
+GLVideoCallPreviewWidget::setContainerSize(const QSize& size)
+{
+    containerSize_ = size;
+}
+
+void
+GLVideoCallPreviewWidget::setLocation(const PreviewSnap location)
+{
+    location_ = location;
+}
+
+QPoint
+GLVideoCallPreviewWidget::getTopLeft()
+{
+    switch (location_) {
+    case PreviewSnap::NW:
+        return QPoint(
+            margin_,
+            margin_);
+    case PreviewSnap::NE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            margin_);
+    case PreviewSnap::SW:
+        return QPoint(
+            margin_,
+            containerSize_.height() - margin_ - this->height());
+    case PreviewSnap::SE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            containerSize_.height() - margin_ - this->height());
+    }
+}
+
+QSize
+GLVideoCallPreviewWidget::getScaledSize(int sourceWidth, int sourceHeight)
+{
+    auto invAspectRatio =
+        static_cast<qreal>(sourceHeight) /
+        static_cast<qreal>(sourceWidth);
+    int newPreviewWidth = containerSize_.width() * containerRatio_;
+    int newPreviewHeight = newPreviewWidth * invAspectRatio;
+    return QSize(newPreviewWidth, newPreviewHeight);
+}
+
+void
+GLVideoCallPreviewWidget::setupGeometry(const QSize& newSize)
+{
+    auto currentRect = geometry();
+    currentRect.setSize(newSize);
+    switch (location_) {
+    case PreviewSnap::NW:
+        currentRect.moveTopLeft(QPoint(margin_, margin_));
+        break;
+    case PreviewSnap::NE:
+        currentRect.moveTopRight(QPoint(containerSize_.width() - margin_,
+            margin_));
+        break;
+    case PreviewSnap::SW:
+        currentRect.moveBottomLeft(QPoint(margin_,
+            containerSize_.height() - margin_));
+        break;
+    case PreviewSnap::SE:
+        currentRect.moveBottomRight(QPoint(containerSize_.width() - margin_,
+            containerSize_.height() - margin_));
+        break;
+    }
+    setGeometry(currentRect);
 }
 
 VideoRecordPreviewWidget::VideoRecordPreviewWidget(QWidget* parent)
