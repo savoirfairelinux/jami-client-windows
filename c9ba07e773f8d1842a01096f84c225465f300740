@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabeee7e_6e054174",
+        "filename": "src/callwidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-12-12T17:26:23Z",
+      "side": 1,
+      "message": "cool, will use it",
+      "parentUuid": "dff083cd_6de00b32",
+      "range": {
+        "startLine": 1585,
+        "startChar": 34,
+        "endLine": 1585,
+        "endChar": 45
+      },
+      "revId": "c9ba07e773f8d1842a01096f84c225465f300740",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72e58c90_1e1189e2",
         "filename": "src/callwidget.cpp",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2019-12-12T03:24:30Z",
       "side": 1,
       "message": "Note warning for this, same as gtk client the shortcut is already taken :)\n\nAlso ideally, we don\u0027t need to open settings to be able to do this shortcuts, should be available anywhere in the app.",
+      "range": {
+        "startLine": 318,
+        "startChar": 52,
+        "endLine": 320,
+        "endChar": 45
+      },
+      "revId": "c9ba07e773f8d1842a01096f84c225465f300740",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84f4134_6a06c45d",
+        "filename": "src/settingswidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-12-12T17:26:23Z",
+      "side": 1,
+      "message": "On gtk client, Control + M actually contains two meanings as well, since Control + M to go to the media settings only work when in settings page,\nso I changed the shortcut so that control + m only now only means to go to media settings, but I will make it global",
+      "parentUuid": "6d88353a_dcc57b4e",
       "range": {
         "startLine": 318,
         "startChar": 52,
