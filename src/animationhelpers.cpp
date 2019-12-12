@@ -69,3 +69,17 @@ FadeAnimation::FadeAnimation(QWidget* target,
 
 FadeAnimation::~FadeAnimation()
 {}
+
+SizeAnimation::SizeAnimation(QWidget* target,
+                             const QRect& startRect,
+                             const QRect& endRect,
+                             const quint64 duration)
+    :QPropertyAnimation(target, "geometry")
+{
+    setDuration(duration);
+    setStartValue(startRect);
+    setEndValue(endRect);
+}
+
+SizeAnimation::~SizeAnimation()
+{}
