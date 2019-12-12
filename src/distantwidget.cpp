@@ -24,7 +24,7 @@
 DistantWidget::DistantWidget(QWidget* parent)
     : VideoWidgetBase(Qt::black, parent)
 {
-    connect(LRCInstance::renderer(), &RenderManager::distantFrameUpdated,
+    connect(LRCInstance::renderer(), &RenderManager::d3dDistantFrameUpdated,
         [this](const std::string& id) {
             if (id_ == id) repaint();
         });
@@ -73,3 +73,35 @@ DistantWidget::setRendererId(const std::string& id)
     id_ = id;
     update();
 }
+
+GLDistantWidget::GLDistantWidget(QWidget* parent)
+    :GLVideoWidgetBase(Qt::black, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::d3dDistantFrameUpdated,
+        [this](const std::string& id) {
+            if (id_ == id) {
+                prepareFrameToDisplay(LRCInstance::renderer()->getAVFrame(id_));
+                update();
+            }
+        });
+    connect(LRCInstance::renderer(), &RenderManager::distantRenderingStopped,
+        [this](const std::string& id) {
+            if (id_ == id) {
+                prepareFrameToDisplay(LRCInstance::renderer()->getAVFrame(id_));
+                update();
+            }
+        });
+}
+
+GLDistantWidget::~GLDistantWidget()
+{
+}
+
+void
+GLDistantWidget::setRendererId(const std::string& id)
+{
+    id_ = id;
+    prepareFrameToDisplay(LRCInstance::renderer()->getAVFrame(id_));
+    update();
+}
+
