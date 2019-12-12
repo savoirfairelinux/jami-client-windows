@@ -101,5 +101,7 @@
         <file>images/icons/av_icons/send-24px.svg</file>
         <file>images/icons/av_icons/stop-24px.svg</file>
         <file>images/icons/av_icons/mic-24px.svg</file>
+        <file>shader/YUVConv.frag</file>
+        <file>shader/YUVConv.vert</file>
     </qresource>
 </RCC>
