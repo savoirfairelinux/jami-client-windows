@@ -71,6 +71,8 @@ public:
      */
     QImage* getFrame();
 
+    AVFrame* getAVFrame();
+
     /**
      * Check if the object is updating actively
      */
@@ -87,6 +89,11 @@ signals:
      * @param id of the renderer
      */
     void frameUpdated(const std::string& id);
+    /**
+     * Emitted each time a frame is ready to be displayed.
+     * @param id of the renderer
+     */
+    void glFrameUpdated(const std::string& id);
     /**
      * Emitted once in slotRenderingStopped.
      * @param id of the renderer
@@ -141,8 +148,7 @@ private:
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
 
-
-    AVFrame *pFrameRGB;
+    AVFrame *pFrameCorrectFormat;
     uint8_t * rgbBuffer;
     SwsContext *img_convert_ctx;
 };
@@ -176,6 +182,9 @@ public:
      * @param force if the capture device should be started
      * @param async
      */
+    // TODO: implement get Preview avframe
+    AVFrame* getPreviewAVFrame();
+
     void startPreviewing(bool force = false, bool async = true);
     /**
      * Stop capturing.
@@ -211,6 +220,9 @@ signals:
 
     /* Emitted when the preview has a new frame ready. */
     void previewFrameUpdated();
+
+    /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
+    void previewGLFrameUpdated();
 
     /* Emitted when the preview is stopped. */
     void previewRenderingStopped();
