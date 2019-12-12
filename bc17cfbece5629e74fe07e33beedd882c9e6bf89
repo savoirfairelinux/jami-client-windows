@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64c171cf_36053d52",
+        "filename": "src/callwidget.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2019-12-12T22:56:03Z",
+      "side": 1,
+      "message": "I will explain it to you on tomorrow",
+      "parentUuid": "74f324ff_5e1e1712",
+      "revId": "bc17cfbece5629e74fe07e33beedd882c9e6bf89",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8de9d90c_c5081fb0",
         "filename": "src/callwidget.cpp",
         "patchSetId": 13
