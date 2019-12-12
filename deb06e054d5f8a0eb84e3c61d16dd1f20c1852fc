@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65547979_22249f01",
+        "filename": "src/videooverlay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2019-12-12T22:24:29Z",
+      "side": 1,
+      "message": "const QSize\u0026",
+      "range": {
+        "startLine": 161,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 1
+      },
+      "revId": "deb06e054d5f8a0eb84e3c61d16dd1f20c1852fc",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e921b3_58901deb",
+        "filename": "src/widgethelpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2019-12-12T22:24:29Z",
+      "side": 1,
+      "message": "replace by QPointer?",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "deb06e054d5f8a0eb84e3c61d16dd1f20c1852fc",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
