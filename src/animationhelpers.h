@@ -52,3 +52,14 @@ public:
                            const QEasingCurve curve = QEasingCurve::OutQuad);
     ~FadeAnimation();
 };
+
+class SizeAnimation : public QPropertyAnimation
+{
+    Q_OBJECT
+public:
+    explicit SizeAnimation(QWidget* target,
+                           const QRect& startRect = QRect(),
+                           const QRect& endRect = QRect(),
+                           const quint64 duration = 1000);
+    ~SizeAnimation();
+};

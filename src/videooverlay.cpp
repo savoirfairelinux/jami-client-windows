@@ -83,7 +83,7 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     QObject::connect(oneSecondTimer_, &QTimer::timeout,
                      this, &VideoOverlay::setTime);
     oneSecondTimer_->start(1000);
-    resetOpacity();
+    resetToFadeIn(true);
 
     // close chat panel
     emit setChatVisibility(false);
@@ -155,6 +155,17 @@ VideoOverlay::shouldFadeOut()
                (callInfo.status == lrc::api::call::Status::PAUSED) ||
                contactPicker_->getContainer()->isActiveWindow() ||
                sipInputPanel_->getContainer()->isActiveWindow());
+}
+
+void
+VideoOverlay::updateGeometry(const QSize& size)
+{
+    resize(size);
+    QRect endRect = rect();
+    setFadeOutStartLocation(endRect);
+    endRect.setHeight(endRect.height() + ui->bottomButtons->height() + ui->bottomButtons->height());
+    endRect.setY(endRect.y() - ui->bottomButtons->height() - ui->bottomButtons->height());
+    setFadeOutEndLocation(endRect);
 }
 
 void

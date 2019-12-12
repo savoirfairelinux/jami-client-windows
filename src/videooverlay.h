@@ -49,6 +49,7 @@ public:
     void simulateShowChatview(bool checked);
 
     bool shouldFadeOut() override;
+    void updateGeometry(const QSize& size);
 
 signals:
     void setChatVisibility(bool visible);
