@@ -22,6 +22,15 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QWidget>
+#include <QOpenGLFunctions>
+#include <QOpenGLWidget>
+#include <QOpenGLTexture>
+#include <QOpenGLShaderProgram>
+#include <QOpenGLBuffer>
+
+extern "C" {
+    struct AVFrame;
+}
 
 // The base for video widgets
 class VideoWidgetBase : public QWidget {
@@ -48,4 +57,56 @@ protected:
 
     virtual void paintBackground(QPainter* painter) = 0;
 
+};
+
+struct YUVFrameTexture
+{
+    QOpenGLTexture* Ytex;
+    QOpenGLTexture* Utex;
+    QOpenGLTexture* Vtex;
+};
+
+class GLVideoWidgetBase : public QOpenGLWidget, protected QOpenGLFunctions {
+    Q_OBJECT;
+
+public:
+    explicit GLVideoWidgetBase(QColor bgColor = Qt::transparent,
+        QWidget* parent = 0);
+    virtual ~GLVideoWidgetBase();
+
+    /**
+     * Repaints the widget while preventing update/repaint to queue
+     * for its parent. This is needed when geometry changes occur,
+     * to disable image tearing.
+     */
+    void forceRepaint();
+
+signals:
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void initializeGL() override;
+    virtual void paintGL() override;
+    virtual void resizeGL(int w, int h) override;
+
+    virtual void initializeTexture(QOpenGLTexture* texture, int width, int height);
+    virtual void initializeShaderProgram();
+    virtual void setUpBuffers();
+
+    virtual void prepareFrameToDisplay(AVFrame* frame);
+
+    virtual bool updateTextures(AVFrame* frame);
+
+    virtual void hideEvent(QHideEvent* e) override;
+    virtual void showEvent(QShowEvent* e) override;
+
+    //virtual void paintBackground(QPainter* painter) = 0;
+
+protected:
+    QOpenGLShaderProgram* shaderProgram_;
+    QOpenGLBuffer* vbo_;
+    QOpenGLBuffer* ibo_;
+    YUVFrameTexture frameTex_;
+    bool updateFrameTexture = false;
+    GLfloat angleToRotate = 0.0f;
 };
