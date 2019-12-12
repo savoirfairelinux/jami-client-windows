@@ -19,6 +19,7 @@
 
 #include "animationhelpers.h"
 #include "popupdialog.h"
+#include "utils.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -34,10 +35,11 @@ public:
     explicit FadeOutable(QWidget* parent = nullptr);
     ~FadeOutable();
 
-    void resetOpacity();
+    void resetToFadeIn(bool resetTimer);
 
-    void setFadeTime(const quint64 ms) { fadeTime_ = ms; }
     void setFadeDelay(const quint64 ms) { fadeDelay_ = ms; }
+    void setFadeOutStartLocation(const QRect& rect) { Utils::whileBlocking(fadeAnimation_)->setStartValue(rect); }
+    void setFadeOutEndLocation(const QRect& rect) { Utils::whileBlocking(fadeAnimation_)->setEndValue(rect); }
 
     virtual bool shouldFadeOut() { return false; };
 
@@ -54,10 +56,9 @@ private slots:
     void slotTimeout();
 
 private:
-    FadeAnimation* fadeAnimation_;
+    SizeAnimation* fadeAnimation_;
     QTimer fadeTimer_;
 
-    quint64 fadeTime_{ 1000 };
     quint64 fadeDelay_{ 2000 };
 
 };

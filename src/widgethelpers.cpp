@@ -18,13 +18,11 @@
 
 #include "widgethelpers.h"
 
-#include "utils.h"
-
 FadeOutable::FadeOutable(QWidget* parent)
     : QWidget(parent)
 {
     setAttribute(Qt::WA_NoSystemBackground);
-    fadeAnimation_ = new FadeAnimation(this, fadeTime_);
+    fadeAnimation_ = new SizeAnimation(this, rect(), rect());
     fadeTimer_.setSingleShot(true);
     connect(&fadeTimer_, SIGNAL(timeout()), this, SLOT(slotTimeout()));
 }
@@ -33,19 +31,20 @@ FadeOutable::~FadeOutable()
 {}
 
 void
-FadeOutable::resetOpacity()
+FadeOutable::resetToFadeIn(bool resetTimer)
 {
-    fadeAnimation_->reset();
+    fadeAnimation_->stop();
+    fadeAnimation_->targetObject()->setProperty(fadeAnimation_->propertyName(), fadeAnimation_->startValue());
     Q_EMIT willReset();
-    fadeTimer_.start(fadeDelay_);
+    if(resetTimer)
+        fadeTimer_.start(fadeDelay_);
 }
 
 void
 FadeOutable::enterEvent(QEvent* event)
 {
     Q_UNUSED(event);
-    fadeAnimation_->reset();
-    Q_EMIT willReset();
+    resetToFadeIn(false);
     event->ignore();
 }
 
@@ -61,9 +60,7 @@ void
 FadeOutable::mouseMoveEvent(QMouseEvent* event)
 {
     // start/restart the timer after which the widget will fade
-    fadeAnimation_->reset();
-    fadeTimer_.start(fadeDelay_);
-    Q_EMIT willReset();
+    resetToFadeIn(true);
     event->ignore();
 }
 
