@@ -36,7 +36,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="DistantWidget" name="distantWidget" native="true">
+    <widget class="GLDistantWidget" name="distantWidget" native="true">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -55,7 +55,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DistantWidget</class>
+   <class>GLDistantWidget</class>
    <extends>QWidget</extends>
    <header>distantwidget.h</header>
    <container>1</container>
