@@ -46,7 +46,7 @@ VideoView::VideoView(QWidget* parent)
     vignette_ = new VignetteWidget(this);
     overlay_ = new VideoOverlay(this);
     audioOnlyAvatar_ = new CallAudioOnlyAvatarOverlay(this);
-    previewWidget_ = new VideoCallPreviewWidget(this);
+    previewWidget_ = new GLVideoCallPreviewWidget(this);
 
     // setup layer order
     vignette_->stackUnder(previewWidget_);
