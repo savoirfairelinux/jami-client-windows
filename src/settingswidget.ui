@@ -388,7 +388,7 @@
              </size>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="generalSettings">
              <property name="sizePolicy">
@@ -1503,7 +1503,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>691</width>
+                   <width>692</width>
                    <height>1405</height>
                   </rect>
                  </property>
@@ -4142,7 +4142,7 @@
                           <height>224</height>
                          </size>
                         </property>
-                        <layout class="QHBoxLayout" name="videoLayout" stretch="1,0,1">
+                        <layout class="QHBoxLayout" name="videoLayout" stretch="0">
                          <property name="spacing">
                           <number>0</number>
                          </property>
@@ -4159,23 +4159,7 @@
                           <number>0</number>
                          </property>
                          <item>
-                          <spacer name="horizontalSpacer_23">
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                           <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                           </property>
-                           <property name="sizeHint" stdset="0">
-                            <size>
-                             <width>40</width>
-                             <height>20</height>
-                            </size>
-                           </property>
-                          </spacer>
-                         </item>
-                         <item>
-                          <widget class="PreviewWidget" name="previewWidget" native="true">
+                          <widget class="GLPreviewWidget" name="previewWidget" native="true">
                            <property name="enabled">
                             <bool>true</bool>
                            </property>
@@ -4193,7 +4177,7 @@
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>400</width>
+                             <width>500</width>
                              <height>16777215</height>
                             </size>
                            </property>
@@ -4204,22 +4188,6 @@
                             </size>
                            </property>
                           </widget>
-                         </item>
-                         <item>
-                          <spacer name="horizontalSpacer_24">
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                           <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                           </property>
-                           <property name="sizeHint" stdset="0">
-                            <size>
-                             <width>40</width>
-                             <height>20</height>
-                            </size>
-                           </property>
-                          </spacer>
                          </item>
                         </layout>
                        </widget>
@@ -4344,7 +4312,7 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>PreviewWidget</class>
+   <class>GLPreviewWidget</class>
    <extends>QWidget</extends>
    <header>previewwidget.h</header>
    <container>1</container>
