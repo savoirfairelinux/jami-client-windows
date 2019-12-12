@@ -113,7 +113,7 @@ VideoView::resizeEvent(QResizeEvent* event)
 
     vignette_->updateGeometry(this->size());
     audioOnlyAvatar_->resize(this->size());
-    overlay_->resize(this->size());
+    overlay_->updateGeometry(this->size());
 }
 
 void
