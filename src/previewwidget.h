@@ -43,6 +43,15 @@ private:
     QMetaObject::Connection previewRenderingStopped_;
 };
 
+class GLPreviewWidget : public GLVideoWidgetBase {
+    Q_OBJECT;
+
+public:
+    explicit GLPreviewWidget(QWidget* parent = nullptr);
+    ~GLPreviewWidget();
+
+};
+
 // A rounded image for photobooths
 class PhotoboothPreviewWidget final : public PreviewWidget {
     Q_OBJECT;
@@ -92,6 +101,36 @@ private:
     constexpr static QMargins padding_ = QMargins(2, 2, 2, 2);
     PreviewSnap location_{ PreviewSnap::SE };
     QSize containerSize_{0, 0};
+};
+
+// rounded corners for video calls
+class GLVideoCallPreviewWidget final : public GLPreviewWidget {
+    Q_OBJECT;
+
+public:
+    explicit GLVideoCallPreviewWidget(QWidget* parent = nullptr);
+    ~GLVideoCallPreviewWidget();
+
+    void setContainerSize(const QSize& size);
+    void setLocation(const PreviewSnap location);
+
+    QPoint getTopLeft();
+
+    QSize getScaledSize(int w, int h);
+
+    /**
+     * Computes new widget size with aspect ratio guarded
+     * taking into consideration snap location
+     */
+    void setupGeometry(const QSize& newSize);
+
+private:
+    constexpr static qreal containerRatio_ = 0.2f;
+    constexpr static qreal cornerRadius_ = 10.0f;
+    constexpr static qreal margin_ = 15.0f;
+    constexpr static QMargins padding_ = QMargins(2, 2, 2, 2);
+    PreviewSnap location_{ PreviewSnap::SE };
+    QSize containerSize_{ 0, 0 };
 };
 
 // rounded corners for video record view
