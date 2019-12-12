@@ -41,3 +41,18 @@ private:
     std::string id_;
 
 };
+
+class GLDistantWidget : public GLVideoWidgetBase
+{
+public:
+    explicit GLDistantWidget(QWidget* parent = 0);
+    ~GLDistantWidget();
+
+    void setRendererId(const std::string& id);
+
+protected:
+
+
+private:
+    std::string id_;
+};
