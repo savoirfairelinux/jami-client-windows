@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dff083cd_6de00b32",
+        "filename": "src/callwidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2019-12-12T03:24:30Z",
+      "side": 1,
+      "message": "Why not use QShortcut + activated()?",
+      "range": {
+        "startLine": 1585,
+        "startChar": 34,
+        "endLine": 1585,
+        "endChar": 45
+      },
+      "revId": "c9ba07e773f8d1842a01096f84c225465f300740",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e58c90_1e1189e2",
+        "filename": "src/callwidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2019-12-12T03:24:30Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 1628,
+        "startChar": 68,
+        "endLine": 1628,
+        "endChar": 70
+      },
+      "revId": "c9ba07e773f8d1842a01096f84c225465f300740",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d88353a_dcc57b4e",
+        "filename": "src/settingswidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2019-12-12T03:24:30Z",
+      "side": 1,
+      "message": "Note warning for this, same as gtk client the shortcut is already taken :)\n\nAlso ideally, we don\u0027t need to open settings to be able to do this shortcuts, should be available anywhere in the app.",
+      "range": {
+        "startLine": 318,
+        "startChar": 52,
+        "endLine": 320,
+        "endChar": 45
+      },
+      "revId": "c9ba07e773f8d1842a01096f84c225465f300740",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
