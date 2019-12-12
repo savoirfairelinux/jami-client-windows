@@ -71,6 +71,8 @@ public:
      */
     QImage* getFrame();
 
+    AVFrame* getAVFrame();
+
     /**
      * Check if the object is updating actively
      */
@@ -118,7 +120,7 @@ private:
     video::Renderer* renderer_;
 
     /* a local copy of the renderer's current frame */
-    AVFrame* frame_;
+    std::unique_ptr<AVFrame> frame_;
 
     /* a the frame's storage data used to set the image */
     std::vector<uint8_t> buffer_;
@@ -138,8 +140,7 @@ private:
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
 
-
-    AVFrame *pFrameRGB;
+    AVFrame *pFrameCorrectFormat;
     uint8_t * rgbBuffer;
     SwsContext *img_convert_ctx;
 };
@@ -173,6 +174,9 @@ public:
      * @param force if the capture device should be started
      * @param async
      */
+    // TODO: implement get Preview avframe
+    AVFrame* getPreviewAVFrame();
+
     void startPreviewing(bool force = false, bool async = true);
     /**
      * Stop capturing.
