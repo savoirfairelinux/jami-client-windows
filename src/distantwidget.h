@@ -40,3 +40,18 @@ protected:
 private:
     QString id_;
 };
+
+class GLDistantWidget : public GLVideoWidgetBase
+{
+public:
+    explicit GLDistantWidget(QWidget* parent = 0);
+    ~GLDistantWidget();
+
+    void setRendererId(const QString& id);
+
+protected:
+
+
+private:
+    QString id_;
+};
