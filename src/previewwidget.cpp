@@ -48,6 +48,25 @@ PreviewWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+GLPreviewWidget::GLPreviewWidget(QWidget* parent)
+    :GLVideoWidgetBase(Qt::transparent, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewGLFrameUpdated,
+        [this]() {
+            prepareFrameToDisplay(LRCInstance::renderer()->getPreviewAVFrame());
+            update();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            prepareFrameToDisplay(LRCInstance::renderer()->getPreviewAVFrame());
+            update();
+        });
+}
+
+GLPreviewWidget::~GLPreviewWidget()
+{
+}
+
 void
 PreviewWidget::paintEvent(QPaintEvent* e)
 {
@@ -57,7 +76,7 @@ PreviewWidget::paintEvent(QPaintEvent* e)
 
     auto previewImage = LRCInstance::renderer()->getPreviewFrame();
     if (previewImage) {
-        QImage scaledPreview;
+        //QImage scaledPreview;
         auto aspectRatio =
             static_cast<qreal>(previewImage->width()) /
             static_cast<qreal>(previewImage->height());
@@ -74,10 +93,10 @@ PreviewWidget::paintEvent(QPaintEvent* e)
         setFixedWidth(previewWidth);
         setFixedHeight(previewHeight);
 
-        scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-        painter.drawImage(this->rect(), scaledPreview);
+        // OpenGL (shader) scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
+        // OpenGL (draw) painter.drawImage(this->rect(), scaledPreview);
     } else {
-        paintBackground(&painter);
+        // OpenGL (shouldn't be needed after glClear) paintBackground(&painter);
     }
 }
 
