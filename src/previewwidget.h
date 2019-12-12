@@ -39,6 +39,15 @@ protected:
     virtual void paintBackground(QPainter* painter) override;
 };
 
+class GLPreviewWidget : public GLVideoWidgetBase {
+    Q_OBJECT;
+
+public:
+    explicit GLPreviewWidget(QWidget* parent = nullptr);
+    ~GLPreviewWidget();
+
+};
+
 // A rounded image for photobooths
 class PhotoboothPreviewWidget final : public PreviewWidget {
     Q_OBJECT;
