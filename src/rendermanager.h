@@ -25,6 +25,7 @@
 #include <QObject>
 #include <QMutex>
 #include <QImage>
+#include <libavutil/pixfmt.h>
 
 #include <libavutil/pixfmt.h>
 
@@ -239,6 +240,9 @@ signals:
     void previewFrameUpdated();
     /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
     void previewD3DFrameUpdated();
+
+    /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
+    void previewGLFrameUpdated();
 
     /* Emitted when the preview is stopped. */
     void previewRenderingStopped();
