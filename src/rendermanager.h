@@ -239,6 +239,9 @@ signals:
     /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
     void previewD3DFrameUpdated();
 
+    /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
+    void previewGLFrameUpdated();
+
     /* Emitted when the preview is stopped. */
     void previewRenderingStopped();
 
