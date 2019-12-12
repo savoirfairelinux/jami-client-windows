@@ -41,6 +41,7 @@
 #include <thread>
 #include <ciso646>
 #include <locale.h>
+#include "testopenglform.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -301,7 +302,9 @@ main(int argc, char* argv[])
 //
 //    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
-    TestOpenGLDialog diaGL;
+    GLSharedContextObject* GLShare_ = new GLSharedContextObject();
+
+    TestOpenGLDialog diaGL(GLShare_);
     diaGL.show();
 
     auto ret = a.exec();

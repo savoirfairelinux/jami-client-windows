@@ -27,30 +27,29 @@ class GLSharedContextObject : public QObject
     Q_OBJECT
 
 public:
-    explicit GLSharedContextObject(TestOpenGLForm* parent = nullptr);
+    explicit GLSharedContextObject(QObject* parent = nullptr);
     ~GLSharedContextObject();
 
     void draw();
 
+signals:
+    void drawSignal();
+
 private:
+    void initializeAll();
     bool initializeShader();
     void initializeTexture();
     void setUpBuffers();
 
 public:
-    QOpenGLContext* context;
+    QOpenGLContext* context_;
     QOpenGLTexture* texture_;
-
-private:
+    QOpenGLBuffer* vbo_;
+    QOpenGLBuffer* ibo_;
     QOpenGLShaderProgram* shaderProgram_;
 
+private:
     QOffscreenSurface* offscreenSurface_;
-    QOpenGLBuffer* vbo_;
-    QOpenGLBuffer* vbo_Color;
-    QOpenGLBuffer* vbo_Tex;
-    QOpenGLVertexArrayObject* vao;
-    QOpenGLBuffer* ibo_;
-
 };
 
 class TestOpenGLForm : public QOpenGLWidget, protected QOpenGLFunctions
@@ -65,6 +64,7 @@ public:
     ~TestOpenGLForm();
 
     void draw();
+    void setContextObj(GLSharedContextObject* contextObj);
 
 protected:
     void resizeGL(int w, int h) override;
@@ -72,22 +72,18 @@ protected:
     void initializeGL() override;
 
 private:
-    bool initializeShader();
-    void initializeTexture();
-    void setUpBuffers();
+    //bool initializeShader();
+    //void initializeTexture();
+    //void setUpBuffers();
 
 private:
     Ui::TestOpenGLForm *ui;
 
-    QOpenGLTexture* texture_;
-    QOpenGLShaderProgram* shaderProgram_;
+    //QOpenGLTexture* texture_;
+    //QOpenGLShaderProgram* shaderProgram_;
 
-    QOpenGLBuffer* vbo_;
-    QOpenGLBuffer* ibo_;
+    //QOpenGLBuffer* vbo_;
+    //QOpenGLBuffer* ibo_;
     GLSharedContextObject* GLShare_;
 };
-
-
-
-
 #endif // TESTOPENGLFORM_H
