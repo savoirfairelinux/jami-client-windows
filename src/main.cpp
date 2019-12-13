@@ -28,6 +28,7 @@
 #include "utils.h"
 #include "splashscreen.h"
 #include "aboutdialog.h"
+#include "previewwidget.h"
 
 #include <QApplication>
 #include <QFile>
@@ -264,49 +265,53 @@ main(int argc, char* argv[])
 
     auto accountList = LRCInstance::accountModel().getAccountList();
 
-    for (const std::string& i : accountList) {
-        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-            int status = dialog->exec();
-
-            //migration failed
-            if (!status) {
-#ifdef Q_OS_WIN
-                FreeConsole();
-#endif
-                exitApp(guard);
-                return status;
-            }
-        }
-    }
-
-    splash->finish(&MainWindow::instance());
-    splash->deleteLater();
-
-    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
-
-    QSettings settings("jami.net", "Jami");
-    if (not startMinimized) {
-        if (settings.value(SettingsKey::hasRun) == 0) {
-            if(LRCInstance::accountModel().getAccountList().size() != 0)
-                MainWindow::instance().showMaximized();
-            QTimer::singleShot(100,
-                [] {
-                    QSettings settings("jami.net", "Jami");
-                    settings.setValue(SettingsKey::hasRun, 1);
-                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
-                    aboutDialog->getContainer()->exec();
-                });
-        } else {
-            MainWindow::instance().showWindow();
-        }
-    } else {
-        MainWindow::instance().showMinimized();
-        MainWindow::instance().hide();
-    }
+//    for (const std::string& i : accountList) {
+//        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
+//        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+//            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
+//            int status = dialog->exec();
+//
+//            //migration failed
+//            if (!status) {
+//#ifdef Q_OS_WIN
+//                FreeConsole();
+//#endif
+//                exitApp(guard);
+//                return status;
+//            }
+//        }
+//    }
+//
+//    splash->finish(&MainWindow::instance());
+//    splash->deleteLater();
+//
+//    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+//
+//    QSettings settings("jami.net", "Jami");
+//    if (not startMinimized) {
+//        if (settings.value(SettingsKey::hasRun) == 0) {
+//            if(LRCInstance::accountModel().getAccountList().size() != 0)
+//                MainWindow::instance().showMaximized();
+//            QTimer::singleShot(100,
+//                [] {
+//                    QSettings settings("jami.net", "Jami");
+//                    settings.setValue(SettingsKey::hasRun, 1);
+//                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
+//                    aboutDialog->getContainer()->exec();
+//                });
+//        } else {
+//            MainWindow::instance().showWindow();
+//        }
+//    } else {
+//        MainWindow::instance().showMinimized();
+//        MainWindow::instance().hide();
+//    }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
+
+    auto pw = new PreviewWidget();
+    LRCInstance::renderer()->startPreviewing();
+    pw->show();
 
     auto ret = a.exec();
 
