@@ -1582,12 +1582,20 @@ CallWidget::registerShortCuts()
 
     connect(focusOnSmartListNextElementSC, &QShortcut::activated,
         [this] {
-            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() + 1, 0));
+            if (ui->smartList->currentIndex().row() == ui->smartList->model()->rowCount() - 1) {
+                return;
+            } else {
+                ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() + 1, 0));
+            }
         });
 
     connect(focusOnSmartListPrevElementSC, &QShortcut::activated,
         [this] {
-            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+            if (ui->smartList->currentIndex().row() == 0) {
+                return;
+            } else {
+                ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+            }
         });
 
     connect(focusOnContactSearchBarSC, &QShortcut::activated,
