@@ -1587,7 +1587,11 @@ CallWidget::registerShortCuts()
 
     connect(focusOnSmartListPrevElementSC, &QShortcut::activated,
         [this] {
-            ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+            if (ui->smartList->currentIndex().row() == -1) {
+                ui->smartList->setCurrentIndex(ui->smartList->model()->index(0, 0));
+            } else {
+                ui->smartList->setCurrentIndex(ui->smartList->model()->index(ui->smartList->currentIndex().row() - 1, 0));
+            }
         });
 
     connect(focusOnContactSearchBarSC, &QShortcut::activated,
