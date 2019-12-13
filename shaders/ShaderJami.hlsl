@@ -10,6 +10,11 @@ struct VS_Output {
     float4 vertexColor   : VERTEX_COLOR_VS2PX;
 };
 
+cbuffer VS_ConstantBuffer : register(cb0) {
+    float angleToRotate;
+    bool isUsingD3D11HW;
+}
+
 VS_Output VS_main(VS_Input input){
     VS_Output out_vtx;
     out_vtx.positionVSOut = float4(input.VertexCoor,1.0f);

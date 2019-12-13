@@ -65,7 +65,8 @@ protected:
 
 struct ConstantBufferDataStruct
 {
-    float angleToRotate;
+    float angleToRotate = 0.0f;
+    bool isUsingD3D11HW = false;
 };
 
 struct Vertex {
@@ -152,8 +153,10 @@ protected:
     ID3D11PixelShader* pixelShader_;
     ID3D10Blob* vertexShaderBlob_;
     ID3D10Blob* pixelShaderBlob_;
+
     ID3D11InputLayout* inputLayout_;
     ID3D11Buffer* constantBuffer_;
+    ID3D11SamplerState* sampler_;
 
     ConstantBufferDataStruct constantBufferDataStruct_;
 };

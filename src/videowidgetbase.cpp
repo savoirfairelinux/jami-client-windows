@@ -153,7 +153,7 @@ D3DVideoWidgetBase::InitD3D()
     swapChainDesc.Windowed = TRUE;
     swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
-    ERROR_HANDLE_RUN(D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, NULL, NULL, NULL,
+    ERROR_HANDLE_RUN(D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, D3D11_CREATE_DEVICE_DEBUG, NULL, NULL,
         D3D11_SDK_VERSION, &swapChainDesc, &swapChain_, &d3dDevice_, NULL, &d3dDevContext_), "The creation of device, context and swap chain fails");
 
     // Create back buffer and render target view
@@ -282,12 +282,17 @@ D3DVideoWidgetBase::InitScene()
     constantBufferDesc.Usage = D3D11_USAGE_DEFAULT;
     constantBufferDesc.ByteWidth = sizeof(ConstantBufferDataStruct);
     constantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    constantBufferDesc.CPUAccessFlags = 0;
+    constantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
     constantBufferDesc.MiscFlags = 0;
 
-    ERROR_HANDLE_RUN(d3dDevice_->CreateBuffer(&constantBufferDesc, NULL, &constantBuffer_), "The creation of constant buffer fails!");
+    D3D11_SUBRESOURCE_DATA constantBufferResourceData;
+    ZeroMemory(&constantBufferResourceData, sizeof(D3D11_SUBRESOURCE_DATA));
+    constantBufferResourceData.pSysMem = &constantBufferDataStruct_;
 
-    float bgColor[4] = { (0.0f,0.0f,0.0f,1.0f) };
+    ERROR_HANDLE_RUN(d3dDevice_->CreateBuffer(&constantBufferDesc, &constantBufferResourceData, &constantBuffer_), "The creation of constant buffer fails!");
+    d3dDevContext_->VSSetConstantBuffers(0, 1, &constantBuffer_);
+    // initialize background
+    float bgColor[4] = { (0.0f,0.0f,0.0f,0.0f) };
     d3dDevContext_->ClearRenderTargetView(renderTargetView_, bgColor);
 }
 
@@ -295,13 +300,13 @@ void
 D3DVideoWidgetBase::paintD3D()
 {
     //Clear our backbuffer
-    float bgColor[4] = { (0.0f,0.0f,0.0f,1.0f) };
+    float bgColor[4] = { (0.0f,0.0f,0.0f,0.0f) };
     d3dDevContext_->ClearRenderTargetView(renderTargetView_, bgColor);
 
-    /*float rotation = 90.f;
-    constantBufferDataStruct_.angleToRotate = rotation;
-    d3dDevContext_->UpdateSubresource(constantBuffer_, 0, NULL, &constantBufferDataStruct_, 0, 0);
-    d3dDevContext_->CSSetConstantBuffers(0, 1, &constantBuffer_);*/
+    if(constantBuffer_) {
+        d3dDevContext_->UpdateSubresource(constantBuffer_, 0, NULL, &constantBufferDataStruct_, 0, 0);
+        d3dDevContext_->VSSetConstantBuffers(0, 1, &constantBuffer_);
+    }
 
     d3dDevContext_->DrawIndexed(6, 0, 0);
     swapChain_->Present(0, 0),"Swap chain swap buffer fails!";
