@@ -354,13 +354,13 @@
           <pixmap resource="../ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
          </property>
          <property name="checkedPix" stdset="0">
-          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/stop-24px-red.svg</pixmap>
+          <pixmap resource="../ressources.qrc">:/images/icons/av_icons/stop-24px.svg</pixmap>
          </property>
          <property name="tintColor" stdset="0">
           <color>
-           <red>244</red>
-           <green>163</green>
-           <blue>0</blue>
+           <red>239</red>
+           <green>41</green>
+           <blue>41</blue>
           </color>
          </property>
         </widget>
@@ -525,9 +525,9 @@
          </property>
          <property name="tintColor" stdset="0">
           <color>
-           <red>0</red>
-           <green>170</green>
-           <blue>255</blue>
+           <red>239</red>
+           <green>41</green>
+           <blue>41</blue>
           </color>
          </property>
         </widget>
