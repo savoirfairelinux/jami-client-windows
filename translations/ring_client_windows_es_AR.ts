@@ -220,7 +220,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="571"/>
         <source>Private Key Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña de clave privada</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami es un software libre para comunicarse univesalmente, el cual respeta las libertades y la privacidad de sus usuarios.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Bloquear contacto</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -567,7 +567,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>Este dispositivo</translation>
     </message>
 </context>
 <context>
@@ -778,7 +778,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Crear una cuenta de Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>

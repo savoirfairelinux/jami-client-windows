@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>&quot;Free as in Freedom&quot;</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Jami的Microsoft Windows客户端。
+Jami是安全的、分布式的通讯软件。</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -59,7 +60,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>添加帐户</translation>
     </message>
 </context>
 <context>
@@ -72,17 +73,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="55"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>呼叫设置</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="102"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>自动接听来电</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="130"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation> 启用自定义铃声</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
@@ -92,7 +93,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN地址</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
@@ -102,7 +103,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>使用UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
@@ -112,17 +113,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN密码</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN用户名</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN地址</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -147,12 +148,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>音频文件(*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>添加自定义铃声</translation>
     </message>
 </context>
 <context>
@@ -165,32 +166,32 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="61"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>呼叫设置</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>允许未被信任的用户来电</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="133"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>自动接听来电</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="161"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation> 启用自定义铃声</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="188"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>添加自定义铃声</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>名称服务器</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
@@ -200,12 +201,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT配置</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>启用代理</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
@@ -230,12 +231,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>私钥</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>颁发机构证书</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -250,12 +251,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN地址</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>使用UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
@@ -265,17 +266,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN密码</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN用户名</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN地址</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -300,7 +301,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>音频文件(*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -321,12 +322,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>姓名</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>id</translation>
     </message>
 </context>
 <context>
@@ -334,7 +335,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>显示会话</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -357,12 +358,15 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+这是您的ID。
+复制并发送给您的朋友！
+</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>显示RingID二维码</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
@@ -454,17 +458,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>发起视频通话</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>发起语音通话</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>清除会话</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -489,12 +493,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>在Jami上联系我</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>我的ID是：</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="847"/>
@@ -519,12 +523,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>删除帐户</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>确定删除以下帐户吗？</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
@@ -562,7 +566,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>设备ID</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -648,7 +652,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>密码错误</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
@@ -677,7 +681,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -735,7 +739,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>密码错误</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
@@ -808,7 +812,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>创建SIP帐户</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -849,7 +853,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>（无）</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
@@ -946,7 +950,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>服务器</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
@@ -987,7 +991,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>正在生成您的Jami帐户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1042,7 +1046,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami档案文件 (*.gz); 所有文件 (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
@@ -1052,7 +1056,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>正在迁移您的Jami帐户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
@@ -1062,12 +1066,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>正在生成您的Jami帐户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>正在生成您的SIP账户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1080,27 +1084,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>更改账户密码</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>输入当前密码</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>输入新密码</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>确认新密码</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>确认</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1110,7 +1114,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>当前密码错误</translation>
     </message>
 </context>
 <context>
@@ -1191,7 +1195,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>选择文件夹</translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1225,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="305"/>
         <location filename="../settingswidget.ui" line="3416"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>音频/视频</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="542"/>
@@ -1231,7 +1235,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>启用桌面通知</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
@@ -1241,7 +1245,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>下载文件夹</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="811"/>
@@ -1251,17 +1255,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>总是录音</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>更新</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>自动检查更新：每</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
@@ -1271,7 +1275,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>天</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
@@ -1292,7 +1296,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1307,7 +1311,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>通话录音</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
@@ -1317,7 +1321,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1359,13 +1363,13 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>导出帐户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>删除帐户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
@@ -1431,7 +1435,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>麦克风</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
@@ -1487,7 +1491,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="550"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>删除设备</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
