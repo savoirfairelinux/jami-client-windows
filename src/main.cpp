@@ -308,6 +308,10 @@ main(int argc, char* argv[])
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
+    // for deployment only
+    QQmlApplicationEngine engine;
+    engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
+
     auto ret = a.exec();
 
 #ifdef Q_OS_WIN
