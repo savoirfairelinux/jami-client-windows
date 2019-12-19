@@ -18,6 +18,8 @@
 
 #include "widgethelpers.h"
 
+#include "mainwindow.h"
+
 FadeOutable::FadeOutable(QWidget* parent)
     : QWidget(parent)
 {
@@ -194,5 +196,25 @@ VignetteWidget::fillRoundRectPath(QPainter& painter, const QLinearGradient & gra
         Utils::fillRoundRectPath(painter, gradient, rect(), cornerRadius_);
     } else {
         painter.fillRect(rect(), gradient);
+    }
+}
+
+void
+QmlPopupWidget::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->darken();
+    }
+}
+
+void
+QmlPopupWidget::hideEvent(QHideEvent* event)
+{
+    QWidget::hideEvent(event);
+    auto cp = getContainer()->parentWidget();
+    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
+        mainWindow->lighten();
     }
 }
