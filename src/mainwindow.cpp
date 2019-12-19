@@ -123,6 +123,17 @@ MainWindow::MainWindow(QWidget* parent)
             }
         });
 
+    keyboardShortcutsAction_ = new QAction(tr("Shortcuts"), this);
+    connect(keyboardShortcutsAction_, &QAction::triggered,
+        [this]() {
+            showWindow();
+            // has to put a single shot here, otherwise, the dialog will not show
+            QTimer::singleShot(0,
+                [this]{
+                    generateQmlDialog(qmlKeyBoardShortcutTable_);
+                });
+        });
+
     exitAction_ = new QAction(tr("Exit"), this);
     connect(exitAction_, &QAction::triggered,
             [this]() { QCoreApplication::exit(); });
@@ -146,6 +157,8 @@ MainWindow::MainWindow(QWidget* parent)
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
         QString aboutTitle = tr("About");
         ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
+        QString keyboardShortcutTitle = tr("Shortcuts");
+        ::AppendMenuW(sysMenu, MF_STRING, IDM_SHORTCUTSBOX, keyboardShortcutTitle.toStdWString().c_str());
     }
 
     // check for updates and start automatic update check if needed
@@ -226,10 +239,14 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
     MSG* msg = (MSG*)message;
 
     if (msg->message == WM_SYSCOMMAND) {
-        if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
+        if (msg->wParam == IDM_ABOUTBOX) {
             *result = 0;
             AboutDialog aboutDialog(this);
             aboutDialog.getContainer()->exec();
+            return true;
+        }
+        if (msg->wParam == IDM_SHORTCUTSBOX) {
+            generateQmlDialog(qmlKeyBoardShortcutTable_);
             return true;
         }
     }
@@ -413,6 +430,7 @@ void MainWindow::slotAccountListChanged()
     systrayMenu->clear();
     if (LRCInstance::accountModel().getAccountList().size()) {
         systrayMenu->addAction(settingsAction_);
+        systrayMenu->addAction(keyboardShortcutsAction_);
         systrayMenu->addAction(exitAction_);
     } else {
         systrayMenu->addAction(exitAction_);
@@ -422,4 +440,18 @@ void MainWindow::slotAccountListChanged()
             emit currentWidget->NavigationRequested(ScreenEnum::WizardScreen);
         }
     }
+}
+
+void
+MainWindow::generateQmlDialog(const QUrl& qmlSource)
+{
+    QScopedPointer<QmlPopupWidget> qmlKeyboardShortcuts (new QmlPopupWidget(qmlSource, this));
+
+    qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
+    qmlKeyboardShortcuts->setClearColor(Qt::transparent);
+    qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
+    qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
+
+    qmlKeyboardShortcuts->getContainer()->exec();
 }
