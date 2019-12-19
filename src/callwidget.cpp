@@ -1509,6 +1509,7 @@ CallWidget::registerShortCuts()
     auto focusOnContactSearchBarSC = new QShortcut(QKeySequence(tr("Ctrl+F", "Focus on contact search bar")), this);
     auto answerCallSC = new QShortcut(QKeySequence(tr("Ctrl+Y", "Answer an incoming call")), this);
     auto declineCallSC = new QShortcut(QKeySequence(tr("Ctrl+D", "Decline the call")), this);
+    auto shortcutsTableSC = new QShortcut(QKeySequence(tr("F10", "Show keyboard shortcuts table")), this);
     auto maximizeScreenSC = new QShortcut(QKeySequence(tr("F11", "Maximize Screen")), this);
 
     auto navigateToMediaSettingsSC = new QShortcut(QKeySequence(tr("Ctrl+M", "Navigate to media setting")), this);
@@ -1631,6 +1632,18 @@ CallWidget::registerShortCuts()
             else {
                 MainWindow::instance().showFullScreen();
             }
+        });
+
+    connect(shortcutsTableSC, &QShortcut::activated,
+        [this] {
+            QUrl qmlSource{ QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml") };
+            QmlPopupWidget* qmlKeyboardShortcuts = new QmlPopupWidget(qmlSource, qobject_cast<MainWindow*>(parent()->parent()->parent()));
+            qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+            qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
+            qmlKeyboardShortcuts->setClearColor(Qt::transparent);
+            qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
+            qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
+            qmlKeyboardShortcuts->getContainer()->exec();
         });
 
     connect(navigateToMediaSettingsSC, &QShortcut::activated,

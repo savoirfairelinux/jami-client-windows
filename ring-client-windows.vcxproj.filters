@@ -258,9 +258,6 @@
     <ClCompile Include="src\splashscreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagewebview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\widgethelpers.h">
@@ -905,5 +902,10 @@
     <QtUic Include="src\advancedsettingswidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="qml.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

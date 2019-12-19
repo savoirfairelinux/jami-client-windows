@@ -29,6 +29,7 @@
 #include <QMouseEvent>
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
+static constexpr char IDM_SHORTCUTSBOX = 0x0011;
 
 static constexpr uint32_t QtMaxDimension = 16777215;
 static constexpr uint32_t mainWindowMinWidth = 1088;
@@ -66,12 +67,16 @@ protected:
 signals:
     void keyReleased(QKeyEvent*ke);
 
+protected:
+    const QUrl qmlKeyBoardShortcutTable_ { QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml") };
+
 private slots:
     void slotCurrentChanged(int index);
     void trayActivated(QSystemTrayIcon::ActivationReason reason);
     void notificationClicked();
     void slotScreenChanged(QScreen* screen);
     void slotAccountListChanged();
+    void generateQmlDialog(const QUrl& qmlSource);
 
 private:
     explicit MainWindow(QWidget* parent = 0);
@@ -90,6 +95,7 @@ private:
 
     QAction* settingsAction_;
     QAction* exitAction_;
+    QAction* keyboardShortcutsAction_;
 #ifdef Q_OS_WIN
     std::unique_ptr<ConnectivityMonitor> connectivityMonitor_;
 #endif // Q_OS_WIN
