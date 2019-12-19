@@ -27,6 +27,9 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPixmap>
+#include <QQmlComponent>
+#include <QQuickWidget>
+#include <QQuickItem>
 
 class FadeOutable : public QWidget
 {
@@ -138,6 +141,34 @@ public:
 
 protected:
     PopupDialog *widgetContainer_;
+
+};
+
+class QmlPopupWidget : public QQuickWidget
+{
+    Q_OBJECT
+public:
+    // insider content of PopupDialog
+    explicit QmlPopupWidget(const QUrl& source,
+                            QWidget* parent = nullptr,
+                            QColor spikeColor = Qt::white,
+                            PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::None)
+        : QQuickWidget(source, parent) {
+
+        widgetContainer_ = new PopupDialog(parent, spikeColor, spikeAlignment);
+        setMouseTracking(true);
+        setParent(widgetContainer_);
+        widgetContainer_->insertWidget(this);
+    }
+    virtual ~QmlPopupWidget() {}
+
+    PopupDialog* getContainer() { return widgetContainer_; }
+
+protected:
+    void showEvent(QShowEvent* event) override;
+    void hideEvent(QHideEvent* event) override;
+
+    PopupDialog* widgetContainer_;
 
 };
 

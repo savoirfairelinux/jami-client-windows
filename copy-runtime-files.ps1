@@ -39,18 +39,21 @@ $FilesToCopy = @(
     "$daemonDir\contrib\build\openssl\out32dll\libeay32.dll",
     "$daemonDir\contrib\build\openssl\out32dll\ssleay32.dll",
     "$ClientDir\qt.conf",
-    "$ClientDir\images\jami.ico"
-    "$ClientDir\License.rtf"
+    "$ClientDir\images\jami.ico",
+    "$ClientDir\License.rtf",
+    "$QtDir\qml\QtQml\",
+    "$QtDir\qml\QtQuick\",
+    "$QtDir\qml\QtQuick.2\"
     )
 foreach ($i in $FilesToCopy) {
     write-host "copying: " $i " => " $OutDir -ForegroundColor Cyan
-    Copy-Item -Path $i -Destination $OutDir -Force
+    Copy-Item -Path $i -Recurse -Destination $OutDir -Force -Container
 }
 
 ############
 # qt
 ############
-$windeployqt = "$QtDir\bin\windeployqt.exe $OutDir\Jami.exe"
+$windeployqt = "$QtDir\bin\windeployqt.exe --qmldir $ClientDir\src --release $OutDir\Jami.exe"
 iex $windeployqt
 
 # ringtones
