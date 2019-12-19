@@ -243,4 +243,5 @@ FORMS += ./src/aboutdialog.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
         ./src/recordwidget.ui
-RESOURCES += ressources.qrc
+RESOURCES += ./ressources.qrc \
+             ./qml.qrc
