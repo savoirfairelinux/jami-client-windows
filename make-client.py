@@ -128,9 +128,20 @@ def deps(arch, toolset):
     execute_cmd("cd qrencode-win32 && git checkout d6495a2aa74d058d54ae0f1b9e9e545698de66ce && " + apply_cmd + ' ..\\qrencode-win32.patch', True)
 
     print('Building qrcodelib')
-    build(arch, '', '', 'Release-Lib', '\\qrencode-win32\\qrencode-win32\\vc8\\qrcodelib\\qrcodelib.vcxproj', False)
+    build(arch, '', '', 'Release-Lib', '\\qrencode-win32\\qrencode-win32\\vc8\\qrcodelib\\qrcodelib.vcxproj', '', False)
 
-def build(arch, toolset, sdk_version, config_str, project_path_under_current_path, force_option=True):
+def build(arch, toolset, sdk_version, config_str, project_path_under_current_path, qtver, force_option=True):
+    if (config_str == 'Release'):
+        print('Generating project using qmake ' + config_str + '|' + arch)
+        execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj")
+    elif (config_str == 'Beta'):
+        print('Generating project using qmake ' + config_str + '|' + arch)
+        execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")
+        config_str = 'Release'
+
+    # Note: If project is configured to Beta, the configuration name is still release,
+    # but will be outputted into x64/Beta folder
+
     print('Building projects in ' + config_str + '|' + arch)
     vs_env_vars = {}
     vs_env_vars.update(getVSEnv())
@@ -177,9 +188,6 @@ def parse_args():
         '-d', '--deps', action='store_true',
         help='Build Deps for Qt Client')
     ap.add_argument(
-        '-c', '--complie', action='store_true',
-        help='Release Complie for Qt Client')
-    ap.add_argument(
         '-bt', '--beta', action='store_true',
         help='Build Qt Client in Beta Config')
     ap.add_argument(
@@ -188,6 +196,9 @@ def parse_args():
     ap.add_argument(
         '-t', '--toolset', default=win_toolset_default, type=str,
         help='Use specified platform toolset version')
+    ap.add_argument(
+        '-q', '--qtver', default='5.9.4',
+        help='Sets the version of Qmake')
 
     parsed_args = ap.parse_args()
 
@@ -209,13 +220,10 @@ def main():
         deps(parsed_args.arch, parsed_args.toolset)
 
     if parsed_args.build:
-        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Release', '\\ring-client-windows.vcxproj')
+        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Release', '\\jami-qt.vcxproj', parsed_args.qtver)
 
     if parsed_args.beta:
-        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Beta', '\\ring-client-windows.vcxproj')
-
-    if parsed_args.complie:
-        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'ReleaseCompile', '\\ring-client-windows.vcxproj')
+        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Beta', '\\jami-qt.vcxproj', parsed_args.qtver)
 
 if __name__ == '__main__':
     main()

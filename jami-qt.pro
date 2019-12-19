@@ -66,6 +66,9 @@ win32-msvc {
     QMAKE_LIBDIR=$(QTDIR)\lib
     QMAKE_MOC=$(QTDIR)\bin\moc.exe
     QMAKE_QMAKE=$(QTDIR)\bin\qmake.exe
+
+    # exe icons
+    Release: RC_FILE = ico.rc
 }
 
 unix {
@@ -264,4 +267,5 @@ FORMS += ./src/aboutdialog.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
         ./src/recordwidget.ui
-RESOURCES += ressources.qrc
+RESOURCES += ./ressources.qrc \
+             ./qml.qrc
