@@ -59,13 +59,16 @@ win32-msvc {
     } else {
         Release: DESTDIR = x64/Release
     }
-    Debug: DESTDIR = x64/Debug
+    Debug: DESTDIR = /Debug
 
     # qt dir
     QMAKE_INCDIR_QT=$(QTDIR)\include
     QMAKE_LIBDIR=$(QTDIR)\lib
     QMAKE_MOC=$(QTDIR)\bin\moc.exe
     QMAKE_QMAKE=$(QTDIR)\bin\qmake.exe
+
+    # exe icons
+    Release: RC_FILE = ico.rc
 }
 
 unix {
@@ -264,4 +267,5 @@ FORMS += ./src/aboutdialog.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
         ./src/recordwidget.ui
-RESOURCES += ressources.qrc
+RESOURCES += ./ressources.qrc \
+             ./qml.qrc
