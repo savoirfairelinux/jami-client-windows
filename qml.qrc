@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/KeyBoardShortcutTable.qml</file>
+    </qresource>
+</RCC>
