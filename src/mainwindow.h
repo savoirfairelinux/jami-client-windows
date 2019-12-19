@@ -29,6 +29,7 @@
 #include <QMouseEvent>
 
 static constexpr char IDM_ABOUTBOX = 0x0010;
+static constexpr char IDM_SHORTCUTSBOX = 0x0011;
 
 static constexpr uint32_t QtMaxDimension = 16777215;
 static constexpr uint32_t mainWindowMinWidth = 1088;
