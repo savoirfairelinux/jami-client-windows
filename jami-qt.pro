@@ -55,11 +55,15 @@ win32-msvc {
             message(Beta config enabled)
             Release: DESTDIR = x64/Beta
             Release: DEFINES += BETA
+            # exe icons
+            Release: RC_ICONS = x64/Beta/jami.ico
         }
     } else {
         Release: DESTDIR = x64/Release
+        # exe icons
+        Release: RC_ICONS = x64/Release/jami.ico
     }
-    Debug: DESTDIR = x64/Debug
+    Debug: DESTDIR = /Debug
 
     # qt dir
     QMAKE_INCDIR_QT=$(QTDIR)\include
@@ -264,4 +268,5 @@ FORMS += ./src/aboutdialog.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
         ./src/recordwidget.ui
-RESOURCES += ressources.qrc
+RESOURCES += ./ressources.qrc \
+             ./qml.qrc
