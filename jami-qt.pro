@@ -242,5 +242,7 @@ FORMS += ./src/aboutdialog.ui \
         ./src/collapsiblepasswordwidget.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
-        ./src/recordwidget.ui
-RESOURCES += ressources.qrc
+        ./src/recordwidget.ui \
+        ./src/KeyBoardShortcutTable.qml
+RESOURCES += ./ressources.qrc \
+             ./qml.qrc
