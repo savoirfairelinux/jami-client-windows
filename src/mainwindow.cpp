@@ -146,6 +146,8 @@ MainWindow::MainWindow(QWidget* parent)
         ::AppendMenuA(sysMenu, MF_SEPARATOR, 0, 0);
         QString aboutTitle = tr("About");
         ::AppendMenuW(sysMenu, MF_STRING, IDM_ABOUTBOX, aboutTitle.toStdWString().c_str());
+        QString keyboardShortcutTitle = tr("Shortcuts");
+        ::AppendMenuW(sysMenu, MF_STRING, IDM_SHORTCUTSBOX, keyboardShortcutTitle.toStdWString().c_str());
     }
 
     // check for updates and start automatic update check if needed
@@ -226,10 +228,21 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
     MSG* msg = (MSG*)message;
 
     if (msg->message == WM_SYSCOMMAND) {
-        if ((msg->wParam & 0xfff0) == IDM_ABOUTBOX) {
+        if (msg->wParam == IDM_ABOUTBOX) {
             *result = 0;
             AboutDialog aboutDialog(this);
             aboutDialog.getContainer()->exec();
+            return true;
+        }
+        if (msg->wParam == IDM_SHORTCUTSBOX) {
+            QUrl qmlSource { QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml") };
+            QmlPopupWidget* qmlKeyboardShortcuts = new QmlPopupWidget(qmlSource, this);
+            qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+            qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
+            qmlKeyboardShortcuts->setClearColor(Qt::transparent);
+            qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
+            qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
+            qmlKeyboardShortcuts->getContainer()->exec();
             return true;
         }
     }
