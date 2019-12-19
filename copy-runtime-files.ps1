@@ -50,7 +50,7 @@ foreach ($i in $FilesToCopy) {
 ############
 # qt
 ############
-$windeployqt = "$QtDir\bin\windeployqt.exe $OutDir\Jami.exe"
+$windeployqt = "$QtDir\bin\windeployqt.exe --qmldir $ClientDir\src --release $OutDir\Jami.exe"
 iex $windeployqt
 
 # ringtones
