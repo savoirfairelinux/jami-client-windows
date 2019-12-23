@@ -51,7 +51,7 @@ unix {
     TARGET = jami-qt
     TEMPLATE = app
 
-    QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg
+    QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg quickcontrols2
 
     #check Qt version
     QT_VERSION = $$[QT_VERSION]
