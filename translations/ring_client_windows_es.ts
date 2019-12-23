@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>Libre en el sentido de libertad</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -113,17 +113,17 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>Dirección TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -201,7 +201,7 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
-        <translation>Configuración de OpenDHT (Tabla de Hash Descentralizada Abierta)</translation>
+        <translation>Configuración de OpenDHT</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
@@ -266,17 +266,17 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>Dirección TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -601,7 +601,7 @@ Este es tu ID.
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation>Introduzca el password de su cuenta</translation>
+        <translation>Introduce la contraseña de tu cuenta</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -724,12 +724,12 @@ Por favor inténtelo de nuevo más tarde.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation>Registrando nomre</translation>
+        <translation>Registrando nombre</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation>Algo fue mal</translation>
+        <translation>Algo salió mal</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -967,12 +967,12 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de proxy SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>Entreda de texto del proxy SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -987,7 +987,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de texto de la Contraseña SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -998,7 +998,7 @@ en lugar de usar su ID.</translation>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Entrada de texto de la Contraseña SIP</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -1406,7 +1406,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation>Selector de velocidad de frames de vídeo</translation>
+        <translation>Selector de velocidad de cuadros del vídeo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
