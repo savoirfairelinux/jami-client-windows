@@ -154,11 +154,11 @@ LRC)](#How_to_Build_LibRingClient_(or_LRC) "wikilink") sections.
 
 - For Debian based:
 ```bash
-    sudo apt install qtmultimedia5-dev libqt5svg5* qtwebengine5-dev qtdeclarative5-dev pandoc
+    sudo apt install qtmultimedia5-dev libqt5svg5* qtwebengine5-dev qtdeclarative5-dev qtquickcontrols2-5-dev qml-module-qtquick* pandoc
 ```
 - For Fedora:
 ```bash
-    sudo dnf install qt5-qtsvg-devel qt5-qtwebengine-devel qt5-multimedia-devel qt5-qtdeclarative-devel pandoc
+    sudo dnf install qt5-qtsvg-devel qt5-qtwebengine-devel qt5-qtmultimedia-devel qt5-qtdeclarative-devel qt5-qtquickcontrols2-devel pandoc
 ```
 
 **Build Windows Client**

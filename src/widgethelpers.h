@@ -28,7 +28,6 @@
 #include <QPainter>
 #include <QPixmap>
 
-#include <QtQML>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlComponent>
