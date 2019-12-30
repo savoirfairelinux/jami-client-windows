@@ -2,9 +2,13 @@ win32-msvc {
     TARGET = Jami
     TEMPLATE = vcapp
 
-    QT += winextras widgets xml multimedia multimediawidgets network webenginewidgets svg sql
+    QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
 
-    CONFIG += suppress_vcproj_warnings
+    CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
+
+    QML2_IMPORT_PATH = C:/Qt/5.9.4/msvc2017_64/qml
+
+    QTQUICK_COMPILER_SKIPPED_RESOURCES += ressources.qrc
 
     # compiler options
     QMAKE_CXXFLAGS += /wd"4068" /wd"4099" /wd"4189" /wd"4267" /wd"4577" /wd"4467" /wd"4715" /wd"4828"
@@ -40,11 +44,28 @@ win32-msvc {
     LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib
 
     # output paths
-    DESTDIR = x64/Release
     OBJECTS_DIR = obj/.obj
     MOC_DIR = obj/.moc
     RCC_DIR = obj/.rcc
     UI_DIR = obj/.ui
+
+    # beta config
+    contains(CONFIG, Beta) {
+        CONFIG(Beta) {
+            message(Beta config enabled)
+            Release: DESTDIR = x64/Beta
+            Release: DEFINES += BETA
+        }
+    } else {
+        Release: DESTDIR = x64/Release
+    }
+    Debug: DESTDIR = x64/Debug
+
+    # qt dir
+    QMAKE_INCDIR_QT=$(QTDIR)\include
+    QMAKE_LIBDIR=$(QTDIR)\lib
+    QMAKE_MOC=$(QTDIR)\bin\moc.exe
+    QMAKE_QMAKE=$(QTDIR)\bin\qmake.exe
 }
 
 unix {
