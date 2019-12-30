@@ -39,6 +39,15 @@ protected:
     virtual void paintBackground(QPainter* painter) override;
 };
 
+class D3DPreviewWidget : public D3DVideoWidgetBase {
+    Q_OBJECT;
+
+public:
+    explicit D3DPreviewWidget(QWidget* parent = 0);
+    ~D3DPreviewWidget();
+
+};
+
 // A rounded image for photobooths
 class PhotoboothPreviewWidget final : public PreviewWidget {
     Q_OBJECT;
