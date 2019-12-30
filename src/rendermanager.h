@@ -26,6 +26,8 @@
 #include <QMutex>
 #include <QImage>
 
+#include <libavutil/pixfmt.h>
+
 extern "C" {
 struct AVFrame;
 struct SwsContext;
@@ -71,6 +73,8 @@ public:
      */
     QImage* getFrame();
 
+    AVFrame* getAVFrame();
+
     /**
      * Check if the object is updating actively
      */
@@ -87,6 +91,11 @@ signals:
      * @param id of the renderer
      */
     void frameUpdated(const std::string& id);
+    /**
+     * Emitted each time a frame is ready to be displayed.
+     * @param id of the renderer
+     */
+    void d3dFrameUpdated(const std::string& id);
     /**
      * Emitted once in slotRenderingStopped.
      * @param id of the renderer
@@ -111,6 +120,9 @@ private slots:
     void slotRenderingStopped(const std::string& id = video::PREVIEW_RENDERER_ID);
 
 private:
+    bool isHardwareAccelFormat(AVPixelFormat format);
+
+private:
     /* the id of the renderer */
     std::string id_;
 
@@ -119,9 +131,8 @@ private:
 
     /* a local copy of the renderer's current frame */
     video::Frame frame_;
-
     /* a local copy of the renderer's current avframe */
-    AVFrame* avFrame_;
+    std::unique_ptr<AVFrame, void(*)(AVFrame*)> avFrame_;
 
     /* a the frame's storage data used to set the image */
     std::vector<uint8_t> buffer_;
@@ -141,8 +152,7 @@ private:
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
 
-
-    AVFrame *pFrameRGB;
+    AVFrame* pFrameCorrectFormat;
     uint8_t * rgbBuffer;
     SwsContext *img_convert_ctx;
 };
@@ -172,7 +182,12 @@ public:
      */
     QImage* getPreviewFrame();
     /**
-     * Start capturing and rendering preview frames.
+     * Get the most recently rendered preview AVFrame.
+     * @return the rendered preview image
+     */
+    AVFrame* getPreviewAVFrame();
+    /**
+     * Start capturing and rendering preview avframe.
      * @param force if the capture device should be started
      * @param async
      */
@@ -189,6 +204,12 @@ public:
      * @return the rendered preview image
      */
     QImage* getFrame(const std::string& id);
+    /**
+     * Get the most recently rendered distant frame for a given id
+     * as an AVFrame pointer.
+     * @return the rendered preview image
+     */
+    AVFrame* getAVFrame(const std::string& id);
     /**
      * Add and connect a distant renderer for a given id
      * to a FrameWrapper object
@@ -211,6 +232,8 @@ signals:
 
     /* Emitted when the preview has a new frame ready. */
     void previewFrameUpdated();
+    /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
+    void previewD3DFrameUpdated();
 
     /* Emitted when the preview is stopped. */
     void previewRenderingStopped();
@@ -220,6 +243,9 @@ signals:
 
     /* Emitted when a distant renderer has a new frame ready for a given id. */
     void distantFrameUpdated(const std::string& id);
+
+    /* Emitted when a distant renderer has a new avframe frame ready for a given id. */
+    void d3dDistantFrameUpdated(const std::string& id);
 
     /* Emitted when a distant renderer is stopped for a given id. */
     void distantRenderingStopped(const std::string& id);

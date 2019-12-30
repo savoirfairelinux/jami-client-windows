@@ -21,6 +21,7 @@
 
 #include <QtConcurrent/QtConcurrent>
 #include <QtMultimedia//QVideoFrame>
+#include "lrcinstance.h"
 
 extern "C" {
 #include "libavutil/frame.h"
@@ -28,6 +29,8 @@ extern "C" {
 #include "libavformat/avformat.h"
 #include "libswscale/swscale.h"
 #include "libavdevice/avdevice.h"
+#include <libavutil/display.h>
+    auto AVFrameDeleter = [](AVFrame* p) {};
 }
 
 using namespace lrc::api;
@@ -37,6 +40,7 @@ FrameWrapper::FrameWrapper(AVModel& avModel,
     : avModel_(avModel)
     , id_(id)
     , isRendering_(false)
+    , avFrame_{ nullptr, AVFrameDeleter }
 {}
 
 FrameWrapper::~FrameWrapper()
@@ -46,7 +50,7 @@ FrameWrapper::~FrameWrapper()
     }
     sws_freeContext(img_convert_ctx);
     av_free(rgbBuffer);
-    av_frame_free(&pFrameRGB);
+    av_frame_free(&pFrameCorrectFormat);
 }
 
 void
@@ -94,6 +98,13 @@ FrameWrapper::getFrame()
     return image_.get();
 }
 
+AVFrame*
+FrameWrapper::getAVFrame()
+{
+    return avFrame_.get();
+}
+
+
 bool
 FrameWrapper::isRendering()
 {
@@ -135,47 +146,52 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
 
 #ifndef Q_OS_LINUX
         auto avFrame = renderer_->currentAVFrame();
-        avFrame_ = avFrame.get();
-        if(!avFrame_ || !avFrame_->width || !avFrame_->height) {
-            qDebug() << "AVFrame: this frame does not exist!";
+        if (!avFrame || !avFrame->width || !avFrame->height) {
             return;
         }
-        AVPixelFormat currentFormat = AVPixelFormat(avFrame_->format);
-        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_RGBA;
 
-        av_frame_free(&pFrameRGB);
-        pFrameRGB = av_frame_alloc();
-        int numBytes = avpicture_get_size(targetFormat, avFrame_->width, avFrame_->height);
-        av_free(rgbBuffer);
-        rgbBuffer = (uint8_t*) av_malloc(numBytes * sizeof(uint8_t));
-        avpicture_fill((AVPicture*) pFrameRGB, rgbBuffer,targetFormat, avFrame_->width, avFrame_->height);
+        AVPixelFormat currentFormat = AVPixelFormat(avFrame->format);
+        AVPixelFormat targetFormat = AVPixelFormat::AV_PIX_FMT_YUV420P;
 
-        // set up SWS context, which is used to convert the video format
-        sws_freeContext(img_convert_ctx);
-        img_convert_ctx = sws_getContext(avFrame_->width, avFrame_->height, currentFormat, avFrame_->width, avFrame_->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
+        if (currentFormat == targetFormat ||
+            currentFormat == AVPixelFormat::AV_PIX_FMT_YUV422P ||
+            currentFormat == AVPixelFormat::AV_PIX_FMT_YUV444P) {
+            avFrame_ = std::move(avFrame);
+        } else if (!LRCInstance::avModel().getHardwareAcceleration() && !isHardwareAccelFormat(currentFormat)) {
+            av_frame_free(&pFrameCorrectFormat);
+            pFrameCorrectFormat = av_frame_alloc();
+            int numBytes = avpicture_get_size(targetFormat, avFrame->width, avFrame->height);
+            av_free(rgbBuffer);
+            rgbBuffer = (uint8_t*)av_malloc(numBytes * sizeof(uint8_t));
+            avpicture_fill((AVPicture*)pFrameCorrectFormat, rgbBuffer, targetFormat, avFrame->width, avFrame->height);
 
+            // set up SWS context, which is used to convert the video format
+            sws_freeContext(img_convert_ctx);
+            img_convert_ctx = sws_getContext(avFrame->width, avFrame->height, currentFormat, avFrame->width, avFrame->height, targetFormat, SWS_BICUBIC, NULL, NULL, NULL);
 
-        //convert the format from YUV to RGB with sws_scale
-        sws_scale(img_convert_ctx,
-            avFrame_->data,
-            avFrame_->linesize, 0, avFrame_->height, pFrameRGB->data,
-                pFrameRGB->linesize);
+            //convert the format from YUV to RGB with sws_scale
+            sws_scale(img_convert_ctx,
+                avFrame->data,
+                avFrame->linesize, 0, avFrame->height, pFrameCorrectFormat->data,
+                pFrameCorrectFormat->linesize);
+            pFrameCorrectFormat->height = avFrame->height;
+            pFrameCorrectFormat->width = avFrame->width;
+            pFrameCorrectFormat->format = targetFormat;
+            av_frame_copy_props(pFrameCorrectFormat, avFrame.get());
+            avFrame_.reset(std::move(pFrameCorrectFormat));
+        }
+        else if (LRCInstance::avModel().getHardwareAcceleration()) {
+            qDebug() << "The hardware accelaration is enabled but no handle code is implemented! Please turn off hardware accelaeration!";
+        }
 
-        image_.reset(
-                new QImage((uchar*) std::move(rgbBuffer),
-                    avFrame_->width,
-                    avFrame_->height,
-                QImage::Format_RGBA8888)
-            );
+        emit d3dFrameUpdated(id);
 #else
         if (frame_.ptr) {
             image_.reset(new QImage(frame_.ptr, width, height, QImage::Format_ARGB32));
-
         }
 #endif
+        emit frameUpdated(id);
     }
-
-    emit frameUpdated(id);
 }
 
 void
@@ -199,6 +215,29 @@ FrameWrapper::slotRenderingStopped(const std::string& id)
     isRendering_ = false;
 
     emit renderingStopped(id);
+}
+
+bool
+FrameWrapper::isHardwareAccelFormat(AVPixelFormat format)
+{
+    bool isAccel = false;
+    std::vector<AVPixelFormat> formats = {
+        AV_PIX_FMT_CUDA,
+        AV_PIX_FMT_D3D11VA_VLD,
+        AV_PIX_FMT_DXVA2_VLD,
+        AV_PIX_FMT_QSV,
+        AV_PIX_FMT_MMAL,
+        AV_PIX_FMT_XVMC,
+        AV_PIX_FMT_VAAPI_MOCO,
+        AV_PIX_FMT_VAAPI_IDCT,
+        AV_PIX_FMT_VAAPI_VLD,
+        AV_PIX_FMT_VDPAU,
+    };
+    for (AVPixelFormat fmt : formats) {
+        isAccel = format == fmt;
+        if (isAccel) break;
+    }
+    return isAccel;
 }
 
 RenderManager::RenderManager(AVModel& avModel)
@@ -230,7 +269,12 @@ RenderManager::RenderManager(AVModel& avModel)
             Q_UNUSED(id);
             emit previewRenderingStopped();
         });
-
+    QObject::connect(previewFrameWrapper_.get(),
+        &FrameWrapper::d3dFrameUpdated,
+        [this](const std::string& id) {
+            Q_UNUSED(id);
+            emit previewD3DFrameUpdated();
+        });
     previewFrameWrapper_->connectStartRendering();
 }
 
@@ -255,7 +299,14 @@ RenderManager::getPreviewFrame()
     return previewFrameWrapper_->getFrame();
 }
 
-void RenderManager::stopPreviewing(bool async)
+AVFrame*
+RenderManager::getPreviewAVFrame()
+{
+    return previewFrameWrapper_->getAVFrame();
+}
+
+void
+RenderManager::stopPreviewing(bool async)
 {
     if (!previewFrameWrapper_->isRendering()) {
         return;
@@ -268,7 +319,8 @@ void RenderManager::stopPreviewing(bool async)
     }
 }
 
-void RenderManager::startPreviewing(bool force, bool async)
+void
+RenderManager::startPreviewing(bool force, bool async)
 {
     if (previewFrameWrapper_->isRendering() && !force) {
         return;
@@ -297,6 +349,16 @@ RenderManager::getFrame(const std::string& id)
     return nullptr;
 }
 
+AVFrame*
+RenderManager::getAVFrame(const std::string& id)
+{
+    auto dfwIt = distantFrameWrapperMap_.find(id);
+    if (dfwIt != distantFrameWrapperMap_.end()) {
+        return dfwIt->second->getAVFrame();
+    }
+    return nullptr;
+}
+
 void
 RenderManager::addDistantRenderer(const std::string& id)
 {
@@ -319,6 +381,11 @@ RenderManager::addDistantRenderer(const std::string& id)
             dfw.get(), &FrameWrapper::frameUpdated,
             [this](const std::string& id) {
                 emit distantFrameUpdated(id);
+            });
+        distantConnectionMap_[id].updated = QObject::connect(
+            dfw.get(), &FrameWrapper::d3dFrameUpdated,
+            [this](const std::string& id) {
+                emit d3dDistantFrameUpdated(id);
             });
         distantConnectionMap_[id].stopped = QObject::connect(
             dfw.get(), &FrameWrapper::renderingStopped,

@@ -43,6 +43,14 @@ private:
     QMetaObject::Connection previewRenderingStopped_;
 };
 
+class D3DPreviewWidget : public D3DVideoWidgetBase {
+    Q_OBJECT;
+
+public:
+    explicit D3DPreviewWidget(QWidget* parent = 0);
+    ~D3DPreviewWidget();
+};
+
 // A rounded image for photobooths
 class PhotoboothPreviewWidget final : public PreviewWidget {
     Q_OBJECT;
@@ -92,6 +100,38 @@ private:
     constexpr static QMargins padding_ = QMargins(2, 2, 2, 2);
     PreviewSnap location_{ PreviewSnap::SE };
     QSize containerSize_{0, 0};
+};
+
+class D3DVideoCallPreviewWidget final : public D3DPreviewWidget {
+    Q_OBJECT;
+
+public:
+    explicit D3DVideoCallPreviewWidget(QWidget* parent = 0);
+    virtual ~D3DVideoCallPreviewWidget();
+
+    void setContainerSize(const QSize& size);
+    void setLocation(const PreviewSnap location);
+
+    QPoint getTopLeft();
+
+    QSize getScaledSize(int w, int h);
+
+    /**
+     * Computes new widget size with aspect ratio guarded
+     * taking into consideration snap location
+     */
+    void setupGeometry(const QSize& newSize);
+
+protected:
+    void paintEvent(QPaintEvent* e) override;
+
+private:
+    constexpr static qreal containerRatio_ = 0.2f;
+    constexpr static qreal cornerRadius_ = 10.0f;
+    constexpr static qreal margin_ = 15.0f;
+    constexpr static QMargins padding_ = QMargins(2, 2, 2, 2);
+    PreviewSnap location_{ PreviewSnap::SE };
+    QSize containerSize_{ 0, 0 };
 };
 
 // rounded corners for video record view

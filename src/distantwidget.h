@@ -28,7 +28,7 @@ class DistantWidget : public VideoWidgetBase {
 
 public:
     explicit DistantWidget(QWidget* parent = 0);
-    ~DistantWidget();
+    virtual ~DistantWidget();
 
     void setRendererId(const std::string& id);
 
@@ -36,6 +36,23 @@ protected:
     void paintEvent(QPaintEvent* e);
 
     void paintBackground(QPainter* painter) override;
+
+private:
+    std::string id_;
+
+};
+
+class D3DDistantWidget : public D3DVideoWidgetBase {
+    Q_OBJECT;
+
+public:
+    explicit D3DDistantWidget(QWidget* parent = 0);
+    virtual ~D3DDistantWidget();
+
+    void setRendererId(const std::string& id);
+
+protected:
+    void paintEvent(QPaintEvent* e);
 
 private:
     std::string id_;
