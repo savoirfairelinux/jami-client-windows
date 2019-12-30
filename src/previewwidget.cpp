@@ -48,6 +48,25 @@ PreviewWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+D3DPreviewWidget::D3DPreviewWidget(QWidget* parent)
+    : D3DVideoWidgetBase(Qt::transparent, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewD3DFrameUpdated,
+        [this]() {
+            updateTextures(LRCInstance::renderer()->getPreviewAVFrame());
+            repaint();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            updateTextures(LRCInstance::renderer()->getPreviewAVFrame());
+            repaint();
+        });
+}
+
+D3DPreviewWidget::~D3DPreviewWidget()
+{
+}
+
 void
 PreviewWidget::paintEvent(QPaintEvent* e)
 {
