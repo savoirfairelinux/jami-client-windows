@@ -49,3 +49,29 @@ protected:
     virtual void paintBackground(QPainter* painter) = 0;
 
 };
+
+class D3DVideoWidgetBase : public QWidget {
+    Q_OBJECT;
+
+public:
+    explicit D3DVideoWidgetBase(QColor bgColor = Qt::transparent,
+        QWidget* parent = 0);
+    virtual ~D3DVideoWidgetBase();
+
+    /**
+     * Repaints the widget while preventing update/repaint to queue
+     * for its parent. This is needed when geometry changes occur,
+     * to disable image tearing.
+     */
+    void forceRepaint();
+
+signals:
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void hideEvent(QHideEvent* e) override;
+    virtual void showEvent(QShowEvent* e) override;
+
+    virtual void paintBackground(QPainter* painter) = 0;
+
+};
