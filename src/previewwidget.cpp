@@ -51,6 +51,25 @@ PreviewWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+D3DPreviewWidget::D3DPreviewWidget(QWidget* parent)
+    : D3DVideoWidgetBase(Qt::transparent, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewD3DFrameUpdated,
+        [this]() {
+            updateTextures(LRCInstance::renderer()->getPreviewAVFrame());
+            repaint();
+        });
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+        [this]() {
+            updateTextures(LRCInstance::renderer()->getPreviewAVFrame());
+            repaint();
+        });
+}
+
+D3DPreviewWidget::~D3DPreviewWidget()
+{
+}
+
 void
 PreviewWidget::paintEvent(QPaintEvent* e)
 {
@@ -198,15 +217,15 @@ VideoCallPreviewWidget::setupGeometry(const QSize& newSize)
         break;
     case PreviewSnap::NE:
         currentRect.moveTopRight(QPoint(containerSize_.width() - margin_,
-                                        margin_));
+            margin_));
         break;
     case PreviewSnap::SW:
         currentRect.moveBottomLeft(QPoint(margin_,
-                                          containerSize_.height() - margin_));
+            containerSize_.height() - margin_));
         break;
     case PreviewSnap::SE:
         currentRect.moveBottomRight(QPoint(containerSize_.width() - margin_,
-                                           containerSize_.height() - margin_));
+            containerSize_.height() - margin_));
         break;
     }
     setGeometry(currentRect);
@@ -240,6 +259,92 @@ VideoCallPreviewWidget::getTopLeft()
             containerSize_.height() - margin_ - this->height());
     }
 }
+
+D3DVideoCallPreviewWidget::D3DVideoCallPreviewWidget(QWidget* parent)
+    : D3DPreviewWidget(parent)
+{}
+
+D3DVideoCallPreviewWidget::~D3DVideoCallPreviewWidget()
+{}
+
+void
+D3DVideoCallPreviewWidget::setContainerSize(const QSize& size)
+{
+    containerSize_ = size;
+}
+
+void
+D3DVideoCallPreviewWidget::setLocation(const PreviewSnap location)
+{
+    location_ = location;
+}
+
+QPoint
+D3DVideoCallPreviewWidget::getTopLeft()
+{
+    switch (location_) {
+    case PreviewSnap::NW:
+        return QPoint(
+            margin_,
+            margin_);
+    case PreviewSnap::NE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            margin_);
+    case PreviewSnap::SW:
+        return QPoint(
+            margin_,
+            containerSize_.height() - margin_ - this->height());
+    case PreviewSnap::SE:
+        return QPoint(
+            containerSize_.width() - margin_ - this->width(),
+            containerSize_.height() - margin_ - this->height());
+    }
+}
+
+QSize
+D3DVideoCallPreviewWidget::getScaledSize(int sourceWidth, int sourceHeight)
+{
+    auto invAspectRatio =
+        static_cast<qreal>(sourceHeight) /
+        static_cast<qreal>(sourceWidth);
+    int newPreviewWidth = containerSize_.width() * containerRatio_;
+    int newPreviewHeight = newPreviewWidth * invAspectRatio;
+    return QSize(newPreviewWidth, newPreviewHeight);
+}
+
+void
+D3DVideoCallPreviewWidget::setupGeometry(const QSize& newSize)
+{
+    auto currentRect = geometry();
+    currentRect.setSize(newSize);
+    switch (location_) {
+    case PreviewSnap::NW:
+        currentRect.moveTopLeft(QPoint(margin_, margin_));
+        break;
+    case PreviewSnap::NE:
+        currentRect.moveTopRight(QPoint(containerSize_.width() - margin_,
+            margin_));
+        break;
+    case PreviewSnap::SW:
+        currentRect.moveBottomLeft(QPoint(margin_,
+            containerSize_.height() - margin_));
+        break;
+    case PreviewSnap::SE:
+        currentRect.moveBottomRight(QPoint(containerSize_.width() - margin_,
+            containerSize_.height() - margin_));
+        break;
+    }
+    setGeometry(currentRect);
+}
+
+void
+D3DVideoCallPreviewWidget::paintEvent(QPaintEvent* e)
+{
+    D3DPreviewWidget::paintEvent(e);
+}
+
+
 
 VideoRecordPreviewWidget::VideoRecordPreviewWidget(QWidget* parent)
     : PreviewWidget(parent)
