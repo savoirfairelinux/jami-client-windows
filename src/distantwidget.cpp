@@ -67,6 +67,42 @@ DistantWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+D3DDistantWidget::D3DDistantWidget(QWidget* parent)
+    : D3DVideoWidgetBase(Qt::black, parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::d3dDistantFrameUpdated,
+        [this](const std::string& id) {
+            if (id_ == id) {
+                updateTextures(LRCInstance::renderer()->getAVFrame(id));
+                repaint();
+            }
+        });
+    connect(LRCInstance::renderer(), &RenderManager::distantRenderingStopped,
+        [this](const std::string& id) {
+            if (id_ == id) {
+                updateTextures(LRCInstance::renderer()->getAVFrame(id));
+                repaint();
+            }
+        });
+}
+
+D3DDistantWidget::~D3DDistantWidget()
+{
+}
+
+void
+D3DDistantWidget::setRendererId(const std::string& id)
+{
+    id_ = id;
+    update();
+}
+
+void
+D3DDistantWidget::paintEvent(QPaintEvent* e)
+{
+    D3DVideoWidgetBase::paintEvent(e);
+}
+
 void
 DistantWidget::setRendererId(const std::string& id)
 {
