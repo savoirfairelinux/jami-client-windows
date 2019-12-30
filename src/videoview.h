@@ -84,7 +84,7 @@ private:
     CallAudioOnlyAvatarOverlay* audioOnlyAvatar_;
 
     // preview
-    VideoCallPreviewWidget* previewWidget_;
+    D3DVideoCallPreviewWidget* previewWidget_;
     QPropertyAnimation* moveAnim_;
     QPoint originMouseDisplacement_;
     bool draggingPreview_ = false;

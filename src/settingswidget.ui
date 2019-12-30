@@ -1463,8 +1463,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>706</width>
-                  <height>1398</height>
+                  <width>707</width>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2787,7 +2787,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>683</width>
-                  <height>874</height>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3762,16 +3762,16 @@
                                <height>5</height>
                               </size>
                              </property>
-                             <property name="maximum" stdset="0">
+                             <property name="maximum">
                               <number>100</number>
                              </property>
-                             <property name="value" stdset="0">
+                             <property name="value">
                               <number>-1</number>
                              </property>
-                             <property name="textVisible" stdset="0">
+                             <property name="textVisible">
                               <bool>false</bool>
                              </property>
-                             <property name="format" stdset="0">
+                             <property name="format">
                               <string>%p%</string>
                              </property>
                             </widget>
@@ -4102,7 +4102,7 @@
                          <height>224</height>
                         </size>
                        </property>
-                       <layout class="QHBoxLayout" name="videoLayout" stretch="1,0,1">
+                       <layout class="QHBoxLayout" name="videoLayout" stretch="0">
                         <property name="spacing">
                          <number>0</number>
                         </property>
@@ -4119,23 +4119,7 @@
                          <number>0</number>
                         </property>
                         <item>
-                         <spacer name="horizontalSpacer_23">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="PreviewWidget" name="previewWidget" native="true">
+                         <widget class="D3DPreviewWidget" name="previewWidget" native="true">
                           <property name="enabled">
                            <bool>true</bool>
                           </property>
@@ -4164,22 +4148,6 @@
                            </size>
                           </property>
                          </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_24">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
                         </item>
                        </layout>
                       </widget>
@@ -4303,7 +4271,7 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>PreviewWidget</class>
+   <class>D3DPreviewWidget</class>
    <extends>QWidget</extends>
    <header>previewwidget.h</header>
    <container>1</container>
