@@ -48,6 +48,16 @@ PreviewWidget::paintBackground(QPainter* painter)
     painter->fillPath(path, brush);
 }
 
+D3DPreviewWidget::D3DPreviewWidget(QWidget* parent)
+    : D3DVideoWidgetBase(Qt::transparent, parent)
+{
+
+}
+
+D3DPreviewWidget::~D3DPreviewWidget()
+{
+}
+
 void
 PreviewWidget::paintEvent(QPaintEvent* e)
 {

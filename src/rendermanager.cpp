@@ -120,6 +120,8 @@ FrameWrapper::slotRenderingStarted(const std::string& id)
 void
 FrameWrapper::slotFrameUpdated(const std::string& id)
 {
+    return;
+
     if (id != id_) {
         return;
     }
