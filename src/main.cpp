@@ -288,19 +288,7 @@ main(int argc, char* argv[])
 
     QSettings settings("jami.net", "Jami");
     if (not startMinimized) {
-        if (settings.value(SettingsKey::hasRun) == 0) {
-            if(LRCInstance::accountModel().getAccountList().size() != 0)
-                MainWindow::instance().showMaximized();
-            QTimer::singleShot(100,
-                [] {
-                    QSettings settings("jami.net", "Jami");
-                    settings.setValue(SettingsKey::hasRun, 1);
-                    auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
-                    aboutDialog->getContainer()->exec();
-                });
-        } else {
-            MainWindow::instance().showWindow();
-        }
+        MainWindow::instance().showWindow();
     } else {
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
