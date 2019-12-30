@@ -54,3 +54,67 @@ VideoWidgetBase::showEvent(QShowEvent* e)
     Q_UNUSED(e);
     emit visibilityChanged(true);
 }
+
+D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
+    : QWidget(parent)
+{
+}
+
+D3DVideoWidgetBase::~D3DVideoWidgetBase()
+{
+}
+
+void
+D3DVideoWidgetBase::forceRepaint()
+{
+    auto parent = qobject_cast<QWidget*>(this->parent());
+    if (parent) parent->setUpdatesEnabled(false);
+    repaint();
+    if (parent) parent->setUpdatesEnabled(true);
+}
+
+void D3DVideoWidgetBase::hideEvent(QHideEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(false);
+}
+
+void D3DVideoWidgetBase::showEvent(QShowEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(true);
+}
+
+void D3DVideoWidgetBase::resizeEvent(QResizeEvent* event)
+{
+    ResizeD3D();
+}
+
+void D3DVideoWidgetBase::paintEvent(QPaintEvent* event)
+{
+}
+
+void
+D3DVideoWidgetBase::InitD3D()
+{
+}
+
+void
+D3DVideoWidgetBase::ResizeD3D()
+{
+}
+
+void
+D3DVideoWidgetBase::InitScene()
+{
+}
+
+void
+D3DVideoWidgetBase::RenderScene()
+{
+}
+
+void
+D3DVideoWidgetBase::CleanUp()
+{
+}
