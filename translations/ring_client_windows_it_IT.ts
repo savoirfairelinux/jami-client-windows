@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation>sul pulsante</translation>
+        <translation>pulsante informazioni su</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>pulsante crediti</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>Free as in Freedom</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
@@ -1148,7 +1148,7 @@ invece di usare il tuo ID.</translation>
     <message>
         <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Visualizzazione photobooth</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>

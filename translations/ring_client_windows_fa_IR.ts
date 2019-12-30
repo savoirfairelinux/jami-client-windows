@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>آزاد مانند آزادی</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>سرویس‌گیر ویندوز مایکروسافت برای جمی.
+جمی یک نرم افزار ارتباطی امن و توزیع شده است.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -59,7 +60,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>افزودن حساب</translation>
     </message>
 </context>
 <context>
@@ -72,17 +73,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="55"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات تماس</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="102"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>پاسخگویی خودکار تماس‌ها</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="130"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>فعال‌سازی صدای زنگ سفارشی</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
@@ -92,7 +93,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>نشانی STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
@@ -102,7 +103,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>استفاده از UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
@@ -112,17 +113,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژه TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>نام‌کاربری TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>نشانی TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -137,7 +138,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>کدک‌های ویدیویی</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
@@ -147,12 +148,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>فایل‌های صوتی (‎*.wav *.ogg *.opus *.mp3 *.aiff *.wma‎)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>افزودن یک صدای زنگ سفارشی</translation>
     </message>
 </context>
 <context>
@@ -165,32 +166,32 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="61"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات تماس</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>اجازه تماس به همتاهای ناشناخته</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="133"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>پاسخگویی خودکار تماس‌ها</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="161"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>فعال‌سازی صدای زنگ سفارشی</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="188"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>افزودن یک صدای زنگ سفارشی</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>سرور نام</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
@@ -200,7 +201,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>پکربندی OpenDHT </translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
@@ -230,12 +231,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>کلید خصوصی</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>گواهی CA</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -250,12 +251,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>نشانی STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>استفاده از UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
@@ -265,17 +266,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژه TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>نام‌کاربری TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>نشانی TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -295,12 +296,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1114"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>کدک‌های ویدیویی</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>فایل‌های صوتی (‎*.wav *.ogg *.opus *.mp3 *.aiff *.wma‎)</translation>
     </message>
 </context>
 <context>
@@ -321,12 +322,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>نام</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>شناسه</translation>
     </message>
 </context>
 <context>
@@ -344,7 +345,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>جستجوی متن ورودی مخاطب</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="653"/>
@@ -357,12 +358,15 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+این شناسه شماست.
+آن را کپی کنید و با دوستان خود به اشتراک بگذارید!
+</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>نمایش کد QR شناسه رینگ</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
@@ -383,17 +387,17 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="1184"/>
         <location filename="../callwidget.ui" line="1434"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>بهترین نام</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
         <source>best Id</source>
-        <translation type="unfinished"/>
+        <translation>بهترین شناسه</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه برگشت به صفحه نخست</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1943"/>
@@ -414,7 +418,7 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="377"/>
         <location filename="../callwidget.cpp" line="552"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>یافتن مخاطب جدید یا موجود</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -429,7 +433,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه نادیده گرفتن تماس ورودی</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1539"/>
@@ -484,17 +488,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="561"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>جستجوی دعوت نامه‌های دریافت‌شده شما</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>با من روی جمی در تماس باشید!</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>شناسه من:</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="847"/>
@@ -519,22 +523,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>حذف حساب</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>آیا واقعا می‌خواهید حساب زیر را پاک کنید؟</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>اگر این حساب برون‌برد نشده یا به دستگاه دیگری اضافه نشده باشد، برگشت‌ناپذیر خواهد بود.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>حذف حساب برای همیشه</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -544,7 +548,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>لغو حذف حساب</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -562,7 +566,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>شناسه دستگاه</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
@@ -593,12 +597,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>مکالمه</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژه حساب‌تان را وارد کنید</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -618,12 +622,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation type="unfinished"/>
+        <translation>برون‌برد حساب</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>پین شما</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -633,7 +637,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>این پین و گذرواژه حساب باید ظرف 10 دقیقه در دستگاه شما وارد شود.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -643,7 +647,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>پیوند یک دستگاه دیگر</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
@@ -654,7 +658,8 @@ Copy and share it with your friends!
         <location filename="../linkdevicedialog.cpp" line="110"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>مشکلی پیش آمد.
+ لطفا بعدا دوباره امتحان کنید.</translation>
     </message>
 </context>
 <context>
@@ -677,7 +682,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>جمی</translation>
     </message>
 </context>
 <context>
@@ -685,12 +690,12 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="35"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>تنظیم نام ثبت‌شده</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژهٔ حساب‌تان را وارد کنید</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -700,7 +705,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>ورودی متن گذرواژه</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
@@ -720,12 +725,12 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>ثبت نام</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>مشکلی پیش آمد.</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -768,12 +773,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه ایجاد حساب جمی</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>راه‌انداز دکمه فشاری برای ایجاد حساب جمی </translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
@@ -788,7 +793,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>راه‌انداز دکمه فشاری برای پیوند دستگاه</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
@@ -798,17 +803,17 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>دکمه ایجاد حساب SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>راه‌انداز دکمه فشاری برای ایجاد حساب SIP جمی </translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>ایجاد یک حساب SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -827,7 +832,13 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;برای پیوند این دستگاه به حسابی دیگر شما در ابتدا &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;نیاز است کد پین را تولید کنید.&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; برای تولید کد پین:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;به &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;تنظیمات مدیریت حساب&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; در دستگاه قبلی رفته،&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;حساب جمی را  &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;که می‌خواهید استفاده کنید،&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; انتخاب کنید&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;‌به برگه &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;دستگاه‌ها&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; بروید و افزودن یک دستگاه را &lt;/span&gt;انتخاب کنید&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;شما پین لازم برای تکمیل این فرم را دریافت خواهید کرد که تنها برای  &lt;/span&gt;10 دقیقه معتبر خواهد بود&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
@@ -842,14 +853,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>پیوند از فایل بایگانی حساب برون‌برد‌شده</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(هیچ)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
@@ -866,7 +877,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>نام نمایه</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -879,17 +890,19 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>نام‌کاربری خود را ثبت کنید.
+با این کار نام‌کاربری رزرو می‌شود تا فقط شما بتوانید از آن استفاده کنید.
+ دوستان شما می‌توانند به جای استفاده از شناسه شما با نام‌کاربری‌تان با شما تماس بگیرند.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1142"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>چک‌باکس نام‌کاربری عمومی</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1145"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>چک‌باکس انتخاب اینکه آیا کاربر یک نام‌کاربری عمومی می‌خواهد</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
@@ -914,7 +927,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>ورودی متن گذرواژه</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1301"/>
@@ -926,7 +939,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1211"/>
         <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>متن وارد‌شده تایید گذرواژه</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
@@ -941,22 +954,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>ویرایش سرور SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>سرور</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>پروکسی SIP وارد‌شده</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>ورودی متن پروکسی SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -971,7 +984,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>ورودی متن گذرواژه SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -982,12 +995,12 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>متن گذرواژه SIP وارد‌شده</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>تولید حساب جمی شما...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -997,7 +1010,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>دکمه فشاری برای دسترسی به صفحه قبلی wizard</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1007,12 +1020,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>لغو ساخت/پیوند حساب</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>دکمه فشاری برای لغو ایجاد یا پیوند حساب</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1027,7 +1040,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>دکمه فشاری برای دسترسی به صفحه بعدی wizard</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1042,32 +1055,32 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>فایل‌های بایگانی جمی (‎*.gz)؛ تمام فایلها (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>نیاز است که حساب شما انتقال یابد. گذرواژه خود را وارد کنید.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>در حال انتقال حساب جمی شما...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>ورود بایگانی حساب...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>تولید حساب جمی شما...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>تولید حساب SIP شما...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1080,27 +1093,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>تغییر گذرواژه حساب</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>ورود گذرواژه فعلی</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>ورود گذرواژه جدید</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>تایید گذرواژه جدید</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>تایید</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1110,7 +1123,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژه فعلی نادرست است.</translation>
     </message>
 </context>
 <context>
@@ -1118,7 +1131,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothdialog.ui" line="14"/>
         <source>Photobooth</source>
-        <translation type="unfinished"/>
+        <translation>غرفه عکس</translation>
     </message>
 </context>
 <context>
@@ -1131,7 +1144,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>نمایش غرفه عکس</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
@@ -1141,7 +1154,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>فایل‌های تصویر (‎*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1162,28 +1175,28 @@ instead of using your ID.</source>
     <message>
         <location filename="../utils.cpp" line="183"/>
         <source>No default mail client found</source>
-        <translation type="unfinished"/>
+        <translation>هیچ سرویس‌گیرنده ایمیل پیش‌فرضی یافت نشد</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="43"/>
         <location filename="../deviceitemwidget.cpp" line="85"/>
         <source>Edit Device Name</source>
-        <translation type="unfinished"/>
+        <translation>ویرایش نام دستگاه</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>حذف پیوند دستگاه به حساب</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>ذخیره نام جدید دستگاه </translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>افزودن به عنوان مخاطب</translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1234,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="305"/>
         <location filename="../settingswidget.ui" line="3416"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>صدا / تصویر</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="542"/>
@@ -1231,12 +1244,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>فعال‌سازی اعلان‌ها</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>در هنگام بستن کمینه نگه دار</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
@@ -1251,27 +1264,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>همیشه در حال ضبط</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>به‌روزرسانی‌ها</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>بررسی خودکار به‌روزرسانی‌ها هر</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>انتخاب‌گر بازه بین بررسی‌های برای به‌روزرسانی در واحد روز</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>روز</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
@@ -1281,7 +1294,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>به‌روزرسانی‌ها را همین الان بررسی کن</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
@@ -1292,32 +1305,32 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>فعال‌سازی</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>تغییر وضعیت فعال‌سازی اعلان‌ها</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>تغییر وضعیت کمینه نگه داشتن در هنگام بستن</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>تماس‌های ضبط‌شده</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>تغییر وضعیت به‌روزرسانی‌های خودکار</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>حساب جمی</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1344,7 +1357,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>برای ثبت نام‌کاربری اینجا بنویسید</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
@@ -1354,28 +1367,28 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>تغییر گذرواژه</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>برون‌برد (ذخیره) حساب</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>حذف حساب</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>دستگاه‌های پیوند‌داده‌شده</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>پیوند یک دستگاه دیگر</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
@@ -1385,23 +1398,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>قالب</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>انتخاب‌گر نرخ فریم دستگاه ویدیویی</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>پیش‌نمایش در‌دسترس نیست</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
         <location filename="../settingswidget.ui" line="3187"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات پیش‌رفته حساب</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
@@ -1431,7 +1444,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>میکروفون</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
@@ -1446,7 +1459,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>انتخاب دستگاه خروجی</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
@@ -1466,53 +1479,53 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="459"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>یک نام ثبت شده نمی‌بایست دارای هیچ فضای خالی بوده و حداقل دارای سه حرف باشد</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="466"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>این نام پیش از این گرفته شده است</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>یک نام مستعار وارد کنید</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>تبت این نام</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="550"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>حذف دستگاه</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>گذرواژه این حساب را برای تایید حذف این دستگاه وارد کنید</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>اطمینان دارید که می‌خواهید این دستگاه را حذف کنید؟</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>حساب را در اینجا برون‌برد کن</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="887"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>یک پوشه برای دانلود‌های خود انتخاب کنید</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="904"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>یک پوشه برای صدا‌های ضبط‌شده خود انتخاب کنید</translation>
     </message>
 </context>
 <context>
@@ -1520,12 +1533,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="419"/>
         <source>Call on Hold</source>
-        <translation type="unfinished"/>
+        <translation>تماس در انتظار</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="89"/>
         <source>Hold / Unhold</source>
-        <translation type="unfinished"/>
+        <translation>در انتظار / از‌سر گیری</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
@@ -1535,7 +1548,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="162"/>
         <source>Mute Mic</source>
-        <translation type="unfinished"/>
+        <translation>قطع میکروفون</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
@@ -1578,7 +1591,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videoview.cpp" line="274"/>
         <source>Share screen area</source>
-        <translation type="unfinished"/>
+        <translation>ناحیه اشتراک صفحه</translation>
     </message>
     <message>
         <location filename="../videoview.cpp" line="281"/>
