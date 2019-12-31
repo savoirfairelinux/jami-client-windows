@@ -67,11 +67,13 @@ Only 64-bit MSVC build can be compiled.
 
 > Note: <br>
 > To control the toolset and the sdk version that are used by msbuild, you can use ```--toolset``` and ```--sdk``` options <br>
-> By default: ```toolset=v141```, ```sdk=10.0.16299.0``` <br>
+> To control which Qt version should be used (qmake, windeployqt), uou can use ```--qtver``` option <br>
+> By default: ```toolset=v141```, ```sdk=10.0.16299.0```,  ```qtver=5.9.4``` <br>
 > For example:
 ```sh
-    python make-ring.py --install --toolset v142 --sdk 10.0.18362.0
+    python make-ring.py --install --toolset v142 --sdk 10.0.18362.0 --qtver 5.12.0
 ```
+
 ### Build Module individually
 ---
 
@@ -82,6 +84,7 @@ Only 64-bit MSVC build can be compiled.
 - Make sure that dependencies is built by make-ring.py
 - On MSVC folder (ring-project\daemon\MSVC):
 ```sh
+    cmake -DCMAKE_CONFIGURATION_TYPES="ReleaseLib_win32" -DCMAKE_VS_PLATFORM_NAME="x64" -G "Visual Studio 16 2019" -A x64 -T '$(DefaultPlatformToolset)' ..
     python winmake.py -b daemon
 ```
 - This will generate a ```.lib``` file in the path of ring-project\daemon\MSVC\x64\ReleaseLib_win32\bin
@@ -116,6 +119,7 @@ Only 64-bit MSVC build can be compiled.
 **Note**
 - For all python scripts, both ```--toolset``` and ```--sdk``` options are available.
 - For more available options, run scripts with ```-h``` option.
+- ```--qtver``` option is available on ```make-lrc.py``` and ```make-client.py```.
 
 ## Packaging On Native Windows
 ---
