@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>src/KeyBoardShortcutTable.qml</file>
         <file>src/KeyBoardShortcutKey.qml</file>
+        <file>src/UserProfileCard.qml</file>
     </qresource>
 </RCC>
