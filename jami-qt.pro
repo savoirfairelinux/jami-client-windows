@@ -171,7 +171,9 @@ HEADERS += ./src/aboutdialog.h \
         ./src/widgethelpers.h \
         ./src/recordwidget.h \
         ./src/networkmanager.h \
-        ./src/connectivitymonitor.h
+        ./src/connectivitymonitor.h \
+        ./src/userprofile.h \
+        ./src/qmlclipboardadapter.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -237,7 +239,8 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/widgethelpers.cpp \
         ./src/recordwidget.cpp \
         ./src/networkmanager.cpp \
-        ./src/connectivitymonitor.cpp
+        ./src/connectivitymonitor.cpp \
+        ./src/userprofile.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \
