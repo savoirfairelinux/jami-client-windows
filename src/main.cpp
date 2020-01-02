@@ -28,6 +28,7 @@
 #include "utils.h"
 #include "splashscreen.h"
 #include "aboutdialog.h"
+#include "qmlclipboardadapter.h"
 
 #include <QApplication>
 #include <QFile>
@@ -296,9 +297,12 @@ main(int argc, char* argv[])
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
-    // for deployment only
+    // for deployment and register types
+    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
     auto ret = a.exec();
 
