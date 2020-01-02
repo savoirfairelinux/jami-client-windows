@@ -110,7 +110,6 @@ private:
     void conversationsButtonClicked();
     void invitationsButtonClicked();
     void setupSmartListContextMenu(const QPoint &pos);
-    void setupQRCode(QString ringID);
     void backToWelcomePage();
 
     void selectConversation(const QModelIndex& index);
