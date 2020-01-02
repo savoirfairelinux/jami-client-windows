@@ -40,6 +40,7 @@
 #include "ringthemeutils.h"
 #include "settingskey.h"
 #include "aboutdialog.h"
+#include "userprofile.h"
 
 #include "globalinstances.h"
 
@@ -415,58 +416,18 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
         // separator
         menu.addSeparator();
 
-        // copy number(infohash)
-        auto copyNumberAction = new QAction(tr("Copy number"), this);
-        menu.addAction(copyNumberAction);
-        connect(copyNumberAction, &QAction::triggered,
-            [contact]() {
-                QApplication::clipboard()->setText(
-                    QString::fromStdString(contact.profileInfo.uri)
-                );
+        // show user profile
+        auto profileShowingAction = new QAction(tr("Profile"), this);
+        menu.addAction(profileShowingAction);
+        connect(profileShowingAction, &QAction::triggered,
+            [conversation, this]() {
+                QScopedPointer<UserProfile> userProfile(new UserProfile(conversation, qobject_cast<MainWindow*>(this->parent()->parent()->parent())));
+                userProfile->showProfile();
             });
     }
     smartListModel_->isContextMenuOpen = true;
     menu.exec(globalPos);
     smartListModel_->isContextMenuOpen = false;
-}
-
-void
-CallWidget::setupQRCode(QString ringID)
-{
-    auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
-                                     0, //Let the version be decided by libqrencode
-                                     QR_ECLEVEL_L, // Lowest level of error correction
-                                     QR_MODE_8, // 8-bit data mode
-                                     1);
-    if (not rcode) {
-        qWarning() << "Failed to generate QR code: " << strerror(errno);
-        return;
-    }
-
-    auto margin = 5;
-    int qrwidth = rcode->width + margin * 2;
-    QImage result(QSize(qrwidth, qrwidth), QImage::Format_Mono);
-    QPainter painter;
-    painter.begin(&result);
-    painter.setClipRect(QRect(0, 0, qrwidth, qrwidth));
-    painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
-    painter.setBrush(Qt::black);
-    painter.fillRect(QRect(0, 0, qrwidth, qrwidth), Qt::white);
-    unsigned char* p;
-    p = rcode->data;
-    for(int y = 0; y < rcode->width; y++) {
-        unsigned char* row = (p + (y * rcode->width));
-        for(int x = 0; x < rcode->width; x++) {
-            if(*(row + x) & 0x1) {
-                painter.drawRect(margin + x, margin + y, 1, 1);
-            }
-        }
-
-    }
-    painter.end();
-    QRcode_free(rcode);
-    ui->qrLabel->setPixmap(QPixmap::fromImage(result.scaled(QSize(qrSize_, qrSize_),
-                           Qt::KeepAspectRatio)));
 }
 
 void
@@ -864,7 +825,8 @@ CallWidget::setSelectedAccount(const std::string& accountId)
     auto isRingAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
     if (isRingAccount) {
         ui->ringIdLabel->setText(QString::fromStdString(id));
-        setupQRCode(QString::fromStdString(accountInfo.profileInfo.uri));
+        ui->qrLabel->setPixmap(QPixmap::fromImage(Utils::setupQRCode(QString::fromStdString(accountInfo.profileInfo.uri)).scaled(QSize(qrSize_, qrSize_),
+            Qt::KeepAspectRatio)));
     }
 
     updateSmartList();

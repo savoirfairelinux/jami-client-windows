@@ -37,6 +37,7 @@
 #include "version.h"
 
 #include <globalinstances.h>
+#include <qrencode.h>
 
 //Qt
 #include <QBitmap>
@@ -711,6 +712,44 @@ Utils::pixmapFromSvg(const QString& svg_resource, const QSize& size)
     QPainter pixPainter(&pixmap);
     svgRenderer.render(&pixPainter);
     return pixmap;
+}
+
+QImage
+Utils::setupQRCode(QString ringID)
+{
+    auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
+        0, //Let the version be decided by libqrencode
+        QR_ECLEVEL_L, // Lowest level of error correction
+        QR_MODE_8, // 8-bit data mode
+        1);
+    if (not rcode) {
+        qWarning() << "Failed to generate QR code: " << strerror(errno);
+        return QImage();
+    }
+
+    auto margin = 5;
+    int qrwidth = rcode->width + margin * 2;
+    QImage result(QSize(qrwidth, qrwidth), QImage::Format_Mono);
+    QPainter painter;
+    painter.begin(&result);
+    painter.setClipRect(QRect(0, 0, qrwidth, qrwidth));
+    painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
+    painter.setBrush(Qt::black);
+    painter.fillRect(QRect(0, 0, qrwidth, qrwidth), Qt::white);
+    unsigned char* p;
+    p = rcode->data;
+    for (int y = 0; y < rcode->width; y++) {
+        unsigned char* row = (p + (y * rcode->width));
+        for (int x = 0; x < rcode->width; x++) {
+            if (*(row + x) & 0x1) {
+                painter.drawRect(margin + x, margin + y, 1, 1);
+            }
+        }
+
+    }
+    painter.end();
+    QRcode_free(rcode);
+    return result;
 }
 
 QString
