@@ -27,6 +27,14 @@ win32-msvc {
     QRENCODE=../client-windows/qrencode-win32/qrencode-win32
 
     # client deps
+    LIBS += -L'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/lib/x64/' -lcudart_static -lcuda -lcudart
+
+    INCLUDEPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/include/'
+    DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/lib/x64'
+
+    win32:!win32-g++: PRE_TARGETDEPS += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/lib/x64/cudart_static.lib'
+    else:win32-g++: PRE_TARGETDEPS += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/lib/x64/libcudart_static.a'
+
     INCLUDEPATH += $${QRENCODE}
     INCLUDEPATH += ../daemon/contrib/msvc/include/
     INCLUDEPATH += $${DRING}/contrib/build/ffmpeg/Build/win32/x64/include/
