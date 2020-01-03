@@ -5,6 +5,7 @@ win32-msvc {
     QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
 
     CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
+    CONFIG += release
 
     QML2_IMPORT_PATH = C:/Qt/5.9.4/msvc2017_64/qml
 
@@ -20,6 +21,61 @@ win32-msvc {
 
     # preprocessor defines
     DEFINES += UNICODE PROCESS_DPI_AWARE=1 QT_NO_DEBUG NDEBUG ENABLE_LIBWRAP=1
+
+    # output paths
+    OBJECTS_DIR = obj/.obj
+    MOC_DIR = obj/.moc
+    RCC_DIR = obj/.rcc
+    UI_DIR = obj/.ui
+
+    # CUDA library include
+    CUDA_SOURCES += \
+        src-gpu/JamiCUDAKernal.cu
+
+    # CUDA settings
+    CUDA_DIR = $$(CUDA_PATH)            # Path to cuda toolkit install
+    CUDA_SDK_DIR = $$(CUDA_SDK_PATH)
+    SYSTEM_NAME = x64                   # Depending on your system either 'Win32', 'x64', or 'Win64'
+    SYSTEM_TYPE = 64                    # '32' or '64', depending on your system
+    CUDA_ARCH = sm_35     # Type of CUDA architecture
+    NVCC_OPTIONS = --use_fast_math
+    CUDA_OBJECTS_DIR = ./cudaobj
+
+    # MSVCRT link option (static or dynamic, it must be the same with your Qt SDK link option)
+    MSVCRT_LINK_FLAG_RELEASE = "/MD"
+
+    # include paths
+    INCLUDEPATH += $$CUDA_DIR/include \
+                   $$CUDA_SDK_DIR/common/inc \
+                   $$CUDA_DIR/../shared/inc
+    DEPENDPATH  += $$CUDA_DIR/include \
+                   $$CUDA_SDK_DIR/common/inc \
+                   $$CUDA_DIR/../shared/inc
+    # library directories
+    CUDA_LIB_PATH_PRIME = $$CUDA_DIR/lib/$$SYSTEM_NAME/
+    CUDA_LIB_PATH +=$$CUDA_DIR/lib/$$SYSTEM_NAME \
+                    $$CUDA_DIR/common/lib/$$SYSTEM_NAME \
+                    $$CUDA_DIR/../shared/lib/$$SYSTEM_NAME
+    QMAKE_LIBDIR += CUDA_LIB_PATH
+
+    # The following makes sure all path names (which often include spaces) are put between quotation marks
+    CUDA_INC = $$join(INCLUDEPATH,'" -I"','-I"','"')
+    # Add the necessary libraries
+    CUDA_BASIC_LIB_NAME += cudart_static cuda cudart cudadevrt
+
+    CUDA_DEPENDENT_LIB_NAME = kernel32 user32 gdi32 winspool comdlg32 \
+                 advapi32 shell32 ole32 oleaut32 uuid odbc32 odbccp32
+
+    CUDA_LIB_NAMES = $$CUDA_BASIC_LIB_NAME + $$CUDA_DEPENDENT_LIB_NAME
+    NVCCLIBS = $$join(CUDA_LIB_NAMES,' -l','-l', '')
+    for(singleLib, CUDA_BASIC_LIB_NAME) {
+        CUDA_LIBS += $$join(singleLib,'.lib ', $$CUDA_LIB_PATH_PRIME, '.lib')
+    }
+    LIBS += $$CUDA_LIBS
+    for(singleLib, CUDA_DEPENDENT_LIB_NAME) {
+        CUDA_DEPENDENT_SYSTEM_LIBS += $$join(singleLib,'.lib ','','.lib')
+    }
+    LIBS += $$CUDA_DEPENDENT_SYSTEM_LIBS
 
     # dependencies
     LRC=../lrc
@@ -47,23 +103,31 @@ win32-msvc {
     # windows system libs
     LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib D3d11.lib
 
-    # output paths
-    OBJECTS_DIR = obj/.obj
-    MOC_DIR = obj/.moc
-    RCC_DIR = obj/.rcc
-    UI_DIR = obj/.ui
-
     # beta config
     contains(CONFIG, Beta) {
         CONFIG(Beta) {
             message(Beta config enabled)
             Release: DESTDIR = x64/Beta
             Release: DEFINES += BETA
+
+            cuda.input = CUDA_SOURCES
+            cuda.output = $$CUDA_OBJECTS_DIR/${QMAKE_FILE_BASE}_cuda.obj
+            cuda.commands = \"$$CUDA_DIR/bin/nvcc.exe\" $$NVCC_OPTIONS $$CUDA_INC $$NVCCLIBS \
+                            --machine $$SYSTEM_TYPE -arch=$$CUDA_ARCH \
+                            --compile -cudart static -DWIN32 -D_MBCS \
+                            -Xcompiler "/wd4819,/EHsc,/W3,/nologo,/O2,/Zi" \
+                            -Xcompiler $$MSVCRT_LINK_FLAG_RELEASE \
+                            -c -o ${QMAKE_FILE_OUT} ${QMAKE_FILE_NAME}
+            cuda.dependency_type = TYPE_C
+            QMAKE_EXTRA_COMPILERS += cuda
         }
     } else {
         Release: DESTDIR = x64/Release
     }
     Debug: DESTDIR = x64/Debug
+
+# Configuration of the Cuda compiler
+
 
     # qt dir
     QMAKE_INCDIR_QT=$(QTDIR)\include
@@ -73,6 +137,19 @@ win32-msvc {
 
     # exe icons
     Release: RC_FILE = ico.rc
+
+CONFIG(release) {
+        cuda.input = CUDA_SOURCES
+        cuda.output = $$CUDA_OBJECTS_DIR/${QMAKE_FILE_BASE}_cuda.obj
+        cuda.commands = \"$$CUDA_DIR/bin/nvcc.exe\" $$NVCC_OPTIONS $$CUDA_INC $$NVCCLIBS \
+                        --machine $$SYSTEM_TYPE -arch=$$CUDA_ARCH \
+                        --compile -cudart static -DWIN32 -D_MBCS \
+                        -Xcompiler "/wd4819,/EHsc,/W3,/nologo,/O2,/Zi" \
+                        -Xcompiler $$MSVCRT_LINK_FLAG_RELEASE \
+                        -c -o ${QMAKE_FILE_OUT} ${QMAKE_FILE_NAME}
+        cuda.dependency_type = TYPE_C
+        QMAKE_EXTRA_COMPILERS += cuda
+    }
 }
 
 unix {
@@ -103,8 +180,6 @@ unix {
     LIBS += -L$${LRC}/lib -lringclient
     LIBS += -lqrencode
 }
-
-
 
 # Input
 HEADERS += ./src/aboutdialog.h \
