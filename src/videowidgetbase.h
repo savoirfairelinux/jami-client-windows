@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QWidget>
+#include <QWindow>
 
 #define interface struct
 #include <d3dcompiler.h>
@@ -29,6 +30,7 @@
 #include <d3d10.h>
 #include <wrl/client.h>
 #include <DirectXMath.h>
+#include <QHBoxLayout>
 
 extern "C" {
 #include <libavutil/frame.h>
@@ -112,41 +114,23 @@ DWORD indices[] = {
     2,3,0
 };
 
-class D3DVideoWidgetBase : public QWidget {
+class D3DVideoWidgetWindow : public QWindow
+{
     Q_OBJECT;
 
 public:
-    explicit D3DVideoWidgetBase(QColor bgColor = Qt::transparent,
-        QWidget* parent = 0);
-    virtual ~D3DVideoWidgetBase();
+    explicit D3DVideoWidgetWindow(int initialWidth, int initialHeight);
+    virtual ~D3DVideoWidgetWindow();
 
-    virtual QPaintEngine* paintEngine() const override
-    {
-        return NULL;
-    }
-
-    /**
-     * Repaints the widget while preventing update/repaint to queue
-     * for its parent. This is needed when geometry changes occur,
-     * to disable image tearing.
-     */
-    void forceRepaint();
-    bool updateTextures(AVFrame* frame);
-
-signals:
-    void visibilityChanged(bool visible);
+    virtual bool updateTextures(AVFrame* frame);
+    virtual void paintD3D();
 
 protected:
-    virtual void hideEvent(QHideEvent* e) override;
-    virtual void showEvent(QShowEvent* e) override;
-
-    virtual void resizeEvent(QResizeEvent* event) override;
-    virtual void paintEvent(QPaintEvent* event) override;
+    virtual void resizeEvent(QResizeEvent* ev) override;
 
     virtual void InitD3D();
-    virtual void ResizeD3D();
+    virtual void ResizeD3D(int width, int height);
     virtual void InitScene();
-    virtual void paintD3D();
     virtual void CleanUp();
 
     void initialize();
@@ -177,4 +161,35 @@ protected:
     Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout_;
     Microsoft::WRL::ComPtr<ID3D11Buffer> constantBuffer_;
     ConstantBufferDataStruct constantBufferDataStruct_;
+};
+
+class D3DVideoWidgetBase : public QWidget {
+    Q_OBJECT;
+
+public:
+    explicit D3DVideoWidgetBase(QColor bgColor = Qt::transparent,
+        QWidget* parent = 0);
+    virtual ~D3DVideoWidgetBase();
+    /**
+     * Repaints the widget while preventing update/repaint to queue
+     * for its parent. This is needed when geometry changes occur,
+     * to disable image tearing.
+     */
+    void forceRepaint();
+    bool updateTextures(AVFrame* frame);
+
+signals:
+    void visibilityChanged(bool visible);
+
+protected:
+    virtual void hideEvent(QHideEvent* e) override;
+    virtual void showEvent(QShowEvent* e) override;
+
+    virtual void resizeEvent(QResizeEvent* event) override;
+    virtual void paintEvent(QPaintEvent* event) override;
+
+protected:
+    QHBoxLayout* layout_;
+    D3DVideoWidgetWindow* d3dWindow_;
+    QWidget* containerOfD3DWindow_;
 };
