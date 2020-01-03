@@ -181,7 +181,7 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
             avFrame_.reset(std::move(pFrameCorrectFormat));
         }
         else if (LRCInstance::avModel().getHardwareAcceleration()) {
-            qDebug() << "The hardware accelaration is enabled but no handle code is implemented! Please turn off hardware accelaeration!";
+            avFrame_ = std::move(avFrame);
         }
 
         emit d3dFrameUpdated(id);
