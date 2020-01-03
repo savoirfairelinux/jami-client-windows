@@ -17,3 +17,8 @@ nuget.exe
 *.autosave
 changelog.html
 obj/
+*.obj
+cudaobj/
+jami-qt.vcxproj
+jami-qt.vcxproj.filters
+*.pdb
