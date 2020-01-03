@@ -55,8 +55,8 @@ VideoWidgetBase::showEvent(QShowEvent* e)
     emit visibilityChanged(true);
 }
 
-D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
-    : QWidget(parent)
+D3DVideoWidgetWindow::D3DVideoWidgetWindow()
+    : QWindow()
     , d3dDevice_(0)
     , d3dDevContext_(0)
     , swapChain_(0)
@@ -77,8 +77,6 @@ D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
     , texU_(0)
     , texV_(0)
 {
-    setAttribute(Qt::WA_PaintOnScreen, true);
-    setAttribute(Qt::WA_NativeWindow, true);
 
     // initialize the constant buffer's value
     constantBufferDataStruct_.angleToRotate = 0.0f;
@@ -92,22 +90,13 @@ D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
     initialize();
 }
 
-D3DVideoWidgetBase::~D3DVideoWidgetBase()
+D3DVideoWidgetWindow::~D3DVideoWidgetWindow()
 {
     CleanUp();
 }
 
-void
-D3DVideoWidgetBase::forceRepaint()
-{
-    auto parent = qobject_cast<QWidget*>(this->parent());
-    if (parent) parent->setUpdatesEnabled(false);
-    repaint();
-    if (parent) parent->setUpdatesEnabled(true);
-}
-
 bool
-D3DVideoWidgetBase::updateTextures(AVFrame* frame)
+D3DVideoWidgetWindow::updateTextures(AVFrame* frame)
 {
     if (!frame || !frame->width || !frame->height || !frame->linesize[0] || !frame->linesize[1] || !frame->linesize[2]) {
         qDebug() << "The size of this frame is not correct and frame update is abondoned!";
@@ -186,14 +175,20 @@ D3DVideoWidgetBase::updateTextures(AVFrame* frame)
 }
 
 void
-D3DVideoWidgetBase::initialize()
+D3DVideoWidgetWindow::resizeEvent(QResizeEvent* ev)
+{
+    ResizeD3D(ev->size().width(), ev->size().height());
+}
+
+void
+D3DVideoWidgetWindow::initialize()
 {
     InitD3D();
     InitScene();
 }
 
 void
-D3DVideoWidgetBase::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture, Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
+D3DVideoWidgetWindow::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture, Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
                                        int width, int height, int index, D3D11_SUBRESOURCE_DATA resourceData)
 {
     D3D11_OBJECT_RELEASE(shaderResourceView);
@@ -229,35 +224,7 @@ D3DVideoWidgetBase::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> t
 }
 
 void
-D3DVideoWidgetBase::hideEvent(QHideEvent* e)
-{
-    Q_UNUSED(e);
-    emit visibilityChanged(false);
-}
-
-void
-D3DVideoWidgetBase::showEvent(QShowEvent* e)
-{
-    Q_UNUSED(e);
-    emit visibilityChanged(true);
-}
-
-void
-D3DVideoWidgetBase::resizeEvent(QResizeEvent* event)
-{
-    Q_UNUSED(event);
-    ResizeD3D();
-}
-
-void
-D3DVideoWidgetBase::paintEvent(QPaintEvent* event)
-{
-    Q_UNUSED(event);
-    paintD3D();
-}
-
-void
-D3DVideoWidgetBase::InitD3D()
+D3DVideoWidgetWindow::InitD3D()
 {
     //Describe our Buffer
     DXGI_MODE_DESC bufferDesc;
@@ -298,10 +265,10 @@ D3DVideoWidgetBase::InitD3D()
 }
 
 void
-D3DVideoWidgetBase::ResizeD3D()
+D3DVideoWidgetWindow::ResizeD3D(int width, int height)
 {
     D3D11_OBJECT_RELEASE(renderTargetView_);
-    swapChain_->ResizeBuffers(1, width(), height(), DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+    swapChain_->ResizeBuffers(1, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
     //Create our BackBuffer
     ID3D11Texture2D* backBuffer;
     swapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&backBuffer);
@@ -320,19 +287,19 @@ D3DVideoWidgetBase::ResizeD3D()
 
     viewport.TopLeftX = 0;
     viewport.TopLeftY = 0;
-    viewport.Width = width();
-    viewport.Height = height();
+    viewport.Width = width;
+    viewport.Height = height;
     viewport.MinDepth = 0.0f;
     viewport.MaxDepth = 1.0f;
 
     //Set the Viewport
     d3dDevContext_->RSSetViewports(1, &viewport);
-    constantBufferDataStruct_.aViewPortWidthAndHeight.x = (float)width();
-    constantBufferDataStruct_.aViewPortWidthAndHeight.y = (float)height();
+    constantBufferDataStruct_.aViewPortWidthAndHeight.x = (float)width;
+    constantBufferDataStruct_.aViewPortWidthAndHeight.y = (float)height;
 }
 
 void
-D3DVideoWidgetBase::InitScene()
+D3DVideoWidgetWindow::InitScene()
 {
     // compile shaders and set shader byte code blob
     Microsoft::WRL::ComPtr<ID3DBlob> VS_ErrorMsg;
@@ -448,7 +415,7 @@ D3DVideoWidgetBase::InitScene()
 }
 
 void
-D3DVideoWidgetBase::paintD3D()
+D3DVideoWidgetWindow::paintD3D()
 {
     //Clear our backbuffer
     float bgColor[4] = { (0.0f,0.0f,0.0f,0.0f) };
@@ -466,7 +433,7 @@ D3DVideoWidgetBase::paintD3D()
 }
 
 void
-D3DVideoWidgetBase::CleanUp()
+D3DVideoWidgetWindow::CleanUp()
 {
     D3D11_OBJECT_RELEASE(d3dDevice_);
     D3D11_OBJECT_RELEASE(d3dDevContext_);
@@ -487,4 +454,70 @@ D3DVideoWidgetBase::CleanUp()
     D3D11_OBJECT_RELEASE(texY_);
     D3D11_OBJECT_RELEASE(texU_);
     D3D11_OBJECT_RELEASE(texV_);
+}
+
+D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
+    : QWidget(parent)
+
+{
+    d3dWindow_ = new D3DVideoWidgetWindow();
+
+    containerOfD3DWindow_ = QWidget::createWindowContainer(d3dWindow_, this);
+    containerOfD3DWindow_->setFocusPolicy(Qt::TabFocus);
+    containerOfD3DWindow_->resize(width(), height());
+}
+
+D3DVideoWidgetBase::~D3DVideoWidgetBase()
+{
+    delete d3dWindow_;
+    delete containerOfD3DWindow_;
+}
+
+void
+D3DVideoWidgetBase::forceRepaint()
+{
+    auto parent = qobject_cast<QWidget*>(this->parent());
+    if (parent) parent->setUpdatesEnabled(false);
+    repaint();
+    if (parent) parent->setUpdatesEnabled(true);
+}
+
+bool
+D3DVideoWidgetBase::updateTextures(AVFrame* frame)
+{
+    return d3dWindow_->updateTextures(frame);
+}
+
+void
+D3DVideoWidgetBase::hideEvent(QHideEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(false);
+}
+
+void
+D3DVideoWidgetBase::showEvent(QShowEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(true);
+}
+
+void
+D3DVideoWidgetBase::resizeEvent(QResizeEvent* event)
+{
+    // TODO: call the container widget's resize function
+    containerOfD3DWindow_->resize(width(), height());
+    containerOfD3DWindow_->setGeometry(this->geometry());
+}
+
+void
+D3DVideoWidgetBase::paintEvent(QPaintEvent* event)
+{
+    Q_UNUSED(event);
+
+    //TODO: call the paint function of the qwindow in  the container
+    d3dWindow_->paintD3D();
+
+
+
 }
