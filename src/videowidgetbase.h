@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QWidget>
+#include <QWindow>
 
 
 #ifndef interface struct
@@ -33,6 +34,7 @@
 #include <d3d10.h>
 #include <wrl/client.h>
 #include <DirectXMath.h>
+#include <QHBoxLayout>
 
 extern "C" {
 #include <libavutil/frame.h>
@@ -116,6 +118,63 @@ DWORD indices[] = {
     2,3,0
 };
 
+class D3DVideoWidgetWindow : public QWindow
+{
+    Q_OBJECT;
+
+public:
+    explicit D3DVideoWidgetWindow(int initialWidth, int initialHeight);
+    virtual ~D3DVideoWidgetWindow();
+
+    virtual bool updateTextures(AVFrame* frame);
+    virtual void paintD3D();
+
+protected:
+    virtual void resizeEvent(QResizeEvent* ev) override;
+
+    virtual void InitD3D();
+    virtual void ResizeD3D(int width, int height);
+    virtual void InitScene();
+    virtual void CleanUp();
+
+    void initialize();
+    void initializeShaderResourceViewWithTexture(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture,
+                                                 Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
+                                                 int index);
+    void initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture, Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>
+                            shaderResourceView, int width, int height, int index, D3D11_SUBRESOURCE_DATA resourceData);
+    bool getTextureFromD3DVA(AVFrame* frame, Microsoft::WRL::ComPtr<ID3D11Texture2D> textureToSet);
+
+protected:
+    Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice_;
+    Microsoft::WRL::ComPtr<ID3D11DeviceContext> d3dDevContext_;
+    Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain_;
+    Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView_;
+
+    Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer_;
+    Microsoft::WRL::ComPtr<ID3D11Buffer> indiceBuffer_;
+    Microsoft::WRL::ComPtr<ID3D11VertexShader> vertexShader_;
+    Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader_;
+    Microsoft::WRL::ComPtr<ID3D10Blob> vertexShaderBlob_;
+    Microsoft::WRL::ComPtr<ID3D10Blob> pixelShaderBlob_;
+
+    Microsoft::WRL::ComPtr<ID3D11SamplerState> sampler_;
+
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewY_;
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewU_;
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewV_;
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewD3DHW_;
+
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> texY_;
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> texU_;
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> texV_;
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> texD3DHW_;
+
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout_;
+    Microsoft::WRL::ComPtr<ID3D11Buffer> constantBuffer_;
+    ConstantBufferDataStruct constantBufferDataStruct_;
+};
+
 class D3DVideoWidgetBase : public QWidget {
     Q_OBJECT;
 
@@ -123,12 +182,6 @@ public:
     explicit D3DVideoWidgetBase(QColor bgColor = Qt::transparent,
         QWidget* parent = 0);
     virtual ~D3DVideoWidgetBase();
-
-    virtual QPaintEngine* paintEngine() const override
-    {
-        return NULL;
-    }
-
     /**
      * Repaints the widget while preventing update/repaint to queue
      * for its parent. This is needed when geometry changes occur,
@@ -147,38 +200,8 @@ protected:
     virtual void resizeEvent(QResizeEvent* event) override;
     virtual void paintEvent(QPaintEvent* event) override;
 
-    virtual void InitD3D();
-    virtual void ResizeD3D();
-    virtual void InitScene();
-    virtual void paintD3D();
-    virtual void CleanUp();
-
-    void initialize();
-    void initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture, Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
-                            int width, int height, int index, D3D11_SUBRESOURCE_DATA resourceData);
-
 protected:
-    Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice_;
-    Microsoft::WRL::ComPtr<ID3D11DeviceContext> d3dDevContext_;
-    Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain_;
-    Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView_;
-
-    Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer_;
-    Microsoft::WRL::ComPtr<ID3D11Buffer> indiceBuffer_;
-    Microsoft::WRL::ComPtr<ID3D11VertexShader> vertexShader_;
-    Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader_;
-    Microsoft::WRL::ComPtr<ID3D10Blob> vertexShaderBlob_;
-    Microsoft::WRL::ComPtr<ID3D10Blob> pixelShaderBlob_;
-
-    Microsoft::WRL::ComPtr<ID3D11SamplerState> sampler_;
-    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewY_;
-    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewU_;
-    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceViewV_;
-    Microsoft::WRL::ComPtr<ID3D11Texture2D> texY_;
-    Microsoft::WRL::ComPtr<ID3D11Texture2D> texU_;
-    Microsoft::WRL::ComPtr<ID3D11Texture2D> texV_;
-
-    Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout_;
-    Microsoft::WRL::ComPtr<ID3D11Buffer> constantBuffer_;
-    ConstantBufferDataStruct constantBufferDataStruct_;
+    QHBoxLayout* layout_;
+    D3DVideoWidgetWindow* d3dWindow_;
+    QWidget* containerOfD3DWindow_;
 };

@@ -55,8 +55,8 @@ VideoWidgetBase::showEvent(QShowEvent* e)
     emit visibilityChanged(true);
 }
 
-D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
-    : QWidget(parent)
+D3DVideoWidgetWindow::D3DVideoWidgetWindow(int initialWidth, int initialHeight)
+    : QWindow()
     , d3dDevice_(0)
     , d3dDevContext_(0)
     , swapChain_(0)
@@ -77,9 +77,8 @@ D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
     , texU_(0)
     , texV_(0)
 {
-    setAttribute(Qt::WA_PaintOnScreen, true);
-    setAttribute(Qt::WA_NativeWindow, true);
-
+    this->setWidth(initialWidth);
+    this->setHeight(initialHeight);
     // initialize the constant buffer's value
     constantBufferDataStruct_.angleToRotate = 0.0f;
     constantBufferDataStruct_.isUsingD3D11HW = false;
@@ -92,109 +91,139 @@ D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
     initialize();
 }
 
-D3DVideoWidgetBase::~D3DVideoWidgetBase()
+D3DVideoWidgetWindow::~D3DVideoWidgetWindow()
 {
     CleanUp();
 }
 
-void
-D3DVideoWidgetBase::forceRepaint()
-{
-    auto parent = qobject_cast<QWidget*>(this->parent());
-    if (parent) parent->setUpdatesEnabled(false);
-    repaint();
-    if (parent) parent->setUpdatesEnabled(true);
-}
-
 bool
-D3DVideoWidgetBase::updateTextures(AVFrame* frame)
+D3DVideoWidgetWindow::updateTextures(AVFrame* frame)
 {
-    if (!frame || !frame->width || !frame->height || !frame->linesize[0] || !frame->linesize[1] || !frame->linesize[2]) {
-        qDebug() << "The size of this frame is not correct and frame update is abondoned!";
-        return false;
-    }
+     if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_D3D11VA_VLD) {
+     //qDebug() << "Application is now using D3D11 to accelerate but it;s not yet implemented!";
+     //TODO: Support the D3D11 HW Accel
+         if (getTextureFromD3DVA(frame, texD3DHW_)) {
+             initializeShaderResourceViewWithTexture(texD3DHW_, shaderResourceViewD3DHW_, 3);
+             constantBufferDataStruct_.isUsingD3D11HW = true;
+             return true;
+         } else {
+             return false;
+         };
+     } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_QSV) {
+         qDebug() << "Application is now using Intel libmfx to accelerate but it;s not yet implemented!";
+         return false;
+         //TODO: Support the libmfx HW Accel
+     } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_CUDA) {
+         qDebug() << "Application is now using CUDA to accelerate but it;s not yet implemented!";
+         return false;
+         //TODO: Support the CUDA HW Accel
+     } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_DXVA2_VLD) {
+         qDebug() << "Application is now using D3D9 to accelerate but it;s not yet implemented!";
+         return false;
+         //TODO: Support the D3D9 HW Accel
+     }
 
-    double rotation = 0;
-    if (auto matrix = av_frame_get_side_data(frame, AV_FRAME_DATA_DISPLAYMATRIX)) {
-        const int32_t* data = reinterpret_cast<int32_t*>(matrix->data);
-        rotation = av_display_rotation_get(data);
-    }
+     if (!frame || !frame->width || !frame->height || !frame->linesize[0] || !frame->linesize[1] || !frame->linesize[2]) {
+         qDebug() << "The size of this frame is not correct and frame update is abondoned!";
+         return false;
+     }
 
-    constantBufferDataStruct_.angleToRotate = rotation;
-    constantBufferDataStruct_.isUsingD3D11HW = false;
-    constantBufferDataStruct_.aWidthAndHeight.x = (float)frame->width;
-    constantBufferDataStruct_.aWidthAndHeight.y = (float)frame->height;
+     double rotation = 0;
+     if (auto matrix = av_frame_get_side_data(frame, AV_FRAME_DATA_DISPLAYMATRIX)) {
+         const int32_t* data = reinterpret_cast<int32_t*>(matrix->data);
+         rotation            = av_display_rotation_get(data);
+     }
 
-    D3D11_SUBRESOURCE_DATA resourceDataTexY;
-    ZeroMemory(&resourceDataTexY, sizeof(D3D11_SUBRESOURCE_DATA));
-    D3D11_SUBRESOURCE_DATA resourceDataTexU;
-    ZeroMemory(&resourceDataTexU, sizeof(D3D11_SUBRESOURCE_DATA));
-    D3D11_SUBRESOURCE_DATA resourceDataTexV;
-    ZeroMemory(&resourceDataTexV, sizeof(D3D11_SUBRESOURCE_DATA));
+     constantBufferDataStruct_.angleToRotate     = rotation;
+     constantBufferDataStruct_.isUsingD3D11HW    = false;
+     constantBufferDataStruct_.aWidthAndHeight.x = (float)frame->width;
+     constantBufferDataStruct_.aWidthAndHeight.y = (float)frame->height;
 
-    if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV420P) {
-        resourceDataTexY.pSysMem = frame->data[0];
-        resourceDataTexY.SysMemPitch = frame->linesize[0];
-        initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
+     D3D11_SUBRESOURCE_DATA resourceDataTexY;
+     ZeroMemory(&resourceDataTexY, sizeof(D3D11_SUBRESOURCE_DATA));
+     D3D11_SUBRESOURCE_DATA resourceDataTexU;
+     ZeroMemory(&resourceDataTexU, sizeof(D3D11_SUBRESOURCE_DATA));
+     D3D11_SUBRESOURCE_DATA resourceDataTexV;
+     ZeroMemory(&resourceDataTexV, sizeof(D3D11_SUBRESOURCE_DATA));
 
-        resourceDataTexU.pSysMem = frame->data[1];
-        resourceDataTexU.SysMemPitch = frame->linesize[1];
-        initializeTextures(texU_, shaderResourceViewU_, frame->width / 2, frame->height / 2, 1, resourceDataTexU);
+     if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV420P) {
+         resourceDataTexY.pSysMem     = frame->data[0];
+         resourceDataTexY.SysMemPitch = frame->linesize[0];
+         initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
 
-        resourceDataTexV.pSysMem = frame->data[2];
-        resourceDataTexV.SysMemPitch = frame->linesize[2];
-        initializeTextures(texV_, shaderResourceViewV_, frame->width / 2, frame->height / 2, 2, resourceDataTexV);
-    } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV422P) {
-        resourceDataTexY.pSysMem = frame->data[0];
-        resourceDataTexY.SysMemPitch = frame->linesize[0];
-        initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
+         resourceDataTexU.pSysMem     = frame->data[1];
+         resourceDataTexU.SysMemPitch = frame->linesize[1];
+         initializeTextures(texU_, shaderResourceViewU_, frame->width / 2, frame->height / 2, 1, resourceDataTexU);
 
-        resourceDataTexU.pSysMem = frame->data[1];
-        resourceDataTexU.SysMemPitch = frame->linesize[1];
-        initializeTextures(texU_, shaderResourceViewU_, frame->width / 2, frame->height, 1, resourceDataTexU);
+         resourceDataTexV.pSysMem     = frame->data[2];
+         resourceDataTexV.SysMemPitch = frame->linesize[2];
+         initializeTextures(texV_, shaderResourceViewV_, frame->width / 2, frame->height / 2, 2, resourceDataTexV);
+     } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV422P) {
+         resourceDataTexY.pSysMem     = frame->data[0];
+         resourceDataTexY.SysMemPitch = frame->linesize[0];
+         initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
 
-        resourceDataTexV.pSysMem = frame->data[2];
-        resourceDataTexV.SysMemPitch = frame->linesize[2];
-        initializeTextures(texV_, shaderResourceViewV_, frame->width / 2, frame->height, 2, resourceDataTexV);
-    } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV444P) {
-        resourceDataTexY.pSysMem = frame->data[0];
-        resourceDataTexY.SysMemPitch = frame->linesize[0];
-        initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
+         resourceDataTexU.pSysMem     = frame->data[1];
+         resourceDataTexU.SysMemPitch = frame->linesize[1];
+         initializeTextures(texU_, shaderResourceViewU_, frame->width / 2, frame->height, 1, resourceDataTexU);
 
-        resourceDataTexU.pSysMem = frame->data[1];
-        resourceDataTexU.SysMemPitch = frame->linesize[1];
-        initializeTextures(texU_, shaderResourceViewU_, frame->width, frame->height, 1, resourceDataTexU);
+         resourceDataTexV.pSysMem     = frame->data[2];
+         resourceDataTexV.SysMemPitch = frame->linesize[2];
+         initializeTextures(texV_, shaderResourceViewV_, frame->width / 2, frame->height, 2, resourceDataTexV);
+     } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_YUV444P) {
+         resourceDataTexY.pSysMem     = frame->data[0];
+         resourceDataTexY.SysMemPitch = frame->linesize[0];
+         initializeTextures(texY_, shaderResourceViewY_, frame->width, frame->height, 0, resourceDataTexY);
 
-        resourceDataTexV.pSysMem = frame->data[2];
-        resourceDataTexV.SysMemPitch = frame->linesize[2];
-        initializeTextures(texV_, shaderResourceViewV_, frame->width, frame->height, 2, resourceDataTexV);
-    } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_D3D11VA_VLD) {
-        qDebug() << "Application is now using D3D11 to accelerate but it;s not yet implemented!";
-    } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_QSV) {
-        qDebug() << "Application is now using Intel libmfx to accelerate but it;s not yet implemented!";
-    } else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_CUDA) {
-        qDebug() << "Application is now using CUDA to accelerate but it;s not yet implemented!";
-    }
-    else if (AVPixelFormat(frame->format) == AVPixelFormat::AV_PIX_FMT_DXVA2_VLD) {
-        qDebug() << "Application is now using D3D9 to accelerate but it;s not yet implemented!";
-    } else {
-        qWarning() << "The format is not supportted, please set it to YUV format in YUV420P, YUV422P or YUV444P!";
-        return false;
-    }
+         resourceDataTexU.pSysMem     = frame->data[1];
+         resourceDataTexU.SysMemPitch = frame->linesize[1];
+         initializeTextures(texU_, shaderResourceViewU_, frame->width, frame->height, 1, resourceDataTexU);
 
-    return true;
+         resourceDataTexV.pSysMem     = frame->data[2];
+         resourceDataTexV.SysMemPitch = frame->linesize[2];
+         initializeTextures(texV_, shaderResourceViewV_, frame->width, frame->height, 2, resourceDataTexV);
+     } else {
+         return false;
+     }
+
+     return true;
 }
 
 void
-D3DVideoWidgetBase::initialize()
+D3DVideoWidgetWindow::resizeEvent(QResizeEvent* ev)
+{
+    ResizeD3D(ev->size().width(), ev->size().height());
+}
+
+void
+D3DVideoWidgetWindow::initialize()
 {
     InitD3D();
     InitScene();
 }
 
 void
-D3DVideoWidgetBase::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture, Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
-                                       int width, int height, int index, D3D11_SUBRESOURCE_DATA resourceData)
+D3DVideoWidgetWindow::initializeShaderResourceViewWithTexture(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture,
+                                                              Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
+                                                              int index)
+{
+    CD3D11_TEXTURE2D_DESC textureDesc;
+    texture->GetDesc(&textureDesc);
+    D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc;
+    ZeroMemory(&shaderResourceViewDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+    shaderResourceViewDesc.Format = textureDesc.Format;
+    shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+    shaderResourceViewDesc.Texture2D.MipLevels = 1;
+    shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
+
+    d3dDevice_->CreateShaderResourceView(texture.Get(), &shaderResourceViewDesc, shaderResourceView.GetAddressOf());
+    d3dDevContext_->PSSetShaderResources(index, 1, shaderResourceView.GetAddressOf());
+}
+
+void
+D3DVideoWidgetWindow::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> texture,
+                                         Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView,
+                                         int width, int height, int index, D3D11_SUBRESOURCE_DATA resourceData)
 {
     D3D11_OBJECT_RELEASE(shaderResourceView);
     D3D11_OBJECT_RELEASE(texture);
@@ -216,48 +245,27 @@ D3DVideoWidgetBase::initializeTextures(Microsoft::WRL::ComPtr<ID3D11Texture2D> t
 
     d3dDevice_->CreateTexture2D(&textureDesc, &resourceData, texture.GetAddressOf());
 
-    D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc;
-    ZeroMemory(&shaderResourceViewDesc,sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
-    shaderResourceViewDesc.Format = textureDesc.Format;
-    shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-    shaderResourceViewDesc.Texture2D.MipLevels = 1;
-    shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
+    initializeShaderResourceViewWithTexture(texture, shaderResourceView, index);
 
-    d3dDevice_->CreateShaderResourceView(texture.Get(), &shaderResourceViewDesc, shaderResourceView.GetAddressOf());
-    d3dDevContext_->PSSetShaderResources(index, 1, shaderResourceView.GetAddressOf());
     d3dDevContext_->PSSetSamplers(0, 1, sampler_.GetAddressOf());
 }
 
-void
-D3DVideoWidgetBase::hideEvent(QHideEvent* e)
+bool
+D3DVideoWidgetWindow::getTextureFromD3DVA(AVFrame* frame, Microsoft::WRL::ComPtr<ID3D11Texture2D> textureToSet)
 {
-    Q_UNUSED(e);
-    emit visibilityChanged(false);
+    if(((AVPixelFormat)frame->format != AVPixelFormat::AV_PIX_FMT_D3D11VA_VLD)) return false;
+
+    ID3D11VideoDecoderOutputView* decodedOutput = (ID3D11VideoDecoderOutputView*)frame->data[3];
+    ID3D11Resource* textureResource;
+    decodedOutput->GetResource(&textureResource);
+    ID3D11Texture2D* texture = (ID3D11Texture2D*)textureResource;
+    if (!texture) return false;
+    textureToSet = texture;
+    return true;
 }
 
 void
-D3DVideoWidgetBase::showEvent(QShowEvent* e)
-{
-    Q_UNUSED(e);
-    emit visibilityChanged(true);
-}
-
-void
-D3DVideoWidgetBase::resizeEvent(QResizeEvent* event)
-{
-    Q_UNUSED(event);
-    ResizeD3D();
-}
-
-void
-D3DVideoWidgetBase::paintEvent(QPaintEvent* event)
-{
-    Q_UNUSED(event);
-    paintD3D();
-}
-
-void
-D3DVideoWidgetBase::InitD3D()
+D3DVideoWidgetWindow::InitD3D()
 {
     //Describe our Buffer
     DXGI_MODE_DESC bufferDesc;
@@ -298,10 +306,10 @@ D3DVideoWidgetBase::InitD3D()
 }
 
 void
-D3DVideoWidgetBase::ResizeD3D()
+D3DVideoWidgetWindow::ResizeD3D(int width, int height)
 {
     D3D11_OBJECT_RELEASE(renderTargetView_);
-    swapChain_->ResizeBuffers(1, width(), height(), DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+    swapChain_->ResizeBuffers(1, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
     //Create our BackBuffer
     ID3D11Texture2D* backBuffer;
     swapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&backBuffer);
@@ -320,19 +328,19 @@ D3DVideoWidgetBase::ResizeD3D()
 
     viewport.TopLeftX = 0;
     viewport.TopLeftY = 0;
-    viewport.Width = width();
-    viewport.Height = height();
+    viewport.Width = width;
+    viewport.Height = height;
     viewport.MinDepth = 0.0f;
     viewport.MaxDepth = 1.0f;
 
     //Set the Viewport
     d3dDevContext_->RSSetViewports(1, &viewport);
-    constantBufferDataStruct_.aViewPortWidthAndHeight.x = (float)width();
-    constantBufferDataStruct_.aViewPortWidthAndHeight.y = (float)height();
+    constantBufferDataStruct_.aViewPortWidthAndHeight.x = (float)width;
+    constantBufferDataStruct_.aViewPortWidthAndHeight.y = (float)height;
 }
 
 void
-D3DVideoWidgetBase::InitScene()
+D3DVideoWidgetWindow::InitScene()
 {
     // compile shaders and set shader byte code blob
     Microsoft::WRL::ComPtr<ID3DBlob> VS_ErrorMsg;
@@ -448,7 +456,7 @@ D3DVideoWidgetBase::InitScene()
 }
 
 void
-D3DVideoWidgetBase::paintD3D()
+D3DVideoWidgetWindow::paintD3D()
 {
     //Clear our backbuffer
     float bgColor[4] = { (0.0f,0.0f,0.0f,0.0f) };
@@ -462,11 +470,11 @@ D3DVideoWidgetBase::paintD3D()
     };
 
     d3dDevContext_->DrawIndexed(6, 0, 0);
-    swapChain_->Present(0, 0),"Swap chain swap buffer fails!";
+    swapChain_->Present(0, 0);
 }
 
 void
-D3DVideoWidgetBase::CleanUp()
+D3DVideoWidgetWindow::CleanUp()
 {
     D3D11_OBJECT_RELEASE(d3dDevice_);
     D3D11_OBJECT_RELEASE(d3dDevContext_);
@@ -487,4 +495,92 @@ D3DVideoWidgetBase::CleanUp()
     D3D11_OBJECT_RELEASE(texY_);
     D3D11_OBJECT_RELEASE(texU_);
     D3D11_OBJECT_RELEASE(texV_);
+}
+
+D3DVideoWidgetBase::D3DVideoWidgetBase(QColor bgColor, QWidget* parent)
+    : QWidget(parent)
+
+{
+    //QPalette pal(palette());
+    //pal.setColor(QPalette::Background, bgColor);
+    //setAutoFillBackground(true);
+    //setPalette(pal);
+
+    layout_ = new QHBoxLayout(this);
+    d3dWindow_ = new D3DVideoWidgetWindow(this->width(),this->height());
+    d3dWindow_->setMinimumSize(QSize(0, 0));
+    d3dWindow_->setMaximumSize(QSize(10000, 10000));
+
+    containerOfD3DWindow_ = QWidget::createWindowContainer(d3dWindow_, this, Qt::Widget);
+
+    containerOfD3DWindow_->setMinimumSize(0, 0);
+    containerOfD3DWindow_->setMaximumSize(10000,10000);
+    containerOfD3DWindow_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    containerOfD3DWindow_->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+
+    //containerOfD3DWindow_->setFocusPolicy(Qt::TabFocus);
+    //containerOfD3DWindow_->setParent(this);
+    //containerOfD3DWindow_->raise();
+    layout_->setAlignment(Qt::Alignment::enum_type::AlignCenter);
+    layout_->addWidget(containerOfD3DWindow_);
+
+    this->setLayout(layout_);
+
+    //QSizePolicy sizePolicy;
+    //sizePolicy.setHorizontalPolicy(QSizePolicy::Policy::Expanding);
+
+    //containerOfD3DWindow_->resize(width(), height());
+}
+
+D3DVideoWidgetBase::~D3DVideoWidgetBase()
+{
+    delete d3dWindow_;
+    delete containerOfD3DWindow_;
+}
+
+void
+D3DVideoWidgetBase::forceRepaint()
+{
+    auto parent = qobject_cast<QWidget*>(this->parent());
+    if (parent) parent->setUpdatesEnabled(false);
+    repaint();
+    if (parent) parent->setUpdatesEnabled(true);
+}
+
+bool
+D3DVideoWidgetBase::updateTextures(AVFrame* frame)
+{
+    return d3dWindow_->updateTextures(frame);
+}
+
+void
+D3DVideoWidgetBase::hideEvent(QHideEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(false);
+}
+
+void
+D3DVideoWidgetBase::showEvent(QShowEvent* e)
+{
+    Q_UNUSED(e);
+    emit visibilityChanged(true);
+}
+
+void
+D3DVideoWidgetBase::resizeEvent(QResizeEvent* event)
+{
+    // TODO: call the container widget's resize function
+    //containerOfD3DWindow_->resize(this->size());
+    //containerOfD3DWindow_->setGeometry(this->geometry());
+}
+
+void
+D3DVideoWidgetBase::paintEvent(QPaintEvent* event)
+{
+    Q_UNUSED(event);
+
+    //TODO: call the paint function of the qwindow in  the container
+    d3dWindow_->paintD3D();
+
 }
