@@ -155,7 +155,9 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
 
         if (currentFormat == targetFormat ||
             currentFormat == AVPixelFormat::AV_PIX_FMT_YUV422P ||
-            currentFormat == AVPixelFormat::AV_PIX_FMT_YUV444P) {
+            currentFormat == AVPixelFormat::AV_PIX_FMT_YUV444P ||
+            currentFormat == AVPixelFormat::AV_PIX_FMT_NV12 ||
+            LRCInstance::avModel().getHardwareAcceleration()) {
             avFrame_ = std::move(avFrame);
         } else if (!LRCInstance::avModel().getHardwareAcceleration() && !isHardwareAccelFormat(currentFormat)) {
             av_frame_free(&pFrameCorrectFormat);
@@ -180,9 +182,7 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
             av_frame_copy_props(pFrameCorrectFormat, avFrame.get());
             avFrame_.reset(std::move(pFrameCorrectFormat));
         }
-        else if (LRCInstance::avModel().getHardwareAcceleration()) {
-            qDebug() << "The hardware accelaration is enabled but no handle code is implemented! Please turn off hardware accelaeration!";
-        }
+
 
         emit d3dFrameUpdated(id);
 #else
@@ -223,15 +223,19 @@ FrameWrapper::isHardwareAccelFormat(AVPixelFormat format)
     bool isAccel = false;
     std::vector<AVPixelFormat> formats = {
         AV_PIX_FMT_CUDA,
-        AV_PIX_FMT_D3D11VA_VLD,
-        AV_PIX_FMT_DXVA2_VLD,
         AV_PIX_FMT_QSV,
+        AV_PIX_FMT_D3D11,
+        AV_PIX_FMT_D3D11VA_VLD,
+        AV_PIX_FMT_OPENCL,
+        AV_PIX_FMT_DXVA2_VLD,
+        AV_PIX_FMT_VDPAU,
         AV_PIX_FMT_MMAL,
+        AV_PIX_FMT_VAAPI_IDCT,
         AV_PIX_FMT_XVMC,
+        AV_PIX_FMT_VIDEOTOOLBOX,
         AV_PIX_FMT_VAAPI_MOCO,
         AV_PIX_FMT_VAAPI_IDCT,
         AV_PIX_FMT_VAAPI_VLD,
-        AV_PIX_FMT_VDPAU,
     };
     for (AVPixelFormat fmt : formats) {
         isAccel = format == fmt;
