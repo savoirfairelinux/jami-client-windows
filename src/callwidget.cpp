@@ -227,8 +227,8 @@ CallWidget::CallWidget(QWidget* parent) :
 
     connect(ui->changelogButton, &QAbstractButton::clicked,
         [this] {
-            auto aboutDialog = std::make_unique<AboutDialog>(&MainWindow::instance());
-            aboutDialog->getContainer()->exec();
+            AboutDialog aboutDialog (&MainWindow::instance());
+            aboutDialog.getContainer().toStrongRef()->exec();
         });
 
     // set first view to welcome view
@@ -422,7 +422,7 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
         connect(profileShowingAction, &QAction::triggered,
             [conversation, this]() {
                 UserProfile userProfile(conversation, qobject_cast<MainWindow*>(this->parent()->parent()->parent()));
-                userProfile.getContainer()->exec();
+                userProfile.getContainer().toStrongRef()->exec();
             });
     }
     smartListModel_->isContextMenuOpen = true;
@@ -1599,13 +1599,13 @@ CallWidget::registerShortCuts()
     connect(shortcutsTableSC, &QShortcut::activated,
         [this] {
             QUrl qmlSource{ QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml") };
-            QmlPopupWidget* qmlKeyboardShortcuts = new QmlPopupWidget(qmlSource, qobject_cast<MainWindow*>(parent()->parent()->parent()));
-            qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-            qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
-            qmlKeyboardShortcuts->setClearColor(Qt::transparent);
-            qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
-            qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
-            qmlKeyboardShortcuts->getContainer()->exec();
+            QmlPopupWidget qmlKeyboardShortcuts(qmlSource, qobject_cast<MainWindow*>(parent()->parent()->parent()));
+            qmlKeyboardShortcuts.setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+            qmlKeyboardShortcuts.setAttribute(Qt::WA_AlwaysStackOnTop);
+            qmlKeyboardShortcuts.setClearColor(Qt::transparent);
+            qmlKeyboardShortcuts.setMinimumWidth(qmlKeyboardShortcuts.rootObject()->property("minWidth").toInt());
+            qmlKeyboardShortcuts.setMinimumHeight(qmlKeyboardShortcuts.rootObject()->property("minHeight").toInt());
+            qmlKeyboardShortcuts.getContainer().toStrongRef()->exec();
         });
 
     connect(navigateToMediaSettingsSC, &QShortcut::activated,
