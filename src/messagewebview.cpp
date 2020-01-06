@@ -131,7 +131,7 @@ MessageWebView::MessageWebView(QWidget *parent)
         });
 
     recordWidget_ = new RecordWidget(this);
-    recordWidget_->getContainer()->hide();
+    recordWidget_->getContainer().toStrongRef()->hide();
 }
 
 MessageWebView::~MessageWebView()
@@ -280,9 +280,10 @@ MessageWebView::openAudioRecorder(int spikePosX, int spikePosY)
     }
     // spikePosX, spikePosY are positions relative to Document
     auto pointOfAudioButton = mapToGlobal(QPoint(spikePosX, spikePosY));
-    recordWidget_->getContainer()->move(
-        pointOfAudioButton.x() - recordWidget_->width() / 2,
-        pointOfAudioButton.y() - recordWidget_->height() - recordWidgetMargin_);
+    if (auto container = recordWidget_->getContainer().toStrongRef()) {
+        container->move(pointOfAudioButton.x() - recordWidget_->width() / 2,
+                        pointOfAudioButton.y() - recordWidget_->height() - recordWidgetMargin_);
+    }
     recordWidget_->openRecorder(true);
 }
 
@@ -296,9 +297,10 @@ MessageWebView::openVideoRecorder(int spikePosX, int spikePosY)
     }
     // spikePosX, spikePosY are positions relative to Document
     auto pointOfVideoButton = mapToGlobal(QPoint(spikePosX, spikePosY));
-    recordWidget_->getContainer()->move(
-        pointOfVideoButton.x() - recordWidget_->width() / 2,
-        pointOfVideoButton.y() - recordWidget_->height() - recordWidgetMargin_);
+    if (auto container = recordWidget_->getContainer().toStrongRef()) {
+        container->move(pointOfVideoButton.x() - recordWidget_->width() / 2,
+                        pointOfVideoButton.y() - recordWidget_->height() - recordWidgetMargin_);
+    }
     recordWidget_->openRecorder(false);
 }
 
