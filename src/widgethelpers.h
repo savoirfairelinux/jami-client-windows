@@ -140,7 +140,12 @@ public:
         setParent(widgetContainer_);
         widgetContainer_->insertWidget(this);
     }
-    virtual ~PopupWidget() {}
+    virtual ~PopupWidget() {
+        setParent(nullptr);
+        if (widgetContainer_) {
+            delete widgetContainer_;
+        }
+    }
 
     PopupDialog *getContainer() { return widgetContainer_; }
 
@@ -165,7 +170,12 @@ public:
         setParent(widgetContainer_);
         widgetContainer_->insertWidget(this);
     }
-    virtual ~QmlPopupWidget() {}
+    virtual ~QmlPopupWidget() {
+        setParent(nullptr);
+        if (widgetContainer_) {
+            delete widgetContainer_;
+        }
+    }
 
     PopupDialog* getContainer() { return widgetContainer_; }
 
