@@ -136,7 +136,6 @@ private:
     PrivateBridging* jsBridge_;
     QLabel* dragDroplabel_;
     bool textSelected_;
-    RecordWidget* recordWidget_;
 
     /*TODO: Generatic Popup Dialog setGeometry function corrsponding to spike alignment*/
     const quint16 recordWidgetMargin_{ 15 };

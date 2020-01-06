@@ -203,9 +203,10 @@ void
 QmlPopupWidget::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
-    auto cp = getContainer()->parentWidget();
-    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
-        mainWindow->darken();
+    if (auto cp = getContainer().toStrongRef()) {
+        if (auto mainWindow = qobject_cast<MainWindow*>(cp->parentWidget())) {
+            mainWindow->darken();
+        }
     }
 }
 
@@ -213,8 +214,9 @@ void
 QmlPopupWidget::hideEvent(QHideEvent* event)
 {
     QWidget::hideEvent(event);
-    auto cp = getContainer()->parentWidget();
-    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
-        mainWindow->lighten();
+    if (auto cp = getContainer().toStrongRef()) {
+        if (auto mainWindow = qobject_cast<MainWindow*>(cp->parentWidget())) {
+            mainWindow->lighten();
+        }
     }
 }

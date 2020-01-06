@@ -26,18 +26,21 @@
 PreviewWidget::PreviewWidget(QWidget * parent)
     : VideoWidgetBase(Qt::transparent, parent)
 {
-    connect(LRCInstance::renderer(), &RenderManager::previewFrameUpdated,
+    previewFrameUpdatedConnection_ = connect(LRCInstance::renderer(), &RenderManager::previewFrameUpdated,
         [this]() {
             repaint();
         });
-    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
+    previewRenderingStopped_ = connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped,
         [this]() {
             repaint();
         });
 }
 
 PreviewWidget::~PreviewWidget()
-{}
+{
+    disconnect(previewFrameUpdatedConnection_);
+    disconnect(previewRenderingStopped_);
+}
 
 void
 PreviewWidget::paintBackground(QPainter* painter)
