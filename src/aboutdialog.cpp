@@ -50,9 +50,10 @@ void
 AboutDialog::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
-    auto cp = getContainer()->parentWidget();
-    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
-        mainWindow->darken();
+    if (auto cp = getContainer().toStrongRef()) {
+        if (auto mainWindow = qobject_cast<MainWindow*>(cp->parentWidget())) {
+            mainWindow->darken();
+        }
     }
 }
 
@@ -60,9 +61,10 @@ void
 AboutDialog::hideEvent(QHideEvent* event)
 {
     QWidget::hideEvent(event);
-    auto cp = getContainer()->parentWidget();
-    if (auto mainWindow = qobject_cast<MainWindow*>(cp)) {
-        mainWindow->lighten();
+    if (auto cp = getContainer().toStrongRef()) {
+        if (auto mainWindow = qobject_cast<MainWindow*>(cp->parentWidget())) {
+            mainWindow->lighten();
+        }
     }
 }
 
@@ -77,7 +79,9 @@ AboutDialog::on_changelogButton_clicked()
 void
 AboutDialog::on_closeAboutDialogButton_clicked()
 {
-    getContainer()->accept();
+    if (auto cp = getContainer().toStrongRef()) {
+        cp->accept();
+    }
 }
 
 void

@@ -207,7 +207,9 @@ RecordOverlay::on_recordOverlaySendBtn_pressed()
     if(recordWidget_->sendRecording()) {
         setRecorderState(RecorderState::aboutToRecord);
         // define what to do when the record is sent out
-        recordWidget_->getContainer()->accept();
+        if (auto container = recordWidget_->getContainer().toStrongRef()) {
+            container->accept();
+        }
     }
 }
 

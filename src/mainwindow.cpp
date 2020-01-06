@@ -242,7 +242,7 @@ bool MainWindow::nativeEvent(const QByteArray& eventType, void* message, long* r
         if (msg->wParam == IDM_ABOUTBOX) {
             *result = 0;
             AboutDialog aboutDialog(this);
-            aboutDialog.getContainer()->exec();
+            aboutDialog.getContainer().toStrongRef()->exec();
             return true;
         }
         if (msg->wParam == IDM_SHORTCUTSBOX) {
@@ -445,13 +445,13 @@ void MainWindow::slotAccountListChanged()
 void
 MainWindow::generateQmlDialog(const QUrl& qmlSource)
 {
-    QScopedPointer<QmlPopupWidget> qmlKeyboardShortcuts (new QmlPopupWidget(qmlSource, this));
+    QmlPopupWidget qmlKeyboardShortcuts(qmlSource, this);
 
-    qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
-    qmlKeyboardShortcuts->setClearColor(Qt::transparent);
-    qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
-    qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
+    qmlKeyboardShortcuts.setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    qmlKeyboardShortcuts.setAttribute(Qt::WA_AlwaysStackOnTop);
+    qmlKeyboardShortcuts.setClearColor(Qt::transparent);
+    qmlKeyboardShortcuts.setMinimumWidth(qmlKeyboardShortcuts.rootObject()->property("minWidth").toInt());
+    qmlKeyboardShortcuts.setMinimumHeight(qmlKeyboardShortcuts.rootObject()->property("minHeight").toInt());
 
-    qmlKeyboardShortcuts->getContainer()->exec();
+    qmlKeyboardShortcuts.getContainer().toStrongRef()->exec();
 }

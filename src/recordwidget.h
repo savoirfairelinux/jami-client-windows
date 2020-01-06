@@ -48,13 +48,12 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
-    void hideEvent(QHideEvent* event) override;
 
 private:
     Ui::RecordWidget* ui;
 
-    VideoRecordPreviewWidget* previewWidget_;
-    RecordOverlay* recordOverlay_;
+    QSharedPointer<VideoRecordPreviewWidget> previewWidget_;
+    QSharedPointer<RecordOverlay> recordOverlay_;
     bool isAudio_ = true;
     QString recordedFilePath_;
 
