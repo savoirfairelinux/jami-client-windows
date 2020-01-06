@@ -136,16 +136,16 @@ public:
                          QColor spikeColor = Qt::white,
                          PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::AlignLeft)
             : QWidget(parent) {
-        widgetContainer_ = new PopupDialog(parent, spikeColor, spikeAlignment);
-        setParent(widgetContainer_);
+        widgetContainer_ = QSharedPointer<PopupDialog>(new PopupDialog(parent, spikeColor, spikeAlignment));
+        setParent(widgetContainer_.data());
         widgetContainer_->insertWidget(this);
     }
-    virtual ~PopupWidget() {}
+    virtual ~PopupWidget() { setParent(nullptr); }
 
-    PopupDialog *getContainer() { return widgetContainer_; }
+    QWeakPointer<PopupDialog> getContainer() { return widgetContainer_.toWeakRef(); }
 
 protected:
-    PopupDialog *widgetContainer_;
+    QSharedPointer<PopupDialog> widgetContainer_;
 
 };
 
@@ -160,20 +160,20 @@ public:
                             PopupDialog::SpikeLabelAlignment spikeAlignment = PopupDialog::SpikeLabelAlignment::None)
         : QQuickWidget(source, parent) {
 
-        widgetContainer_ = new PopupDialog(parent, spikeColor, spikeAlignment);
+        widgetContainer_ = QSharedPointer<PopupDialog>(new PopupDialog(parent, spikeColor, spikeAlignment));
         setMouseTracking(true);
-        setParent(widgetContainer_);
+        setParent(widgetContainer_.data());
         widgetContainer_->insertWidget(this);
     }
-    virtual ~QmlPopupWidget() {}
+    virtual ~QmlPopupWidget() { setParent(nullptr); }
 
-    PopupDialog* getContainer() { return widgetContainer_; }
+    QWeakPointer<PopupDialog> getContainer() { return widgetContainer_.toWeakRef(); }
 
 protected:
     void showEvent(QShowEvent* event) override;
     void hideEvent(QHideEvent* event) override;
 
-    PopupDialog* widgetContainer_;
+    QSharedPointer<PopupDialog> widgetContainer_;
 
 };
 

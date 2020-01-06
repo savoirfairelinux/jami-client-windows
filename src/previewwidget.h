@@ -37,6 +37,10 @@ protected:
     virtual void paintEvent(QPaintEvent* e) override;
 
     virtual void paintBackground(QPainter* painter) override;
+
+private:
+    QMetaObject::Connection previewFrameUpdatedConnection_;
+    QMetaObject::Connection previewRenderingStopped_;
 };
 
 // A rounded image for photobooths
