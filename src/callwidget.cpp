@@ -1599,13 +1599,13 @@ CallWidget::registerShortCuts()
     connect(shortcutsTableSC, &QShortcut::activated,
         [this] {
             QUrl qmlSource{ QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml") };
-            QmlPopupWidget* qmlKeyboardShortcuts = new QmlPopupWidget(qmlSource, qobject_cast<MainWindow*>(parent()->parent()->parent()));
-            qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-            qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
-            qmlKeyboardShortcuts->setClearColor(Qt::transparent);
-            qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
-            qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
-            qmlKeyboardShortcuts->getContainer()->exec();
+            QmlPopupWidget qmlKeyboardShortcuts(qmlSource, qobject_cast<MainWindow*>(parent()->parent()->parent()));
+            qmlKeyboardShortcuts.setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+            qmlKeyboardShortcuts.setAttribute(Qt::WA_AlwaysStackOnTop);
+            qmlKeyboardShortcuts.setClearColor(Qt::transparent);
+            qmlKeyboardShortcuts.setMinimumWidth(qmlKeyboardShortcuts.rootObject()->property("minWidth").toInt());
+            qmlKeyboardShortcuts.setMinimumHeight(qmlKeyboardShortcuts.rootObject()->property("minHeight").toInt());
+            qmlKeyboardShortcuts.getContainer()->exec();
         });
 
     connect(navigateToMediaSettingsSC, &QShortcut::activated,
