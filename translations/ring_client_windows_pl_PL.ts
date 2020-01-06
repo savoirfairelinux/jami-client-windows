@@ -60,7 +60,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Dodaj konto</translation>
     </message>
 </context>
 <context>
@@ -143,7 +143,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Kodeki audio</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
@@ -191,7 +191,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Serwer nazw</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
@@ -231,7 +231,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Klucz Prywatny</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
@@ -291,7 +291,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Kodeki audio</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1114"/>
@@ -335,7 +335,7 @@ Jami jest wolnym oprogramowaniem do uniwersalnej komunikacji, respektującym wol
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż rozmowy</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -363,7 +363,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Rozpocznij połączenie wideo</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
@@ -404,12 +404,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="202"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż zaproszenia</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="205"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Zaproszenia</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="377"/>
@@ -445,7 +445,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj wychodzące połączenie</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1305"/>
@@ -455,17 +455,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Rozpocznij rozmowę wideo</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Rozpocznij połączenie głosowe</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Wyczyść rozmowę</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -649,7 +649,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Nieprawidłowe hasło</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
@@ -678,7 +678,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -736,7 +736,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Nieprawidłowe hasło</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
@@ -779,7 +779,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation type="unfinished"/>
+        <translation>Utwórz konto Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -867,7 +867,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa profilu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -1192,7 +1192,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz folder</translation>
     </message>
 </context>
 <context>
@@ -1257,7 +1257,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Aktualizacje</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
@@ -1366,7 +1366,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Usuń konto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
@@ -1442,7 +1442,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Urządzenie wyjściowe</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
@@ -1541,7 +1541,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Nagraj rozmowę</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
