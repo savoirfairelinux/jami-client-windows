@@ -19,6 +19,7 @@
 #pragma once
 
 #include "widgethelpers.h"
+#include "smartlistmodel.h"
 
 #include "api/conversationmodel.h"
 
@@ -30,6 +31,7 @@
 
 class ContactPicker;
 class SIPInputPanelWidget;
+class OverlayButton;
 
 namespace Ui {
 class VideoOverlay;
@@ -56,6 +58,9 @@ signals:
     void holdStateChanged(bool state);
     void videoMuteStateChanged(bool state);
 
+private:
+    void contactPickerPopup(SmartListModel::Type type, OverlayButton* locateButton);
+
 private slots:
     void setTime();
     void on_hangupButton_clicked();
@@ -79,9 +84,9 @@ private:
     std::string accountId_;
     std::string convUid_;
 
-    ContactPicker* contactPicker_;
-    SIPInputPanelWidget* sipInputPanel_;
     QTimer* oneSecondTimer_;
+    QString currentBestCalleeDisplayName_ { "" };
+    bool popUpShown_ { false };
 
     quint16 popupMargin_{ 16 };
 };

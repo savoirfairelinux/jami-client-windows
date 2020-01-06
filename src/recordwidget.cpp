@@ -16,6 +16,7 @@
 * You should have received a copy of the GNU General Public License       *
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
 **************************************************************************/
+
 #include "recordwidget.h"
 #include "ui_recordwidget.h"
 
@@ -30,13 +31,19 @@ RecordWidget::RecordWidget(QWidget *parent) :
     ui(new Ui::RecordWidget)
 {
     ui->setupUi(this);
-    recordOverlay_ = new RecordOverlay(this);
-    previewWidget_ = new VideoRecordPreviewWidget(this);
+    recordOverlay_ = QSharedPointer<RecordOverlay>(new RecordOverlay(this));
+    previewWidget_ = QSharedPointer<VideoRecordPreviewWidget>(new VideoRecordPreviewWidget(this));
     recordOverlay_->setDrawRoundedCorner(true);
 }
 
 RecordWidget::~RecordWidget()
-{}
+{
+    LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+    Utils::forceDeleteAsync(recordedFilePath_);
+    if (!isAudio_) {
+        LRCInstance::avModel().stopPreview();
+    }
+}
 
 bool
 RecordWidget::startRecording()
@@ -118,7 +125,7 @@ RecordWidget::openRecorder(bool isAudio)
     if(!isAudio_) {
         LRCInstance::avModel().startPreview();
     }
-    widgetContainer_->show();
+    widgetContainer_->exec();
 }
 
 bool
@@ -133,18 +140,11 @@ void RecordWidget::resizeEvent(QResizeEvent* event)
     recordOverlay_->resize(this->size());
     previewWidget_->resize(this->size());
 
-    previewWidget_->stackUnder(recordOverlay_);
+    previewWidget_->stackUnder(recordOverlay_.data());
 }
 
 void
 RecordWidget::hideEvent(QHideEvent* event)
 {
     Q_UNUSED(event);
-    LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
-    Utils::forceDeleteAsync(recordedFilePath_);
-    if(!isAudio_) {
-        LRCInstance::avModel().stopPreview();
-        previewWidget_->toPaintingBackground(true);
-        previewWidget_->toDrawLastFrame(false);
-    }
 }
