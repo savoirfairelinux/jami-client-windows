@@ -445,13 +445,13 @@ void MainWindow::slotAccountListChanged()
 void
 MainWindow::generateQmlDialog(const QUrl& qmlSource)
 {
-    QScopedPointer<QmlPopupWidget> qmlKeyboardShortcuts (new QmlPopupWidget(qmlSource, this));
+    QmlPopupWidget qmlKeyboardShortcuts(qmlSource, this);
 
-    qmlKeyboardShortcuts->setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    qmlKeyboardShortcuts->setAttribute(Qt::WA_AlwaysStackOnTop);
-    qmlKeyboardShortcuts->setClearColor(Qt::transparent);
-    qmlKeyboardShortcuts->setMinimumWidth(qmlKeyboardShortcuts->rootObject()->property("minWidth").toInt());
-    qmlKeyboardShortcuts->setMinimumHeight(qmlKeyboardShortcuts->rootObject()->property("minHeight").toInt());
+    qmlKeyboardShortcuts.setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    qmlKeyboardShortcuts.setAttribute(Qt::WA_AlwaysStackOnTop);
+    qmlKeyboardShortcuts.setClearColor(Qt::transparent);
+    qmlKeyboardShortcuts.setMinimumWidth(qmlKeyboardShortcuts.rootObject()->property("minWidth").toInt());
+    qmlKeyboardShortcuts.setMinimumHeight(qmlKeyboardShortcuts.rootObject()->property("minHeight").toInt());
 
-    qmlKeyboardShortcuts->getContainer()->exec();
+    qmlKeyboardShortcuts.getContainer()->exec();
 }
