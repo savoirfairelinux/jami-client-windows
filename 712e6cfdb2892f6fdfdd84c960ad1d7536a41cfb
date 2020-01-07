@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af6de902_f3e3c559",
+        "filename": "src/widgethelpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:45:46Z",
+      "side": 1,
+      "message": "dirty indent, one line by op",
+      "range": {
+        "startLine": 143,
+        "startChar": 29,
+        "endLine": 143,
+        "endChar": 97
+      },
+      "revId": "712e6cfdb2892f6fdfdd84c960ad1d7536a41cfb",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
