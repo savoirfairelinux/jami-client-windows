@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba97caee_1e0fa642",
+        "filename": "src/UserProfileCard.qml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:56:14Z",
+      "side": 1,
+      "message": "600*700 is big, should be possible to scale",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd2d734_41c25f19",
+        "filename": "src/UserProfileCard.qml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:56:14Z",
+      "side": 1,
+      "message": "IS there em instead of px in QML",
+      "range": {
+        "startLine": 17,
+        "startChar": 61,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124e9164_d9706d3e",
+        "filename": "src/qmlclipboardadapter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:56:14Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952b4d3f_f05b2ffc",
+        "filename": "src/userprofile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:56:14Z",
+      "side": 1,
+      "message": "ellipsis character not 3 dots",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08fe436_71146c34",
+        "filename": "src/userprofile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-07T21:56:14Z",
+      "side": 1,
+      "message": "NO! username !\u003d Display Name. username should only show the registeredName value and be removed if no username (or marked as none)",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 86
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
