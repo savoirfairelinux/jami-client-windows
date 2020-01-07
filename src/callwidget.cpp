@@ -243,6 +243,7 @@ CallWidget::CallWidget(QWidget* parent) :
     setCallPanelVisibility(false);
 
     ui->containerWidget->setVisible(false);
+    ui->sipCallerBestIdLabel->setVisible(false);
 }
 
 CallWidget::~CallWidget()
@@ -734,6 +735,12 @@ CallWidget::slotShowIncomingCallView(const std::string& accountId,
 
     elidedLabel = sencondaryCallLabelFontMetrics.elidedText(finalBestId, Qt::ElideRight, ui->callingBestIdLabel->width());
     ui->callingBestIdLabel->setText(elidedLabel);
+    ui->sipCallerBestIdLabel->setText(elidedLabel);
+
+    if(finalBestId.isEmpty())
+        ui->sipCallerBestIdLabel->setVisible(false);
+    else
+        ui->sipCallerBestIdLabel->setVisible(true);
 
     ui->smartList->update();
 }
