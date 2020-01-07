@@ -445,11 +445,11 @@
                    <attribute name="headerVisible">
                     <bool>false</bool>
                    </attribute>
-                   <attribute name="headerDefaultSectionSize">
-                    <number>42</number>
-                   </attribute>
                    <attribute name="headerMinimumSectionSize">
                     <number>0</number>
+                   </attribute>
+                   <attribute name="headerDefaultSectionSize">
+                    <number>42</number>
                    </attribute>
                   </widget>
                  </item>
@@ -1494,7 +1494,7 @@ Copy and share it with your friends!
                         <height>420</height>
                        </size>
                       </property>
-                      <layout class="QVBoxLayout" name="callInviteLayout" stretch="0,2,1,2,1,9">
+                      <layout class="QVBoxLayout" name="callInviteLayout" stretch="0,2,1,0,0,0,2,1,9">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -1563,6 +1563,54 @@ Copy and share it with your friends!
                           <string>best name</string>
                          </property>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_13">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>5</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="sipCallerBestIdLabel">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI Emoji</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(128, 128, 128);</string>
+                         </property>
+                         <property name="text">
+                          <string>best id</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_12">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Expanding</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>5</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                        <item>
                         <widget class="QLabel" name="wantToTalkLabel">
