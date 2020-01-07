@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0e6dfa8_09d205f4",
+        "filename": "src/UserProfileCard.qml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-07T22:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba97caee_1e0fa642",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd2d734_41c25f19",
         "filename": "src/UserProfileCard.qml",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20df95f6_9394cf21",
+        "filename": "src/UserProfileCard.qml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-07T22:43:24Z",
+      "side": 1,
+      "message": "En, yeah, i will replace all other qml font pix size with pointsize",
+      "parentUuid": "0dd2d734_41c25f19",
+      "range": {
+        "startLine": 17,
+        "startChar": 61,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8d987e71_f8ecec50",
+        "filename": "src/qmlclipboardadapter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-07T22:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "124e9164_d9706d3e",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "952b4d3f_f05b2ffc",
         "filename": "src/userprofile.cpp",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c8bc1b21_5d952414",
+        "filename": "src/userprofile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-07T22:43:24Z",
+      "side": 1,
+      "message": "Done, by adding elide in qml",
+      "parentUuid": "952b4d3f_f05b2ffc",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08fe436_71146c34",
         "filename": "src/userprofile.cpp",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1caae977_952d3177",
+        "filename": "src/userprofile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-07T22:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08fe436_71146c34",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 86
+      },
+      "revId": "46eaa544d88c646196ded2b8163ecc94ef7c012e",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
