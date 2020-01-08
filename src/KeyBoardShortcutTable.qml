@@ -28,7 +28,7 @@ Rectangle {
             anchors.centerIn: parent
             anchors.leftMargin: 10
             font.family: "Arial"
-            font.pixelSize: 20
+            font.pointSize: 12
             font.bold: true
             text: "Shortcuts"
             color: "black"
@@ -181,7 +181,7 @@ Rectangle {
                                                                    'anchors.leftMargin: 30;' +
                                                                    'color: "#525252";' +
                                                                    'font.bold: true;' +
-                                                                   'font.pixelSize : 20;' +
+                                                                   'font.pointSize : 12;' +
                                                                    'text: "+"}',
                                                                    containerRect)
 
@@ -233,7 +233,7 @@ Rectangle {
                                                                'anchors.leftMargin: 30;' +
                                                                'color: "#525252";' +
                                                                'font.bold: true;' +
-                                                               'font.pixelSize : 20;' +
+                                                               'font.pointSize : 12;' +
                                                                'text: "+"}',
                                                                containerRectWithThreeKeys)
 
@@ -253,7 +253,7 @@ Rectangle {
                                                                    'anchors.leftMargin: 97;' +
                                                                    'color: "#525252";' +
                                                                    'font.bold: true;' +
-                                                                   'font.pixelSize : 20;' +
+                                                                   'font.pointSize : 12;' +
                                                                    'text: "+"}',
                                                                    containerRectWithThreeKeys)
 
@@ -270,22 +270,22 @@ Rectangle {
         }
     }
     Component {
-        id: descriptionDelegate;
+        id: descriptionDelegate
 
         Rectangle {
-            implicitWidth: minWidth /2;
-            implicitHeight: 50;
+            implicitWidth: minWidth /2
+            implicitHeight: 50
 
-            color: "white";
-            border.color: "white";
+            color: "white"
+            border.color: "white"
             Text {
-                id : descriptionText;
+                id : descriptionText
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                anchors.leftMargin: 10;
-                font.family: "Arial";
-                font.pixelSize: 15;
-                text: styleData.value;
+                anchors.leftMargin: 10
+                font.family: "Arial"
+                font.pointSize: 10
+                text: styleData.value
             }
         }
     }
@@ -353,7 +353,7 @@ Rectangle {
                                     anchors.left: parent.left
                                     anchors.leftMargin: 10
                                     font.family: "Arial"
-                                    font.pixelSize: 20
+                                    font.pointSize: 12
                                     text: styleData.column % 2 ? "" : "General"
                                     color: "black"
                                 }
@@ -416,7 +416,7 @@ Rectangle {
                                     anchors.left: parent.left
                                     anchors.leftMargin: 10
                                     font.family: "Arial"
-                                    font.pixelSize: 20
+                                    font.pointSize: 12
                                     text: styleData.column % 2 ? "" : "Conversations"
                                     color: "black"
                                 }
@@ -476,14 +476,15 @@ Rectangle {
                                     anchors.left: parent.left
                                     anchors.leftMargin: 10
                                     font.family: "Arial"
-                                    font.pixelSize: 20
+                                    font.pointSize: 12
                                     text: styleData.column % 2 ? "" : "Calls"
                                     color: "black"
                                 }
+                                // make sure that calls and settings header are parallel
                                 TextMetrics {
                                     id:     t_metrics_calls
                                     font:   callsShortcutText.font
-                                    text:   callsShortcutText.text
+                                    text:   "Settings"
                                 }
                             }
                         }
@@ -533,7 +534,7 @@ Rectangle {
                                     anchors.left: parent.left
                                     anchors.leftMargin: 10
                                     font.family: "Arial"
-                                    font.pixelSize: 20
+                                    font.pointSize: 12
                                     text: styleData.column % 2 ? "" : "Settings"
                                     color: "black"
                                 }
@@ -578,8 +579,8 @@ Rectangle {
                 radius: 10
                 color: pageOne.down ? "#e0e0e0" :"#fdfdfd"
                 MouseArea {
-                    anchors.fill: parent;
-                    hoverEnabled: true;
+                    anchors.fill: parent
+                    hoverEnabled: true
                     onPressed: { buttonRectOne.color = "#c0c0c0"; tabBar.currentIndex = 0; pageOne.down = true; pageTwo.down = false;}
                     onReleased: { buttonRectOne.color = "#e0e0e0"; }
                     onEntered: { buttonRectOne.color = "#c7c7c7"; }
@@ -607,8 +608,8 @@ Rectangle {
                 radius: 10
                 color: pageTwo.down ? "#e0e0e0" :"#fdfdfd"
                 MouseArea {
-                    anchors.fill: parent;
-                    hoverEnabled: true;
+                    anchors.fill: parent
+                    hoverEnabled: true
                     onPressed: { buttonRectTwo.color = "#c0c0c0"; tabBar.currentIndex = 1; pageTwo.down = true; pageOne.down = false;}
                     onReleased: { buttonRectTwo.color = "#e0e0e0"; }
                     onEntered: { buttonRectTwo.color = "#c7c7c7"; }
