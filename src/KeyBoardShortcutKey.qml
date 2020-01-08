@@ -15,7 +15,7 @@ Item {
             anchors.centerIn: parent
             anchors.leftMargin: 10
             font.family: "Arial"
-            font.pixelSize: 20
+            font.pointSize: 12
             color: "white"
         }
         TextMetrics {
