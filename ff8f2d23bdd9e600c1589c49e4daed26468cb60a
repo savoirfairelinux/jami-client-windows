@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5b7d4c5_d140734b",
+        "filename": "src/widgethelpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-01-08T15:29:42Z",
+      "side": 1,
+      "message": "Avoid raw pointers, we should never write a delete. Use a unique_ptr or shared_ptr here",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "ff8f2d23bdd9e600c1589c49e4daed26468cb60a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
