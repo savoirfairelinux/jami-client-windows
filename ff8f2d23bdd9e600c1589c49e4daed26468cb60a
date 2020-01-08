@@ -22,6 +22,30 @@
       "revId": "ff8f2d23bdd9e600c1589c49e4daed26468cb60a",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79783624_3f14ccde",
+        "filename": "src/widgethelpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-01-08T17:05:58Z",
+      "side": 1,
+      "message": "What do you think of the new change",
+      "parentUuid": "f5b7d4c5_d140734b",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "ff8f2d23bdd9e600c1589c49e4daed26468cb60a",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
