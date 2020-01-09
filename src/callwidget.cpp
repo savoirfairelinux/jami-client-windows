@@ -936,18 +936,21 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     auto selectedAccountId = LRCInstance::getCurrAccId();
     auto& accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
     bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
+
+    lrc::api::profile::Type contactType;
     try {
         auto contactInfo = accountInfo.contactModel->getContact(contactURI.toStdString());
         if (contactInfo.isTrusted) {
             isContact = true;
         }
+        contactType = contactInfo.profileInfo.type;
     } catch (...) {}
 
     ui->imNameLabel->setText(displayName);
     ui->imIdLabel->setText(displayId);
     ui->imIdLabel->setVisible(isRINGAccount && displayName != displayId);
 
-    bool shouldShowSendContactRequestBtn = !isContact && isRINGAccount;
+    bool shouldShowSendContactRequestBtn = !isContact && contactType != lrc::api::profile::Type::SIP;
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     ui->messageView->setMessagesVisibility(false);
