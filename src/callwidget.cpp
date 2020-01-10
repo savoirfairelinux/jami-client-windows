@@ -955,13 +955,13 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
 
     ui->messageView->setMessagesVisibility(false);
     Utils::oneShotConnect(ui->messageView, &MessageWebView::sendMessageContentSaved,
-        [this, &convInfo, &accountInfo, lastConvUid = lastConvUid_](const QString& content) {
+        [this, convInfo, accountId = accountInfo.id, lastConvUid = lastConvUid_](const QString& content) {
             if (!lastConvUid.empty()) {
                 LRCInstance::setContentDraft(
-                    lastConvUid.c_str(), accountInfo.id.c_str(), content);
+                    lastConvUid.c_str(), accountId.c_str(), content);
             }
             Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesCleared,
-                [this, &convInfo] {
+                [this, convInfo] {
                     auto convModel = LRCInstance::getCurrentConversationModel();
                     ui->messageView->printHistory(*convModel, convInfo.interactions);
                     Utils::oneShotConnect(ui->messageView, &MessageWebView::messagesLoaded,
@@ -973,7 +973,7 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
             ui->messageView->setInvitation(false);
             ui->messageView->clear();
             auto restoredContent = LRCInstance::getContentDraft(
-                convInfo.uid.c_str(), accountInfo.id.c_str());
+                convInfo.uid.c_str(), accountId.c_str());
             ui->messageView->setSendMessageContent(restoredContent);
             ui->smartList->update();
         });
