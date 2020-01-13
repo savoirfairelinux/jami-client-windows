@@ -36,7 +36,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
         <source>version</source>
-        <translation type="unfinished"/>
+        <translation>bertsioa</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="39"/>
@@ -59,7 +59,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Gehitu kontua</translation>
     </message>
 </context>
 <context>
@@ -195,7 +195,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Helbidea</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
@@ -230,12 +230,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Gako pribatua</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA ziurtagiria</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -334,7 +334,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Erakutsi elkarrizketa</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -419,7 +419,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1444"/>
         <source>Wants to talk to you!</source>
-        <translation type="unfinished"/>
+        <translation>Zurekin hitz egin nahi du!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1517"/>
@@ -434,12 +434,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1539"/>
         <source>Answer</source>
-        <translation type="unfinished"/>
+        <translation>Erantzun</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1617"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Ezikusi</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1280"/>
@@ -469,7 +469,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Kendu kontaktua</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="373"/>
@@ -500,13 +500,13 @@ Copy and share it with your friends!
         <location filename="../callwidget.cpp" line="847"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="852"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="675"/>
@@ -667,7 +667,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Irten</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="111"/>
@@ -677,7 +677,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -849,18 +849,18 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Bat ere ez)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Pasahitza:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
         <location filename="../newwizardwidget.ui" line="1586"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profila</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="953"/>
@@ -1002,7 +1002,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Aurrekoa</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
@@ -1037,7 +1037,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Ireki fitxategia</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
@@ -1090,12 +1090,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Sartu pasahitz berria</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Baieztatu pasahitz berria</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
@@ -1136,7 +1136,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Hautatu fitxategia</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
@@ -1149,7 +1149,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Hautatu fitxategia</translation>
     </message>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
@@ -1191,7 +1191,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Hautatu karpeta</translation>
     </message>
 </context>
 <context>
@@ -1256,7 +1256,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Eguneratzeak</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
@@ -1292,7 +1292,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Gaitu</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1323,7 +1323,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profila</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>
@@ -1365,7 +1365,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Ezabatu kontua</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
@@ -1431,7 +1431,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofonoa</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
@@ -1441,7 +1441,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Irteera gailua</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
@@ -1530,7 +1530,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>Txata</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="162"/>
@@ -1555,12 +1555,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="393"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="57"/>
         <source>Hangup</source>
-        <translation type="unfinished"/>
+        <translation>Eseki</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="203"/>
