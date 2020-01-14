@@ -1,0 +1,7 @@
+Code-Review+2: Yang Wang <yang.wang@savoirfairelinux.com>
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Submitted-by: Sébastien Blin <sebastien.blin@savoirfairelinux.com>
+Submitted-at: Tue, 14 Jan 2020 11:00:46 -0500
+Reviewed-on: https://review.jami.net/c/ring-client-windows/+/13454
+Project: ring-client-windows
+Branch: refs/heads/master
