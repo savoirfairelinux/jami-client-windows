@@ -494,6 +494,12 @@ SettingsWidget::toggleAdvancedSIPSettings()
                 auto top = ui->advancedAccountSettingsSIPButton->frameGeometry().top();
                 ui->scrollSIPArea->verticalScrollBar()->setSliderPosition(top);
             });
+        connect(ui->advancedSIPSettingsWidget, &AdvancedSIPSettingsWidget::sipCredInfoChanged,
+            [this](const QString& username, const QString& password, const QString& realm) {
+                ui->usernameSIP->setText(username);
+                ui->hostnameSIP->setText(realm);
+                ui->passSIPlineEdit->setText(password);
+            });
     }
 
     advancedSIPSettingsDropped_ = !advancedSIPSettingsDropped_;

@@ -307,6 +307,7 @@ QWidget#messagingPage {
 }
 
 QDialog#PasswordDialog,
+QDialog#SipCredentialDialog,
 QDialog#LinkDeviceDialog,
 QDialog#DeleteAccountDialog {
     background: rgb(255, 255, 255);

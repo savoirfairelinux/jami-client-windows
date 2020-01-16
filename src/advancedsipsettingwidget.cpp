@@ -23,6 +23,7 @@
 
 #include "lrcinstance.h"
 #include "utils.h"
+#include "sipcredentialdialog.h"
 
 #include "api/newcodecmodel.h"
 
@@ -73,6 +74,30 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
     ui->tlsProtocolComboBox->insertItem(1, "TLSv1");
     ui->tlsProtocolComboBox->insertItem(2, "TLSv1.1");
     ui->tlsProtocolComboBox->insertItem(3, "TLSv1.2");
+
+    // credentials
+    connect(ui->addSIPCredentialsButton, &QAbstractButton::clicked,
+        [this] {
+            SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo, this);
+            connect(&sipAddExtraCredDialog, &SipCredentialDialog::sipCredInfoCreated,
+                [this](const QString& username, const QString& password, const QString& realm) {
+                    createNewSIPCredSection(username, password, realm);
+                });
+            sipAddExtraCredDialog.exec();
+        });
+
+    connect(ui->editRootUserCredButton, &QAbstractButton::clicked,
+        [this] {
+            SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo,
+                                                      this,
+                                                      0,
+                                                      SipCredentialDialog::EditMode::EditCredential);
+            connect(&sipAddExtraCredDialog, &SipCredentialDialog::sipCredInfoChanged,
+                [this] (const QString& username, const QString& password, const QString& realm) {
+                    emit sipCredInfoChanged(username, password, realm);
+                });
+            sipAddExtraCredDialog.exec();
+        });
 
     // connectivity
     connect(ui->checkBoxUPnPSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseUPnP);
@@ -194,6 +219,9 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
 
     ui->negotiationTimeoutSpinBox->setValue(config.TLS.negotiationTimeoutSec);
     connect(ui->negotiationTimeoutSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
+
+    // credentials
+    ui->rootUserNameCredLabel->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
 
     // Connectivity
     ui->checkBoxUPnPSIP->setChecked(config.upnpEnabled);
@@ -702,6 +730,21 @@ AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
+void
+AdvancedSIPSettingsWidget::createNewSIPCredSection(const QString& username, const QString& password, const QString& realm)
+{
+    QLabel* userNameLabel = new QLabel(this);
+    userNameLabel->setText(username);
+    userNameLabel->setFont(ui->rootUserNameCredLabel->font());
+
+    QPushButton* editNewSIPCredButton = new QPushButton("Edit", this);
+    editNewSIPCredButton->setFont(ui->editRootUserCredButton->font());
+
+
+    ui->gridLayoutSIPCred->addWidget(userNameLabel, ui->gridLayoutSIPCred->rowCount(), 0);
+    ui->gridLayoutSIPCred->addWidget(editNewSIPCredButton, ui->gridLayoutSIPCred->rowCount() - 1, 2);
+}
+#pragma optimize( "", on )
 bool
 AdvancedSIPSettingsWidget::eventFilter(QObject* object, QEvent* event)
 {
