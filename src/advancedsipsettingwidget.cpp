@@ -23,6 +23,7 @@
 
 #include "lrcinstance.h"
 #include "utils.h"
+#include "sipcredentialdialog.h"
 
 #include "api/newcodecmodel.h"
 
@@ -73,6 +74,33 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
     ui->tlsProtocolComboBox->insertItem(1, "TLSv1");
     ui->tlsProtocolComboBox->insertItem(2, "TLSv1.1");
     ui->tlsProtocolComboBox->insertItem(3, "TLSv1.2");
+
+    // credentials
+    ui->removeRootUserCredButton->hide();
+
+    connect(ui->addSIPCredentialsButton, &QAbstractButton::clicked,
+        [this] {
+            SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo, this);
+            connect(&sipAddExtraCredDialog, &SipCredentialDialog::sipCredInfoCreated,
+                [this](const QString& username, const QString& password, const QString& realm) {
+                    createNewSIPCredSection(username, password, realm);
+                });
+            sipAddExtraCredDialog.exec();
+        });
+
+    connect(ui->editRootUserCredButton, &QAbstractButton::clicked,
+        [this] {
+            SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo,
+                                                      this,
+                                                      0,
+                                                      SipCredentialDialog::EditMode::EditCredential);
+            connect(&sipAddExtraCredDialog, &SipCredentialDialog::sipCredInfoChanged,
+                [this](const QString& username, const QString& password, const QString& realm) {
+                    ui->rootUserNameCredLabel->setText(username);
+                    emit sipCredInfoChanged(username, password, realm);
+                });
+            sipAddExtraCredDialog.exec();
+        });
 
     // connectivity
     connect(ui->checkBoxUPnPSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseUPnP);
@@ -194,6 +222,27 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
 
     ui->negotiationTimeoutSpinBox->setValue(config.TLS.negotiationTimeoutSec);
     connect(ui->negotiationTimeoutSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
+
+    // Credentials
+    ui->rootUserNameCredLabel->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
+
+    // remove credentials' components from previous account
+    for (int row = ui->gridLayoutSIPCred->rowCount() - 1; row > 1; --row) {
+        for (int col = 0; col < ui->gridLayoutSIPCred->columnCount(); ++col) {
+            QLayoutItem* item = ui->gridLayoutSIPCred->itemAtPosition(row, col);
+            if (item) {
+                QWidget* itemWidget = item->widget();
+                ui->gridLayoutSIPCred->removeWidget(itemWidget);
+                delete itemWidget;
+            }
+        }
+    }
+
+    for (auto& i : LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials) {
+        if (i[SipCredentialDialog::usernameKey] == LRCInstance::getCurrentAccountInfo().profileInfo.uri)
+            continue;
+        createNewSIPCredSection(QString::fromStdString(i[SipCredentialDialog::usernameKey]));
+    }
 
     // Connectivity
     ui->checkBoxUPnPSIP->setChecked(config.upnpEnabled);
@@ -607,6 +656,12 @@ AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePa
 }
 
 void
+AdvancedSIPSettingsWidget::updateSIPRootUsername(const QString& username)
+{
+    ui->rootUserNameCredLabel->setText(username);
+}
+
+void
 AdvancedSIPSettingsWidget::registrationTimeoutSpinBoxValueChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -700,6 +755,85 @@ AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
     confProps.mailbox = ui->lineEditVoiceMailDialCode->text().toStdString();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
+AdvancedSIPSettingsWidget::createNewSIPCredSection(const QString& username, const QString& password, const QString& realm)
+{
+    Q_UNUSED(password)
+    Q_UNUSED(realm)
+
+    // Add cred elements dynamically
+    QString usernameToCopy = username;
+    QLabel* userNameLabel = new QLabel(this);
+    userNameLabel->setText(username);
+    userNameLabel->setFont(ui->rootUserNameCredLabel->font());
+
+    QPushButton* editNewSIPCredButton = new QPushButton("Edit", this);
+    editNewSIPCredButton->setFont(ui->editRootUserCredButton->font());
+    editNewSIPCredButton->setMinimumHeight(ui->editRootUserCredButton->height());
+    editNewSIPCredButton->setMinimumWidth(ui->editRootUserCredButton->width());
+
+    // edit button link with correct cred info
+    connect(editNewSIPCredButton, &QAbstractButton::clicked,
+        [this, userNameLabel, usernameToCopy]() mutable {
+            auto credVec = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials;
+            try {
+                std::for_each(credVec.begin(), credVec.end(), [this, userNameLabel, &usernameToCopy, idx = 0](std::map<std::string, std::string> i) mutable {
+                    if (i[SipCredentialDialog::usernameKey] == usernameToCopy.toStdString()) {
+                        SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo,
+                            this,
+                            idx,
+                            SipCredentialDialog::EditMode::EditCredential);
+                        connect(&sipAddExtraCredDialog, &SipCredentialDialog::sipCredInfoChanged,
+                            [this, userNameLabel, &usernameToCopy](const QString& username_new, const QString& password_new, const QString& realm_new) {
+                                usernameToCopy = username_new;
+                                userNameLabel->setText(username_new);
+                            });
+                        sipAddExtraCredDialog.exec();
+                        throw "Element Found";
+                    }
+                    ++idx; // 0, 1, 2... 9
+                });
+            }
+            catch (...) {}
+        });
+
+    QPushButton* removeSIPCredButton = new QPushButton("Remove", this);
+    removeSIPCredButton->setMinimumHeight(ui->removeRootUserCredButton->height());
+    removeSIPCredButton->setMinimumWidth(ui->removeRootUserCredButton->width());
+    removeSIPCredButton->setFont(ui->removeRootUserCredButton->font());
+    removeSIPCredButton->setStyleSheet(ui->removeRootUserCredButton->styleSheet());
+
+    // remove button
+    connect(removeSIPCredButton, &QAbstractButton::clicked,
+        [this, userNameLabel, editNewSIPCredButton, removeSIPCredButton]() {
+            auto credentialsVec = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials;
+            auto conf = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+
+            for (int i = 0; i < credentialsVec.size(); i++) {
+                if (credentialsVec[i][SipCredentialDialog::usernameKey] == userNameLabel->text().toStdString())
+                    credentialsVec.erase(credentialsVec.begin() + i);
+            }
+
+            conf.credentials = credentialsVec;
+            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
+
+            ui->gridLayoutSIPCred->removeWidget(userNameLabel);
+            ui->gridLayoutSIPCred->removeWidget(editNewSIPCredButton);
+            ui->gridLayoutSIPCred->removeWidget(removeSIPCredButton);
+            // After this call (removeWidget),
+            // it is the caller's responsibility to give the widget a reasonable geometry
+            // or to put the widget back into a layout or to explicitly hide it if necessary
+            // better to delete it
+            delete userNameLabel;
+            delete editNewSIPCredButton;
+            delete removeSIPCredButton;
+        });
+
+    ui->gridLayoutSIPCred->addWidget(userNameLabel, ui->gridLayoutSIPCred->rowCount(), 0);
+    ui->gridLayoutSIPCred->addWidget(editNewSIPCredButton, ui->gridLayoutSIPCred->rowCount() - 1, 2);
+    ui->gridLayoutSIPCred->addWidget(removeSIPCredButton, ui->gridLayoutSIPCred->rowCount() - 1, 3);
 }
 
 bool
