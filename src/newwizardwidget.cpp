@@ -566,6 +566,7 @@ NewWizardWidget::createAccount()
                 if (!isRing) {
                     // set SIP details
                     confProps.hostname = inputPara_["hostname"].toStdString();
+                    confProps.realm = inputPara_["hostname"].toStdString();
                     confProps.username = inputPara_["username"].toStdString();
                     confProps.password = inputPara_["password"].toStdString();
                     confProps.proxyServer = inputPara_["proxy"].toStdString();
