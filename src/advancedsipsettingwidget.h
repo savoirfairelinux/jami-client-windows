@@ -42,6 +42,10 @@ public:
                                    const char* fileTypeDesp,
                                    const QString& fileTypeFilter,
                                    QPushButton* button);
+    void updateSIPRootUsername(const QString& username);
+
+signals:
+    void sipCredInfoChanged(const QString& username, const QString& password, const QString& realm);
 
 protected:
     bool eventFilter(QObject *object, QEvent *event);
@@ -117,4 +121,7 @@ private slots:
 
     // voicemail
     void lineEditVoiceMailDialCodeEditFinished();
+
+    // credential
+    void createNewSIPCredSection(const QString& username, const QString& password = "", const QString& realm = "");
 };
