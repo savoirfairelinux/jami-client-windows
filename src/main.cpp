@@ -148,7 +148,7 @@ main(int argc, char* argv[])
 
     Utils::removeOldVersions();
 
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     auto startMinimized = false;
