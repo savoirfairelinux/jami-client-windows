@@ -219,6 +219,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
             confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
             confProps_.username = ui->usernameSIP->text().toStdString();
             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
+            ui->advancedSIPSettingsWidget->updateSIPRootUsername(ui->usernameSIP->text());
         });
 
     connect(ui->hostnameSIP, &QLineEdit::editingFinished,
@@ -493,6 +494,15 @@ SettingsWidget::toggleAdvancedSIPSettings()
             [this] {
                 auto top = ui->advancedAccountSettingsSIPButton->frameGeometry().top();
                 ui->scrollSIPArea->verticalScrollBar()->setSliderPosition(top);
+            });
+        connect(ui->advancedSIPSettingsWidget, &AdvancedSIPSettingsWidget::sipCredInfoChanged,
+            [this](const QString& username, const QString& password, const QString& realm) {
+                ui->usernameSIP->setText(username);
+                ui->hostnameSIP->setText(realm);
+                ui->passSIPlineEdit->setText(password);
+                auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+                confProps.username = username.toStdString();
+                LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
             });
     }
 
