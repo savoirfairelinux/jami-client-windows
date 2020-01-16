@@ -171,7 +171,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/networkmanager.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
-        ./src/qmlclipboardadapter.h
+        ./src/qmlclipboardadapter.h \
+        ./src/sipcredentialdialog.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -238,7 +239,8 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/recordwidget.cpp \
         ./src/networkmanager.cpp \
         ./src/connectivitymonitor.cpp \
-        ./src/userprofile.cpp
+        ./src/userprofile.cpp \
+        ./src/sipcredentialdialog.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \
@@ -267,6 +269,7 @@ FORMS += ./src/aboutdialog.ui \
         ./src/collapsiblepasswordwidget.ui \
         ./src/popupdialog.ui \
         ./src/recordoverlay.ui \
-        ./src/recordwidget.ui
+        ./src/recordwidget.ui \
+        ./src/sipcredentialdialog.ui
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
