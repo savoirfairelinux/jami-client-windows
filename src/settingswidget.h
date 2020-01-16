@@ -54,6 +54,7 @@ public:
     virtual void updateCustomUI();
 public slots:
     virtual void slotAccountListChanged();
+    void delAccountSlot();
 
 private:
     Ui::SettingsWidget* ui;
@@ -121,7 +122,6 @@ private slots:
         const std::string& address, const std::string& name);
     void slotRegisterName();
     void setAccEnableSlot(int state);
-    void delAccountSlot();
     void toggleAdvancedSIPSettings();
     void toggleAdvancedSettings();
     void toggleBannedContacts();
