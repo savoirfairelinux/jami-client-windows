@@ -42,6 +42,12 @@ public:
                                    const char* fileTypeDesp,
                                    const QString& fileTypeFilter,
                                    QPushButton* button);
+    // In case where the root creds are modified in Credential section
+    void updateSIPRootUsername(const QString& username);
+
+signals:
+    // for root cred
+    void sipCredInfoChanged(const QString& username, const QString& password, const QString& realm);
 
 protected:
     bool eventFilter(QObject *object, QEvent *event);
@@ -117,4 +123,7 @@ private slots:
 
     // voicemail
     void lineEditVoiceMailDialCodeEditFinished();
+
+    // credential
+    void createNewSIPCredSection(const QString& username, const QString& password = "", const QString& realm = "");
 };
