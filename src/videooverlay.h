@@ -42,6 +42,7 @@ using namespace lrc::api;
 class VideoOverlay : public FadeOutable
 {
     Q_OBJECT
+    Q_PROPERTY(QPixmap pixRedDot READ getOriginPix WRITE setOriginPix DESIGNABLE true);
 
 public:
     explicit VideoOverlay(QWidget* parent = 0);
@@ -52,6 +53,9 @@ public:
 
     bool shouldFadeOut() override;
     void updateGeometry(const QSize& size);
+
+    QPixmap getOriginPix();
+    void setOriginPix(QPixmap);
 
 signals:
     void setChatVisibility(bool visible);
@@ -68,7 +72,7 @@ private slots:
     void on_holdButton_toggled(bool checked);
     void on_noMicButton_toggled(bool checked);
     void on_noVideoButton_toggled(bool checked);
-    void on_recButton_clicked();
+    void on_recButton_toggled(bool checked);
     void on_transferCallButton_toggled(bool checked);
     void on_addToConferenceButton_toggled(bool checked);
     void on_sipInputPanelButton_toggled(bool checked);
@@ -87,6 +91,7 @@ private:
     QTimer* oneSecondTimer_;
     QString currentBestCalleeDisplayName_ { "" };
     bool popUpShown_ { false };
+    QPixmap redDotPix_;
 
     quint16 popupMargin_{ 16 };
 };
