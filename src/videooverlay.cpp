@@ -40,6 +40,9 @@ VideoOverlay::VideoOverlay(QWidget* parent)
 
     ui->chatButton->setCheckable(true);
 
+    ui->recButton->setCheckable(true);
+    ui->recordDot->setVisible(false);
+
     ui->onHoldLabel->setVisible(false);
 
     ui->transferCallButton->setVisible(false);
@@ -50,6 +53,7 @@ VideoOverlay::VideoOverlay(QWidget* parent)
 
     ui->holdButton->setVisible(false);
 
+    ui->recordDot->setPixmap(&redDotPix_);
 }
 
 VideoOverlay::~VideoOverlay()
@@ -152,6 +156,18 @@ VideoOverlay::updateGeometry(const QSize& size)
     setFadeOutEndLocation(endRect);
 }
 
+QPixmap
+VideoOverlay::getOriginPix()
+{
+    return redDotPix_;
+}
+
+void
+VideoOverlay::setOriginPix(QPixmap pix)
+{
+    redDotPix_ = pix;
+}
+
 void
 VideoOverlay::simulateShowChatview(bool checked)
 {
@@ -237,7 +253,7 @@ VideoOverlay::on_noVideoButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::on_recButton_clicked()
+VideoOverlay::on_recButton_toggled(bool checked)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
     if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
@@ -246,6 +262,14 @@ VideoOverlay::on_recButton_clicked()
     auto callModel = LRCInstance::getCurrentCallModel();
     if (callModel->hasCall(callId)) {
         callModel->toggleAudioRecord(callId);
+        if(checked) {
+            ui->recordDot->setVisible(true);
+            ui->recordDot->stop();
+            ui->recordDot->start();
+        } else {
+            ui->recordDot->stop();
+            ui->recordDot->setVisible(false);
+        }
     }
 }
 

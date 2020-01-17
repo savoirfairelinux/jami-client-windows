@@ -22,6 +22,9 @@
   <property name="windowTitle">
    <string/>
   </property>
+  <property name="pixRedDot" stdset="0">
+   <pixmap resource="../ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
+  </property>
   <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0" columnstretch="0,0,2,0,0">
    <item row="2" column="0" colspan="5">
     <widget class="QWidget" name="bottomButtons" native="true">
@@ -529,6 +532,25 @@
        </spacer>
       </item>
       <item>
+       <widget class="Blinkable" name="recordDot" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>15</width>
+          <height>15</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>15</width>
+          <height>15</height>
+         </size>
+        </property>
+        <property name="pixRedDot" stdset="0">
+         <pixmap resource="../ressources.qrc">:/images/icons/av_icons/fiber_manual_record-24px.svg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="timerLabel">
         <property name="palette">
          <palette>
@@ -624,6 +646,12 @@
    <class>OverlayButton</class>
    <extends>QPushButton</extends>
    <header>overlaybutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Blinkable</class>
+   <extends>QWidget</extends>
+   <header>widgethelpers.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
