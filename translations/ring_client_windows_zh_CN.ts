@@ -88,7 +88,7 @@ Jami是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>连接性</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
@@ -241,7 +241,7 @@ Jami是安全的、分布式的通讯软件。</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>连接性</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="868"/>
