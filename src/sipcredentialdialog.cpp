@@ -19,6 +19,8 @@
 #include "sipcredentialdialog.h"
 #include "ui_sipcredentialdialog.h"
 
+#include <QtConcurrent/QtConcurrent>
+
 SipCredentialDialog::SipCredentialDialog(lrc::api::profile::Info currentSIPAccountInfo, QWidget* parent, int itemIndex, EditMode mode):
     QDialog(parent),
     ui(new Ui::SipCredentialDialog)
@@ -33,11 +35,11 @@ SipCredentialDialog::SipCredentialDialog(lrc::api::profile::Info currentSIPAccou
     ui->duplicateUsernameLabel->hide();
     ui->sipPasswordRewriteLineEdit->setEchoMode(QLineEdit::Password);
 
-    auto initialUserName = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][usernameKey];
+    auto initialUserName = QString::fromStdString(LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][usernameKey]);
     if (mode == EditMode::EditCredential) {
         ui->sipUsernameRewriteLineEdit->setText(initialUserName);
-        ui->sipPasswordRewriteLineEdit->setText(LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][passwordKey]);
-        ui->sipRealmRewriteLineEdit->setText(LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][realmKey]);
+        ui->sipPasswordRewriteLineEdit->setText(QString::fromStdString(LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][passwordKey]));
+        ui->sipRealmRewriteLineEdit->setText(QString::fromStdString(LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials[itemIndex][realmKey]));
     }
 
 
@@ -46,32 +48,35 @@ SipCredentialDialog::SipCredentialDialog(lrc::api::profile::Info currentSIPAccou
             auto credentialsVec = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials;
             auto conf = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
 
-            for (auto &i : credentialsVec) {
-                if (i[usernameKey] == ui->sipUsernameRewriteLineEdit->text() && ui->sipUsernameRewriteLineEdit->text() != initialUserName) {
+            for (auto& i : credentialsVec) {
+                if (i[usernameKey] == ui->sipUsernameRewriteLineEdit->text().toStdString() && ui->sipUsernameRewriteLineEdit->text() != initialUserName) {
                     ui->duplicateUsernameLabel->show();
                     return;
                 }
             }
 
-            MapStringString credentials;
-            credentials[usernameKey] = ui->sipUsernameRewriteLineEdit->text();
-            credentials[passwordKey] = ui->sipPasswordRewriteLineEdit->text();
-            credentials[realmKey] = ui->sipRealmRewriteLineEdit->text().isEmpty() ? QString("*") : ui->sipRealmRewriteLineEdit->text();
+            std::map<std::string, std::string> credentials;
+            credentials[usernameKey] = ui->sipUsernameRewriteLineEdit->text().toStdString();
+            credentials[passwordKey] = ui->sipPasswordRewriteLineEdit->text().toStdString();
+            credentials[realmKey] = ui->sipRealmRewriteLineEdit->text().isEmpty() ? "*" : ui->sipRealmRewriteLineEdit->text().toStdString();
 
             if (mode == EditMode::NewCredential) {
-                credentialsVec.append(credentials);
+                credentialsVec.push_back(credentials);
                 conf.credentials = credentialsVec;
-                LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
                 // new cred insert
-                emit sipCredInfoCreated(credentials[usernameKey], credentials[passwordKey], credentials[realmKey]);
-            } else {
+                emit sipCredInfoCreated(QString::fromStdString(credentials[usernameKey]), QString::fromStdString(credentials[passwordKey]), QString::fromStdString(credentials[realmKey]));
+            }
+            else {
                 credentialsVec[itemIndex] = credentials;
                 conf.credentials = credentialsVec;
-                LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
                 // update root cred in settings
-                emit sipCredInfoChanged(credentials[usernameKey], credentials[passwordKey], credentials[realmKey]);
+                emit sipCredInfoChanged(QString::fromStdString(credentials[usernameKey]), QString::fromStdString(credentials[passwordKey]), QString::fromStdString(credentials[realmKey]));
             }
-            QDialog::accept();
+            QtConcurrent::run(
+                [this, conf]() {
+                    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
+                });
+            accept();
         });
     connect(ui->sipCredCancelButton, &QAbstractButton::clicked, this, &QDialog::reject);
     connect(ui->sipUsernameRewriteLineEdit, &QLineEdit::textChanged,
@@ -80,9 +85,9 @@ SipCredentialDialog::SipCredentialDialog(lrc::api::profile::Info currentSIPAccou
         });
 }
 
-const QString SipCredentialDialog::usernameKey = "Account.username";
-const QString SipCredentialDialog::passwordKey = "Account.password";
-const QString SipCredentialDialog::realmKey = "Account.realm";
+const char* SipCredentialDialog::usernameKey = "Account.username";
+const char* SipCredentialDialog::passwordKey = "Account.password";
+const char* SipCredentialDialog::realmKey = "Account.realm";
 
 SipCredentialDialog::~SipCredentialDialog()
 {

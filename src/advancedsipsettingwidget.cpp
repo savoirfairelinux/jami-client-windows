@@ -102,12 +102,6 @@ AdvancedSIPSettingsWidget::AdvancedSIPSettingsWidget(QWidget* parent)
             sipAddExtraCredDialog.exec();
         });
 
-    for (auto& i : LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials) {
-        if (i[SipCredentialDialog::usernameKey] == QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri))
-            continue;
-        createNewSIPCredSection(i[SipCredentialDialog::usernameKey]);
-    }
-
     // connectivity
     connect(ui->checkBoxUPnPSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseUPnP);
     connect(ui->checkBoxTurnEnableSIP, &QAbstractButton::clicked, this, &AdvancedSIPSettingsWidget::setUseTURN);
@@ -245,9 +239,9 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     }
 
     for (auto& i : LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials) {
-        if (i[SipCredentialDialog::usernameKey] == QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri))
+        if (i[SipCredentialDialog::usernameKey] == LRCInstance::getCurrentAccountInfo().profileInfo.uri)
             continue;
-        createNewSIPCredSection(i[SipCredentialDialog::usernameKey]);
+        createNewSIPCredSection(QString::fromStdString(i[SipCredentialDialog::usernameKey]));
     }
 
     // Connectivity
@@ -785,8 +779,8 @@ AdvancedSIPSettingsWidget::createNewSIPCredSection(const QString& username, cons
         [this, userNameLabel, usernameToCopy] () mutable {
             auto credVec = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId()).credentials;
             try {
-                std::for_each(credVec.begin(), credVec.end(), [this, userNameLabel, &usernameToCopy, idx = 0](MapStringString i) mutable {
-                    if (i[SipCredentialDialog::usernameKey] == usernameToCopy) {
+                std::for_each(credVec.begin(), credVec.end(), [this, userNameLabel, &usernameToCopy, idx = 0](std::map<std::string, std::string> i) mutable {
+                    if (i[SipCredentialDialog::usernameKey] == usernameToCopy.toStdString()) {
                         SipCredentialDialog sipAddExtraCredDialog(LRCInstance::getCurrentAccountInfo().profileInfo,
                             this,
                             idx,
@@ -817,12 +811,15 @@ AdvancedSIPSettingsWidget::createNewSIPCredSection(const QString& username, cons
             auto conf = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
 
             for (int i = 0; i < credentialsVec.size(); i++) {
-                if (credentialsVec[i][SipCredentialDialog::usernameKey] == userNameLabel->text())
-                    credentialsVec.remove(i);
+                if (credentialsVec[i][SipCredentialDialog::usernameKey] == userNameLabel->text().toStdString())
+                    credentialsVec.erase(credentialsVec.begin() + i);
             }
 
             conf.credentials = credentialsVec;
-            LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
+            QtConcurrent::run(
+                [this, conf]() {
+                    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), conf);
+                });
 
             ui->gridLayoutSIPCred->removeWidget(userNameLabel);
             ui->gridLayoutSIPCred->removeWidget(editNewSIPCredButton);

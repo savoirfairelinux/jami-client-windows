@@ -44,9 +44,9 @@ public:
     ~SipCredentialDialog();
 
     // key from daemon, since there is a confilct when adding account_const.h
-    static const QString usernameKey;
-    static const QString passwordKey;
-    static const QString realmKey;
+    static const char* usernameKey;
+    static const char* passwordKey;
+    static const char* realmKey;
 
 signals:
     void sipCredInfoChanged(const QString& username, const QString& password, const QString& realm);

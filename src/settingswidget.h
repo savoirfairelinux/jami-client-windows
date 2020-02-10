@@ -96,7 +96,6 @@ private:
     SettingsMenu selectedMenu_ = SettingsMenu::General;
     lrc::api::profile::Type pastAccount_ = lrc::api::profile::Type::INVALID;
     bool advancedSettingsDropped_ = false;
-    QList<QPair<std::string, float>> formatIndexList_;
     AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
     QScrollArea* scrollSIPArea_;
     bool advancedSIPSettingsDropped_ = false;
@@ -142,7 +141,8 @@ private slots:
     void slotAudioOutputIndexChanged(int index);
     void slotAudioInputIndexChanged(int index);
     void slotDeviceBoxCurrentIndexChanged(int index);
-    void slotFormatBoxCurrentIndexChanged(int index);
+    void slotResolutionBoxCurrentIndexChanged(int index);
+    void slotFrameRateBoxCurrentIndexChanged(int index);
     void slotSetHardwareAccel(bool state);
     void slotVideoDeviceListChanged();
     void slotAudioMeter(const std::string& id, float level);
