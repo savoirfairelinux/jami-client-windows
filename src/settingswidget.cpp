@@ -1112,17 +1112,47 @@ SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 }
 
 void
-SettingsWidget::slotFormatBoxCurrentIndexChanged(int index)
+SettingsWidget::slotResolutionBoxCurrentIndexChanged(int index)
 {
-    auto resolution = formatIndexList_.at(index).first;
-    auto rate = formatIndexList_.at(index).second;
-    auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
     try {
-        auto settings = LRCInstance::avModel().getDeviceSettings(device);
-        settings.rate = rate;
-        settings.size = resolution;
-        LRCInstance::avModel().setDeviceSettings(settings);
+        auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+        auto deviceCapabilities = LRCInstance::avModel().getDeviceCapabilities(device);
+        auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
+        auto currentChannel = currentSettings.channel;
+        currentChannel = currentChannel.empty() ? "default" : currentChannel;
+        auto channelCaps = deviceCapabilities.at(currentChannel);
+
+        auto blockedFPSComboBox = Utils::whileBlocking<QComboBox>(ui->fpsComboBox);
+        auto resolutionToSet = ui->resolutionComboBox->itemText(index).toStdString();
+        blockedFPSComboBox->clear();
+
+        for (auto [resolution, frameRateList] : channelCaps) {
+            if (resolution == resolutionToSet) {
+                for (auto rate : frameRateList) {
+                    blockedFPSComboBox->addItem(QString::number(rate) + " FPS");
+                }
+            }
+        }
+
+        auto rate = ui->fpsComboBox->itemText(0).left(ui->fpsComboBox->itemText(0).indexOf("FPS") - 1).toFloat();
+
+        currentSettings.rate = rate;
+        currentSettings.size = resolutionToSet;
+
+        LRCInstance::avModel().setDeviceSettings(currentSettings);
     } catch (...) {}
+}
+
+void
+SettingsWidget::slotFrameRateBoxCurrentIndexChanged(int index)
+{
+    auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
+    auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
+    auto rate = ui->fpsComboBox->itemText(0).left(ui->fpsComboBox->itemText(0).indexOf("FPS") - 1).toFloat();
+
+    currentSettings.rate = rate;
+
+    LRCInstance::avModel().setDeviceSettings(currentSettings);
 }
 
 void
@@ -1154,24 +1184,24 @@ SettingsWidget::setFormatListForDevice(const std::string& device)
         currentChannel = currentChannel.empty() ? "default" : currentChannel;
         auto channelCaps = deviceCapabilities.at(currentChannel);
 
-        ui->formatBox->blockSignals(true);
-        ui->formatBox->clear();
-        formatIndexList_.clear();
+        auto blockedResolutionComboBox = Utils::whileBlocking<QComboBox>(ui->resolutionComboBox);
+        auto blockedFPSComboBox = Utils::whileBlocking<QComboBox>(ui->fpsComboBox);
+
+        blockedResolutionComboBox->clear();
+        blockedFPSComboBox->clear();
 
         for (auto[resolution, frameRateList] : channelCaps) {
-            for (auto rate : frameRateList) {
-                formatIndexList_.append(QPair<std::string, float>(resolution, rate));
-                auto sizeRateString = QString("%1 [%2 fps]")
-                    .arg(QString::fromStdString(resolution))
-                    .arg(round(rate));
-                ui->formatBox->addItem(sizeRateString.toUtf8());
-                if (resolution == currentSettings.size && rate == currentSettings.rate) {
-                    ui->formatBox->setCurrentIndex(ui->formatBox->count() - 1);
+            blockedResolutionComboBox->addItem(QString::fromStdString(resolution));
+            if (resolution == currentSettings.size) {
+                blockedResolutionComboBox->setCurrentIndex(blockedResolutionComboBox->count() - 1);
+                for (auto rate : frameRateList) {
+                    blockedFPSComboBox->addItem(QString::number(rate) + " FPS");
+                    if (rate == currentSettings.rate) {
+                        blockedFPSComboBox->setCurrentIndex(blockedFPSComboBox->count() - 1);
+                    }
                 }
             }
         }
-
-        ui->formatBox->blockSignals(false);
     } catch(const std::exception& e) {
         qWarning() << e.what();
     }
@@ -1254,16 +1284,20 @@ SettingsWidget::populateVideoSettings()
 {
     disconnect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
-    disconnect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
+    disconnect(ui->resolutionComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::slotResolutionBoxCurrentIndexChanged);
+    disconnect(ui->fpsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::slotFrameRateBoxCurrentIndexChanged);
 
     ui->deviceBox->clear();
-    ui->formatBox->clear();
+    ui->fpsComboBox->clear();
+    ui->resolutionComboBox->clear();
 
     auto devices = LRCInstance::avModel().getDevices();
 
     ui->deviceBox->setEnabled(devices.size());
-    ui->formatBox->setEnabled(devices.size());
+    ui->resolutionComboBox->setEnabled(devices.size());
+    ui->fpsComboBox->setEnabled(devices.size());
     ui->labelVideoDevice->setEnabled(devices.size());
     ui->labelVideoFormat->setEnabled(devices.size());
 
@@ -1271,8 +1305,10 @@ SettingsWidget::populateVideoSettings()
         ui->deviceBox->addItem(QObject::tr("No Device"));
         ui->deviceBox->setCurrentIndex(0);
 
-        ui->formatBox->addItem(QObject::tr("No Device"));
-        ui->formatBox->setCurrentIndex(0);
+        ui->fpsComboBox->addItem(QObject::tr("No Device"));
+        ui->fpsComboBox->setCurrentIndex(0);
+        ui->resolutionComboBox->addItem(QObject::tr("No Device"));
+        ui->resolutionComboBox->setCurrentIndex(0);
     } else {
         auto currentCaptureDevice = LRCInstance::avModel().getCurrentVideoCaptureDevice();
         auto deviceIndex = Utils::indexInVector(devices, currentCaptureDevice);
@@ -1296,8 +1332,10 @@ SettingsWidget::populateVideoSettings()
 
     connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &SettingsWidget::slotDeviceBoxCurrentIndexChanged);
-    connect(ui->formatBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-        this, &SettingsWidget::slotFormatBoxCurrentIndexChanged);
+    connect(ui->resolutionComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::slotResolutionBoxCurrentIndexChanged);
+    connect(ui->fpsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this, &SettingsWidget::slotFrameRateBoxCurrentIndexChanged);
 
     ui->previewUnavailableLabel->setVisible(devices.size() == 0);
     ui->videoLayoutWidget->setVisible(devices.size() != 0);
