@@ -1463,8 +1463,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>706</width>
-                  <height>1398</height>
+                  <width>707</width>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -2787,7 +2787,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>683</width>
-                  <height>874</height>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3762,16 +3762,16 @@
                                <height>5</height>
                               </size>
                              </property>
-                             <property name="maximum" stdset="0">
+                             <property name="maximum">
                               <number>100</number>
                              </property>
-                             <property name="value" stdset="0">
+                             <property name="value">
                               <number>-1</number>
                              </property>
-                             <property name="textVisible" stdset="0">
+                             <property name="textVisible">
                               <bool>false</bool>
                              </property>
-                             <property name="format" stdset="0">
+                             <property name="format">
                               <string>%p%</string>
                              </property>
                             </widget>
@@ -4019,7 +4019,7 @@
                               </font>
                              </property>
                              <property name="text">
-                              <string>Format</string>
+                              <string>Resolution</string>
                              </property>
                             </widget>
                            </item>
@@ -4037,7 +4037,69 @@
                             </spacer>
                            </item>
                            <item>
-                            <widget class="QComboBox" name="formatBox">
+                            <widget class="QComboBox" name="resolutionComboBox">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>360</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>360</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="toolTip">
+                              <string>Video device resolution selector</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_23">
+                           <item>
+                            <widget class="QLabel" name="labelVideoFPS">
+                             <property name="font">
+                              <font>
+                               <pointsize>11</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Frame Rate</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_29">
+                             <property name="orientation">
+                              <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="fpsComboBox">
                              <property name="sizePolicy">
                               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                                <horstretch>0</horstretch>
@@ -4339,7 +4401,8 @@
   <tabstop>inputComboBox</tabstop>
   <tabstop>outputComboBox</tabstop>
   <tabstop>deviceBox</tabstop>
-  <tabstop>formatBox</tabstop>
+  <tabstop>resolutionComboBox</tabstop>
+  <tabstop>fpsComboBox</tabstop>
  </tabstops>
  <resources>
   <include location="../ressources.qrc"/>
