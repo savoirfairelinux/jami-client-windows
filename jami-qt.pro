@@ -6,13 +6,11 @@ win32-msvc {
 
     CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
 
-    QML2_IMPORT_PATH = C:/Qt/5.9.4/msvc2017_64/qml
-
     QTQUICK_COMPILER_SKIPPED_RESOURCES += ressources.qrc
 
     # compiler options
     QMAKE_CXXFLAGS += /wd"4068" /wd"4099" /wd"4189" /wd"4267" /wd"4577" /wd"4467" /wd"4715" /wd"4828"
-    QMAKE_CXXFLAGS += /MP /GS /W3 /Gy /Zc:wchar_t /Zi /Gm- /O2 /Zc:inline /fp:precise /errorReport:prompt /WX- /Zc:forScope
+    QMAKE_CXXFLAGS += /MP /GS /W3 /Gy /Zc:wchar_t /Zi /Gm- /O2 /Zc:inline /fp:precise /errorReport:prompt
     QMAKE_CXXFLAGS += /Gd /Oi /MD /std:c++17 /FC /EHsc /nologo /sdl
 
     # linker options
@@ -37,7 +35,7 @@ win32-msvc {
 
     # daemon
     INCLUDEPATH += ../daemon/contrib/msvc/include/
-    LIBS += $${DRING}/MSVC/x64/ReleaseLib_win32/bin/dring.lib
+    LIBS += $${DRING}/build-local/x64/ReleaseLib_win32/bin/dring.lib
     LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
 
     # windows system libs
