@@ -18,9 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
+#include "lrcinstance.h"
 #include "mainapplication.h"
 #include "runguard.h"
 #include "qmlclipboardadapter.h"
+#include "d3d11qtquickvideowidgetbae.h"
 
 #include <QCryptographicHash>
 #include <QQmlEngine>
@@ -31,6 +33,8 @@
 int
 main(int argc, char* argv[])
 {
+    QQuickWindow::setSceneGraphBackend(QSGRendererInterface::Direct3D11Rhi);
+
     setlocale(LC_ALL, "en_US.utf8");
 
     MainApplication::applicationInitialization();
@@ -59,10 +63,22 @@ main(int argc, char* argv[])
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<D3D11QtQuickVideoWidgetBase>("D3D11QML",1,0,"D3D11QtQuickVideoWidgetBase");
+    qmlRegisterType<D3D11QtQuickVideoPreviewWidget>("D3D11QML", 1, 0, "D3D11QtQuickVideoPreviewWidget");
+    qmlRegisterType<D3D11QtQuickVideoDistantWidget>("D3D11QML", 1, 0, "D3D11QtQuickVideoDistantWidget");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
     engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/src/VideoPreviewBase.qml")));
+
+    QQuickWindow* viewwindow = qobject_cast<QQuickWindow*>(engine.rootObjects().value(2));
+    LRCInstance::renderer()->startPreviewing();
+
+    //QWidget* container = QWidget::createWindowContainer(viewwindow);
+    //container->show();
+
+    viewwindow->show();
 
     // exec the application
     auto ret = a.exec();
