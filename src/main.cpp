@@ -29,6 +29,7 @@
 #include "splashscreen.h"
 #include "aboutdialog.h"
 #include "qmlclipboardadapter.h"
+#include "d3d11qtquickvideowidgetbae.h"
 
 #include <QApplication>
 #include <QFile>
@@ -299,6 +300,8 @@ main(int argc, char* argv[])
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<D3D11QtQuickVideoWidgetBase>("D3D11QML",1,0,"D3D11QtQuickVideoWidgetBase");
+    qmlRegisterType<D3D11QtQuickVideoPreviewWidget>("D3D11QML", 1, 0, "D3D11QtQuickVideoPreviewWidget");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
