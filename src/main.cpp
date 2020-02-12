@@ -29,6 +29,7 @@
 #include "splashscreen.h"
 #include "aboutdialog.h"
 #include "qmlclipboardadapter.h"
+#include "d3d11qtquickvideowidgetbae.h"
 
 #include <QApplication>
 #include <QFile>
@@ -265,46 +266,62 @@ main(int argc, char* argv[])
 
     auto accountList = LRCInstance::accountModel().getAccountList();
 
-    for (const std::string& i : accountList) {
-        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-            int status = dialog->exec();
-
-            //migration failed
-            if (!status) {
-#ifdef Q_OS_WIN
-                FreeConsole();
-#endif
-                exitApp(guard);
-                return status;
-            }
-        }
-    }
-
-    splash->finish(&MainWindow::instance());
-    splash->deleteLater();
-
-    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
-
-    QSettings settings("jami.net", "Jami");
-    if (not startMinimized) {
-        MainWindow::instance().showWindow();
-    } else {
-        MainWindow::instance().showMinimized();
-        MainWindow::instance().hide();
-    }
+//    for (const std::string& i : accountList) {
+//        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
+//        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+//            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
+//            int status = dialog->exec();
+//
+//            //migration failed
+//            if (!status) {
+//#ifdef Q_OS_WIN
+//                FreeConsole();
+//#endif
+//                exitApp(guard);
+//                return status;
+//            }
+//        }
+//    }
+//
+//    splash->finish(&MainWindow::instance());
+//    splash->deleteLater();
+//
+//    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+//
+//    QSettings settings("jami.net", "Jami");
+//    if (not startMinimized) {
+//        MainWindow::instance().showWindow();
+//    } else {
+//        MainWindow::instance().showMinimized();
+//        MainWindow::instance().hide();
+//    }
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
 
+    QQuickWindow::setSceneGraphBackend(QSGRendererInterface::Direct3D11Rhi);
+
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<D3D11QtQuickVideoWidgetBase>("D3D11QML",1,0,"D3D11QtQuickVideoWidgetBase");
+    qmlRegisterType<D3D11QtQuickVideoPreviewWidget>("D3D11QML", 1, 0, "D3D11QtQuickVideoPreviewWidget");
+    qmlRegisterType<D3D11QtQuickVideoDistantWidget>("D3D11QML", 1, 0, "D3D11QtQuickVideoDistantWidget");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
     engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/src/VideoPreviewBase.qml")));
+
+    QQuickWindow* viewwindow = qobject_cast<QQuickWindow*>(engine.rootObjects().value(2));
+    LRCInstance::renderer()->startPreviewing();
+
+    //QWidget* container = QWidget::createWindowContainer(viewwindow);
+    //container->show();
+
+    viewwindow->show();
 
     auto ret = a.exec();
+
+    //delete container;
 
 #ifdef Q_OS_WIN
     FreeConsole();
