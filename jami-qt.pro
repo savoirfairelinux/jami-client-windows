@@ -5,6 +5,7 @@ win32-msvc {
     QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
 
     CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
+    CONFIG += release
 
     QTQUICK_COMPILER_SKIPPED_RESOURCES += ./ressources.qrc
 
@@ -19,18 +20,84 @@ win32-msvc {
     # preprocessor defines
     DEFINES += UNICODE QT_NO_DEBUG NDEBUG ENABLE_LIBWRAP=1
 
+    # output paths
+    OBJECTS_DIR = obj/.obj
+    MOC_DIR = obj/.moc
+    RCC_DIR = obj/.rcc
+    UI_DIR = obj/.ui
+
+    # CUDA library include
+    CUDA_SOURCES += \
+
+
+    # CUDA settings
+    CUDA_DIR = $$(CUDA_PATH)            # Path to cuda toolkit install
+    CUDA_SDK_DIR = $$(CUDA_SDK_PATH)    # Path to cuda sdk install
+    SYSTEM_NAME = x64                   # Depending on your system either 'Win32', 'x64', or 'Win64'
+    SYSTEM_TYPE = 64                    # '32' or '64', depending on your system
+    CUDA_ARCH = sm_50     # Type of CUDA architecture
+    NVCC_OPTIONS = --use_fast_math
+    CUDA_OBJECTS_DIR = ./cudaobj
+
+    # MSVCRT link option (static or dynamic, it must be the same with your Qt SDK link option)
+    MSVCRT_LINK_FLAG_RELEASE = "/MD"
+
+    # CUDA library include
+    # include paths
+    INCLUDEPATH += $$CUDA_DIR/include \
+                   $$CUDA_SDK_DIR/common/inc \
+                   $$CUDA_DIR/../shared/inc
+    DEPENDPATH  += $$CUDA_DIR/include \
+                   $$CUDA_SDK_DIR/common/inc \
+                   $$CUDA_DIR/../shared/inc
+    # library directories
+    CUDA_LIB_PATH_PRIME = $$CUDA_DIR/lib/$$SYSTEM_NAME/
+    CUDA_LIB_PATH +=$$CUDA_DIR/lib/$$SYSTEM_NAME \
+                    $$CUDA_DIR/common/lib/$$SYSTEM_NAME \
+                    $$CUDA_DIR/../shared/lib/$$SYSTEM_NAME
+    QMAKE_LIBDIR += CUDA_LIB_PATH
+
+    # The following makes sure all path names (which often include spaces) are put between quotation marks
+    CUDA_INC = $$join(INCLUDEPATH,'" -I"','-I"','"')
+    # Add the necessary libraries
+    CUDA_BASIC_LIB_NAME += cudart_static cuda nvrtc cudart cudadevrt
+
+    CUDA_DEPENDENT_LIB_NAME = kernel32 user32 gdi32 winspool comdlg32 \
+                 advapi32 shell32 ole32 oleaut32 uuid odbc32 odbccp32
+
+    CUDA_LIB_NAMES = $$CUDA_BASIC_LIB_NAME + $$CUDA_DEPENDENT_LIB_NAME
+    NVCCLIBS = $$join(CUDA_LIB_NAMES,' -l','-l', '')
+    for(singleLib, CUDA_BASIC_LIB_NAME) {
+        CUDA_LIBS += $$join(singleLib,'.lib ', $$CUDA_LIB_PATH_PRIME, '.lib')
+    }
+    LIBS += $$CUDA_LIBS
+    for(singleLib, CUDA_DEPENDENT_LIB_NAME) {
+        CUDA_DEPENDENT_SYSTEM_LIBS += $$join(singleLib,'.lib ','','.lib')
+    }
+    LIBS += $$CUDA_DEPENDENT_SYSTEM_LIBS
+
     # dependencies
     LRC= ../lrc
     DRING= ../daemon
     QRENCODE= qrencode-win32/qrencode-win32
 
     # client deps
-    INCLUDEPATH += $${QRENCODE}
+       # libmfx library deps
+    INCLUDEPATH += ../daemon/contrib/msvc/include/mfx
+    INCLUDEPATH += ../daemon/contrib/build/media-sdk/api/include
+    LIBS += ../daemon/contrib/msvc/lib/x64/libmfx.lib
+    LIBS += ../daemon/contrib/build/media-sdk/build/win_x64/Release/lib/libmfx.lib
+
+      # ffmpeg library deps
     INCLUDEPATH += ../daemon/contrib/msvc/include/
     INCLUDEPATH += $${DRING}/contrib/build/ffmpeg/Build/win32/x64/include/
     LIBS += $${QRENCODE}/vc8/qrcodelib/x64/Release-Lib/qrcodelib.lib
     LIBS += $${DRING}/build-local/x64/ReleaseLib_win32/bin/dring.lib
     LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
+
+      # QRENCODE library path
+    INCLUDEPATH += $${QRENCODE}
+    LIBS += $${QRENCODE}/vc8/qrcodelib/x64/Release-Lib/qrcodelib.lib
 
     # lrc
     INCLUDEPATH += $${LRC}/src/
@@ -43,13 +110,7 @@ win32-msvc {
     LIBS += $${DRING}/contrib/msvc/lib/x64/libgnutls.lib
 
     # windows system libs
-    LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib D3d11.lib
-
-    # output paths
-    OBJECTS_DIR = obj/.obj
-    MOC_DIR = obj/.moc
-    RCC_DIR = obj/.rcc
-    UI_DIR = obj/.ui
+    LIBS += Shell32.lib Ole32.lib Advapi32.lib Shlwapi.lib User32.lib Gdi32.lib Crypt32.lib Strmiids.lib D3d11.lib D3d10.lib D3dcompiler.lib
 
     # ReleaseCompile config
     contains(CONFIG, ReleaseCompile) {
@@ -65,11 +126,25 @@ win32-msvc {
             message(Beta config enabled)
             Release: DESTDIR = x64/Beta
             Release: DEFINES += BETA
+
+            cuda.input = CUDA_SOURCES
+            cuda.output = $$CUDA_OBJECTS_DIR/${QMAKE_FILE_BASE}_cuda.obj
+            cuda.commands = \"$$CUDA_DIR/bin/nvcc.exe\" $$NVCC_OPTIONS $$CUDA_INC $$NVCCLIBS \
+                            --machine $$SYSTEM_TYPE -arch=$$CUDA_ARCH \
+                            --compile -cudart static -DWIN32 -D_MBCS \
+                            -Xcompiler "/wd4819,/EHsc,/W3,/nologo,/O2,/Zi" \
+                            -Xcompiler $$MSVCRT_LINK_FLAG_RELEASE \
+                            -c -o ${QMAKE_FILE_OUT} ${QMAKE_FILE_NAME}
+            cuda.dependency_type = TYPE_C
+            QMAKE_EXTRA_COMPILERS += cuda
         }
     } else {
         Release: DESTDIR = x64/Release
     }
     Debug: DESTDIR = x64/Debug
+
+# Configuration of the Cuda compiler
+
 
     # qt dir
     QMAKE_INCDIR_QT=$(QTDIR)\include
@@ -79,6 +154,19 @@ win32-msvc {
 
     # exe icons
     Release: RC_FILE = ico.rc
+
+CONFIG(release) {
+        cuda.input = CUDA_SOURCES
+        cuda.output = $$CUDA_OBJECTS_DIR/${QMAKE_FILE_BASE}_cuda.obj
+        cuda.commands = \"$$CUDA_DIR/bin/nvcc.exe\" $$NVCC_OPTIONS $$CUDA_INC $$NVCCLIBS \
+                        --machine $$SYSTEM_TYPE -arch=$$CUDA_ARCH \
+                        --compile -cudart static -DWIN32 -D_MBCS \
+                        -Xcompiler "/wd4819,/EHsc,/W3,/nologo,/O2,/Zi" \
+                        -Xcompiler $$MSVCRT_LINK_FLAG_RELEASE \
+                        -c -o ${QMAKE_FILE_OUT} ${QMAKE_FILE_NAME}
+        cuda.dependency_type = TYPE_C
+        QMAKE_EXTRA_COMPILERS += cuda
+    }
 }
 
 unix {
@@ -183,7 +271,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
         ./src/qmlclipboardadapter.h \
-        ./src/mainapplication.h
+        ./src/mainapplication.h \
+        ./src/d3d11qtquickvideowidgetbae.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -250,7 +339,8 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/networkmanager.cpp \
         ./src/connectivitymonitor.cpp \
         ./src/userprofile.cpp \
-        ./src/mainapplication.cpp
+        ./src/mainapplication.cpp \
+        ./src/d3d11qtquickvideowidgetbae.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \
