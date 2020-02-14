@@ -1,6 +1,7 @@
 /***************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                                 *
+* Copyright (C) 2019-2020 by Savoir-faire Linux                            *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>           *
+* Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>               *
 *                                                                          *
 * This program is free software; you can redistribute it and/or modify     *
 * it under the terms of the GNU General Public License as published by     *
@@ -29,26 +30,29 @@
 #include "lrcinstance.h"
 #include "utils.h"
 
-AccountListModel::AccountListModel(QObject *parent)
-    : QAbstractItemModel(parent)
+AccountListModel::AccountListModel(QObject* parent)
+    : QAbstractListModel(parent)
 {
 }
 
-int AccountListModel::rowCount(const QModelIndex &parent) const
+int
+AccountListModel::rowCount(const QModelIndex& parent) const
 {
     if (!parent.isValid()) {
-        return LRCInstance::accountModel().getAccountList().size() + 1; // count
+        return LRCInstance::accountModel().getAccountList().size(); // count
     }
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
 
-int AccountListModel::columnCount(const QModelIndex &parent) const
+int
+AccountListModel::columnCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
     return 1;
 }
 
-QVariant AccountListModel::data(const QModelIndex &index, int role) const
+QVariant
+AccountListModel::data(const QModelIndex& index, int role) const
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (!index.isValid() || accountList.size() <= index.row()) {
@@ -59,7 +63,6 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case Role::Alias:
-    case Qt::DisplayRole:
         return QVariant(QString::fromStdString(Utils::bestNameForAccount(accountInfo)));
     case Role::Username:
         return QVariant(QString::fromStdString(Utils::secondBestNameForAccount(accountInfo)));
@@ -68,7 +71,6 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     case Role::Status:
         return QVariant(Utils::toUnderlyingValue<lrc::api::account::Status>(accountInfo.status));
     case Role::Picture:
-    case Qt::DecorationRole:
         return Utils::accountPhoto(accountInfo);
     case Role::ID:
         return QVariant(QString::fromStdString(accountInfo.id));
@@ -76,7 +78,8 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-QModelIndex AccountListModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex
+AccountListModel::index(int row, int column, const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
     if (column != 0) {
@@ -89,17 +92,32 @@ QModelIndex AccountListModel::index(int row, int column, const QModelIndex &pare
     return QModelIndex();
 }
 
-QModelIndex AccountListModel::parent(const QModelIndex &child) const
+QModelIndex
+AccountListModel::parent(const QModelIndex& child) const
 {
     Q_UNUSED(child);
     return QModelIndex();
 }
 
-Qt::ItemFlags AccountListModel::flags(const QModelIndex &index) const
+Qt::ItemFlags
+AccountListModel::flags(const QModelIndex& index) const
 {
     auto flags = QAbstractItemModel::flags(index) | Qt::ItemNeverHasChildren | Qt::ItemIsSelectable;
     if (!index.isValid()) {
         return QAbstractItemModel::flags(index);
     }
     return flags;
+}
+
+QHash<int, QByteArray>
+AccountListModel::roleNames() const {
+    // provide a way to access model data in qml
+    QHash<int, QByteArray> roles;
+    roles[Alias] = "alias";
+    roles[Username] = "username";
+    roles[Picture] = "picture";
+    roles[Type] = "type";
+    roles[Status] = "status";
+    roles[ID] = "id";
+    return roles;
 }
