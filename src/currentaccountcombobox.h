@@ -1,7 +1,8 @@
 /***************************************************************************
- * Copyright (C) 2019-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2020 by Savoir-faire Linux                           *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,70 +21,68 @@
 #pragma once
 
 #include "accountlistmodel.h"
-#include "accountitemdelegate.h"
 #include "notifypushbutton.h"
 
-#include <QComboBox>
-#include <QLabel>
-#include <QPushButton>
+#include <QQuickImageProvider>
+#include <QtQuick/QtQuick>
+#include <QQuickItem>
+#include <QQuickWidget>
+
+#include <QPair>
 
 namespace Ui {
     class CurrentAccountComboBox;
 }
 
-class CurrentAccountComboBox : public QComboBox
+class CurrentAccountComboBox : public QQuickWidget
 {
     Q_OBJECT
-    CurrentAccountComboBox(const CurrentAccountComboBox& cpy);
 
 public:
     explicit CurrentAccountComboBox(QWidget* parent = nullptr);
     ~CurrentAccountComboBox();
-    void accountListUpdate();
-    void setCurrentIndex(int index);
-    void updateComboBoxDisplay();
-    void canPlaceAudioOnlyCall(const std::string& convUid) { emit placeAudioOnlyCall(convUid); }
-    void activateComboBox() { showPopup(); }
-    void deactivateComboBox() { hidePopup(); }
 
-signals:
-    void settingsButtonClicked();
-    void newAccountClicked();
-    void placeAudioOnlyCall(const std::string& convUid);
+    void accountListUpdate();
+
+    AccountListModel* getCurrentModel() { return accountListModel_.get(); }
 
 protected:
-    void paintEvent(QPaintEvent* e);
-    void resizeEvent(QResizeEvent *event);
-    void mousePressEvent(QMouseEvent* mouseEvent);
-    void mouseMoveEvent(QMouseEvent* event);
-    void leaveEvent(QEvent * event);
-    void showPopup();
-    void hidePopup();
+    void resizeEvent(QResizeEvent* event);
 
 private:
-    void connectVoiceMail();
-    void importLabelPhoto(int index);
-    void setupSettingsButton();
-    void setupVoicemailButton();
-
-    AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
+};
 
-    QPixmap currentAccountAvatarImage_;
-    int cellHeight_ = 60; // [screen awareness]
-    int avatarSize_ = 48; // [screen awareness]
-    const int elidConst = 35; // [screen awareness]
-    const int gearBorder_ = 4;
-    const int gearSize_ = 24;
-    bool popupPresent = false;
+class AccountImageProvider : public QObject, public QQuickImageProvider
+{
 
-    QPoint gearPoint_;
-    QLabel gearLabel_;
+private:
+    CurrentAccountComboBox* toProvide_;
 
-    QPoint voicemailPoint_;
-    NotifyPushButton voicemailButton_;
-    const int voicemailBorder_ = 4;
-    const int voicemailSize_ = 24;
+public:
+    AccountImageProvider(CurrentAccountComboBox *toProvide) :
+        QQuickImageProvider(QQuickImageProvider::Image)
+    {
+        toProvide_ = toProvide;
+    }
 
-    std::map<std::string,std::pair<int,int>> voicemailMap_;
+    QPair<int, int> getIndexFromID(const QString& id) {
+        // should be string like account_0_0
+        auto list = id.split('_', QString::SkipEmptyParts);
+        if (list.contains("account")) {
+            return QPair<int, int>(list[1].toInt(), list[2].toInt());
+        }
+        qDebug().noquote() << "accountImage provider id format incorrect";
+        return QPair<int, int>(0, 0);
+    }
+
+    QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize) override
+    {
+        Q_UNUSED(size);
+        Q_UNUSED(requestedSize);
+
+        auto model = toProvide_->getCurrentModel();
+        auto indexPair = getIndexFromID(id);
+        return model->data(model->index(indexPair.first, indexPair.second), AccountListModel::Role::Picture).value<QImage>();
+    }
 };

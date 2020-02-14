@@ -109,7 +109,6 @@ HEADERS += ./src/aboutdialog.h \
         ./src/ringbutton.h \
         ./src/smartlistmodel.h \
         ./src/utils.h \
-        ./src/accountitemdelegate.h \
         ./src/bannedlistmodel.h \
         ./src/currentaccountcombobox.h \
         ./src/invitebuttonswidget.h \
@@ -180,7 +179,6 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/ringbutton.cpp \
         ./src/smartlistview.cpp \
         ./src/videoview.cpp \
-        ./src/accountitemdelegate.cpp \
         ./src/bannedlistmodel.cpp \
         ./src/currentaccountcombobox.cpp \
         ./src/invitebuttonswidget.cpp \

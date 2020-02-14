@@ -97,7 +97,7 @@ CallWidget::CallWidget(QWidget* parent) :
         // get account index and set the currentAccountComboBox
         auto index = Utils::indexInVector(accountList, accountIdToStartWith);
         if (index != -1) {
-            ui->currentAccountComboBox->setCurrentIndex(index);
+            //ui->currentAccountComboBox->setCurrentIndex(index);
         }
     }
 
@@ -110,7 +110,7 @@ CallWidget::CallWidget(QWidget* parent) :
     ui->mainActivitySplitter->setCollapsible(1, false);
 
     //disable dropdown shadow on combobox
-    ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
+    //ui->currentAccountComboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 
     // conversation list
     ui->smartList->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -124,13 +124,13 @@ CallWidget::CallWidget(QWidget* parent) :
     registerShortCuts();
 
     // connections
-    connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
+    /*connect(ui->currentAccountComboBox, &CurrentAccountComboBox::settingsButtonClicked,
             this, &CallWidget::settingsButtonClicked);
 
     connect(ui->currentAccountComboBox, &CurrentAccountComboBox::newAccountClicked,
         [this]() {
             emit NavigationRequested(ScreenEnum::WizardScreen);
-        });
+        });*/
 
     connect(ui->mainActivitySplitter, &QSplitter::splitterMoved,
         [this](int pos, int index) {
@@ -158,8 +158,8 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->smartList, &SmartListView::btnIgnoreInviteClicked,
             this, &CallWidget::slotIgnoreInviteClicked);
 
-    connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &CallWidget::slotAccountChanged);
+    /*connect(ui->currentAccountComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &CallWidget::slotAccountChanged);*/
 
     connect(ui->sendContactRequestButton, &QPushButton::clicked,
             this, &CallWidget::on_sendContactRequestButton_clicked);
@@ -170,11 +170,11 @@ CallWidget::CallWidget(QWidget* parent) :
     connect(ui->btnVideoCall, &QPushButton::clicked,
             this, &CallWidget::on_sendContactRequestButton_clicked);
 
-    connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
+    /*connect(ui->currentAccountComboBox, QOverload<int>::of(&CurrentAccountComboBox::currentIndexChanged),
         [this] {
             ui->btnConversations->setChecked(true);
             ui->btnInvites->setChecked(false);
-        });
+        });*/
 
     connect(ui->messageView, &MessageWebView::conversationRemoved,
         [this] {
@@ -268,7 +268,7 @@ CallWidget::navigated(bool to)
                 }
             }
         } catch (...) {}
-        ui->currentAccountComboBox->updateComboBoxDisplay();
+        //ui->currentAccountComboBox->updateComboBoxDisplay();
         auto& conversation = LRCInstance::getCurrentConversation();
         if (!conversation.uid.empty()) {
             selectSmartlistItem(conversation.uid);
@@ -1103,7 +1103,7 @@ CallWidget::connectConversationModel()
             updateSmartList();
             updateConversationForNewContact(convUid);
             ui->conversationsFilterWidget->update();
-            ui->currentAccountComboBox->canPlaceAudioOnlyCall(convUid);
+            //ui->currentAccountComboBox->canPlaceAudioOnlyCall(convUid);
         }
     );
     conversationRemovedConnection_ = QObject::connect(
@@ -1294,7 +1294,7 @@ CallWidget::updateSmartList()
 void
 CallWidget::updateComboBox()
 {
-    ui->currentAccountComboBox->updateComboBoxDisplay();
+    //ui->currentAccountComboBox->updateComboBoxDisplay();
 }
 
 void
@@ -1545,7 +1545,7 @@ CallWidget::registerShortCuts()
 
     connect(openAccountListSC, &QShortcut::activated,
         [this] {
-            ui->currentAccountComboBox->activateComboBox();
+            //ui->currentAccountComboBox->activateComboBox();
         });
 
     connect(focusOnSmartListSC, &QShortcut::activated,
