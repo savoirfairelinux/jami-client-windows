@@ -65,7 +65,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QWidget" name="sidePanelLayoutWidget" native="true">
+         <widget class="SidePanelQuickWidget" name="sidePanelLayoutWidget" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -90,7 +90,7 @@
             <height>0</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0">
+          <layout class="QVBoxLayout" name="verticalLayout_12">
            <property name="spacing">
             <number>0</number>
            </property>
@@ -109,356 +109,6 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
-           <item>
-            <widget class="CurrentAccountComboBox" name="currentAccountComboBox" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="smartListWidget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,0">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="ConversationsFilterWidget" name="conversationsFilterWidget" native="true">
-                <layout class="QHBoxLayout" name="conversationFilterLayout_3">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>15</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>9</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>15</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QPushButton" name="btnConversations">
-                   <property name="font">
-                    <font>
-                     <pointsize>9</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Show conversations</string>
-                   </property>
-                   <property name="text">
-                    <string>Conversations</string>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btnInvites">
-                   <property name="font">
-                    <font>
-                     <pointsize>9</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Show invites</string>
-                   </property>
-                   <property name="text">
-                    <string>Invites</string>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="smartListOuterWidget" native="true">
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <layout class="QVBoxLayout" name="smartListOuterWidgetLayout">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QWidget" name="searchBarLayoutWidget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>60</height>
-                    </size>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_4">
-                    <property name="sizeConstraint">
-                     <enum>QLayout::SetDefaultConstraint</enum>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="1" column="2">
-                     <spacer name="horizontalSpacer_2">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>16</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="1" column="0">
-                     <spacer name="horizontalSpacer">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>16</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="2" column="1">
-                     <spacer name="verticalSpacer_8">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>0</width>
-                        <height>15</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="2">
-                     <widget class="BezierConnectorWidget" name="searchTopRightWidget" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>16</width>
-                        <height>15</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background:purple;</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="RingContactLineEdit" name="ringContactLineEdit">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>266</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="baseSize">
-                       <size>
-                        <width>244</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>9</pointsize>
-                       </font>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>IBeamCursor</cursorShape>
-                      </property>
-                      <property name="toolTip">
-                       <string>Search contact text input</string>
-                      </property>
-                      <property name="maxLength">
-                       <number>100</number>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                      </property>
-                      <property name="placeholderText">
-                       <string>Find a new or existing contact</string>
-                      </property>
-                      <property name="clearButtonEnabled">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="BezierConnectorWidget" name="searchTopLeftWidget" native="true">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>16</width>
-                        <height>15</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background:purple;</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <spacer name="verticalSpacer_7">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>0</width>
-                        <height>15</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="SmartListView" name="smartList">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="autoScrollMargin">
-                    <number>16</number>
-                   </property>
-                   <property name="indentation">
-                    <number>0</number>
-                   </property>
-                   <property name="rootIsDecorated">
-                    <bool>false</bool>
-                   </property>
-                   <property name="itemsExpandable">
-                    <bool>false</bool>
-                   </property>
-                   <property name="expandsOnDoubleClick">
-                    <bool>false</bool>
-                   </property>
-                   <attribute name="headerVisible">
-                    <bool>false</bool>
-                   </attribute>
-                   <attribute name="headerMinimumSectionSize">
-                    <number>0</number>
-                   </attribute>
-                   <attribute name="headerDefaultSectionSize">
-                    <number>42</number>
-                   </attribute>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
           </layout>
          </widget>
         </item>
@@ -2184,7 +1834,7 @@ Copy and share it with your friends!
                        </spacer>
                       </item>
                       <item>
-                       <widget class="MessageWebView" name="messageView">
+                       <widget class="MessageWebView" name="messageView" native="true">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                           <horstretch>0</horstretch>
@@ -2246,16 +1896,6 @@ Copy and share it with your friends!
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
   <customwidget>
-   <class>RingContactLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>ringcontactlineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SmartListView</class>
-   <extends>QTreeView</extends>
-   <header>smartlistview.h</header>
-  </customwidget>
-  <customwidget>
    <class>VideoView</class>
    <extends>QWidget</extends>
    <header>videoview.h</header>
@@ -2272,27 +1912,13 @@ Copy and share it with your friends!
    <header>messagewebview.h</header>
   </customwidget>
   <customwidget>
-   <class>ConversationsFilterWidget</class>
+   <class>SidePanelQuickWidget</class>
    <extends>QWidget</extends>
-   <header>conversationsfilterwidget.h</header>
+   <header>sidepanelquickwidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>CurrentAccountComboBox</class>
-   <extends>QWidget</extends>
-   <header>currentaccountcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BezierConnectorWidget</class>
-   <extends>QWidget</extends>
-   <header>bezierconnectorwidget.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>btnConversations</tabstop>
-  <tabstop>btnInvites</tabstop>
-  <tabstop>ringContactLineEdit</tabstop>
-  <tabstop>smartList</tabstop>
   <tabstop>acceptButton</tabstop>
   <tabstop>refuseButton</tabstop>
   <tabstop>cancelButton</tabstop>
