@@ -96,7 +96,7 @@ SelectAreaDialog::mouseReleaseEvent(QMouseEvent* event)
     QApplication::restoreOverrideCursor();
     releaseMouse();
     QRect rect = rubberBand_->geometry();
-#if defined(Q_OS_WIN) && !(PROCESS_DPI_AWARE)
+#if defined(Q_OS_WIN)
     if (screen && screen->devicePixelRatio() > 1.0) {
         auto scaledSize = screen->geometry();
         auto sourceHdc = GetDC(nullptr);
